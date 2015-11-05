@@ -26,6 +26,8 @@
 // EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "ApplicationDelegate.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation ApplicationDelegate
 
@@ -59,6 +61,10 @@ void *kContextActivePanel = &kContextActivePanel;
 {
     // Install icon into the menu bar
     self.menubarController = [[MenubarController alloc] init];
+    
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
+    
+    [Fabric with:@[[Crashlytics class]]];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
