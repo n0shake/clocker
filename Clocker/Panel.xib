@@ -141,7 +141,7 @@
                         </scroller>
                     </scrollView>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HR1-ZK-Ey0">
-                        <rect key="frame" x="0.0" y="2" width="279" height="22"/>
+                        <rect key="frame" x="0.0" y="2" width="280" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="IxM-FF-J1F"/>
                         </constraints>
@@ -185,7 +185,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="4Gd-Nv-fXr" firstAttribute="top" secondItem="6" secondAttribute="top" constant="8" id="1g0-Hm-7Gh"/>
-                    <constraint firstAttribute="trailing" secondItem="HR1-ZK-Ey0" secondAttribute="trailing" constant="1" id="1ol-mo-aQU"/>
+                    <constraint firstAttribute="trailing" secondItem="HR1-ZK-Ey0" secondAttribute="trailing" id="1ol-mo-aQU"/>
                     <constraint firstAttribute="bottom" secondItem="HR1-ZK-Ey0" secondAttribute="bottom" constant="2" id="Jtb-Nx-FYR"/>
                     <constraint firstAttribute="bottom" secondItem="nTt-pf-Hw2" secondAttribute="bottom" constant="2" id="QoV-TI-KVJ"/>
                     <constraint firstAttribute="bottom" secondItem="OFy-u1-TnH" secondAttribute="bottom" constant="2" id="Ubf-Mv-WMp"/>
