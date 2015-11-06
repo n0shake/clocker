@@ -45,6 +45,8 @@
 
 @property (weak) IBOutlet NSButton *is24HourFormatSelected;
 @property (weak) IBOutlet NSTextField *messageLabel;
+@property (weak) IBOutlet NSTextField *openSourceMessage;
+@property (weak) IBOutlet NSButton *reportBug;
 
 @end
 
@@ -54,6 +56,17 @@ static PreferencesWindowController *sharedPreferences = nil;
 
 - (void)windowDidLoad {
     [super windowDidLoad];
+    
+    [self.openSourceMessage setAllowsEditingTextAttributes: YES];
+    [self.openSourceMessage setSelectable:YES];
+    NSString *credits = @"Clocker v1.0 is open source. You can find the source code <a href=\"https://github.com/Abhishaker17/Clocker\">here!</a>";
+    [self.openSourceMessage setAttributedStringValue:[self stringFromHTML:credits withFont:[self.openSourceMessage font]]];
+    
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc]initWithString:@"Report Bug!x"];
+    [attrString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleSingle] range:NSMakeRange(0, attrString.length)];
+    [attrString addAttribute:NSForegroundColorAttributeName value:[NSColor blueColor] range:NSMakeRange(0, self.reportBug.title.length)];
+    [self.reportBug setAttributedStringValue:attrString];
+
     
      NSMutableArray *defaultTimeZones = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultPreferences"];
     
@@ -75,6 +88,14 @@ static PreferencesWindowController *sharedPreferences = nil;
     [self.timezoneTableView registerForDraggedTypes: [NSArray arrayWithObject: @"public.text"]];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+}
+
+-(NSAttributedString *)stringFromHTML:(NSString *)html withFont:(NSFont *)font
+{
+    html = [NSString stringWithFormat:@"<span style=\"font-family:'%@'; font-size:%dpx;\">%@</span>", [font fontName], (int)[font pointSize], html];
+    NSData *data = [html dataUsingEncoding:NSUTF8StringEncoding];
+    NSAttributedString* string = [[NSAttributedString alloc] initWithHTML:data documentAttributes:nil];
+    return string;
 }
 
 -(id)copyWithZone:(NSZone *)zone
@@ -408,5 +429,16 @@ static PreferencesWindowController *sharedPreferences = nil;
         }
     }
 }
+
+- (IBAction)supportAction:(id)sender
+{
+    NSAppleScript *mailScript;
+    NSString *scriptString= @"tell application \"Mail\"\nset theAddress to \"abhishekbanthia@me.com\"\n set msg to make new outgoing message with properties {visible:true, subject:\"Regarding Clocker - We need to talk!\"}\ntell msg to make new to recipient at end of every to recipient with properties {address:theAddress}\n activate\nend tell";
+    mailScript = [[NSAppleScript alloc] initWithSource:scriptString];
+    NSDictionary *dict = nil;
+    [mailScript executeAndReturnError:&dict];
+}
+
+
 
 @end

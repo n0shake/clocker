@@ -9,6 +9,8 @@
                 <outlet property="availableTimezoneTableView" destination="6Hm-XH-CMI" id="GA1-tc-E9E"/>
                 <outlet property="is24HourFormatSelected" destination="N47-gw-Pay" id="2MV-F1-uYf"/>
                 <outlet property="messageLabel" destination="Rty-6T-aPw" id="Qg4-mk-P90"/>
+                <outlet property="openSourceMessage" destination="cso-OX-qzB" id="yJg-DI-SX9"/>
+                <outlet property="reportBug" destination="psn-eC-m9g" id="zeL-Kw-pBY"/>
                 <outlet property="searchField" destination="5jL-eb-qdB" id="K6C-JS-ko0"/>
                 <outlet property="timezonePanel" destination="Z6I-Ny-aGx" id="tXP-KH-Xfi"/>
                 <outlet property="timezoneTableView" destination="oKD-AN-gPT" id="oD2-n0-4jf"/>
@@ -20,15 +22,15 @@
         <window identifier="Selected Timezones" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="documentWindow" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="407" y="179" width="439" height="392"/>
+            <rect key="contentRect" x="407" y="179" width="439" height="426"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <value key="minSize" type="size" width="439" height="351"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="439" height="392"/>
+                <rect key="frame" x="0.0" y="0.0" width="439" height="426"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DCz-qN-ydK">
-                        <rect key="frame" x="11" y="107" width="21" height="22"/>
+                        <rect key="frame" x="11" y="146" width="21" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="aUK-f8-pvY"/>
                             <constraint firstAttribute="width" constant="21" id="hAr-3f-KNJ"/>
@@ -43,7 +45,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ixe-Sn-8qT">
-                        <rect key="frame" x="32" y="107" width="21" height="22"/>
+                        <rect key="frame" x="32" y="146" width="21" height="22"/>
                         <animations/>
                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SVO-Wt-Mfb">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -54,13 +56,13 @@
                         </connections>
                     </button>
                     <scrollView focusRingType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cI0-M7-C9h">
-                        <rect key="frame" x="10" y="134" width="419" height="250"/>
+                        <rect key="frame" x="10" y="173" width="419" height="245"/>
                         <clipView key="contentView" id="WWk-6i-nI7">
-                            <rect key="frame" x="1" y="0.0" width="417" height="249"/>
+                            <rect key="frame" x="1" y="0.0" width="417" height="244"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="20" headerView="dKI-Ue-9QX" id="oKD-AN-gPT">
-                                    <rect key="frame" x="0.0" y="0.0" width="417" height="226"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="417" height="221"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                     <size key="intercellSpacing" width="3" height="2"/>
@@ -108,11 +110,11 @@
                         </tableHeaderView>
                     </scrollView>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="P0l-kc-VxU" customClass="ColoredButton">
-                        <rect key="frame" x="9" y="58" width="219" height="18"/>
+                        <rect key="frame" x="9" y="97" width="191" height="18"/>
                         <animations/>
-                        <buttonCell key="cell" type="check" title="Show only city/region name" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jaB-eA-S6N">
+                        <buttonCell key="cell" type="check" title="Show only City/Region name" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jaB-eA-S6N">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" size="14" name="Helvetica-Light"/>
+                            <font key="font" size="12" name="Helvetica-Light"/>
                         </buttonCell>
                         <connections>
                             <action selector="showOnlyCityName:" target="-2" id="1lf-cZ-gyt"/>
@@ -120,18 +122,18 @@
                         </connections>
                     </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="GDz-2Z-uX5" customClass="ColoredButton">
-                        <rect key="frame" x="9" y="39" width="219" height="18"/>
+                        <rect key="frame" x="9" y="75" width="191" height="18"/>
                         <animations/>
                         <buttonCell key="cell" type="check" title="Start Clocker on system startup" bezelStyle="regularSquare" imagePosition="left" inset="2" id="h45-jZ-cPY">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" size="14" name="Helvetica-Light"/>
+                            <font key="font" size="12" name="Helvetica-Light"/>
                         </buttonCell>
                         <connections>
                             <binding destination="-2" name="value" keyPath="self.launchOnLogin" id="Vqw-iQ-qOe"/>
                         </connections>
                     </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="N47-gw-Pay" customClass="ColoredButton">
-                        <rect key="frame" x="9" y="77" width="343" height="22"/>
+                        <rect key="frame" x="9" y="119" width="343" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="339" id="0eX-T7-EbU"/>
                             <constraint firstAttribute="height" constant="18" id="qwS-Bk-vmy"/>
@@ -139,52 +141,69 @@
                         <animations/>
                         <buttonCell key="cell" type="check" title="Use a 24-hour clock" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Fro-eC-cMC">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" size="14" name="Helvetica-Light"/>
+                            <font key="font" size="12" name="Helvetica-Light"/>
                         </buttonCell>
                         <connections>
                             <action selector="timeFormatSelectionChanged:" target="-2" id="6vB-XV-sSq"/>
                             <binding destination="sEG-Zb-KUM" name="value" keyPath="values.is24HourFormatSelected" id="wod-mK-9M5"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cso-OX-qzB">
-                        <rect key="frame" x="8" y="13" width="413" height="20"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cso-OX-qzB">
+                        <rect key="frame" x="8" y="49" width="413" height="20"/>
                         <animations/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" title="Clocker v1.0 is open source. Find the source code here." placeholderString="" id="l7j-wK-zcu">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="Open Source Message" id="l7j-wK-zcu">
                             <font key="font" size="13" name="HelveticaNeue-Thin"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button toolTip="Say Hello!" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="psn-eC-m9g">
+                        <rect key="frame" x="2" y="13" width="97" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Url-R6-qPD"/>
+                            <constraint firstAttribute="width" constant="85" id="Zyt-kT-9nT"/>
+                        </constraints>
+                        <animations/>
+                        <buttonCell key="cell" type="push" title="Report Bug!" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="ZVb-7Q-E7k">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="supportAction:" target="-2" id="nlJ-e3-fCy"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="psn-eC-m9g" firstAttribute="top" secondItem="cso-OX-qzB" secondAttribute="bottom" constant="8" id="1ah-5W-DP0"/>
                     <constraint firstItem="DCz-qN-ydK" firstAttribute="top" secondItem="cI0-M7-C9h" secondAttribute="bottom" constant="6" id="6Ye-VD-kSE"/>
                     <constraint firstItem="cso-OX-qzB" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="10" id="Bux-4T-BB9"/>
                     <constraint firstItem="P0l-kc-VxU" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="11" id="DUR-uK-Ncx"/>
-                    <constraint firstAttribute="bottom" secondItem="cso-OX-qzB" secondAttribute="bottom" constant="13" id="EdL-0P-Jrg"/>
                     <constraint firstItem="GDz-2Z-uX5" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="11" id="FLl-Pc-Gzn"/>
                     <constraint firstItem="cI0-M7-C9h" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="10" id="Fy5-6V-gu1"/>
-                    <constraint firstItem="GDz-2Z-uX5" firstAttribute="top" secondItem="P0l-kc-VxU" secondAttribute="bottom" constant="5" id="NW3-cd-t0e"/>
+                    <constraint firstAttribute="bottom" secondItem="psn-eC-m9g" secondAttribute="bottom" constant="20" id="N2a-39-Xp7"/>
+                    <constraint firstItem="GDz-2Z-uX5" firstAttribute="top" secondItem="P0l-kc-VxU" secondAttribute="bottom" constant="8" id="NW3-cd-t0e"/>
                     <constraint firstAttribute="trailing" secondItem="cso-OX-qzB" secondAttribute="trailing" constant="20" id="Q4B-CE-JrO"/>
                     <constraint firstItem="ixe-Sn-8qT" firstAttribute="leading" secondItem="DCz-qN-ydK" secondAttribute="trailing" id="TLA-Fw-F7P"/>
-                    <constraint firstItem="P0l-kc-VxU" firstAttribute="top" secondItem="N47-gw-Pay" secondAttribute="bottom" constant="5" id="Tfe-Y8-KcS"/>
+                    <constraint firstItem="P0l-kc-VxU" firstAttribute="top" secondItem="N47-gw-Pay" secondAttribute="bottom" constant="8" id="Tfe-Y8-KcS"/>
                     <constraint firstItem="GDz-2Z-uX5" firstAttribute="width" secondItem="P0l-kc-VxU" secondAttribute="width" id="VUD-7V-5SX"/>
                     <constraint firstItem="DCz-qN-ydK" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="11" id="Waz-CP-UWF"/>
                     <constraint firstItem="GDz-2Z-uX5" firstAttribute="height" secondItem="P0l-kc-VxU" secondAttribute="height" id="c2z-Ik-d6W"/>
-                    <constraint firstItem="N47-gw-Pay" firstAttribute="top" secondItem="ixe-Sn-8qT" secondAttribute="bottom" constant="11" id="gbd-HA-u9p"/>
+                    <constraint firstItem="N47-gw-Pay" firstAttribute="top" secondItem="ixe-Sn-8qT" secondAttribute="bottom" constant="8" id="gbd-HA-u9p"/>
                     <constraint firstItem="N47-gw-Pay" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="11" id="hXb-69-tI0"/>
                     <constraint firstItem="ixe-Sn-8qT" firstAttribute="width" secondItem="DCz-qN-ydK" secondAttribute="width" id="o7k-jf-cL0"/>
                     <constraint firstItem="cso-OX-qzB" firstAttribute="top" secondItem="GDz-2Z-uX5" secondAttribute="bottom" constant="8" id="qZY-wv-3kN"/>
                     <constraint firstItem="ixe-Sn-8qT" firstAttribute="height" secondItem="DCz-qN-ydK" secondAttribute="height" id="rsK-UP-Umg"/>
                     <constraint firstItem="cI0-M7-C9h" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="8" id="u5H-Ff-ivt"/>
                     <constraint firstAttribute="trailing" secondItem="cI0-M7-C9h" secondAttribute="trailing" constant="10" id="ut9-6b-cdu"/>
-                    <constraint firstItem="N47-gw-Pay" firstAttribute="top" secondItem="DCz-qN-ydK" secondAttribute="bottom" constant="11" id="x0C-Ev-Imb"/>
+                    <constraint firstItem="N47-gw-Pay" firstAttribute="top" secondItem="DCz-qN-ydK" secondAttribute="bottom" constant="8" id="x0C-Ev-Imb"/>
+                    <constraint firstItem="psn-eC-m9g" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="8" id="xEn-ec-WQn"/>
                 </constraints>
                 <animations/>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="304.5" y="240"/>
+            <point key="canvasLocation" x="304.5" y="257"/>
         </window>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="alertPanel" appearanceType="aqua" frameAutosaveName="" id="Z6I-Ny-aGx" customClass="Panel">
             <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES" resizable="YES" documentModal="YES" nonactivatingPanel="YES" texturedBackground="YES"/>

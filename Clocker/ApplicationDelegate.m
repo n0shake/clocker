@@ -59,6 +59,34 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"noOfLaunches"] == nil)
+    {
+        NSNumber *numberOfLaunches = @1;
+        [[NSUserDefaults standardUserDefaults] setObject:numberOfLaunches forKey:@"noOfLaunches"];
+    }
+    else
+    {
+        //Check the number of times app has been launched.
+        
+        NSNumber *numberOfLaunches = [[NSUserDefaults standardUserDefaults] objectForKey:@"noOfLaunches"];
+        NSInteger launches = numberOfLaunches.integerValue;
+        launches++;
+        numberOfLaunches = [NSNumber numberWithInteger:launches];
+        [[NSUserDefaults standardUserDefaults] setObject:numberOfLaunches forKey:@"noOfLaunches"];
+        
+        if (numberOfLaunches.integerValue == 5)
+        {
+            NSAlert *reviewAlert = [[NSAlert alloc] init];
+            reviewAlert.alertStyle = NSInformationalAlertStyle;
+            reviewAlert.messageText = @"Spead the word, maybe?";
+            reviewAlert.informativeText = @"Clocker is completely open source. If it has helped you in any way, please leave a kind review on the App Store!";
+            [reviewAlert addButtonWithTitle:@"Cancel"];
+            [reviewAlert runModal];
+
+        }
+    }
+    
     // Install icon into the menu bar
     self.menubarController = [[MenubarController alloc] init];
     

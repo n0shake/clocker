@@ -36,14 +36,13 @@
 
 - (void)setButtonTitleFor:(NSButton*)button toString:(NSString*)title withColor:(NSColor*)color
 {
-    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    [style setAlignment:NSLeftTextAlignment];
-    NSFont *font = [NSFont fontWithName:@"HelveticaNeue-Light" size:13.0];
-    NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:color, NSForegroundColorAttributeName, style, NSParagraphStyleAttributeName, font,NSFontAttributeName, nil];
+   
+    NSFont *font = [NSFont fontWithName:@"HelveticaNeue-Light" size:12.0];
+    NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:color, NSForegroundColorAttributeName, font,NSFontAttributeName, nil];
     
     
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc]initWithString:title attributes:attrsDictionary];
-    [attrString setAlignment:NSTextAlignmentLeft range:NSMakeRange(0, self.title.length)];
+
 
 
     [button setAttributedTitle:attrString];
@@ -53,6 +52,7 @@
 {
     NSString *title = self.title;
     NSColor *color = [NSColor blackColor];
+    self.imagePosition = NSImageLeft;
     [self setButtonTitleFor:self toString:title withColor:color];
 }
 

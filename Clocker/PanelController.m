@@ -98,13 +98,7 @@
     }
     
        
-    if (self.defaultPreferences.count <= 10) {
-        self.scrollViewHeight.constant = self.window.contentView.frame.size.height;
-    }
-    else
-    {
-        self.scrollViewHeight.constant = 550;
-    }
+    self.scrollViewHeight.constant = self.defaultPreferences.count*55 + 30;
 }
 
 #pragma mark - Public accessors
@@ -204,14 +198,7 @@
     NSRect panelRect = [panel frame];
     panelRect.size.width = PANEL_WIDTH;
     
-    if (self.defaultPreferences.count <= 10)
-    {
-        panelRect.size.height = self.defaultPreferences.count*55 + 30;
-    }
-    else
-    {
-        panelRect.size.height = 500;
-    }
+    panelRect.size.height = self.defaultPreferences.count*55 + 30;
 
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
