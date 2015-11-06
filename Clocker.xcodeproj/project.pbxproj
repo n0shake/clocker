@@ -23,7 +23,6 @@
 		9A8605BF1BEC14F600A810A4 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BC1BEC14F600A810A4 /* BackgroundView.m */; };
 		9A8605C01BEC14F600A810A4 /* Panel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BD1BEC14F600A810A4 /* Panel.m */; };
 		9A8605C11BEC14F600A810A4 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BE1BEC14F600A810A4 /* PreferencesWindowController.m */; };
-		9A8605D41BEC155B00A810A4 /* Clock.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605C21BEC155B00A810A4 /* Clock.jpeg */; settings = {ASSET_TAGS = (); }; };
 		9A8605D61BEC155B00A810A4 /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605CD1BEC155B00A810A4 /* Panel.xib */; settings = {ASSET_TAGS = (); }; };
 		9A8605D71BEC155B00A810A4 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605CE1BEC155B00A810A4 /* PreferencesWindow.xib */; settings = {ASSET_TAGS = (); }; };
 		9A8605D81BEC155B00A810A4 /* PowerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605CF1BEC155B00A810A4 /* PowerIcon.png */; settings = {ASSET_TAGS = (); }; };
@@ -52,7 +51,6 @@
 		9A8605BC1BEC14F600A810A4 /* BackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BackgroundView.m; path = Clocker/BackgroundView.m; sourceTree = "<group>"; };
 		9A8605BD1BEC14F600A810A4 /* Panel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Panel.m; path = Clocker/Panel.m; sourceTree = "<group>"; };
 		9A8605BE1BEC14F600A810A4 /* PreferencesWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PreferencesWindowController.m; path = Clocker/PreferencesWindowController.m; sourceTree = "<group>"; };
-		9A8605C21BEC155B00A810A4 /* Clock.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Clock.jpeg; path = Clocker/Clock.jpeg; sourceTree = "<group>"; };
 		9A8605C31BEC155B00A810A4 /* Clocker-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Clocker-Info.plist"; path = "Clocker/Clocker-Info.plist"; sourceTree = "<group>"; };
 		9A8605C41BEC155B00A810A4 /* BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BackgroundView.h; path = Clocker/BackgroundView.h; sourceTree = "<group>"; };
 		9A8605C51BEC155B00A810A4 /* StatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusItemView.h; path = Clocker/StatusItemView.h; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 		9A8605E11BEC160700A810A4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				9A8605C21BEC155B00A810A4 /* Clock.jpeg */,
 				9A8605CF1BEC155B00A810A4 /* PowerIcon.png */,
 				9A8605D01BEC155B00A810A4 /* Status.png */,
 				9A8605D11BEC155B00A810A4 /* Status@2x.png */,
@@ -262,7 +259,6 @@
 				9A8605D91BEC155B00A810A4 /* Status.png in Resources */,
 				9A8605D61BEC155B00A810A4 /* Panel.xib in Resources */,
 				9A43792E1BEC256200F4E27F /* Media.xcassets in Resources */,
-				9A8605D41BEC155B00A810A4 /* Clock.jpeg in Resources */,
 				9A8605DC1BEC155B00A810A4 /* StatusHighlighted@2x.png in Resources */,
 				9A8605DA1BEC155B00A810A4 /* Status@2x.png in Resources */,
 				9A8605DB1BEC155B00A810A4 /* StatusHighlighted.png in Resources */,
