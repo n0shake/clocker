@@ -9,7 +9,7 @@
     {
       "size" : "16x16",
       "idiom" : "mac",
-      "filename" : "ClockerIcon-34.png",
+      "filename" : "ClockerIcon-33.png",
       "scale" : "2x"
     },
     {
@@ -55,8 +55,9 @@
       "scale" : "1x"
     },
     {
-      "idiom" : "mac",
       "size" : "512x512",
+      "idiom" : "mac",
+      "filename" : "ClockerIcon-1024.png",
       "scale" : "2x"
     }
   ],

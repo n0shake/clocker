@@ -411,10 +411,14 @@
 
 - (void)showOptions:(BOOL)value
 {
-    if (self.defaultPreferences.count > 0) {
-        self.shutdownButton.hidden = !value;
-        self.preferencesButton.hidden = !value;
+    if (self.defaultPreferences.count == 0)
+    {
+        value = YES;
     }
+   
+    self.shutdownButton.hidden = !value;
+    self.preferencesButton.hidden = !value;
+    
 }
 
 @end

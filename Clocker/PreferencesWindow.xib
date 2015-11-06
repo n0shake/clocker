@@ -244,7 +244,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         </tableColumn>
-                                        <tableColumn identifier="abbreviation" width="115.71875" minWidth="10" maxWidth="3.4028234663852886e+38" id="Iuq-hc-Ma0">
+                                        <tableColumn identifier="abbreviation" editable="NO" width="115.71875" minWidth="10" maxWidth="3.4028234663852886e+38" id="Iuq-hc-Ma0">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Abbreviation">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
