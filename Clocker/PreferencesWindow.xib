@@ -10,7 +10,6 @@
                 <outlet property="is24HourFormatSelected" destination="N47-gw-Pay" id="2MV-F1-uYf"/>
                 <outlet property="messageLabel" destination="Rty-6T-aPw" id="Qg4-mk-P90"/>
                 <outlet property="openSourceMessage" destination="cso-OX-qzB" id="yJg-DI-SX9"/>
-                <outlet property="reportBug" destination="psn-eC-m9g" id="zeL-Kw-pBY"/>
                 <outlet property="searchField" destination="5jL-eb-qdB" id="K6C-JS-ko0"/>
                 <outlet property="timezonePanel" destination="Z6I-Ny-aGx" id="tXP-KH-Xfi"/>
                 <outlet property="timezoneTableView" destination="oKD-AN-gPT" id="oD2-n0-4jf"/>

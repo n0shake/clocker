@@ -84,6 +84,10 @@
 
 }
 
+#pragma mark -
+#pragma mark Updating Timezones
+#pragma mark -
+
 - (void) updateDefaultPreferences
 {
     NSArray *defaultZones = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultPreferences"];
@@ -235,6 +239,10 @@
     });
 }
 
+#pragma mark -
+#pragma mark NSTableview Datasource
+#pragma mark -
+
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
     return self.defaultPreferences.count;
@@ -260,6 +268,10 @@
     
     return cell;
 }
+
+#pragma mark -
+#pragma mark Datasource formatting
+#pragma mark -
 
 - (NSString *)formatStringShouldContainCity:(BOOL)value withTimezoneName:(NSString *)name
 {
@@ -330,9 +342,6 @@
     {
         return @"Tomorrow";
     }
-
-    
-
 }
 
 - (NSString *)getDateForTimeZone:(NSString *)timezoneName
@@ -347,6 +356,10 @@
     
     return [self compareSystemDate:[self getLocalCurrentDate] toTimezoneDate:[dateFormatter stringFromDate:currentDate]];;
 }
+
+#pragma mark -
+#pragma mark NSTableview Drag and Drop
+#pragma mark -
 
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
 {
@@ -383,16 +396,21 @@
     return NSDragOperationEvery;
 }
 
-
+#pragma mark -
+#pragma mark Preferences Target-Action
+#pragma mark -
 
 - (IBAction)openPreferences:(id)sender
 {
     self.preferencesWindow = [PreferencesWindowController sharedPreferences];
     [self.preferencesWindow showWindow:nil];
-    
     [NSApp activateIgnoringOtherApps:YES];
 
 }
+
+#pragma mark -
+#pragma mark Hiding Buttons on Mouse Exit
+#pragma mark -
 
 - (void)showOptions:(BOOL)value
 {

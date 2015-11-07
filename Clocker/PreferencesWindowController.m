@@ -46,7 +46,6 @@
 @property (weak) IBOutlet NSButton *is24HourFormatSelected;
 @property (weak) IBOutlet NSTextField *messageLabel;
 @property (weak) IBOutlet NSTextField *openSourceMessage;
-@property (weak) IBOutlet NSButton *reportBug;
 
 @end
 
@@ -62,11 +61,6 @@ static PreferencesWindowController *sharedPreferences = nil;
     NSString *credits = @"Clocker v1.0 is open source. You can find the source code <a href=\"https://github.com/Abhishaker17/Clocker\">here!</a>";
     [self.openSourceMessage setAttributedStringValue:[self stringFromHTML:credits withFont:[self.openSourceMessage font]]];
     
-    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc]initWithString:@"Report Bug!x"];
-    [attrString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleSingle] range:NSMakeRange(0, attrString.length)];
-    [attrString addAttribute:NSForegroundColorAttributeName value:[NSColor blueColor] range:NSMakeRange(0, self.reportBug.title.length)];
-    [self.reportBug setAttributedStringValue:attrString];
-
     
      NSMutableArray *defaultTimeZones = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultPreferences"];
     
@@ -76,8 +70,6 @@ static PreferencesWindowController *sharedPreferences = nil;
         self.selectedTimeZones = [[NSMutableArray alloc] initWithArray:defaultTimeZones];
         self.filteredArray = [[NSArray alloc] init];
     }
-    
-    self.fontFamilies = [[NSArray alloc] initWithArray:[[NSFontManager sharedFontManager] availableFonts]];
     
     self.messageLabel.stringValue = @"";
     
@@ -209,7 +201,9 @@ static PreferencesWindowController *sharedPreferences = nil;
     }
     
         
-    selectedTimezone = self.searchField.stringValue.length > 0 ? self.filteredArray[self.availableTimezoneTableView.selectedRow] : self.timeZoneArray[self.availableTimezoneTableView.selectedRow];
+    selectedTimezone = self.searchField.stringValue.length > 0 ?
+                       self.filteredArray[self.availableTimezoneTableView.selectedRow] :
+                        self.timeZoneArray[self.availableTimezoneTableView.selectedRow];
     
     [self.selectedTimeZones addObject:selectedTimezone];
     
@@ -263,10 +257,7 @@ static PreferencesWindowController *sharedPreferences = nil;
     [self.selectedTimeZones removeObjectsInArray:itemsToRemove];
     
     
-    NSMutableArray *newDefaults;
-    
-    newDefaults = [[NSMutableArray alloc] initWithArray:self.selectedTimeZones];
-    
+    NSMutableArray *newDefaults = [[NSMutableArray alloc] initWithArray:self.selectedTimeZones];
     
     [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:@"defaultPreferences"];
     
@@ -305,7 +296,9 @@ static PreferencesWindowController *sharedPreferences = nil;
 }
 - (IBAction)timeFormatSelectionChanged:(id)sender {
     
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:self.is24HourFormatSelected.state] forKey:@"is24HourFormatSelected"];
+    NSButton *is24HourFormatSelected = (NSButton *)sender;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:is24HourFormatSelected.state] forKey:@"is24HourFormatSelected"];
     
     [self refreshMainTableview];
 }

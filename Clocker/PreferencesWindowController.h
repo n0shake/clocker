@@ -38,7 +38,6 @@
 @property (strong, nonatomic) NSMutableArray *timeZoneArray;
 @property (strong, nonatomic) NSMutableArray *selectedTimeZones;
 @property (strong, nonatomic) NSArray *filteredArray;
-@property (strong, nonatomic) NSArray *fontFamilies;
 @property (atomic, assign) BOOL launchOnLogin;
 
 + (instancetype)sharedPreferences;

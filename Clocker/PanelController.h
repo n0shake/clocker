@@ -58,21 +58,18 @@
 @property (nonatomic) BOOL hasActivePanel;
 @property (nonatomic, unsafe_unretained, readonly) id<PanelControllerDelegate> delegate;
 @property (weak) IBOutlet NSTableView *mainTableview;
-@property (weak) IBOutlet NSScrollView *scrollView;
 
 @property (weak) IBOutlet NSLayoutConstraint *scrollViewHeight;
 
 @property (weak) IBOutlet NSButton *shutdownButton;
 @property (weak) IBOutlet NSButton *preferencesButton;
-@property (weak) IBOutlet NSTextField *logoLabel;
-
 
 
 - (id)initWithDelegate:(id<PanelControllerDelegate>)delegate;
 
 - (void)openPanel;
 - (void)closePanel;
-- (void) updateDefaultPreferences;
+- (void)updateDefaultPreferences;
 - (void)showOptions:(BOOL)value;
 
 @end

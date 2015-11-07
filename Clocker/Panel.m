@@ -41,6 +41,10 @@
     return YES;
 }
 
+#pragma mark -
+#pragma mark Handling Keydown events
+#pragma mark -
+
 -(void)keyDown:(NSEvent *)theEvent
 {
     [super keyDown:theEvent];

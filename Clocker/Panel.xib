@@ -7,10 +7,8 @@
         <customObject id="-2" userLabel="File's Owner" customClass="PanelController">
             <connections>
                 <outlet property="backgroundView" destination="6" id="20"/>
-                <outlet property="logoLabel" destination="HR1-ZK-Ey0" id="5Mh-OP-GqP"/>
                 <outlet property="mainTableview" destination="dFw-ts-8OZ" id="wwJ-jA-lCy"/>
                 <outlet property="preferencesButton" destination="OFy-u1-TnH" id="SId-Ih-ssT"/>
-                <outlet property="scrollView" destination="4Gd-Nv-fXr" id="mw5-Tt-83x"/>
                 <outlet property="scrollViewHeight" destination="QcT-N0-G4s" id="EHr-Co-L0Z"/>
                 <outlet property="shutdownButton" destination="nTt-pf-Hw2" id="gCK-0D-gnK"/>
                 <outlet property="window" destination="5" id="7"/>
