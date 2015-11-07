@@ -66,11 +66,8 @@
         self.image = [NSImage imageNamed:@"StatusHighlighted"];
     }
     else
-    {
-        if (self.isHighlighted)
-            self.image = [NSImage imageNamed:@"StatusHighlighted"];
-        else
-            self.image = [NSImage imageNamed:@"Status"];
+    {        
+        self.image = self.isHighlighted ? [NSImage imageNamed:@"StatusHighlighted"] : [NSImage imageNamed:@"Status"];
     }
 	[self.statusItem drawStatusBarBackgroundInRect:dirtyRect withHighlight:self.isHighlighted];
     

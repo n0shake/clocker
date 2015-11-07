@@ -88,15 +88,7 @@
 {
     NSArray *defaultZones = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultPreferences"];
     
-    if (self.defaultPreferences == nil)
-    {
-        self.defaultPreferences = [[NSMutableArray alloc] initWithArray:defaultZones];
-    }
-    else
-    {
-        self.defaultPreferences = [NSMutableArray arrayWithArray:defaultZones];
-    }
-    
+    self.defaultPreferences = self.defaultPreferences == nil ? [[NSMutableArray alloc] initWithArray:defaultZones] : [NSMutableArray arrayWithArray:defaultZones];
        
     self.scrollViewHeight.constant = self.defaultPreferences.count*55 + 30;
 }
@@ -114,14 +106,7 @@
     {
         _hasActivePanel = flag;
         
-        if (_hasActivePanel)
-        {
-            [self openPanel];
-        }
-        else
-        {
-            [self closePanel];
-        }
+        _hasActivePanel ? [self openPanel] : [self closePanel];
     }
 }
 

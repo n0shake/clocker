@@ -263,13 +263,7 @@ static PreferencesWindowController *sharedPreferences = nil;
     [self.selectedTimeZones removeObjectsInArray:itemsToRemove];
     
     
-    NSArray *defaultTimeZones = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultPreferences"];
     NSMutableArray *newDefaults;
-    
-    if (defaultTimeZones == nil)
-    {
-        defaultTimeZones = [[NSMutableArray alloc] init];
-    }
     
     newDefaults = [[NSMutableArray alloc] initWithArray:self.selectedTimeZones];
     
