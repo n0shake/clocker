@@ -224,6 +224,8 @@
     [[panel animator] setAlphaValue:1];
     [NSAnimationContext endGrouping];
     
+    [self.mainTableview reloadData];
+    
 }
 
 - (void)closePanel
