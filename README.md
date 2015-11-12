@@ -1,12 +1,18 @@
 # Clocker
-
-![Clocker]({{site.baseurl}}/https://github.com/Abhishaker17/Clocker/blob/master/Icons/Icon.png)
-
-[Read more words!](Icons/Icon.png)
-
-![Clocker](https://github.com/Abhishaker17/Clocker/blob/master/Icons/Icon.png)
+![Clocker](https://raw.githubusercontent.com/Abhishaker17/Clocker/master/Icons/ClockerIcon-64.png)
 
 Clocker is a menubar utility designed to help you keep track of your friends in different time zones.  It's completely free and open-source.
 
+## Features
 
-An OSX timezone world clock application for your menubar!
+- Add any timezone you want
+- Relatives dates (e.g. today, tomorrow, yesterday)
+- Drag and drop timezones to rearrange
+- Hundreds of time zones are included
+- 24-hour times or AM/PM are both supported
+- Designed to work efficiently with 10 timezones
+- Optimized for Dark mode and Retina Displays
+
+
+
+
