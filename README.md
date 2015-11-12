@@ -2,7 +2,7 @@
 ---
 ![Clocker](https://raw.githubusercontent.com/Abhishaker17/Clocker/master/Icons/ClockerIcon-64.png)
 
-**Clocker** is a menubar utility designed to help you keep track of your friends in different time zones.  It's free and open-source.
+**Clocker** is an OSX menubar utility designed to help you keep track of your friends in different time zones.  It's written using Objective-C and is completely free and open-source.
 
 **Features**
 ---
