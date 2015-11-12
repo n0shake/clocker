@@ -1,10 +1,10 @@
-# Clocker
+**Clocker**
 ---
 ![Clocker](https://raw.githubusercontent.com/Abhishaker17/Clocker/master/Icons/ClockerIcon-64.png)
 
 **Clocker** is a menubar utility designed to help you keep track of your friends in different time zones.  It's free and open-source.
 
-## Features
+**Features**
 ---
 - Add any timezone you want
 - Relatives dates (e.g. today, tomorrow, yesterday)
@@ -14,11 +14,11 @@
 - Designed to work efficiently with 10 timezones
 - Optimized for Dark mode and Retina Displays
 
-## Contributing
+**Contributing**
 ---
 **Clocker** is open for pull requests.
 
-## License
+**License**
 ---
 Copyright (c) 2015 **Abhishek Banthia**
 
