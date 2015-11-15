@@ -30,6 +30,7 @@
 #import "BackgroundView.h"
 #import "StatusItemView.h"
 #import "MenubarController.h"
+#import <Crashlytics/Crashlytics.h>
 
 #define OPEN_DURATION .15
 #define CLOSE_DURATION .1
@@ -310,9 +311,6 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = kCFDateFormatterShortStyle;
     dateFormatter.timeStyle = kCFDateFormatterNoStyle;
-    
-    
-    
     dateFormatter.timeZone = [NSTimeZone systemTimeZone];
     
     return [dateFormatter stringFromDate:currentDate];
@@ -326,6 +324,14 @@
     
     NSDate *localDate = [formatter dateFromString:systemDate];
     NSDate *timezoneDate = [formatter dateFromString:date];
+    
+    if (localDate == nil || timezoneDate == nil) {
+        [[Crashlytics sharedInstance] crash];
+        [CrashlyticsKit setUserEmail:systemDate];
+        [CrashlyticsKit setUserIdentifier:date];
+        NSLog(@"One of the dates is nil");
+        return @"Today";
+    }
     
     // Specify which units we would like to use
     unsigned units = NSCalendarUnitDay;
