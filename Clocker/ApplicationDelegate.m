@@ -87,11 +87,22 @@ void *kContextActivePanel = &kContextActivePanel;
         }
     }
     
+    NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultPreferences"];
+    
+    if (defaultPreference.count == 0)
+    {
+        NSMutableArray *newDefaults = [[NSMutableArray alloc] initWithObjects:[NSTimeZone systemTimeZone].name, nil];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:@"defaultPreferences"];
+    }
+
+    
     // Install icon into the menu bar
     self.menubarController = [[MenubarController alloc] init];
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
     
+    [[Crashlytics sharedInstance] setDebugMode:YES];
     [Fabric with:@[[Crashlytics class]]];
 }
 

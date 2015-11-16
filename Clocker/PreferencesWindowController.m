@@ -241,6 +241,11 @@ static PreferencesWindowController *sharedPreferences = nil;
 - (IBAction)removeFromFavourites:(id)sender
 {
     
+    if ([self.timezoneTableView numberOfRows] == 1) {
+        
+        return;
+    }
+    
     NSMutableArray *itemsToRemove = [NSMutableArray array];
     
     if (self.timezoneTableView.selectedRow == -1)
@@ -255,7 +260,6 @@ static PreferencesWindowController *sharedPreferences = nil;
    }];
     
     [self.selectedTimeZones removeObjectsInArray:itemsToRemove];
-    
     
     NSMutableArray *newDefaults = [[NSMutableArray alloc] initWithArray:self.selectedTimeZones];
     
