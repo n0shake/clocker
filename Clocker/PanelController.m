@@ -313,20 +313,22 @@
     dateFormatter.timeStyle = kCFDateFormatterNoStyle;
     dateFormatter.timeZone = [NSTimeZone systemTimeZone];
     
-    return [dateFormatter stringFromDate:currentDate];
+    return [NSDateFormatter localizedStringFromDate:currentDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
+//    return [dateFormatter stringFromDate:currentDate];
 
 }
 
 - (NSString *)compareSystemDate:(NSString *)systemDate toTimezoneDate:(NSString *)date
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"MM/dd/yy";
+    formatter.dateFormat = @"MM/dd/yyyy";
+    formatter.dateFormat = @"dd/MM/yyyy";
     
     NSDate *localDate = [formatter dateFromString:systemDate];
     NSDate *timezoneDate = [formatter dateFromString:date];
     
     if (localDate == nil || timezoneDate == nil) {
-        [[Crashlytics sharedInstance] crash];
+//        [[Crashlytics sharedInstance] crash];
         [CrashlyticsKit setUserEmail:systemDate];
         [CrashlyticsKit setUserIdentifier:date];
         NSLog(@"One of the dates is nil");
