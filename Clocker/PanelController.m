@@ -326,7 +326,7 @@
     NSDate *timezoneDate = [formatter dateFromString:date];
     
     if (localDate == nil || timezoneDate == nil) {
-        [[Crashlytics sharedInstance] crash];
+//        [[Crashlytics sharedInstance] crash];
         [CrashlyticsKit setUserEmail:systemDate];
         [CrashlyticsKit setUserIdentifier:date];
         NSLog(@"One of the dates is nil");
