@@ -297,10 +297,12 @@
     
     NSNumber *is24HourFormatSelected = [[NSUserDefaults standardUserDefaults] objectForKey:@"is24HourFormatSelected"];
     
-    is24HourFormatSelected.boolValue ? [dateFormatter setDateFormat:@"HH:mm"] : [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    is24HourFormatSelected.boolValue ? [dateFormatter setDateFormat:@"HH:mm"] : [dateFormatter setDateFormat:@"hh:mm"];
     
     dateFormatter.timeZone = [NSTimeZone timeZoneWithName:timezoneName];
     //In the format 22:10
+    
+    NSLog(@"Time:%@", [dateFormatter stringFromDate:currentDate]);
     
     return [dateFormatter stringFromDate:currentDate];
 }
@@ -321,14 +323,13 @@
 - (NSString *)compareSystemDate:(NSString *)systemDate toTimezoneDate:(NSString *)date
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"MM/dd/yyyy";
-    formatter.dateFormat = @"dd/MM/yyyy";
+    formatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"MM/dd/yyyy" options:0 locale:[NSLocale currentLocale]];
     
     NSDate *localDate = [formatter dateFromString:systemDate];
     NSDate *timezoneDate = [formatter dateFromString:date];
     
     if (localDate == nil || timezoneDate == nil) {
-//        [[Crashlytics sharedInstance] crash];
+        [[Crashlytics sharedInstance] crash];
         [CrashlyticsKit setUserEmail:systemDate];
         [CrashlyticsKit setUserIdentifier:date];
         NSLog(@"One of the dates is nil");
