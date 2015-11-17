@@ -297,7 +297,7 @@
     
     NSNumber *is24HourFormatSelected = [[NSUserDefaults standardUserDefaults] objectForKey:@"is24HourFormatSelected"];
     
-    is24HourFormatSelected.boolValue ? [dateFormatter setDateFormat:@"HH:mm"] : [dateFormatter setDateFormat:@"hh:mm"];
+    is24HourFormatSelected.boolValue ? [dateFormatter setDateFormat:@"HH:mm"] : [dateFormatter setDateFormat:@"hh:mm a"];
     
     dateFormatter.timeZone = [NSTimeZone timeZoneWithName:timezoneName];
     //In the format 22:10
