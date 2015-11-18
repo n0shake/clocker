@@ -302,8 +302,6 @@
     dateFormatter.timeZone = [NSTimeZone timeZoneWithName:timezoneName];
     //In the format 22:10
     
-    NSLog(@"Time:%@", [dateFormatter stringFromDate:currentDate]);
-    
     return [dateFormatter stringFromDate:currentDate];
 }
 
@@ -343,15 +341,15 @@
     NSInteger timezoneDay = [calendar component:units fromDate:timezoneDate];
     
     if (systemDay == timezoneDay) {
-        return @"Today";
+        return NSLocalizedString(@"Today", @"Today");;
     }
     else if (systemDay > timezoneDay)
     {
-        return @"Yesterday";
+        return NSLocalizedString(@"Yesterday", @"Yesterday");
     }
     else
     {
-        return @"Tomorrow";
+        return NSLocalizedString(@"Tomorrow", @"Tomorrow");;
     }
 }
 
