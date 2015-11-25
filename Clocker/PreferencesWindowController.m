@@ -433,11 +433,16 @@ static PreferencesWindowController *sharedPreferences = nil;
 
 - (IBAction)supportAction:(id)sender
 {
+    /*
     NSAppleScript *mailScript;
     NSString *scriptString= @"tell application \"Mail\"\nset theAddress to \"abhishekbanthia@me.com\"\n set msg to make new outgoing message with properties {visible:true, subject:\"Regarding Clocker - We need to talk!\"}\ntell msg to make new to recipient at end of every to recipient with properties {address:theAddress}\n activate\nend tell";
     mailScript = [[NSAppleScript alloc] initWithSource:scriptString];
     NSDictionary *dict = nil;
-    [mailScript executeAndReturnError:&dict];
+    [mailScript executeAndReturnError:&dict];*/
+    
+    NSString *issuePage = @"https://github.com/Abhishaker17/Clocker/issues";
+    NSURL *mainURL = [NSURL URLWithString:issuePage];
+    [[NSWorkspace sharedWorkspace] openURL:mainURL];
 }
 
 
