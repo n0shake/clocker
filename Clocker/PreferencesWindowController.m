@@ -156,6 +156,11 @@ static PreferencesWindowController *sharedPreferences = nil;
     }
     if ([tableColumn.identifier isEqualToString:@"abbreviation"])
     {
+        if (self.searchField.stringValue.length > 0)
+        {
+            return [NSTimeZone timeZoneWithName:self.filteredArray[row]].abbreviation;
+        }
+        
         return [NSTimeZone timeZoneWithName:self.timeZoneArray[row]].abbreviation;
     }
 
@@ -165,9 +170,7 @@ static PreferencesWindowController *sharedPreferences = nil;
 
 - (IBAction)addTimeZone:(id)sender
 {
-
     [self.window beginSheet:self.timezonePanel completionHandler:^(NSModalResponse returnCode) {
-        
     }];
 }
 

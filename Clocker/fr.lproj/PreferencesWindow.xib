@@ -222,7 +222,7 @@
                             <rect key="frame" x="1" y="0.0" width="327" height="256"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" headerView="hHn-48-RCd" id="6Hm-XH-CMI">
+                                <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="20" headerView="hHn-48-RCd" id="6Hm-XH-CMI">
                                     <rect key="frame" x="0.0" y="0.0" width="327" height="233"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
