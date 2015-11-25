@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  Clocker
+
+  Created by Abhishek Banthia on 11/17/15.
+
+*/
+
+
+"Yesterday" = "Hier";
+"Today" = "Aujourd'hui";
+"Tomorrow" = "Demain";
+"SpreadTheWordTitle" = "Passez le mot";
+"SpreadTheWordMessage" = "Clocker est complètement open source . Si cela vous a aidé de quelque façon , s'il vous plaît laisser un avis de genre sur l'App Store !";
+"Cancel" = "Annuler";
+"MaximumTimezoneMessage" = "Maximum 10 fuseaux horaires autorisés!";
+"DuplicateTimezoneMessage" = "Fuseau horaire a déjà été sélectionnée!";

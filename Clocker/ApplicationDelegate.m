@@ -75,13 +75,13 @@ void *kContextActivePanel = &kContextActivePanel;
         numberOfLaunches = [NSNumber numberWithInteger:launches];
         [[NSUserDefaults standardUserDefaults] setObject:numberOfLaunches forKey:@"noOfLaunches"];
         
-        if (numberOfLaunches.integerValue == 5)
+        if (numberOfLaunches.integerValue == 151)
         {
             NSAlert *reviewAlert = [[NSAlert alloc] init];
             reviewAlert.alertStyle = NSInformationalAlertStyle;
-            reviewAlert.messageText = @"Spead the word, maybe?";
-            reviewAlert.informativeText = @"Clocker is completely open source. If it has helped you in any way, please leave a kind review on the App Store!";
-            [reviewAlert addButtonWithTitle:@"Cancel"];
+            reviewAlert.messageText = NSLocalizedString(@"SpreadTheWordTitle", nil);
+            reviewAlert.informativeText = NSLocalizedString(@"SpreadTheWordMessage", nil);
+            [reviewAlert addButtonWithTitle:NSLocalizedString(@"Cancel", nil)];
             [reviewAlert runModal];
 
         }

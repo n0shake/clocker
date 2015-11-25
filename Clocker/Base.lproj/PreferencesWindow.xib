@@ -28,7 +28,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="439" height="426"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DCz-qN-ydK">
+                    <button toolTip="Add a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DCz-qN-ydK">
                         <rect key="frame" x="11" y="146" width="21" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="aUK-f8-pvY"/>
@@ -43,7 +43,7 @@
                             <action selector="addTimeZone:" target="-2" id="dXi-qw-Vu2"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ixe-Sn-8qT">
+                    <button toolTip="Remove a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ixe-Sn-8qT">
                         <rect key="frame" x="32" y="146" width="21" height="22"/>
                         <animations/>
                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SVO-Wt-Mfb">
@@ -108,7 +108,7 @@
                             <animations/>
                         </tableHeaderView>
                     </scrollView>
-                    <button translatesAutoresizingMaskIntoConstraints="NO" id="P0l-kc-VxU" customClass="ColoredButton">
+                    <button toolTip="Show only the City instead of Continent/City format" translatesAutoresizingMaskIntoConstraints="NO" id="P0l-kc-VxU" customClass="ColoredButton">
                         <rect key="frame" x="9" y="97" width="191" height="18"/>
                         <animations/>
                         <buttonCell key="cell" type="check" title="Show only City/Region name" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jaB-eA-S6N">
@@ -120,7 +120,7 @@
                             <binding destination="sEG-Zb-KUM" name="value" keyPath="values.showOnlyCity" id="xqX-Jx-epo"/>
                         </connections>
                     </button>
-                    <button translatesAutoresizingMaskIntoConstraints="NO" id="GDz-2Z-uX5" customClass="ColoredButton">
+                    <button toolTip="Clocker will start on each system launch" translatesAutoresizingMaskIntoConstraints="NO" id="GDz-2Z-uX5" customClass="ColoredButton">
                         <rect key="frame" x="9" y="75" width="191" height="18"/>
                         <animations/>
                         <buttonCell key="cell" type="check" title="Start Clocker on system startup" bezelStyle="regularSquare" imagePosition="left" inset="2" id="h45-jZ-cPY">
@@ -131,7 +131,7 @@
                             <binding destination="-2" name="value" keyPath="self.launchOnLogin" id="Vqw-iQ-qOe"/>
                         </connections>
                     </button>
-                    <button translatesAutoresizingMaskIntoConstraints="NO" id="N47-gw-Pay" customClass="ColoredButton">
+                    <button toolTip="Show time using a 24-hour format" translatesAutoresizingMaskIntoConstraints="NO" id="N47-gw-Pay" customClass="ColoredButton">
                         <rect key="frame" x="9" y="119" width="343" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="339" id="0eX-T7-EbU"/>
@@ -221,7 +221,7 @@
                             <rect key="frame" x="1" y="0.0" width="327" height="256"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" headerView="hHn-48-RCd" id="6Hm-XH-CMI">
+                                <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="20" headerView="hHn-48-RCd" id="6Hm-XH-CMI">
                                     <rect key="frame" x="0.0" y="0.0" width="327" height="233"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
@@ -291,7 +291,7 @@
                             <animations/>
                         </tableHeaderView>
                     </scrollView>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KlN-dU-s3o">
+                    <button toolTip="Add a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KlN-dU-s3o">
                         <rect key="frame" x="2" y="-2" width="52" height="32"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="2QY-oM-3sO"/>
@@ -306,7 +306,7 @@
                             <action selector="addToFavorites:" target="-2" id="y27-tR-f1g"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ueh-Ln-TC8">
+                    <button toolTip="Close Panel" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ueh-Ln-TC8">
                         <rect key="frame" x="44" y="-2" width="65" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="53" id="Bql-d6-oci"/>
@@ -320,7 +320,7 @@
                             <action selector="closePanel:" target="-2" id="6v9-wN-07n"/>
                         </connections>
                     </button>
-                    <searchField wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5jL-eb-qdB">
+                    <searchField toolTip="Search a timezone" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5jL-eb-qdB">
                         <rect key="frame" x="8" y="287" width="329" height="25"/>
                         <animations/>
                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Enter Timezone Name" drawsBackground="YES" usesSingleLineMode="YES" id="2DC-BS-vbb">

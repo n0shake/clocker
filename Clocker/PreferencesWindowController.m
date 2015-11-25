@@ -177,7 +177,7 @@ static PreferencesWindowController *sharedPreferences = nil;
     
     if (self.selectedTimeZones.count > 9)
     {
-        self.messageLabel.stringValue = @"Maximum 10 timezones allowed!";
+        self.messageLabel.stringValue = NSLocalizedString(@"MaximumTimezoneMessage", nil);
          [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(clearLabel) userInfo:nil repeats:NO];
         return;
     }
@@ -194,7 +194,7 @@ static PreferencesWindowController *sharedPreferences = nil;
         }
         else if ([name isEqualToString:self.timeZoneArray[self.availableTimezoneTableView.selectedRow]])
         {
-            self.messageLabel.stringValue = @"Timezone has already been selected!";
+            self.messageLabel.stringValue = NSLocalizedString(@"DuplicateTimezoneMessage", nil);
             [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(clearLabel) userInfo:nil repeats:NO];
             return;
         }

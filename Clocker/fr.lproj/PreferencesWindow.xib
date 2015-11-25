@@ -232,7 +232,7 @@
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
                                         <tableColumn identifier="availableTimezones" editable="NO" width="205.5" minWidth="40" maxWidth="1000" id="TEh-P6-jcT">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Timezone Name">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Fuseau horaire Nom">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -245,7 +245,7 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         </tableColumn>
                                         <tableColumn identifier="abbreviation" editable="NO" width="115.71875" minWidth="10" maxWidth="3.4028234663852886e+38" id="Iuq-hc-Ma0">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Abbreviation">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Abréviation">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -293,13 +293,13 @@
                         </tableHeaderView>
                     </scrollView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KlN-dU-s3o">
-                        <rect key="frame" x="2" y="-2" width="52" height="32"/>
+                        <rect key="frame" x="2" y="-2" width="72" height="32"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="2QY-oM-3sO"/>
-                            <constraint firstAttribute="width" constant="40" id="6JQ-5n-kb7"/>
+                            <constraint firstAttribute="width" constant="60" id="6JQ-5n-kb7"/>
                         </constraints>
                         <animations/>
-                        <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kZe-ua-0p9">
+                        <buttonCell key="cell" type="push" title="Ajouter" bezelStyle="rounded" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kZe-ua-0p9">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="13" name="HelveticaNeue-Light"/>
                         </buttonCell>
@@ -308,12 +308,12 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ueh-Ln-TC8">
-                        <rect key="frame" x="44" y="-2" width="65" height="32"/>
+                        <rect key="frame" x="64" y="-2" width="72" height="32"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="53" id="Bql-d6-oci"/>
+                            <constraint firstAttribute="width" constant="60" id="Bql-d6-oci"/>
                         </constraints>
                         <animations/>
-                        <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ODT-4D-sWu">
+                        <buttonCell key="cell" type="push" title="Fermer" bezelStyle="rounded" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ODT-4D-sWu">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="13" name="HelveticaNeue-Light"/>
                         </buttonCell>
@@ -324,7 +324,7 @@
                     <searchField wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5jL-eb-qdB">
                         <rect key="frame" x="8" y="287" width="329" height="25"/>
                         <animations/>
-                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Enter Timezone Name" drawsBackground="YES" usesSingleLineMode="YES" id="2DC-BS-vbb">
+                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Entrez le nom Fuseau horaire" drawsBackground="YES" usesSingleLineMode="YES" id="2DC-BS-vbb">
                             <font key="font" size="13" name="HelveticaNeue-Light"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -334,7 +334,7 @@
                         </connections>
                     </searchField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rty-6T-aPw">
-                        <rect key="frame" x="104" y="8" width="232" height="20"/>
+                        <rect key="frame" x="131" y="8" width="205" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="y9Z-oT-NCB"/>
                         </constraints>
