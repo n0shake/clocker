@@ -173,9 +173,16 @@ static PreferencesWindowController *sharedPreferences = nil;
 
 - (IBAction)addToFavorites:(id)sender
 {
+    if (self.availableTimezoneTableView.selectedRow == -1)
+    {
+        self.messageLabel.stringValue = @"Please select a timezone!";
+        [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(clearLabel) userInfo:nil repeats:NO];
+        return;
+    }
+    
     NSString *selectedTimezone;
     
-    if (self.selectedTimeZones.count > 9)
+    if (self.selectedTimeZones.count > 10)
     {
         self.messageLabel.stringValue = NSLocalizedString(@"MaximumTimezoneMessage", nil);
          [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(clearLabel) userInfo:nil repeats:NO];

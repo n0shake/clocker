@@ -327,7 +327,6 @@
     NSDate *timezoneDate = [formatter dateFromString:date];
     
     if (localDate == nil || timezoneDate == nil) {
-        [[Crashlytics sharedInstance] crash];
         [CrashlyticsKit setUserEmail:systemDate];
         [CrashlyticsKit setUserIdentifier:date];
         NSLog(@"One of the dates is nil");
@@ -372,7 +371,6 @@
 
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
 {
-
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
     
     [pboard declareTypes:[NSArray arrayWithObject:@"public.text"] owner:self];

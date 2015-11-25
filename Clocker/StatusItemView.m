@@ -44,6 +44,7 @@
     CGFloat itemWidth = [statusItem length];
     CGFloat itemHeight = [[NSStatusBar systemStatusBar] thickness];
     NSRect itemRect = NSMakeRect(0.0, 0.0, itemWidth, itemHeight);
+    
     self = [super initWithFrame:itemRect];
     
     if (self != nil) {
@@ -79,9 +80,6 @@
     NSPoint iconPoint = NSMakePoint(iconX, iconY);
 
 	[icon drawAtPoint:iconPoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
-    
- 
-    
 }
 
 #pragma mark -
