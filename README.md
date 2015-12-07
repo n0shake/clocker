@@ -4,7 +4,9 @@
 
 **Clocker** is an OSX menubar utility designed to help you keep track of your friends in different time zones.  It's written using Objective-C and is completely ad-free.
 
-You can find the latest App Store version [here](https://itunes.apple.com/us/app/clocker-menubar-world-clock/id1056643111?mt=12). Need any help? Tweet [me](https://twitter.com/Abhi_Shaker)!
+You can find the latest App Store version [here](https://itunes.apple.com/us/app/clocker-menubar-world-clock/id1056643111?mt=12). Need any help? Tweet [me](https://twitter.com/Abhi_Shaker)! 
+
+You can find a review of the app by SoftPedia [here](http://mac.softpedia.com/get/Utilities/Clocker-Banthia.shtml)
 
 ## In Action
 
