@@ -67,6 +67,7 @@ static PreferencesWindowController *sharedPreferences = nil;
     NSString *credits = @"Clocker v1.0 is open source. You can find the source code <a href=\"https://github.com/Abhishaker17/Clocker\">here!</a>";
     [self.openSourceMessage setAttributedStringValue:[self stringFromHTML:credits withFont:[self.openSourceMessage font]]];
     
+    self.window.titleVisibility = NSWindowTitleHidden;
     
      NSMutableArray *defaultTimeZones = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultPreferences"];
     
@@ -155,7 +156,7 @@ static PreferencesWindowController *sharedPreferences = nil;
     {
         if (self.searchField.stringValue.length > 0)
         {
-            return self.filteredArray[row][@"timezoneName"];
+            return self.filteredArray[row];
         }
         
         return self.timeZoneArray[row];
