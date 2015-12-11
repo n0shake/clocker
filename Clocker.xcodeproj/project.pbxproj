@@ -35,6 +35,7 @@
 		9A8605DF1BEC15C400A810A4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605DD1BEC15C400A810A4 /* MainMenu.xib */; settings = {ASSET_TAGS = (); }; };
 		9ABA38AC1BFAD7F80073EA4D /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ABA38AE1BFAD7F80073EA4D /* Panel.xib */; };
 		9ABA38AF1BFAD83F0073EA4D /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ABA38B11BFAD83F0073EA4D /* PreferencesWindow.xib */; };
+		9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */; };
 		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,7 @@
 		9A8605D31BEC155B00A810A4 /* StatusHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusHighlighted@2x.png"; path = "Clocker/StatusHighlighted@2x.png"; sourceTree = "<group>"; };
 		9ABA38B31BFAD8520073EA4D /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/Panel.xib; sourceTree = "<group>"; };
 		9ABA38B41BFAD8520073EA4D /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
+		9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DD4F7C0413C30F9F00825C6E /* Clocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4F7C0813C30F9F00825C6E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DD4F7C0B13C30F9F00825C6E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -106,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */,
 				9A43792C1BEC231100F4E27F /* libz.tbd in Frameworks */,
 				9A43792A1BEC230A00F4E27F /* libc++.tbd in Frameworks */,
 				9A4379251BEC223900F4E27F /* Security.framework in Frameworks */,
@@ -236,6 +239,7 @@
 		DD4F7C0713C30F9F00825C6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */,
 				9A4379211BEC223900F4E27F /* Security.framework */,
 				9A4379221BEC223900F4E27F /* SystemConfiguration.framework */,
 				9A4379231BEC223900F4E27F /* Fabric.framework */,

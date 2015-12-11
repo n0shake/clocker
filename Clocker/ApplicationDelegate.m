@@ -73,7 +73,9 @@ void *kContextActivePanel = &kContextActivePanel;
     
     if (defaultPreference.count == 0)
     {
-        NSMutableArray *newDefaults = [[NSMutableArray alloc] initWithObjects:[NSTimeZone systemTimeZone].name, nil];
+        NSDictionary *defaultDictionary = @{@"timezoneName" : [NSTimeZone systemTimeZone].name, @"customLabel" : @""};
+        
+        NSMutableArray *newDefaults = [[NSMutableArray alloc] initWithObjects:defaultDictionary, nil];
         
         [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:@"defaultPreferences"];
     }
@@ -84,14 +86,10 @@ void *kContextActivePanel = &kContextActivePanel;
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
     
-    [[Crashlytics sharedInstance] setDebugMode:YES];
+    [[Crashlytics sharedInstance] setDebugMode:NO];
     [Fabric with:@[[Crashlytics class]]];
 }
 
-- (void) initialize
-{
-    //App ID: 1056643111
-}
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
 {

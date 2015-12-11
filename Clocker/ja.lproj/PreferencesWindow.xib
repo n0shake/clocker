@@ -7,6 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController">
             <connections>
                 <outlet property="availableTimezoneTableView" destination="6Hm-XH-CMI" id="GA1-tc-E9E"/>
+                <outlet property="customView" destination="se5-gp-TjO" id="Ix1-NV-1Ut"/>
                 <outlet property="is24HourFormatSelected" destination="N47-gw-Pay" id="2MV-F1-uYf"/>
                 <outlet property="messageLabel" destination="Rty-6T-aPw" id="Qg4-mk-P90"/>
                 <outlet property="openSourceMessage" destination="cso-OX-qzB" id="yJg-DI-SX9"/>
@@ -29,7 +30,7 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <button toolTip="Add a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DCz-qN-ydK">
-                        <rect key="frame" x="11" y="152" width="21" height="22"/>
+                        <rect key="frame" x="11" y="148" width="21" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="aUK-f8-pvY"/>
                             <constraint firstAttribute="width" constant="21" id="hAr-3f-KNJ"/>
@@ -44,7 +45,7 @@
                         </connections>
                     </button>
                     <button toolTip="Remove a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ixe-Sn-8qT">
-                        <rect key="frame" x="32" y="152" width="21" height="22"/>
+                        <rect key="frame" x="32" y="148" width="21" height="22"/>
                         <animations/>
                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SVO-Wt-Mfb">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -55,26 +56,39 @@
                         </connections>
                     </button>
                     <scrollView focusRingType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cI0-M7-C9h">
-                        <rect key="frame" x="10" y="179" width="419" height="239"/>
+                        <rect key="frame" x="10" y="175" width="419" height="243"/>
                         <clipView key="contentView" id="WWk-6i-nI7">
-                            <rect key="frame" x="1" y="0.0" width="417" height="238"/>
+                            <rect key="frame" x="1" y="0.0" width="417" height="242"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="20" headerView="dKI-Ue-9QX" id="oKD-AN-gPT">
-                                    <rect key="frame" x="0.0" y="0.0" width="417" height="215"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="417" height="219"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn identifier="timezoneName" editable="NO" width="413.75" minWidth="40" maxWidth="1000" id="CJN-Eu-3s5">
+                                        <tableColumn identifier="timezoneName" editable="NO" width="255.75" minWidth="40" maxWidth="1000" id="CJN-Eu-3s5">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="選択したタイムゾーン（複数可）">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="Vu3-3D-aDG">
+                                                <font key="font" size="13" name="HelveticaNeue-Light"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        </tableColumn>
+                                        <tableColumn identifier="label" width="155" minWidth="10" maxWidth="3.4028234663852886e+38" id="oLW-eb-iRt">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="ラベル">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="RSk-O8-Ndj">
                                                 <font key="font" size="13" name="HelveticaNeue-Light"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -93,7 +107,7 @@
                         </clipView>
                         <animations/>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Hxj-Tc-UWs">
-                            <rect key="frame" x="1" y="214" width="337" height="15"/>
+                            <rect key="frame" x="1" y="222" width="417" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <animations/>
                         </scroller>
@@ -109,7 +123,7 @@
                         </tableHeaderView>
                     </scrollView>
                     <button toolTip="Show only the City instead of Continent/City format" translatesAutoresizingMaskIntoConstraints="NO" id="P0l-kc-VxU" customClass="ColoredButton">
-                        <rect key="frame" x="9" y="100" width="190" height="21"/>
+                        <rect key="frame" x="9" y="96" width="190" height="21"/>
                         <animations/>
                         <buttonCell key="cell" type="check" title="唯一の都市/地域名を表示" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jaB-eA-S6N">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -121,7 +135,7 @@
                         </connections>
                     </button>
                     <button toolTip="Clocker will start on each system launch" translatesAutoresizingMaskIntoConstraints="NO" id="GDz-2Z-uX5" customClass="ColoredButton">
-                        <rect key="frame" x="9" y="75" width="190" height="21"/>
+                        <rect key="frame" x="9" y="71" width="190" height="21"/>
                         <animations/>
                         <buttonCell key="cell" type="check" title="システム起動時に計時係を開始" bezelStyle="regularSquare" imagePosition="left" inset="2" id="h45-jZ-cPY">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -132,7 +146,7 @@
                         </connections>
                     </button>
                     <button toolTip="Show time using a 24-hour format" translatesAutoresizingMaskIntoConstraints="NO" id="N47-gw-Pay" customClass="ColoredButton">
-                        <rect key="frame" x="9" y="125" width="343" height="22"/>
+                        <rect key="frame" x="9" y="121" width="343" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="339" id="0eX-T7-EbU"/>
                             <constraint firstAttribute="height" constant="18" id="qwS-Bk-vmy"/>
@@ -148,7 +162,7 @@
                         </connections>
                     </button>
                     <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cso-OX-qzB">
-                        <rect key="frame" x="8" y="49" width="413" height="20"/>
+                        <rect key="frame" x="10" y="49" width="411" height="20"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="Open Source Message" id="l7j-wK-zcu">
                             <font key="font" size="13" name="HelveticaNeue-Thin"/>
@@ -157,7 +171,7 @@
                         </textFieldCell>
                     </textField>
                     <button toolTip="Say Hello!" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="psn-eC-m9g">
-                        <rect key="frame" x="2" y="13" width="97" height="32"/>
+                        <rect key="frame" x="4" y="13" width="97" height="32"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Url-R6-qPD"/>
                             <constraint firstAttribute="width" constant="85" id="Zyt-kT-9nT"/>
@@ -175,7 +189,7 @@
                 <constraints>
                     <constraint firstItem="psn-eC-m9g" firstAttribute="top" secondItem="cso-OX-qzB" secondAttribute="bottom" constant="8" id="1ah-5W-DP0"/>
                     <constraint firstItem="DCz-qN-ydK" firstAttribute="top" secondItem="cI0-M7-C9h" secondAttribute="bottom" constant="6" id="6Ye-VD-kSE"/>
-                    <constraint firstItem="cso-OX-qzB" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="10" id="Bux-4T-BB9"/>
+                    <constraint firstItem="cso-OX-qzB" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="12" id="Bux-4T-BB9"/>
                     <constraint firstItem="P0l-kc-VxU" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="11" id="DUR-uK-Ncx"/>
                     <constraint firstItem="GDz-2Z-uX5" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="11" id="FLl-Pc-Gzn"/>
                     <constraint firstItem="cI0-M7-C9h" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="10" id="Fy5-6V-gu1"/>
@@ -190,12 +204,12 @@
                     <constraint firstItem="N47-gw-Pay" firstAttribute="top" secondItem="ixe-Sn-8qT" secondAttribute="bottom" constant="8" id="gbd-HA-u9p"/>
                     <constraint firstItem="N47-gw-Pay" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="11" id="hXb-69-tI0"/>
                     <constraint firstItem="ixe-Sn-8qT" firstAttribute="width" secondItem="DCz-qN-ydK" secondAttribute="width" id="o7k-jf-cL0"/>
-                    <constraint firstItem="cso-OX-qzB" firstAttribute="top" secondItem="GDz-2Z-uX5" secondAttribute="bottom" constant="8" id="qZY-wv-3kN"/>
+                    <constraint firstItem="cso-OX-qzB" firstAttribute="top" secondItem="GDz-2Z-uX5" secondAttribute="bottom" constant="4" id="qZY-wv-3kN"/>
                     <constraint firstItem="ixe-Sn-8qT" firstAttribute="height" secondItem="DCz-qN-ydK" secondAttribute="height" id="rsK-UP-Umg"/>
                     <constraint firstItem="cI0-M7-C9h" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="8" id="u5H-Ff-ivt"/>
                     <constraint firstAttribute="trailing" secondItem="cI0-M7-C9h" secondAttribute="trailing" constant="10" id="ut9-6b-cdu"/>
                     <constraint firstItem="N47-gw-Pay" firstAttribute="top" secondItem="DCz-qN-ydK" secondAttribute="bottom" constant="8" id="x0C-Ev-Imb"/>
-                    <constraint firstItem="psn-eC-m9g" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="8" id="xEn-ec-WQn"/>
+                    <constraint firstItem="psn-eC-m9g" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="10" id="xEn-ec-WQn"/>
                 </constraints>
                 <animations/>
             </view>

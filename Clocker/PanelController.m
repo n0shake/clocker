@@ -261,9 +261,9 @@
     
     NSTextField *dateCell = [cell viewWithTag:102];
     
-    dateCell.stringValue = [self getDateForTimeZone:self.defaultPreferences[row]];
+    dateCell.stringValue = [self getDateForTimeZone:self.defaultPreferences[row][@"timezoneName"]];
     
-    timeCell.stringValue = [self getTimeForTimeZone:self.defaultPreferences[row]];
+    timeCell.stringValue = [self getTimeForTimeZone:self.defaultPreferences[row][@"timezoneName"]];
     
     NSNumber *shouldShowOnlyCity = [[NSUserDefaults standardUserDefaults] objectForKey:@"showOnlyCity"];
   
@@ -276,17 +276,26 @@
 #pragma mark Datasource formatting
 #pragma mark -
 
-- (NSString *)formatStringShouldContainCity:(BOOL)value withTimezoneName:(NSString *)name
+- (NSString *)formatStringShouldContainCity:(BOOL)value withTimezoneName:(NSDictionary *)timeZoneDictionary
 {
-    if (value) {
-        NSRange range = [name rangeOfString:@"/"];
-        
-        if (range.location != NSNotFound) {
-            return [name substringFromIndex:range.location+1];
+    if (timeZoneDictionary[@"customLabel"]) {
+        NSString *customLabel = timeZoneDictionary[@"customLabel"];
+        if (customLabel.length > 0) {
+            return customLabel;
         }
     }
     
-    return name;
+    NSString *timezoneName = timeZoneDictionary[@"timezoneName"];
+    
+    if (value) {
+        NSRange range = [timezoneName rangeOfString:@"/"];
+        
+        if (range.location != NSNotFound) {
+            return [timezoneName substringFromIndex:range.location+1];
+        }
+    }
+    
+    return timezoneName;
 }
 
 - (NSString *)getTimeForTimeZone:(NSString *)timezoneName

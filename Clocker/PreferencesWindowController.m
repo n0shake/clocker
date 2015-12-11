@@ -39,6 +39,7 @@
 
 @property (weak) IBOutlet NSTableView *timezoneTableView;
 @property (strong) IBOutlet Panel *timezonePanel;
+@property (strong) IBOutlet NSView *customView;
 
 @property (weak) IBOutlet NSTableView *availableTimezoneTableView;
 @property (weak) IBOutlet NSSearchField *searchField;
@@ -55,6 +56,11 @@ static PreferencesWindowController *sharedPreferences = nil;
 
 - (void)windowDidLoad {
     [super windowDidLoad];
+    
+    CALayer *viewLayer = [CALayer layer];
+    [viewLayer setBackgroundColor:CGColorCreateGenericRGB(255.0, 255.0, 255.0, 0.8)]; //RGB plus Alpha Channel
+    [self.customView setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
+    [self.customView setLayer:viewLayer];
     
     [self.openSourceMessage setAllowsEditingTextAttributes: YES];
     [self.openSourceMessage setSelectable:YES];
@@ -143,16 +149,20 @@ static PreferencesWindowController *sharedPreferences = nil;
 {
     if ([[tableColumn identifier] isEqualToString:@"timezoneName"])
     {
-        return self.selectedTimeZones[row];
+        return self.selectedTimeZones[row][@"timezoneName"];
     }
     else if([[tableColumn identifier] isEqualToString:@"availableTimezones"])
     {
         if (self.searchField.stringValue.length > 0)
         {
-            return self.filteredArray[row];
+            return self.filteredArray[row][@"timezoneName"];
         }
         
-        return self.timeZoneArray[row];;
+        return self.timeZoneArray[row];
+    }
+    else if([[tableColumn identifier] isEqualToString:@"label"])
+    {
+        return self.selectedTimeZones[row][@"customLabel"];
     }
     if ([tableColumn.identifier isEqualToString:@"abbreviation"])
     {
@@ -166,6 +176,20 @@ static PreferencesWindowController *sharedPreferences = nil;
 
     return nil;
     
+}
+
+-(void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    if ([object isKindOfClass:[NSString class]])
+    {
+        
+        NSDictionary *timezoneDictionary = self.selectedTimeZones[row];
+        NSDictionary *mutableTimeZoneDict = [timezoneDictionary mutableCopy];
+        [mutableTimeZoneDict setValue:object forKey:@"customLabel"];
+        [self.selectedTimeZones replaceObjectAtIndex:row withObject:mutableTimeZoneDict];
+        [[NSUserDefaults standardUserDefaults] setObject:self.selectedTimeZones forKey:@"defaultPreferences"];
+    }
+
 }
 
 - (IBAction)addTimeZone:(id)sender
@@ -192,8 +216,10 @@ static PreferencesWindowController *sharedPreferences = nil;
         return;
     }
     
-    for (NSString *name in self.selectedTimeZones)
+    for (NSDictionary *timezoneDictionary in self.selectedTimeZones)
     {
+        NSString *name = timezoneDictionary[@"timezoneName"];
+        
         if (self.searchField.stringValue.length > 0) {
             if ([name isEqualToString:self.filteredArray[self.availableTimezoneTableView.selectedRow]])
             {
@@ -215,7 +241,9 @@ static PreferencesWindowController *sharedPreferences = nil;
                        self.filteredArray[self.availableTimezoneTableView.selectedRow] :
                         self.timeZoneArray[self.availableTimezoneTableView.selectedRow];
     
-    [self.selectedTimeZones addObject:selectedTimezone];
+    NSDictionary *newTimezoneToAdd = @{@"timezoneName" : selectedTimezone, @"customLabel" : @""};
+    
+    [self.selectedTimeZones addObject:newTimezoneToAdd];
     
     NSArray *defaultTimeZones = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultPreferences"];
     NSMutableArray *newDefaults;
@@ -227,7 +255,7 @@ static PreferencesWindowController *sharedPreferences = nil;
    
     newDefaults = [[NSMutableArray alloc] initWithArray:defaultTimeZones];
         
-    [newDefaults addObject:selectedTimezone];
+    [newDefaults addObject:newTimezoneToAdd];
     
     [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:@"defaultPreferences"];
     
@@ -336,10 +364,6 @@ static PreferencesWindowController *sharedPreferences = nil;
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:checkbox.state] forKey:@"showOnlyCity"];
     
     [self refreshMainTableview];
-}
-
-- (IBAction)startAppAtLogin:(id)sender
-{
 }
 
 #pragma mark Reordering

@@ -7,6 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController">
             <connections>
                 <outlet property="availableTimezoneTableView" destination="6Hm-XH-CMI" id="GA1-tc-E9E"/>
+                <outlet property="customView" destination="se5-gp-TjO" id="6Il-Ob-1H1"/>
                 <outlet property="is24HourFormatSelected" destination="N47-gw-Pay" id="2MV-F1-uYf"/>
                 <outlet property="messageLabel" destination="Rty-6T-aPw" id="Qg4-mk-P90"/>
                 <outlet property="openSourceMessage" destination="cso-OX-qzB" id="yJg-DI-SX9"/>
@@ -29,7 +30,7 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <button toolTip="Add a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DCz-qN-ydK">
-                        <rect key="frame" x="11" y="146" width="21" height="22"/>
+                        <rect key="frame" x="11" y="142" width="21" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="aUK-f8-pvY"/>
                             <constraint firstAttribute="width" constant="21" id="hAr-3f-KNJ"/>
@@ -44,7 +45,7 @@
                         </connections>
                     </button>
                     <button toolTip="Remove a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ixe-Sn-8qT">
-                        <rect key="frame" x="32" y="146" width="21" height="22"/>
+                        <rect key="frame" x="32" y="142" width="21" height="22"/>
                         <animations/>
                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SVO-Wt-Mfb">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -54,27 +55,40 @@
                             <action selector="removeFromFavourites:" target="-2" id="65F-Jn-DMw"/>
                         </connections>
                     </button>
-                    <scrollView focusRingType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cI0-M7-C9h">
-                        <rect key="frame" x="10" y="173" width="419" height="245"/>
+                    <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cI0-M7-C9h">
+                        <rect key="frame" x="10" y="169" width="419" height="249"/>
                         <clipView key="contentView" id="WWk-6i-nI7">
-                            <rect key="frame" x="1" y="0.0" width="417" height="244"/>
+                            <rect key="frame" x="0.0" y="0.0" width="419" height="249"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="20" headerView="dKI-Ue-9QX" id="oKD-AN-gPT">
-                                    <rect key="frame" x="0.0" y="0.0" width="417" height="221"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="419" height="226"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn identifier="timezoneName" editable="NO" width="413.75" minWidth="40" maxWidth="1000" id="CJN-Eu-3s5">
+                                        <tableColumn identifier="timezoneName" editable="NO" width="252.75" minWidth="80" maxWidth="1000" id="CJN-Eu-3s5">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Selected Timezone(s)">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="Vu3-3D-aDG">
+                                                <font key="font" size="13" name="HelveticaNeue-Light"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        </tableColumn>
+                                        <tableColumn identifier="label" width="150" minWidth="80" maxWidth="150" id="f5a-V1-lGO">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Label">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="fiu-I9-CnG">
                                                 <font key="font" size="13" name="HelveticaNeue-Light"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -93,7 +107,7 @@
                         </clipView>
                         <animations/>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Hxj-Tc-UWs">
-                            <rect key="frame" x="1" y="214" width="337" height="15"/>
+                            <rect key="frame" x="0.0" y="229" width="419" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <animations/>
                         </scroller>
@@ -102,14 +116,14 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <animations/>
                         </scroller>
-                        <tableHeaderView key="headerView" id="dKI-Ue-9QX">
-                            <rect key="frame" x="0.0" y="0.0" width="417" height="23"/>
+                        <tableHeaderView key="headerView" focusRingType="none" id="dKI-Ue-9QX">
+                            <rect key="frame" x="0.0" y="0.0" width="419" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <animations/>
                         </tableHeaderView>
                     </scrollView>
                     <button toolTip="Show only the City instead of Continent/City format" translatesAutoresizingMaskIntoConstraints="NO" id="P0l-kc-VxU" customClass="ColoredButton">
-                        <rect key="frame" x="9" y="97" width="191" height="18"/>
+                        <rect key="frame" x="9" y="93" width="191" height="18"/>
                         <animations/>
                         <buttonCell key="cell" type="check" title="Show only City/Region name" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jaB-eA-S6N">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -121,7 +135,7 @@
                         </connections>
                     </button>
                     <button toolTip="Clocker will start on each system launch" translatesAutoresizingMaskIntoConstraints="NO" id="GDz-2Z-uX5" customClass="ColoredButton">
-                        <rect key="frame" x="9" y="75" width="191" height="18"/>
+                        <rect key="frame" x="9" y="71" width="191" height="18"/>
                         <animations/>
                         <buttonCell key="cell" type="check" title="Start Clocker on system startup" bezelStyle="regularSquare" imagePosition="left" inset="2" id="h45-jZ-cPY">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -132,7 +146,7 @@
                         </connections>
                     </button>
                     <button toolTip="Show time using a 24-hour format" translatesAutoresizingMaskIntoConstraints="NO" id="N47-gw-Pay" customClass="ColoredButton">
-                        <rect key="frame" x="9" y="119" width="343" height="22"/>
+                        <rect key="frame" x="9" y="115" width="343" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="339" id="0eX-T7-EbU"/>
                             <constraint firstAttribute="height" constant="18" id="qwS-Bk-vmy"/>
@@ -148,7 +162,7 @@
                         </connections>
                     </button>
                     <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cso-OX-qzB">
-                        <rect key="frame" x="8" y="49" width="413" height="20"/>
+                        <rect key="frame" x="10" y="49" width="411" height="20"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="Open Source Message" id="l7j-wK-zcu">
                             <font key="font" size="13" name="HelveticaNeue-Thin"/>
@@ -157,7 +171,7 @@
                         </textFieldCell>
                     </textField>
                     <button toolTip="Say Hello!" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="psn-eC-m9g">
-                        <rect key="frame" x="2" y="13" width="97" height="32"/>
+                        <rect key="frame" x="4" y="13" width="97" height="32"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Url-R6-qPD"/>
                             <constraint firstAttribute="width" constant="85" id="Zyt-kT-9nT"/>
@@ -175,7 +189,7 @@
                 <constraints>
                     <constraint firstItem="psn-eC-m9g" firstAttribute="top" secondItem="cso-OX-qzB" secondAttribute="bottom" constant="8" id="1ah-5W-DP0"/>
                     <constraint firstItem="DCz-qN-ydK" firstAttribute="top" secondItem="cI0-M7-C9h" secondAttribute="bottom" constant="6" id="6Ye-VD-kSE"/>
-                    <constraint firstItem="cso-OX-qzB" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="10" id="Bux-4T-BB9"/>
+                    <constraint firstItem="cso-OX-qzB" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="12" id="Bux-4T-BB9"/>
                     <constraint firstItem="P0l-kc-VxU" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="11" id="DUR-uK-Ncx"/>
                     <constraint firstItem="GDz-2Z-uX5" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="11" id="FLl-Pc-Gzn"/>
                     <constraint firstItem="cI0-M7-C9h" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="10" id="Fy5-6V-gu1"/>
@@ -190,12 +204,12 @@
                     <constraint firstItem="N47-gw-Pay" firstAttribute="top" secondItem="ixe-Sn-8qT" secondAttribute="bottom" constant="8" id="gbd-HA-u9p"/>
                     <constraint firstItem="N47-gw-Pay" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="11" id="hXb-69-tI0"/>
                     <constraint firstItem="ixe-Sn-8qT" firstAttribute="width" secondItem="DCz-qN-ydK" secondAttribute="width" id="o7k-jf-cL0"/>
-                    <constraint firstItem="cso-OX-qzB" firstAttribute="top" secondItem="GDz-2Z-uX5" secondAttribute="bottom" constant="8" id="qZY-wv-3kN"/>
+                    <constraint firstItem="cso-OX-qzB" firstAttribute="top" secondItem="GDz-2Z-uX5" secondAttribute="bottom" constant="4" id="qZY-wv-3kN"/>
                     <constraint firstItem="ixe-Sn-8qT" firstAttribute="height" secondItem="DCz-qN-ydK" secondAttribute="height" id="rsK-UP-Umg"/>
                     <constraint firstItem="cI0-M7-C9h" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="8" id="u5H-Ff-ivt"/>
                     <constraint firstAttribute="trailing" secondItem="cI0-M7-C9h" secondAttribute="trailing" constant="10" id="ut9-6b-cdu"/>
                     <constraint firstItem="N47-gw-Pay" firstAttribute="top" secondItem="DCz-qN-ydK" secondAttribute="bottom" constant="8" id="x0C-Ev-Imb"/>
-                    <constraint firstItem="psn-eC-m9g" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="8" id="xEn-ec-WQn"/>
+                    <constraint firstItem="psn-eC-m9g" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="10" id="xEn-ec-WQn"/>
                 </constraints>
                 <animations/>
             </view>
@@ -215,14 +229,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="345" height="320"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView focusRingType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3B2-hV-f8v">
+                    <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3B2-hV-f8v">
                         <rect key="frame" x="8" y="27" width="329" height="257"/>
                         <clipView key="contentView" id="xtL-kR-J62">
-                            <rect key="frame" x="1" y="0.0" width="327" height="256"/>
+                            <rect key="frame" x="0.0" y="0.0" width="329" height="257"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="20" headerView="hHn-48-RCd" id="6Hm-XH-CMI">
-                                    <rect key="frame" x="0.0" y="0.0" width="327" height="233"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="329" height="234"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                     <size key="intercellSpacing" width="3" height="2"/>
@@ -243,7 +257,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         </tableColumn>
-                                        <tableColumn identifier="abbreviation" editable="NO" width="115.71875" minWidth="10" maxWidth="3.4028234663852886e+38" id="Iuq-hc-Ma0">
+                                        <tableColumn identifier="abbreviation" editable="NO" width="117.71875" minWidth="10" maxWidth="3.4028234663852886e+38" id="Iuq-hc-Ma0">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Abbreviation">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -286,7 +300,7 @@
                             <animations/>
                         </scroller>
                         <tableHeaderView key="headerView" id="hHn-48-RCd">
-                            <rect key="frame" x="0.0" y="0.0" width="327" height="23"/>
+                            <rect key="frame" x="0.0" y="0.0" width="329" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <animations/>
                         </tableHeaderView>
