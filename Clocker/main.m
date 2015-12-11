@@ -2,8 +2,8 @@
 //  main.m
 //  Clocker
 //
-//  Created by Vadim Shpakovski on 7/5/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by Abhishek Banthia.
+//  Copyright 2015. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>

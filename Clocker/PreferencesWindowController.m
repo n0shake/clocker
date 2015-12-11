@@ -359,6 +359,10 @@ static PreferencesWindowController *sharedPreferences = nil;
 
 -(BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation
 {
+    if (row == self.selectedTimeZones.count) {
+        row--;
+    }
+    
     NSPasteboard *pBoard = [info draggingPasteboard];
     
     NSData *data = [pBoard dataForType:@"public.text"];
