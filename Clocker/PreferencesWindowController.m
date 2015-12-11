@@ -156,6 +156,11 @@ static PreferencesWindowController *sharedPreferences = nil;
     }
     if ([tableColumn.identifier isEqualToString:@"abbreviation"])
     {
+        if (self.searchField.stringValue.length > 0)
+        {
+            return [NSTimeZone timeZoneWithName:self.filteredArray[row]].abbreviation;
+        }
+        
         return [NSTimeZone timeZoneWithName:self.timeZoneArray[row]].abbreviation;
     }
 
@@ -165,9 +170,7 @@ static PreferencesWindowController *sharedPreferences = nil;
 
 - (IBAction)addTimeZone:(id)sender
 {
-
     [self.window beginSheet:self.timezonePanel completionHandler:^(NSModalResponse returnCode) {
-        
     }];
 }
 
@@ -184,7 +187,7 @@ static PreferencesWindowController *sharedPreferences = nil;
     
     if (self.selectedTimeZones.count > 10)
     {
-        self.messageLabel.stringValue = @"Maximum 10 timezones allowed!";
+        self.messageLabel.stringValue = NSLocalizedString(@"MaximumTimezoneMessage", nil);
          [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(clearLabel) userInfo:nil repeats:NO];
         return;
     }
@@ -201,7 +204,7 @@ static PreferencesWindowController *sharedPreferences = nil;
         }
         else if ([name isEqualToString:self.timeZoneArray[self.availableTimezoneTableView.selectedRow]])
         {
-            self.messageLabel.stringValue = @"Timezone has already been selected!";
+            self.messageLabel.stringValue = NSLocalizedString(@"DuplicateTimezoneMessage", nil);
             [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(clearLabel) userInfo:nil repeats:NO];
             return;
         }
@@ -356,6 +359,10 @@ static PreferencesWindowController *sharedPreferences = nil;
 
 -(BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation
 {
+    if (row == self.selectedTimeZones.count) {
+        row--;
+    }
+    
     NSPasteboard *pBoard = [info draggingPasteboard];
     
     NSData *data = [pBoard dataForType:@"public.text"];
@@ -430,11 +437,16 @@ static PreferencesWindowController *sharedPreferences = nil;
 
 - (IBAction)supportAction:(id)sender
 {
+    /*
     NSAppleScript *mailScript;
     NSString *scriptString= @"tell application \"Mail\"\nset theAddress to \"abhishekbanthia@me.com\"\n set msg to make new outgoing message with properties {visible:true, subject:\"Regarding Clocker - We need to talk!\"}\ntell msg to make new to recipient at end of every to recipient with properties {address:theAddress}\n activate\nend tell";
     mailScript = [[NSAppleScript alloc] initWithSource:scriptString];
     NSDictionary *dict = nil;
-    [mailScript executeAndReturnError:&dict];
+    [mailScript executeAndReturnError:&dict];*/
+    
+    NSString *issuePage = @"https://github.com/Abhishaker17/Clocker/issues";
+    NSURL *mainURL = [NSURL URLWithString:issuePage];
+    [[NSWorkspace sharedWorkspace] openURL:mainURL];
 }
 
 

@@ -297,7 +297,7 @@
     
     NSNumber *is24HourFormatSelected = [[NSUserDefaults standardUserDefaults] objectForKey:@"is24HourFormatSelected"];
     
-    is24HourFormatSelected.boolValue ? [dateFormatter setDateFormat:@"HH:mm"] : [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    is24HourFormatSelected.boolValue ? [dateFormatter setDateFormat:@"HH:mm"] : [dateFormatter setDateFormat:@"hh:mm a"];
     
     dateFormatter.timeZone = [NSTimeZone timeZoneWithName:timezoneName];
     //In the format 22:10
@@ -313,14 +313,15 @@
     dateFormatter.timeStyle = kCFDateFormatterNoStyle;
     dateFormatter.timeZone = [NSTimeZone systemTimeZone];
     
-    return [dateFormatter stringFromDate:currentDate];
+    return [NSDateFormatter localizedStringFromDate:currentDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
+//    return [dateFormatter stringFromDate:currentDate];
 
 }
 
 - (NSString *)compareSystemDate:(NSString *)systemDate toTimezoneDate:(NSString *)date
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"MM/dd/yy";
+    formatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"MM/dd/yyyy" options:0 locale:[NSLocale currentLocale]];
     
     NSDate *localDate = [formatter dateFromString:systemDate];
     NSDate *timezoneDate = [formatter dateFromString:date];
@@ -339,15 +340,15 @@
     NSInteger timezoneDay = [calendar component:units fromDate:timezoneDate];
     
     if (systemDay == timezoneDay) {
-        return @"Today";
+        return NSLocalizedString(@"Today", @"Today");;
     }
     else if (systemDay > timezoneDay)
     {
-        return @"Yesterday";
+        return NSLocalizedString(@"Yesterday", @"Yesterday");
     }
     else
     {
-        return @"Tomorrow";
+        return NSLocalizedString(@"Tomorrow", @"Tomorrow");;
     }
 }
 

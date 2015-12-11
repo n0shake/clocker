@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A2000D11BFBD472002BFDE8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A2000CF1BFBD472002BFDE8 /* Localizable.strings */; settings = {ASSET_TAGS = (); }; };
 		9A4379251BEC223900F4E27F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379211BEC223900F4E27F /* Security.framework */; settings = {ASSET_TAGS = (); }; };
 		9A4379261BEC223900F4E27F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379221BEC223900F4E27F /* SystemConfiguration.framework */; settings = {ASSET_TAGS = (); }; };
 		9A4379271BEC223900F4E27F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379231BEC223900F4E27F /* Fabric.framework */; settings = {ASSET_TAGS = (); }; };
@@ -23,18 +24,23 @@
 		9A8605BF1BEC14F600A810A4 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BC1BEC14F600A810A4 /* BackgroundView.m */; };
 		9A8605C01BEC14F600A810A4 /* Panel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BD1BEC14F600A810A4 /* Panel.m */; };
 		9A8605C11BEC14F600A810A4 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BE1BEC14F600A810A4 /* PreferencesWindowController.m */; };
-		9A8605D61BEC155B00A810A4 /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605CD1BEC155B00A810A4 /* Panel.xib */; settings = {ASSET_TAGS = (); }; };
-		9A8605D71BEC155B00A810A4 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605CE1BEC155B00A810A4 /* PreferencesWindow.xib */; settings = {ASSET_TAGS = (); }; };
 		9A8605D81BEC155B00A810A4 /* PowerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605CF1BEC155B00A810A4 /* PowerIcon.png */; settings = {ASSET_TAGS = (); }; };
 		9A8605D91BEC155B00A810A4 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D01BEC155B00A810A4 /* Status.png */; settings = {ASSET_TAGS = (); }; };
 		9A8605DA1BEC155B00A810A4 /* Status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D11BEC155B00A810A4 /* Status@2x.png */; settings = {ASSET_TAGS = (); }; };
 		9A8605DB1BEC155B00A810A4 /* StatusHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D21BEC155B00A810A4 /* StatusHighlighted.png */; settings = {ASSET_TAGS = (); }; };
 		9A8605DC1BEC155B00A810A4 /* StatusHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D31BEC155B00A810A4 /* StatusHighlighted@2x.png */; settings = {ASSET_TAGS = (); }; };
 		9A8605DF1BEC15C400A810A4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605DD1BEC15C400A810A4 /* MainMenu.xib */; settings = {ASSET_TAGS = (); }; };
+		9ABA38AC1BFAD7F80073EA4D /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ABA38AE1BFAD7F80073EA4D /* Panel.xib */; };
+		9ABA38AF1BFAD83F0073EA4D /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ABA38B11BFAD83F0073EA4D /* PreferencesWindow.xib */; };
 		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A2000CC1BFBD3D7002BFDE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Clocker/Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9A2000CD1BFBD3D7002BFDE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Panel.xib; sourceTree = "<group>"; };
+		9A2000CE1BFBD3D7002BFDE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
+		9A2000D01BFBD472002BFDE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Clocker/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A2000D21BFBD47C002BFDE8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Clocker/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9A4379211BEC223900F4E27F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Security.framework; sourceTree = "<group>"; };
 		9A4379221BEC223900F4E27F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SystemConfiguration.framework; sourceTree = "<group>"; };
 		9A4379231BEC223900F4E27F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -43,6 +49,10 @@
 		9A43792B1BEC231100F4E27F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9A43792D1BEC256200F4E27F /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		9A5B1A8D1BECDFB700A77C68 /* Clocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Clocker.entitlements; path = Clocker/Clocker.entitlements; sourceTree = "<group>"; };
+		9A825E3B1C064F6C0037CA3B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Clocker/en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9A825E3C1C064F700037CA3B /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Clocker/fr.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9A825E3D1C06534E0037CA3B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
+		9A825E3F1C06538B0037CA3B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Panel.xib; sourceTree = "<group>"; };
 		9A8605AD1BEC148400A810A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Clocker/main.m; sourceTree = "<group>"; };
 		9A8605B21BEC14A600A810A4 /* ColoredButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ColoredButton.m; path = Clocker/ColoredButton.m; sourceTree = "<group>"; };
 		9A8605B41BEC14BE00A810A4 /* MenubarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MenubarController.m; path = Clocker/MenubarController.m; sourceTree = "<group>"; };
@@ -62,14 +72,13 @@
 		9A8605CA1BEC155B00A810A4 /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationDelegate.h; path = Clocker/ApplicationDelegate.h; sourceTree = "<group>"; };
 		9A8605CB1BEC155B00A810A4 /* ColoredButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColoredButton.h; path = Clocker/ColoredButton.h; sourceTree = "<group>"; };
 		9A8605CC1BEC155B00A810A4 /* Clocker-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Clocker-Prefix.pch"; path = "Clocker/Clocker-Prefix.pch"; sourceTree = "<group>"; };
-		9A8605CD1BEC155B00A810A4 /* Panel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Panel.xib; path = Clocker/Panel.xib; sourceTree = "<group>"; };
-		9A8605CE1BEC155B00A810A4 /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindow.xib; path = Clocker/PreferencesWindow.xib; sourceTree = "<group>"; };
 		9A8605CF1BEC155B00A810A4 /* PowerIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PowerIcon.png; path = Clocker/PowerIcon.png; sourceTree = "<group>"; };
 		9A8605D01BEC155B00A810A4 /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Status.png; path = Clocker/Status.png; sourceTree = "<group>"; };
 		9A8605D11BEC155B00A810A4 /* Status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Status@2x.png"; path = "Clocker/Status@2x.png"; sourceTree = "<group>"; };
 		9A8605D21BEC155B00A810A4 /* StatusHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusHighlighted.png; path = Clocker/StatusHighlighted.png; sourceTree = "<group>"; };
 		9A8605D31BEC155B00A810A4 /* StatusHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusHighlighted@2x.png"; path = "Clocker/StatusHighlighted@2x.png"; sourceTree = "<group>"; };
-		9A8605DE1BEC15C400A810A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Clocker/en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9ABA38B31BFAD8520073EA4D /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/Panel.xib; sourceTree = "<group>"; };
+		9ABA38B41BFAD8520073EA4D /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
 		DD4F7C0413C30F9F00825C6E /* Clocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4F7C0813C30F9F00825C6E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DD4F7C0B13C30F9F00825C6E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -95,12 +104,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A2000C61BFBCEF6002BFDE8 /* Localization Strings */ = {
+			isa = PBXGroup;
+			children = (
+				9A2000CF1BFBD472002BFDE8 /* Localizable.strings */,
+			);
+			name = "Localization Strings";
+			sourceTree = "<group>";
+		};
 		9A8605E01BEC15F400A810A4 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
 				9A8605DD1BEC15C400A810A4 /* MainMenu.xib */,
-				9A8605CD1BEC155B00A810A4 /* Panel.xib */,
-				9A8605CE1BEC155B00A810A4 /* PreferencesWindow.xib */,
+				9ABA38AE1BFAD7F80073EA4D /* Panel.xib */,
+				9ABA38B11BFAD83F0073EA4D /* PreferencesWindow.xib */,
 			);
 			name = XIB;
 			sourceTree = "<group>";
@@ -169,6 +186,7 @@
 			children = (
 				9A5B1A8D1BECDFB700A77C68 /* Clocker.entitlements */,
 				9A43792D1BEC256200F4E27F /* Media.xcassets */,
+				9A2000C61BFBCEF6002BFDE8 /* Localization Strings */,
 				9A8605E01BEC15F400A810A4 /* XIB */,
 				9A8605E11BEC160700A810A4 /* Images */,
 				9A8605E41BEC164C00A810A4 /* Main */,
@@ -250,6 +268,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				fr,
+				Base,
 			);
 			mainGroup = DD4F7BF913C30F9F00825C6E;
 			productRefGroup = DD4F7C0513C30F9F00825C6E /* Products */;
@@ -266,11 +286,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A8605D71BEC155B00A810A4 /* PreferencesWindow.xib in Resources */,
+				9ABA38AF1BFAD83F0073EA4D /* PreferencesWindow.xib in Resources */,
 				9A8605DF1BEC15C400A810A4 /* MainMenu.xib in Resources */,
 				9A8605D91BEC155B00A810A4 /* Status.png in Resources */,
-				9A8605D61BEC155B00A810A4 /* Panel.xib in Resources */,
+				9ABA38AC1BFAD7F80073EA4D /* Panel.xib in Resources */,
 				9A43792E1BEC256200F4E27F /* Media.xcassets in Resources */,
+				9A2000D11BFBD472002BFDE8 /* Localizable.strings in Resources */,
 				9A8605DC1BEC155B00A810A4 /* StatusHighlighted@2x.png in Resources */,
 				9A8605DA1BEC155B00A810A4 /* Status@2x.png in Resources */,
 				9A8605DB1BEC155B00A810A4 /* StatusHighlighted.png in Resources */,
@@ -316,12 +337,45 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		9A2000CF1BFBD472002BFDE8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A2000D01BFBD472002BFDE8 /* en */,
+				9A2000D21BFBD47C002BFDE8 /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		9A8605DD1BEC15C400A810A4 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9A8605DE1BEC15C400A810A4 /* en */,
+				9A2000CC1BFBD3D7002BFDE8 /* Base */,
+				9A825E3B1C064F6C0037CA3B /* en */,
+				9A825E3C1C064F700037CA3B /* fr */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		9ABA38AE1BFAD7F80073EA4D /* Panel.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9ABA38B31BFAD8520073EA4D /* fr */,
+				9A2000CD1BFBD3D7002BFDE8 /* Base */,
+				9A825E3F1C06538B0037CA3B /* en */,
+			);
+			name = Panel.xib;
+			path = Clocker;
+			sourceTree = "<group>";
+		};
+		9ABA38B11BFAD83F0073EA4D /* PreferencesWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9ABA38B41BFAD8520073EA4D /* fr */,
+				9A2000CE1BFBD3D7002BFDE8 /* Base */,
+				9A825E3D1C06534E0037CA3B /* en */,
+			);
+			name = PreferencesWindow.xib;
+			path = Clocker;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -338,7 +392,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -354,7 +408,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1885f3d2-2a35-4a0b-b465-4c0119f4bbaf";
 				SDKROOT = macosx;
 			};
 			name = Distribution;
@@ -365,7 +419,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -377,7 +431,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1885f3d2-2a35-4a0b-b465-4c0119f4bbaf";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;
@@ -393,7 +447,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -417,7 +471,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1885f3d2-2a35-4a0b-b465-4c0119f4bbaf";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -433,7 +487,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -449,7 +503,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1885f3d2-2a35-4a0b-b465-4c0119f4bbaf";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -460,7 +514,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -473,7 +527,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1885f3d2-2a35-4a0b-b465-4c0119f4bbaf";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -484,7 +538,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -496,7 +550,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1885f3d2-2a35-4a0b-b465-4c0119f4bbaf";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
