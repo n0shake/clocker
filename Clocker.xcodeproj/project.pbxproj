@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9A2000D11BFBD472002BFDE8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A2000CF1BFBD472002BFDE8 /* Localizable.strings */; settings = {ASSET_TAGS = (); }; };
+		9A25F7451C1A5E17007D369B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A25F7421C1A5E17007D369B /* Info.plist */; settings = {ASSET_TAGS = (); }; };
+		9A25F7461C1A5E17007D369B /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A25F7431C1A5E17007D369B /* iRate.bundle */; settings = {ASSET_TAGS = (); }; };
+		9A25F7471C1A5E17007D369B /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A25F7441C1A5E17007D369B /* iRate.m */; settings = {ASSET_TAGS = (); }; };
 		9A4379251BEC223900F4E27F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379211BEC223900F4E27F /* Security.framework */; settings = {ASSET_TAGS = (); }; };
 		9A4379261BEC223900F4E27F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379221BEC223900F4E27F /* SystemConfiguration.framework */; settings = {ASSET_TAGS = (); }; };
 		9A4379271BEC223900F4E27F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379231BEC223900F4E27F /* Fabric.framework */; settings = {ASSET_TAGS = (); }; };
@@ -41,6 +44,18 @@
 		9A2000CE1BFBD3D7002BFDE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
 		9A2000D01BFBD472002BFDE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Clocker/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9A2000D21BFBD47C002BFDE8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Clocker/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A25F7411C1A5E17007D369B /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iRate.h; path = "Clocker/Rate App/iRate.h"; sourceTree = "<group>"; };
+		9A25F7421C1A5E17007D369B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Clocker/Rate App/Info.plist"; sourceTree = "<group>"; };
+		9A25F7431C1A5E17007D369B /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = iRate.bundle; path = "Clocker/Rate App/iRate.bundle"; sourceTree = "<group>"; };
+		9A25F7441C1A5E17007D369B /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iRate.m; path = "Clocker/Rate App/iRate.m"; sourceTree = "<group>"; };
+		9A25F7491C1A672A007D369B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = Clocker/ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A25F74A1C1A672A007D369B /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = Clocker/ja.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9A25F74B1C1A672A007D369B /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/Panel.xib; sourceTree = "<group>"; };
+		9A25F74C1C1A672A007D369B /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
+		9A25F74D1C1A6C08007D369B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Clocker/de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A25F74E1C1A6C08007D369B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = Clocker/de.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9A25F74F1C1A6C08007D369B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/Panel.xib; sourceTree = "<group>"; };
+		9A25F7501C1A6C08007D369B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
 		9A4379211BEC223900F4E27F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Security.framework; sourceTree = "<group>"; };
 		9A4379221BEC223900F4E27F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SystemConfiguration.framework; sourceTree = "<group>"; };
 		9A4379231BEC223900F4E27F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -110,6 +125,17 @@
 				9A2000CF1BFBD472002BFDE8 /* Localizable.strings */,
 			);
 			name = "Localization Strings";
+			sourceTree = "<group>";
+		};
+		9A25F7481C1A5E21007D369B /* Rate */ = {
+			isa = PBXGroup;
+			children = (
+				9A25F7411C1A5E17007D369B /* iRate.h */,
+				9A25F7421C1A5E17007D369B /* Info.plist */,
+				9A25F7431C1A5E17007D369B /* iRate.bundle */,
+				9A25F7441C1A5E17007D369B /* iRate.m */,
+			);
+			name = Rate;
 			sourceTree = "<group>";
 		};
 		9A8605E01BEC15F400A810A4 /* XIB */ = {
@@ -184,6 +210,7 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
+				9A25F7481C1A5E21007D369B /* Rate */,
 				9A5B1A8D1BECDFB700A77C68 /* Clocker.entitlements */,
 				9A43792D1BEC256200F4E27F /* Media.xcassets */,
 				9A2000C61BFBCEF6002BFDE8 /* Localization Strings */,
@@ -270,6 +297,8 @@
 				en,
 				fr,
 				Base,
+				ja,
+				de,
 			);
 			mainGroup = DD4F7BF913C30F9F00825C6E;
 			productRefGroup = DD4F7C0513C30F9F00825C6E /* Products */;
@@ -291,9 +320,11 @@
 				9A8605D91BEC155B00A810A4 /* Status.png in Resources */,
 				9ABA38AC1BFAD7F80073EA4D /* Panel.xib in Resources */,
 				9A43792E1BEC256200F4E27F /* Media.xcassets in Resources */,
+				9A25F7461C1A5E17007D369B /* iRate.bundle in Resources */,
 				9A2000D11BFBD472002BFDE8 /* Localizable.strings in Resources */,
 				9A8605DC1BEC155B00A810A4 /* StatusHighlighted@2x.png in Resources */,
 				9A8605DA1BEC155B00A810A4 /* Status@2x.png in Resources */,
+				9A25F7451C1A5E17007D369B /* Info.plist in Resources */,
 				9A8605DB1BEC155B00A810A4 /* StatusHighlighted.png in Resources */,
 				9A8605D81BEC155B00A810A4 /* PowerIcon.png in Resources */,
 			);
@@ -323,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A8605BF1BEC14F600A810A4 /* BackgroundView.m in Sources */,
+				9A25F7471C1A5E17007D369B /* iRate.m in Sources */,
 				9A8605C01BEC14F600A810A4 /* Panel.m in Sources */,
 				9A8605C11BEC14F600A810A4 /* PreferencesWindowController.m in Sources */,
 				9A8605BA1BEC14DC00A810A4 /* StatusItemView.m in Sources */,
@@ -342,6 +374,8 @@
 			children = (
 				9A2000D01BFBD472002BFDE8 /* en */,
 				9A2000D21BFBD47C002BFDE8 /* fr */,
+				9A25F7491C1A672A007D369B /* ja */,
+				9A25F74D1C1A6C08007D369B /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -352,6 +386,8 @@
 				9A2000CC1BFBD3D7002BFDE8 /* Base */,
 				9A825E3B1C064F6C0037CA3B /* en */,
 				9A825E3C1C064F700037CA3B /* fr */,
+				9A25F74A1C1A672A007D369B /* ja */,
+				9A25F74E1C1A6C08007D369B /* de */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -362,6 +398,8 @@
 				9ABA38B31BFAD8520073EA4D /* fr */,
 				9A2000CD1BFBD3D7002BFDE8 /* Base */,
 				9A825E3F1C06538B0037CA3B /* en */,
+				9A25F74B1C1A672A007D369B /* ja */,
+				9A25F74F1C1A6C08007D369B /* de */,
 			);
 			name = Panel.xib;
 			path = Clocker;
@@ -373,6 +411,8 @@
 				9ABA38B41BFAD8520073EA4D /* fr */,
 				9A2000CE1BFBD3D7002BFDE8 /* Base */,
 				9A825E3D1C06534E0037CA3B /* en */,
+				9A25F74C1C1A672A007D369B /* ja */,
+				9A25F7501C1A6C08007D369B /* de */,
 			);
 			name = PreferencesWindow.xib;
 			path = Clocker;
@@ -392,7 +432,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
+				CODE_SIGN_IDENTITY = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -408,7 +448,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PROVISIONING_PROFILE = "1885f3d2-2a35-4a0b-b465-4c0119f4bbaf";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};
 			name = Distribution;
@@ -419,7 +459,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
+				CODE_SIGN_IDENTITY = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -431,7 +471,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
-				PROVISIONING_PROFILE = "1885f3d2-2a35-4a0b-b465-4c0119f4bbaf";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;
@@ -447,7 +487,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
+				CODE_SIGN_IDENTITY = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -471,7 +511,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "1885f3d2-2a35-4a0b-b465-4c0119f4bbaf";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -487,7 +527,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
+				CODE_SIGN_IDENTITY = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -503,7 +543,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PROVISIONING_PROFILE = "1885f3d2-2a35-4a0b-b465-4c0119f4bbaf";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -514,7 +554,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
+				CODE_SIGN_IDENTITY = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -527,7 +567,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
-				PROVISIONING_PROFILE = "1885f3d2-2a35-4a0b-b465-4c0119f4bbaf";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -538,7 +578,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
+				CODE_SIGN_IDENTITY = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -550,7 +590,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
-				PROVISIONING_PROFILE = "1885f3d2-2a35-4a0b-b465-4c0119f4bbaf";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

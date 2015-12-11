@@ -1,18 +1,3 @@
-/* 
-  Localizable.strings
-  Clocker
-
-  Created by Abhishek Banthia on 11/17/15.
-
-*/
-
-
-"Yesterday" = "Hier";
-"Today" = "Aujourd'hui";
-"Tomorrow" = "Demain";
-"MaximumTimezoneMessage" = "Maximum 10 fuseaux horaires autorisés!";
-"DuplicateTimezoneMessage" = "Fuseau horaire a déjà été sélectionnée!";
-
 "iRateMessageTitle" = "Notez %@";
 "iRateAppMessage" = "Si vous aimez utiliser %@, n'oubliez pas de donner votre avis sur l'App Store. Cela ne prend qu'une minute. Merci d'avance pour votre soutien !";
 "iRateGameMessage" = "Si vous aimez jouer à %@, n'oubliez pas de donner votre avis sur l'App Store. Cela ne prend qu'une minute. Merci d'avance pour votre soutien !";

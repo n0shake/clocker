@@ -266,7 +266,7 @@
     timeCell.stringValue = [self getTimeForTimeZone:self.defaultPreferences[row]];
     
     NSNumber *shouldShowOnlyCity = [[NSUserDefaults standardUserDefaults] objectForKey:@"showOnlyCity"];
-    
+  
     cellText.stringValue = [self formatStringShouldContainCity:shouldShowOnlyCity.boolValue withTimezoneName:self.defaultPreferences[row]];
     
     return cell;
@@ -366,6 +366,38 @@
 }
 
 #pragma mark -
+#pragma mark NSTableview Minor Customization when selecting rows
+#pragma mark -
+
+-(void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+    if (self.mainTableview.selectedRow != -1) {
+        [self updateCellForOldSelection:self.mainTableview.selectedRow andColor:[NSColor whiteColor]];
+    }
+    if (self.previousSelectedRow != -1) {
+        [self updateCellForOldSelection:self.previousSelectedRow andColor:[NSColor blackColor]];
+    }
+    
+    self.previousSelectedRow = self.mainTableview.selectedRow;
+}
+
+- (void)updateCellForOldSelection:(NSInteger)rowNumber andColor:(NSColor *)colorName
+{
+    NSTableCellView *cellView = [self.mainTableview viewAtColumn:self.mainTableview.selectedColumn
+                                                             row:rowNumber
+                                                 makeIfNecessary:NO];
+    
+    NSTextField *cellText = [cellView viewWithTag:100];
+    NSTextField *timeCell = [cellView viewWithTag:101];
+    NSTextField *dateCell = [cellView viewWithTag:102];
+    
+    cellText.textColor = colorName;
+    timeCell.textColor = colorName;
+    dateCell.textColor = colorName;
+}
+
+
+#pragma mark -
 #pragma mark NSTableview Drag and Drop
 #pragma mark -
 
@@ -376,6 +408,9 @@
     [pboard declareTypes:[NSArray arrayWithObject:@"public.text"] owner:self];
     
     [pboard setData:data forType:@"public.text"];
+    
+    [self updateCellForOldSelection:rowIndexes.firstIndex andColor:[NSColor blackColor]];
+    NSLog(@"Write row with indexes");
     
     return YES;
 }

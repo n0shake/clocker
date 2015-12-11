@@ -28,6 +28,7 @@
 #import "ApplicationDelegate.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "iRate.h"
 
 @implementation ApplicationDelegate
 
@@ -55,38 +56,19 @@ void *kContextActivePanel = &kContextActivePanel;
     }
 }
 
++ (void)initialize
+{
+    //Configure iRate
+    [iRate sharedInstance].daysUntilPrompt = 0;
+    [iRate sharedInstance].usesUntilPrompt = 5;
+    [iRate sharedInstance].appStoreID = 1056643111;
+    [iRate sharedInstance].useAllAvailableLanguages = NO;
+}
+
 #pragma mark - NSApplicationDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"noOfLaunches"] == nil)
-    {
-        NSNumber *numberOfLaunches = @1;
-        [[NSUserDefaults standardUserDefaults] setObject:numberOfLaunches forKey:@"noOfLaunches"];
-    }
-    else
-    {
-        //Check the number of times app has been launched.
-        
-        NSNumber *numberOfLaunches = [[NSUserDefaults standardUserDefaults] objectForKey:@"noOfLaunches"];
-        NSInteger launches = numberOfLaunches.integerValue;
-        launches++;
-        numberOfLaunches = [NSNumber numberWithInteger:launches];
-        [[NSUserDefaults standardUserDefaults] setObject:numberOfLaunches forKey:@"noOfLaunches"];
-        
-        if (numberOfLaunches.integerValue == 151)
-        {
-            NSAlert *reviewAlert = [[NSAlert alloc] init];
-            reviewAlert.alertStyle = NSInformationalAlertStyle;
-            reviewAlert.messageText = NSLocalizedString(@"SpreadTheWordTitle", nil);
-            reviewAlert.informativeText = NSLocalizedString(@"SpreadTheWordMessage", nil);
-            [reviewAlert addButtonWithTitle:NSLocalizedString(@"Cancel", nil)];
-            [reviewAlert runModal];
-
-        }
-    }
-    
     NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultPreferences"];
     
     if (defaultPreference.count == 0)
@@ -104,6 +86,11 @@ void *kContextActivePanel = &kContextActivePanel;
     
     [[Crashlytics sharedInstance] setDebugMode:YES];
     [Fabric with:@[[Crashlytics class]]];
+}
+
+- (void) initialize
+{
+    //App ID: 1056643111
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
