@@ -106,6 +106,70 @@
                                                         <outlet property="textField" destination="etF-33-bCB" id="6fd-cc-Qq2"/>
                                                     </connections>
                                                 </tableCellView>
+                                                <tableCellView identifier="ratingCellView" id="uSg-Ob-VaY" customClass="CLRatingCellView">
+                                                    <rect key="frame" x="1" y="61" width="279" height="51"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DV6-1S-ozI">
+                                                            <rect key="frame" x="92" y="31" width="105" height="20"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Enjoying Clocker?" id="Smx-UD-UHl">
+                                                                <font key="font" size="13" name="HelveticaNeue-Light"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xr7-B4-Qrg">
+                                                            <rect key="frame" x="29" y="2" width="112" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="2rr-Hq-XNm"/>
+                                                                <constraint firstAttribute="height" constant="14" id="cZI-Gh-Ts5"/>
+                                                            </constraints>
+                                                            <buttonCell key="cell" type="push" title="Not Really" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BxE-ut-DNY">
+                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" size="13" name="HelveticaNeue-Light"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="actionOnNegativeFeedback:" target="uSg-Ob-VaY" id="fyn-OT-8QU"/>
+                                                            </connections>
+                                                        </button>
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HVb-Zh-7bm">
+                                                            <rect key="frame" x="72" y="31" width="16" height="16"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="16" id="8V1-MH-3aC"/>
+                                                                <constraint firstAttribute="width" constant="16" id="sCo-ah-NEf"/>
+                                                            </constraints>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-16" id="WaH-om-d6S"/>
+                                                        </imageView>
+                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KHa-CS-VSi">
+                                                            <rect key="frame" x="134" y="2" width="112" height="25"/>
+                                                            <buttonCell key="cell" type="push" title="Yes!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5b3-zK-eAK">
+                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" size="13" name="HelveticaNeue-Light"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="actionOnPositiveFeedback:" target="uSg-Ob-VaY" id="osb-fs-bPh"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="KHa-CS-VSi" firstAttribute="height" secondItem="Xr7-B4-Qrg" secondAttribute="height" id="B0P-Qp-kXo"/>
+                                                        <constraint firstItem="KHa-CS-VSi" firstAttribute="centerX" secondItem="uSg-Ob-VaY" secondAttribute="centerX" constant="50" id="Lat-9z-4zx"/>
+                                                        <constraint firstItem="HVb-Zh-7bm" firstAttribute="top" secondItem="uSg-Ob-VaY" secondAttribute="top" constant="4" id="OMd-kn-yzF"/>
+                                                        <constraint firstItem="DV6-1S-ozI" firstAttribute="centerX" secondItem="uSg-Ob-VaY" secondAttribute="centerX" constant="5" id="jKr-Dz-Zyc"/>
+                                                        <constraint firstItem="Xr7-B4-Qrg" firstAttribute="top" secondItem="DV6-1S-ozI" secondAttribute="bottom" constant="8" id="m18-dO-Naj"/>
+                                                        <constraint firstItem="KHa-CS-VSi" firstAttribute="top" secondItem="DV6-1S-ozI" secondAttribute="bottom" constant="8" id="rg0-MF-n9j"/>
+                                                        <constraint firstItem="KHa-CS-VSi" firstAttribute="width" secondItem="Xr7-B4-Qrg" secondAttribute="width" id="tdx-bo-yWb"/>
+                                                        <constraint firstItem="DV6-1S-ozI" firstAttribute="leading" secondItem="HVb-Zh-7bm" secondAttribute="trailing" constant="6" id="tsg-tN-lFV"/>
+                                                        <constraint firstItem="DV6-1S-ozI" firstAttribute="top" secondItem="uSg-Ob-VaY" secondAttribute="top" id="yCc-cf-MCd"/>
+                                                        <constraint firstItem="Xr7-B4-Qrg" firstAttribute="centerX" secondItem="uSg-Ob-VaY" secondAttribute="centerX" constant="-55" id="yXu-4w-cSS"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="imageView" destination="HVb-Zh-7bm" id="JM1-kh-oZn"/>
+                                                        <outlet property="leftButton" destination="Xr7-B4-Qrg" id="zMy-dD-hx6"/>
+                                                        <outlet property="leftField" destination="DV6-1S-ozI" id="Mfc-2l-tjA"/>
+                                                        <outlet property="rightButton" destination="KHa-CS-VSi" id="0mz-t8-4g2"/>
+                                                    </connections>
+                                                </tableCellView>
                                             </prototypeCellViews>
                                         </tableColumn>
                                     </tableColumns>
@@ -190,6 +254,7 @@
         <userDefaultsController representsSharedInstance="YES" id="O3B-kK-4vm"/>
     </objects>
     <resources>
+        <image name="ClockerIcon-16" width="16" height="16"/>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="PowerIcon" width="270" height="270"/>
     </resources>
