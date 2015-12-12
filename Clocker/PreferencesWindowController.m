@@ -38,7 +38,6 @@
 #import "CommonStrings.h"
 
 NSString *const CLPredicateKey = @"SELF CONTAINS[cd]%@";
-NSString *const CLDragSessionKey = @"public.text";
 NSString *const CLPreferencesNibIdentifier = @"PreferencesWindow";
 NSString *const CLPreferencesTimezoneNameColumnIdentifier = @"timezoneName";
 NSString *const CLPreferencesAbbreviationColumnIdentifier = @"abbreviation";
@@ -217,7 +216,7 @@ static PreferencesWindowController *sharedPreferences = nil;
         if (self.searchField.stringValue.length > 0) {
             if ([name isEqualToString:self.filteredArray[self.availableTimezoneTableView.selectedRow]])
             {
-                self.messageLabel.stringValue = @"Timezone has already been selected!";
+                self.messageLabel.stringValue = NSLocalizedString(@"DuplicateTimezoneMessage", nil);
                 [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(clearLabel) userInfo:nil repeats:NO];
                 return;
             }
@@ -335,7 +334,7 @@ static PreferencesWindowController *sharedPreferences = nil;
     
     NSButton *is24HourFormatSelected = (NSButton *)sender;
     
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:is24HourFormatSelected.state] forKey:@"is24HourFormatSelected"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:is24HourFormatSelected.state] forKey:CL24hourFormatSelectedKey];
     
     [self refreshMainTableview];
 }

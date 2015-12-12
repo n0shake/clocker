@@ -14,5 +14,7 @@ extern NSString *const CLEmptyString;
 extern NSString *const CLDefaultPreferenceKey;
 extern NSString *const CLTimezoneName;
 extern NSString *const CLCustomLabel;
-extern NSString *const CLC24hourFormatSelectedKey;
+extern NSString *const CL24hourFormatSelectedKey;
+extern NSString *const CLDragSessionKey;
+
 @end

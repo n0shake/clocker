@@ -14,6 +14,7 @@ NSString *const CLEmptyString = @"";
 NSString *const CLDefaultPreferenceKey = @"defaultPreferences";
 NSString *const CLTimezoneName = @"timezoneName";
 NSString *const CLCustomLabel = @"customLabel";
-NSString *const CLC24hourFormatSelectedKey = @"is24HourFormatSelected";
+NSString *const CL24hourFormatSelectedKey = @"is24HourFormatSelected";
+NSString *const CLDragSessionKey = @"public.text";
 
 @end

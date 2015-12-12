@@ -49,10 +49,12 @@
 #pragma mark -
 
 #import "PreferencesWindowController.h"
+#import "CommonStrings.h"
 
 NSString *const CLPanelNibIdentifier = @"Panel";
 NSString *const CLRatingCellViewIdentifier = @"ratingCellView";
 NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
+
 
 @implementation PanelController
 
@@ -87,7 +89,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     [panel setBackgroundColor:[NSColor clearColor]];
     
     //Register for drag and drop
-    [self.mainTableview registerForDraggedTypes: [NSArray arrayWithObject: @"public.text"]];
+    [self.mainTableview registerForDraggedTypes: [NSArray arrayWithObject:CLDragSessionKey]];
 
 }
 
@@ -435,9 +437,9 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 {
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
     
-    [pboard declareTypes:[NSArray arrayWithObject:@"public.text"] owner:self];
+    [pboard declareTypes:[NSArray arrayWithObject:CLDragSessionKey] owner:self];
     
-    [pboard setData:data forType:@"public.text"];
+    [pboard setData:data forType:CLDragSessionKey];
     
     [self updateCellForOldSelection:rowIndexes.firstIndex andColor:[NSColor blackColor]];
     return YES;
@@ -448,7 +450,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 {
     NSPasteboard *pBoard = [info draggingPasteboard];
     
-    NSData *data = [pBoard dataForType:@"public.text"];
+    NSData *data = [pBoard dataForType:CLDragSessionKey];
     
     NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
