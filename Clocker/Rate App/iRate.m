@@ -32,7 +32,7 @@
 
 
 #import "iRate.h"
-
+#import "PanelController.h"
 
 #import <Availability.h>
 #if !__has_feature(objc_arc)
@@ -936,19 +936,10 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
 #endif
 
         {
-//            [alert beginSheetModalForWindow:[NSApplication sharedApplication].mainWindow completionHandler:^(NSModalResponse returnCode) {
-//                [self didDismissAlert:alert withButtonAtIndex:returnCode - NSAlertFirstButtonReturn];
-//            }];
-            
-           NSModalResponse modalResponse = [alert runModal];
-            NSLog(@"Modal response code:%zd", modalResponse);
-            if (modalResponse == NSModalResponseStop) {
-                [self rate];
-            }
-            else
-            {
-                [self remindLater];
-            }
+            PanelController *panelRef = (PanelController *)[[[NSApplication sharedApplication]
+                                                  mainWindow] windowController];
+            panelRef.showReviewCell = YES;
+            [panelRef updateDefaultPreferences];
         }
 
 #endif

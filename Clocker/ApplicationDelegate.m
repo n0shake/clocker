@@ -59,10 +59,7 @@ void *kContextActivePanel = &kContextActivePanel;
 + (void)initialize
 {
     //Configure iRate
-    [iRate sharedInstance].daysUntilPrompt = 0;
-    [iRate sharedInstance].usesUntilPrompt = 5;
     [iRate sharedInstance].appStoreID = 1056643111;
-    [iRate sharedInstance].useAllAvailableLanguages = NO;
 }
 
 #pragma mark - NSApplicationDelegate

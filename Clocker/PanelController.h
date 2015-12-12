@@ -65,7 +65,7 @@
 
 @property (weak) IBOutlet NSButton *shutdownButton;
 @property (weak) IBOutlet NSButton *preferencesButton;
-
+@property (assign) BOOL showReviewCell;
 
 - (id)initWithDelegate:(id<PanelControllerDelegate>)delegate;
 

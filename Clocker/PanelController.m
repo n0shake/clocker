@@ -31,6 +31,7 @@
 #import "StatusItemView.h"
 #import "MenubarController.h"
 #import <Crashlytics/Crashlytics.h>
+#import "CLRatingCellView.h"
 
 #define OPEN_DURATION .15
 #define CLOSE_DURATION .1
@@ -91,11 +92,13 @@
 
 - (void) updateDefaultPreferences
 {
+    
     NSArray *defaultZones = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultPreferences"];
     
     self.defaultPreferences = self.defaultPreferences == nil ? [[NSMutableArray alloc] initWithArray:defaultZones] : [NSMutableArray arrayWithArray:defaultZones];
        
-    self.scrollViewHeight.constant = self.defaultPreferences.count*55 + 30;
+    self.scrollViewHeight.constant = self.showReviewCell ? (self.defaultPreferences.count+1)*55+30 : self.defaultPreferences.count*55 + 30;
+
 }
 
 #pragma mark - Public accessors
@@ -184,11 +187,10 @@
     NSRect screenRect = [[[NSScreen screens] objectAtIndex:0] frame];
     NSRect statusRect = [self statusRectForWindow:panel];
     
-    
     NSRect panelRect = [panel frame];
     panelRect.size.width = PANEL_WIDTH;
     
-    panelRect.size.height = self.defaultPreferences.count*55 + 30;
+    panelRect.size.height = self.showReviewCell ? (self.defaultPreferences.count+1)*55+30: self.defaultPreferences.count*55 + 30;
 
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
@@ -248,11 +250,20 @@
 
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
+    if (self.showReviewCell) {
+        return self.defaultPreferences.count+1;
+    }
     return self.defaultPreferences.count;
 }
 
 -(NSView*)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
+    if (self.showReviewCell && row == self.defaultPreferences.count) {
+        CLRatingCellView *cellView = [self.mainTableview makeViewWithIdentifier:@"ratingCellView" owner:self];
+        return cellView;
+    }
+
+    
     NSTableCellView *cell = [tableView makeViewWithIdentifier:@"timeZoneCell" owner:self];
     
     NSTextField *cellText = [cell viewWithTag:100];

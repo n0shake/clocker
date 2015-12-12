@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="CLAboutWindowController">
+            <connections>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" unifiedTitleAndToolbar="YES"/>
+            <rect key="contentRect" x="196" y="240" width="504" height="229"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <value key="minSize" type="size" width="504" height="229"/>
+            <value key="maxSize" type="size" width="504" height="229"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="504" height="229"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BsP-Tb-4sJ">
+                        <rect key="frame" x="20" y="56" width="125" height="117"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="117" id="RrP-Vg-GBa"/>
+                            <constraint firstAttribute="width" constant="125" id="gZj-LY-MWe"/>
+                        </constraints>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-256" id="m30-9D-QyB"/>
+                    </imageView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aT9-yS-c3k">
+                        <rect key="frame" x="161" y="152" width="97" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="UyY-KI-AX4"/>
+                            <constraint firstAttribute="width" constant="93" id="xVd-xK-q10"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Clocker" id="Lj4-TU-n4Y">
+                            <font key="font" size="29" name="HelveticaNeue-Thin"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BpB-kg-4aM">
+                        <rect key="frame" x="164" y="133" width="79" height="23"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="75" id="3tP-5e-nsb"/>
+                            <constraint firstAttribute="height" constant="23" id="pln-QB-nQM"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version 1.2" id="8dp-NX-aX5">
+                            <font key="font" size="16" name="HelveticaNeue-Thin"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tXd-tB-xLA">
+                        <rect key="frame" x="164" y="111" width="199" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="195" id="Jg6-ve-vTn"/>
+                            <constraint firstAttribute="height" constant="20" id="fIN-Te-Np8"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Copyright (2015) Abhishek Banthia" id="0sO-QJ-REN">
+                            <font key="font" size="14" name="HelveticaNeue-UltraLight"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zA5-13-Tpe">
+                        <rect key="frame" x="164" y="83" width="334" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="330" id="UCQ-E5-zGd"/>
+                            <constraint firstAttribute="height" constant="20" id="hYQ-9a-Wtw"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Clocker is completely open-source and is available for reuse under" id="aI5-C5-JE1">
+                            <font key="font" size="10" name="HelveticaNeue-Light"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ai0-zj-hWG">
+                        <rect key="frame" x="153" y="13" width="116" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="104" id="VAx-Fd-avD"/>
+                            <constraint firstAttribute="height" constant="21" id="frd-nz-x47"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="View Source" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1xZ-FG-lFo">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="viewSource:" target="-2" id="clk-nW-2lg"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xs4-xQ-4FY">
+                        <rect key="frame" x="260" y="13" width="117" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="KEt-2P-cqC"/>
+                            <constraint firstAttribute="width" constant="105" id="ZjE-fm-LLA"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="Report Issue" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sFv-8K-jHG">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="reportIssue:" target="-2" id="FMT-l3-yHo"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Odv-R0-7ED">
+                        <rect key="frame" x="367" y="13" width="123" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="111" id="3KL-Hh-DNh"/>
+                            <constraint firstAttribute="height" constant="21" id="zOP-mp-319"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="FB-FindUsonFacebook-online-144" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="S4v-dW-xay">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="openFacebookPage:" target="-2" id="5N5-sF-7db"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ho6-Pn-eV6">
+                        <rect key="frame" x="165" y="68" width="334" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="330" id="4Re-Xl-N2L"/>
+                            <constraint firstAttribute="height" constant="20" id="SV5-yn-c72"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="the MIT License." id="jE1-of-cML">
+                            <font key="font" size="10" name="HelveticaNeue-Light"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="BsP-Tb-4sJ" firstAttribute="centerY" secondItem="se5-gp-TjO" secondAttribute="centerY" id="8cx-uj-8RG"/>
+                    <constraint firstItem="Odv-R0-7ED" firstAttribute="leading" secondItem="xs4-xQ-4FY" secondAttribute="trailing" constant="2" id="BJ5-Oj-ixK"/>
+                    <constraint firstItem="aT9-yS-c3k" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="42" id="BiF-xY-b6E"/>
+                    <constraint firstAttribute="bottom" secondItem="xs4-xQ-4FY" secondAttribute="bottom" constant="20" id="MTt-gE-wQ5"/>
+                    <constraint firstItem="BpB-kg-4aM" firstAttribute="leading" secondItem="BsP-Tb-4sJ" secondAttribute="trailing" constant="21" id="SyA-kb-fDK"/>
+                    <constraint firstItem="BsP-Tb-4sJ" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="Vb0-iz-1ft"/>
+                    <constraint firstItem="Ai0-zj-hWG" firstAttribute="leading" secondItem="BsP-Tb-4sJ" secondAttribute="trailing" constant="14" id="WIf-k5-3mZ"/>
+                    <constraint firstItem="aT9-yS-c3k" firstAttribute="leading" secondItem="BsP-Tb-4sJ" secondAttribute="trailing" constant="18" id="b7E-pJ-nIU"/>
+                    <constraint firstItem="zA5-13-Tpe" firstAttribute="top" secondItem="tXd-tB-xLA" secondAttribute="bottom" constant="8" id="fLA-bJ-Tnw"/>
+                    <constraint firstItem="tXd-tB-xLA" firstAttribute="top" secondItem="BpB-kg-4aM" secondAttribute="bottom" constant="2" id="gah-gH-BmR"/>
+                    <constraint firstItem="Ho6-Pn-eV6" firstAttribute="top" secondItem="zA5-13-Tpe" secondAttribute="bottom" constant="-5" id="hBr-Zv-R8T"/>
+                    <constraint firstItem="zA5-13-Tpe" firstAttribute="leading" secondItem="BsP-Tb-4sJ" secondAttribute="trailing" constant="21" id="hJo-gz-c23"/>
+                    <constraint firstAttribute="bottom" secondItem="Ai0-zj-hWG" secondAttribute="bottom" constant="20" id="imC-eC-ASI"/>
+                    <constraint firstItem="Ho6-Pn-eV6" firstAttribute="leading" secondItem="BsP-Tb-4sJ" secondAttribute="trailing" constant="22" id="lB9-6w-aoM"/>
+                    <constraint firstItem="BpB-kg-4aM" firstAttribute="top" secondItem="aT9-yS-c3k" secondAttribute="bottom" constant="-4" id="uUP-Ea-smc"/>
+                    <constraint firstItem="xs4-xQ-4FY" firstAttribute="leading" secondItem="Ai0-zj-hWG" secondAttribute="trailing" constant="3" id="ul7-8R-AfW"/>
+                    <constraint firstItem="tXd-tB-xLA" firstAttribute="leading" secondItem="BsP-Tb-4sJ" secondAttribute="trailing" constant="21" id="yGF-jQ-Ydp"/>
+                    <constraint firstAttribute="bottom" secondItem="Odv-R0-7ED" secondAttribute="bottom" constant="20" id="yLC-Dg-aDQ"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="167" y="267.5"/>
+        </window>
+    </objects>
+    <resources>
+        <image name="ClockerIcon-256" width="256" height="256"/>
+        <image name="FB-FindUsonFacebook-online-144" width="144" height="27"/>
+    </resources>
+</document>

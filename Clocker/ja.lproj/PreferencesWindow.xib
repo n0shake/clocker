@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController">
@@ -10,7 +10,6 @@
                 <outlet property="customView" destination="se5-gp-TjO" id="Ix1-NV-1Ut"/>
                 <outlet property="is24HourFormatSelected" destination="N47-gw-Pay" id="2MV-F1-uYf"/>
                 <outlet property="messageLabel" destination="Rty-6T-aPw" id="Qg4-mk-P90"/>
-                <outlet property="openSourceMessage" destination="cso-OX-qzB" id="yJg-DI-SX9"/>
                 <outlet property="searchField" destination="5jL-eb-qdB" id="K6C-JS-ko0"/>
                 <outlet property="timezonePanel" destination="Z6I-Ny-aGx" id="tXP-KH-Xfi"/>
                 <outlet property="timezoneTableView" destination="oKD-AN-gPT" id="oD2-n0-4jf"/>
@@ -22,20 +21,19 @@
         <window identifier="Selected Timezones" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="documentWindow" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="407" y="179" width="439" height="426"/>
+            <rect key="contentRect" x="407" y="179" width="439" height="373"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <value key="minSize" type="size" width="439" height="351"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="439" height="426"/>
+                <rect key="frame" x="0.0" y="0.0" width="439" height="373"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <button toolTip="Add a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DCz-qN-ydK">
-                        <rect key="frame" x="11" y="148" width="21" height="22"/>
+                        <rect key="frame" x="11" y="95" width="21" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="aUK-f8-pvY"/>
                             <constraint firstAttribute="width" constant="21" id="hAr-3f-KNJ"/>
                         </constraints>
-                        <animations/>
                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rjd-Yu-81P">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -45,8 +43,7 @@
                         </connections>
                     </button>
                     <button toolTip="Remove a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ixe-Sn-8qT">
-                        <rect key="frame" x="32" y="148" width="21" height="22"/>
-                        <animations/>
+                        <rect key="frame" x="32" y="95" width="21" height="22"/>
                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SVO-Wt-Mfb">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -56,7 +53,7 @@
                         </connections>
                     </button>
                     <scrollView focusRingType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cI0-M7-C9h">
-                        <rect key="frame" x="10" y="175" width="419" height="243"/>
+                        <rect key="frame" x="10" y="122" width="419" height="243"/>
                         <clipView key="contentView" id="WWk-6i-nI7">
                             <rect key="frame" x="1" y="0.0" width="417" height="242"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,7 +61,6 @@
                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="20" headerView="dKI-Ue-9QX" id="oKD-AN-gPT">
                                     <rect key="frame" x="0.0" y="0.0" width="417" height="219"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -102,29 +98,23 @@
                                     </connections>
                                 </tableView>
                             </subviews>
-                            <animations/>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
-                        <animations/>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Hxj-Tc-UWs">
                             <rect key="frame" x="1" y="222" width="417" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <animations/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="s9V-58-jwp">
                             <rect key="frame" x="-14" y="-7" width="15" height="0.0"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <animations/>
                         </scroller>
                         <tableHeaderView key="headerView" id="dKI-Ue-9QX">
                             <rect key="frame" x="0.0" y="0.0" width="417" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <animations/>
                         </tableHeaderView>
                     </scrollView>
                     <button toolTip="Show only the City instead of Continent/City format" translatesAutoresizingMaskIntoConstraints="NO" id="P0l-kc-VxU" customClass="ColoredButton">
-                        <rect key="frame" x="9" y="96" width="190" height="21"/>
-                        <animations/>
+                        <rect key="frame" x="9" y="43" width="190" height="21"/>
                         <buttonCell key="cell" type="check" title="唯一の都市/地域名を表示" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jaB-eA-S6N">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" size="12" name="PingFangSC-Light"/>
@@ -135,8 +125,7 @@
                         </connections>
                     </button>
                     <button toolTip="Clocker will start on each system launch" translatesAutoresizingMaskIntoConstraints="NO" id="GDz-2Z-uX5" customClass="ColoredButton">
-                        <rect key="frame" x="9" y="71" width="190" height="21"/>
-                        <animations/>
+                        <rect key="frame" x="9" y="18" width="190" height="21"/>
                         <buttonCell key="cell" type="check" title="システム起動時に計時係を開始" bezelStyle="regularSquare" imagePosition="left" inset="2" id="h45-jZ-cPY">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" size="12" name="PingFangSC-Light"/>
@@ -146,12 +135,11 @@
                         </connections>
                     </button>
                     <button toolTip="Show time using a 24-hour format" translatesAutoresizingMaskIntoConstraints="NO" id="N47-gw-Pay" customClass="ColoredButton">
-                        <rect key="frame" x="9" y="121" width="343" height="22"/>
+                        <rect key="frame" x="9" y="68" width="343" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="339" id="0eX-T7-EbU"/>
                             <constraint firstAttribute="height" constant="18" id="qwS-Bk-vmy"/>
                         </constraints>
-                        <animations/>
                         <buttonCell key="cell" type="check" title="24時間時計を使用して" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Fro-eC-cMC">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" size="12" name="Helvetica-Light"/>
@@ -161,62 +149,48 @@
                             <binding destination="sEG-Zb-KUM" name="value" keyPath="values.is24HourFormatSelected" id="wod-mK-9M5"/>
                         </connections>
                     </button>
-                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cso-OX-qzB">
-                        <rect key="frame" x="10" y="49" width="411" height="20"/>
-                        <animations/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="Open Source Message" id="l7j-wK-zcu">
-                            <font key="font" size="13" name="HelveticaNeue-Thin"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <button toolTip="Say Hello!" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="psn-eC-m9g">
-                        <rect key="frame" x="4" y="13" width="97" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="Url-R6-qPD"/>
-                            <constraint firstAttribute="width" constant="85" id="Zyt-kT-9nT"/>
-                        </constraints>
-                        <animations/>
-                        <buttonCell key="cell" type="push" title="バグレポート" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="ZVb-7Q-E7k">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="13" name=".PingFangSC-Regular"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="supportAction:" target="-2" id="nlJ-e3-fCy"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="psn-eC-m9g" firstAttribute="top" secondItem="cso-OX-qzB" secondAttribute="bottom" constant="8" id="1ah-5W-DP0"/>
                     <constraint firstItem="DCz-qN-ydK" firstAttribute="top" secondItem="cI0-M7-C9h" secondAttribute="bottom" constant="6" id="6Ye-VD-kSE"/>
-                    <constraint firstItem="cso-OX-qzB" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="12" id="Bux-4T-BB9"/>
                     <constraint firstItem="P0l-kc-VxU" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="11" id="DUR-uK-Ncx"/>
                     <constraint firstItem="GDz-2Z-uX5" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="11" id="FLl-Pc-Gzn"/>
                     <constraint firstItem="cI0-M7-C9h" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="10" id="Fy5-6V-gu1"/>
-                    <constraint firstAttribute="bottom" secondItem="psn-eC-m9g" secondAttribute="bottom" constant="20" id="N2a-39-Xp7"/>
                     <constraint firstItem="GDz-2Z-uX5" firstAttribute="top" secondItem="P0l-kc-VxU" secondAttribute="bottom" constant="8" id="NW3-cd-t0e"/>
-                    <constraint firstAttribute="trailing" secondItem="cso-OX-qzB" secondAttribute="trailing" constant="20" id="Q4B-CE-JrO"/>
                     <constraint firstItem="ixe-Sn-8qT" firstAttribute="leading" secondItem="DCz-qN-ydK" secondAttribute="trailing" id="TLA-Fw-F7P"/>
                     <constraint firstItem="P0l-kc-VxU" firstAttribute="top" secondItem="N47-gw-Pay" secondAttribute="bottom" constant="8" id="Tfe-Y8-KcS"/>
                     <constraint firstItem="GDz-2Z-uX5" firstAttribute="width" secondItem="P0l-kc-VxU" secondAttribute="width" id="VUD-7V-5SX"/>
                     <constraint firstItem="DCz-qN-ydK" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="11" id="Waz-CP-UWF"/>
+                    <constraint firstAttribute="bottom" secondItem="GDz-2Z-uX5" secondAttribute="bottom" constant="20" id="Wev-0K-aHT"/>
                     <constraint firstItem="GDz-2Z-uX5" firstAttribute="height" secondItem="P0l-kc-VxU" secondAttribute="height" id="c2z-Ik-d6W"/>
                     <constraint firstItem="N47-gw-Pay" firstAttribute="top" secondItem="ixe-Sn-8qT" secondAttribute="bottom" constant="8" id="gbd-HA-u9p"/>
                     <constraint firstItem="N47-gw-Pay" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="11" id="hXb-69-tI0"/>
                     <constraint firstItem="ixe-Sn-8qT" firstAttribute="width" secondItem="DCz-qN-ydK" secondAttribute="width" id="o7k-jf-cL0"/>
-                    <constraint firstItem="cso-OX-qzB" firstAttribute="top" secondItem="GDz-2Z-uX5" secondAttribute="bottom" constant="4" id="qZY-wv-3kN"/>
                     <constraint firstItem="ixe-Sn-8qT" firstAttribute="height" secondItem="DCz-qN-ydK" secondAttribute="height" id="rsK-UP-Umg"/>
                     <constraint firstItem="cI0-M7-C9h" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="8" id="u5H-Ff-ivt"/>
                     <constraint firstAttribute="trailing" secondItem="cI0-M7-C9h" secondAttribute="trailing" constant="10" id="ut9-6b-cdu"/>
                     <constraint firstItem="N47-gw-Pay" firstAttribute="top" secondItem="DCz-qN-ydK" secondAttribute="bottom" constant="8" id="x0C-Ev-Imb"/>
-                    <constraint firstItem="psn-eC-m9g" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="10" id="xEn-ec-WQn"/>
                 </constraints>
-                <animations/>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="F3234CE0-AD10-4FA0-9344-8D25F1B80A00" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="small" id="lwO-iS-sp3">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="F8w-j2-3Nf"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Gao-yi-TLa"/>
+                    <toolbarItem implicitItemIdentifier="238FBC10-33D9-453A-9B4E-77BB41D4E49A" label="About Us" paletteLabel="About Us" tag="-1" image="NSInfo" autovalidates="NO" id="Nrm-Be-Nwa">
+                        <connections>
+                            <action selector="openAboutUsWindow:" target="-2" id="GXg-je-6YE"/>
+                        </connections>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="F8w-j2-3Nf"/>
+                    <toolbarItem reference="Gao-yi-TLa"/>
+                    <toolbarItem reference="Nrm-Be-Nwa"/>
+                </defaultToolbarItems>
+            </toolbar>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="304.5" y="257"/>
+            <point key="canvasLocation" x="304.5" y="230.5"/>
         </window>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="alertPanel" appearanceType="aqua" frameAutosaveName="" id="Z6I-Ny-aGx" customClass="Panel">
             <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES" resizable="YES" documentModal="YES" nonactivatingPanel="YES" texturedBackground="YES"/>
@@ -238,7 +212,6 @@
                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="20" headerView="hHn-48-RCd" id="6Hm-XH-CMI">
                                     <rect key="frame" x="0.0" y="0.0" width="327" height="233"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <tableViewGridLines key="gridStyleMask" vertical="YES"/>
@@ -282,27 +255,22 @@
                                     </connections>
                                 </tableView>
                             </subviews>
-                            <animations/>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
                         <constraints>
                             <constraint firstAttribute="height" constant="257" id="Yru-1j-SeJ"/>
                         </constraints>
-                        <animations/>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="nBP-zr-k3M">
                             <rect key="frame" x="1" y="241" width="327" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <animations/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="x3e-JD-qwd">
                             <rect key="frame" x="224" y="17" width="15" height="102"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <animations/>
                         </scroller>
                         <tableHeaderView key="headerView" id="hHn-48-RCd">
                             <rect key="frame" x="0.0" y="0.0" width="327" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <animations/>
                         </tableHeaderView>
                     </scrollView>
                     <button toolTip="Add a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KlN-dU-s3o">
@@ -311,7 +279,6 @@
                             <constraint firstAttribute="height" constant="21" id="2QY-oM-3sO"/>
                             <constraint firstAttribute="width" constant="50" id="6JQ-5n-kb7"/>
                         </constraints>
-                        <animations/>
                         <buttonCell key="cell" type="push" title="追加" bezelStyle="rounded" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kZe-ua-0p9">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="13" name="PingFangSC-Light"/>
@@ -325,7 +292,6 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="Bql-d6-oci"/>
                         </constraints>
-                        <animations/>
                         <buttonCell key="cell" type="push" title="閉じる" bezelStyle="rounded" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ODT-4D-sWu">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="13" name="PingFangSC-Light"/>
@@ -336,7 +302,6 @@
                     </button>
                     <searchField toolTip="Search a timezone" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5jL-eb-qdB">
                         <rect key="frame" x="8" y="287" width="329" height="25"/>
-                        <animations/>
                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="タイムゾーン名を入力してください" drawsBackground="YES" usesSingleLineMode="YES" id="2DC-BS-vbb">
                             <font key="font" size="13" name="HelveticaNeue-Light"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -351,7 +316,6 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="y9Z-oT-NCB"/>
                         </constraints>
-                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="ysU-zz-gJh">
                             <font key="font" size="13" name="HelveticaNeue-Light"/>
                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -375,7 +339,6 @@
                     <constraint firstItem="KlN-dU-s3o" firstAttribute="leading" secondItem="byp-2M-iAO" secondAttribute="leading" constant="8" id="y6V-Aa-AZU"/>
                     <constraint firstItem="Ueh-Ln-TC8" firstAttribute="height" secondItem="KlN-dU-s3o" secondAttribute="height" id="zET-ty-u3G"/>
                 </constraints>
-                <animations/>
             </view>
             <point key="canvasLocation" x="582.5" y="681"/>
         </window>
@@ -383,6 +346,7 @@
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSInfo" width="32" height="32"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
     </resources>
 </document>

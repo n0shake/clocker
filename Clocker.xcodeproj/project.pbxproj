@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A2000D11BFBD472002BFDE8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A2000CF1BFBD472002BFDE8 /* Localizable.strings */; settings = {ASSET_TAGS = (); }; };
-		9A25F7451C1A5E17007D369B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A25F7421C1A5E17007D369B /* Info.plist */; settings = {ASSET_TAGS = (); }; };
-		9A25F7461C1A5E17007D369B /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A25F7431C1A5E17007D369B /* iRate.bundle */; settings = {ASSET_TAGS = (); }; };
-		9A25F7471C1A5E17007D369B /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A25F7441C1A5E17007D369B /* iRate.m */; settings = {ASSET_TAGS = (); }; };
-		9A4379251BEC223900F4E27F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379211BEC223900F4E27F /* Security.framework */; settings = {ASSET_TAGS = (); }; };
-		9A4379261BEC223900F4E27F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379221BEC223900F4E27F /* SystemConfiguration.framework */; settings = {ASSET_TAGS = (); }; };
-		9A4379271BEC223900F4E27F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379231BEC223900F4E27F /* Fabric.framework */; settings = {ASSET_TAGS = (); }; };
-		9A4379281BEC223900F4E27F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379241BEC223900F4E27F /* Crashlytics.framework */; settings = {ASSET_TAGS = (); }; };
+		9A2000D11BFBD472002BFDE8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A2000CF1BFBD472002BFDE8 /* Localizable.strings */; };
+		9A25F7451C1A5E17007D369B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A25F7421C1A5E17007D369B /* Info.plist */; };
+		9A25F7461C1A5E17007D369B /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A25F7431C1A5E17007D369B /* iRate.bundle */; };
+		9A25F7471C1A5E17007D369B /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A25F7441C1A5E17007D369B /* iRate.m */; };
+		9A4379251BEC223900F4E27F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379211BEC223900F4E27F /* Security.framework */; };
+		9A4379261BEC223900F4E27F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379221BEC223900F4E27F /* SystemConfiguration.framework */; };
+		9A4379271BEC223900F4E27F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379231BEC223900F4E27F /* Fabric.framework */; };
+		9A4379281BEC223900F4E27F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379241BEC223900F4E27F /* Crashlytics.framework */; };
 		9A43792A1BEC230A00F4E27F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379291BEC230A00F4E27F /* libc++.tbd */; };
 		9A43792C1BEC231100F4E27F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A43792B1BEC231100F4E27F /* libz.tbd */; };
-		9A43792E1BEC256200F4E27F /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A43792D1BEC256200F4E27F /* Media.xcassets */; settings = {ASSET_TAGS = (); }; };
+		9A43792E1BEC256200F4E27F /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A43792D1BEC256200F4E27F /* Media.xcassets */; };
 		9A8605AE1BEC148400A810A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605AD1BEC148400A810A4 /* main.m */; };
 		9A8605B31BEC14A600A810A4 /* ColoredButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B21BEC14A600A810A4 /* ColoredButton.m */; };
 		9A8605B61BEC14BE00A810A4 /* MenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B41BEC14BE00A810A4 /* MenubarController.m */; };
@@ -27,15 +27,23 @@
 		9A8605BF1BEC14F600A810A4 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BC1BEC14F600A810A4 /* BackgroundView.m */; };
 		9A8605C01BEC14F600A810A4 /* Panel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BD1BEC14F600A810A4 /* Panel.m */; };
 		9A8605C11BEC14F600A810A4 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BE1BEC14F600A810A4 /* PreferencesWindowController.m */; };
-		9A8605D81BEC155B00A810A4 /* PowerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605CF1BEC155B00A810A4 /* PowerIcon.png */; settings = {ASSET_TAGS = (); }; };
-		9A8605D91BEC155B00A810A4 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D01BEC155B00A810A4 /* Status.png */; settings = {ASSET_TAGS = (); }; };
-		9A8605DA1BEC155B00A810A4 /* Status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D11BEC155B00A810A4 /* Status@2x.png */; settings = {ASSET_TAGS = (); }; };
-		9A8605DB1BEC155B00A810A4 /* StatusHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D21BEC155B00A810A4 /* StatusHighlighted.png */; settings = {ASSET_TAGS = (); }; };
-		9A8605DC1BEC155B00A810A4 /* StatusHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D31BEC155B00A810A4 /* StatusHighlighted@2x.png */; settings = {ASSET_TAGS = (); }; };
-		9A8605DF1BEC15C400A810A4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605DD1BEC15C400A810A4 /* MainMenu.xib */; settings = {ASSET_TAGS = (); }; };
+		9A8605D81BEC155B00A810A4 /* PowerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605CF1BEC155B00A810A4 /* PowerIcon.png */; };
+		9A8605D91BEC155B00A810A4 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D01BEC155B00A810A4 /* Status.png */; };
+		9A8605DA1BEC155B00A810A4 /* Status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D11BEC155B00A810A4 /* Status@2x.png */; };
+		9A8605DB1BEC155B00A810A4 /* StatusHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D21BEC155B00A810A4 /* StatusHighlighted.png */; };
+		9A8605DC1BEC155B00A810A4 /* StatusHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D31BEC155B00A810A4 /* StatusHighlighted@2x.png */; };
+		9A8605DF1BEC15C400A810A4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605DD1BEC15C400A810A4 /* MainMenu.xib */; };
+		9AB935781C1AD79D001285A0 /* ClockerIcon-16.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB935771C1AD79D001285A0 /* ClockerIcon-16.png */; };
+		9AB9357B1C1AD8F7001285A0 /* CLRatingCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9357A1C1AD8F7001285A0 /* CLRatingCellView.m */; };
 		9ABA38AC1BFAD7F80073EA4D /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ABA38AE1BFAD7F80073EA4D /* Panel.xib */; };
 		9ABA38AF1BFAD83F0073EA4D /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ABA38B11BFAD83F0073EA4D /* PreferencesWindow.xib */; };
 		9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */; };
+		9AD232741C1B96A700D1D446 /* ClockerIcon-256.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD232731C1B96A700D1D446 /* ClockerIcon-256.png */; };
+		9AD232781C1B985700D1D446 /* CLAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD232761C1B985700D1D446 /* CLAboutWindowController.m */; };
+		9AD232791C1B985700D1D446 /* CLAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AD232771C1B985700D1D446 /* CLAboutWindow.xib */; };
+		9AD2327B1C1B995900D1D446 /* Vector.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2327A1C1B995900D1D446 /* Vector.jpg */; };
+		9AD2327D1C1B9A9000D1D446 /* aboutTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2327C1C1B9A9000D1D446 /* aboutTemplate.png */; };
+		9AD2327F1C1BA04800D1D446 /* FB-FindUsonFacebook-online-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2327E1C1BA04800D1D446 /* FB-FindUsonFacebook-online-144.png */; };
 		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,9 +101,19 @@
 		9A8605D11BEC155B00A810A4 /* Status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Status@2x.png"; path = "Clocker/Status@2x.png"; sourceTree = "<group>"; };
 		9A8605D21BEC155B00A810A4 /* StatusHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusHighlighted.png; path = Clocker/StatusHighlighted.png; sourceTree = "<group>"; };
 		9A8605D31BEC155B00A810A4 /* StatusHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusHighlighted@2x.png"; path = "Clocker/StatusHighlighted@2x.png"; sourceTree = "<group>"; };
+		9AB935771C1AD79D001285A0 /* ClockerIcon-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ClockerIcon-16.png"; path = "Icons/ClockerIcon-16.png"; sourceTree = "<group>"; };
+		9AB935791C1AD8F7001285A0 /* CLRatingCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLRatingCellView.h; path = Clocker/CLRatingCellView.h; sourceTree = "<group>"; };
+		9AB9357A1C1AD8F7001285A0 /* CLRatingCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLRatingCellView.m; path = Clocker/CLRatingCellView.m; sourceTree = "<group>"; };
 		9ABA38B31BFAD8520073EA4D /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/Panel.xib; sourceTree = "<group>"; };
 		9ABA38B41BFAD8520073EA4D /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
 		9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9AD232731C1B96A700D1D446 /* ClockerIcon-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ClockerIcon-256.png"; path = "Icons/ClockerIcon-256.png"; sourceTree = "<group>"; };
+		9AD232751C1B985700D1D446 /* CLAboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAboutWindowController.h; path = Clocker/AboutUsWindow/CLAboutWindowController.h; sourceTree = "<group>"; };
+		9AD232761C1B985700D1D446 /* CLAboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAboutWindowController.m; path = Clocker/AboutUsWindow/CLAboutWindowController.m; sourceTree = "<group>"; };
+		9AD232771C1B985700D1D446 /* CLAboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLAboutWindow.xib; path = Clocker/AboutUsWindow/CLAboutWindow.xib; sourceTree = "<group>"; };
+		9AD2327A1C1B995900D1D446 /* Vector.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Vector.jpg; path = ../Vector.jpg; sourceTree = "<group>"; };
+		9AD2327C1C1B9A9000D1D446 /* aboutTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aboutTemplate.png; path = ../../../Downloads/aboutTemplate.png; sourceTree = "<group>"; };
+		9AD2327E1C1BA04800D1D446 /* FB-FindUsonFacebook-online-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FB-FindUsonFacebook-online-144.png"; path = "../../../Downloads/logos-and-badges_find-us_online/png/FB-FindUsonFacebook-online-144.png"; sourceTree = "<group>"; };
 		DD4F7C0413C30F9F00825C6E /* Clocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4F7C0813C30F9F00825C6E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DD4F7C0B13C30F9F00825C6E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -147,6 +165,9 @@
 				9A8605DD1BEC15C400A810A4 /* MainMenu.xib */,
 				9ABA38AE1BFAD7F80073EA4D /* Panel.xib */,
 				9ABA38B11BFAD83F0073EA4D /* PreferencesWindow.xib */,
+				9AD232751C1B985700D1D446 /* CLAboutWindowController.h */,
+				9AD232761C1B985700D1D446 /* CLAboutWindowController.m */,
+				9AD232771C1B985700D1D446 /* CLAboutWindow.xib */,
 			);
 			name = XIB;
 			sourceTree = "<group>";
@@ -154,6 +175,11 @@
 		9A8605E11BEC160700A810A4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9AD2327E1C1BA04800D1D446 /* FB-FindUsonFacebook-online-144.png */,
+				9AD2327C1C1B9A9000D1D446 /* aboutTemplate.png */,
+				9AD2327A1C1B995900D1D446 /* Vector.jpg */,
+				9AD232731C1B96A700D1D446 /* ClockerIcon-256.png */,
+				9AB935771C1AD79D001285A0 /* ClockerIcon-16.png */,
 				9A8605CF1BEC155B00A810A4 /* PowerIcon.png */,
 				9A8605D01BEC155B00A810A4 /* Status.png */,
 				9A8605D11BEC155B00A810A4 /* Status@2x.png */,
@@ -181,6 +207,8 @@
 				9A8605C51BEC155B00A810A4 /* StatusItemView.h */,
 				9A8605BC1BEC14F600A810A4 /* BackgroundView.m */,
 				9A8605B81BEC14DC00A810A4 /* StatusItemView.m */,
+				9AB935791C1AD8F7001285A0 /* CLRatingCellView.h */,
+				9AB9357A1C1AD8F7001285A0 /* CLRatingCellView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -319,16 +347,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AD2327F1C1BA04800D1D446 /* FB-FindUsonFacebook-online-144.png in Resources */,
 				9ABA38AF1BFAD83F0073EA4D /* PreferencesWindow.xib in Resources */,
 				9A8605DF1BEC15C400A810A4 /* MainMenu.xib in Resources */,
 				9A8605D91BEC155B00A810A4 /* Status.png in Resources */,
 				9ABA38AC1BFAD7F80073EA4D /* Panel.xib in Resources */,
 				9A43792E1BEC256200F4E27F /* Media.xcassets in Resources */,
+				9AB935781C1AD79D001285A0 /* ClockerIcon-16.png in Resources */,
+				9AD232741C1B96A700D1D446 /* ClockerIcon-256.png in Resources */,
 				9A25F7461C1A5E17007D369B /* iRate.bundle in Resources */,
 				9A2000D11BFBD472002BFDE8 /* Localizable.strings in Resources */,
+				9AD232791C1B985700D1D446 /* CLAboutWindow.xib in Resources */,
 				9A8605DC1BEC155B00A810A4 /* StatusHighlighted@2x.png in Resources */,
 				9A8605DA1BEC155B00A810A4 /* Status@2x.png in Resources */,
+				9AD2327B1C1B995900D1D446 /* Vector.jpg in Resources */,
 				9A25F7451C1A5E17007D369B /* Info.plist in Resources */,
+				9AD2327D1C1B9A9000D1D446 /* aboutTemplate.png in Resources */,
 				9A8605DB1BEC155B00A810A4 /* StatusHighlighted.png in Resources */,
 				9A8605D81BEC155B00A810A4 /* PowerIcon.png in Resources */,
 			);
@@ -358,10 +392,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A8605BF1BEC14F600A810A4 /* BackgroundView.m in Sources */,
+				9AB9357B1C1AD8F7001285A0 /* CLRatingCellView.m in Sources */,
 				9A25F7471C1A5E17007D369B /* iRate.m in Sources */,
 				9A8605C01BEC14F600A810A4 /* Panel.m in Sources */,
 				9A8605C11BEC14F600A810A4 /* PreferencesWindowController.m in Sources */,
 				9A8605BA1BEC14DC00A810A4 /* StatusItemView.m in Sources */,
+				9AD232781C1B985700D1D446 /* CLAboutWindowController.m in Sources */,
 				9A8605BB1BEC14DC00A810A4 /* PanelController.m in Sources */,
 				9A8605B61BEC14BE00A810A4 /* MenubarController.m in Sources */,
 				9A8605B71BEC14BE00A810A4 /* ApplicationDelegate.m in Sources */,

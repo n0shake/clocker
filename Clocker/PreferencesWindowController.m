@@ -34,6 +34,7 @@
 #import "Panel.h"
 #import "PanelController.h"
 #import "ApplicationDelegate.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface PreferencesWindowController ()
 
@@ -46,7 +47,6 @@
 
 @property (weak) IBOutlet NSButton *is24HourFormatSelected;
 @property (weak) IBOutlet NSTextField *messageLabel;
-@property (weak) IBOutlet NSTextField *openSourceMessage;
 
 @end
 
@@ -61,11 +61,6 @@ static PreferencesWindowController *sharedPreferences = nil;
     [viewLayer setBackgroundColor:CGColorCreateGenericRGB(255.0, 255.0, 255.0, 0.8)]; //RGB plus Alpha Channel
     [self.customView setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
     [self.customView setLayer:viewLayer];
-    
-    [self.openSourceMessage setAllowsEditingTextAttributes: YES];
-    [self.openSourceMessage setSelectable:YES];
-    NSString *credits = @"Clocker v1.0 is open source. You can find the source code <a href=\"https://github.com/Abhishaker17/Clocker\">here!</a>";
-    [self.openSourceMessage setAttributedStringValue:[self stringFromHTML:credits withFont:[self.openSourceMessage font]]];
     
     self.window.titleVisibility = NSWindowTitleHidden;
     
@@ -460,18 +455,11 @@ static PreferencesWindowController *sharedPreferences = nil;
     }
 }
 
-- (IBAction)supportAction:(id)sender
+- (IBAction)openAboutUsWindow:(id)sender
 {
-    /*
-    NSAppleScript *mailScript;
-    NSString *scriptString= @"tell application \"Mail\"\nset theAddress to \"abhishekbanthia@me.com\"\n set msg to make new outgoing message with properties {visible:true, subject:\"Regarding Clocker - We need to talk!\"}\ntell msg to make new to recipient at end of every to recipient with properties {address:theAddress}\n activate\nend tell";
-    mailScript = [[NSAppleScript alloc] initWithSource:scriptString];
-    NSDictionary *dict = nil;
-    [mailScript executeAndReturnError:&dict];*/
-    
-    NSString *issuePage = @"https://github.com/Abhishaker17/Clocker/issues";
-    NSURL *mainURL = [NSURL URLWithString:issuePage];
-    [[NSWorkspace sharedWorkspace] openURL:mainURL];
+    self.aboutUsWindow = [CLAboutWindowController sharedReference];
+    [self.aboutUsWindow showWindow:nil];
+    [NSApp activateIgnoringOtherApps:YES];
 }
 
 
