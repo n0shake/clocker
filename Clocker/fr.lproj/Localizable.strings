@@ -13,6 +13,14 @@
 "MaximumTimezoneMessage" = "Maximum 10 fuseaux horaires autorisés!";
 "DuplicateTimezoneMessage" = "Fuseau horaire a déjà été sélectionnée!";
 
+//Rating App
+"Not Really" = "Pas vraiment";
+"Yes!" = "Oui!!";
+"AskForRatingMessage" = "Voter pour nous sur l'App Store?";
+"AskForFeedbackMessage" = "Rappelez- nous donner de la rétroaction?";
+"NoSelected" = "Non";
+"YesSelected" = "Qui!";
+
 "iRateMessageTitle" = "Notez %@";
 "iRateAppMessage" = "Si vous aimez utiliser %@, n'oubliez pas de donner votre avis sur l'App Store. Cela ne prend qu'une minute. Merci d'avance pour votre soutien !";
 "iRateGameMessage" = "Si vous aimez jouer à %@, n'oubliez pas de donner votre avis sur l'App Store. Cela ne prend qu'une minute. Merci d'avance pour votre soutien !";

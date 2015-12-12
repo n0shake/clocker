@@ -29,6 +29,7 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "iRate.h"
+#import "CommonStrings.h"
 
 @implementation ApplicationDelegate
 
@@ -66,15 +67,15 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultPreferences"];
+    NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
     
     if (defaultPreference.count == 0)
     {
-        NSDictionary *defaultDictionary = @{@"timezoneName" : [NSTimeZone systemTimeZone].name, @"customLabel" : @""};
+        NSDictionary *defaultDictionary = @{CLTimezoneName : [NSTimeZone systemTimeZone].name, CLCustomLabel : CLEmptyString};
         
         NSMutableArray *newDefaults = [[NSMutableArray alloc] initWithObjects:defaultDictionary, nil];
         
-        [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:@"defaultPreferences"];
+        [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:CLDefaultPreferenceKey];
     }
 
     

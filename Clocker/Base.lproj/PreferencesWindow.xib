@@ -29,7 +29,7 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <button toolTip="Add a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DCz-qN-ydK">
-                        <rect key="frame" x="11" y="89" width="21" height="22"/>
+                        <rect key="frame" x="11" y="67" width="21" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="aUK-f8-pvY"/>
                             <constraint firstAttribute="width" constant="21" id="hAr-3f-KNJ"/>
@@ -43,7 +43,7 @@
                         </connections>
                     </button>
                     <button toolTip="Remove a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ixe-Sn-8qT">
-                        <rect key="frame" x="32" y="89" width="21" height="22"/>
+                        <rect key="frame" x="32" y="67" width="21" height="22"/>
                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SVO-Wt-Mfb">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -53,13 +53,13 @@
                         </connections>
                     </button>
                     <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cI0-M7-C9h">
-                        <rect key="frame" x="10" y="116" width="419" height="249"/>
+                        <rect key="frame" x="10" y="94" width="419" height="271"/>
                         <clipView key="contentView" id="WWk-6i-nI7">
-                            <rect key="frame" x="0.0" y="0.0" width="419" height="249"/>
+                            <rect key="frame" x="0.0" y="0.0" width="419" height="271"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="20" headerView="dKI-Ue-9QX" id="oKD-AN-gPT">
-                                    <rect key="frame" x="0.0" y="0.0" width="419" height="226"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="419" height="248"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -113,17 +113,6 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
-                    <button toolTip="Show only the City instead of Continent/City format" translatesAutoresizingMaskIntoConstraints="NO" id="P0l-kc-VxU" customClass="ColoredButton">
-                        <rect key="frame" x="9" y="40" width="191" height="18"/>
-                        <buttonCell key="cell" type="check" title="Show only City/Region name" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jaB-eA-S6N">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" size="12" name="Helvetica-Light"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="showOnlyCityName:" target="-2" id="1lf-cZ-gyt"/>
-                            <binding destination="sEG-Zb-KUM" name="value" keyPath="values.showOnlyCity" id="xqX-Jx-epo"/>
-                        </connections>
-                    </button>
                     <button toolTip="Clocker will start on each system launch" translatesAutoresizingMaskIntoConstraints="NO" id="GDz-2Z-uX5" customClass="ColoredButton">
                         <rect key="frame" x="9" y="18" width="191" height="18"/>
                         <buttonCell key="cell" type="check" title="Start Clocker on system startup" bezelStyle="regularSquare" imagePosition="left" inset="2" id="h45-jZ-cPY">
@@ -135,7 +124,7 @@
                         </connections>
                     </button>
                     <button toolTip="Show time using a 24-hour format" translatesAutoresizingMaskIntoConstraints="NO" id="N47-gw-Pay" customClass="ColoredButton">
-                        <rect key="frame" x="9" y="62" width="343" height="22"/>
+                        <rect key="frame" x="9" y="40" width="343" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="339" id="0eX-T7-EbU"/>
                             <constraint firstAttribute="height" constant="18" id="qwS-Bk-vmy"/>
@@ -153,15 +142,11 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="GDz-2Z-uX5" secondAttribute="bottom" constant="20" id="5zZ-7S-DL7"/>
                     <constraint firstItem="DCz-qN-ydK" firstAttribute="top" secondItem="cI0-M7-C9h" secondAttribute="bottom" constant="6" id="6Ye-VD-kSE"/>
-                    <constraint firstItem="P0l-kc-VxU" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="11" id="DUR-uK-Ncx"/>
                     <constraint firstItem="GDz-2Z-uX5" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="11" id="FLl-Pc-Gzn"/>
                     <constraint firstItem="cI0-M7-C9h" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="10" id="Fy5-6V-gu1"/>
-                    <constraint firstItem="GDz-2Z-uX5" firstAttribute="top" secondItem="P0l-kc-VxU" secondAttribute="bottom" constant="8" id="NW3-cd-t0e"/>
                     <constraint firstItem="ixe-Sn-8qT" firstAttribute="leading" secondItem="DCz-qN-ydK" secondAttribute="trailing" id="TLA-Fw-F7P"/>
-                    <constraint firstItem="P0l-kc-VxU" firstAttribute="top" secondItem="N47-gw-Pay" secondAttribute="bottom" constant="8" id="Tfe-Y8-KcS"/>
-                    <constraint firstItem="GDz-2Z-uX5" firstAttribute="width" secondItem="P0l-kc-VxU" secondAttribute="width" id="VUD-7V-5SX"/>
+                    <constraint firstItem="GDz-2Z-uX5" firstAttribute="top" secondItem="N47-gw-Pay" secondAttribute="bottom" constant="8" id="VaK-C6-zPA"/>
                     <constraint firstItem="DCz-qN-ydK" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="11" id="Waz-CP-UWF"/>
-                    <constraint firstItem="GDz-2Z-uX5" firstAttribute="height" secondItem="P0l-kc-VxU" secondAttribute="height" id="c2z-Ik-d6W"/>
                     <constraint firstItem="N47-gw-Pay" firstAttribute="top" secondItem="ixe-Sn-8qT" secondAttribute="bottom" constant="8" id="gbd-HA-u9p"/>
                     <constraint firstItem="N47-gw-Pay" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="11" id="hXb-69-tI0"/>
                     <constraint firstItem="ixe-Sn-8qT" firstAttribute="width" secondItem="DCz-qN-ydK" secondAttribute="width" id="o7k-jf-cL0"/>

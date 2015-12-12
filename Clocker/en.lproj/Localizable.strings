@@ -11,6 +11,15 @@
 "Tomorrow" = "Tomorrow";
 "MaximumTimezoneMessage" = "Maximum 10 timezones allowed!";
 "DuplicateTimezoneMessage" = "Timezone has already been selected!";
+
+//Rating App
+"Not Really" = "Not Really";
+"Yes!" = "Yes!";
+"AskForRatingMessage" = "Rate us on the App Store, then?";
+"AskForFeedbackMessage" = "Mind giving us some feedback?";
+"NoSelected" = "No, thanks";
+"YesSelected" = "Ok, sure";
+
 "iRateMessageTitle" = "Rate %@";
 "iRateAppMessage" = "If you enjoy using %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
 "iRateGameMessage" = "If you enjoy playing %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";

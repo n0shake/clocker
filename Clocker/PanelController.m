@@ -32,6 +32,7 @@
 #import "MenubarController.h"
 #import <Crashlytics/Crashlytics.h>
 #import "CLRatingCellView.h"
+#import "CommonStrings.h"
 
 #define OPEN_DURATION .15
 #define CLOSE_DURATION .1
@@ -49,6 +50,10 @@
 
 #import "PreferencesWindowController.h"
 
+NSString *const CLPanelNibIdentifier = @"Panel";
+NSString *const CLRatingCellViewIdentifier = @"ratingCellView";
+NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
+
 @implementation PanelController
 
 
@@ -57,7 +62,7 @@
 
 - (id)initWithDelegate:(id<PanelControllerDelegate>)delegate
 {
-    self = [super initWithWindowNibName:@"Panel"];
+    self = [super initWithWindowNibName:CLPanelNibIdentifier];
     if (self != nil)
     {
         _delegate = delegate;
@@ -93,7 +98,7 @@
 - (void) updateDefaultPreferences
 {
     
-    NSArray *defaultZones = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultPreferences"];
+    NSArray *defaultZones = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
     
     self.defaultPreferences = self.defaultPreferences == nil ? [[NSMutableArray alloc] initWithArray:defaultZones] : [NSMutableArray arrayWithArray:defaultZones];
        
@@ -259,12 +264,12 @@
 -(NSView*)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     if (self.showReviewCell && row == self.defaultPreferences.count) {
-        CLRatingCellView *cellView = [self.mainTableview makeViewWithIdentifier:@"ratingCellView" owner:self];
+        CLRatingCellView *cellView = [self.mainTableview makeViewWithIdentifier:CLRatingCellViewIdentifier owner:self];
         return cellView;
     }
 
     
-    NSTableCellView *cell = [tableView makeViewWithIdentifier:@"timeZoneCell" owner:self];
+    NSTableCellView *cell = [tableView makeViewWithIdentifier:CLTimezoneCellViewIdentifier owner:self];
     
     NSTextField *cellText = [cell viewWithTag:100];
     
@@ -272,13 +277,13 @@
     
     NSTextField *dateCell = [cell viewWithTag:102];
     
-    dateCell.stringValue = [self getDateForTimeZone:self.defaultPreferences[row][@"timezoneName"]];
+    dateCell.stringValue = [self getDateForTimeZone:self.defaultPreferences[row][CLTimezoneName]];
     
-    timeCell.stringValue = [self getTimeForTimeZone:self.defaultPreferences[row][@"timezoneName"]];
+    timeCell.stringValue = [self getTimeForTimeZone:self.defaultPreferences[row][CLTimezoneName]];
     
-    NSNumber *shouldShowOnlyCity = [[NSUserDefaults standardUserDefaults] objectForKey:@"showOnlyCity"];
   
-    cellText.stringValue = [self formatStringShouldContainCity:shouldShowOnlyCity.boolValue withTimezoneName:self.defaultPreferences[row]];
+    cellText.stringValue = [self formatStringShouldContainCity:YES
+                                              withTimezoneName:self.defaultPreferences[row]];
     
     return cell;
 }
@@ -289,20 +294,26 @@
 
 - (NSString *)formatStringShouldContainCity:(BOOL)value withTimezoneName:(NSDictionary *)timeZoneDictionary
 {
-    if (timeZoneDictionary[@"customLabel"]) {
-        NSString *customLabel = timeZoneDictionary[@"customLabel"];
+    if (timeZoneDictionary[CLCustomLabel]) {
+        NSString *customLabel = timeZoneDictionary[CLCustomLabel];
         if (customLabel.length > 0) {
             return customLabel;
         }
     }
     
-    NSString *timezoneName = timeZoneDictionary[@"timezoneName"];
+    NSString *timezoneName = timeZoneDictionary[CLTimezoneName];
     
     if (value) {
         NSRange range = [timezoneName rangeOfString:@"/"];
-        
-        if (range.location != NSNotFound) {
-            return [timezoneName substringFromIndex:range.location+1];
+        NSRange underscoreRange = [timezoneName rangeOfString:@"_"];
+        if (range.location != NSNotFound)
+        {
+            timezoneName = [timezoneName substringFromIndex:range.location+1];
+        }
+        if (underscoreRange.location != NSNotFound)
+        {
+            timezoneName = [timezoneName stringByReplacingOccurrencesOfString:@"_"
+                                                                   withString:@" "];
         }
     }
     
@@ -315,7 +326,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = kCFDateFormatterNoStyle;
     
-    NSNumber *is24HourFormatSelected = [[NSUserDefaults standardUserDefaults] objectForKey:@"is24HourFormatSelected"];
+    NSNumber *is24HourFormatSelected = [[NSUserDefaults standardUserDefaults] objectForKey:CLC24hourFormatSelectedKey];
     
     is24HourFormatSelected.boolValue ? [dateFormatter setDateFormat:@"HH:mm"] : [dateFormatter setDateFormat:@"hh:mm a"];
     
@@ -349,7 +360,6 @@
     if (localDate == nil || timezoneDate == nil) {
         [CrashlyticsKit setUserEmail:systemDate];
         [CrashlyticsKit setUserIdentifier:date];
-        NSLog(@"One of the dates is nil");
         return @"Today";
     }
     
@@ -430,8 +440,6 @@
     [pboard setData:data forType:@"public.text"];
     
     [self updateCellForOldSelection:rowIndexes.firstIndex andColor:[NSColor blackColor]];
-    NSLog(@"Write row with indexes");
-    
     return YES;
 }
 
@@ -446,7 +454,7 @@
     
     [self.defaultPreferences exchangeObjectAtIndex:rowIndexes.firstIndex withObjectAtIndex:row];
     
-    [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences forKey:@"defaultPreferences"];
+    [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences forKey:CLDefaultPreferenceKey];
     
     [self.mainTableview reloadData];
     

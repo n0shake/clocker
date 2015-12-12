@@ -35,6 +35,15 @@
 #import "PanelController.h"
 #import "ApplicationDelegate.h"
 #import <QuartzCore/QuartzCore.h>
+#import "CommonStrings.h"
+
+NSString *const CLPredicateKey = @"SELF CONTAINS[cd]%@";
+NSString *const CLDragSessionKey = @"public.text";
+NSString *const CLPreferencesNibIdentifier = @"PreferencesWindow";
+NSString *const CLPreferencesTimezoneNameColumnIdentifier = @"timezoneName";
+NSString *const CLPreferencesAbbreviationColumnIdentifier = @"abbreviation";
+NSString *const CLPreferencesCustomLabelColumnIdentifier = @"label";
+NSString *const CLPreferencesAvailableTimezoneColumnIdentifier = @"availableTimezones";
 
 @interface PreferencesWindowController ()
 
@@ -64,7 +73,7 @@ static PreferencesWindowController *sharedPreferences = nil;
     
     self.window.titleVisibility = NSWindowTitleHidden;
     
-     NSMutableArray *defaultTimeZones = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultPreferences"];
+     NSMutableArray *defaultTimeZones = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
     
     if (!self.timeZoneArray || !self.selectedTimeZones)
     {
@@ -73,28 +82,18 @@ static PreferencesWindowController *sharedPreferences = nil;
         self.filteredArray = [[NSArray alloc] init];
     }
     
-    self.messageLabel.stringValue = @"";
+    self.messageLabel.stringValue = CLEmptyString;
     
     [self.timezoneTableView reloadData];
     [self.availableTimezoneTableView reloadData];
     
     //Register for drag and drop
-    [self.timezoneTableView registerForDraggedTypes: [NSArray arrayWithObject: @"public.text"]];
-    
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-}
-
--(NSAttributedString *)stringFromHTML:(NSString *)html withFont:(NSFont *)font
-{
-    html = [NSString stringWithFormat:@"<span style=\"font-family:'%@'; font-size:%dpx;\">%@</span>", [font fontName], (int)[font pointSize], html];
-    NSData *data = [html dataUsingEncoding:NSUTF8StringEncoding];
-    NSAttributedString* string = [[NSAttributedString alloc] initWithHTML:data documentAttributes:nil];
-    return string;
+    [self.timezoneTableView registerForDraggedTypes: [NSArray arrayWithObject: CLDragSessionKey]];
 }
 
 -(id)copyWithZone:(NSZone *)zone
 {
-    id copy = [[[self class] alloc] initWithWindowNibName:@"PreferencesWindow"];
+    id copy = [[[self class] alloc] initWithWindowNibName:CLPreferencesNibIdentifier];
     
     if (copy)
     {
@@ -116,10 +115,9 @@ static PreferencesWindowController *sharedPreferences = nil;
         /*Using a thread safe pattern*/
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            sharedPreferences = [[self alloc] initWithWindowNibName:@"PreferencesWindow"];
+            sharedPreferences = [[self alloc] initWithWindowNibName:CLPreferencesNibIdentifier];
            
         });
-        
     }
     
     return sharedPreferences;
@@ -143,11 +141,11 @@ static PreferencesWindowController *sharedPreferences = nil;
 
 - (nullable id)tableView:(NSTableView *)tableView objectValueForTableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    if ([[tableColumn identifier] isEqualToString:@"timezoneName"])
+    if ([[tableColumn identifier] isEqualToString:CLPreferencesTimezoneNameColumnIdentifier])
     {
-        return self.selectedTimeZones[row][@"timezoneName"];
+        return self.selectedTimeZones[row][CLTimezoneName];
     }
-    else if([[tableColumn identifier] isEqualToString:@"availableTimezones"])
+    else if([[tableColumn identifier] isEqualToString:CLPreferencesAvailableTimezoneColumnIdentifier])
     {
         if (self.searchField.stringValue.length > 0)
         {
@@ -156,11 +154,11 @@ static PreferencesWindowController *sharedPreferences = nil;
         
         return self.timeZoneArray[row];
     }
-    else if([[tableColumn identifier] isEqualToString:@"label"])
+    else if([[tableColumn identifier] isEqualToString:CLPreferencesCustomLabelColumnIdentifier])
     {
-        return self.selectedTimeZones[row][@"customLabel"];
+        return self.selectedTimeZones[row][CLCustomLabel];
     }
-    if ([tableColumn.identifier isEqualToString:@"abbreviation"])
+    if ([tableColumn.identifier isEqualToString:CLPreferencesAbbreviationColumnIdentifier])
     {
         if (self.searchField.stringValue.length > 0)
         {
@@ -178,14 +176,14 @@ static PreferencesWindowController *sharedPreferences = nil;
 {
     if ([object isKindOfClass:[NSString class]])
     {
-        
         NSDictionary *timezoneDictionary = self.selectedTimeZones[row];
         NSDictionary *mutableTimeZoneDict = [timezoneDictionary mutableCopy];
-        [mutableTimeZoneDict setValue:object forKey:@"customLabel"];
+        [mutableTimeZoneDict setValue:object forKey:CLCustomLabel];
         [self.selectedTimeZones replaceObjectAtIndex:row withObject:mutableTimeZoneDict];
-        [[NSUserDefaults standardUserDefaults] setObject:self.selectedTimeZones forKey:@"defaultPreferences"];
+        [[NSUserDefaults standardUserDefaults] setObject:self.selectedTimeZones forKey:CLDefaultPreferenceKey];
+        
+        [self refreshMainTableview];
     }
-
 }
 
 - (IBAction)addTimeZone:(id)sender
@@ -214,7 +212,7 @@ static PreferencesWindowController *sharedPreferences = nil;
     
     for (NSDictionary *timezoneDictionary in self.selectedTimeZones)
     {
-        NSString *name = timezoneDictionary[@"timezoneName"];
+        NSString *name = timezoneDictionary[CLTimezoneName];
         
         if (self.searchField.stringValue.length > 0) {
             if ([name isEqualToString:self.filteredArray[self.availableTimezoneTableView.selectedRow]])
@@ -237,11 +235,12 @@ static PreferencesWindowController *sharedPreferences = nil;
                        self.filteredArray[self.availableTimezoneTableView.selectedRow] :
                         self.timeZoneArray[self.availableTimezoneTableView.selectedRow];
     
-    NSDictionary *newTimezoneToAdd = @{@"timezoneName" : selectedTimezone, @"customLabel" : @""};
+    NSDictionary *newTimezoneToAdd = @{CLTimezoneName : selectedTimezone,
+                                       CLCustomLabel : CLEmptyString};
     
     [self.selectedTimeZones addObject:newTimezoneToAdd];
     
-    NSArray *defaultTimeZones = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultPreferences"];
+    NSArray *defaultTimeZones = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
     NSMutableArray *newDefaults;
     
     if (defaultTimeZones == nil)
@@ -253,7 +252,7 @@ static PreferencesWindowController *sharedPreferences = nil;
         
     [newDefaults addObject:newTimezoneToAdd];
     
-    [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:@"defaultPreferences"];
+    [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:CLDefaultPreferenceKey];
     
     [self.timezoneTableView reloadData];
     
@@ -264,7 +263,7 @@ static PreferencesWindowController *sharedPreferences = nil;
 
 - (void)clearLabel
 {
-    self.messageLabel.stringValue = @"";
+    self.messageLabel.stringValue = CLEmptyString;
 }
 
 - (IBAction)closePanel:(id)sender
@@ -297,7 +296,7 @@ static PreferencesWindowController *sharedPreferences = nil;
     
     NSMutableArray *newDefaults = [[NSMutableArray alloc] initWithArray:self.selectedTimeZones];
     
-    [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:@"defaultPreferences"];
+    [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:CLDefaultPreferenceKey];
     
     [self.timezoneTableView reloadData];
     
@@ -325,7 +324,7 @@ static PreferencesWindowController *sharedPreferences = nil;
 {
     
     if (self.searchField.stringValue.length > 0) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[cd] %@", self.searchField.stringValue];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:CLPredicateKey, self.searchField.stringValue];
         
         self.filteredArray = [self.timeZoneArray filteredArrayUsingPredicate:predicate];
     }
@@ -353,15 +352,6 @@ static PreferencesWindowController *sharedPreferences = nil;
 
 }
 
-- (IBAction)showOnlyCityName:(id)sender {
-    
-    NSButton *checkbox = (NSButton *)sender;
-    
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:checkbox.state] forKey:@"showOnlyCity"];
-    
-    [self refreshMainTableview];
-}
-
 #pragma mark Reordering
 
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
@@ -369,9 +359,9 @@ static PreferencesWindowController *sharedPreferences = nil;
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
     
-    [pboard declareTypes:[NSArray arrayWithObject:@"public.text"] owner:self];
+    [pboard declareTypes:[NSArray arrayWithObject:CLDragSessionKey] owner:self];
     
-    [pboard setData:data forType:@"public.text"];
+    [pboard setData:data forType:CLDragSessionKey];
     
     return YES;
 }
@@ -385,13 +375,13 @@ static PreferencesWindowController *sharedPreferences = nil;
     
     NSPasteboard *pBoard = [info draggingPasteboard];
     
-    NSData *data = [pBoard dataForType:@"public.text"];
+    NSData *data = [pBoard dataForType:CLDragSessionKey];
     
     NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
     [self.selectedTimeZones exchangeObjectAtIndex:rowIndexes.firstIndex withObjectAtIndex:row];
     
-    [[NSUserDefaults standardUserDefaults] setObject:self.selectedTimeZones forKey:@"defaultPreferences"];
+    [[NSUserDefaults standardUserDefaults] setObject:self.selectedTimeZones forKey:CLDefaultPreferenceKey];
     
     [self.timezoneTableView reloadData];
     

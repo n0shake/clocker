@@ -44,6 +44,7 @@
 		9AD2327B1C1B995900D1D446 /* Vector.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2327A1C1B995900D1D446 /* Vector.jpg */; };
 		9AD2327D1C1B9A9000D1D446 /* aboutTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2327C1C1B9A9000D1D446 /* aboutTemplate.png */; };
 		9AD2327F1C1BA04800D1D446 /* FB-FindUsonFacebook-online-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2327E1C1BA04800D1D446 /* FB-FindUsonFacebook-online-144.png */; };
+		9AD232821C1BDA3A00D1D446 /* CommonStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD232811C1BDA3A00D1D446 /* CommonStrings.m */; };
 		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +115,8 @@
 		9AD2327A1C1B995900D1D446 /* Vector.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Vector.jpg; path = ../Vector.jpg; sourceTree = "<group>"; };
 		9AD2327C1C1B9A9000D1D446 /* aboutTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aboutTemplate.png; path = ../../../Downloads/aboutTemplate.png; sourceTree = "<group>"; };
 		9AD2327E1C1BA04800D1D446 /* FB-FindUsonFacebook-online-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FB-FindUsonFacebook-online-144.png"; path = "../../../Downloads/logos-and-badges_find-us_online/png/FB-FindUsonFacebook-online-144.png"; sourceTree = "<group>"; };
+		9AD232801C1BDA3A00D1D446 /* CommonStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonStrings.h; path = Clocker/CommonStrings.h; sourceTree = "<group>"; };
+		9AD232811C1BDA3A00D1D446 /* CommonStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommonStrings.m; path = Clocker/CommonStrings.m; sourceTree = "<group>"; };
 		DD4F7C0413C30F9F00825C6E /* Clocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4F7C0813C30F9F00825C6E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DD4F7C0B13C30F9F00825C6E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -144,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				9A2000CF1BFBD472002BFDE8 /* Localizable.strings */,
+				9AD232801C1BDA3A00D1D446 /* CommonStrings.h */,
+				9AD232811C1BDA3A00D1D446 /* CommonStrings.m */,
 			);
 			name = "Localization Strings";
 			sourceTree = "<group>";
@@ -165,8 +170,6 @@
 				9A8605DD1BEC15C400A810A4 /* MainMenu.xib */,
 				9ABA38AE1BFAD7F80073EA4D /* Panel.xib */,
 				9ABA38B11BFAD83F0073EA4D /* PreferencesWindow.xib */,
-				9AD232751C1B985700D1D446 /* CLAboutWindowController.h */,
-				9AD232761C1B985700D1D446 /* CLAboutWindowController.m */,
 				9AD232771C1B985700D1D446 /* CLAboutWindow.xib */,
 			);
 			name = XIB;
@@ -226,6 +229,8 @@
 		9A8605E51BEC165400A810A4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9AD232751C1B985700D1D446 /* CLAboutWindowController.h */,
+				9AD232761C1B985700D1D446 /* CLAboutWindowController.m */,
 				9A8605CA1BEC155B00A810A4 /* ApplicationDelegate.h */,
 				9A8605B51BEC14BE00A810A4 /* ApplicationDelegate.m */,
 				9A8605C91BEC155B00A810A4 /* MenubarController.h */,
@@ -241,7 +246,6 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
-				9A25F7481C1A5E21007D369B /* Rate */,
 				9A5B1A8D1BECDFB700A77C68 /* Clocker.entitlements */,
 				9A43792D1BEC256200F4E27F /* Media.xcassets */,
 				9A2000C61BFBCEF6002BFDE8 /* Localization Strings */,
@@ -253,6 +257,7 @@
 				9A8605E21BEC161300A810A4 /* Superclass */,
 				DD4F7C0713C30F9F00825C6E /* Frameworks */,
 				DD4F7C0513C30F9F00825C6E /* Products */,
+				9A25F7481C1A5E21007D369B /* Rate */,
 			);
 			sourceTree = "<group>";
 		};
@@ -394,6 +399,7 @@
 				9A8605BF1BEC14F600A810A4 /* BackgroundView.m in Sources */,
 				9AB9357B1C1AD8F7001285A0 /* CLRatingCellView.m in Sources */,
 				9A25F7471C1A5E17007D369B /* iRate.m in Sources */,
+				9AD232821C1BDA3A00D1D446 /* CommonStrings.m in Sources */,
 				9A8605C01BEC14F600A810A4 /* Panel.m in Sources */,
 				9A8605C11BEC14F600A810A4 /* PreferencesWindowController.m in Sources */,
 				9A8605BA1BEC14DC00A810A4 /* StatusItemView.m in Sources */,

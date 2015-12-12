@@ -194,7 +194,7 @@
                         </scroller>
                     </scrollView>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HR1-ZK-Ey0">
-                        <rect key="frame" x="0.0" y="2" width="280" height="22"/>
+                        <rect key="frame" x="1" y="2" width="278" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="IxM-FF-J1F"/>
                         </constraints>
@@ -235,12 +235,12 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="4Gd-Nv-fXr" firstAttribute="top" secondItem="6" secondAttribute="top" constant="8" id="1g0-Hm-7Gh"/>
-                    <constraint firstAttribute="trailing" secondItem="HR1-ZK-Ey0" secondAttribute="trailing" id="1ol-mo-aQU"/>
+                    <constraint firstAttribute="trailing" secondItem="HR1-ZK-Ey0" secondAttribute="trailing" constant="1" id="1ol-mo-aQU"/>
                     <constraint firstAttribute="bottom" secondItem="HR1-ZK-Ey0" secondAttribute="bottom" constant="2" id="Jtb-Nx-FYR"/>
                     <constraint firstAttribute="bottom" secondItem="nTt-pf-Hw2" secondAttribute="bottom" constant="2" id="QoV-TI-KVJ"/>
                     <constraint firstAttribute="bottom" secondItem="OFy-u1-TnH" secondAttribute="bottom" constant="2" id="Ubf-Mv-WMp"/>
                     <constraint firstAttribute="trailing" secondItem="4Gd-Nv-fXr" secondAttribute="trailing" constant="-1" id="XP6-W0-2XT"/>
-                    <constraint firstItem="HR1-ZK-Ey0" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="XQ8-hU-ayC"/>
+                    <constraint firstItem="HR1-ZK-Ey0" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="1" id="XQ8-hU-ayC"/>
                     <constraint firstItem="4Gd-Nv-fXr" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="-1" id="fHc-VQ-mJ3"/>
                     <constraint firstAttribute="trailing" secondItem="OFy-u1-TnH" secondAttribute="trailing" constant="5" id="p2a-qj-LHE"/>
                     <constraint firstItem="nTt-pf-Hw2" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="pKl-Ay-0cB"/>

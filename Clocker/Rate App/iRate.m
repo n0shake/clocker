@@ -33,6 +33,7 @@
 
 #import "iRate.h"
 #import "PanelController.h"
+#import "CommonStrings.h"
 
 #import <Availability.h>
 #if !__has_feature(objc_arc)
@@ -185,7 +186,7 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
         {
             self.appStoreCountry = @"eu";
         }
-        else if (!self.appStoreCountry || [[self.appStoreCountry stringByReplacingOccurrencesOfString:@"[A-Za-z]{2}" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, 2)] length])
+        else if (!self.appStoreCountry || [[self.appStoreCountry stringByReplacingOccurrencesOfString:@"[A-Za-z]{2}" withString:CLEmptyString options:NSRegularExpressionSearch range:NSMakeRange(0, 2)] length])
         {
             self.appStoreCountry = @"us";
         }

@@ -23,8 +23,8 @@
 {
     NSButton *leftButton = (NSButton *)sender;
     
-    if ([leftButton.title isEqualToString:@"Not Really"]) {
-         [self setAnimatedStringValue:@"Mind giving us some feedback?" andTextField:self.leftField];
+    if ([leftButton.title isEqualToString:NSLocalizedString(@"Not Really", nil)]) {
+         [self setAnimatedStringValue:NSLocalizedString(@"AskForFeedbackMessage", nil) andTextField:self.leftField];
     }
     else
     {
@@ -41,8 +41,8 @@
 {
     NSButton *rightButton = (NSButton *)sender;
     
-    if ([rightButton.title isEqualToString:@"Yes!"]) {
-        [self setAnimatedStringValue:@"Rate us on the App Store, then?" andTextField:self.leftField];
+    if ([rightButton.title isEqualToString:NSLocalizedString(@"Yes!", nil)]) {
+        [self setAnimatedStringValue:NSLocalizedString(@"AskForRatingMessage", nil) andTextField:self.leftField];
     }
     else
     {
@@ -79,11 +79,11 @@
                                 [textfield.animator setAlphaValue: 1.0];
                                 [self.leftButton.animator setAlphaValue:1.0];
                                 [self.rightButton.animator setAlphaValue:1.0];
-                                if ([self.leftButton.title isEqualToString:@"Not Really"]) {
-                                    [self.leftButton.animator setTitle:@"No, thanks"];
+                                if ([self.leftButton.title isEqualToString:NSLocalizedString(@"Not Really", nil)]) {
+                                    [self.leftButton.animator setTitle:NSLocalizedString(@"NoSelected", nil)];
                                 }
-                                if ([self.rightButton.title isEqualToString:@"Yes!"]) {
-                                    [self.rightButton.animator setTitle:@"Ok, sure"];
+                                if ([self.rightButton.title isEqualToString:NSLocalizedString(@"Yes!", nil)]) {
+                                    [self.rightButton.animator setTitle:NSLocalizedString(@"YesSelected", nil)];
                                 }
 
                             } completionHandler: ^{
