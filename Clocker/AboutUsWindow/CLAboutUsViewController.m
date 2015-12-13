@@ -7,6 +7,7 @@
 //
 
 #import "CLAboutUsViewController.h"
+#import <ApptentiveConnect/ATConnect.h>
 
 @interface CLAboutUsViewController ()
 
@@ -38,7 +39,8 @@ NSString *const CLFacebookPageURL = @"https://www.facebook.com/ClockerMenubarClo
 - (IBAction)reportIssue:(id)sender
 {
     //
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLIssueURL]];
+    ATConnect *connection = [ATConnect sharedConnection];
+    [connection showFeedbackWindow:sender];
 }
 
 - (IBAction)openFacebookPage:(id)sender

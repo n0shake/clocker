@@ -10,6 +10,7 @@
 #import "iRate.h"
 #import <QuartzCore/QuartzCore.h>
 #import "PanelController.h"
+#import <ApptentiveConnect/ATConnect.h>
 
 @implementation CLRatingCellView
 
@@ -24,7 +25,7 @@
     NSButton *leftButton = (NSButton *)sender;
     
     if ([leftButton.title isEqualToString:@"Not Really"]) {
-         [self setAnimatedStringValue:@"Mind giving us feedback?" andTextField:self.leftField];
+         [self setAnimatedStringValue:@"Mind giving us feedback?" andTextField:self.leftField  withLeftButtonTitle:@"No, thanks" andRightButtonTitle:@"Yes?"];
     }
     else
     {
@@ -42,20 +43,32 @@
     NSButton *rightButton = (NSButton *)sender;
     
     if ([rightButton.title isEqualToString:@"Yes!"]) {
-        [self setAnimatedStringValue:@"Would you mind rating Clocker?" andTextField:self.leftField];
+        [self setAnimatedStringValue:@"Would you mind rating Clocker?" andTextField:self.leftField withLeftButtonTitle:@"No, thanks" andRightButtonTitle:@"Yes"];
+    }
+    else if ([rightButton.title isEqualToString:@"Yes?"])
+    {
+             [self updateMainTableView];
+        ATConnect *connection = [ATConnect sharedConnection];
+        [connection showFeedbackWindow:sender];
+   
     }
     else
     {
         //Make the row disappear and call rate
         
         [[iRate sharedInstance] rate];
-        PanelController *panelRef = [[[NSApplication sharedApplication] mainWindow] windowController];
-        panelRef.showReviewCell = NO;
-        [panelRef updateDefaultPreferences];
+        [self updateMainTableView];
     }
 }
 
-- (void) setAnimatedStringValue:(NSString *)aString andTextField:(NSTextField *)textfield
+- (void)updateMainTableView
+{
+    PanelController *panelRef = [[[NSApplication sharedApplication] mainWindow] windowController];
+    panelRef.showReviewCell = NO;
+    [panelRef updateDefaultPreferences];
+}
+
+- (void) setAnimatedStringValue:(NSString *)aString andTextField:(NSTextField *)textfield withLeftButtonTitle:(NSString *)leftTitle andRightButtonTitle:(NSString *)rightTitle
 {
     if ([[textfield stringValue] isEqual: aString])
     {
@@ -82,9 +95,12 @@
                                 if ([self.leftButton.title isEqualToString:@"Not Really"]) {
                                     [self.leftButton.animator setTitle:@"No, thanks"];
                                 }
-                                if ([self.rightButton.title isEqualToString:@"Yes"]) {
+                                if ([self.rightButton.title isEqualToString:@"Yes!"]) {
                                     [self.rightButton.animator setTitle:@"Yes, sure"];
                                 }
+                                
+                                [self.leftButton.animator setTitle:leftTitle];
+                                 [self.rightButton.animator setTitle:rightTitle];
 
                             } completionHandler: ^{
                                                             }];

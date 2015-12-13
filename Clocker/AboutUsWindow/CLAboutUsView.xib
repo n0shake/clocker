@@ -146,7 +146,7 @@
                 <constraint firstItem="Rzs-xE-sfs" firstAttribute="top" secondItem="6Cx-BF-XMU" secondAttribute="bottom" constant="-5" id="ydK-a7-uQy"/>
                 <constraint firstItem="6Cx-BF-XMU" firstAttribute="top" secondItem="5Eo-aJ-L8H" secondAttribute="bottom" constant="8" id="zki-ag-D4H"/>
             </constraints>
-            <point key="canvasLocation" x="321" y="253.5"/>
+            <point key="canvasLocation" x="578" y="300.5"/>
         </view>
     </objects>
     <resources>

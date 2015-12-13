@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'ApptentiveConnectTests' target in the 'ApptentiveConnectTests' project
+//
+
+#ifdef __OBJC__
+	#import <UIKit/UIKit.h>
+	#import "ATLog.h"
+#endif

@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'ApptentiveConnect' target in the 'ApptentiveConnect' project
+//
+
+#ifdef __OBJC__
+	#import <Foundation/Foundation.h>
+	#import "ATLog.h"
+#endif

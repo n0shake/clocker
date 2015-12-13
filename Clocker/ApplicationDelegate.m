@@ -30,6 +30,8 @@
 #import <Crashlytics/Crashlytics.h>
 #import "iRate.h"
 #import "CommonStrings.h"
+#import "iVersion.h"
+#import <ApptentiveConnect/ATConnect.h>
 
 @implementation ApplicationDelegate
 
@@ -61,22 +63,46 @@ void *kContextActivePanel = &kContextActivePanel;
 {
     //Configure iRate
     [iRate sharedInstance].appStoreID = 1056643111;
+    [iVersion sharedInstance].appStoreID = 1056643111;
+    [iRate sharedInstance].useAllAvailableLanguages = NO;
+    [iVersion sharedInstance].useAllAvailableLanguages = NO;
 }
 
 #pragma mark - NSApplicationDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
+    ATConnect *connection = [ATConnect sharedConnection];
+    connection.apiKey = @"b9bff3e37b738748b671a751f09fea3a419661bac3e6e11fa5e854b463db3ba0";
+    
     NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
+    
+     NSMutableArray *newDefaults = [[NSMutableArray alloc] init];
+
     
     if (defaultPreference.count == 0)
     {
         NSDictionary *defaultDictionary = @{CLTimezoneName : [NSTimeZone systemTimeZone].name, CLCustomLabel : CLEmptyString};
         
-        NSMutableArray *newDefaults = [[NSMutableArray alloc] initWithObjects:defaultDictionary, nil];
+        newDefaults = [[NSMutableArray alloc] initWithObjects:defaultDictionary, nil];
         
         [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:CLDefaultPreferenceKey];
     }
+   
+    [defaultPreference enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            if ([obj isKindOfClass:[NSString class]]) {
+                NSDictionary *defaultDictionary = @{CLTimezoneName : obj, CLCustomLabel : CLEmptyString};
+                [newDefaults addObject:defaultDictionary];
+            }
+        }];
+    
+    if (newDefaults.count > 0)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:CLDefaultPreferenceKey];
+    }
+    
+
 
     
     // Install icon into the menu bar

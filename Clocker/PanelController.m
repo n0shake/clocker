@@ -33,6 +33,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import "CLRatingCellView.h"
 #import "CommonStrings.h"
+#import "CLTimezoneCellView.h"
 
 #define OPEN_DURATION .15
 #define CLOSE_DURATION .1
@@ -81,6 +82,8 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     [self updateDefaultPreferences];
     
+    self.mainTableview.selectionHighlightStyle = NSTableViewSelectionHighlightStyleNone;
+    
     // Make a fully skinned panel
     NSPanel *panel = (id)[self window];
     [panel setAcceptsMouseMovedEvents:YES];
@@ -104,7 +107,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     self.defaultPreferences = self.defaultPreferences == nil ? [[NSMutableArray alloc] initWithArray:defaultZones] : [NSMutableArray arrayWithArray:defaultZones];
        
-    self.scrollViewHeight.constant = self.showReviewCell ? (self.defaultPreferences.count+1)*55+30 : self.defaultPreferences.count*55 + 30;
+    self.scrollViewHeight.constant = self.showReviewCell ? (self.defaultPreferences.count+1)*55+40 : self.defaultPreferences.count*55 + 30;
 
 }
 
@@ -197,7 +200,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     NSRect panelRect = [panel frame];
     panelRect.size.width = PANEL_WIDTH;
     
-    panelRect.size.height = self.showReviewCell ? (self.defaultPreferences.count+1)*55+30: self.defaultPreferences.count*55 + 30;
+    panelRect.size.height = self.showReviewCell ? (self.defaultPreferences.count+1)*55+40: self.defaultPreferences.count*55 + 30;
 
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
@@ -263,6 +266,8 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     return self.defaultPreferences.count;
 }
 
+
+
 -(NSView*)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     if (self.showReviewCell && row == self.defaultPreferences.count) {
@@ -271,20 +276,16 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     }
 
     
-    NSTableCellView *cell = [tableView makeViewWithIdentifier:CLTimezoneCellViewIdentifier owner:self];
+    CLTimezoneCellView *cell = [tableView makeViewWithIdentifier:CLTimezoneCellViewIdentifier owner:self];
+
     
-    NSTextField *cellText = [cell viewWithTag:100];
+    cell.relativeDate.stringValue = [self getDateForTimeZone:self.defaultPreferences[row][CLTimezoneName]];
     
-    NSTextField *timeCell = [cell viewWithTag:101];
+    cell.time.stringValue = [self getTimeForTimeZone:self.defaultPreferences[row][CLTimezoneName]];
     
-    NSTextField *dateCell = [cell viewWithTag:102];
-    
-    dateCell.stringValue = [self getDateForTimeZone:self.defaultPreferences[row][CLTimezoneName]];
-    
-    timeCell.stringValue = [self getTimeForTimeZone:self.defaultPreferences[row][CLTimezoneName]];
-    
-  
-    cellText.stringValue = [self formatStringShouldContainCity:YES
+    cell.rowNumber = row;
+
+    cell.customName.stringValue = [self formatStringShouldContainCity:YES
                                               withTimezoneName:self.defaultPreferences[row]];
     
     return cell;
@@ -401,32 +402,6 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 #pragma mark NSTableview Minor Customization when selecting rows
 #pragma mark -
 
--(void)tableViewSelectionDidChange:(NSNotification *)notification
-{
-    if (self.mainTableview.selectedRow != -1) {
-        [self updateCellForOldSelection:self.mainTableview.selectedRow andColor:[NSColor whiteColor]];
-    }
-    if (self.previousSelectedRow != -1) {
-        [self updateCellForOldSelection:self.previousSelectedRow andColor:[NSColor blackColor]];
-    }
-    
-    self.previousSelectedRow = self.mainTableview.selectedRow;
-}
-
-- (void)updateCellForOldSelection:(NSInteger)rowNumber andColor:(NSColor *)colorName
-{
-    NSTableCellView *cellView = [self.mainTableview viewAtColumn:self.mainTableview.selectedColumn
-                                                             row:rowNumber
-                                                 makeIfNecessary:NO];
-    
-    NSTextField *cellText = [cellView viewWithTag:100];
-    NSTextField *timeCell = [cellView viewWithTag:101];
-    NSTextField *dateCell = [cellView viewWithTag:102];
-    
-    cellText.textColor = colorName;
-    timeCell.textColor = colorName;
-    dateCell.textColor = colorName;
-}
 
 
 #pragma mark -
@@ -441,8 +416,22 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     [pboard setData:data forType:CLDragSessionKey];
     
-    [self updateCellForOldSelection:rowIndexes.firstIndex andColor:[NSColor blackColor]];
     return YES;
+}
+
+
+-(void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    if ([object isKindOfClass:[NSString class]])
+    {
+        NSDictionary *timezoneDictionary = self.defaultPreferences[row];
+        NSDictionary *mutableTimeZoneDict = [timezoneDictionary mutableCopy];
+        [mutableTimeZoneDict setValue:object forKey:CLCustomLabel];
+        [self.defaultPreferences replaceObjectAtIndex:row withObject:mutableTimeZoneDict];
+        [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences forKey:CLDefaultPreferenceKey];
+        
+        [self.mainTableview reloadData];
+    }
 }
 
 

@@ -1,0 +1,21 @@
+# xcode noise
+build/
+build/*
+*/build/*
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata/*
+xcuserdata/
+
+# OSX noise
+.DS_Store
+profile
+Icon*
+
+# Emacs noise
+*~
+
+# other noise
+.svn

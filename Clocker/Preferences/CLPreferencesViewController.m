@@ -43,26 +43,33 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     [self.view setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
     [self.view setLayer:viewLayer];
     
-//    self.window.titleVisibility = NSWindowTitleHidden;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refereshTimezoneTableView) name:CLCustomLabelChangedNotification object:nil];
+
     
-    NSMutableArray *defaultTimeZones = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
+    [self refereshTimezoneTableView];
     
-    if (!self.timeZoneArray || !self.selectedTimeZones)
+    if (!self.timeZoneArray)
     {
         self.timeZoneArray = [[NSMutableArray alloc] initWithArray:[NSTimeZone knownTimeZoneNames]];
-        self.selectedTimeZones = [[NSMutableArray alloc] initWithArray:defaultTimeZones];
+        
         self.filteredArray = [[NSArray alloc] init];
     }
     
     self.messageLabel.stringValue = CLEmptyString;
-    
-    [self.timezoneTableView reloadData];
+
     [self.availableTimezoneTableView reloadData];
     
     //Register for drag and drop
     [self.timezoneTableView registerForDraggedTypes: [NSArray arrayWithObject: CLDragSessionKey]];
 
     // Do view setup here.
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:CLCustomLabelChangedNotification object:nil];
 }
 
 
@@ -124,9 +131,14 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
 {
     if ([object isKindOfClass:[NSString class]])
     {
+        
+        NSString *originalValue = (NSString *)object;
+        NSString *customLabelValue = [originalValue stringByTrimmingCharactersInSet:
+                            [NSCharacterSet whitespaceCharacterSet]];
+        
         NSDictionary *timezoneDictionary = self.selectedTimeZones[row];
         NSDictionary *mutableTimeZoneDict = [timezoneDictionary mutableCopy];
-        [mutableTimeZoneDict setValue:object forKey:CLCustomLabel];
+        customLabelValue.length > 0 ? [mutableTimeZoneDict setValue:customLabelValue forKey:CLCustomLabel] : [mutableTimeZoneDict setValue:CLEmptyString forKey:CLCustomLabel];
         [self.selectedTimeZones replaceObjectAtIndex:row withObject:mutableTimeZoneDict];
         [[NSUserDefaults standardUserDefaults] setObject:self.selectedTimeZones forKey:CLDefaultPreferenceKey];
         
@@ -222,11 +234,6 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
 - (IBAction)removeFromFavourites:(id)sender
 {
     
-    if ([self.timezoneTableView numberOfRows] == 1) {
-        
-        return;
-    }
-    
     NSMutableArray *itemsToRemove = [NSMutableArray array];
     
     if (self.timezoneTableView.selectedRow == -1)
@@ -286,6 +293,13 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:is24HourFormatSelected.state] forKey:CL24hourFormatSelectedKey];
     
     [self refreshMainTableview];
+}
+
+- (void)refereshTimezoneTableView
+{
+    NSMutableArray *defaultTimeZones = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
+    self.selectedTimeZones = [[NSMutableArray alloc] initWithArray:defaultTimeZones];
+    [self.timezoneTableView reloadData];
 }
 
 - (void)refreshMainTableview
