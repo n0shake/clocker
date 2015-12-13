@@ -105,7 +105,7 @@
                         <constraint firstAttribute="width" constant="111" id="5Yt-bH-NGf"/>
                         <constraint firstAttribute="height" constant="21" id="8Jh-fm-8up"/>
                     </constraints>
-                    <buttonCell key="cell" type="push" bezelStyle="rounded" image="FB-FindUsonFacebook-online-144" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KI2-hO-Wif">
+                    <buttonCell key="cell" type="push" bezelStyle="rounded" image="FindUsOnFacebook" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KI2-hO-Wif">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -151,6 +151,6 @@
     </objects>
     <resources>
         <image name="ClockerIcon-256" width="256" height="256"/>
-        <image name="FB-FindUsonFacebook-online-144" width="144" height="27"/>
+        <image name="FindUsOnFacebook" width="144" height="27"/>
     </resources>
 </document>

@@ -34,18 +34,8 @@
 		9A8605BB1BEC14DC00A810A4 /* PanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B91BEC14DC00A810A4 /* PanelController.m */; };
 		9A8605BF1BEC14F600A810A4 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BC1BEC14F600A810A4 /* BackgroundView.m */; };
 		9A8605C01BEC14F600A810A4 /* Panel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BD1BEC14F600A810A4 /* Panel.m */; };
-		9A8605D81BEC155B00A810A4 /* PowerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605CF1BEC155B00A810A4 /* PowerIcon.png */; };
-		9A8605D91BEC155B00A810A4 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D01BEC155B00A810A4 /* Status.png */; };
-		9A8605DA1BEC155B00A810A4 /* Status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D11BEC155B00A810A4 /* Status@2x.png */; };
-		9A8605DB1BEC155B00A810A4 /* StatusHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D21BEC155B00A810A4 /* StatusHighlighted.png */; };
-		9A8605DC1BEC155B00A810A4 /* StatusHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D31BEC155B00A810A4 /* StatusHighlighted@2x.png */; };
-		9AB935781C1AD79D001285A0 /* ClockerIcon-16.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB935771C1AD79D001285A0 /* ClockerIcon-16.png */; };
 		9AB9357B1C1AD8F7001285A0 /* CLRatingCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9357A1C1AD8F7001285A0 /* CLRatingCellView.m */; };
 		9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */; };
-		9AD232741C1B96A700D1D446 /* ClockerIcon-256.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD232731C1B96A700D1D446 /* ClockerIcon-256.png */; };
-		9AD2327B1C1B995900D1D446 /* Vector.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2327A1C1B995900D1D446 /* Vector.jpg */; };
-		9AD2327D1C1B9A9000D1D446 /* aboutTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2327C1C1B9A9000D1D446 /* aboutTemplate.png */; };
-		9AD2327F1C1BA04800D1D446 /* FB-FindUsonFacebook-online-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2327E1C1BA04800D1D446 /* FB-FindUsonFacebook-online-144.png */; };
 		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,19 +82,9 @@
 		9A8605CA1BEC155B00A810A4 /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationDelegate.h; path = Clocker/ApplicationDelegate.h; sourceTree = "<group>"; };
 		9A8605CB1BEC155B00A810A4 /* ColoredButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColoredButton.h; path = Clocker/ColoredButton.h; sourceTree = "<group>"; };
 		9A8605CC1BEC155B00A810A4 /* Clocker-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Clocker-Prefix.pch"; path = "Clocker/Clocker-Prefix.pch"; sourceTree = "<group>"; };
-		9A8605CF1BEC155B00A810A4 /* PowerIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PowerIcon.png; path = Clocker/PowerIcon.png; sourceTree = "<group>"; };
-		9A8605D01BEC155B00A810A4 /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Status.png; path = Clocker/Status.png; sourceTree = "<group>"; };
-		9A8605D11BEC155B00A810A4 /* Status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Status@2x.png"; path = "Clocker/Status@2x.png"; sourceTree = "<group>"; };
-		9A8605D21BEC155B00A810A4 /* StatusHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusHighlighted.png; path = Clocker/StatusHighlighted.png; sourceTree = "<group>"; };
-		9A8605D31BEC155B00A810A4 /* StatusHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusHighlighted@2x.png"; path = "Clocker/StatusHighlighted@2x.png"; sourceTree = "<group>"; };
-		9AB935771C1AD79D001285A0 /* ClockerIcon-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ClockerIcon-16.png"; path = "Icons/ClockerIcon-16.png"; sourceTree = "<group>"; };
 		9AB935791C1AD8F7001285A0 /* CLRatingCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLRatingCellView.h; path = Clocker/CLRatingCellView.h; sourceTree = "<group>"; };
 		9AB9357A1C1AD8F7001285A0 /* CLRatingCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLRatingCellView.m; path = Clocker/CLRatingCellView.m; sourceTree = "<group>"; };
 		9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		9AD232731C1B96A700D1D446 /* ClockerIcon-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ClockerIcon-256.png"; path = "Icons/ClockerIcon-256.png"; sourceTree = "<group>"; };
-		9AD2327A1C1B995900D1D446 /* Vector.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Vector.jpg; path = ../Vector.jpg; sourceTree = "<group>"; };
-		9AD2327C1C1B9A9000D1D446 /* aboutTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aboutTemplate.png; path = ../../../Downloads/aboutTemplate.png; sourceTree = "<group>"; };
-		9AD2327E1C1BA04800D1D446 /* FB-FindUsonFacebook-online-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FB-FindUsonFacebook-online-144.png"; path = "../../../Downloads/logos-and-badges_find-us_online/png/FB-FindUsonFacebook-online-144.png"; sourceTree = "<group>"; };
 		DD4F7C0413C30F9F00825C6E /* Clocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4F7C0813C30F9F00825C6E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DD4F7C0B13C30F9F00825C6E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -174,24 +154,6 @@
 			name = XIB;
 			sourceTree = "<group>";
 		};
-		9A8605E11BEC160700A810A4 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				9A8605E31BEC163100A810A4 /* Views */,
-				9AD2327E1C1BA04800D1D446 /* FB-FindUsonFacebook-online-144.png */,
-				9AD2327C1C1B9A9000D1D446 /* aboutTemplate.png */,
-				9AD2327A1C1B995900D1D446 /* Vector.jpg */,
-				9AD232731C1B96A700D1D446 /* ClockerIcon-256.png */,
-				9AB935771C1AD79D001285A0 /* ClockerIcon-16.png */,
-				9A8605CF1BEC155B00A810A4 /* PowerIcon.png */,
-				9A8605D01BEC155B00A810A4 /* Status.png */,
-				9A8605D11BEC155B00A810A4 /* Status@2x.png */,
-				9A8605D21BEC155B00A810A4 /* StatusHighlighted.png */,
-				9A8605D31BEC155B00A810A4 /* StatusHighlighted@2x.png */,
-			);
-			name = Images;
-			sourceTree = "<group>";
-		};
 		9A8605E21BEC161300A810A4 /* Superclass */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,7 +210,7 @@
 				9A43792D1BEC256200F4E27F /* Media.xcassets */,
 				9A2000C61BFBCEF6002BFDE8 /* Utilties */,
 				9A8605E01BEC15F400A810A4 /* XIB */,
-				9A8605E11BEC160700A810A4 /* Images */,
+				9A8605E31BEC163100A810A4 /* Views */,
 				9A8605E41BEC164C00A810A4 /* Main */,
 				9A5951C31C1D0DE3009C17AA /* View Controllers */,
 				9A8605E51BEC165400A810A4 /* Controllers */,
@@ -345,22 +307,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A392EEE1C1CE9950072C10A /* CLPreferencesView.xib in Resources */,
-				9AD2327F1C1BA04800D1D446 /* FB-FindUsonFacebook-online-144.png in Resources */,
 				9A56DB811C1CFB73004CE6AF /* Panel.xib in Resources */,
-				9A8605D91BEC155B00A810A4 /* Status.png in Resources */,
 				9A43792E1BEC256200F4E27F /* Media.xcassets in Resources */,
-				9AB935781C1AD79D001285A0 /* ClockerIcon-16.png in Resources */,
-				9AD232741C1B96A700D1D446 /* ClockerIcon-256.png in Resources */,
 				9A25F7461C1A5E17007D369B /* iRate.bundle in Resources */,
-				9A8605DC1BEC155B00A810A4 /* StatusHighlighted@2x.png in Resources */,
-				9A8605DA1BEC155B00A810A4 /* Status@2x.png in Resources */,
-				9AD2327B1C1B995900D1D446 /* Vector.jpg in Resources */,
 				9A25F7451C1A5E17007D369B /* Info.plist in Resources */,
 				9A392EE91C1CDD530072C10A /* CLAboutUsView.xib in Resources */,
-				9AD2327D1C1B9A9000D1D446 /* aboutTemplate.png in Resources */,
-				9A8605DB1BEC155B00A810A4 /* StatusHighlighted.png in Resources */,
 				9A5951C21C1D0AAD009C17AA /* CLOneWindow.xib in Resources */,
-				9A8605D81BEC155B00A810A4 /* PowerIcon.png in Resources */,
 				9A56DB801C1CFB73004CE6AF /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

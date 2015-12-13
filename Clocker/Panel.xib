@@ -106,6 +106,70 @@
                                                         <outlet property="textField" destination="etF-33-bCB" id="6fd-cc-Qq2"/>
                                                     </connections>
                                                 </tableCellView>
+                                                <tableCellView id="wWn-9q-AYl" customClass="CLRatingCellView">
+                                                    <rect key="frame" x="1" y="61" width="279" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gRN-xJ-bfq">
+                                                            <rect key="frame" x="61" y="34" width="16" height="16"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-16" id="8gl-Vi-0VF"/>
+                                                        </imageView>
+                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JNw-ld-oz9">
+                                                            <rect key="frame" x="82" y="32" width="115" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="kOH-Lb-7sB"/>
+                                                            </constraints>
+                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Enjoy Using Clocker?" id="iM2-CB-CE2">
+                                                                <font key="font" size="12" name="HelveticaNeue-Light"/>
+                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gf6-2O-DZv">
+                                                            <rect key="frame" x="26" y="-4" width="108" height="32"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="96" id="2gM-fC-Oj0"/>
+                                                                <constraint firstAttribute="height" constant="21" id="Rv7-Nd-VH1"/>
+                                                            </constraints>
+                                                            <buttonCell key="cell" type="push" title="Not Really" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ckn-uK-FWI">
+                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="actionOnNegativeFeedback:" target="wWn-9q-AYl" id="lBL-WL-xum"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kfq-0p-Oqf">
+                                                            <rect key="frame" x="130" y="-4" width="108" height="32"/>
+                                                            <buttonCell key="cell" type="push" title="Yes!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5K0-zD-kN0">
+                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="actionOnPositiveFeedback:" target="wWn-9q-AYl" id="KYm-dp-Jno"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="Kfq-0p-Oqf" firstAttribute="width" secondItem="gf6-2O-DZv" secondAttribute="width" id="6Mc-Df-PFM"/>
+                                                        <constraint firstItem="JNw-ld-oz9" firstAttribute="top" secondItem="wWn-9q-AYl" secondAttribute="top" constant="-2" id="7Wj-6T-kuF"/>
+                                                        <constraint firstItem="gf6-2O-DZv" firstAttribute="centerX" secondItem="wWn-9q-AYl" secondAttribute="centerX" constant="-60" id="A8v-do-LdI"/>
+                                                        <constraint firstItem="Kfq-0p-Oqf" firstAttribute="leading" secondItem="gf6-2O-DZv" secondAttribute="trailing" constant="8" id="B6V-Es-uVV"/>
+                                                        <constraint firstItem="Kfq-0p-Oqf" firstAttribute="height" secondItem="gf6-2O-DZv" secondAttribute="height" id="I60-AU-Yhi"/>
+                                                        <constraint firstItem="gRN-xJ-bfq" firstAttribute="top" secondItem="wWn-9q-AYl" secondAttribute="top" id="PQb-l5-nLd"/>
+                                                        <constraint firstAttribute="bottom" secondItem="gf6-2O-DZv" secondAttribute="bottom" constant="3" id="iqG-ta-N68"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Kfq-0p-Oqf" secondAttribute="bottom" constant="3" id="k43-mW-Z3z"/>
+                                                        <constraint firstItem="JNw-ld-oz9" firstAttribute="leading" secondItem="gRN-xJ-bfq" secondAttribute="trailing" constant="7" id="opd-fc-Q5o"/>
+                                                        <constraint firstItem="JNw-ld-oz9" firstAttribute="centerX" secondItem="wWn-9q-AYl" secondAttribute="centerX" id="yYL-61-BgS"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="imageView" destination="gRN-xJ-bfq" id="eNP-AX-syJ"/>
+                                                        <outlet property="leftButton" destination="gf6-2O-DZv" id="MQg-oW-jd2"/>
+                                                        <outlet property="leftField" destination="JNw-ld-oz9" id="fDT-qG-fRw"/>
+                                                        <outlet property="rightButton" destination="Kfq-0p-Oqf" id="mUN-yg-Wlc"/>
+                                                        <outlet property="textField" destination="JNw-ld-oz9" id="z19-n5-O1O"/>
+                                                    </connections>
+                                                </tableCellView>
                                             </prototypeCellViews>
                                         </tableColumn>
                                     </tableColumns>
@@ -190,6 +254,7 @@
         <userDefaultsController representsSharedInstance="YES" id="O3B-kK-4vm"/>
     </objects>
     <resources>
+        <image name="ClockerIcon-16" width="16" height="16"/>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="PowerIcon" width="270" height="270"/>
     </resources>
