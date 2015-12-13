@@ -30,16 +30,14 @@
 // EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Cocoa/Cocoa.h>
-#import "CLAboutWindowController.h"
 
 @class AvailableTimezonesPanel;
 
-@interface PreferencesWindowController : NSWindowController <NSCopying, NSTableViewDelegate, NSTableViewDataSource>
+@interface c : NSWindowController <NSCopying, NSTableViewDelegate, NSTableViewDataSource>
 
 @property (strong, nonatomic) NSMutableArray *timeZoneArray;
 @property (strong, nonatomic) NSMutableArray *selectedTimeZones;
 @property (strong, nonatomic) NSArray *filteredArray;
-@property (strong, nonatomic) CLAboutWindowController *aboutUsWindow;
 @property (atomic, assign) BOOL launchOnLogin;
 
 + (instancetype)sharedPreferences;

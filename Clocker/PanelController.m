@@ -48,7 +48,7 @@
 
 #pragma mark -
 
-#import "PreferencesWindowController.h"
+#import "CLOneWindowController.h"
 #import "CommonStrings.h"
 
 NSString *const CLPanelNibIdentifier = @"Panel";
@@ -328,7 +328,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = kCFDateFormatterNoStyle;
     
-    NSNumber *is24HourFormatSelected = [[NSUserDefaults standardUserDefaults] objectForKey:CLC24hourFormatSelectedKey];
+    NSNumber *is24HourFormatSelected = [[NSUserDefaults standardUserDefaults] objectForKey:CL24hourFormatSelectedKey];
     
     is24HourFormatSelected.boolValue ? [dateFormatter setDateFormat:@"HH:mm"] : [dateFormatter setDateFormat:@"hh:mm a"];
     
@@ -372,15 +372,15 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     NSInteger timezoneDay = [calendar component:units fromDate:timezoneDate];
     
     if (systemDay == timezoneDay) {
-        return NSLocalizedString(@"Today", @"Today");;
+        return @"Today";
     }
     else if (systemDay > timezoneDay)
     {
-        return NSLocalizedString(@"Yesterday", @"Yesterday");
+        return @"Yesterday";
     }
     else
     {
-        return NSLocalizedString(@"Tomorrow", @"Tomorrow");;
+        return @"Tomorrow";
     }
 }
 
@@ -474,8 +474,8 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 
 - (IBAction)openPreferences:(id)sender
 {
-    self.preferencesWindow = [PreferencesWindowController sharedPreferences];
-    [self.preferencesWindow showWindow:nil];
+    self.oneWindow = [CLOneWindowController sharedWindow];
+    [self.oneWindow showWindow:nil];
     [NSApp activateIgnoringOtherApps:YES];
 
 }

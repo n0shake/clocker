@@ -18,8 +18,8 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window identifier="Selected Timezones" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="documentWindow" id="F0z-JX-Cv5">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
+        <window identifier="Selected Timezones" title="Clocker" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="documentWindow" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="407" y="179" width="439" height="373"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
@@ -297,8 +297,8 @@
                             <action selector="filterArray:" target="-2" id="tX8-FN-IPy"/>
                         </connections>
                     </searchField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rty-6T-aPw">
-                        <rect key="frame" x="104" y="8" width="232" height="20"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rty-6T-aPw">
+                        <rect key="frame" x="104" y="7" width="232" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="y9Z-oT-NCB"/>
                         </constraints>

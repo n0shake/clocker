@@ -7,17 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A2000D11BFBD472002BFDE8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A2000CF1BFBD472002BFDE8 /* Localizable.strings */; };
 		9A25F7451C1A5E17007D369B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A25F7421C1A5E17007D369B /* Info.plist */; };
 		9A25F7461C1A5E17007D369B /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A25F7431C1A5E17007D369B /* iRate.bundle */; };
 		9A25F7471C1A5E17007D369B /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A25F7441C1A5E17007D369B /* iRate.m */; };
+		9A392EE81C1CDD530072C10A /* CLAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A392EE61C1CDD530072C10A /* CLAboutUsViewController.m */; };
+		9A392EE91C1CDD530072C10A /* CLAboutUsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A392EE71C1CDD530072C10A /* CLAboutUsView.xib */; };
+		9A392EED1C1CE9950072C10A /* CLPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A392EEB1C1CE9950072C10A /* CLPreferencesViewController.m */; };
+		9A392EEE1C1CE9950072C10A /* CLPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A392EEC1C1CE9950072C10A /* CLPreferencesView.xib */; };
 		9A4379251BEC223900F4E27F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379211BEC223900F4E27F /* Security.framework */; };
 		9A4379261BEC223900F4E27F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379221BEC223900F4E27F /* SystemConfiguration.framework */; };
 		9A4379271BEC223900F4E27F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379231BEC223900F4E27F /* Fabric.framework */; };
-		9A4379281BEC223900F4E27F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379241BEC223900F4E27F /* Crashlytics.framework */; };
 		9A43792A1BEC230A00F4E27F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379291BEC230A00F4E27F /* libc++.tbd */; };
 		9A43792C1BEC231100F4E27F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A43792B1BEC231100F4E27F /* libz.tbd */; };
 		9A43792E1BEC256200F4E27F /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A43792D1BEC256200F4E27F /* Media.xcassets */; };
+		9A56DB801C1CFB73004CE6AF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A56DB7D1C1CFB73004CE6AF /* MainMenu.xib */; };
+		9A56DB811C1CFB73004CE6AF /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A56DB7E1C1CFB73004CE6AF /* Panel.xib */; };
+		9A5951BA1C1D0A22009C17AA /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5951B91C1D0A22009C17AA /* Crashlytics.framework */; };
+		9A5951BD1C1D0A8D009C17AA /* CommonStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5951BB1C1D0A8D009C17AA /* CommonStrings.m */; };
+		9A5951C01C1D0AA0009C17AA /* CLOneWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5951BE1C1D0AA0009C17AA /* CLOneWindowController.m */; };
+		9A5951C21C1D0AAD009C17AA /* CLOneWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A5951C11C1D0AAD009C17AA /* CLOneWindow.xib */; };
 		9A8605AE1BEC148400A810A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605AD1BEC148400A810A4 /* main.m */; };
 		9A8605B31BEC14A600A810A4 /* ColoredButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B21BEC14A600A810A4 /* ColoredButton.m */; };
 		9A8605B61BEC14BE00A810A4 /* MenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B41BEC14BE00A810A4 /* MenubarController.m */; };
@@ -26,58 +34,47 @@
 		9A8605BB1BEC14DC00A810A4 /* PanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B91BEC14DC00A810A4 /* PanelController.m */; };
 		9A8605BF1BEC14F600A810A4 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BC1BEC14F600A810A4 /* BackgroundView.m */; };
 		9A8605C01BEC14F600A810A4 /* Panel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BD1BEC14F600A810A4 /* Panel.m */; };
-		9A8605C11BEC14F600A810A4 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BE1BEC14F600A810A4 /* PreferencesWindowController.m */; };
 		9A8605D81BEC155B00A810A4 /* PowerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605CF1BEC155B00A810A4 /* PowerIcon.png */; };
 		9A8605D91BEC155B00A810A4 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D01BEC155B00A810A4 /* Status.png */; };
 		9A8605DA1BEC155B00A810A4 /* Status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D11BEC155B00A810A4 /* Status@2x.png */; };
 		9A8605DB1BEC155B00A810A4 /* StatusHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D21BEC155B00A810A4 /* StatusHighlighted.png */; };
 		9A8605DC1BEC155B00A810A4 /* StatusHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605D31BEC155B00A810A4 /* StatusHighlighted@2x.png */; };
-		9A8605DF1BEC15C400A810A4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A8605DD1BEC15C400A810A4 /* MainMenu.xib */; };
 		9AB935781C1AD79D001285A0 /* ClockerIcon-16.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB935771C1AD79D001285A0 /* ClockerIcon-16.png */; };
 		9AB9357B1C1AD8F7001285A0 /* CLRatingCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9357A1C1AD8F7001285A0 /* CLRatingCellView.m */; };
-		9ABA38AC1BFAD7F80073EA4D /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ABA38AE1BFAD7F80073EA4D /* Panel.xib */; };
-		9ABA38AF1BFAD83F0073EA4D /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ABA38B11BFAD83F0073EA4D /* PreferencesWindow.xib */; };
 		9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */; };
 		9AD232741C1B96A700D1D446 /* ClockerIcon-256.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD232731C1B96A700D1D446 /* ClockerIcon-256.png */; };
-		9AD232781C1B985700D1D446 /* CLAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD232761C1B985700D1D446 /* CLAboutWindowController.m */; };
-		9AD232791C1B985700D1D446 /* CLAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AD232771C1B985700D1D446 /* CLAboutWindow.xib */; };
 		9AD2327B1C1B995900D1D446 /* Vector.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2327A1C1B995900D1D446 /* Vector.jpg */; };
 		9AD2327D1C1B9A9000D1D446 /* aboutTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2327C1C1B9A9000D1D446 /* aboutTemplate.png */; };
 		9AD2327F1C1BA04800D1D446 /* FB-FindUsonFacebook-online-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2327E1C1BA04800D1D446 /* FB-FindUsonFacebook-online-144.png */; };
-		9AD232821C1BDA3A00D1D446 /* CommonStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD232811C1BDA3A00D1D446 /* CommonStrings.m */; };
 		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9A2000CC1BFBD3D7002BFDE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Clocker/Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		9A2000CD1BFBD3D7002BFDE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Panel.xib; sourceTree = "<group>"; };
-		9A2000CE1BFBD3D7002BFDE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
-		9A2000D01BFBD472002BFDE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Clocker/en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9A2000D21BFBD47C002BFDE8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Clocker/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9A25F7411C1A5E17007D369B /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iRate.h; path = "Clocker/Rate App/iRate.h"; sourceTree = "<group>"; };
 		9A25F7421C1A5E17007D369B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Clocker/Rate App/Info.plist"; sourceTree = "<group>"; };
 		9A25F7431C1A5E17007D369B /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = iRate.bundle; path = "Clocker/Rate App/iRate.bundle"; sourceTree = "<group>"; };
 		9A25F7441C1A5E17007D369B /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iRate.m; path = "Clocker/Rate App/iRate.m"; sourceTree = "<group>"; };
-		9A25F7491C1A672A007D369B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = Clocker/ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9A25F74A1C1A672A007D369B /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = Clocker/ja.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		9A25F74B1C1A672A007D369B /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/Panel.xib; sourceTree = "<group>"; };
-		9A25F74C1C1A672A007D369B /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
-		9A25F74D1C1A6C08007D369B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Clocker/de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9A25F74E1C1A6C08007D369B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = Clocker/de.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		9A25F74F1C1A6C08007D369B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/Panel.xib; sourceTree = "<group>"; };
-		9A25F7501C1A6C08007D369B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
+		9A392EE51C1CDD530072C10A /* CLAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAboutUsViewController.h; path = Clocker/AboutUsWindow/CLAboutUsViewController.h; sourceTree = "<group>"; };
+		9A392EE61C1CDD530072C10A /* CLAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAboutUsViewController.m; path = Clocker/AboutUsWindow/CLAboutUsViewController.m; sourceTree = "<group>"; };
+		9A392EE71C1CDD530072C10A /* CLAboutUsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLAboutUsView.xib; path = Clocker/AboutUsWindow/CLAboutUsView.xib; sourceTree = "<group>"; };
+		9A392EEA1C1CE9950072C10A /* CLPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLPreferencesViewController.h; path = Clocker/Preferences/CLPreferencesViewController.h; sourceTree = "<group>"; };
+		9A392EEB1C1CE9950072C10A /* CLPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLPreferencesViewController.m; path = Clocker/Preferences/CLPreferencesViewController.m; sourceTree = "<group>"; };
+		9A392EEC1C1CE9950072C10A /* CLPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLPreferencesView.xib; path = Clocker/Preferences/CLPreferencesView.xib; sourceTree = "<group>"; };
 		9A4379211BEC223900F4E27F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Security.framework; sourceTree = "<group>"; };
 		9A4379221BEC223900F4E27F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SystemConfiguration.framework; sourceTree = "<group>"; };
 		9A4379231BEC223900F4E27F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		9A4379241BEC223900F4E27F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		9A4379291BEC230A00F4E27F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		9A43792B1BEC231100F4E27F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9A43792D1BEC256200F4E27F /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		9A56DB7D1C1CFB73004CE6AF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Clocker/MainMenu.xib; sourceTree = "<group>"; };
+		9A56DB7E1C1CFB73004CE6AF /* Panel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Panel.xib; path = Clocker/Panel.xib; sourceTree = "<group>"; };
+		9A5951B91C1D0A22009C17AA /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Frameworks/Crashlytics.framework; sourceTree = "<group>"; };
+		9A5951BB1C1D0A8D009C17AA /* CommonStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommonStrings.m; path = Clocker/Utilities/CommonStrings.m; sourceTree = "<group>"; };
+		9A5951BC1C1D0A8D009C17AA /* CommonStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonStrings.h; path = Clocker/Utilities/CommonStrings.h; sourceTree = "<group>"; };
+		9A5951BE1C1D0AA0009C17AA /* CLOneWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLOneWindowController.m; path = Clocker/CLOneWindow/CLOneWindowController.m; sourceTree = "<group>"; };
+		9A5951BF1C1D0AA0009C17AA /* CLOneWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLOneWindowController.h; path = Clocker/CLOneWindow/CLOneWindowController.h; sourceTree = "<group>"; };
+		9A5951C11C1D0AAD009C17AA /* CLOneWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLOneWindow.xib; path = Clocker/CLOneWindow/CLOneWindow.xib; sourceTree = "<group>"; };
 		9A5B1A8D1BECDFB700A77C68 /* Clocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Clocker.entitlements; path = Clocker/Clocker.entitlements; sourceTree = "<group>"; };
-		9A825E3B1C064F6C0037CA3B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Clocker/en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		9A825E3C1C064F700037CA3B /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Clocker/fr.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		9A825E3D1C06534E0037CA3B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
-		9A825E3F1C06538B0037CA3B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Panel.xib; sourceTree = "<group>"; };
 		9A8605AD1BEC148400A810A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Clocker/main.m; sourceTree = "<group>"; };
 		9A8605B21BEC14A600A810A4 /* ColoredButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ColoredButton.m; path = Clocker/ColoredButton.m; sourceTree = "<group>"; };
 		9A8605B41BEC14BE00A810A4 /* MenubarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MenubarController.m; path = Clocker/MenubarController.m; sourceTree = "<group>"; };
@@ -86,12 +83,10 @@
 		9A8605B91BEC14DC00A810A4 /* PanelController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PanelController.m; path = Clocker/PanelController.m; sourceTree = "<group>"; };
 		9A8605BC1BEC14F600A810A4 /* BackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BackgroundView.m; path = Clocker/BackgroundView.m; sourceTree = "<group>"; };
 		9A8605BD1BEC14F600A810A4 /* Panel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Panel.m; path = Clocker/Panel.m; sourceTree = "<group>"; };
-		9A8605BE1BEC14F600A810A4 /* PreferencesWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PreferencesWindowController.m; path = Clocker/PreferencesWindowController.m; sourceTree = "<group>"; };
 		9A8605C31BEC155B00A810A4 /* Clocker-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Clocker-Info.plist"; path = "Clocker/Clocker-Info.plist"; sourceTree = "<group>"; };
 		9A8605C41BEC155B00A810A4 /* BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BackgroundView.h; path = Clocker/BackgroundView.h; sourceTree = "<group>"; };
 		9A8605C51BEC155B00A810A4 /* StatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusItemView.h; path = Clocker/StatusItemView.h; sourceTree = "<group>"; };
 		9A8605C61BEC155B00A810A4 /* Panel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Panel.h; path = Clocker/Panel.h; sourceTree = "<group>"; };
-		9A8605C71BEC155B00A810A4 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesWindowController.h; path = Clocker/PreferencesWindowController.h; sourceTree = "<group>"; };
 		9A8605C81BEC155B00A810A4 /* PanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PanelController.h; path = Clocker/PanelController.h; sourceTree = "<group>"; };
 		9A8605C91BEC155B00A810A4 /* MenubarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenubarController.h; path = Clocker/MenubarController.h; sourceTree = "<group>"; };
 		9A8605CA1BEC155B00A810A4 /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationDelegate.h; path = Clocker/ApplicationDelegate.h; sourceTree = "<group>"; };
@@ -105,18 +100,11 @@
 		9AB935771C1AD79D001285A0 /* ClockerIcon-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ClockerIcon-16.png"; path = "Icons/ClockerIcon-16.png"; sourceTree = "<group>"; };
 		9AB935791C1AD8F7001285A0 /* CLRatingCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLRatingCellView.h; path = Clocker/CLRatingCellView.h; sourceTree = "<group>"; };
 		9AB9357A1C1AD8F7001285A0 /* CLRatingCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLRatingCellView.m; path = Clocker/CLRatingCellView.m; sourceTree = "<group>"; };
-		9ABA38B31BFAD8520073EA4D /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/Panel.xib; sourceTree = "<group>"; };
-		9ABA38B41BFAD8520073EA4D /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
 		9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9AD232731C1B96A700D1D446 /* ClockerIcon-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ClockerIcon-256.png"; path = "Icons/ClockerIcon-256.png"; sourceTree = "<group>"; };
-		9AD232751C1B985700D1D446 /* CLAboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAboutWindowController.h; path = Clocker/AboutUsWindow/CLAboutWindowController.h; sourceTree = "<group>"; };
-		9AD232761C1B985700D1D446 /* CLAboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAboutWindowController.m; path = Clocker/AboutUsWindow/CLAboutWindowController.m; sourceTree = "<group>"; };
-		9AD232771C1B985700D1D446 /* CLAboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLAboutWindow.xib; path = Clocker/AboutUsWindow/CLAboutWindow.xib; sourceTree = "<group>"; };
 		9AD2327A1C1B995900D1D446 /* Vector.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Vector.jpg; path = ../Vector.jpg; sourceTree = "<group>"; };
 		9AD2327C1C1B9A9000D1D446 /* aboutTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aboutTemplate.png; path = ../../../Downloads/aboutTemplate.png; sourceTree = "<group>"; };
 		9AD2327E1C1BA04800D1D446 /* FB-FindUsonFacebook-online-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FB-FindUsonFacebook-online-144.png"; path = "../../../Downloads/logos-and-badges_find-us_online/png/FB-FindUsonFacebook-online-144.png"; sourceTree = "<group>"; };
-		9AD232801C1BDA3A00D1D446 /* CommonStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonStrings.h; path = Clocker/CommonStrings.h; sourceTree = "<group>"; };
-		9AD232811C1BDA3A00D1D446 /* CommonStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommonStrings.m; path = Clocker/CommonStrings.m; sourceTree = "<group>"; };
 		DD4F7C0413C30F9F00825C6E /* Clocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4F7C0813C30F9F00825C6E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DD4F7C0B13C30F9F00825C6E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -131,9 +119,9 @@
 			files = (
 				9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */,
 				9A43792C1BEC231100F4E27F /* libz.tbd in Frameworks */,
+				9A5951BA1C1D0A22009C17AA /* Crashlytics.framework in Frameworks */,
 				9A43792A1BEC230A00F4E27F /* libc++.tbd in Frameworks */,
 				9A4379251BEC223900F4E27F /* Security.framework in Frameworks */,
-				9A4379281BEC223900F4E27F /* Crashlytics.framework in Frameworks */,
 				9A4379261BEC223900F4E27F /* SystemConfiguration.framework in Frameworks */,
 				DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */,
 				9A4379271BEC223900F4E27F /* Fabric.framework in Frameworks */,
@@ -143,14 +131,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9A2000C61BFBCEF6002BFDE8 /* Localization Strings */ = {
+		9A2000C61BFBCEF6002BFDE8 /* Utilties */ = {
 			isa = PBXGroup;
 			children = (
-				9A2000CF1BFBD472002BFDE8 /* Localizable.strings */,
-				9AD232801C1BDA3A00D1D446 /* CommonStrings.h */,
-				9AD232811C1BDA3A00D1D446 /* CommonStrings.m */,
+				9A5951BB1C1D0A8D009C17AA /* CommonStrings.m */,
+				9A5951BC1C1D0A8D009C17AA /* CommonStrings.h */,
 			);
-			name = "Localization Strings";
+			name = Utilties;
 			sourceTree = "<group>";
 		};
 		9A25F7481C1A5E21007D369B /* Rate */ = {
@@ -164,13 +151,25 @@
 			name = Rate;
 			sourceTree = "<group>";
 		};
+		9A5951C31C1D0DE3009C17AA /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9A392EE51C1CDD530072C10A /* CLAboutUsViewController.h */,
+				9A392EE61C1CDD530072C10A /* CLAboutUsViewController.m */,
+				9A392EEA1C1CE9950072C10A /* CLPreferencesViewController.h */,
+				9A392EEB1C1CE9950072C10A /* CLPreferencesViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		9A8605E01BEC15F400A810A4 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
-				9A8605DD1BEC15C400A810A4 /* MainMenu.xib */,
-				9ABA38AE1BFAD7F80073EA4D /* Panel.xib */,
-				9ABA38B11BFAD83F0073EA4D /* PreferencesWindow.xib */,
-				9AD232771C1B985700D1D446 /* CLAboutWindow.xib */,
+				9A5951C11C1D0AAD009C17AA /* CLOneWindow.xib */,
+				9A56DB7D1C1CFB73004CE6AF /* MainMenu.xib */,
+				9A56DB7E1C1CFB73004CE6AF /* Panel.xib */,
+				9A392EE71C1CDD530072C10A /* CLAboutUsView.xib */,
+				9A392EEC1C1CE9950072C10A /* CLPreferencesView.xib */,
 			);
 			name = XIB;
 			sourceTree = "<group>";
@@ -178,6 +177,7 @@
 		9A8605E11BEC160700A810A4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9A8605E31BEC163100A810A4 /* Views */,
 				9AD2327E1C1BA04800D1D446 /* FB-FindUsonFacebook-online-144.png */,
 				9AD2327C1C1B9A9000D1D446 /* aboutTemplate.png */,
 				9AD2327A1C1B995900D1D446 /* Vector.jpg */,
@@ -229,16 +229,14 @@
 		9A8605E51BEC165400A810A4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9AD232751C1B985700D1D446 /* CLAboutWindowController.h */,
-				9AD232761C1B985700D1D446 /* CLAboutWindowController.m */,
+				9A5951BE1C1D0AA0009C17AA /* CLOneWindowController.m */,
+				9A5951BF1C1D0AA0009C17AA /* CLOneWindowController.h */,
 				9A8605CA1BEC155B00A810A4 /* ApplicationDelegate.h */,
 				9A8605B51BEC14BE00A810A4 /* ApplicationDelegate.m */,
 				9A8605C91BEC155B00A810A4 /* MenubarController.h */,
 				9A8605B41BEC14BE00A810A4 /* MenubarController.m */,
 				9A8605C81BEC155B00A810A4 /* PanelController.h */,
 				9A8605B91BEC14DC00A810A4 /* PanelController.m */,
-				9A8605C71BEC155B00A810A4 /* PreferencesWindowController.h */,
-				9A8605BE1BEC14F600A810A4 /* PreferencesWindowController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -248,11 +246,11 @@
 			children = (
 				9A5B1A8D1BECDFB700A77C68 /* Clocker.entitlements */,
 				9A43792D1BEC256200F4E27F /* Media.xcassets */,
-				9A2000C61BFBCEF6002BFDE8 /* Localization Strings */,
+				9A2000C61BFBCEF6002BFDE8 /* Utilties */,
 				9A8605E01BEC15F400A810A4 /* XIB */,
 				9A8605E11BEC160700A810A4 /* Images */,
 				9A8605E41BEC164C00A810A4 /* Main */,
-				9A8605E31BEC163100A810A4 /* Views */,
+				9A5951C31C1D0DE3009C17AA /* View Controllers */,
 				9A8605E51BEC165400A810A4 /* Controllers */,
 				9A8605E21BEC161300A810A4 /* Superclass */,
 				DD4F7C0713C30F9F00825C6E /* Frameworks */,
@@ -272,11 +270,11 @@
 		DD4F7C0713C30F9F00825C6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A5951B91C1D0A22009C17AA /* Crashlytics.framework */,
 				9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */,
 				9A4379211BEC223900F4E27F /* Security.framework */,
 				9A4379221BEC223900F4E27F /* SystemConfiguration.framework */,
 				9A4379231BEC223900F4E27F /* Fabric.framework */,
-				9A4379241BEC223900F4E27F /* Crashlytics.framework */,
 				9A43792B1BEC231100F4E27F /* libz.tbd */,
 				9A4379291BEC230A00F4E27F /* libc++.tbd */,
 				DD4F7C0B13C30F9F00825C6E /* AppKit.framework */,
@@ -314,6 +312,7 @@
 		DD4F7BFB13C30F9F00825C6E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = CL;
 				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					DD4F7C0313C30F9F00825C6E = {
@@ -330,13 +329,6 @@
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				fr,
-				Base,
-				ja,
-				de,
-			);
 			mainGroup = DD4F7BF913C30F9F00825C6E;
 			productRefGroup = DD4F7C0513C30F9F00825C6E /* Products */;
 			projectDirPath = "";
@@ -352,24 +344,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A392EEE1C1CE9950072C10A /* CLPreferencesView.xib in Resources */,
 				9AD2327F1C1BA04800D1D446 /* FB-FindUsonFacebook-online-144.png in Resources */,
-				9ABA38AF1BFAD83F0073EA4D /* PreferencesWindow.xib in Resources */,
-				9A8605DF1BEC15C400A810A4 /* MainMenu.xib in Resources */,
+				9A56DB811C1CFB73004CE6AF /* Panel.xib in Resources */,
 				9A8605D91BEC155B00A810A4 /* Status.png in Resources */,
-				9ABA38AC1BFAD7F80073EA4D /* Panel.xib in Resources */,
 				9A43792E1BEC256200F4E27F /* Media.xcassets in Resources */,
 				9AB935781C1AD79D001285A0 /* ClockerIcon-16.png in Resources */,
 				9AD232741C1B96A700D1D446 /* ClockerIcon-256.png in Resources */,
 				9A25F7461C1A5E17007D369B /* iRate.bundle in Resources */,
-				9A2000D11BFBD472002BFDE8 /* Localizable.strings in Resources */,
-				9AD232791C1B985700D1D446 /* CLAboutWindow.xib in Resources */,
 				9A8605DC1BEC155B00A810A4 /* StatusHighlighted@2x.png in Resources */,
 				9A8605DA1BEC155B00A810A4 /* Status@2x.png in Resources */,
 				9AD2327B1C1B995900D1D446 /* Vector.jpg in Resources */,
 				9A25F7451C1A5E17007D369B /* Info.plist in Resources */,
+				9A392EE91C1CDD530072C10A /* CLAboutUsView.xib in Resources */,
 				9AD2327D1C1B9A9000D1D446 /* aboutTemplate.png in Resources */,
 				9A8605DB1BEC155B00A810A4 /* StatusHighlighted.png in Resources */,
+				9A5951C21C1D0AAD009C17AA /* CLOneWindow.xib in Resources */,
 				9A8605D81BEC155B00A810A4 /* PowerIcon.png in Resources */,
+				9A56DB801C1CFB73004CE6AF /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,12 +374,14 @@
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/myfile",
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 94088f95c41979e8019b67d5795f52bbbe7104d4 2a8a3a4356dd9c0f768dd23e8ef4e862faeffab4c2de8e7868d56edb8f3b7fa3";
+			shellScript = "";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -398,73 +392,22 @@
 			files = (
 				9A8605BF1BEC14F600A810A4 /* BackgroundView.m in Sources */,
 				9AB9357B1C1AD8F7001285A0 /* CLRatingCellView.m in Sources */,
+				9A392EED1C1CE9950072C10A /* CLPreferencesViewController.m in Sources */,
+				9A5951BD1C1D0A8D009C17AA /* CommonStrings.m in Sources */,
 				9A25F7471C1A5E17007D369B /* iRate.m in Sources */,
-				9AD232821C1BDA3A00D1D446 /* CommonStrings.m in Sources */,
 				9A8605C01BEC14F600A810A4 /* Panel.m in Sources */,
-				9A8605C11BEC14F600A810A4 /* PreferencesWindowController.m in Sources */,
 				9A8605BA1BEC14DC00A810A4 /* StatusItemView.m in Sources */,
-				9AD232781C1B985700D1D446 /* CLAboutWindowController.m in Sources */,
 				9A8605BB1BEC14DC00A810A4 /* PanelController.m in Sources */,
 				9A8605B61BEC14BE00A810A4 /* MenubarController.m in Sources */,
+				9A5951C01C1D0AA0009C17AA /* CLOneWindowController.m in Sources */,
 				9A8605B71BEC14BE00A810A4 /* ApplicationDelegate.m in Sources */,
 				9A8605B31BEC14A600A810A4 /* ColoredButton.m in Sources */,
 				9A8605AE1BEC148400A810A4 /* main.m in Sources */,
+				9A392EE81C1CDD530072C10A /* CLAboutUsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		9A2000CF1BFBD472002BFDE8 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9A2000D01BFBD472002BFDE8 /* en */,
-				9A2000D21BFBD47C002BFDE8 /* fr */,
-				9A25F7491C1A672A007D369B /* ja */,
-				9A25F74D1C1A6C08007D369B /* de */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		9A8605DD1BEC15C400A810A4 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9A2000CC1BFBD3D7002BFDE8 /* Base */,
-				9A825E3B1C064F6C0037CA3B /* en */,
-				9A825E3C1C064F700037CA3B /* fr */,
-				9A25F74A1C1A672A007D369B /* ja */,
-				9A25F74E1C1A6C08007D369B /* de */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		9ABA38AE1BFAD7F80073EA4D /* Panel.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9ABA38B31BFAD8520073EA4D /* fr */,
-				9A2000CD1BFBD3D7002BFDE8 /* Base */,
-				9A825E3F1C06538B0037CA3B /* en */,
-				9A25F74B1C1A672A007D369B /* ja */,
-				9A25F74F1C1A6C08007D369B /* de */,
-			);
-			name = Panel.xib;
-			path = Clocker;
-			sourceTree = "<group>";
-		};
-		9ABA38B11BFAD83F0073EA4D /* PreferencesWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9ABA38B41BFAD8520073EA4D /* fr */,
-				9A2000CE1BFBD3D7002BFDE8 /* Base */,
-				9A825E3D1C06534E0037CA3B /* en */,
-				9A25F74C1C1A672A007D369B /* ja */,
-				9A25F7501C1A6C08007D369B /* de */,
-			);
-			name = PreferencesWindow.xib;
-			path = Clocker;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		9A5B1A8B1BECDB5B00A77C68 /* Distribution */ = {
@@ -510,6 +453,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";
@@ -606,6 +550,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";
@@ -629,6 +574,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";

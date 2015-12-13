@@ -28,7 +28,7 @@
 
 #import "BackgroundView.h"
 #import "StatusItemView.h"
-#import "PreferencesWindowController.h"
+#import "CLOneWindowController.h"
 
 @class PanelController;
 
@@ -52,7 +52,7 @@
 }
 
 @property (nonatomic, unsafe_unretained) IBOutlet BackgroundView *backgroundView;
-@property (nonatomic, strong) PreferencesWindowController *preferencesWindow;
+@property (nonatomic, strong) CLOneWindowController *oneWindow;
 @property (nonatomic, strong) NSMutableArray *defaultPreferences;
 
 @property (nonatomic) BOOL hasActivePanel;
