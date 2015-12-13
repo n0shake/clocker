@@ -204,7 +204,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="IxM-FF-J1F"/>
                         </constraints>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" placeholderString="Clocker" drawsBackground="YES" id="KVB-OA-XfT">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" placeholderString="Clocker" drawsBackground="YES" id="KVB-OA-XfT">
                             <font key="font" size="17" name="Palatino-Bold"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
