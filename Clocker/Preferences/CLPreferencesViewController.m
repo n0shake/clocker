@@ -24,10 +24,10 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
 
 @property (weak) IBOutlet NSTableView *timezoneTableView;
 @property (strong) IBOutlet Panel *timezonePanel;
-
+@property (weak) IBOutlet NSPopUpButton *themePopUp;
+@property (weak) IBOutlet NSPopUpButton *fontPopUp;
 @property (weak) IBOutlet NSTableView *availableTimezoneTableView;
 @property (weak) IBOutlet NSSearchField *searchField;
-
 @property (weak) IBOutlet NSButton *is24HourFormatSelected;
 @property (weak) IBOutlet NSTextField *messageLabel;
 
@@ -52,7 +52,6 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     if (!self.timeZoneArray)
     {
         self.timeZoneArray = [[NSMutableArray alloc] initWithArray:[NSTimeZone knownTimeZoneNames]];
-        
         self.filteredArray = [[NSArray alloc] init];
     }
     
@@ -62,9 +61,33 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     
     //Register for drag and drop
     [self.timezoneTableView registerForDraggedTypes: [NSArray arrayWithObject: CLDragSessionKey]];
+    
+    NSMutableSet *sampleArray = [[NSMutableSet alloc] init];
+    
+    NSFontCollection *fontCollection = [NSFontCollection fontCollectionWithName:@"com.apple.UserFonts"];
+    
+    for (NSFontDescriptor *descriptor in fontCollection.matchingDescriptors) {
+        if ([descriptor objectForKey:@"NSFontFamilyAttribute"]) {
+            if (![sampleArray containsObject:[descriptor objectForKey:@"NSFontFamilyAttribute"]]) {
+                [sampleArray addObject:[descriptor objectForKey:@"NSFontFamilyAttribute"]];
+            }
+        }
+    }
+    
+    if ([sampleArray containsObject:@"Apple Chancery"]) {
+        [sampleArray removeObject:@"Apple Chancery"];
+        [sampleArray removeObject:@"Zapfino"];
+        [sampleArray removeObject:@"Trattatello"];
+        [sampleArray removeObject:@"Noteworthy"];
+        
+    }
+    
+    self.fontFamilies = [[NSArray alloc] initWithArray:sampleArray.allObjects];
 
     // Do view setup here.
 }
+
+
 
 -(void)dealloc
 {
@@ -406,5 +429,33 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
         }
     }
 }
+
+- (IBAction)changeTheme:(id)sender {
+}
+
+- (IBAction)changeFont:(id)sender
+{
+    ApplicationDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+    PanelController *panelController = appDelegate.panelController;
+    
+    
+}
+
+- (IBAction)changeTransparency:(id)sender
+{
+    ApplicationDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+    PanelController *panelController = appDelegate.panelController;
+    NSSlider *slider = (NSSlider *)sender;
+    
+    if (![panelController.window isVisible])
+    {
+        [panelController openPanel];
+    }
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:0.10];
+    [[panelController.window animator] setAlphaValue:slider.floatValue/100];
+    [NSAnimationContext endGrouping];
+}
+
 
 @end

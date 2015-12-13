@@ -45,7 +45,6 @@ static CLOneWindowController *sharedWindow = nil;
 
 - (IBAction)openPreferences:(id)sender
 {
-
     self.preferencesView = [[CLPreferencesViewController alloc] initWithNibName:@"CLPreferencesView" bundle:nil];
     [self setWindowWithContentView:self.preferencesView.view];
     [self.aboutUsView.view removeFromSuperview];
@@ -60,11 +59,11 @@ static CLOneWindowController *sharedWindow = nil;
 
 - (IBAction)openAboutUsView:(id)sender
 {
-    [self.preferencesView.view removeFromSuperview];
-    self.preferencesView = nil;
     self.aboutUsView = [[CLAboutUsViewController alloc] initWithNibName:@"CLAboutUsView" bundle:nil];
     [self setWindowWithContentView:self.aboutUsView.view];
-
+    [self.preferencesView.view removeFromSuperview];
+    self.preferencesView = nil;
 }
+
 
 @end

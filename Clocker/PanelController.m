@@ -274,10 +274,15 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
         CLRatingCellView *cellView = [self.mainTableview makeViewWithIdentifier:CLRatingCellViewIdentifier owner:self];
         return cellView;
     }
-
     
     CLTimezoneCellView *cell = [tableView makeViewWithIdentifier:CLTimezoneCellViewIdentifier owner:self];
-
+    
+    NSString *fontFamily = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultFontFamily"];
+    
+    if (fontFamily.length > 0)
+    {
+        [cell updateFontFamilyWithFontName:fontFamily andCell:cell];
+    }
     
     cell.relativeDate.stringValue = [self getDateForTimeZone:self.defaultPreferences[row][CLTimezoneName]];
     

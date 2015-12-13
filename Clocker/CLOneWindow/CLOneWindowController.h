@@ -12,12 +12,6 @@
 
 @interface CLOneWindowController : NSWindowController
 
-typedef enum : NSUInteger {
-    GeneralPane,
-    AppearancePane,
-    AboutUsPane
-}PaneSelection;
-
 @property (strong, nonatomic) CLPreferencesViewController *preferencesView;
 @property (strong, nonatomic) CLAboutUsViewController *aboutUsView;
 

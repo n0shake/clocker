@@ -45,4 +45,11 @@
     }
 }
 
+- (void)updateFontFamilyWithFontName:(NSString *)fontName andCell:(CLTimezoneCellView*)cell
+{
+    cell.relativeDate.font = [NSFont fontWithName:fontName size:13];
+    cell.customName.font = [NSFont fontWithName:fontName size:15];
+    cell.time.font = [NSFont fontWithName:fontName size:31];
+}
+
 @end

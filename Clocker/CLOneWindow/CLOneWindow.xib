@@ -27,7 +27,6 @@
                             <action selector="openPreferences:" target="-2" id="rJI-gB-Gcb"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="3BF08920-522C-482A-93B1-0425F8C1FBA3" label="Appearance" paletteLabel="Appearance" tag="-1" image="NSComputer" autovalidates="NO" id="hOs-51-YmZ"/>
                     <toolbarItem implicitItemIdentifier="B5E58161-D319-4490-AD3C-CED0C67FD50E" label="Appearance" paletteLabel="About Us" tag="-1" image="NSInfo" autovalidates="NO" id="ti4-MJ-8Xu">
                         <connections>
                             <action selector="openAboutUsView:" target="-2" id="Aec-lN-CqR"/>
@@ -36,7 +35,6 @@
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="Khj-zc-D5t"/>
-                    <toolbarItem reference="hOs-51-YmZ"/>
                     <toolbarItem reference="ti4-MJ-8Xu"/>
                 </defaultToolbarItems>
             </toolbar>
@@ -47,7 +45,6 @@
         </window>
     </objects>
     <resources>
-        <image name="NSComputer" width="32" height="32"/>
         <image name="NSHomeTemplate" width="14" height="14"/>
         <image name="NSInfo" width="32" height="32"/>
     </resources>

@@ -56,7 +56,6 @@
 @property (nonatomic, strong) NSMutableArray *defaultPreferences;
 
 @property (nonatomic) BOOL hasActivePanel;
-@property (nonatomic) NSInteger previousSelectedRow; //for color changes on row selection
 
 @property (nonatomic, unsafe_unretained, readonly) id<PanelControllerDelegate> delegate;
 @property (weak) IBOutlet NSTableView *mainTableview;

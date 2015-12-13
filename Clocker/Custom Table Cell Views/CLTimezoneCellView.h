@@ -14,5 +14,6 @@
 @property (weak) IBOutlet NSTextField *relativeDate;
 @property (weak) IBOutlet NSTextField *time;
 @property (nonatomic) NSInteger rowNumber;
+- (void)updateFontFamilyWithFontName:(NSString *)fontName andCell:(CLTimezoneCellView*)cell;
 
 @end
