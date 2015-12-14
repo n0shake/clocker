@@ -31,6 +31,7 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
 @property (weak) IBOutlet NSButton *is24HourFormatSelected;
 @property (weak) IBOutlet NSTextField *messageLabel;
 
+@property (weak) IBOutlet NSSlider *transparencySlider;
 @end
 
 @implementation CLPreferencesViewController
@@ -77,7 +78,7 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     //Certain fonts don't look good with constraints set
     
     NSArray *fontsToRemove = [NSArray arrayWithObjects:@"Apple Chancery", @"Zapfino",
-                              @"Trattatello", @"Noteworthy", @"Arial Black", @"Chalkduster",@"Monoid",   nil];
+                              @"Trattatello", @"Noteworthy", @"Arial Black", @"Chalkduster",@"Monoid", @"Andale Mono", @"Courier" ,@"Courier New",@"Geneva",@"Menlo", @"Monaco",@"PT Mono", @"Verdana", nil];
     for (NSString *font in fontsToRemove) {
         if([availableFonts containsObject:font])
         {
@@ -449,29 +450,21 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     PanelController *panelController = appDelegate.panelController;
     [panelController.backgroundView setNeedsDisplay:YES];
     
+    
     if ([[popUpButtonTitle titleOfSelectedItem] isEqualToString:@"Black"]) {
         panelController.shutdownButton.image = [NSImage imageNamed:@"PowerIcon-White"];
+        panelController.preferencesButton.image = [NSImage imageNamed:@"Settings-White"];
     }
     else
     {
         panelController.shutdownButton.image = [NSImage imageNamed:@"PowerIcon"];
+        panelController.preferencesButton.image = [NSImage imageNamed:NSImageNameActionTemplate];
     }
     
     [panelController.mainTableview reloadData];
     
 }
 
-- (IBAction)changeTransparency:(id)sender
-{
-    ApplicationDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-    PanelController *panelController = appDelegate.panelController;
-    NSSlider *slider = (NSSlider *)sender;
-    
-    [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:0.10];
-    [[panelController.window animator] setAlphaValue:slider.floatValue/100];
-    [NSAnimationContext endGrouping];
-}
 
 
 @end

@@ -86,12 +86,12 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="101" translatesAutoresizingMaskIntoConstraints="NO" id="vnv-J2-7r1">
-                                                            <rect key="frame" x="139" y="12" width="141" height="40"/>
+                                                            <rect key="frame" x="139" y="12" width="134" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="3WU-de-OQL"/>
-                                                                <constraint firstAttribute="width" constant="137" id="cQV-gJ-zMz"/>
+                                                                <constraint firstAttribute="width" constant="130" id="cQV-gJ-zMz"/>
                                                             </constraints>
-                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" placeholderString="23:46 AM" id="g8s-EU-UHx">
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" placeholderString="23:46 AM" id="g8s-EU-UHx">
                                                                 <font key="font" size="27" name="Helvetica-Light"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -104,7 +104,7 @@
                                                         <constraint firstItem="vnv-J2-7r1" firstAttribute="centerY" secondItem="qbN-ba-fho" secondAttribute="centerY" constant="-2" id="TuQ-gE-ZUh"/>
                                                         <constraint firstItem="QUd-7D-q14" firstAttribute="top" secondItem="etF-33-bCB" secondAttribute="bottom" constant="-5" id="VO6-Zn-eA3"/>
                                                         <constraint firstItem="etF-33-bCB" firstAttribute="leading" secondItem="qbN-ba-fho" secondAttribute="leading" constant="10" id="ueW-ow-ZRq"/>
-                                                        <constraint firstAttribute="trailing" secondItem="vnv-J2-7r1" secondAttribute="trailing" constant="1" id="zXo-eA-0bQ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="vnv-J2-7r1" secondAttribute="trailing" constant="8" id="zXo-eA-0bQ"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="customName" destination="etF-33-bCB" id="6Yz-qc-WmD"/>

@@ -82,6 +82,17 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     [self updateDefaultPreferences];
     
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"defaultTheme"] isEqualToString:@"Black"]) {
+        self.shutdownButton.image = [NSImage imageNamed:@"PowerIcon-White"];
+        self.preferencesButton.image = [NSImage imageNamed:@"Settings-White"];
+    }
+    else
+    {
+        self.shutdownButton.image = [NSImage imageNamed:@"PowerIcon"];
+        self.preferencesButton.image = [NSImage imageNamed:NSImageNameActionTemplate];
+    }
+    
+    [self updateDefaultPreferences];
     self.mainTableview.selectionHighlightStyle = NSTableViewSelectionHighlightStyleNone;
     
     // Make a fully skinned panel
@@ -273,6 +284,10 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     if (self.showReviewCell && row == self.defaultPreferences.count) {
         CLRatingCellView *cellView = [self.mainTableview makeViewWithIdentifier:CLRatingCellViewIdentifier owner:self];
         return cellView;
+    }
+    
+    if (row == self.defaultPreferences.count) {
+        [self updateWindowTransparency];
     }
     
     CLTimezoneCellView *cell = [tableView makeViewWithIdentifier:CLTimezoneCellViewIdentifier owner:self];

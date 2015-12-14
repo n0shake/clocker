@@ -73,5 +73,6 @@
 - (void)closePanel;
 - (void)updateDefaultPreferences;
 - (void)showOptions:(BOOL)value;
+- (void)updateWindowTransparency;
 
 @end

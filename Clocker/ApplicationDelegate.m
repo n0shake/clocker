@@ -112,7 +112,6 @@ void *kContextActivePanel = &kContextActivePanel;
         [[NSUserDefaults standardUserDefaults] setObject:@"Default" forKey:@"defaultTheme"];
     }
 
-    
     // Install icon into the menu bar
     self.menubarController = [[MenubarController alloc] init];
     
