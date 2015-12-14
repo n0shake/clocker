@@ -11,6 +11,7 @@
                 <outlet property="preferencesButton" destination="OFy-u1-TnH" id="SId-Ih-ssT"/>
                 <outlet property="scrollViewHeight" destination="QcT-N0-G4s" id="EHr-Co-L0Z"/>
                 <outlet property="shutdownButton" destination="nTt-pf-Hw2" id="gCK-0D-gnK"/>
+                <outlet property="titleField" destination="HR1-ZK-Ey0" id="L0G-91-jZx"/>
                 <outlet property="window" destination="5" id="7"/>
             </connections>
         </customObject>
@@ -58,9 +59,9 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="100" translatesAutoresizingMaskIntoConstraints="NO" id="etF-33-bCB">
-                                                            <rect key="frame" x="8" y="29" width="179" height="23"/>
+                                                            <rect key="frame" x="8" y="29" width="134" height="23"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="175" id="32b-h6-joo"/>
+                                                                <constraint firstAttribute="width" constant="130" id="32b-h6-joo"/>
                                                                 <constraint firstAttribute="height" constant="23" id="vod-YN-iNX"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" placeholderString="Timezone Name" id="rnh-AP-ooc">
@@ -85,13 +86,13 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="101" translatesAutoresizingMaskIntoConstraints="NO" id="vnv-J2-7r1">
-                                                            <rect key="frame" x="169" y="8" width="104" height="45"/>
+                                                            <rect key="frame" x="139" y="12" width="141" height="40"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="45" id="3WU-de-OQL"/>
-                                                                <constraint firstAttribute="width" constant="100" id="cQV-gJ-zMz"/>
+                                                                <constraint firstAttribute="height" constant="40" id="3WU-de-OQL"/>
+                                                                <constraint firstAttribute="width" constant="137" id="cQV-gJ-zMz"/>
                                                             </constraints>
-                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" placeholderString="23:46" id="g8s-EU-UHx">
-                                                                <font key="font" size="31" name="Helvetica-Light"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" placeholderString="23:46 AM" id="g8s-EU-UHx">
+                                                                <font key="font" size="27" name="Helvetica-Light"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -100,10 +101,10 @@
                                                     <constraints>
                                                         <constraint firstItem="QUd-7D-q14" firstAttribute="leading" secondItem="qbN-ba-fho" secondAttribute="leading" constant="10" id="0Qz-Ev-efP"/>
                                                         <constraint firstItem="etF-33-bCB" firstAttribute="top" secondItem="qbN-ba-fho" secondAttribute="top" constant="8" id="Lct-kG-usb"/>
-                                                        <constraint firstItem="vnv-J2-7r1" firstAttribute="centerY" secondItem="qbN-ba-fho" secondAttribute="centerY" constant="-0.5" id="TuQ-gE-ZUh"/>
+                                                        <constraint firstItem="vnv-J2-7r1" firstAttribute="centerY" secondItem="qbN-ba-fho" secondAttribute="centerY" constant="-2" id="TuQ-gE-ZUh"/>
                                                         <constraint firstItem="QUd-7D-q14" firstAttribute="top" secondItem="etF-33-bCB" secondAttribute="bottom" constant="-5" id="VO6-Zn-eA3"/>
                                                         <constraint firstItem="etF-33-bCB" firstAttribute="leading" secondItem="qbN-ba-fho" secondAttribute="leading" constant="10" id="ueW-ow-ZRq"/>
-                                                        <constraint firstAttribute="trailing" secondItem="vnv-J2-7r1" secondAttribute="trailing" constant="8" id="zXo-eA-0bQ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="vnv-J2-7r1" secondAttribute="trailing" constant="1" id="zXo-eA-0bQ"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="customName" destination="etF-33-bCB" id="6Yz-qc-WmD"/>

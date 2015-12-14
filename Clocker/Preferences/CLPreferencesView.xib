@@ -150,7 +150,7 @@
                         </menu>
                     </popUpButtonCell>
                     <connections>
-                        <action selector="changeFont:" target="-2" id="hsn-H5-o4c"/>
+                        <action selector="changeFont:" target="-2" id="n9a-vp-3p1"/>
                         <binding destination="-2" name="content" keyPath="self.fontFamilies" id="JZm-hy-Yzo"/>
                         <binding destination="1Gq-ZQ-IML" name="selectedValue" keyPath="values.defaultFontFamily" previousBinding="JZm-hy-Yzo" id="olU-xe-W4j"/>
                     </connections>
@@ -160,12 +160,12 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="174" id="AQn-7i-cfu"/>
                     </constraints>
-                    <popUpButtonCell key="cell" type="push" title="Default" bezelStyle="rounded" imagePosition="overlaps" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wIH-hb-kKL" id="tDC-SX-9j7">
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" imagePosition="overlaps" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="tDC-SX-9j7">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="12" name="HelveticaNeue-Thin"/>
                         <menu key="menu" id="A5x-kq-ASo">
                             <items>
-                                <menuItem title="Default" state="on" id="wIH-hb-kKL"/>
+                                <menuItem title="Default" id="wIH-hb-kKL"/>
                                 <menuItem title="Item 2" id="z5C-7z-5Lv"/>
                                 <menuItem title="Item 3" id="1qC-i0-ODT"/>
                             </items>
@@ -173,6 +173,8 @@
                     </popUpButtonCell>
                     <connections>
                         <action selector="changeTheme:" target="-2" id="EJf-VX-AVu"/>
+                        <binding destination="-2" name="content" keyPath="self.themes" id="sq9-TC-zmI"/>
+                        <binding destination="1Gq-ZQ-IML" name="selectedValue" keyPath="values.defaultTheme" previousBinding="sq9-TC-zmI" id="YII-d7-sWH"/>
                     </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wtb-He-7BA">

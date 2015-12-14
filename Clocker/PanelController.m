@@ -279,9 +279,50 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     NSString *fontFamily = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultFontFamily"];
     
-    if (fontFamily.length > 0)
+    if (fontFamily.length > 0 && ![fontFamily isEqualToString:@"Default"])
     {
         [cell updateFontFamilyWithFontName:fontFamily andCell:cell];
+    }
+    fontFamily.length > 0 && ![fontFamily isEqualToString:@"Default"] ? [cell updateFontFamilyWithFontName:fontFamily andCell:cell] : [cell setDefaultThemeForCell:cell];
+    
+    NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultTheme"];
+    if (theme.length > 0 && ![theme isEqualToString:@"Default"])
+    {
+        [cell updateTextColorWithColor:[NSColor whiteColor] andCell:cell];
+        [self.mainTableview setBackgroundColor:[NSColor blackColor]];
+        [self.titleField setBackgroundColor:[NSColor blackColor]];
+        
+        NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
+        paragraphStyle.alignment                = NSTextAlignmentCenter;
+        
+        NSDictionary *whiteDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSColor whiteColor], NSForegroundColorAttributeName, [NSFont fontWithName:@"Palatino" size:17] ,NSFontAttributeName,paragraphStyle,NSParagraphStyleAttributeName, nil];
+        NSAttributedString *whiteTitle = [[NSAttributedString alloc]
+                                          initWithString: @"Clocker"
+                                              attributes: whiteDict] ;
+       
+
+        [self.titleField setPlaceholderAttributedString:whiteTitle];
+        self.window.alphaValue = 0.90;
+
+    }
+    else
+    {
+        [cell updateTextColorWithColor:[NSColor blackColor] andCell:cell];
+        [self.mainTableview setBackgroundColor:[NSColor whiteColor]];
+        [self.titleField setBackgroundColor:[NSColor whiteColor]];
+        
+        NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
+        paragraphStyle.alignment                = NSTextAlignmentCenter;
+        
+        NSDictionary *whiteDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSColor blackColor], NSForegroundColorAttributeName, [NSFont fontWithName:@"Palatino" size:17] ,NSFontAttributeName,paragraphStyle,NSParagraphStyleAttributeName, nil];
+        NSAttributedString *whiteTitle = [[NSAttributedString alloc]
+                                          initWithString: @"Clocker"
+                                          attributes: whiteDict] ;
+        
+        
+        [self.titleField setPlaceholderAttributedString:whiteTitle];
+        self.window.alphaValue = 1;
+
     }
     
     cell.relativeDate.stringValue = [self getDateForTimeZone:self.defaultPreferences[row][CLTimezoneName]];

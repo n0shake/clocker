@@ -80,7 +80,11 @@
     [path lineToPoint:NSMakePoint(_arrowX - ARROW_WIDTH / 2, NSMaxY(contentRect) - ARROW_HEIGHT)];
     [path closePath];
     
-    [[NSColor colorWithDeviceWhite:1 alpha:FILL_OPACITY] setFill];
+    NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultTheme"];
+    [theme isEqualToString:@"Default"] ?
+    [[NSColor colorWithDeviceRed:255.0f green:255.0f blue:255.0f alpha:FILL_OPACITY] setFill]:
+    [[NSColor colorWithDeviceRed:0.0f green:0.0f blue:0.0f alpha:FILL_OPACITY] setFill];
+    
     [path fill];
     
     [NSGraphicsContext saveGraphicsState];

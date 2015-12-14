@@ -15,5 +15,7 @@
 @property (weak) IBOutlet NSTextField *time;
 @property (nonatomic) NSInteger rowNumber;
 - (void)updateFontFamilyWithFontName:(NSString *)fontName andCell:(CLTimezoneCellView*)cell;
+- (void)updateTextColorWithColor:(NSColor *)color andCell:(CLTimezoneCellView*)cell;
+- (void)setDefaultThemeForCell:(CLTimezoneCellView *)cell;
 
 @end

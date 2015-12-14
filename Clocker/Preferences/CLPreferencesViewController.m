@@ -62,27 +62,32 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     //Register for drag and drop
     [self.timezoneTableView registerForDraggedTypes: [NSArray arrayWithObject: CLDragSessionKey]];
     
-    NSMutableSet *sampleArray = [[NSMutableSet alloc] init];
+    NSMutableArray *availableFonts = [[NSMutableArray alloc] init];
     
     NSFontCollection *fontCollection = [NSFontCollection fontCollectionWithName:@"com.apple.UserFonts"];
     
     for (NSFontDescriptor *descriptor in fontCollection.matchingDescriptors) {
         if ([descriptor objectForKey:@"NSFontFamilyAttribute"]) {
-            if (![sampleArray containsObject:[descriptor objectForKey:@"NSFontFamilyAttribute"]]) {
-                [sampleArray addObject:[descriptor objectForKey:@"NSFontFamilyAttribute"]];
+            if (![availableFonts containsObject:[descriptor objectForKey:@"NSFontFamilyAttribute"]]) {
+                [availableFonts addObject:[descriptor objectForKey:@"NSFontFamilyAttribute"]];
             }
         }
     }
     
-    if ([sampleArray containsObject:@"Apple Chancery"]) {
-        [sampleArray removeObject:@"Apple Chancery"];
-        [sampleArray removeObject:@"Zapfino"];
-        [sampleArray removeObject:@"Trattatello"];
-        [sampleArray removeObject:@"Noteworthy"];
-        
+    //Certain fonts don't look good with constraints set
+    
+    NSArray *fontsToRemove = [NSArray arrayWithObjects:@"Apple Chancery", @"Zapfino",
+                              @"Trattatello", @"Noteworthy", @"Arial Black", @"Chalkduster",@"Monoid",   nil];
+    for (NSString *font in fontsToRemove) {
+        if([availableFonts containsObject:font])
+        {
+            [availableFonts removeObject:font];
+        }
     }
     
-    self.fontFamilies = [[NSArray alloc] initWithArray:sampleArray.allObjects];
+    [availableFonts insertObject:@"Default" atIndex:0];
+    self.themes = [NSArray arrayWithObjects:@"Default", @"Black", nil];
+    self.fontFamilies = [[NSArray alloc] initWithArray:availableFonts];
 
     // Do view setup here.
 }
@@ -430,14 +435,29 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     }
 }
 
-- (IBAction)changeTheme:(id)sender {
-}
-
 - (IBAction)changeFont:(id)sender
 {
     ApplicationDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     PanelController *panelController = appDelegate.panelController;
+    [panelController.mainTableview reloadData];
+}
+
+- (IBAction)changeTheme:(id)sender
+{
+    NSPopUpButton *popUpButtonTitle = (NSPopUpButton *)sender;
+    ApplicationDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+    PanelController *panelController = appDelegate.panelController;
+    [panelController.backgroundView setNeedsDisplay:YES];
     
+    if ([[popUpButtonTitle titleOfSelectedItem] isEqualToString:@"Black"]) {
+        panelController.shutdownButton.image = [NSImage imageNamed:@"PowerIcon-White"];
+    }
+    else
+    {
+        panelController.shutdownButton.image = [NSImage imageNamed:@"PowerIcon"];
+    }
+    
+    [panelController.mainTableview reloadData];
     
 }
 
@@ -447,10 +467,6 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     PanelController *panelController = appDelegate.panelController;
     NSSlider *slider = (NSSlider *)sender;
     
-    if (![panelController.window isVisible])
-    {
-        [panelController openPanel];
-    }
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:0.10];
     [[panelController.window animator] setAlphaValue:slider.floatValue/100];

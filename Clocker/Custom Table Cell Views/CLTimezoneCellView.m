@@ -49,7 +49,21 @@
 {
     cell.relativeDate.font = [NSFont fontWithName:fontName size:13];
     cell.customName.font = [NSFont fontWithName:fontName size:15];
-    cell.time.font = [NSFont fontWithName:fontName size:31];
+    cell.time.font = [NSFont fontWithName:fontName size:29];
+}
+
+- (void)updateTextColorWithColor:(NSColor *)color andCell:(CLTimezoneCellView*)cell
+{
+    cell.relativeDate.textColor = color;
+    cell.customName.textColor = color;
+    cell.time.textColor = color;
+}
+
+- (void)setDefaultThemeForCell:(CLTimezoneCellView *)cell
+{
+    cell.relativeDate.font = [NSFont fontWithName:@"Helvetica-Bold" size:13];
+    cell.customName.font = [NSFont fontWithName:@"Helvetica-Light" size:15];
+    cell.time.font = [NSFont fontWithName:@"Helvetica-Light" size:29];
 }
 
 @end
