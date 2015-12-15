@@ -14,7 +14,6 @@
 		9A392EED1C1CE9950072C10A /* CLPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A392EEB1C1CE9950072C10A /* CLPreferencesViewController.m */; };
 		9A392EEE1C1CE9950072C10A /* CLPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A392EEC1C1CE9950072C10A /* CLPreferencesView.xib */; };
 		9A4379251BEC223900F4E27F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379211BEC223900F4E27F /* Security.framework */; };
-		9A4379261BEC223900F4E27F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379221BEC223900F4E27F /* SystemConfiguration.framework */; };
 		9A4379271BEC223900F4E27F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379231BEC223900F4E27F /* Fabric.framework */; };
 		9A43792A1BEC230A00F4E27F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379291BEC230A00F4E27F /* libc++.tbd */; };
 		9A43792C1BEC231100F4E27F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A43792B1BEC231100F4E27F /* libz.tbd */; };
@@ -25,7 +24,6 @@
 		9A5951BD1C1D0A8D009C17AA /* CommonStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5951BB1C1D0A8D009C17AA /* CommonStrings.m */; };
 		9A5951C01C1D0AA0009C17AA /* CLOneWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5951BE1C1D0AA0009C17AA /* CLOneWindowController.m */; };
 		9A5951C21C1D0AAD009C17AA /* CLOneWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A5951C11C1D0AAD009C17AA /* CLOneWindow.xib */; };
-		9A5951EB1C1D1EAB009C17AA /* ApptentiveConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5951E81C1D1E92009C17AA /* ApptentiveConnect.framework */; };
 		9A5951EC1C1D1EB4009C17AA /* ApptentiveConnect.framework in Resources */ = {isa = PBXBuildFile; fileRef = 9A5951D11C1D1D94009C17AA /* ApptentiveConnect.framework */; };
 		9A5951F51C1D3D81009C17AA /* CLTimezoneCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5951F41C1D3D81009C17AA /* CLTimezoneCellView.m */; };
 		9A5951FA1C1D5214009C17AA /* iVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5951F91C1D5214009C17AA /* iVersion.m */; };
@@ -58,41 +56,6 @@
 			remoteGlobalIDString = 49626B6D13942A2B0093534C;
 			remoteInfo = ApptentiveUnitTests;
 		};
-		9A5951DC1C1D1E35009C17AA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A5951D61C1D1E35009C17AA /* ApptentiveConnect.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 496DC37F1333D35600743F65;
-			remoteInfo = ApptentiveConnect;
-		};
-		9A5951DE1C1D1E35009C17AA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A5951D61C1D1E35009C17AA /* ApptentiveConnect.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 496DC38C1333D35600743F65;
-			remoteInfo = ApptentiveConnectTests;
-		};
-		9A5951E01C1D1E35009C17AA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A5951D61C1D1E35009C17AA /* ApptentiveConnect.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 49D1118C13341A7C00603373;
-			remoteInfo = ApptentiveResources;
-		};
-		9A5951E71C1D1E92009C17AA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A5951E21C1D1E91009C17AA /* ApptentiveConnect.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
-			remoteInfo = ApptentiveConnect;
-		};
-		9A5951E91C1D1E92009C17AA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A5951E21C1D1E91009C17AA /* ApptentiveConnect.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 49626B6D13942A2B0093534C;
-			remoteInfo = ApptentiveUnitTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -106,7 +69,6 @@
 		9A392EEB1C1CE9950072C10A /* CLPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLPreferencesViewController.m; path = Clocker/Preferences/CLPreferencesViewController.m; sourceTree = "<group>"; };
 		9A392EEC1C1CE9950072C10A /* CLPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLPreferencesView.xib; path = Clocker/Preferences/CLPreferencesView.xib; sourceTree = "<group>"; };
 		9A4379211BEC223900F4E27F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Security.framework; sourceTree = "<group>"; };
-		9A4379221BEC223900F4E27F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SystemConfiguration.framework; sourceTree = "<group>"; };
 		9A4379231BEC223900F4E27F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9A4379291BEC230A00F4E27F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		9A43792B1BEC231100F4E27F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -121,9 +83,6 @@
 		9A5951C11C1D0AAD009C17AA /* CLOneWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLOneWindow.xib; path = Clocker/CLOneWindow/CLOneWindow.xib; sourceTree = "<group>"; };
 		9A5951C71C1D1B6F009C17AA /* ApptentiveConnect.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ApptentiveConnect.xcodeproj; path = Clocker/ApptentiveConnect/ApptentiveConnect.xcodeproj; sourceTree = "<group>"; };
 		9A5951D11C1D1D94009C17AA /* ApptentiveConnect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApptentiveConnect.framework; path = Clocker/ApptentiveConnect/ApptentiveConnect.framework; sourceTree = "<group>"; };
-		9A5951D41C1D1E1D009C17AA /* apptentive-ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "apptentive-ios"; path = "Clocker/ApptentiveConnect/apptentive-ios"; sourceTree = "<group>"; };
-		9A5951D61C1D1E35009C17AA /* ApptentiveConnect.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ApptentiveConnect.xcodeproj; path = "Clocker/ApptentiveConnect/apptentive-ios/ApptentiveConnect/ApptentiveConnect.xcodeproj"; sourceTree = "<group>"; };
-		9A5951E21C1D1E91009C17AA /* ApptentiveConnect.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ApptentiveConnect.xcodeproj; path = Clocker/ApptentiveConnect/ApptentiveConnect/ApptentiveConnect.xcodeproj; sourceTree = "<group>"; };
 		9A5951F31C1D3D81009C17AA /* CLTimezoneCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLTimezoneCellView.h; path = "Clocker/Custom Table Cell Views/CLTimezoneCellView.h"; sourceTree = "<group>"; };
 		9A5951F41C1D3D81009C17AA /* CLTimezoneCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLTimezoneCellView.m; path = "Clocker/Custom Table Cell Views/CLTimezoneCellView.m"; sourceTree = "<group>"; };
 		9A5951F81C1D5214009C17AA /* iVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iVersion.h; path = "Clocker/Updated Version/iVersion.h"; sourceTree = "<group>"; };
@@ -153,8 +112,6 @@
 		DD4F7C0413C30F9F00825C6E /* Clocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4F7C0813C30F9F00825C6E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DD4F7C0B13C30F9F00825C6E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		DD4F7C0C13C30F9F00825C6E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		DD4F7C0D13C30F9F00825C6E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,13 +119,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A5951EB1C1D1EAB009C17AA /* ApptentiveConnect.framework in Frameworks */,
 				9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */,
 				9A43792C1BEC231100F4E27F /* libz.tbd in Frameworks */,
 				9A5951BA1C1D0A22009C17AA /* Crashlytics.framework in Frameworks */,
 				9A43792A1BEC230A00F4E27F /* libc++.tbd in Frameworks */,
 				9A4379251BEC223900F4E27F /* Security.framework in Frameworks */,
-				9A4379261BEC223900F4E27F /* SystemConfiguration.framework in Frameworks */,
 				DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */,
 				9A4379271BEC223900F4E27F /* Fabric.framework in Frameworks */,
 			);
@@ -212,25 +167,6 @@
 			children = (
 				9A5951CD1C1D1B6F009C17AA /* ApptentiveConnect.framework */,
 				9A5951CF1C1D1B6F009C17AA /* ApptentiveUnitTests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		9A5951D71C1D1E35009C17AA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9A5951DD1C1D1E35009C17AA /* libApptentiveConnect.a */,
-				9A5951DF1C1D1E35009C17AA /* ApptentiveConnectTests.octest */,
-				9A5951E11C1D1E35009C17AA /* ApptentiveResources.bundle */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		9A5951E31C1D1E91009C17AA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9A5951E81C1D1E92009C17AA /* ApptentiveConnect.framework */,
-				9A5951EA1C1D1E92009C17AA /* ApptentiveUnitTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -331,7 +267,6 @@
 				DD4F7C0713C30F9F00825C6E /* Frameworks */,
 				9A5951FB1C1D5222009C17AA /* Check for Updated Version */,
 				DD4F7C0513C30F9F00825C6E /* Products */,
-				9A5951E21C1D1E91009C17AA /* ApptentiveConnect.xcodeproj */,
 				9A25F7481C1A5E21007D369B /* Rate */,
 			);
 			sourceTree = "<group>";
@@ -347,20 +282,15 @@
 		DD4F7C0713C30F9F00825C6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9A5951D61C1D1E35009C17AA /* ApptentiveConnect.xcodeproj */,
-				9A5951D41C1D1E1D009C17AA /* apptentive-ios */,
 				9A5951D11C1D1D94009C17AA /* ApptentiveConnect.framework */,
 				9A5951C71C1D1B6F009C17AA /* ApptentiveConnect.xcodeproj */,
 				9A5951B91C1D0A22009C17AA /* Crashlytics.framework */,
 				9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */,
 				9A4379211BEC223900F4E27F /* Security.framework */,
-				9A4379221BEC223900F4E27F /* SystemConfiguration.framework */,
 				9A4379231BEC223900F4E27F /* Fabric.framework */,
 				9A43792B1BEC231100F4E27F /* libz.tbd */,
 				9A4379291BEC230A00F4E27F /* libc++.tbd */,
 				DD4F7C0B13C30F9F00825C6E /* AppKit.framework */,
-				DD4F7C0C13C30F9F00825C6E /* CoreData.framework */,
-				DD4F7C0D13C30F9F00825C6E /* Foundation.framework */,
 				DD4F7C0813C30F9F00825C6E /* Cocoa.framework */,
 			);
 			name = Frameworks;
@@ -421,14 +351,6 @@
 					ProductGroup = 9A5951C81C1D1B6F009C17AA /* Products */;
 					ProjectRef = 9A5951C71C1D1B6F009C17AA /* ApptentiveConnect.xcodeproj */;
 				},
-				{
-					ProductGroup = 9A5951D71C1D1E35009C17AA /* Products */;
-					ProjectRef = 9A5951D61C1D1E35009C17AA /* ApptentiveConnect.xcodeproj */;
-				},
-				{
-					ProductGroup = 9A5951E31C1D1E91009C17AA /* Products */;
-					ProjectRef = 9A5951E21C1D1E91009C17AA /* ApptentiveConnect.xcodeproj */;
-				},
 			);
 			projectRoot = "";
 			targets = (
@@ -450,41 +372,6 @@
 			fileType = wrapper.cfbundle;
 			path = ApptentiveUnitTests.octest;
 			remoteRef = 9A5951CE1C1D1B6F009C17AA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9A5951DD1C1D1E35009C17AA /* libApptentiveConnect.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libApptentiveConnect.a;
-			remoteRef = 9A5951DC1C1D1E35009C17AA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9A5951DF1C1D1E35009C17AA /* ApptentiveConnectTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ApptentiveConnectTests.octest;
-			remoteRef = 9A5951DE1C1D1E35009C17AA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9A5951E11C1D1E35009C17AA /* ApptentiveResources.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ApptentiveResources.bundle;
-			remoteRef = 9A5951E01C1D1E35009C17AA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9A5951E81C1D1E92009C17AA /* ApptentiveConnect.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ApptentiveConnect.framework;
-			remoteRef = 9A5951E71C1D1E92009C17AA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9A5951EA1C1D1E92009C17AA /* ApptentiveUnitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ApptentiveUnitTests.octest;
-			remoteRef = 9A5951E91C1D1E92009C17AA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -705,6 +592,7 @@
 				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

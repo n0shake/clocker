@@ -292,7 +292,7 @@
 		
 		ABMultiValue *abEmails = [me valueForProperty:kABEmailProperty];
 		if (abEmails && [abEmails count]) {
-			for (int i = 0; i < [abEmails count]; i++) {
+			for (NSInteger i = 0; i < [abEmails count]; i++) {
 				NSString *abEmail = [abEmails valueAtIndex:i];
 				if (contactStorage.email == nil || ![contactStorage.email isEqualToString:abEmail]) {
 					[emails addObject:abEmail];
@@ -301,7 +301,7 @@
 		}
 		ABMultiValue *abPhoneNumbers = [me valueForProperty:kABPhoneProperty];
 		if (abPhoneNumbers && [abPhoneNumbers count]) {
-			for (int i = 0; i < [abPhoneNumbers count]; i++) {
+			for (NSInteger i = 0; i < [abPhoneNumbers count]; i++) {
 				NSString *abPhoneNumber = [abPhoneNumbers valueAtIndex:i];
 				if (contactStorage.phone == nil || ![contactStorage.phone isEqualToString:abPhoneNumber]) {
 					[phoneNumbers addObject:abPhoneNumber];

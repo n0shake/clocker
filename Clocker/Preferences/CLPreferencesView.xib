@@ -168,9 +168,9 @@
                     </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wtb-He-7BA">
-                    <rect key="frame" x="95" y="21" width="64" height="19"/>
+                    <rect key="frame" x="95" y="21" width="67" height="19"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="60" id="Whm-eI-Qun"/>
+                        <constraint firstAttribute="width" constant="63" id="Whm-eI-Qun"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Font Family:" id="fIc-YC-zol">
                         <font key="font" size="12" name="HelveticaNeue-Light"/>
@@ -208,7 +208,7 @@
                 <constraint firstAttribute="bottom" secondItem="adA-dB-5Ok" secondAttribute="bottom" constant="20" id="fZs-aV-AJw"/>
                 <constraint firstItem="sfL-D2-aUX" firstAttribute="leading" secondItem="RVw-E8-jnc" secondAttribute="trailing" constant="9" id="fzk-AD-jKY"/>
                 <constraint firstItem="wtb-He-7BA" firstAttribute="leading" secondItem="Uu9-io-frR" secondAttribute="leading" constant="97" id="im6-yj-x5a"/>
-                <constraint firstItem="adA-dB-5Ok" firstAttribute="leading" secondItem="wtb-He-7BA" secondAttribute="trailing" constant="12" id="l3q-0l-VaZ"/>
+                <constraint firstItem="adA-dB-5Ok" firstAttribute="leading" secondItem="wtb-He-7BA" secondAttribute="trailing" constant="9" id="l3q-0l-VaZ"/>
                 <constraint firstAttribute="trailing" secondItem="zBR-OH-6QQ" secondAttribute="trailing" constant="10" id="p1P-Ev-oBI"/>
                 <constraint firstItem="msw-L5-agF" firstAttribute="leading" secondItem="Uu9-io-frR" secondAttribute="leading" constant="169" id="uwf-y2-ZwE"/>
                 <constraint firstItem="wtb-He-7BA" firstAttribute="top" secondItem="RVw-E8-jnc" secondAttribute="bottom" constant="9" id="w2l-AG-0Y2"/>

@@ -10,9 +10,10 @@
 #import "iRate.h"
 #import <QuartzCore/QuartzCore.h>
 #import "PanelController.h"
-#import <ApptentiveConnect/ATConnect.h>
 
 @implementation CLRatingCellView
+
+NSString *const CLGitHubIssueURL =@"https://github.com/Abhishaker17/Clocker/issues";
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
@@ -48,8 +49,7 @@
     else if ([rightButton.title isEqualToString:@"Yes?"])
     {
              [self updateMainTableView];
-        ATConnect *connection = [ATConnect sharedConnection];
-        [connection showFeedbackWindow:sender];
+         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLGitHubIssueURL]];
    
     }
     else

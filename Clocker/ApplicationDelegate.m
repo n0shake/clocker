@@ -31,7 +31,6 @@
 #import "iRate.h"
 #import "CommonStrings.h"
 #import "iVersion.h"
-#import <ApptentiveConnect/ATConnect.h>
 
 @implementation ApplicationDelegate
 
@@ -71,10 +70,7 @@ void *kContextActivePanel = &kContextActivePanel;
 #pragma mark - NSApplicationDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
-{
-    ATConnect *connection = [ATConnect sharedConnection];
-    connection.apiKey = @"b9bff3e37b738748b671a751f09fea3a419661bac3e6e11fa5e854b463db3ba0";
-    
+{    
     NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
     
      NSMutableArray *newDefaults = [[NSMutableArray alloc] init];
