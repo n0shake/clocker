@@ -286,10 +286,6 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
         return cellView;
     }
     
-    if (row == self.defaultPreferences.count) {
-        [self updateWindowTransparency];
-    }
-    
     CLTimezoneCellView *cell = [tableView makeViewWithIdentifier:CLTimezoneCellViewIdentifier owner:self];
     
     NSString *fontFamily = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultFontFamily"];

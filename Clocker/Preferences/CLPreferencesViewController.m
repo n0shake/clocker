@@ -133,7 +133,9 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     {
         if (self.searchField.stringValue.length > 0)
         {
-            return self.filteredArray[row];
+            if (row < self.filteredArray.count) {
+                return self.filteredArray[row];
+            }
         }
         
         return self.timeZoneArray[row];
@@ -146,7 +148,11 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     {
         if (self.searchField.stringValue.length > 0)
         {
-            return [NSTimeZone timeZoneWithName:self.filteredArray[row]].abbreviation;
+            if (row < self.filteredArray.count)
+            {
+                return [NSTimeZone timeZoneWithName:self.filteredArray[row]].abbreviation;
+            }
+            
         }
         
         return [NSTimeZone timeZoneWithName:self.timeZoneArray[row]].abbreviation;
@@ -218,7 +224,6 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
             return;
         }
     }
-    
     
     selectedTimezone = self.searchField.stringValue.length > 0 ?
     self.filteredArray[self.availableTimezoneTableView.selectedRow] :
@@ -396,12 +401,13 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     for (id item in loginItems) {
         LSSharedFileListItemRef itemRef = (__bridge LSSharedFileListItemRef)item;
         CFURLRef itemURLRef;
-        if (LSSharedFileListItemResolve(itemRef, 0, &itemURLRef, NULL) == noErr) {
+        
+            itemURLRef = LSSharedFileListItemCopyResolvedURL(itemRef, 0, NULL);
             NSURL *itemURL = (NSURL *)CFBridgingRelease(itemURLRef);
             if ([itemURL isEqual:bundleURL]) {
                 return YES;
             }
-        }
+        
     }
     return NO;
 }
@@ -425,13 +431,12 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
         
         for (id item in loginItems) {
             LSSharedFileListItemRef itemRef = (__bridge LSSharedFileListItemRef)item;
-            CFURLRef itemURLRef;
-            if (LSSharedFileListItemResolve(itemRef, 0, &itemURLRef, NULL) == noErr) {
+            CFURLRef itemURLRef = LSSharedFileListItemCopyResolvedURL(itemRef, 0, NULL);
+            
                 NSURL *itemURL = (NSURL *)CFBridgingRelease(itemURLRef);
                 if ([itemURL isEqual:bundleURL]) {
                     LSSharedFileListItemRemove(loginItemsListRef, itemRef);
                 }
-            }
         }
     }
 }

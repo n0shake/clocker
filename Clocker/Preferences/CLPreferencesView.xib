@@ -20,11 +20,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <view id="Uu9-io-frR">
-            <rect key="frame" x="0.0" y="0.0" width="439" height="430"/>
+            <rect key="frame" x="0.0" y="0.0" width="439" height="407"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button toolTip="Add a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4yB-vZ-tNX">
-                    <rect key="frame" x="11" y="124" width="21" height="22"/>
+                    <rect key="frame" x="11" y="102" width="21" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="GNz-C9-Ay8"/>
                         <constraint firstAttribute="width" constant="21" id="OkY-Uq-PwX"/>
@@ -38,7 +38,7 @@
                     </connections>
                 </button>
                 <button toolTip="Remove a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iOG-Ey-lmD">
-                    <rect key="frame" x="32" y="124" width="21" height="22"/>
+                    <rect key="frame" x="32" y="102" width="21" height="22"/>
                     <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gLH-wy-bCE">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -48,13 +48,13 @@
                     </connections>
                 </button>
                 <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBR-OH-6QQ">
-                    <rect key="frame" x="10" y="151" width="419" height="271"/>
+                    <rect key="frame" x="10" y="129" width="419" height="270"/>
                     <clipView key="contentView" id="UZ2-JA-TZe">
-                        <rect key="frame" x="0.0" y="0.0" width="419" height="271"/>
+                        <rect key="frame" x="0.0" y="0.0" width="419" height="270"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="20" headerView="igm-uc-1wh" id="LbJ-dW-ITm">
-                                <rect key="frame" x="0.0" y="0.0" width="419" height="248"/>
+                                <rect key="frame" x="0.0" y="0.0" width="419" height="247"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -108,18 +108,8 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <button toolTip="Clocker will start on each system launch" translatesAutoresizingMaskIntoConstraints="NO" id="i4I-JP-QcP" customClass="ColoredButton">
-                    <rect key="frame" x="167" y="76" width="191" height="18"/>
-                    <buttonCell key="cell" type="check" title="Start Clocker on system startup" bezelStyle="regularSquare" imagePosition="left" inset="2" id="GSg-4f-ngw">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" size="12" name="Helvetica-Light"/>
-                    </buttonCell>
-                    <connections>
-                        <binding destination="-2" name="value" keyPath="self.launchOnLogin" id="Baz-dU-CxZ"/>
-                    </connections>
-                </button>
                 <button toolTip="Show time using a 24-hour format" translatesAutoresizingMaskIntoConstraints="NO" id="msw-L5-agF" customClass="ColoredButton">
-                    <rect key="frame" x="167" y="97" width="343" height="22"/>
+                    <rect key="frame" x="167" y="75" width="343" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="339" id="KXG-qX-V3N"/>
                         <constraint firstAttribute="height" constant="18" id="d60-FM-DPd"/>
@@ -196,16 +186,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dx5-9L-nPB">
-                    <rect key="frame" x="113" y="76" width="46" height="19"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Launch:" id="AYA-cO-ArR">
-                        <font key="font" size="12" name="HelveticaNeue-Light"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EdZ-8X-JQg">
-                    <rect key="frame" x="86" y="99" width="73" height="19"/>
+                    <rect key="frame" x="86" y="77" width="73" height="19"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Time Format:" id="KxG-3S-ZCz">
                         <font key="font" size="12" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -214,34 +196,30 @@
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="sfL-D2-aUX" firstAttribute="top" secondItem="i4I-JP-QcP" secondAttribute="bottom" constant="9" id="7cF-n8-BQL"/>
                 <constraint firstItem="adA-dB-5Ok" firstAttribute="top" secondItem="sfL-D2-aUX" secondAttribute="bottom" constant="7" id="8lc-ds-Esz"/>
                 <constraint firstAttribute="bottom" secondItem="wtb-He-7BA" secondAttribute="bottom" constant="21" id="ABT-bI-1fr"/>
-                <constraint firstItem="Dx5-9L-nPB" firstAttribute="leading" secondItem="Uu9-io-frR" secondAttribute="leading" constant="115" id="BV7-hK-dBd"/>
                 <constraint firstItem="msw-L5-agF" firstAttribute="top" secondItem="4yB-vZ-tNX" secondAttribute="bottom" constant="8" id="CnR-dg-KfG"/>
                 <constraint firstItem="iOG-Ey-lmD" firstAttribute="height" secondItem="4yB-vZ-tNX" secondAttribute="height" id="HKt-is-5y3"/>
                 <constraint firstItem="zBR-OH-6QQ" firstAttribute="top" secondItem="Uu9-io-frR" secondAttribute="top" constant="8" id="JKn-gF-8oI"/>
-                <constraint firstItem="i4I-JP-QcP" firstAttribute="leading" secondItem="Uu9-io-frR" secondAttribute="leading" constant="169" id="QAx-JY-Iyc"/>
-                <constraint firstItem="Dx5-9L-nPB" firstAttribute="top" secondItem="EdZ-8X-JQg" secondAttribute="bottom" constant="4" id="Udf-Cm-OWA"/>
                 <constraint firstItem="msw-L5-agF" firstAttribute="top" secondItem="iOG-Ey-lmD" secondAttribute="bottom" constant="8" id="Umd-Jo-VZj"/>
+                <constraint firstItem="RVw-E8-jnc" firstAttribute="top" secondItem="EdZ-8X-JQg" secondAttribute="bottom" constant="9" id="YL7-ik-B6o"/>
                 <constraint firstItem="4yB-vZ-tNX" firstAttribute="top" secondItem="zBR-OH-6QQ" secondAttribute="bottom" constant="6" id="Zsk-85-aI8"/>
                 <constraint firstItem="RVw-E8-jnc" firstAttribute="leading" secondItem="Uu9-io-frR" secondAttribute="leading" constant="121" id="dyX-Sd-50z"/>
                 <constraint firstAttribute="bottom" secondItem="adA-dB-5Ok" secondAttribute="bottom" constant="20" id="fZs-aV-AJw"/>
                 <constraint firstItem="sfL-D2-aUX" firstAttribute="leading" secondItem="RVw-E8-jnc" secondAttribute="trailing" constant="9" id="fzk-AD-jKY"/>
                 <constraint firstItem="wtb-He-7BA" firstAttribute="leading" secondItem="Uu9-io-frR" secondAttribute="leading" constant="97" id="im6-yj-x5a"/>
                 <constraint firstItem="adA-dB-5Ok" firstAttribute="leading" secondItem="wtb-He-7BA" secondAttribute="trailing" constant="12" id="l3q-0l-VaZ"/>
-                <constraint firstItem="RVw-E8-jnc" firstAttribute="top" secondItem="Dx5-9L-nPB" secondAttribute="bottom" constant="8" id="mcI-AG-tvu"/>
                 <constraint firstAttribute="trailing" secondItem="zBR-OH-6QQ" secondAttribute="trailing" constant="10" id="p1P-Ev-oBI"/>
-                <constraint firstItem="i4I-JP-QcP" firstAttribute="top" secondItem="msw-L5-agF" secondAttribute="bottom" constant="7" id="pLv-GC-ciZ"/>
                 <constraint firstItem="msw-L5-agF" firstAttribute="leading" secondItem="Uu9-io-frR" secondAttribute="leading" constant="169" id="uwf-y2-ZwE"/>
                 <constraint firstItem="wtb-He-7BA" firstAttribute="top" secondItem="RVw-E8-jnc" secondAttribute="bottom" constant="9" id="w2l-AG-0Y2"/>
                 <constraint firstItem="iOG-Ey-lmD" firstAttribute="width" secondItem="4yB-vZ-tNX" secondAttribute="width" id="wLJ-lQ-GhP"/>
                 <constraint firstItem="EdZ-8X-JQg" firstAttribute="leading" secondItem="Uu9-io-frR" secondAttribute="leading" constant="88" id="wmd-IT-K12"/>
                 <constraint firstItem="iOG-Ey-lmD" firstAttribute="leading" secondItem="4yB-vZ-tNX" secondAttribute="trailing" id="xu0-0C-2pe"/>
+                <constraint firstItem="sfL-D2-aUX" firstAttribute="top" secondItem="msw-L5-agF" secondAttribute="bottom" constant="8" id="zSV-jH-6pp"/>
                 <constraint firstItem="4yB-vZ-tNX" firstAttribute="leading" secondItem="Uu9-io-frR" secondAttribute="leading" constant="11" id="zgB-PO-97r"/>
                 <constraint firstItem="zBR-OH-6QQ" firstAttribute="leading" secondItem="Uu9-io-frR" secondAttribute="leading" constant="10" id="zoH-62-nam"/>
             </constraints>
-            <point key="canvasLocation" x="295.5" y="221"/>
+            <point key="canvasLocation" x="295.5" y="209.5"/>
         </view>
         <userDefaultsController representsSharedInstance="YES" id="1Gq-ZQ-IML"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="alertPanel" appearanceType="aqua" frameAutosaveName="" id="6FL-fp-Ke1" customClass="Panel">
