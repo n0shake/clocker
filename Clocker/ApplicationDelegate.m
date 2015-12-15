@@ -31,6 +31,7 @@
 #import "iRate.h"
 #import "CommonStrings.h"
 #import "iVersion.h"
+#import <Parse/Parse.h>
 
 @implementation ApplicationDelegate
 
@@ -115,6 +116,17 @@ void *kContextActivePanel = &kContextActivePanel;
     
     [[Crashlytics sharedInstance] setDebugMode:NO];
     [Fabric with:@[[Crashlytics class]]];
+    
+    //Setting up Parse
+    [Parse setApplicationId:@"F2ahd8J6sfjQMCc5z3xSy9kVK94PmKmH6hV2UsUK"
+                  clientKey:@"vfnqDtinvmwUBkcifznYHzYTetxN5iMvt8Ey8StD"];
+    
+    // [Optional] Track statistics around application opens.
+    [PFAnalytics trackAppOpenedWithLaunchOptions:nil];
+    
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    testObject[@"sucks"] = @"cock";
+    [testObject saveInBackground];
 }
 
 

@@ -34,6 +34,14 @@
 		9A8605BB1BEC14DC00A810A4 /* PanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B91BEC14DC00A810A4 /* PanelController.m */; };
 		9A8605BF1BEC14F600A810A4 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BC1BEC14F600A810A4 /* BackgroundView.m */; };
 		9A8605C01BEC14F600A810A4 /* Panel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BD1BEC14F600A810A4 /* Panel.m */; };
+		9A9E875A1C1FED1A00A7A2DF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87581C1FED1A00A7A2DF /* Parse.framework */; };
+		9A9E875F1C1FED7500A7A2DF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87571C1FED1A00A7A2DF /* Bolts.framework */; };
+		9A9E87621C1FEDB500A7A2DF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87611C1FEDB500A7A2DF /* CFNetwork.framework */; };
+		9A9E87681C1FEDD300A7A2DF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87671C1FEDD300A7A2DF /* Security.framework */; };
+		9A9E876A1C1FEDDB00A7A2DF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87691C1FEDDB00A7A2DF /* SystemConfiguration.framework */; };
+		9A9E876C1C1FEDE700A7A2DF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E876B1C1FEDE700A7A2DF /* libsqlite3.tbd */; };
+		9A9E876E1C1FEE1800A7A2DF /* Bolts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A9E87571C1FED1A00A7A2DF /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9A9E876F1C1FEE1A00A7A2DF /* Parse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A9E87581C1FED1A00A7A2DF /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9AB9357B1C1AD8F7001285A0 /* CLRatingCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9357A1C1AD8F7001285A0 /* CLRatingCellView.m */; };
 		9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */; };
 		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
@@ -55,6 +63,20 @@
 			remoteInfo = ApptentiveUnitTests;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9A9E876D1C1FEE0B00A7A2DF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9A9E876F1C1FEE1A00A7A2DF /* Parse.framework in CopyFiles */,
+				9A9E876E1C1FEE1800A7A2DF /* Bolts.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9A25F7411C1A5E17007D369B /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iRate.h; path = "Clocker/Rate App/iRate.h"; sourceTree = "<group>"; };
@@ -103,6 +125,14 @@
 		9A8605CA1BEC155B00A810A4 /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationDelegate.h; path = Clocker/ApplicationDelegate.h; sourceTree = "<group>"; };
 		9A8605CB1BEC155B00A810A4 /* ColoredButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColoredButton.h; path = Clocker/ColoredButton.h; sourceTree = "<group>"; };
 		9A8605CC1BEC155B00A810A4 /* Clocker-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Clocker-Prefix.pch"; path = "Clocker/Clocker-Prefix.pch"; sourceTree = "<group>"; };
+		9A9E87571C1FED1A00A7A2DF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Clocker/Parse/Bolts.framework; sourceTree = "<group>"; };
+		9A9E87581C1FED1A00A7A2DF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Clocker/Parse/Parse.framework; sourceTree = "<group>"; };
+		9A9E87611C1FEDB500A7A2DF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		9A9E87631C1FEDBD00A7A2DF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9A9E87651C1FEDC500A7A2DF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9A9E87671C1FEDD300A7A2DF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9A9E87691C1FEDDB00A7A2DF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9A9E876B1C1FEDE700A7A2DF /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		9AB935791C1AD8F7001285A0 /* CLRatingCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLRatingCellView.h; path = Clocker/CLRatingCellView.h; sourceTree = "<group>"; };
 		9AB9357A1C1AD8F7001285A0 /* CLRatingCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLRatingCellView.m; path = Clocker/CLRatingCellView.m; sourceTree = "<group>"; };
 		9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -116,12 +146,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */,
 				9A43792C1BEC231100F4E27F /* libz.tbd in Frameworks */,
+				9A9E876C1C1FEDE700A7A2DF /* libsqlite3.tbd in Frameworks */,
+				9A9E876A1C1FEDDB00A7A2DF /* SystemConfiguration.framework in Frameworks */,
+				9A9E87681C1FEDD300A7A2DF /* Security.framework in Frameworks */,
+				9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */,
+				9A9E87621C1FEDB500A7A2DF /* CFNetwork.framework in Frameworks */,
+				9A9E875A1C1FED1A00A7A2DF /* Parse.framework in Frameworks */,
 				9A5951BA1C1D0A22009C17AA /* Crashlytics.framework in Frameworks */,
 				9A43792A1BEC230A00F4E27F /* libc++.tbd in Frameworks */,
 				9A4379251BEC223900F4E27F /* Security.framework in Frameworks */,
 				DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */,
+				9A9E875F1C1FED7500A7A2DF /* Bolts.framework in Frameworks */,
 				9A4379271BEC223900F4E27F /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,9 +283,19 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		9A9E875B1C1FED1E00A7A2DF /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				9A9E87571C1FED1A00A7A2DF /* Bolts.framework */,
+				9A9E87581C1FED1A00A7A2DF /* Parse.framework */,
+			);
+			name = Parse;
+			sourceTree = "<group>";
+		};
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
+				9A9E875B1C1FED1E00A7A2DF /* Parse */,
 				9A5B1A8D1BECDFB700A77C68 /* Clocker.entitlements */,
 				9A43792D1BEC256200F4E27F /* Media.xcassets */,
 				9A2000C61BFBCEF6002BFDE8 /* Utilties */,
@@ -278,6 +324,12 @@
 		DD4F7C0713C30F9F00825C6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A9E876B1C1FEDE700A7A2DF /* libsqlite3.tbd */,
+				9A9E87691C1FEDDB00A7A2DF /* SystemConfiguration.framework */,
+				9A9E87671C1FEDD300A7A2DF /* Security.framework */,
+				9A9E87651C1FEDC500A7A2DF /* CoreLocation.framework */,
+				9A9E87631C1FEDBD00A7A2DF /* CoreGraphics.framework */,
+				9A9E87611C1FEDB500A7A2DF /* CFNetwork.framework */,
 				9A5951D11C1D1D94009C17AA /* ApptentiveConnect.framework */,
 				9A5951C71C1D1B6F009C17AA /* ApptentiveConnect.xcodeproj */,
 				9A5951B91C1D0A22009C17AA /* Crashlytics.framework */,
@@ -303,6 +355,7 @@
 				DD4F7C0113C30F9F00825C6E /* Frameworks */,
 				DD4F7C0213C30F9F00825C6E /* Resources */,
 				9A4379201BEC220200F4E27F /* ShellScript */,
+				9A9E876D1C1FEE0B00A7A2DF /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -478,10 +531,12 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)/Clocker/ApptentiveConnect",
+					"$(PROJECT_DIR)/Clocker/Parse",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
@@ -577,10 +632,12 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)/Clocker/ApptentiveConnect",
+					"$(PROJECT_DIR)/Clocker/Parse",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
@@ -604,10 +661,12 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)/Clocker/ApptentiveConnect",
+					"$(PROJECT_DIR)/Clocker/Parse",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
