@@ -494,6 +494,10 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 
 -(BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation
 {
+    if (row == self.defaultPreferences.count) {
+        row--;
+    }
+    
     NSPasteboard *pBoard = [info draggingPasteboard];
     
     NSData *data = [pBoard dataForType:CLDragSessionKey];
