@@ -10,10 +10,6 @@ Need any help? Tweet [me](https://twitter.com/Abhi_Shaker)!
 
 You can find a review of the app by SoftPedia [here](http://mac.softpedia.com/get/Utilities/Clocker-Banthia.shtml)
 
-## In Action
-
-![Sample Animations](https://github.com/Abhishaker17/Clocker/blob/Localization/Clocker-Preview.gif)
-
 **Features**
 ---
 - Add any timezone you want
