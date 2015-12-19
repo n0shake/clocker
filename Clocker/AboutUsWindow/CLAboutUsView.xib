@@ -119,7 +119,7 @@
                         <constraint firstAttribute="height" constant="20" id="2sg-Q1-h9h"/>
                         <constraint firstAttribute="width" constant="330" id="MHq-fu-8k6"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="the MIT License." id="JAy-Yp-MXm">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="the MIT License. Timezone search powered by GEONAMES." id="JAy-Yp-MXm">
                         <font key="font" size="10" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

@@ -336,9 +336,9 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 
     }
     
-    cell.relativeDate.stringValue = [self getDateForTimeZone:self.defaultPreferences[row][CLTimezoneName]];
+    cell.relativeDate.stringValue = [self getDateForTimeZone:self.defaultPreferences[row][CLTimezoneID]];
     
-    cell.time.stringValue = [self getTimeForTimeZone:self.defaultPreferences[row][CLTimezoneName]];
+    cell.time.stringValue = [self getTimeForTimeZone:self.defaultPreferences[row][CLTimezoneID]];
     
     cell.rowNumber = row;
 
@@ -360,27 +360,30 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
             return customLabel;
         }
     }
-    
-    NSString *timezoneName = timeZoneDictionary[CLTimezoneName];
-    
-    if (value) {
-        NSRange range = [timezoneName rangeOfString:@"/"];
-        NSRange underscoreRange = [timezoneName rangeOfString:@"_"];
+
+    if ([timeZoneDictionary[@"formattedAddress"] length] > 0)
+    {
+        return timeZoneDictionary[@"formattedAddress"];
+    }
+    else if (timeZoneDictionary[@"timezoneID"])
+    {
+        NSString *timezoneID = timeZoneDictionary[@"timezoneID"];
+        
+        NSRange range = [timezoneID rangeOfString:@"/"];
         if (range.location != NSNotFound)
         {
-            timezoneName = [timezoneName substringFromIndex:range.location+1];
+            timezoneID = [timezoneID substringWithRange:NSMakeRange(range.location+1, timezoneID.length-1 - range.location)];
         }
-        if (underscoreRange.location != NSNotFound)
-        {
-            timezoneName = [timezoneName stringByReplacingOccurrencesOfString:@"_"
-                                                                   withString:@" "];
-        }
+        return timezoneID;
     }
-    
-    return timezoneName;
+    else
+    {
+        return @"Error";
+    }
+
 }
 
-- (NSString *)getTimeForTimeZone:(NSString *)timezoneName
+- (NSString *)getTimeForTimeZone:(NSString *)timezoneID
 {
     NSDate *currentDate = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -390,7 +393,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     is24HourFormatSelected.boolValue ? [dateFormatter setDateFormat:@"HH:mm"] : [dateFormatter setDateFormat:@"hh:mm a"];
     
-    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:timezoneName];
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:timezoneID];
     //In the format 22:10
     
     return [dateFormatter stringFromDate:currentDate];
@@ -442,24 +445,18 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     }
 }
 
-- (NSString *)getDateForTimeZone:(NSString *)timezoneName
+- (NSString *)getDateForTimeZone:(NSString *)timezoneID
 {
     NSDate *currentDate = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = kCFDateFormatterShortStyle;
     dateFormatter.timeStyle = kCFDateFormatterNoStyle;
     
-    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:timezoneName];
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:timezoneID];
     //In the format 22:10
     
     return [self compareSystemDate:[self getLocalCurrentDate] toTimezoneDate:[dateFormatter stringFromDate:currentDate]];;
 }
-
-#pragma mark -
-#pragma mark NSTableview Minor Customization when selecting rows
-#pragma mark -
-
-
 
 #pragma mark -
 #pragma mark NSTableview Drag and Drop

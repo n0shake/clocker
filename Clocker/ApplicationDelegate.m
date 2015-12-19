@@ -66,6 +66,8 @@ void *kContextActivePanel = &kContextActivePanel;
     [iVersion sharedInstance].appStoreID = 1056643111;
     [iRate sharedInstance].useAllAvailableLanguages = NO;
     [iVersion sharedInstance].useAllAvailableLanguages = NO;
+    [[iRate sharedInstance] setVerboseLogging:NO];
+    [[iVersion sharedInstance] setVerboseLogging:NO];
 }
 
 #pragma mark - NSApplicationDelegate
@@ -76,16 +78,6 @@ void *kContextActivePanel = &kContextActivePanel;
     
      NSMutableArray *newDefaults = [[NSMutableArray alloc] init];
 
-    
-    if (defaultPreference.count == 0)
-    {
-        NSDictionary *defaultDictionary = @{CLTimezoneName : [NSTimeZone systemTimeZone].name, CLCustomLabel : CLEmptyString};
-        
-        newDefaults = [[NSMutableArray alloc] initWithObjects:defaultDictionary, nil];
-        
-        [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:CLDefaultPreferenceKey];
-    }
-   
     [defaultPreference enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
             if ([obj isKindOfClass:[NSString class]]) {
@@ -116,6 +108,7 @@ void *kContextActivePanel = &kContextActivePanel;
     
     [[Crashlytics sharedInstance] setDebugMode:NO];
     [Fabric with:@[[Crashlytics class]]];
+
     
     //Setting up Parse
     [Parse setApplicationId:@"F2ahd8J6sfjQMCc5z3xSy9kVK94PmKmH6hV2UsUK"

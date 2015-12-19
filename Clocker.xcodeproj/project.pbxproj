@@ -44,25 +44,9 @@
 		9A9E876F1C1FEE1A00A7A2DF /* Parse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A9E87581C1FED1A00A7A2DF /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9AB9357B1C1AD8F7001285A0 /* CLRatingCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9357A1C1AD8F7001285A0 /* CLRatingCellView.m */; };
 		9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */; };
+		9AF9A16B1C250AB300EE7C2A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9A16A1C250AB300EE7C2A /* Reachability.m */; };
 		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		9A5951CC1C1D1B6F009C17AA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A5951C71C1D1B6F009C17AA /* ApptentiveConnect.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
-			remoteInfo = ApptentiveConnect;
-		};
-		9A5951CE1C1D1B6F009C17AA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A5951C71C1D1B6F009C17AA /* ApptentiveConnect.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 49626B6D13942A2B0093534C;
-			remoteInfo = ApptentiveUnitTests;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		9A9E876D1C1FEE0B00A7A2DF /* CopyFiles */ = {
@@ -100,7 +84,6 @@
 		9A5951BE1C1D0AA0009C17AA /* CLOneWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLOneWindowController.m; path = Clocker/CLOneWindow/CLOneWindowController.m; sourceTree = "<group>"; };
 		9A5951BF1C1D0AA0009C17AA /* CLOneWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLOneWindowController.h; path = Clocker/CLOneWindow/CLOneWindowController.h; sourceTree = "<group>"; };
 		9A5951C11C1D0AAD009C17AA /* CLOneWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLOneWindow.xib; path = Clocker/CLOneWindow/CLOneWindow.xib; sourceTree = "<group>"; };
-		9A5951C71C1D1B6F009C17AA /* ApptentiveConnect.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ApptentiveConnect.xcodeproj; path = Clocker/ApptentiveConnect/ApptentiveConnect.xcodeproj; sourceTree = "<group>"; };
 		9A5951D11C1D1D94009C17AA /* ApptentiveConnect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApptentiveConnect.framework; path = Clocker/ApptentiveConnect/ApptentiveConnect.framework; sourceTree = "<group>"; };
 		9A5951F31C1D3D81009C17AA /* CLTimezoneCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLTimezoneCellView.h; path = "Clocker/Custom Table Cell Views/CLTimezoneCellView.h"; sourceTree = "<group>"; };
 		9A5951F41C1D3D81009C17AA /* CLTimezoneCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLTimezoneCellView.m; path = "Clocker/Custom Table Cell Views/CLTimezoneCellView.m"; sourceTree = "<group>"; };
@@ -136,6 +119,8 @@
 		9AB935791C1AD8F7001285A0 /* CLRatingCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLRatingCellView.h; path = Clocker/CLRatingCellView.h; sourceTree = "<group>"; };
 		9AB9357A1C1AD8F7001285A0 /* CLRatingCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLRatingCellView.m; path = Clocker/CLRatingCellView.m; sourceTree = "<group>"; };
 		9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9AF9A1691C250AB300EE7C2A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Clocker/Reachability/Reachability.h; sourceTree = "<group>"; };
+		9AF9A16A1C250AB300EE7C2A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Clocker/Reachability/Reachability.m; sourceTree = "<group>"; };
 		DD4F7C0413C30F9F00825C6E /* Clocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4F7C0813C30F9F00825C6E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DD4F7C0B13C30F9F00825C6E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -192,15 +177,6 @@
 				9A392EEB1C1CE9950072C10A /* CLPreferencesViewController.m */,
 			);
 			name = "View Controllers";
-			sourceTree = "<group>";
-		};
-		9A5951C81C1D1B6F009C17AA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9A5951CD1C1D1B6F009C17AA /* ApptentiveConnect.framework */,
-				9A5951CF1C1D1B6F009C17AA /* ApptentiveUnitTests.octest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		9A5951F01C1D3D35009C17AA /* Table Cell Views */ = {
@@ -292,9 +268,19 @@
 			name = Parse;
 			sourceTree = "<group>";
 		};
+		9AF9A1681C250AA300EE7C2A /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				9AF9A1691C250AB300EE7C2A /* Reachability.h */,
+				9AF9A16A1C250AB300EE7C2A /* Reachability.m */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
+				9AF9A1681C250AA300EE7C2A /* Reachability */,
 				9A9E875B1C1FED1E00A7A2DF /* Parse */,
 				9A5B1A8D1BECDFB700A77C68 /* Clocker.entitlements */,
 				9A43792D1BEC256200F4E27F /* Media.xcassets */,
@@ -331,7 +317,6 @@
 				9A9E87631C1FEDBD00A7A2DF /* CoreGraphics.framework */,
 				9A9E87611C1FEDB500A7A2DF /* CFNetwork.framework */,
 				9A5951D11C1D1D94009C17AA /* ApptentiveConnect.framework */,
-				9A5951C71C1D1B6F009C17AA /* ApptentiveConnect.xcodeproj */,
 				9A5951B91C1D0A22009C17AA /* Crashlytics.framework */,
 				9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */,
 				9A4379211BEC223900F4E27F /* Security.framework */,
@@ -395,35 +380,12 @@
 			mainGroup = DD4F7BF913C30F9F00825C6E;
 			productRefGroup = DD4F7C0513C30F9F00825C6E /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 9A5951C81C1D1B6F009C17AA /* Products */;
-					ProjectRef = 9A5951C71C1D1B6F009C17AA /* ApptentiveConnect.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				DD4F7C0313C30F9F00825C6E /* Clocker */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		9A5951CD1C1D1B6F009C17AA /* ApptentiveConnect.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ApptentiveConnect.framework;
-			remoteRef = 9A5951CC1C1D1B6F009C17AA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9A5951CF1C1D1B6F009C17AA /* ApptentiveUnitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ApptentiveUnitTests.octest;
-			remoteRef = 9A5951CE1C1D1B6F009C17AA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DD4F7C0213C30F9F00825C6E /* Resources */ = {
@@ -480,6 +442,7 @@
 				9A8605B31BEC14A600A810A4 /* ColoredButton.m in Sources */,
 				9A8605AE1BEC148400A810A4 /* main.m in Sources */,
 				9A392EE81C1CDD530072C10A /* CLAboutUsViewController.m in Sources */,
+				9AF9A16B1C250AB300EE7C2A /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
