@@ -8,6 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+typedef enum : NSUInteger {
+    CLDefaultTheme,
+    CLBlackTheme
+} CLTheme;
+
 @interface CLPreferencesViewController : NSViewController
 
 @property (strong, nonatomic) NSMutableArray *selectedTimeZones;
@@ -16,6 +21,5 @@
 @property (atomic, strong) NSArray *fontFamilies;
 @property (atomic, strong) NSArray *themes;
 @property (nonatomic, strong) NSURLSessionDataTask *dataTask;
-@property (nonatomic, strong) NSString *buttonTitle;
 
 @end

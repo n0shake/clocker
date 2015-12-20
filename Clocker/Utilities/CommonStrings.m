@@ -13,6 +13,7 @@
 NSString *const CLEmptyString = @"";
 NSString *const CLDefaultPreferenceKey = @"defaultPreferences";
 NSString *const CLTimezoneName = @"formattedAddress";
+NSString *const CLPlaceIdentifier = @"place_id";
 NSString *const CLTimezoneID = @"timezoneID";
 NSString *const CLCustomLabel = @"customLabel";
 NSString *const CL24hourFormatSelectedKey = @"is24HourFormatSelected";

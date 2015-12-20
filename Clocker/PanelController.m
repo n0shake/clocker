@@ -59,8 +59,6 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 
 @implementation PanelController
 
-
-
 #pragma mark -
 
 - (id)initWithDelegate:(id<PanelControllerDelegate>)delegate
@@ -79,6 +77,11 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
+    if (!self.dateFormatter)
+    {
+        self.dateFormatter = [[NSDateFormatter alloc] init];
+    }
     
     [self updateDefaultPreferences];
     
@@ -113,12 +116,21 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 
 - (void) updateDefaultPreferences
 {
-    
     NSArray *defaultZones = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
     
     self.defaultPreferences = self.defaultPreferences == nil ? [[NSMutableArray alloc] initWithArray:defaultZones] : [NSMutableArray arrayWithArray:defaultZones];
        
     self.scrollViewHeight.constant = self.showReviewCell ? (self.defaultPreferences.count+1)*55+40 : self.defaultPreferences.count*55 + 30;
+    
+    if (self.defaultPreferences.count == 0) {
+        self.futureSlider.hidden = YES;
+        self.sliderLabel.hidden = YES;
+    }
+    else
+    {
+        self.futureSlider.hidden = NO;
+        self.sliderLabel.hidden = NO;
+    }
 
 }
 
@@ -203,6 +215,8 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 
 - (void)openPanel
 {
+    self.futureSliderValue = 0;
+    
     NSWindow *panel = [self window];
     
     NSRect screenRect = [[[NSScreen screens] objectAtIndex:0] frame];
@@ -301,39 +315,13 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     {
         [cell updateTextColorWithColor:[NSColor whiteColor] andCell:cell];
         [self.mainTableview setBackgroundColor:[NSColor blackColor]];
-        [self.titleField setBackgroundColor:[NSColor blackColor]];
-        
-        NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
-        paragraphStyle.alignment                = NSTextAlignmentCenter;
-        
-        NSDictionary *whiteDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSColor whiteColor], NSForegroundColorAttributeName, [NSFont fontWithName:@"Palatino" size:17] ,NSFontAttributeName,paragraphStyle,NSParagraphStyleAttributeName, nil];
-        NSAttributedString *whiteTitle = [[NSAttributedString alloc]
-                                          initWithString: @"Clocker"
-                                              attributes: whiteDict] ;
-       
-
-        [self.titleField setPlaceholderAttributedString:whiteTitle];
         self.window.alphaValue = 0.90;
-
     }
     else
     {
         [cell updateTextColorWithColor:[NSColor blackColor] andCell:cell];
         [self.mainTableview setBackgroundColor:[NSColor whiteColor]];
-        [self.titleField setBackgroundColor:[NSColor whiteColor]];
-        
-        NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
-        paragraphStyle.alignment                = NSTextAlignmentCenter;
-        
-        NSDictionary *whiteDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSColor blackColor], NSForegroundColorAttributeName, [NSFont fontWithName:@"Palatino" size:17] ,NSFontAttributeName,paragraphStyle,NSParagraphStyleAttributeName, nil];
-        NSAttributedString *whiteTitle = [[NSAttributedString alloc]
-                                          initWithString: @"Clocker"
-                                          attributes: whiteDict] ;
-        
-        
-        [self.titleField setPlaceholderAttributedString:whiteTitle];
         self.window.alphaValue = 1;
-
     }
     
     cell.relativeDate.stringValue = [self getDateForTimeZone:self.defaultPreferences[row][CLTimezoneID]];
@@ -385,7 +373,11 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 
 - (NSString *)getTimeForTimeZone:(NSString *)timezoneID
 {
-    NSDate *currentDate = [NSDate date];
+    NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
+    NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitHour
+                                                  value:self.futureSliderValue
+                                                 toDate:[NSDate date]
+                                                options:kNilOptions];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = kCFDateFormatterNoStyle;
     
@@ -396,19 +388,19 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     dateFormatter.timeZone = [NSTimeZone timeZoneWithName:timezoneID];
     //In the format 22:10
     
-    return [dateFormatter stringFromDate:currentDate];
+    return [dateFormatter stringFromDate:newDate];
 }
 
 - (NSString *)getLocalCurrentDate
 {
-    NSDate *currentDate = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = kCFDateFormatterShortStyle;
     dateFormatter.timeStyle = kCFDateFormatterNoStyle;
     dateFormatter.timeZone = [NSTimeZone systemTimeZone];
     
-    return [NSDateFormatter localizedStringFromDate:currentDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
-//    return [dateFormatter stringFromDate:currentDate];
+    return [NSDateFormatter localizedStringFromDate:[NSDate date]
+                                          dateStyle:NSDateFormatterShortStyle
+                                          timeStyle:NSDateFormatterNoStyle];
 
 }
 
@@ -428,9 +420,10 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     // Specify which units we would like to use
     unsigned units = NSCalendarUnitDay;
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
     NSInteger systemDay = [calendar component:units fromDate:localDate];
     NSInteger timezoneDay = [calendar component:units fromDate:timezoneDate];
+    NSInteger weekday = [calendar component:NSCalendarUnitWeekday fromDate:localDate];
     
     if (systemDay == timezoneDay) {
         return @"Today";
@@ -439,23 +432,30 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     {
         return @"Yesterday";
     }
-    else
+    else if (systemDay + 1 == timezoneDay)
     {
         return @"Tomorrow";
+    }
+    else
+    {
+        return [self getWeekdayFromInteger:weekday+2];
     }
 }
 
 - (NSString *)getDateForTimeZone:(NSString *)timezoneID
 {
-    NSDate *currentDate = [NSDate date];
+    NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
+    NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitHour
+                                                  value:self.futureSliderValue
+                                                 toDate:[NSDate date]
+                                                options:kNilOptions];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = kCFDateFormatterShortStyle;
     dateFormatter.timeStyle = kCFDateFormatterNoStyle;
     
     dateFormatter.timeZone = [NSTimeZone timeZoneWithName:timezoneID];
-    //In the format 22:10
     
-    return [self compareSystemDate:[self getLocalCurrentDate] toTimezoneDate:[dateFormatter stringFromDate:currentDate]];;
+    return [self compareSystemDate:[self getLocalCurrentDate] toTimezoneDate:[dateFormatter stringFromDate:newDate]];;
 }
 
 #pragma mark -
@@ -465,11 +465,8 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
 {
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
-    
     [pboard declareTypes:[NSArray arrayWithObject:CLDragSessionKey] owner:self];
-    
     [pboard setData:data forType:CLDragSessionKey];
-    
     return YES;
 }
 
@@ -483,7 +480,6 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
         [mutableTimeZoneDict setValue:object forKey:CLCustomLabel];
         [self.defaultPreferences replaceObjectAtIndex:row withObject:mutableTimeZoneDict];
         [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences forKey:CLDefaultPreferenceKey];
-        
         [self.mainTableview reloadData];
     }
 }
@@ -536,7 +532,76 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
    
     self.shutdownButton.hidden = !value;
     self.preferencesButton.hidden = !value;
+}
+
+- (IBAction)sliderMoved:(id)sender
+{    
+    NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
+    NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitHour
+                                          value:self.futureSliderValue
+                                         toDate:[NSDate date]
+                                        options:kNilOptions];
     
+   
+    
+    self.dateFormatter.dateStyle = kCFDateFormatterNoStyle;
+    self.dateFormatter.timeStyle = kCFDateFormatterShortStyle;
+    
+    NSString *relativeDate = [currentCalendar isDateInToday:newDate] ? @"Today" : @"Tomorrow";
+    
+    NSString *helper = [self.dateFormatter stringFromDate:newDate];
+    
+    NSHelpManager *helpManager = [NSHelpManager sharedHelpManager];
+
+    NSPoint pointInScreen = [NSEvent mouseLocation];
+    pointInScreen.y -= 5;
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ %@", relativeDate, helper]];
+    [NSHelpManager setContextHelpModeActive:YES];
+    [helpManager setContextHelp:attributedString forObject:self.futureSlider];
+    [helpManager showContextHelpForObject:self.futureSlider locationHint:pointInScreen];
+    
+    [self.mainTableview reloadData];
+}
+
+- (NSString *)getWeekdayFromInteger:(NSInteger)weekdayInteger
+{
+    if (weekdayInteger > 7) {
+        weekdayInteger = weekdayInteger - 7;
+    }
+    
+    switch (weekdayInteger) {
+        case 1:
+            return @"Sunday";
+            break;
+            
+        case 2:
+            return @"Monday";
+            break;
+            
+        case 3:
+            return @"Tuesday";
+            break;
+            
+        case 4:
+            return @"Wednesday";
+            break;
+            
+        case 5:
+            return @"Thursday";
+            break;
+            
+        case 6:
+            return @"Friday";
+            break;
+            
+        case 7:
+            return @"Saturday";
+            break;
+            
+        default:
+            return @"Error";
+            break;
+    }
 }
 
 @end

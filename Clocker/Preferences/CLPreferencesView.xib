@@ -8,11 +8,11 @@
             <connections>
                 <outlet property="availableTimezoneTableView" destination="Q0t-hQ-orw" id="vQv-rd-Wkv"/>
                 <outlet property="fontPopUp" destination="adA-dB-5Ok" id="FK1-Pq-eXW"/>
-                <outlet property="is24HourFormatSelected" destination="msw-L5-agF" id="Orm-wH-Yr8"/>
                 <outlet property="messageLabel" destination="KFC-NV-5A3" id="NKB-JY-Udb"/>
                 <outlet property="placeholderLabel" destination="Wb6-yr-Pw4" id="ilx-y4-XEw"/>
                 <outlet property="searchField" destination="biT-6m-ElR" id="Di3-QU-LGY"/>
-                <outlet property="themePopUp" destination="sfL-D2-aUX" id="G3Z-Nv-eVe"/>
+                <outlet property="theme" destination="ri6-fd-h3Z" id="9Sm-u7-G9o"/>
+                <outlet property="timeFormat" destination="qCn-Gz-vsB" id="0ZW-hJ-wgI"/>
                 <outlet property="timezonePanel" destination="6FL-fp-Ke1" id="SDq-Q4-hMb"/>
                 <outlet property="timezoneTableView" destination="LbJ-dW-ITm" id="tRO-Ch-Was"/>
                 <outlet property="view" destination="Uu9-io-frR" id="bYk-D1-SUF"/>
@@ -21,11 +21,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <view id="Uu9-io-frR">
-            <rect key="frame" x="0.0" y="0.0" width="439" height="407"/>
+            <rect key="frame" x="0.0" y="0.0" width="439" height="479"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button toolTip="Add a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4yB-vZ-tNX">
-                    <rect key="frame" x="11" y="102" width="21" height="22"/>
+                    <rect key="frame" x="11" y="163" width="21" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="GNz-C9-Ay8"/>
                         <constraint firstAttribute="width" constant="21" id="OkY-Uq-PwX"/>
@@ -39,7 +39,7 @@
                     </connections>
                 </button>
                 <button toolTip="Remove a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iOG-Ey-lmD">
-                    <rect key="frame" x="32" y="102" width="21" height="22"/>
+                    <rect key="frame" x="32" y="163" width="21" height="22"/>
                     <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gLH-wy-bCE">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -52,13 +52,13 @@ CA
                     </connections>
                 </button>
                 <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBR-OH-6QQ">
-                    <rect key="frame" x="10" y="129" width="419" height="270"/>
+                    <rect key="frame" x="10" y="190" width="419" height="281"/>
                     <clipView key="contentView" id="UZ2-JA-TZe">
-                        <rect key="frame" x="0.0" y="0.0" width="419" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="419" height="281"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="20" headerView="igm-uc-1wh" id="LbJ-dW-ITm">
-                                <rect key="frame" x="0.0" y="0.0" width="419" height="247"/>
+                                <rect key="frame" x="0.0" y="0.0" width="419" height="258"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -112,27 +112,73 @@ CA
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <button toolTip="Show time using a 24-hour format" translatesAutoresizingMaskIntoConstraints="NO" id="msw-L5-agF" customClass="ColoredButton">
-                    <rect key="frame" x="167" y="75" width="343" height="22"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wtb-He-7BA">
+                    <rect key="frame" x="186" y="45" width="67" height="19"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="339" id="KXG-qX-V3N"/>
-                        <constraint firstAttribute="height" constant="18" id="d60-FM-DPd"/>
+                        <constraint firstAttribute="width" constant="63" id="Whm-eI-Qun"/>
                     </constraints>
-                    <buttonCell key="cell" type="check" title="Use a 24-hour clock" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="ki6-rf-utU">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" size="12" name="Helvetica-Light"/>
-                    </buttonCell>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Font Family" id="fIc-YC-zol">
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RVw-E8-jnc">
+                    <rect key="frame" x="200" y="93" width="40" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Theme" id="Fxt-Z4-w4Z">
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EdZ-8X-JQg">
+                    <rect key="frame" x="184" y="141" width="70" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Time Format" id="KxG-3S-ZCz">
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ri6-fd-h3Z">
+                    <rect key="frame" x="157" y="66" width="124" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="uei-YD-v1R"/>
+                    </constraints>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Z4q-lw-PxF">
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
+                        <segments>
+                            <segment label="Default"/>
+                            <segment label="Black" toolTip="Customize the timezone panel by selecting a theme!" selected="YES" tag="1"/>
+                        </segments>
+                    </segmentedCell>
                     <connections>
-                        <action selector="timeFormatSelectionChanged:" target="-2" id="5mG-yB-Vzd"/>
-                        <binding destination="1Gq-ZQ-IML" name="value" keyPath="values.is24HourFormatSelected" id="KjZ-gp-ipG"/>
+                        <action selector="changeTheme:" target="-2" id="IeG-lF-AYU"/>
+                        <binding destination="1Gq-ZQ-IML" name="selectedLabel" keyPath="values.defaultTheme" id="ODp-CX-fqY"/>
                     </connections>
-                </button>
+                </segmentedControl>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qCn-Gz-vsB">
+                    <rect key="frame" x="101" y="114" width="236" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="232" id="Gma-Mm-ceK"/>
+                    </constraints>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="rc6-Qv-gWj">
+                        <font key="font" size="13" name="HelveticaNeue-Light"/>
+                        <segments>
+                            <segment label="12-hour clock" width="115"/>
+                            <segment label="24-hour clock" toolTip="Set the time format you want to see in the timezone panel!" width="114" tag="1"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="timeFormatSelectionChanged:" target="-2" id="tdk-w1-ZdT"/>
+                        <binding destination="1Gq-ZQ-IML" name="selectedIndex" keyPath="values.is24HourFormatSelected" id="f6L-5I-EVP"/>
+                    </connections>
+                </segmentedControl>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="adA-dB-5Ok">
-                    <rect key="frame" x="167" y="17" width="179" height="26"/>
+                    <rect key="frame" x="131" y="17" width="179" height="26"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="174" id="Iav-7m-gZ5"/>
                     </constraints>
-                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" imagePosition="overlaps" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="fI5-8y-GjM" id="3QE-QI-x3u">
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" arrowPosition="noArrow" selectedItem="fI5-8y-GjM" id="3QE-QI-x3u">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="12" name="HelveticaNeue-Thin"/>
                         <menu key="menu" id="cF5-QZ-Ydw">
@@ -149,85 +195,36 @@ CA
                         <binding destination="1Gq-ZQ-IML" name="selectedValue" keyPath="values.defaultFontFamily" previousBinding="JZm-hy-Yzo" id="olU-xe-W4j"/>
                     </connections>
                 </popUpButton>
-                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sfL-D2-aUX">
-                    <rect key="frame" x="167" y="45" width="179" height="26"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="174" id="AQn-7i-cfu"/>
-                    </constraints>
-                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" imagePosition="overlaps" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="tDC-SX-9j7">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" size="12" name="HelveticaNeue-Thin"/>
-                        <menu key="menu" id="A5x-kq-ASo">
-                            <items>
-                                <menuItem title="Default" id="wIH-hb-kKL"/>
-                                <menuItem title="Item 2" id="z5C-7z-5Lv"/>
-                                <menuItem title="Item 3" id="1qC-i0-ODT"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                    <connections>
-                        <action selector="changeTheme:" target="-2" id="EJf-VX-AVu"/>
-                        <binding destination="-2" name="content" keyPath="self.themes" id="sq9-TC-zmI"/>
-                        <binding destination="1Gq-ZQ-IML" name="selectedValue" keyPath="values.defaultTheme" previousBinding="sq9-TC-zmI" id="YII-d7-sWH"/>
-                    </connections>
-                </popUpButton>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wtb-He-7BA">
-                    <rect key="frame" x="95" y="21" width="67" height="19"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="63" id="Whm-eI-Qun"/>
-                    </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Font Family:" id="fIc-YC-zol">
-                        <font key="font" size="12" name="HelveticaNeue-Light"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RVw-E8-jnc">
-                    <rect key="frame" x="119" y="49" width="43" height="19"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Theme:" id="Fxt-Z4-w4Z">
-                        <font key="font" size="12" name="HelveticaNeue-Light"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EdZ-8X-JQg">
-                    <rect key="frame" x="86" y="77" width="73" height="19"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Time Format:" id="KxG-3S-ZCz">
-                        <font key="font" size="12" name="HelveticaNeue-Light"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="adA-dB-5Ok" firstAttribute="top" secondItem="sfL-D2-aUX" secondAttribute="bottom" constant="7" id="8lc-ds-Esz"/>
-                <constraint firstAttribute="bottom" secondItem="wtb-He-7BA" secondAttribute="bottom" constant="21" id="ABT-bI-1fr"/>
-                <constraint firstItem="msw-L5-agF" firstAttribute="top" secondItem="4yB-vZ-tNX" secondAttribute="bottom" constant="8" id="CnR-dg-KfG"/>
+                <constraint firstItem="adA-dB-5Ok" firstAttribute="centerX" secondItem="Uu9-io-frR" secondAttribute="centerX" id="1cp-Qu-tUG"/>
+                <constraint firstItem="EdZ-8X-JQg" firstAttribute="top" secondItem="4yB-vZ-tNX" secondAttribute="bottom" constant="4" id="7j3-qP-hQS"/>
+                <constraint firstItem="qCn-Gz-vsB" firstAttribute="centerX" secondItem="Uu9-io-frR" secondAttribute="centerX" id="Ddq-aH-J08"/>
+                <constraint firstItem="wtb-He-7BA" firstAttribute="centerX" secondItem="Uu9-io-frR" secondAttribute="centerX" id="FYU-zT-Kh2"/>
                 <constraint firstItem="iOG-Ey-lmD" firstAttribute="height" secondItem="4yB-vZ-tNX" secondAttribute="height" id="HKt-is-5y3"/>
                 <constraint firstItem="zBR-OH-6QQ" firstAttribute="top" secondItem="Uu9-io-frR" secondAttribute="top" constant="8" id="JKn-gF-8oI"/>
-                <constraint firstItem="msw-L5-agF" firstAttribute="top" secondItem="iOG-Ey-lmD" secondAttribute="bottom" constant="8" id="Umd-Jo-VZj"/>
-                <constraint firstItem="RVw-E8-jnc" firstAttribute="top" secondItem="EdZ-8X-JQg" secondAttribute="bottom" constant="9" id="YL7-ik-B6o"/>
+                <constraint firstItem="ri6-fd-h3Z" firstAttribute="top" secondItem="RVw-E8-jnc" secondAttribute="bottom" constant="4" id="K6f-Vr-qVl"/>
+                <constraint firstItem="RVw-E8-jnc" firstAttribute="centerX" secondItem="Uu9-io-frR" secondAttribute="centerX" id="Lbm-Wb-QhA"/>
+                <constraint firstItem="EdZ-8X-JQg" firstAttribute="top" secondItem="iOG-Ey-lmD" secondAttribute="bottom" constant="4" id="VH4-rQ-sQ3"/>
                 <constraint firstItem="4yB-vZ-tNX" firstAttribute="top" secondItem="zBR-OH-6QQ" secondAttribute="bottom" constant="6" id="Zsk-85-aI8"/>
-                <constraint firstItem="RVw-E8-jnc" firstAttribute="leading" secondItem="Uu9-io-frR" secondAttribute="leading" constant="121" id="dyX-Sd-50z"/>
+                <constraint firstItem="adA-dB-5Ok" firstAttribute="top" secondItem="wtb-He-7BA" secondAttribute="bottom" constant="4" id="alc-Vc-hTT"/>
+                <constraint firstItem="qCn-Gz-vsB" firstAttribute="top" secondItem="EdZ-8X-JQg" secondAttribute="bottom" constant="4" id="btm-if-1Jq"/>
                 <constraint firstAttribute="bottom" secondItem="adA-dB-5Ok" secondAttribute="bottom" constant="20" id="fZs-aV-AJw"/>
-                <constraint firstItem="sfL-D2-aUX" firstAttribute="leading" secondItem="RVw-E8-jnc" secondAttribute="trailing" constant="9" id="fzk-AD-jKY"/>
-                <constraint firstItem="wtb-He-7BA" firstAttribute="leading" secondItem="Uu9-io-frR" secondAttribute="leading" constant="97" id="im6-yj-x5a"/>
-                <constraint firstItem="adA-dB-5Ok" firstAttribute="leading" secondItem="wtb-He-7BA" secondAttribute="trailing" constant="9" id="l3q-0l-VaZ"/>
+                <constraint firstItem="wtb-He-7BA" firstAttribute="top" secondItem="ri6-fd-h3Z" secondAttribute="bottom" constant="4" id="kOu-TZ-9f8"/>
                 <constraint firstAttribute="trailing" secondItem="zBR-OH-6QQ" secondAttribute="trailing" constant="10" id="p1P-Ev-oBI"/>
-                <constraint firstItem="msw-L5-agF" firstAttribute="leading" secondItem="Uu9-io-frR" secondAttribute="leading" constant="169" id="uwf-y2-ZwE"/>
-                <constraint firstItem="wtb-He-7BA" firstAttribute="top" secondItem="RVw-E8-jnc" secondAttribute="bottom" constant="9" id="w2l-AG-0Y2"/>
+                <constraint firstItem="RVw-E8-jnc" firstAttribute="top" secondItem="qCn-Gz-vsB" secondAttribute="bottom" constant="4" id="pkQ-fr-Y1p"/>
+                <constraint firstItem="ri6-fd-h3Z" firstAttribute="centerX" secondItem="Uu9-io-frR" secondAttribute="centerX" id="slW-cb-BAu"/>
                 <constraint firstItem="iOG-Ey-lmD" firstAttribute="width" secondItem="4yB-vZ-tNX" secondAttribute="width" id="wLJ-lQ-GhP"/>
-                <constraint firstItem="EdZ-8X-JQg" firstAttribute="leading" secondItem="Uu9-io-frR" secondAttribute="leading" constant="88" id="wmd-IT-K12"/>
+                <constraint firstItem="EdZ-8X-JQg" firstAttribute="centerX" secondItem="Uu9-io-frR" secondAttribute="centerX" id="xh9-kQ-AAh"/>
                 <constraint firstItem="iOG-Ey-lmD" firstAttribute="leading" secondItem="4yB-vZ-tNX" secondAttribute="trailing" id="xu0-0C-2pe"/>
-                <constraint firstItem="sfL-D2-aUX" firstAttribute="top" secondItem="msw-L5-agF" secondAttribute="bottom" constant="8" id="zSV-jH-6pp"/>
                 <constraint firstItem="4yB-vZ-tNX" firstAttribute="leading" secondItem="Uu9-io-frR" secondAttribute="leading" constant="11" id="zgB-PO-97r"/>
                 <constraint firstItem="zBR-OH-6QQ" firstAttribute="leading" secondItem="Uu9-io-frR" secondAttribute="leading" constant="10" id="zoH-62-nam"/>
             </constraints>
-            <point key="canvasLocation" x="295.5" y="209.5"/>
+            <point key="canvasLocation" x="295.5" y="245.5"/>
         </view>
         <userDefaultsController representsSharedInstance="YES" id="1Gq-ZQ-IML"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="alertPanel" appearanceType="aqua" frameAutosaveName="" id="6FL-fp-Ke1" customClass="Panel">
-            <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES" resizable="YES" documentModal="YES" nonactivatingPanel="YES" texturedBackground="YES"/>
+            <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES" nonactivatingPanel="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="120" y="64" width="345" height="320"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
@@ -266,14 +263,14 @@ CA
                                         </tableColumn>
                                     </tableColumns>
                                     <connections>
-                                        <binding destination="-2" name="enabled" keyPath="self.activityInProgress" id="Xk8-FS-aWk">
-                                            <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                            </dictionary>
-                                        </binding>
                                         <binding destination="-2" name="doubleClickTarget" keyPath="self" id="nBJ-qr-qEf">
                                             <dictionary key="options">
                                                 <string key="NSSelectorName">addToFavorites:</string>
+                                            </dictionary>
+                                        </binding>
+                                        <binding destination="-2" name="enabled" keyPath="self.activityInProgress" id="Xk8-FS-aWk">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
                                             </dictionary>
                                         </binding>
                                         <outlet property="dataSource" destination="-2" id="86g-xx-hg5"/>
@@ -299,26 +296,6 @@ CA
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
-                    <button toolTip="Add a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hp6-CH-WJs">
-                        <rect key="frame" x="8" y="4" width="60" height="22"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="r2L-5O-GZy"/>
-                            <constraint firstAttribute="width" constant="60" id="yuH-LM-RAy"/>
-                        </constraints>
-                        <buttonCell key="cell" type="roundRect" title="Add" bezelStyle="roundedRect" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="x6l-8x-qnu">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="cellTitle"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="addToFavorites:" target="-2" id="Mdg-7P-kDy"/>
-                            <binding destination="-2" name="enabled" keyPath="self.activityInProgress" id="aBp-GA-vQ3">
-                                <dictionary key="options">
-                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                </dictionary>
-                            </binding>
-                            <binding destination="-2" name="title" keyPath="self.buttonTitle" id="W5O-nY-Q3i"/>
-                        </connections>
-                    </button>
                     <searchField toolTip="Search a timezone" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="biT-6m-ElR">
                         <rect key="frame" x="8" y="287" width="329" height="25"/>
                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Enter a city, state, country name" drawsBackground="YES" usesSingleLineMode="YES" id="ijc-z6-99E">
@@ -336,7 +313,7 @@ CA
                         </connections>
                     </searchField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KFC-NV-5A3">
-                        <rect key="frame" x="76" y="7" width="256" height="20"/>
+                        <rect key="frame" x="102" y="7" width="230" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="rr3-gU-VUn"/>
                         </constraints>
@@ -361,25 +338,60 @@ CA
                     <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ifx-PO-gfq">
                         <rect key="frame" x="75" y="134" width="16" height="16"/>
                         <connections>
-                            <binding destination="-2" name="animate" keyPath="self.activityInProgress" id="S3o-gJ-W9p"/>
                             <binding destination="-2" name="hidden" keyPath="self.activityInProgress" id="9pA-XX-dhd">
                                 <dictionary key="options">
                                     <string key="NSValueTransformerName">NSNegateBoolean</string>
                                 </dictionary>
                             </binding>
+                            <binding destination="-2" name="animate" keyPath="self.activityInProgress" id="S3o-gJ-W9p"/>
                         </connections>
                     </progressIndicator>
+                    <button toolTip="Add a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cyZ-cL-S7a">
+                        <rect key="frame" x="50" y="4" width="50" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="lku-Qx-nX5"/>
+                            <constraint firstAttribute="width" constant="50" id="vqo-37-082"/>
+                        </constraints>
+                        <buttonCell key="cell" type="roundRect" title="Close" bezelStyle="roundedRect" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="YjP-c4-vTl">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="cellTitle"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="closePanel:" target="-2" id="YRs-VA-eFr"/>
+                        </connections>
+                    </button>
+                    <button toolTip="Add a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hp6-CH-WJs">
+                        <rect key="frame" x="8" y="4" width="40" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="r2L-5O-GZy"/>
+                            <constraint firstAttribute="width" constant="40" id="yuH-LM-RAy"/>
+                        </constraints>
+                        <buttonCell key="cell" type="roundRect" title="Add" bezelStyle="roundedRect" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="x6l-8x-qnu">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="cellTitle"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="addToFavorites:" target="-2" id="Mdg-7P-kDy"/>
+                            <binding destination="-2" name="enabled" keyPath="self.activityInProgress" id="aBp-GA-vQ3">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="KFC-NV-5A3" firstAttribute="leading" secondItem="cyZ-cL-S7a" secondAttribute="trailing" constant="4" id="1i8-FW-qYz"/>
                     <constraint firstAttribute="trailing" secondItem="biT-6m-ElR" secondAttribute="trailing" constant="8" id="23X-dw-hpU"/>
                     <constraint firstItem="Wb6-yr-Pw4" firstAttribute="leading" secondItem="ifx-PO-gfq" secondAttribute="trailing" constant="9" id="9cg-iz-7Dq"/>
                     <constraint firstAttribute="trailing" secondItem="KFC-NV-5A3" secondAttribute="trailing" constant="15" id="B6V-vn-THO"/>
                     <constraint firstItem="LM9-75-vkc" firstAttribute="top" secondItem="biT-6m-ElR" secondAttribute="bottom" constant="3" id="DZR-XO-6sm"/>
                     <constraint firstAttribute="bottom" secondItem="KFC-NV-5A3" secondAttribute="bottom" constant="7" id="FWx-F1-VK8"/>
-                    <constraint firstItem="KFC-NV-5A3" firstAttribute="leading" secondItem="hp6-CH-WJs" secondAttribute="trailing" constant="10" id="GYa-Tw-JN4"/>
                     <constraint firstItem="hp6-CH-WJs" firstAttribute="leading" secondItem="kXo-nl-oxR" secondAttribute="leading" constant="8" id="Oir-hL-Og8"/>
+                    <constraint firstAttribute="bottom" secondItem="cyZ-cL-S7a" secondAttribute="bottom" constant="5" id="QQ1-JS-knf"/>
                     <constraint firstItem="biT-6m-ElR" firstAttribute="top" secondItem="kXo-nl-oxR" secondAttribute="top" constant="8" id="Y7N-oR-3KY"/>
                     <constraint firstItem="LM9-75-vkc" firstAttribute="leading" secondItem="kXo-nl-oxR" secondAttribute="leading" constant="8" id="ZJc-ws-AZR"/>
+                    <constraint firstItem="cyZ-cL-S7a" firstAttribute="leading" secondItem="hp6-CH-WJs" secondAttribute="trailing" constant="2" id="g8m-TW-fLo"/>
                     <constraint firstAttribute="bottom" secondItem="hp6-CH-WJs" secondAttribute="bottom" constant="5" id="hEn-h1-my5"/>
                     <constraint firstItem="biT-6m-ElR" firstAttribute="leading" secondItem="kXo-nl-oxR" secondAttribute="leading" constant="8" id="nhU-xR-AW2"/>
                     <constraint firstAttribute="trailing" secondItem="LM9-75-vkc" secondAttribute="trailing" constant="8" id="pMs-Ol-hsh"/>

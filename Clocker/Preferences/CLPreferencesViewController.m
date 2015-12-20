@@ -28,11 +28,11 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
 
 @property (weak) IBOutlet NSTableView *timezoneTableView;
 @property (strong) IBOutlet Panel *timezonePanel;
-@property (weak) IBOutlet NSPopUpButton *themePopUp;
+@property (weak) IBOutlet NSSegmentedControl *theme;
 @property (weak) IBOutlet NSPopUpButton *fontPopUp;
 @property (weak) IBOutlet NSTableView *availableTimezoneTableView;
 @property (weak) IBOutlet NSSearchField *searchField;
-@property (weak) IBOutlet NSButton *is24HourFormatSelected;
+@property (weak) IBOutlet NSSegmentedControl *timeFormat;
 @property (weak) IBOutlet NSTextField *messageLabel;
 
 @end
@@ -46,8 +46,6 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     [viewLayer setBackgroundColor:CGColorCreateGenericRGB(255.0, 255.0, 255.0, 0.8)]; //RGB plus Alpha Channel
     [self.view setWantsLayer:YES];
     [self.view setLayer:viewLayer];
-    
-    self.buttonTitle = @"Close";
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(refereshTimezoneTableView) name:CLCustomLabelChangedNotification object:nil];
@@ -181,18 +179,7 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
 - (IBAction)addToFavorites:(id)sender
 {
     self.activityInProgress = YES;
-    
-    if ([self.buttonTitle isEqualToString:@"Close"])
-    {
-         self.filteredArray = [NSMutableArray array];
-        self.placeholderLabel.placeholderString = CLEmptyString;
-        [self.availableTimezoneTableView reloadData];
-        self.searchField.stringValue = CLEmptyString;
-        [self.timezonePanel close];
-        self.activityInProgress = NO;
-        return;
-    }
-    
+
     if (self.availableTimezoneTableView.selectedRow == -1)
     {
         self.messageLabel.stringValue = @"Please select a timezone!";
@@ -207,7 +194,6 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     {
         self.messageLabel.stringValue = @"Maximum 10 timezones allowed!";
         [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(clearLabel) userInfo:nil repeats:NO];
-        NSLog(@"Maximum me ghusa");
         self.activityInProgress = NO;
         return;
     }
@@ -234,6 +220,18 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     self.searchField.stringValue = CLEmptyString;
     
    [self getTimeZoneForLatitude:[self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:@"latitude"] andLongitude:[self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:@"longitude"]];
+}
+
+- (IBAction)closePanel:(id)sender {
+
+        self.filteredArray = [NSMutableArray array];
+        self.placeholderLabel.placeholderString = CLEmptyString;
+        [self.availableTimezoneTableView reloadData];
+        self.searchField.stringValue = CLEmptyString;
+        [self.timezonePanel close];
+        self.activityInProgress = NO;
+  
+
 }
 
 - (void)clearLabel
@@ -298,7 +296,6 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
         }
         
         self.placeholderLabel.placeholderString = CLEmptyString;
-        self.buttonTitle = @"Close";
     }
         
     [self.availableTimezoneTableView reloadData];
@@ -306,9 +303,9 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
 
 - (IBAction)timeFormatSelectionChanged:(id)sender {
     
-    NSButton *is24HourFormatSelected = (NSButton *)sender;
+    NSSegmentedControl *timeFormat = (NSSegmentedControl *)sender;
     
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:is24HourFormatSelected.state] forKey:CL24hourFormatSelectedKey];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:timeFormat.selectedSegment] forKey:CL24hourFormatSelectedKey];
     
     [self refreshMainTableview];
 }
@@ -391,12 +388,12 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
 
 - (IBAction)changeTheme:(id)sender
 {
-    NSPopUpButton *popUpButtonTitle = (NSPopUpButton *)sender;
+    NSSegmentedControl *themeSegment = (NSSegmentedControl *)sender;
     ApplicationDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     PanelController *panelController = appDelegate.panelController;
     [panelController.backgroundView setNeedsDisplay:YES];
     
-    if ([[popUpButtonTitle titleOfSelectedItem] isEqualToString:@"Black"]) {
+    if (themeSegment.selectedSegment == CLBlackTheme) {
         panelController.shutdownButton.image = [NSImage imageNamed:@"PowerIcon-White"];
         panelController.preferencesButton.image = [NSImage imageNamed:@"Settings-White"];
     }
@@ -423,7 +420,6 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     if (networkStatus == NotReachable)
     {
         self.placeholderLabel.placeholderString = @"You're offline, maybe?";
-        self.buttonTitle = @"Close";
         return;
     }
     
@@ -454,7 +450,7 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
         self.dataTask= [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             if (!error) {
                 NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
-                NSLog(@"Status Code:%zd", httpResp.statusCode);
+        
                 if (httpResp.statusCode == 200) {
                     
                      dispatch_async(dispatch_get_main_queue(), ^{
@@ -467,7 +463,7 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
                                                error:nil];
                          
                          if ([json[@"status"] isEqualToString:@"ZERO_RESULTS"]) {
-                             self.placeholderLabel.placeholderString = @"No results found!";
+                             self.placeholderLabel.placeholderString = @"No results found! 😔";
                              self.activityInProgress = NO;
                              return;
                          }
@@ -484,15 +480,13 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
                                                             CLTimezoneName:formattedAddress,
                                                             @"customLabel" : @"",
                                                             @"timezoneID" : @"",
-                                                            @"placeID" : dictionary[@"place_id"]};
+                                                            CLPlaceIdentifier : dictionary[@"place_id"]};
                              [self.filteredArray addObject:totalPackage];
                              
                          }
                          self.activityInProgress = NO;
                          
                          [self.availableTimezoneTableView reloadData];
-                         
-                        self.buttonTitle = @"Add";
 
                      });
                   
@@ -524,7 +518,6 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
         dispatch_async(dispatch_get_main_queue(), ^{
         self.placeholderLabel.placeholderString = @"You're offline, maybe?";
         self.activityInProgress = NO;
-        self.buttonTitle = @"Close";
         self.filteredArray = [NSMutableArray array];
         [self.availableTimezoneTableView reloadData];
         });
@@ -584,7 +577,8 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
                                                       @"sunriseTime" : json[@"sunrise"],
                                                       @"sunsetTime": json[@"sunset"],
                                                       CLCustomLabel : @"",
-                                                      CLTimezoneName : filteredAddress};
+                                                      CLTimezoneName : filteredAddress,
+                                                      CLPlaceIdentifier : self.filteredArray[self.availableTimezoneTableView.selectedRow][CLPlaceIdentifier]};
                         
                         NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
                         
@@ -621,7 +615,6 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
             }
             else
             {
- 
                 self.placeholderLabel.placeholderString = [error.localizedDescription isEqualToString:@"The Internet connection appears to be offline."] ?
                 @"You're offline, maybe?" : @"Try again, maybe?";
                 

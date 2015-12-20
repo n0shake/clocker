@@ -51,24 +51,23 @@
     __unsafe_unretained NSTextField *_textField;
 }
 
-@property (nonatomic, unsafe_unretained) IBOutlet BackgroundView *backgroundView;
+
 @property (nonatomic, strong) CLOneWindowController *oneWindow;
 @property (nonatomic, strong) NSMutableArray *defaultPreferences;
-
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
+@property (nonatomic, assign) NSInteger futureSliderValue;
 @property (nonatomic) BOOL hasActivePanel;
-
+@property (nonatomic) BOOL showReviewCell;
 @property (nonatomic, unsafe_unretained, readonly) id<PanelControllerDelegate> delegate;
+@property (nonatomic, unsafe_unretained) IBOutlet BackgroundView *backgroundView;
 @property (weak) IBOutlet NSTableView *mainTableview;
-
 @property (weak) IBOutlet NSLayoutConstraint *scrollViewHeight;
-
 @property (weak) IBOutlet NSButton *shutdownButton;
 @property (weak) IBOutlet NSButton *preferencesButton;
-@property (assign) BOOL showReviewCell;
-@property (weak) IBOutlet NSTextField *titleField;
+@property (weak) IBOutlet NSSlider *futureSlider;
+@property (weak) IBOutlet NSTextField *sliderLabel;
 
 - (id)initWithDelegate:(id<PanelControllerDelegate>)delegate;
-
 - (void)openPanel;
 - (void)closePanel;
 - (void)updateDefaultPreferences;

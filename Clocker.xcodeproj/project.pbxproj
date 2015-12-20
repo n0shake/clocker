@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9A25F7471C1A5E17007D369B /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A25F7441C1A5E17007D369B /* iRate.m */; };
+		9A3247321C25FD3A00CF6B6E /* CLCustomSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3247311C25FD3A00CF6B6E /* CLCustomSliderCell.m */; };
 		9A392EE81C1CDD530072C10A /* CLAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A392EE61C1CDD530072C10A /* CLAboutUsViewController.m */; };
 		9A392EE91C1CDD530072C10A /* CLAboutUsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A392EE71C1CDD530072C10A /* CLAboutUsView.xib */; };
 		9A392EED1C1CE9950072C10A /* CLPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A392EEB1C1CE9950072C10A /* CLPreferencesViewController.m */; };
@@ -65,6 +66,8 @@
 /* Begin PBXFileReference section */
 		9A25F7411C1A5E17007D369B /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iRate.h; path = "Clocker/Rate App/iRate.h"; sourceTree = "<group>"; };
 		9A25F7441C1A5E17007D369B /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iRate.m; path = "Clocker/Rate App/iRate.m"; sourceTree = "<group>"; };
+		9A3247301C25FD3A00CF6B6E /* CLCustomSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLCustomSliderCell.h; path = "Clocker/Custom Slider/CLCustomSliderCell.h"; sourceTree = "<group>"; };
+		9A3247311C25FD3A00CF6B6E /* CLCustomSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLCustomSliderCell.m; path = "Clocker/Custom Slider/CLCustomSliderCell.m"; sourceTree = "<group>"; };
 		9A392EE51C1CDD530072C10A /* CLAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAboutUsViewController.h; path = Clocker/AboutUsWindow/CLAboutUsViewController.h; sourceTree = "<group>"; };
 		9A392EE61C1CDD530072C10A /* CLAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAboutUsViewController.m; path = Clocker/AboutUsWindow/CLAboutUsViewController.m; sourceTree = "<group>"; };
 		9A392EE71C1CDD530072C10A /* CLAboutUsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLAboutUsView.xib; path = Clocker/AboutUsWindow/CLAboutUsView.xib; sourceTree = "<group>"; };
@@ -217,6 +220,8 @@
 				9A8605BD1BEC14F600A810A4 /* Panel.m */,
 				9A8605CB1BEC155B00A810A4 /* ColoredButton.h */,
 				9A8605B21BEC14A600A810A4 /* ColoredButton.m */,
+				9A3247301C25FD3A00CF6B6E /* CLCustomSliderCell.h */,
+				9A3247311C25FD3A00CF6B6E /* CLCustomSliderCell.m */,
 			);
 			name = Superclass;
 			sourceTree = "<group>";
@@ -428,6 +433,7 @@
 			files = (
 				9A8605BF1BEC14F600A810A4 /* BackgroundView.m in Sources */,
 				9AB9357B1C1AD8F7001285A0 /* CLRatingCellView.m in Sources */,
+				9A3247321C25FD3A00CF6B6E /* CLCustomSliderCell.m in Sources */,
 				9A392EED1C1CE9950072C10A /* CLPreferencesViewController.m in Sources */,
 				9A5951BD1C1D0A8D009C17AA /* CommonStrings.m in Sources */,
 				9A5951FA1C1D5214009C17AA /* iVersion.m in Sources */,

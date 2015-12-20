@@ -18,5 +18,6 @@ extern NSString *const CL24hourFormatSelectedKey;
 extern NSString *const CLDragSessionKey;
 extern NSString *const CLCustomLabelChangedNotification;
 extern NSString *const CLTimezoneID;
+extern NSString *const CLPlaceIdentifier;
 
 @end

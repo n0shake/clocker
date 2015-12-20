@@ -7,11 +7,12 @@
         <customObject id="-2" userLabel="File's Owner" customClass="PanelController">
             <connections>
                 <outlet property="backgroundView" destination="6" id="20"/>
+                <outlet property="futureSlider" destination="T7e-RS-eTE" id="xDZ-rl-pux"/>
                 <outlet property="mainTableview" destination="dFw-ts-8OZ" id="wwJ-jA-lCy"/>
                 <outlet property="preferencesButton" destination="OFy-u1-TnH" id="SId-Ih-ssT"/>
                 <outlet property="scrollViewHeight" destination="QcT-N0-G4s" id="EHr-Co-L0Z"/>
                 <outlet property="shutdownButton" destination="nTt-pf-Hw2" id="gCK-0D-gnK"/>
-                <outlet property="titleField" destination="HR1-ZK-Ey0" id="L0G-91-jZx"/>
+                <outlet property="sliderLabel" destination="rGL-w7-iSa" id="70y-sh-dyl"/>
                 <outlet property="window" destination="5" id="7"/>
             </connections>
         </customObject>
@@ -38,7 +39,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="1"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <tableViewGridLines key="gridStyleMask" dashed="YES"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
                                         <tableColumn width="279" minWidth="40" maxWidth="1000" id="LTt-db-Dwv">
@@ -200,17 +200,29 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HR1-ZK-Ey0">
-                        <rect key="frame" x="0.0" y="2" width="280" height="22"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-w7-iSa">
+                        <rect key="frame" x="100" y="26" width="79" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="22" id="IxM-FF-J1F"/>
+                            <constraint firstAttribute="width" constant="75" id="XLu-0I-ACL"/>
+                            <constraint firstAttribute="height" constant="20" id="j4s-Vf-pQQ"/>
                         </constraints>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" placeholderString="Clocker" drawsBackground="YES" id="KVB-OA-XfT">
-                            <font key="font" size="17" name="Palatino-Bold"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" placeholderString="Future Slider" id="KPS-ge-xQM">
+                            <font key="font" size="13" name="HelveticaNeue-Light"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T7e-RS-eTE">
+                        <rect key="frame" x="29" y="11" width="217" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="tQw-lm-Ify"/>
+                        </constraints>
+                        <sliderCell key="cell" state="on" alignment="left" maxValue="24" tickMarkPosition="above" sliderType="linear" id="V8R-sf-5hO" customClass="CLCustomSliderCell"/>
+                        <connections>
+                            <action selector="sliderMoved:" target="-2" id="TMW-de-NVq"/>
+                            <binding destination="-2" name="value" keyPath="self.futureSliderValue" id="Fbv-WN-01b"/>
+                        </connections>
+                    </slider>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OFy-u1-TnH">
                         <rect key="frame" x="246" y="1" width="29" height="19"/>
                         <constraints>
@@ -218,7 +230,7 @@
                             <constraint firstAttribute="height" constant="18" id="X7D-ep-wB4"/>
                         </constraints>
                         <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="NSActionTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vYm-fs-Zjd">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <behavior key="behavior" lightByContents="YES"/>
                             <font key="font" metaFont="systemBold" size="12"/>
                         </buttonCell>
                         <connections>
@@ -232,7 +244,7 @@
                             <constraint firstAttribute="height" constant="18" id="sVG-VE-3q4"/>
                         </constraints>
                         <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="PowerIcon" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sUh-16-Fhk">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                            <behavior key="behavior" lightByContents="YES"/>
                             <font key="font" metaFont="systemBold" size="12"/>
                         </buttonCell>
                         <connections>
@@ -242,15 +254,17 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="4Gd-Nv-fXr" firstAttribute="top" secondItem="6" secondAttribute="top" constant="8" id="1g0-Hm-7Gh"/>
-                    <constraint firstAttribute="trailing" secondItem="HR1-ZK-Ey0" secondAttribute="trailing" id="1ol-mo-aQU"/>
-                    <constraint firstAttribute="bottom" secondItem="HR1-ZK-Ey0" secondAttribute="bottom" constant="2" id="Jtb-Nx-FYR"/>
+                    <constraint firstItem="T7e-RS-eTE" firstAttribute="top" secondItem="dFw-ts-8OZ" secondAttribute="bottom" constant="-25" id="96B-lf-iFV"/>
+                    <constraint firstItem="T7e-RS-eTE" firstAttribute="leading" secondItem="nTt-pf-Hw2" secondAttribute="trailing" constant="2" id="GgQ-58-tbc"/>
                     <constraint firstAttribute="bottom" secondItem="nTt-pf-Hw2" secondAttribute="bottom" constant="2" id="QoV-TI-KVJ"/>
                     <constraint firstAttribute="bottom" secondItem="OFy-u1-TnH" secondAttribute="bottom" constant="2" id="Ubf-Mv-WMp"/>
                     <constraint firstAttribute="trailing" secondItem="4Gd-Nv-fXr" secondAttribute="trailing" constant="-1" id="XP6-W0-2XT"/>
-                    <constraint firstItem="HR1-ZK-Ey0" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="XQ8-hU-ayC"/>
+                    <constraint firstItem="T7e-RS-eTE" firstAttribute="top" secondItem="rGL-w7-iSa" secondAttribute="bottom" constant="1" id="cuU-JZ-uRn"/>
                     <constraint firstItem="4Gd-Nv-fXr" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="-1" id="fHc-VQ-mJ3"/>
+                    <constraint firstItem="rGL-w7-iSa" firstAttribute="centerX" secondItem="dFw-ts-8OZ" secondAttribute="centerX" id="jY7-tr-VZ1"/>
                     <constraint firstAttribute="trailing" secondItem="OFy-u1-TnH" secondAttribute="trailing" constant="5" id="p2a-qj-LHE"/>
                     <constraint firstItem="nTt-pf-Hw2" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="pKl-Ay-0cB"/>
+                    <constraint firstItem="OFy-u1-TnH" firstAttribute="leading" secondItem="T7e-RS-eTE" secondAttribute="trailing" constant="2" id="vVD-Or-EZX"/>
                 </constraints>
             </view>
             <connections>
