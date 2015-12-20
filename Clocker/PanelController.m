@@ -316,10 +316,13 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
         [cell updateTextColorWithColor:[NSColor whiteColor] andCell:cell];
         [self.mainTableview setBackgroundColor:[NSColor blackColor]];
         self.window.alphaValue = 0.90;
+        [cell.customName setDrawsBackground:YES];
+        [cell.customName setBackgroundColor:[NSColor blackColor]];
     }
     else
     {
         [cell updateTextColorWithColor:[NSColor blackColor] andCell:cell];
+        [cell.customName setDrawsBackground:NO];
         [self.mainTableview setBackgroundColor:[NSColor whiteColor]];
         self.window.alphaValue = 1;
     }

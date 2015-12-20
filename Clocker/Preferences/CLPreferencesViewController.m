@@ -230,8 +230,6 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
         self.searchField.stringValue = CLEmptyString;
         [self.timezonePanel close];
         self.activityInProgress = NO;
-  
-
 }
 
 - (void)clearLabel
