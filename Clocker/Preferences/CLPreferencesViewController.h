@@ -18,7 +18,7 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) NSMutableArray *selectedTimeZones;
 @property (strong, nonatomic) NSMutableArray *filteredArray;
 @property (atomic, assign) BOOL launchOnLogin;
-@property (atomic, strong) NSArray *fontFamilies;
+
 @property (atomic, strong) NSArray *themes;
 @property (nonatomic, strong) NSURLSessionDataTask *dataTask;
 

@@ -13,7 +13,6 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="480" height="275"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="se5-gp-TjO">
@@ -22,12 +21,17 @@
             </view>
             <toolbar key="toolbar" implicitIdentifier="15DCF3D0-4463-497F-B0C3-14E5359E9266" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="small" id="eut-Zr-nON">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="716E502A-B9AE-4776-9A41-E42176C403F7" label="General" paletteLabel="General" tag="-1" image="NSHomeTemplate" id="Khj-zc-D5t">
+                    <toolbarItem implicitItemIdentifier="716E502A-B9AE-4776-9A41-E42176C403F7" label="General" paletteLabel="General" tag="-1" image="NSPreferencesGeneral" id="Khj-zc-D5t">
                         <connections>
                             <action selector="openPreferences:" target="-2" id="rJI-gB-Gcb"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="B5E58161-D319-4490-AD3C-CED0C67FD50E" label="Appearance" paletteLabel="About Us" tag="-1" image="NSInfo" autovalidates="NO" id="ti4-MJ-8Xu">
+                    <toolbarItem implicitItemIdentifier="E5C7052B-66F5-4E01-B453-642B034EB433" label="Appearance" paletteLabel="Appearance" tag="-1" image="NSFontPanel" id="Y9Q-gx-taO">
+                        <connections>
+                            <action selector="openAppearanceView:" target="-2" id="y38-Hb-icv"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="A66E9082-B4AF-4B6F-B2E8-CC3D70124C0B" label="Appearance" paletteLabel="About Us" tag="-1" image="NSInfo" autovalidates="NO" id="ti4-MJ-8Xu">
                         <connections>
                             <action selector="openAboutUsView:" target="-2" id="Aec-lN-CqR"/>
                         </connections>
@@ -35,6 +39,7 @@
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="Khj-zc-D5t"/>
+                    <toolbarItem reference="Y9Q-gx-taO"/>
                     <toolbarItem reference="ti4-MJ-8Xu"/>
                 </defaultToolbarItems>
             </toolbar>
@@ -45,7 +50,8 @@
         </window>
     </objects>
     <resources>
-        <image name="NSHomeTemplate" width="14" height="14"/>
+        <image name="NSFontPanel" width="32" height="32"/>
         <image name="NSInfo" width="32" height="32"/>
+        <image name="NSPreferencesGeneral" width="32" height="32"/>
     </resources>
 </document>

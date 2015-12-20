@@ -84,7 +84,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     }
     
     [self updateDefaultPreferences];
-    
+
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"defaultTheme"] isEqualToString:@"Black"]) {
         self.shutdownButton.image = [NSImage imageNamed:@"PowerIcon-White"];
         self.preferencesButton.image = [NSImage imageNamed:@"Settings-White"];

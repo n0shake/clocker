@@ -9,11 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import "CLPreferencesViewController.h"
 #import "CLAboutUsViewController.h"
+#import "CLAppearanceViewController.h"
 
 @interface CLOneWindowController : NSWindowController
 
 @property (strong, nonatomic) CLPreferencesViewController *preferencesView;
 @property (strong, nonatomic) CLAboutUsViewController *aboutUsView;
+@property (strong, nonatomic) CLAppearanceViewController *appearanceView;
 
 + (instancetype)sharedWindow;
 

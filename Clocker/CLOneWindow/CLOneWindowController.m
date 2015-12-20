@@ -49,6 +49,8 @@ static CLOneWindowController *sharedWindow = nil;
     [self setWindowWithContentView:self.preferencesView.view];
     [self.aboutUsView.view removeFromSuperview];
     self.aboutUsView = nil;
+    [self.appearanceView.view removeFromSuperview];
+    self.appearanceView = nil;
 }
 
 - (void)setWindowWithContentView:(NSView *)contentView
@@ -63,7 +65,18 @@ static CLOneWindowController *sharedWindow = nil;
     [self setWindowWithContentView:self.aboutUsView.view];
     [self.preferencesView.view removeFromSuperview];
     self.preferencesView = nil;
+    [self.appearanceView.view removeFromSuperview];
+    self.appearanceView = nil;
 }
 
+- (IBAction)openAppearanceView:(id)sender
+{
+    self.appearanceView = [[CLAppearanceViewController alloc] initWithNibName:@"CLAppearanceView" bundle:nil];
+    [self setWindowWithContentView:self.appearanceView.view];
+    [self.preferencesView.view removeFromSuperview];
+    self.preferencesView = nil;
+    [self.aboutUsView.view removeFromSuperview];
+    self.aboutUsView = nil;
+}
 
 @end

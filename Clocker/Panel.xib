@@ -59,7 +59,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="100" translatesAutoresizingMaskIntoConstraints="NO" id="etF-33-bCB">
-                                                            <rect key="frame" x="8" y="29" width="134" height="23"/>
+                                                            <rect key="frame" x="7" y="29" width="134" height="23"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="130" id="32b-h6-joo"/>
                                                                 <constraint firstAttribute="height" constant="23" id="vod-YN-iNX"/>
@@ -103,7 +103,7 @@
                                                         <constraint firstItem="etF-33-bCB" firstAttribute="top" secondItem="qbN-ba-fho" secondAttribute="top" constant="8" id="Lct-kG-usb"/>
                                                         <constraint firstItem="vnv-J2-7r1" firstAttribute="centerY" secondItem="qbN-ba-fho" secondAttribute="centerY" constant="-2" id="TuQ-gE-ZUh"/>
                                                         <constraint firstItem="QUd-7D-q14" firstAttribute="top" secondItem="etF-33-bCB" secondAttribute="bottom" constant="-5" id="VO6-Zn-eA3"/>
-                                                        <constraint firstItem="etF-33-bCB" firstAttribute="leading" secondItem="qbN-ba-fho" secondAttribute="leading" constant="10" id="ueW-ow-ZRq"/>
+                                                        <constraint firstItem="etF-33-bCB" firstAttribute="leading" secondItem="qbN-ba-fho" secondAttribute="leading" constant="9" id="ueW-ow-ZRq"/>
                                                         <constraint firstAttribute="trailing" secondItem="vnv-J2-7r1" secondAttribute="trailing" constant="8" id="zXo-eA-0bQ"/>
                                                     </constraints>
                                                     <connections>

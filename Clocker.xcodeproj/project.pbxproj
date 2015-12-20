@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9A25F7471C1A5E17007D369B /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A25F7441C1A5E17007D369B /* iRate.m */; };
 		9A3247321C25FD3A00CF6B6E /* CLCustomSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3247311C25FD3A00CF6B6E /* CLCustomSliderCell.m */; };
+		9A3247391C263F4F00CF6B6E /* CLAppearanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3247371C263F4F00CF6B6E /* CLAppearanceViewController.m */; };
+		9A32473A1C263F4F00CF6B6E /* CLAppearanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A3247381C263F4F00CF6B6E /* CLAppearanceView.xib */; };
 		9A392EE81C1CDD530072C10A /* CLAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A392EE61C1CDD530072C10A /* CLAboutUsViewController.m */; };
 		9A392EE91C1CDD530072C10A /* CLAboutUsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A392EE71C1CDD530072C10A /* CLAboutUsView.xib */; };
 		9A392EED1C1CE9950072C10A /* CLPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A392EEB1C1CE9950072C10A /* CLPreferencesViewController.m */; };
@@ -68,6 +70,9 @@
 		9A25F7441C1A5E17007D369B /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iRate.m; path = "Clocker/Rate App/iRate.m"; sourceTree = "<group>"; };
 		9A3247301C25FD3A00CF6B6E /* CLCustomSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLCustomSliderCell.h; path = "Clocker/Custom Slider/CLCustomSliderCell.h"; sourceTree = "<group>"; };
 		9A3247311C25FD3A00CF6B6E /* CLCustomSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLCustomSliderCell.m; path = "Clocker/Custom Slider/CLCustomSliderCell.m"; sourceTree = "<group>"; };
+		9A3247361C263F4F00CF6B6E /* CLAppearanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAppearanceViewController.h; path = "Clocker/Appearance Tab/CLAppearanceViewController.h"; sourceTree = "<group>"; };
+		9A3247371C263F4F00CF6B6E /* CLAppearanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAppearanceViewController.m; path = "Clocker/Appearance Tab/CLAppearanceViewController.m"; sourceTree = "<group>"; };
+		9A3247381C263F4F00CF6B6E /* CLAppearanceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLAppearanceView.xib; path = "Clocker/Appearance Tab/CLAppearanceView.xib"; sourceTree = "<group>"; };
 		9A392EE51C1CDD530072C10A /* CLAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAboutUsViewController.h; path = Clocker/AboutUsWindow/CLAboutUsViewController.h; sourceTree = "<group>"; };
 		9A392EE61C1CDD530072C10A /* CLAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAboutUsViewController.m; path = Clocker/AboutUsWindow/CLAboutUsViewController.m; sourceTree = "<group>"; };
 		9A392EE71C1CDD530072C10A /* CLAboutUsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLAboutUsView.xib; path = Clocker/AboutUsWindow/CLAboutUsView.xib; sourceTree = "<group>"; };
@@ -209,6 +214,9 @@
 				9A56DB7E1C1CFB73004CE6AF /* Panel.xib */,
 				9A392EE71C1CDD530072C10A /* CLAboutUsView.xib */,
 				9A392EEC1C1CE9950072C10A /* CLPreferencesView.xib */,
+				9A3247361C263F4F00CF6B6E /* CLAppearanceViewController.h */,
+				9A3247371C263F4F00CF6B6E /* CLAppearanceViewController.m */,
+				9A3247381C263F4F00CF6B6E /* CLAppearanceView.xib */,
 			);
 			name = XIB;
 			sourceTree = "<group>";
@@ -402,6 +410,7 @@
 				9A56DB811C1CFB73004CE6AF /* Panel.xib in Resources */,
 				9A43792E1BEC256200F4E27F /* Media.xcassets in Resources */,
 				9A392EE91C1CDD530072C10A /* CLAboutUsView.xib in Resources */,
+				9A32473A1C263F4F00CF6B6E /* CLAppearanceView.xib in Resources */,
 				9A5951C21C1D0AAD009C17AA /* CLOneWindow.xib in Resources */,
 				9A56DB801C1CFB73004CE6AF /* MainMenu.xib in Resources */,
 			);
@@ -440,6 +449,7 @@
 				9A25F7471C1A5E17007D369B /* iRate.m in Sources */,
 				9A8605C01BEC14F600A810A4 /* Panel.m in Sources */,
 				9A8605BA1BEC14DC00A810A4 /* StatusItemView.m in Sources */,
+				9A3247391C263F4F00CF6B6E /* CLAppearanceViewController.m in Sources */,
 				9A8605BB1BEC14DC00A810A4 /* PanelController.m in Sources */,
 				9A8605B61BEC14BE00A810A4 /* MenubarController.m in Sources */,
 				9A5951C01C1D0AA0009C17AA /* CLOneWindowController.m in Sources */,

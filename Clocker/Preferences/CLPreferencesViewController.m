@@ -67,34 +67,7 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     
     NSMutableArray *availableFonts = [[NSMutableArray alloc] init];
     
-    NSFontCollection *fontCollection = [NSFontCollection fontCollectionWithName:@"com.apple.UserFonts"];
-    
-    for (NSFontDescriptor *descriptor in fontCollection.matchingDescriptors) {
-        if ([descriptor objectForKey:@"NSFontFamilyAttribute"]) {
-            if (![availableFonts containsObject:[descriptor objectForKey:@"NSFontFamilyAttribute"]]) {
-                [availableFonts addObject:[descriptor objectForKey:@"NSFontFamilyAttribute"]];
-            }
-        }
-    }
-    
-    
-    
-    //Certain fonts don't look good with constraints set
-    
-    NSArray *fontsToRemove = [NSArray arrayWithObjects:@"Apple Chancery", @"Zapfino",
-                              @"Trattatello", @"Noteworthy", @"Arial Black", @"Chalkduster",@"Monoid", @"Andale Mono", @"Courier" ,@"Courier New",@"Geneva",@"Menlo", @"Monaco",@"PT Mono", @"Verdana", nil];
-    for (NSString *font in fontsToRemove) {
-        if([availableFonts containsObject:font])
-        {
-            [availableFonts removeObject:font];
-        }
-    }
-    
-    [availableFonts insertObject:@"Default" atIndex:0];
-    self.themes = [NSArray arrayWithObjects:@"Default", @"Black", nil];
-    self.fontFamilies = [[NSArray alloc] initWithArray:availableFonts];
-
-    // Do view setup here.
+        // Do view setup here.
 }
 
 
@@ -299,15 +272,6 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     [self.availableTimezoneTableView reloadData];
 }
 
-- (IBAction)timeFormatSelectionChanged:(id)sender {
-    
-    NSSegmentedControl *timeFormat = (NSSegmentedControl *)sender;
-    
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:timeFormat.selectedSegment] forKey:CL24hourFormatSelectedKey];
-    
-    [self refreshMainTableview];
-}
-
 - (void)refereshTimezoneTableView
 {
      dispatch_async(dispatch_get_main_queue(), ^{
@@ -375,33 +339,6 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
 -(NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation
 {
     return NSDragOperationEvery;
-}
-
-- (IBAction)changeFont:(id)sender
-{
-    ApplicationDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-    PanelController *panelController = appDelegate.panelController;
-    [panelController.mainTableview reloadData];
-}
-
-- (IBAction)changeTheme:(id)sender
-{
-    NSSegmentedControl *themeSegment = (NSSegmentedControl *)sender;
-    ApplicationDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-    PanelController *panelController = appDelegate.panelController;
-    [panelController.backgroundView setNeedsDisplay:YES];
-    
-    if (themeSegment.selectedSegment == CLBlackTheme) {
-        panelController.shutdownButton.image = [NSImage imageNamed:@"PowerIcon-White"];
-        panelController.preferencesButton.image = [NSImage imageNamed:@"Settings-White"];
-    }
-    else
-    {
-        panelController.shutdownButton.image = [NSImage imageNamed:@"PowerIcon"];
-        panelController.preferencesButton.image = [NSImage imageNamed:NSImageNameActionTemplate];
-    }
-    
-    [panelController.mainTableview reloadData];
 }
 
 - (void)callGoogleAPiWithSearchString:(NSString *)searchString

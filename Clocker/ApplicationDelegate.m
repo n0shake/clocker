@@ -100,6 +100,11 @@ void *kContextActivePanel = &kContextActivePanel;
     if (defaultTheme == nil) {
         [[NSUserDefaults standardUserDefaults] setObject:@"Default" forKey:@"defaultTheme"];
     }
+    
+    NSNumber *defaultTimeFormat = [[NSUserDefaults standardUserDefaults] objectForKey:CL24hourFormatSelectedKey];
+    if (defaultTimeFormat == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:CL24hourFormatSelectedKey];
+    }
 
     // Install icon into the menu bar
     self.menubarController = [[MenubarController alloc] init];
