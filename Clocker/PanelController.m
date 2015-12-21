@@ -458,7 +458,21 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     dateFormatter.timeZone = [NSTimeZone timeZoneWithName:timezoneID];
     
-    return [self compareSystemDate:[self getLocalCurrentDate] toTimezoneDate:[dateFormatter stringFromDate:newDate]];;
+    NSNumber *relativeDayPreference = [[NSUserDefaults standardUserDefaults] objectForKey:@"relativeDate"];
+    if (relativeDayPreference.integerValue == 0) {
+         return [self compareSystemDate:[self getLocalCurrentDate] toTimezoneDate:[dateFormatter stringFromDate:newDate]];;
+    }
+    else
+    {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"MM/dd/yyyy" options:0 locale:[NSLocale currentLocale]];
+        
+        NSDate *convertedDate = [formatter dateFromString:[dateFormatter stringFromDate:newDate]];
+
+        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+        NSInteger weekday = [calendar component:NSCalendarUnitWeekday fromDate:convertedDate];
+        return [self getWeekdayFromInteger:weekday];
+    }
 }
 
 #pragma mark -

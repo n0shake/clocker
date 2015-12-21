@@ -94,8 +94,18 @@
 
 }
 
-- (IBAction)toggleSunriseAndSunset:(id)sender {
+- (IBAction)toggleSunriseAndSunset:(id)sender
+{
 }
+
+- (IBAction)changeRelativeDayDisplay:(id)sender
+{
+    NSSegmentedControl *relativeDayControl = (NSSegmentedControl*) sender;
+    NSNumber *selectedIndex = [NSNumber numberWithInteger:relativeDayControl.selectedSegment];
+    [[NSUserDefaults standardUserDefaults] setObject:selectedIndex forKey:@"relativeDate"];
+    [self refreshMainTableview];
+}
+
 
 - (void)refreshMainTableview
 {

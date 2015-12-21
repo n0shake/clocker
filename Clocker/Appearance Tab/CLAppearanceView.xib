@@ -15,11 +15,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="272" height="180"/>
+            <rect key="frame" x="0.0" y="0.0" width="439" height="335"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6mg-pt-RHb">
-                    <rect key="frame" x="47" y="17" width="179" height="26"/>
+                    <rect key="frame" x="131" y="164" width="179" height="26"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="174" id="jc9-tN-3oB"/>
                     </constraints>
@@ -41,7 +41,7 @@
                     </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qi6-T2-p3b">
-                    <rect key="frame" x="103" y="45" width="67" height="19"/>
+                    <rect key="frame" x="186" y="192" width="67" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="63" id="4T0-z6-dAq"/>
                     </constraints>
@@ -52,7 +52,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iVw-cq-zLz">
-                    <rect key="frame" x="116" y="93" width="40" height="19"/>
+                    <rect key="frame" x="200" y="244" width="40" height="19"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Theme" id="hCb-NM-To8">
                         <font key="font" size="12" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -60,7 +60,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5TC-RQ-gzI">
-                    <rect key="frame" x="101" y="141" width="70" height="19"/>
+                    <rect key="frame" x="185" y="296" width="70" height="19"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Time Format" id="Hza-PB-FEf">
                         <font key="font" size="12" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -68,7 +68,7 @@
                     </textFieldCell>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5tI-fU-0lZ">
-                    <rect key="frame" x="74" y="66" width="124" height="24"/>
+                    <rect key="frame" x="158" y="217" width="124" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="120" id="dW5-vG-EwD"/>
                     </constraints>
@@ -84,8 +84,50 @@
                         <binding destination="WGI-5h-l6M" name="selectedLabel" keyPath="values.defaultTheme" id="vyq-YM-las"/>
                     </connections>
                 </segmentedControl>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yuq-9i-SR0">
+                    <rect key="frame" x="180" y="113" width="82" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="78" id="F56-RS-TkQ"/>
+                    </constraints>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="wtp-4R-FaO">
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
+                        <segments>
+                            <segment label="Yes"/>
+                            <segment label="No" toolTip="Customize the timezone panel by selecting a theme!" selected="YES" tag="1"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="toggleSunriseAndSunset:" target="-2" id="7yw-7E-Oiy"/>
+                        <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.displaySunTimings" id="CFq-VY-oBb"/>
+                    </connections>
+                </segmentedControl>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YQi-x8-6f8">
+                    <rect key="frame" x="177" y="88" width="85" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Display Options" id="KTv-74-itf">
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1eh-BT-2fK">
+                    <rect key="frame" x="101" y="61" width="240" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="236" id="uU1-9Q-cqa"/>
+                    </constraints>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="ZV9-ih-faz">
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
+                        <segments>
+                            <segment label="Show Relative Dates"/>
+                            <segment label="Show actual day" toolTip="Customize the timezone panel by selecting a theme!" selected="YES" tag="1"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="changeRelativeDayDisplay:" target="-2" id="7Af-BH-qFq"/>
+                        <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.relativeDate" id="eKo-sG-1eE"/>
+                    </connections>
+                </segmentedControl>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OrL-Ix-fmY">
-                    <rect key="frame" x="18" y="114" width="236" height="24"/>
+                    <rect key="frame" x="102" y="269" width="236" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="232" id="uOJ-Mi-Fin"/>
                     </constraints>
@@ -101,20 +143,36 @@
                         <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.is24HourFormatSelected" id="UsS-ER-9M9"/>
                     </connections>
                 </segmentedControl>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="o8j-B8-IEv">
+                    <rect key="frame" x="146" y="140" width="147" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Show Sunrise, Sunset Time" id="gv1-YC-fw7">
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
+                <constraint firstItem="o8j-B8-IEv" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="0j0-b3-5B3"/>
+                <constraint firstItem="YQi-x8-6f8" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="6LU-d8-lKX"/>
+                <constraint firstItem="Yuq-9i-SR0" firstAttribute="top" secondItem="o8j-B8-IEv" secondAttribute="bottom" constant="4" id="B4y-AK-Eod"/>
                 <constraint firstItem="OrL-Ix-fmY" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="JtZ-ra-RaC"/>
                 <constraint firstItem="6mg-pt-RHb" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="Oh4-4K-mPE"/>
                 <constraint firstItem="6mg-pt-RHb" firstAttribute="top" secondItem="Qi6-T2-p3b" secondAttribute="bottom" constant="4" id="P8v-4d-79D"/>
+                <constraint firstItem="o8j-B8-IEv" firstAttribute="top" secondItem="6mg-pt-RHb" secondAttribute="bottom" constant="8" id="PGn-UJ-nsm"/>
+                <constraint firstItem="1eh-BT-2fK" firstAttribute="top" secondItem="YQi-x8-6f8" secondAttribute="bottom" constant="4" id="POa-Gi-Prk"/>
+                <constraint firstItem="Yuq-9i-SR0" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="1.5" id="Tc9-yI-eIf"/>
                 <constraint firstItem="5tI-fU-0lZ" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="Vkb-QV-unN"/>
-                <constraint firstItem="iVw-cq-zLz" firstAttribute="top" secondItem="OrL-Ix-fmY" secondAttribute="bottom" constant="4" id="XgM-Wl-Xap"/>
+                <constraint firstItem="iVw-cq-zLz" firstAttribute="top" secondItem="OrL-Ix-fmY" secondAttribute="bottom" constant="8" id="XgM-Wl-Xap"/>
                 <constraint firstItem="Qi6-T2-p3b" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="ZKu-5n-Qwo"/>
                 <constraint firstItem="iVw-cq-zLz" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="Zh8-Vn-VxM"/>
                 <constraint firstItem="5tI-fU-0lZ" firstAttribute="top" secondItem="iVw-cq-zLz" secondAttribute="bottom" constant="4" id="bo6-s2-Vfj"/>
+                <constraint firstItem="1eh-BT-2fK" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="1.5" id="fvI-By-5Ef"/>
                 <constraint firstItem="5TC-RQ-gzI" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="lc0-ud-Mnw"/>
                 <constraint firstItem="5TC-RQ-gzI" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="oI8-4L-ppf"/>
-                <constraint firstItem="Qi6-T2-p3b" firstAttribute="top" secondItem="5tI-fU-0lZ" secondAttribute="bottom" constant="4" id="rAe-QL-e4G"/>
+                <constraint firstItem="Qi6-T2-p3b" firstAttribute="top" secondItem="5tI-fU-0lZ" secondAttribute="bottom" constant="8" id="rAe-QL-e4G"/>
                 <constraint firstItem="OrL-Ix-fmY" firstAttribute="top" secondItem="5TC-RQ-gzI" secondAttribute="bottom" constant="4" id="rpk-WN-DT9"/>
+                <constraint firstItem="YQi-x8-6f8" firstAttribute="top" secondItem="Yuq-9i-SR0" secondAttribute="bottom" constant="8" id="vQl-up-u15"/>
             </constraints>
             <point key="canvasLocation" x="187" y="251"/>
         </customView>
