@@ -479,7 +479,7 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
         return;
     }
     
-    self.searchField.placeholderString = @"Fetching data!";
+    self.searchField.placeholderString = @"Fetching data might take some time!";
 
     self.placeholderLabel.placeholderString = @"Retrieving timezone data";
   

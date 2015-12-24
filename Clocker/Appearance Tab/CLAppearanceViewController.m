@@ -14,8 +14,6 @@
 @interface CLAppearanceViewController ()
 @property (weak) IBOutlet NSSegmentedControl *timeFormat;
 @property (weak) IBOutlet NSSegmentedControl *theme;
-@property (weak) IBOutlet NSPopUpButton *fontPopup;
-@property (weak) IBOutlet NSSegmentedControl *sunriseToggle;
 
 @end
 
@@ -84,18 +82,6 @@
     
     [panelController.mainTableview reloadData];
 
-}
-
-- (IBAction)fontChanged:(id)sender
-{
-    ApplicationDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-    PanelController *panelController = appDelegate.panelController;
-    [panelController.mainTableview reloadData];
-
-}
-
-- (IBAction)toggleSunriseAndSunset:(id)sender
-{
 }
 
 - (IBAction)changeRelativeDayDisplay:(id)sender
