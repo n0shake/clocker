@@ -580,6 +580,31 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     [self.mainTableview reloadData];
 }
 
+- (void)removeContextHelpForSlider
+{
+    NSEvent *newEvent = [NSEvent mouseEventWithType:NSLeftMouseDown
+                                           location:self.window.mouseLocationOutsideOfEventStream
+                                      modifierFlags:0
+                                          timestamp:0
+                                       windowNumber:self.window.windowNumber
+                                            context:self.window.graphicsContext
+                                        eventNumber:0
+                                         clickCount:1
+                                           pressure:0];
+    [NSApp postEvent:newEvent atStart:NO];
+    newEvent = [NSEvent mouseEventWithType:NSLeftMouseUp
+                                  location:self.window.mouseLocationOutsideOfEventStream
+                             modifierFlags:0
+                                 timestamp:0
+                              windowNumber:self.window.windowNumber
+                                   context:self.window.graphicsContext
+                               eventNumber:0
+                                clickCount:1
+                                  pressure:0];
+    
+    [NSApp postEvent:newEvent atStart:NO];
+}
+
 - (NSString *)getWeekdayFromInteger:(NSInteger)weekdayInteger
 {
     if (weekdayInteger > 7) {

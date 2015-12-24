@@ -118,6 +118,7 @@
     PanelController *controller = delegate.panelController;
     
     [controller showOptions:NO];
+    [controller removeContextHelpForSlider];
 }
 
 -(void)updateTrackingAreas
