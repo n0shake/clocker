@@ -7,7 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "CLAppFeedbackWindowController.h"
 
 @interface CLAboutUsViewController : NSViewController
+
+@property (strong, nonatomic) CLAppFeedbackWindowController *feedbackWindow;
 
 @end

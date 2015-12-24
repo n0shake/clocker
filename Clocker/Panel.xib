@@ -121,7 +121,7 @@
                                                             <rect key="frame" x="62" y="30" width="16" height="16"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-16" id="8gl-Vi-0VF"/>
                                                         </imageView>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JNw-ld-oz9">
+                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" preferredMaxLayoutWidth="110" translatesAutoresizingMaskIntoConstraints="NO" id="JNw-ld-oz9">
                                                             <rect key="frame" x="83" y="28" width="114" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="kOH-Lb-7sB"/>
@@ -200,7 +200,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-w7-iSa">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="75" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-w7-iSa">
                         <rect key="frame" x="100" y="28" width="79" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="75" id="XLu-0I-ACL"/>

@@ -37,8 +37,10 @@ NSString *const CLFacebookPageURL = @"https://www.facebook.com/ClockerMenubarClo
 }
 - (IBAction)reportIssue:(id)sender
 {
-    //
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLIssueURL]];
+    self.feedbackWindow = [CLAppFeedbackWindowController sharedWindow];
+    [self.feedbackWindow showWindow:nil];
+    [NSApp activateIgnoringOtherApps:YES];
+    [self.view.window orderOut:self];
 }
 
 - (IBAction)openFacebookPage:(id)sender

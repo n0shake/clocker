@@ -215,9 +215,9 @@ CA
                         </connections>
                     </searchField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KFC-NV-5A3">
-                        <rect key="frame" x="102" y="9" width="230" height="15"/>
+                        <rect key="frame" x="102" y="4" width="230" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="15" id="rr3-gU-VUn"/>
+                            <constraint firstAttribute="height" constant="20" id="rr3-gU-VUn"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="COF-wH-VLX">
                             <font key="font" size="13" name="SFUIDisplay-Light"/>
@@ -226,10 +226,9 @@ CA
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wb6-yr-Pw4">
-                        <rect key="frame" x="98" y="135" width="259" height="20"/>
+                        <rect key="frame" x="123" y="135" width="209" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="QQQ-at-c1H"/>
-                            <constraint firstAttribute="width" constant="255" id="ezl-af-c93"/>
                         </constraints>
                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" placeholderString="Please enter a timezone name" id="l4k-Vi-z4I">
                             <font key="font" size="13" name="SFUIDisplay-Light"/>
@@ -238,7 +237,7 @@ CA
                         </textFieldCell>
                     </textField>
                     <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ifx-PO-gfq">
-                        <rect key="frame" x="75" y="137" width="16" height="16"/>
+                        <rect key="frame" x="100" y="137" width="16" height="16"/>
                         <connections>
                             <binding destination="-2" name="hidden" keyPath="self.activityInProgress" id="9pA-XX-dhd">
                                 <dictionary key="options">
@@ -288,7 +287,8 @@ CA
                     <constraint firstItem="Wb6-yr-Pw4" firstAttribute="leading" secondItem="ifx-PO-gfq" secondAttribute="trailing" constant="9" id="9cg-iz-7Dq"/>
                     <constraint firstAttribute="trailing" secondItem="KFC-NV-5A3" secondAttribute="trailing" constant="15" id="B6V-vn-THO"/>
                     <constraint firstItem="LM9-75-vkc" firstAttribute="top" secondItem="biT-6m-ElR" secondAttribute="bottom" constant="3" id="DZR-XO-6sm"/>
-                    <constraint firstAttribute="bottom" secondItem="KFC-NV-5A3" secondAttribute="bottom" constant="9" id="FWx-F1-VK8"/>
+                    <constraint firstAttribute="bottom" secondItem="KFC-NV-5A3" secondAttribute="bottom" constant="4" id="FWx-F1-VK8"/>
+                    <constraint firstAttribute="trailing" secondItem="Wb6-yr-Pw4" secondAttribute="trailing" constant="15" id="MGS-8P-guQ"/>
                     <constraint firstItem="hp6-CH-WJs" firstAttribute="leading" secondItem="kXo-nl-oxR" secondAttribute="leading" constant="8" id="Oir-hL-Og8"/>
                     <constraint firstAttribute="bottom" secondItem="cyZ-cL-S7a" secondAttribute="bottom" constant="5" id="QQ1-JS-knf"/>
                     <constraint firstItem="biT-6m-ElR" firstAttribute="top" secondItem="kXo-nl-oxR" secondAttribute="top" constant="8" id="Y7N-oR-3KY"/>

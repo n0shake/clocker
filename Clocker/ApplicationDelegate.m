@@ -117,9 +117,6 @@ void *kContextActivePanel = &kContextActivePanel;
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:nil];
     
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    testObject[@"sucks"] = @"cock";
-    [testObject saveInBackground];
 }
 
 

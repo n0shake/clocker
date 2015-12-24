@@ -13,7 +13,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "CommonStrings.h"
 #import "Reachability.h"
-
+#import <Parse/Parse.h>
 
 NSString *const CLSearchPredicateKey = @"SELF CONTAINS[cd]%@";
 NSString *const CLPreferencesViewNibIdentifier = @"PreferencesWindow";
@@ -190,7 +190,14 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     
     self.searchField.stringValue = CLEmptyString;
     
-   [self getTimeZoneForLatitude:[self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:@"latitude"] andLongitude:[self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:@"longitude"]];
+   [self getTimeZoneForLatitude:[self.filteredArray[self.availableTimezoneTableView
+                                                    .selectedRow] objectForKey:@"latitude"]andLongitude:[self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:@"longitude"]];
+    
+    PFObject *feedbackObject = [PFObject objectWithClassName:@"CLTimezoneSelection"];
+    feedbackObject[@"areaName"] = [self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:@"formattedAddress"];
+    [feedbackObject saveEventually];
+   
+
 }
 
 - (IBAction)closePanel:(id)sender {
@@ -252,7 +259,21 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
 
 - (IBAction)filterArray:(id)sender
 {
+    [self clearLabel];
+    
     self.filteredArray = [NSMutableArray array];
+    
+    if (self.searchField.stringValue.length > 50)
+    {
+        self.activityInProgress = NO;
+        self.messageLabel.stringValue = @"Only 50 characters allowed!";
+        [NSTimer scheduledTimerWithTimeInterval:10
+                                         target:self
+                                       selector:@selector(clearLabel)
+                                       userInfo:nil
+                                        repeats:NO];
+        return;
+    }
     
     if (self.searchField.stringValue.length > 0)
     {
@@ -458,7 +479,7 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
         return;
     }
     
-    self.searchField.placeholderString = [NSString stringWithFormat:@"Adding %@", [self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:CLTimezoneName]];
+    self.searchField.placeholderString = @"Fetching data!";
 
     self.placeholderLabel.placeholderString = @"Retrieving timezone data";
   

@@ -37,6 +37,8 @@
 		9A8605BB1BEC14DC00A810A4 /* PanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B91BEC14DC00A810A4 /* PanelController.m */; };
 		9A8605BF1BEC14F600A810A4 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BC1BEC14F600A810A4 /* BackgroundView.m */; };
 		9A8605C01BEC14F600A810A4 /* Panel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BD1BEC14F600A810A4 /* Panel.m */; };
+		9A9E63861C2C673E009A299B /* CLAppFeedbackWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E63841C2C673E009A299B /* CLAppFeedbackWindowController.m */; };
+		9A9E63871C2C673E009A299B /* CLAppFeedbackWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A9E63851C2C673E009A299B /* CLAppFeedbackWindow.xib */; };
 		9A9E875A1C1FED1A00A7A2DF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87581C1FED1A00A7A2DF /* Parse.framework */; };
 		9A9E875F1C1FED7500A7A2DF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87571C1FED1A00A7A2DF /* Bolts.framework */; };
 		9A9E87621C1FEDB500A7A2DF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87611C1FEDB500A7A2DF /* CFNetwork.framework */; };
@@ -117,6 +119,9 @@
 		9A8605CA1BEC155B00A810A4 /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationDelegate.h; path = Clocker/ApplicationDelegate.h; sourceTree = "<group>"; };
 		9A8605CB1BEC155B00A810A4 /* ColoredButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColoredButton.h; path = Clocker/ColoredButton.h; sourceTree = "<group>"; };
 		9A8605CC1BEC155B00A810A4 /* Clocker-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Clocker-Prefix.pch"; path = "Clocker/Clocker-Prefix.pch"; sourceTree = "<group>"; };
+		9A9E63831C2C673E009A299B /* CLAppFeedbackWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAppFeedbackWindowController.h; path = "Clocker/App Feedback/CLAppFeedbackWindowController.h"; sourceTree = "<group>"; };
+		9A9E63841C2C673E009A299B /* CLAppFeedbackWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAppFeedbackWindowController.m; path = "Clocker/App Feedback/CLAppFeedbackWindowController.m"; sourceTree = "<group>"; };
+		9A9E63851C2C673E009A299B /* CLAppFeedbackWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLAppFeedbackWindow.xib; path = "Clocker/App Feedback/CLAppFeedbackWindow.xib"; sourceTree = "<group>"; };
 		9A9E87571C1FED1A00A7A2DF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Clocker/Parse/Bolts.framework; sourceTree = "<group>"; };
 		9A9E87581C1FED1A00A7A2DF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Clocker/Parse/Parse.framework; sourceTree = "<group>"; };
 		9A9E87611C1FEDB500A7A2DF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -182,6 +187,8 @@
 		9A5951C31C1D0DE3009C17AA /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9A3247361C263F4F00CF6B6E /* CLAppearanceViewController.h */,
+				9A3247371C263F4F00CF6B6E /* CLAppearanceViewController.m */,
 				9A392EE51C1CDD530072C10A /* CLAboutUsViewController.h */,
 				9A392EE61C1CDD530072C10A /* CLAboutUsViewController.m */,
 				9A392EEA1C1CE9950072C10A /* CLPreferencesViewController.h */,
@@ -217,9 +224,10 @@
 				9A56DB7E1C1CFB73004CE6AF /* Panel.xib */,
 				9A392EE71C1CDD530072C10A /* CLAboutUsView.xib */,
 				9A392EEC1C1CE9950072C10A /* CLPreferencesView.xib */,
-				9A3247361C263F4F00CF6B6E /* CLAppearanceViewController.h */,
-				9A3247371C263F4F00CF6B6E /* CLAppearanceViewController.m */,
 				9A3247381C263F4F00CF6B6E /* CLAppearanceView.xib */,
+				9A9E63831C2C673E009A299B /* CLAppFeedbackWindowController.h */,
+				9A9E63841C2C673E009A299B /* CLAppFeedbackWindowController.m */,
+				9A9E63851C2C673E009A299B /* CLAppFeedbackWindow.xib */,
 			);
 			name = XIB;
 			sourceTree = "<group>";
@@ -418,6 +426,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A9E63871C2C673E009A299B /* CLAppFeedbackWindow.xib in Resources */,
 				9A5951FD1C1D592D009C17AA /* iVersion.bundle in Resources */,
 				9A392EEE1C1CE9950072C10A /* CLPreferencesView.xib in Resources */,
 				9A56DB811C1CFB73004CE6AF /* Panel.xib in Resources */,
@@ -463,6 +472,7 @@
 				9A8605C01BEC14F600A810A4 /* Panel.m in Sources */,
 				9A8605BA1BEC14DC00A810A4 /* StatusItemView.m in Sources */,
 				9A3247391C263F4F00CF6B6E /* CLAppearanceViewController.m in Sources */,
+				9A9E63861C2C673E009A299B /* CLAppFeedbackWindowController.m in Sources */,
 				9A8605BB1BEC14DC00A810A4 /* PanelController.m in Sources */,
 				9A8605B61BEC14BE00A810A4 /* MenubarController.m in Sources */,
 				9A5951C01C1D0AA0009C17AA /* CLOneWindowController.m in Sources */,
@@ -523,7 +533,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Frameworks",
-					"$(PROJECT_DIR)/Clocker/ApptentiveConnect",
 					"$(PROJECT_DIR)/Clocker/Parse",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -624,7 +633,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Frameworks",
-					"$(PROJECT_DIR)/Clocker/ApptentiveConnect",
 					"$(PROJECT_DIR)/Clocker/Parse",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -653,7 +661,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Frameworks",
-					"$(PROJECT_DIR)/Clocker/ApptentiveConnect",
 					"$(PROJECT_DIR)/Clocker/Parse",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
