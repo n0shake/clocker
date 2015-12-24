@@ -68,7 +68,7 @@ CA
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
                                         <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="HJL-uw-ZOC">
-                                            <font key="font" size="13" name="HelveticaNeue-Light"/>
+                                            <font key="font" size="13" name="SFUIDisplay-Light"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -81,7 +81,7 @@ CA
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
                                         <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="xOd-3p-ihC">
-                                            <font key="font" size="13" name="HelveticaNeue-Light"/>
+                                            <font key="font" size="13" name="SFUIDisplay-Light"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -137,7 +137,7 @@ CA
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LM9-75-vkc">
-                        <rect key="frame" x="8" y="27" width="329" height="257"/>
+                        <rect key="frame" x="8" y="28" width="329" height="257"/>
                         <clipView key="contentView" id="Z7L-Ef-90Z">
                             <rect key="frame" x="0.0" y="0.0" width="329" height="257"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,7 +157,7 @@ CA
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="QRU-bQ-qf9">
-                                                <font key="font" size="13" name="HelveticaNeue-Light"/>
+                                                <font key="font" size="13" name="SFUIDisplay-Light"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -199,9 +199,9 @@ CA
                         </tableHeaderView>
                     </scrollView>
                     <searchField toolTip="Search a timezone" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="biT-6m-ElR">
-                        <rect key="frame" x="8" y="287" width="329" height="25"/>
+                        <rect key="frame" x="8" y="288" width="329" height="24"/>
                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Enter a city, state, country name" drawsBackground="YES" usesSingleLineMode="YES" id="ijc-z6-99E">
-                            <font key="font" size="13" name="HelveticaNeue-Light"/>
+                            <font key="font" size="13" name="SFUIDisplay-Light"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </searchFieldCell>
@@ -215,30 +215,30 @@ CA
                         </connections>
                     </searchField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KFC-NV-5A3">
-                        <rect key="frame" x="102" y="7" width="230" height="20"/>
+                        <rect key="frame" x="102" y="9" width="230" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="rr3-gU-VUn"/>
+                            <constraint firstAttribute="height" constant="15" id="rr3-gU-VUn"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="COF-wH-VLX">
-                            <font key="font" size="13" name="HelveticaNeue-Light"/>
+                            <font key="font" size="13" name="SFUIDisplay-Light"/>
                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wb6-yr-Pw4">
-                        <rect key="frame" x="98" y="134" width="259" height="20"/>
+                        <rect key="frame" x="98" y="135" width="259" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="QQQ-at-c1H"/>
                             <constraint firstAttribute="width" constant="255" id="ezl-af-c93"/>
                         </constraints>
                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" placeholderString="Please enter a timezone name" id="l4k-Vi-z4I">
-                            <font key="font" size="13" name="HelveticaNeue-Light"/>
+                            <font key="font" size="13" name="SFUIDisplay-Light"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ifx-PO-gfq">
-                        <rect key="frame" x="75" y="134" width="16" height="16"/>
+                        <rect key="frame" x="75" y="137" width="16" height="16"/>
                         <connections>
                             <binding destination="-2" name="hidden" keyPath="self.activityInProgress" id="9pA-XX-dhd">
                                 <dictionary key="options">
@@ -249,28 +249,28 @@ CA
                         </connections>
                     </progressIndicator>
                     <button toolTip="Add a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cyZ-cL-S7a">
-                        <rect key="frame" x="50" y="4" width="50" height="22"/>
+                        <rect key="frame" x="50" y="4" width="50" height="19"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="lku-Qx-nX5"/>
+                            <constraint firstAttribute="height" constant="18" id="lku-Qx-nX5"/>
                             <constraint firstAttribute="width" constant="50" id="vqo-37-082"/>
                         </constraints>
                         <buttonCell key="cell" type="roundRect" title="Close" bezelStyle="roundedRect" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="YjP-c4-vTl">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="cellTitle"/>
+                            <font key="font" size="12" name="SFUIDisplay-Light"/>
                         </buttonCell>
                         <connections>
                             <action selector="closePanel:" target="-2" id="YRs-VA-eFr"/>
                         </connections>
                     </button>
                     <button toolTip="Add a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hp6-CH-WJs">
-                        <rect key="frame" x="8" y="4" width="40" height="22"/>
+                        <rect key="frame" x="8" y="4" width="40" height="19"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="r2L-5O-GZy"/>
+                            <constraint firstAttribute="height" constant="18" id="r2L-5O-GZy"/>
                             <constraint firstAttribute="width" constant="40" id="yuH-LM-RAy"/>
                         </constraints>
                         <buttonCell key="cell" type="roundRect" title="Add" bezelStyle="roundedRect" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="x6l-8x-qnu">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="cellTitle"/>
+                            <font key="font" size="12" name="SFUIDisplay-Light"/>
                         </buttonCell>
                         <connections>
                             <action selector="addToFavorites:" target="-2" id="Mdg-7P-kDy"/>
@@ -288,7 +288,7 @@ CA
                     <constraint firstItem="Wb6-yr-Pw4" firstAttribute="leading" secondItem="ifx-PO-gfq" secondAttribute="trailing" constant="9" id="9cg-iz-7Dq"/>
                     <constraint firstAttribute="trailing" secondItem="KFC-NV-5A3" secondAttribute="trailing" constant="15" id="B6V-vn-THO"/>
                     <constraint firstItem="LM9-75-vkc" firstAttribute="top" secondItem="biT-6m-ElR" secondAttribute="bottom" constant="3" id="DZR-XO-6sm"/>
-                    <constraint firstAttribute="bottom" secondItem="KFC-NV-5A3" secondAttribute="bottom" constant="7" id="FWx-F1-VK8"/>
+                    <constraint firstAttribute="bottom" secondItem="KFC-NV-5A3" secondAttribute="bottom" constant="9" id="FWx-F1-VK8"/>
                     <constraint firstItem="hp6-CH-WJs" firstAttribute="leading" secondItem="kXo-nl-oxR" secondAttribute="leading" constant="8" id="Oir-hL-Og8"/>
                     <constraint firstAttribute="bottom" secondItem="cyZ-cL-S7a" secondAttribute="bottom" constant="5" id="QQ1-JS-knf"/>
                     <constraint firstItem="biT-6m-ElR" firstAttribute="top" secondItem="kXo-nl-oxR" secondAttribute="top" constant="8" id="Y7N-oR-3KY"/>
@@ -297,7 +297,7 @@ CA
                     <constraint firstAttribute="bottom" secondItem="hp6-CH-WJs" secondAttribute="bottom" constant="5" id="hEn-h1-my5"/>
                     <constraint firstItem="biT-6m-ElR" firstAttribute="leading" secondItem="kXo-nl-oxR" secondAttribute="leading" constant="8" id="nhU-xR-AW2"/>
                     <constraint firstAttribute="trailing" secondItem="LM9-75-vkc" secondAttribute="trailing" constant="8" id="pMs-Ol-hsh"/>
-                    <constraint firstItem="ifx-PO-gfq" firstAttribute="centerY" secondItem="Q0t-hQ-orw" secondAttribute="centerY" constant="2" id="roB-zz-kJF"/>
+                    <constraint firstItem="ifx-PO-gfq" firstAttribute="centerY" secondItem="Q0t-hQ-orw" secondAttribute="centerY" id="roB-zz-kJF"/>
                     <constraint firstItem="Wb6-yr-Pw4" firstAttribute="centerY" secondItem="Q0t-hQ-orw" secondAttribute="centerY" id="uio-eQ-cpc"/>
                     <constraint firstItem="Wb6-yr-Pw4" firstAttribute="centerX" secondItem="Q0t-hQ-orw" secondAttribute="centerX" constant="55" id="y8D-5A-bLz"/>
                 </constraints>

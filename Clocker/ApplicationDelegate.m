@@ -91,11 +91,6 @@ void *kContextActivePanel = &kContextActivePanel;
         [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:CLDefaultPreferenceKey];
     }
     
-    NSString *defaultFont = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultFontFamily"];
-    if (defaultFont == nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:@"Default" forKey:@"defaultFontFamily"];
-    }
-    
     NSString *defaultTheme = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultTheme"];
     if (defaultTheme == nil) {
         [[NSUserDefaults standardUserDefaults] setObject:@"Default" forKey:@"defaultTheme"];

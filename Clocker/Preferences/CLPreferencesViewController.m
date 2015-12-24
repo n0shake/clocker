@@ -65,8 +65,6 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     //Register for drag and drop
     [self.timezoneTableView registerForDraggedTypes: [NSArray arrayWithObject: CLDragSessionKey]];
     
-    NSMutableArray *availableFonts = [[NSMutableArray alloc] init];
-    
         // Do view setup here.
 }
 
@@ -265,7 +263,7 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
         if (self.dataTask.state == NSURLSessionTaskStateRunning) {
             [self.dataTask cancel];
         }
-        
+        self.activityInProgress = NO;
         self.placeholderLabel.placeholderString = CLEmptyString;
     }
         
@@ -496,7 +494,7 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
                                               error:nil];
                         
                         if (json.count == 0) {
-                            self.placeholderLabel.placeholderString = @"No results found";
+                            self.placeholderLabel.placeholderString = @"No results found! ! 😔 Try Again?";
                             return;
                         }
                         

@@ -302,14 +302,6 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     CLTimezoneCellView *cell = [tableView makeViewWithIdentifier:CLTimezoneCellViewIdentifier owner:self];
     
-    NSString *fontFamily = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultFontFamily"];
-    
-    if (fontFamily.length > 0 && ![fontFamily isEqualToString:@"Default"])
-    {
-        [cell updateFontFamilyWithFontName:fontFamily andCell:cell];
-    }
-    fontFamily.length > 0 && ![fontFamily isEqualToString:@"Default"] ? [cell updateFontFamilyWithFontName:fontFamily andCell:cell] : [cell setDefaultThemeForCell:cell];
-    
     NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultTheme"];
     if (theme.length > 0 && ![theme isEqualToString:@"Default"])
     {
@@ -332,6 +324,8 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     cell.time.stringValue = [self getTimeForTimeZone:self.defaultPreferences[row][CLTimezoneID]];
     
     cell.rowNumber = row;
+    
+    cell.sunTime.stringValue = [self getFormattedSunriseOrSunsetTime:self.defaultPreferences[row]];
 
     cell.customName.stringValue = [self formatStringShouldContainCity:YES
                                               withTimezoneName:self.defaultPreferences[row]];
@@ -372,6 +366,11 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
         return @"Error";
     }
 
+}
+
+- (NSString *)getFormattedSunriseOrSunsetTime:(NSDictionary *)originalTime
+{
+    return [originalTime[@"sunriseTime"] substringFromIndex:11];
 }
 
 - (NSString *)getTimeForTimeZone:(NSString *)timezoneID
@@ -549,6 +548,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
    
     self.shutdownButton.hidden = !value;
     self.preferencesButton.hidden = !value;
+    self.sliderLabel.hidden = !value;
 }
 
 - (IBAction)sliderMoved:(id)sender

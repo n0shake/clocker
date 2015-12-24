@@ -46,6 +46,7 @@
 		9A9E876E1C1FEE1800A7A2DF /* Bolts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A9E87571C1FED1A00A7A2DF /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9A9E876F1C1FEE1A00A7A2DF /* Parse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A9E87581C1FED1A00A7A2DF /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9AB9357B1C1AD8F7001285A0 /* CLRatingCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9357A1C1AD8F7001285A0 /* CLRatingCellView.m */; };
+		9ABF58721C29A80600BD0187 /* CLTimezoneData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABF58711C29A80600BD0187 /* CLTimezoneData.m */; };
 		9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */; };
 		9AF9A16B1C250AB300EE7C2A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9A16A1C250AB300EE7C2A /* Reachability.m */; };
 		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
@@ -126,6 +127,8 @@
 		9A9E876B1C1FEDE700A7A2DF /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		9AB935791C1AD8F7001285A0 /* CLRatingCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLRatingCellView.h; path = Clocker/CLRatingCellView.h; sourceTree = "<group>"; };
 		9AB9357A1C1AD8F7001285A0 /* CLRatingCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLRatingCellView.m; path = Clocker/CLRatingCellView.m; sourceTree = "<group>"; };
+		9ABF58701C29A80600BD0187 /* CLTimezoneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLTimezoneData.h; path = Clocker/Model/CLTimezoneData.h; sourceTree = "<group>"; };
+		9ABF58711C29A80600BD0187 /* CLTimezoneData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLTimezoneData.m; path = Clocker/Model/CLTimezoneData.m; sourceTree = "<group>"; };
 		9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9AF9A1691C250AB300EE7C2A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Clocker/Reachability/Reachability.h; sourceTree = "<group>"; };
 		9AF9A16A1C250AB300EE7C2A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Clocker/Reachability/Reachability.m; sourceTree = "<group>"; };
@@ -281,6 +284,15 @@
 			name = Parse;
 			sourceTree = "<group>";
 		};
+		9ABF586F1C29A7EB00BD0187 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9ABF58701C29A80600BD0187 /* CLTimezoneData.h */,
+				9ABF58711C29A80600BD0187 /* CLTimezoneData.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		9AF9A1681C250AA300EE7C2A /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +305,7 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
+				9ABF586F1C29A7EB00BD0187 /* Model */,
 				9AF9A1681C250AA300EE7C2A /* Reachability */,
 				9A9E875B1C1FED1E00A7A2DF /* Parse */,
 				9A5B1A8D1BECDFB700A77C68 /* Clocker.entitlements */,
@@ -455,6 +468,7 @@
 				9A5951C01C1D0AA0009C17AA /* CLOneWindowController.m in Sources */,
 				9A8605B71BEC14BE00A810A4 /* ApplicationDelegate.m in Sources */,
 				9A5951F51C1D3D81009C17AA /* CLTimezoneCellView.m in Sources */,
+				9ABF58721C29A80600BD0187 /* CLTimezoneData.m in Sources */,
 				9A8605B31BEC14A600A810A4 /* ColoredButton.m in Sources */,
 				9A8605AE1BEC148400A810A4 /* main.m in Sources */,
 				9A392EE81C1CDD530072C10A /* CLAboutUsViewController.m in Sources */,
