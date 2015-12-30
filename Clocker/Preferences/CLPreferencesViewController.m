@@ -21,6 +21,15 @@ NSString *const CLPreferencesTimezoneNameIdentifier = @"formattedAddress";
 NSString *const CLPreferencesAbbreviationIdentifier = @"abbreviation";
 NSString *const CLPreferencesCustomLabelIdentifier = @"label";
 NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones";
+NSString *const CLNoTimezoneSelectedErrorMessage =  @"Please select a timezone!";
+NSString *const CLMaxTimezonesErrorMessage =  @"Maximum 10 timezones allowed!";
+NSString *const CLTimezoneAlreadySelectedError = @"Timezone has already been selected!";
+NSString *const CLParseTimezoneSelectionClassIdentifier = @"CLTimezoneSelection";
+NSString *const CLParseTimezoneNameProperty = @"areaName";
+NSString *const CLMaxCharactersReachedError = @"Only 50 characters allowed!";
+NSString *const CLNoInternetConnectivityError = @"You're offline, maybe?";
+NSString *const CLLocationSearchURL = @"https://maps.googleapis.com/maps/api/geocode/json?address=%@&key=AIzaSyCyf2knCi6KiKuDJLYDBD3Odq5dt4c-_KI";
+NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 @interface CLPreferencesViewController ()
 @property (weak) IBOutlet NSTextField *placeholderLabel;
@@ -153,7 +162,7 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
 
     if (self.availableTimezoneTableView.selectedRow == -1)
     {
-        self.messageLabel.stringValue = @"Please select a timezone!";
+        self.messageLabel.stringValue = CLNoTimezoneSelectedErrorMessage;
         [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(clearLabel) userInfo:nil repeats:NO];
         self.activityInProgress = NO;
         return;
@@ -163,7 +172,7 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     
     if (self.selectedTimeZones.count >= 10)
     {
-        self.messageLabel.stringValue = @"Maximum 10 timezones allowed!";
+        self.messageLabel.stringValue = CLMaxTimezonesErrorMessage;
         [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(clearLabel) userInfo:nil repeats:NO];
         self.activityInProgress = NO;
         return;
@@ -171,14 +180,14 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     
     for (NSDictionary *timezoneDictionary in self.selectedTimeZones)
     {
-        NSString *name = timezoneDictionary[@"place_id"];
-        NSString *selectedPlaceID = [self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:@"place_id"];
+        NSString *name = timezoneDictionary[CLPlaceIdentifier];
+        NSString *selectedPlaceID = [self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:CLPlaceIdentifier];
         
         if (self.searchField.stringValue.length > 0) {
             if ([name isKindOfClass:[NSString class]] &&
                 [name isEqualToString:selectedPlaceID])
             {
-                self.messageLabel.stringValue = @"Timezone has already been selected!";
+                self.messageLabel.stringValue = CLTimezoneAlreadySelectedError;
                 [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(clearLabel) userInfo:nil repeats:NO];
                 self.activityInProgress = NO;
                 return;
@@ -193,8 +202,8 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
    [self getTimeZoneForLatitude:[self.filteredArray[self.availableTimezoneTableView
                                                     .selectedRow] objectForKey:@"latitude"]andLongitude:[self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:@"longitude"]];
     
-    PFObject *feedbackObject = [PFObject objectWithClassName:@"CLTimezoneSelection"];
-    feedbackObject[@"areaName"] = [self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:@"formattedAddress"];
+    PFObject *feedbackObject = [PFObject objectWithClassName:CLParseTimezoneSelectionClassIdentifier];
+    feedbackObject[CLParseTimezoneNameProperty] = [self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:CLTimezoneName];
     [feedbackObject saveEventually];
    
 
@@ -266,7 +275,7 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     if (self.searchField.stringValue.length > 50)
     {
         self.activityInProgress = NO;
-        self.messageLabel.stringValue = @"Only 50 characters allowed!";
+        self.messageLabel.stringValue = CLMaxCharactersReachedError;
         [NSTimer scheduledTimerWithTimeInterval:10
                                          target:self
                                        selector:@selector(clearLabel)
@@ -373,7 +382,7 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     
     if (networkStatus == NotReachable)
     {
-        self.placeholderLabel.placeholderString = @"You're offline, maybe?";
+        self.placeholderLabel.placeholderString = CLNoInternetConnectivityError;
         return;
     }
     
@@ -382,9 +391,9 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     self.placeholderLabel.placeholderString = [NSString stringWithFormat:@"Searching for '%@'", searchString];
     
     NSArray* words = [searchString componentsSeparatedByCharactersInSet :[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    searchString = [words componentsJoinedByString:@""];
+    searchString = [words componentsJoinedByString:CLEmptyString];
     
-    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&key=AIzaSyCyf2knCi6KiKuDJLYDBD3Odq5dt4c-_KI", searchString];
+    NSString *urlString = [NSString stringWithFormat:CLLocationSearchURL, searchString];
     
     NSURL *url = [NSURL URLWithString:urlString];
     
@@ -432,9 +441,9 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
                              NSDictionary *totalPackage = @{@"latitude":latitude,
                                                             @"longitude" : longitude,
                                                             CLTimezoneName:formattedAddress,
-                                                            @"customLabel" : @"",
-                                                            @"timezoneID" : @"",
-                                                            CLPlaceIdentifier : dictionary[@"place_id"]};
+                                                            CLCustomLabel: CLEmptyString,
+                                                            CLTimezoneID : CLEmptyString,
+                                                            CLPlaceIdentifier : dictionary[CLPlaceIdentifier]};
                              [self.filteredArray addObject:totalPackage];
                              
                          }
@@ -449,7 +458,7 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
                 {
                      dispatch_async(dispatch_get_main_queue(), ^{
                          self.placeholderLabel.placeholderString = [error.localizedDescription isEqualToString:@"The Internet connection appears to be offline."] ?
-                         @"You're offline, maybe?" : @"Try again, maybe?";
+                         CLNoInternetConnectivityError : CLTryAgainMessage;
                          self.activityInProgress = NO;
                      });
                
@@ -470,7 +479,7 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
     if (networkStatus == NotReachable)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-        self.placeholderLabel.placeholderString = @"You're offline, maybe?";
+        self.placeholderLabel.placeholderString = CLNoInternetConnectivityError;
         self.activityInProgress = NO;
         self.filteredArray = [NSMutableArray array];
         [self.availableTimezoneTableView reloadData];
@@ -570,7 +579,7 @@ NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones"
             else
             {
                 self.placeholderLabel.placeholderString = [error.localizedDescription isEqualToString:@"The Internet connection appears to be offline."] ?
-                @"You're offline, maybe?" : @"Try again, maybe?";
+                CLNoInternetConnectivityError : CLTryAgainMessage;
                 
                 self.activityInProgress = NO;
             }

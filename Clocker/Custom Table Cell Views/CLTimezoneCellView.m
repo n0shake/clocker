@@ -21,7 +21,15 @@
 - (IBAction)labelDidChange:(id)sender
 {
     NSTextField *customLabelCell = (NSTextField*) sender;
-    PanelController *panelController = (PanelController *)[[[NSApplication sharedApplication] mainWindow] windowController];
+    PanelController *panelController;
+    
+    for (NSWindow *window in [[NSApplication sharedApplication] windows])
+    {
+        if ([window.windowController isMemberOfClass:[PanelController class]])
+        {
+            panelController = window.windowController;
+        }
+    }
     
     NSString *originalValue = customLabelCell.stringValue;
     NSString *customLabelValue = [originalValue stringByTrimmingCharactersInSet:

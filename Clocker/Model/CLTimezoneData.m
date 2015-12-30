@@ -10,4 +10,9 @@
 
 @implementation CLTimezoneData
 
+-(void)initWithDictionary:(NSDictionary *)dictionary
+{
+    
+}
+
 @end

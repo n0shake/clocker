@@ -37,6 +37,7 @@
 #define SEARCH_INSET 10.0f
 #import "ApplicationDelegate.h"
 #import "PanelController.h"
+#import "CommonStrings.h"
 
 #pragma mark -
 
@@ -80,7 +81,7 @@
     [path lineToPoint:NSMakePoint(_arrowX - ARROW_WIDTH / 2, NSMaxY(contentRect) - ARROW_HEIGHT)];
     [path closePath];
     
-    NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultTheme"];
+    NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
     [theme isEqualToString:@"Default"] ?
     [[NSColor colorWithDeviceRed:255.0f green:255.0f blue:255.0f alpha:FILL_OPACITY] setFill]:
     [[NSColor colorWithDeviceRed:0.0f green:0.0f blue:0.0f alpha:FILL_OPACITY] setFill];

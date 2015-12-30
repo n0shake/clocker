@@ -19,5 +19,7 @@ NSString *const CLCustomLabel = @"customLabel";
 NSString *const CL24hourFormatSelectedKey = @"is24HourFormatSelected";
 NSString *const CLDragSessionKey = @"public.text";
 NSString *const CLCustomLabelChangedNotification = @"CLCustomLabelChangedNotification";
+NSString *const CLRelativeDateKey = @"relativeDate";
+NSString *const CLThemeKey = @"defaultTheme";
 
 @end

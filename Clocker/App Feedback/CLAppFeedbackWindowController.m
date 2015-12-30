@@ -12,6 +12,15 @@
 #import "CommonStrings.h"
 
 NSString *const CLAppFeedbackNibIdentifier = @"CLAppFeedbackWindow";
+NSString *const CLParseAppFeedbackClassIdentifier = @"CLAppFeedback";
+NSString *const CLParseAppFeedbackNoResponseString = @"Not Provided";
+NSString *const CLParseAppFeedbackNameProperty = @"name";
+NSString *const CLParseAppFeedbackEmailProperty = @"email";
+NSString *const CLParseAppFeedbackFeedbackProperty = @"feedback";
+NSString *const CLFeedbackAlertTitle = @"Thank you for helping make Clocker even better!";
+NSString *const CLFeedbackAlertInformativeText = @"We owe you a candy. 😇";
+NSString *const CLFeedbackAlertButtonTitle = @"Close";
+NSString *const CLFeedbackNotEnteredErrorMessage = @"Please enter some feedback.";
 
 static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
 
@@ -64,7 +73,7 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
     
     if (self.feedbackTextView.string.length == 0)
     {
-        self.informativeText.stringValue = @"Yo, enter some feedback!";
+        self.informativeText.stringValue = CLFeedbackNotEnteredErrorMessage;
         [NSTimer scheduledTimerWithTimeInterval:5.0
                                          target:self
                                        selector:@selector(cleanUp)
@@ -74,12 +83,12 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
         return;
     }
     
-    PFObject *feedbackObject = [PFObject objectWithClassName:@"CLAppFeedback"];
-    feedbackObject[@"name"] = (self.nameField.stringValue.length > 0) ?
-                               self.nameField.stringValue : @"Not Provided";
-    feedbackObject[@"email"] = (self.emailField.stringValue.length > 0) ?
-                                self.emailField.stringValue : @"Not Provided";
-    feedbackObject[@"feedback"] = self.feedbackTextView.string;
+    PFObject *feedbackObject = [PFObject objectWithClassName:CLParseAppFeedbackClassIdentifier];
+    feedbackObject[CLParseAppFeedbackNameProperty] = (self.nameField.stringValue.length > 0) ?
+                               self.nameField.stringValue : CLParseAppFeedbackNoResponseString;
+    feedbackObject[CLParseAppFeedbackEmailProperty] = (self.emailField.stringValue.length > 0) ?
+                                self.emailField.stringValue : CLParseAppFeedbackNoResponseString;
+    feedbackObject[CLParseAppFeedbackFeedbackProperty] = self.feedbackTextView.string;
     [feedbackObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         self.activityInProgress = NO;
         if (!succeeded) {
@@ -94,9 +103,9 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
         else
         {
             NSAlert *alert = [[NSAlert alloc] init];
-            alert.messageText = @"Thank you for helping make Clocker even better!";
-            alert.informativeText = @"We owe you a candy. 😇";
-            [alert addButtonWithTitle:@"Close"];
+            alert.messageText = CLFeedbackAlertTitle;
+            alert.informativeText = CLFeedbackAlertInformativeText;
+            [alert addButtonWithTitle:CLFeedbackAlertButtonTitle];
             [alert beginSheetModalForWindow:self.window
                                             completionHandler:^(NSModalResponse returnCode) {
                                                 [self.window close];

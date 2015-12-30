@@ -27,31 +27,6 @@
     [self.view setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
     [self.view setLayer:viewLayer];
     
-    
-    //Certain fonts don't look good with constraints set
-    NSMutableArray *availableFonts = [[NSMutableArray alloc] init];
-    
-    NSFontCollection *fontCollection = [NSFontCollection fontCollectionWithName:@"com.apple.UserFonts"];
-    
-    for (NSFontDescriptor *descriptor in fontCollection.matchingDescriptors) {
-        if ([descriptor objectForKey:@"NSFontFamilyAttribute"]) {
-            if (![availableFonts containsObject:[descriptor objectForKey:@"NSFontFamilyAttribute"]]) {
-                [availableFonts addObject:[descriptor objectForKey:@"NSFontFamilyAttribute"]];
-            }
-        }
-    }
-    NSArray *fontsToRemove = [NSArray arrayWithObjects:@"Apple Chancery", @"Zapfino",
-                              @"Trattatello", @"Noteworthy", @"Arial Black", @"Chalkduster",@"Monoid", @"Andale Mono", @"Courier" ,@"Courier New",@"Geneva",@"Menlo", @"Monaco",@"PT Mono", @"Verdana", nil];
-    for (NSString *font in fontsToRemove) {
-        if([availableFonts containsObject:font])
-        {
-            [availableFonts removeObject:font];
-        }
-    }
-    
-    [availableFonts insertObject:@"Default" atIndex:0];
-    self.fontFamilies = [[NSArray alloc] initWithArray:availableFonts];
-    // Do view setup here.
 }
 
 - (IBAction)timeFormatSelectionChanged:(id)sender
@@ -88,7 +63,7 @@
 {
     NSSegmentedControl *relativeDayControl = (NSSegmentedControl*) sender;
     NSNumber *selectedIndex = [NSNumber numberWithInteger:relativeDayControl.selectedSegment];
-    [[NSUserDefaults standardUserDefaults] setObject:selectedIndex forKey:@"relativeDate"];
+    [[NSUserDefaults standardUserDefaults] setObject:selectedIndex forKey:CLRelativeDateKey];
     [self refreshMainTableview];
 }
 

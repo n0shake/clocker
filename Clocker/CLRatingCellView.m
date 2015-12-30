@@ -10,10 +10,17 @@
 #import "iRate.h"
 #import <QuartzCore/QuartzCore.h>
 #import "PanelController.h"
+#import "CLAppFeedbackWindowController.h"
 
 @implementation CLRatingCellView
 
-NSString *const CLGitHubIssueURL =@"https://github.com/Abhishaker17/Clocker/issues";
+NSString *const CLNotReallyButtonTitle = @"Not Really";
+NSString *const CLFeedbackString = @"Mind giving feedback?";
+NSString *const CLNoThanksTitle = @"No, thanks";
+NSString *const CLYesWithQuestionMark = @"Yes?";
+NSString *const CLYesWithExclamation = @"Yes!";
+
+
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
@@ -25,8 +32,11 @@ NSString *const CLGitHubIssueURL =@"https://github.com/Abhishaker17/Clocker/issu
 {
     NSButton *leftButton = (NSButton *)sender;
     
-    if ([leftButton.title isEqualToString:@"Not Really"]) {
-         [self setAnimatedStringValue:@"Mind giving us feedback?" andTextField:self.leftField  withLeftButtonTitle:@"No, thanks" andRightButtonTitle:@"Yes?"];
+    if ([leftButton.title isEqualToString:CLNotReallyButtonTitle]) {
+         [self setAnimatedStringValue:CLFeedbackString
+                         andTextField:self.leftField
+                  withLeftButtonTitle:CLNoThanksTitle
+                  andRightButtonTitle:CLYesWithQuestionMark];
     }
     else
     {
@@ -43,19 +53,21 @@ NSString *const CLGitHubIssueURL =@"https://github.com/Abhishaker17/Clocker/issu
 {
     NSButton *rightButton = (NSButton *)sender;
     
-    if ([rightButton.title isEqualToString:@"Yes!"]) {
-        [self setAnimatedStringValue:@"Would you mind rating Clocker?" andTextField:self.leftField withLeftButtonTitle:@"No, thanks" andRightButtonTitle:@"Yes"];
+    if ([rightButton.title isEqualToString:CLYesWithExclamation]) {
+        [self setAnimatedStringValue:@"Mind rating us?"
+                        andTextField:self.leftField
+                 withLeftButtonTitle:CLNoThanksTitle
+                 andRightButtonTitle:@"Yes"];
     }
-    else if ([rightButton.title isEqualToString:@"Yes?"])
+    else if ([rightButton.title isEqualToString:CLYesWithQuestionMark])
     {
-             [self updateMainTableView];
-         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLGitHubIssueURL]];
-   
+        [self updateMainTableView];
+        self.feedbackWindow = [CLAppFeedbackWindowController sharedWindow];
+        [self.feedbackWindow showWindow:nil];
+        [NSApp activateIgnoringOtherApps:YES];
     }
     else
     {
-        //Make the row disappear and call rate
-        
         [[iRate sharedInstance] rate];
         [self updateMainTableView];
     }
@@ -68,7 +80,10 @@ NSString *const CLGitHubIssueURL =@"https://github.com/Abhishaker17/Clocker/issu
     [panelRef updateDefaultPreferences];
 }
 
-- (void) setAnimatedStringValue:(NSString *)aString andTextField:(NSTextField *)textfield withLeftButtonTitle:(NSString *)leftTitle andRightButtonTitle:(NSString *)rightTitle
+- (void) setAnimatedStringValue:(NSString *)aString
+                   andTextField:(NSTextField *)textfield
+            withLeftButtonTitle:(NSString *)leftTitle
+            andRightButtonTitle:(NSString *)rightTitle
 {
     if ([[textfield stringValue] isEqual: aString])
     {
@@ -93,9 +108,9 @@ NSString *const CLGitHubIssueURL =@"https://github.com/Abhishaker17/Clocker/issu
                                 [self.leftButton.animator setAlphaValue:1.0];
                                 [self.rightButton.animator setAlphaValue:1.0];
                                 if ([self.leftButton.title isEqualToString:@"Not Really"]) {
-                                    [self.leftButton.animator setTitle:@"No, thanks"];
+                                    [self.leftButton.animator setTitle:CLNoThanksTitle];
                                 }
-                                if ([self.rightButton.title isEqualToString:@"Yes!"]) {
+                                if ([self.rightButton.title isEqualToString:CLYesWithExclamation]) {
                                     [self.rightButton.animator setTitle:@"Yes, sure"];
                                 }
                                 

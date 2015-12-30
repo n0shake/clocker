@@ -33,6 +33,9 @@
 #import "iVersion.h"
 #import <Parse/Parse.h>
 
+NSString *const CLParseApplicationID = @"F2ahd8J6sfjQMCc5z3xSy9kVK94PmKmH6hV2UsUK";
+NSString *const CLParseClientID = @"vfnqDtinvmwUBkcifznYHzYTetxN5iMvt8Ey8StD";
+
 @implementation ApplicationDelegate
 
 @synthesize panelController = _panelController;
@@ -66,7 +69,7 @@ void *kContextActivePanel = &kContextActivePanel;
     [iVersion sharedInstance].appStoreID = 1056643111;
     [iRate sharedInstance].useAllAvailableLanguages = NO;
     [iVersion sharedInstance].useAllAvailableLanguages = NO;
-    [[iRate sharedInstance] setVerboseLogging:NO];
+    [[iRate sharedInstance] setVerboseLogging:YES];
     [[iVersion sharedInstance] setVerboseLogging:NO];
 }
 
@@ -91,9 +94,9 @@ void *kContextActivePanel = &kContextActivePanel;
         [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:CLDefaultPreferenceKey];
     }
     
-    NSString *defaultTheme = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultTheme"];
+    NSString *defaultTheme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
     if (defaultTheme == nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:@"Default" forKey:@"defaultTheme"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"Default" forKey:CLThemeKey];
     }
     
     NSNumber *defaultTimeFormat = [[NSUserDefaults standardUserDefaults] objectForKey:CL24hourFormatSelectedKey];
@@ -111,8 +114,8 @@ void *kContextActivePanel = &kContextActivePanel;
 
     
     //Setting up Parse
-    [Parse setApplicationId:@"F2ahd8J6sfjQMCc5z3xSy9kVK94PmKmH6hV2UsUK"
-                  clientKey:@"vfnqDtinvmwUBkcifznYHzYTetxN5iMvt8Ey8StD"];
+    [Parse setApplicationId:CLParseApplicationID
+                  clientKey:CLParseClientID];
     
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:nil];

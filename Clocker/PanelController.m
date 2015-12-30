@@ -56,7 +56,6 @@ NSString *const CLPanelNibIdentifier = @"Panel";
 NSString *const CLRatingCellViewIdentifier = @"ratingCellView";
 NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 
-
 @implementation PanelController
 
 #pragma mark -
@@ -85,7 +84,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     [self updateDefaultPreferences];
 
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"defaultTheme"] isEqualToString:@"Black"]) {
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey] isEqualToString:@"Black"]) {
         self.shutdownButton.image = [NSImage imageNamed:@"PowerIcon-White"];
         self.preferencesButton.image = [NSImage imageNamed:@"Settings-White"];
     }
@@ -250,9 +249,6 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
         {
             openDuration *= 5;
             
-            if (shiftOptionPressed)
-                NSLog(@"Icon is at %@\n\tMenu is on screen %@\n\tWill be animated to %@",
-                      NSStringFromRect(statusRect), NSStringFromRect(screenRect), NSStringFromRect(panelRect));
         }
     }
     
@@ -302,7 +298,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     CLTimezoneCellView *cell = [tableView makeViewWithIdentifier:CLTimezoneCellViewIdentifier owner:self];
     
-    NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultTheme"];
+    NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
     if (theme.length > 0 && ![theme isEqualToString:@"Default"])
     {
         [cell updateTextColorWithColor:[NSColor whiteColor] andCell:cell];
@@ -346,13 +342,13 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
         }
     }
 
-    if ([timeZoneDictionary[@"formattedAddress"] length] > 0)
+    if ([timeZoneDictionary[CLTimezoneName] length] > 0)
     {
-        return timeZoneDictionary[@"formattedAddress"];
+        return timeZoneDictionary[CLTimezoneName];
     }
-    else if (timeZoneDictionary[@"timezoneID"])
+    else if (timeZoneDictionary[CLTimezoneID])
     {
-        NSString *timezoneID = timeZoneDictionary[@"timezoneID"];
+        NSString *timezoneID = timeZoneDictionary[CLTimezoneID];
         
         NSRange range = [timezoneID rangeOfString:@"/"];
         if (range.location != NSNotFound)
@@ -457,7 +453,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     dateFormatter.timeZone = [NSTimeZone timeZoneWithName:timezoneID];
     
-    NSNumber *relativeDayPreference = [[NSUserDefaults standardUserDefaults] objectForKey:@"relativeDate"];
+    NSNumber *relativeDayPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLRelativeDateKey];
     if (relativeDayPreference.integerValue == 0) {
          return [self compareSystemDate:[self getLocalCurrentDate] toTimezoneDate:[dateFormatter stringFromDate:newDate]];;
     }

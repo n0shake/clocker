@@ -10,6 +10,5 @@
 
 @interface CLAppearanceViewController : NSViewController
 
-@property (atomic, strong) NSArray *fontFamilies;
 
 @end

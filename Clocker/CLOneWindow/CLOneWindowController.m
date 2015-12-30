@@ -9,6 +9,10 @@
 #import "CLOneWindowController.h"
 
 NSString *const CLOneWindowNibIdentifier = @"CLOneWindow";
+NSString *const CLPreferenceViewNibIdentifier = @"CLPreferencesView";
+NSString *const CLAboutUsViewNibIdentifier = @"CLAboutUsView";
+NSString *const CLAppearenceViewNibIdentifier = @"CLAppearanceView";
+
 
 @interface CLOneWindowController ()
 
@@ -47,7 +51,7 @@ static CLOneWindowController *sharedWindow = nil;
 
 - (IBAction)openPreferences:(id)sender
 {
-    self.preferencesView = [[CLPreferencesViewController alloc] initWithNibName:@"CLPreferencesView" bundle:nil];
+    self.preferencesView = [[CLPreferencesViewController alloc] initWithNibName:CLPreferenceViewNibIdentifier bundle:nil];
     [self setWindowWithContentView:self.preferencesView.view];
     [self.aboutUsView.view removeFromSuperview];
     self.aboutUsView = nil;
@@ -63,7 +67,7 @@ static CLOneWindowController *sharedWindow = nil;
 
 - (IBAction)openAboutUsView:(id)sender
 {
-    self.aboutUsView = [[CLAboutUsViewController alloc] initWithNibName:@"CLAboutUsView" bundle:nil];
+    self.aboutUsView = [[CLAboutUsViewController alloc] initWithNibName:CLAboutUsViewNibIdentifier bundle:nil];
     [self setWindowWithContentView:self.aboutUsView.view];
     [self.preferencesView.view removeFromSuperview];
     self.preferencesView = nil;
@@ -73,7 +77,7 @@ static CLOneWindowController *sharedWindow = nil;
 
 - (IBAction)openAppearanceView:(id)sender
 {
-    self.appearanceView = [[CLAppearanceViewController alloc] initWithNibName:@"CLAppearanceView" bundle:nil];
+    self.appearanceView = [[CLAppearanceViewController alloc] initWithNibName:CLAppearenceViewNibIdentifier bundle:nil];
     [self setWindowWithContentView:self.appearanceView.view];
     [self.preferencesView.view removeFromSuperview];
     self.preferencesView = nil;

@@ -7,6 +7,7 @@
 //
 
 #import "CLCustomSliderCell.h"
+#import "CommonStrings.h"
 
 @implementation CLCustomSliderCell
 
@@ -28,7 +29,7 @@
     leftRect.size.width = finalWidth;
     
      NSBezierPath* bg = [NSBezierPath bezierPathWithRoundedRect: rect xRadius: barRadius yRadius: barRadius];
-    NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultTheme"];
+    NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
     [theme isEqualToString:@"Black"] ? [NSColor.whiteColor setFill] :  [[NSColor colorWithCalibratedRed:67.0/255.0 green:138.0/255.0 blue:250.0/255.0 alpha:1.0] setFill];
     [bg fill];
 
