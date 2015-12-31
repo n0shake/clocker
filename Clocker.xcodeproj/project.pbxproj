@@ -37,6 +37,14 @@
 		9A8605BB1BEC14DC00A810A4 /* PanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B91BEC14DC00A810A4 /* PanelController.m */; };
 		9A8605BF1BEC14F600A810A4 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BC1BEC14F600A810A4 /* BackgroundView.m */; };
 		9A8605C01BEC14F600A810A4 /* Panel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BD1BEC14F600A810A4 /* Panel.m */; };
+		9A87DAC41C358FA800A8CF3B /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A87DAB41C358FA800A8CF3B /* DateTools.bundle */; };
+		9A87DAC51C358FA800A8CF3B /* DTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A87DAB71C358FA800A8CF3B /* DTConstants.m */; };
+		9A87DAC61C358FA800A8CF3B /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A87DAB91C358FA800A8CF3B /* DTError.m */; };
+		9A87DAC71C358FA800A8CF3B /* DTTimePeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A87DABB1C358FA800A8CF3B /* DTTimePeriod.m */; };
+		9A87DAC81C358FA800A8CF3B /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A87DABD1C358FA800A8CF3B /* DTTimePeriodChain.m */; };
+		9A87DAC91C358FA800A8CF3B /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A87DABF1C358FA800A8CF3B /* DTTimePeriodCollection.m */; };
+		9A87DACA1C358FA800A8CF3B /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A87DAC11C358FA800A8CF3B /* DTTimePeriodGroup.m */; };
+		9A87DACB1C358FA800A8CF3B /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A87DAC31C358FA800A8CF3B /* NSDate+DateTools.m */; };
 		9A9E63861C2C673E009A299B /* CLAppFeedbackWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E63841C2C673E009A299B /* CLAppFeedbackWindowController.m */; };
 		9A9E63871C2C673E009A299B /* CLAppFeedbackWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A9E63851C2C673E009A299B /* CLAppFeedbackWindow.xib */; };
 		9A9E875A1C1FED1A00A7A2DF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87581C1FED1A00A7A2DF /* Parse.framework */; };
@@ -119,6 +127,22 @@
 		9A8605CA1BEC155B00A810A4 /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationDelegate.h; path = Clocker/ApplicationDelegate.h; sourceTree = "<group>"; };
 		9A8605CB1BEC155B00A810A4 /* ColoredButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColoredButton.h; path = Clocker/ColoredButton.h; sourceTree = "<group>"; };
 		9A8605CC1BEC155B00A810A4 /* Clocker-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Clocker-Prefix.pch"; path = "Clocker/Clocker-Prefix.pch"; sourceTree = "<group>"; };
+		9A87DAB41C358FA800A8CF3B /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DateTools.bundle; path = "Clocker/Date Tools/DateTools-master/DateTools/DateTools.bundle"; sourceTree = "<group>"; };
+		9A87DAB51C358FA800A8CF3B /* DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateTools.h; path = "Clocker/Date Tools/DateTools-master/DateTools/DateTools.h"; sourceTree = "<group>"; };
+		9A87DAB61C358FA800A8CF3B /* DTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTConstants.h; path = "Clocker/Date Tools/DateTools-master/DateTools/DTConstants.h"; sourceTree = "<group>"; };
+		9A87DAB71C358FA800A8CF3B /* DTConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTConstants.m; path = "Clocker/Date Tools/DateTools-master/DateTools/DTConstants.m"; sourceTree = "<group>"; };
+		9A87DAB81C358FA800A8CF3B /* DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTError.h; path = "Clocker/Date Tools/DateTools-master/DateTools/DTError.h"; sourceTree = "<group>"; };
+		9A87DAB91C358FA800A8CF3B /* DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTError.m; path = "Clocker/Date Tools/DateTools-master/DateTools/DTError.m"; sourceTree = "<group>"; };
+		9A87DABA1C358FA800A8CF3B /* DTTimePeriod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriod.h; path = "Clocker/Date Tools/DateTools-master/DateTools/DTTimePeriod.h"; sourceTree = "<group>"; };
+		9A87DABB1C358FA800A8CF3B /* DTTimePeriod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriod.m; path = "Clocker/Date Tools/DateTools-master/DateTools/DTTimePeriod.m"; sourceTree = "<group>"; };
+		9A87DABC1C358FA800A8CF3B /* DTTimePeriodChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodChain.h; path = "Clocker/Date Tools/DateTools-master/DateTools/DTTimePeriodChain.h"; sourceTree = "<group>"; };
+		9A87DABD1C358FA800A8CF3B /* DTTimePeriodChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodChain.m; path = "Clocker/Date Tools/DateTools-master/DateTools/DTTimePeriodChain.m"; sourceTree = "<group>"; };
+		9A87DABE1C358FA800A8CF3B /* DTTimePeriodCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodCollection.h; path = "Clocker/Date Tools/DateTools-master/DateTools/DTTimePeriodCollection.h"; sourceTree = "<group>"; };
+		9A87DABF1C358FA800A8CF3B /* DTTimePeriodCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodCollection.m; path = "Clocker/Date Tools/DateTools-master/DateTools/DTTimePeriodCollection.m"; sourceTree = "<group>"; };
+		9A87DAC01C358FA800A8CF3B /* DTTimePeriodGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodGroup.h; path = "Clocker/Date Tools/DateTools-master/DateTools/DTTimePeriodGroup.h"; sourceTree = "<group>"; };
+		9A87DAC11C358FA800A8CF3B /* DTTimePeriodGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodGroup.m; path = "Clocker/Date Tools/DateTools-master/DateTools/DTTimePeriodGroup.m"; sourceTree = "<group>"; };
+		9A87DAC21C358FA800A8CF3B /* NSDate+DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+DateTools.h"; path = "Clocker/Date Tools/DateTools-master/DateTools/NSDate+DateTools.h"; sourceTree = "<group>"; };
+		9A87DAC31C358FA800A8CF3B /* NSDate+DateTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+DateTools.m"; path = "Clocker/Date Tools/DateTools-master/DateTools/NSDate+DateTools.m"; sourceTree = "<group>"; };
 		9A9E63831C2C673E009A299B /* CLAppFeedbackWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAppFeedbackWindowController.h; path = "Clocker/App Feedback/CLAppFeedbackWindowController.h"; sourceTree = "<group>"; };
 		9A9E63841C2C673E009A299B /* CLAppFeedbackWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAppFeedbackWindowController.m; path = "Clocker/App Feedback/CLAppFeedbackWindowController.m"; sourceTree = "<group>"; };
 		9A9E63851C2C673E009A299B /* CLAppFeedbackWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLAppFeedbackWindow.xib; path = "Clocker/App Feedback/CLAppFeedbackWindow.xib"; sourceTree = "<group>"; };
@@ -283,6 +307,29 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		9A87DA4F1C358F8200A8CF3B /* Date Tools */ = {
+			isa = PBXGroup;
+			children = (
+				9A87DAB41C358FA800A8CF3B /* DateTools.bundle */,
+				9A87DAB51C358FA800A8CF3B /* DateTools.h */,
+				9A87DAB61C358FA800A8CF3B /* DTConstants.h */,
+				9A87DAB71C358FA800A8CF3B /* DTConstants.m */,
+				9A87DAB81C358FA800A8CF3B /* DTError.h */,
+				9A87DAB91C358FA800A8CF3B /* DTError.m */,
+				9A87DABA1C358FA800A8CF3B /* DTTimePeriod.h */,
+				9A87DABB1C358FA800A8CF3B /* DTTimePeriod.m */,
+				9A87DABC1C358FA800A8CF3B /* DTTimePeriodChain.h */,
+				9A87DABD1C358FA800A8CF3B /* DTTimePeriodChain.m */,
+				9A87DABE1C358FA800A8CF3B /* DTTimePeriodCollection.h */,
+				9A87DABF1C358FA800A8CF3B /* DTTimePeriodCollection.m */,
+				9A87DAC01C358FA800A8CF3B /* DTTimePeriodGroup.h */,
+				9A87DAC11C358FA800A8CF3B /* DTTimePeriodGroup.m */,
+				9A87DAC21C358FA800A8CF3B /* NSDate+DateTools.h */,
+				9A87DAC31C358FA800A8CF3B /* NSDate+DateTools.m */,
+			);
+			name = "Date Tools";
+			sourceTree = "<group>";
+		};
 		9A9E875B1C1FED1E00A7A2DF /* Parse */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +360,7 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
+				9A87DA4F1C358F8200A8CF3B /* Date Tools */,
 				9ABF586F1C29A7EB00BD0187 /* Model */,
 				9AF9A1681C250AA300EE7C2A /* Reachability */,
 				9A9E875B1C1FED1E00A7A2DF /* Parse */,
@@ -435,6 +483,7 @@
 				9A32473A1C263F4F00CF6B6E /* CLAppearanceView.xib in Resources */,
 				9A5951C21C1D0AAD009C17AA /* CLOneWindow.xib in Resources */,
 				9A56DB801C1CFB73004CE6AF /* MainMenu.xib in Resources */,
+				9A87DAC41C358FA800A8CF3B /* DateTools.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,14 +512,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A8605BF1BEC14F600A810A4 /* BackgroundView.m in Sources */,
+				9A87DAC51C358FA800A8CF3B /* DTConstants.m in Sources */,
 				9AB9357B1C1AD8F7001285A0 /* CLRatingCellView.m in Sources */,
+				9A87DAC81C358FA800A8CF3B /* DTTimePeriodChain.m in Sources */,
+				9A87DAC71C358FA800A8CF3B /* DTTimePeriod.m in Sources */,
 				9A3247321C25FD3A00CF6B6E /* CLCustomSliderCell.m in Sources */,
 				9A392EED1C1CE9950072C10A /* CLPreferencesViewController.m in Sources */,
 				9A5951BD1C1D0A8D009C17AA /* CommonStrings.m in Sources */,
 				9A5951FA1C1D5214009C17AA /* iVersion.m in Sources */,
+				9A87DAC61C358FA800A8CF3B /* DTError.m in Sources */,
+				9A87DACA1C358FA800A8CF3B /* DTTimePeriodGroup.m in Sources */,
 				9A25F7471C1A5E17007D369B /* iRate.m in Sources */,
 				9A8605C01BEC14F600A810A4 /* Panel.m in Sources */,
 				9A8605BA1BEC14DC00A810A4 /* StatusItemView.m in Sources */,
+				9A87DAC91C358FA800A8CF3B /* DTTimePeriodCollection.m in Sources */,
 				9A3247391C263F4F00CF6B6E /* CLAppearanceViewController.m in Sources */,
 				9A9E63861C2C673E009A299B /* CLAppFeedbackWindowController.m in Sources */,
 				9A8605BB1BEC14DC00A810A4 /* PanelController.m in Sources */,
@@ -482,6 +537,7 @@
 				9A8605B31BEC14A600A810A4 /* ColoredButton.m in Sources */,
 				9A8605AE1BEC148400A810A4 /* main.m in Sources */,
 				9A392EE81C1CDD530072C10A /* CLAboutUsViewController.m in Sources */,
+				9A87DACB1C358FA800A8CF3B /* NSDate+DateTools.m in Sources */,
 				9AF9A16B1C250AB300EE7C2A /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

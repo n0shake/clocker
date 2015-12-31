@@ -67,7 +67,7 @@
                         <font key="font" size="12" name="SFUIDisplay-Light"/>
                         <segments>
                             <segment label="Show Relative Dates"/>
-                            <segment label="Show actual day" toolTip="Customize the timezone panel by selecting a theme!" selected="YES" tag="1"/>
+                            <segment label="Show actual day" selected="YES" tag="1"/>
                         </segments>
                     </segmentedCell>
                     <connections>
@@ -92,17 +92,46 @@
                         <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.is24HourFormatSelected" id="UsS-ER-9M9"/>
                     </connections>
                 </segmentedControl>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3d9-qg-dNb">
+                    <rect key="frame" x="148" y="144" width="142" height="18"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Show Sunrise, Sunset Time" id="ZP5-1i-Bm8">
+                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="atA-2r-FXV">
+                    <rect key="frame" x="180" y="117" width="80" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="76" id="dEg-kt-bk1"/>
+                        <constraint firstAttribute="height" constant="21" id="ttW-aD-dh3"/>
+                    </constraints>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="rIg-AP-wGG">
+                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                        <segments>
+                            <segment label="Yes"/>
+                            <segment label="No" selected="YES" tag="1"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.displaySuntime" id="rkd-Nx-YEh"/>
+                    </connections>
+                </segmentedControl>
             </subviews>
             <constraints>
                 <constraint firstItem="YQi-x8-6f8" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="6LU-d8-lKX"/>
+                <constraint firstItem="3d9-qg-dNb" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="FBj-0N-ltc"/>
                 <constraint firstItem="OrL-Ix-fmY" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="JtZ-ra-RaC"/>
                 <constraint firstItem="1eh-BT-2fK" firstAttribute="top" secondItem="YQi-x8-6f8" secondAttribute="bottom" constant="4" id="POa-Gi-Prk"/>
+                <constraint firstItem="atA-2r-FXV" firstAttribute="top" secondItem="3d9-qg-dNb" secondAttribute="bottom" constant="4" id="PY9-Mh-Qsb"/>
+                <constraint firstItem="atA-2r-FXV" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="Pjx-sg-kK0"/>
                 <constraint firstItem="5tI-fU-0lZ" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="Vkb-QV-unN"/>
                 <constraint firstItem="YQi-x8-6f8" firstAttribute="top" secondItem="5tI-fU-0lZ" secondAttribute="bottom" constant="8" id="WoY-W4-XuS"/>
                 <constraint firstItem="iVw-cq-zLz" firstAttribute="top" secondItem="OrL-Ix-fmY" secondAttribute="bottom" constant="8" id="XgM-Wl-Xap"/>
                 <constraint firstItem="iVw-cq-zLz" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="Zh8-Vn-VxM"/>
                 <constraint firstItem="5tI-fU-0lZ" firstAttribute="top" secondItem="iVw-cq-zLz" secondAttribute="bottom" constant="4" id="bo6-s2-Vfj"/>
                 <constraint firstItem="1eh-BT-2fK" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="1.5" id="fvI-By-5Ef"/>
+                <constraint firstItem="3d9-qg-dNb" firstAttribute="top" secondItem="1eh-BT-2fK" secondAttribute="bottom" constant="8" id="iVY-Yj-mck"/>
                 <constraint firstItem="5TC-RQ-gzI" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="lc0-ud-Mnw"/>
                 <constraint firstItem="5TC-RQ-gzI" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="oI8-4L-ppf"/>
                 <constraint firstItem="OrL-Ix-fmY" firstAttribute="top" secondItem="5TC-RQ-gzI" secondAttribute="bottom" constant="4" id="rpk-WN-DT9"/>

@@ -541,7 +541,9 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                                                       @"sunsetTime": json[@"sunset"],
                                                       CLCustomLabel : @"",
                                                       CLTimezoneName : filteredAddress,
-                                                      CLPlaceIdentifier : self.filteredArray[self.availableTimezoneTableView.selectedRow][CLPlaceIdentifier]};
+                                                      CLPlaceIdentifier : self.filteredArray[self.availableTimezoneTableView.selectedRow][CLPlaceIdentifier],
+                                                      @"latitude" : latitude,
+                                                      @"longitude" : longitude};
                         
                         NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
                         

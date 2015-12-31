@@ -12,5 +12,6 @@
 @interface CLAboutUsViewController : NSViewController
 
 @property (strong, nonatomic) CLAppFeedbackWindowController *feedbackWindow;
+@property (weak) IBOutlet NSTextField *versionField;
 
 @end

@@ -21,5 +21,6 @@ NSString *const CLDragSessionKey = @"public.text";
 NSString *const CLCustomLabelChangedNotification = @"CLCustomLabelChangedNotification";
 NSString *const CLRelativeDateKey = @"relativeDate";
 NSString *const CLThemeKey = @"defaultTheme";
+NSString *const CLDisplaySunTimingKey = @"displaySuntime";
 
 @end

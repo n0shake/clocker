@@ -58,6 +58,21 @@
     cell.relativeDate.textColor = color;
     cell.customName.textColor = color;
     cell.time.textColor = color;
+    cell.sunTime.textColor = color;
+}
+
+- (void)setUpAutoLayoutWithCell:(CLTimezoneCellView *)cell
+{
+    CGFloat width = [cell.relativeDate.stringValue
+                     sizeWithAttributes: @{NSFontAttributeName:cell.relativeDate.font}].width;
+    
+    for (NSLayoutConstraint *constraint in cell.relativeDate.constraints)
+    {
+        if (constraint.constant > 20)
+        {
+            constraint.constant = width+8;
+        }
+    }
 }
 
 @end

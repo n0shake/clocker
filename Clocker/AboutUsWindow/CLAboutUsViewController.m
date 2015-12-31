@@ -23,6 +23,8 @@ NSString *const CLFacebookPageURL = @"https://www.facebook.com/ClockerMenubarClo
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.versionField.stringValue = [NSString stringWithFormat:@"Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    
     CALayer *viewLayer = [CALayer layer];
     [viewLayer setBackgroundColor:CGColorCreateGenericRGB(255.0, 255.0, 255.0, 0.8)]; //RGB plus Alpha Channel
     [self.view setWantsLayer:YES]; // view's backing store is using a Core Animation Layer

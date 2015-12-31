@@ -74,7 +74,7 @@
                                                             </connections>
                                                         </textField>
                                                         <textField verticalHuggingPriority="750" tag="102" translatesAutoresizingMaskIntoConstraints="NO" id="QUd-7D-q14">
-                                                            <rect key="frame" x="9" y="13" width="76" height="18"/>
+                                                            <rect key="frame" x="8" y="13" width="76" height="18"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="18" id="42Y-hy-Uo7"/>
                                                                 <constraint firstAttribute="width" constant="72" id="fkH-oq-qvM"/>
@@ -97,18 +97,44 @@
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7zS-Nt-MMx">
+                                                            <rect key="frame" x="77" y="11" width="19" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="19" id="8ld-PK-Xtr"/>
+                                                                <constraint firstAttribute="height" constant="21" id="D4F-wd-Y1z"/>
+                                                            </constraints>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="LEc-9r-Xb6"/>
+                                                        </imageView>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kga-Kt-F29">
+                                                            <rect key="frame" x="97" y="14" width="38" height="15"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="15" id="O7I-i9-V4C"/>
+                                                                <constraint firstAttribute="width" constant="34" id="sm2-xn-PVC"/>
+                                                            </constraints>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="" id="5Wm-Xi-fiE">
+                                                                <font key="font" size="9" name="SFUIDisplay-Regular"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="QUd-7D-q14" firstAttribute="leading" secondItem="qbN-ba-fho" secondAttribute="leading" constant="11" id="0Qz-Ev-efP"/>
+                                                        <constraint firstItem="QUd-7D-q14" firstAttribute="leading" secondItem="qbN-ba-fho" secondAttribute="leading" constant="10" id="0Qz-Ev-efP"/>
+                                                        <constraint firstItem="7zS-Nt-MMx" firstAttribute="top" secondItem="etF-33-bCB" secondAttribute="bottom" constant="1" id="GXm-Gn-d7P"/>
                                                         <constraint firstItem="etF-33-bCB" firstAttribute="top" secondItem="qbN-ba-fho" secondAttribute="top" constant="5" id="Lct-kG-usb"/>
+                                                        <constraint firstItem="kga-Kt-F29" firstAttribute="top" secondItem="etF-33-bCB" secondAttribute="bottom" constant="4" id="M2S-Fb-VV8"/>
                                                         <constraint firstItem="vnv-J2-7r1" firstAttribute="centerY" secondItem="qbN-ba-fho" secondAttribute="centerY" constant="-8" id="TuQ-gE-ZUh"/>
                                                         <constraint firstItem="QUd-7D-q14" firstAttribute="top" secondItem="etF-33-bCB" secondAttribute="bottom" constant="2" id="VO6-Zn-eA3"/>
                                                         <constraint firstItem="etF-33-bCB" firstAttribute="leading" secondItem="qbN-ba-fho" secondAttribute="leading" constant="9" id="ueW-ow-ZRq"/>
+                                                        <constraint firstItem="7zS-Nt-MMx" firstAttribute="leading" secondItem="QUd-7D-q14" secondAttribute="trailing" constant="-5" id="vZ8-mD-p3a"/>
+                                                        <constraint firstItem="kga-Kt-F29" firstAttribute="leading" secondItem="7zS-Nt-MMx" secondAttribute="trailing" constant="3" id="yxq-jA-jVe"/>
                                                         <constraint firstAttribute="trailing" secondItem="vnv-J2-7r1" secondAttribute="trailing" constant="8" id="zXo-eA-0bQ"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="customName" destination="etF-33-bCB" id="6Yz-qc-WmD"/>
                                                         <outlet property="relativeDate" destination="QUd-7D-q14" id="Ath-zr-bGo"/>
+                                                        <outlet property="sunImage" destination="7zS-Nt-MMx" id="U1Z-8x-dVx"/>
+                                                        <outlet property="sunTime" destination="kga-Kt-F29" id="rTz-qB-NS8"/>
                                                         <outlet property="textField" destination="etF-33-bCB" id="6fd-cc-Qq2"/>
                                                         <outlet property="time" destination="vnv-J2-7r1" id="XFD-GQ-9CD"/>
                                                     </connections>
@@ -202,13 +228,13 @@
                         </scroller>
                     </scrollView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="75" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-w7-iSa">
-                        <rect key="frame" x="100" y="28" width="79" height="15"/>
+                        <rect key="frame" x="106" y="24" width="64" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="75" id="XLu-0I-ACL"/>
-                            <constraint firstAttribute="height" constant="15" id="j4s-Vf-pQQ"/>
+                            <constraint firstAttribute="width" constant="60" id="XLu-0I-ACL"/>
+                            <constraint firstAttribute="height" constant="17" id="j4s-Vf-pQQ"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" placeholderString="Future Slider" id="KPS-ge-xQM">
-                            <font key="font" size="13" name="SFUIDisplay-Thin"/>
+                            <font key="font" size="11" name="SFUIDisplay-Thin"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -255,14 +281,14 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="4Gd-Nv-fXr" firstAttribute="top" secondItem="6" secondAttribute="top" constant="8" id="1g0-Hm-7Gh"/>
+                    <constraint firstItem="rGL-w7-iSa" firstAttribute="centerX" secondItem="T7e-RS-eTE" secondAttribute="centerX" id="5NW-NQ-wPO"/>
                     <constraint firstItem="T7e-RS-eTE" firstAttribute="top" secondItem="dFw-ts-8OZ" secondAttribute="bottom" constant="-25" id="96B-lf-iFV"/>
                     <constraint firstItem="T7e-RS-eTE" firstAttribute="leading" secondItem="nTt-pf-Hw2" secondAttribute="trailing" constant="2" id="GgQ-58-tbc"/>
                     <constraint firstAttribute="bottom" secondItem="nTt-pf-Hw2" secondAttribute="bottom" constant="2" id="QoV-TI-KVJ"/>
                     <constraint firstAttribute="bottom" secondItem="OFy-u1-TnH" secondAttribute="bottom" constant="2" id="Ubf-Mv-WMp"/>
                     <constraint firstAttribute="trailing" secondItem="4Gd-Nv-fXr" secondAttribute="trailing" constant="-1" id="XP6-W0-2XT"/>
-                    <constraint firstItem="T7e-RS-eTE" firstAttribute="top" secondItem="rGL-w7-iSa" secondAttribute="bottom" constant="3" id="cuU-JZ-uRn"/>
+                    <constraint firstItem="T7e-RS-eTE" firstAttribute="top" secondItem="rGL-w7-iSa" secondAttribute="bottom" constant="-1" id="cuU-JZ-uRn"/>
                     <constraint firstItem="4Gd-Nv-fXr" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="-1" id="fHc-VQ-mJ3"/>
-                    <constraint firstItem="rGL-w7-iSa" firstAttribute="centerX" secondItem="dFw-ts-8OZ" secondAttribute="centerX" id="jY7-tr-VZ1"/>
                     <constraint firstAttribute="trailing" secondItem="OFy-u1-TnH" secondAttribute="trailing" constant="5" id="p2a-qj-LHE"/>
                     <constraint firstItem="nTt-pf-Hw2" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="pKl-Ay-0cB"/>
                     <constraint firstItem="OFy-u1-TnH" firstAttribute="leading" secondItem="T7e-RS-eTE" secondAttribute="trailing" constant="2" id="vVD-Or-EZX"/>

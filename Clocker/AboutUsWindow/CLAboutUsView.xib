@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CLAboutUsViewController">
             <connections>
+                <outlet property="versionField" destination="FG9-E5-o8y" id="nBg-l0-ELU"/>
                 <outlet property="view" destination="FS5-f2-b1Z" id="qSe-zw-rRT"/>
             </connections>
         </customObject>
@@ -36,10 +37,9 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FG9-E5-o8y">
-                    <rect key="frame" x="153" y="168" width="79" height="23"/>
+                    <rect key="frame" x="153" y="168" width="316" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="APM-BF-sIg"/>
-                        <constraint firstAttribute="width" constant="75" id="W3D-bf-G5h"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version 1.2" id="ctT-VL-V5M">
                         <font key="font" size="16" name="SFUIDisplay-Light"/>
@@ -151,6 +151,7 @@
                 <constraint firstItem="5Eo-aJ-L8H" firstAttribute="leading" secondItem="p2G-hA-MSX" secondAttribute="trailing" constant="10" id="a9Y-c0-NKB"/>
                 <constraint firstAttribute="bottom" secondItem="P3u-Um-Nby" secondAttribute="bottom" constant="20" id="csw-Zl-TRQ"/>
                 <constraint firstItem="q67-QZ-7g3" firstAttribute="leading" secondItem="fgO-N3-3oh" secondAttribute="trailing" constant="8" id="fA5-O5-kY8"/>
+                <constraint firstAttribute="trailing" secondItem="FG9-E5-o8y" secondAttribute="trailing" constant="20" id="j5d-17-Loc"/>
                 <constraint firstItem="FG9-E5-o8y" firstAttribute="leading" secondItem="p2G-hA-MSX" secondAttribute="trailing" constant="10" id="kyh-fi-23P"/>
                 <constraint firstItem="5Eo-aJ-L8H" firstAttribute="top" secondItem="FG9-E5-o8y" secondAttribute="bottom" constant="2" id="pVM-TS-Wvl"/>
                 <constraint firstItem="XlC-Xd-67t" firstAttribute="top" secondItem="FS5-f2-b1Z" secondAttribute="top" constant="13" id="slR-Qu-uJh"/>
