@@ -93,7 +93,8 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-    if (tableView == self.timezoneTableView) {
+    if (tableView == self.timezoneTableView)
+    {
         return self.selectedTimeZones.count;
     }
     else
@@ -140,8 +141,8 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         NSString *customLabelValue = [originalValue stringByTrimmingCharactersInSet:
                             [NSCharacterSet whitespaceCharacterSet]];
         
-        NSDictionary *timezoneDictionary = self.selectedTimeZones[row];
-        NSDictionary *mutableTimeZoneDict = [timezoneDictionary mutableCopy];
+        NSMutableDictionary *timezoneDictionary = self.selectedTimeZones[row];
+        NSMutableDictionary *mutableTimeZoneDict = [timezoneDictionary mutableCopy];
         customLabelValue.length > 0 ? [mutableTimeZoneDict setValue:customLabelValue forKey:CLCustomLabel] : [mutableTimeZoneDict setValue:CLEmptyString forKey:CLCustomLabel];
         [self.selectedTimeZones replaceObjectAtIndex:row withObject:mutableTimeZoneDict];
         [[NSUserDefaults standardUserDefaults] setObject:self.selectedTimeZones forKey:CLDefaultPreferenceKey];
@@ -152,8 +153,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 - (IBAction)addTimeZone:(id)sender
 {
-    [self.view.window beginSheet:self.timezonePanel completionHandler:^(NSModalResponse returnCode) {
-    }];
+    [self.view.window beginSheet:self.timezonePanel completionHandler:nil];
 }
 
 - (IBAction)addToFavorites:(id)sender
@@ -163,7 +163,10 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     if (self.availableTimezoneTableView.selectedRow == -1)
     {
         self.messageLabel.stringValue = CLNoTimezoneSelectedErrorMessage;
-        [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(clearLabel) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:5 target:self
+                                       selector:@selector(clearLabel)
+                                       userInfo:nil
+                                        repeats:NO];
         self.activityInProgress = NO;
         return;
     }
@@ -173,12 +176,15 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     if (self.selectedTimeZones.count >= 10)
     {
         self.messageLabel.stringValue = CLMaxTimezonesErrorMessage;
-        [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(clearLabel) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:5 target:self
+                                       selector:@selector(clearLabel)
+                                       userInfo:nil
+                                        repeats:NO];
         self.activityInProgress = NO;
         return;
     }
     
-    for (NSDictionary *timezoneDictionary in self.selectedTimeZones)
+    for (NSMutableDictionary *timezoneDictionary in self.selectedTimeZones)
     {
         NSString *name = timezoneDictionary[CLPlaceIdentifier];
         NSString *selectedPlaceID = [self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:CLPlaceIdentifier];
@@ -188,7 +194,10 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                 [name isEqualToString:selectedPlaceID])
             {
                 self.messageLabel.stringValue = CLTimezoneAlreadySelectedError;
-                [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(clearLabel) userInfo:nil repeats:NO];
+                [NSTimer scheduledTimerWithTimeInterval:5
+                                                 target:self
+                                               selector:@selector(clearLabel) userInfo:nil
+                                                repeats:NO];
                 self.activityInProgress = NO;
                 return;
             }
@@ -205,18 +214,18 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     PFObject *feedbackObject = [PFObject objectWithClassName:CLParseTimezoneSelectionClassIdentifier];
     feedbackObject[CLParseTimezoneNameProperty] = [self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:CLTimezoneName];
     [feedbackObject saveEventually];
-   
 
 }
 
-- (IBAction)closePanel:(id)sender {
-
-        self.filteredArray = [NSMutableArray array];
-        self.placeholderLabel.placeholderString = CLEmptyString;
-        [self.availableTimezoneTableView reloadData];
-        self.searchField.stringValue = CLEmptyString;
-        [self.timezonePanel close];
-        self.activityInProgress = NO;
+- (IBAction)closePanel:(id)sender
+{
+    self.filteredArray = [NSMutableArray array];
+    self.placeholderLabel.placeholderString = CLEmptyString;
+    [self.availableTimezoneTableView reloadData];
+    self.searchField.stringValue = CLEmptyString;
+    self.searchField.placeholderString = @"Enter a city, state or country name";
+    [self.timezonePanel close];
+    self.activityInProgress = NO;
 }
 
 - (void)clearLabel
@@ -248,22 +257,6 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     [self.timezoneTableView reloadData];
     
     [self refreshMainTableview];
-}
-
--(void)keyDown:(NSEvent *)theEvent
-{
-    [super keyDown:theEvent];
-    
-    if (theEvent.keyCode == 53) {
-        [self.timezonePanel close];
-    }
-}
-
--(void)keyUp:(NSEvent *)theEvent
-{
-    if (theEvent.keyCode == 53) {
-        [self.timezonePanel close];
-    }
 }
 
 - (IBAction)filterArray:(id)sender
@@ -375,7 +368,12 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         [self.dataTask cancel];
     }
     
-        self.placeholderLabel.hidden = NO;
+    if (self.availableTimezoneTableView.isHidden)
+    {
+        self.availableTimezoneTableView.hidden = NO;
+    }
+    
+    self.placeholderLabel.hidden = NO;
     
     Reachability *reachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [reachability currentReachabilityStatus];
@@ -424,9 +422,8 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                                                JSONObjectWithData:data
                                                options:kNilOptions
                                                error:nil];
-                         
                          if ([json[@"status"] isEqualToString:@"ZERO_RESULTS"]) {
-                             self.placeholderLabel.placeholderString = @"No results found! 😔";
+                             self.placeholderLabel.placeholderString = @"No results! 😔 Try entering the exact name.";
                              self.activityInProgress = NO;
                              return;
                          }
@@ -448,7 +445,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                              
                          }
                          self.activityInProgress = NO;
-                         
+
                          [self.availableTimezoneTableView reloadData];
 
                      });
@@ -523,8 +520,18 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                                               options:kNilOptions
                                               error:nil];
                         
+                        
                         if (json.count == 0) {
+                            self.activityInProgress = NO;
                             self.placeholderLabel.placeholderString = @"No results found! ! 😔 Try Again?";
+                            return;
+                        }
+                        
+                        if ([json[@"status"][@"message"] isEqualToString:@"the hourly limit of 2000 credits for abhishaker17 has been exceeded. Please throttle your requests or use the commercial service."])
+                        {
+                            self.activityInProgress = NO;
+                            self.placeholderLabel.placeholderString = @"API limit reached. Try again in an hour.?";
+                            self.searchField.placeholderString = @"We rely on free APIs which have limits.";
                             return;
                         }
                         
@@ -536,14 +543,23 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                             filteredAddress = [[self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:CLTimezoneName ] substringWithRange:NSMakeRange(0, range.location)];
                         }
                         
-                        NSDictionary *newTimezone = @{CLTimezoneID: json[@"timezoneId"],
-                                                      @"sunriseTime" : json[@"sunrise"],
-                                                      @"sunsetTime": json[@"sunset"],
-                                                      CLCustomLabel : @"",
-                                                      CLTimezoneName : filteredAddress,
-                                                      CLPlaceIdentifier : self.filteredArray[self.availableTimezoneTableView.selectedRow][CLPlaceIdentifier],
-                                                      @"latitude" : latitude,
-                                                      @"longitude" : longitude};
+                        NSMutableDictionary *newTimezone = [NSMutableDictionary dictionary];
+                        if (json[@"sunrise"]) {
+                               [newTimezone setObject:json[@"sunrise"] forKey:@"sunriseTime"];
+                        }
+                        if (json[@"sunset"]) {
+                             [newTimezone setObject:json[@"sunset"] forKey:@"sunsetTime"];
+                        }
+                        
+                        [newTimezone setObject:json[@"timezoneId"] forKey:CLTimezoneID];
+                     
+                        
+                        [newTimezone setObject:filteredAddress forKey:CLTimezoneName];
+                        [newTimezone setObject:self.filteredArray[self.availableTimezoneTableView.selectedRow][CLPlaceIdentifier] forKey:CLPlaceIdentifier];
+                        [newTimezone setObject:latitude forKey:@"latitude"];
+                        [newTimezone setObject:longitude forKey:@"longitude"];
+                        [newTimezone setObject:CLEmptyString forKey:@"nextUpdate"];
+                        [newTimezone setObject:CLEmptyString forKey:CLCustomLabel];
                         
                         NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
                         
@@ -567,11 +583,11 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                         
                         [self.timezonePanel close];
                         
-                        self.availableTimezoneTableView.hidden = NO;
-                        
                         self.placeholderLabel.placeholderString = CLEmptyString;
                         
                         self.searchField.placeholderString = @"Enter a city, state or country name";
+                        
+                        self.availableTimezoneTableView.hidden = NO;
                         
                         self.activityInProgress = NO;
                         

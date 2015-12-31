@@ -38,8 +38,8 @@
 
         if ([[sender superview] isKindOfClass:[self class]]) {
             CLTimezoneCellView *cellView = (CLTimezoneCellView *)[sender superview];
-            NSDictionary *timezoneDictionary = panelController.defaultPreferences[cellView.rowNumber];
-            NSDictionary *mutableTimeZoneDict = [timezoneDictionary mutableCopy];
+            NSMutableDictionary *timezoneDictionary = panelController.defaultPreferences[cellView.rowNumber];
+            NSMutableDictionary *mutableTimeZoneDict = [timezoneDictionary mutableCopy];
         
             (customLabelValue.length > 0) ?    [mutableTimeZoneDict setValue:customLabelValue forKey:CLCustomLabel] : [mutableTimeZoneDict setValue:CLEmptyString forKey:CLCustomLabel]  ;
                 [panelController.defaultPreferences replaceObjectAtIndex:cellView.rowNumber withObject:mutableTimeZoneDict];
