@@ -302,6 +302,9 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     CLTimezoneCellView *cell = [tableView makeViewWithIdentifier:CLTimezoneCellViewIdentifier owner:self];
     
+    NSTextView *customLabel = (NSTextView*)[cell.relativeDate.window fieldEditor:YES
+                                                                       forObject:cell.relativeDate];
+    
     NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
     if (theme.length > 0 && ![theme isEqualToString:@"Default"])
     {
@@ -310,13 +313,16 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
         self.window.alphaValue = 0.90;
         [cell.customName setDrawsBackground:YES];
         [cell.customName setBackgroundColor:[NSColor blackColor]];
+        customLabel.insertionPointColor = [NSColor whiteColor];
     }
     else
     {
+        
         [cell updateTextColorWithColor:[NSColor blackColor] andCell:cell];
         [cell.customName setDrawsBackground:NO];
         [self.mainTableview setBackgroundColor:[NSColor whiteColor]];
         self.window.alphaValue = 1;
+        customLabel.insertionPointColor = [NSColor blackColor];
     }
     
     cell.relativeDate.stringValue = [self getDateForTimeZone:self.defaultPreferences[row]];
@@ -574,6 +580,12 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     if ([object isKindOfClass:[NSString class]])
     {
         NSMutableDictionary *timezoneDictionary = self.defaultPreferences[row];
+        
+        if ([self.defaultPreferences[row][CLTimezoneName] isEqualToString:object])
+        {
+            return;
+        }
+        
         NSMutableDictionary *mutableTimeZoneDict = [timezoneDictionary mutableCopy];
         [mutableTimeZoneDict setValue:object forKey:CLCustomLabel];
         [self.defaultPreferences replaceObjectAtIndex:row withObject:mutableTimeZoneDict];
@@ -591,11 +603,20 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
-    [self.defaultPreferences exchangeObjectAtIndex:rowIndexes.firstIndex withObjectAtIndex:row];
+    [self.defaultPreferences exchangeObjectAtIndex:rowIndexes.firstIndex
+                                 withObjectAtIndex:row];
     
-    [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences forKey:CLDefaultPreferenceKey];
+    [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences
+                                              forKey:CLDefaultPreferenceKey];
     
     [self.mainTableview reloadData];
+    
+    for (NSWindow *window in [NSApplication sharedApplication].windows) {
+        if ([window.windowController isMemberOfClass:[CLPreferencesViewController class]]) {
+            CLPreferencesViewController *ref = (CLPreferencesViewController *) window.windowController;
+            [ref refereshTimezoneTableView];
+        }
+    }
     
     return YES;
 }

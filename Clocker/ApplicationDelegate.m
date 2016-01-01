@@ -76,22 +76,16 @@ void *kContextActivePanel = &kContextActivePanel;
 #pragma mark - NSApplicationDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
-{    
-    NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
-    
-     NSMutableArray *newDefaults = [[NSMutableArray alloc] init];
-
-    [defaultPreference enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            
-            if ([obj isKindOfClass:[NSString class]]) {
-                NSDictionary *defaultDictionary = @{CLTimezoneName : obj, CLCustomLabel : CLEmptyString};
-                [newDefaults addObject:defaultDictionary];
-            }
-        }];
-    
-    if (newDefaults.count > 0)
+{
+    NSNumber *opened = [[NSUserDefaults standardUserDefaults] objectForKey:@"noOfTimes"];
+    if (opened == nil)
     {
-        [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:CLDefaultPreferenceKey];
+         [[NSUserDefaults standardUserDefaults] setObject:[NSMutableArray array]
+                                                   forKey:CLDefaultPreferenceKey];
+        NSInteger noOfTimes = opened.integerValue + 1;
+        NSNumber *noOfTime = [NSNumber numberWithInteger:noOfTimes];
+        [[NSUserDefaults standardUserDefaults] setObject:noOfTime forKey:@"noOfTimes"];;
+        
     }
     
     NSString *defaultTheme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
@@ -101,7 +95,7 @@ void *kContextActivePanel = &kContextActivePanel;
     
     NSNumber *displaySuntimings = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplaySunTimingKey];
     if (displaySuntimings == nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:0] forKey:CLDisplaySunTimingKey];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:1] forKey:CLDisplaySunTimingKey];
     }
     
     NSNumber *displayFutureSlider = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey];

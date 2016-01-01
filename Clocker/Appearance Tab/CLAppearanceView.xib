@@ -93,8 +93,8 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3d9-qg-dNb">
-                    <rect key="frame" x="148" y="111" width="142" height="18"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Show Sunrise, Sunset Time" id="ZP5-1i-Bm8">
+                    <rect key="frame" x="132" y="111" width="175" height="18"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Show Sunrise, Sunset Time (Beta)" id="ZP5-1i-Bm8">
                         <font key="font" size="12" name="SFUIDisplay-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -148,8 +148,8 @@
             </subviews>
             <constraints>
                 <constraint firstItem="72r-oi-X0f" firstAttribute="top" secondItem="HTZ-1V-qZb" secondAttribute="bottom" constant="8" id="23z-Z7-vpe"/>
+                <constraint firstItem="HTZ-1V-qZb" firstAttribute="top" secondItem="atA-2r-FXV" secondAttribute="bottom" constant="15" id="55C-jv-7Rw"/>
                 <constraint firstItem="YQi-x8-6f8" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="6LU-d8-lKX"/>
-                <constraint firstAttribute="bottom" secondItem="72r-oi-X0f" secondAttribute="bottom" constant="20" id="9Bg-Cy-0Hw"/>
                 <constraint firstItem="3d9-qg-dNb" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="FBj-0N-ltc"/>
                 <constraint firstItem="OrL-Ix-fmY" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="JtZ-ra-RaC"/>
                 <constraint firstItem="1eh-BT-2fK" firstAttribute="top" secondItem="YQi-x8-6f8" secondAttribute="bottom" constant="8" id="POa-Gi-Prk"/>

@@ -22,4 +22,6 @@ typedef enum : NSUInteger {
 @property (atomic, strong) NSArray *themes;
 @property (nonatomic, strong) NSURLSessionDataTask *dataTask;
 
+- (void)refereshTimezoneTableView;
+
 @end

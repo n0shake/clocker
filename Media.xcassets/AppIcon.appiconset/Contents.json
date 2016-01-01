@@ -3,61 +3,61 @@
     {
       "size" : "16x16",
       "idiom" : "mac",
-      "filename" : "ClockerIcon-16.png",
+      "filename" : "NewIcon-16.png",
       "scale" : "1x"
     },
     {
       "size" : "16x16",
       "idiom" : "mac",
-      "filename" : "ClockerIcon-33.png",
+      "filename" : "NewIcon-32.png",
       "scale" : "2x"
     },
     {
       "size" : "32x32",
       "idiom" : "mac",
-      "filename" : "ClockerIcon-32.png",
+      "filename" : "NewIcon-33.png",
       "scale" : "1x"
     },
     {
       "size" : "32x32",
       "idiom" : "mac",
-      "filename" : "ClockerIcon-64.png",
+      "filename" : "NewIcon-64.png",
       "scale" : "2x"
     },
     {
       "size" : "128x128",
       "idiom" : "mac",
-      "filename" : "ClockerIcon.png",
+      "filename" : "NewIcon-128.png",
       "scale" : "1x"
     },
     {
       "size" : "128x128",
       "idiom" : "mac",
-      "filename" : "ClockerIcon-258.png",
+      "filename" : "NewIcon-256.png",
       "scale" : "2x"
     },
     {
       "size" : "256x256",
       "idiom" : "mac",
-      "filename" : "ClockerIcon-256.png",
+      "filename" : "NewIcon-257.png",
       "scale" : "1x"
     },
     {
       "size" : "256x256",
       "idiom" : "mac",
-      "filename" : "ClockerIcon-514.png",
+      "filename" : "NewIcon-512.png",
       "scale" : "2x"
     },
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "ClockerIcon-512.png",
+      "filename" : "NewIcon-513.png",
       "scale" : "1x"
     },
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "ClockerIcon-1024.png",
+      "filename" : "NewIcon-1024.png",
       "scale" : "2x"
     }
   ],
