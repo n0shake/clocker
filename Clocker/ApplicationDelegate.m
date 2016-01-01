@@ -104,6 +104,11 @@ void *kContextActivePanel = &kContextActivePanel;
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:0] forKey:CLDisplaySunTimingKey];
     }
     
+    NSNumber *displayFutureSlider = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey];
+    if (displayFutureSlider == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:0] forKey:CLDisplayFutureSliderKey];
+    }
+    
     NSNumber *defaultTimeFormat = [[NSUserDefaults standardUserDefaults] objectForKey:CL24hourFormatSelectedKey];
     if (defaultTimeFormat == nil) {
         [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:CL24hourFormatSelectedKey];

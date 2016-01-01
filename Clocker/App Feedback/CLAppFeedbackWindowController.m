@@ -134,7 +134,8 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
     self.emailField.stringValue = CLEmptyString;
     self.feedbackTextView.string = CLEmptyString;
     self.activityInProgress = NO;
-    for (NSWindow *window in [NSApplication sharedApplication].windows) {
+    for (NSWindow *window in [NSApplication sharedApplication].windows)
+    {
         if ([window.windowController isMemberOfClass:[CLOneWindowController class]]) {
             [window makeKeyAndOrderFront:self];
             [NSApp activateIgnoringOtherApps:YES];

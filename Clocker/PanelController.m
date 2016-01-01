@@ -339,6 +339,18 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
         cell.sunTime.stringValue = CLEmptyString;
     }
     
+    NSNumber *displayFutureSlider = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey];
+    if ([displayFutureSlider isEqualToNumber:[NSNumber numberWithInteger:0]])
+    {
+        self.futureSlider.hidden = NO;
+        self.sliderLabel.hidden = NO;
+    }
+    else
+    {
+        self.sliderLabel.hidden = YES;
+        self.futureSlider.hidden = YES;
+    }
+    
     [cell setUpAutoLayoutWithCell:cell];
     
     return cell;
@@ -611,12 +623,19 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 
 - (void)showOptions:(BOOL)value
 {
-    self.sliderLabel.hidden = !value;
+    if (!self.futureSlider.isHidden) {
+           self.sliderLabel.hidden = !value;
+    }
+ 
     
     if (self.defaultPreferences.count == 0)
     {
         value = YES;
-        self.sliderLabel.hidden = YES;
+        if (!self.futureSlider.isHidden)
+        {
+            self.sliderLabel.hidden = YES;
+        }
+        
     }
    
     self.shutdownButton.hidden = !value;
@@ -772,9 +791,11 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
                         
                         NSMutableDictionary *newDictionary = [[NSMutableDictionary alloc] initWithDictionary:dictionary copyItems:YES];
                         
-                        [newDictionary setObject:json[@"sunrise"] forKey:@"sunriseTime"];
-                        [newDictionary setObject:json[@"sunset"] forKey:@"sunsetTime"];
-                        
+                        if (json[@"sunrise"] && json[@"sunset"]) {
+                            [newDictionary setObject:json[@"sunrise"] forKey:@"sunriseTime"];
+                            [newDictionary setObject:json[@"sunset"] forKey:@"sunsetTime"];
+                        }
+                     
                         NSUInteger units = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
                         NSDateComponents *comps = [[NSCalendar currentCalendar] components:units fromDate:newDictionary[@"nextUpdate"]];
                         comps.day = comps.day + 1;

@@ -22,5 +22,6 @@ NSString *const CLCustomLabelChangedNotification = @"CLCustomLabelChangedNotific
 NSString *const CLRelativeDateKey = @"relativeDate";
 NSString *const CLThemeKey = @"defaultTheme";
 NSString *const CLDisplaySunTimingKey = @"displaySuntime";
+NSString *const CLDisplayFutureSliderKey = @"displayFutureSlider";
 
 @end
