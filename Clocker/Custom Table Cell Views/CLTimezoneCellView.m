@@ -41,6 +41,11 @@
             NSMutableDictionary *timezoneDictionary = panelController.defaultPreferences[cellView.rowNumber];
             NSMutableDictionary *mutableTimeZoneDict = [timezoneDictionary mutableCopy];
         
+            for (NSDictionary *dictionary in panelController.defaultPreferences) {
+                if ([dictionary[CLTimezoneName] isEqualToString:customLabelValue]) {
+                    return;
+                }
+            }
             (customLabelValue.length > 0) ?    [mutableTimeZoneDict setValue:customLabelValue forKey:CLCustomLabel] : [mutableTimeZoneDict setValue:CLEmptyString forKey:CLCustomLabel]  ;
                 [panelController.defaultPreferences replaceObjectAtIndex:cellView.rowNumber withObject:mutableTimeZoneDict];
                 [[NSUserDefaults standardUserDefaults] setObject:panelController.defaultPreferences forKey:CLDefaultPreferenceKey];

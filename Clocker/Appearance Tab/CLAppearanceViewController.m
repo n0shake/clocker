@@ -55,6 +55,11 @@
         panelController.preferencesButton.image = [NSImage imageNamed:NSImageNameActionTemplate];
     }
     
+    if (panelController.defaultPreferences.count == 0)
+    {
+        [panelController updatePanelColor];
+    }
+    
     [panelController.mainTableview reloadData];
 
 }

@@ -398,7 +398,8 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 
 }
 
-- (NSString *)getFormattedSunriseOrSunsetTime:(NSMutableDictionary *)originalTime andSunImage:(CLTimezoneCellView *)cell
+- (NSString *)getFormattedSunriseOrSunsetTime:(NSMutableDictionary *)originalTime
+                                  andSunImage:(CLTimezoneCellView *)cell
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyy-MM-dd HH:mm";
@@ -609,14 +610,14 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences
                                               forKey:CLDefaultPreferenceKey];
     
-    [self.mainTableview reloadData];
-    
     for (NSWindow *window in [NSApplication sharedApplication].windows) {
-        if ([window.windowController isMemberOfClass:[CLPreferencesViewController class]]) {
-            CLPreferencesViewController *ref = (CLPreferencesViewController *) window.windowController;
-            [ref refereshTimezoneTableView];
+        if ([window.windowController isMemberOfClass:[CLOneWindowController class]]) {
+            CLOneWindowController *ref = (CLOneWindowController *) window.windowController;
+            [ref.preferencesView refereshTimezoneTableView];
         }
     }
+    
+    [self.mainTableview reloadData];
     
     return YES;
 }
@@ -833,7 +834,12 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
                         }
                         
                         NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:defaultPreference];
-                        [newArray replaceObjectAtIndex:[self.defaultPreferences indexOfObject:dictionary] withObject:newDictionary];
+                        
+                        for (NSMutableDictionary *timeDictionary in self.defaultPreferences) {
+                            if ([dictionary[CLPlaceIdentifier] isEqualToString:timeDictionary[CLPlaceIdentifier]]) {
+                                [newArray replaceObjectAtIndex:[self.defaultPreferences indexOfObject:timeDictionary] withObject:newDictionary];
+                            }
+                        }
                         
                         [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:CLDefaultPreferenceKey];
                         
@@ -852,6 +858,23 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
         [dataTask resume];
         
     }
+}
+
+- (void)updatePanelColor
+{
+    NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
+    if (theme.length > 0 && ![theme isEqualToString:@"Default"])
+    {
+        [self.mainTableview setBackgroundColor:[NSColor blackColor]];
+        self.window.alphaValue = 0.90;
+    }
+    else
+    {
+        [self.mainTableview setBackgroundColor:[NSColor whiteColor]];
+        self.window.alphaValue = 1;
+    }
+    
+
 }
 
 @end

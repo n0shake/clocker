@@ -107,6 +107,11 @@ void *kContextActivePanel = &kContextActivePanel;
     if (defaultTimeFormat == nil) {
         [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:CL24hourFormatSelectedKey];
     }
+    
+    NSNumber *relativeDate = [[NSUserDefaults standardUserDefaults] objectForKey:CLRelativeDateKey];
+    if (relativeDate == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLRelativeDateKey];
+    }
 
     // Install icon into the menu bar
     self.menubarController = [[MenubarController alloc] init];

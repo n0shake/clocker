@@ -33,7 +33,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5tI-fU-0lZ">
+                <segmentedControl toolTip="Choose a theme for the main panel!" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5tI-fU-0lZ">
                     <rect key="frame" x="158" y="204" width="124" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="120" id="dW5-vG-EwD"/>
@@ -75,7 +75,7 @@
                         <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.relativeDate" id="eKo-sG-1eE"/>
                     </connections>
                 </segmentedControl>
-                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OrL-Ix-fmY">
+                <segmentedControl toolTip="Select a time-format!" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OrL-Ix-fmY">
                     <rect key="frame" x="102" y="266" width="236" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="232" id="uOJ-Mi-Fin"/>

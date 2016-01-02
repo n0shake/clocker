@@ -31,7 +31,7 @@
                             <action selector="openAppearanceView:" target="-2" id="y38-Hb-icv"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="A66E9082-B4AF-4B6F-B2E8-CC3D70124C0B" label="Appearance" paletteLabel="About Us" tag="-1" image="NSInfo" autovalidates="NO" id="ti4-MJ-8Xu">
+                    <toolbarItem implicitItemIdentifier="A66E9082-B4AF-4B6F-B2E8-CC3D70124C0B" label="About Clocker" paletteLabel="About Clocker" tag="-1" image="NSInfo" autovalidates="NO" id="ti4-MJ-8Xu">
                         <connections>
                             <action selector="openAboutUsView:" target="-2" id="Aec-lN-CqR"/>
                         </connections>

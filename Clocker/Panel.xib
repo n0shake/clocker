@@ -250,7 +250,7 @@
                             <binding destination="-2" name="value" keyPath="self.futureSliderValue" id="Fbv-WN-01b"/>
                         </connections>
                     </slider>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OFy-u1-TnH">
+                    <button toolTip="Open Preferences" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OFy-u1-TnH">
                         <rect key="frame" x="246" y="1" width="29" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="29" id="MIQ-4K-E5A"/>
@@ -264,7 +264,7 @@
                             <action selector="openPreferences:" target="-2" id="0Yc-Eq-obQ"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nTt-pf-Hw2">
+                    <button toolTip="Close Clocker" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nTt-pf-Hw2">
                         <rect key="frame" x="0.0" y="1" width="29" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="29" id="8kZ-Pj-VK6"/>

@@ -73,5 +73,6 @@
 - (void)updateDefaultPreferences;
 - (void)showOptions:(BOOL)value;
 - (void)removeContextHelpForSlider;
+- (void)updatePanelColor;
 
 @end

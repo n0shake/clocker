@@ -247,7 +247,7 @@ CA
                             <binding destination="-2" name="animate" keyPath="self.activityInProgress" id="S3o-gJ-W9p"/>
                         </connections>
                     </progressIndicator>
-                    <button toolTip="Add a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cyZ-cL-S7a">
+                    <button toolTip="Close Panel" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cyZ-cL-S7a">
                         <rect key="frame" x="50" y="4" width="50" height="19"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="lku-Qx-nX5"/>
