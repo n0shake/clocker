@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
@@ -18,7 +19,11 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iVw-cq-zLz">
-                    <rect key="frame" x="200" y="235" width="40" height="18"/>
+                    <rect key="frame" x="198" y="235" width="44" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="2DP-wK-Ga8"/>
+                        <constraint firstAttribute="width" constant="40" id="KEa-ei-G2i"/>
+                    </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Theme" id="hCb-NM-To8">
                         <font key="font" size="12" name="SFUIDisplay-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -26,7 +31,11 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5TC-RQ-gzI">
-                    <rect key="frame" x="186" y="297" width="68" height="18"/>
+                    <rect key="frame" x="183" y="297" width="74" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="gWc-u4-D8E"/>
+                        <constraint firstAttribute="width" constant="70" id="nh0-5K-Aa0"/>
+                    </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Time Format" id="Hza-PB-FEf">
                         <font key="font" size="12" name="SFUIDisplay-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -51,7 +60,11 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YQi-x8-6f8">
-                    <rect key="frame" x="178" y="173" width="84" height="18"/>
+                    <rect key="frame" x="175" y="173" width="89" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="eY8-bV-QLM"/>
+                        <constraint firstAttribute="width" constant="85" id="n8S-fR-UtY"/>
+                    </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Display Options" id="KTv-74-itf">
                         <font key="font" size="12" name="SFUIDisplay-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -59,9 +72,9 @@
                     </textFieldCell>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1eh-BT-2fK">
-                    <rect key="frame" x="101" y="142" width="240" height="24"/>
+                    <rect key="frame" x="98" y="142" width="244" height="24"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="236" id="uU1-9Q-cqa"/>
+                        <constraint firstAttribute="width" constant="240" id="uU1-9Q-cqa"/>
                     </constraints>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="ZV9-ih-faz">
                         <font key="font" size="12" name="SFUIDisplay-Light"/>
@@ -93,7 +106,10 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3d9-qg-dNb">
-                    <rect key="frame" x="132" y="111" width="175" height="18"/>
+                    <rect key="frame" x="130" y="111" width="179" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="175" id="hHO-Wa-gmc"/>
+                    </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Show Sunrise, Sunset Time (Beta)" id="ZP5-1i-Bm8">
                         <font key="font" size="12" name="SFUIDisplay-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -134,9 +150,9 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HTZ-1V-qZb">
-                    <rect key="frame" x="168" y="49" width="103" height="18"/>
+                    <rect key="frame" x="165" y="49" width="109" height="18"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="99" id="1Lv-wC-hEM"/>
+                        <constraint firstAttribute="width" constant="105" id="1Lv-wC-hEM"/>
                         <constraint firstAttribute="height" constant="18" id="tK6-lZ-2AV"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Show Future Slider" id="PE4-Ua-hkI">
@@ -161,7 +177,7 @@
                 <constraint firstItem="iVw-cq-zLz" firstAttribute="top" secondItem="OrL-Ix-fmY" secondAttribute="bottom" constant="15" id="XgM-Wl-Xap"/>
                 <constraint firstItem="iVw-cq-zLz" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="Zh8-Vn-VxM"/>
                 <constraint firstItem="5tI-fU-0lZ" firstAttribute="top" secondItem="iVw-cq-zLz" secondAttribute="bottom" constant="8" id="bo6-s2-Vfj"/>
-                <constraint firstItem="1eh-BT-2fK" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="1.5" id="fvI-By-5Ef"/>
+                <constraint firstItem="1eh-BT-2fK" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="0.5" id="fvI-By-5Ef"/>
                 <constraint firstItem="3d9-qg-dNb" firstAttribute="top" secondItem="1eh-BT-2fK" secondAttribute="bottom" constant="15" id="iVY-Yj-mck"/>
                 <constraint firstItem="5TC-RQ-gzI" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="lc0-ud-Mnw"/>
                 <constraint firstItem="5TC-RQ-gzI" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="oI8-4L-ppf"/>

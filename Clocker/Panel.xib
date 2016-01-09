@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
@@ -74,9 +75,9 @@
                                                             </connections>
                                                         </textField>
                                                         <textField verticalHuggingPriority="750" tag="102" translatesAutoresizingMaskIntoConstraints="NO" id="QUd-7D-q14">
-                                                            <rect key="frame" x="8" y="13" width="76" height="18"/>
+                                                            <rect key="frame" x="8" y="11" width="76" height="20"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="18" id="42Y-hy-Uo7"/>
+                                                                <constraint firstAttribute="height" constant="20" id="42Y-hy-Uo7"/>
                                                                 <constraint firstAttribute="width" constant="72" id="fkH-oq-qvM"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" placeholderString="Tomorrow" usesSingleLineMode="YES" id="74U-rv-5xj">
@@ -98,7 +99,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7zS-Nt-MMx">
-                                                            <rect key="frame" x="77" y="11" width="19" height="21"/>
+                                                            <rect key="frame" x="82" y="11" width="19" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="19" id="8ld-PK-Xtr"/>
                                                                 <constraint firstAttribute="height" constant="21" id="D4F-wd-Y1z"/>
@@ -106,7 +107,7 @@
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="LEc-9r-Xb6"/>
                                                         </imageView>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kga-Kt-F29">
-                                                            <rect key="frame" x="97" y="14" width="38" height="15"/>
+                                                            <rect key="frame" x="102" y="14" width="38" height="15"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="15" id="O7I-i9-V4C"/>
                                                                 <constraint firstAttribute="width" constant="34" id="sm2-xn-PVC"/>
@@ -126,7 +127,7 @@
                                                         <constraint firstItem="vnv-J2-7r1" firstAttribute="centerY" secondItem="qbN-ba-fho" secondAttribute="centerY" constant="-8" id="TuQ-gE-ZUh"/>
                                                         <constraint firstItem="QUd-7D-q14" firstAttribute="top" secondItem="etF-33-bCB" secondAttribute="bottom" constant="2" id="VO6-Zn-eA3"/>
                                                         <constraint firstItem="etF-33-bCB" firstAttribute="leading" secondItem="qbN-ba-fho" secondAttribute="leading" constant="9" id="ueW-ow-ZRq"/>
-                                                        <constraint firstItem="7zS-Nt-MMx" firstAttribute="leading" secondItem="QUd-7D-q14" secondAttribute="trailing" constant="-5" id="vZ8-mD-p3a"/>
+                                                        <constraint firstItem="7zS-Nt-MMx" firstAttribute="leading" secondItem="QUd-7D-q14" secondAttribute="trailing" id="vZ8-mD-p3a"/>
                                                         <constraint firstItem="kga-Kt-F29" firstAttribute="leading" secondItem="7zS-Nt-MMx" secondAttribute="trailing" constant="3" id="yxq-jA-jVe"/>
                                                         <constraint firstAttribute="trailing" secondItem="vnv-J2-7r1" secondAttribute="trailing" constant="8" id="zXo-eA-0bQ"/>
                                                     </constraints>
@@ -144,13 +145,13 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gRN-xJ-bfq">
-                                                            <rect key="frame" x="75" y="30" width="16" height="16"/>
+                                                            <rect key="frame" x="58" y="30" width="16" height="16"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-16" id="8gl-Vi-0VF"/>
                                                         </imageView>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" preferredMaxLayoutWidth="110" translatesAutoresizingMaskIntoConstraints="NO" id="JNw-ld-oz9">
-                                                            <rect key="frame" x="96" y="28" width="154" height="20"/>
+                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JNw-ld-oz9">
+                                                            <rect key="frame" x="79" y="28" width="189" height="20"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="150" id="dBn-va-BvP"/>
+                                                                <constraint firstAttribute="width" constant="185" id="i6p-pO-tfO"/>
                                                                 <constraint firstAttribute="height" constant="20" id="kOH-Lb-7sB"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Enjoy using Clocker?" id="iM2-CB-CE2">
@@ -228,13 +229,13 @@
                         </scroller>
                     </scrollView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="75" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-w7-iSa">
-                        <rect key="frame" x="106" y="24" width="64" height="17"/>
+                        <rect key="frame" x="97" y="24" width="84" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="60" id="XLu-0I-ACL"/>
+                            <constraint firstAttribute="width" constant="80" id="XLu-0I-ACL"/>
                             <constraint firstAttribute="height" constant="17" id="j4s-Vf-pQQ"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" placeholderString="Future Slider" id="KPS-ge-xQM">
-                            <font key="font" size="11" name="SFUIDisplay-Thin"/>
+                            <font key="font" size="11" name="SFUIDisplay-Bold"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -281,7 +282,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="4Gd-Nv-fXr" firstAttribute="top" secondItem="6" secondAttribute="top" constant="8" id="1g0-Hm-7Gh"/>
-                    <constraint firstItem="rGL-w7-iSa" firstAttribute="centerX" secondItem="T7e-RS-eTE" secondAttribute="centerX" id="5NW-NQ-wPO"/>
+                    <constraint firstItem="rGL-w7-iSa" firstAttribute="centerX" secondItem="T7e-RS-eTE" secondAttribute="centerX" constant="1" id="5NW-NQ-wPO"/>
                     <constraint firstItem="T7e-RS-eTE" firstAttribute="top" secondItem="dFw-ts-8OZ" secondAttribute="bottom" constant="-25" id="96B-lf-iFV"/>
                     <constraint firstItem="T7e-RS-eTE" firstAttribute="leading" secondItem="nTt-pf-Hw2" secondAttribute="trailing" constant="2" id="GgQ-58-tbc"/>
                     <constraint firstAttribute="bottom" secondItem="nTt-pf-Hw2" secondAttribute="bottom" constant="2" id="QoV-TI-KVJ"/>
