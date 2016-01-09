@@ -487,8 +487,6 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
     NSInteger weekday = [calendar component:NSCalendarUnitWeekday fromDate:localDate];
     
-    NSInteger index =  [self.defaultPreferences indexOfObject:dictionary];
-    
     if ([dictionary[@"nextUpdate"] isKindOfClass:[NSString class]])
     {
 
@@ -499,8 +497,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
         
         NSMutableDictionary *newDict = [[NSMutableDictionary alloc] initWithDictionary:dictionary copyItems:YES];
         [newDict setObject:tomorrowMidnight forKey:@"nextUpdate"];
-        
-        index = [self.defaultPreferences indexOfObject:dictionary];
+
         
         [self.defaultPreferences replaceObjectAtIndex:[self.defaultPreferences indexOfObject:dictionary] withObject:newDict];
         [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences forKey:CLDefaultPreferenceKey];

@@ -170,8 +170,6 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         self.activityInProgress = NO;
         return;
     }
-
-    NSString *selectedTimezone;
     
     if (self.selectedTimeZones.count >= 10)
     {
@@ -203,8 +201,6 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
             }
         }
     }
-    
-    selectedTimezone = self.filteredArray[self.availableTimezoneTableView.selectedRow];
     
     self.searchField.stringValue = CLEmptyString;
     
