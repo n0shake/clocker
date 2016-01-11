@@ -29,6 +29,7 @@
 		9A5951F51C1D3D81009C17AA /* CLTimezoneCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5951F41C1D3D81009C17AA /* CLTimezoneCellView.m */; };
 		9A5951FA1C1D5214009C17AA /* iVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5951F91C1D5214009C17AA /* iVersion.m */; };
 		9A5951FD1C1D592D009C17AA /* iVersion.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A5951FC1C1D592D009C17AA /* iVersion.bundle */; };
+		9A63620A1C432F68004AD010 /* CLAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6362091C432F68004AD010 /* CLAPI.m */; };
 		9A8605AE1BEC148400A810A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605AD1BEC148400A810A4 /* main.m */; };
 		9A8605B31BEC14A600A810A4 /* ColoredButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B21BEC14A600A810A4 /* ColoredButton.m */; };
 		9A8605B61BEC14BE00A810A4 /* MenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B41BEC14BE00A810A4 /* MenubarController.m */; };
@@ -110,6 +111,8 @@
 		9A5951F91C1D5214009C17AA /* iVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iVersion.m; path = "Clocker/Updated Version/iVersion.m"; sourceTree = "<group>"; };
 		9A5951FC1C1D592D009C17AA /* iVersion.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = iVersion.bundle; path = "Clocker/Updated Version/iVersion.bundle"; sourceTree = "<group>"; };
 		9A5B1A8D1BECDFB700A77C68 /* Clocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Clocker.entitlements; path = Clocker/Clocker.entitlements; sourceTree = "<group>"; };
+		9A6362081C432F68004AD010 /* CLAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAPI.h; path = Clocker/API/CLAPI.h; sourceTree = "<group>"; };
+		9A6362091C432F68004AD010 /* CLAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAPI.m; path = Clocker/API/CLAPI.m; sourceTree = "<group>"; };
 		9A8605AD1BEC148400A810A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Clocker/main.m; sourceTree = "<group>"; };
 		9A8605B21BEC14A600A810A4 /* ColoredButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ColoredButton.m; path = Clocker/ColoredButton.m; sourceTree = "<group>"; };
 		9A8605B41BEC14BE00A810A4 /* MenubarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MenubarController.m; path = Clocker/MenubarController.m; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 			children = (
 				9A5951BB1C1D0A8D009C17AA /* CommonStrings.m */,
 				9A5951BC1C1D0A8D009C17AA /* CommonStrings.h */,
+				9A6362081C432F68004AD010 /* CLAPI.h */,
+				9A6362091C432F68004AD010 /* CLAPI.m */,
 			);
 			name = Utilties;
 			sourceTree = "<group>";
@@ -514,6 +519,7 @@
 				9A8605BF1BEC14F600A810A4 /* BackgroundView.m in Sources */,
 				9A87DAC51C358FA800A8CF3B /* DTConstants.m in Sources */,
 				9AB9357B1C1AD8F7001285A0 /* CLRatingCellView.m in Sources */,
+				9A63620A1C432F68004AD010 /* CLAPI.m in Sources */,
 				9A87DAC81C358FA800A8CF3B /* DTTimePeriodChain.m in Sources */,
 				9A87DAC71C358FA800A8CF3B /* DTTimePeriod.m in Sources */,
 				9A3247321C25FD3A00CF6B6E /* CLCustomSliderCell.m in Sources */,

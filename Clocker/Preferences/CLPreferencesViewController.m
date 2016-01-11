@@ -12,8 +12,9 @@
 #import "ApplicationDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 #import "CommonStrings.h"
-#import "Reachability.h"
+
 #import <Parse/Parse.h>
+#import "CLAPI.h"
 
 NSString *const CLSearchPredicateKey = @"SELF CONTAINS[cd]%@";
 NSString *const CLPreferencesViewNibIdentifier = @"PreferencesWindow";
@@ -353,7 +354,10 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     return YES;
 }
 
--(NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation
+-(NSDragOperation)tableView:(NSTableView *)tableView
+               validateDrop:(id<NSDraggingInfo>)info
+                proposedRow:(NSInteger)row
+      proposedDropOperation:(NSTableViewDropOperation)dropOperation
 {
     return NSDragOperationEvery;
 }
@@ -371,11 +375,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     
     self.placeholderLabel.hidden = NO;
     
-    Reachability *reachability = [Reachability reachabilityForInternetConnection];
-    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
-    
-    if (networkStatus == NotReachable)
-    {
+    if (![CLAPI isUserConnectedToInternet]) {
         self.placeholderLabel.placeholderString = CLNoInternetConnectivityError;
         return;
     }
@@ -389,97 +389,67 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     
     NSString *urlString = [NSString stringWithFormat:CLLocationSearchURL, searchString];
     
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    request.HTTPMethod = @"GET";
-    
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
-    NSError *error = nil;
-    
-    if (!error) {
-        
-        self.dataTask= [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            if (!error) {
-                NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
-        
-                if (httpResp.statusCode == 200) {
-                    
-                     dispatch_async(dispatch_get_main_queue(), ^{
-
-                      self.placeholderLabel.placeholderString = CLEmptyString;
-                         
-                         NSDictionary* json = [NSJSONSerialization
-                                               JSONObjectWithData:data
-                                               options:kNilOptions
-                                               error:nil];
-                         if ([json[@"status"] isEqualToString:@"ZERO_RESULTS"]) {
-                             self.placeholderLabel.placeholderString = @"No results! 😔 Try entering the exact name.";
-                             self.activityInProgress = NO;
-                             return;
-                         }
-                         
-                         for (NSDictionary *dictionary in json[@"results"])
-                         {
-                             NSDictionary *latLang = [[dictionary objectForKey:@"geometry"] objectForKey:@"location"];
-                             NSString *latitude = latLang[@"lat"];
-                             NSString *longitude = latLang[@"lng"];
-                             NSString *formattedAddress = [dictionary objectForKey:@"formatted_address"];
-                             
-                             NSDictionary *totalPackage = @{@"latitude":latitude,
-                                                            @"longitude" : longitude,
-                                                            CLTimezoneName:formattedAddress,
-                                                            CLCustomLabel: CLEmptyString,
-                                                            CLTimezoneID : CLEmptyString,
-                                                            CLPlaceIdentifier : dictionary[CLPlaceIdentifier]};
-                             [self.filteredArray addObject:totalPackage];
-                             
-                         }
-                         self.activityInProgress = NO;
-
-                         [self.availableTimezoneTableView reloadData];
-
-                     });
-                  
-                    }
-                else
-                {
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         self.placeholderLabel.placeholderString = [error.localizedDescription isEqualToString:@"The Internet connection appears to be offline."] ?
-                         CLNoInternetConnectivityError : CLTryAgainMessage;
-                         self.activityInProgress = NO;
-                     });
-               
-                }
-            }
-            
-        }];
-        [self.dataTask resume];
-        
-    }
+    [CLAPI dataTaskWithServicePath:urlString
+                          bySender:self
+               withCompletionBlock:^(NSError *error, NSDictionary *json) {
+                   
+                   
+                   dispatch_async(dispatch_get_main_queue(), ^{
+                       
+                       if (error)
+                       {
+                           self.placeholderLabel.placeholderString = [error.localizedDescription isEqualToString:@"The Internet connection appears to be offline."] ?
+                           CLNoInternetConnectivityError : CLTryAgainMessage;
+                           self.activityInProgress = NO;
+                           return;
+                       }
+                       
+                       self.placeholderLabel.placeholderString = CLEmptyString;
+                       
+                       if ([json[@"status"] isEqualToString:@"ZERO_RESULTS"]) {
+                           self.placeholderLabel.placeholderString = @"No results! 😔 Try entering the exact name.";
+                           self.activityInProgress = NO;
+                           return;
+                       }
+                       
+                       for (NSDictionary *dictionary in json[@"results"])
+                       {
+                           NSDictionary *latLang = [[dictionary objectForKey:@"geometry"] objectForKey:@"location"];
+                           NSString *latitude = latLang[@"lat"];
+                           NSString *longitude = latLang[@"lng"];
+                           NSString *formattedAddress = [dictionary objectForKey:@"formatted_address"];
+                           
+                           NSDictionary *totalPackage = @{@"latitude":latitude,
+                                                          @"longitude" : longitude,
+                                                          CLTimezoneName:formattedAddress,
+                                                          CLCustomLabel: CLEmptyString,
+                                                          CLTimezoneID : CLEmptyString,
+                                                          CLPlaceIdentifier : dictionary[CLPlaceIdentifier]};
+                           [self.filteredArray addObject:totalPackage];
+                           
+                       }
+                       self.activityInProgress = NO;
+                       
+                       [self.availableTimezoneTableView reloadData];
+                       
+                   });
+                   
+               }];
 }
 
 - (void)getTimeZoneForLatitude:(NSString *)latitude andLongitude:(NSString *)longitude
-{
-    Reachability *reachability = [Reachability reachabilityForInternetConnection];
-    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
-    
-    if (networkStatus == NotReachable)
-    {
+{    
+    if (![CLAPI isUserConnectedToInternet]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-        self.placeholderLabel.placeholderString = CLNoInternetConnectivityError;
-        self.activityInProgress = NO;
-        self.filteredArray = [NSMutableArray array];
-        [self.availableTimezoneTableView reloadData];
+            self.placeholderLabel.placeholderString = CLNoInternetConnectivityError;
+            self.activityInProgress = NO;
+            self.filteredArray = [NSMutableArray array];
+            [self.availableTimezoneTableView reloadData];
         });
-        
+
         return;
     }
+
     
     self.searchField.placeholderString = @"Fetching data might take some time!";
 
@@ -489,120 +459,97 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     
     NSString *urlString = [NSString stringWithFormat:@"http://api.geonames.org/timezoneJSON?lat=%@&lng=%@&username=abhishaker17", latitude, longitude];
     
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    request.HTTPMethod = @"GET";
-    
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-
-    NSError *error = nil;
-    
-    if (!error) {
-        
-        self.dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            if (!error) {
-                NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
-                if (httpResp.statusCode == 200) {
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        
-                        NSDictionary* json = [NSJSONSerialization
-                                              JSONObjectWithData:data
-                                              options:kNilOptions
-                                              error:nil];
-                        
-                        
-                        if (json.count == 0) {
-                            self.activityInProgress = NO;
-                            self.placeholderLabel.placeholderString = @"No results found! ! 😔 Try Again?";
-                            return;
-                        }
-                        
-                        if ([json[@"status"][@"message"] isEqualToString:@"the hourly limit of 2000 credits for abhishaker17 has been exceeded. Please throttle your requests or use the commercial service."])
-                        {
-                            self.activityInProgress = NO;
-                            self.placeholderLabel.placeholderString = @"API limit reached. Try again in an hour.?";
-                            self.searchField.placeholderString = @"We rely on free APIs which have limits.";
-                            return;
-                        }
-                        
-                        
-                        NSString *filteredAddress = [self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:CLTimezoneName];
-                        NSRange range = [filteredAddress rangeOfString:@","];
-                        if (range.location != NSNotFound)
-                        {
-                            filteredAddress = [[self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:CLTimezoneName ] substringWithRange:NSMakeRange(0, range.location)];
-                        }
-                        
-                        NSMutableDictionary *newTimezone = [NSMutableDictionary dictionary];
-                        if (json[@"sunrise"]) {
-                               [newTimezone setObject:json[@"sunrise"] forKey:@"sunriseTime"];
-                        }
-                        if (json[@"sunset"]) {
-                             [newTimezone setObject:json[@"sunset"] forKey:@"sunsetTime"];
-                        }
-                        
-                        [newTimezone setObject:json[@"timezoneId"] forKey:CLTimezoneID];
-                     
-                        
-                        [newTimezone setObject:filteredAddress forKey:CLTimezoneName];
-                        [newTimezone setObject:self.filteredArray[self.availableTimezoneTableView.selectedRow][CLPlaceIdentifier] forKey:CLPlaceIdentifier];
-                        [newTimezone setObject:latitude forKey:@"latitude"];
-                        [newTimezone setObject:longitude forKey:@"longitude"];
-                        [newTimezone setObject:CLEmptyString forKey:@"nextUpdate"];
-                        [newTimezone setObject:CLEmptyString forKey:CLCustomLabel];
-                        
-                        NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
-                        
-                        if (defaultPreference == nil)
-                        {
-                            defaultPreference = [[NSMutableArray alloc] init];
-                        }
-                        
-                        NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:defaultPreference];
-                        [newArray addObject:newTimezone];
-                        
-                        [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:CLDefaultPreferenceKey];
-                        
-                        self.filteredArray = [NSMutableArray array];
-                        
-                        [self.availableTimezoneTableView reloadData];
-
-                        [self refereshTimezoneTableView];
-                        
-                        [self refreshMainTableview];
-                        
-                        [self.timezonePanel close];
-                        
-                        self.placeholderLabel.placeholderString = CLEmptyString;
-                        
-                        self.searchField.placeholderString = @"Enter a city, state or country name";
-                        
-                        self.availableTimezoneTableView.hidden = NO;
-                        
-                        self.activityInProgress = NO;
-                        
-                    });
-                }
-            }
-            else
-            {
-                self.placeholderLabel.placeholderString = [error.localizedDescription isEqualToString:@"The Internet connection appears to be offline."] ?
-                CLNoInternetConnectivityError : CLTryAgainMessage;
+    [CLAPI dataTaskWithServicePath:urlString
+                          bySender:self
+               withCompletionBlock:^(NSError *error, NSDictionary *json) {
+                  
+                   if (!error)
+                   {
+                       dispatch_async(dispatch_get_main_queue(), ^{
                 
-                self.activityInProgress = NO;
-            }
-            
-        }];
-        
-        [self.dataTask resume];
-        
-    }
+                           if (json.count == 0) {
+                               self.activityInProgress = NO;
+                               self.placeholderLabel.placeholderString = @"No results found! ! 😔 Try Again?";
+                               return;
+                           }
+                           
+                           if ([json[@"status"][@"message"] isEqualToString:@"the hourly limit of 2000 credits for abhishaker17 has been exceeded. Please throttle your requests or use the commercial service."])
+                           {
+                               self.activityInProgress = NO;
+                               self.placeholderLabel.placeholderString = @"API limit reached. Try again in an hour.?";
+                               self.searchField.placeholderString = @"We rely on free APIs which have limits.";
+                               return;
+                           }
+                           
+                           
+                           NSString *filteredAddress = [self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:CLTimezoneName];
+                           NSRange range = [filteredAddress rangeOfString:@","];
+                           if (range.location != NSNotFound)
+                           {
+                               filteredAddress = [[self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:CLTimezoneName ] substringWithRange:NSMakeRange(0, range.location)];
+                           }
+                           
+                           NSMutableDictionary *newTimezone = [NSMutableDictionary dictionary];
+                           if (json[@"sunrise"]) {
+                               [newTimezone setObject:json[@"sunrise"] forKey:@"sunriseTime"];
+                           }
+                           if (json[@"sunset"]) {
+                               [newTimezone setObject:json[@"sunset"] forKey:@"sunsetTime"];
+                           }
+                           
+                           [newTimezone setObject:json[@"timezoneId"] forKey:CLTimezoneID];
+                           
+                           
+                           [newTimezone setObject:filteredAddress forKey:CLTimezoneName];
+                           [newTimezone setObject:self.filteredArray[self.availableTimezoneTableView.selectedRow][CLPlaceIdentifier] forKey:CLPlaceIdentifier];
+                           [newTimezone setObject:latitude forKey:@"latitude"];
+                           [newTimezone setObject:longitude forKey:@"longitude"];
+                           [newTimezone setObject:CLEmptyString forKey:@"nextUpdate"];
+                           [newTimezone setObject:CLEmptyString forKey:CLCustomLabel];
+                           
+                           NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
+                           
+                           if (defaultPreference == nil)
+                           {
+                               defaultPreference = [[NSMutableArray alloc] init];
+                           }
+                           
+                           NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:defaultPreference];
+                           [newArray addObject:newTimezone];
+                           
+                           [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:CLDefaultPreferenceKey];
+                           
+                           self.filteredArray = [NSMutableArray array];
+                           
+                           [self.availableTimezoneTableView reloadData];
+                           
+                           [self refereshTimezoneTableView];
+                           
+                           [self refreshMainTableview];
+                           
+                           [self.timezonePanel close];
+                           
+                           self.placeholderLabel.placeholderString = CLEmptyString;
+                           
+                           self.searchField.placeholderString = @"Enter a city, state or country name";
+                           
+                           self.availableTimezoneTableView.hidden = NO;
+                           
+                           self.activityInProgress = NO;
+                           
+                       });
+                   }
+                   else
+                   {
+                       self.placeholderLabel.placeholderString = [error.localizedDescription isEqualToString:@"The Internet connection appears to be offline."] ?
+                       CLNoInternetConnectivityError : CLTryAgainMessage;
+                       
+                       self.activityInProgress = NO;
+
+                   }
+                   
+               }];
+    
 }
 
 @end

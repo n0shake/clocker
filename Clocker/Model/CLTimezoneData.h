@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CLTimezoneData : NSObject
+@interface CLTimezoneData : NSObject<NSCoding>
 
 @property (strong, nonatomic) NSString *customLabel;
 @property (strong, nonatomic) NSString *formattedAddress;
@@ -16,5 +16,7 @@
 @property (strong, nonatomic) NSString *sunriseTime;
 @property (strong, nonatomic) NSString *sunsetTime;
 @property (strong, nonatomic) NSString *timezoneID;
+
+- (BOOL)saveObjectToPreferences:(CLTimezoneData *)object;
 
 @end
