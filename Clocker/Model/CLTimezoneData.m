@@ -7,12 +7,25 @@
 //
 
 #import "CLTimezoneData.h"
+#import "CommonStrings.h"
 
 @implementation CLTimezoneData
 
--(void)initWithDictionary:(NSDictionary *)dictionary
+-(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
+    if (self == [super init])
+    {
+        self.customLabel = dictionary[CLCustomLabel];
+        self.sunriseTime = CLEmptyString;
+        self.sunsetTime = CLEmptyString;
+        self.timezoneID = dictionary[CLTimezoneName];
+        self.latitude = dictionary[@"latitude"];
+        self.longitude = dictionary[@"longitude"];
+        self.place_id = dictionary[CLPlaceIdentifier];
+        self.formattedAddress = dictionary[CLTimezoneName];
+    }
     
+    return self;
 }
 
 - (BOOL)saveObjectToPreferences:(CLTimezoneData *)object
@@ -63,6 +76,18 @@
     }
     
     return self;
+}
+
+-(NSString *)description
+{
+    return [NSString stringWithFormat:@"TimezoneID:%@\nFormatted Address:%@\nCustom Label:%@\nLatitude:%@\nLongitude:%@\nSunrise:%@\nSunset:%@\nPlaceID:%@", self.timezoneID,
+            self.formattedAddress,
+            self.customLabel,
+            self.latitude,
+            self.longitude,
+            self.sunriseTime,
+            self.sunsetTime,
+            self.place_id];
 }
 
 @end

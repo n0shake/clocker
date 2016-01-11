@@ -12,7 +12,7 @@
 #import "ApplicationDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 #import "CommonStrings.h"
-
+#import "CLTimezoneData.h"
 #import <Parse/Parse.h>
 #import "CLAPI.h"
 
@@ -425,6 +425,11 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                                                           CLCustomLabel: CLEmptyString,
                                                           CLTimezoneID : CLEmptyString,
                                                           CLPlaceIdentifier : dictionary[CLPlaceIdentifier]};
+                           
+                           CLTimezoneData *newObject = [[CLTimezoneData alloc] initWithDictionary:totalPackage];
+                           
+                           NSLog(@"%@", newObject.description);
+                           
                            [self.filteredArray addObject:totalPackage];
                            
                        }

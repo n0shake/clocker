@@ -99,7 +99,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     [self updateDefaultPreferences];
     self.mainTableview.selectionHighlightStyle = NSTableViewSelectionHighlightStyleNone;
     
-    // Make a fully skinned panel
+
     NSPanel *panel = (id)[self window];
     [panel setAcceptsMouseMovedEvents:YES];
     [panel setLevel:NSPopUpMenuWindowLevel];
@@ -308,7 +308,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
     if (theme.length > 0 && ![theme isEqualToString:@"Default"])
     {
-        [cell updateTextColorWithColor:[NSColor whiteColor] andCell:cell];
+//        [cell updateTextColorWithColor:[NSColor whiteColor] andCell:cell];
         [self.mainTableview setBackgroundColor:[NSColor blackColor]];
         self.window.alphaValue = 0.90;
         [cell.customName setDrawsBackground:YES];
@@ -318,7 +318,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     else
     {
         
-        [cell updateTextColorWithColor:[NSColor blackColor] andCell:cell];
+//        [cell updateTextColorWithColor:[NSColor blackColor] andCell:cell];
         [cell.customName setDrawsBackground:NO];
         [self.mainTableview setBackgroundColor:[NSColor whiteColor]];
         self.window.alphaValue = 1;
@@ -361,6 +361,8 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     return cell;
 }
+
+
 
 #pragma mark -
 #pragma mark Datasource formatting
@@ -801,14 +803,16 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
                             return;
                         }
                         
-                        if ([json[@"status"][@"message"] isEqualToString:@"the hourly limit of 2000 credits for abhishaker17 has been exceeded. Please throttle your requests or use the commercial service."])
+                        if ([json[@"status"][@"message"]
+                             isEqualToString:@"the hourly limit of 2000 credits for abhishaker17 has been exceeded. Please throttle your requests or use the commercial service."])
                         {
                             return;
                         }
                         
                         
                         
-                        NSMutableDictionary *newDictionary = [[NSMutableDictionary alloc] initWithDictionary:dictionary copyItems:YES];
+                        NSMutableDictionary *newDictionary = [[NSMutableDictionary alloc] initWithDictionary:dictionary
+                                                                                                   copyItems:YES];
                         
                         if (json[@"sunrise"] && json[@"sunset"]) {
                             [newDictionary setObject:json[@"sunrise"] forKey:@"sunriseTime"];

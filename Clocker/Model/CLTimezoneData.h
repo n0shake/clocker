@@ -16,7 +16,11 @@
 @property (strong, nonatomic) NSString *sunriseTime;
 @property (strong, nonatomic) NSString *sunsetTime;
 @property (strong, nonatomic) NSString *timezoneID;
+@property (strong, nonatomic) NSString *latitude;
+@property (strong, nonatomic) NSString *longitude;
 
+
+-(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 - (BOOL)saveObjectToPreferences:(CLTimezoneData *)object;
 
 @end
