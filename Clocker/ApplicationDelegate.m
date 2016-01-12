@@ -70,7 +70,20 @@ void *kContextActivePanel = &kContextActivePanel;
 #pragma mark - NSApplicationDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
-{    
+{
+    NSNumber *opened = [[NSUserDefaults standardUserDefaults] objectForKey:@"noOfTimes"];
+    if (opened == nil)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSMutableArray array]
+                                                  forKey:CLDefaultPreferenceKey];
+        NSInteger noOfTimes = opened.integerValue + 1;
+        NSNumber *noOfTime = [NSNumber numberWithInteger:noOfTimes];
+        [[NSUserDefaults standardUserDefaults] setObject:noOfTime forKey:@"noOfTimes"];;
+        
+    }
+
+    
+    
     NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
     
      NSMutableArray *newDefaults = [[NSMutableArray alloc] init];
