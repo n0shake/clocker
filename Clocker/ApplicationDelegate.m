@@ -77,16 +77,10 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    NSNumber *opened = [[NSUserDefaults standardUserDefaults] objectForKey:@"noOfTimes"];
-    if (opened == nil)
-    {
-         [[NSUserDefaults standardUserDefaults] setObject:[NSMutableArray array]
-                                                   forKey:CLDefaultPreferenceKey];
-        NSInteger noOfTimes = opened.integerValue + 1;
-        NSNumber *noOfTime = [NSNumber numberWithInteger:noOfTimes];
-        [[NSUserDefaults standardUserDefaults] setObject:noOfTime forKey:@"noOfTimes"];;
-        
-    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSMutableArray array]
+                                              forKey:CLDefaultPreferenceKey];
+
     
     NSString *defaultTheme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
     if (defaultTheme == nil) {

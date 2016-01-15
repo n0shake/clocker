@@ -31,6 +31,7 @@
 #import "CLOneWindowController.h"
 
 @class PanelController;
+@class CLTimezoneData;
 
 @protocol PanelControllerDelegate <NSObject>
 
@@ -53,7 +54,7 @@
 
 
 @property (nonatomic, strong) CLOneWindowController *oneWindow;
-@property (nonatomic, strong) NSMutableArray<NSMutableDictionary*> *defaultPreferences;
+@property (nonatomic, strong) NSMutableArray<CLTimezoneData*> *defaultPreferences;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, assign) NSInteger futureSliderValue;
 @property (nonatomic) BOOL hasActivePanel;

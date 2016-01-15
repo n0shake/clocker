@@ -108,6 +108,15 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 - (nullable id)tableView:(NSTableView *)tableView objectValueForTableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row
 {
+    CLTimezoneData *dataSource;
+    
+    if (self.filteredArray.count > 0)
+    {
+         dataSource = self.filteredArray[row];
+    }
+    
+   
+    
     if ([[tableColumn identifier] isEqualToString:CLPreferencesTimezoneNameIdentifier])
     {
         if ([self.selectedTimeZones[row][CLTimezoneName] length] > 0) {
@@ -119,7 +128,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     {
         if (row < self.filteredArray.count)
         {
-            return [self.filteredArray[row] objectForKey:CLTimezoneName];
+            return dataSource.formattedAddress;
         }
         
         return nil;
@@ -183,10 +192,14 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         return;
     }
     
+    CLTimezoneData *dataObject = self.filteredArray[self.availableTimezoneTableView.selectedRow];
+    
     for (NSMutableDictionary *timezoneDictionary in self.selectedTimeZones)
     {
+        
+        
         NSString *name = timezoneDictionary[CLPlaceIdentifier];
-        NSString *selectedPlaceID = [self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:CLPlaceIdentifier];
+        NSString *selectedPlaceID = dataObject.place_id;
         
         if (self.searchField.stringValue.length > 0) {
             if ([name isKindOfClass:[NSString class]] &&
@@ -205,12 +218,12 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     
     self.searchField.stringValue = CLEmptyString;
     
-   [self getTimeZoneForLatitude:[self.filteredArray[self.availableTimezoneTableView
-                                                    .selectedRow] objectForKey:@"latitude"]andLongitude:[self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:@"longitude"]];
+   [self getTimeZoneForLatitude:dataObject.latitude andLongitude:dataObject.longitude];
     
+    /*
     PFObject *feedbackObject = [PFObject objectWithClassName:CLParseTimezoneSelectionClassIdentifier];
     feedbackObject[CLParseTimezoneNameProperty] = [self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:CLTimezoneName];
-    [feedbackObject saveEventually];
+    [feedbackObject saveEventually];*/
 
 }
 
@@ -428,9 +441,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                            
                            CLTimezoneData *newObject = [[CLTimezoneData alloc] initWithDictionary:totalPackage];
                            
-                           NSLog(@"%@", newObject.description);
-                           
-                           [self.filteredArray addObject:totalPackage];
+                           [self.filteredArray addObject:newObject];
                            
                        }
                        self.activityInProgress = NO;
@@ -486,12 +497,14 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                                return;
                            }
                            
+                           CLTimezoneData *dataObject = self.filteredArray[self.availableTimezoneTableView.selectedRow];
                            
-                           NSString *filteredAddress = [self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:CLTimezoneName];
+                           NSString *filteredAddress = dataObject.formattedAddress;
+                           
                            NSRange range = [filteredAddress rangeOfString:@","];
                            if (range.location != NSNotFound)
                            {
-                               filteredAddress = [[self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:CLTimezoneName ] substringWithRange:NSMakeRange(0, range.location)];
+                               filteredAddress = [dataObject.formattedAddress substringWithRange:NSMakeRange(0, range.location)];
                            }
                            
                            NSMutableDictionary *newTimezone = [NSMutableDictionary dictionary];
@@ -506,11 +519,13 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                            
                            
                            [newTimezone setObject:filteredAddress forKey:CLTimezoneName];
-                           [newTimezone setObject:self.filteredArray[self.availableTimezoneTableView.selectedRow][CLPlaceIdentifier] forKey:CLPlaceIdentifier];
+                           [newTimezone setObject:dataObject.place_id forKey:CLPlaceIdentifier];
                            [newTimezone setObject:latitude forKey:@"latitude"];
                            [newTimezone setObject:longitude forKey:@"longitude"];
                            [newTimezone setObject:CLEmptyString forKey:@"nextUpdate"];
                            [newTimezone setObject:CLEmptyString forKey:CLCustomLabel];
+                           
+                           CLTimezoneData *timezoneObject = [[CLTimezoneData alloc] initWithDictionary:newTimezone];
                            
                            NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
                            
@@ -519,8 +534,9 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                                defaultPreference = [[NSMutableArray alloc] init];
                            }
                            
+                           NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:timezoneObject];
                            NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:defaultPreference];
-                           [newArray addObject:newTimezone];
+                           [newArray addObject:encodedObject];
                            
                            [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:CLDefaultPreferenceKey];
                            

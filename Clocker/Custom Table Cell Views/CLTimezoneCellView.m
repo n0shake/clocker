@@ -9,6 +9,7 @@
 #import "CLTimezoneCellView.h"
 #import "PanelController.h"
 #import "CommonStrings.h"
+#import "CLTimezoneData.h"
 
 @implementation CLTimezoneCellView
 
@@ -38,16 +39,16 @@
 
         if ([[sender superview] isKindOfClass:[self class]]) {
             CLTimezoneCellView *cellView = (CLTimezoneCellView *)[sender superview];
-            NSMutableDictionary *timezoneDictionary = panelController.defaultPreferences[cellView.rowNumber];
-            NSMutableDictionary *mutableTimeZoneDict = [timezoneDictionary mutableCopy];
+            CLTimezoneData *dataObject = panelController.defaultPreferences[cellView.rowNumber];
+            CLTimezoneData *newDataObject = [dataObject mutableCopy];
         
-            for (NSDictionary *dictionary in panelController.defaultPreferences) {
-                if ([dictionary[CLTimezoneName] isEqualToString:customLabelValue]) {
+            for (CLTimezoneData *object in panelController.defaultPreferences) {
+                if ([object.formattedAddress isEqualToString:customLabelValue]) {
                     return;
                 }
             }
-            (customLabelValue.length > 0) ?    [mutableTimeZoneDict setValue:customLabelValue forKey:CLCustomLabel] : [mutableTimeZoneDict setValue:CLEmptyString forKey:CLCustomLabel]  ;
-                [panelController.defaultPreferences replaceObjectAtIndex:cellView.rowNumber withObject:mutableTimeZoneDict];
+            newDataObject.customLabel = (customLabelValue.length > 0) ? customLabelValue : CLEmptyString;
+                [panelController.defaultPreferences replaceObjectAtIndex:cellView.rowNumber withObject:newDataObject];
                 [[NSUserDefaults standardUserDefaults] setObject:panelController.defaultPreferences forKey:CLDefaultPreferenceKey];
                 
                 [panelController updateDefaultPreferences];
