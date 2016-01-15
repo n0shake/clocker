@@ -303,6 +303,8 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     CLTimezoneCellView *cell = [tableView makeViewWithIdentifier:CLTimezoneCellViewIdentifier owner:self];
     
+    CLTimezoneData *dataObject = self.defaultPreferences[row];
+    
     NSTextView *customLabel = (NSTextView*)[cell.relativeDate.window fieldEditor:YES
                                                                        forObject:cell.relativeDate];
     
@@ -328,12 +330,16 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     cell.relativeDate.stringValue = [self getDateForTimeZone:self.defaultPreferences[row]];
     
+    cell.time.stringValue = [self getTimeForTimeZone:dataObject.timezoneID];
     
     cell.rowNumber = row;
     
     cell.customName.stringValue = [self formatStringShouldContainCity:YES
+                                                     withTimezoneName:dataObject];
     
     NSNumber *displaySuntimings = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplaySunTimingKey];
+    if ([displaySuntimings isEqualToNumber:[NSNumber numberWithInteger:0]] && dataObject.sunriseTime && dataObject.sunsetTime) {
+          cell.sunTime.stringValue = [self getFormattedSunriseOrSunsetTime:dataObject andSunImage:cell];
     }
     else
     {
@@ -364,16 +370,23 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 #pragma mark Datasource formatting
 #pragma mark -
 
+- (NSString *)formatStringShouldContainCity:(BOOL)value withTimezoneName:(CLTimezoneData *)dataObject
 {
+    if (dataObject.customLabel) {
+        NSString *customLabel = dataObject.customLabel;
         if (customLabel.length > 0)
         {
             return customLabel;
         }
     }
 
+    if ([dataObject.formattedAddress length] > 0)
     {
+        return dataObject.formattedAddress;
     }
+    else if (dataObject.timezoneID.length > 0)
     {
+        NSString *timezoneID = dataObject.timezoneID;
         
         NSRange range = [timezoneID rangeOfString:@"/"];
         if (range.location != NSNotFound)
@@ -389,18 +402,22 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 
 }
 
+- (NSString *)getFormattedSunriseOrSunsetTime:(CLTimezoneData *)dataObject
                                   andSunImage:(CLTimezoneCellView *)cell
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyy-MM-dd HH:mm";
+    NSDate *sunTime = [formatter dateFromString:dataObject.sunriseTime];
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:dataObject.timezoneID];
         dateFormatter.dateStyle = kCFDateFormatterShortStyle;
     dateFormatter.timeStyle = kCFDateFormatterShortStyle;
      dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm";
     NSString *newDate = [dateFormatter stringFromDate:[NSDate date]];
     
     NSDateFormatter *dateConversion = [[NSDateFormatter alloc] init];
+    dateConversion.timeZone = [NSTimeZone timeZoneWithName:dataObject.timezoneID];
     dateConversion.dateStyle = kCFDateFormatterShortStyle;
     dateConversion.timeStyle = kCFDateFormatterShortStyle;
     dateConversion.dateFormat = @"yyyy-MM-dd HH:mm";
@@ -411,11 +428,13 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     {
         cell.sunImage.image = theme.length > 0 && [theme isEqualToString:@"Default"] ?
          [NSImage imageNamed:@"Sunrise"] : [NSImage imageNamed:@"White Sunrise"];
+       return [dataObject.sunriseTime substringFromIndex:11];
     }
     else
     {
         cell.sunImage.image = theme.length > 0 && [theme isEqualToString:@"Default"] ?
          [NSImage imageNamed:@"Sunset"] : [NSImage imageNamed:@"White Sunset"];
+        return [dataObject.sunsetTime substringFromIndex:11];
     }
 }
 
@@ -452,6 +471,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 
 }
 
+- (NSString *)compareSystemDate:(NSString *)systemDate toTimezoneDate:(NSString *)date andDataObject:(CLTimezoneData *)dataObject
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"MM/dd/yyyy"
@@ -471,6 +491,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
     NSInteger weekday = [calendar component:NSCalendarUnitWeekday fromDate:localDate];
     
+    if ([dataObject.nextUpdate isKindOfClass:[NSString class]])
     {
 
         NSUInteger units = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
@@ -478,10 +499,18 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
         comps.day = comps.day + 1;
         NSDate *tomorrowMidnight = [[NSCalendar currentCalendar] dateFromComponents:comps];
         
+        CLTimezoneData *newDataObject = [dataObject mutableCopy];
+        newDataObject.nextUpdate = tomorrowMidnight;
         
+        [self.defaultPreferences replaceObjectAtIndex:[self.defaultPreferences indexOfObject:dataObject] withObject:newDataObject];
         [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences forKey:CLDefaultPreferenceKey];
     }
+    else if ([dataObject.nextUpdate isKindOfClass:[NSDate class]] &&
+             [dataObject.nextUpdate isEarlierThanOrEqualTo:timezoneDate])
     {
+            [self getTimeZoneForLatitude:dataObject.latitude
+                            andLongitude:dataObject.longitude
+                           andDataObject:dataObject];
     }
     
     NSInteger daysApart = [timezoneDate daysFrom:localDate];
@@ -503,6 +532,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     }
 }
 
+- (NSString *)getDateForTimeZone:(CLTimezoneData *)dataObject
 {
     NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
     NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitHour
@@ -513,10 +543,12 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     dateFormatter.dateStyle = kCFDateFormatterShortStyle;
     dateFormatter.timeStyle = kCFDateFormatterNoStyle;
     
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:dataObject.timezoneID];
     
     NSNumber *relativeDayPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLRelativeDateKey];
     if (relativeDayPreference.integerValue == 0) {
          return [self compareSystemDate:[self getLocalCurrentDate]
+                         toTimezoneDate:[dateFormatter stringFromDate:newDate] andDataObject:dataObject] ;;
     }
     else
     {
@@ -548,11 +580,16 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 {
     if ([object isKindOfClass:[NSString class]])
     {
+        CLTimezoneData *dataObject = self.defaultPreferences[row];
         
+        if ([dataObject.formattedAddress isEqualToString:object])
         {
             return;
         }
         
+        CLTimezoneData *mutableTimeZoneData = [dataObject mutableCopy];
+        mutableTimeZoneData.customLabel = object;
+        [self.defaultPreferences replaceObjectAtIndex:row withObject:mutableTimeZoneData];
         [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences forKey:CLDefaultPreferenceKey];
         [self.mainTableview reloadData];
     }
@@ -721,6 +758,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     }
 }
 
+- (void)getTimeZoneForLatitude:(NSString *)latitude andLongitude:(NSString *)longitude andDataObject:(CLTimezoneData *)dataObject
 {
     Reachability *reachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [reachability currentReachabilityStatus];
@@ -773,13 +811,27 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
                         }
                         
                         
+                        CLTimezoneData *newDataObject = [[CLTimezoneData alloc] init];
+                        newDataObject.timezoneID = dataObject.timezoneID;
+                        newDataObject.formattedAddress = dataObject.formattedAddress;
+                        newDataObject.latitude = dataObject.latitude;
+                        newDataObject.longitude = dataObject.longitude;
+                        newDataObject.sunriseTime = dataObject.sunriseTime;
+                        newDataObject.sunsetTime = dataObject.sunsetTime;
+                        newDataObject.customLabel = dataObject.customLabel;
+                        newDataObject.place_id = dataObject.place_id;
+                        newDataObject.nextUpdate = dataObject.nextUpdate;
                         
                         if (json[@"sunrise"] && json[@"sunset"]) {
+                            newDataObject.sunriseTime = json[@"sunrise"];
+                            newDataObject.sunsetTime = json[@"sunset"];
                         }
                      
                         NSUInteger units = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
+                        NSDateComponents *comps = [[NSCalendar currentCalendar] components:units fromDate:dataObject.nextUpdate];
                         comps.day = comps.day + 1;
                         NSDate *tomorrowMidnight = [[NSCalendar currentCalendar] dateFromComponents:comps];
+                        newDataObject.nextUpdate = tomorrowMidnight;
                         
                         NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
                         
@@ -791,6 +843,8 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
                         NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:defaultPreference];
                         
                         for (NSMutableDictionary *timeDictionary in self.defaultPreferences) {
+                            if ([dataObject.place_id isEqualToString:timeDictionary[CLPlaceIdentifier]]) {
+                                [newArray replaceObjectAtIndex:[self.defaultPreferences indexOfObject:dataObject] withObject:newDataObject];
                             }
                         }
                         
