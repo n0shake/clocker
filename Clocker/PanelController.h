@@ -54,7 +54,7 @@
 
 
 @property (nonatomic, strong) CLOneWindowController *oneWindow;
-@property (nonatomic, strong) NSMutableArray<CLTimezoneData*> *defaultPreferences;
+@property (nonatomic, strong) NSMutableArray *defaultPreferences;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, assign) NSInteger futureSliderValue;
 @property (nonatomic) BOOL hasActivePanel;

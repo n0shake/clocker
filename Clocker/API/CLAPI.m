@@ -18,15 +18,11 @@
 
     __block NSDictionary *responseDictionary = [NSDictionary dictionary];
     
-    NSView *currentView = [sender view];
-    
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
     
     sessionConfig.timeoutIntervalForRequest = 20;
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
-    
-    NSError *error;
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", path]];
     

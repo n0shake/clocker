@@ -85,7 +85,6 @@
                                     <rect key="frame" x="8" y="-3" width="273" height="45"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="45" id="dRi-pM-pWX"/>
-                                        <constraint firstAttribute="width" constant="269" id="xTs-u1-oid"/>
                                     </constraints>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Your contact information will let us contact you in case we need more information or can help!" placeholderString="" id="yEq-6I-HBq">
                                         <font key="font" size="12" name="SFUIDisplay-Light"/>
@@ -99,6 +98,7 @@
                                 <constraint firstItem="Qzm-kE-Igl" firstAttribute="top" secondItem="moX-Vc-vMc" secondAttribute="top" constant="11" id="Dpz-4F-hN7"/>
                                 <constraint firstItem="Qzm-kE-Igl" firstAttribute="leading" secondItem="moX-Vc-vMc" secondAttribute="leading" constant="10" id="GKZ-24-t7t"/>
                                 <constraint firstItem="LVY-Qw-MYC" firstAttribute="top" secondItem="zlM-Cf-OxV" secondAttribute="bottom" constant="3" id="Xck-iy-cZk"/>
+                                <constraint firstItem="LVY-Qw-MYC" firstAttribute="leading" secondItem="moX-Vc-vMc" secondAttribute="leading" constant="10" id="iLs-Ob-MZC"/>
                                 <constraint firstItem="LVY-Qw-MYC" firstAttribute="centerX" secondItem="moX-Vc-vMc" secondAttribute="centerX" id="k3n-00-eiV"/>
                                 <constraint firstItem="zlM-Cf-OxV" firstAttribute="leading" secondItem="moX-Vc-vMc" secondAttribute="leading" constant="10" id="u3y-gI-YeL"/>
                             </constraints>
@@ -145,9 +145,8 @@ DQ
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gej-YH-9dt">
-                        <rect key="frame" x="10" y="351" width="139" height="17"/>
+                        <rect key="frame" x="10" y="351" width="299" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="135" id="1Ix-I9-ymS"/>
                             <constraint firstAttribute="height" constant="17" id="a7O-DC-irX"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Tell us what you think!" id="oHe-hu-bQn">
@@ -183,6 +182,7 @@ DQ
                     <constraint firstAttribute="trailing" secondItem="Qzm-kE-Igl" secondAttribute="trailing" constant="30" id="5UG-sC-szG"/>
                     <constraint firstItem="W3a-Hi-ryk" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="12" id="8UN-bn-s8Y"/>
                     <constraint firstAttribute="trailing" secondItem="zlM-Cf-OxV" secondAttribute="trailing" constant="30" id="Arj-b2-oje"/>
+                    <constraint firstAttribute="trailing" secondItem="LVY-Qw-MYC" secondAttribute="trailing" constant="30" id="I39-jS-bL7"/>
                     <constraint firstAttribute="trailing" secondItem="oNX-kV-RGt" secondAttribute="trailing" constant="12" id="IqR-EG-ga3"/>
                     <constraint firstItem="sJq-1o-Bft" firstAttribute="leading" secondItem="szs-8j-SMN" secondAttribute="trailing" constant="8" id="JSB-K6-cbX"/>
                     <constraint firstAttribute="trailing" secondItem="sJq-1o-Bft" secondAttribute="trailing" constant="20" id="KuW-ez-Od9"/>
@@ -196,6 +196,7 @@ DQ
                     <constraint firstItem="h17-og-9PU" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="12" id="iIH-oN-lBO"/>
                     <constraint firstAttribute="trailing" secondItem="W3a-Hi-ryk" secondAttribute="trailing" constant="22" id="j6H-0M-Cux"/>
                     <constraint firstAttribute="trailing" secondItem="JzF-Oq-qhW" secondAttribute="trailing" constant="22" id="leu-ZX-18k"/>
+                    <constraint firstAttribute="trailing" secondItem="gej-YH-9dt" secondAttribute="trailing" constant="12" id="qjH-ND-NKx"/>
                     <constraint firstItem="gej-YH-9dt" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="12" id="tlA-wq-Gts"/>
                     <constraint firstItem="JzF-Oq-qhW" firstAttribute="top" secondItem="oNX-kV-RGt" secondAttribute="bottom" constant="13" id="w7P-k5-O59"/>
                     <constraint firstAttribute="bottom" secondItem="szs-8j-SMN" secondAttribute="bottom" constant="20" id="xos-N8-d1k"/>

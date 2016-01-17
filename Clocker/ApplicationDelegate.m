@@ -65,22 +65,18 @@ void *kContextActivePanel = &kContextActivePanel;
 + (void)initialize
 {
     //Configure iRate
-    [iRate sharedInstance].appStoreID = 1056643111;
-    [iVersion sharedInstance].appStoreID = 1056643111;
+    [iRate sharedInstance].appStoreID = (NSInteger)nil;
+    [iVersion sharedInstance].appStoreID = (NSInteger)nil;
     [iRate sharedInstance].useAllAvailableLanguages = NO;
     [iVersion sharedInstance].useAllAvailableLanguages = NO;
     [[iRate sharedInstance] setVerboseLogging:YES];
-    [[iVersion sharedInstance] setVerboseLogging:NO];
+    [[iVersion sharedInstance] setVerboseLogging:YES];
 }
 
 #pragma mark - NSApplicationDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    
-    [[NSUserDefaults standardUserDefaults] setObject:[NSMutableArray array]
-                                              forKey:CLDefaultPreferenceKey];
-
     
     NSString *defaultTheme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
     if (defaultTheme == nil) {

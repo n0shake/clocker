@@ -30,6 +30,7 @@ NSString *const CLParseTimezoneNameProperty = @"areaName";
 NSString *const CLMaxCharactersReachedError = @"Only 50 characters allowed!";
 NSString *const CLNoInternetConnectivityError = @"You're offline, maybe?";
 NSString *const CLLocationSearchURL = @"https://maps.googleapis.com/maps/api/geocode/json?address=%@&key=AIzaSyCyf2knCi6KiKuDJLYDBD3Odq5dt4c-_KI";
+NSString *const CLTimezoneSearchURL = @"https://maps.googleapis.com/maps/api/timezone/json?location=%@&timestamp=%f&key=AIzaSyCyf2knCi6KiKuDJLYDBD3Odq5dt4c-_KI";
 NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 @interface CLPreferencesViewController ()
@@ -108,21 +109,25 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 - (nullable id)tableView:(NSTableView *)tableView objectValueForTableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    CLTimezoneData *dataSource;
+    CLTimezoneData *dataSource, *selectedDataSource;
     
     if (self.filteredArray.count > 0)
     {
          dataSource = self.filteredArray[row];
     }
     
-   
+    if (self.selectedTimeZones.count > row) {
+          selectedDataSource = [CLTimezoneData getCustomObject:self.selectedTimeZones[row]];
+    }
+  
+    
     
     if ([[tableColumn identifier] isEqualToString:CLPreferencesTimezoneNameIdentifier])
     {
-        if ([self.selectedTimeZones[row][CLTimezoneName] length] > 0) {
-           return self.selectedTimeZones[row][CLTimezoneName];
+        if ([selectedDataSource.formattedAddress length] > 0) {
+           return selectedDataSource.formattedAddress;
         }
-        return self.selectedTimeZones[row][CLTimezoneID];
+        return selectedDataSource.timezoneID;
     }
     else if([[tableColumn identifier] isEqualToString:CLPreferencesAvailableTimezoneIdentifier])
     {
@@ -135,7 +140,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     }
     else if([[tableColumn identifier] isEqualToString:CLPreferencesCustomLabelIdentifier])
     {
-        return self.selectedTimeZones[row][CLCustomLabel];
+        return selectedDataSource.customLabel;
     }
 
     return nil;
@@ -194,11 +199,11 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     
     CLTimezoneData *dataObject = self.filteredArray[self.availableTimezoneTableView.selectedRow];
     
-    for (NSMutableDictionary *timezoneDictionary in self.selectedTimeZones)
+    for (NSData *encodedData in self.selectedTimeZones)
     {
         
-        
-        NSString *name = timezoneDictionary[CLPlaceIdentifier];
+        CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:encodedData];
+        NSString *name = timezoneObject.place_id;
         NSString *selectedPlaceID = dataObject.place_id;
         
         if (self.searchField.stringValue.length > 0) {
@@ -473,7 +478,11 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
   
     self.availableTimezoneTableView.hidden = YES;
     
-    NSString *urlString = [NSString stringWithFormat:@"http://api.geonames.org/timezoneJSON?lat=%@&lng=%@&username=abhishaker17", latitude, longitude];
+    NSString *tuple = [NSString stringWithFormat:@"%@,%@", latitude, longitude];
+    
+    NSTimeInterval timestamp = [[NSDate date] timeIntervalSince1970];
+    
+    NSString *urlString = [NSString stringWithFormat:CLTimezoneSearchURL, tuple, timestamp];
     
     [CLAPI dataTaskWithServicePath:urlString
                           bySender:self
@@ -489,11 +498,9 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                                return;
                            }
                            
-                           if ([json[@"status"][@"message"] isEqualToString:@"the hourly limit of 2000 credits for abhishaker17 has been exceeded. Please throttle your requests or use the commercial service."])
-                           {
+                           if ([json[@"status"] isEqualToString:@"ZERO_RESULTS"]) {
+                               self.placeholderLabel.placeholderString = @"No results! 😔 Try entering the exact name.";
                                self.activityInProgress = NO;
-                               self.placeholderLabel.placeholderString = @"API limit reached. Try again in an hour.?";
-                               self.searchField.placeholderString = @"We rely on free APIs which have limits.";
                                return;
                            }
                            
@@ -515,7 +522,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                                [newTimezone setObject:json[@"sunset"] forKey:@"sunsetTime"];
                            }
                            
-                           [newTimezone setObject:json[@"timezoneId"] forKey:CLTimezoneID];
+                           [newTimezone setObject:json[@"timeZoneId"] forKey:CLTimezoneID];
                            
                            
                            [newTimezone setObject:filteredAddress forKey:CLTimezoneName];

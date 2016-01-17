@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CLTimezoneCellView.h"
 
 @interface CLTimezoneData : NSObject<NSCoding>
 
@@ -20,7 +21,15 @@
 @property (strong, nonatomic) NSString *longitude;
 @property (strong, nonatomic) NSDate *nextUpdate;
 
--(instancetype)initWithDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 - (BOOL)saveObjectToPreferences:(CLTimezoneData *)object;
+- (NSString *)getTimeForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue;
+- (NSString *)getLocalCurrentDate;
+- (NSString *)compareSystemDate:(NSString *)systemDate toTimezoneDate:(NSString *)date;
+- (NSString *)getDateForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue;
+- (void)getTimeZoneForLatitude:(NSString *)latitude andLongitude:(NSString *)longitude andDataObject:(CLTimezoneData *)dataObject;
+- (NSString *)getFormattedSunriseOrSunsetTimeAndSunImage:(CLTimezoneCellView *)cell;
+- (NSString *)formatStringShouldContainCity:(BOOL)value;
++ (instancetype)getCustomObject:(NSData *)encodedData;
 
 @end

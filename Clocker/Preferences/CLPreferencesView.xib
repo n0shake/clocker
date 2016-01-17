@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
@@ -199,14 +200,13 @@ CA
                         </tableHeaderView>
                     </scrollView>
                     <searchField toolTip="Search a timezone" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="biT-6m-ElR">
-                        <rect key="frame" x="8" y="288" width="329" height="24"/>
+                        <rect key="frame" x="8" y="288" width="283" height="24"/>
                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Enter a city, state, country name" drawsBackground="YES" usesSingleLineMode="YES" id="ijc-z6-99E">
                             <font key="font" size="13" name="SFUIDisplay-Light"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </searchFieldCell>
                         <connections>
-                            <action selector="filterArray:" target="-2" id="f8p-qF-cfD"/>
                             <binding destination="-2" name="editable" keyPath="self.activityInProgress" id="qG8-46-bev">
                                 <dictionary key="options">
                                     <string key="NSValueTransformerName">NSNegateBoolean</string>
@@ -280,14 +280,27 @@ CA
                             </binding>
                         </connections>
                     </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2ez-Np-rIM">
+                        <rect key="frame" x="288" y="283" width="58" height="32"/>
+                        <buttonCell key="cell" type="push" title="Go" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sbL-Gc-NTj">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="filterArray:" target="-2" id="KTU-QP-smI"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="KFC-NV-5A3" firstAttribute="leading" secondItem="cyZ-cL-S7a" secondAttribute="trailing" constant="4" id="1i8-FW-qYz"/>
-                    <constraint firstAttribute="trailing" secondItem="biT-6m-ElR" secondAttribute="trailing" constant="8" id="23X-dw-hpU"/>
                     <constraint firstAttribute="trailing" secondItem="KFC-NV-5A3" secondAttribute="trailing" constant="15" id="B6V-vn-THO"/>
                     <constraint firstItem="LM9-75-vkc" firstAttribute="top" secondItem="biT-6m-ElR" secondAttribute="bottom" constant="3" id="DZR-XO-6sm"/>
                     <constraint firstItem="Wb6-yr-Pw4" firstAttribute="leading" secondItem="kXo-nl-oxR" secondAttribute="leading" constant="13" id="Ezn-kD-zu1"/>
                     <constraint firstAttribute="bottom" secondItem="KFC-NV-5A3" secondAttribute="bottom" constant="4" id="FWx-F1-VK8"/>
+                    <constraint firstItem="85y-4a-860" firstAttribute="top" secondItem="2ez-Np-rIM" secondAttribute="bottom" constant="5" id="Gft-hZ-8vM"/>
                     <constraint firstItem="hp6-CH-WJs" firstAttribute="leading" secondItem="kXo-nl-oxR" secondAttribute="leading" constant="8" id="Oir-hL-Og8"/>
                     <constraint firstItem="Wb6-yr-Pw4" firstAttribute="top" secondItem="ifx-PO-gfq" secondAttribute="bottom" constant="5" id="Pha-iy-RTE"/>
                     <constraint firstItem="ifx-PO-gfq" firstAttribute="centerX" secondItem="Q0t-hQ-orw" secondAttribute="centerX" id="QOS-0E-N10"/>
@@ -295,9 +308,12 @@ CA
                     <constraint firstAttribute="trailing" secondItem="Wb6-yr-Pw4" secondAttribute="trailing" constant="15" id="RgE-qx-qrq"/>
                     <constraint firstItem="biT-6m-ElR" firstAttribute="top" secondItem="kXo-nl-oxR" secondAttribute="top" constant="8" id="Y7N-oR-3KY"/>
                     <constraint firstItem="LM9-75-vkc" firstAttribute="leading" secondItem="kXo-nl-oxR" secondAttribute="leading" constant="8" id="ZJc-ws-AZR"/>
+                    <constraint firstItem="2ez-Np-rIM" firstAttribute="top" secondItem="kXo-nl-oxR" secondAttribute="top" constant="9" id="fdw-te-IzK"/>
                     <constraint firstItem="cyZ-cL-S7a" firstAttribute="leading" secondItem="hp6-CH-WJs" secondAttribute="trailing" constant="2" id="g8m-TW-fLo"/>
                     <constraint firstAttribute="bottom" secondItem="hp6-CH-WJs" secondAttribute="bottom" constant="5" id="hEn-h1-my5"/>
+                    <constraint firstItem="2ez-Np-rIM" firstAttribute="leading" secondItem="biT-6m-ElR" secondAttribute="trailing" constant="3" id="hq2-I2-ol4"/>
                     <constraint firstItem="biT-6m-ElR" firstAttribute="leading" secondItem="kXo-nl-oxR" secondAttribute="leading" constant="8" id="nhU-xR-AW2"/>
+                    <constraint firstAttribute="trailing" secondItem="2ez-Np-rIM" secondAttribute="trailing" constant="5" id="p9u-rt-s1o"/>
                     <constraint firstAttribute="trailing" secondItem="LM9-75-vkc" secondAttribute="trailing" constant="8" id="pMs-Ol-hsh"/>
                     <constraint firstItem="Wb6-yr-Pw4" firstAttribute="centerY" secondItem="Q0t-hQ-orw" secondAttribute="centerY" id="uio-eQ-cpc"/>
                 </constraints>

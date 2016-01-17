@@ -10,7 +10,6 @@
 #import "CommonStrings.h"
 #import "DateTools.h"
 #import "CLAPI.h"
-#import "CLTimezoneCellView.h"
 #import "PanelController.h"
 
 @implementation CLTimezoneData
@@ -22,7 +21,7 @@
         self.customLabel = dictionary[CLCustomLabel];
         self.sunriseTime = CLEmptyString;
         self.sunsetTime = CLEmptyString;
-        self.timezoneID = dictionary[CLTimezoneName];
+        self.timezoneID = dictionary[CLTimezoneID];
         self.latitude = dictionary[@"latitude"];
         self.longitude = dictionary[@"longitude"];
         self.place_id = dictionary[CLPlaceIdentifier];
@@ -39,19 +38,15 @@
     NSMutableArray *array = [NSMutableArray new];
     [array addObject:encodedObject];
     
-    [[NSUserDefaults standardUserDefaults] setObject:array forKey:@"checking"];
-    
-    [self getCustomObject];
+    [[NSUserDefaults standardUserDefaults] setObject:array forKey:CLDefaultPreferenceKey];
     
     return YES;
 }
 
-- (void)getCustomObject
++ (instancetype)getCustomObject:(NSData *)encodedData
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSArray *encodedObject = [defaults objectForKey:@"checking"];
-    CLTimezoneData *object = [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject[0]];
-    NSLog(@"Object:%@", object.place_id);
+    CLTimezoneData *object = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
+    return object;
     
 }
 
@@ -95,23 +90,20 @@
             self.place_id];
 }
 
-- (NSString *)formatStringShouldContainCity:(BOOL)value withTimezoneName:(NSMutableDictionary *)timeZoneDictionary
+- (NSString *)formatStringShouldContainCity:(BOOL)value
 {
-    if (timeZoneDictionary[CLCustomLabel]) {
-        NSString *customLabel = timeZoneDictionary[CLCustomLabel];
-        if (customLabel.length > 0)
-        {
-            return customLabel;
-        }
+    if (self.customLabel.length > 0)
+    {
+        return self.customLabel;
     }
     
-    if ([timeZoneDictionary[CLTimezoneName] length] > 0)
+    if ([self.formattedAddress length] > 0)
     {
-        return timeZoneDictionary[CLTimezoneName];
+        return self.formattedAddress;
     }
-    else if (timeZoneDictionary[CLTimezoneID])
+    else if (self.timezoneID)
     {
-        NSString *timezoneID = timeZoneDictionary[CLTimezoneID];
+        NSString *timezoneID = self.timezoneID;
         
         NSRange range = [timezoneID rangeOfString:@"/"];
         if (range.location != NSNotFound)
@@ -127,22 +119,21 @@
     
 }
 
-- (NSString *)getFormattedSunriseOrSunsetTime:(NSMutableDictionary *)originalTime
-                                  andSunImage:(CLTimezoneCellView *)cell
+- (NSString *)getFormattedSunriseOrSunsetTimeAndSunImage:(CLTimezoneCellView *)cell
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyy-MM-dd HH:mm";
-    NSDate *sunTime = [formatter dateFromString:originalTime[@"sunriseTime"]];
+    NSDate *sunTime = [formatter dateFromString:self.sunriseTime];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:originalTime[CLTimezoneID]];
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.timezoneID];
     dateFormatter.dateStyle = kCFDateFormatterShortStyle;
     dateFormatter.timeStyle = kCFDateFormatterShortStyle;
     dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm";
     NSString *newDate = [dateFormatter stringFromDate:[NSDate date]];
     
     NSDateFormatter *dateConversion = [[NSDateFormatter alloc] init];
-    dateConversion.timeZone = [NSTimeZone timeZoneWithName:originalTime[CLTimezoneID]];
+    dateConversion.timeZone = [NSTimeZone timeZoneWithName:self.timezoneID];
     dateConversion.dateStyle = kCFDateFormatterShortStyle;
     dateConversion.timeStyle = kCFDateFormatterShortStyle;
     dateConversion.dateFormat = @"yyyy-MM-dd HH:mm";
@@ -153,17 +144,17 @@
     {
         cell.sunImage.image = theme.length > 0 && [theme isEqualToString:@"Default"] ?
         [NSImage imageNamed:@"Sunrise"] : [NSImage imageNamed:@"White Sunrise"];
-        return [originalTime[@"sunriseTime"] substringFromIndex:11];
+        return [self.sunriseTime substringFromIndex:11];
     }
     else
     {
         cell.sunImage.image = theme.length > 0 && [theme isEqualToString:@"Default"] ?
         [NSImage imageNamed:@"Sunset"] : [NSImage imageNamed:@"White Sunset"];
-        return [originalTime[@"sunsetTime"] substringFromIndex:11];
+        return [self.sunsetTime substringFromIndex:11];
     }
 }
 
-- (NSString *)getTimeForTimeZone:(NSString *)timezoneID withFutureSliderValue:(NSInteger)futureSliderValue
+- (NSString *)getTimeForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue
 {
     NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
     NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitHour
@@ -177,7 +168,7 @@
     
     is24HourFormatSelected.boolValue ? [dateFormatter setDateFormat:@"HH:mm"] : [dateFormatter setDateFormat:@"hh:mm a"];
     
-    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:timezoneID];
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.timezoneID];
     //In the format 22:10
     
     return [dateFormatter stringFromDate:newDate];
@@ -196,7 +187,7 @@
     
 }
 
-- (NSString *)compareSystemDate:(NSString *)systemDate toTimezoneDate:(NSString *)date andDataObject:(CLTimezoneData *)dataObject
+- (NSString *)compareSystemDate:(NSString *)systemDate toTimezoneDate:(NSString *)date
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"MM/dd/yyyy"
@@ -214,7 +205,7 @@
     NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
     NSInteger weekday = [calendar component:NSCalendarUnitWeekday fromDate:localDate];
     
-    if ([dataObject.nextUpdate isKindOfClass:[NSString class]])
+    if ([self.nextUpdate isKindOfClass:[NSString class]])
     {
         
         NSUInteger units = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
@@ -223,14 +214,14 @@
         NSDate *tomorrowMidnight = [[NSCalendar currentCalendar] dateFromComponents:comps];
         
         CLTimezoneData *newDataObject = [[CLTimezoneData alloc] init];
-        newDataObject.timezoneID = dataObject.timezoneID;
-        newDataObject.formattedAddress = dataObject.formattedAddress;
-        newDataObject.latitude = dataObject.latitude;
-        newDataObject.longitude = dataObject.longitude;
-        newDataObject.sunriseTime = dataObject.sunriseTime;
-        newDataObject.sunsetTime = dataObject.sunsetTime;
-        newDataObject.customLabel = dataObject.customLabel;
-        newDataObject.place_id = dataObject.place_id;
+        newDataObject.timezoneID = self.timezoneID;
+        newDataObject.formattedAddress = self.formattedAddress;
+        newDataObject.latitude = self.latitude;
+        newDataObject.longitude = self.longitude;
+        newDataObject.sunriseTime = self.sunriseTime;
+        newDataObject.sunsetTime = self.sunsetTime;
+        newDataObject.customLabel = self.customLabel;
+        newDataObject.place_id = self.place_id;
         newDataObject.nextUpdate = tomorrowMidnight;
 
         
@@ -247,15 +238,15 @@
 
         
         
-        [panelController.defaultPreferences replaceObjectAtIndex:[panelController.defaultPreferences indexOfObject:dataObject] withObject:newDataObject];
+        [panelController.defaultPreferences replaceObjectAtIndex:[panelController.defaultPreferences indexOfObject:self] withObject:newDataObject];
         [[NSUserDefaults standardUserDefaults] setObject:panelController.defaultPreferences forKey:CLDefaultPreferenceKey];
     }
-    else if ([dataObject.nextUpdate isKindOfClass:[NSDate class]] &&
-             [dataObject.nextUpdate isEarlierThanOrEqualTo:timezoneDate])
+    else if ([self.nextUpdate isKindOfClass:[NSDate class]] &&
+             [self.nextUpdate isEarlierThanOrEqualTo:timezoneDate])
     {
-        [self getTimeZoneForLatitude:dataObject.latitude
-                        andLongitude:dataObject.longitude
-                       andDataObject:dataObject];
+        [self getTimeZoneForLatitude:self.latitude
+                        andLongitude:self.longitude
+                       andDataObject:self];
     }
     
     NSInteger daysApart = [timezoneDate daysFrom:localDate];
@@ -277,7 +268,7 @@
     }
 }
 
-- (NSString *)getDateForTimeZone:(CLTimezoneData *)dataObject withFutureSliderValue:(NSInteger)futureSliderValue
+- (NSString *)getDateForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue
 {
     NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
     NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitHour
@@ -288,13 +279,12 @@
     dateFormatter.dateStyle = kCFDateFormatterShortStyle;
     dateFormatter.timeStyle = kCFDateFormatterNoStyle;
     
-    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:dataObject.timezoneID];
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.timezoneID];
     
     NSNumber *relativeDayPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLRelativeDateKey];
     if (relativeDayPreference.integerValue == 0) {
         return [self compareSystemDate:[self getLocalCurrentDate]
-                        toTimezoneDate:[dateFormatter stringFromDate:newDate]
-                         andDataObject:dataObject];
+                        toTimezoneDate:[dateFormatter stringFromDate:newDate]];
     }
     else
     {
