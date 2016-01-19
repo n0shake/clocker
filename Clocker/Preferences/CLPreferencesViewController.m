@@ -78,10 +78,8 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     [self.timezoneTableView registerForDraggedTypes: [NSArray arrayWithObject: CLDragSessionKey]];
     
     self.columnName = @"Place(s)";
-    self.abbreviation.hidden = YES;
         // Do view setup here.
 }
-
 
 
 -(void)dealloc
@@ -178,8 +176,21 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     {
         return selectedDataSource.isFavourite;
     }
-   
+    else if ([tableColumn.identifier isEqualToString:@"abbreviation"])
+    {
+        if (self.searchField.stringValue.length > 0)
+        {
+            if (row < self.timeZoneFilteredArray.count)
+            {
+                return [NSTimeZone timeZoneWithName:self.timeZoneFilteredArray[row]].abbreviation;
+            }
+            
+        }
+        
+        return [NSTimeZone timeZoneWithName:self.timeZoneArray[row]].abbreviation;
 
+    }
+    
     return nil;
     
 }
@@ -233,8 +244,16 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 - (IBAction)addTimeZone:(id)sender
 {
+    self.abbreviation.hidden = YES;
+    
+    self.filteredArray = [NSMutableArray new];
+    
     self.searchCriteria.selectedSegment = 0;
-    [self.view.window beginSheet:self.timezonePanel completionHandler:nil];
+    
+    self.timeZoneArray = [NSMutableArray new];
+    
+    [self.view.window beginSheet:self.timezonePanel
+               completionHandler:nil];
 }
 
 - (IBAction)addToFavorites:(id)sender
@@ -359,6 +378,9 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 - (IBAction)closePanel:(id)sender
 {
     self.filteredArray = [NSMutableArray array];
+    self.timeZoneArray = [NSMutableArray new];
+    self.searchCriteria.selectedSegment = 0;
+    self.columnName = @"Place(s)";
     self.placeholderLabel.placeholderString = CLEmptyString;
     [self.availableTimezoneTableView reloadData];
     self.searchField.stringValue = CLEmptyString;
@@ -752,8 +774,6 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         self.columnName = @"Timezone(s)";
         self.abbreviation.hidden = NO;
     }
-    
-    self.filteredArray = [NSMutableArray new];
     
     self.searchField.stringValue = CLEmptyString;
     [self.availableTimezoneTableView reloadData];

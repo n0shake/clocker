@@ -97,8 +97,8 @@ CA
                                         </tableHeaderCell>
                                         <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="xOd-3p-ihC">
                                             <font key="font" size="13" name="SFUIDisplay-Light"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
@@ -264,7 +264,7 @@ CA
                                     <tableViewGridLines key="gridStyleMask" vertical="YES"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn identifier="availableTimezones" editable="NO" width="236" minWidth="200" maxWidth="1000" id="48H-5i-utq">
+                                        <tableColumn identifier="availableTimezones" editable="NO" width="225" minWidth="200" maxWidth="1000" id="48H-5i-utq">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Places/Timezone(s)">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -280,14 +280,14 @@ CA
                                                 <binding destination="-2" name="headerTitle" keyPath="self.columnName" id="7nT-oz-EFo"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn identifier="abbreviation" editable="NO" width="87" minWidth="70" maxWidth="100" id="V1c-xe-G2h">
+                                        <tableColumn identifier="abbreviation" editable="NO" width="90" minWidth="90" maxWidth="100" id="V1c-xe-G2h">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Abbreviation">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </tableHeaderCell>
                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="j4V-8w-sXt">
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" size="13" name="SFUIDisplay-Light"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
