@@ -109,6 +109,8 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     //Register for drag and drop
     [self.mainTableview registerForDraggedTypes: [NSArray arrayWithObject:CLDragSessionKey]];
+    
+    [self updatePanelColor];
 
 }
 

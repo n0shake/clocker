@@ -82,12 +82,12 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="269" translatesAutoresizingMaskIntoConstraints="NO" id="LVY-Qw-MYC">
-                                    <rect key="frame" x="8" y="-3" width="273" height="45"/>
+                                    <rect key="frame" x="3" y="0.0" width="288" height="42"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="45" id="dRi-pM-pWX"/>
+                                        <constraint firstAttribute="height" constant="42" id="dRi-pM-pWX"/>
                                     </constraints>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Your contact information will let us contact you in case we need more information or can help!" placeholderString="" id="yEq-6I-HBq">
-                                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                                        <font key="font" size="10" name="SFUIDisplay-Regular"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -98,8 +98,8 @@
                                 <constraint firstItem="Qzm-kE-Igl" firstAttribute="top" secondItem="moX-Vc-vMc" secondAttribute="top" constant="11" id="Dpz-4F-hN7"/>
                                 <constraint firstItem="Qzm-kE-Igl" firstAttribute="leading" secondItem="moX-Vc-vMc" secondAttribute="leading" constant="10" id="GKZ-24-t7t"/>
                                 <constraint firstItem="LVY-Qw-MYC" firstAttribute="top" secondItem="zlM-Cf-OxV" secondAttribute="bottom" constant="3" id="Xck-iy-cZk"/>
-                                <constraint firstItem="LVY-Qw-MYC" firstAttribute="leading" secondItem="moX-Vc-vMc" secondAttribute="leading" constant="10" id="iLs-Ob-MZC"/>
-                                <constraint firstItem="LVY-Qw-MYC" firstAttribute="centerX" secondItem="moX-Vc-vMc" secondAttribute="centerX" id="k3n-00-eiV"/>
+                                <constraint firstItem="LVY-Qw-MYC" firstAttribute="leading" secondItem="moX-Vc-vMc" secondAttribute="leading" constant="5" id="iLs-Ob-MZC"/>
+                                <constraint firstItem="LVY-Qw-MYC" firstAttribute="centerX" secondItem="moX-Vc-vMc" secondAttribute="centerX" constant="2.5" id="k3n-00-eiV"/>
                                 <constraint firstItem="zlM-Cf-OxV" firstAttribute="leading" secondItem="moX-Vc-vMc" secondAttribute="leading" constant="10" id="u3y-gI-YeL"/>
                             </constraints>
                         </view>
@@ -182,7 +182,7 @@ DQ
                     <constraint firstAttribute="trailing" secondItem="Qzm-kE-Igl" secondAttribute="trailing" constant="30" id="5UG-sC-szG"/>
                     <constraint firstItem="W3a-Hi-ryk" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="12" id="8UN-bn-s8Y"/>
                     <constraint firstAttribute="trailing" secondItem="zlM-Cf-OxV" secondAttribute="trailing" constant="30" id="Arj-b2-oje"/>
-                    <constraint firstAttribute="trailing" secondItem="LVY-Qw-MYC" secondAttribute="trailing" constant="30" id="I39-jS-bL7"/>
+                    <constraint firstAttribute="trailing" secondItem="LVY-Qw-MYC" secondAttribute="trailing" constant="20" id="I39-jS-bL7"/>
                     <constraint firstAttribute="trailing" secondItem="oNX-kV-RGt" secondAttribute="trailing" constant="12" id="IqR-EG-ga3"/>
                     <constraint firstItem="sJq-1o-Bft" firstAttribute="leading" secondItem="szs-8j-SMN" secondAttribute="trailing" constant="8" id="JSB-K6-cbX"/>
                     <constraint firstAttribute="trailing" secondItem="sJq-1o-Bft" secondAttribute="trailing" constant="20" id="KuW-ez-Od9"/>

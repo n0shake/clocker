@@ -47,6 +47,11 @@
 
 + (instancetype)getCustomObject:(NSData *)encodedData
 {
+    if ([encodedData isKindOfClass:[NSDictionary class]])
+    {
+        CLTimezoneData *newObject = [[self alloc] initWithDictionary:(NSDictionary *)encodedData];
+        return newObject;
+    }
     CLTimezoneData *object = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
     return object;
     

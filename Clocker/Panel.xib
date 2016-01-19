@@ -203,7 +203,7 @@
                         </scroller>
                     </scrollView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="75" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-w7-iSa">
-                        <rect key="frame" x="97" y="24" width="84" height="17"/>
+                        <rect key="frame" x="97" y="29" width="84" height="17"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="80" id="XLu-0I-ACL"/>
                             <constraint firstAttribute="height" constant="17" id="j4s-Vf-pQQ"/>
@@ -215,7 +215,7 @@
                         </textFieldCell>
                     </textField>
                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T7e-RS-eTE">
-                        <rect key="frame" x="29" y="11" width="217" height="16"/>
+                        <rect key="frame" x="29" y="16" width="217" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="tQw-lm-Ify"/>
                         </constraints>
@@ -257,7 +257,7 @@
                 <constraints>
                     <constraint firstItem="4Gd-Nv-fXr" firstAttribute="top" secondItem="6" secondAttribute="top" constant="8" id="1g0-Hm-7Gh"/>
                     <constraint firstItem="rGL-w7-iSa" firstAttribute="centerX" secondItem="T7e-RS-eTE" secondAttribute="centerX" constant="1" id="5NW-NQ-wPO"/>
-                    <constraint firstItem="T7e-RS-eTE" firstAttribute="top" secondItem="dFw-ts-8OZ" secondAttribute="bottom" constant="-25" id="96B-lf-iFV"/>
+                    <constraint firstItem="T7e-RS-eTE" firstAttribute="top" secondItem="dFw-ts-8OZ" secondAttribute="bottom" constant="-30" id="96B-lf-iFV"/>
                     <constraint firstItem="T7e-RS-eTE" firstAttribute="leading" secondItem="nTt-pf-Hw2" secondAttribute="trailing" constant="2" id="GgQ-58-tbc"/>
                     <constraint firstAttribute="bottom" secondItem="nTt-pf-Hw2" secondAttribute="bottom" constant="2" id="QoV-TI-KVJ"/>
                     <constraint firstAttribute="bottom" secondItem="OFy-u1-TnH" secondAttribute="bottom" constant="2" id="Ubf-Mv-WMp"/>

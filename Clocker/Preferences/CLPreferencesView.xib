@@ -198,15 +198,22 @@ CA
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wb6-yr-Pw4">
-                        <rect key="frame" x="11" y="118" width="321" height="20"/>
+                        <rect key="frame" x="13" y="118" width="317" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="QQQ-at-c1H"/>
                         </constraints>
-                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" placeholderString="Please enter a timezone name" id="l4k-Vi-z4I">
+                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Please enter a timezone name" placeholderString="Please enter a timezone name" drawsBackground="YES" id="l4k-Vi-z4I">
                             <font key="font" size="13" name="SFUIDisplay-Light"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </textFieldCell>
+                        <connections>
+                            <binding destination="-2" name="hidden" keyPath="self.activityInProgress" id="62r-5u-wa3">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
                     </textField>
                     <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ifx-PO-gfq">
                         <rect key="frame" x="164" y="143" width="16" height="16"/>

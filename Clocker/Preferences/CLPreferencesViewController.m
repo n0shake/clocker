@@ -399,6 +399,16 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     
     [self.timezoneTableView.selectedRowIndexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
         
+        CLTimezoneData *dataObject = [CLTimezoneData getCustomObject:self.selectedTimeZones[idx]];
+        
+        if (dataObject.isFavourite.integerValue == 1)
+        {
+            //Remove favourite from standard defaults
+            [[NSUserDefaults standardUserDefaults] setObject:nil
+                                                      forKey:@"favouriteTimezone"];
+
+        }
+        
         [itemsToRemove addObject:self.selectedTimeZones[idx]];
         
     }];
@@ -544,17 +554,23 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         [self.dataTask cancel];
     }
     
-    if (self.availableTimezoneTableView.isHidden)
-    {
-        self.availableTimezoneTableView.hidden = NO;
-    }
-    
-    self.placeholderLabel.hidden = NO;
-    
-    if (![CLAPI isUserConnectedToInternet]) {
-        self.placeholderLabel.placeholderString = CLNoInternetConnectivityError;
-        return;
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if (self.availableTimezoneTableView.isHidden)
+        {
+            self.availableTimezoneTableView.hidden = NO;
+        }
+
+        
+        self.placeholderLabel.hidden = NO;
+        
+        if (![CLAPI isUserConnectedToInternet]) {
+            self.placeholderLabel.stringValue = CLNoInternetConnectivityError;
+            return;
+        }
+
+        
+    });
     
     self.activityInProgress = YES;
 

@@ -19,24 +19,24 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iVw-cq-zLz">
-                    <rect key="frame" x="198" y="349" width="44" height="18"/>
+                    <rect key="frame" x="188" y="349" width="64" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="2DP-wK-Ga8"/>
-                        <constraint firstAttribute="width" constant="40" id="KEa-ei-G2i"/>
+                        <constraint firstAttribute="width" constant="60" id="KEa-ei-G2i"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Theme" id="hCb-NM-To8">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Theme" id="hCb-NM-To8">
                         <font key="font" size="13" name="SFUIDisplay-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5TC-RQ-gzI">
-                    <rect key="frame" x="183" y="411" width="74" height="18"/>
+                    <rect key="frame" x="168" y="411" width="104" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="gWc-u4-D8E"/>
-                        <constraint firstAttribute="width" constant="70" id="nh0-5K-Aa0"/>
+                        <constraint firstAttribute="width" constant="100" id="nh0-5K-Aa0"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Time Format" id="Hza-PB-FEf">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Time Format" id="Hza-PB-FEf">
                         <font key="font" size="13" name="SFUIDisplay-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -60,12 +60,12 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YQi-x8-6f8">
-                    <rect key="frame" x="175" y="287" width="89" height="18"/>
+                    <rect key="frame" x="168" y="287" width="104" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="eY8-bV-QLM"/>
-                        <constraint firstAttribute="width" constant="85" id="n8S-fR-UtY"/>
+                        <constraint firstAttribute="width" constant="100" id="n8S-fR-UtY"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Display Options" id="KTv-74-itf">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Display Options" id="KTv-74-itf">
                         <font key="font" size="13" name="SFUIDisplay-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -173,27 +173,10 @@
                         <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.displayFutureSlider" id="zRQ-mQ-qBp"/>
                     </connections>
                 </segmentedControl>
-                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1eh-BT-2fK">
-                    <rect key="frame" x="98" y="256" width="244" height="24"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="240" id="uU1-9Q-cqa"/>
-                    </constraints>
-                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="ZV9-ih-faz">
-                        <font key="font" size="12" name="SFUIDisplay-Light"/>
-                        <segments>
-                            <segment label="Show Relative Dates"/>
-                            <segment label="Show actual day" selected="YES" tag="1"/>
-                        </segments>
-                    </segmentedCell>
-                    <connections>
-                        <action selector="changeRelativeDayDisplay:" target="-2" id="7Af-BH-qFq"/>
-                        <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.relativeDate" id="eKo-sG-1eE"/>
-                    </connections>
-                </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HTZ-1V-qZb">
-                    <rect key="frame" x="165" y="232" width="109" height="19"/>
+                    <rect key="frame" x="158" y="232" width="124" height="19"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="105" id="1Lv-wC-hEM"/>
+                        <constraint firstAttribute="width" constant="120" id="1Lv-wC-hEM"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Show Future Slider" id="PE4-Ua-hkI">
                         <font key="font" size="13" name="SFUIDisplay-Light"/>
@@ -248,6 +231,23 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1eh-BT-2fK">
+                    <rect key="frame" x="133" y="256" width="174" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="170" id="u9T-ks-rqA"/>
+                    </constraints>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="ZV9-ih-faz">
+                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                        <segments>
+                            <segment label="Relative Dates"/>
+                            <segment label="Actual day" selected="YES" tag="1"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="changeRelativeDayDisplay:" target="-2" id="7Af-BH-qFq"/>
+                        <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.relativeDate" id="eKo-sG-1eE"/>
+                    </connections>
+                </segmentedControl>
             </subviews>
             <constraints>
                 <constraint firstItem="5TC-RQ-gzI" firstAttribute="top" secondItem="X5s-Mc-Yfo" secondAttribute="bottom" constant="8" id="1Wi-S2-cSq"/>
