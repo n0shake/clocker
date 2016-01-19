@@ -43,6 +43,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 @property (weak) IBOutlet NSSearchField *searchField;
 @property (weak) IBOutlet NSTextField *messageLabel;
 @property (weak) IBOutlet NSSegmentedControl *searchCriteria;
+@property (weak) IBOutlet NSTableColumn *abbreviation;
 
 @end
 
@@ -76,6 +77,8 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     //Register for drag and drop
     [self.timezoneTableView registerForDraggedTypes: [NSArray arrayWithObject: CLDragSessionKey]];
     
+    self.columnName = @"Place(s)";
+    self.abbreviation.hidden = YES;
         // Do view setup here.
 }
 
@@ -409,6 +412,12 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 - (IBAction)filterArray:(id)sender
 {
+    if (self.searchCriteria.selectedSegment == 1)
+    {
+        [self filterTimezoneArray:sender];
+        return;
+    }
+    
     [self clearLabel];
     
     self.filteredArray = [NSMutableArray array];
@@ -733,11 +742,15 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     if (self.searchCriteria.selectedSegment == 0)
     {
         self.searchField.placeholderString = @"Enter a city, state or country name";
+        self.columnName = @"Place(s)";
+        self.abbreviation.hidden = YES;
     }
     else
     {
         self.timeZoneArray = [NSMutableArray arrayWithArray:[NSTimeZone knownTimeZoneNames]];
        self.searchField.placeholderString = @"Enter a timezone name";
+        self.columnName = @"Timezone(s)";
+        self.abbreviation.hidden = NO;
     }
     
     self.filteredArray = [NSMutableArray new];
