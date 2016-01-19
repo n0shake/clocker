@@ -19,13 +19,12 @@
     if (self == [super init])
     {
         self.customLabel = dictionary[CLCustomLabel];
-        self.sunriseTime = CLEmptyString;
-        self.sunsetTime = CLEmptyString;
         self.timezoneID = dictionary[CLTimezoneID];
         self.latitude = dictionary[@"latitude"];
         self.longitude = dictionary[@"longitude"];
         self.place_id = dictionary[CLPlaceIdentifier];
         self.formattedAddress = dictionary[CLTimezoneName];
+        self.isFavourite = [NSNumber numberWithInt:NSOffState];
     }
     
     return self;
@@ -55,11 +54,9 @@
     [coder encodeObject:self.place_id forKey:@"place_id"];
     [coder encodeObject:self.formattedAddress forKey:@"formattedAddress"];
     [coder encodeObject:self.customLabel forKey:@"customLabel"];
-    [coder encodeObject:self.sunriseTime forKey:@"sunriseTime"];
-    [coder encodeObject:self.sunsetTime forKey:@"sunsetTime"];
     [coder encodeObject:self.timezoneID forKey:@"timezoneID"];
     [coder encodeObject:self.nextUpdate forKey:@"nextUpdate"];
-    
+    [coder encodeObject:self.isFavourite forKey:@"isFavourite"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -69,10 +66,9 @@
         self.place_id = [coder decodeObjectForKey:@"place_id"];
         self.formattedAddress = [coder decodeObjectForKey:@"formattedAddress"];
         self.customLabel = [coder decodeObjectForKey:@"customLabel"];
-        self.sunsetTime = [coder decodeObjectForKey:@"sunsetTime"];
-        self.sunriseTime = [coder decodeObjectForKey:@"sunriseTime"];
         self.timezoneID = [coder decodeObjectForKey:@"timezoneID"];
         self.nextUpdate = [coder decodeObjectForKey:@"nextUpdate"];
+        self.isFavourite = [coder decodeObjectForKey:@"isFavourite"];
     }
     
     return self;
@@ -80,14 +76,13 @@
 
 -(NSString *)description
 {
-    return [NSString stringWithFormat:@"TimezoneID: %@\nFormatted Address: %@\nCustom Label: %@\nLatitude: %@\nLongitude:%@\nSunrise: %@\nSunset: %@\nPlaceID: %@", self.timezoneID,
+    return [NSString stringWithFormat:@"TimezoneID: %@\nFormatted Address: %@\nCustom Label: %@\nLatitude: %@\nLongitude:%@\nPlaceID: %@\nisFavourite: %@", self.timezoneID,
             self.formattedAddress,
             self.customLabel,
             self.latitude,
             self.longitude,
-            self.sunriseTime,
-            self.sunsetTime,
-            self.place_id];
+            self.place_id,
+            self.isFavourite];
 }
 
 - (NSString *)formatStringShouldContainCity:(BOOL)value
@@ -119,8 +114,14 @@
     
 }
 
+/*
 - (NSString *)getFormattedSunriseOrSunsetTimeAndSunImage:(CLTimezoneCellView *)cell
 {
+    if (!self.shouldFetchSunTimings) {
+        return CLEmptyString;
+    }
+    
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyy-MM-dd HH:mm";
     NSDate *sunTime = [formatter dateFromString:self.sunriseTime];
@@ -152,7 +153,7 @@
         [NSImage imageNamed:@"Sunset"] : [NSImage imageNamed:@"White Sunset"];
         return [self.sunsetTime substringFromIndex:11];
     }
-}
+}*/
 
 - (NSString *)getTimeForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue
 {
@@ -218,13 +219,10 @@
         newDataObject.formattedAddress = self.formattedAddress;
         newDataObject.latitude = self.latitude;
         newDataObject.longitude = self.longitude;
-        newDataObject.sunriseTime = self.sunriseTime;
-        newDataObject.sunsetTime = self.sunsetTime;
         newDataObject.customLabel = self.customLabel;
         newDataObject.place_id = self.place_id;
         newDataObject.nextUpdate = tomorrowMidnight;
-
-        
+        newDataObject.isFavourite = [NSNumber numberWithInt:NSOffState];
         
         PanelController *panelController;
         
@@ -329,10 +327,11 @@
                        
                        CLTimezoneData *newDataObject = [dataObject mutableCopy];
                        
+                       /*
                        if (json[@"sunrise"] && json[@"sunset"]) {
                            newDataObject.sunriseTime = json[@"sunrise"];
                            newDataObject.sunsetTime = json[@"sunset"];
-                       }
+                       }*/
                        
                        NSUInteger units = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
                        NSDateComponents *comps = [[NSCalendar currentCalendar] components:units fromDate:newDataObject.nextUpdate];
@@ -419,6 +418,61 @@
             return @"Error";
             break;
     }
+}
+
+- (NSString *)getMenuTitle
+{
+    NSMutableString *menuTitle = [NSMutableString new];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *shouldCityBeShown = [userDefaults objectForKey:CLShowCityInMenu];
+    NSNumber *shouldDayBeShown = [userDefaults objectForKey:CLShowDayInMenu];
+    NSNumber *shouldDateBeShown = [userDefaults objectForKey:CLShowDateInMenu];
+    
+    if (shouldCityBeShown.boolValue == 0)
+    {
+        [menuTitle appendString:self.formattedAddress];
+    }
+    
+    if (shouldDayBeShown.boolValue == 0)
+    {
+        NSString *substring = [self getDateForTimeZoneWithFutureSliderValue:0];
+        substring = [substring substringToIndex:3];
+        
+        if (menuTitle.length > 0)
+        {
+            [menuTitle appendFormat:@" %@",substring.capitalizedString];
+        }
+        else
+        {
+            [menuTitle appendString:substring.capitalizedString];
+        }
+    }
+    
+    if (shouldDateBeShown.boolValue == 0)
+    {
+        NSString *date = [[NSDate date] formattedDateWithFormat:@"MMM dd" timeZone:[NSTimeZone timeZoneWithName:self.timezoneID] locale:[NSLocale currentLocale]];
+        
+        if (menuTitle.length > 0)
+        {
+            [menuTitle appendFormat:@" %@",date];
+        }
+        else
+        {
+            [menuTitle appendString:date];
+        }
+    }
+    
+    if (menuTitle.length > 0)
+    {
+        [menuTitle appendFormat:@" %@",[self getTimeForTimeZoneWithFutureSliderValue:0]];
+    }
+    else
+    {
+        [menuTitle appendString:[self getTimeForTimeZoneWithFutureSliderValue:0]];
+    }
+    
+    return menuTitle;
+
 }
 
 

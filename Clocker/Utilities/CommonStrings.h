@@ -21,7 +21,9 @@ extern NSString *const CLTimezoneID;
 extern NSString *const CLPlaceIdentifier;
 extern NSString *const CLRelativeDateKey;
 extern NSString *const CLThemeKey;
-extern NSString *const CLDisplaySunTimingKey;
+extern NSString *const CLShowDayInMenu;
+extern NSString *const CLShowDateInMenu;
+extern NSString *const CLShowCityInMenu;
 extern NSString *const CLDisplayFutureSliderKey;
 
 @end

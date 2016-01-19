@@ -27,6 +27,8 @@
 
 
 #import "StatusItemView.h"
+#import "CommonStrings.h"
+#import "CLTimezoneData.h"
 
 @implementation StatusItemView
 
@@ -61,16 +63,48 @@
 {
     [super drawRect:dirtyRect];
     
+    NSTextField *textField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, self.frame.size.width, 18)];
+    
+    textField.bordered = NO;
+
+    textField.alignment = NSTextAlignmentCenter;
+    
+    NSData *dataObject = [[NSUserDefaults standardUserDefaults] objectForKey:@"favouriteTimezone"];
+    
+    if (dataObject)
+    {
+        CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:dataObject];
+        textField.stringValue = [timezoneObject getMenuTitle];
+    }
+    else
+    {
+        textField.stringValue = @"Icon";
+    }
+    
+    
+    [textField sizeToFit];
+
+    
 	// Set up dark mode for icon
     if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"]  isEqual: @"Dark"])
     {
-        self.image = [NSImage imageNamed:@"StatusHighlighted"];
+        textField.backgroundColor = [NSColor whiteColor];
+        textField.textColor = [NSColor blackColor];
+        self.image = [self imageWithSubviewsWithTextField:textField];
     }
     else
-    {        
-        self.image = self.isHighlighted ? [NSImage imageNamed:@"StatusHighlighted"] : [NSImage imageNamed:@"Status"];
+    {
+        textField.backgroundColor = [NSColor blackColor];
+        textField.textColor = [NSColor whiteColor];
+        self.image = [self imageWithSubviewsWithTextField:textField];
     }
-	[self.statusItem drawStatusBarBackgroundInRect:dirtyRect withHighlight:self.isHighlighted];
+    
+    NSDisableScreenUpdates();
+    [self.statusItem setLength:textField.frame.size.width+10];
+    NSEnableScreenUpdates();
+    
+    CGRect newRect = CGRectMake(dirtyRect.origin.x, dirtyRect.origin.y, textField.frame.size.width+5, dirtyRect.size.height);
+	[self.statusItem drawStatusBarBackgroundInRect:newRect withHighlight:NO];
     
     NSImage *icon = self.image;
     NSSize iconSize = [icon size];
@@ -79,8 +113,29 @@
     CGFloat iconY = roundf((NSHeight(bounds) - iconSize.height) / 2);
     NSPoint iconPoint = NSMakePoint(iconX, iconY);
 
-	[icon drawAtPoint:iconPoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+	[icon drawAtPoint:iconPoint fromRect:NSZeroRect
+            operation:NSCompositeSourceOver
+             fraction:1.0];
 }
+
+
+- (NSImage *)imageWithSubviewsWithTextField:(NSTextField *)textField
+{
+    NSSize mySize = textField.bounds.size;
+    NSSize imgSize = NSMakeSize( mySize.width, mySize.height );
+    
+    NSBitmapImageRep *bir = [textField bitmapImageRepForCachingDisplayInRect:[textField bounds]];
+    [bir setSize:imgSize];
+    [textField cacheDisplayInRect:[textField bounds] toBitmapImageRep:bir];
+    
+    NSImage* image = [[NSImage alloc]initWithSize:imgSize];
+    [image addRepresentation:bir];
+    return image;
+    
+}
+
+
+
 
 #pragma mark -
 #pragma mark Mouse tracking

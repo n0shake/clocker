@@ -39,12 +39,10 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 @property (weak) IBOutlet NSTableView *timezoneTableView;
 @property (strong) IBOutlet Panel *timezonePanel;
-@property (weak) IBOutlet NSSegmentedControl *theme;
-@property (weak) IBOutlet NSPopUpButton *fontPopUp;
 @property (weak) IBOutlet NSTableView *availableTimezoneTableView;
 @property (weak) IBOutlet NSSearchField *searchField;
-@property (weak) IBOutlet NSSegmentedControl *timeFormat;
 @property (weak) IBOutlet NSTextField *messageLabel;
+@property (weak) IBOutlet NSSegmentedControl *searchCriteria;
 
 @end
 
@@ -66,7 +64,9 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     
     if (!self.filteredArray)
     {
-        self.filteredArray = [[NSMutableArray alloc] init];
+        self.timeZoneArray = [[NSMutableArray alloc] initWithArray:[NSTimeZone knownTimeZoneNames]];
+        self.timeZoneFilteredArray = [NSMutableArray new];
+        self.filteredArray = [NSMutableArray new];
     }
     
     self.messageLabel.stringValue = CLEmptyString;
@@ -101,9 +101,20 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     }
     else
     {
-        return self.filteredArray.count;
+        NSInteger searchCriteria = [self.searchCriteria selectedSegment];
+        
+        if (searchCriteria == 0) {
+             return self.filteredArray.count;
+        }
+        else
+        {
+            if (self.searchField.stringValue.length > 0) {
+                return self.timeZoneFilteredArray.count;
+            }
+            return self.timeZoneArray.count;
+        }
     }
-    
+
     return 0;
 }
 
@@ -131,9 +142,27 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     }
     else if([[tableColumn identifier] isEqualToString:CLPreferencesAvailableTimezoneIdentifier])
     {
-        if (row < self.filteredArray.count)
+        NSInteger searchCriteria = [self.searchCriteria selectedSegment];
+        
+        if (searchCriteria == 0)
         {
-            return dataSource.formattedAddress;
+            if (row < self.filteredArray.count)
+            {
+                return dataSource.formattedAddress;
+            }
+
+        }
+        else
+        {
+            if (self.searchField.stringValue.length > 0)
+            {
+                if (row < self.timeZoneFilteredArray.count) {
+                    return self.timeZoneFilteredArray[row];
+                }
+            }
+            
+            return self.timeZoneArray[row];
+
         }
         
         return nil;
@@ -142,6 +171,11 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     {
         return selectedDataSource.customLabel;
     }
+    else if ([tableColumn.identifier isEqualToString:@"favouriteTimezone"])
+    {
+        return selectedDataSource.isFavourite;
+    }
+   
 
     return nil;
     
@@ -156,18 +190,47 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         NSString *customLabelValue = [originalValue stringByTrimmingCharactersInSet:
                             [NSCharacterSet whitespaceCharacterSet]];
         
-        NSMutableDictionary *timezoneDictionary = self.selectedTimeZones[row];
-        NSMutableDictionary *mutableTimeZoneDict = [timezoneDictionary mutableCopy];
-        customLabelValue.length > 0 ? [mutableTimeZoneDict setValue:customLabelValue forKey:CLCustomLabel] : [mutableTimeZoneDict setValue:CLEmptyString forKey:CLCustomLabel];
-        [self.selectedTimeZones replaceObjectAtIndex:row withObject:mutableTimeZoneDict];
+        CLTimezoneData *dataObject = [CLTimezoneData getCustomObject:self.selectedTimeZones[row]];
+        dataObject.customLabel = customLabelValue.length > 0 ? customLabelValue : CLEmptyString;
+        NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:dataObject];
+        [self.selectedTimeZones replaceObjectAtIndex:row withObject:encodedObject];
         [[NSUserDefaults standardUserDefaults] setObject:self.selectedTimeZones forKey:CLDefaultPreferenceKey];
         
         [self refreshMainTableview];
+    }
+    else
+    {
+        NSMutableArray *newArray = [NSMutableArray new];
+        
+        for (NSData *object in self.selectedTimeZones)
+        {
+            CLTimezoneData *timezone = [CLTimezoneData getCustomObject:object];
+            timezone.isFavourite = [NSNumber numberWithInt:0];
+             NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:timezone];
+            [newArray addObject:encodedObject];
+        }
+        
+        CLTimezoneData *dataObject = [CLTimezoneData getCustomObject:newArray[row]];
+        dataObject.isFavourite = object;
+        NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:dataObject];
+        [newArray replaceObjectAtIndex:row withObject:encodedObject];
+        self.selectedTimeZones = [NSMutableArray arrayWithArray:newArray];
+         [[NSUserDefaults standardUserDefaults] setObject:self.selectedTimeZones forKey:CLDefaultPreferenceKey];
+        
+      
+        (dataObject.isFavourite.integerValue == 1) ?
+        [[NSUserDefaults standardUserDefaults] setObject:encodedObject
+                                                  forKey:@"favouriteTimezone"]:
+        [[NSUserDefaults standardUserDefaults] setObject:nil
+                                                  forKey:@"favouriteTimezone"];
+        
+        [self.timezoneTableView reloadData];
     }
 }
 
 - (IBAction)addTimeZone:(id)sender
 {
+    self.searchCriteria.selectedSegment = 0;
     [self.view.window beginSheet:self.timezonePanel completionHandler:nil];
 }
 
@@ -197,33 +260,91 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         return;
     }
     
-    CLTimezoneData *dataObject = self.filteredArray[self.availableTimezoneTableView.selectedRow];
     
-    for (NSData *encodedData in self.selectedTimeZones)
+    if (self.searchCriteria.selectedSegment == 0)
     {
+        CLTimezoneData *dataObject = self.filteredArray[self.availableTimezoneTableView.selectedRow];
         
-        CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:encodedData];
-        NSString *name = timezoneObject.place_id;
-        NSString *selectedPlaceID = dataObject.place_id;
-        
-        if (self.searchField.stringValue.length > 0) {
-            if ([name isKindOfClass:[NSString class]] &&
-                [name isEqualToString:selectedPlaceID])
-            {
-                self.messageLabel.stringValue = CLTimezoneAlreadySelectedError;
-                [NSTimer scheduledTimerWithTimeInterval:5
-                                                 target:self
-                                               selector:@selector(clearLabel) userInfo:nil
-                                                repeats:NO];
-                self.activityInProgress = NO;
-                return;
+        for (NSData *encodedData in self.selectedTimeZones)
+        {
+            
+            CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:encodedData];
+            NSString *name = timezoneObject.place_id;
+            NSString *selectedPlaceID = dataObject.place_id;
+            
+            if (self.searchField.stringValue.length > 0) {
+                if ([name isKindOfClass:[NSString class]] &&
+                    [name isEqualToString:selectedPlaceID])
+                {
+                    self.messageLabel.stringValue = CLTimezoneAlreadySelectedError;
+                    [NSTimer scheduledTimerWithTimeInterval:5
+                                                     target:self
+                                                   selector:@selector(clearLabel) userInfo:nil
+                                                    repeats:NO];
+                    self.activityInProgress = NO;
+                    return;
+                }
             }
         }
+        
+        self.searchField.stringValue = CLEmptyString;
+        
+        [self getTimeZoneForLatitude:dataObject.latitude
+                        andLongitude:dataObject.longitude];
+    }
+    else
+    {
+        CLTimezoneData *data = [CLTimezoneData new];
+        data.isFavourite = [NSNumber numberWithInt:NSOffState];
+        data.customLabel = CLEmptyString;
+        
+        if (self.searchField.stringValue.length > 0)
+        {
+            data.timezoneID = self.timeZoneFilteredArray[self.availableTimezoneTableView.selectedRow];
+            data.formattedAddress = self.timeZoneFilteredArray[self.availableTimezoneTableView.selectedRow];
+        }
+        else
+        {
+            data.timezoneID = self.timeZoneArray[self.availableTimezoneTableView.selectedRow];
+            data.formattedAddress = self.timeZoneArray[self.availableTimezoneTableView.selectedRow];
+        }
+        
+        NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
+        
+        if (defaultPreference == nil)
+        {
+            defaultPreference = [[NSMutableArray alloc] init];
+        }
+        
+        NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:data];
+        NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:defaultPreference];
+        [newArray addObject:encodedObject];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:CLDefaultPreferenceKey];
+        
+        self.timeZoneArray = [NSMutableArray array];
+        
+        self.timeZoneFilteredArray = [NSMutableArray array];
+        
+        [self.availableTimezoneTableView reloadData];
+        
+        [self refereshTimezoneTableView];
+        
+        [self refreshMainTableview];
+        
+        [self.timezonePanel close];
+        
+        self.placeholderLabel.placeholderString = CLEmptyString;
+        
+        self.searchField.stringValue = CLEmptyString;
+        
+        self.searchField.placeholderString = @"Enter a city, state or country name";
+        
+        self.availableTimezoneTableView.hidden = NO;
+        
+        self.activityInProgress = NO;
     }
     
-    self.searchField.stringValue = CLEmptyString;
-    
-   [self getTimeZoneForLatitude:dataObject.latitude andLongitude:dataObject.longitude];
     
     /*
     PFObject *feedbackObject = [PFObject objectWithClassName:CLParseTimezoneSelectionClassIdentifier];
@@ -273,6 +394,18 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     
     [self refreshMainTableview];
 }
+
+- (IBAction)filterTimezoneArray:(id)sender
+{
+    if (self.searchField.stringValue.length > 0) {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:CLSearchPredicateKey, self.searchField.stringValue];
+    
+    self.timeZoneFilteredArray = [NSMutableArray arrayWithArray:[self.timeZoneArray filteredArrayUsingPredicate:predicate]];
+        
+    [self.availableTimezoneTableView reloadData];
+    }
+}
+
 
 - (IBAction)filterArray:(id)sender
 {
@@ -579,5 +712,39 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                }];
     
 }
+
+- (IBAction)filterSearch:(id)sender
+{
+    if (self.searchCriteria.selectedSegment == 1)
+    {
+        if (self.searchField.stringValue.length > 0) {
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:CLSearchPredicateKey, self.searchField.stringValue];
+            
+            self.timeZoneFilteredArray = [NSMutableArray arrayWithArray:[self.timeZoneArray filteredArrayUsingPredicate:predicate]];
+            
+            [self.availableTimezoneTableView reloadData];
+        }
+    }
+}
+
+
+- (IBAction)searchOptions:(id)sender
+{
+    if (self.searchCriteria.selectedSegment == 0)
+    {
+        self.searchField.placeholderString = @"Enter a city, state or country name";
+    }
+    else
+    {
+        self.timeZoneArray = [NSMutableArray arrayWithArray:[NSTimeZone knownTimeZoneNames]];
+       self.searchField.placeholderString = @"Enter a timezone name";
+    }
+    
+    self.filteredArray = [NSMutableArray new];
+    
+    self.searchField.stringValue = CLEmptyString;
+    [self.availableTimezoneTableView reloadData];
+}
+
 
 @end

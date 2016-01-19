@@ -335,17 +335,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     cell.rowNumber = row;
     
     cell.customName.stringValue = [dataObject formatStringShouldContainCity:YES];
-    
-    NSNumber *displaySuntimings = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplaySunTimingKey];
-    if ([displaySuntimings isEqualToNumber:[NSNumber numberWithInteger:0]] && dataObject.sunriseTime && dataObject.sunsetTime) {
-          cell.sunTime.stringValue = [dataObject getFormattedSunriseOrSunsetTimeAndSunImage:cell];
-    }
-    else
-    {
-        cell.sunImage.image = nil;
-        cell.sunTime.stringValue = CLEmptyString;
-    }
-    
+       
     NSNumber *displayFutureSlider = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey];
     if ([displayFutureSlider isEqualToNumber:[NSNumber numberWithInteger:0]])
     {
@@ -517,155 +507,6 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     [NSApp postEvent:newEvent atStart:NO];
 }
 
-- (NSString *)getWeekdayFromInteger:(NSInteger)weekdayInteger
-{
-    if (weekdayInteger > 7) {
-        weekdayInteger = weekdayInteger - 7;
-    }
-    
-    switch (weekdayInteger) {
-        case 1:
-            return @"Sunday";
-            break;
-            
-        case 2:
-            return @"Monday";
-            break;
-            
-        case 3:
-            return @"Tuesday";
-            break;
-            
-        case 4:
-            return @"Wednesday";
-            break;
-            
-        case 5:
-            return @"Thursday";
-            break;
-            
-        case 6:
-            return @"Friday";
-            break;
-            
-        case 7:
-            return @"Saturday";
-            break;
-            
-        default:
-            return @"Error";
-            break;
-    }
-}
-
-- (void)getTimeZoneForLatitude:(NSString *)latitude andLongitude:(NSString *)longitude andDataObject:(CLTimezoneData *)dataObject
-{
-    Reachability *reachability = [Reachability reachabilityForInternetConnection];
-    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
-    
-    if (networkStatus == NotReachable)
-    {
-        //Could not fetch data
-        return;
-    }
-    
-    NSString *urlString = [NSString stringWithFormat:@"http://api.geonames.org/timezoneJSON?lat=%@&lng=%@&username=abhishaker17", latitude, longitude];
-    
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    request.HTTPMethod = @"GET";
-    
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
-    NSError *error = nil;
-    
-    if (!error) {
-        
-        NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            if (!error) {
-                NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
-                if (httpResp.statusCode == 200)
-                {
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        
-                        NSDictionary* json = [NSJSONSerialization
-                                              JSONObjectWithData:data
-                                              options:kNilOptions
-                                              error:nil];
-                        
-                        if (json.count == 0) {
-                           //No results found
-                            return;
-                        }
-                        
-                        if ([json[@"status"][@"message"]
-                             isEqualToString:@"the hourly limit of 2000 credits for abhishaker17 has been exceeded. Please throttle your requests or use the commercial service."])
-                        {
-                            return;
-                        }
-                        
-                        CLTimezoneData *newDataObject = [[CLTimezoneData alloc] init];
-                        newDataObject.timezoneID = dataObject.timezoneID;
-                        newDataObject.formattedAddress = dataObject.formattedAddress;
-                        newDataObject.latitude = dataObject.latitude;
-                        newDataObject.longitude = dataObject.longitude;
-                        newDataObject.sunriseTime = dataObject.sunriseTime;
-                        newDataObject.sunsetTime = dataObject.sunsetTime;
-                        newDataObject.customLabel = dataObject.customLabel;
-                        newDataObject.place_id = dataObject.place_id;
-                        newDataObject.nextUpdate = dataObject.nextUpdate;
-                        
-                        if (json[@"sunrise"] && json[@"sunset"]) {
-                            newDataObject.sunriseTime = json[@"sunrise"];
-                            newDataObject.sunsetTime = json[@"sunset"];
-                        }
-                     
-                        NSUInteger units = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
-                        NSDateComponents *comps = [[NSCalendar currentCalendar] components:units fromDate:dataObject.nextUpdate];
-                        comps.day = comps.day + 1;
-                        NSDate *tomorrowMidnight = [[NSCalendar currentCalendar] dateFromComponents:comps];
-                        newDataObject.nextUpdate = tomorrowMidnight;
-                        
-                        NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
-                        
-                        if (defaultPreference == nil)
-                        {
-                            defaultPreference = [[NSMutableArray alloc] init];
-                        }
-                        
-                        NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:defaultPreference];
-                        
-                        for (NSMutableDictionary *timeDictionary in self.defaultPreferences) {
-                            if ([dataObject.place_id isEqualToString:timeDictionary[CLPlaceIdentifier]]) {
-                                [newArray replaceObjectAtIndex:[self.defaultPreferences indexOfObject:dataObject] withObject:newDataObject];
-                            }
-                        }
-                        
-                        [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:CLDefaultPreferenceKey];
-                        
-                        [self.mainTableview reloadData];
-                        
-                    });
-                }
-            }
-            else
-            {
-                //error
-            }
-            
-        }];
-        
-        [dataTask resume];
-        
-    }
-}
-
 - (void)updatePanelColor
 {
     NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
@@ -680,7 +521,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
         self.window.alphaValue = 1;
     }
     
-
+    
 }
 
 @end

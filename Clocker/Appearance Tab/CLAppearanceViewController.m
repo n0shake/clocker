@@ -10,10 +10,12 @@
 #import "ApplicationDelegate.h"
 #import "PanelController.h"
 #import "CommonStrings.h"
+#import "CLTimezoneData.h"
 
 @interface CLAppearanceViewController ()
 @property (weak) IBOutlet NSSegmentedControl *timeFormat;
 @property (weak) IBOutlet NSSegmentedControl *theme;
+@property (weak) IBOutlet NSSegmentedControl *menuOptions;
 
 @end
 
@@ -26,6 +28,13 @@
     [viewLayer setBackgroundColor:CGColorCreateGenericRGB(255.0, 255.0, 255.0, 0.8)]; //RGB plus Alpha Channel
     [self.view setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
     [self.view setLayer:viewLayer];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *shouldCityBeShown = [userDefaults objectForKey:@"shouldCityBeShown"];
+    NSNumber *shouldDayBeShown = [userDefaults objectForKey:@"shouldDayBeShown"];
+    
+    [self.menuOptions setSelected:shouldDayBeShown.boolValue forSegment:0];
+    [self.menuOptions setSelected:shouldCityBeShown.boolValue forSegment:1];
     
 }
 
@@ -86,5 +95,58 @@
         
     });
 }
+
+- (NSImage *)imageWithSubviewsWithTextField:(NSTextField *)textField
+{
+    NSSize mySize = textField.bounds.size;
+    NSSize imgSize = NSMakeSize( mySize.width, mySize.height );
+    
+    NSBitmapImageRep *bir = [textField bitmapImageRepForCachingDisplayInRect:[textField bounds]];
+    [bir setSize:imgSize];
+    [textField cacheDisplayInRect:[textField bounds] toBitmapImageRep:bir];
+    
+    NSImage* image = [[NSImage alloc]initWithSize:imgSize];
+    [image addRepresentation:bir];
+    return image;
+    
+}
+
+- (NSImage *)textWithTextField:(NSTextField *)textField
+{
+    NSString *myString = textField.stringValue;
+    unsigned char *string = (unsigned char *) [myString UTF8String];
+    NSSize mySize = NSMakeSize(50,100); //or measure the string
+    
+    NSBitmapImageRep *bir = [[NSBitmapImageRep alloc]
+                                                        initWithBitmapDataPlanes:&string
+                                                        pixelsWide:mySize.width pixelsHigh:mySize.height
+                                                        bitsPerSample:8
+                                                        samplesPerPixel:3  // or 4 with alpha
+                                                        hasAlpha:NO
+                                                        isPlanar:NO
+                                                        colorSpaceName:NSDeviceRGBColorSpace
+                                                        bitmapFormat:0
+                                                        bytesPerRow:0  // 0 == determine automatically
+                                                        bitsPerPixel:0];  // 0 == determine automatically
+    
+    //draw text using -(void)drawInRect:(NSRect)aRect withAttributes:(NSDictionary *)attributes
+    
+    NSImage* image = [[NSImage alloc]initWithSize:mySize];
+    [image addRepresentation:bir];
+    return image;
+}
+
+- (IBAction)changeMenuBarDisplayPreferences:(id)sender
+{
+    NSSegmentedControl *segmentedControl = (NSSegmentedControl *)sender;
+    NSNumber *shouldDayBeShown = [NSNumber numberWithBool:[segmentedControl isSelectedForSegment:0]];
+    NSNumber *shouldCityBeShown = [NSNumber numberWithBool:[segmentedControl isSelectedForSegment:1]];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:shouldDayBeShown forKey:@"shouldDayBeShown"];
+    [userDefaults setObject:shouldCityBeShown forKey:@"shouldCityBeShown"];
+}
+
+
 
 @end

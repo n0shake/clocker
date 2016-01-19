@@ -13,8 +13,6 @@
 @property (weak) IBOutlet NSTextField *customName;
 @property (weak) IBOutlet NSTextField *relativeDate;
 @property (weak) IBOutlet NSTextField *time;
-@property (weak) IBOutlet NSImageView *sunImage;
-@property (weak) IBOutlet NSTextField *sunTime;
 @property (nonatomic) NSInteger rowNumber;
 
 - (void)updateTextColorWithColor:(NSColor *)color andCell:(CLTimezoneCellView*)cell;

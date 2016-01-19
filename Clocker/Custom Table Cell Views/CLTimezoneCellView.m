@@ -39,15 +39,18 @@
 
         if ([[sender superview] isKindOfClass:[self class]]) {
             CLTimezoneCellView *cellView = (CLTimezoneCellView *)[sender superview];
-            CLTimezoneData *dataObject = panelController.defaultPreferences[cellView.rowNumber];
-            CLTimezoneData *newDataObject = [dataObject mutableCopy];
+            NSData *dataObject = panelController.defaultPreferences[cellView.rowNumber];
+            NSData *newDataObject = [dataObject mutableCopy];
+            CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:newDataObject];
         
-            for (CLTimezoneData *object in panelController.defaultPreferences) {
-                if ([object.formattedAddress isEqualToString:customLabelValue]) {
+            for (NSData *object in panelController.defaultPreferences)
+            {
+                CLTimezoneData *timeObject = [CLTimezoneData getCustomObject:object];
+                if ([timeObject.formattedAddress isEqualToString:customLabelValue]) {
                     return;
                 }
             }
-            newDataObject.customLabel = (customLabelValue.length > 0) ? customLabelValue : CLEmptyString;
+            timezoneObject.customLabel = (customLabelValue.length > 0) ? customLabelValue : CLEmptyString;
                 [panelController.defaultPreferences replaceObjectAtIndex:cellView.rowNumber withObject:newDataObject];
                 [[NSUserDefaults standardUserDefaults] setObject:panelController.defaultPreferences forKey:CLDefaultPreferenceKey];
                 
@@ -64,7 +67,6 @@
     cell.relativeDate.textColor = color;
     cell.customName.textColor = color;
     cell.time.textColor = color;
-    cell.sunTime.textColor = color;
 }
 
 - (void)setUpAutoLayoutWithCell:(CLTimezoneCellView *)cell

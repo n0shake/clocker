@@ -83,11 +83,6 @@ void *kContextActivePanel = &kContextActivePanel;
         [[NSUserDefaults standardUserDefaults] setObject:@"Default" forKey:CLThemeKey];
     }
     
-    NSNumber *displaySuntimings = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplaySunTimingKey];
-    if (displaySuntimings == nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:1] forKey:CLDisplaySunTimingKey];
-    }
-    
     NSNumber *displayFutureSlider = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey];
     if (displayFutureSlider == nil) {
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:0] forKey:CLDisplayFutureSliderKey];
@@ -101,6 +96,21 @@ void *kContextActivePanel = &kContextActivePanel;
     NSNumber *relativeDate = [[NSUserDefaults standardUserDefaults] objectForKey:CLRelativeDateKey];
     if (relativeDate == nil) {
         [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLRelativeDateKey];
+    }
+    
+    NSNumber *showDayInMenuBar = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowDayInMenu];
+    if (showDayInMenuBar == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowDayInMenu];
+    }
+    
+    NSNumber *showDateInMenu = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowDateInMenu];
+    if (showDateInMenu == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:CLShowDateInMenu];
+    }
+    
+    NSNumber *showCityInMenu = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowCityInMenu];
+    if (showCityInMenu == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowCityInMenu];
     }
 
     // Install icon into the menu bar
