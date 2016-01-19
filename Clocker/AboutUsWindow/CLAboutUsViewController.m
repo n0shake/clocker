@@ -7,6 +7,7 @@
 //
 
 #import "CLAboutUsViewController.h"
+#import <Parse/Parse.h>
 
 @interface CLAboutUsViewController ()
 
@@ -35,10 +36,18 @@ NSString *const CLFacebookPageURL = @"https://www.facebook.com/ClockerMenubarClo
 
 - (IBAction)viewSource:(id)sender
 {
+    PFObject *aboutView = [PFObject objectWithClassName:@"CLAboutViews"];
+    aboutView[@"GitHub"] = @"YES";
+    aboutView[@"UniqueID"] = [self getSerialNumber];
+    [aboutView saveEventually];
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLGitHubURL]];
 }
 - (IBAction)reportIssue:(id)sender
 {
+    PFObject *aboutView = [PFObject objectWithClassName:@"CLAboutViews"];
+    aboutView[@"ReportIssue"] = @"YES";
+    aboutView[@"UniqueID"] = [self getSerialNumber];
+    [aboutView saveEventually];
     self.feedbackWindow = [CLAppFeedbackWindowController sharedWindow];
     [self.feedbackWindow showWindow:nil];
     [NSApp activateIgnoringOtherApps:YES];
@@ -47,7 +56,34 @@ NSString *const CLFacebookPageURL = @"https://www.facebook.com/ClockerMenubarClo
 
 - (IBAction)openFacebookPage:(id)sender
 {
+    PFObject *aboutView = [PFObject objectWithClassName:@"CLAboutViews"];
+    aboutView[@"FacebookPage"] = @"YES";
+    aboutView[@"UniqueID"] = [self getSerialNumber];
+    [aboutView saveEventually];
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLFacebookPageURL]];
+}
+
+- (NSString *)getSerialNumber
+{
+    io_service_t    platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault,
+                                                                 
+                                                                 IOServiceMatching("IOPlatformExpertDevice"));
+    CFStringRef serialNumberAsCFString = NULL;
+    
+    if (platformExpert) {
+        serialNumberAsCFString = IORegistryEntryCreateCFProperty(platformExpert,
+                                                                 CFSTR(kIOPlatformSerialNumberKey),
+                                                                 kCFAllocatorDefault, 0);
+        IOObjectRelease(platformExpert);
+    }
+    
+    NSString *serialNumberAsNSString = nil;
+    if (serialNumberAsCFString) {
+        serialNumberAsNSString = [NSString stringWithString:(__bridge NSString *)serialNumberAsCFString];
+        CFRelease(serialNumberAsCFString);
+    }
+    
+    return serialNumberAsNSString;
 }
 
 

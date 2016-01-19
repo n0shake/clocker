@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSNumber *isFavourite;
 
 + (instancetype)getCustomObject:(NSData *)encodedData;
+- (void)sendAnalyticsData;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 - (BOOL)saveObjectToPreferences:(CLTimezoneData *)object;

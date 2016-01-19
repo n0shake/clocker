@@ -123,7 +123,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 {
     CLTimezoneData *dataSource, *selectedDataSource;
     
-    if (self.filteredArray.count > 0)
+    if (self.filteredArray.count > row)
     {
          dataSource = self.filteredArray[row];
     }
@@ -366,13 +366,6 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         
         self.activityInProgress = NO;
     }
-    
-    
-    /*
-    PFObject *feedbackObject = [PFObject objectWithClassName:CLParseTimezoneSelectionClassIdentifier];
-    feedbackObject[CLParseTimezoneNameProperty] = [self.filteredArray[self.availableTimezoneTableView.selectedRow] objectForKey:CLTimezoneName];
-    [feedbackObject saveEventually];*/
-
 }
 
 - (IBAction)closePanel:(id)sender
@@ -670,6 +663,8 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                            
                            CLTimezoneData *dataObject = self.filteredArray[self.availableTimezoneTableView.selectedRow];
                            
+                           [dataObject sendAnalyticsData];
+                           
                            NSString *filteredAddress = dataObject.formattedAddress;
                            
                            NSRange range = [filteredAddress rangeOfString:@","];
@@ -696,7 +691,11 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                            [newTimezone setObject:CLEmptyString forKey:@"nextUpdate"];
                            [newTimezone setObject:CLEmptyString forKey:CLCustomLabel];
                            
+                           
+                           
                            CLTimezoneData *timezoneObject = [[CLTimezoneData alloc] initWithDictionary:newTimezone];
+                           
+                           
                            
                            NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
                            

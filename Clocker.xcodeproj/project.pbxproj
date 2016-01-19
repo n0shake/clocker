@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A20A04B1C4DEED200FB45AB /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A20A04A1C4DEED200FB45AB /* IOKit.framework */; };
 		9A25F7471C1A5E17007D369B /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A25F7441C1A5E17007D369B /* iRate.m */; };
 		9A3247321C25FD3A00CF6B6E /* CLCustomSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3247311C25FD3A00CF6B6E /* CLCustomSliderCell.m */; };
 		9A3247391C263F4F00CF6B6E /* CLAppearanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3247371C263F4F00CF6B6E /* CLAppearanceViewController.m */; };
@@ -78,6 +79,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9A20A04A1C4DEED200FB45AB /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		9A25F7411C1A5E17007D369B /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iRate.h; path = "Clocker/Rate App/iRate.h"; sourceTree = "<group>"; };
 		9A25F7441C1A5E17007D369B /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iRate.m; path = "Clocker/Rate App/iRate.m"; sourceTree = "<group>"; };
 		9A3247301C25FD3A00CF6B6E /* CLCustomSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLCustomSliderCell.h; path = "Clocker/Custom Slider/CLCustomSliderCell.h"; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A20A04B1C4DEED200FB45AB /* IOKit.framework in Frameworks */,
 				9A43792C1BEC231100F4E27F /* libz.tbd in Frameworks */,
 				9A9E876C1C1FEDE700A7A2DF /* libsqlite3.tbd in Frameworks */,
 				9A9E876A1C1FEDDB00A7A2DF /* SystemConfiguration.framework in Frameworks */,
@@ -397,6 +400,7 @@
 		DD4F7C0713C30F9F00825C6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A20A04A1C4DEED200FB45AB /* IOKit.framework */,
 				9A9E876B1C1FEDE700A7A2DF /* libsqlite3.tbd */,
 				9A9E87691C1FEDDB00A7A2DF /* SystemConfiguration.framework */,
 				9A9E87671C1FEDD300A7A2DF /* Security.framework */,

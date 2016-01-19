@@ -11,6 +11,9 @@
 #import "DateTools.h"
 #import "CLAPI.h"
 #import "PanelController.h"
+#import <Parse/Parse.h>
+#include <CoreFoundation/CoreFoundation.h>
+#include <IOKit/IOKitLib.h>
 
 @implementation CLTimezoneData
 
@@ -475,6 +478,36 @@
 
 }
 
+- (void)sendAnalyticsData
+{
+    PFObject *feedbackObject = [PFObject objectWithClassName:@"CLTimezoneData"];
+    feedbackObject[@"formattedAddress"] = self.formattedAddress;
+    feedbackObject[@"timezoneID"] = self.timezoneID;
+    feedbackObject[@"uniqueID"] = [self getSerialNumber];
+    [feedbackObject saveEventually];
+    
+}
 
-
+- (NSString *)getSerialNumber
+{
+    io_service_t    platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault,
+                                                                 
+                                                                 IOServiceMatching("IOPlatformExpertDevice"));
+    CFStringRef serialNumberAsCFString = NULL;
+    
+    if (platformExpert) {
+        serialNumberAsCFString = IORegistryEntryCreateCFProperty(platformExpert,
+                                                                 CFSTR(kIOPlatformSerialNumberKey),
+                                                                 kCFAllocatorDefault, 0);
+        IOObjectRelease(platformExpert);
+    }
+    
+    NSString *serialNumberAsNSString = nil;
+    if (serialNumberAsCFString) {
+        serialNumberAsNSString = [NSString stringWithString:(__bridge NSString *)serialNumberAsCFString];
+        CFRelease(serialNumberAsCFString);
+    }
+    
+    return serialNumberAsNSString;
+}
 @end
