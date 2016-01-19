@@ -1,0 +1,302 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9A20A05A1C4E801500FB45AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A20A0591C4E801500FB45AB /* AppDelegate.m */; };
+		9A20A05D1C4E801500FB45AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A20A05C1C4E801500FB45AB /* main.m */; };
+		9A20A05F1C4E801500FB45AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A20A05E1C4E801500FB45AB /* Assets.xcassets */; };
+		9A20A0621C4E801500FB45AB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A20A0601C4E801500FB45AB /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9A20A0551C4E801500FB45AB /* Clocker-Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clocker-Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A20A0581C4E801500FB45AB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9A20A0591C4E801500FB45AB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9A20A05C1C4E801500FB45AB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9A20A05E1C4E801500FB45AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9A20A0611C4E801500FB45AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9A20A0631C4E801500FB45AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A20A0731C4E80D300FB45AB /* Clocker-Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Clocker-Helper.entitlements"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9A20A0521C4E801500FB45AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9A20A04C1C4E801500FB45AB = {
+			isa = PBXGroup;
+			children = (
+				9A20A0571C4E801500FB45AB /* Clocker-Helper */,
+				9A20A0561C4E801500FB45AB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9A20A0561C4E801500FB45AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A20A0551C4E801500FB45AB /* Clocker-Helper.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A20A0571C4E801500FB45AB /* Clocker-Helper */ = {
+			isa = PBXGroup;
+			children = (
+				9A20A0731C4E80D300FB45AB /* Clocker-Helper.entitlements */,
+				9A20A0581C4E801500FB45AB /* AppDelegate.h */,
+				9A20A0591C4E801500FB45AB /* AppDelegate.m */,
+				9A20A05E1C4E801500FB45AB /* Assets.xcassets */,
+				9A20A0601C4E801500FB45AB /* MainMenu.xib */,
+				9A20A0631C4E801500FB45AB /* Info.plist */,
+				9A20A05B1C4E801500FB45AB /* Supporting Files */,
+			);
+			path = "Clocker-Helper";
+			sourceTree = "<group>";
+		};
+		9A20A05B1C4E801500FB45AB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9A20A05C1C4E801500FB45AB /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9A20A0541C4E801500FB45AB /* Clocker-Helper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A20A0661C4E801500FB45AB /* Build configuration list for PBXNativeTarget "Clocker-Helper" */;
+			buildPhases = (
+				9A20A0511C4E801500FB45AB /* Sources */,
+				9A20A0521C4E801500FB45AB /* Frameworks */,
+				9A20A0531C4E801500FB45AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Clocker-Helper";
+			productName = "Clocker-Helper";
+			productReference = 9A20A0551C4E801500FB45AB /* Clocker-Helper.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9A20A04D1C4E801500FB45AB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Abhishek Banthia";
+				TargetAttributes = {
+					9A20A0541C4E801500FB45AB = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = AJS5SNW8EY;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 9A20A0501C4E801500FB45AB /* Build configuration list for PBXProject "Clocker-Helper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9A20A04C1C4E801500FB45AB;
+			productRefGroup = 9A20A0561C4E801500FB45AB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9A20A0541C4E801500FB45AB /* Clocker-Helper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9A20A0531C4E801500FB45AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A20A05F1C4E801500FB45AB /* Assets.xcassets in Resources */,
+				9A20A0621C4E801500FB45AB /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9A20A0511C4E801500FB45AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A20A05D1C4E801500FB45AB /* main.m in Sources */,
+				9A20A05A1C4E801500FB45AB /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9A20A0601C4E801500FB45AB /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A20A0611C4E801500FB45AB /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9A20A0641C4E801500FB45AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9A20A0651C4E801500FB45AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9A20A0671C4E801500FB45AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Clocker-Helper/Clocker-Helper.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Clocker-Helper/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.abhishek.Clocker-Helper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		9A20A0681C4E801500FB45AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Clocker-Helper/Clocker-Helper.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Clocker-Helper/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.abhishek.Clocker-Helper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9A20A0501C4E801500FB45AB /* Build configuration list for PBXProject "Clocker-Helper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A20A0641C4E801500FB45AB /* Debug */,
+				9A20A0651C4E801500FB45AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A20A0661C4E801500FB45AB /* Build configuration list for PBXNativeTarget "Clocker-Helper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A20A0671C4E801500FB45AB /* Debug */,
+				9A20A0681C4E801500FB45AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9A20A04D1C4E801500FB45AB /* Project object */;
+}

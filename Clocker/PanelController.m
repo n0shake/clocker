@@ -311,7 +311,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
     if (theme.length > 0 && ![theme isEqualToString:@"Default"])
     {
-//        [cell updateTextColorWithColor:[NSColor whiteColor] andCell:cell];
+        [cell updateTextColorWithColor:[NSColor whiteColor] andCell:cell];
         [self.mainTableview setBackgroundColor:[NSColor blackColor]];
         self.window.alphaValue = 0.90;
         [cell.customName setDrawsBackground:YES];
@@ -321,7 +321,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     else
     {
         
-//        [cell updateTextColorWithColor:[NSColor blackColor] andCell:cell];
+        [cell updateTextColorWithColor:[NSColor blackColor] andCell:cell];
         [cell.customName setDrawsBackground:NO];
         [self.mainTableview setBackgroundColor:[NSColor whiteColor]];
         self.window.alphaValue = 1;

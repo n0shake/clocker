@@ -15,6 +15,7 @@
 #import "CLTimezoneData.h"
 #import <Parse/Parse.h>
 #import "CLAPI.h"
+#import <ServiceManagement/ServiceManagement.h>
 
 NSString *const CLSearchPredicateKey = @"SELF CONTAINS[cd]%@";
 NSString *const CLPreferencesViewNibIdentifier = @"PreferencesWindow";
@@ -778,5 +779,13 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     [self.availableTimezoneTableView reloadData];
 }
 
+- (IBAction)loginPreferenceChanged:(NSButton *)sender
+{
+    if(!(SMLoginItemSetEnabled((__bridge CFStringRef)@"com.abhishek.Clocker-Helper", (BOOL)[sender state])))
+    {
+        NSLog(@"Login item was not successful.");
+    }
+    
+}
 
 @end

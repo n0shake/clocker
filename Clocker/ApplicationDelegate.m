@@ -113,6 +113,14 @@ void *kContextActivePanel = &kContextActivePanel;
         [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowCityInMenu];
     }
 
+    NSNumber *startClockerAtLogin = [[NSUserDefaults standardUserDefaults] objectForKey:@"startAtLogin"];
+    if (startClockerAtLogin == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:@"startAtLogin"];
+    }
+    
+
+    
+    
     // Install icon into the menu bar
     self.menubarController = [[MenubarController alloc] init];
     

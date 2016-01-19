@@ -111,6 +111,9 @@ CA
                         </subviews>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="281" id="PZN-nD-VFx"/>
+                    </constraints>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="QrG-bP-Ras">
                         <rect key="frame" x="0.0" y="266" width="419" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -124,12 +127,28 @@ CA
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="HMC-Ku-qrH">
+                    <rect key="frame" x="59" y="21" width="265" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="261" id="5ET-GR-cI7"/>
+                        <constraint firstAttribute="height" constant="14" id="Hfw-03-t8F"/>
+                    </constraints>
+                    <buttonCell key="cell" type="check" title="Start Clocker at Login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="6ag-Bx-bSv">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="loginPreferenceChanged:" target="-2" id="OW9-5g-HZG"/>
+                        <binding destination="1Gq-ZQ-IML" name="value" keyPath="values.startAtLogin" id="UjN-PC-pxC"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="iOG-Ey-lmD" firstAttribute="height" secondItem="4yB-vZ-tNX" secondAttribute="height" id="HKt-is-5y3"/>
                 <constraint firstItem="zBR-OH-6QQ" firstAttribute="top" secondItem="Uu9-io-frR" secondAttribute="top" constant="8" id="JKn-gF-8oI"/>
                 <constraint firstAttribute="bottom" secondItem="iOG-Ey-lmD" secondAttribute="bottom" constant="20" id="LkE-TY-4pP"/>
-                <constraint firstItem="4yB-vZ-tNX" firstAttribute="top" secondItem="zBR-OH-6QQ" secondAttribute="bottom" constant="6" id="Zsk-85-aI8"/>
+                <constraint firstItem="HMC-Ku-qrH" firstAttribute="leading" secondItem="iOG-Ey-lmD" secondAttribute="trailing" constant="8" id="RAb-Xi-AY4"/>
+                <constraint firstAttribute="bottom" secondItem="HMC-Ku-qrH" secondAttribute="bottom" constant="23" id="j8p-GM-QPX"/>
                 <constraint firstAttribute="trailing" secondItem="zBR-OH-6QQ" secondAttribute="trailing" constant="10" id="p1P-Ev-oBI"/>
                 <constraint firstItem="iOG-Ey-lmD" firstAttribute="width" secondItem="4yB-vZ-tNX" secondAttribute="width" id="wLJ-lQ-GhP"/>
                 <constraint firstItem="iOG-Ey-lmD" firstAttribute="leading" secondItem="4yB-vZ-tNX" secondAttribute="trailing" id="xu0-0C-2pe"/>
