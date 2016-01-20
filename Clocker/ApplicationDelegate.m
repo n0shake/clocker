@@ -34,8 +34,10 @@
 #import <Parse/Parse.h>
 #import "CLOnboardingWindowController.h"
 
+#define helperAppBundleIdentifier @"com.abhishek.Clocker-Helper" // change as appropriate to help app bundle identifier
 NSString *const CLParseApplicationID = @"F2ahd8J6sfjQMCc5z3xSy9kVK94PmKmH6hV2UsUK";
 NSString *const CLParseClientID = @"vfnqDtinvmwUBkcifznYHzYTetxN5iMvt8Ey8StD";
+#define terminateNotification @"TerminateHelper" 
 
 @implementation ApplicationDelegate
 
@@ -66,8 +68,8 @@ void *kContextActivePanel = &kContextActivePanel;
 + (void)initialize
 {
     //Configure iRate
-    [iRate sharedInstance].appStoreID = (NSInteger)nil;
-    [iVersion sharedInstance].appStoreID = (NSInteger)nil;
+    [iRate sharedInstance].appStoreID = 1056643111;
+    [iVersion sharedInstance].appStoreID = 1056643111;
     [iRate sharedInstance].useAllAvailableLanguages = NO;
     [iVersion sharedInstance].useAllAvailableLanguages = NO;
     [[iRate sharedInstance] setVerboseLogging:YES];
@@ -78,6 +80,20 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
+    
+
+    BOOL startedAtLogin = NO;
+    NSArray *apps = [[NSWorkspace sharedWorkspace] runningApplications];
+    for (NSRunningApplication *app in apps) {
+        if ([app.bundleIdentifier isEqualToString:helperAppBundleIdentifier]) startedAtLogin = YES;
+    }
+    
+    if (startedAtLogin) {
+        [[NSDistributedNotificationCenter defaultCenter]
+         postNotificationName:terminateNotification
+                        object:[[NSBundle mainBundle] bundleIdentifier]];
+    }
+    
     
     NSString *defaultTheme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
     if (defaultTheme == nil) {
@@ -126,21 +142,17 @@ void *kContextActivePanel = &kContextActivePanel;
     
     if (onboarding == nil)
     {
-      
-               [[NSUserDefaults standardUserDefaults] setObject:@"OnboardingDone" forKey:@"initalLaunch"];
-            [self.menubarController setInitialTimezoneData];
+        CLOnboardingWindowController *windowController = [CLOnboardingWindowController sharedWindow];
+        [windowController showWindow:nil];
+        [NSApp activateIgnoringOtherApps:YES];
+        [[NSUserDefaults standardUserDefaults] setObject:@"OnboardingDone" forKey:@"initalLaunch"];
+        [self.menubarController setInitialTimezoneData];
     }
-
-    CLOnboardingWindowController *windowController = [CLOnboardingWindowController sharedWindow];
-    [windowController showWindow:nil];
-    [NSApp activateIgnoringOtherApps:YES];
-
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
     
     [[Crashlytics sharedInstance] setDebugMode:NO];
     [Fabric with:@[[Crashlytics class]]];
-
     
     //Setting up Parse
     [Parse setApplicationId:CLParseApplicationID

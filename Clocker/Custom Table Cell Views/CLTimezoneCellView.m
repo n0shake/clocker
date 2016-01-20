@@ -46,7 +46,7 @@
             {
                 CLTimezoneData *timeObject = [CLTimezoneData getCustomObject:object];
                 if ([timeObject.formattedAddress isEqualToString:customLabelValue]) {
-                    return;
+                    timeObject.customLabel = CLEmptyString;
                 }
             }
             

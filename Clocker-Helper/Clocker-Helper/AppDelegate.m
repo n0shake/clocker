@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#define terminateNotification @"TerminateHelper" 
+#define mainAppBundleIdentifier @"com.abhishek.Clocker" 
 
 @interface AppDelegate ()
 
@@ -17,16 +19,41 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    NSString *path = [[[[[[NSBundle mainBundle] bundlePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent];
+
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                        selector:@selector(killApp)
+                                                            name:terminateNotification
+                                                          object:mainAppBundleIdentifier];
+
     
-    [[NSWorkspace sharedWorkspace] launchApplication:path];
+    BOOL alreadyRunning = NO;
+    BOOL isActive = NO;
     
-    /*The Helper App's job is done!*/
+    NSArray *running = [[NSWorkspace sharedWorkspace] runningApplications];
+    for (NSRunningApplication *app in running) {
+        if ([[app bundleIdentifier] isEqualToString:@"com.abhishek.Clocker"]) {
+            alreadyRunning = YES;
+             isActive = [app isActive];
+            break;
+        }
+    }
+    
+    if (!alreadyRunning || !isActive) {
+        NSString *path = [[[[[[NSBundle mainBundle] bundlePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent];
+        NSLog(@"Path:%@", path);
+        [[NSWorkspace sharedWorkspace] launchApplication:path];
+
+    }
     [NSApp terminate:nil];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+}
+
+-(void)killApp
+{
+    [NSApp terminate:nil];
 }
 
 @end

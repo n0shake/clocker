@@ -36,7 +36,6 @@ typedef enum : NSUInteger {
 - (NSString *)getLocalCurrentDate;
 - (NSString *)compareSystemDate:(NSString *)systemDate toTimezoneDate:(NSString *)date;
 - (NSString *)getDateForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue andDisplayType:(CLDateDisplayType)type;
-- (void)getTimeZoneForLatitude:(NSString *)latitude andLongitude:(NSString *)longitude andDataObject:(CLTimezoneData *)dataObject;
 - (NSString *)formatStringShouldContainCity:(BOOL)value;
 - (NSString *)getMenuTitle;
 

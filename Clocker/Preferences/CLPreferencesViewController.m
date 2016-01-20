@@ -15,6 +15,7 @@
 #import "CLTimezoneData.h"
 #import <Parse/Parse.h>
 #import "CLAPI.h"
+//#import <Answers/Answers.h>
 #import <ServiceManagement/ServiceManagement.h>
 
 NSString *const CLSearchPredicateKey = @"SELF CONTAINS[cd]%@";
@@ -186,7 +187,11 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
             
         }
         
-        return [NSTimeZone timeZoneWithName:self.timeZoneArray[row]].abbreviation;
+        if (self.timeZoneArray.count > row)
+        {
+             return [NSTimeZone timeZoneWithName:self.timeZoneArray[row]].abbreviation;
+        }
+       
 
     }
     
@@ -249,8 +254,6 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     self.filteredArray = [NSMutableArray new];
     
     self.searchCriteria.selectedSegment = 0;
-    
-    self.timeZoneArray = [NSMutableArray new];
     
     [self.view.window beginSheet:self.timezonePanel
                completionHandler:nil];
@@ -344,9 +347,9 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         
         [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:CLDefaultPreferenceKey];
         
-        self.timeZoneArray = [NSMutableArray array];
-        
         self.timeZoneFilteredArray = [NSMutableArray array];
+        
+        self.timeZoneArray = [NSMutableArray new];
         
         [self.availableTimezoneTableView reloadData];
         
@@ -537,6 +540,8 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     
     [self refreshMainTableview];
     
+    [self.timezoneTableView deselectRow:self.timezoneTableView.selectedRow];
+    
     return YES;
 }
 
@@ -633,7 +638,12 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 }
 
 - (void)getTimeZoneForLatitude:(NSString *)latitude andLongitude:(NSString *)longitude
-{    
+{
+    if (self.placeholderLabel.isHidden)
+    {
+        self.placeholderLabel.hidden = NO;
+    }
+    
     if (![CLAPI isUserConnectedToInternet]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.placeholderLabel.placeholderString = CLNoInternetConnectivityError;
@@ -777,6 +787,9 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 - (IBAction)searchOptions:(id)sender
 {
+    self.placeholderLabel.placeholderString = CLEmptyString;
+    self.placeholderLabel.hidden = YES;
+    
     if (self.searchCriteria.selectedSegment == 0)
     {
         self.searchField.placeholderString = @"Enter a city, state or country name";
@@ -785,10 +798,10 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     }
     else
     {
-        self.timeZoneArray = [NSMutableArray arrayWithArray:[NSTimeZone knownTimeZoneNames]];
        self.searchField.placeholderString = @"Enter a timezone name";
         self.columnName = @"Timezone(s)";
         self.abbreviation.hidden = NO;
+        self.timeZoneArray = [NSMutableArray arrayWithArray:[NSTimeZone knownTimeZoneNames]];
     }
     
     self.searchField.stringValue = CLEmptyString;
@@ -800,8 +813,11 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     if(!(SMLoginItemSetEnabled((__bridge CFStringRef)@"com.abhishek.Clocker-Helper", (BOOL)[sender state])))
     {
         NSLog(@"Login item was not successful.");
+
     }
     
 }
+
+
 
 @end
