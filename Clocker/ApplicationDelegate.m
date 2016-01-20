@@ -135,7 +135,7 @@ void *kContextActivePanel = &kContextActivePanel;
         [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:@"startAtLogin"];
     }
     
-    NSString *onboarding = [[NSUserDefaults standardUserDefaults] objectForKey:@"initalLaunch"];
+    NSString *onboarding = [[NSUserDefaults standardUserDefaults] objectForKey:@"initialLaunch"];
     
     // Install icon into the menu bar
     self.menubarController = [[MenubarController alloc] init];
@@ -145,7 +145,7 @@ void *kContextActivePanel = &kContextActivePanel;
         CLOnboardingWindowController *windowController = [CLOnboardingWindowController sharedWindow];
         [windowController showWindow:nil];
         [NSApp activateIgnoringOtherApps:YES];
-        [[NSUserDefaults standardUserDefaults] setObject:@"OnboardingDone" forKey:@"initalLaunch"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"OnboardingDone" forKey:@"initialLaunch"];
         [self.menubarController setInitialTimezoneData];
     }
     
