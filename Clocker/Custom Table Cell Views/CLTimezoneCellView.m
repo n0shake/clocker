@@ -40,8 +40,7 @@
         if ([[sender superview] isKindOfClass:[self class]]) {
             CLTimezoneCellView *cellView = (CLTimezoneCellView *)[sender superview];
             NSData *dataObject = panelController.defaultPreferences[cellView.rowNumber];
-            NSData *newDataObject = [dataObject mutableCopy];
-            CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:newDataObject];
+            CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:dataObject];
         
             for (NSData *object in panelController.defaultPreferences)
             {
@@ -50,14 +49,18 @@
                     return;
                 }
             }
+            
             timezoneObject.customLabel = (customLabelValue.length > 0) ? customLabelValue : CLEmptyString;
-                [panelController.defaultPreferences replaceObjectAtIndex:cellView.rowNumber withObject:newDataObject];
+                      NSData *newObject = [NSKeyedArchiver archivedDataWithRootObject:timezoneObject];
+                [panelController.defaultPreferences replaceObjectAtIndex:cellView.rowNumber withObject:newObject];
                 [[NSUserDefaults standardUserDefaults] setObject:panelController.defaultPreferences forKey:CLDefaultPreferenceKey];
                 
                 [panelController updateDefaultPreferences];
                 [panelController.mainTableview reloadData];
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:CLCustomLabelChangedNotification object:nil];
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:CLCustomLabelChangedNotification
+                           object:nil];
         
     }
 }

@@ -33,10 +33,19 @@
     return self;
 }
 
-- (BOOL)saveObjectToPreferences:(CLTimezoneData *)object
++ (void)setInitialTimezoneData
+{
+    CLTimezoneData *newData = [[self alloc] init];
+    newData.timezoneID = [[NSTimeZone systemTimeZone] name];
+    newData.formattedAddress = newData.timezoneID;
+    
+    [newData saveObjectToPreferences];
+}
+
+- (BOOL)saveObjectToPreferences
 {
     
-    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:object];
+    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:self];
     NSMutableArray *array = [NSMutableArray new];
     [array addObject:encodedObject];
     
@@ -241,18 +250,9 @@
                 panelController = window.windowController;
             }
         }
-
-        
         
         [panelController.defaultPreferences replaceObjectAtIndex:[panelController.defaultPreferences indexOfObject:self] withObject:newDataObject];
         [[NSUserDefaults standardUserDefaults] setObject:panelController.defaultPreferences forKey:CLDefaultPreferenceKey];
-    }
-    else if ([self.nextUpdate isKindOfClass:[NSDate class]] &&
-             [self.nextUpdate isEarlierThanOrEqualTo:timezoneDate])
-    {
-        [self getTimeZoneForLatitude:self.latitude
-                        andLongitude:self.longitude
-                       andDataObject:self];
     }
     
     NSInteger daysApart = [timezoneDate daysFrom:localDate];
@@ -274,7 +274,7 @@
     }
 }
 
-- (NSString *)getDateForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue
+- (NSString *)getDateForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue andDisplayType:(CLDateDisplayType)type
 {
     NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
     NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitHour
@@ -288,7 +288,7 @@
     dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.timezoneID];
     
     NSNumber *relativeDayPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLRelativeDateKey];
-    if (relativeDayPreference.integerValue == 0) {
+    if (relativeDayPreference.integerValue == 0 && type == CLPanelDisplay) {
         return [self compareSystemDate:[self getLocalCurrentDate]
                         toTimezoneDate:[dateFormatter stringFromDate:newDate]];
     }
@@ -303,88 +303,6 @@
         NSInteger weekday = [calendar component:NSCalendarUnitWeekday fromDate:convertedDate];
         return [self getWeekdayFromInteger:weekday];
     }
-}
-
-- (void)getTimeZoneForLatitude:(NSString *)latitude andLongitude:(NSString *)longitude andDataObject:(CLTimezoneData *)dataObject
-{
-
-    if (![CLAPI isUserConnectedToInternet])
-    {
-        //Could not fetch data
-        return;
-    }
-    
-    NSString *urlString = [NSString stringWithFormat:@"http://api.geonames.org/timezoneJSON?lat=%@&lng=%@&username=abhishaker17", latitude, longitude];
-    
-    
-    [CLAPI dataTaskWithServicePath:urlString
-                          bySender:self
-               withCompletionBlock:^(NSError *error, NSDictionary *json) {
-                   dispatch_async(dispatch_get_main_queue(), ^{
-                       
-                       if (json.count == 0) {
-                           //No results found
-                           return;
-                       }
-                       
-                       if ([json[@"status"][@"message"]
-                            isEqualToString:@"the hourly limit of 2000 credits for abhishaker17 has been exceeded. Please throttle your requests or use the commercial service."])
-                       {
-                           return;
-                       }
-                       
-                       CLTimezoneData *newDataObject = [dataObject mutableCopy];
-                       
-                       /*
-                       if (json[@"sunrise"] && json[@"sunset"]) {
-                           newDataObject.sunriseTime = json[@"sunrise"];
-                           newDataObject.sunsetTime = json[@"sunset"];
-                       }*/
-                       
-                       NSUInteger units = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
-                       NSDateComponents *comps = [[NSCalendar currentCalendar] components:units fromDate:newDataObject.nextUpdate];
-                       comps.day = comps.day + 1;
-                       NSDate *tomorrowMidnight = [[NSCalendar currentCalendar] dateFromComponents:comps];
-                       
-                       dataObject.nextUpdate = tomorrowMidnight;
-                       
-                       
-                       NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
-                       
-                       if (defaultPreference == nil)
-                       {
-                           defaultPreference = [[NSMutableArray alloc] init];
-                       }
-                       
-                       
-                       PanelController *panelController;
-                       
-                       for (NSWindow *window in [[NSApplication sharedApplication] windows])
-                       {
-                           if ([window.windowController isMemberOfClass:[PanelController class]])
-                           {
-                               panelController = window.windowController;
-                           }
-                       }
-                       
-                       
-                       NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:defaultPreference];
-                       
-                       for (NSMutableDictionary *timeDictionary in panelController.defaultPreferences) {
-                           if ([dataObject.place_id isEqualToString:timeDictionary[CLPlaceIdentifier]]) {
-                               [newArray replaceObjectAtIndex:[panelController.defaultPreferences indexOfObject:dataObject] withObject:newDataObject];
-                           }
-                       }
-                       
-                       [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:CLDefaultPreferenceKey];
-                       
-                       [panelController.mainTableview reloadData];
-                       
-                   });
-
-    
-               }];
-    
 }
 
 - (NSString *)getWeekdayFromInteger:(NSInteger)weekdayInteger
@@ -443,7 +361,7 @@
     
     if (shouldDayBeShown.boolValue == 0)
     {
-        NSString *substring = [self getDateForTimeZoneWithFutureSliderValue:0];
+        NSString *substring = [self getDateForTimeZoneWithFutureSliderValue:0 andDisplayType:CLMenuDisplay];
         substring = [substring substringToIndex:3];
         
         if (menuTitle.length > 0)

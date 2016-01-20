@@ -52,7 +52,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="6fy-MI-uin"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Copyright (2015) Abhishek Banthia" id="4PX-se-5ds">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Copyright (2016) Abhishek Banthia" id="4PX-se-5ds">
                         <font key="font" size="14" name="SFUIDisplay-Ultralight"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

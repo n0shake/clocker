@@ -164,9 +164,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
             }
             
             return self.timeZoneArray[row];
-
         }
-        
         return nil;
     }
     else if([[tableColumn identifier] isEqualToString:CLPreferencesCustomLabelIdentifier])
@@ -229,8 +227,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         dataObject.isFavourite = object;
         NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:dataObject];
         [newArray replaceObjectAtIndex:row withObject:encodedObject];
-        self.selectedTimeZones = [NSMutableArray arrayWithArray:newArray];
-         [[NSUserDefaults standardUserDefaults] setObject:self.selectedTimeZones forKey:CLDefaultPreferenceKey];
+         [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:CLDefaultPreferenceKey];
         
       
         (dataObject.isFavourite.integerValue == 1) ?
@@ -239,7 +236,9 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         [[NSUserDefaults standardUserDefaults] setObject:nil
                                                   forKey:@"favouriteTimezone"];
         
-        [self.timezoneTableView reloadData];
+        [self refereshTimezoneTableView];
+        
+        [self refreshMainTableview];
     }
 }
 
@@ -412,7 +411,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         [itemsToRemove addObject:self.selectedTimeZones[idx]];
         
     }];
-    
+  
     [self.selectedTimeZones removeObjectsInArray:itemsToRemove];
     
     NSMutableArray *newDefaults = [[NSMutableArray alloc] initWithArray:self.selectedTimeZones];
@@ -422,6 +421,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     [self.timezoneTableView reloadData];
     
     [self refreshMainTableview];
+
 }
 
 - (IBAction)filterTimezoneArray:(id)sender

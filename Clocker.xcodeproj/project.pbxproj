@@ -10,6 +10,10 @@
 		9A20A04B1C4DEED200FB45AB /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A20A04A1C4DEED200FB45AB /* IOKit.framework */; };
 		9A20A0701C4E804D00FB45AB /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A20A06F1C4E804D00FB45AB /* ServiceManagement.framework */; };
 		9A20A0721C4E80A800FB45AB /* Clocker-Helper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A20A06E1C4E801600FB45AB /* Clocker-Helper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9A20A0781C4EA53600FB45AB /* CLOnboardingWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A20A0761C4EA53600FB45AB /* CLOnboardingWindowController.m */; };
+		9A20A0791C4EA53600FB45AB /* CLOnboardingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A20A0771C4EA53600FB45AB /* CLOnboardingWindow.xib */; };
+		9A20A07E1C4EAAEB00FB45AB /* CLIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A20A07C1C4EAAEB00FB45AB /* CLIntroViewController.m */; };
+		9A20A07F1C4EAAEB00FB45AB /* CLIntroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A20A07D1C4EAAEB00FB45AB /* CLIntroView.xib */; };
 		9A25F7471C1A5E17007D369B /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A25F7441C1A5E17007D369B /* iRate.m */; };
 		9A3247321C25FD3A00CF6B6E /* CLCustomSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3247311C25FD3A00CF6B6E /* CLCustomSliderCell.m */; };
 		9A3247391C263F4F00CF6B6E /* CLAppearanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3247371C263F4F00CF6B6E /* CLAppearanceViewController.m */; };
@@ -104,6 +108,12 @@
 		9A20A04A1C4DEED200FB45AB /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		9A20A0691C4E801500FB45AB /* Clocker-Helper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Clocker-Helper.xcodeproj"; path = "Clocker-Helper/Clocker-Helper.xcodeproj"; sourceTree = "<group>"; };
 		9A20A06F1C4E804D00FB45AB /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		9A20A0751C4EA53600FB45AB /* CLOnboardingWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLOnboardingWindowController.h; path = Clocker/Onboarding/CLOnboardingWindowController.h; sourceTree = "<group>"; };
+		9A20A0761C4EA53600FB45AB /* CLOnboardingWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLOnboardingWindowController.m; path = Clocker/Onboarding/CLOnboardingWindowController.m; sourceTree = "<group>"; };
+		9A20A0771C4EA53600FB45AB /* CLOnboardingWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLOnboardingWindow.xib; path = Clocker/Onboarding/CLOnboardingWindow.xib; sourceTree = "<group>"; };
+		9A20A07B1C4EAAEB00FB45AB /* CLIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLIntroViewController.h; path = Clocker/Onboarding/CLIntroViewController.h; sourceTree = "<group>"; };
+		9A20A07C1C4EAAEB00FB45AB /* CLIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLIntroViewController.m; path = Clocker/Onboarding/CLIntroViewController.m; sourceTree = "<group>"; };
+		9A20A07D1C4EAAEB00FB45AB /* CLIntroView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLIntroView.xib; path = Clocker/Onboarding/CLIntroView.xib; sourceTree = "<group>"; };
 		9A25F7411C1A5E17007D369B /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iRate.h; path = "Clocker/Rate App/iRate.h"; sourceTree = "<group>"; };
 		9A25F7441C1A5E17007D369B /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iRate.m; path = "Clocker/Rate App/iRate.m"; sourceTree = "<group>"; };
 		9A3247301C25FD3A00CF6B6E /* CLCustomSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLCustomSliderCell.h; path = "Clocker/Custom Slider/CLCustomSliderCell.h"; sourceTree = "<group>"; };
@@ -258,6 +268,9 @@
 				9A392EE61C1CDD530072C10A /* CLAboutUsViewController.m */,
 				9A392EEA1C1CE9950072C10A /* CLPreferencesViewController.h */,
 				9A392EEB1C1CE9950072C10A /* CLPreferencesViewController.m */,
+				9A20A07B1C4EAAEB00FB45AB /* CLIntroViewController.h */,
+				9A20A07C1C4EAAEB00FB45AB /* CLIntroViewController.m */,
+				9A20A07D1C4EAAEB00FB45AB /* CLIntroView.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -291,6 +304,7 @@
 				9A392EEC1C1CE9950072C10A /* CLPreferencesView.xib */,
 				9A3247381C263F4F00CF6B6E /* CLAppearanceView.xib */,
 				9A9E63851C2C673E009A299B /* CLAppFeedbackWindow.xib */,
+				9A20A0771C4EA53600FB45AB /* CLOnboardingWindow.xib */,
 			);
 			name = XIB;
 			sourceTree = "<group>";
@@ -334,6 +348,8 @@
 		9A8605E51BEC165400A810A4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9A20A0751C4EA53600FB45AB /* CLOnboardingWindowController.h */,
+				9A20A0761C4EA53600FB45AB /* CLOnboardingWindowController.m */,
 				9A9E63831C2C673E009A299B /* CLAppFeedbackWindowController.h */,
 				9A9E63841C2C673E009A299B /* CLAppFeedbackWindowController.m */,
 				9A5951BE1C1D0AA0009C17AA /* CLOneWindowController.m */,
@@ -535,9 +551,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A20A0791C4EA53600FB45AB /* CLOnboardingWindow.xib in Resources */,
 				9A9E63871C2C673E009A299B /* CLAppFeedbackWindow.xib in Resources */,
 				9A5951FD1C1D592D009C17AA /* iVersion.bundle in Resources */,
 				9A392EEE1C1CE9950072C10A /* CLPreferencesView.xib in Resources */,
+				9A20A07F1C4EAAEB00FB45AB /* CLIntroView.xib in Resources */,
 				9A56DB811C1CFB73004CE6AF /* Panel.xib in Resources */,
 				9A43792E1BEC256200F4E27F /* Media.xcassets in Resources */,
 				9A392EE91C1CDD530072C10A /* CLAboutUsView.xib in Resources */,
@@ -583,6 +601,7 @@
 				9A5951BD1C1D0A8D009C17AA /* CommonStrings.m in Sources */,
 				9A5951FA1C1D5214009C17AA /* iVersion.m in Sources */,
 				9A87DAC61C358FA800A8CF3B /* DTError.m in Sources */,
+				9A20A0781C4EA53600FB45AB /* CLOnboardingWindowController.m in Sources */,
 				9A87DACA1C358FA800A8CF3B /* DTTimePeriodGroup.m in Sources */,
 				9A25F7471C1A5E17007D369B /* iRate.m in Sources */,
 				9A8605C01BEC14F600A810A4 /* Panel.m in Sources */,
@@ -593,6 +612,7 @@
 				9A8605BB1BEC14DC00A810A4 /* PanelController.m in Sources */,
 				9A8605B61BEC14BE00A810A4 /* MenubarController.m in Sources */,
 				9A5951C01C1D0AA0009C17AA /* CLOneWindowController.m in Sources */,
+				9A20A07E1C4EAAEB00FB45AB /* CLIntroViewController.m in Sources */,
 				9A8605B71BEC14BE00A810A4 /* ApplicationDelegate.m in Sources */,
 				9A5951F51C1D3D81009C17AA /* CLTimezoneCellView.m in Sources */,
 				9ABF58721C29A80600BD0187 /* CLTimezoneData.m in Sources */,
@@ -658,7 +678,7 @@
 				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
@@ -759,7 +779,7 @@
 				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
@@ -788,7 +808,7 @@
 				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;

@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "CLTimezoneCellView.h"
 
+typedef enum : NSUInteger {
+    CLPanelDisplay,
+    CLMenuDisplay
+} CLDateDisplayType;
+
 @interface CLTimezoneData : NSObject<NSCoding>
 
 @property (strong, nonatomic) NSString *customLabel;
@@ -21,14 +26,16 @@
 @property (strong, nonatomic) NSNumber *isFavourite;
 
 + (instancetype)getCustomObject:(NSData *)encodedData;
-- (void)sendAnalyticsData;
++ (void)setInitialTimezoneData;
 
+
+- (void)sendAnalyticsData;
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
-- (BOOL)saveObjectToPreferences:(CLTimezoneData *)object;
+- (BOOL)saveObjectToPreferences;
 - (NSString *)getTimeForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue;
 - (NSString *)getLocalCurrentDate;
 - (NSString *)compareSystemDate:(NSString *)systemDate toTimezoneDate:(NSString *)date;
-- (NSString *)getDateForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue;
+- (NSString *)getDateForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue andDisplayType:(CLDateDisplayType)type;
 - (void)getTimeZoneForLatitude:(NSString *)latitude andLongitude:(NSString *)longitude andDataObject:(CLTimezoneData *)dataObject;
 - (NSString *)formatStringShouldContainCity:(BOOL)value;
 - (NSString *)getMenuTitle;

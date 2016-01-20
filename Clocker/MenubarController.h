@@ -41,4 +41,6 @@
 @property (nonatomic, strong, readonly) NSStatusItem *statusItem;
 @property (nonatomic, strong, readonly) StatusItemView *statusItemView;
 
+- (void)setInitialTimezoneData;
+
 @end

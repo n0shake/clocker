@@ -136,7 +136,10 @@
     [self addTrackingArea:self.trackingArea];
 }
 
-
+-(BOOL)allowsVibrancy
+{
+    return YES;
+}
 
 #pragma mark -
 #pragma mark Public accessors

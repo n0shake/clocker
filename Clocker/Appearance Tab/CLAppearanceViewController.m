@@ -16,6 +16,7 @@
 @property (weak) IBOutlet NSSegmentedControl *timeFormat;
 @property (weak) IBOutlet NSSegmentedControl *theme;
 @property (weak) IBOutlet NSSegmentedControl *menuOptions;
+@property (weak) IBOutlet NSTextField *informationLabel;
 
 @end
 
@@ -29,13 +30,10 @@
     [self.view setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
     [self.view setLayer:viewLayer];
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *shouldCityBeShown = [userDefaults objectForKey:@"shouldCityBeShown"];
-    NSNumber *shouldDayBeShown = [userDefaults objectForKey:@"shouldDayBeShown"];
+    self.informationLabel.stringValue = @"Select a favourite timezone to enable menubar display options.";
+    self.informationLabel.textColor = [NSColor secondaryLabelColor];
     
-    [self.menuOptions setSelected:shouldDayBeShown.boolValue forSegment:0];
-    [self.menuOptions setSelected:shouldCityBeShown.boolValue forSegment:1];
-    
+    self.enableOptions = [[NSUserDefaults standardUserDefaults] objectForKey:@"favouriteTimezone"] == nil ? NO : YES;
 }
 
 - (IBAction)timeFormatSelectionChanged:(id)sender

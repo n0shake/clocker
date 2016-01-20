@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CLAppearanceViewController">
             <connections>
+                <outlet property="informationLabel" destination="WDP-d4-eNj" id="4Af-T9-vEI"/>
                 <outlet property="theme" destination="5tI-fU-0lZ" id="dzr-Zx-E8x"/>
                 <outlet property="timeFormat" destination="OrL-Ix-fmY" id="ZzR-ip-HS9"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -60,12 +61,12 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YQi-x8-6f8">
-                    <rect key="frame" x="168" y="287" width="104" height="18"/>
+                    <rect key="frame" x="143" y="287" width="154" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="eY8-bV-QLM"/>
-                        <constraint firstAttribute="width" constant="100" id="n8S-fR-UtY"/>
+                        <constraint firstAttribute="width" constant="150" id="n8S-fR-UtY"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Display Options" id="KTv-74-itf">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Day Display Options" id="KTv-74-itf">
                         <font key="font" size="13" name="SFUIDisplay-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -110,6 +111,9 @@
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="enabled" keyPath="self.enableOptions" id="wwV-Hq-RlT"/>
+                    </connections>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="atA-2r-FXV">
                     <rect key="frame" x="179" y="116" width="84" height="24"/>
@@ -125,6 +129,7 @@
                         </segments>
                     </segmentedCell>
                     <connections>
+                        <binding destination="-2" name="enabled" keyPath="self.enableOptions" id="K4w-DT-u3f"/>
                         <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.showDate" id="Qee-Dc-Piu"/>
                     </connections>
                 </segmentedControl>
@@ -139,6 +144,9 @@
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="enabled" keyPath="self.enableOptions" id="56M-0X-vvP"/>
+                    </connections>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XwV-hy-YiP">
                     <rect key="frame" x="178" y="67" width="84" height="24"/>
@@ -154,6 +162,7 @@
                         </segments>
                     </segmentedCell>
                     <connections>
+                        <binding destination="-2" name="enabled" keyPath="self.enableOptions" id="5wv-GT-fne"/>
                         <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.showDay" id="AeO-a9-xU4"/>
                     </connections>
                 </segmentedControl>
@@ -201,6 +210,9 @@
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="enabled" keyPath="self.enableOptions" id="3ho-kS-zgV"/>
+                    </connections>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JR8-v7-K0w">
                     <rect key="frame" x="178" y="15" width="84" height="24"/>
@@ -216,6 +228,7 @@
                         </segments>
                     </segmentedCell>
                     <connections>
+                        <binding destination="-2" name="enabled" keyPath="self.enableOptions" id="g8k-2L-2XR"/>
                         <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.showCityName" id="FYy-NU-cIr"/>
                     </connections>
                 </segmentedControl>
@@ -232,15 +245,15 @@
                     </textFieldCell>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1eh-BT-2fK">
-                    <rect key="frame" x="133" y="256" width="174" height="24"/>
+                    <rect key="frame" x="155" y="256" width="129" height="24"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="170" id="u9T-ks-rqA"/>
+                        <constraint firstAttribute="width" constant="125" id="u9T-ks-rqA"/>
                     </constraints>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="ZV9-ih-faz">
                         <font key="font" size="12" name="SFUIDisplay-Light"/>
                         <segments>
-                            <segment label="Relative Dates"/>
-                            <segment label="Actual day" selected="YES" tag="1"/>
+                            <segment label="Relative"/>
+                            <segment label="Actual" selected="YES" tag="1"/>
                         </segments>
                     </segmentedCell>
                     <connections>
@@ -248,6 +261,37 @@
                         <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.relativeDate" id="eKo-sG-1eE"/>
                     </connections>
                 </segmentedControl>
+                <visualEffectView wantsLayer="YES" appearanceType="vibrantLight" alphaValue="0.90000000000000002" blendingMode="withinWindow" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="kHi-mx-HdE">
+                    <rect key="frame" x="0.0" y="0.0" width="439" height="195"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WDP-d4-eNj">
+                            <rect key="frame" x="58" y="67" width="324" height="39"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="320" id="3wp-Z6-TrB"/>
+                                <constraint firstAttribute="height" constant="39" id="IyN-y5-6JP"/>
+                            </constraints>
+                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="JHS-Tb-Aq8">
+                                <font key="font" size="13" name="SFUIDisplay-Bold"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <connections>
+                                <binding destination="-2" name="hidden" keyPath="self.enableOptions" id="ZtR-jU-eva"/>
+                            </connections>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="195" id="JD3-oH-lbP"/>
+                        <constraint firstItem="WDP-d4-eNj" firstAttribute="centerY" secondItem="kHi-mx-HdE" secondAttribute="centerY" constant="11" id="YZN-MB-zQ8"/>
+                        <constraint firstItem="WDP-d4-eNj" firstAttribute="centerX" secondItem="kHi-mx-HdE" secondAttribute="centerX" id="xlO-Y9-7Dn"/>
+                    </constraints>
+                    <shadow key="shadow" blurRadius="10">
+                        <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </shadow>
+                    <connections>
+                        <binding destination="-2" name="hidden" keyPath="self.enableOptions" id="4El-Z9-rMM"/>
+                    </connections>
+                </visualEffectView>
             </subviews>
             <constraints>
                 <constraint firstItem="5TC-RQ-gzI" firstAttribute="top" secondItem="X5s-Mc-Yfo" secondAttribute="bottom" constant="8" id="1Wi-S2-cSq"/>
@@ -257,14 +301,17 @@
                 <constraint firstItem="YQi-x8-6f8" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="6LU-d8-lKX"/>
                 <constraint firstItem="3d9-qg-dNb" firstAttribute="top" secondItem="MHe-dB-GZr" secondAttribute="bottom" constant="4" id="BZ1-zf-1At"/>
                 <constraint firstItem="3d9-qg-dNb" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="FBj-0N-ltc"/>
+                <constraint firstAttribute="bottom" secondItem="kHi-mx-HdE" secondAttribute="bottom" id="GqC-hp-yU9"/>
                 <constraint firstItem="OrL-Ix-fmY" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="JtZ-ra-RaC"/>
                 <constraint firstItem="kEn-QZ-niZ" firstAttribute="top" secondItem="atA-2r-FXV" secondAttribute="bottom" constant="5" id="O8m-uk-Ppx"/>
+                <constraint firstItem="kHi-mx-HdE" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Oan-Iw-Pp1"/>
                 <constraint firstItem="X5s-Mc-Yfo" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="8" id="OeD-4K-q6Y"/>
                 <constraint firstItem="HTZ-1V-qZb" firstAttribute="top" secondItem="1eh-BT-2fK" secondAttribute="bottom" constant="7" id="Ohx-zT-4Wu"/>
                 <constraint firstItem="pqa-Qg-U8Y" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="PHa-pY-kHG"/>
                 <constraint firstItem="1eh-BT-2fK" firstAttribute="top" secondItem="YQi-x8-6f8" secondAttribute="bottom" constant="8" id="POa-Gi-Prk"/>
                 <constraint firstItem="X5s-Mc-Yfo" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="PRU-TH-852"/>
                 <constraint firstItem="atA-2r-FXV" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="1" id="Pjx-sg-kK0"/>
+                <constraint firstAttribute="trailing" secondItem="kHi-mx-HdE" secondAttribute="trailing" id="QaQ-6R-Oy9"/>
                 <constraint firstItem="XwV-hy-YiP" firstAttribute="top" secondItem="kEn-QZ-niZ" secondAttribute="bottom" constant="5" id="Qyy-6B-BBN"/>
                 <constraint firstItem="atA-2r-FXV" firstAttribute="top" secondItem="pqa-Qg-U8Y" secondAttribute="bottom" constant="5" id="RdE-wy-6vH"/>
                 <constraint firstItem="MHe-dB-GZr" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="TyR-gg-RLi"/>
@@ -277,7 +324,7 @@
                 <constraint firstItem="iVw-cq-zLz" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="Zh8-Vn-VxM"/>
                 <constraint firstItem="5tI-fU-0lZ" firstAttribute="top" secondItem="iVw-cq-zLz" secondAttribute="bottom" constant="8" id="bo6-s2-Vfj"/>
                 <constraint firstItem="kEn-QZ-niZ" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="eU3-c4-cnM"/>
-                <constraint firstItem="1eh-BT-2fK" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="0.5" id="fvI-By-5Ef"/>
+                <constraint firstItem="1eh-BT-2fK" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="fvI-By-5Ef"/>
                 <constraint firstAttribute="trailing" secondItem="MHe-dB-GZr" secondAttribute="trailing" id="jL7-Cv-YuY"/>
                 <constraint firstItem="5TC-RQ-gzI" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="lc0-ud-Mnw"/>
                 <constraint firstItem="JR8-v7-K0w" firstAttribute="top" secondItem="LC1-Sx-uav" secondAttribute="bottom" constant="5" id="pHX-KA-5RI"/>

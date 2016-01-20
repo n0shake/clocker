@@ -29,6 +29,7 @@
 #import "StatusItemView.h"
 #import "CommonStrings.h"
 #import "CLTimezoneData.h"
+#import "DateTools.h"
 
 @implementation StatusItemView
 
@@ -78,7 +79,9 @@
     }
     else
     {
-        textField.stringValue = @"Icon";
+        textField.stringValue = [[NSDate date] formattedDateWithFormat:@"MMM dd HH:mm"
+                                                              timeZone:[NSTimeZone systemTimeZone]
+                                                                locale:[NSLocale currentLocale]];
     }
     
     

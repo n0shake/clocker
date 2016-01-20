@@ -47,6 +47,11 @@
     return self;
 }
 
+- (void)setInitialTimezoneData
+{
+    [CLTimezoneData setInitialTimezoneData];
+}
+
 - (void)updateIconDisplay
 {
     [self.statusItemView setNeedsDisplay:YES];

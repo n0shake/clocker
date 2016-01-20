@@ -84,8 +84,6 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     {
         self.dateFormatter = [[NSDateFormatter alloc] init];
     }
-    
-    [self updateDefaultPreferences];
 
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey] isEqualToString:@"Black"]) {
         self.shutdownButton.image = [NSImage imageNamed:@"PowerIcon-White"];
@@ -307,8 +305,9 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     CLTimezoneData *dataObject = [CLTimezoneData getCustomObject:self.defaultPreferences[row]];
     
-    NSTextView *customLabel = (NSTextView*)[cell.relativeDate.window fieldEditor:YES
-                                                                       forObject:cell.relativeDate];
+    NSTextView *customLabel = (NSTextView*)[cell.relativeDate.window
+                                            fieldEditor:YES
+                                              forObject:cell.relativeDate];
     
     NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
     if (theme.length > 0 && ![theme isEqualToString:@"Default"])
@@ -330,7 +329,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
         customLabel.insertionPointColor = [NSColor blackColor];
     }
     
-    cell.relativeDate.stringValue = [dataObject getDateForTimeZoneWithFutureSliderValue:self.futureSliderValue];
+    cell.relativeDate.stringValue = [dataObject getDateForTimeZoneWithFutureSliderValue:self.futureSliderValue andDisplayType:CLPanelDisplay];
     
     cell.time.stringValue = [dataObject getTimeForTimeZoneWithFutureSliderValue:self.futureSliderValue];
     
@@ -379,9 +378,8 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
             return;
         }
         
-        CLTimezoneData *mutableTimeZoneData = [dataObject mutableCopy];
-        mutableTimeZoneData.customLabel = object;
-        [self.defaultPreferences replaceObjectAtIndex:row withObject:mutableTimeZoneData];
+        dataObject.customLabel = object;
+        [self.defaultPreferences replaceObjectAtIndex:row withObject:dataObject];
         [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences forKey:CLDefaultPreferenceKey];
         [self.mainTableview reloadData];
     }
@@ -522,8 +520,6 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
         [self.mainTableview setBackgroundColor:[NSColor whiteColor]];
         self.window.alphaValue = 1;
     }
-    
-    
 }
 
 @end

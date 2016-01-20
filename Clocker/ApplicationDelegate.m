@@ -32,6 +32,7 @@
 #import "CommonStrings.h"
 #import "iVersion.h"
 #import <Parse/Parse.h>
+#import "CLOnboardingWindowController.h"
 
 NSString *const CLParseApplicationID = @"F2ahd8J6sfjQMCc5z3xSy9kVK94PmKmH6hV2UsUK";
 NSString *const CLParseClientID = @"vfnqDtinvmwUBkcifznYHzYTetxN5iMvt8Ey8StD";
@@ -118,11 +119,22 @@ void *kContextActivePanel = &kContextActivePanel;
         [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:@"startAtLogin"];
     }
     
-
-    
+    NSString *onboarding = [[NSUserDefaults standardUserDefaults] objectForKey:@"initalLaunch"];
     
     // Install icon into the menu bar
     self.menubarController = [[MenubarController alloc] init];
+    
+    if (onboarding == nil)
+    {
+      
+               [[NSUserDefaults standardUserDefaults] setObject:@"OnboardingDone" forKey:@"initalLaunch"];
+            [self.menubarController setInitialTimezoneData];
+    }
+
+    CLOnboardingWindowController *windowController = [CLOnboardingWindowController sharedWindow];
+    [windowController showWindow:nil];
+    [NSApp activateIgnoringOtherApps:YES];
+
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
     

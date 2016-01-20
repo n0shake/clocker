@@ -11,4 +11,6 @@
 @interface CLAppearanceViewController : NSViewController
 
 
+@property (assign, nonatomic) BOOL enableOptions;
+
 @end
