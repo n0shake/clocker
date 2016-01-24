@@ -3,7 +3,7 @@
 //  Clocker
 //
 //  Created by Abhishek Banthia on 12/22/15.
-//
+// 
 //
 
 #import <Foundation/Foundation.h>
@@ -16,12 +16,12 @@ typedef enum : NSUInteger {
 
 @interface CLTimezoneData : NSObject<NSCoding>
 
-@property (strong, nonatomic) NSString *customLabel;
-@property (strong, nonatomic) NSString *formattedAddress;
-@property (strong, nonatomic) NSString *place_id;
-@property (strong, nonatomic) NSString *timezoneID;
-@property (strong, nonatomic) NSString *latitude;
-@property (strong, nonatomic) NSString *longitude;
+@property (copy, nonatomic) NSString *customLabel;
+@property (copy, nonatomic) NSString *formattedAddress;
+@property (copy, nonatomic) NSString *place_id;
+@property (copy, nonatomic) NSString *timezoneID;
+@property (copy, nonatomic) NSString *latitude;
+@property (copy, nonatomic) NSString *longitude;
 @property (strong, nonatomic) NSDate *nextUpdate;
 @property (strong, nonatomic) NSNumber *isFavourite;
 
