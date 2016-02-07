@@ -8,10 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "CLIntroViewController.h"
+#import "CLMainWindowController.h"
 
-@interface CLOnboardingWindowController : NSWindowController
-
-@property (strong, nonatomic) CLIntroViewController *introViewController;
+@interface CLOnboardingWindowController : CLMainWindowController
 
 + (instancetype)sharedWindow;
 

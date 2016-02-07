@@ -937,10 +937,20 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
 #endif
 
         {
-            PanelController *panelRef = (PanelController *)[[[NSApplication sharedApplication]
-                                                  mainWindow] windowController];
-            panelRef.showReviewCell = YES;
-            [panelRef updateDefaultPreferences];
+            NSArray *currentWindows = [NSApplication sharedApplication].windows;
+            
+            for (NSWindow *window in currentWindows)
+            {
+                if ([window.windowController isKindOfClass:[PanelController class]])
+                {
+                    PanelController *panelRef = (PanelController *)[[[NSApplication sharedApplication]
+                                                                     mainWindow] windowController];
+                    panelRef.showReviewCell = YES;
+                    [panelRef updateDefaultPreferences];
+                }
+            }
+            
+        
         }
 
 #endif

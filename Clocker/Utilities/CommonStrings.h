@@ -23,7 +23,8 @@ extern NSString *const CLRelativeDateKey;
 extern NSString *const CLThemeKey;
 extern NSString *const CLShowDayInMenu;
 extern NSString *const CLShowDateInMenu;
-extern NSString *const CLShowCityInMenu;
+extern NSString *const CLShowPlaceInMenu;
 extern NSString *const CLDisplayFutureSliderKey;
+extern NSString *const CLStartAtLogin;
 
 @end

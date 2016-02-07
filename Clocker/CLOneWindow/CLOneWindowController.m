@@ -16,6 +16,10 @@ NSString *const CLAppearenceViewNibIdentifier = @"CLAppearanceView";
 
 @interface CLOneWindowController ()
 
+
+@property (strong, nonatomic) CLAboutUsViewController *aboutUsView;
+@property (strong, nonatomic) CLAppearanceViewController *appearanceView;
+
 @end
 
 @implementation CLOneWindowController

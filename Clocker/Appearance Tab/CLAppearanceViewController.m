@@ -15,8 +15,8 @@
 @interface CLAppearanceViewController ()
 @property (weak) IBOutlet NSSegmentedControl *timeFormat;
 @property (weak) IBOutlet NSSegmentedControl *theme;
-@property (weak) IBOutlet NSSegmentedControl *menuOptions;
 @property (weak) IBOutlet NSTextField *informationLabel;
+@property (assign, nonatomic) BOOL enableOptions;
 
 @end
 

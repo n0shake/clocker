@@ -82,7 +82,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     if (!self.dateFormatter)
     {
-        self.dateFormatter = [[NSDateFormatter alloc] init];
+        self.dateFormatter = [NSDateFormatter new];
     }
 
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey] isEqualToString:@"Black"]) {
@@ -400,12 +400,14 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences
                                               forKey:CLDefaultPreferenceKey];
     
-    for (NSWindow *window in [NSApplication sharedApplication].windows) {
+    
+    [[NSApplication sharedApplication].windows enumerateObjectsUsingBlock:^(NSWindow * _Nonnull window, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([window.windowController isMemberOfClass:[CLOneWindowController class]]) {
             CLOneWindowController *ref = (CLOneWindowController *) window.windowController;
             [ref.preferencesView refereshTimezoneTableView];
         }
-    }
+
+    }];
     
     [self.mainTableview reloadData];
     

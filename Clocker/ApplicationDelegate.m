@@ -68,8 +68,6 @@ void *kContextActivePanel = &kContextActivePanel;
 + (void)initialize
 {
     //Configure iRate
-    [iRate sharedInstance].appStoreID = 1056643111;
-    [iVersion sharedInstance].appStoreID = 1056643111;
     [iRate sharedInstance].useAllAvailableLanguages = NO;
     [iVersion sharedInstance].useAllAvailableLanguages = NO;
     [[iRate sharedInstance] setVerboseLogging:YES];
@@ -81,17 +79,18 @@ void *kContextActivePanel = &kContextActivePanel;
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
     
-
-    BOOL startedAtLogin = NO;
-    NSArray *apps = [[NSWorkspace sharedWorkspace] runningApplications];
-    for (NSRunningApplication *app in apps) {
+    
+    __block BOOL startedAtLogin = NO;
+    
+    [[NSWorkspace sharedWorkspace].runningApplications enumerateObjectsUsingBlock:^(NSRunningApplication * _Nonnull app, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([app.bundleIdentifier isEqualToString:helperAppBundleIdentifier]) startedAtLogin = YES;
-    }
+        
+    }];
     
     if (startedAtLogin) {
         [[NSDistributedNotificationCenter defaultCenter]
          postNotificationName:terminateNotification
-                        object:[[NSBundle mainBundle] bundleIdentifier]];
+         object:[[NSBundle mainBundle] bundleIdentifier]];
     }
     
     
@@ -125,20 +124,20 @@ void *kContextActivePanel = &kContextActivePanel;
         [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:CLShowDateInMenu];
     }
     
-    NSNumber *showCityInMenu = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowCityInMenu];
+    NSNumber *showCityInMenu = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowPlaceInMenu];
     if (showCityInMenu == nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowCityInMenu];
+        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowPlaceInMenu];
     }
-
-    NSNumber *startClockerAtLogin = [[NSUserDefaults standardUserDefaults] objectForKey:@"startAtLogin"];
+    
+    NSNumber *startClockerAtLogin = [[NSUserDefaults standardUserDefaults] objectForKey:CLStartAtLogin];
     if (startClockerAtLogin == nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:@"startAtLogin"];
+        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLStartAtLogin];
     }
     
     NSString *onboarding = [[NSUserDefaults standardUserDefaults] objectForKey:@"initialLaunch"];
     
     // Install icon into the menu bar
-    self.menubarController = [[MenubarController alloc] init];
+    self.menubarController = [MenubarController new];
     
     if (onboarding == nil)
     {
@@ -162,6 +161,8 @@ void *kContextActivePanel = &kContextActivePanel;
     [PFAnalytics trackAppOpenedWithLaunchOptions:nil];
     
 }
+
+
 
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender

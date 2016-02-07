@@ -26,17 +26,15 @@
                                                           object:mainAppBundleIdentifier];
 
     
-    BOOL alreadyRunning = NO;
-    BOOL isActive = NO;
+    __block BOOL alreadyRunning = NO;
+    __block BOOL isActive = NO;
     
-    NSArray *running = [[NSWorkspace sharedWorkspace] runningApplications];
-    for (NSRunningApplication *app in running) {
+    [[NSWorkspace sharedWorkspace].runningApplications enumerateObjectsUsingBlock:^(NSRunningApplication * _Nonnull app, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([[app bundleIdentifier] isEqualToString:@"com.abhishek.Clocker"]) {
             alreadyRunning = YES;
-             isActive = [app isActive];
-            break;
+            isActive = [app isActive];
         }
-    }
+    }];
     
     if (!alreadyRunning || !isActive) {
         NSString *path = [[[[[[NSBundle mainBundle] bundlePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent];

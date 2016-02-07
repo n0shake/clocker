@@ -7,8 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "CLMainWindowController.h"
 
-@interface CLAppFeedbackWindowController : NSWindowController<NSWindowDelegate>
+@interface CLAppFeedbackWindowController : CLMainWindowController
 
 + (instancetype)sharedWindow;
 

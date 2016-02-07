@@ -227,8 +227,8 @@
                         </segments>
                     </segmentedCell>
                     <connections>
+                        <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.showPlaceName" id="374-hG-giL"/>
                         <binding destination="-2" name="enabled" keyPath="self.enableOptions" id="g8k-2L-2XR"/>
-                        <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.showCityName" id="FYy-NU-cIr"/>
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X5s-Mc-Yfo">

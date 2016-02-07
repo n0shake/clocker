@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Clocker/Model/CLTimezoneData.m"
-            timestampString = "474941219.735933"
+            filePath = "Clocker/ColoredButton.m"
+            timestampString = "475337911.265892"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
-            landmarkName = "-compareSystemDate:toTimezoneDate:"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "-awakeFromNib"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

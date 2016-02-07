@@ -24,7 +24,7 @@ NSString *const CLFeedbackNotEnteredErrorMessage = @"Please enter some feedback.
 
 static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
 
-@interface CLAppFeedbackWindowController ()
+@interface CLAppFeedbackWindowController ()<NSWindowDelegate>
 @property (weak) IBOutlet NSTextField *nameField;
 @property (weak) IBOutlet NSTextField *emailField;
 @property (unsafe_unretained) IBOutlet NSTextView *feedbackTextView;
@@ -37,12 +37,6 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    
-    CALayer *viewLayer = [CALayer layer];
-    [viewLayer setBackgroundColor:CGColorCreateGenericRGB(255.0, 255.0, 255.0, 0.8)]; //RGB plus Alpha Channel
-    [self.window.contentView setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
-    [self.window.contentView setLayer:viewLayer];
-    self.window.titlebarAppearsTransparent = YES;
     
     self.window.backgroundColor = [NSColor whiteColor];
     
@@ -85,9 +79,9 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
     
     PFObject *feedbackObject = [PFObject objectWithClassName:CLParseAppFeedbackClassIdentifier];
     feedbackObject[CLParseAppFeedbackNameProperty] = (self.nameField.stringValue.length > 0) ?
-                               self.nameField.stringValue : CLParseAppFeedbackNoResponseString;
+    self.nameField.stringValue : CLParseAppFeedbackNoResponseString;
     feedbackObject[CLParseAppFeedbackEmailProperty] = (self.emailField.stringValue.length > 0) ?
-                                self.emailField.stringValue : CLParseAppFeedbackNoResponseString;
+    self.emailField.stringValue : CLParseAppFeedbackNoResponseString;
     feedbackObject[CLParseAppFeedbackFeedbackProperty] = self.feedbackTextView.string;
     [feedbackObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         self.activityInProgress = NO;
@@ -102,19 +96,19 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
         }
         else
         {
-            NSAlert *alert = [[NSAlert alloc] init];
+            NSAlert *alert = [NSAlert new];
             alert.messageText = CLFeedbackAlertTitle;
             alert.informativeText = CLFeedbackAlertInformativeText;
             [alert addButtonWithTitle:CLFeedbackAlertButtonTitle];
             [alert beginSheetModalForWindow:self.window
-                                            completionHandler:^(NSModalResponse returnCode) {
-                                                [self.window close];
-                                            }];
+                          completionHandler:^(NSModalResponse returnCode) {
+                              [self.window close];
+                          }];
         }
     }];
     
     
-
+    
 }
 
 - (void)cleanUp
@@ -134,14 +128,14 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
     self.emailField.stringValue = CLEmptyString;
     self.feedbackTextView.string = CLEmptyString;
     self.activityInProgress = NO;
-    for (NSWindow *window in [NSApplication sharedApplication].windows)
-    {
+    
+    [[NSApplication sharedApplication].windows enumerateObjectsUsingBlock:^(NSWindow * _Nonnull window, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([window.windowController isMemberOfClass:[CLOneWindowController class]]) {
             [window makeKeyAndOrderFront:self];
             [NSApp activateIgnoringOtherApps:YES];
         }
-    }
-
+    }];
+    
 }
 
 @end

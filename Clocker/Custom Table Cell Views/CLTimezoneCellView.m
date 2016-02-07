@@ -22,15 +22,14 @@
 - (IBAction)labelDidChange:(id)sender
 {
     NSTextField *customLabelCell = (NSTextField*) sender;
-    PanelController *panelController;
+    __block PanelController *panelController;
     
-    for (NSWindow *window in [[NSApplication sharedApplication] windows])
-    {
+    [[[NSApplication sharedApplication] windows] enumerateObjectsUsingBlock:^(NSWindow * _Nonnull window, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([window.windowController isMemberOfClass:[PanelController class]])
         {
             panelController = window.windowController;
         }
-    }
+    }];
     
     NSString *originalValue = customLabelCell.stringValue;
     NSString *customLabelValue = [originalValue stringByTrimmingCharactersInSet:
@@ -41,14 +40,16 @@
             CLTimezoneCellView *cellView = (CLTimezoneCellView *)[sender superview];
             NSData *dataObject = panelController.defaultPreferences[cellView.rowNumber];
             CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:dataObject];
-        
-            for (NSData *object in panelController.defaultPreferences)
-            {
+            
+            [panelController.defaultPreferences enumerateObjectsUsingBlock:^(id  _Nonnull object, NSUInteger idx, BOOL * _Nonnull stop) {
+                
                 CLTimezoneData *timeObject = [CLTimezoneData getCustomObject:object];
                 if ([timeObject.formattedAddress isEqualToString:customLabelValue]) {
                     timeObject.customLabel = CLEmptyString;
                 }
-            }
+
+                
+            }];
             
             timezoneObject.customLabel = (customLabelValue.length > 0) ? customLabelValue : CLEmptyString;
                       NSData *newObject = [NSKeyedArchiver archivedDataWithRootObject:timezoneObject];
@@ -77,13 +78,15 @@
     CGFloat width = [cell.relativeDate.stringValue
                      sizeWithAttributes: @{NSFontAttributeName:cell.relativeDate.font}].width;
     
-    for (NSLayoutConstraint *constraint in cell.relativeDate.constraints)
-    {
+    
+    [cell.relativeDate.constraints enumerateObjectsUsingBlock:^(NSLayoutConstraint * _Nonnull constraint, NSUInteger idx, BOOL * _Nonnull stop) {
         if (constraint.constant > 20)
         {
             constraint.constant = width+8;
         }
-    }
+
+        
+    }];
 }
 
 @end

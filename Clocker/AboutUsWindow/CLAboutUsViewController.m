@@ -11,6 +11,9 @@
 
 @interface CLAboutUsViewController ()
 
+@property (strong, nonatomic) CLAppFeedbackWindowController *feedbackWindow;
+@property (weak) IBOutlet NSTextField *versionField;
+
 @end
 
 static CLAboutUsViewController *sharedAboutUs = nil;

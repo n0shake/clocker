@@ -65,9 +65,7 @@
     [super drawRect:dirtyRect];
     
     NSTextField *textField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, self.frame.size.width, 18)];
-    
     textField.bordered = NO;
-
     textField.alignment = NSTextAlignmentCenter;
     
     NSData *dataObject = [[NSUserDefaults standardUserDefaults] objectForKey:@"favouriteTimezone"];

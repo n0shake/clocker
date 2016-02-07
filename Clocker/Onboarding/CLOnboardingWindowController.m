@@ -11,6 +11,8 @@
 
 @interface CLOnboardingWindowController ()
 
+@property (strong, nonatomic) CLIntroViewController *introViewController;
+
 @end
 
 static CLOnboardingWindowController *sharedOnboardingWindow;
@@ -19,12 +21,7 @@ static CLOnboardingWindowController *sharedOnboardingWindow;
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    
-    CALayer *viewLayer = [CALayer layer];
-    [viewLayer setBackgroundColor:CGColorCreateGenericRGB(255.0, 255.0, 255.0, 0.8)]; //RGB plus Alpha Channel
-    [self.window.contentView setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
-    [self.window.contentView setLayer:viewLayer];
-    self.window.titlebarAppearsTransparent = YES;
+
     
     self.window.backgroundColor = [NSColor whiteColor];
     

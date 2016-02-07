@@ -38,7 +38,6 @@
 		9A5951FD1C1D592D009C17AA /* iVersion.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A5951FC1C1D592D009C17AA /* iVersion.bundle */; };
 		9A63620A1C432F68004AD010 /* CLAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6362091C432F68004AD010 /* CLAPI.m */; };
 		9A8605AE1BEC148400A810A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605AD1BEC148400A810A4 /* main.m */; };
-		9A8605B31BEC14A600A810A4 /* ColoredButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B21BEC14A600A810A4 /* ColoredButton.m */; };
 		9A8605B61BEC14BE00A810A4 /* MenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B41BEC14BE00A810A4 /* MenubarController.m */; };
 		9A8605B71BEC14BE00A810A4 /* ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B51BEC14BE00A810A4 /* ApplicationDelegate.m */; };
 		9A8605BA1BEC14DC00A810A4 /* StatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B81BEC14DC00A810A4 /* StatusItemView.m */; };
@@ -64,6 +63,7 @@
 		9A9E876E1C1FEE1800A7A2DF /* Bolts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A9E87571C1FED1A00A7A2DF /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9A9E876F1C1FEE1A00A7A2DF /* Parse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A9E87581C1FED1A00A7A2DF /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9AB9357B1C1AD8F7001285A0 /* CLRatingCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9357A1C1AD8F7001285A0 /* CLRatingCellView.m */; };
+		9ABA2B031C671D49009DC0EF /* CLMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABA2B021C671D49009DC0EF /* CLMainWindowController.m */; };
 		9ABF58721C29A80600BD0187 /* CLTimezoneData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABF58711C29A80600BD0187 /* CLTimezoneData.m */; };
 		9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */; };
 		9AF9A16B1C250AB300EE7C2A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9A16A1C250AB300EE7C2A /* Reachability.m */; };
@@ -150,7 +150,6 @@
 		9A6362081C432F68004AD010 /* CLAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAPI.h; path = Clocker/API/CLAPI.h; sourceTree = "<group>"; };
 		9A6362091C432F68004AD010 /* CLAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAPI.m; path = Clocker/API/CLAPI.m; sourceTree = "<group>"; };
 		9A8605AD1BEC148400A810A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Clocker/main.m; sourceTree = "<group>"; };
-		9A8605B21BEC14A600A810A4 /* ColoredButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ColoredButton.m; path = Clocker/ColoredButton.m; sourceTree = "<group>"; };
 		9A8605B41BEC14BE00A810A4 /* MenubarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MenubarController.m; path = Clocker/MenubarController.m; sourceTree = "<group>"; };
 		9A8605B51BEC14BE00A810A4 /* ApplicationDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ApplicationDelegate.m; path = Clocker/ApplicationDelegate.m; sourceTree = "<group>"; };
 		9A8605B81BEC14DC00A810A4 /* StatusItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = StatusItemView.m; path = Clocker/StatusItemView.m; sourceTree = "<group>"; };
@@ -164,7 +163,6 @@
 		9A8605C81BEC155B00A810A4 /* PanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PanelController.h; path = Clocker/PanelController.h; sourceTree = "<group>"; };
 		9A8605C91BEC155B00A810A4 /* MenubarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenubarController.h; path = Clocker/MenubarController.h; sourceTree = "<group>"; };
 		9A8605CA1BEC155B00A810A4 /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationDelegate.h; path = Clocker/ApplicationDelegate.h; sourceTree = "<group>"; };
-		9A8605CB1BEC155B00A810A4 /* ColoredButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColoredButton.h; path = Clocker/ColoredButton.h; sourceTree = "<group>"; };
 		9A8605CC1BEC155B00A810A4 /* Clocker-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Clocker-Prefix.pch"; path = "Clocker/Clocker-Prefix.pch"; sourceTree = "<group>"; };
 		9A87DAB41C358FA800A8CF3B /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DateTools.bundle; path = "Clocker/Date Tools/DateTools-master/DateTools/DateTools.bundle"; sourceTree = "<group>"; };
 		9A87DAB51C358FA800A8CF3B /* DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateTools.h; path = "Clocker/Date Tools/DateTools-master/DateTools/DateTools.h"; sourceTree = "<group>"; };
@@ -195,6 +193,8 @@
 		9A9E876B1C1FEDE700A7A2DF /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		9AB935791C1AD8F7001285A0 /* CLRatingCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLRatingCellView.h; path = Clocker/CLRatingCellView.h; sourceTree = "<group>"; };
 		9AB9357A1C1AD8F7001285A0 /* CLRatingCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLRatingCellView.m; path = Clocker/CLRatingCellView.m; sourceTree = "<group>"; };
+		9ABA2B011C671D49009DC0EF /* CLMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLMainWindowController.h; path = Clocker/CLMainWindowController.h; sourceTree = "<group>"; };
+		9ABA2B021C671D49009DC0EF /* CLMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLMainWindowController.m; path = Clocker/CLMainWindowController.m; sourceTree = "<group>"; };
 		9ABF58701C29A80600BD0187 /* CLTimezoneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLTimezoneData.h; path = Clocker/Model/CLTimezoneData.h; sourceTree = "<group>"; };
 		9ABF58711C29A80600BD0187 /* CLTimezoneData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLTimezoneData.m; path = Clocker/Model/CLTimezoneData.m; sourceTree = "<group>"; };
 		9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -314,10 +314,10 @@
 			children = (
 				9A8605C61BEC155B00A810A4 /* Panel.h */,
 				9A8605BD1BEC14F600A810A4 /* Panel.m */,
-				9A8605CB1BEC155B00A810A4 /* ColoredButton.h */,
-				9A8605B21BEC14A600A810A4 /* ColoredButton.m */,
 				9A3247301C25FD3A00CF6B6E /* CLCustomSliderCell.h */,
 				9A3247311C25FD3A00CF6B6E /* CLCustomSliderCell.m */,
+				9ABA2B011C671D49009DC0EF /* CLMainWindowController.h */,
+				9ABA2B021C671D49009DC0EF /* CLMainWindowController.m */,
 			);
 			name = Superclass;
 			sourceTree = "<group>";
@@ -608,6 +608,7 @@
 				9A8605BA1BEC14DC00A810A4 /* StatusItemView.m in Sources */,
 				9A87DAC91C358FA800A8CF3B /* DTTimePeriodCollection.m in Sources */,
 				9A3247391C263F4F00CF6B6E /* CLAppearanceViewController.m in Sources */,
+				9ABA2B031C671D49009DC0EF /* CLMainWindowController.m in Sources */,
 				9A9E63861C2C673E009A299B /* CLAppFeedbackWindowController.m in Sources */,
 				9A8605BB1BEC14DC00A810A4 /* PanelController.m in Sources */,
 				9A8605B61BEC14BE00A810A4 /* MenubarController.m in Sources */,
@@ -616,7 +617,6 @@
 				9A8605B71BEC14BE00A810A4 /* ApplicationDelegate.m in Sources */,
 				9A5951F51C1D3D81009C17AA /* CLTimezoneCellView.m in Sources */,
 				9ABF58721C29A80600BD0187 /* CLTimezoneData.m in Sources */,
-				9A8605B31BEC14A600A810A4 /* ColoredButton.m in Sources */,
 				9A8605AE1BEC148400A810A4 /* main.m in Sources */,
 				9A392EE81C1CDD530072C10A /* CLAboutUsViewController.m in Sources */,
 				9A87DACB1C358FA800A8CF3B /* NSDate+DateTools.m in Sources */,

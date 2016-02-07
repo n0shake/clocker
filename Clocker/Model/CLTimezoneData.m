@@ -19,7 +19,9 @@
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
-    if (self == [super init])
+    self = [super init];
+    
+    if (self)
     {
         self.customLabel = dictionary[CLCustomLabel];
         self.timezoneID = dictionary[CLTimezoneID];
@@ -35,7 +37,7 @@
 
 + (void)setInitialTimezoneData
 {
-    CLTimezoneData *newData = [[self alloc] init];
+    CLTimezoneData *newData = [self new];
     newData.timezoneID = [[NSTimeZone systemTimeZone] name];
     newData.formattedAddress = newData.timezoneID;
     
@@ -78,7 +80,9 @@
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
-    if (self == [super init])
+    self = [super init];
+    
+    if (self)
     {
         self.place_id = [coder decodeObjectForKey:@"place_id"];
         self.formattedAddress = [coder decodeObjectForKey:@"formattedAddress"];
@@ -179,7 +183,7 @@
                                                   value:futureSliderValue
                                                  toDate:[NSDate date]
                                                 options:kNilOptions];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.dateStyle = kCFDateFormatterNoStyle;
     
     NSNumber *is24HourFormatSelected = [[NSUserDefaults standardUserDefaults] objectForKey:CL24hourFormatSelectedKey];
@@ -194,7 +198,7 @@
 
 - (NSString *)getLocalCurrentDate
 {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.dateStyle = kCFDateFormatterShortStyle;
     dateFormatter.timeStyle = kCFDateFormatterNoStyle;
     dateFormatter.timeZone = [NSTimeZone systemTimeZone];
@@ -207,7 +211,7 @@
 
 - (NSString *)compareSystemDate:(NSString *)systemDate toTimezoneDate:(NSString *)date
 {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter = [NSDateFormatter new];
     formatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"MM/dd/yyyy"
                                                            options:0
                                                             locale:[NSLocale currentLocale]];
@@ -231,7 +235,7 @@
         comps.day = comps.day + 1;
         NSDate *tomorrowMidnight = [[NSCalendar currentCalendar] dateFromComponents:comps];
         
-        CLTimezoneData *newDataObject = [[CLTimezoneData alloc] init];
+        CLTimezoneData *newDataObject = [CLTimezoneData new];
         newDataObject.timezoneID = self.timezoneID;
         newDataObject.formattedAddress = self.formattedAddress;
         newDataObject.latitude = self.latitude;
@@ -241,15 +245,14 @@
         newDataObject.nextUpdate = tomorrowMidnight;
         newDataObject.isFavourite = [NSNumber numberWithInt:NSOffState];
         
-        PanelController *panelController;
+        __block PanelController *panelController;
         
-        for (NSWindow *window in [[NSApplication sharedApplication] windows])
-        {
+        [[NSApplication sharedApplication].windows enumerateObjectsUsingBlock:^(NSWindow * _Nonnull window, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([window.windowController isMemberOfClass:[PanelController class]])
             {
                 panelController = window.windowController;
             }
-        }
+        }];
         
         [panelController.defaultPreferences replaceObjectAtIndex:[panelController.defaultPreferences indexOfObject:self] withObject:newDataObject];
         [[NSUserDefaults standardUserDefaults] setObject:panelController.defaultPreferences forKey:CLDefaultPreferenceKey];
@@ -281,7 +284,7 @@
                                                   value:futureSliderValue
                                                  toDate:[NSDate date]
                                                 options:kNilOptions];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.dateStyle = kCFDateFormatterShortStyle;
     dateFormatter.timeStyle = kCFDateFormatterNoStyle;
     
@@ -294,7 +297,7 @@
     }
     else
     {
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        NSDateFormatter *formatter = [NSDateFormatter new];
         formatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"MM/dd/yyyy" options:0 locale:[NSLocale currentLocale]];
         
         NSDate *convertedDate = [formatter dateFromString:[dateFormatter stringFromDate:newDate]];
@@ -350,7 +353,7 @@
 {
     NSMutableString *menuTitle = [NSMutableString new];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *shouldCityBeShown = [userDefaults objectForKey:CLShowCityInMenu];
+    NSNumber *shouldCityBeShown = [userDefaults objectForKey:CLShowPlaceInMenu];
     NSNumber *shouldDayBeShown = [userDefaults objectForKey:CLShowDayInMenu];
     NSNumber *shouldDateBeShown = [userDefaults objectForKey:CLShowDateInMenu];
     

@@ -24,6 +24,8 @@ NSString *const CLThemeKey = @"defaultTheme";
 NSString *const CLDisplayFutureSliderKey = @"displayFutureSlider";
 NSString *const CLShowDayInMenu = @"showDay";
 NSString *const CLShowDateInMenu = @"showDate";
-NSString *const CLShowCityInMenu = @"showCityName";
+NSString *const CLShowPlaceInMenu = @"showPlaceName";
+NSString *const CLStartAtLogin = @"startAtLogin";
+
 
 @end

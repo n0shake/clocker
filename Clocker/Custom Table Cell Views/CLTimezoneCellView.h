@@ -13,7 +13,7 @@
 @property (weak) IBOutlet NSTextField *customName;
 @property (weak) IBOutlet NSTextField *relativeDate;
 @property (weak) IBOutlet NSTextField *time;
-@property (nonatomic) NSInteger rowNumber;
+@property (nonatomic, assign) NSInteger rowNumber;
 
 - (void)updateTextColorWithColor:(NSColor *)color andCell:(CLTimezoneCellView*)cell;
 - (void)setUpAutoLayoutWithCell:(CLTimezoneCellView *)cell;
