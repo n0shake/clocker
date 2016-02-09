@@ -52,11 +52,23 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
         /*Using a thread safe pattern*/
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            sharedFeedbackWindow = [[self alloc] initWithWindowNibName:CLAppFeedbackNibIdentifier];
+            sharedFeedbackWindow = [[self alloc] initPrivate];
             
         });
     }
     return sharedFeedbackWindow;
+}
+
+- (instancetype)initWithWindowNibName:(NSString *)windowNibName
+{
+    [NSException raise:@"Singleton" format:@"Use +[CLAppFeedbackWindowController sharedWindow]"];
+    return nil;
+}
+
+- (instancetype)initPrivate
+{
+    self = [super initWithWindowNibName:CLAppFeedbackNibIdentifier];
+    return self;
 }
 
 - (IBAction)sendFeedback:(id)sender
