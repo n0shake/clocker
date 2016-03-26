@@ -34,34 +34,42 @@
     NSString *originalValue = customLabelCell.stringValue;
     NSString *customLabelValue = [originalValue stringByTrimmingCharactersInSet:
                                   [NSCharacterSet whitespaceCharacterSet]];
-   
+    
+    
+    if ([[sender superview] isKindOfClass:[self class]]) {
+        CLTimezoneCellView *cellView = (CLTimezoneCellView *)[sender superview];
+        NSData *dataObject = panelController.defaultPreferences[cellView.rowNumber];
+        CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:dataObject];
+        
+        [panelController.defaultPreferences enumerateObjectsUsingBlock:^(id  _Nonnull object, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            CLTimezoneData *timeObject = [CLTimezoneData getCustomObject:object];
+            if ([timeObject.formattedAddress isEqualToString:customLabelValue]) {
+                timeObject.customLabel = CLEmptyString;
+            }
+            
+            
+        }];
+        
+        timezoneObject.customLabel = (customLabelValue.length > 0) ? customLabelValue : CLEmptyString;
+        
+        if ([timezoneObject.isFavourite isEqualToNumber:@1])
+        {
+            NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:timezoneObject];
+            [[NSUserDefaults standardUserDefaults] setObject:encodedObject
+                                                      forKey:@"favouriteTimezone"];
+        }
 
-        if ([[sender superview] isKindOfClass:[self class]]) {
-            CLTimezoneCellView *cellView = (CLTimezoneCellView *)[sender superview];
-            NSData *dataObject = panelController.defaultPreferences[cellView.rowNumber];
-            CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:dataObject];
-            
-            [panelController.defaultPreferences enumerateObjectsUsingBlock:^(id  _Nonnull object, NSUInteger idx, BOOL * _Nonnull stop) {
-                
-                CLTimezoneData *timeObject = [CLTimezoneData getCustomObject:object];
-                if ([timeObject.formattedAddress isEqualToString:customLabelValue]) {
-                    timeObject.customLabel = CLEmptyString;
-                }
-
-                
-            }];
-            
-            timezoneObject.customLabel = (customLabelValue.length > 0) ? customLabelValue : CLEmptyString;
-                      NSData *newObject = [NSKeyedArchiver archivedDataWithRootObject:timezoneObject];
-                [panelController.defaultPreferences replaceObjectAtIndex:cellView.rowNumber withObject:newObject];
-                [[NSUserDefaults standardUserDefaults] setObject:panelController.defaultPreferences forKey:CLDefaultPreferenceKey];
-                
-                [panelController updateDefaultPreferences];
-                [panelController.mainTableview reloadData];
-            
-            [[NSNotificationCenter defaultCenter]
-             postNotificationName:CLCustomLabelChangedNotification
-                           object:nil];
+        NSData *newObject = [NSKeyedArchiver archivedDataWithRootObject:timezoneObject];
+        [panelController.defaultPreferences replaceObjectAtIndex:cellView.rowNumber withObject:newObject];
+        [[NSUserDefaults standardUserDefaults] setObject:panelController.defaultPreferences forKey:CLDefaultPreferenceKey];
+        
+        [panelController updateDefaultPreferences];
+        [panelController.mainTableview reloadData];
+        
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:CLCustomLabelChangedNotification
+         object:nil];
         
     }
 }
@@ -84,7 +92,7 @@
         {
             constraint.constant = width+8;
         }
-
+        
         
     }];
 }
