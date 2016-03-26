@@ -6,14 +6,15 @@
 //
 //
 
+#import "CLAPI.h"
 #import "CLTimezoneData.h"
 #import "CommonStrings.h"
 #import "DateTools.h"
-#import "CLAPI.h"
 #import "PanelController.h"
 #import <Parse/Parse.h>
 #include <CoreFoundation/CoreFoundation.h>
 #include <IOKit/IOKitLib.h>
+
 
 @implementation CLTimezoneData
 
@@ -58,13 +59,21 @@
 
 + (instancetype)getCustomObject:(NSData *)encodedData
 {
-    if ([encodedData isKindOfClass:[NSDictionary class]])
+    
+    
+    if (encodedData)
     {
-        CLTimezoneData *newObject = [[self alloc] initWithDictionary:(NSDictionary *)encodedData];
-        return newObject;
+        if ([encodedData isKindOfClass:[NSDictionary class]])
+        {
+            CLTimezoneData *newObject = [[self alloc] initWithDictionary:(NSDictionary *)encodedData];
+            return newObject;
+        }
+        CLTimezoneData *object = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
+        return object;
+        
     }
-    CLTimezoneData *object = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
-    return object;
+    
+    return nil;
     
 }
 
@@ -136,45 +145,45 @@
 }
 
 /*
-- (NSString *)getFormattedSunriseOrSunsetTimeAndSunImage:(CLTimezoneCellView *)cell
-{
-    if (!self.shouldFetchSunTimings) {
-        return CLEmptyString;
-    }
-    
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"yyyy-MM-dd HH:mm";
-    NSDate *sunTime = [formatter dateFromString:self.sunriseTime];
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.timezoneID];
-    dateFormatter.dateStyle = kCFDateFormatterShortStyle;
-    dateFormatter.timeStyle = kCFDateFormatterShortStyle;
-    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm";
-    NSString *newDate = [dateFormatter stringFromDate:[NSDate date]];
-    
-    NSDateFormatter *dateConversion = [[NSDateFormatter alloc] init];
-    dateConversion.timeZone = [NSTimeZone timeZoneWithName:self.timezoneID];
-    dateConversion.dateStyle = kCFDateFormatterShortStyle;
-    dateConversion.timeStyle = kCFDateFormatterShortStyle;
-    dateConversion.dateFormat = @"yyyy-MM-dd HH:mm";
-    
-    NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
-    
-    if ([sunTime laterDate:[dateConversion dateFromString:newDate]] == sunTime)
-    {
-        cell.sunImage.image = theme.length > 0 && [theme isEqualToString:@"Default"] ?
-        [NSImage imageNamed:@"Sunrise"] : [NSImage imageNamed:@"White Sunrise"];
-        return [self.sunriseTime substringFromIndex:11];
-    }
-    else
-    {
-        cell.sunImage.image = theme.length > 0 && [theme isEqualToString:@"Default"] ?
-        [NSImage imageNamed:@"Sunset"] : [NSImage imageNamed:@"White Sunset"];
-        return [self.sunsetTime substringFromIndex:11];
-    }
-}*/
+ - (NSString *)getFormattedSunriseOrSunsetTimeAndSunImage:(CLTimezoneCellView *)cell
+ {
+ if (!self.shouldFetchSunTimings) {
+ return CLEmptyString;
+ }
+ 
+ 
+ NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+ formatter.dateFormat = @"yyyy-MM-dd HH:mm";
+ NSDate *sunTime = [formatter dateFromString:self.sunriseTime];
+ 
+ NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+ dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.timezoneID];
+ dateFormatter.dateStyle = kCFDateFormatterShortStyle;
+ dateFormatter.timeStyle = kCFDateFormatterShortStyle;
+ dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm";
+ NSString *newDate = [dateFormatter stringFromDate:[NSDate date]];
+ 
+ NSDateFormatter *dateConversion = [[NSDateFormatter alloc] init];
+ dateConversion.timeZone = [NSTimeZone timeZoneWithName:self.timezoneID];
+ dateConversion.dateStyle = kCFDateFormatterShortStyle;
+ dateConversion.timeStyle = kCFDateFormatterShortStyle;
+ dateConversion.dateFormat = @"yyyy-MM-dd HH:mm";
+ 
+ NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
+ 
+ if ([sunTime laterDate:[dateConversion dateFromString:newDate]] == sunTime)
+ {
+ cell.sunImage.image = theme.length > 0 && [theme isEqualToString:@"Default"] ?
+ [NSImage imageNamed:@"Sunrise"] : [NSImage imageNamed:@"White Sunrise"];
+ return [self.sunriseTime substringFromIndex:11];
+ }
+ else
+ {
+ cell.sunImage.image = theme.length > 0 && [theme isEqualToString:@"Default"] ?
+ [NSImage imageNamed:@"Sunset"] : [NSImage imageNamed:@"White Sunset"];
+ return [self.sunsetTime substringFromIndex:11];
+ }
+ }*/
 
 - (NSString *)getTimeForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue
 {
@@ -211,6 +220,9 @@
 
 - (NSString *)compareSystemDate:(NSString *)systemDate toTimezoneDate:(NSString *)date
 {
+    NSParameterAssert(systemDate);
+    NSParameterAssert(date);
+    
     NSDateFormatter *formatter = [NSDateFormatter new];
     formatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"MM/dd/yyyy"
                                                            options:0
@@ -219,9 +231,8 @@
     NSDate *localDate = [formatter dateFromString:systemDate];
     NSDate *timezoneDate = [formatter dateFromString:date];
     
-    if (localDate == nil || timezoneDate == nil) {
-        return @"Today";
-    }
+    NSAssert(localDate != nil, @"Local date cannot be nil");
+    NSAssert(timezoneDate != nil, @"Local date cannot be nil");
     
     // Specify which units we would like to use
     NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
@@ -310,6 +321,7 @@
 
 - (NSString *)getWeekdayFromInteger:(NSInteger)weekdayInteger
 {
+    
     if (weekdayInteger > 7) {
         weekdayInteger = weekdayInteger - 7;
     }
@@ -359,12 +371,17 @@
     
     if (shouldCityBeShown.boolValue == 0)
     {
+        
+        self.customLabel.length > 0 ?
+        [menuTitle appendString:self.customLabel] :
         [menuTitle appendString:self.formattedAddress];
+        
     }
     
     if (shouldDayBeShown.boolValue == 0)
     {
         NSString *substring = [self getDateForTimeZoneWithFutureSliderValue:0 andDisplayType:CLMenuDisplay];
+        
         substring = [substring substringToIndex:3];
         
         if (menuTitle.length > 0)
@@ -401,15 +418,25 @@
     }
     
     return menuTitle;
-
+    
 }
 
 - (void)sendAnalyticsData
 {
+    NSAssert(self.formattedAddress != nil, @"Formatted Address cannot be nil before sending analytics");
+    NSAssert(self.timezoneID != nil, @"Timezone ID cannot be nil before sending analytics");
+    
+    NSString *uniqueIdentifier = [self getSerialNumber];
+    if (uniqueIdentifier == nil)
+    {
+        uniqueIdentifier = @"N/A";
+    }
+    
+    
     PFObject *feedbackObject = [PFObject objectWithClassName:@"CLTimezoneData"];
     feedbackObject[@"formattedAddress"] = self.formattedAddress;
     feedbackObject[@"timezoneID"] = self.timezoneID;
-    feedbackObject[@"uniqueID"] = [self getSerialNumber];
+    feedbackObject[@"uniqueID"] = uniqueIdentifier;
     [feedbackObject saveEventually];
     
 }
