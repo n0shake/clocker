@@ -44,7 +44,7 @@
 		<true/>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2015, Abhishek Banthia</string>
+	<string>Copyright © 2016, Abhishek Banthia</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
