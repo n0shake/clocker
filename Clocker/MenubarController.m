@@ -19,23 +19,32 @@
         // Install status item into the menu bar
         NSData *dataObject = [[NSUserDefaults standardUserDefaults] objectForKey:@"favouriteTimezone"];
         NSString *menuTitle = [NSString new];
+        
+        NSStatusItem *statusItem;
+        NSTextField *textField;
+        
         if (dataObject) {
             CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:dataObject];
             menuTitle = [timezoneObject getMenuTitle];
+            
+            textField= [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, STATUS_ITEM_VIEW_WIDTH, 18)];
+            textField.backgroundColor = [NSColor whiteColor];
+            textField.bordered = NO;
+            textField.textColor = [NSColor blackColor];
+            textField.alignment = NSTextAlignmentCenter;
+            textField.stringValue = (menuTitle.length > 0) ? menuTitle : @"Icon";
+            [textField sizeToFit];
+            
+           statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:textField.frame.size.width+3];
         }
-        
-        NSTextField *textField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, STATUS_ITEM_VIEW_WIDTH, 18)];
-        textField.backgroundColor = [NSColor whiteColor];
-        textField.bordered = NO;
-        textField.textColor = [NSColor blackColor];
-        textField.alignment = NSTextAlignmentCenter;
-        textField.stringValue = (menuTitle.length > 0) ? menuTitle : @"Icon";
-        [textField sizeToFit];
-        
-        NSStatusItem *statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:textField.frame.size.width+3];
+        else
+        {
+            statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:STATUS_ITEM_VIEW_WIDTH];
+        }
+       
      
         _statusItemView = [[StatusItemView alloc] initWithStatusItem:statusItem];
-        _statusItemView.image = [self imageWithSubviewsWithTextField:textField];
+        _statusItemView.image = dataObject ? [self imageWithSubviewsWithTextField:textField] : [NSImage imageNamed:@"MenuIcon"];
         _statusItemView.alternateImage = [NSImage imageNamed:@"StatusHighlighted"];
         _statusItemView.action = @selector(togglePanel:);
         [NSTimer scheduledTimerWithTimeInterval:1.0
