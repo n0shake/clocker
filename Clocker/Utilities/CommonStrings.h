@@ -26,5 +26,6 @@ extern NSString *const CLShowDateInMenu;
 extern NSString *const CLShowPlaceInMenu;
 extern NSString *const CLDisplayFutureSliderKey;
 extern NSString *const CLStartAtLogin;
+extern NSString *const CLShowAppInForeground;
 
 @end
