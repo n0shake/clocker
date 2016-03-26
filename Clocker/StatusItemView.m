@@ -74,38 +74,37 @@
     {
         CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:dataObject];
         textField.stringValue = [timezoneObject getMenuTitle];
-    }
-    else
-    {
-        textField.stringValue = [[NSDate date] formattedDateWithFormat:@"MMM dd HH:mm"
-                                                              timeZone:[NSTimeZone systemTimeZone]
-                                                                locale:[NSLocale currentLocale]];
-    }
-    
-    
-    [textField sizeToFit];
+        
+        // Set up dark mode for icon
+        if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"]  isEqual: @"Dark"])
+        {
+            textField.textColor = [NSColor whiteColor];
+            self.image = [self imageWithSubviewsWithTextField:textField];
+        }
+        else
+        {
+            textField.textColor = [NSColor blackColor];
+            self.image = [self imageWithSubviewsWithTextField:textField];
+        }
+        
+        [textField sizeToFit];
+        
+        NSDisableScreenUpdates();
+        [self.statusItem setLength:textField.frame.size.width+10];
+        NSEnableScreenUpdates();
+        
+        CGRect newRect = CGRectMake(dirtyRect.origin.x, dirtyRect.origin.y, textField.frame.size.width+5, dirtyRect.size.height);
+        
+        [self.statusItem drawStatusBarBackgroundInRect:newRect withHighlight:NO];
 
-    
-	// Set up dark mode for icon
-    if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"]  isEqual: @"Dark"])
-    {
-        textField.backgroundColor = [NSColor whiteColor];
-        textField.textColor = [NSColor blackColor];
-        self.image = [self imageWithSubviewsWithTextField:textField];
     }
     else
     {
-        textField.backgroundColor = [NSColor blackColor];
-        textField.textColor = [NSColor whiteColor];
-        self.image = [self imageWithSubviewsWithTextField:textField];
+      self.image = [NSImage imageNamed:@"MenuIcon"];
+        self.statusItem.length = 24;
+        [self.statusItem drawStatusBarBackgroundInRect:CGRectMake(0, 0, self.image.size.width, self.image.size.height) withHighlight:NO];
     }
     
-    NSDisableScreenUpdates();
-    [self.statusItem setLength:textField.frame.size.width+10];
-    NSEnableScreenUpdates();
-    
-    CGRect newRect = CGRectMake(dirtyRect.origin.x, dirtyRect.origin.y, textField.frame.size.width+5, dirtyRect.size.height);
-	[self.statusItem drawStatusBarBackgroundInRect:newRect withHighlight:NO];
     
     NSImage *icon = self.image;
     NSSize iconSize = [icon size];
