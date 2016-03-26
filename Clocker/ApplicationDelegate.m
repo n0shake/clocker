@@ -70,8 +70,8 @@ void *kContextActivePanel = &kContextActivePanel;
     //Configure iRate
     [iRate sharedInstance].useAllAvailableLanguages = NO;
     [iVersion sharedInstance].useAllAvailableLanguages = NO;
-    [[iRate sharedInstance] setVerboseLogging:YES];
-    [[iVersion sharedInstance] setVerboseLogging:YES];
+    [[iRate sharedInstance] setVerboseLogging:NO];
+    [[iVersion sharedInstance] setVerboseLogging:NO];
 }
 
 #pragma mark - NSApplicationDelegate
@@ -127,6 +127,11 @@ void *kContextActivePanel = &kContextActivePanel;
     NSNumber *showCityInMenu = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowPlaceInMenu];
     if (showCityInMenu == nil) {
         [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowPlaceInMenu];
+    }
+    
+    NSNumber *showAppInForeground = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowAppInForeground];
+    if (showAppInForeground == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:CLShowAppInForeground];
     }
     
     NSNumber *startClockerAtLogin = [[NSUserDefaults standardUserDefaults] objectForKey:CLStartAtLogin];
