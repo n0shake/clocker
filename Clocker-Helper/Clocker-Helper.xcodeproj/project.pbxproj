@@ -10,7 +10,6 @@
 		9A20A05A1C4E801500FB45AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A20A0591C4E801500FB45AB /* AppDelegate.m */; };
 		9A20A05D1C4E801500FB45AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A20A05C1C4E801500FB45AB /* main.m */; };
 		9A20A05F1C4E801500FB45AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A20A05E1C4E801500FB45AB /* Assets.xcassets */; };
-		9A20A0621C4E801500FB45AB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A20A0601C4E801500FB45AB /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,7 +18,6 @@
 		9A20A0591C4E801500FB45AB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9A20A05C1C4E801500FB45AB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9A20A05E1C4E801500FB45AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9A20A0611C4E801500FB45AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		9A20A0631C4E801500FB45AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A20A0731C4E80D300FB45AB /* Clocker-Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Clocker-Helper.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,7 +56,6 @@
 				9A20A0581C4E801500FB45AB /* AppDelegate.h */,
 				9A20A0591C4E801500FB45AB /* AppDelegate.m */,
 				9A20A05E1C4E801500FB45AB /* Assets.xcassets */,
-				9A20A0601C4E801500FB45AB /* MainMenu.xib */,
 				9A20A0631C4E801500FB45AB /* Info.plist */,
 				9A20A05B1C4E801500FB45AB /* Supporting Files */,
 			);
@@ -119,7 +116,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
 			mainGroup = 9A20A04C1C4E801500FB45AB;
 			productRefGroup = 9A20A0561C4E801500FB45AB /* Products */;
@@ -137,7 +133,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A20A05F1C4E801500FB45AB /* Assets.xcassets in Resources */,
-				9A20A0621C4E801500FB45AB /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,17 +149,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		9A20A0601C4E801500FB45AB /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9A20A0611C4E801500FB45AB /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		9A20A0641C4E801500FB45AB /* Debug */ = {
