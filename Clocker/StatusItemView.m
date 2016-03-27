@@ -76,7 +76,7 @@
         textField.stringValue = [timezoneObject getMenuTitle];
         
         // Set up dark mode for icon
-        if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"]  isEqual: @"Dark"])
+        if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"]  isEqualToString:@"Dark"])
         {
             textField.textColor = [NSColor whiteColor];
             self.image = [self imageWithSubviewsWithTextField:textField];
@@ -96,13 +96,12 @@
         CGRect newRect = CGRectMake(dirtyRect.origin.x, dirtyRect.origin.y, textField.frame.size.width+5, dirtyRect.size.height);
         
         [self.statusItem drawStatusBarBackgroundInRect:newRect withHighlight:NO];
-
     }
     else
     {
       self.image = [NSImage imageNamed:@"MenuIcon"];
-        self.statusItem.length = 24;
-        [self.statusItem drawStatusBarBackgroundInRect:CGRectMake(0, 0, self.image.size.width, self.image.size.height) withHighlight:NO];
+      self.statusItem.length = 24;
+      [self.statusItem drawStatusBarBackgroundInRect:CGRectMake(0, 0, self.image.size.width, self.image.size.height) withHighlight:NO];
     }
     
     

@@ -80,6 +80,8 @@
     }
     else
     {
+        //Call setNeedsDisplay to change the icon and then invalidate the timer
+        [self.statusItemView setNeedsDisplay:YES];
         [self.iconUpdateTimer invalidate];
         self.iconUpdateTimer = nil;
     }

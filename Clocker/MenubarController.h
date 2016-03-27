@@ -43,5 +43,6 @@
 @property (nonatomic, strong) NSTimer *iconUpdateTimer;
 
 - (void)setInitialTimezoneData;
+- (void)shouldIconBeUpdated:(BOOL)value;
 
 @end

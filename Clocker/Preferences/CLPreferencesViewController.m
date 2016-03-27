@@ -228,7 +228,6 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                                                       forKey:@"favouriteTimezone"];
         }
 
-        
         [self refreshMainTableview];
     }
     else
@@ -250,12 +249,23 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         [newArray replaceObjectAtIndex:row withObject:encodedObject];
         [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:CLDefaultPreferenceKey];
         
+        ApplicationDelegate *appDelegate = (ApplicationDelegate*)[NSApplication sharedApplication].delegate;
         
-        (dataObject.isFavourite.integerValue == 1) ?
-        [[NSUserDefaults standardUserDefaults] setObject:encodedObject
-                                                  forKey:@"favouriteTimezone"]:
-        [[NSUserDefaults standardUserDefaults] setObject:nil
-                                                  forKey:@"favouriteTimezone"];
+        if (dataObject.isFavourite.integerValue == 1)
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:encodedObject
+                                                      forKey:@"favouriteTimezone"];
+            [appDelegate.menubarController shouldIconBeUpdated:YES];
+            
+        }
+        else
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:nil
+                                                      forKey:@"favouriteTimezone"];
+            [appDelegate.menubarController shouldIconBeUpdated:NO];
+        }
+        
+        
         
         [self refereshTimezoneTableView];
         

@@ -91,6 +91,8 @@
         
         [panelController.mainTableview reloadData];
         
+        [appDelegate.menubarController shouldIconBeUpdated:YES];
+        
     });
 }
 
