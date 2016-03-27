@@ -40,6 +40,7 @@
 @property (nonatomic) BOOL hasActiveIcon;
 @property (nonatomic, strong, readonly) NSStatusItem *statusItem;
 @property (nonatomic, strong, readonly) StatusItemView *statusItemView;
+@property (nonatomic, strong) NSTimer *iconUpdateTimer;
 
 - (void)setInitialTimezoneData;
 

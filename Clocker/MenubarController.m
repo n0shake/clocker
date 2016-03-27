@@ -23,7 +23,8 @@
         NSStatusItem *statusItem;
         NSTextField *textField;
         
-        if (dataObject) {
+        if (dataObject)
+        {
             CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:dataObject];
             menuTitle = [timezoneObject getMenuTitle];
             
@@ -36,10 +37,15 @@
             [textField sizeToFit];
             
            statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:textField.frame.size.width+3];
+            
+            [self shouldIconBeUpdated:YES];
+            
         }
         else
         {
             statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:STATUS_ITEM_VIEW_WIDTH];
+            
+            [self shouldIconBeUpdated:NO];
         }
        
      
@@ -47,12 +53,7 @@
         _statusItemView.image = dataObject ? [self imageWithSubviewsWithTextField:textField] : [NSImage imageNamed:@"MenuIcon"];
         _statusItemView.alternateImage = [NSImage imageNamed:@"StatusHighlighted"];
         _statusItemView.action = @selector(togglePanel:);
-        [NSTimer scheduledTimerWithTimeInterval:1.0
-                                         target:self
-                                       selector:@selector(updateIconDisplay)
-                                       userInfo:nil
-                                        repeats:YES];
-    }
+           }
     return self;
 }
 
@@ -64,6 +65,24 @@
 - (void)updateIconDisplay
 {
     [self.statusItemView setNeedsDisplay:YES];
+}
+
+- (void)shouldIconBeUpdated:(BOOL)value
+{
+    if (value)
+    {
+       self.iconUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                         target:self
+                                       selector:@selector(updateIconDisplay)
+                                       userInfo:nil
+                                        repeats:YES];
+
+    }
+    else
+    {
+        [self.iconUpdateTimer invalidate];
+        self.iconUpdateTimer = nil;
+    }
 }
 
 - (NSImage *)imageWithSubviewsWithTextField:(NSTextField *)textField

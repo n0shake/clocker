@@ -225,7 +225,7 @@
                         </connections>
                     </slider>
                     <button toolTip="Open Preferences" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OFy-u1-TnH">
-                        <rect key="frame" x="246" y="11" width="29" height="19"/>
+                        <rect key="frame" x="246" y="4" width="29" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="29" id="MIQ-4K-E5A"/>
                             <constraint firstAttribute="height" constant="18" id="X7D-ep-wB4"/>
@@ -239,12 +239,12 @@
                         </connections>
                     </button>
                     <button toolTip="Close Clocker" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nTt-pf-Hw2">
-                        <rect key="frame" x="0.0" y="11" width="29" height="19"/>
+                        <rect key="frame" x="0.0" y="4" width="29" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="29" id="8kZ-Pj-VK6"/>
                             <constraint firstAttribute="height" constant="18" id="sVG-VE-3q4"/>
                         </constraints>
-                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="PowerIcon" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sUh-16-Fhk">
+                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="PowerIcon" imagePosition="only" alignment="center" alternateImage="PowerIcon" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sUh-16-Fhk">
                             <behavior key="behavior" lightByContents="YES"/>
                             <font key="font" metaFont="systemBold" size="12"/>
                         </buttonCell>
@@ -255,16 +255,16 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="4Gd-Nv-fXr" firstAttribute="top" secondItem="6" secondAttribute="top" constant="8" id="1g0-Hm-7Gh"/>
-                    <constraint firstItem="dFw-ts-8OZ" firstAttribute="leading" secondItem="nTt-pf-Hw2" secondAttribute="trailing" constant="-30" id="4aK-71-fsY"/>
                     <constraint firstItem="rGL-w7-iSa" firstAttribute="centerX" secondItem="T7e-RS-eTE" secondAttribute="centerX" constant="1" id="5NW-NQ-wPO"/>
                     <constraint firstItem="T7e-RS-eTE" firstAttribute="top" secondItem="dFw-ts-8OZ" secondAttribute="bottom" constant="-30" id="96B-lf-iFV"/>
+                    <constraint firstAttribute="bottom" secondItem="nTt-pf-Hw2" secondAttribute="bottom" constant="5" id="Alf-Sy-CEF"/>
                     <constraint firstItem="T7e-RS-eTE" firstAttribute="leading" secondItem="nTt-pf-Hw2" secondAttribute="trailing" constant="2" id="GgQ-58-tbc"/>
-                    <constraint firstItem="nTt-pf-Hw2" firstAttribute="top" secondItem="dFw-ts-8OZ" secondAttribute="bottom" constant="-30" id="LV3-1D-GqQ"/>
                     <constraint firstAttribute="trailing" secondItem="4Gd-Nv-fXr" secondAttribute="trailing" constant="-1" id="XP6-W0-2XT"/>
+                    <constraint firstAttribute="bottom" secondItem="OFy-u1-TnH" secondAttribute="bottom" constant="5" id="an1-GW-fs9"/>
                     <constraint firstItem="T7e-RS-eTE" firstAttribute="top" secondItem="rGL-w7-iSa" secondAttribute="bottom" constant="1" id="cuU-JZ-uRn"/>
                     <constraint firstItem="4Gd-Nv-fXr" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="-1" id="fHc-VQ-mJ3"/>
                     <constraint firstAttribute="trailing" secondItem="OFy-u1-TnH" secondAttribute="trailing" constant="5" id="p2a-qj-LHE"/>
-                    <constraint firstItem="OFy-u1-TnH" firstAttribute="top" secondItem="dFw-ts-8OZ" secondAttribute="bottom" constant="-30" id="snA-N5-mgY"/>
+                    <constraint firstItem="nTt-pf-Hw2" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="uxy-ac-DRN"/>
                     <constraint firstItem="OFy-u1-TnH" firstAttribute="leading" secondItem="T7e-RS-eTE" secondAttribute="trailing" constant="2" id="vVD-Or-EZX"/>
                 </constraints>
             </view>

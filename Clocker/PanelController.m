@@ -502,50 +502,30 @@ static PanelController *sharedPanel = nil;
 {
     if (self.showReviewCell) {
         self.sliderLabel.hidden = YES;
-        self.panelWindow.sliderLabel.hidden = YES;
         return;
     }
     
     
     if (!self.futureSlider.isHidden) {
         self.sliderLabel.hidden = !value;
-        self.panelWindow.sliderLabel.hidden = !value;
     }
     
     
     if (self.defaultPreferences.count == 0)
     {
         value = YES;
+        
         if (!self.futureSlider.isHidden)
         {
             self.sliderLabel.hidden = YES;
         }
     }
     
-    if (self.panelWindow.defaultPreferences.count == 0)
-    {
-        value = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.shutdownButton.hidden = !value;
+        self.preferencesButton.hidden = !value;
         
-        if (!self.panelWindow.futureSlider.isHidden)
-        {
-            self.panelWindow.sliderLabel.hidden = YES;
-        }
-    }
-    
-    self.panelWindow.shutdownButton.hidden = !value;
-    self.panelWindow.preferencesButton.hidden = !value;
-    
-    if (value)
-    {
-        self.panelWindow.window.styleMask = NSResizableWindowMask | NSClosableWindowMask | NSTitledWindowMask;
-    }
-    else
-    {
-        self.panelWindow.window.styleMask = NSBorderlessWindowMask;
-    }
-  
-    self.shutdownButton.hidden = !value;
-    self.preferencesButton.hidden = !value;
+    });
     
 }
 
