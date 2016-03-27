@@ -13,6 +13,7 @@
 
 @interface CLOneWindowController : NSWindowController
 @property (strong, nonatomic) CLPreferencesViewController *preferencesView;
+@property (strong, nonatomic) CLAppearanceViewController *appearanceView;
 + (instancetype)sharedWindow;
 
 @end

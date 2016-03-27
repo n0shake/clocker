@@ -18,7 +18,7 @@ NSString *const CLAppearenceViewNibIdentifier = @"CLAppearanceView";
 
 
 @property (strong, nonatomic) CLAboutUsViewController *aboutUsView;
-@property (strong, nonatomic) CLAppearanceViewController *appearanceView;
+
 
 @end
 

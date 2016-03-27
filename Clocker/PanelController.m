@@ -36,6 +36,7 @@
 #import "CLTimezoneCellView.h"
 #import "DateTools.h"
 #import "CLTimezoneData.h"
+#import "Panel.h"
 
 #define OPEN_DURATION .15
 #define CLOSE_DURATION .1
@@ -59,6 +60,8 @@ NSString *const CLPanelNibIdentifier = @"Panel";
 NSString *const CLRatingCellViewIdentifier = @"ratingCellView";
 NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 
+static PanelController *sharedPanel = nil;
+
 @implementation PanelController
 
 #pragma mark -
@@ -80,11 +83,13 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 {
     [super awakeFromNib];
     
+    self.futureSlider.continuous = YES;
+    
     if (!self.dateFormatter)
     {
         self.dateFormatter = [NSDateFormatter new];
     }
-
+    
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey] isEqualToString:@"Black"]) {
         self.shutdownButton.image = [NSImage imageNamed:@"PowerIcon-White"];
         self.preferencesButton.image = [NSImage imageNamed:@"Settings-White"];
@@ -98,7 +103,8 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     [self updateDefaultPreferences];
     self.mainTableview.selectionHighlightStyle = NSTableViewSelectionHighlightStyleNone;
     
-
+    
+    
     NSPanel *panel = (id)[self window];
     [panel setAcceptsMouseMovedEvents:YES];
     [panel setLevel:NSPopUpMenuWindowLevel];
@@ -109,7 +115,70 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     [self.mainTableview registerForDraggedTypes: [NSArray arrayWithObject:CLDragSessionKey]];
     
     [self updatePanelColor];
+    
+}
 
+
++ (instancetype)sharedPanel
+{
+    if (sharedPanel == nil)
+    {
+        /*Using a thread safe pattern*/
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            sharedPanel = [[self alloc] initWithWindowNibName:@"Panel"];
+        });
+    }
+    return sharedPanel;
+}
+
+- (void)openAsFloatingWindow
+{
+    
+    if (self.panelWindow)
+    {
+        [self.panelWindow.window makeKeyAndOrderFront:nil];
+        return;
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:CLShowAppInForeground];
+    
+    self.panelWindow = [PanelController sharedPanel];
+    self.panelWindow.window.level = NSFloatingWindowLevel;
+    
+    self.panelWindow.window.styleMask = NSTitledWindowMask | NSClosableWindowMask | NSResizableWindowMask;
+    self.panelWindow.window.titlebarAppearsTransparent = YES;
+    self.panelWindow.window.titleVisibility = NSWindowTitleVisible;
+    [self.panelWindow showWindow:nil];
+    NSSize maxWindowSize;
+    maxWindowSize.width = self.window.frame.size.width;
+    maxWindowSize.height = self.window.frame.size.height+40;
+    NSSize minWindowSize;
+    minWindowSize.width = 110;
+    minWindowSize.height = 50;
+    
+    NSSize currentSize;
+    currentSize.width = self.window.frame.size.width;
+    currentSize.height = self.window.frame.size.height;
+    
+    self.panelWindow.window.contentMaxSize = maxWindowSize;
+    self.panelWindow.window.contentMinSize = minWindowSize;
+    
+    [self.panelWindow.window setContentSize:currentSize];
+    [NSApp activateIgnoringOtherApps:YES];
+    
+    self.floatingWindowTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                                target:self selector:@selector(updateTime)
+                                                              userInfo:nil
+                                                               repeats:YES];
+}
+
+- (void)updateTime
+{
+    if (self.panelWindow)
+    {
+        [self.panelWindow.mainTableview reloadData];
+    }
 }
 
 #pragma mark -
@@ -118,11 +187,13 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 
 - (void) updateDefaultPreferences
 {
+    
     NSArray *defaultZones = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
     
     self.defaultPreferences = self.defaultPreferences == nil ? [[NSMutableArray alloc] initWithArray:defaultZones] : [NSMutableArray arrayWithArray:defaultZones];
-       
-    self.scrollViewHeight.constant = self.showReviewCell ? (self.defaultPreferences.count+1)*55+40 : self.defaultPreferences.count*55 + 30;
+    
+    self.scrollViewHeight.constant = self.showReviewCell ?
+    (self.defaultPreferences.count+1)*55+40 : self.defaultPreferences.count*55 + 30;
     
     if (self.defaultPreferences.count == 0) {
         self.futureSlider.hidden = YES;
@@ -133,7 +204,13 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
         self.futureSlider.hidden = NO;
         self.sliderLabel.hidden = NO;
     }
-
+    
+    //hide the label when show review cell is shown so that the Main Panel looks cleaner
+    
+    if (self.showReviewCell) {
+        self.sliderLabel.hidden = YES;
+    }
+    
 }
 
 #pragma mark - Public accessors
@@ -157,7 +234,27 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 
 - (void)windowWillClose:(NSNotification *)notification
 {
+    if ([notification.object isKindOfClass:[Panel class]])
+    {
+        
+        for (NSWindow *currentWindow in [NSApplication sharedApplication].windows)
+        {
+            if ([currentWindow.windowController isKindOfClass:[CLOneWindowController class]])
+            {
+                CLOneWindowController *reference = (CLOneWindowController *)currentWindow.windowController;
+                CLAppearanceViewController *appearanceView = reference.appearanceView;
+                [appearanceView updateState];
+                self.panelWindow = nil;
+            }
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowAppInForeground];
+              return;
+        
+    }
+    
     self.hasActivePanel = NO;
+    
 }
 
 - (void)windowDidResignKey:(NSNotification *)notification;
@@ -178,7 +275,6 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     CGFloat panelX = statusX - NSMinX(panelRect);
     
     self.backgroundView.arrowX = panelX;
-    
 }
 
 #pragma mark - Keyboard
@@ -228,7 +324,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     panelRect.size.width = PANEL_WIDTH;
     
     panelRect.size.height = self.showReviewCell ? (self.defaultPreferences.count+1)*55+40: self.defaultPreferences.count*55 + 30;
-
+    
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
     
@@ -307,7 +403,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     
     NSTextView *customLabel = (NSTextView*)[cell.relativeDate.window
                                             fieldEditor:YES
-                                              forObject:cell.relativeDate];
+                                            forObject:cell.relativeDate];
     
     NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
     if (theme.length > 0 && ![theme isEqualToString:@"Default"])
@@ -336,7 +432,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     cell.rowNumber = row;
     
     cell.customName.stringValue = [dataObject formatStringShouldContainCity:YES];
-       
+    
     NSNumber *displayFutureSlider = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey];
     if ([displayFutureSlider isEqualToNumber:[NSNumber numberWithInteger:0]])
     {
@@ -406,7 +502,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
             CLOneWindowController *ref = (CLOneWindowController *) window.windowController;
             [ref.preferencesView refereshTimezoneTableView];
         }
-
+        
     }];
     
     [self.mainTableview reloadData];
@@ -428,7 +524,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     self.oneWindow = [CLOneWindowController sharedWindow];
     [self.oneWindow showWindow:nil];
     [NSApp activateIgnoringOtherApps:YES];
-
+    
 }
 
 #pragma mark -
@@ -437,10 +533,18 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
 
 - (void)showOptions:(BOOL)value
 {
-    if (!self.futureSlider.isHidden) {
-           self.sliderLabel.hidden = !value;
+    if (self.showReviewCell) {
+        self.sliderLabel.hidden = YES;
+        self.panelWindow.sliderLabel.hidden = YES;
+        return;
     }
- 
+    
+    
+    if (!self.futureSlider.isHidden) {
+        self.sliderLabel.hidden = !value;
+        self.panelWindow.sliderLabel.hidden = !value;
+    }
+    
     
     if (self.defaultPreferences.count == 0)
     {
@@ -449,21 +553,42 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
         {
             self.sliderLabel.hidden = YES;
         }
-        
     }
-   
+    
+    if (self.panelWindow.defaultPreferences.count == 0)
+    {
+        value = YES;
+        
+        if (!self.panelWindow.futureSlider.isHidden)
+        {
+            self.panelWindow.sliderLabel.hidden = YES;
+        }
+    }
+    
+    self.panelWindow.shutdownButton.hidden = !value;
+    self.panelWindow.preferencesButton.hidden = !value;
+    
+    if (value)
+    {
+        self.panelWindow.window.styleMask = NSResizableWindowMask | NSClosableWindowMask | NSTitledWindowMask;
+    }
+    else
+    {
+        self.panelWindow.window.styleMask = NSBorderlessWindowMask;
+    }
+  
     self.shutdownButton.hidden = !value;
     self.preferencesButton.hidden = !value;
-
+    
 }
 
 - (IBAction)sliderMoved:(id)sender
 {    
     NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
     NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitHour
-                                          value:self.futureSliderValue
-                                         toDate:[NSDate date]
-                                        options:kNilOptions];
+                                                  value:self.futureSliderValue
+                                                 toDate:[NSDate date]
+                                                options:kNilOptions];
     
     self.dateFormatter.dateStyle = kCFDateFormatterNoStyle;
     self.dateFormatter.timeStyle = kCFDateFormatterShortStyle;
@@ -473,7 +598,7 @@ NSString *const CLTimezoneCellViewIdentifier = @"timeZoneCell";
     NSString *helper = [self.dateFormatter stringFromDate:newDate];
     
     NSHelpManager *helpManager = [NSHelpManager sharedHelpManager];
-
+    
     NSPoint pointInScreen = [NSEvent mouseLocation];
     pointInScreen.y -= 5;
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ %@", relativeDate, helper]];

@@ -67,6 +67,10 @@
 @property (weak) IBOutlet NSButton *preferencesButton;
 @property (weak) IBOutlet NSSlider *futureSlider;
 @property (weak) IBOutlet NSTextField *sliderLabel;
+@property (strong, nonatomic) PanelController *panelWindow;
+@property (strong, nonatomic) NSTimer *floatingWindowTimer;
+
++ (instancetype)sharedPanel;
 
 - (id)initWithDelegate:(id<PanelControllerDelegate>)delegate;
 - (void)openPanel;
@@ -75,5 +79,6 @@
 - (void)showOptions:(BOOL)value;
 - (void)removeContextHelpForSlider;
 - (void)updatePanelColor;
+- (void)openAsFloatingWindow;
 
 @end
