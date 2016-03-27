@@ -188,7 +188,7 @@
 - (NSString *)getTimeForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue
 {
     NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
-    NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitHour
+    NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
                                                   value:futureSliderValue
                                                  toDate:[NSDate date]
                                                 options:kNilOptions];
@@ -291,7 +291,7 @@
 - (NSString *)getDateForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue andDisplayType:(CLDateDisplayType)type
 {
     NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
-    NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitHour
+    NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
                                                   value:futureSliderValue
                                                  toDate:[NSDate date]
                                                 options:kNilOptions];

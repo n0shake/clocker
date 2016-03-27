@@ -585,7 +585,7 @@ static PanelController *sharedPanel = nil;
 - (IBAction)sliderMoved:(id)sender
 {    
     NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
-    NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitHour
+    NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
                                                   value:self.futureSliderValue
                                                  toDate:[NSDate date]
                                                 options:kNilOptions];

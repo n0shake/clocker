@@ -65,6 +65,7 @@
 		9AB9357B1C1AD8F7001285A0 /* CLRatingCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB9357A1C1AD8F7001285A0 /* CLRatingCellView.m */; };
 		9ABA2B031C671D49009DC0EF /* CLMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABA2B021C671D49009DC0EF /* CLMainWindowController.m */; };
 		9ABF58721C29A80600BD0187 /* CLTimezoneData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABF58711C29A80600BD0187 /* CLTimezoneData.m */; };
+		9ABFB3801CA6882000E10745 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ABFB37F1CA6882000E10745 /* ApplicationServices.framework */; };
 		9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */; };
 		9AF9A16B1C250AB300EE7C2A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9A16A1C250AB300EE7C2A /* Reachability.m */; };
 		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
@@ -197,6 +198,7 @@
 		9ABA2B021C671D49009DC0EF /* CLMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLMainWindowController.m; path = Clocker/CLMainWindowController.m; sourceTree = "<group>"; };
 		9ABF58701C29A80600BD0187 /* CLTimezoneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLTimezoneData.h; path = Clocker/Model/CLTimezoneData.h; sourceTree = "<group>"; };
 		9ABF58711C29A80600BD0187 /* CLTimezoneData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLTimezoneData.m; path = Clocker/Model/CLTimezoneData.m; sourceTree = "<group>"; };
+		9ABFB37F1CA6882000E10745 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9AF9A1691C250AB300EE7C2A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Clocker/Reachability/Reachability.h; sourceTree = "<group>"; };
 		9AF9A16A1C250AB300EE7C2A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Clocker/Reachability/Reachability.m; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ABFB3801CA6882000E10745 /* ApplicationServices.framework in Frameworks */,
 				9A20A0701C4E804D00FB45AB /* ServiceManagement.framework in Frameworks */,
 				9A20A04B1C4DEED200FB45AB /* IOKit.framework in Frameworks */,
 				9A43792C1BEC231100F4E27F /* libz.tbd in Frameworks */,
@@ -450,6 +453,7 @@
 		DD4F7C0713C30F9F00825C6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9ABFB37F1CA6882000E10745 /* ApplicationServices.framework */,
 				9A20A06F1C4E804D00FB45AB /* ServiceManagement.framework */,
 				9A20A04A1C4DEED200FB45AB /* IOKit.framework */,
 				9A9E876B1C1FEDE700A7A2DF /* libsqlite3.tbd */,
