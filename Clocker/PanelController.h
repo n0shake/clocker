@@ -70,8 +70,6 @@
 @property (strong, nonatomic) PanelController *panelWindow;
 @property (strong, nonatomic) NSTimer *floatingWindowTimer;
 
-+ (instancetype)sharedPanel;
-
 - (id)initWithDelegate:(id<PanelControllerDelegate>)delegate;
 - (void)openPanel;
 - (void)closePanel;
@@ -79,6 +77,5 @@
 - (void)showOptions:(BOOL)value;
 - (void)removeContextHelpForSlider;
 - (void)updatePanelColor;
-- (void)openAsFloatingWindow;
 
 @end

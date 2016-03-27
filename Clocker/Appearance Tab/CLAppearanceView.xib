@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
@@ -18,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="439" height="463"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iVw-cq-zLz">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="60" translatesAutoresizingMaskIntoConstraints="NO" id="iVw-cq-zLz">
                     <rect key="frame" x="188" y="349" width="64" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="2DP-wK-Ga8"/>
@@ -30,7 +30,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5TC-RQ-gzI">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="5TC-RQ-gzI">
                     <rect key="frame" x="168" y="411" width="104" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="gWc-u4-D8E"/>
@@ -59,7 +59,7 @@
                         <binding destination="WGI-5h-l6M" name="selectedLabel" keyPath="values.defaultTheme" id="vyq-YM-las"/>
                     </connections>
                 </segmentedControl>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YQi-x8-6f8">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="YQi-x8-6f8">
                     <rect key="frame" x="143" y="287" width="154" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="eY8-bV-QLM"/>
@@ -181,7 +181,7 @@
                         <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.displayFutureSlider" id="zRQ-mQ-qBp"/>
                     </connections>
                 </segmentedControl>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HTZ-1V-qZb">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="HTZ-1V-qZb">
                     <rect key="frame" x="158" y="232" width="124" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="120" id="1Lv-wC-hEM"/>
@@ -227,8 +227,8 @@
                         </segments>
                     </segmentedCell>
                     <connections>
-                        <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.showPlaceName" id="374-hG-giL"/>
                         <binding destination="-2" name="enabled" keyPath="self.enableOptions" id="g8k-2L-2XR"/>
+                        <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.showPlaceName" id="374-hG-giL"/>
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X5s-Mc-Yfo">

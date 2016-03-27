@@ -118,20 +118,7 @@ static PanelController *sharedPanel = nil;
     
 }
 
-
-+ (instancetype)sharedPanel
-{
-    if (sharedPanel == nil)
-    {
-        /*Using a thread safe pattern*/
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            sharedPanel = [[self alloc] initWithWindowNibName:@"Panel"];
-        });
-    }
-    return sharedPanel;
-}
-
+/*
 - (void)openAsFloatingWindow
 {
     
@@ -179,7 +166,7 @@ static PanelController *sharedPanel = nil;
     {
         [self.panelWindow.mainTableview reloadData];
     }
-}
+}*/
 
 #pragma mark -
 #pragma mark Updating Timezones
@@ -234,27 +221,7 @@ static PanelController *sharedPanel = nil;
 
 - (void)windowWillClose:(NSNotification *)notification
 {
-    if ([notification.object isKindOfClass:[Panel class]])
-    {
-        
-        for (NSWindow *currentWindow in [NSApplication sharedApplication].windows)
-        {
-            if ([currentWindow.windowController isKindOfClass:[CLOneWindowController class]])
-            {
-                CLOneWindowController *reference = (CLOneWindowController *)currentWindow.windowController;
-                CLAppearanceViewController *appearanceView = reference.appearanceView;
-                [appearanceView updateState];
-                self.panelWindow = nil;
-            }
-        }
-        
-        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowAppInForeground];
-              return;
-        
-    }
-    
     self.hasActivePanel = NO;
-    
 }
 
 - (void)windowDidResignKey:(NSNotification *)notification;
