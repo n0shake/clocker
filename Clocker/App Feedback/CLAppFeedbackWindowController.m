@@ -109,7 +109,7 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
         else
         {
             NSAlert *alert = [NSAlert new];
-            alert.messageText = CLFeedbackAlertTitle;
+            alert.messageText = NSLocalizedString(CLFeedbackAlertTitle, @"Thank you for helping make Clocker even better!");
             alert.informativeText = CLFeedbackAlertInformativeText;
             [alert addButtonWithTitle:CLFeedbackAlertButtonTitle];
             [alert beginSheetModalForWindow:self.window

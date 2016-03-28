@@ -68,9 +68,9 @@ void *kContextActivePanel = &kContextActivePanel;
 + (void)initialize
 {
     //Configure iRate
-    [iRate sharedInstance].useAllAvailableLanguages = NO;
-    [iVersion sharedInstance].useAllAvailableLanguages = NO;
-    [[iRate sharedInstance] setVerboseLogging:NO];
+    [iRate sharedInstance].useAllAvailableLanguages = YES;
+    [iVersion sharedInstance].useAllAvailableLanguages = YES;
+    [[iRate sharedInstance] setVerboseLogging:YES];
     [[iVersion sharedInstance] setVerboseLogging:NO];
 }
 
@@ -78,25 +78,10 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    
-    
-    __block BOOL startedAtLogin = NO;
-    
-    [[NSWorkspace sharedWorkspace].runningApplications enumerateObjectsUsingBlock:^(NSRunningApplication * _Nonnull app, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([app.bundleIdentifier isEqualToString:helperAppBundleIdentifier]) startedAtLogin = YES;
-        
-    }];
-    
-    if (startedAtLogin) {
-        [[NSDistributedNotificationCenter defaultCenter]
-         postNotificationName:terminateNotification
-         object:[[NSBundle mainBundle] bundleIdentifier]];
-    }
-    
-    
+
     NSString *defaultTheme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
     if (defaultTheme == nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:@"Default" forKey:CLThemeKey];
+        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLThemeKey];
     }
     
     NSNumber *displayFutureSlider = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey];

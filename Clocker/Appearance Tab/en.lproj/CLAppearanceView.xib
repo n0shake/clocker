@@ -56,7 +56,7 @@
                     </segmentedCell>
                     <connections>
                         <action selector="themeChanged:" target="-2" id="V9J-fh-uqe"/>
-                        <binding destination="WGI-5h-l6M" name="selectedLabel" keyPath="values.defaultTheme" id="vyq-YM-las"/>
+                        <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.defaultTheme" id="CZP-v9-Ucg"/>
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="YQi-x8-6f8">

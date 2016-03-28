@@ -66,7 +66,6 @@
 @property (weak) IBOutlet NSButton *shutdownButton;
 @property (weak) IBOutlet NSButton *preferencesButton;
 @property (weak) IBOutlet NSSlider *futureSlider;
-@property (weak) IBOutlet NSTextField *sliderLabel;
 @property (strong, nonatomic) PanelController *panelWindow;
 @property (strong, nonatomic) NSTimer *floatingWindowTimer;
 

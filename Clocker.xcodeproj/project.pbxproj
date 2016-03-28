@@ -11,6 +11,11 @@
 		9A13BACA1CA877A6007C6CBE /* CLPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BACC1CA877A6007C6CBE /* CLPreferencesView.xib */; };
 		9A13BACE1CA879E5007C6CBE /* CLAppearanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAD01CA879E5007C6CBE /* CLAppearanceView.xib */; };
 		9A13BAD21CA87DF4007C6CBE /* CLOnboardingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAD41CA87DF4007C6CBE /* CLOnboardingWindow.xib */; };
+		9A13BAD61CA87F08007C6CBE /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAD81CA87F08007C6CBE /* Panel.xib */; };
+		9A13BADA1CA87F3F007C6CBE /* CLOneWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BADC1CA87F3F007C6CBE /* CLOneWindow.xib */; };
+		9A13BAE01CA882FA007C6CBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAE21CA882FA007C6CBE /* InfoPlist.strings */; };
+		9A13BAE61CA889BB007C6CBE /* CLAppFeedbackWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAE81CA889BB007C6CBE /* CLAppFeedbackWindow.xib */; };
+		9A13BAEA1CA88A76007C6CBE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAEC1CA88A76007C6CBE /* Localizable.strings */; };
 		9A20A04B1C4DEED200FB45AB /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A20A04A1C4DEED200FB45AB /* IOKit.framework */; };
 		9A20A0701C4E804D00FB45AB /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A20A06F1C4E804D00FB45AB /* ServiceManagement.framework */; };
 		9A20A0721C4E80A800FB45AB /* Clocker-Helper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A20A06E1C4E801600FB45AB /* Clocker-Helper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -28,11 +33,9 @@
 		9A43792C1BEC231100F4E27F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A43792B1BEC231100F4E27F /* libz.tbd */; };
 		9A43792E1BEC256200F4E27F /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A43792D1BEC256200F4E27F /* Media.xcassets */; };
 		9A56DB801C1CFB73004CE6AF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A56DB7D1C1CFB73004CE6AF /* MainMenu.xib */; };
-		9A56DB811C1CFB73004CE6AF /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A56DB7E1C1CFB73004CE6AF /* Panel.xib */; };
 		9A5951BA1C1D0A22009C17AA /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5951B91C1D0A22009C17AA /* Crashlytics.framework */; };
 		9A5951BD1C1D0A8D009C17AA /* CommonStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5951BB1C1D0A8D009C17AA /* CommonStrings.m */; };
 		9A5951C01C1D0AA0009C17AA /* CLOneWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5951BE1C1D0AA0009C17AA /* CLOneWindowController.m */; };
-		9A5951C21C1D0AAD009C17AA /* CLOneWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A5951C11C1D0AAD009C17AA /* CLOneWindow.xib */; };
 		9A5951F51C1D3D81009C17AA /* CLTimezoneCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5951F41C1D3D81009C17AA /* CLTimezoneCellView.m */; };
 		9A5951FA1C1D5214009C17AA /* iVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5951F91C1D5214009C17AA /* iVersion.m */; };
 		9A5951FD1C1D592D009C17AA /* iVersion.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A5951FC1C1D592D009C17AA /* iVersion.bundle */; };
@@ -53,7 +56,6 @@
 		9A87DACA1C358FA800A8CF3B /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A87DAC11C358FA800A8CF3B /* DTTimePeriodGroup.m */; };
 		9A87DACB1C358FA800A8CF3B /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A87DAC31C358FA800A8CF3B /* NSDate+DateTools.m */; };
 		9A9E63861C2C673E009A299B /* CLAppFeedbackWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E63841C2C673E009A299B /* CLAppFeedbackWindowController.m */; };
-		9A9E63871C2C673E009A299B /* CLAppFeedbackWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A9E63851C2C673E009A299B /* CLAppFeedbackWindow.xib */; };
 		9A9E875A1C1FED1A00A7A2DF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87581C1FED1A00A7A2DF /* Parse.framework */; };
 		9A9E875F1C1FED7500A7A2DF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87571C1FED1A00A7A2DF /* Bolts.framework */; };
 		9A9E87621C1FEDB500A7A2DF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87611C1FEDB500A7A2DF /* CFNetwork.framework */; };
@@ -114,6 +116,16 @@
 		9A13BAD11CA879E8007C6CBE /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/CLAppearanceView.xib; sourceTree = "<group>"; };
 		9A13BAD31CA87DF4007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CLOnboardingWindow.xib; sourceTree = "<group>"; };
 		9A13BAD51CA87DF5007C6CBE /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/CLOnboardingWindow.xib; sourceTree = "<group>"; };
+		9A13BAD71CA87F08007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Panel.xib; sourceTree = "<group>"; };
+		9A13BAD91CA87F09007C6CBE /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/Panel.xib; sourceTree = "<group>"; };
+		9A13BADB1CA87F3F007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CLOneWindow.xib; sourceTree = "<group>"; };
+		9A13BADD1CA87F40007C6CBE /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/CLOneWindow.xib; sourceTree = "<group>"; };
+		9A13BAE11CA882FA007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9A13BAE31CA882FC007C6CBE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9A13BAE71CA889BB007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CLAppFeedbackWindow.xib; sourceTree = "<group>"; };
+		9A13BAE91CA889BD007C6CBE /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/CLAppFeedbackWindow.xib; sourceTree = "<group>"; };
+		9A13BAEB1CA88A76007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A13BAED1CA88AD3007C6CBE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9A20A04A1C4DEED200FB45AB /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		9A20A0691C4E801500FB45AB /* Clocker-Helper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Clocker-Helper.xcodeproj"; path = "Clocker-Helper/Clocker-Helper.xcodeproj"; sourceTree = "<group>"; };
 		9A20A06F1C4E804D00FB45AB /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
@@ -138,13 +150,11 @@
 		9A43792B1BEC231100F4E27F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9A43792D1BEC256200F4E27F /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		9A56DB7D1C1CFB73004CE6AF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Clocker/MainMenu.xib; sourceTree = "<group>"; };
-		9A56DB7E1C1CFB73004CE6AF /* Panel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Panel.xib; path = Clocker/Panel.xib; sourceTree = "<group>"; };
 		9A5951B91C1D0A22009C17AA /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Frameworks/Crashlytics.framework; sourceTree = "<group>"; };
 		9A5951BB1C1D0A8D009C17AA /* CommonStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommonStrings.m; path = Clocker/Utilities/CommonStrings.m; sourceTree = "<group>"; };
 		9A5951BC1C1D0A8D009C17AA /* CommonStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonStrings.h; path = Clocker/Utilities/CommonStrings.h; sourceTree = "<group>"; };
 		9A5951BE1C1D0AA0009C17AA /* CLOneWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLOneWindowController.m; path = Clocker/CLOneWindow/CLOneWindowController.m; sourceTree = "<group>"; };
 		9A5951BF1C1D0AA0009C17AA /* CLOneWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLOneWindowController.h; path = Clocker/CLOneWindow/CLOneWindowController.h; sourceTree = "<group>"; };
-		9A5951C11C1D0AAD009C17AA /* CLOneWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLOneWindow.xib; path = Clocker/CLOneWindow/CLOneWindow.xib; sourceTree = "<group>"; };
 		9A5951D11C1D1D94009C17AA /* ApptentiveConnect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApptentiveConnect.framework; path = Clocker/ApptentiveConnect/ApptentiveConnect.framework; sourceTree = "<group>"; };
 		9A5951F31C1D3D81009C17AA /* CLTimezoneCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLTimezoneCellView.h; path = "Clocker/Custom Table Cell Views/CLTimezoneCellView.h"; sourceTree = "<group>"; };
 		9A5951F41C1D3D81009C17AA /* CLTimezoneCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLTimezoneCellView.m; path = "Clocker/Custom Table Cell Views/CLTimezoneCellView.m"; sourceTree = "<group>"; };
@@ -187,7 +197,6 @@
 		9A87DAC31C358FA800A8CF3B /* NSDate+DateTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+DateTools.m"; path = "Clocker/Date Tools/DateTools-master/DateTools/NSDate+DateTools.m"; sourceTree = "<group>"; };
 		9A9E63831C2C673E009A299B /* CLAppFeedbackWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAppFeedbackWindowController.h; path = "Clocker/App Feedback/CLAppFeedbackWindowController.h"; sourceTree = "<group>"; };
 		9A9E63841C2C673E009A299B /* CLAppFeedbackWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAppFeedbackWindowController.m; path = "Clocker/App Feedback/CLAppFeedbackWindowController.m"; sourceTree = "<group>"; };
-		9A9E63851C2C673E009A299B /* CLAppFeedbackWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLAppFeedbackWindow.xib; path = "Clocker/App Feedback/CLAppFeedbackWindow.xib"; sourceTree = "<group>"; };
 		9A9E87571C1FED1A00A7A2DF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Clocker/Parse/Bolts.framework; sourceTree = "<group>"; };
 		9A9E87581C1FED1A00A7A2DF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Clocker/Parse/Parse.framework; sourceTree = "<group>"; };
 		9A9E87611C1FEDB500A7A2DF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -245,6 +254,8 @@
 				9A5951BC1C1D0A8D009C17AA /* CommonStrings.h */,
 				9A6362081C432F68004AD010 /* CLAPI.h */,
 				9A6362091C432F68004AD010 /* CLAPI.m */,
+				9A13BAE21CA882FA007C6CBE /* InfoPlist.strings */,
+				9A13BAEC1CA88A76007C6CBE /* Localizable.strings */,
 			);
 			name = Utilties;
 			sourceTree = "<group>";
@@ -304,13 +315,13 @@
 		9A8605E01BEC15F400A810A4 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
-				9A5951C11C1D0AAD009C17AA /* CLOneWindow.xib */,
+				9A13BADC1CA87F3F007C6CBE /* CLOneWindow.xib */,
 				9A56DB7D1C1CFB73004CE6AF /* MainMenu.xib */,
-				9A56DB7E1C1CFB73004CE6AF /* Panel.xib */,
+				9A13BAD81CA87F08007C6CBE /* Panel.xib */,
 				9A13BAC81CA86A88007C6CBE /* CLAboutUsView.xib */,
 				9A13BACC1CA877A6007C6CBE /* CLPreferencesView.xib */,
 				9A13BAD01CA879E5007C6CBE /* CLAppearanceView.xib */,
-				9A9E63851C2C673E009A299B /* CLAppFeedbackWindow.xib */,
+				9A13BAE81CA889BB007C6CBE /* CLAppFeedbackWindow.xib */,
 				9A13BAD41CA87DF4007C6CBE /* CLOnboardingWindow.xib */,
 			);
 			name = XIB;
@@ -514,6 +525,9 @@
 					DD4F7C0313C30F9F00825C6E = {
 						DevelopmentTeam = AJS5SNW8EY;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 0;
+							};
 							com.apple.Sandbox = {
 								enabled = 1;
 							};
@@ -561,15 +575,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A13BAD21CA87DF4007C6CBE /* CLOnboardingWindow.xib in Resources */,
-				9A9E63871C2C673E009A299B /* CLAppFeedbackWindow.xib in Resources */,
+				9A13BAE61CA889BB007C6CBE /* CLAppFeedbackWindow.xib in Resources */,
 				9A5951FD1C1D592D009C17AA /* iVersion.bundle in Resources */,
+				9A13BAEA1CA88A76007C6CBE /* Localizable.strings in Resources */,
+				9A13BAE01CA882FA007C6CBE /* InfoPlist.strings in Resources */,
 				9A13BACA1CA877A6007C6CBE /* CLPreferencesView.xib in Resources */,
 				9A20A07F1C4EAAEB00FB45AB /* CLIntroView.xib in Resources */,
-				9A56DB811C1CFB73004CE6AF /* Panel.xib in Resources */,
+				9A13BAD61CA87F08007C6CBE /* Panel.xib in Resources */,
 				9A43792E1BEC256200F4E27F /* Media.xcassets in Resources */,
 				9A13BAC61CA86A88007C6CBE /* CLAboutUsView.xib in Resources */,
 				9A13BACE1CA879E5007C6CBE /* CLAppearanceView.xib in Resources */,
-				9A5951C21C1D0AAD009C17AA /* CLOneWindow.xib in Resources */,
+				9A13BADA1CA87F3F007C6CBE /* CLOneWindow.xib in Resources */,
 				9A56DB801C1CFB73004CE6AF /* MainMenu.xib in Resources */,
 				9A87DAC41C358FA800A8CF3B /* DateTools.bundle in Resources */,
 			);
@@ -676,6 +692,56 @@
 			path = Clocker/Onboarding;
 			sourceTree = "<group>";
 		};
+		9A13BAD81CA87F08007C6CBE /* Panel.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A13BAD71CA87F08007C6CBE /* en */,
+				9A13BAD91CA87F09007C6CBE /* ja */,
+			);
+			name = Panel.xib;
+			path = Clocker;
+			sourceTree = "<group>";
+		};
+		9A13BADC1CA87F3F007C6CBE /* CLOneWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A13BADB1CA87F3F007C6CBE /* en */,
+				9A13BADD1CA87F40007C6CBE /* ja */,
+			);
+			name = CLOneWindow.xib;
+			path = Clocker/CLOneWindow;
+			sourceTree = "<group>";
+		};
+		9A13BAE21CA882FA007C6CBE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A13BAE11CA882FA007C6CBE /* en */,
+				9A13BAE31CA882FC007C6CBE /* ja */,
+			);
+			name = InfoPlist.strings;
+			path = Clocker;
+			sourceTree = "<group>";
+		};
+		9A13BAE81CA889BB007C6CBE /* CLAppFeedbackWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A13BAE71CA889BB007C6CBE /* en */,
+				9A13BAE91CA889BD007C6CBE /* ja */,
+			);
+			name = CLAppFeedbackWindow.xib;
+			path = "Clocker/App Feedback";
+			sourceTree = "<group>";
+		};
+		9A13BAEC1CA88A76007C6CBE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A13BAEB1CA88A76007C6CBE /* en */,
+				9A13BAED1CA88AD3007C6CBE /* ja */,
+			);
+			name = Localizable.strings;
+			path = Clocker;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -690,7 +756,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -717,7 +783,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -750,7 +816,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -790,7 +856,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -817,7 +883,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -847,7 +913,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (

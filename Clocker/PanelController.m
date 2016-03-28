@@ -90,7 +90,14 @@ static PanelController *sharedPanel = nil;
         self.dateFormatter = [NSDateFormatter new];
     }
     
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey] isEqualToString:@"Black"]) {
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey] isKindOfClass:[NSString class]]) {
+        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLThemeKey];
+    }
+    
+    NSNumber *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
+    
+    if (theme.integerValue == 1)
+    {
         self.shutdownButton.image = [NSImage imageNamed:@"PowerIcon-White"];
         self.preferencesButton.image = [NSImage imageNamed:@"Settings-White"];
     }
@@ -182,22 +189,13 @@ static PanelController *sharedPanel = nil;
     self.scrollViewHeight.constant = self.showReviewCell ?
     (self.defaultPreferences.count+1)*55+40 : self.defaultPreferences.count*55 + 30;
     
-    if (self.defaultPreferences.count == 0) {
+    if (self.defaultPreferences.count == 1) {
         self.futureSlider.hidden = YES;
-        self.sliderLabel.hidden = YES;
     }
     else
     {
         self.futureSlider.hidden = NO;
-        self.sliderLabel.hidden = NO;
     }
-    
-    //hide the label when show review cell is shown so that the Main Panel looks cleaner
-    
-    if (self.showReviewCell) {
-        self.sliderLabel.hidden = YES;
-    }
-    
 }
 
 #pragma mark - Public accessors
@@ -372,8 +370,8 @@ static PanelController *sharedPanel = nil;
                                             fieldEditor:YES
                                             forObject:cell.relativeDate];
     
-    NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
-    if (theme.length > 0 && ![theme isEqualToString:@"Default"])
+    NSNumber *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
+    if (theme.integerValue == 1)
     {
         [cell updateTextColorWithColor:[NSColor whiteColor] andCell:cell];
         [self.mainTableview setBackgroundColor:[NSColor blackColor]];
@@ -401,15 +399,13 @@ static PanelController *sharedPanel = nil;
     cell.customName.stringValue = [dataObject formatStringShouldContainCity:YES];
     
     NSNumber *displayFutureSlider = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey];
-    if ([displayFutureSlider isEqualToNumber:[NSNumber numberWithInteger:0]])
+    if ([displayFutureSlider isEqualToNumber:[NSNumber numberWithInteger:1]])
     {
-        self.futureSlider.hidden = NO;
-        self.sliderLabel.hidden = NO;
+        self.futureSlider.hidden = YES;
     }
     else
     {
-        self.sliderLabel.hidden = YES;
-        self.futureSlider.hidden = YES;
+        self.futureSlider.hidden = NO;
     }
     
     [cell setUpAutoLayoutWithCell:cell];
@@ -500,25 +496,10 @@ static PanelController *sharedPanel = nil;
 
 - (void)showOptions:(BOOL)value
 {
-    if (self.showReviewCell) {
-        self.sliderLabel.hidden = YES;
-        return;
-    }
-    
-    
-    if (!self.futureSlider.isHidden) {
-        self.sliderLabel.hidden = !value;
-    }
-    
     
     if (self.defaultPreferences.count == 0)
     {
         value = YES;
-        
-        if (!self.futureSlider.isHidden)
-        {
-            self.sliderLabel.hidden = YES;
-        }
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -583,8 +564,8 @@ static PanelController *sharedPanel = nil;
 
 - (void)updatePanelColor
 {
-    NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
-    if (theme.length > 0 && ![theme isEqualToString:@"Default"])
+    NSNumber *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
+    if (theme.integerValue)
     {
         [self.mainTableview setBackgroundColor:[NSColor blackColor]];
         self.window.alphaValue = 0.90;

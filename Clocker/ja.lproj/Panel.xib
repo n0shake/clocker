@@ -12,7 +12,6 @@
                 <outlet property="preferencesButton" destination="OFy-u1-TnH" id="SId-Ih-ssT"/>
                 <outlet property="scrollViewHeight" destination="QcT-N0-G4s" id="EHr-Co-L0Z"/>
                 <outlet property="shutdownButton" destination="nTt-pf-Hw2" id="gCK-0D-gnK"/>
-                <outlet property="sliderLabel" destination="rGL-w7-iSa" id="70y-sh-dyl"/>
                 <outlet property="window" destination="5" id="7"/>
             </connections>
         </customObject>
@@ -118,16 +117,16 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gRN-xJ-bfq">
-                                                            <rect key="frame" x="58" y="30" width="16" height="16"/>
+                                                            <rect key="frame" x="69" y="30" width="16" height="16"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-16" id="8gl-Vi-0VF"/>
                                                         </imageView>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JNw-ld-oz9">
-                                                            <rect key="frame" x="79" y="28" width="189" height="20"/>
+                                                            <rect key="frame" x="90" y="28" width="189" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="185" id="i6p-pO-tfO"/>
                                                                 <constraint firstAttribute="height" constant="20" id="kOH-Lb-7sB"/>
                                                             </constraints>
-                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Enjoy using Clocker?" id="iM2-CB-CE2">
+                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Enjoy タイムキーパー?" id="iM2-CB-CE2">
                                                                 <font key="font" size="12" name="SFUIDisplay-Regular"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -168,7 +167,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="gf6-2O-DZv" secondAttribute="bottom" constant="5" id="iqG-ta-N68"/>
                                                         <constraint firstAttribute="bottom" secondItem="Kfq-0p-Oqf" secondAttribute="bottom" constant="5" id="k43-mW-Z3z"/>
                                                         <constraint firstItem="JNw-ld-oz9" firstAttribute="leading" secondItem="gRN-xJ-bfq" secondAttribute="trailing" constant="7" id="opd-fc-Q5o"/>
-                                                        <constraint firstItem="JNw-ld-oz9" firstAttribute="centerX" secondItem="wWn-9q-AYl" secondAttribute="centerX" constant="33.5" id="yYL-61-BgS"/>
+                                                        <constraint firstItem="JNw-ld-oz9" firstAttribute="centerX" secondItem="wWn-9q-AYl" secondAttribute="centerX" constant="45" id="yYL-61-BgS"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="imageView" destination="gRN-xJ-bfq" id="eNP-AX-syJ"/>
@@ -201,18 +200,6 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="75" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-w7-iSa">
-                        <rect key="frame" x="97" y="31" width="84" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="80" id="XLu-0I-ACL"/>
-                            <constraint firstAttribute="height" constant="17" id="j4s-Vf-pQQ"/>
-                        </constraints>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" placeholderString="Future Slider" id="KPS-ge-xQM">
-                            <font key="font" size="11" name="SFUIDisplay-Bold"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T7e-RS-eTE">
                         <rect key="frame" x="29" y="13" width="217" height="19"/>
                         <constraints>
@@ -255,13 +242,11 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="4Gd-Nv-fXr" firstAttribute="top" secondItem="6" secondAttribute="top" constant="8" id="1g0-Hm-7Gh"/>
-                    <constraint firstItem="rGL-w7-iSa" firstAttribute="centerX" secondItem="T7e-RS-eTE" secondAttribute="centerX" constant="1" id="5NW-NQ-wPO"/>
                     <constraint firstItem="T7e-RS-eTE" firstAttribute="top" secondItem="dFw-ts-8OZ" secondAttribute="bottom" constant="-30" id="96B-lf-iFV"/>
                     <constraint firstAttribute="bottom" secondItem="nTt-pf-Hw2" secondAttribute="bottom" constant="5" id="Alf-Sy-CEF"/>
                     <constraint firstItem="T7e-RS-eTE" firstAttribute="leading" secondItem="nTt-pf-Hw2" secondAttribute="trailing" constant="2" id="GgQ-58-tbc"/>
                     <constraint firstAttribute="trailing" secondItem="4Gd-Nv-fXr" secondAttribute="trailing" constant="-1" id="XP6-W0-2XT"/>
                     <constraint firstAttribute="bottom" secondItem="OFy-u1-TnH" secondAttribute="bottom" constant="5" id="an1-GW-fs9"/>
-                    <constraint firstItem="T7e-RS-eTE" firstAttribute="top" secondItem="rGL-w7-iSa" secondAttribute="bottom" constant="1" id="cuU-JZ-uRn"/>
                     <constraint firstItem="4Gd-Nv-fXr" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="-1" id="fHc-VQ-mJ3"/>
                     <constraint firstAttribute="trailing" secondItem="OFy-u1-TnH" secondAttribute="trailing" constant="5" id="p2a-qj-LHE"/>
                     <constraint firstItem="nTt-pf-Hw2" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="uxy-ac-DRN"/>
