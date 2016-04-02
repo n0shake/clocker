@@ -7,7 +7,6 @@
 //
 
 #import "CLAppFeedbackWindowController.h"
-#import <Parse/Parse.h>
 #import "CLOneWindowController.h"
 #import "CommonStrings.h"
 
@@ -89,6 +88,7 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
         return;
     }
     
+    /*
     PFObject *feedbackObject = [PFObject objectWithClassName:CLParseAppFeedbackClassIdentifier];
     feedbackObject[CLParseAppFeedbackNameProperty] = (self.nameField.stringValue.length > 0) ?
     self.nameField.stringValue : CLParseAppFeedbackNoResponseString;
@@ -120,7 +120,7 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
     }];
     
     
-    
+    */
 }
 
 - (void)cleanUp

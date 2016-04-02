@@ -31,12 +31,9 @@
 #import "iRate.h"
 #import "CommonStrings.h"
 #import "iVersion.h"
-#import <Parse/Parse.h>
 #import "CLOnboardingWindowController.h"
 
 #define helperAppBundleIdentifier @"com.abhishek.Clocker-Helper" // change as appropriate to help app bundle identifier
-NSString *const CLParseApplicationID = @"F2ahd8J6sfjQMCc5z3xSy9kVK94PmKmH6hV2UsUK";
-NSString *const CLParseClientID = @"vfnqDtinvmwUBkcifznYHzYTetxN5iMvt8Ey8StD";
 #define terminateNotification @"TerminateHelper" 
 
 @implementation ApplicationDelegate
@@ -138,17 +135,17 @@ void *kContextActivePanel = &kContextActivePanel;
         [self.menubarController setInitialTimezoneData];
     }
     
+    CLOnboardingWindowController *windowController = [CLOnboardingWindowController sharedWindow];
+    [windowController showWindow:nil];
+    [NSApp activateIgnoringOtherApps:YES];
+    [[NSUserDefaults standardUserDefaults] setObject:@"OnboardingDone" forKey:@"initialLaunch"];
+    [self.menubarController setInitialTimezoneData];
+
+    
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
     
     [[Crashlytics sharedInstance] setDebugMode:NO];
     [Fabric with:@[[Crashlytics class]]];
-    
-    //Setting up Parse
-    [Parse setApplicationId:CLParseApplicationID
-                  clientKey:CLParseClientID];
-    
-    // [Optional] Track statistics around application opens.
-    [PFAnalytics trackAppOpenedWithLaunchOptions:nil];
     
 }
 

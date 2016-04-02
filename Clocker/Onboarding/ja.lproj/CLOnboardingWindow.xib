@@ -6,7 +6,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CLOnboardingWindowController">
             <connections>
-                <outlet property="titleLabel" destination="oiI-iN-JcW" id="QZa-pU-xDz"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>

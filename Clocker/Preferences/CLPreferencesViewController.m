@@ -13,7 +13,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "CommonStrings.h"
 #import "CLTimezoneData.h"
-#import <Parse/Parse.h>
 #import "CLAPI.h"
 //#import <Answers/Answers.h>
 #import <ServiceManagement/ServiceManagement.h>

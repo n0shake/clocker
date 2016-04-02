@@ -11,7 +11,6 @@
 #import "CommonStrings.h"
 #import "DateTools.h"
 #import "PanelController.h"
-#import <Parse/Parse.h>
 #include <CoreFoundation/CoreFoundation.h>
 #include <IOKit/IOKitLib.h>
 
@@ -432,12 +431,13 @@
         uniqueIdentifier = @"N/A";
     }
     
+    /*
     
     PFObject *feedbackObject = [PFObject objectWithClassName:@"CLTimezoneData"];
     feedbackObject[@"formattedAddress"] = self.formattedAddress;
     feedbackObject[@"timezoneID"] = self.timezoneID;
     feedbackObject[@"uniqueID"] = uniqueIdentifier;
-    [feedbackObject saveEventually];
+    [feedbackObject saveEventually];*/
     
 }
 
