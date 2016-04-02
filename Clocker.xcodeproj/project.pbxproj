@@ -756,7 +756,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -772,7 +772,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cf78c9d1-4fcf-48d9-8f73-e61c3c403976";
 				SDKROOT = macosx;
 			};
 			name = Distribution;
@@ -783,7 +783,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -800,7 +801,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cf78c9d1-4fcf-48d9-8f73-e61c3c403976";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;
@@ -816,7 +817,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -840,7 +841,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cf78c9d1-4fcf-48d9-8f73-e61c3c403976";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -856,7 +857,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -872,7 +873,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cf78c9d1-4fcf-48d9-8f73-e61c3c403976";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -883,7 +884,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -902,7 +904,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cf78c9d1-4fcf-48d9-8f73-e61c3c403976";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -913,7 +915,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -930,7 +933,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cf78c9d1-4fcf-48d9-8f73-e61c3c403976";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
