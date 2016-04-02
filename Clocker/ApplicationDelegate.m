@@ -69,6 +69,7 @@ void *kContextActivePanel = &kContextActivePanel;
     [iVersion sharedInstance].useAllAvailableLanguages = YES;
     [[iRate sharedInstance] setVerboseLogging:YES];
     [[iVersion sharedInstance] setVerboseLogging:NO];
+    [iRate sharedInstance].promptForNewVersionIfUserRated = YES;
 }
 
 #pragma mark - NSApplicationDelegate
@@ -134,12 +135,6 @@ void *kContextActivePanel = &kContextActivePanel;
         [[NSUserDefaults standardUserDefaults] setObject:@"OnboardingDone" forKey:@"initialLaunch"];
         [self.menubarController setInitialTimezoneData];
     }
-    
-    CLOnboardingWindowController *windowController = [CLOnboardingWindowController sharedWindow];
-    [windowController showWindow:nil];
-    [NSApp activateIgnoringOtherApps:YES];
-    [[NSUserDefaults standardUserDefaults] setObject:@"OnboardingDone" forKey:@"initialLaunch"];
-    [self.menubarController setInitialTimezoneData];
 
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];

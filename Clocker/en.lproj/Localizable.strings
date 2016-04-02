@@ -7,3 +7,10 @@
 */
 
 "Thank you for helping make Clocker even better!" = "Thank you for helping make Clocker even better!";
+"iRateMessageTitle" = "Rate %@";
+"iRateAppMessage" = "If you enjoy using %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
+"iRateGameMessage" = "If you enjoy playing %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
+"iRateCancelButton" = "No, Thanks";
+"iRateRateButton" = "Rate It Now";
+"iRateRemindButton" = "Remind Me Later";
+"iRateUpdateMessage" = "Update now?";

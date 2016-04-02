@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="CLAboutUsViewController">
+            <connections>
+                <outlet property="versionField" destination="FG9-E5-o8y" id="nBg-l0-ELU"/>
+                <outlet property="view" destination="FS5-f2-b1Z" id="qSe-zw-rRT"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <view id="FS5-f2-b1Z">
+            <rect key="frame" x="0.0" y="0.0" width="487" height="222"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p2G-hA-MSX">
+                    <rect key="frame" x="20" y="85" width="125" height="117"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="125" id="6Kp-RK-dT4"/>
+                        <constraint firstAttribute="height" constant="117" id="znw-VN-bXv"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-256" id="pfa-88-uAu"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XlC-Xd-67t">
+                    <rect key="frame" x="153" y="166" width="316" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="43" id="dqF-vG-wml"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="计时员" id="KPE-f2-s6r">
+                        <font key="font" size="29" name="SFUIDisplay-Light"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FG9-E5-o8y">
+                    <rect key="frame" x="153" y="142" width="316" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="23" id="APM-BF-sIg"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="Version String" id="ctT-VL-V5M">
+                        <font key="font" size="16" name="SFUIDisplay-Light"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Eo-aJ-L8H">
+                    <rect key="frame" x="153" y="120" width="316" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="6fy-MI-uin"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Copyright (2016) Abhishek Banthia" id="4PX-se-5ds">
+                        <font key="font" size="14" name="SFUIDisplay-Ultralight"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Cx-BF-XMU">
+                    <rect key="frame" x="153" y="95" width="316" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="Oob-bz-4Vp"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="这个程序是开源的，可以在MIT许可下重用。" id="oId-kW-4fE">
+                        <font key="font" size="10" name="SFUIDisplay-Light"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fgO-N3-3oh">
+                    <rect key="frame" x="124" y="13" width="130" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="HOR-7s-O7V"/>
+                        <constraint firstAttribute="width" constant="118" id="fjr-FG-Jlq"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="支持我们" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yEt-bN-Jci">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="viewSource:" target="-2" id="gkr-T0-0OI"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q67-QZ-7g3">
+                    <rect key="frame" x="250" y="13" width="107" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Fw5-r2-JCs"/>
+                        <constraint firstAttribute="width" constant="95" id="zmg-WE-hsM"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="报告问题" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HO1-pf-GNd">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="reportIssue:" target="-2" id="71W-Nb-pYu"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="P3u-Um-Nby">
+                    <rect key="frame" x="353" y="13" width="123" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="111" id="5Yt-bH-NGf"/>
+                        <constraint firstAttribute="height" constant="21" id="8Jh-fm-8up"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" bezelStyle="rounded" image="FindUsOnFacebook" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KI2-hO-Wif">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="openFacebookPage:" target="-2" id="gnQ-cM-gbO"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IhK-El-tOe">
+                    <rect key="frame" x="153" y="61" width="316" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="7kh-Ha-LHP"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="apa-Nu-NtC">
+                        <font key="font" size="10" name="SFUIDisplay-Bold"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rzs-xE-sfs">
+                    <rect key="frame" x="153" y="78" width="316" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="2sg-Q1-h9h"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="You can support Timekeeper by starring the source on GitHub! :)" id="JAy-Yp-MXm">
+                        <font key="font" size="10" name="SFUIDisplay-Bold"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="p2G-hA-MSX" firstAttribute="leading" secondItem="FS5-f2-b1Z" secondAttribute="leading" constant="20" id="8LW-4H-HKD"/>
+                <constraint firstAttribute="bottom" secondItem="q67-QZ-7g3" secondAttribute="bottom" constant="20" id="Cl5-lU-Hlw"/>
+                <constraint firstItem="IhK-El-tOe" firstAttribute="top" secondItem="Rzs-xE-sfs" secondAttribute="bottom" constant="2" id="GhF-Ml-o0d"/>
+                <constraint firstAttribute="bottom" secondItem="fgO-N3-3oh" secondAttribute="bottom" constant="20" id="Ka3-lR-aW1"/>
+                <constraint firstItem="Rzs-xE-sfs" firstAttribute="leading" secondItem="p2G-hA-MSX" secondAttribute="trailing" constant="10" id="Mru-Qk-R35"/>
+                <constraint firstItem="P3u-Um-Nby" firstAttribute="leading" secondItem="q67-QZ-7g3" secondAttribute="trailing" constant="8" id="NtI-jY-BNB"/>
+                <constraint firstAttribute="trailing" secondItem="6Cx-BF-XMU" secondAttribute="trailing" constant="20" id="PCL-2W-fCV"/>
+                <constraint firstItem="6Cx-BF-XMU" firstAttribute="leading" secondItem="p2G-hA-MSX" secondAttribute="trailing" constant="10" id="PxC-Pa-PfL"/>
+                <constraint firstItem="XlC-Xd-67t" firstAttribute="leading" secondItem="p2G-hA-MSX" secondAttribute="trailing" constant="10" id="ReB-0P-Ppj"/>
+                <constraint firstItem="IhK-El-tOe" firstAttribute="leading" secondItem="p2G-hA-MSX" secondAttribute="trailing" constant="10" id="YNf-3g-MSO"/>
+                <constraint firstItem="5Eo-aJ-L8H" firstAttribute="leading" secondItem="p2G-hA-MSX" secondAttribute="trailing" constant="10" id="a9Y-c0-NKB"/>
+                <constraint firstAttribute="bottom" secondItem="P3u-Um-Nby" secondAttribute="bottom" constant="20" id="csw-Zl-TRQ"/>
+                <constraint firstAttribute="trailing" secondItem="IhK-El-tOe" secondAttribute="trailing" constant="20" id="cxj-b7-7xn"/>
+                <constraint firstItem="q67-QZ-7g3" firstAttribute="leading" secondItem="fgO-N3-3oh" secondAttribute="trailing" constant="8" id="fA5-O5-kY8"/>
+                <constraint firstAttribute="trailing" secondItem="5Eo-aJ-L8H" secondAttribute="trailing" constant="20" id="has-V9-fM5"/>
+                <constraint firstAttribute="trailing" secondItem="FG9-E5-o8y" secondAttribute="trailing" constant="20" id="j5d-17-Loc"/>
+                <constraint firstItem="FG9-E5-o8y" firstAttribute="leading" secondItem="p2G-hA-MSX" secondAttribute="trailing" constant="10" id="kyh-fi-23P"/>
+                <constraint firstItem="5Eo-aJ-L8H" firstAttribute="top" secondItem="FG9-E5-o8y" secondAttribute="bottom" constant="2" id="pVM-TS-Wvl"/>
+                <constraint firstItem="XlC-Xd-67t" firstAttribute="top" secondItem="FS5-f2-b1Z" secondAttribute="top" constant="13" id="slR-Qu-uJh"/>
+                <constraint firstItem="p2G-hA-MSX" firstAttribute="top" secondItem="FS5-f2-b1Z" secondAttribute="top" constant="20" id="tO4-p0-Wfk"/>
+                <constraint firstAttribute="trailing" secondItem="XlC-Xd-67t" secondAttribute="trailing" constant="20" id="vpM-Kh-fhm"/>
+                <constraint firstItem="fgO-N3-3oh" firstAttribute="leading" secondItem="FS5-f2-b1Z" secondAttribute="leading" constant="130" id="wOA-HL-UjC"/>
+                <constraint firstItem="FG9-E5-o8y" firstAttribute="top" secondItem="XlC-Xd-67t" secondAttribute="bottom" constant="1" id="yHu-dm-LPw"/>
+                <constraint firstItem="Rzs-xE-sfs" firstAttribute="top" secondItem="6Cx-BF-XMU" secondAttribute="bottom" constant="2" id="ydK-a7-uQy"/>
+                <constraint firstAttribute="trailing" secondItem="Rzs-xE-sfs" secondAttribute="trailing" constant="20" id="zhC-Yf-lRU"/>
+                <constraint firstItem="6Cx-BF-XMU" firstAttribute="top" secondItem="5Eo-aJ-L8H" secondAttribute="bottom" constant="10" id="zki-ag-D4H"/>
+            </constraints>
+            <point key="canvasLocation" x="601.5" y="244"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ClockerIcon-256" width="256" height="256"/>
+        <image name="FindUsOnFacebook" width="144" height="27"/>
+    </resources>
+</document>

@@ -41,6 +41,7 @@
 		9A5951FD1C1D592D009C17AA /* iVersion.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A5951FC1C1D592D009C17AA /* iVersion.bundle */; };
 		9A5E6B9E1CAF7199006E7C5C /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5E6B9D1CAF7199006E7C5C /* Firebase.framework */; };
 		9A5E6BA01CAF71C1006E7C5C /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5E6B9F1CAF71C1006E7C5C /* libicucore.tbd */; };
+		9A5E6BAB1CAF8DFA006E7C5C /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A5E6BAA1CAF8DFA006E7C5C /* iRate.bundle */; };
 		9A63620A1C432F68004AD010 /* CLAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6362091C432F68004AD010 /* CLAPI.m */; };
 		9A8605AE1BEC148400A810A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605AD1BEC148400A810A4 /* main.m */; };
 		9A8605B61BEC14BE00A810A4 /* MenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B41BEC14BE00A810A4 /* MenubarController.m */; };
@@ -151,6 +152,16 @@
 		9A5B1A8D1BECDFB700A77C68 /* Clocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Clocker.entitlements; path = Clocker/Clocker.entitlements; sourceTree = "<group>"; };
 		9A5E6B9D1CAF7199006E7C5C /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Frameworks/Firebase.framework; sourceTree = "<group>"; };
 		9A5E6B9F1CAF71C1006E7C5C /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		9A5E6BA11CAF794D006E7C5C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		9A5E6BA21CAF794D006E7C5C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9A5E6BA31CAF794D006E7C5C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/CLOneWindow.xib"; sourceTree = "<group>"; };
+		9A5E6BA41CAF794D006E7C5C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/Panel.xib"; sourceTree = "<group>"; };
+		9A5E6BA51CAF794D006E7C5C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/CLAboutUsView.xib"; sourceTree = "<group>"; };
+		9A5E6BA61CAF794D006E7C5C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/CLPreferencesView.xib"; sourceTree = "<group>"; };
+		9A5E6BA71CAF794D006E7C5C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/CLAppearanceView.xib"; sourceTree = "<group>"; };
+		9A5E6BA81CAF794D006E7C5C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/CLAppFeedbackWindow.xib"; sourceTree = "<group>"; };
+		9A5E6BA91CAF794D006E7C5C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/CLOnboardingWindow.xib"; sourceTree = "<group>"; };
+		9A5E6BAA1CAF8DFA006E7C5C /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		9A6362081C432F68004AD010 /* CLAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAPI.h; path = Clocker/API/CLAPI.h; sourceTree = "<group>"; };
 		9A6362091C432F68004AD010 /* CLAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAPI.m; path = Clocker/API/CLAPI.m; sourceTree = "<group>"; };
 		9A8605AD1BEC148400A810A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Clocker/main.m; sourceTree = "<group>"; };
@@ -258,6 +269,7 @@
 		9A25F7481C1A5E21007D369B /* Rate */ = {
 			isa = PBXGroup;
 			children = (
+				9A5E6BAA1CAF8DFA006E7C5C /* iRate.bundle */,
 				9A25F7411C1A5E17007D369B /* iRate.h */,
 				9A25F7441C1A5E17007D369B /* iRate.m */,
 			);
@@ -528,6 +540,7 @@
 			knownRegions = (
 				en,
 				ja,
+				"zh-Hans",
 			);
 			mainGroup = DD4F7BF913C30F9F00825C6E;
 			productRefGroup = DD4F7C0513C30F9F00825C6E /* Products */;
@@ -568,6 +581,7 @@
 				9A13BACA1CA877A6007C6CBE /* CLPreferencesView.xib in Resources */,
 				9A20A07F1C4EAAEB00FB45AB /* CLIntroView.xib in Resources */,
 				9A13BAD61CA87F08007C6CBE /* Panel.xib in Resources */,
+				9A5E6BAB1CAF8DFA006E7C5C /* iRate.bundle in Resources */,
 				9A43792E1BEC256200F4E27F /* Media.xcassets in Resources */,
 				9A13BAC61CA86A88007C6CBE /* CLAboutUsView.xib in Resources */,
 				9A13BACE1CA879E5007C6CBE /* CLAppearanceView.xib in Resources */,
@@ -643,6 +657,7 @@
 			children = (
 				9A13BAC71CA86A88007C6CBE /* en */,
 				9A13BAC91CA86AAE007C6CBE /* ja */,
+				9A5E6BA51CAF794D006E7C5C /* zh-Hans */,
 			);
 			name = CLAboutUsView.xib;
 			path = Clocker/AboutUsWindow;
@@ -653,6 +668,7 @@
 			children = (
 				9A13BACB1CA877A6007C6CBE /* en */,
 				9A13BACD1CA877A8007C6CBE /* ja */,
+				9A5E6BA61CAF794D006E7C5C /* zh-Hans */,
 			);
 			name = CLPreferencesView.xib;
 			path = Clocker/Preferences;
@@ -663,6 +679,7 @@
 			children = (
 				9A13BACF1CA879E5007C6CBE /* en */,
 				9A13BAD11CA879E8007C6CBE /* ja */,
+				9A5E6BA71CAF794D006E7C5C /* zh-Hans */,
 			);
 			name = CLAppearanceView.xib;
 			path = "Clocker/Appearance Tab";
@@ -673,6 +690,7 @@
 			children = (
 				9A13BAD31CA87DF4007C6CBE /* en */,
 				9A13BAD51CA87DF5007C6CBE /* ja */,
+				9A5E6BA91CAF794D006E7C5C /* zh-Hans */,
 			);
 			name = CLOnboardingWindow.xib;
 			path = Clocker/Onboarding;
@@ -683,6 +701,7 @@
 			children = (
 				9A13BAD71CA87F08007C6CBE /* en */,
 				9A13BAD91CA87F09007C6CBE /* ja */,
+				9A5E6BA41CAF794D006E7C5C /* zh-Hans */,
 			);
 			name = Panel.xib;
 			path = Clocker;
@@ -693,6 +712,7 @@
 			children = (
 				9A13BADB1CA87F3F007C6CBE /* en */,
 				9A13BADD1CA87F40007C6CBE /* ja */,
+				9A5E6BA31CAF794D006E7C5C /* zh-Hans */,
 			);
 			name = CLOneWindow.xib;
 			path = Clocker/CLOneWindow;
@@ -703,6 +723,7 @@
 			children = (
 				9A13BAE11CA882FA007C6CBE /* en */,
 				9A13BAE31CA882FC007C6CBE /* ja */,
+				9A5E6BA11CAF794D006E7C5C /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			path = Clocker;
@@ -713,6 +734,7 @@
 			children = (
 				9A13BAE71CA889BB007C6CBE /* en */,
 				9A13BAE91CA889BD007C6CBE /* ja */,
+				9A5E6BA81CAF794D006E7C5C /* zh-Hans */,
 			);
 			name = CLAppFeedbackWindow.xib;
 			path = "Clocker/App Feedback";
@@ -723,6 +745,7 @@
 			children = (
 				9A13BAEB1CA88A76007C6CBE /* en */,
 				9A13BAED1CA88AD3007C6CBE /* ja */,
+				9A5E6BA21CAF794D006E7C5C /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			path = Clocker;

@@ -51,7 +51,8 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
-      showNonLocalizedStrings = "YES">
+      showNonLocalizedStrings = "YES"
+      language = "zh-Hans">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
