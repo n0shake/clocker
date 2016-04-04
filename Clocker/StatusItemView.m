@@ -78,6 +78,8 @@
         // Set up dark mode for icon
         if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"]  isEqualToString:@"Dark"])
         {
+            //Fix for Tammy Jackson's feedback
+            textField.backgroundColor = [NSColor clearColor];
             textField.textColor = [NSColor whiteColor];
             self.image = [self imageWithSubviewsWithTextField:textField];
         }
