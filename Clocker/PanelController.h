@@ -28,7 +28,7 @@
 
 #import "BackgroundView.h"
 #import "StatusItemView.h"
-#import "CLOneWindowController.h"
+#import "CLParentPanelController.h"
 
 @class PanelController;
 @class CLTimezoneData;
@@ -43,7 +43,7 @@
 
 #pragma mark -
 
-@interface PanelController : NSWindowController <NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate>
+@interface PanelController : CLParentPanelController <NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate>
 {
     BOOL _hasActivePanel;
     __unsafe_unretained BackgroundView *_backgroundView;
@@ -53,19 +53,9 @@
 }
 
 
-@property (nonatomic, strong) CLOneWindowController *oneWindow;
-@property (nonatomic, strong) NSMutableArray *defaultPreferences;
-@property (nonatomic, strong) NSDateFormatter *dateFormatter;
-@property (nonatomic, assign) NSInteger futureSliderValue;
 @property (nonatomic) BOOL hasActivePanel;
-@property (nonatomic) BOOL showReviewCell;
 @property (nonatomic, unsafe_unretained, readonly) id<PanelControllerDelegate> delegate;
 @property (nonatomic, unsafe_unretained) IBOutlet BackgroundView *backgroundView;
-@property (weak) IBOutlet NSTableView *mainTableview;
-@property (weak) IBOutlet NSLayoutConstraint *scrollViewHeight;
-@property (weak) IBOutlet NSButton *shutdownButton;
-@property (weak) IBOutlet NSButton *preferencesButton;
-@property (weak) IBOutlet NSSlider *futureSlider;
 @property (strong, nonatomic) PanelController *panelWindow;
 @property (strong, nonatomic) NSTimer *floatingWindowTimer;
 
@@ -73,8 +63,5 @@
 - (void)openPanel;
 - (void)closePanel;
 - (void)updateDefaultPreferences;
-- (void)showOptions:(BOOL)value;
-- (void)removeContextHelpForSlider;
-- (void)updatePanelColor;
 
 @end

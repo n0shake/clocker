@@ -530,6 +530,26 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         
         [panelController.mainTableview reloadData];
         
+        //Get the current display mode
+        NSNumber *displayMode = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowAppInForeground];
+        
+        if (displayMode.integerValue == 1)
+        {
+            //Get the Floating window instance
+            for (NSWindow *window in [NSApplication sharedApplication].windows)
+            {
+                if ([window.windowController isKindOfClass:[CLFloatingWindowController class]])
+                {
+                    CLFloatingWindowController *currentInstance = (CLFloatingWindowController *)window.windowController;
+                    
+                    [currentInstance updateDefaultPreferences];
+                    
+                    [currentInstance.mainTableview reloadData];
+                }
+            }
+        }
+
+        
     });
 }
 

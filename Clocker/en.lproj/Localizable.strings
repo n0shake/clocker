@@ -14,3 +14,5 @@
 "iRateRateButton" = "Rate It Now";
 "iRateRemindButton" = "Remind Me Later";
 "iRateUpdateMessage" = "Update now?";
+"ClockerVersion" = "Version %@";
+"CLFeedbackAlertTitle" = "Thank you for helping make Clocker even better!";

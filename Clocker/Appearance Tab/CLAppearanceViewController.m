@@ -11,6 +11,7 @@
 #import "PanelController.h"
 #import "CommonStrings.h"
 #import "CLTimezoneData.h"
+#import "CLFloatingWindowController.h"
 
 @interface CLAppearanceViewController ()
 @property (weak) IBOutlet NSSegmentedControl *timeFormat;
@@ -42,12 +43,16 @@
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:timeFormat.selectedSegment] forKey:CL24hourFormatSelectedKey];
     
-    [self refreshMainTableview];
+    [self refreshMainTableview:YES andUpdateFloatingWindow:YES];
 }
 
 - (IBAction)themeChanged:(id)sender
 {
     NSSegmentedControl *themeSegment = (NSSegmentedControl *)sender;
+    
+    //Get the current display mode
+    [self refreshMainTableview:NO andUpdateFloatingWindow:YES];
+    
     ApplicationDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     PanelController *panelController = appDelegate.panelController;
     [panelController.backgroundView setNeedsDisplay:YES];
@@ -71,69 +76,78 @@
 
 }
 
+- (IBAction)displayModeChanged:(id)sender
+{
+    NSSegmentedControl *modeSegment = (NSSegmentedControl *)sender;
+    ApplicationDelegate *sharedDelege = (ApplicationDelegate*)[NSApplication sharedApplication].delegate;
+    
+    if (modeSegment.selectedSegment == 1)
+    {
+        sharedDelege.floatingWindow = [CLFloatingWindowController sharedFloatingWindow];
+        [sharedDelege.floatingWindow showWindow:nil];
+        [NSApp activateIgnoringOtherApps:YES];
+    }
+    else
+    {
+        sharedDelege.floatingWindow = [CLFloatingWindowController sharedFloatingWindow];
+        [sharedDelege.floatingWindow.window close];
+        [sharedDelege.panelController updateDefaultPreferences];
+    }
+}
+
+
 - (IBAction)changeRelativeDayDisplay:(id)sender
 {
     NSSegmentedControl *relativeDayControl = (NSSegmentedControl*) sender;
     NSNumber *selectedIndex = [NSNumber numberWithInteger:relativeDayControl.selectedSegment];
     [[NSUserDefaults standardUserDefaults] setObject:selectedIndex forKey:CLRelativeDateKey];
-    [self refreshMainTableview];
+    [self refreshMainTableview:YES andUpdateFloatingWindow:YES];
 }
 
 
-- (void)refreshMainTableview
+- (void)refreshMainTableview:(BOOL)panel andUpdateFloatingWindow:(BOOL)value
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        ApplicationDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
         
-        PanelController *panelController = appDelegate.panelController;
+        if (panel)
+        {
+            ApplicationDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+            
+            PanelController *panelController = appDelegate.panelController;
+            
+            [panelController updateDefaultPreferences];
+            
+            [panelController.mainTableview reloadData];
+            
+            [appDelegate.menubarController shouldIconBeUpdated:YES];
+        }
         
-        [panelController updateDefaultPreferences];
-        
-        [panelController.mainTableview reloadData];
-        
-        [appDelegate.menubarController shouldIconBeUpdated:YES];
-        
+        if (value)
+        {
+            //Get the current display mode
+            NSNumber *displayMode = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowAppInForeground];
+            
+            if (displayMode.integerValue == 1)
+            {
+                //Get the Floating window instance
+                for (NSWindow *window in [NSApplication sharedApplication].windows)
+                {
+                    if ([window.windowController isKindOfClass:[CLFloatingWindowController class]])
+                    {
+                        CLFloatingWindowController *currentInstance = (CLFloatingWindowController *)window.windowController;
+                        [currentInstance.mainTableview reloadData];
+                        
+                        //Only one instance where we need to update panel color and in that instance we pass panel as NO
+                        
+                        if (!panel)
+                        {
+                             [currentInstance updatePanelColor];
+                        }
+                    }
+                }
+            }
+        }
     });
-}
-
-- (NSImage *)imageWithSubviewsWithTextField:(NSTextField *)textField
-{
-    NSSize mySize = textField.bounds.size;
-    NSSize imgSize = NSMakeSize( mySize.width, mySize.height );
-    
-    NSBitmapImageRep *bir = [textField bitmapImageRepForCachingDisplayInRect:[textField bounds]];
-    [bir setSize:imgSize];
-    [textField cacheDisplayInRect:[textField bounds] toBitmapImageRep:bir];
-    
-    NSImage* image = [[NSImage alloc]initWithSize:imgSize];
-    [image addRepresentation:bir];
-    return image;
-    
-}
-
-- (NSImage *)textWithTextField:(NSTextField *)textField
-{
-    NSString *myString = textField.stringValue;
-    unsigned char *string = (unsigned char *) [myString UTF8String];
-    NSSize mySize = NSMakeSize(50,100); //or measure the string
-    
-    NSBitmapImageRep *bir = [[NSBitmapImageRep alloc]
-                                                        initWithBitmapDataPlanes:&string
-                                                        pixelsWide:mySize.width pixelsHigh:mySize.height
-                                                        bitsPerSample:8
-                                                        samplesPerPixel:3  // or 4 with alpha
-                                                        hasAlpha:NO
-                                                        isPlanar:NO
-                                                        colorSpaceName:NSDeviceRGBColorSpace
-                                                        bitmapFormat:0
-                                                        bytesPerRow:0  // 0 == determine automatically
-                                                        bitsPerPixel:0];  // 0 == determine automatically
-    
-    //draw text using -(void)drawInRect:(NSRect)aRect withAttributes:(NSDictionary *)attributes
-    
-    NSImage* image = [[NSImage alloc]initWithSize:mySize];
-    [image addRepresentation:bir];
-    return image;
 }
 
 - (IBAction)changeMenuBarDisplayPreferences:(id)sender
@@ -147,6 +161,11 @@
     [userDefaults setObject:shouldCityBeShown forKey:@"shouldCityBeShown"];
 }
 
+- (IBAction)showFutureSlider:(id)sender
+{
+    //Get the current display mode
+    [self refreshMainTableview:NO andUpdateFloatingWindow:YES];
+}
 
 
 @end

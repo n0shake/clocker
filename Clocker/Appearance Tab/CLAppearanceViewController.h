@@ -10,5 +10,4 @@
 
 @interface CLAppearanceViewController : NSViewController
 
-
 @end

@@ -90,28 +90,6 @@ static PanelController *sharedPanel = nil;
         self.dateFormatter = [NSDateFormatter new];
     }
     
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey] isKindOfClass:[NSString class]]) {
-        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLThemeKey];
-    }
-    
-    NSNumber *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
-    
-    if (theme.integerValue == 1)
-    {
-        self.shutdownButton.image = [NSImage imageNamed:@"PowerIcon-White"];
-        self.preferencesButton.image = [NSImage imageNamed:@"Settings-White"];
-    }
-    else
-    {
-        self.shutdownButton.image = [NSImage imageNamed:@"PowerIcon"];
-        self.preferencesButton.image = [NSImage imageNamed:NSImageNameActionTemplate];
-    }
-    
-    [self updateDefaultPreferences];
-    self.mainTableview.selectionHighlightStyle = NSTableViewSelectionHighlightStyleNone;
-    
-    
-    
     NSPanel *panel = (id)[self window];
     [panel setAcceptsMouseMovedEvents:YES];
     [panel setLevel:NSPopUpMenuWindowLevel];
@@ -121,59 +99,12 @@ static PanelController *sharedPanel = nil;
     //Register for drag and drop
     [self.mainTableview registerForDraggedTypes: [NSArray arrayWithObject:CLDragSessionKey]];
     
-    [self updatePanelColor];
+    [super updatePanelColor];
+    
+    [super updateDefaultPreferences];
     
 }
 
-/*
-- (void)openAsFloatingWindow
-{
-    
-    if (self.panelWindow)
-    {
-        [self.panelWindow.window makeKeyAndOrderFront:nil];
-        return;
-    }
-    
-    [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:CLShowAppInForeground];
-    
-    self.panelWindow = [PanelController sharedPanel];
-    self.panelWindow.window.level = NSFloatingWindowLevel;
-    
-    self.panelWindow.window.styleMask = NSTitledWindowMask | NSClosableWindowMask | NSResizableWindowMask;
-    self.panelWindow.window.titlebarAppearsTransparent = YES;
-    self.panelWindow.window.titleVisibility = NSWindowTitleVisible;
-    [self.panelWindow showWindow:nil];
-    NSSize maxWindowSize;
-    maxWindowSize.width = self.window.frame.size.width;
-    maxWindowSize.height = self.window.frame.size.height+40;
-    NSSize minWindowSize;
-    minWindowSize.width = 110;
-    minWindowSize.height = 50;
-    
-    NSSize currentSize;
-    currentSize.width = self.window.frame.size.width;
-    currentSize.height = self.window.frame.size.height;
-    
-    self.panelWindow.window.contentMaxSize = maxWindowSize;
-    self.panelWindow.window.contentMinSize = minWindowSize;
-    
-    [self.panelWindow.window setContentSize:currentSize];
-    [NSApp activateIgnoringOtherApps:YES];
-    
-    self.floatingWindowTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                                target:self selector:@selector(updateTime)
-                                                              userInfo:nil
-                                                               repeats:YES];
-}
-
-- (void)updateTime
-{
-    if (self.panelWindow)
-    {
-        [self.panelWindow.mainTableview reloadData];
-    }
-}*/
 
 #pragma mark -
 #pragma mark Updating Timezones
@@ -181,21 +112,7 @@ static PanelController *sharedPanel = nil;
 
 - (void) updateDefaultPreferences
 {
-    
-    NSArray *defaultZones = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
-    
-    self.defaultPreferences = self.defaultPreferences == nil ? [[NSMutableArray alloc] initWithArray:defaultZones] : [NSMutableArray arrayWithArray:defaultZones];
-    
-    self.scrollViewHeight.constant = self.showReviewCell ?
-    (self.defaultPreferences.count+1)*55+40 : self.defaultPreferences.count*55 + 30;
-    
-    if (self.defaultPreferences.count == 1) {
-        self.futureSlider.hidden = YES;
-    }
-    else
-    {
-        self.futureSlider.hidden = NO;
-    }
+    [super updateDefaultPreferences];
 }
 
 #pragma mark - Public accessors
@@ -417,15 +334,6 @@ static PanelController *sharedPanel = nil;
 #pragma mark NSTableview Drag and Drop
 #pragma mark -
 
-- (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
-{
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
-    [pboard declareTypes:[NSArray arrayWithObject:CLDragSessionKey] owner:self];
-    [pboard setData:data forType:CLDragSessionKey];
-    return YES;
-}
-
-
 -(void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     if ([object isKindOfClass:[NSString class]])
@@ -441,139 +349,6 @@ static PanelController *sharedPanel = nil;
         [self.defaultPreferences replaceObjectAtIndex:row withObject:dataObject];
         [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences forKey:CLDefaultPreferenceKey];
         [self.mainTableview reloadData];
-    }
-}
-
-
--(BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation
-{
-    NSPasteboard *pBoard = [info draggingPasteboard];
-    
-    NSData *data = [pBoard dataForType:CLDragSessionKey];
-    
-    NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    
-    [self.defaultPreferences exchangeObjectAtIndex:rowIndexes.firstIndex
-                                 withObjectAtIndex:row];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences
-                                              forKey:CLDefaultPreferenceKey];
-    
-    
-    [[NSApplication sharedApplication].windows enumerateObjectsUsingBlock:^(NSWindow * _Nonnull window, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([window.windowController isMemberOfClass:[CLOneWindowController class]]) {
-            CLOneWindowController *ref = (CLOneWindowController *) window.windowController;
-            [ref.preferencesView refereshTimezoneTableView];
-        }
-        
-    }];
-    
-    [self.mainTableview reloadData];
-    
-    return YES;
-}
-
--(NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation
-{
-    return NSDragOperationEvery;
-}
-
-#pragma mark -
-#pragma mark Preferences Target-Action
-#pragma mark -
-
-- (IBAction)openPreferences:(id)sender
-{
-    self.oneWindow = [CLOneWindowController sharedWindow];
-    [self.oneWindow showWindow:nil];
-    [NSApp activateIgnoringOtherApps:YES];
-    
-}
-
-#pragma mark -
-#pragma mark Hiding Buttons on Mouse Exit
-#pragma mark -
-
-- (void)showOptions:(BOOL)value
-{
-    
-    if (self.defaultPreferences.count == 0)
-    {
-        value = YES;
-    }
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.shutdownButton.hidden = !value;
-        self.preferencesButton.hidden = !value;
-        
-    });
-    
-}
-
-- (IBAction)sliderMoved:(id)sender
-{    
-    NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
-    NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
-                                                  value:self.futureSliderValue
-                                                 toDate:[NSDate date]
-                                                options:kNilOptions];
-    
-    self.dateFormatter.dateStyle = kCFDateFormatterNoStyle;
-    self.dateFormatter.timeStyle = kCFDateFormatterShortStyle;
-    
-    NSString *relativeDate = [currentCalendar isDateInToday:newDate] ? @"Today" : @"Tomorrow";
-    
-    NSString *helper = [self.dateFormatter stringFromDate:newDate];
-    
-    NSHelpManager *helpManager = [NSHelpManager sharedHelpManager];
-    
-    NSPoint pointInScreen = [NSEvent mouseLocation];
-    pointInScreen.y -= 5;
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ %@", relativeDate, helper]];
-    [NSHelpManager setContextHelpModeActive:YES];
-    [helpManager setContextHelp:attributedString forObject:self.futureSlider];
-    [helpManager showContextHelpForObject:self.futureSlider locationHint:pointInScreen];
-    
-    [self.mainTableview reloadData];
-}
-
-- (void)removeContextHelpForSlider
-{
-    NSEvent *newEvent = [NSEvent mouseEventWithType:NSLeftMouseDown
-                                           location:self.window.mouseLocationOutsideOfEventStream
-                                      modifierFlags:0
-                                          timestamp:0
-                                       windowNumber:self.window.windowNumber
-                                            context:self.window.graphicsContext
-                                        eventNumber:0
-                                         clickCount:1
-                                           pressure:0];
-    [NSApp postEvent:newEvent atStart:NO];
-    newEvent = [NSEvent mouseEventWithType:NSLeftMouseUp
-                                  location:self.window.mouseLocationOutsideOfEventStream
-                             modifierFlags:0
-                                 timestamp:0
-                              windowNumber:self.window.windowNumber
-                                   context:self.window.graphicsContext
-                               eventNumber:0
-                                clickCount:1
-                                  pressure:0];
-    
-    [NSApp postEvent:newEvent atStart:NO];
-}
-
-- (void)updatePanelColor
-{
-    NSNumber *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
-    if (theme.integerValue)
-    {
-        [self.mainTableview setBackgroundColor:[NSColor blackColor]];
-        self.window.alphaValue = 0.90;
-    }
-    else
-    {
-        [self.mainTableview setBackgroundColor:[NSColor whiteColor]];
-        self.window.alphaValue = 1;
     }
 }
 
