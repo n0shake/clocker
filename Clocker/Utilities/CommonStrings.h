@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define NSLocalizedFormatString(fmt, ...) [NSString stringWithFormat:NSLocalizedString(fmt, nil), __VA_ARGS__]
+
 @interface CommonStrings : NSObject
 
 extern NSString *const CLEmptyString;
