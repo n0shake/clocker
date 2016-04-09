@@ -28,11 +28,13 @@
 
 #import "MenubarController.h"
 #import "PanelController.h"
+#import "CLFloatingWindowController.h"
 
 @interface ApplicationDelegate : NSObject <NSApplicationDelegate, PanelControllerDelegate>
 
 @property (nonatomic, strong) MenubarController *menubarController;
 @property (nonatomic, strong, readonly) PanelController *panelController;
+@property (strong, nonatomic) CLFloatingWindowController *floatingWindow;
 
 - (IBAction)togglePanel:(id)sender;
 

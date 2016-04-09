@@ -122,6 +122,11 @@ void *kContextActivePanel = &kContextActivePanel;
         [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLStartAtLogin];
     }
     
+    NSNumber *displayMode = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowAppInForeground];
+    if (displayMode == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowAppInForeground];
+    }
+    
     NSString *onboarding = [[NSUserDefaults standardUserDefaults] objectForKey:@"initialLaunch"];
     
     // Install icon into the menu bar
@@ -135,7 +140,15 @@ void *kContextActivePanel = &kContextActivePanel;
         [[NSUserDefaults standardUserDefaults] setObject:@"OnboardingDone" forKey:@"initialLaunch"];
         [self.menubarController setInitialTimezoneData];
     }
-
+    
+    //If mode selected is 1, then show the window when the app starts
+    if (displayMode.integerValue == 1)
+    {
+        self.floatingWindow = [CLFloatingWindowController sharedFloatingWindow];
+        [self.floatingWindow showWindow:nil];
+        [NSApp activateIgnoringOtherApps:YES];
+    }
+    
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
     
@@ -158,6 +171,17 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (IBAction)togglePanel:(id)sender
 {
+    NSNumber *displayMode = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowAppInForeground];
+    
+    if (displayMode.integerValue == 1)
+    {
+        self.floatingWindow = [CLFloatingWindowController sharedFloatingWindow];
+        [self.floatingWindow showWindow:nil];
+        [NSApp activateIgnoringOtherApps:YES];
+        return;
+    }
+    
+    
     self.menubarController.hasActiveIcon = !self.menubarController.hasActiveIcon;
     self.panelController.hasActivePanel = self.menubarController.hasActiveIcon;
 }
