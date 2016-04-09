@@ -53,11 +53,11 @@ CA
                 <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBR-OH-6QQ">
                     <rect key="frame" x="10" y="46" width="419" height="281"/>
                     <clipView key="contentView" id="UZ2-JA-TZe">
-                        <rect key="frame" x="0.0" y="0.0" width="419" height="281"/>
+                        <rect key="frame" x="0.0" y="0.0" width="419" height="266"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="20" headerView="igm-uc-1wh" id="LbJ-dW-ITm">
-                                <rect key="frame" x="0.0" y="0.0" width="429" height="258"/>
+                                <rect key="frame" x="0.0" y="0.0" width="429" height="243"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>

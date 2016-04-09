@@ -6,8 +6,7 @@
 
 */
 
-"Thank you for helping make Clocker even better!" = "Thank you for helping make Clocker even better!";
-
+"Thank you for helping make Clocker even better!" = "谢谢!";
 "iRateMessageTitle" = "为“%@”评分";
 "iRateAppMessage" = "如果您觉得“%@”很好用，可否为其评一个分数？评分过程只需花费很少的时间。感谢您的支持！";
 "iRateGameMessage" = "如果您觉得“%@”很好玩，可否为其评一个分数？评分过程只需花费很少的时间。感谢您的支持！";
@@ -15,3 +14,4 @@
 "iRateRateButton" = "现在去评分";
 "iRateRemindButton" = "稍后再说";
 "iRateUpdateMessage" = "Update now?";
+"ClockerVersion" = "版 %@";

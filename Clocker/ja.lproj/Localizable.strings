@@ -14,3 +14,5 @@
 "iRateRateButton" = "今すぐ評価する";
 "iRateRemindButton" = "後でする";
 "iRateUpdateMessage" = "Update now?";
+"ClockerVersion" = "バージョン %@";
+"CLFeedbackAlertTitle" = "ありがとうございました!";
