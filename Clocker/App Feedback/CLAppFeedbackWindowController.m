@@ -9,6 +9,7 @@
 #import "CLAppFeedbackWindowController.h"
 #import "CLOneWindowController.h"
 #import "CommonStrings.h"
+#import <Firebase/Firebase.h>
 
 NSString *const CLAppFeedbackNibIdentifier = @"CLAppFeedbackWindow";
 NSString *const CLParseAppFeedbackClassIdentifier = @"CLAppFeedback";
@@ -88,39 +89,30 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
         return;
     }
     
-    /*
-    PFObject *feedbackObject = [PFObject objectWithClassName:CLParseAppFeedbackClassIdentifier];
-    feedbackObject[CLParseAppFeedbackNameProperty] = (self.nameField.stringValue.length > 0) ?
-    self.nameField.stringValue : CLParseAppFeedbackNoResponseString;
-    feedbackObject[CLParseAppFeedbackEmailProperty] = (self.emailField.stringValue.length > 0) ?
-    self.emailField.stringValue : CLParseAppFeedbackNoResponseString;
-    feedbackObject[CLParseAppFeedbackFeedbackProperty] = self.feedbackTextView.string;
-    [feedbackObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        self.activityInProgress = NO;
-        if (!succeeded) {
-            self.informativeText.stringValue = error.localizedDescription;
-            [NSTimer scheduledTimerWithTimeInterval:10.0
-                                             target:self
-                                           selector:@selector(cleanUp)
-                                           userInfo:nil
-                                            repeats:NO];
-            
-        }
-        else
-        {
-            NSAlert *alert = [NSAlert new];
-            alert.messageText = NSLocalizedString(CLFeedbackAlertTitle, @"Thank you for helping make Clocker even better!");
-            alert.informativeText = CLFeedbackAlertInformativeText;
-            [alert addButtonWithTitle:CLFeedbackAlertButtonTitle];
-            [alert beginSheetModalForWindow:self.window
-                          completionHandler:^(NSModalResponse returnCode) {
-                              [self.window close];
-                          }];
-        }
-    }];
     
+    NSMutableDictionary *feedbackInfo = [[NSMutableDictionary alloc] init];
+    [feedbackInfo setObject:(self.nameField.stringValue.length > 0) ?
+    self.nameField.stringValue : CLParseAppFeedbackNoResponseString forKey:CLParseAppFeedbackNameProperty];
+    [feedbackInfo setObject:(self.emailField.stringValue.length > 0) ?
+     self.emailField.stringValue : CLParseAppFeedbackNoResponseString forKey:CLParseAppFeedbackEmailProperty];
+    [feedbackInfo setObject:self.feedbackTextView.string forKey:CLParseAppFeedbackFeedbackProperty ];
     
-    */
+    // Create a reference to a Firebase database URL
+    Firebase *myRootRef = [[Firebase alloc] initWithUrl:@"https://fiery-heat-5237.firebaseio.com/Feedback"];
+    Firebase *feedbackRef = [myRootRef childByAppendingPath:[self getSerialNumber]];
+    // Write data to Firebase
+    
+    [feedbackRef setValue:feedbackInfo];
+   
+    self.activityInProgress = NO;
+    NSAlert *alert = [NSAlert new];
+    alert.messageText = NSLocalizedString(CLFeedbackAlertTitle, @"Thank you for helping make Clocker even better!");
+    alert.informativeText = CLFeedbackAlertInformativeText;
+    [alert addButtonWithTitle:CLFeedbackAlertButtonTitle];
+    [alert beginSheetModalForWindow:self.window
+                  completionHandler:^(NSModalResponse returnCode) {
+                      [self.window close];
+                  }];
 }
 
 - (void)cleanUp
@@ -148,6 +140,29 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
         }
     }];
     
+}
+     
+- (NSString *)getSerialNumber
+{
+    io_service_t    platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault,
+                                                                 
+                                                                 IOServiceMatching("IOPlatformExpertDevice"));
+    CFStringRef serialNumberAsCFString = NULL;
+    
+    if (platformExpert) {
+        serialNumberAsCFString = IORegistryEntryCreateCFProperty(platformExpert,
+                                                                 CFSTR(kIOPlatformSerialNumberKey),
+                                                                 kCFAllocatorDefault, 0);
+        IOObjectRelease(platformExpert);
+    }
+    
+    NSString *serialNumberAsNSString = nil;
+    if (serialNumberAsCFString) {
+        serialNumberAsNSString = [NSString stringWithString:(__bridge NSString *)serialNumberAsCFString];
+        CFRelease(serialNumberAsCFString);
+    }
+    
+    return serialNumberAsNSString;
 }
 
 @end
