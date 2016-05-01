@@ -144,6 +144,7 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
     cell.customName.stringValue = [dataObject formatStringShouldContainCity:YES];
     
     NSNumber *displayFutureSlider = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey];
+    
     if ([displayFutureSlider isEqualToNumber:[NSNumber numberWithInteger:1]])
     {
         self.futureSlider.hidden = YES;
@@ -297,6 +298,28 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
                                   pressure:0];
     
     [NSApp postEvent:newEvent atStart:NO];
+}
+
+-(void)windowWillClose:(NSNotification *)notification
+{
+    self.futureSliderValue = 0;
+    
+    if (self.floatingWindowTimer)
+    {
+        [self.floatingWindowTimer invalidate];
+        self.floatingWindowTimer = nil;
+    }
+}
+
+- (void)startWindowTimer
+{
+    if (!self.floatingWindowTimer)
+    {
+        self.floatingWindowTimer = [NSTimer scheduledTimerWithTimeInterval:2.0
+                                                                    target:self
+                                                                  selector:@selector(updateTime) userInfo:nil
+                                                                   repeats:YES];
+    }
 }
 
 - (void)updatePanelColor

@@ -146,6 +146,9 @@ void *kContextActivePanel = &kContextActivePanel;
     {
         self.floatingWindow = [CLFloatingWindowController sharedFloatingWindow];
         [self.floatingWindow showWindow:nil];
+        [self.floatingWindow.mainTableview reloadData];
+        [self.floatingWindow startWindowTimer];
+        
         [NSApp activateIgnoringOtherApps:YES];
     }
     
@@ -177,6 +180,7 @@ void *kContextActivePanel = &kContextActivePanel;
     {
         self.floatingWindow = [CLFloatingWindowController sharedFloatingWindow];
         [self.floatingWindow showWindow:nil];
+        [self.floatingWindow startWindowTimer];
         [NSApp activateIgnoringOtherApps:YES];
         return;
     }

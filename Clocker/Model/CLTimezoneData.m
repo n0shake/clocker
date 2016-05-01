@@ -218,10 +218,7 @@
 }
 
 - (NSString *)compareSystemDate:(NSString *)systemDate toTimezoneDate:(NSString *)date
-{
-    NSParameterAssert(systemDate);
-    NSParameterAssert(date);
-    
+{    
     NSDateFormatter *formatter = [NSDateFormatter new];
     formatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"MM/dd/yyyy"
                                                            options:0
@@ -229,9 +226,6 @@
     
     NSDate *localDate = [formatter dateFromString:systemDate];
     NSDate *timezoneDate = [formatter dateFromString:date];
-    
-    NSAssert(localDate != nil, @"Local date cannot be nil");
-    NSAssert(timezoneDate != nil, @"Local date cannot be nil");
     
     // Specify which units we would like to use
     NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];

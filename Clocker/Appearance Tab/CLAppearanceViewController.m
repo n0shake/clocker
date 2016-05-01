@@ -85,6 +85,8 @@
     {
         sharedDelege.floatingWindow = [CLFloatingWindowController sharedFloatingWindow];
         [sharedDelege.floatingWindow showWindow:nil];
+        [sharedDelege.floatingWindow.mainTableview reloadData];
+        [sharedDelege.floatingWindow startWindowTimer];
         [NSApp activateIgnoringOtherApps:YES];
     }
     else
