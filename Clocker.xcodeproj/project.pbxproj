@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A10C6881CDAAB3000D474F1 /* CLPausableTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A10C6871CDAAB3000D474F1 /* CLPausableTimer.m */; };
+		9A10C68F1CDAC8B500D474F1 /* CLPanelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A10C68E1CDAC8B500D474F1 /* CLPanelTextField.m */; };
 		9A13BAC61CA86A88007C6CBE /* CLAboutUsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAC81CA86A88007C6CBE /* CLAboutUsView.xib */; };
 		9A13BACA1CA877A6007C6CBE /* CLPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BACC1CA877A6007C6CBE /* CLPreferencesView.xib */; };
 		9A13BACE1CA879E5007C6CBE /* CLAppearanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAD01CA879E5007C6CBE /* CLAppearanceView.xib */; };
@@ -99,6 +101,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9A10C6861CDAAB3000D474F1 /* CLPausableTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLPausableTimer.h; path = Clocker/CLPausableTimer.h; sourceTree = "<group>"; };
+		9A10C6871CDAAB3000D474F1 /* CLPausableTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLPausableTimer.m; path = Clocker/CLPausableTimer.m; sourceTree = "<group>"; };
+		9A10C68D1CDAC8B500D474F1 /* CLPanelTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLPanelTextField.h; path = Clocker/CLPanelTextField.h; sourceTree = "<group>"; };
+		9A10C68E1CDAC8B500D474F1 /* CLPanelTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLPanelTextField.m; path = Clocker/CLPanelTextField.m; sourceTree = "<group>"; };
 		9A13BAC71CA86A88007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CLAboutUsView.xib; sourceTree = "<group>"; };
 		9A13BAC91CA86AAE007C6CBE /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/CLAboutUsView.xib; sourceTree = "<group>"; };
 		9A13BACB1CA877A6007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CLPreferencesView.xib; sourceTree = "<group>"; };
@@ -264,6 +270,10 @@
 				9A6362091C432F68004AD010 /* CLAPI.m */,
 				9A13BAE21CA882FA007C6CBE /* InfoPlist.strings */,
 				9A13BAEC1CA88A76007C6CBE /* Localizable.strings */,
+				9A10C6861CDAAB3000D474F1 /* CLPausableTimer.h */,
+				9A10C6871CDAAB3000D474F1 /* CLPausableTimer.m */,
+				9A10C68D1CDAC8B500D474F1 /* CLPanelTextField.h */,
+				9A10C68E1CDAC8B500D474F1 /* CLPanelTextField.m */,
 			);
 			name = Utilties;
 			sourceTree = "<group>";
@@ -655,9 +665,11 @@
 				9A8605BB1BEC14DC00A810A4 /* PanelController.m in Sources */,
 				9A8605B61BEC14BE00A810A4 /* MenubarController.m in Sources */,
 				9A42394F1CB0616400A8E51A /* CLFloatingWindowController.m in Sources */,
+				9A10C68F1CDAC8B500D474F1 /* CLPanelTextField.m in Sources */,
 				9A5951C01C1D0AA0009C17AA /* CLOneWindowController.m in Sources */,
 				9A20A07E1C4EAAEB00FB45AB /* CLIntroViewController.m in Sources */,
 				9A8605B71BEC14BE00A810A4 /* ApplicationDelegate.m in Sources */,
+				9A10C6881CDAAB3000D474F1 /* CLPausableTimer.m in Sources */,
 				9A5951F51C1D3D81009C17AA /* CLTimezoneCellView.m in Sources */,
 				9ABF58721C29A80600BD0187 /* CLTimezoneData.m in Sources */,
 				9A8605AE1BEC148400A810A4 /* main.m in Sources */,
@@ -794,7 +806,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -821,8 +833,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
+				CODE_SIGN_IDENTITY = "";
+<<<<<<< HEAD
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
+=======
+>>>>>>> master
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -855,7 +870,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -895,7 +910,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -922,8 +937,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
+				CODE_SIGN_IDENTITY = "";
+<<<<<<< HEAD
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
+=======
+>>>>>>> master
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -953,8 +971,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer: Abhishek Banthia (75WFZYE9LW)";
+				CODE_SIGN_IDENTITY = "";
+<<<<<<< HEAD
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
+=======
+>>>>>>> master
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (

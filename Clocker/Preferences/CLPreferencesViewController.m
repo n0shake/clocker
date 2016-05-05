@@ -232,6 +232,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     else
     {
         NSMutableArray *newArray = [NSMutableArray new];
+        NSNumber *isFavouriteValue = (NSNumber *)object;
         
         [self.selectedTimeZones enumerateObjectsUsingBlock:^(NSData *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
          {
@@ -243,7 +244,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
          }];
         
         CLTimezoneData *dataObject = [CLTimezoneData getCustomObject:newArray[row]];
-        dataObject.isFavourite = object;
+        dataObject.isFavourite = isFavouriteValue;
         NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:dataObject];
         [newArray replaceObjectAtIndex:row withObject:encodedObject];
         [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:CLDefaultPreferenceKey];
@@ -549,7 +550,6 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
             }
         }
 
-        
     });
 }
 
@@ -569,7 +569,8 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 -(BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation
 {
-    if (row == self.selectedTimeZones.count) {
+    if (row == self.selectedTimeZones.count)
+    {
         row--;
     }
     
@@ -602,7 +603,8 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 - (void)callGoogleAPiWithSearchString:(NSString *)searchString
 {
-    if (self.dataTask.state == NSURLSessionTaskStateRunning) {
+    if (self.dataTask.state == NSURLSessionTaskStateRunning)
+    {
         [self.dataTask cancel];
     }
     
@@ -614,7 +616,6 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         {
             self.availableTimezoneTableView.hidden = NO;
         }
-        
         
         self.placeholderLabel.hidden = NO;
         

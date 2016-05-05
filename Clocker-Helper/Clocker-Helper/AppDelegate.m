@@ -19,10 +19,42 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    BOOL alreadyRunning = NO;
+    BOOL isActive = NO;
     
-    NSString *path = [[[[[[NSBundle mainBundle] bundlePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent];
-    [[NSWorkspace sharedWorkspace] launchApplication:path];
-    [NSApp terminate:nil];
+    NSArray *running = [[NSWorkspace sharedWorkspace] runningApplications];
+    
+    for (NSRunningApplication *app in running)
+    {
+        if ([[app bundleIdentifier] isEqualToString:@"com.abhishek.Clocker"]) {
+            alreadyRunning = YES;
+            isActive = [app isActive];
+            break;
+        }
+    }
+    
+    if (!alreadyRunning || !isActive)
+    {
+        NSString *path = [[[[[[NSBundle mainBundle] bundlePath]
+                             stringByDeletingLastPathComponent]
+                            stringByDeletingLastPathComponent]
+                           stringByDeletingLastPathComponent]
+                          stringByDeletingLastPathComponent];
+        [[NSWorkspace sharedWorkspace] launchApplication:path];
+        
+    }
+    
+
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                        selector:@selector(killApp)
+                                                            name:terminateNotification
+                                                          object:mainAppBundleIdentifier];
+    
+    /*
+     Let's not delete the helper app. This can help us determine whether app has launched at  login or not.
+     
+    [NSApp terminate:nil];*/
+  
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

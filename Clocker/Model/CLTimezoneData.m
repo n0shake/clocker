@@ -416,9 +416,6 @@
 
 - (void)sendAnalyticsData
 {
-    NSAssert(self.formattedAddress != nil, @"Formatted Address cannot be nil before sending analytics");
-    NSAssert(self.timezoneID != nil, @"Timezone ID cannot be nil before sending analytics");
-    
     NSString *uniqueIdentifier = [self getSerialNumber];
     if (uniqueIdentifier == nil)
     {

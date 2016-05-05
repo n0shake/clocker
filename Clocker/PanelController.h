@@ -57,7 +57,6 @@
 @property (nonatomic, unsafe_unretained, readonly) id<PanelControllerDelegate> delegate;
 @property (nonatomic, unsafe_unretained) IBOutlet BackgroundView *backgroundView;
 @property (strong, nonatomic) PanelController *panelWindow;
-@property (strong, nonatomic) NSTimer *floatingWindowTimer;
 
 - (id)initWithDelegate:(id<PanelControllerDelegate>)delegate;
 - (void)openPanel;

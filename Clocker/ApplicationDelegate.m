@@ -34,7 +34,7 @@
 #import "CLOnboardingWindowController.h"
 
 #define helperAppBundleIdentifier @"com.abhishek.Clocker-Helper" // change as appropriate to help app bundle identifier
-#define terminateNotification @"TerminateHelper" 
+#define terminateNotification @"TERMINATEHELPER" // can be basically any string
 
 @implementation ApplicationDelegate
 
@@ -76,29 +76,96 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
+<<<<<<< HEAD
+    BOOL startedAtLogin = NO;
+=======
+    NSNumber *opened = [[NSUserDefaults standardUserDefaults] objectForKey:@"noOfTimes"];
+    if (opened == nil)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSMutableArray array]
+                                                  forKey:CLDefaultPreferenceKey];
+        NSInteger noOfTimes = opened.integerValue + 1;
+        NSNumber *noOfTime = [NSNumber numberWithInteger:noOfTimes];
+        [[NSUserDefaults standardUserDefaults] setObject:noOfTime forKey:@"noOfTimes"];;
+        
+    }
 
+    
+    
+    NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
+>>>>>>> master
+    
+    NSArray *apps = [[NSWorkspace sharedWorkspace] runningApplications];
+    
+    for (NSRunningApplication *app in apps)
+    {
+        if ([app.bundleIdentifier isEqualToString:helperAppBundleIdentifier])
+        {
+            startedAtLogin = YES;
+            break;
+        }
+    }
+    
+
+    if (startedAtLogin)
+    {
+        [[NSDistributedNotificationCenter defaultCenter]
+         postNotificationName:terminateNotification
+                       object:[[NSBundle mainBundle] bundleIdentifier]];
+    }
+    
+    // Install icon into the menu bar
+    self.menubarController = [MenubarController new];
+    
+    [self initializeDefaults];
+
+    NSString *onboarding = [[NSUserDefaults standardUserDefaults] objectForKey:@"initialLaunch"];
+    
+    if (onboarding == nil)
+    {
+        CLOnboardingWindowController *windowController = [CLOnboardingWindowController sharedWindow];
+        [windowController showWindow:nil];
+        [NSApp activateIgnoringOtherApps:YES];
+        [[NSUserDefaults standardUserDefaults] setObject:@"OnboardingDone" forKey:@"initialLaunch"];
+        [self.menubarController setInitialTimezoneData];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
+    
+    [[Crashlytics sharedInstance] setDebugMode:NO];
+    [Fabric with:@[[Crashlytics class]]];
+    
+}
+
+- (void)initializeDefaults
+{
     NSString *defaultTheme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
-    if (defaultTheme == nil) {
+    if (defaultTheme == nil)
+    {
         [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLThemeKey];
     }
     
     NSNumber *displayFutureSlider = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey];
-    if (displayFutureSlider == nil) {
+    if (displayFutureSlider == nil)
+    {
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:0] forKey:CLDisplayFutureSliderKey];
     }
     
     NSNumber *defaultTimeFormat = [[NSUserDefaults standardUserDefaults] objectForKey:CL24hourFormatSelectedKey];
-    if (defaultTimeFormat == nil) {
+    if (defaultTimeFormat == nil)
+    {
         [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:CL24hourFormatSelectedKey];
     }
     
     NSNumber *relativeDate = [[NSUserDefaults standardUserDefaults] objectForKey:CLRelativeDateKey];
-    if (relativeDate == nil) {
+    if (relativeDate == nil)
+    {
         [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLRelativeDateKey];
     }
     
     NSNumber *showDayInMenuBar = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowDayInMenu];
-    if (showDayInMenuBar == nil) {
+    if (showDayInMenuBar == nil)
+    {
         [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowDayInMenu];
     }
     
@@ -108,7 +175,8 @@ void *kContextActivePanel = &kContextActivePanel;
     }
     
     NSNumber *showCityInMenu = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowPlaceInMenu];
-    if (showCityInMenu == nil) {
+    if (showCityInMenu == nil)
+    {
         [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowPlaceInMenu];
     }
     
@@ -127,20 +195,6 @@ void *kContextActivePanel = &kContextActivePanel;
         [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowAppInForeground];
     }
     
-    NSString *onboarding = [[NSUserDefaults standardUserDefaults] objectForKey:@"initialLaunch"];
-    
-    // Install icon into the menu bar
-    self.menubarController = [MenubarController new];
-    
-    if (onboarding == nil)
-    {
-        CLOnboardingWindowController *windowController = [CLOnboardingWindowController sharedWindow];
-        [windowController showWindow:nil];
-        [NSApp activateIgnoringOtherApps:YES];
-        [[NSUserDefaults standardUserDefaults] setObject:@"OnboardingDone" forKey:@"initialLaunch"];
-        [self.menubarController setInitialTimezoneData];
-    }
-    
     //If mode selected is 1, then show the window when the app starts
     if (displayMode.integerValue == 1)
     {
@@ -152,15 +206,9 @@ void *kContextActivePanel = &kContextActivePanel;
         [NSApp activateIgnoringOtherApps:YES];
     }
     
-    
-    [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
-    
-    [[Crashlytics sharedInstance] setDebugMode:NO];
-    [Fabric with:@[[Crashlytics class]]];
-    
+
+
 }
-
-
 
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender

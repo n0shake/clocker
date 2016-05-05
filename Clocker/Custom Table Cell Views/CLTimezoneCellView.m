@@ -10,25 +10,43 @@
 #import "PanelController.h"
 #import "CommonStrings.h"
 #import "CLTimezoneData.h"
+#import "CLFloatingWindowController.h"
 
 @implementation CLTimezoneCellView
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    
+
     // Drawing code here.
 }
 
-- (IBAction)labelDidChange:(id)sender
+- (IBAction)labelDidChange:(NSTextField *)sender
 {
     NSTextField *customLabelCell = (NSTextField*) sender;
     __block PanelController *panelController;
+    __block CLFloatingWindowController *floatingWindow;
     
-    [[[NSApplication sharedApplication] windows] enumerateObjectsUsingBlock:^(NSWindow * _Nonnull window, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([window.windowController isMemberOfClass:[PanelController class]])
+    NSNumber *displayMode = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowAppInForeground];
+    
+    
+    [[[NSApplication sharedApplication] windows] enumerateObjectsUsingBlock:^(NSWindow * _Nonnull window, NSUInteger idx, BOOL * _Nonnull stop)
+    {
+        if (displayMode.integerValue == 0)
         {
-            panelController = window.windowController;
+            if ([window.windowController isMemberOfClass:[PanelController class]])
+            {
+                panelController = window.windowController;
+            }
         }
+        else if (displayMode.integerValue == 1)
+        {
+            if ([window.windowController isMemberOfClass:[CLFloatingWindowController class]])
+            {
+                floatingWindow = window.windowController;
+            }
+        }
+        
+      
     }];
     
     NSString *originalValue = customLabelCell.stringValue;
@@ -36,20 +54,34 @@
                                   [NSCharacterSet whitespaceCharacterSet]];
     
     
-    if ([[sender superview] isKindOfClass:[self class]]) {
+    if ([[sender superview] isKindOfClass:[self class]])
+    {
         CLTimezoneCellView *cellView = (CLTimezoneCellView *)[sender superview];
-        NSData *dataObject = panelController.defaultPreferences[cellView.rowNumber];
+        NSData *dataObject = displayMode.integerValue == 0 ? panelController.defaultPreferences[cellView.rowNumber] : floatingWindow.defaultPreferences[cellView.rowNumber];
         CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:dataObject];
         
-        [panelController.defaultPreferences enumerateObjectsUsingBlock:^(id  _Nonnull object, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (displayMode.integerValue == 0)
+        {
             
-            CLTimezoneData *timeObject = [CLTimezoneData getCustomObject:object];
-            if ([timeObject.formattedAddress isEqualToString:customLabelValue]) {
-                timeObject.customLabel = CLEmptyString;
-            }
-            
-            
-        }];
+            [panelController.defaultPreferences enumerateObjectsUsingBlock:^(id  _Nonnull object, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                CLTimezoneData *timeObject = [CLTimezoneData getCustomObject:object];
+                if ([timeObject.formattedAddress isEqualToString:customLabelValue]) {
+                    timeObject.customLabel = CLEmptyString;
+                }
+            }];
+        }
+        else if (displayMode.integerValue == 1)
+        {
+            [floatingWindow.defaultPreferences enumerateObjectsUsingBlock:^(id  _Nonnull object, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                CLTimezoneData *timeObject = [CLTimezoneData getCustomObject:object];
+                if ([timeObject.formattedAddress isEqualToString:customLabelValue]) {
+                    timeObject.customLabel = CLEmptyString;
+                }
+            }];
+        }
+ 
         
         timezoneObject.customLabel = (customLabelValue.length > 0) ? customLabelValue : CLEmptyString;
         
@@ -61,17 +93,32 @@
         }
 
         NSData *newObject = [NSKeyedArchiver archivedDataWithRootObject:timezoneObject];
-        [panelController.defaultPreferences replaceObjectAtIndex:cellView.rowNumber withObject:newObject];
-        [[NSUserDefaults standardUserDefaults] setObject:panelController.defaultPreferences forKey:CLDefaultPreferenceKey];
         
-        [panelController updateDefaultPreferences];
-        [panelController.mainTableview reloadData];
+        if (displayMode.integerValue == 0)
+        {
+            [panelController.defaultPreferences replaceObjectAtIndex:cellView.rowNumber withObject:newObject];
+            [[NSUserDefaults standardUserDefaults] setObject:panelController.defaultPreferences forKey:CLDefaultPreferenceKey];
+            [panelController updateDefaultPreferences];
+            [panelController.mainTableview reloadData];
+        }
+        else if(displayMode.integerValue == 1)
+        {
+            [floatingWindow.defaultPreferences replaceObjectAtIndex:cellView.rowNumber withObject:newObject];
+            [[NSUserDefaults standardUserDefaults] setObject:floatingWindow.defaultPreferences forKey:CLDefaultPreferenceKey];
+            [floatingWindow updateDefaultPreferences];
+            [floatingWindow.mainTableview reloadData];
+        }
         
         [[NSNotificationCenter defaultCenter]
          postNotificationName:CLCustomLabelChangedNotification
          object:nil];
         
     }
+}
+
+-(void)mouseDown:(NSEvent *)theEvent
+{
+    [self.window endEditingFor:nil];
 }
 
 - (void)updateTextColorWithColor:(NSColor *)color andCell:(CLTimezoneCellView*)cell
@@ -95,6 +142,14 @@
         
         
     }];
+}
+
+- (void)controlTextDidEndEditing:(NSNotification *)obj
+{
+    
+    CLFloatingWindowController *windowController = [CLFloatingWindowController sharedFloatingWindow];
+    
+    [windowController.floatingWindowTimer start];
 }
 
 @end

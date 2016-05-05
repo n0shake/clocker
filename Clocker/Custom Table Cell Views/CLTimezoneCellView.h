@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface CLTimezoneCellView : NSTableCellView
+@interface CLTimezoneCellView : NSTableCellView<NSTextDelegate>
 
 @property (weak) IBOutlet NSTextField *customName;
 @property (weak) IBOutlet NSTextField *relativeDate;
@@ -19,3 +19,4 @@
 - (void)setUpAutoLayoutWithCell:(CLTimezoneCellView *)cell;
 
 @end
+

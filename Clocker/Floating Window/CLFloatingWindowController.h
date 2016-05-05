@@ -8,10 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 #import "CLParentPanelController.h"
+#import "CLPausableTimer.h"
 
 @interface CLFloatingWindowController : CLParentPanelController <NSTableViewDataSource, NSWindowDelegate>
 
-@property (strong, nonatomic) NSTimer *floatingWindowTimer;
+@property (strong, nonatomic) CLPausableTimer *floatingWindowTimer;
 
 + (instancetype)sharedFloatingWindow;
 - (void)updatePanelColor;

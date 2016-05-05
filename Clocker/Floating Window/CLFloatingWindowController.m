@@ -306,7 +306,7 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
     
     if (self.floatingWindowTimer)
     {
-        [self.floatingWindowTimer invalidate];
+        [self.floatingWindowTimer.timer invalidate];
         self.floatingWindowTimer = nil;
     }
 }
@@ -315,10 +315,11 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
 {
     if (!self.floatingWindowTimer)
     {
-        self.floatingWindowTimer = [NSTimer scheduledTimerWithTimeInterval:2.0
+        self.floatingWindowTimer = [CLPausableTimer timerWithTimeInterval:2.0
                                                                     target:self
                                                                   selector:@selector(updateTime) userInfo:nil
                                                                    repeats:YES];
+        [self.floatingWindowTimer start]; //Explicitly start the timer
     }
 }
 

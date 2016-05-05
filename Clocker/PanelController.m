@@ -352,4 +352,62 @@ static PanelController *sharedPanel = nil;
     }
 }
 
+<<<<<<< HEAD
+=======
+
+-(BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation
+{
+    if (row == self.defaultPreferences.count) {
+        row--;
+    }
+    
+    NSPasteboard *pBoard = [info draggingPasteboard];
+    
+    NSData *data = [pBoard dataForType:CLDragSessionKey];
+    
+    NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    [self.defaultPreferences exchangeObjectAtIndex:rowIndexes.firstIndex withObjectAtIndex:row];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences forKey:CLDefaultPreferenceKey];
+    
+    [self.mainTableview reloadData];
+    
+    return YES;
+}
+
+-(NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation
+{
+    return NSDragOperationEvery;
+}
+
+#pragma mark -
+#pragma mark Preferences Target-Action
+#pragma mark -
+
+- (IBAction)openPreferences:(id)sender
+{
+    self.oneWindow = [CLOneWindowController sharedWindow];
+    [self.oneWindow showWindow:nil];
+    [NSApp activateIgnoringOtherApps:YES];
+
+}
+
+#pragma mark -
+#pragma mark Hiding Buttons on Mouse Exit
+#pragma mark -
+
+- (void)showOptions:(BOOL)value
+{
+    if (self.defaultPreferences.count == 0)
+    {
+        value = YES;
+    }
+   
+    self.shutdownButton.hidden = !value;
+    self.preferencesButton.hidden = !value;
+    
+}
+
+>>>>>>> master
 @end

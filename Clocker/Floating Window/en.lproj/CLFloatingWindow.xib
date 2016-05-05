@@ -33,7 +33,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="282" height="265"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="55" viewBased="YES" id="lfp-oy-qHb">
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="55" viewBased="YES" id="lfp-oy-qHb">
                                     <rect key="frame" x="0.0" y="0.0" width="282" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="1"/>
@@ -57,7 +57,7 @@
                                                     <rect key="frame" x="1" y="0.0" width="279" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="100" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="Zyy-Fw-K7Z">
+                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="100" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="Zyy-Fw-K7Z" customClass="CLPanelTextField">
                                                             <rect key="frame" x="7" y="33" width="154" height="22"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="150" id="6MO-wT-Yr5"/>
@@ -70,6 +70,7 @@
                                                             </textFieldCell>
                                                             <connections>
                                                                 <action selector="labelDidChange:" target="8mq-8K-c34" id="CdT-6J-5Bn"/>
+                                                                <outlet property="delegate" destination="8mq-8K-c34" id="3CA-OP-j1f"/>
                                                             </connections>
                                                         </textField>
                                                         <textField verticalHuggingPriority="750" tag="102" preferredMaxLayoutWidth="72" translatesAutoresizingMaskIntoConstraints="NO" id="wFR-Xg-kpb">
