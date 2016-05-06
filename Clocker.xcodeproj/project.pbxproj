@@ -174,6 +174,16 @@
 		9A5E6BAA1CAF8DFA006E7C5C /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		9A6362081C432F68004AD010 /* CLAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAPI.h; path = Clocker/API/CLAPI.h; sourceTree = "<group>"; };
 		9A6362091C432F68004AD010 /* CLAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAPI.m; path = Clocker/API/CLAPI.m; sourceTree = "<group>"; };
+		9A7654341CDC2290000FB825 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		9A7654351CDC2290000FB825 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9A7654361CDC2290000FB825 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant"; path = "zh-Hant.lproj/CLOneWindow.xib"; sourceTree = "<group>"; };
+		9A7654371CDC2291000FB825 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant"; path = "zh-Hant.lproj/Panel.xib"; sourceTree = "<group>"; };
+		9A7654381CDC2291000FB825 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant"; path = "zh-Hant.lproj/CLAboutUsView.xib"; sourceTree = "<group>"; };
+		9A7654391CDC2291000FB825 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant"; path = "zh-Hant.lproj/CLPreferencesView.xib"; sourceTree = "<group>"; };
+		9A76543A1CDC2291000FB825 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant"; path = "zh-Hant.lproj/CLAppearanceView.xib"; sourceTree = "<group>"; };
+		9A76543B1CDC2291000FB825 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant"; path = "zh-Hant.lproj/CLAppFeedbackWindow.xib"; sourceTree = "<group>"; };
+		9A76543C1CDC2291000FB825 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant"; path = "zh-Hant.lproj/CLOnboardingWindow.xib"; sourceTree = "<group>"; };
+		9A76543D1CDC2291000FB825 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant"; path = "zh-Hant.lproj/CLFloatingWindow.xib"; sourceTree = "<group>"; };
 		9A79E98E1CB34B6800BA7916 /* CLParentPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLParentPanelController.h; path = Clocker/CLParentPanelController.h; sourceTree = "<group>"; };
 		9A79E98F1CB34B6800BA7916 /* CLParentPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLParentPanelController.m; path = Clocker/CLParentPanelController.m; sourceTree = "<group>"; };
 		9A8605AD1BEC148400A810A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Clocker/main.m; sourceTree = "<group>"; };
@@ -566,6 +576,7 @@
 				en,
 				ja,
 				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = DD4F7BF913C30F9F00825C6E;
 			productRefGroup = DD4F7C0513C30F9F00825C6E /* Products */;
@@ -688,6 +699,7 @@
 				9A13BAC71CA86A88007C6CBE /* en */,
 				9A13BAC91CA86AAE007C6CBE /* ja */,
 				9A5E6BA51CAF794D006E7C5C /* zh-Hans */,
+				9A7654381CDC2291000FB825 /* zh-Hant */,
 			);
 			name = CLAboutUsView.xib;
 			path = Clocker/AboutUsWindow;
@@ -699,6 +711,7 @@
 				9A13BACB1CA877A6007C6CBE /* en */,
 				9A13BACD1CA877A8007C6CBE /* ja */,
 				9A5E6BA61CAF794D006E7C5C /* zh-Hans */,
+				9A7654391CDC2291000FB825 /* zh-Hant */,
 			);
 			name = CLPreferencesView.xib;
 			path = Clocker/Preferences;
@@ -710,6 +723,7 @@
 				9A13BACF1CA879E5007C6CBE /* en */,
 				9A13BAD11CA879E8007C6CBE /* ja */,
 				9A5E6BA71CAF794D006E7C5C /* zh-Hans */,
+				9A76543A1CDC2291000FB825 /* zh-Hant */,
 			);
 			name = CLAppearanceView.xib;
 			path = "Clocker/Appearance Tab";
@@ -721,6 +735,7 @@
 				9A13BAD31CA87DF4007C6CBE /* en */,
 				9A13BAD51CA87DF5007C6CBE /* ja */,
 				9A5E6BA91CAF794D006E7C5C /* zh-Hans */,
+				9A76543C1CDC2291000FB825 /* zh-Hant */,
 			);
 			name = CLOnboardingWindow.xib;
 			path = Clocker/Onboarding;
@@ -732,6 +747,7 @@
 				9A13BAD71CA87F08007C6CBE /* en */,
 				9A13BAD91CA87F09007C6CBE /* ja */,
 				9A5E6BA41CAF794D006E7C5C /* zh-Hans */,
+				9A7654371CDC2291000FB825 /* zh-Hant */,
 			);
 			name = Panel.xib;
 			path = Clocker;
@@ -743,6 +759,7 @@
 				9A13BADB1CA87F3F007C6CBE /* en */,
 				9A13BADD1CA87F40007C6CBE /* ja */,
 				9A5E6BA31CAF794D006E7C5C /* zh-Hans */,
+				9A7654361CDC2290000FB825 /* zh-Hant */,
 			);
 			name = CLOneWindow.xib;
 			path = Clocker/CLOneWindow;
@@ -754,6 +771,7 @@
 				9A13BAE11CA882FA007C6CBE /* en */,
 				9A13BAE31CA882FC007C6CBE /* ja */,
 				9A5E6BA11CAF794D006E7C5C /* zh-Hans */,
+				9A7654341CDC2290000FB825 /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			path = Clocker;
@@ -765,6 +783,7 @@
 				9A13BAE71CA889BB007C6CBE /* en */,
 				9A13BAE91CA889BD007C6CBE /* ja */,
 				9A5E6BA81CAF794D006E7C5C /* zh-Hans */,
+				9A76543B1CDC2291000FB825 /* zh-Hant */,
 			);
 			name = CLAppFeedbackWindow.xib;
 			path = "Clocker/App Feedback";
@@ -776,6 +795,7 @@
 				9A13BAEB1CA88A76007C6CBE /* en */,
 				9A13BAED1CA88AD3007C6CBE /* ja */,
 				9A5E6BA21CAF794D006E7C5C /* zh-Hans */,
+				9A7654351CDC2290000FB825 /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			path = Clocker;
@@ -787,6 +807,7 @@
 				9AB2420C1CB723650017C17C /* en */,
 				9AB2420F1CB723670017C17C /* ja */,
 				9AB242101CB723690017C17C /* zh-Hans */,
+				9A76543D1CDC2291000FB825 /* zh-Hant */,
 			);
 			name = CLFloatingWindow.xib;
 			path = "Clocker/Floating Window";
@@ -834,10 +855,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
 				CODE_SIGN_IDENTITY = "";
-<<<<<<< HEAD
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
-=======
->>>>>>> master
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -938,10 +956,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
 				CODE_SIGN_IDENTITY = "";
-<<<<<<< HEAD
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
-=======
->>>>>>> master
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -972,10 +987,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
 				CODE_SIGN_IDENTITY = "";
-<<<<<<< HEAD
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
-=======
->>>>>>> master
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (

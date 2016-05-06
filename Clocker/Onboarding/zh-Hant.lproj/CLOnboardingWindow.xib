@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="CLOnboardingWindowController">
+            <connections>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <rect key="contentRect" x="196" y="240" width="275" height="233"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="275" height="233"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TaQ-Ln-Vip">
+                        <rect key="frame" x="114" y="155" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="48" id="Ll6-ju-UBQ"/>
+                            <constraint firstAttribute="height" constant="48" id="kpd-df-Kmk"/>
+                        </constraints>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-256" id="2t2-AF-Gtf"/>
+                    </imageView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oiI-iN-JcW">
+                        <rect key="frame" x="18" y="120" width="239" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="C7v-6N-7K9"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="计时员" id="r8V-tn-VkN">
+                            <font key="font" size="20" name="SFUIDisplay-Bold"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oyE-6j-Mni">
+                        <rect key="frame" x="18" y="11" width="239" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="Ttg-Xe-RUI"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" placeholderString="Made by Abhishek Banthia" id="cdT-3T-Jmu">
+                            <font key="font" size="11" name="SFUIDisplay-Light"/>
+                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MQa-AK-s2j">
+                        <rect key="frame" x="81" y="27" width="114" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="102" id="17K-x2-WJw"/>
+                            <constraint firstAttribute="height" constant="21" id="uWT-Rz-CCE"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="下一个" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="TjC-Ot-oen">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                    <color key="value" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </buttonCell>
+                        <connections>
+                            <action selector="continueButtonPressed:" target="-2" id="vNV-kl-MtP"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wod-xv-dtj">
+                        <rect key="frame" x="18" y="99" width="239" height="19"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="管理你的时间更好" id="hQe-Z5-uca">
+                            <font key="font" size="13" name="SFUIDisplay-Light"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="MQa-AK-s2j" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="3QT-5g-r17"/>
+                    <constraint firstItem="wod-xv-dtj" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="6V0-ex-bD0"/>
+                    <constraint firstAttribute="trailing" secondItem="oyE-6j-Mni" secondAttribute="trailing" constant="20" id="Cnl-ve-VbG"/>
+                    <constraint firstItem="oiI-iN-JcW" firstAttribute="top" secondItem="TaQ-Ln-Vip" secondAttribute="bottom" constant="5" id="M9K-qv-5Bd"/>
+                    <constraint firstItem="TaQ-Ln-Vip" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="30" id="MAA-ac-ceo"/>
+                    <constraint firstItem="oyE-6j-Mni" firstAttribute="top" secondItem="MQa-AK-s2j" secondAttribute="bottom" constant="6" id="U8v-lf-N46"/>
+                    <constraint firstItem="oiI-iN-JcW" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="ajN-5l-kDS"/>
+                    <constraint firstItem="wod-xv-dtj" firstAttribute="top" secondItem="oiI-iN-JcW" secondAttribute="bottom" constant="2" id="bed-o9-FYi"/>
+                    <constraint firstItem="wod-xv-dtj" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="bm9-w8-ea0"/>
+                    <constraint firstItem="TaQ-Ln-Vip" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="dV9-LG-Mh6"/>
+                    <constraint firstAttribute="bottom" secondItem="oyE-6j-Mni" secondAttribute="bottom" constant="11" id="fGG-Ao-iJ2"/>
+                    <constraint firstItem="oyE-6j-Mni" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="fMJ-gf-n5K"/>
+                    <constraint firstAttribute="trailing" secondItem="wod-xv-dtj" secondAttribute="trailing" constant="20" id="kcg-ph-uGv"/>
+                    <constraint firstItem="oiI-iN-JcW" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="nnJ-Ie-tQW"/>
+                    <constraint firstAttribute="trailing" secondItem="oiI-iN-JcW" secondAttribute="trailing" constant="20" id="ux4-02-bAj"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="295.5" y="171.5"/>
+        </window>
+    </objects>
+    <resources>
+        <image name="ClockerIcon-256" width="256" height="256"/>
+    </resources>
+</document>

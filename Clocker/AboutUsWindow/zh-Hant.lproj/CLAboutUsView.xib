@@ -29,7 +29,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="dqF-vG-wml"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="计时员" id="KPE-f2-s6r">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="計時員" id="KPE-f2-s6r">
                         <font key="font" size="29" name="SFUIDisplay-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -111,22 +111,11 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IhK-El-tOe">
-                    <rect key="frame" x="153" y="58" width="316" height="15"/>
+                    <rect key="frame" x="153" y="75" width="316" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="7kh-Ha-LHP"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="apa-Nu-NtC">
-                        <font key="font" size="10" name="SFUIDisplay-Bold"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rzs-xE-sfs">
-                    <rect key="frame" x="153" y="75" width="316" height="15"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="15" id="2sg-Q1-h9h"/>
-                    </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="You can support Timekeeper by starring the source on GitHub! :)" id="JAy-Yp-MXm">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="You can support Timekeeper by starring the source on GitHub! :)" id="apa-Nu-NtC">
                         <font key="font" size="10" name="SFUIDisplay-Bold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -134,11 +123,10 @@
                 </textField>
             </subviews>
             <constraints>
+                <constraint firstItem="IhK-El-tOe" firstAttribute="top" secondItem="6Cx-BF-XMU" secondAttribute="bottom" constant="5" id="6zD-S4-g3n"/>
                 <constraint firstItem="p2G-hA-MSX" firstAttribute="leading" secondItem="FS5-f2-b1Z" secondAttribute="leading" constant="20" id="8LW-4H-HKD"/>
                 <constraint firstAttribute="bottom" secondItem="q67-QZ-7g3" secondAttribute="bottom" constant="20" id="Cl5-lU-Hlw"/>
-                <constraint firstItem="IhK-El-tOe" firstAttribute="top" secondItem="Rzs-xE-sfs" secondAttribute="bottom" constant="2" id="GhF-Ml-o0d"/>
                 <constraint firstAttribute="bottom" secondItem="fgO-N3-3oh" secondAttribute="bottom" constant="20" id="Ka3-lR-aW1"/>
-                <constraint firstItem="Rzs-xE-sfs" firstAttribute="leading" secondItem="p2G-hA-MSX" secondAttribute="trailing" constant="10" id="Mru-Qk-R35"/>
                 <constraint firstItem="P3u-Um-Nby" firstAttribute="leading" secondItem="q67-QZ-7g3" secondAttribute="trailing" constant="8" id="NtI-jY-BNB"/>
                 <constraint firstAttribute="trailing" secondItem="6Cx-BF-XMU" secondAttribute="trailing" constant="20" id="PCL-2W-fCV"/>
                 <constraint firstItem="6Cx-BF-XMU" firstAttribute="leading" secondItem="p2G-hA-MSX" secondAttribute="trailing" constant="10" id="PxC-Pa-PfL"/>
@@ -157,8 +145,6 @@
                 <constraint firstAttribute="trailing" secondItem="XlC-Xd-67t" secondAttribute="trailing" constant="20" id="vpM-Kh-fhm"/>
                 <constraint firstItem="fgO-N3-3oh" firstAttribute="leading" secondItem="FS5-f2-b1Z" secondAttribute="leading" constant="130" id="wOA-HL-UjC"/>
                 <constraint firstItem="FG9-E5-o8y" firstAttribute="top" secondItem="XlC-Xd-67t" secondAttribute="bottom" constant="1" id="yHu-dm-LPw"/>
-                <constraint firstItem="Rzs-xE-sfs" firstAttribute="top" secondItem="6Cx-BF-XMU" secondAttribute="bottom" constant="5" id="ydK-a7-uQy"/>
-                <constraint firstAttribute="trailing" secondItem="Rzs-xE-sfs" secondAttribute="trailing" constant="20" id="zhC-Yf-lRU"/>
                 <constraint firstItem="6Cx-BF-XMU" firstAttribute="top" secondItem="5Eo-aJ-L8H" secondAttribute="bottom" constant="10" id="zki-ag-D4H"/>
             </constraints>
             <point key="canvasLocation" x="601.5" y="244"/>

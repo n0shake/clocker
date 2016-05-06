@@ -24,7 +24,7 @@
                         <constraint firstAttribute="height" constant="18" id="2DP-wK-Ga8"/>
                         <constraint firstAttribute="width" constant="60" id="KEa-ei-G2i"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Theme" id="hCb-NM-To8">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="主题" id="hCb-NM-To8">
                         <font key="font" size="13" name="SFUIDisplay-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -36,7 +36,7 @@
                         <constraint firstAttribute="height" constant="18" id="gWc-u4-D8E"/>
                         <constraint firstAttribute="width" constant="100" id="nh0-5K-Aa0"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Time Format" id="Hza-PB-FEf">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="时间格式" id="Hza-PB-FEf">
                         <font key="font" size="13" name="SFUIDisplay-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -50,8 +50,8 @@
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="3ED-rf-SN8">
                         <font key="font" size="12" name="SFUIDisplay-Light"/>
                         <segments>
-                            <segment label="Default" width="70"/>
-                            <segment label="Black" toolTip="Customize the timezone panel by selecting a theme!" width="70" selected="YES" tag="1"/>
+                            <segment label="白色" width="70"/>
+                            <segment label="黑色" toolTip="Customize the timezone panel by selecting a theme!" width="70" selected="YES" tag="1"/>
                         </segments>
                     </segmentedCell>
                     <connections>
@@ -65,7 +65,7 @@
                         <constraint firstAttribute="height" constant="18" id="eY8-bV-QLM"/>
                         <constraint firstAttribute="width" constant="150" id="n8S-fR-UtY"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Day Display Options" id="KTv-74-itf">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="日显示选项" id="KTv-74-itf">
                         <font key="font" size="13" name="SFUIDisplay-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -123,8 +123,8 @@
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="rIg-AP-wGG">
                         <font key="font" size="12" name="SFUIDisplay-Light"/>
                         <segments>
-                            <segment label="Yes" width="38" selected="YES"/>
-                            <segment label="No" width="38" tag="1"/>
+                            <segment label="是" width="38" selected="YES"/>
+                            <segment label="没有" width="38" tag="1"/>
                         </segments>
                     </segmentedCell>
                     <connections>
@@ -156,8 +156,8 @@
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="18N-XQ-ANm">
                         <font key="font" size="12" name="SFUIDisplay-Light"/>
                         <segments>
-                            <segment label="Yes" width="38"/>
-                            <segment label="No" width="38" selected="YES" tag="1"/>
+                            <segment label="是" width="38"/>
+                            <segment label="没有" width="38" selected="YES" tag="1"/>
                         </segments>
                     </segmentedCell>
                     <connections>
@@ -173,8 +173,8 @@
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="FMr-PO-czs">
                         <font key="font" size="12" name="SFUIDisplay-Light"/>
                         <segments>
-                            <segment label="Yes" width="36"/>
-                            <segment label="No" width="36" selected="YES" tag="1"/>
+                            <segment label="是" width="36"/>
+                            <segment label="没有" width="36" selected="YES" tag="1"/>
                         </segments>
                     </segmentedCell>
                     <connections>
@@ -187,7 +187,7 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="120" id="1Lv-wC-hEM"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Show Future Slider" id="PE4-Ua-hkI">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="显示滑块" id="PE4-Ua-hkI">
                         <font key="font" size="13" name="SFUIDisplay-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -216,7 +216,7 @@
                         <constraint firstAttribute="width" constant="175" id="Pdc-78-vzv"/>
                         <constraint firstAttribute="height" constant="18" id="hsh-i8-ULY"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Show Favourite Place Name" id="nEh-Sa-SDH">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="显示位置" id="nEh-Sa-SDH">
                         <font key="font" size="13" name="SFUIDisplay-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -234,8 +234,8 @@
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="SLe-HO-6so">
                         <font key="font" size="12" name="SFUIDisplay-Light"/>
                         <segments>
-                            <segment label="Yes" width="38"/>
-                            <segment label="No" width="38" selected="YES" tag="1"/>
+                            <segment label="是" width="38"/>
+                            <segment label="没有" width="38" selected="YES" tag="1"/>
                         </segments>
                     </segmentedCell>
                     <connections>
@@ -249,7 +249,7 @@
                         <constraint firstAttribute="width" constant="175" id="YaE-Og-A4W"/>
                         <constraint firstAttribute="height" constant="18" id="bTT-ve-oW9"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Main Panel Options" id="skQ-rM-X70">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="主面板选项" id="skQ-rM-X70">
                         <font key="font" size="12" name="SFUIDisplay-Bold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -263,8 +263,8 @@
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="ZV9-ih-faz">
                         <font key="font" size="12" name="SFUIDisplay-Light"/>
                         <segments>
-                            <segment label="Relative" width="60"/>
-                            <segment label="Actual" width="60" selected="YES" tag="1"/>
+                            <segment label="各自" width="60"/>
+                            <segment label="实际" width="60" selected="YES" tag="1"/>
                         </segments>
                     </segmentedCell>
                     <connections>
