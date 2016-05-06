@@ -352,9 +352,6 @@ static PanelController *sharedPanel = nil;
     }
 }
 
-<<<<<<< HEAD
-=======
-
 -(BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation
 {
     if (row == self.defaultPreferences.count) {
@@ -409,5 +406,4 @@ static PanelController *sharedPanel = nil;
     
 }
 
->>>>>>> master
 @end

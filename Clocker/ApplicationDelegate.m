@@ -76,9 +76,8 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-<<<<<<< HEAD
     BOOL startedAtLogin = NO;
-=======
+    
     NSNumber *opened = [[NSUserDefaults standardUserDefaults] objectForKey:@"noOfTimes"];
     if (opened == nil)
     {
@@ -89,11 +88,6 @@ void *kContextActivePanel = &kContextActivePanel;
         [[NSUserDefaults standardUserDefaults] setObject:noOfTime forKey:@"noOfTimes"];;
         
     }
-
-    
-    
-    NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
->>>>>>> master
     
     NSArray *apps = [[NSWorkspace sharedWorkspace] runningApplications];
     
@@ -182,7 +176,7 @@ void *kContextActivePanel = &kContextActivePanel;
     
     NSNumber *showAppInForeground = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowAppInForeground];
     if (showAppInForeground == nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:CLShowAppInForeground];
+        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowAppInForeground];
     }
     
     NSNumber *startClockerAtLogin = [[NSUserDefaults standardUserDefaults] objectForKey:CLStartAtLogin];

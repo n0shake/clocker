@@ -17,12 +17,8 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-<<<<<<< HEAD
 	<string>22</string>
-=======
-	<string>17</string>
->>>>>>> master
-	<key>Fabric</key>
+    <key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
 		<string>94088f95c41979e8019b67d5795f52bbbe7104d4</string>
