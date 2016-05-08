@@ -59,7 +59,6 @@
 + (instancetype)getCustomObject:(NSData *)encodedData
 {
     
-    
     if (encodedData)
     {
         if ([encodedData isKindOfClass:[NSDictionary class]])
@@ -82,7 +81,7 @@
     [coder encodeObject:self.formattedAddress forKey:@"formattedAddress"];
     [coder encodeObject:self.customLabel forKey:@"customLabel"];
     [coder encodeObject:self.timezoneID forKey:@"timezoneID"];
-    [coder encodeObject:self.nextUpdate forKey:@"nextUpdate"];
+    [coder encodeObject:self.nextUpdate forKey:@"latitude"];
     [coder encodeObject:self.isFavourite forKey:@"isFavourite"];
 }
 
@@ -96,7 +95,7 @@
         self.formattedAddress = [coder decodeObjectForKey:@"formattedAddress"];
         self.customLabel = [coder decodeObjectForKey:@"customLabel"];
         self.timezoneID = [coder decodeObjectForKey:@"timezoneID"];
-        self.nextUpdate = [coder decodeObjectForKey:@"nextUpdate"];
+        self.nextUpdate = [coder decodeObjectForKey:@"latitude"];
         self.isFavourite = [coder decodeObjectForKey:@"isFavourite"];
     }
     
