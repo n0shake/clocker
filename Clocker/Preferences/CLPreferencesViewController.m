@@ -749,13 +749,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                            }
                            
                            NSMutableDictionary *newTimezone = [NSMutableDictionary dictionary];
-                           if (json[@"sunrise"]) {
-                               [newTimezone setObject:json[@"sunrise"] forKey:@"sunriseTime"];
-                           }
-                           if (json[@"sunset"]) {
-                               [newTimezone setObject:json[@"sunset"] forKey:@"sunsetTime"];
-                           }
-                           
+
                            [newTimezone setObject:json[@"timeZoneId"] forKey:CLTimezoneID];
                            
                            
