@@ -9,10 +9,12 @@
 #import "CLIntroViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ApplicationDelegate.h"
-
+#import <pop/POP.h>
+#import "CLAnimatedImages.h"
 
 @interface CLIntroViewController ()
 @property (weak) IBOutlet NSImageView *onboardingImageView;
+@property (weak) IBOutlet CLAnimatedImages *customView;
 
 @end
 
@@ -30,10 +32,13 @@
     [self.view setLayer:viewLayer];
     
     self.view.window.styleMask = NSFullSizeContentViewWindowMask;
+    
+    [self.customView addUntitled1Animation];
 }
 
 - (IBAction)continueOnboarding:(NSButton *)sender
 {
+    
     if ([sender.title isEqualToString:@"Get Started"])
     {
         [self.view.window close];
@@ -42,16 +47,28 @@
          return;
     }
     
+    
     self.onboardingImageView.image = [NSImage imageNamed:@"FinalOnboarding"];
     [sender setTitle:@"Get Started"];
+    CALayer *layer = self.onboardingImageView.layer;
+    [layer pop_removeAllAnimations];
     
-    CATransition *transition = [CATransition animation];
-    transition.duration = 1.0f;
-    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    transition.type = kCATransitionMoveIn;
-    [self.view setWantsLayer:YES];
+    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
+    anim.fromValue = @(300);
+    anim.toValue = @(100);
+    anim.springBounciness = 20.0f;
     
-    [self.onboardingImageView.layer addAnimation:transition forKey:nil];
+    [layer pop_addAnimation:anim forKey:@"size"];
+    
+}
+
+- (IBAction)leftAction:(id)sender
+{
+    [self.customView addUntitled1Animation];
+}
+
+- (IBAction)rightAction:(id)sender
+{
     
 }
 

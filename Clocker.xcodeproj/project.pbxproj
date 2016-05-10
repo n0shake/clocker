@@ -81,6 +81,8 @@
 		9ACE03EF1CB0ADE00039FC01 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACE03EE1CB0ADE00039FC01 /* Firebase.framework */; };
 		9AD6DE571CE114DA007A8401 /* CLScaleUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD6DE561CE114DA007A8401 /* CLScaleUpButton.m */; };
 		9AD6DE651CE18EB4007A8401 /* CLArrowIndicators.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD6DE641CE18EB4007A8401 /* CLArrowIndicators.m */; };
+		9AE1FFE21CE28CF500827C80 /* CLAnimatedImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE1FFDF1CE28CF500827C80 /* CLAnimatedImages.m */; };
+		9AE1FFE31CE28CF500827C80 /* QCMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE1FFE11CE28CF500827C80 /* QCMethod.m */; };
 		9AF9A16B1C250AB300EE7C2A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9A16A1C250AB300EE7C2A /* Reachability.m */; };
 		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -334,6 +336,10 @@
 		9AD6DE561CE114DA007A8401 /* CLScaleUpButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLScaleUpButton.m; path = Clocker/CLScaleUpButton.m; sourceTree = "<group>"; };
 		9AD6DE631CE18EB4007A8401 /* CLArrowIndicators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLArrowIndicators.h; path = Clocker/CLArrowIndicators.h; sourceTree = "<group>"; };
 		9AD6DE641CE18EB4007A8401 /* CLArrowIndicators.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLArrowIndicators.m; path = Clocker/CLArrowIndicators.m; sourceTree = "<group>"; };
+		9AE1FFDE1CE28CF500827C80 /* CLAnimatedImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAnimatedImages.h; path = Clocker/CLAnimatedImages.h; sourceTree = "<group>"; };
+		9AE1FFDF1CE28CF500827C80 /* CLAnimatedImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAnimatedImages.m; path = Clocker/CLAnimatedImages.m; sourceTree = "<group>"; };
+		9AE1FFE01CE28CF500827C80 /* QCMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QCMethod.h; path = Clocker/QCMethod.h; sourceTree = "<group>"; };
+		9AE1FFE11CE28CF500827C80 /* QCMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QCMethod.m; path = Clocker/QCMethod.m; sourceTree = "<group>"; };
 		9AF9A1691C250AB300EE7C2A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Clocker/Reachability/Reachability.h; sourceTree = "<group>"; };
 		9AF9A16A1C250AB300EE7C2A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Clocker/Reachability/Reachability.m; sourceTree = "<group>"; };
 		DD4F7C0413C30F9F00825C6E /* Clocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -598,6 +604,10 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
+				9AE1FFDE1CE28CF500827C80 /* CLAnimatedImages.h */,
+				9AE1FFDF1CE28CF500827C80 /* CLAnimatedImages.m */,
+				9AE1FFE01CE28CF500827C80 /* QCMethod.h */,
+				9AE1FFE11CE28CF500827C80 /* QCMethod.m */,
 				9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */,
 				9A5E6B9C1CAF7174006E7C5C /* Firebase */,
 				9A87DA4F1C358F8200A8CF3B /* Date Tools */,
@@ -881,6 +891,7 @@
 				9A25F7471C1A5E17007D369B /* iRate.m in Sources */,
 				9A8605C01BEC14F600A810A4 /* Panel.m in Sources */,
 				9AD6DE651CE18EB4007A8401 /* CLArrowIndicators.m in Sources */,
+				9AE1FFE21CE28CF500827C80 /* CLAnimatedImages.m in Sources */,
 				9A8605BA1BEC14DC00A810A4 /* StatusItemView.m in Sources */,
 				9A87DAC91C358FA800A8CF3B /* DTTimePeriodCollection.m in Sources */,
 				9A3247391C263F4F00CF6B6E /* CLAppearanceViewController.m in Sources */,
@@ -889,6 +900,7 @@
 				9A9E63861C2C673E009A299B /* CLAppFeedbackWindowController.m in Sources */,
 				9A8605BB1BEC14DC00A810A4 /* PanelController.m in Sources */,
 				9A8605B61BEC14BE00A810A4 /* MenubarController.m in Sources */,
+				9AE1FFE31CE28CF500827C80 /* QCMethod.m in Sources */,
 				9A42394F1CB0616400A8E51A /* CLFloatingWindowController.m in Sources */,
 				9A10C68F1CDAC8B500D474F1 /* CLPanelTextField.m in Sources */,
 				9A5951C01C1D0AA0009C17AA /* CLOneWindowController.m in Sources */,

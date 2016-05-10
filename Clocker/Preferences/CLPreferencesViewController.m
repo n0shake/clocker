@@ -14,8 +14,9 @@
 #import "CommonStrings.h"
 #import "CLTimezoneData.h"
 #import "CLAPI.h"
-//#import <Answers/Answers.h>
+#import "EDSunriseSet.h"
 #import <ServiceManagement/ServiceManagement.h>
+
 
 NSString *const CLSearchPredicateKey = @"SELF CONTAINS[cd]%@";
 NSString *const CLPreferencesViewNibIdentifier = @"PreferencesWindow";
@@ -45,6 +46,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 @property (nonatomic, copy) NSString *columnName;
 @property (atomic, copy) NSArray *themes;
 @property (nonatomic, strong) NSURLSessionDataTask *dataTask;
+@property (weak) IBOutlet SRRecorderControl *recorderControl;
 
 @property (weak) IBOutlet NSTableView *timezoneTableView;
 @property (strong) IBOutlet Panel *timezonePanel;
@@ -88,8 +90,60 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     
     self.columnName = @"Place(s)";
         // Do view setup here.
+    
+    NSUserDefaultsController *defaults = [NSUserDefaultsController sharedUserDefaultsController];
+    self.recorderControl.delegate = self;
+    [self.recorderControl bind:NSValueBinding
+                                 toObject:defaults
+                              withKeyPath:@"values.globalPing"
+                                  options:nil];
+    
+    [defaults addObserver:self forKeyPath:@"values.globalPing" options:NSKeyValueObservingOptionInitial context:NULL];
 }
 
+/*
+- (void)initializeHotkeySequence
+{
+    PTHotKeyCenter *hotKeyCenter = [PTHotKeyCenter sharedCenter];
+    PTHotKey *oldHotKey = [hotKeyCenter hotKeyWithIdentifier:aKeyPath];
+    [hotKeyCenter unregisterHotKey:oldHotKey];
+    
+    PTHotKey *newHotKey = [PTHotKey hotKeyWithIdentifier:aKeyPath
+                                                keyCombo:newShortcut
+                                                  target:self
+                                                  action:@selector(ping:)];
+    [hotKeyCenter registerHotKey:newHotKey];
+
+}*/
+
+-(void)observeValueForKeyPath:(NSString *)aKeyPath ofObject:(id)anObject change:(NSDictionary<NSString *,id> *)aChange context:(void *)aContext
+{
+    if ([aKeyPath isEqualToString:@"values.globalPing"])
+    {
+        PTHotKeyCenter *hotKeyCenter = [PTHotKeyCenter sharedCenter];
+        PTHotKey *oldHotKey = [hotKeyCenter hotKeyWithIdentifier:aKeyPath];
+        [hotKeyCenter unregisterHotKey:oldHotKey];
+        
+        NSDictionary *newShortcut = [anObject valueForKeyPath:aKeyPath];
+        
+        if (newShortcut && (NSNull *)newShortcut != [NSNull null])
+        {
+            PTHotKey *newHotKey = [PTHotKey hotKeyWithIdentifier:aKeyPath
+                                                        keyCombo:newShortcut
+                                                          target:self
+                                                          action:@selector(ping:)];
+            [hotKeyCenter registerHotKey:newHotKey];
+        }
+    }
+    else
+        [super observeValueForKeyPath:aKeyPath ofObject:anObject change:aChange context:aContext];
+}
+
+-(IBAction)ping:(id)sender
+{
+    ApplicationDelegate *delegate = (ApplicationDelegate *)[[NSApplication sharedApplication] delegate];
+    [delegate togglePanel:nil];
+}
 
 -(void)dealloc
 {
@@ -738,7 +792,8 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                            
                            CLTimezoneData *dataObject = self.filteredArray[self.availableTimezoneTableView.selectedRow];
                            
-                           [dataObject sendAnalyticsData];
+                           
+                           /*Strip till the first comma we encounter*/
                            
                            NSString *filteredAddress = dataObject.formattedAddress;
                            
@@ -755,10 +810,11 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                            
                            [newTimezone setObject:filteredAddress forKey:CLTimezoneName];
                            [newTimezone setObject:dataObject.place_id forKey:CLPlaceIdentifier];
-                           [newTimezone setObject:latitude forKey:@"latitude"];
-                           [newTimezone setObject:longitude forKey:@"longitude"];
+                           [newTimezone setObject:dataObject.latitude forKey:@"latitude"];
+                           [newTimezone setObject:dataObject.longitude forKey:@"longitude"];
                            [newTimezone setObject:CLEmptyString forKey:@"nextUpdate"];
                            [newTimezone setObject:CLEmptyString forKey:CLCustomLabel];
+                           
                            
                            CLTimezoneData *timezoneObject = [[CLTimezoneData alloc] initWithDictionary:newTimezone];
                            
