@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="IKIBAutoLayoutWindowController">
+            <connections>
+                <outlet property="globalPingShortcutRecorder" destination="13" id="90"/>
+                <outlet property="pingItemShortcutRecorder" destination="141" id="162"/>
+                <outlet property="pingShortcutRecorder" destination="8" id="89"/>
+                <outlet property="window" destination="5" id="7"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Interface Builder Auto Layout Demo" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" showsToolbarButton="NO" frameAutosaveName="Interface Builder Auto Layout Demo" animationBehavior="default" id="5" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES" utility="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="112" width="411" height="131"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <view key="contentView" wantsLayer="YES" id="6">
+                <rect key="frame" x="0.0" y="0.0" width="411" height="131"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="8" customClass="SRRecorderControl">
+                        <rect key="frame" x="109" y="86" width="282" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="44v-Ku-Fxy"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="pw5-ZW-h0a"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="allowedModifierFlags">
+                                <integer key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <accessibilityConnection property="title" destination="18" id="129"/>
+                            <outlet property="delegate" destination="-2" id="131"/>
+                        </connections>
+                    </customView>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="13" customClass="SRRecorderControl">
+                        <rect key="frame" x="109" y="53" width="282" height="25"/>
+                        <connections>
+                            <accessibilityConnection property="title" destination="23" id="130"/>
+                            <outlet property="delegate" destination="-2" id="132"/>
+                        </connections>
+                    </customView>
+                    <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="18" userLabel="Ping Button Label">
+                        <rect key="frame" x="18" y="83" width="85" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="81" id="eoT-cc-Swt"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Ping Button:" id="19">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="23" userLabel="Global Ping Label">
+                        <rect key="frame" x="18" y="50" width="85" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="116"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Global Ping:" id="24">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="141" customClass="SRRecorderControl">
+                        <rect key="frame" x="109" y="20" width="282" height="25"/>
+                        <connections>
+                            <accessibilityConnection property="title" destination="137" id="160"/>
+                            <outlet property="delegate" destination="-2" id="161"/>
+                        </connections>
+                    </customView>
+                    <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="137" userLabel="Ping Item Label">
+                        <rect key="frame" x="18" y="17" width="85" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="67" id="158"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Ping Item:" id="138">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="13" firstAttribute="trailing" secondItem="8" secondAttribute="trailing" id="1L0-EV-0eS"/>
+                    <constraint firstItem="141" firstAttribute="baseline" secondItem="137" secondAttribute="baseline" id="1by-4m-cQM"/>
+                    <constraint firstItem="13" firstAttribute="top" secondItem="8" secondAttribute="bottom" constant="8" symbolic="YES" id="4Eq-Jg-m83"/>
+                    <constraint firstItem="141" firstAttribute="leading" secondItem="13" secondAttribute="leading" id="4xF-rl-sl4"/>
+                    <constraint firstItem="141" firstAttribute="top" secondItem="13" secondAttribute="bottom" constant="8" symbolic="YES" id="Jtg-9U-w2u"/>
+                    <constraint firstItem="141" firstAttribute="height" secondItem="13" secondAttribute="height" id="LE9-R3-sDy"/>
+                    <constraint firstItem="141" firstAttribute="trailing" secondItem="13" secondAttribute="trailing" id="RAz-3I-dQg"/>
+                    <constraint firstItem="13" firstAttribute="height" secondItem="8" secondAttribute="height" id="Ta6-p0-KrZ"/>
+                    <constraint firstItem="137" firstAttribute="trailing" secondItem="23" secondAttribute="trailing" id="Uy1-V9-aOf"/>
+                    <constraint firstItem="23" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="20" symbolic="YES" id="by8-Mj-2uE"/>
+                    <constraint firstAttribute="trailing" secondItem="8" secondAttribute="trailing" constant="20" symbolic="YES" id="eLg-WV-Qtu"/>
+                    <constraint firstItem="8" firstAttribute="leading" secondItem="18" secondAttribute="trailing" constant="8" symbolic="YES" id="eQT-vu-0s6"/>
+                    <constraint firstItem="23" firstAttribute="trailing" secondItem="18" secondAttribute="trailing" id="iWl-MD-Fkk"/>
+                    <constraint firstItem="18" firstAttribute="baseline" secondItem="8" secondAttribute="baseline" id="kFr-fB-U4P"/>
+                    <constraint firstItem="8" firstAttribute="top" secondItem="6" secondAttribute="top" constant="20" symbolic="YES" id="kaZ-QD-cXD"/>
+                    <constraint firstItem="13" firstAttribute="leading" secondItem="8" secondAttribute="leading" id="l0u-R5-hvE"/>
+                    <constraint firstItem="18" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="20" symbolic="YES" id="rCD-cF-OEo"/>
+                    <constraint firstItem="137" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="20" symbolic="YES" id="tWc-F4-7fR"/>
+                    <constraint firstItem="13" firstAttribute="baseline" secondItem="23" secondAttribute="baseline" id="zoV-Ng-bmL"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="318.5" y="603.5"/>
+        </window>
+    </objects>
+</document>

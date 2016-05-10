@@ -46,6 +46,7 @@
 		9A5E6BAB1CAF8DFA006E7C5C /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A5E6BAA1CAF8DFA006E7C5C /* iRate.bundle */; };
 		9A63620A1C432F68004AD010 /* CLAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6362091C432F68004AD010 /* CLAPI.m */; };
 		9A79E9901CB34B6800BA7916 /* CLParentPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A79E98F1CB34B6800BA7916 /* CLParentPanelController.m */; };
+		9A82F3441CDFF8F600CC8906 /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A82F33B1CDFF8CF00CC8906 /* pop.framework */; };
 		9A8605AE1BEC148400A810A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605AD1BEC148400A810A4 /* main.m */; };
 		9A8605B61BEC14BE00A810A4 /* MenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B41BEC14BE00A810A4 /* MenubarController.m */; };
 		9A8605B71BEC14BE00A810A4 /* ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B51BEC14BE00A810A4 /* ApplicationDelegate.m */; };
@@ -53,6 +54,11 @@
 		9A8605BB1BEC14DC00A810A4 /* PanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605B91BEC14DC00A810A4 /* PanelController.m */; };
 		9A8605BF1BEC14F600A810A4 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BC1BEC14F600A810A4 /* BackgroundView.m */; };
 		9A8605C01BEC14F600A810A4 /* Panel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BD1BEC14F600A810A4 /* Panel.m */; };
+		9A86E2B41CE0351C00547EE7 /* EDSunriseSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A86E2B31CE0351C00547EE7 /* EDSunriseSet.m */; };
+		9A86E2C11CE04F4300547EE7 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86E2BC1CE04F1600547EE7 /* ShortcutRecorder.framework */; };
+		9A86E2C21CE04F4A00547EE7 /* PTHotKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86E2BE1CE04F1600547EE7 /* PTHotKey.framework */; };
+		9A86E2C41CE04F7B00547EE7 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A86E2BC1CE04F1600547EE7 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9A86E2C51CE04F7B00547EE7 /* PTHotKey.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A86E2BE1CE04F1600547EE7 /* PTHotKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9A87DAC41C358FA800A8CF3B /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A87DAB41C358FA800A8CF3B /* DateTools.bundle */; };
 		9A87DAC51C358FA800A8CF3B /* DTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A87DAB71C358FA800A8CF3B /* DTConstants.m */; };
 		9A87DAC61C358FA800A8CF3B /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A87DAB91C358FA800A8CF3B /* DTError.m */; };
@@ -73,6 +79,8 @@
 		9ABFB3801CA6882000E10745 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ABFB37F1CA6882000E10745 /* ApplicationServices.framework */; };
 		9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */; };
 		9ACE03EF1CB0ADE00039FC01 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACE03EE1CB0ADE00039FC01 /* Firebase.framework */; };
+		9AD6DE571CE114DA007A8401 /* CLScaleUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD6DE561CE114DA007A8401 /* CLScaleUpButton.m */; };
+		9AD6DE651CE18EB4007A8401 /* CLArrowIndicators.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD6DE641CE18EB4007A8401 /* CLArrowIndicators.m */; };
 		9AF9A16B1C250AB300EE7C2A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9A16A1C250AB300EE7C2A /* Reachability.m */; };
 		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -85,6 +93,76 @@
 			remoteGlobalIDString = 9A20A0551C4E801500FB45AB;
 			remoteInfo = "Clocker-Helper";
 		};
+		9A82F3361CDFF8CF00CC8906 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A82F32B1CDFF8CE00CC8906 /* pop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EC191218162FB53A00E0CC76;
+			remoteInfo = "pop-ios-static";
+		};
+		9A82F3381CDFF8CF00CC8906 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A82F32B1CDFF8CE00CC8906 /* pop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0B6BE74819FFD3B900762101;
+			remoteInfo = "pop-ios-framework";
+		};
+		9A82F33A1CDFF8CF00CC8906 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A82F32B1CDFF8CE00CC8906 /* pop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EC68857F18C7B60000C6194C;
+			remoteInfo = "pop-osx-framework";
+		};
+		9A82F33C1CDFF8CF00CC8906 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A82F32B1CDFF8CE00CC8906 /* pop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0755AE4F1BEA15950094AB41;
+			remoteInfo = "pop-tvos-framework";
+		};
+		9A82F33E1CDFF8CF00CC8906 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A82F32B1CDFF8CE00CC8906 /* pop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ECF01ED318C92B7F009E0AD1;
+			remoteInfo = "pop-tests-ios";
+		};
+		9A82F3401CDFF8CF00CC8906 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A82F32B1CDFF8CE00CC8906 /* pop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EC7E319918C93D6500B38170;
+			remoteInfo = "pop-tests-osx";
+		};
+		9A82F3421CDFF8CF00CC8906 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A82F32B1CDFF8CE00CC8906 /* pop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0755AE8C1BEA19580094AB41;
+			remoteInfo = "pop-tests-tvos";
+		};
+		9A86E2BB1CE04F1600547EE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 939837800DA42965007F53F3;
+			remoteInfo = ShortcutRecorder.framework;
+		};
+		9A86E2BD1CE04F1600547EE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E273122E1349EC9000A84433;
+			remoteInfo = PTHotKey.framework;
+		};
+		9A86E2BF1CE04F1600547EE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0D6B2468180304DE00CE1142;
+			remoteInfo = Demo;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -95,6 +173,17 @@
 			dstSubfolderSpec = 1;
 			files = (
 				9A20A0721C4E80A800FB45AB /* Clocker-Helper.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A86E2C31CE04F7100547EE7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9A86E2C41CE04F7B00547EE7 /* ShortcutRecorder.framework in CopyFiles */,
+				9A86E2C51CE04F7B00547EE7 /* PTHotKey.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +275,7 @@
 		9A76543D1CDC2291000FB825 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant"; path = "zh-Hant.lproj/CLFloatingWindow.xib"; sourceTree = "<group>"; };
 		9A79E98E1CB34B6800BA7916 /* CLParentPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLParentPanelController.h; path = Clocker/CLParentPanelController.h; sourceTree = "<group>"; };
 		9A79E98F1CB34B6800BA7916 /* CLParentPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLParentPanelController.m; path = Clocker/CLParentPanelController.m; sourceTree = "<group>"; };
+		9A82F32B1CDFF8CE00CC8906 /* pop.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pop.xcodeproj; path = Clocker/pop/pop.xcodeproj; sourceTree = "<group>"; };
 		9A8605AD1BEC148400A810A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Clocker/main.m; sourceTree = "<group>"; };
 		9A8605B41BEC14BE00A810A4 /* MenubarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MenubarController.m; path = Clocker/MenubarController.m; sourceTree = "<group>"; };
 		9A8605B51BEC14BE00A810A4 /* ApplicationDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ApplicationDelegate.m; path = Clocker/ApplicationDelegate.m; sourceTree = "<group>"; };
@@ -201,6 +291,9 @@
 		9A8605C91BEC155B00A810A4 /* MenubarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenubarController.h; path = Clocker/MenubarController.h; sourceTree = "<group>"; };
 		9A8605CA1BEC155B00A810A4 /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationDelegate.h; path = Clocker/ApplicationDelegate.h; sourceTree = "<group>"; };
 		9A8605CC1BEC155B00A810A4 /* Clocker-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Clocker-Prefix.pch"; path = "Clocker/Clocker-Prefix.pch"; sourceTree = "<group>"; };
+		9A86E2B21CE0351C00547EE7 /* EDSunriseSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDSunriseSet.h; path = Clocker/EDSunriseSet.h; sourceTree = "<group>"; };
+		9A86E2B31CE0351C00547EE7 /* EDSunriseSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDSunriseSet.m; path = Clocker/EDSunriseSet.m; sourceTree = "<group>"; };
+		9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShortcutRecorder.xcodeproj; path = "Clocker/ShortcutRecorder-master/ShortcutRecorder.xcodeproj"; sourceTree = "<group>"; };
 		9A87DAB41C358FA800A8CF3B /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DateTools.bundle; path = "Clocker/Date Tools/DateTools-master/DateTools/DateTools.bundle"; sourceTree = "<group>"; };
 		9A87DAB51C358FA800A8CF3B /* DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateTools.h; path = "Clocker/Date Tools/DateTools-master/DateTools/DateTools.h"; sourceTree = "<group>"; };
 		9A87DAB61C358FA800A8CF3B /* DTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTConstants.h; path = "Clocker/Date Tools/DateTools-master/DateTools/DTConstants.h"; sourceTree = "<group>"; };
@@ -237,6 +330,10 @@
 		9ABFB37F1CA6882000E10745 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9ACE03EE1CB0ADE00039FC01 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Frameworks/Firebase.framework; sourceTree = "<group>"; };
+		9AD6DE551CE114DA007A8401 /* CLScaleUpButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLScaleUpButton.h; path = Clocker/CLScaleUpButton.h; sourceTree = "<group>"; };
+		9AD6DE561CE114DA007A8401 /* CLScaleUpButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLScaleUpButton.m; path = Clocker/CLScaleUpButton.m; sourceTree = "<group>"; };
+		9AD6DE631CE18EB4007A8401 /* CLArrowIndicators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLArrowIndicators.h; path = Clocker/CLArrowIndicators.h; sourceTree = "<group>"; };
+		9AD6DE641CE18EB4007A8401 /* CLArrowIndicators.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLArrowIndicators.m; path = Clocker/CLArrowIndicators.m; sourceTree = "<group>"; };
 		9AF9A1691C250AB300EE7C2A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Clocker/Reachability/Reachability.h; sourceTree = "<group>"; };
 		9AF9A16A1C250AB300EE7C2A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Clocker/Reachability/Reachability.m; sourceTree = "<group>"; };
 		DD4F7C0413C30F9F00825C6E /* Clocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -249,6 +346,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A86E2C21CE04F4A00547EE7 /* PTHotKey.framework in Frameworks */,
+				9A86E2C11CE04F4300547EE7 /* ShortcutRecorder.framework in Frameworks */,
+				9A82F3441CDFF8F600CC8906 /* pop.framework in Frameworks */,
 				9A9E876A1C1FEDDB00A7A2DF /* SystemConfiguration.framework in Frameworks */,
 				9A9E87621C1FEDB500A7A2DF /* CFNetwork.framework in Frameworks */,
 				9A5E6BA01CAF71C1006E7C5C /* libicucore.tbd in Frameworks */,
@@ -274,6 +374,8 @@
 		9A2000C61BFBCEF6002BFDE8 /* Utilties */ = {
 			isa = PBXGroup;
 			children = (
+				9A86E2B21CE0351C00547EE7 /* EDSunriseSet.h */,
+				9A86E2B31CE0351C00547EE7 /* EDSunriseSet.m */,
 				9A5951BB1C1D0A8D009C17AA /* CommonStrings.m */,
 				9A5951BC1C1D0A8D009C17AA /* CommonStrings.h */,
 				9A6362081C432F68004AD010 /* CLAPI.h */,
@@ -284,6 +386,10 @@
 				9A10C6871CDAAB3000D474F1 /* CLPausableTimer.m */,
 				9A10C68D1CDAC8B500D474F1 /* CLPanelTextField.h */,
 				9A10C68E1CDAC8B500D474F1 /* CLPanelTextField.m */,
+				9AD6DE551CE114DA007A8401 /* CLScaleUpButton.h */,
+				9AD6DE561CE114DA007A8401 /* CLScaleUpButton.m */,
+				9AD6DE631CE18EB4007A8401 /* CLArrowIndicators.h */,
+				9AD6DE641CE18EB4007A8401 /* CLArrowIndicators.m */,
 			);
 			name = Utilties;
 			sourceTree = "<group>";
@@ -347,6 +453,20 @@
 				9ACE03EE1CB0ADE00039FC01 /* Firebase.framework */,
 			);
 			name = Firebase;
+			sourceTree = "<group>";
+		};
+		9A82F32C1CDFF8CE00CC8906 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A82F3371CDFF8CF00CC8906 /* libpop.a */,
+				9A82F3391CDFF8CF00CC8906 /* pop.framework */,
+				9A82F33B1CDFF8CF00CC8906 /* pop.framework */,
+				9A82F33D1CDFF8CF00CC8906 /* pop.framework */,
+				9A82F33F1CDFF8CF00CC8906 /* pop-tests.xctest */,
+				9A82F3411CDFF8CF00CC8906 /* pop-tests.xctest */,
+				9A82F3431CDFF8CF00CC8906 /* pop-tests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		9A8605E01BEC15F400A810A4 /* XIB */ = {
@@ -424,6 +544,16 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		9A86E2B61CE04F1600547EE7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A86E2BC1CE04F1600547EE7 /* ShortcutRecorder.framework */,
+				9A86E2BE1CE04F1600547EE7 /* PTHotKey.framework */,
+				9A86E2C01CE04F1600547EE7 /* Demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9A87DA4F1C358F8200A8CF3B /* Date Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -468,6 +598,7 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
+				9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */,
 				9A5E6B9C1CAF7174006E7C5C /* Firebase */,
 				9A87DA4F1C358F8200A8CF3B /* Date Tools */,
 				9ABF586F1C29A7EB00BD0187 /* Model */,
@@ -486,6 +617,7 @@
 				9A5951FB1C1D5222009C17AA /* Check for Updated Version */,
 				DD4F7C0513C30F9F00825C6E /* Products */,
 				9A25F7481C1A5E21007D369B /* Rate */,
+				9A82F32B1CDFF8CE00CC8906 /* pop.xcodeproj */,
 				9A20A0691C4E801500FB45AB /* Clocker-Helper.xcodeproj */,
 			);
 			sourceTree = "<group>";
@@ -536,6 +668,7 @@
 				DD4F7C0213C30F9F00825C6E /* Resources */,
 				9A4379201BEC220200F4E27F /* ShellScript */,
 				9A20A0711C4E808500FB45AB /* CopyFiles */,
+				9A86E2C31CE04F7100547EE7 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -553,6 +686,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = CL;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					DD4F7C0313C30F9F00825C6E = {
@@ -586,6 +720,14 @@
 					ProductGroup = 9A20A06A1C4E801500FB45AB /* Products */;
 					ProjectRef = 9A20A0691C4E801500FB45AB /* Clocker-Helper.xcodeproj */;
 				},
+				{
+					ProductGroup = 9A82F32C1CDFF8CE00CC8906 /* Products */;
+					ProjectRef = 9A82F32B1CDFF8CE00CC8906 /* pop.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A86E2B61CE04F1600547EE7 /* Products */;
+					ProjectRef = 9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -600,6 +742,76 @@
 			fileType = wrapper.application;
 			path = "Clocker-Helper.app";
 			remoteRef = 9A20A06D1C4E801600FB45AB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A82F3371CDFF8CF00CC8906 /* libpop.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libpop.a;
+			remoteRef = 9A82F3361CDFF8CF00CC8906 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A82F3391CDFF8CF00CC8906 /* pop.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = pop.framework;
+			remoteRef = 9A82F3381CDFF8CF00CC8906 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A82F33B1CDFF8CF00CC8906 /* pop.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = pop.framework;
+			remoteRef = 9A82F33A1CDFF8CF00CC8906 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A82F33D1CDFF8CF00CC8906 /* pop.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = pop.framework;
+			remoteRef = 9A82F33C1CDFF8CF00CC8906 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A82F33F1CDFF8CF00CC8906 /* pop-tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "pop-tests.xctest";
+			remoteRef = 9A82F33E1CDFF8CF00CC8906 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A82F3411CDFF8CF00CC8906 /* pop-tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "pop-tests.xctest";
+			remoteRef = 9A82F3401CDFF8CF00CC8906 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A82F3431CDFF8CF00CC8906 /* pop-tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "pop-tests.xctest";
+			remoteRef = 9A82F3421CDFF8CF00CC8906 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A86E2BC1CE04F1600547EE7 /* ShortcutRecorder.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ShortcutRecorder.framework;
+			remoteRef = 9A86E2BB1CE04F1600547EE7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A86E2BE1CE04F1600547EE7 /* PTHotKey.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PTHotKey.framework;
+			remoteRef = 9A86E2BD1CE04F1600547EE7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A86E2C01CE04F1600547EE7 /* Demo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Demo.app;
+			remoteRef = 9A86E2BF1CE04F1600547EE7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -668,9 +880,11 @@
 				9A87DACA1C358FA800A8CF3B /* DTTimePeriodGroup.m in Sources */,
 				9A25F7471C1A5E17007D369B /* iRate.m in Sources */,
 				9A8605C01BEC14F600A810A4 /* Panel.m in Sources */,
+				9AD6DE651CE18EB4007A8401 /* CLArrowIndicators.m in Sources */,
 				9A8605BA1BEC14DC00A810A4 /* StatusItemView.m in Sources */,
 				9A87DAC91C358FA800A8CF3B /* DTTimePeriodCollection.m in Sources */,
 				9A3247391C263F4F00CF6B6E /* CLAppearanceViewController.m in Sources */,
+				9A86E2B41CE0351C00547EE7 /* EDSunriseSet.m in Sources */,
 				9ABA2B031C671D49009DC0EF /* CLMainWindowController.m in Sources */,
 				9A9E63861C2C673E009A299B /* CLAppFeedbackWindowController.m in Sources */,
 				9A8605BB1BEC14DC00A810A4 /* PanelController.m in Sources */,
@@ -681,6 +895,7 @@
 				9A20A07E1C4EAAEB00FB45AB /* CLIntroViewController.m in Sources */,
 				9A8605B71BEC14BE00A810A4 /* ApplicationDelegate.m in Sources */,
 				9A10C6881CDAAB3000D474F1 /* CLPausableTimer.m in Sources */,
+				9AD6DE571CE114DA007A8401 /* CLScaleUpButton.m in Sources */,
 				9A5951F51C1D3D81009C17AA /* CLTimezoneCellView.m in Sources */,
 				9ABF58721C29A80600BD0187 /* CLTimezoneData.m in Sources */,
 				9A8605AE1BEC148400A810A4 /* main.m in Sources */,
@@ -852,6 +1067,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
 				CODE_SIGN_IDENTITY = "";
@@ -873,6 +1089,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Clocker-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;
@@ -953,6 +1170,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
 				CODE_SIGN_IDENTITY = "";
@@ -976,6 +1194,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Clocker-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -984,6 +1204,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
 				CODE_SIGN_IDENTITY = "";
@@ -1005,6 +1226,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Clocker-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
