@@ -27,6 +27,6 @@ NSString *const CLShowDateInMenu = @"showDate";
 NSString *const CLShowPlaceInMenu = @"showPlaceName";
 NSString *const CLStartAtLogin = @"startAtLogin";
 NSString *const CLShowAppInForeground = @"displayAppAsForegroundApp";
-
+NSString *const CLSunriseSunsetTime = @"showSunriseSetTime";
 
 @end

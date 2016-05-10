@@ -54,10 +54,12 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if (context == kContextActivePanel) {
+    if (context == kContextActivePanel)
+    {
         self.menubarController.hasActiveIcon = self.panelController.hasActivePanel;
     }
-    else {
+    else
+    {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
@@ -67,7 +69,7 @@ void *kContextActivePanel = &kContextActivePanel;
     //Configure iRate
     [iRate sharedInstance].useAllAvailableLanguages = YES;
     [iVersion sharedInstance].useAllAvailableLanguages = YES;
-    [[iRate sharedInstance] setVerboseLogging:YES];
+    [[iRate sharedInstance] setVerboseLogging:NO];
     [[iVersion sharedInstance] setVerboseLogging:NO];
     [iRate sharedInstance].promptForNewVersionIfUserRated = YES;
 }
@@ -100,7 +102,6 @@ void *kContextActivePanel = &kContextActivePanel;
         }
     }
     
-
     if (startedAtLogin)
     {
         [[NSDistributedNotificationCenter defaultCenter]
@@ -115,7 +116,7 @@ void *kContextActivePanel = &kContextActivePanel;
 
     NSString *onboarding = [[NSUserDefaults standardUserDefaults] objectForKey:@"initialLaunch"];
     
-    if (onboarding == nil)
+    if (onboarding != nil)
     {
         CLOnboardingWindowController *windowController = [CLOnboardingWindowController sharedWindow];
         [windowController showWindow:nil];
@@ -126,8 +127,8 @@ void *kContextActivePanel = &kContextActivePanel;
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
     
-    [[Crashlytics sharedInstance] setDebugMode:NO];
-    [Fabric with:@[[Crashlytics class]]];
+//    [[Crashlytics sharedInstance] setDebugMode:NO];
+//    [Fabric with:@[[Crashlytics class]]];
     
 }
 
@@ -187,6 +188,11 @@ void *kContextActivePanel = &kContextActivePanel;
     NSNumber *displayMode = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowAppInForeground];
     if (displayMode == nil) {
         [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowAppInForeground];
+    }
+    
+    NSNumber *showSunriseSunsetTime = [[NSUserDefaults standardUserDefaults] objectForKey:CLSunriseSunsetTime];
+    if (showSunriseSunsetTime == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:CLSunriseSunsetTime];
     }
     
     //If mode selected is 1, then show the window when the app starts

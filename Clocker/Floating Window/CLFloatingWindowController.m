@@ -111,6 +111,8 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
     
     CLTimezoneData *dataObject = [CLTimezoneData getCustomObject:self.defaultPreferences[row]];
     
+    cell.sunriseSetTime.stringValue = [dataObject getFormattedSunriseOrSunsetTime];
+    
     NSTextView *customLabel = (NSTextView*)[cell.relativeDate.window
                                             fieldEditor:YES
                                             forObject:cell.relativeDate];
@@ -124,6 +126,10 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
         [cell.customName setDrawsBackground:YES];
         [cell.customName setBackgroundColor:[NSColor blackColor]];
         customLabel.insertionPointColor = [NSColor whiteColor];
+        cell.sunriseSetImage.image = dataObject.sunriseOrSunset ?
+        [NSImage imageNamed:@"White Sunrise"] : [NSImage imageNamed:@"White Sunset"];
+        cell.sunriseSetImage.image = dataObject.sunriseOrSunset ?
+        [NSImage imageNamed:@"Sunrise"] : [NSImage imageNamed:@"Sunset"];
     }
     else
     {
@@ -145,14 +151,13 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
     
     NSNumber *displayFutureSlider = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey];
     
-    if ([displayFutureSlider isEqualToNumber:[NSNumber numberWithInteger:1]])
-    {
-        self.futureSlider.hidden = YES;
-    }
-    else
-    {
-        self.futureSlider.hidden = NO;
-    }
+    self.futureSlider.hidden = [displayFutureSlider isEqualToNumber:[NSNumber numberWithInteger:1]] ? YES : NO;
+    
+    NSNumber *displaySunriseSunsetTime = [[NSUserDefaults standardUserDefaults] objectForKey:CLSunriseSunsetTime];
+    
+    cell.sunriseSetTime.hidden = [displaySunriseSunsetTime isEqualToNumber:@(1)] ? YES : NO;
+    
+    cell.sunriseSetImage.hidden = [displaySunriseSunsetTime isEqualToNumber:@(1)] ? YES : NO;
     
     [cell setUpAutoLayoutWithCell:cell];
     

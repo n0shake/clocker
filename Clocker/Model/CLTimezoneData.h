@@ -24,12 +24,14 @@ typedef enum : NSUInteger {
 @property (copy, nonatomic) NSString *longitude;
 @property (strong, nonatomic) NSDate *nextUpdate;
 @property (strong, nonatomic) NSNumber *isFavourite;
+@property (strong, nonatomic) NSDate *sunriseTime;
+@property (strong, nonatomic) NSDate *sunsetTime;
+@property (assign, nonatomic) BOOL sunriseOrSunset; //YES for Sunrise, NO for Sunset
 
 + (instancetype)getCustomObject:(NSData *)encodedData;
 + (void)setInitialTimezoneData;
 
 
-- (void)sendAnalyticsData;
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 - (BOOL)saveObjectToPreferences;
 - (NSString *)getTimeForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue;
@@ -38,6 +40,8 @@ typedef enum : NSUInteger {
 - (NSString *)getDateForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue andDisplayType:(CLDateDisplayType)type;
 - (NSString *)formatStringShouldContainCity:(BOOL)value;
 - (NSString *)getMenuTitle;
+- (NSString *)getFormattedSunriseOrSunsetTime;
+- (NSImage *)getFormattedSunriseOrSunsetImage;
 
 /*
  - (NSString *)getFormattedSunriseOrSunsetTimeAndSunImage:(CLTimezoneCellView *)cell;

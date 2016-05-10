@@ -57,6 +57,26 @@
                                                     <rect key="frame" x="1" y="0.0" width="279" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Tq-t6-KS6">
+                                                            <rect key="frame" x="203" y="4" width="20" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="20" id="JLt-So-9GB"/>
+                                                                <constraint firstAttribute="height" constant="20" id="gQ5-I6-hfW"/>
+                                                            </constraints>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Sunrise" id="aeR-XC-8J2"/>
+                                                        </imageView>
+                                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w0H-z4-Qmv">
+                                                            <rect key="frame" x="224" y="7" width="49" height="17"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="45" id="v6B-Bv-Ye1"/>
+                                                                <constraint firstAttribute="height" constant="17" id="zYu-u6-R0W"/>
+                                                            </constraints>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" placeholderString="07:00 PM" id="ENI-4b-K6F">
+                                                                <font key="font" size="11" name="SFUIDisplay-Ultralight"/>
+                                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="100" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="Zyy-Fw-K7Z" customClass="CLPanelTextField">
                                                             <rect key="frame" x="7" y="33" width="154" height="22"/>
                                                             <constraints>
@@ -86,7 +106,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="101" preferredMaxLayoutWidth="110" translatesAutoresizingMaskIntoConstraints="NO" id="DSw-uJ-JCx">
-                                                            <rect key="frame" x="159" y="21" width="114" height="35"/>
+                                                            <rect key="frame" x="159" y="24" width="114" height="35"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="110" id="seR-NV-Bdf"/>
                                                                 <constraint firstAttribute="height" constant="35" id="wBx-lE-7e5"/>
@@ -103,12 +123,18 @@
                                                         <constraint firstItem="Zyy-Fw-K7Z" firstAttribute="top" secondItem="8mq-8K-c34" secondAttribute="top" constant="5" id="B0D-ik-bxk"/>
                                                         <constraint firstAttribute="trailing" secondItem="DSw-uJ-JCx" secondAttribute="trailing" constant="8" id="IA6-vj-gHR"/>
                                                         <constraint firstItem="Zyy-Fw-K7Z" firstAttribute="leading" secondItem="8mq-8K-c34" secondAttribute="leading" constant="9" id="JFG-Yz-esL"/>
-                                                        <constraint firstItem="DSw-uJ-JCx" firstAttribute="centerY" secondItem="8mq-8K-c34" secondAttribute="centerY" constant="-8" id="ko5-Yd-e4R"/>
+                                                        <constraint firstItem="w0H-z4-Qmv" firstAttribute="top" secondItem="DSw-uJ-JCx" secondAttribute="bottom" id="XQh-GT-9wS"/>
+                                                        <constraint firstItem="DSw-uJ-JCx" firstAttribute="top" secondItem="8mq-8K-c34" secondAttribute="top" constant="1" id="Zib-Mn-8DY"/>
+                                                        <constraint firstItem="w0H-z4-Qmv" firstAttribute="leading" secondItem="7Tq-t6-KS6" secondAttribute="trailing" constant="3" id="lla-8q-Xtc"/>
                                                         <constraint firstItem="wFR-Xg-kpb" firstAttribute="leading" secondItem="8mq-8K-c34" secondAttribute="leading" constant="10" id="p0N-YR-EDR"/>
+                                                        <constraint firstItem="7Tq-t6-KS6" firstAttribute="top" secondItem="DSw-uJ-JCx" secondAttribute="bottom" id="wrv-xK-4wC"/>
+                                                        <constraint firstAttribute="trailing" secondItem="w0H-z4-Qmv" secondAttribute="trailing" constant="8" id="wtp-3R-eGY"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="customName" destination="Zyy-Fw-K7Z" id="X1r-mx-tOf"/>
                                                         <outlet property="relativeDate" destination="wFR-Xg-kpb" id="Yur-Tf-mwV"/>
+                                                        <outlet property="sunriseSetImage" destination="7Tq-t6-KS6" id="Wrx-aS-zy4"/>
+                                                        <outlet property="sunriseSetTime" destination="w0H-z4-Qmv" id="bAH-4f-3Uh"/>
                                                         <outlet property="textField" destination="Zyy-Fw-K7Z" id="8fF-LK-hhX"/>
                                                         <outlet property="time" destination="DSw-uJ-JCx" id="vCh-BC-lB4"/>
                                                     </connections>
@@ -264,5 +290,6 @@
         <image name="ClockerIcon-16" width="16" height="16"/>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="PowerIcon" width="270" height="270"/>
+        <image name="Sunrise" width="512" height="512"/>
     </resources>
 </document>

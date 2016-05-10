@@ -169,5 +169,4 @@
     [self refreshMainTableview:NO andUpdateFloatingWindow:YES];
 }
 
-
 @end

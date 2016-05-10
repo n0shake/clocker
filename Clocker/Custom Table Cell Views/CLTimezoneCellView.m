@@ -14,7 +14,8 @@
 
 @implementation CLTimezoneCellView
 
-- (void)drawRect:(NSRect)dirtyRect {
+- (void)drawRect:(NSRect)dirtyRect
+{
     [super drawRect:dirtyRect];
 
     // Drawing code here.
@@ -27,7 +28,6 @@
     __block CLFloatingWindowController *floatingWindow;
     
     NSNumber *displayMode = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowAppInForeground];
-    
     
     [[[NSApplication sharedApplication] windows] enumerateObjectsUsingBlock:^(NSWindow * _Nonnull window, NSUInteger idx, BOOL * _Nonnull stop)
     {
@@ -45,14 +45,11 @@
                 floatingWindow = window.windowController;
             }
         }
-        
-      
     }];
     
     NSString *originalValue = customLabelCell.stringValue;
     NSString *customLabelValue = [originalValue stringByTrimmingCharactersInSet:
                                   [NSCharacterSet whitespaceCharacterSet]];
-    
     
     if ([[sender superview] isKindOfClass:[self class]])
     {
@@ -82,7 +79,6 @@
             }];
         }
  
-        
         timezoneObject.customLabel = (customLabelValue.length > 0) ? customLabelValue : CLEmptyString;
         
         if ([timezoneObject.isFavourite isEqualToNumber:@1])
@@ -112,7 +108,6 @@
         [[NSNotificationCenter defaultCenter]
          postNotificationName:CLCustomLabelChangedNotification
          object:nil];
-        
     }
 }
 
@@ -126,6 +121,7 @@
     cell.relativeDate.textColor = color;
     cell.customName.textColor = color;
     cell.time.textColor = color;
+    cell.sunriseSetTime.textColor = color;
 }
 
 - (void)setUpAutoLayoutWithCell:(CLTimezoneCellView *)cell
@@ -146,7 +142,6 @@
 
 - (void)controlTextDidEndEditing:(NSNotification *)obj
 {
-    
     CLFloatingWindowController *windowController = [CLFloatingWindowController sharedFloatingWindow];
     
     [windowController.floatingWindowTimer start];

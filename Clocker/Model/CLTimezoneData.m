@@ -13,7 +13,7 @@
 #import "PanelController.h"
 #include <CoreFoundation/CoreFoundation.h>
 #include <IOKit/IOKitLib.h>
-
+#include "EDSunriseSet.h"
 
 @implementation CLTimezoneData
 
@@ -81,8 +81,12 @@
     [coder encodeObject:self.formattedAddress forKey:@"formattedAddress"];
     [coder encodeObject:self.customLabel forKey:@"customLabel"];
     [coder encodeObject:self.timezoneID forKey:@"timezoneID"];
-    [coder encodeObject:self.nextUpdate forKey:@"latitude"];
+    [coder encodeObject:self.nextUpdate forKey:@"nextUpdate"];
+    [coder encodeObject:self.latitude forKey:@"latitude"];
+    [coder encodeObject:self.longitude forKey:@"longitude"];
     [coder encodeObject:self.isFavourite forKey:@"isFavourite"];
+    [coder encodeObject:self.sunriseTime forKey:@"sunriseTime"];
+    [coder encodeObject:self.sunsetTime forKey:@"sunsetTime"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -95,8 +99,12 @@
         self.formattedAddress = [coder decodeObjectForKey:@"formattedAddress"];
         self.customLabel = [coder decodeObjectForKey:@"customLabel"];
         self.timezoneID = [coder decodeObjectForKey:@"timezoneID"];
-        self.nextUpdate = [coder decodeObjectForKey:@"latitude"];
+        self.nextUpdate = [coder decodeObjectForKey:@"nextUpdate"];
+        self.latitude = [coder decodeObjectForKey:@"latitude"];
+        self.longitude = [coder decodeObjectForKey:@"longitude"];
         self.isFavourite = [coder decodeObjectForKey:@"isFavourite"];
+        self.sunriseTime = [coder decodeObjectForKey:@"sunriseTime"];
+        self.sunsetTime = [coder decodeObjectForKey:@"sunsetTime"];
     }
     
     return self;
@@ -104,13 +112,15 @@
 
 -(NSString *)description
 {
-    return [NSString stringWithFormat:@"TimezoneID: %@\nFormatted Address: %@\nCustom Label: %@\nLatitude: %@\nLongitude:%@\nPlaceID: %@\nisFavourite: %@", self.timezoneID,
+    return [NSString stringWithFormat:@"TimezoneID: %@\nFormatted Address: %@\nCustom Label: %@\nLatitude: %@\nLongitude:%@\nPlaceID: %@\nisFavourite: %@\nSunrise Time: %@\nSunset Time: %@", self.timezoneID,
             self.formattedAddress,
             self.customLabel,
             self.latitude,
             self.longitude,
             self.place_id,
-            self.isFavourite];
+            self.isFavourite,
+            self.sunriseTime,
+            self.sunsetTime];
 }
 
 - (NSString *)formatStringShouldContainCity:(BOOL)value
@@ -142,47 +152,6 @@
     
 }
 
-/*
- - (NSString *)getFormattedSunriseOrSunsetTimeAndSunImage:(CLTimezoneCellView *)cell
- {
- if (!self.shouldFetchSunTimings) {
- return CLEmptyString;
- }
- 
- 
- NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
- formatter.dateFormat = @"yyyy-MM-dd HH:mm";
- NSDate *sunTime = [formatter dateFromString:self.sunriseTime];
- 
- NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
- dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.timezoneID];
- dateFormatter.dateStyle = kCFDateFormatterShortStyle;
- dateFormatter.timeStyle = kCFDateFormatterShortStyle;
- dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm";
- NSString *newDate = [dateFormatter stringFromDate:[NSDate date]];
- 
- NSDateFormatter *dateConversion = [[NSDateFormatter alloc] init];
- dateConversion.timeZone = [NSTimeZone timeZoneWithName:self.timezoneID];
- dateConversion.dateStyle = kCFDateFormatterShortStyle;
- dateConversion.timeStyle = kCFDateFormatterShortStyle;
- dateConversion.dateFormat = @"yyyy-MM-dd HH:mm";
- 
- NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
- 
- if ([sunTime laterDate:[dateConversion dateFromString:newDate]] == sunTime)
- {
- cell.sunImage.image = theme.length > 0 && [theme isEqualToString:@"Default"] ?
- [NSImage imageNamed:@"Sunrise"] : [NSImage imageNamed:@"White Sunrise"];
- return [self.sunriseTime substringFromIndex:11];
- }
- else
- {
- cell.sunImage.image = theme.length > 0 && [theme isEqualToString:@"Default"] ?
- [NSImage imageNamed:@"Sunset"] : [NSImage imageNamed:@"White Sunset"];
- return [self.sunsetTime substringFromIndex:11];
- }
- }*/
-
 - (NSString *)getTimeForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue
 {
     NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
@@ -201,6 +170,13 @@
     //In the format 22:10
     
     return [dateFormatter stringFromDate:newDate];
+}
+
+-(void)initializeSunriseSunset
+{
+    EDSunriseSet *sunriseSetObject = [EDSunriseSet sunrisesetWithDate:[NSDate date] timezone:[NSTimeZone timeZoneWithName:self.timezoneID] latitude:self.latitude.doubleValue longitude:self.longitude.doubleValue];
+    self.sunriseTime = sunriseSetObject.sunrise;
+    self.sunsetTime = sunriseSetObject.sunset;
 }
 
 - (NSString *)getLocalCurrentDate
@@ -400,57 +376,68 @@
         }
     }
     
-    if (menuTitle.length > 0)
-    {
-        [menuTitle appendFormat:@" %@",[self getTimeForTimeZoneWithFutureSliderValue:0]];
-    }
-    else
-    {
-        [menuTitle appendString:[self getTimeForTimeZoneWithFutureSliderValue:0]];
-    }
+    menuTitle.length > 0 ?
+    [menuTitle appendFormat:@" %@",[self getTimeForTimeZoneWithFutureSliderValue:0]] :
+    [menuTitle appendString:[self getTimeForTimeZoneWithFutureSliderValue:0]];
     
     return menuTitle;
+}
+
+
+-(NSString *)getFormattedSunriseOrSunsetTime
+{
+    [self initializeSunriseSunset];
+    
+    NSString *timezoneDate = [self getFullFledgedDateForTime];
+    
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    
+    formatter.dateFormat = @"yyyy-MM-d hh:mm a";
+
+    NSDate *formattedDate = [formatter dateFromString:timezoneDate];
+
+    NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
+    
+    self.sunriseOrSunset = [self.sunriseTime isLaterThanOrEqualTo:formattedDate];
+    
+    NSDate *newDate = self.sunriseOrSunset ?
+                    [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
+                                                  value:0
+                                                 toDate:self.sunriseTime
+                                              options:kNilOptions] :
+                    [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
+                                value:0
+                               toDate:self.sunsetTime
+                                              options:kNilOptions];
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    
+    dateFormatter.dateStyle = kCFDateFormatterNoStyle;
+    
+    NSNumber *is24HourFormatSelected = [[NSUserDefaults standardUserDefaults] objectForKey:CL24hourFormatSelectedKey];
+    
+    is24HourFormatSelected.boolValue ? [dateFormatter setDateFormat:@"HH:mm"] : [dateFormatter setDateFormat:@"hh:mm a"];
+
+    //In the format 22:10
+    
+    return [dateFormatter stringFromDate:newDate];
     
 }
 
-- (void)sendAnalyticsData
+- (NSString *)getFullFledgedDateForTime
 {
-    NSString *uniqueIdentifier = [self getSerialNumber];
-    if (uniqueIdentifier == nil)
-    {
-        uniqueIdentifier = @"N/A";
-    }
+    NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
+    NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
+                                                  value:0
+                                                 toDate:[NSDate date]
+                                                options:kNilOptions];
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
     
-    /*
+    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm a"];
     
-    PFObject *feedbackObject = [PFObject objectWithClassName:@"CLTimezoneData"];
-    feedbackObject[@"formattedAddress"] = self.formattedAddress;
-    feedbackObject[@"timezoneID"] = self.timezoneID;
-    feedbackObject[@"uniqueID"] = uniqueIdentifier;
-    [feedbackObject saveEventually];*/
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.timezoneID];
     
+    return [dateFormatter stringFromDate:newDate];
 }
 
-- (NSString *)getSerialNumber
-{
-    io_service_t    platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault,
-                                                                 
-                                                                 IOServiceMatching("IOPlatformExpertDevice"));
-    CFStringRef serialNumberAsCFString = NULL;
-    
-    if (platformExpert) {
-        serialNumberAsCFString = IORegistryEntryCreateCFProperty(platformExpert,
-                                                                 CFSTR(kIOPlatformSerialNumberKey),
-                                                                 kCFAllocatorDefault, 0);
-        IOObjectRelease(platformExpert);
-    }
-    
-    NSString *serialNumberAsNSString = nil;
-    if (serialNumberAsCFString) {
-        serialNumberAsNSString = [NSString stringWithString:(__bridge NSString *)serialNumberAsCFString];
-        CFRelease(serialNumberAsCFString);
-    }
-    
-    return serialNumberAsNSString;
-}
 @end
