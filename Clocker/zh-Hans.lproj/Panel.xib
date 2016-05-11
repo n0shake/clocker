@@ -72,6 +72,26 @@
                                                                 <action selector="labelDidChange:" target="qbN-ba-fho" id="7uY-zA-yJS"/>
                                                             </connections>
                                                         </textField>
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ids-Uo-ci6">
+                                                            <rect key="frame" x="203" y="4" width="20" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="Tug-eT-kM6"/>
+                                                                <constraint firstAttribute="width" constant="20" id="fw4-xM-R7B"/>
+                                                            </constraints>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Sunrise" id="SQ7-zC-HEd"/>
+                                                        </imageView>
+                                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Lf-Yu-mLH">
+                                                            <rect key="frame" x="224" y="7" width="49" height="17"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="17" id="Erg-ja-DqV"/>
+                                                                <constraint firstAttribute="width" constant="45" id="r3N-lG-lbQ"/>
+                                                            </constraints>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" placeholderString="07:00 PM" id="7e9-Cy-Q3m">
+                                                                <font key="font" size="11" name="SFUIDisplay-Ultralight"/>
+                                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
                                                         <textField verticalHuggingPriority="750" tag="102" preferredMaxLayoutWidth="72" translatesAutoresizingMaskIntoConstraints="NO" id="QUd-7D-q14">
                                                             <rect key="frame" x="8" y="11" width="76" height="20"/>
                                                             <constraints>
@@ -85,7 +105,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="101" preferredMaxLayoutWidth="110" translatesAutoresizingMaskIntoConstraints="NO" id="vnv-J2-7r1">
-                                                            <rect key="frame" x="159" y="21" width="114" height="35"/>
+                                                            <rect key="frame" x="159" y="24" width="114" height="35"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="35" id="3WU-de-OQL"/>
                                                                 <constraint firstAttribute="width" constant="110" id="cQV-gJ-zMz"/>
@@ -99,15 +119,21 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="QUd-7D-q14" firstAttribute="leading" secondItem="qbN-ba-fho" secondAttribute="leading" constant="10" id="0Qz-Ev-efP"/>
+                                                        <constraint firstItem="6Lf-Yu-mLH" firstAttribute="top" secondItem="vnv-J2-7r1" secondAttribute="bottom" id="6Mc-mV-px7"/>
+                                                        <constraint firstAttribute="trailing" secondItem="6Lf-Yu-mLH" secondAttribute="trailing" constant="8" id="EFk-L8-w4w"/>
                                                         <constraint firstItem="etF-33-bCB" firstAttribute="top" secondItem="qbN-ba-fho" secondAttribute="top" constant="5" id="Lct-kG-usb"/>
-                                                        <constraint firstItem="vnv-J2-7r1" firstAttribute="centerY" secondItem="qbN-ba-fho" secondAttribute="centerY" constant="-8" id="TuQ-gE-ZUh"/>
+                                                        <constraint firstItem="6Lf-Yu-mLH" firstAttribute="leading" secondItem="Ids-Uo-ci6" secondAttribute="trailing" constant="3" id="Mh9-0D-cWP"/>
+                                                        <constraint firstItem="vnv-J2-7r1" firstAttribute="top" secondItem="qbN-ba-fho" secondAttribute="top" constant="1" id="Syb-YN-Gsr"/>
                                                         <constraint firstItem="QUd-7D-q14" firstAttribute="top" secondItem="etF-33-bCB" secondAttribute="bottom" constant="2" id="VO6-Zn-eA3"/>
+                                                        <constraint firstItem="Ids-Uo-ci6" firstAttribute="top" secondItem="vnv-J2-7r1" secondAttribute="bottom" id="sfI-UU-HeB"/>
                                                         <constraint firstItem="etF-33-bCB" firstAttribute="leading" secondItem="qbN-ba-fho" secondAttribute="leading" constant="9" id="ueW-ow-ZRq"/>
                                                         <constraint firstAttribute="trailing" secondItem="vnv-J2-7r1" secondAttribute="trailing" constant="8" id="zXo-eA-0bQ"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="customName" destination="etF-33-bCB" id="6Yz-qc-WmD"/>
                                                         <outlet property="relativeDate" destination="QUd-7D-q14" id="Ath-zr-bGo"/>
+                                                        <outlet property="sunriseSetImage" destination="Ids-Uo-ci6" id="qZh-SH-33g"/>
+                                                        <outlet property="sunriseSetTime" destination="6Lf-Yu-mLH" id="eIy-7v-jzE"/>
                                                         <outlet property="textField" destination="etF-33-bCB" id="6fd-cc-Qq2"/>
                                                         <outlet property="time" destination="vnv-J2-7r1" id="XFD-GQ-9CD"/>
                                                     </connections>
@@ -264,5 +290,6 @@
         <image name="ClockerIcon-16" width="16" height="16"/>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="PowerIcon" width="270" height="270"/>
+        <image name="Sunrise" width="512" height="512"/>
     </resources>
 </document>
