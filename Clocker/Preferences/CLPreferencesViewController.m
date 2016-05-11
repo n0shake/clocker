@@ -790,46 +790,55 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                                return;
                            }
                            
-                           CLTimezoneData *dataObject = self.filteredArray[self.availableTimezoneTableView.selectedRow];
                            
+                           /*Fix for http://crashes.to/s/5b1432e77c9 
+                            
+                            Additional precautions taken to make sure selected row's value is in the filtered array!
+                            
+                            */
                            
-                           /*Strip till the first comma we encounter*/
-                           
-                           NSString *filteredAddress = dataObject.formattedAddress;
-                           
-                           NSRange range = [filteredAddress rangeOfString:@","];
-                           if (range.location != NSNotFound)
+                           if (self.availableTimezoneTableView.selectedRow >=0 && self.availableTimezoneTableView.selectedRow < self.filteredArray.count)
                            {
-                               filteredAddress = [dataObject.formattedAddress substringWithRange:NSMakeRange(0, range.location)];
-                           }
-                           
-                           NSMutableDictionary *newTimezone = [NSMutableDictionary dictionary];
+                                   CLTimezoneData *dataObject = self.filteredArray[self.availableTimezoneTableView.selectedRow];
+                               /*Strip till the first comma we encounter*/
+                               
+                               NSString *filteredAddress = dataObject.formattedAddress;
+                               
+                               NSRange range = [filteredAddress rangeOfString:@","];
+                               if (range.location != NSNotFound)
+                               {
+                                   filteredAddress = [dataObject.formattedAddress substringWithRange:NSMakeRange(0, range.location)];
+                               }
+                               
+                               NSMutableDictionary *newTimezone = [NSMutableDictionary dictionary];
+                               
+                               [newTimezone setObject:json[@"timeZoneId"] forKey:CLTimezoneID];
+                               
+                               
+                               [newTimezone setObject:filteredAddress forKey:CLTimezoneName];
+                               [newTimezone setObject:dataObject.place_id forKey:CLPlaceIdentifier];
+                               [newTimezone setObject:dataObject.latitude forKey:@"latitude"];
+                               [newTimezone setObject:dataObject.longitude forKey:@"longitude"];
+                               [newTimezone setObject:CLEmptyString forKey:@"nextUpdate"];
+                               [newTimezone setObject:CLEmptyString forKey:CLCustomLabel];
+                               
+                               
+                               CLTimezoneData *timezoneObject = [[CLTimezoneData alloc] initWithDictionary:newTimezone];
+                               
+                               NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
+                               
+                               if (defaultPreference == nil)
+                               {
+                                   defaultPreference = [NSMutableArray new];
+                               }
+                               
+                               NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:timezoneObject];
+                               NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:defaultPreference];
+                               [newArray addObject:encodedObject];
+                               
+                               [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:CLDefaultPreferenceKey];
 
-                           [newTimezone setObject:json[@"timeZoneId"] forKey:CLTimezoneID];
-                           
-                           
-                           [newTimezone setObject:filteredAddress forKey:CLTimezoneName];
-                           [newTimezone setObject:dataObject.place_id forKey:CLPlaceIdentifier];
-                           [newTimezone setObject:dataObject.latitude forKey:@"latitude"];
-                           [newTimezone setObject:dataObject.longitude forKey:@"longitude"];
-                           [newTimezone setObject:CLEmptyString forKey:@"nextUpdate"];
-                           [newTimezone setObject:CLEmptyString forKey:CLCustomLabel];
-                           
-                           
-                           CLTimezoneData *timezoneObject = [[CLTimezoneData alloc] initWithDictionary:newTimezone];
-                           
-                           NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
-                           
-                           if (defaultPreference == nil)
-                           {
-                               defaultPreference = [NSMutableArray new];
                            }
-                           
-                           NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:timezoneObject];
-                           NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:defaultPreference];
-                           [newArray addObject:encodedObject];
-                           
-                           [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:CLDefaultPreferenceKey];
                            
                            self.filteredArray = [NSMutableArray array];
                            
