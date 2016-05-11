@@ -54,6 +54,20 @@
     if ([[sender superview] isKindOfClass:[self class]])
     {
         CLTimezoneCellView *cellView = (CLTimezoneCellView *)[sender superview];
+        
+        /*
+         
+         Fix for http://crashes.to/s/f43ce0accd0
+         
+         More stringent null check for array values.
+         
+         */
+        
+        if (panelController.defaultPreferences == nil && floatingWindow.defaultPreferences == nil)
+        {
+            return;
+        }
+        
         NSData *dataObject = displayMode.integerValue == 0 ? panelController.defaultPreferences[cellView.rowNumber] : floatingWindow.defaultPreferences[cellView.rowNumber];
         CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:dataObject];
         
