@@ -141,12 +141,24 @@ CA
                         <binding destination="1Gq-ZQ-IML" name="value" keyPath="values.startAtLogin" id="UjN-PC-pxC"/>
                     </connections>
                 </button>
+                <customView focusRingType="none" appearanceType="aqua" translatesAutoresizingMaskIntoConstraints="NO" id="dwV-4M-GbV" customClass="SRRecorderControl">
+                    <rect key="frame" x="249" y="15" width="180" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="1sb-d8-Nyq"/>
+                        <constraint firstAttribute="width" constant="180" id="8Mj-Zf-kVn"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="enabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </customView>
             </subviews>
             <constraints>
                 <constraint firstItem="iOG-Ey-lmD" firstAttribute="height" secondItem="4yB-vZ-tNX" secondAttribute="height" id="HKt-is-5y3"/>
                 <constraint firstItem="zBR-OH-6QQ" firstAttribute="top" secondItem="Uu9-io-frR" secondAttribute="top" constant="8" id="JKn-gF-8oI"/>
                 <constraint firstAttribute="bottom" secondItem="iOG-Ey-lmD" secondAttribute="bottom" constant="20" id="LkE-TY-4pP"/>
                 <constraint firstItem="HMC-Ku-qrH" firstAttribute="leading" secondItem="iOG-Ey-lmD" secondAttribute="trailing" constant="8" id="RAb-Xi-AY4"/>
+                <constraint firstAttribute="bottom" secondItem="dwV-4M-GbV" secondAttribute="bottom" constant="15" id="YRA-YJ-d3h"/>
+                <constraint firstItem="dwV-4M-GbV" firstAttribute="leading" secondItem="HMC-Ku-qrH" secondAttribute="trailing" constant="-73" id="bbK-y4-tNC"/>
                 <constraint firstAttribute="bottom" secondItem="HMC-Ku-qrH" secondAttribute="bottom" constant="23" id="j8p-GM-QPX"/>
                 <constraint firstAttribute="trailing" secondItem="zBR-OH-6QQ" secondAttribute="trailing" constant="10" id="p1P-Ev-oBI"/>
                 <constraint firstItem="iOG-Ey-lmD" firstAttribute="width" secondItem="4yB-vZ-tNX" secondAttribute="width" id="wLJ-lQ-GhP"/>

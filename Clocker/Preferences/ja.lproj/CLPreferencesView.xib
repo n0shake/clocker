@@ -20,7 +20,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <view id="Uu9-io-frR">
-            <rect key="frame" x="0.0" y="0.0" width="439" height="335"/>
+            <rect key="frame" x="0.0" y="0.0" width="451" height="335"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button toolTip="Add a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4yB-vZ-tNX">
@@ -51,13 +51,13 @@ CA
                     </connections>
                 </button>
                 <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBR-OH-6QQ">
-                    <rect key="frame" x="10" y="46" width="419" height="281"/>
+                    <rect key="frame" x="10" y="46" width="431" height="281"/>
                     <clipView key="contentView" id="UZ2-JA-TZe">
-                        <rect key="frame" x="0.0" y="0.0" width="419" height="266"/>
+                        <rect key="frame" x="0.0" y="0.0" width="431" height="281"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="20" headerView="igm-uc-1wh" id="LbJ-dW-ITm">
-                                <rect key="frame" x="0.0" y="0.0" width="429" height="243"/>
+                                <rect key="frame" x="0.0" y="0.0" width="431" height="258"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -88,7 +88,7 @@ CA
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="label" width="105" minWidth="80" maxWidth="120" id="wmL-jC-Tny">
+                                    <tableColumn identifier="label" width="107" minWidth="80" maxWidth="120" id="wmL-jC-Tny">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="ラベル">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -113,7 +113,7 @@ CA
                     <constraints>
                         <constraint firstAttribute="height" constant="281" id="PZN-nD-VFx"/>
                     </constraints>
-                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="QrG-bP-Ras">
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="QrG-bP-Ras">
                         <rect key="frame" x="0.0" y="265" width="419" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -122,7 +122,7 @@ CA
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" focusRingType="none" id="igm-uc-1wh">
-                        <rect key="frame" x="0.0" y="0.0" width="429" height="23"/>
+                        <rect key="frame" x="0.0" y="0.0" width="431" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
@@ -141,11 +141,23 @@ CA
                         <binding destination="1Gq-ZQ-IML" name="value" keyPath="values.startAtLogin" id="UjN-PC-pxC"/>
                     </connections>
                 </button>
+                <customView focusRingType="none" appearanceType="aqua" translatesAutoresizingMaskIntoConstraints="NO" id="Nzo-6w-LBL" customClass="SRRecorderControl">
+                    <rect key="frame" x="299" y="18" width="140" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="140" id="8DA-wO-ySC"/>
+                        <constraint firstAttribute="height" constant="25" id="AAZ-ZD-DGb"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="enabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </customView>
             </subviews>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="Nzo-6w-LBL" secondAttribute="bottom" constant="18" id="Gtf-tF-q3a"/>
                 <constraint firstItem="iOG-Ey-lmD" firstAttribute="height" secondItem="4yB-vZ-tNX" secondAttribute="height" id="HKt-is-5y3"/>
                 <constraint firstItem="zBR-OH-6QQ" firstAttribute="top" secondItem="Uu9-io-frR" secondAttribute="top" constant="8" id="JKn-gF-8oI"/>
                 <constraint firstAttribute="bottom" secondItem="iOG-Ey-lmD" secondAttribute="bottom" constant="20" id="LkE-TY-4pP"/>
+                <constraint firstItem="Nzo-6w-LBL" firstAttribute="leading" secondItem="HMC-Ku-qrH" secondAttribute="trailing" constant="-23" id="NM6-d2-4TR"/>
                 <constraint firstItem="HMC-Ku-qrH" firstAttribute="leading" secondItem="iOG-Ey-lmD" secondAttribute="trailing" constant="8" id="RAb-Xi-AY4"/>
                 <constraint firstAttribute="bottom" secondItem="HMC-Ku-qrH" secondAttribute="bottom" constant="23" id="j8p-GM-QPX"/>
                 <constraint firstAttribute="trailing" secondItem="zBR-OH-6QQ" secondAttribute="trailing" constant="10" id="p1P-Ev-oBI"/>
@@ -155,7 +167,7 @@ CA
                 <constraint firstItem="zBR-OH-6QQ" firstAttribute="leading" secondItem="Uu9-io-frR" secondAttribute="leading" constant="10" id="zoH-62-nam"/>
                 <constraint firstAttribute="bottom" secondItem="4yB-vZ-tNX" secondAttribute="bottom" constant="20" id="zvP-zK-Hxe"/>
             </constraints>
-            <point key="canvasLocation" x="295.5" y="173.5"/>
+            <point key="canvasLocation" x="301.5" y="173.5"/>
         </view>
         <userDefaultsController representsSharedInstance="YES" id="1Gq-ZQ-IML"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="alertPanel" appearanceType="aqua" frameAutosaveName="" id="6FL-fp-Ke1" customClass="Panel">

@@ -141,8 +141,20 @@ CA
                         <binding destination="1Gq-ZQ-IML" name="value" keyPath="values.startAtLogin" id="UjN-PC-pxC"/>
                     </connections>
                 </button>
+                <customView focusRingType="none" appearanceType="aqua" translatesAutoresizingMaskIntoConstraints="NO" id="w8I-yb-BFh" customClass="SRRecorderControl">
+                    <rect key="frame" x="249" y="13" width="180" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="3sV-9B-GlE"/>
+                        <constraint firstAttribute="width" constant="180" id="r7E-6Z-7Jv"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="enabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </customView>
             </subviews>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="w8I-yb-BFh" secondAttribute="bottom" constant="13" id="2Pf-4W-uyG"/>
+                <constraint firstItem="w8I-yb-BFh" firstAttribute="leading" secondItem="HMC-Ku-qrH" secondAttribute="trailing" constant="-73" id="GPP-hi-Fec"/>
                 <constraint firstItem="iOG-Ey-lmD" firstAttribute="height" secondItem="4yB-vZ-tNX" secondAttribute="height" id="HKt-is-5y3"/>
                 <constraint firstItem="zBR-OH-6QQ" firstAttribute="top" secondItem="Uu9-io-frR" secondAttribute="top" constant="8" id="JKn-gF-8oI"/>
                 <constraint firstAttribute="bottom" secondItem="iOG-Ey-lmD" secondAttribute="bottom" constant="20" id="LkE-TY-4pP"/>
