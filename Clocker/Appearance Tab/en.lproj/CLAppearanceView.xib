@@ -220,17 +220,6 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="R46-6I-vYT">
-                    <rect key="frame" x="138" y="235" width="164" height="19"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="160" id="3tu-Bf-MZ4"/>
-                    </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Show Sunrise/Sunset" id="dPO-nm-S9e">
-                        <font key="font" size="13" name="SFUIDisplay-Light"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="MHe-dB-GZr">
                     <rect key="frame" x="0.0" y="199" width="439" height="5"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -346,6 +335,17 @@
                         <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.displayAppAsForegroundApp" id="Fuh-BG-SYM"/>
                     </connections>
                 </segmentedControl>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="R46-6I-vYT">
+                    <rect key="frame" x="138" y="235" width="164" height="19"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="160" id="3tu-Bf-MZ4"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Show Sunrise/Sunset" id="dPO-nm-S9e">
+                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstItem="5TC-RQ-gzI" firstAttribute="top" secondItem="X5s-Mc-Yfo" secondAttribute="bottom" constant="8" id="1Wi-S2-cSq"/>
