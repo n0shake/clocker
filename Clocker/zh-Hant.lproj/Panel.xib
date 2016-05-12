@@ -166,7 +166,7 @@
                                                             </constraints>
                                                             <buttonCell key="cell" type="push" title="Not Really" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ckn-uK-FWI">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                <font key="font" size="13" name="SFUIDisplay-Thin"/>
+                                                                <font key="font" size="13" name="HelveticaNeue-Thin"/>
                                                             </buttonCell>
                                                             <connections>
                                                                 <action selector="actionOnNegativeFeedback:" target="wWn-9q-AYl" id="lBL-WL-xum"/>
@@ -176,7 +176,7 @@
                                                             <rect key="frame" x="130" y="-2" width="108" height="32"/>
                                                             <buttonCell key="cell" type="push" title="Yes!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5K0-zD-kN0">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                <font key="font" size="13" name="SFUIDisplay-Thin"/>
+                                                                <font key="font" size="13" name="HelveticaNeue-Thin"/>
                                                             </buttonCell>
                                                             <connections>
                                                                 <action selector="actionOnPositiveFeedback:" target="wWn-9q-AYl" id="KYm-dp-Jno"/>
