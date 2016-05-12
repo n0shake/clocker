@@ -153,7 +153,7 @@
                                                                 <constraint firstAttribute="height" constant="20" id="kOH-Lb-7sB"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Enjoy タイムキーパー?" id="iM2-CB-CE2">
-                                                                <font key="font" size="12" name="SFUIDisplay-Regular"/>
+                                                                <font key="font" size="12" name="HelveticaNeue"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
