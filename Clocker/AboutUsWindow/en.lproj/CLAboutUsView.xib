@@ -22,7 +22,7 @@
                         <constraint firstAttribute="width" constant="125" id="6Kp-RK-dT4"/>
                         <constraint firstAttribute="height" constant="117" id="znw-VN-bXv"/>
                     </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-256" id="pfa-88-uAu"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-512" id="pfa-88-uAu"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XlC-Xd-67t">
                     <rect key="frame" x="153" y="166" width="316" height="43"/>
@@ -165,7 +165,7 @@
         </view>
     </objects>
     <resources>
-        <image name="ClockerIcon-256" width="256" height="256"/>
+        <image name="ClockerIcon-512" width="512" height="512"/>
         <image name="FindUsOnFacebook" width="144" height="27"/>
     </resources>
 </document>
