@@ -85,7 +85,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="101" preferredMaxLayoutWidth="110" translatesAutoresizingMaskIntoConstraints="NO" id="vnv-J2-7r1">
-                                                            <rect key="frame" x="159" y="25" width="114" height="35"/>
+                                                            <rect key="frame" x="159" y="21" width="114" height="35"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="35" id="3WU-de-OQL"/>
                                                                 <constraint firstAttribute="width" constant="110" id="cQV-gJ-zMz"/>
@@ -97,20 +97,20 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7OQ-cr-VJS">
-                                                            <rect key="frame" x="203" y="5" width="20" height="20"/>
+                                                            <rect key="frame" x="203" y="6" width="20" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="Vmz-Ji-Y0Q"/>
                                                                 <constraint firstAttribute="height" constant="20" id="qNj-EP-era"/>
                                                             </constraints>
-                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Sunrise" id="U2f-NK-Gua"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="U2f-NK-Gua"/>
                                                         </imageView>
                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uOg-ij-alO">
-                                                            <rect key="frame" x="224" y="8" width="49" height="17"/>
+                                                            <rect key="frame" x="224" y="9" width="49" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="89H-r0-Dnh"/>
                                                                 <constraint firstAttribute="width" constant="45" id="8KH-Ks-d4T"/>
                                                             </constraints>
-                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" placeholderString="07:00 PM" id="qpH-kn-cMT">
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" placeholderString="" id="qpH-kn-cMT">
                                                                 <font key="font" size="11" name="SFUIDisplay-Ultralight"/>
                                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -123,10 +123,10 @@
                                                         <constraint firstItem="etF-33-bCB" firstAttribute="top" secondItem="qbN-ba-fho" secondAttribute="top" constant="5" id="Lct-kG-usb"/>
                                                         <constraint firstAttribute="trailing" secondItem="uOg-ij-alO" secondAttribute="trailing" constant="8" id="Siz-97-mYl"/>
                                                         <constraint firstItem="QUd-7D-q14" firstAttribute="top" secondItem="etF-33-bCB" secondAttribute="bottom" constant="2" id="VO6-Zn-eA3"/>
-                                                        <constraint firstItem="uOg-ij-alO" firstAttribute="top" secondItem="vnv-J2-7r1" secondAttribute="bottom" id="j2E-3l-6B2"/>
-                                                        <constraint firstItem="7OQ-cr-VJS" firstAttribute="top" secondItem="vnv-J2-7r1" secondAttribute="bottom" id="uZd-y0-d6A"/>
+                                                        <constraint firstItem="uOg-ij-alO" firstAttribute="top" secondItem="vnv-J2-7r1" secondAttribute="bottom" constant="-5" id="j2E-3l-6B2"/>
+                                                        <constraint firstItem="7OQ-cr-VJS" firstAttribute="top" secondItem="vnv-J2-7r1" secondAttribute="bottom" constant="-5" id="uZd-y0-d6A"/>
                                                         <constraint firstItem="etF-33-bCB" firstAttribute="leading" secondItem="qbN-ba-fho" secondAttribute="leading" constant="9" id="ueW-ow-ZRq"/>
-                                                        <constraint firstItem="vnv-J2-7r1" firstAttribute="top" secondItem="qbN-ba-fho" secondAttribute="top" constant="1" id="vGp-XY-wiJ"/>
+                                                        <constraint firstItem="vnv-J2-7r1" firstAttribute="top" secondItem="qbN-ba-fho" secondAttribute="top" constant="5" id="vGp-XY-wiJ"/>
                                                         <constraint firstAttribute="trailing" secondItem="vnv-J2-7r1" secondAttribute="trailing" constant="8" id="zXo-eA-0bQ"/>
                                                     </constraints>
                                                     <connections>
@@ -290,6 +290,5 @@
         <image name="ClockerIcon-16" width="16" height="16"/>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="PowerIcon" width="270" height="270"/>
-        <image name="Sunrise" width="512" height="512"/>
     </resources>
 </document>

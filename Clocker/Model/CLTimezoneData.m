@@ -174,7 +174,9 @@
 
 -(void)initializeSunriseSunset
 {
-    EDSunriseSet *sunriseSetObject = [EDSunriseSet sunrisesetWithDate:[NSDate date] timezone:[NSTimeZone timeZoneWithName:self.timezoneID] latitude:self.latitude.doubleValue longitude:self.longitude.doubleValue];
+    EDSunriseSet *sunriseSetObject = [EDSunriseSet sunrisesetWithDate:[NSDate date]
+                                                             timezone:[NSTimeZone timeZoneWithName:self.timezoneID]
+                                                             latitude:self.latitude.doubleValue longitude:self.longitude.doubleValue];
     self.sunriseTime = sunriseSetObject.sunrise;
     self.sunsetTime = sunriseSetObject.sunset;
 }
@@ -388,6 +390,11 @@
 {
     [self initializeSunriseSunset];
     
+    if (!self.sunriseTime && !self.sunsetTime)
+    {
+        return CLEmptyString;
+    }
+    
     NSString *timezoneDate = [self getFullFledgedDateForTime];
     
     NSDateFormatter *formatter = [NSDateFormatter new];
@@ -434,8 +441,6 @@
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     
     [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm a"];
-    
-    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.timezoneID];
     
     return [dateFormatter stringFromDate:newDate];
 }

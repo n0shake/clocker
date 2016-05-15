@@ -78,7 +78,7 @@
                                                                 <constraint firstAttribute="height" constant="20" id="TYa-1I-fQJ"/>
                                                                 <constraint firstAttribute="width" constant="20" id="b27-EB-ZA9"/>
                                                             </constraints>
-                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Sunrise" id="k54-vn-T4E"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="k54-vn-T4E"/>
                                                         </imageView>
                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="L5a-d8-SuC">
                                                             <rect key="frame" x="224" y="7" width="49" height="17"/>
@@ -86,7 +86,7 @@
                                                                 <constraint firstAttribute="height" constant="17" id="Fmh-lZ-7vJ"/>
                                                                 <constraint firstAttribute="width" constant="45" id="psP-EH-mNo"/>
                                                             </constraints>
-                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" placeholderString="07:00 PM" id="uGx-ek-RAy">
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" placeholderString="" id="uGx-ek-RAy">
                                                                 <font key="font" size="11" name="SFUIDisplay-Ultralight"/>
                                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -290,6 +290,5 @@
         <image name="ClockerIcon-16" width="16" height="16"/>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="PowerIcon" width="270" height="270"/>
-        <image name="Sunrise" width="512" height="512"/>
     </resources>
 </document>

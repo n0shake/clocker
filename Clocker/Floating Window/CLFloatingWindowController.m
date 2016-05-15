@@ -155,11 +155,13 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
     
     NSNumber *displaySunriseSunsetTime = [[NSUserDefaults standardUserDefaults] objectForKey:CLSunriseSunsetTime];
     
-    cell.sunriseSetTime.hidden = [displaySunriseSunsetTime isEqualToNumber:@(1)] ? YES : NO;
+    cell.sunriseSetTime.hidden = ([displaySunriseSunsetTime isEqualToNumber:@(0)] && cell.sunriseSetTime.stringValue.length > 0) ? NO : YES;
     
-    cell.sunriseSetImage.hidden = [displaySunriseSunsetTime isEqualToNumber:@(1)] ? YES : NO;
+    cell.sunriseSetImage.hidden = [displaySunriseSunsetTime isEqualToNumber:@(0)] && cell.sunriseSetTime.stringValue.length > 0 ? NO : YES;
     
     [cell setUpAutoLayoutWithCell:cell];
+    
+    [cell setAppropriateFont];
     
     return cell;
 }
