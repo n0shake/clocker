@@ -73,7 +73,7 @@
                                                             </connections>
                                                         </textField>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xs9-YL-kjz">
-                                                            <rect key="frame" x="203" y="4" width="20" height="20"/>
+                                                            <rect key="frame" x="203" y="9" width="20" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="Obq-Oh-WXk"/>
                                                                 <constraint firstAttribute="height" constant="20" id="reh-nM-X2T"/>
@@ -81,7 +81,7 @@
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="s4Y-Ea-vG5"/>
                                                         </imageView>
                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4gs-C2-sJo">
-                                                            <rect key="frame" x="224" y="7" width="49" height="17"/>
+                                                            <rect key="frame" x="224" y="12" width="49" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="45" id="lao-W5-nM7"/>
                                                                 <constraint firstAttribute="height" constant="17" id="wVS-6m-nWK"/>
@@ -119,11 +119,11 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="wFR-Xg-kpb" firstAttribute="top" secondItem="Zyy-Fw-K7Z" secondAttribute="bottom" constant="2" id="2BN-TO-QwP"/>
-                                                        <constraint firstItem="4gs-C2-sJo" firstAttribute="top" secondItem="DSw-uJ-JCx" secondAttribute="bottom" id="ArU-Hf-FT8"/>
+                                                        <constraint firstItem="4gs-C2-sJo" firstAttribute="top" secondItem="DSw-uJ-JCx" secondAttribute="bottom" constant="-5" id="ArU-Hf-FT8"/>
                                                         <constraint firstItem="Zyy-Fw-K7Z" firstAttribute="top" secondItem="8mq-8K-c34" secondAttribute="top" constant="5" id="B0D-ik-bxk"/>
                                                         <constraint firstAttribute="trailing" secondItem="DSw-uJ-JCx" secondAttribute="trailing" constant="8" id="IA6-vj-gHR"/>
                                                         <constraint firstItem="Zyy-Fw-K7Z" firstAttribute="leading" secondItem="8mq-8K-c34" secondAttribute="leading" constant="9" id="JFG-Yz-esL"/>
-                                                        <constraint firstItem="xs9-YL-kjz" firstAttribute="top" secondItem="DSw-uJ-JCx" secondAttribute="bottom" id="KY7-eL-ZbD"/>
+                                                        <constraint firstItem="xs9-YL-kjz" firstAttribute="top" secondItem="DSw-uJ-JCx" secondAttribute="bottom" constant="-5" id="KY7-eL-ZbD"/>
                                                         <constraint firstItem="4gs-C2-sJo" firstAttribute="leading" secondItem="xs9-YL-kjz" secondAttribute="trailing" constant="3" id="Kuv-5o-LHK"/>
                                                         <constraint firstAttribute="trailing" secondItem="4gs-C2-sJo" secondAttribute="trailing" constant="8" id="keh-iW-7So"/>
                                                         <constraint firstItem="wFR-Xg-kpb" firstAttribute="leading" secondItem="8mq-8K-c34" secondAttribute="leading" constant="10" id="p0N-YR-EDR"/>

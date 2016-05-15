@@ -74,7 +74,7 @@
                                                             </connections>
                                                         </textField>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Urg-5y-Zdn">
-                                                            <rect key="frame" x="203" y="4" width="20" height="20"/>
+                                                            <rect key="frame" x="203" y="9" width="20" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="5ea-gY-HZ1"/>
                                                                 <constraint firstAttribute="height" constant="20" id="6Ir-U7-lbX"/>
@@ -82,7 +82,7 @@
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="gKv-kD-9FC"/>
                                                         </imageView>
                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XyF-3h-GbI">
-                                                            <rect key="frame" x="224" y="7" width="49" height="17"/>
+                                                            <rect key="frame" x="224" y="12" width="49" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="45" id="8zt-C5-2xb"/>
                                                                 <constraint firstAttribute="height" constant="17" id="dVD-Q8-tsO"/>
@@ -121,14 +121,14 @@
                                                     <constraints>
                                                         <constraint firstItem="wFR-Xg-kpb" firstAttribute="top" secondItem="Zyy-Fw-K7Z" secondAttribute="bottom" constant="2" id="2BN-TO-QwP"/>
                                                         <constraint firstAttribute="trailing" secondItem="XyF-3h-GbI" secondAttribute="trailing" constant="8" id="2Cz-zm-2AY"/>
-                                                        <constraint firstItem="Urg-5y-Zdn" firstAttribute="top" secondItem="DSw-uJ-JCx" secondAttribute="bottom" id="80T-WB-Gos"/>
+                                                        <constraint firstItem="Urg-5y-Zdn" firstAttribute="top" secondItem="DSw-uJ-JCx" secondAttribute="bottom" constant="-5" id="80T-WB-Gos"/>
                                                         <constraint firstItem="Zyy-Fw-K7Z" firstAttribute="top" secondItem="8mq-8K-c34" secondAttribute="top" constant="5" id="B0D-ik-bxk"/>
                                                         <constraint firstItem="DSw-uJ-JCx" firstAttribute="top" secondItem="8mq-8K-c34" secondAttribute="top" constant="1" id="C7x-Fx-C3E"/>
                                                         <constraint firstAttribute="trailing" secondItem="DSw-uJ-JCx" secondAttribute="trailing" constant="8" id="IA6-vj-gHR"/>
                                                         <constraint firstItem="Zyy-Fw-K7Z" firstAttribute="leading" secondItem="8mq-8K-c34" secondAttribute="leading" constant="9" id="JFG-Yz-esL"/>
                                                         <constraint firstItem="wFR-Xg-kpb" firstAttribute="leading" secondItem="8mq-8K-c34" secondAttribute="leading" constant="10" id="p0N-YR-EDR"/>
                                                         <constraint firstItem="XyF-3h-GbI" firstAttribute="leading" secondItem="Urg-5y-Zdn" secondAttribute="trailing" constant="3" id="sh1-RK-bLs"/>
-                                                        <constraint firstItem="XyF-3h-GbI" firstAttribute="top" secondItem="DSw-uJ-JCx" secondAttribute="bottom" id="u5A-7t-5sJ"/>
+                                                        <constraint firstItem="XyF-3h-GbI" firstAttribute="top" secondItem="DSw-uJ-JCx" secondAttribute="bottom" constant="-5" id="u5A-7t-5sJ"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="customName" destination="Zyy-Fw-K7Z" id="X1r-mx-tOf"/>

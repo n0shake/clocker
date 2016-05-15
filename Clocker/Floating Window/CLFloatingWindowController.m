@@ -128,8 +128,6 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
         customLabel.insertionPointColor = [NSColor whiteColor];
         cell.sunriseSetImage.image = dataObject.sunriseOrSunset ?
         [NSImage imageNamed:@"White Sunrise"] : [NSImage imageNamed:@"White Sunset"];
-        cell.sunriseSetImage.image = dataObject.sunriseOrSunset ?
-        [NSImage imageNamed:@"Sunrise"] : [NSImage imageNamed:@"Sunset"];
     }
     else
     {
@@ -139,6 +137,8 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
         [self.mainTableview setBackgroundColor:[NSColor whiteColor]];
         self.window.alphaValue = 1;
         customLabel.insertionPointColor = [NSColor blackColor];
+        cell.sunriseSetImage.image = dataObject.sunriseOrSunset ?
+        [NSImage imageNamed:@"Sunrise"] : [NSImage imageNamed:@"Sunset"];
     }
     
     cell.relativeDate.stringValue = [dataObject getDateForTimeZoneWithFutureSliderValue:self.futureSliderValue andDisplayType:CLPanelDisplay];
