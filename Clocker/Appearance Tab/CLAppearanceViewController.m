@@ -35,7 +35,42 @@
     self.informationLabel.textColor = [NSColor secondaryLabelColor];
     
     self.enableOptions = [[NSUserDefaults standardUserDefaults] objectForKey:@"favouriteTimezone"] == nil ? NO : YES;
+    
+    [self setAppropriateFont];
+    
 }
+
+
+- (void)setAppropriateFont
+{
+    NSOperatingSystemVersion operatingSystemVersion = [[NSProcessInfo processInfo] operatingSystemVersion];
+    
+    if (operatingSystemVersion.minorVersion <= 10)
+    {
+        //Set up Helvetica Neue font
+         [self setFontFamily:@"HelveticaNeue-Light" forView:self.view andSubViews:YES];
+    }
+    
+}
+
+-(void)setFontFamily:(NSString*)fontFamily forView:(NSView*)view andSubViews:(BOOL)isSubViews
+{
+    if ([view isKindOfClass:[NSTextField class]])
+    {
+        NSTextField *lbl = (NSTextField *)view;
+        
+        [lbl setFont:[NSFont fontWithName:fontFamily size:[[lbl font] pointSize]]];
+    }
+    
+    if (isSubViews)
+    {
+        for (NSView *sview in view.subviews)
+        {
+            [self setFontFamily:fontFamily forView:sview andSubViews:YES];
+        }
+    }
+}
+
 
 - (IBAction)timeFormatSelectionChanged:(id)sender
 {

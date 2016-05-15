@@ -138,6 +138,24 @@
     cell.sunriseSetTime.textColor = color;
 }
 
+- (void)setAppropriateFont
+{
+    NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
+    
+    NSArray *availableFonts = [[NSFontManager sharedFontManager] availableFontFamilies];
+    
+    if(version.minorVersion <= 10)
+    {
+        if ([availableFonts containsObject:@"Helvetica Neue"])
+        {
+            self.relativeDate.font = [NSFont fontWithName:@"HelveticaNeue-Bold" size:0];
+            self.customName.font = [NSFont fontWithName:@"HelveticaNeue-Thin" size:15];
+            self.time.font = [NSFont fontWithName:@"HelveticaNeue-Thin" size:22];
+            self.sunriseSetTime.font = [NSFont fontWithName:@"HelveticaNeue-UltraLight" size:11];
+        }
+    }
+}
+
 - (void)setUpAutoLayoutWithCell:(CLTimezoneCellView *)cell
 {
     CGFloat width = [cell.relativeDate.stringValue

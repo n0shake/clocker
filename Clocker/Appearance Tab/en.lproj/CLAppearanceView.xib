@@ -60,9 +60,9 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="YQi-x8-6f8">
-                    <rect key="frame" x="143" y="402" width="154" height="18"/>
+                    <rect key="frame" x="143" y="400" width="154" height="20"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="18" id="eY8-bV-QLM"/>
+                        <constraint firstAttribute="height" constant="20" id="eY8-bV-QLM"/>
                         <constraint firstAttribute="width" constant="150" id="n8S-fR-UtY"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Day Display Options" id="KTv-74-itf">
@@ -89,7 +89,7 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="3d9-qg-dNb">
-                    <rect key="frame" x="130" y="175" width="179" height="18"/>
+                    <rect key="frame" x="130" y="173" width="179" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="MdL-Dh-02n"/>
                         <constraint firstAttribute="width" constant="175" id="hHO-Wa-gmc"/>
@@ -101,7 +101,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="pqa-Qg-U8Y">
-                    <rect key="frame" x="130" y="147" width="179" height="19"/>
+                    <rect key="frame" x="130" y="145" width="179" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="175" id="B2I-0j-0W0"/>
                     </constraints>
@@ -115,7 +115,7 @@
                     </connections>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="atA-2r-FXV">
-                    <rect key="frame" x="179" y="119" width="84" height="24"/>
+                    <rect key="frame" x="179" y="117" width="84" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="BqM-4F-6Ta"/>
                         <constraint firstAttribute="width" constant="80" id="ZeK-lO-tUa"/>
@@ -133,7 +133,7 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="kEn-QZ-niZ">
-                    <rect key="frame" x="130" y="98" width="179" height="18"/>
+                    <rect key="frame" x="130" y="96" width="179" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="2fd-f6-8cD"/>
                         <constraint firstAttribute="width" constant="175" id="D0w-xz-gkw"/>
@@ -148,7 +148,7 @@
                     </connections>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XwV-hy-YiP">
-                    <rect key="frame" x="178" y="70" width="84" height="24"/>
+                    <rect key="frame" x="178" y="68" width="84" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="80" id="dBz-ZQ-BF1"/>
                         <constraint firstAttribute="height" constant="21" id="y8c-hZ-MtI"/>
@@ -166,7 +166,7 @@
                     </connections>
                 </segmentedControl>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="72r-oi-X0f">
-                    <rect key="frame" x="180" y="316" width="79" height="24"/>
+                    <rect key="frame" x="180" y="314" width="79" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="75" id="H8w-wg-vel"/>
                     </constraints>
@@ -183,7 +183,7 @@
                     </connections>
                 </segmentedControl>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="14F-6y-MaJ">
-                    <rect key="frame" x="180" y="208" width="79" height="24"/>
+                    <rect key="frame" x="180" y="206" width="79" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="75" id="XbD-oF-Vod"/>
                     </constraints>
@@ -199,7 +199,7 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="HTZ-1V-qZb">
-                    <rect key="frame" x="158" y="347" width="124" height="19"/>
+                    <rect key="frame" x="158" y="345" width="124" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="120" id="1Lv-wC-hEM"/>
                     </constraints>
@@ -210,7 +210,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="76h-05-go1">
-                    <rect key="frame" x="158" y="291" width="124" height="19"/>
+                    <rect key="frame" x="158" y="289" width="124" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="120" id="Odw-mb-nT5"/>
                     </constraints>
@@ -221,13 +221,13 @@
                     </textFieldCell>
                 </textField>
                 <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="MHe-dB-GZr">
-                    <rect key="frame" x="0.0" y="199" width="439" height="5"/>
+                    <rect key="frame" x="0.0" y="197" width="439" height="5"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="LC1-Sx-uav">
-                    <rect key="frame" x="130" y="46" width="179" height="18"/>
+                    <rect key="frame" x="130" y="44" width="179" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="175" id="Pdc-78-vzv"/>
                         <constraint firstAttribute="height" constant="18" id="hsh-i8-ULY"/>
@@ -242,7 +242,7 @@
                     </connections>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JR8-v7-K0w">
-                    <rect key="frame" x="178" y="18" width="84" height="24"/>
+                    <rect key="frame" x="178" y="16" width="84" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Xof-eY-ZUl"/>
                         <constraint firstAttribute="width" constant="80" id="msH-Xd-mrp"/>
@@ -272,7 +272,7 @@
                     </textFieldCell>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1eh-BT-2fK">
-                    <rect key="frame" x="155" y="371" width="129" height="24"/>
+                    <rect key="frame" x="155" y="369" width="129" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="125" id="u9T-ks-rqA"/>
                     </constraints>
@@ -289,10 +289,10 @@
                     </connections>
                 </segmentedControl>
                 <visualEffectView wantsLayer="YES" appearanceType="vibrantLight" alphaValue="0.90000000000000002" blendingMode="withinWindow" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="kHi-mx-HdE">
-                    <rect key="frame" x="0.0" y="0.0" width="439" height="201"/>
+                    <rect key="frame" x="0.0" y="0.0" width="439" height="199"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WDP-d4-eNj">
-                            <rect key="frame" x="57" y="87" width="324" height="39"/>
+                            <rect key="frame" x="57" y="86" width="324" height="39"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="320" id="3wp-Z6-TrB"/>
                                 <constraint firstAttribute="height" constant="39" id="IyN-y5-6JP"/>
@@ -319,7 +319,7 @@
                     </connections>
                 </visualEffectView>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SbG-Qh-ziy">
-                    <rect key="frame" x="53" y="260" width="334" height="24"/>
+                    <rect key="frame" x="53" y="258" width="334" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="330" id="T2D-fB-93g"/>
                     </constraints>
@@ -336,7 +336,7 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="R46-6I-vYT">
-                    <rect key="frame" x="138" y="235" width="164" height="19"/>
+                    <rect key="frame" x="138" y="233" width="164" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="160" id="3tu-Bf-MZ4"/>
                     </constraints>
