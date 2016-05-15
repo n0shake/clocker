@@ -30,5 +30,6 @@ extern NSString *const CLDisplayFutureSliderKey;
 extern NSString *const CLStartAtLogin;
 extern NSString *const CLShowAppInForeground;
 extern NSString *const CLSunriseSunsetTime;
+extern NSString *const CLLocationSearchURL;
 
 @end

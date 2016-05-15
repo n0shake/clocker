@@ -111,7 +111,7 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
     
     CLTimezoneData *dataObject = [CLTimezoneData getCustomObject:self.defaultPreferences[row]];
     
-    cell.sunriseSetTime.stringValue = [dataObject getFormattedSunriseOrSunsetTime];
+    cell.sunriseSetTime.stringValue = [dataObject getFormattedSunriseOrSunsetTimeAndSliderValue:self.futureSliderValue];
     
     NSTextView *customLabel = (NSTextView*)[cell.relativeDate.window
                                             fieldEditor:YES

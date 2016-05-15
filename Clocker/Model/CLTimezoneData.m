@@ -172,13 +172,54 @@
     return [dateFormatter stringFromDate:newDate];
 }
 
--(void)initializeSunriseSunset
+- (void)retrieveLatitudeAndLongitudeWithSearchString:(NSString *)formattedString
 {
-    EDSunriseSet *sunriseSetObject = [EDSunriseSet sunrisesetWithDate:[NSDate date]
-                                                             timezone:[NSTimeZone timeZoneWithName:self.timezoneID]
-                                                             latitude:self.latitude.doubleValue longitude:self.longitude.doubleValue];
-    self.sunriseTime = sunriseSetObject.sunrise;
-    self.sunsetTime = sunriseSetObject.sunset;
+    NSString *preferredLanguage = [NSLocale preferredLanguages][0];
+    
+    if (![CLAPI isUserConnectedToInternet])
+    {
+        /*Show some kind of information label*/
+        return;
+    }
+    
+    
+    NSArray* words = [formattedString componentsSeparatedByCharactersInSet :[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    formattedString = [words componentsJoinedByString:CLEmptyString];
+    
+    NSString *urlString = [NSString stringWithFormat:CLLocationSearchURL, formattedString, preferredLanguage];
+    
+    [CLAPI dataTaskWithServicePath:urlString
+                          bySender:self
+               withCompletionBlock:^(NSError *error, NSDictionary *json) {
+                   
+                   
+                   dispatch_async(dispatch_get_main_queue(), ^{
+                       
+                       if (error || [json[@"status"] isEqualToString:@"ZERO_RESULTS"])
+                       {
+                           return;
+                       }
+                       
+                       
+                       [json[@"results"] enumerateObjectsUsingBlock:^(NSDictionary *  _Nonnull dictionary, NSUInteger idx, BOOL * _Nonnull stop)
+                       {
+                           
+                           if ([dictionary[CLPlaceIdentifier] isEqualToString:self.place_id])
+                           {
+                               //We have a match
+                               
+                               NSDictionary *latLang = [[dictionary objectForKey:@"geometry"] objectForKey:@"location"];
+                               self.latitude = [NSString stringWithFormat:@"%@", latLang[@"lat"]];
+                               self.longitude = [NSString stringWithFormat:@"%@", latLang[@"lng"]];
+                           }
+                           
+                       }];
+                       
+                   });
+                   
+               }];
+
 }
 
 - (NSString *)getLocalCurrentDate
@@ -258,7 +299,8 @@
     }
 }
 
-- (NSString *)getDateForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue andDisplayType:(CLDateDisplayType)type
+- (NSString *)getDateForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue
+                                       andDisplayType:(CLDateDisplayType)type
 {
     NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
     NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
@@ -385,41 +427,49 @@
     return menuTitle;
 }
 
-
--(NSString *)getFormattedSunriseOrSunsetTime
+-(void)initializeSunriseSunsetWithSliderValue:(NSInteger)sliderValue
 {
-    [self initializeSunriseSunset];
+    if (!self.latitude || !self.longitude)
+    {
+        //Retrieve the values using Google Places API
+        
+        [self retrieveLatitudeAndLongitudeWithSearchString:self.formattedAddress];
+        
+    }
+    
+    EDSunriseSet *sunriseSetObject = [EDSunriseSet sunrisesetWithDate:[[NSCalendar autoupdatingCurrentCalendar]
+                                                                       dateByAddingUnit:NSCalendarUnitMinute
+                                                                       value:sliderValue
+                                                                       toDate:[NSDate date]
+                                                                       options:kNilOptions]
+                                                             timezone:[NSTimeZone timeZoneWithName:self.timezoneID]
+                                                             latitude:self.latitude.doubleValue
+                                                            longitude:self.longitude.doubleValue];
+    self.sunriseTime = sunriseSetObject.sunrise;
+    self.sunsetTime = sunriseSetObject.sunset;
+}
+
+
+-(NSString *)getFormattedSunriseOrSunsetTimeAndSliderValue:(NSInteger)sliderValue
+{
+    /* We have to call this everytime so that we get an updated value everytime! */
+    
+    [self initializeSunriseSunsetWithSliderValue:sliderValue];
     
     if (!self.sunriseTime && !self.sunsetTime)
     {
         return CLEmptyString;
     }
     
-    NSString *timezoneDate = [self getFullFledgedDateForTime];
+    self.sunriseOrSunset = [self.sunriseTime isLaterThanOrEqualTo:[NSDate date]];
     
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    
-    formatter.dateFormat = @"yyyy-MM-d hh:mm a";
-
-    NSDate *formattedDate = [formatter dateFromString:timezoneDate];
-
-    NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
-    
-    self.sunriseOrSunset = [self.sunriseTime isLaterThanOrEqualTo:formattedDate];
-    
-    NSDate *newDate = self.sunriseOrSunset ?
-                    [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
-                                                  value:0
-                                                 toDate:self.sunriseTime
-                                              options:kNilOptions] :
-                    [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
-                                value:0
-                               toDate:self.sunsetTime
-                                              options:kNilOptions];
+    NSDate *newDate = self.sunriseOrSunset ? self.sunriseTime : self.sunsetTime;
     
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     
     dateFormatter.dateStyle = kCFDateFormatterNoStyle;
+    
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:self.timezoneID]];
     
     NSNumber *is24HourFormatSelected = [[NSUserDefaults standardUserDefaults] objectForKey:CL24hourFormatSelectedKey];
     
@@ -431,16 +481,20 @@
     
 }
 
-- (NSString *)getFullFledgedDateForTime
+- (NSString *)getFullFledgedDateForTimeWithDate:(NSDate *)date
 {
     NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
+    
     NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
                                                   value:0
-                                                 toDate:[NSDate date]
+                                                 toDate:date
                                                 options:kNilOptions];
+    
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     
     [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm a"];
+    
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:self.timezoneID]];
     
     return [dateFormatter stringFromDate:newDate];
 }

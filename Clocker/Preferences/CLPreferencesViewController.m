@@ -31,7 +31,6 @@ NSString *const CLParseTimezoneSelectionClassIdentifier = @"CLTimezoneSelection"
 NSString *const CLParseTimezoneNameProperty = @"areaName";
 NSString *const CLMaxCharactersReachedError = @"Only 50 characters allowed!";
 NSString *const CLNoInternetConnectivityError = @"You're offline, maybe?";
-NSString *const CLLocationSearchURL = @"https://maps.googleapis.com/maps/api/geocode/json?address=%@&key=AIzaSyCyf2knCi6KiKuDJLYDBD3Odq5dt4c-_KI&language=%@";
 NSString *const CLTimezoneSearchURL = @"https://maps.googleapis.com/maps/api/timezone/json?location=%@&timestamp=%f&key=AIzaSyCyf2knCi6KiKuDJLYDBD3Odq5dt4c-_KI";
 NSString *const CLTryAgainMessage = @"Try again, maybe?";
 

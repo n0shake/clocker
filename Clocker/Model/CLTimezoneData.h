@@ -40,8 +40,7 @@ typedef enum : NSUInteger {
 - (NSString *)getDateForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue andDisplayType:(CLDateDisplayType)type;
 - (NSString *)formatStringShouldContainCity:(BOOL)value;
 - (NSString *)getMenuTitle;
-- (NSString *)getFormattedSunriseOrSunsetTime;
-- (NSImage *)getFormattedSunriseOrSunsetImage;
+-(NSString *)getFormattedSunriseOrSunsetTimeAndSliderValue:(NSInteger)sliderValue;
 
 /*
  - (NSString *)getFormattedSunriseOrSunsetTimeAndSunImage:(CLTimezoneCellView *)cell;
