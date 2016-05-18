@@ -11,6 +11,7 @@
 #import "CLTimezoneData.h"
 #import "CommonStrings.h"
 #import "CLOneWindowController.h"
+#import <pop/POP.h>
 
 @interface CLParentPanelController ()
 
@@ -156,10 +157,43 @@
 
 - (IBAction)openPreferences:(id)sender
 {
-    self.oneWindow = [CLOneWindowController sharedWindow];
-    [self.oneWindow showWindow:nil];
-    [NSApp activateIgnoringOtherApps:YES];
-    
+    [self openPreferenceWindowWithValue:NO];
 }
+
+- (void)openPreferenceWindowWithValue:(BOOL)value
+{
+    self.oneWindow = [CLOneWindowController sharedWindow];
+    
+    [self.oneWindow showWindow:nil];
+    
+    CGRect originalFrame = self.oneWindow.window.frame;
+    
+    CGRect oldFrame = CGRectMake(self.oneWindow.window.frame.origin.x, 730,self.oneWindow.window.frame.size.width, self.oneWindow.window.frame.size.height);
+    
+   
+    
+    [self performBoundsAnimationWithOldRect:oldFrame andNewRect:originalFrame];
+    
+    if (value)
+    {
+        [self.oneWindow.preferencesView addTimeZone:self];
+    }
+    
+    [NSApp activateIgnoringOtherApps:YES];
+}
+
+
+- (void)performBoundsAnimationWithOldRect:(CGRect)fromRect andNewRect:(CGRect)newRect
+{
+     [self.oneWindow.window setFrame:fromRect display:NO animate:NO];
+    
+    self.window.contentView.wantsLayer = YES;
+    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPWindowFrame];
+    anim.toValue = [NSValue valueWithCGRect:newRect];
+    anim.springSpeed = 1;
+    [self.oneWindow.window pop_addAnimation:anim forKey:@"popBounds"];
+}
+
+
 
 @end

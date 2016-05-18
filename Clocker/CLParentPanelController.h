@@ -28,5 +28,6 @@
 - (void)showOptions:(BOOL)value;
 - (void)removeContextHelpForSlider;
 - (void)updatePanelColor;
+- (void)openPreferenceWindowWithValue:(BOOL)value;
 
 @end

@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "NYC.jpg",
+      "filename" : "MainScreen.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "MainScreen@2x.png",
       "scale" : "2x"
     },
     {
