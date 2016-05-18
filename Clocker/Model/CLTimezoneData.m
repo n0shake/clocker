@@ -182,7 +182,6 @@
         return;
     }
     
-    
     NSArray* words = [formattedString componentsSeparatedByCharactersInSet :[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     formattedString = [words componentsJoinedByString:CLEmptyString];
