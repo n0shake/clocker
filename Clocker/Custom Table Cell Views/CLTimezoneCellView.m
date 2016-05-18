@@ -151,7 +151,7 @@
             self.relativeDate.font = [NSFont fontWithName:@"HelveticaNeue-Bold" size:0];
             self.customName.font = [NSFont fontWithName:@"HelveticaNeue-Thin" size:15];
             self.time.font = [NSFont fontWithName:@"HelveticaNeue-Thin" size:22];
-            self.sunriseSetTime.font = [NSFont fontWithName:@"HelveticaNeue-UltraLight" size:11];
+            self.sunriseSetTime.font = [NSFont fontWithName:@"HelveticaNeue-Light" size:11];
         }
     }
 }
