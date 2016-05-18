@@ -193,8 +193,6 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     if (self.selectedTimeZones.count > row) {
           selectedDataSource = [CLTimezoneData getCustomObject:self.selectedTimeZones[row]];
     }
-  
-    
     
     if ([[tableColumn identifier] isEqualToString:CLPreferencesTimezoneNameIdentifier])
     {
@@ -505,6 +503,11 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     [self.timezoneTableView reloadData];
     
     [self refreshMainTableview];
+    
+    if (self.selectedTimeZones.count == 0)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"favouriteTimezone"];
+    }
     
 }
 
