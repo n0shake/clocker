@@ -21,5 +21,6 @@ typedef enum : NSUInteger {
 
 
 - (void)refereshTimezoneTableView;
+- (IBAction)addTimeZone:(id)sender;
 
 @end
