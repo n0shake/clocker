@@ -232,7 +232,7 @@
                         <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.showPlaceName" id="374-hG-giL"/>
                     </connections>
                 </segmentedControl>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X5s-Mc-Yfo">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="X5s-Mc-Yfo">
                     <rect key="frame" x="130" y="549" width="179" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="175" id="YaE-Og-A4W"/>

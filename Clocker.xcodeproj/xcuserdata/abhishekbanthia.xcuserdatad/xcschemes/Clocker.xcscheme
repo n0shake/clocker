@@ -52,7 +52,7 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       showNonLocalizedStrings = "YES"
-      region = "DE">
+      region = "US">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference

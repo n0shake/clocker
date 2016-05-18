@@ -11,5 +11,6 @@
 @interface CLScaleUpButton : NSButton
 
 @property (strong, nonatomic) NSTrackingArea *trackingArea;
+@property (nonatomic, strong) IBInspectable NSColor *textColor;
 
 @end
