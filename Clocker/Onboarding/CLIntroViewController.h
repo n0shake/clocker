@@ -8,6 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface CLIntroViewController : NSViewController
+typedef enum : NSUInteger {
+    CLFloatingViewFeature,
+    CLKeyboardShortcutFeature,
+    CLFavouriteFeature
+} CLFeature;
 
+@interface CLIntroViewController : NSViewController
 @end
