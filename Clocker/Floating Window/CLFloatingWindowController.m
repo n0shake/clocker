@@ -159,7 +159,16 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
     
     cell.sunriseSetImage.hidden = [displaySunriseSunsetTime isEqualToNumber:@(0)] && cell.sunriseSetTime.stringValue.length > 0 ? NO : YES;
     
-    [cell setUpAutoLayoutWithCell:cell];
+    /*WE hide the Sunrise or set details because of chances of incorrect date calculations
+     */
+    
+    if (self.futureSliderValue > 0)
+    {
+        cell.sunriseSetImage.hidden = YES;
+        cell.sunriseSetTime.hidden = YES;
+    }
+
+    [cell setUpAutoLayoutWithCell];
     
     [cell setAppropriateFont];
     
