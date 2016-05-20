@@ -55,14 +55,12 @@
     self.scrollViewHeight.constant = self.showReviewCell ?
     (self.defaultPreferences.count+1)*55+40 : self.defaultPreferences.count*55 + 30;
     
-    if (self.defaultPreferences.count == 1) {
-        self.futureSlider.hidden = YES;
-    }
-    else
-    {
-        self.futureSlider.hidden = NO;
-    }
-
+    NSNumber *displayFutureSlider = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey];
+    
+    /*No Future Slider when no timezones duh*/
+    
+    self.futureSlider.hidden = [displayFutureSlider isEqualToNumber:[NSNumber numberWithInteger:1]] || (self.defaultPreferences.count == 0) ? YES : NO;
+    
     [self updatePanelColor];
 }
 
@@ -172,18 +170,13 @@
     
    
     
-    [self performBoundsAnimationWithOldRect:oldFrame andNewRect:originalFrame];
-    
-    if (value)
-    {
-        [self.oneWindow.preferencesView addTimeZone:self];
-    }
+    [self performBoundsAnimationWithOldRect:oldFrame andNewRect:originalFrame andShouldOpenTimezonePanel:value];
     
     [NSApp activateIgnoringOtherApps:YES];
 }
 
 
-- (void)performBoundsAnimationWithOldRect:(CGRect)fromRect andNewRect:(CGRect)newRect
+- (void)performBoundsAnimationWithOldRect:(CGRect)fromRect andNewRect:(CGRect)newRect andShouldOpenTimezonePanel:(BOOL)shouldOpen
 {
      [self.oneWindow.window setFrame:fromRect display:NO animate:NO];
     
@@ -192,6 +185,14 @@
     anim.toValue = [NSValue valueWithCGRect:newRect];
     anim.springSpeed = 1;
     [self.oneWindow.window pop_addAnimation:anim forKey:@"popBounds"];
+    
+    anim.completionBlock = ^(POPAnimation *animation, BOOL finished)
+    {
+        if (finished && shouldOpen)
+        {
+            [self.oneWindow.preferencesView addTimeZone:self];
+        }
+    };
 }
 
 
