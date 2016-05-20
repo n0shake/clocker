@@ -57,9 +57,9 @@
 {
     if ([view isKindOfClass:[NSTextField class]])
     {
-        NSTextField *lbl = (NSTextField *)view;
+        NSTextField *labels = (NSTextField *)view;
         
-        [lbl setFont:[NSFont fontWithName:fontFamily size:[[lbl font] pointSize]]];
+        [labels setFont:[NSFont fontWithName:fontFamily size:[[labels font] pointSize]]];
     }
     
     if (isSubViews)
@@ -120,6 +120,7 @@
     {
         sharedDelege.floatingWindow = [CLFloatingWindowController sharedFloatingWindow];
         [sharedDelege.floatingWindow showWindow:nil];
+        [sharedDelege.floatingWindow updateDefaultPreferences];
         [sharedDelege.floatingWindow.mainTableview reloadData];
         [sharedDelege.floatingWindow startWindowTimer];
         [NSApp activateIgnoringOtherApps:YES];
