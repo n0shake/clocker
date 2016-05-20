@@ -13,33 +13,35 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-            <rect key="contentRect" x="196" y="240" width="275" height="233"/>
+            <rect key="contentRect" x="196" y="240" width="440" height="411"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <value key="minSize" type="size" width="440" height="411"/>
+            <value key="maxSize" type="size" width="440" height="411"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="275" height="233"/>
+                <rect key="frame" x="0.0" y="0.0" width="440" height="411"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TaQ-Ln-Vip">
-                        <rect key="frame" x="114" y="155" width="48" height="48"/>
+                        <rect key="frame" x="120" y="181" width="200" height="200"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="48" id="Ll6-ju-UBQ"/>
-                            <constraint firstAttribute="height" constant="48" id="kpd-df-Kmk"/>
+                            <constraint firstAttribute="width" constant="200" id="Ll6-ju-UBQ"/>
+                            <constraint firstAttribute="height" constant="200" id="kpd-df-Kmk"/>
                         </constraints>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-256" id="2t2-AF-Gtf"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-512" id="2t2-AF-Gtf"/>
                     </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oiI-iN-JcW">
-                        <rect key="frame" x="18" y="120" width="239" height="30"/>
+                        <rect key="frame" x="18" y="136" width="404" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="C7v-6N-7K9"/>
+                            <constraint firstAttribute="height" constant="40" id="C7v-6N-7K9"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="计时员" id="r8V-tn-VkN">
-                            <font key="font" size="20" name="SFUIDisplay-Bold"/>
+                            <font key="font" size="35" name="HelveticaNeue-Bold"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oyE-6j-Mni">
-                        <rect key="frame" x="18" y="11" width="239" height="17"/>
+                        <rect key="frame" x="18" y="11" width="404" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="Ttg-Xe-RUI"/>
                         </constraints>
@@ -50,7 +52,7 @@
                         </textFieldCell>
                     </textField>
                     <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MQa-AK-s2j">
-                        <rect key="frame" x="81" y="27" width="114" height="32"/>
+                        <rect key="frame" x="163" y="27" width="114" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="102" id="17K-x2-WJw"/>
                             <constraint firstAttribute="height" constant="21" id="uWT-Rz-CCE"/>
@@ -72,9 +74,9 @@ DQ
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wod-xv-dtj">
-                        <rect key="frame" x="18" y="99" width="239" height="19"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="管理你的时间更好" id="hQe-Z5-uca">
-                            <font key="font" size="13" name="SFUIDisplay-Light"/>
+                        <rect key="frame" x="18" y="105" width="404" height="23"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Here's what's new in Version 1.3..." id="hQe-Z5-uca">
+                            <font key="font" size="16" name="HelveticaNeue-Thin"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -88,7 +90,7 @@ DQ
                     <constraint firstItem="TaQ-Ln-Vip" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="30" id="MAA-ac-ceo"/>
                     <constraint firstItem="oyE-6j-Mni" firstAttribute="top" secondItem="MQa-AK-s2j" secondAttribute="bottom" constant="6" id="U8v-lf-N46"/>
                     <constraint firstItem="oiI-iN-JcW" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="ajN-5l-kDS"/>
-                    <constraint firstItem="wod-xv-dtj" firstAttribute="top" secondItem="oiI-iN-JcW" secondAttribute="bottom" constant="2" id="bed-o9-FYi"/>
+                    <constraint firstItem="wod-xv-dtj" firstAttribute="top" secondItem="oiI-iN-JcW" secondAttribute="bottom" constant="8" id="bed-o9-FYi"/>
                     <constraint firstItem="wod-xv-dtj" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="bm9-w8-ea0"/>
                     <constraint firstItem="TaQ-Ln-Vip" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="dV9-LG-Mh6"/>
                     <constraint firstAttribute="bottom" secondItem="oyE-6j-Mni" secondAttribute="bottom" constant="11" id="fGG-Ao-iJ2"/>
@@ -105,6 +107,6 @@ DQ
         </window>
     </objects>
     <resources>
-        <image name="ClockerIcon-256" width="256" height="256"/>
+        <image name="ClockerIcon-512" width="512" height="512"/>
     </resources>
 </document>
