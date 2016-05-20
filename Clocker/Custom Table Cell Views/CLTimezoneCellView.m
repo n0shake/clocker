@@ -160,16 +160,26 @@
 {
     CGFloat width = [self.relativeDate.stringValue
                      sizeWithAttributes: @{NSFontAttributeName:self.relativeDate.font}].width;
-    
+    CGFloat sunriseWidth = [self.sunriseSetTime.stringValue
+                     sizeWithAttributes: @{NSFontAttributeName:self.sunriseSetTime.font}].width;
     
     [self.relativeDate.constraints enumerateObjectsUsingBlock:^(NSLayoutConstraint * _Nonnull constraint, NSUInteger idx, BOOL * _Nonnull stop) {
         if (constraint.constant > 20)
         {
             constraint.constant = width+8;
         }
-        
-        
     }];
+    
+    [self.sunriseSetTime.constraints enumerateObjectsUsingBlock:^(NSLayoutConstraint * _Nonnull constraint, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (constraint.constant > 40)
+        {
+            constraint.constant = sunriseWidth+3;
+        }
+    }];
+    
+    
+    
+    
 }
 
 - (void)controlTextDidEndEditing:(NSNotification *)obj

@@ -73,7 +73,7 @@
                                                             </connections>
                                                         </textField>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="32s-jh-CdZ">
-                                                            <rect key="frame" x="199" y="5" width="20" height="20"/>
+                                                            <rect key="frame" x="203" y="5" width="20" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="LN0-5e-Uw7"/>
                                                                 <constraint firstAttribute="width" constant="20" id="Txb-Xo-JPl"/>
@@ -81,7 +81,7 @@
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="eLr-Js-g3E"/>
                                                         </imageView>
                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6CM-3s-ZNr">
-                                                            <rect key="frame" x="220" y="7" width="49" height="17"/>
+                                                            <rect key="frame" x="224" y="7" width="49" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="Mho-dg-5yL"/>
                                                                 <constraint firstAttribute="width" constant="45" id="zNy-He-GNo"/>
@@ -123,7 +123,7 @@
                                                         <constraint firstItem="etF-33-bCB" firstAttribute="top" secondItem="qbN-ba-fho" secondAttribute="top" constant="5" id="Lct-kG-usb"/>
                                                         <constraint firstItem="QUd-7D-q14" firstAttribute="top" secondItem="etF-33-bCB" secondAttribute="bottom" constant="2" id="VO6-Zn-eA3"/>
                                                         <constraint firstItem="vnv-J2-7r1" firstAttribute="top" secondItem="qbN-ba-fho" secondAttribute="top" constant="5" id="aN5-p4-LEq"/>
-                                                        <constraint firstAttribute="trailing" secondItem="6CM-3s-ZNr" secondAttribute="trailing" constant="12" id="qcf-ej-oC8"/>
+                                                        <constraint firstAttribute="trailing" secondItem="6CM-3s-ZNr" secondAttribute="trailing" constant="8" id="qcf-ej-oC8"/>
                                                         <constraint firstItem="etF-33-bCB" firstAttribute="leading" secondItem="qbN-ba-fho" secondAttribute="leading" constant="9" id="ueW-ow-ZRq"/>
                                                         <constraint firstItem="6CM-3s-ZNr" firstAttribute="leading" secondItem="32s-jh-CdZ" secondAttribute="trailing" constant="3" id="xMj-d9-yh6"/>
                                                         <constraint firstItem="6CM-3s-ZNr" firstAttribute="top" secondItem="vnv-J2-7r1" secondAttribute="bottom" constant="-4" id="yfd-bg-v0L"/>
