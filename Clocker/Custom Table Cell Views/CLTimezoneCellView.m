@@ -156,13 +156,13 @@
     }
 }
 
-- (void)setUpAutoLayoutWithCell:(CLTimezoneCellView *)cell
+- (void)setUpAutoLayoutWithCell
 {
-    CGFloat width = [cell.relativeDate.stringValue
-                     sizeWithAttributes: @{NSFontAttributeName:cell.relativeDate.font}].width;
+    CGFloat width = [self.relativeDate.stringValue
+                     sizeWithAttributes: @{NSFontAttributeName:self.relativeDate.font}].width;
     
     
-    [cell.relativeDate.constraints enumerateObjectsUsingBlock:^(NSLayoutConstraint * _Nonnull constraint, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.relativeDate.constraints enumerateObjectsUsingBlock:^(NSLayoutConstraint * _Nonnull constraint, NSUInteger idx, BOOL * _Nonnull stop) {
         if (constraint.constant > 20)
         {
             constraint.constant = width+8;
