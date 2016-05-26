@@ -30,7 +30,7 @@
                         <constraint firstAttribute="height" constant="43" id="dqF-vG-wml"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="計時員" id="KPE-f2-s6r">
-                        <font key="font" size="29" name="SFUIDisplay-Light"/>
+                        <font key="font" size="29" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -41,7 +41,7 @@
                         <constraint firstAttribute="height" constant="23" id="APM-BF-sIg"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="Version String" id="ctT-VL-V5M">
-                        <font key="font" size="16" name="SFUIDisplay-Light"/>
+                        <font key="font" size="16" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -52,7 +52,7 @@
                         <constraint firstAttribute="height" constant="20" id="6fy-MI-uin"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Copyright (2016) Abhishek Banthia" id="4PX-se-5ds">
-                        <font key="font" size="14" name="SFUIDisplay-Ultralight"/>
+                        <font key="font" size="14" name="HelveticaNeue-UltraLight"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -63,7 +63,7 @@
                         <constraint firstAttribute="height" constant="15" id="Oob-bz-4Vp"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="这个程序是开源的，可以在MIT许可下重用。" id="oId-kW-4fE">
-                        <font key="font" size="10" name="SFUIDisplay-Light"/>
+                        <font key="font" size="10" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -76,7 +76,7 @@
                     </constraints>
                     <buttonCell key="cell" type="push" title="支持我们" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yEt-bN-Jci">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                        <font key="font" size="13" name="HelveticaNeue-Light"/>
                     </buttonCell>
                     <connections>
                         <action selector="viewSource:" target="-2" id="gkr-T0-0OI"/>
@@ -90,7 +90,7 @@
                     </constraints>
                     <buttonCell key="cell" type="push" title="报告问题" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HO1-pf-GNd">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                        <font key="font" size="13" name="HelveticaNeue-Light"/>
                     </buttonCell>
                     <connections>
                         <action selector="reportIssue:" target="-2" id="71W-Nb-pYu"/>
@@ -116,7 +116,7 @@
                         <constraint firstAttribute="height" constant="15" id="7kh-Ha-LHP"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="You can support Timekeeper by starring the source on GitHub! :)" id="apa-Nu-NtC">
-                        <font key="font" size="10" name="SFUIDisplay-Bold"/>
+                        <font key="font" size="10" name="HelveticaNeue-Bold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
