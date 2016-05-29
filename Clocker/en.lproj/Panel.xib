@@ -64,7 +64,7 @@
                                                                 <constraint firstAttribute="height" constant="22" id="vod-YN-iNX"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" placeholderString="Timezone Name" id="rnh-AP-ooc">
-                                                                <font key="font" size="15" name="SFUIDisplay-Thin"/>
+                                                                <font key="font" size="15" name="HelveticaNeue-Thin"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -79,19 +79,19 @@
                                                                 <constraint firstAttribute="width" constant="72" id="fkH-oq-qvM"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" placeholderString="Tomorrow" usesSingleLineMode="YES" id="74U-rv-5xj">
-                                                                <font key="font" size="13" name="SFUIDisplay-Bold"/>
+                                                                <font key="font" size="13" name="HelveticaNeue-Bold"/>
                                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="101" preferredMaxLayoutWidth="110" translatesAutoresizingMaskIntoConstraints="NO" id="vnv-J2-7r1">
-                                                            <rect key="frame" x="159" y="21" width="114" height="35"/>
+                                                            <rect key="frame" x="159" y="21" width="114" height="32"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="35" id="3WU-de-OQL"/>
+                                                                <constraint firstAttribute="height" constant="32" id="3WU-de-OQL"/>
                                                                 <constraint firstAttribute="width" constant="110" id="cQV-gJ-zMz"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" placeholderString="23:46 AM" id="g8s-EU-UHx">
-                                                                <font key="font" size="22" name="SFUIDisplay-Thin"/>
+                                                                <font key="font" size="22" name="HelveticaNeue-Thin"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -126,7 +126,7 @@
                                                         <constraint firstItem="uOg-ij-alO" firstAttribute="top" secondItem="vnv-J2-7r1" secondAttribute="bottom" constant="-5" id="j2E-3l-6B2"/>
                                                         <constraint firstItem="7OQ-cr-VJS" firstAttribute="top" secondItem="vnv-J2-7r1" secondAttribute="bottom" constant="-5" id="uZd-y0-d6A"/>
                                                         <constraint firstItem="etF-33-bCB" firstAttribute="leading" secondItem="qbN-ba-fho" secondAttribute="leading" constant="9" id="ueW-ow-ZRq"/>
-                                                        <constraint firstItem="vnv-J2-7r1" firstAttribute="top" secondItem="qbN-ba-fho" secondAttribute="top" constant="5" id="vGp-XY-wiJ"/>
+                                                        <constraint firstItem="vnv-J2-7r1" firstAttribute="top" secondItem="qbN-ba-fho" secondAttribute="top" constant="8" id="vGp-XY-wiJ"/>
                                                         <constraint firstAttribute="trailing" secondItem="vnv-J2-7r1" secondAttribute="trailing" constant="8" id="zXo-eA-0bQ"/>
                                                     </constraints>
                                                     <connections>

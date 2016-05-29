@@ -82,7 +82,7 @@ CA
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
                                         <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="HJL-uw-ZOC">
-                                            <font key="font" size="13" name="SFUIDisplay-Light"/>
+                                            <font key="font" size="13" name="HelveticaNeue-Light"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -95,7 +95,7 @@ CA
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
                                         <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="xOd-3p-ihC">
-                                            <font key="font" size="13" name="SFUIDisplay-Light"/>
+                                            <font key="font" size="13" name="HelveticaNeue-Light"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -182,9 +182,9 @@ CA
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <searchField toolTip="Search a timezone" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="biT-6m-ElR">
-                        <rect key="frame" x="8" y="288" width="329" height="24"/>
+                        <rect key="frame" x="8" y="287" width="329" height="25"/>
                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="输入城市，州，国名" usesSingleLineMode="YES" maximumRecents="5" id="ijc-z6-99E">
-                            <font key="font" size="13" name="SFUIDisplay-Light"/>
+                            <font key="font" size="13" name="HelveticaNeue-Light"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </searchFieldCell>
@@ -198,13 +198,13 @@ CA
                             <constraint firstAttribute="height" constant="20" id="rr3-gU-VUn"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="COF-wH-VLX">
-                            <font key="font" size="13" name="SFUIDisplay-Light"/>
+                            <font key="font" size="13" name="HelveticaNeue-Light"/>
                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ifx-PO-gfq">
-                        <rect key="frame" x="164" y="147" width="16" height="16"/>
+                        <rect key="frame" x="164" y="146" width="16" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="16" id="dUF-zC-zcm"/>
                             <constraint firstAttribute="height" constant="16" id="igc-Hk-413"/>
@@ -226,7 +226,7 @@ CA
                         </constraints>
                         <buttonCell key="cell" type="roundRect" title="关闭" bezelStyle="roundedRect" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="YjP-c4-vTl">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="12" name="SFUIDisplay-Light"/>
+                            <font key="font" size="12" name="HelveticaNeue-Light"/>
                         </buttonCell>
                         <connections>
                             <action selector="closePanel:" target="-2" id="YRs-VA-eFr"/>
@@ -240,7 +240,7 @@ CA
                         </constraints>
                         <buttonCell key="cell" type="roundRect" title="加" bezelStyle="roundedRect" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="x6l-8x-qnu">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="12" name="SFUIDisplay-Light"/>
+                            <font key="font" size="12" name="HelveticaNeue-Light"/>
                         </buttonCell>
                         <connections>
                             <action selector="addToFavorites:" target="-2" id="Mdg-7P-kDy"/>
@@ -252,13 +252,13 @@ CA
                         </connections>
                     </button>
                     <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MiN-SF-nnU">
-                        <rect key="frame" x="6" y="257" width="294" height="24"/>
+                        <rect key="frame" x="6" y="256" width="294" height="24"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="290" id="bEt-xB-Cf4"/>
                             <constraint firstAttribute="height" constant="21" id="uOZ-MR-dr4"/>
                         </constraints>
                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="P1v-7w-asy">
-                            <font key="font" size="12" name="SFUIDisplay-Regular"/>
+                            <font key="font" size="12" name="HelveticaNeue"/>
                             <segments>
                                 <segment label="按城市搜索" width="144" selected="YES"/>
                                 <segment label="通过时区搜索" width="143" tag="1"/>
@@ -269,13 +269,13 @@ CA
                         </connections>
                     </segmentedControl>
                     <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LM9-75-vkc">
-                        <rect key="frame" x="8" y="28" width="329" height="223"/>
+                        <rect key="frame" x="8" y="28" width="329" height="222"/>
                         <clipView key="contentView" id="Z7L-Ef-90Z">
-                            <rect key="frame" x="0.0" y="0.0" width="329" height="223"/>
+                            <rect key="frame" x="0.0" y="0.0" width="329" height="222"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="20" headerView="85y-4a-860" id="Q0t-hQ-orw">
-                                    <rect key="frame" x="0.0" y="0.0" width="329" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="329" height="199"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -289,7 +289,7 @@ CA
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="QRU-bQ-qf9">
-                                                <font key="font" size="13" name="SFUIDisplay-Light"/>
+                                                <font key="font" size="13" name="HelveticaNeue-Light"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -305,7 +305,7 @@ CA
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </tableHeaderCell>
                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="j4V-8w-sXt">
-                                                <font key="font" size="13" name="SFUIDisplay-Light"/>
+                                                <font key="font" size="13" name="HelveticaNeue-Light"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -344,12 +344,12 @@ CA
                         </tableHeaderView>
                     </scrollView>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="L5U-OI-Tkv">
-                        <rect key="frame" x="18" y="117" width="309" height="22"/>
+                        <rect key="frame" x="18" y="116" width="309" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="vJh-uH-1OY"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" placeholderString="" id="iFR-Vo-eLR">
-                            <font key="font" size="13" name="SFUIDisplay-Light"/>
+                            <font key="font" size="13" name="HelveticaNeue-Light"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>

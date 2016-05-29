@@ -25,7 +25,7 @@
                         <constraint firstAttribute="width" constant="60" id="KEa-ei-G2i"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Theme" id="hCb-NM-To8">
-                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                        <font key="font" size="13" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -37,7 +37,7 @@
                         <constraint firstAttribute="width" constant="100" id="nh0-5K-Aa0"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Time Format" id="Hza-PB-FEf">
-                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                        <font key="font" size="13" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -48,7 +48,7 @@
                         <constraint firstAttribute="width" constant="143" id="dW5-vG-EwD"/>
                     </constraints>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="3ED-rf-SN8">
-                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
                         <segments>
                             <segment label="Default" width="70"/>
                             <segment label="Black" toolTip="Customize the timezone panel by selecting a theme!" width="70" selected="YES" tag="1"/>
@@ -66,7 +66,7 @@
                         <constraint firstAttribute="width" constant="150" id="n8S-fR-UtY"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Day Display Options" id="KTv-74-itf">
-                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                        <font key="font" size="13" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -77,7 +77,7 @@
                         <constraint firstAttribute="width" constant="232" id="uOJ-Mi-Fin"/>
                     </constraints>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="s7b-og-KCV">
-                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                        <font key="font" size="13" name="HelveticaNeue-Light"/>
                         <segments>
                             <segment label="12-hour clock" width="115"/>
                             <segment label="24-hour clock" toolTip="Set the time format you want to see in the timezone panel!" width="114" tag="1"/>
@@ -89,24 +89,24 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="3d9-qg-dNb">
-                    <rect key="frame" x="130" y="173" width="179" height="18"/>
+                    <rect key="frame" x="130" y="170" width="179" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="MdL-Dh-02n"/>
                         <constraint firstAttribute="width" constant="175" id="hHO-Wa-gmc"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Menubar Display Options" id="ZP5-1i-Bm8">
-                        <font key="font" size="12" name="SFUIDisplay-Bold"/>
+                        <font key="font" size="12" name="HelveticaNeue-Bold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="pqa-Qg-U8Y">
-                    <rect key="frame" x="130" y="145" width="179" height="19"/>
+                    <rect key="frame" x="130" y="141" width="179" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="175" id="B2I-0j-0W0"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Show Date of Favourite Place" id="IAe-wr-MUG">
-                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                        <font key="font" size="13" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -115,13 +115,13 @@
                     </connections>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="atA-2r-FXV">
-                    <rect key="frame" x="179" y="117" width="84" height="24"/>
+                    <rect key="frame" x="179" y="113" width="84" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="BqM-4F-6Ta"/>
                         <constraint firstAttribute="width" constant="80" id="ZeK-lO-tUa"/>
                     </constraints>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="rIg-AP-wGG">
-                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
                         <segments>
                             <segment label="Yes" width="38" selected="YES"/>
                             <segment label="No" width="38" tag="1"/>
@@ -133,13 +133,13 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="kEn-QZ-niZ">
-                    <rect key="frame" x="130" y="96" width="179" height="18"/>
+                    <rect key="frame" x="130" y="88" width="179" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="18" id="2fd-f6-8cD"/>
+                        <constraint firstAttribute="height" constant="22" id="2fd-f6-8cD"/>
                         <constraint firstAttribute="width" constant="175" id="D0w-xz-gkw"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Show Day of Favourite Place" id="I99-Wp-1Iq">
-                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                        <font key="font" size="13" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -148,13 +148,13 @@
                     </connections>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XwV-hy-YiP">
-                    <rect key="frame" x="178" y="68" width="84" height="24"/>
+                    <rect key="frame" x="178" y="60" width="84" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="80" id="dBz-ZQ-BF1"/>
                         <constraint firstAttribute="height" constant="21" id="y8c-hZ-MtI"/>
                     </constraints>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="18N-XQ-ANm">
-                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
                         <segments>
                             <segment label="Yes" width="38"/>
                             <segment label="No" width="38" selected="YES" tag="1"/>
@@ -166,12 +166,12 @@
                     </connections>
                 </segmentedControl>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="72r-oi-X0f">
-                    <rect key="frame" x="180" y="314" width="79" height="24"/>
+                    <rect key="frame" x="180" y="313" width="79" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="75" id="H8w-wg-vel"/>
                     </constraints>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="FMr-PO-czs">
-                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
                         <segments>
                             <segment label="Yes" width="36"/>
                             <segment label="No" width="36" selected="YES" tag="1"/>
@@ -183,12 +183,12 @@
                     </connections>
                 </segmentedControl>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="14F-6y-MaJ">
-                    <rect key="frame" x="180" y="206" width="79" height="24"/>
+                    <rect key="frame" x="180" y="203" width="79" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="75" id="XbD-oF-Vod"/>
                     </constraints>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="d4r-UR-acP">
-                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
                         <segments>
                             <segment label="Yes" width="36"/>
                             <segment label="No" width="36" selected="YES" tag="1"/>
@@ -199,41 +199,41 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="HTZ-1V-qZb">
-                    <rect key="frame" x="158" y="345" width="124" height="19"/>
+                    <rect key="frame" x="158" y="344" width="124" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="120" id="1Lv-wC-hEM"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Show Future Slider" id="PE4-Ua-hkI">
-                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                        <font key="font" size="13" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="76h-05-go1">
-                    <rect key="frame" x="158" y="289" width="124" height="19"/>
+                    <rect key="frame" x="158" y="287" width="124" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="120" id="Odw-mb-nT5"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Clocker should be" id="ahg-YF-MX8">
-                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                        <font key="font" size="13" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="MHe-dB-GZr">
-                    <rect key="frame" x="0.0" y="197" width="439" height="5"/>
+                    <rect key="frame" x="0.0" y="194" width="439" height="5"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="LC1-Sx-uav">
-                    <rect key="frame" x="130" y="44" width="179" height="18"/>
+                    <rect key="frame" x="130" y="36" width="179" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="175" id="Pdc-78-vzv"/>
                         <constraint firstAttribute="height" constant="18" id="hsh-i8-ULY"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Show Favourite Place Name" id="nEh-Sa-SDH">
-                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                        <font key="font" size="13" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -242,13 +242,13 @@
                     </connections>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JR8-v7-K0w">
-                    <rect key="frame" x="178" y="16" width="84" height="24"/>
+                    <rect key="frame" x="178" y="8" width="84" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Xof-eY-ZUl"/>
                         <constraint firstAttribute="width" constant="80" id="msH-Xd-mrp"/>
                     </constraints>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="SLe-HO-6so">
-                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
                         <segments>
                             <segment label="Yes" width="38"/>
                             <segment label="No" width="38" selected="YES" tag="1"/>
@@ -266,7 +266,7 @@
                         <constraint firstAttribute="height" constant="18" id="bTT-ve-oW9"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Main Panel Options" id="skQ-rM-X70">
-                        <font key="font" size="12" name="SFUIDisplay-Bold"/>
+                        <font key="font" size="12" name="HelveticaNeue-Bold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -277,7 +277,7 @@
                         <constraint firstAttribute="width" constant="125" id="u9T-ks-rqA"/>
                     </constraints>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="ZV9-ih-faz">
-                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
                         <segments>
                             <segment label="Relative" width="60"/>
                             <segment label="Actual" width="60" selected="YES" tag="1"/>
@@ -289,16 +289,16 @@
                     </connections>
                 </segmentedControl>
                 <visualEffectView wantsLayer="YES" appearanceType="vibrantLight" alphaValue="0.90000000000000002" blendingMode="withinWindow" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="kHi-mx-HdE">
-                    <rect key="frame" x="0.0" y="0.0" width="439" height="199"/>
+                    <rect key="frame" x="0.0" y="0.0" width="439" height="196"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WDP-d4-eNj">
-                            <rect key="frame" x="57" y="86" width="324" height="39"/>
+                            <rect key="frame" x="57" y="84" width="324" height="39"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="320" id="3wp-Z6-TrB"/>
                                 <constraint firstAttribute="height" constant="39" id="IyN-y5-6JP"/>
                             </constraints>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="JHS-Tb-Aq8">
-                                <font key="font" size="13" name="SFUIDisplay-Bold"/>
+                                <font key="font" size="13" name="HelveticaNeue-Bold"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -319,12 +319,12 @@
                     </connections>
                 </visualEffectView>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SbG-Qh-ziy">
-                    <rect key="frame" x="53" y="258" width="334" height="24"/>
+                    <rect key="frame" x="53" y="256" width="334" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="330" id="T2D-fB-93g"/>
                     </constraints>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="zOl-EY-gEX">
-                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
                         <segments>
                             <segment label="Attached to the menu-bar" width="164"/>
                             <segment label="In Floating mode" width="163" selected="YES" tag="1"/>
@@ -336,12 +336,12 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="R46-6I-vYT">
-                    <rect key="frame" x="138" y="233" width="164" height="19"/>
+                    <rect key="frame" x="138" y="230" width="164" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="160" id="3tu-Bf-MZ4"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Show Sunrise/Sunset" id="dPO-nm-S9e">
-                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                        <font key="font" size="13" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>

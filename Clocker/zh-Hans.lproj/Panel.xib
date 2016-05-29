@@ -64,7 +64,7 @@
                                                                 <constraint firstAttribute="height" constant="22" id="vod-YN-iNX"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" placeholderString="Timezone Name" id="rnh-AP-ooc">
-                                                                <font key="font" size="15" name="SFUIDisplay-Thin"/>
+                                                                <font key="font" size="15" name="HelveticaNeue-Light"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -87,7 +87,7 @@
                                                                 <constraint firstAttribute="width" constant="45" id="r3N-lG-lbQ"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="left" placeholderString="" id="7e9-Cy-Q3m">
-                                                                <font key="font" size="11" name="SFUIDisplay-Light"/>
+                                                                <font key="font" size="11" name="HelveticaNeue-Light"/>
                                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -99,7 +99,7 @@
                                                                 <constraint firstAttribute="width" constant="72" id="fkH-oq-qvM"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" placeholderString="Tomorrow" usesSingleLineMode="YES" id="74U-rv-5xj">
-                                                                <font key="font" size="13" name="SFUIDisplay-Bold"/>
+                                                                <font key="font" size="13" name="HelveticaNeue-Bold"/>
                                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -111,7 +111,7 @@
                                                                 <constraint firstAttribute="width" constant="110" id="cQV-gJ-zMz"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" placeholderString="23:46 AM" id="g8s-EU-UHx">
-                                                                <font key="font" size="22" name="SFUIDisplay-Thin"/>
+                                                                <font key="font" size="22" name="HelveticaNeue-Light"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>

@@ -44,6 +44,7 @@
 		9A5E6BA01CAF71C1006E7C5C /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5E6B9F1CAF71C1006E7C5C /* libicucore.tbd */; };
 		9A5E6BAB1CAF8DFA006E7C5C /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A5E6BAA1CAF8DFA006E7C5C /* iRate.bundle */; };
 		9A63620A1C432F68004AD010 /* CLAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6362091C432F68004AD010 /* CLAPI.m */; };
+		9A6D93371CF3E82F005A8690 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6D93361CF3E82F005A8690 /* CoreImage.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9A79E9901CB34B6800BA7916 /* CLParentPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A79E98F1CB34B6800BA7916 /* CLParentPanelController.m */; };
 		9A82F3441CDFF8F600CC8906 /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A82F33B1CDFF8CF00CC8906 /* pop.framework */; };
 		9A8605AE1BEC148400A810A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605AD1BEC148400A810A4 /* main.m */; };
@@ -81,7 +82,7 @@
 		9ABA2B031C671D49009DC0EF /* CLMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABA2B021C671D49009DC0EF /* CLMainWindowController.m */; };
 		9ABF58721C29A80600BD0187 /* CLTimezoneData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABF58711C29A80600BD0187 /* CLTimezoneData.m */; };
 		9ABFB3801CA6882000E10745 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ABFB37F1CA6882000E10745 /* ApplicationServices.framework */; };
-		9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */; };
+		9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9ACE03EF1CB0ADE00039FC01 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACE03EE1CB0ADE00039FC01 /* Firebase.framework */; };
 		9AD6DE571CE114DA007A8401 /* CLScaleUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD6DE561CE114DA007A8401 /* CLScaleUpButton.m */; };
 		9AF9A16B1C250AB300EE7C2A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9A16A1C250AB300EE7C2A /* Reachability.m */; };
@@ -265,6 +266,7 @@
 		9A5E6BAA1CAF8DFA006E7C5C /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		9A6362081C432F68004AD010 /* CLAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAPI.h; path = Clocker/API/CLAPI.h; sourceTree = "<group>"; };
 		9A6362091C432F68004AD010 /* CLAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAPI.m; path = Clocker/API/CLAPI.m; sourceTree = "<group>"; };
+		9A6D93361CF3E82F005A8690 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		9A7654341CDC2290000FB825 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		9A7654351CDC2290000FB825 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		9A7654361CDC2290000FB825 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant"; path = "zh-Hant.lproj/CLOneWindow.xib"; sourceTree = "<group>"; };
@@ -355,6 +357,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */,
+				9A6D93371CF3E82F005A8690 /* CoreImage.framework in Frameworks */,
 				9A86E2C21CE04F4A00547EE7 /* PTHotKey.framework in Frameworks */,
 				9A86E2C11CE04F4300547EE7 /* ShortcutRecorder.framework in Frameworks */,
 				9A82F3441CDFF8F600CC8906 /* pop.framework in Frameworks */,
@@ -367,7 +371,6 @@
 				9A43792C1BEC231100F4E27F /* libz.tbd in Frameworks */,
 				9A9E876C1C1FEDE700A7A2DF /* libsqlite3.tbd in Frameworks */,
 				9A9E87681C1FEDD300A7A2DF /* Security.framework in Frameworks */,
-				9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */,
 				9A5951BA1C1D0A22009C17AA /* Crashlytics.framework in Frameworks */,
 				9A43792A1BEC230A00F4E27F /* libc++.tbd in Frameworks */,
 				9A4379251BEC223900F4E27F /* Security.framework in Frameworks */,
@@ -656,6 +659,7 @@
 		DD4F7C0713C30F9F00825C6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A6D93361CF3E82F005A8690 /* CoreImage.framework */,
 				9A5E6B9F1CAF71C1006E7C5C /* libicucore.tbd */,
 				9ABFB37F1CA6882000E10745 /* ApplicationServices.framework */,
 				9A20A06F1C4E804D00FB45AB /* ServiceManagement.framework */,

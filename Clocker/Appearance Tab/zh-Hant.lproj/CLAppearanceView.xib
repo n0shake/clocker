@@ -25,7 +25,7 @@
                         <constraint firstAttribute="width" constant="60" id="KEa-ei-G2i"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="主题" id="hCb-NM-To8">
-                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                        <font key="font" size="13" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -48,7 +48,7 @@
                         <constraint firstAttribute="width" constant="143" id="dW5-vG-EwD"/>
                     </constraints>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="3ED-rf-SN8">
-                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
                         <segments>
                             <segment label="白色" width="70"/>
                             <segment label="黑色" toolTip="Customize the timezone panel by selecting a theme!" width="70" selected="YES" tag="1"/>

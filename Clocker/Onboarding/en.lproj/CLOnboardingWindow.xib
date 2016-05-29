@@ -61,7 +61,7 @@
                         </constraints>
                         <buttonCell key="cell" type="push" title="Continue" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="TjC-Ot-oen">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="13" name="SFUIDisplay-Light"/>
+                            <font key="font" size="13" name="HelveticaNeue-Light"/>
                             <string key="keyEquivalent" base64-UTF8="YES">
 DQ
 </string>

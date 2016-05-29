@@ -371,6 +371,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         [self.selectedTimeZones enumerateObjectsUsingBlock:^(NSData *  _Nonnull encodedData, NSUInteger idx, BOOL * _Nonnull stop) {
             
             CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:encodedData];
+            timezoneObject.selectionType = CLCitySelection;
             NSString *name = timezoneObject.place_id;
             NSString *selectedPlaceID = dataObject.place_id;
             
@@ -399,6 +400,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     else
     {
         CLTimezoneData *data = [CLTimezoneData new];
+        data.selectionType = CLTimezoneSelection;
         data.isFavourite = [NSNumber numberWithInt:NSOffState];
         data.customLabel = CLEmptyString;
         

@@ -64,7 +64,7 @@
                                                                 <constraint firstAttribute="height" constant="22" id="IPV-7t-wcx"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" placeholderString="Timezone Name" id="gVe-So-ccI">
-                                                                <font key="font" size="15" name="SFUIDisplay-Thin"/>
+                                                                <font key="font" size="15" name="HelveticaNeue-Light"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -88,7 +88,7 @@
                                                                 <constraint firstAttribute="height" constant="17" id="dVD-Q8-tsO"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="left" placeholderString="" id="A8n-aG-v8t">
-                                                                <font key="font" size="11" name="SFUIDisplay-Ultralight"/>
+                                                                <font key="font" size="11" name="HelveticaNeue-Thin"/>
                                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -100,7 +100,7 @@
                                                                 <constraint firstAttribute="width" constant="72" id="1lj-e2-EdR"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" placeholderString="Tomorrow" usesSingleLineMode="YES" id="Mf8-R9-XbU">
-                                                                <font key="font" size="13" name="SFUIDisplay-Bold"/>
+                                                                <font key="font" size="13" name="HelveticaNeue-Bold"/>
                                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -112,7 +112,7 @@
                                                                 <constraint firstAttribute="height" constant="35" id="wBx-lE-7e5"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" placeholderString="23:46 AM" id="XcD-xi-2Mc">
-                                                                <font key="font" size="22" name="SFUIDisplay-Thin"/>
+                                                                <font key="font" size="22" name="HelveticaNeue-Light"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -154,7 +154,7 @@
                                                                 <constraint firstAttribute="height" constant="20" id="vbo-OR-VmB"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Enjoy using 计时员?" id="1Rx-kx-Jwl">
-                                                                <font key="font" size="12" name="SFUIDisplay-Regular"/>
+                                                                <font key="font" size="12" name="HelveticaNeue"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -167,7 +167,7 @@
                                                             </constraints>
                                                             <buttonCell key="cell" type="push" title="Not Really" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SrC-SM-0fO">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                <font key="font" size="13" name="SFUIDisplay-Thin"/>
+                                                                <font key="font" size="13" name="HelveticaNeue-Light"/>
                                                             </buttonCell>
                                                             <connections>
                                                                 <action selector="actionOnNegativeFeedback:" target="G9G-ck-AYH" id="Orf-XY-IB9"/>
@@ -177,7 +177,7 @@
                                                             <rect key="frame" x="130" y="-2" width="108" height="32"/>
                                                             <buttonCell key="cell" type="push" title="Yes!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cNi-UX-fun">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                <font key="font" size="13" name="SFUIDisplay-Thin"/>
+                                                                <font key="font" size="13" name="HelveticaNeue-Light"/>
                                                             </buttonCell>
                                                             <connections>
                                                                 <action selector="actionOnPositiveFeedback:" target="G9G-ck-AYH" id="17t-0A-6lZ"/>

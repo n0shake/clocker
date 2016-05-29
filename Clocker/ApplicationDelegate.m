@@ -116,7 +116,7 @@ void *kContextActivePanel = &kContextActivePanel;
 
     NSString *onboarding = [[NSUserDefaults standardUserDefaults] objectForKey:@"initialLaunch"];
     
-    if (onboarding != nil)
+    if (onboarding == nil)
     {
         CLOnboardingWindowController *windowController = [CLOnboardingWindowController sharedWindow];
         [windowController showWindow:nil];
@@ -205,9 +205,6 @@ void *kContextActivePanel = &kContextActivePanel;
         
         [NSApp activateIgnoringOtherApps:YES];
     }
-    
-
-
 }
 
 

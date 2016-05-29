@@ -62,34 +62,37 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" preferredMaxLayoutWidth="269" translatesAutoresizingMaskIntoConstraints="NO" id="Qzm-kE-Igl">
-                                    <rect key="frame" x="10" y="77" width="269" height="22"/>
+                                    <rect key="frame" x="10" y="71" width="269" height="28"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="22" id="6DY-uj-pMG"/>
+                                        <constraint firstAttribute="height" constant="28" id="6DY-uj-pMG"/>
                                     </constraints>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="名" drawsBackground="YES" id="9OU-9S-Apl">
-                                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString=" 名" drawsBackground="YES" id="9OU-9S-Apl">
+                                        <font key="font" size="12" name="HelveticaNeue-Light"/>
                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        <allowedInputSourceLocales>
+                                            <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                        </allowedInputSourceLocales>
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" preferredMaxLayoutWidth="269" translatesAutoresizingMaskIntoConstraints="NO" id="zlM-Cf-OxV">
-                                    <rect key="frame" x="10" y="45" width="269" height="22"/>
+                                    <rect key="frame" x="10" y="33" width="269" height="28"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="22" id="b3M-Sc-y8S"/>
+                                        <constraint firstAttribute="height" constant="28" id="b3M-Sc-y8S"/>
                                     </constraints>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Eメール" drawsBackground="YES" id="Z0A-qe-nbc">
-                                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString=" Eメール" drawsBackground="YES" id="Z0A-qe-nbc">
+                                        <font key="font" size="12" name="HelveticaNeue-Light"/>
                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="269" translatesAutoresizingMaskIntoConstraints="NO" id="LVY-Qw-MYC">
-                                    <rect key="frame" x="6" y="8" width="277" height="30"/>
+                                    <rect key="frame" x="6" y="-4" width="277" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="dRi-pM-pWX"/>
                                     </constraints>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Your contact information will let us contact you in case we need more information or can help!" placeholderString="" id="yEq-6I-HBq">
-                                        <font key="font" size="10" name="SFUIDisplay-Regular"/>
+                                        <font key="font" size="10" name="HelveticaNeue"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -111,7 +114,7 @@
                         </constraints>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" size="11" name="SFUIDisplay-Regular"/>
+                        <font key="titleFont" size="11" name="HelveticaNeue-Bold"/>
                     </box>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="szs-8j-SMN">
                         <rect key="frame" x="93" y="13" width="82" height="32"/>
@@ -153,7 +156,7 @@ DQ
                             <constraint firstAttribute="height" constant="17" id="a7O-DC-irX"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Tell us what you think!" id="oHe-hu-bQn">
-                            <font key="font" size="13" name="SFUIDisplay-Regular"/>
+                            <font key="font" size="13" name="HelveticaNeue"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -164,7 +167,7 @@ DQ
                             <constraint firstAttribute="height" constant="17" id="vCO-Z3-Dfd"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" placeholderString="" id="sSH-y9-tFH">
-                            <font key="font" size="13" name="SFUIDisplay-Light"/>
+                            <font key="font" size="13" name="HelveticaNeue-Light"/>
                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>

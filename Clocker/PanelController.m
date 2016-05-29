@@ -343,8 +343,6 @@ static PanelController *sharedPanel = nil;
     
     [cell setUpAutoLayoutWithCell];
     
-    [cell setAppropriateFont];
-    
     return cell;
 }
 

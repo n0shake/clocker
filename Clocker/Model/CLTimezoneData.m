@@ -30,6 +30,7 @@
         self.place_id = dictionary[CLPlaceIdentifier];
         self.formattedAddress = dictionary[CLTimezoneName];
         self.isFavourite = [NSNumber numberWithInt:NSOffState];
+        self.selectionType = CLCitySelection;
     }
     
     return self;
@@ -87,6 +88,7 @@
     [coder encodeObject:self.isFavourite forKey:@"isFavourite"];
     [coder encodeObject:self.sunriseTime forKey:@"sunriseTime"];
     [coder encodeObject:self.sunsetTime forKey:@"sunsetTime"];
+    [coder encodeInteger:self.selectionType forKey:@"selectionType"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -105,6 +107,7 @@
         self.isFavourite = [coder decodeObjectForKey:@"isFavourite"];
         self.sunriseTime = [coder decodeObjectForKey:@"sunriseTime"];
         self.sunsetTime = [coder decodeObjectForKey:@"sunsetTime"];
+        self.selectionType = [coder decodeIntegerForKey:@"selectionType"];
     }
     
     return self;
@@ -112,7 +115,7 @@
 
 -(NSString *)description
 {
-    return [NSString stringWithFormat:@"TimezoneID: %@\nFormatted Address: %@\nCustom Label: %@\nLatitude: %@\nLongitude:%@\nPlaceID: %@\nisFavourite: %@\nSunrise Time: %@\nSunset Time: %@", self.timezoneID,
+    return [NSString stringWithFormat:@"TimezoneID: %@\nFormatted Address: %@\nCustom Label: %@\nLatitude: %@\nLongitude:%@\nPlaceID: %@\nisFavourite: %@\nSunrise Time: %@\nSunset Time: %@\nSelection Type: %zd", self.timezoneID,
             self.formattedAddress,
             self.customLabel,
             self.latitude,
@@ -120,7 +123,8 @@
             self.place_id,
             self.isFavourite,
             self.sunriseTime,
-            self.sunsetTime];
+            self.sunsetTime,
+            self.selectionType];
 }
 
 - (NSString *)formatStringShouldContainCity:(BOOL)value
@@ -428,9 +432,19 @@
 
 -(void)initializeSunriseSunsetWithSliderValue:(NSInteger)sliderValue
 {
+    
     if (!self.latitude || !self.longitude)
     {
         //Retrieve the values using Google Places API
+        
+        if (self.selectionType == CLTimezoneSelection)
+        {
+            /* A timezone has been selected*/
+            
+            NSLog(@"%@", self);
+            
+            return;
+        }
         
         [self retrieveLatitudeAndLongitudeWithSearchString:self.formattedAddress];
         

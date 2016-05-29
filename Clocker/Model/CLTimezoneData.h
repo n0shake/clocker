@@ -14,6 +14,11 @@ typedef enum : NSUInteger {
     CLMenuDisplay
 } CLDateDisplayType;
 
+typedef enum : NSUInteger {
+    CLCitySelection,
+    CLTimezoneSelection
+} CLSelection;
+
 @interface CLTimezoneData : NSObject<NSCoding>
 
 @property (copy, nonatomic) NSString *customLabel;
@@ -27,6 +32,7 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) NSDate *sunriseTime;
 @property (strong, nonatomic) NSDate *sunsetTime;
 @property (assign, nonatomic) BOOL sunriseOrSunset; //YES for Sunrise, NO for Sunset
+@property (assign, nonatomic) CLSelection selectionType;
 
 + (instancetype)getCustomObject:(NSData *)encodedData;
 + (void)setInitialTimezoneData;

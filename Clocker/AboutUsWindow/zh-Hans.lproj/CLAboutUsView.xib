@@ -47,18 +47,18 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Eo-aJ-L8H">
-                    <rect key="frame" x="153" y="120" width="316" height="20"/>
+                    <rect key="frame" x="153" y="118" width="316" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="20" id="6fy-MI-uin"/>
+                        <constraint firstAttribute="height" constant="22" id="6fy-MI-uin"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Copyright (2016) Abhishek Banthia" id="4PX-se-5ds">
-                        <font key="font" size="14" name="HelveticaNeue-UltraLight"/>
+                        <font key="font" size="14" name="HelveticaNeue-Thin"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Cx-BF-XMU">
-                    <rect key="frame" x="153" y="95" width="316" height="15"/>
+                    <rect key="frame" x="153" y="93" width="316" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="Oob-bz-4Vp"/>
                     </constraints>
@@ -111,7 +111,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rzs-xE-sfs">
-                    <rect key="frame" x="153" y="75" width="316" height="15"/>
+                    <rect key="frame" x="153" y="73" width="316" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="2sg-Q1-h9h"/>
                     </constraints>

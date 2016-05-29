@@ -20,7 +20,6 @@
 
 - (void)updateTextColorWithColor:(NSColor *)color andCell:(CLTimezoneCellView*)cell;
 - (void)setUpAutoLayoutWithCell;
-- (void)setAppropriateFont;
 
 @end
 

@@ -170,8 +170,6 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
 
     [cell setUpAutoLayoutWithCell];
     
-    [cell setAppropriateFont];
-    
     return cell;
 }
 
