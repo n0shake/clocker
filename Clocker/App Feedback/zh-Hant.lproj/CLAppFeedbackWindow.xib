@@ -25,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNX-kV-RGt">
-                        <rect key="frame" x="12" y="208" width="295" height="135"/>
+                        <rect key="frame" x="12" y="205" width="295" height="135"/>
                         <clipView key="contentView" id="NNn-eZ-8Je">
                             <rect key="frame" x="1" y="1" width="293" height="133"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,7 +56,7 @@
                         </scroller>
                     </scrollView>
                     <box title="Contact Information (自选)" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="JzF-Oq-qhW">
-                        <rect key="frame" x="9" y="66" width="291" height="129"/>
+                        <rect key="frame" x="9" y="63" width="291" height="129"/>
                         <view key="contentView" id="moX-Vc-vMc">
                             <rect key="frame" x="1" y="1" width="289" height="112"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,9 +148,9 @@ DQ
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gej-YH-9dt">
-                        <rect key="frame" x="10" y="351" width="299" height="17"/>
+                        <rect key="frame" x="10" y="348" width="299" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="17" id="a7O-DC-irX"/>
+                            <constraint firstAttribute="height" constant="20" id="a7O-DC-irX"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Tell us what you think!" id="oHe-hu-bQn">
                             <font key="font" size="13" name="HelveticaNeue"/>
@@ -163,7 +163,7 @@ DQ
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="vCO-Z3-Dfd"/>
                         </constraints>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" placeholderString="" id="sSH-y9-tFH">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" placeholderString="" id="sSH-y9-tFH">
                             <font key="font" size="13" name="HelveticaNeue-Light"/>
                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
