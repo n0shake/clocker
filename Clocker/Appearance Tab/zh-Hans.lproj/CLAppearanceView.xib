@@ -95,18 +95,18 @@
                         <constraint firstAttribute="width" constant="175" id="hHO-Wa-gmc"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="菜单栏选项" id="ZP5-1i-Bm8">
-                        <font key="font" size="12" name="SFUIDisplay-Bold"/>
+                        <font key="font" size="12" name="HelveticaNeue-Bold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pqa-Qg-U8Y">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pqa-Qg-U8Y">
                     <rect key="frame" x="130" y="145" width="179" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="175" id="B2I-0j-0W0"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="显示日期" id="IAe-wr-MUG">
-                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                        <font key="font" size="13" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -114,14 +114,14 @@
                         <binding destination="-2" name="enabled" keyPath="self.enableOptions" id="wwV-Hq-RlT"/>
                     </connections>
                 </textField>
-                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="atA-2r-FXV">
+                <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="atA-2r-FXV">
                     <rect key="frame" x="180" y="117" width="83" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="BqM-4F-6Ta"/>
                         <constraint firstAttribute="width" constant="79" id="ZeK-lO-tUa"/>
                     </constraints>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="rIg-AP-wGG">
-                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
                         <segments>
                             <segment label="是" selected="YES"/>
                             <segment label="没有" tag="1"/>
@@ -132,14 +132,14 @@
                         <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.showDate" id="Qee-Dc-Piu"/>
                     </connections>
                 </segmentedControl>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kEn-QZ-niZ">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kEn-QZ-niZ">
                     <rect key="frame" x="130" y="96" width="179" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="2fd-f6-8cD"/>
                         <constraint firstAttribute="width" constant="175" id="D0w-xz-gkw"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="显示日名称" id="I99-Wp-1Iq">
-                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                        <font key="font" size="13" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -147,14 +147,14 @@
                         <binding destination="-2" name="enabled" keyPath="self.enableOptions" id="56M-0X-vvP"/>
                     </connections>
                 </textField>
-                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XwV-hy-YiP">
+                <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwV-hy-YiP">
                     <rect key="frame" x="179" y="68" width="83" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="79" id="dBz-ZQ-BF1"/>
                         <constraint firstAttribute="height" constant="21" id="y8c-hZ-MtI"/>
                     </constraints>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="18N-XQ-ANm">
-                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
                         <segments>
                             <segment label="是"/>
                             <segment label="没有" selected="YES" tag="1"/>
@@ -171,7 +171,7 @@
                         <constraint firstAttribute="width" constant="67" id="H8w-wg-vel"/>
                     </constraints>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="FMr-PO-czs">
-                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
                         <segments>
                             <segment label="是" width="32"/>
                             <segment label="没有" width="32" selected="YES" tag="1"/>
@@ -199,14 +199,14 @@
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LC1-Sx-uav">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LC1-Sx-uav">
                     <rect key="frame" x="130" y="44" width="179" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="175" id="Pdc-78-vzv"/>
                         <constraint firstAttribute="height" constant="18" id="hsh-i8-ULY"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="显示位置" id="nEh-Sa-SDH">
-                        <font key="font" size="13" name="SFUIDisplay-Light"/>
+                        <font key="font" size="13" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -214,14 +214,14 @@
                         <binding destination="-2" name="enabled" keyPath="self.enableOptions" id="3ho-kS-zgV"/>
                     </connections>
                 </textField>
-                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JR8-v7-K0w">
+                <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JR8-v7-K0w">
                     <rect key="frame" x="179" y="16" width="83" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Xof-eY-ZUl"/>
                         <constraint firstAttribute="width" constant="79" id="msH-Xd-mrp"/>
                     </constraints>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="SLe-HO-6so">
-                        <font key="font" size="12" name="SFUIDisplay-Light"/>
+                        <font key="font" size="12" name="HelveticaNeue-Light"/>
                         <segments>
                             <segment label="是"/>
                             <segment label="没有" selected="YES" tag="1"/>
@@ -271,7 +271,7 @@
                                 <constraint firstAttribute="height" constant="39" id="IyN-y5-6JP"/>
                             </constraints>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="JHS-Tb-Aq8">
-                                <font key="font" size="13" name="SFUIDisplay-Bold"/>
+                                <font key="font" size="13" name="HelveticaNeue-Bold"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
