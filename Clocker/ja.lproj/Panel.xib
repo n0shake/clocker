@@ -84,7 +84,7 @@
                                                             <rect key="frame" x="224" y="7" width="49" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="Mho-dg-5yL"/>
-                                                                <constraint firstAttribute="width" constant="45" id="zNy-He-GNo"/>
+                                                                <constraint firstAttribute="width" constant="45" identifier="width" id="zNy-He-GNo"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="left" placeholderString="" id="Yxf-ti-4jB">
                                                                 <font key="font" size="11" name="HelveticaNeue-Light"/>

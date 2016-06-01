@@ -68,7 +68,7 @@
                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w0H-z4-Qmv">
                                                             <rect key="frame" x="224" y="8" width="49" height="17"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="45" id="v6B-Bv-Ye1"/>
+                                                                <constraint firstAttribute="width" constant="45" identifier="width" id="v6B-Bv-Ye1"/>
                                                                 <constraint firstAttribute="height" constant="17" id="zYu-u6-R0W"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="left" placeholderString="" id="ENI-4b-K6F">

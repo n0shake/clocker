@@ -108,7 +108,7 @@
                                                             <rect key="frame" x="219" y="9" width="54" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="89H-r0-Dnh"/>
-                                                                <constraint firstAttribute="width" constant="50" id="8KH-Ks-d4T"/>
+                                                                <constraint firstAttribute="width" constant="50" identifier="width" id="8KH-Ks-d4T"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" alignment="left" placeholderString="" id="qpH-kn-cMT">
                                                                 <font key="font" size="11" name="HelveticaNeue-Light"/>
