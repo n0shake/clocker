@@ -91,13 +91,17 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         // Do view setup here.
     
     NSUserDefaultsController *defaults = [NSUserDefaultsController sharedUserDefaultsController];
-    self.recorderControl.delegate = self;
+
     [self.recorderControl bind:NSValueBinding
                                  toObject:defaults
                               withKeyPath:@"values.globalPing"
                                   options:nil];
+    self.recorderControl.delegate = self;
     
-    [defaults addObserver:self forKeyPath:@"values.globalPing" options:NSKeyValueObservingOptionInitial context:NULL];
+    [defaults addObserver:self
+               forKeyPath:@"values.globalPing"
+                  options:NSKeyValueObservingOptionInitial
+                  context:NULL];
 }
 
 /*
@@ -132,10 +136,22 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                                                           target:self
                                                           action:@selector(ping:)];
             [hotKeyCenter registerHotKey:newHotKey];
+            
         }
     }
     else
         [super observeValueForKeyPath:aKeyPath ofObject:anObject change:aChange context:aContext];
+}
+
+- (BOOL)shortcutRecorderShouldBeginRecording:(SRRecorderControl *)aRecorder
+{
+    [[PTHotKeyCenter sharedCenter] pause];
+    return YES;
+}
+
+- (void)shortcutRecorderDidEndRecording:(SRRecorderControl *)aRecorder
+{
+    [[PTHotKeyCenter sharedCenter] resume];
 }
 
 -(IBAction)ping:(id)sender
@@ -148,6 +164,10 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:CLCustomLabelChangedNotification object:nil];
+
+    [[NSUserDefaultsController sharedUserDefaultsController]
+     removeObserver:self forKeyPath:@"values.globalPing"];
+    
 }
 
 
