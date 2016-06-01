@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CLAboutUsViewController">
@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p2G-hA-MSX">
-                    <rect key="frame" x="20" y="85" width="125" height="117"/>
+                    <rect key="frame" x="20" y="73" width="125" height="117"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="125" id="6Kp-RK-dT4"/>
                         <constraint firstAttribute="height" constant="117" id="znw-VN-bXv"/>
@@ -25,7 +25,7 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-512" id="pfa-88-uAu"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XlC-Xd-67t">
-                    <rect key="frame" x="153" y="166" width="316" height="43"/>
+                    <rect key="frame" x="153" y="162" width="316" height="43"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="dqF-vG-wml"/>
                     </constraints>
@@ -36,7 +36,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FG9-E5-o8y">
-                    <rect key="frame" x="153" y="142" width="316" height="23"/>
+                    <rect key="frame" x="153" y="138" width="316" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="APM-BF-sIg"/>
                     </constraints>
@@ -47,7 +47,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Eo-aJ-L8H">
-                    <rect key="frame" x="153" y="118" width="316" height="22"/>
+                    <rect key="frame" x="153" y="114" width="316" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="6fy-MI-uin"/>
                     </constraints>
@@ -58,7 +58,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Cx-BF-XMU">
-                    <rect key="frame" x="153" y="93" width="316" height="15"/>
+                    <rect key="frame" x="153" y="89" width="316" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="Oob-bz-4Vp"/>
                     </constraints>
@@ -111,7 +111,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rzs-xE-sfs">
-                    <rect key="frame" x="153" y="73" width="316" height="15"/>
+                    <rect key="frame" x="153" y="69" width="316" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="2sg-Q1-h9h"/>
                     </constraints>
@@ -126,11 +126,13 @@
                 <constraint firstItem="p2G-hA-MSX" firstAttribute="leading" secondItem="FS5-f2-b1Z" secondAttribute="leading" constant="20" id="8LW-4H-HKD"/>
                 <constraint firstAttribute="bottom" secondItem="q67-QZ-7g3" secondAttribute="bottom" constant="20" id="Cl5-lU-Hlw"/>
                 <constraint firstAttribute="bottom" secondItem="fgO-N3-3oh" secondAttribute="bottom" constant="20" id="Ka3-lR-aW1"/>
+                <constraint firstItem="p2G-hA-MSX" firstAttribute="centerY" secondItem="FS5-f2-b1Z" secondAttribute="centerY" constant="-20" id="LJC-8V-rZD"/>
                 <constraint firstItem="Rzs-xE-sfs" firstAttribute="leading" secondItem="p2G-hA-MSX" secondAttribute="trailing" constant="10" id="Mru-Qk-R35"/>
                 <constraint firstItem="P3u-Um-Nby" firstAttribute="leading" secondItem="q67-QZ-7g3" secondAttribute="trailing" constant="8" id="NtI-jY-BNB"/>
                 <constraint firstAttribute="trailing" secondItem="6Cx-BF-XMU" secondAttribute="trailing" constant="20" id="PCL-2W-fCV"/>
                 <constraint firstItem="6Cx-BF-XMU" firstAttribute="leading" secondItem="p2G-hA-MSX" secondAttribute="trailing" constant="10" id="PxC-Pa-PfL"/>
                 <constraint firstItem="XlC-Xd-67t" firstAttribute="leading" secondItem="p2G-hA-MSX" secondAttribute="trailing" constant="10" id="ReB-0P-Ppj"/>
+                <constraint firstItem="p2G-hA-MSX" firstAttribute="top" secondItem="XlC-Xd-67t" secondAttribute="bottom" constant="-28" id="ZaL-sC-iNs"/>
                 <constraint firstItem="5Eo-aJ-L8H" firstAttribute="leading" secondItem="p2G-hA-MSX" secondAttribute="trailing" constant="10" id="a9Y-c0-NKB"/>
                 <constraint firstAttribute="bottom" secondItem="P3u-Um-Nby" secondAttribute="bottom" constant="20" id="csw-Zl-TRQ"/>
                 <constraint firstItem="q67-QZ-7g3" firstAttribute="leading" secondItem="fgO-N3-3oh" secondAttribute="trailing" constant="8" id="fA5-O5-kY8"/>
@@ -138,8 +140,6 @@
                 <constraint firstAttribute="trailing" secondItem="FG9-E5-o8y" secondAttribute="trailing" constant="20" id="j5d-17-Loc"/>
                 <constraint firstItem="FG9-E5-o8y" firstAttribute="leading" secondItem="p2G-hA-MSX" secondAttribute="trailing" constant="10" id="kyh-fi-23P"/>
                 <constraint firstItem="5Eo-aJ-L8H" firstAttribute="top" secondItem="FG9-E5-o8y" secondAttribute="bottom" constant="2" id="pVM-TS-Wvl"/>
-                <constraint firstItem="XlC-Xd-67t" firstAttribute="top" secondItem="FS5-f2-b1Z" secondAttribute="top" constant="13" id="slR-Qu-uJh"/>
-                <constraint firstItem="p2G-hA-MSX" firstAttribute="top" secondItem="FS5-f2-b1Z" secondAttribute="top" constant="20" id="tO4-p0-Wfk"/>
                 <constraint firstAttribute="trailing" secondItem="XlC-Xd-67t" secondAttribute="trailing" constant="20" id="vpM-Kh-fhm"/>
                 <constraint firstItem="fgO-N3-3oh" firstAttribute="leading" secondItem="FS5-f2-b1Z" secondAttribute="leading" constant="130" id="wOA-HL-UjC"/>
                 <constraint firstItem="FG9-E5-o8y" firstAttribute="top" secondItem="XlC-Xd-67t" secondAttribute="bottom" constant="1" id="yHu-dm-LPw"/>
