@@ -122,13 +122,12 @@ void *kContextActivePanel = &kContextActivePanel;
         [windowController showWindow:nil];
         [NSApp activateIgnoringOtherApps:YES];
         [[NSUserDefaults standardUserDefaults] setObject:@"OnboardingDone" forKey:@"initialLaunch"];
-//        [self.menubarController setInitialTimezoneData];
     }
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
     
-//    [[Crashlytics sharedInstance] setDebugMode:NO];
-//    [Fabric with:@[[Crashlytics class]]];
+    [[Crashlytics sharedInstance] setDebugMode:NO];
+    [Fabric with:@[[Crashlytics class]]];
     
 }
 
