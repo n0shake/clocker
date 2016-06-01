@@ -10,6 +10,7 @@
                 <outlet property="availableTimezoneTableView" destination="Q0t-hQ-orw" id="vQv-rd-Wkv"/>
                 <outlet property="messageLabel" destination="KFC-NV-5A3" id="NKB-JY-Udb"/>
                 <outlet property="placeholderLabel" destination="L5U-OI-Tkv" id="NhA-YA-x7S"/>
+                <outlet property="recorderControl" destination="Nzo-6w-LBL" id="MwM-jK-mlM"/>
                 <outlet property="searchCriteria" destination="MiN-SF-nnU" id="Osf-q8-wwG"/>
                 <outlet property="searchField" destination="biT-6m-ElR" id="Di3-QU-LGY"/>
                 <outlet property="timezonePanel" destination="6FL-fp-Ke1" id="SDq-Q4-hMb"/>
