@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CLPreferencesViewController">
@@ -219,28 +219,28 @@ CA
                         </connections>
                     </progressIndicator>
                     <button toolTip="Close Panel" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cyZ-cL-S7a">
-                        <rect key="frame" x="50" y="4" width="50" height="19"/>
+                        <rect key="frame" x="44" y="-2" width="62" height="29"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="lku-Qx-nX5"/>
                             <constraint firstAttribute="width" constant="50" id="vqo-37-082"/>
                         </constraints>
-                        <buttonCell key="cell" type="roundRect" title="关闭" bezelStyle="roundedRect" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="YjP-c4-vTl">
+                        <buttonCell key="cell" type="push" title="关闭" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="YjP-c4-vTl">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="12" name="HelveticaNeue-Light"/>
+                            <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
                             <action selector="closePanel:" target="-2" id="YRs-VA-eFr"/>
                         </connections>
                     </button>
                     <button toolTip="Add a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hp6-CH-WJs">
-                        <rect key="frame" x="8" y="4" width="40" height="19"/>
+                        <rect key="frame" x="2" y="-2" width="52" height="29"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="r2L-5O-GZy"/>
                             <constraint firstAttribute="width" constant="40" id="yuH-LM-RAy"/>
                         </constraints>
-                        <buttonCell key="cell" type="roundRect" title="加" bezelStyle="roundedRect" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="x6l-8x-qnu">
+                        <buttonCell key="cell" type="push" title="加" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="x6l-8x-qnu">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="12" name="HelveticaNeue-Light"/>
+                            <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
                             <action selector="addToFavorites:" target="-2" id="Mdg-7P-kDy"/>
