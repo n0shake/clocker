@@ -153,14 +153,14 @@
     }];
     
     [self.sunriseSetTime.constraints enumerateObjectsUsingBlock:^(NSLayoutConstraint * _Nonnull constraint, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (constraint.constant > 40)
+        if ([constraint.identifier isEqualToString:@"width"])
         {
             constraint.constant = sunriseWidth+3;
         }
     }];
     
-    
-    
+    [self.relativeDate setNeedsUpdateConstraints:YES];
+    [self.sunriseSetTime setNeedsUpdateConstraints:YES];
     
 }
 
