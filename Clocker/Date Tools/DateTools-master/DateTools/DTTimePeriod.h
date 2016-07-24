@@ -83,15 +83,15 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodAnchor) {
 +(instancetype)timePeriodWithAllTime;
 
 #pragma mark - Time Period Information
--(BOOL)hasStartDate;
--(BOOL)hasEndDate;
--(BOOL)isMoment;
--(double)durationInYears;
--(double)durationInWeeks;
--(double)durationInDays;
--(double)durationInHours;
--(double)durationInMinutes;
--(double)durationInSeconds;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL hasStartDate;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL hasEndDate;
+@property (NS_NONATOMIC_IOSONLY, getter=isMoment, readonly) BOOL moment;
+@property (NS_NONATOMIC_IOSONLY, readonly) double durationInYears;
+@property (NS_NONATOMIC_IOSONLY, readonly) double durationInWeeks;
+@property (NS_NONATOMIC_IOSONLY, readonly) double durationInDays;
+@property (NS_NONATOMIC_IOSONLY, readonly) double durationInHours;
+@property (NS_NONATOMIC_IOSONLY, readonly) double durationInMinutes;
+@property (NS_NONATOMIC_IOSONLY, readonly) double durationInSeconds;
 
 #pragma mark - Time Period Relationship
 -(BOOL)isEqualToPeriod:(DTTimePeriod *)period;
@@ -119,5 +119,5 @@ typedef NS_ENUM(NSUInteger, DTTimePeriodAnchor) {
 -(void)shortenWithAnchorDate:(DTTimePeriodAnchor)anchor size:(DTTimePeriodSize)size amount:(NSInteger)amount;
 
 #pragma mark - Helper Methods
--(DTTimePeriod *)copy;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) DTTimePeriod *copy;
 @end

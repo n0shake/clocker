@@ -6,17 +6,17 @@
 //
 //
 
-#import "CLAPI.h"
+#import "CLAPIConnector.h"
 #import "Reachability.h"
 
-@implementation CLAPI
+@implementation CLAPIConnector
 
 + (void)dataTaskWithServicePath:(NSString *)path
                                        bySender:(id)sender
                             withCompletionBlock:(void (^)(NSError *error, NSDictionary *dictionary))completionBlock
 {
 
-    __block NSDictionary *responseDictionary = [NSDictionary dictionary];
+    __block NSDictionary *responseDictionary = @{};
     
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
     
@@ -27,7 +27,7 @@
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", path]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    [request setHTTPMethod:@"GET"];
+    request.HTTPMethod = @"GET";
     
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];

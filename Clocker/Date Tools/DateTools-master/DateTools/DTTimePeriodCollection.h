@@ -49,7 +49,7 @@
 -(BOOL)isEqualToCollection:(DTTimePeriodCollection *)collection considerOrder:(BOOL)considerOrder;
 
 #pragma mark - Helper Methods
--(DTTimePeriodCollection *)copy;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) DTTimePeriodCollection *copy;
 
 #pragma mark - Updates
 -(void)updateVariables;

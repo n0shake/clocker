@@ -38,15 +38,15 @@
 - (void)setObject:(id)obj atIndexedSubscript:(NSUInteger)index; //setter
 
 #pragma mark - Group Info
--(double)durationInYears;
--(double)durationInWeeks;
--(double)durationInDays;
--(double)durationInHours;
--(double)durationInMinutes;
--(double)durationInSeconds;
+@property (NS_NONATOMIC_IOSONLY, readonly) double durationInYears;
+@property (NS_NONATOMIC_IOSONLY, readonly) double durationInWeeks;
+@property (NS_NONATOMIC_IOSONLY, readonly) double durationInDays;
+@property (NS_NONATOMIC_IOSONLY, readonly) double durationInHours;
+@property (NS_NONATOMIC_IOSONLY, readonly) double durationInMinutes;
+@property (NS_NONATOMIC_IOSONLY, readonly) double durationInSeconds;
 -(NSDate *)StartDate;
 -(NSDate *)EndDate;
--(NSInteger)count;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger count;
 
 #pragma mark - Chain Time Manipulation
 -(void)shiftEarlierWithSize:(DTTimePeriodSize)size;

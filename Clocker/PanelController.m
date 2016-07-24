@@ -66,7 +66,7 @@ static PanelController *sharedPanel = nil;
 
 #pragma mark -
 
-- (id)initWithDelegate:(id<PanelControllerDelegate>)delegate
+- (instancetype)initWithDelegate:(id<PanelControllerDelegate>)delegate
 {
     self = [super initWithWindowNibName:CLPanelNibIdentifier];
     if (self != nil)
@@ -90,14 +90,16 @@ static PanelController *sharedPanel = nil;
         self.dateFormatter = [NSDateFormatter new];
     }
     
-    NSPanel *panel = (id)[self window];
+    self.mainTableview.delegate = self;
+    
+    NSPanel *panel = (id)self.window;
     [panel setAcceptsMouseMovedEvents:YES];
     [panel setLevel:NSPopUpMenuWindowLevel];
     [panel setOpaque:NO];
-    [panel setBackgroundColor:[NSColor clearColor]];
+    panel.backgroundColor = [NSColor clearColor];
     
     //Register for drag and drop
-    [self.mainTableview registerForDraggedTypes: [NSArray arrayWithObject:CLDragSessionKey]];
+    [self.mainTableview registerForDraggedTypes: @[CLDragSessionKey]];
     
     [super updatePanelColor];
     
@@ -141,7 +143,7 @@ static PanelController *sharedPanel = nil;
 
 - (void)windowDidResignKey:(NSNotification *)notification;
 {
-    if ([[self window] isVisible])
+    if (self.window.visible)
     {
         self.hasActivePanel = NO;
     }
@@ -149,9 +151,9 @@ static PanelController *sharedPanel = nil;
 
 - (void)windowDidResize:(NSNotification *)notification
 {
-    NSWindow *panel = [self window];
+    NSWindow *panel = self.window;
     NSRect statusRect = [self statusRectForWindow:panel];
-    NSRect panelRect = [panel frame];
+    NSRect panelRect = panel.frame;
     
     CGFloat statusX = roundf(NSMidX(statusRect));
     CGFloat panelX = statusX - NSMinX(panelRect);
@@ -170,7 +172,7 @@ static PanelController *sharedPanel = nil;
 
 - (NSRect)statusRectForWindow:(NSWindow *)window
 {
-    NSRect screenRect = [[[NSScreen screens] objectAtIndex:0] frame];
+    NSRect screenRect = [NSScreen screens][0].frame;
     NSRect statusRect = NSZeroRect;
     
     StatusItemView *statusItemView = nil;
@@ -186,7 +188,7 @@ static PanelController *sharedPanel = nil;
     }
     else
     {
-        statusRect.size = NSMakeSize(STATUS_ITEM_VIEW_WIDTH, [[NSStatusBar systemStatusBar] thickness]);
+        statusRect.size = NSMakeSize(STATUS_ITEM_VIEW_WIDTH, [NSStatusBar systemStatusBar].thickness);
         statusRect.origin.x = roundf((NSWidth(screenRect) - NSWidth(statusRect)) / 2);
         statusRect.origin.y = NSHeight(screenRect) - NSHeight(statusRect) * 2;
     }
@@ -197,12 +199,12 @@ static PanelController *sharedPanel = nil;
 {
     self.futureSliderValue = 0;
     
-    NSWindow *panel = [self window];
+    NSWindow *panel = self.window;
     
-    NSRect screenRect = [[[NSScreen screens] objectAtIndex:0] frame];
+    NSRect screenRect = [NSScreen screens][0].frame;
     NSRect statusRect = [self statusRectForWindow:panel];
     
-    NSRect panelRect = [panel frame];
+    NSRect panelRect = panel.frame;
     panelRect.size.width = PANEL_WIDTH;
     
     panelRect.size.height = self.showReviewCell ? (self.defaultPreferences.count+1)*55+40: self.defaultPreferences.count*55 + 30;
@@ -214,16 +216,16 @@ static PanelController *sharedPanel = nil;
         panelRect.origin.x -= NSMaxX(panelRect) - (NSMaxX(screenRect) - ARROW_HEIGHT);
     
     [NSApp activateIgnoringOtherApps:NO];
-    [panel setAlphaValue:0];
+    panel.alphaValue = 0;
     [panel setFrame:statusRect display:YES];
     [panel makeKeyAndOrderFront:nil];
     
     NSTimeInterval openDuration = OPEN_DURATION;
     
-    NSEvent *currentEvent = [NSApp currentEvent];
-    if ([currentEvent type] == NSLeftMouseDown)
+    NSEvent *currentEvent = NSApp.currentEvent;
+    if (currentEvent.type == NSLeftMouseDown)
     {
-        NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
+        NSUInteger clearFlags = (currentEvent.modifierFlags & NSDeviceIndependentModifierFlagsMask);
         BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
         BOOL shiftOptionPressed = (clearFlags == (NSShiftKeyMask | NSAlternateKeyMask));
         if (shiftPressed || shiftOptionPressed)
@@ -234,9 +236,9 @@ static PanelController *sharedPanel = nil;
     }
     
     [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:openDuration];
+    [NSAnimationContext currentContext].duration = openDuration;
     [[panel animator] setFrame:panelRect display:YES];
-    [[panel animator] setAlphaValue:1];
+    [panel animator].alphaValue = 1;
     [NSAnimationContext endGrouping];
     
     [self.mainTableview reloadData];
@@ -247,7 +249,7 @@ static PanelController *sharedPanel = nil;
 {
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:CLOSE_DURATION];
-    [[[self window] animator] setAlphaValue:0];
+    [self.window animator].alphaValue = 0;
     [NSAnimationContext endGrouping];
     
     dispatch_after(dispatch_walltime(NULL, NSEC_PER_SEC * CLOSE_DURATION * 2), dispatch_get_main_queue(), ^{
@@ -267,8 +269,6 @@ static PanelController *sharedPanel = nil;
     }
     return self.defaultPreferences.count;
 }
-
-
 
 -(NSView*)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
@@ -290,13 +290,11 @@ static PanelController *sharedPanel = nil;
                                             forObject:cell.relativeDate];
     
     NSNumber *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
+    
     if (theme.integerValue == 1)
     {
-        [cell updateTextColorWithColor:[NSColor whiteColor] andCell:cell];
-        [self.mainTableview setBackgroundColor:[NSColor blackColor]];
+        (self.mainTableview).backgroundColor = [NSColor blackColor];
         self.window.alphaValue = 0.90;
-        [cell.customName setDrawsBackground:YES];
-        [cell.customName setBackgroundColor:[NSColor blackColor]];
         customLabel.insertionPointColor = [NSColor whiteColor];
         cell.sunriseSetImage.image = dataObject.sunriseOrSunset ?
         [NSImage imageNamed:@"White Sunrise"] : [NSImage imageNamed:@"White Sunset"];
@@ -304,9 +302,7 @@ static PanelController *sharedPanel = nil;
     else
     {
         
-        [cell updateTextColorWithColor:[NSColor blackColor] andCell:cell];
-        [cell.customName setDrawsBackground:NO];
-        [self.mainTableview setBackgroundColor:[NSColor whiteColor]];
+        (self.mainTableview).backgroundColor = [NSColor whiteColor];
         self.window.alphaValue = 1;
         customLabel.insertionPointColor = [NSColor blackColor];
         cell.sunriseSetImage.image = dataObject.sunriseOrSunset ?
@@ -324,7 +320,7 @@ static PanelController *sharedPanel = nil;
     
     NSNumber *displayFutureSlider = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey];
 
-    self.futureSlider.hidden = [displayFutureSlider isEqualToNumber:[NSNumber numberWithInteger:1]] ? YES : NO;
+    self.futureSlider.hidden = [displayFutureSlider isEqualToNumber:@1] ? YES : NO;
     
     NSNumber *displaySunriseSunsetTime = [[NSUserDefaults standardUserDefaults] objectForKey:CLSunriseSunsetTime];
     
@@ -341,7 +337,7 @@ static PanelController *sharedPanel = nil;
         cell.sunriseSetTime.hidden = YES;
     }
     
-    [cell setUpAutoLayoutWithCell];
+    [cell setUpLayout];
     
     return cell;
 }
@@ -362,7 +358,7 @@ static PanelController *sharedPanel = nil;
         }
         
         dataObject.customLabel = object;
-        [self.defaultPreferences replaceObjectAtIndex:row withObject:dataObject];
+        (self.defaultPreferences)[row] = dataObject;
         [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences forKey:CLDefaultPreferenceKey];
         [self.mainTableview reloadData];
     }
@@ -400,7 +396,6 @@ static PanelController *sharedPanel = nil;
 
 - (IBAction)openPreferences:(id)sender
 {
-//    [self.mainTableview abortEditing];
     self.oneWindow = [CLOneWindowController sharedWindow];
     [self.oneWindow showWindow:nil];
     [NSApp activateIgnoringOtherApps:YES];
@@ -422,5 +417,20 @@ static PanelController *sharedPanel = nil;
     self.preferencesButton.hidden = !value;
     
 }
+
++ (instancetype)getPanelControllerInstance
+{
+    __block PanelController *panelController;
+    
+    [[NSApplication sharedApplication].windows enumerateObjectsUsingBlock:^(NSWindow * _Nonnull window, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([window.windowController isMemberOfClass:[PanelController class]])
+        {
+            panelController = window.windowController;
+        }
+    }];
+    
+    return panelController;
+}
+
 
 @end

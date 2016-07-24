@@ -10,15 +10,14 @@
 #import <ShortcutRecorder/ShortcutRecorder.h>
 #import <PTHotKey/PTHotKeyCenter.h>
 #import <PTHotKey/PTHotKey+ShortcutRecorder.h>
+#import "CLParentViewController.h"
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, CLTheme) {
     CLDefaultTheme,
     CLBlackTheme
-} CLTheme;
+};
 
-@interface CLPreferencesViewController : NSViewController<SRRecorderControlDelegate>
-
-
+@interface CLPreferencesViewController : CLParentViewController<SRRecorderControlDelegate>
 
 - (void)refereshTimezoneTableView;
 - (IBAction)addTimeZone:(id)sender;

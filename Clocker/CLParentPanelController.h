@@ -29,5 +29,6 @@
 - (void)removeContextHelpForSlider;
 - (void)updatePanelColor;
 - (void)openPreferenceWindowWithValue:(BOOL)value;
+- (void)updateTableContent;
 
 @end

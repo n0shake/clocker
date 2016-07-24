@@ -7,9 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "CLAppFeedbackWindowController.h"
+#import "CLParentViewController.h"
 
-@interface CLAboutUsViewController : NSViewController
+@interface CLAboutUsViewController : CLParentViewController
 
 
 

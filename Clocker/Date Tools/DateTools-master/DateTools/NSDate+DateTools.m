@@ -267,7 +267,7 @@ static NSCalendar *implicitCalendar = nil;
 }
 
 - (NSString *)getLocaleFormatUnderscoresWithValue:(double)value{
-    NSString *localeCode = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
+    NSString *localeCode = [NSBundle mainBundle].preferredLocalizations[0];
     
     // Russian (ru) and Ukrainian (uk)
     if([localeCode isEqualToString:@"ru"] || [localeCode isEqualToString:@"uk"]) {
@@ -502,7 +502,7 @@ static NSCalendar *implicitCalendar = nil;
     NSRange weekdayRange            = [calendar maximumRangeOfUnit:NSCalendarUnitWeekday];
     NSDateComponents *components    = [calendar components:NSCalendarUnitWeekday
                                                   fromDate:self];
-    NSUInteger weekdayOfSomeDate    = [components weekday];
+    NSUInteger weekdayOfSomeDate    = components.weekday;
     
     BOOL result = NO;
     
@@ -727,31 +727,31 @@ static NSCalendar *implicitCalendar = nil;
     
     switch (component) {
         case DTDateComponentEra:
-            return [dateComponents era];
+            return dateComponents.era;
         case DTDateComponentYear:
-            return [dateComponents year];
+            return dateComponents.year;
         case DTDateComponentMonth:
-            return [dateComponents month];
+            return dateComponents.month;
         case DTDateComponentDay:
-            return [dateComponents day];
+            return dateComponents.day;
         case DTDateComponentHour:
-            return [dateComponents hour];
+            return dateComponents.hour;
         case DTDateComponentMinute:
-            return [dateComponents minute];
+            return dateComponents.minute;
         case DTDateComponentSecond:
-            return [dateComponents second];
+            return dateComponents.second;
         case DTDateComponentWeekday:
-            return [dateComponents weekday];
+            return dateComponents.weekday;
         case DTDateComponentWeekdayOrdinal:
-            return [dateComponents weekdayOrdinal];
+            return dateComponents.weekdayOrdinal;
         case DTDateComponentQuarter:
-            return [dateComponents quarter];
+            return dateComponents.quarter;
         case DTDateComponentWeekOfMonth:
-            return [dateComponents weekOfMonth];
+            return dateComponents.weekOfMonth;
         case DTDateComponentWeekOfYear:
-            return [dateComponents weekOfYear];
+            return dateComponents.weekOfYear;
         case DTDateComponentYearForWeekOfYear:
-            return [dateComponents yearForWeekOfYear];
+            return dateComponents.yearForWeekOfYear;
         case DTDateComponentDayOfYear:
             return [calendar ordinalityOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitYear forDate:date];
         default:
@@ -818,7 +818,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateByAddingYears:(NSInteger)years{
     NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setYear:years];
+    components.year = years;
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
@@ -833,7 +833,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateByAddingMonths:(NSInteger)months{
     NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setMonth:months];
+    components.month = months;
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
@@ -848,7 +848,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateByAddingWeeks:(NSInteger)weeks{
     NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setWeekOfYear:weeks];
+    components.weekOfYear = weeks;
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
@@ -863,7 +863,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateByAddingDays:(NSInteger)days{
     NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setDay:days];
+    components.day = days;
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
@@ -878,7 +878,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateByAddingHours:(NSInteger)hours{
     NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setHour:hours];
+    components.hour = hours;
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
@@ -893,7 +893,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateByAddingMinutes:(NSInteger)minutes{
     NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setMinute:minutes];
+    components.minute = minutes;
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
@@ -908,7 +908,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateByAddingSeconds:(NSInteger)seconds{
     NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setSecond:seconds];
+    components.second = seconds;
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
@@ -924,7 +924,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateBySubtractingYears:(NSInteger)years{
     NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setYear:-1*years];
+    components.year = -1*years;
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
@@ -939,7 +939,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateBySubtractingMonths:(NSInteger)months{
     NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setMonth:-1*months];
+    components.month = -1*months;
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
@@ -954,7 +954,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateBySubtractingWeeks:(NSInteger)weeks{
     NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setWeekOfYear:-1*weeks];
+    components.weekOfYear = -1*weeks;
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
@@ -969,7 +969,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateBySubtractingDays:(NSInteger)days{
     NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setDay:-1*days];
+    components.day = -1*days;
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
@@ -984,7 +984,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateBySubtractingHours:(NSInteger)hours{
     NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setHour:-1*hours];
+    components.hour = -1*hours;
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
@@ -999,7 +999,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateBySubtractingMinutes:(NSInteger)minutes{
     NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setMinute:-1*minutes];
+    components.minute = -1*minutes;
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
@@ -1014,7 +1014,7 @@ static NSCalendar *implicitCalendar = nil;
 - (NSDate *)dateBySubtractingSeconds:(NSInteger)seconds{
     NSCalendar *calendar = [[self class] implicitCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setSecond:-1*seconds];
+    components.second = -1*seconds;
     
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
@@ -1603,9 +1603,9 @@ static NSCalendar *implicitCalendar = nil;
         formatter = [[NSDateFormatter alloc] init];
     });
 
-    [formatter setDateStyle:style];
-    [formatter setTimeZone:timeZone];
-    [formatter setLocale:locale];
+    formatter.dateStyle = style;
+    formatter.timeZone = timeZone;
+    formatter.locale = locale;
     return [formatter stringFromDate:self];
 }
 
@@ -1661,9 +1661,9 @@ static NSCalendar *implicitCalendar = nil;
         formatter = [[NSDateFormatter alloc] init];
     });
 
-    [formatter setDateFormat:format];
-    [formatter setTimeZone:timeZone];
-    [formatter setLocale:locale];
+    formatter.dateFormat = format;
+    formatter.timeZone = timeZone;
+    formatter.locale = locale;
     return [formatter stringFromDate:self];
 }
 

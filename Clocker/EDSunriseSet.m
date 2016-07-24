@@ -147,7 +147,7 @@
 -(void) sun_RA_decAtDay:(double)d RA:(double*)RA decl:(double *)dec  r:(double *)r
 {
     double lon, obl_ecl;
-    double xs, ys, zs;
+    double xs, ys;
     double xe, ye, ze;
     
     /* Compute Sun's ecliptical coordinates */
@@ -157,7 +157,6 @@
     /* Compute ecliptic rectangular coordinates */
     xs = *r * cosd(lon);
     ys = *r * sind(lon);
-    zs = 0; /* because the Sun is always in the ecliptic plane! */
     
     /* Compute obliquity of ecliptic (inclination of Earth's axis) */
     obl_ecl = 23.4393 - 3.563E-7 * d;
@@ -314,13 +313,13 @@ static const int kSecondsInHour= 60.0*60.0;
 
 -(NSDate*)utcTime:(NSDateComponents*)dateComponents withOffset:(NSTimeInterval)interval
 {
-    [self.calendar setTimeZone:self.utcTimeZone];
+    (self.calendar).timeZone = self.utcTimeZone;
     return [[self.calendar dateFromComponents:dateComponents] dateByAddingTimeInterval:(NSTimeInterval)(interval)];
 }
 
 -(NSDateComponents*)localTime:(NSDate*)refDate
 {
-    [self.calendar setTimeZone:self.timezone];
+    (self.calendar).timeZone = self.timezone;
     // Return only hour, minute, seconds
     NSDateComponents *dc = [self.calendar components:( NSCalendarUnitHour  | NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:refDate] ;
     
@@ -357,12 +356,12 @@ static const int kSecondsInHour= 60.0*60.0;
 -(void)calculateSunriseSunset
 {
     // Get date components
-    [self.calendar setTimeZone:self.timezone];
+    (self.calendar).timeZone = self.timezone;
     NSDateComponents *dateComponents = [self.calendar components:( NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay ) fromDate:self.date];
     
     // Calculate sunrise and sunset
     double rise=0.0, set=0.0;
-    [self sunRiseSetForYear:(int)[dateComponents year] month:(int)[dateComponents month] day:(int)[dateComponents day] longitude:self.longitude latitude:self.latitude
+    [self sunRiseSetForYear:(int)dateComponents.year month:(int)dateComponents.month day:(int)dateComponents.day longitude:self.longitude latitude:self.latitude
                       trise:&rise tset:&set ];
     NSTimeInterval secondsRise  = rise*kSecondsInHour;
     NSTimeInterval secondsSet   = set*kSecondsInHour;
@@ -376,12 +375,12 @@ static const int kSecondsInHour= 60.0*60.0;
 -(void)calculateTwilight
 {
     // Get date components
-    [self.calendar setTimeZone:self.timezone];
+    (self.calendar).timeZone = self.timezone;
     NSDateComponents *dateComponents = [self.calendar components:( NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay ) fromDate:self.date];
     double start=0.0, end=0.0;
     
     // Civil twilight
-    [self civilTwilightForYear:(int)[dateComponents year] month:(int)[dateComponents month] day:(int)[dateComponents day] longitude:self.longitude latitude:self.latitude
+    [self civilTwilightForYear:(int)dateComponents.year month:(int)dateComponents.month day:(int)dateComponents.day longitude:self.longitude latitude:self.latitude
                          trise:&start tset:&end ];
     self.civilTwilightStart = [self utcTime:dateComponents withOffset:(NSTimeInterval)(start*kSecondsInHour)];
     self.civilTwilightEnd  = [self utcTime:dateComponents withOffset:(NSTimeInterval)(end*kSecondsInHour)];
@@ -389,14 +388,14 @@ static const int kSecondsInHour= 60.0*60.0;
     self.localCivilTwilightEnd = [self localTime:self.civilTwilightEnd];
     
     // Nautical twilight
-    [self nauticalTwilightForYear:(int)[dateComponents year] month:(int)[dateComponents month] day:(int)[dateComponents day] longitude:self.longitude latitude:self.latitude
+    [self nauticalTwilightForYear:(int)dateComponents.year month:(int)dateComponents.month day:(int)dateComponents.day longitude:self.longitude latitude:self.latitude
                             trise:&start tset:&end ];
     self.nauticalTwilightStart = [self utcTime:dateComponents withOffset:(NSTimeInterval)(start*kSecondsInHour)];
     self.nauticalTwilightEnd  = [self utcTime:dateComponents withOffset:(NSTimeInterval)(end*kSecondsInHour)];
     self.localNauticalTwilightStart = [self localTime:self.nauticalTwilightStart];
     self.localNauticalTwilightEnd = [self localTime:self.nauticalTwilightEnd];
     // Astronomical twilight
-    [self astronomicalTwilightForYear:(int)[dateComponents year] month:(int)[dateComponents month] day:(int)[dateComponents day] longitude:self.longitude latitude:self.latitude
+    [self astronomicalTwilightForYear:(int)dateComponents.year month:(int)dateComponents.month day:(int)dateComponents.day longitude:self.longitude latitude:self.latitude
                                 trise:&start tset:&end ];
     self.astronomicalTwilightStart = [self utcTime:dateComponents withOffset:(NSTimeInterval)(start*kSecondsInHour)];
     self.astronomicalTwilightEnd  = [self utcTime:dateComponents withOffset:(NSTimeInterval)(end*kSecondsInHour)];

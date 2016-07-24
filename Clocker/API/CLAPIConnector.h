@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CLAPI : NSObject
+@interface CLAPIConnector : NSObject
 
 + (void)dataTaskWithServicePath:(NSString *)path
                                        bySender:(id)sender

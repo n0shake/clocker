@@ -37,7 +37,7 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
         [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLThemeKey];
     }
     
-    NSPanel *panel = (id)[self window];
+    NSPanel *panel = (id)self.window;
     [panel setAcceptsMouseMovedEvents:YES];
     [panel setLevel:NSPopUpMenuWindowLevel];
     [panel setOpaque:NO];
@@ -49,20 +49,20 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
         self.shutdownButton.image = [NSImage imageNamed:@"PowerIcon-White"];
         self.preferencesButton.image = [NSImage imageNamed:@"Settings-White"];
         self.window.backgroundColor = [NSColor blackColor];
-        [panel setBackgroundColor:[NSColor blackColor]];
+        panel.backgroundColor = [NSColor blackColor];
     }
     else
     {
         self.shutdownButton.image = [NSImage imageNamed:@"PowerIcon"];
         self.preferencesButton.image = [NSImage imageNamed:NSImageNameActionTemplate];
         self.window.backgroundColor = [NSColor whiteColor];
-        [panel setBackgroundColor:[NSColor whiteColor]];
+        panel.backgroundColor = [NSColor whiteColor];
     }
     
     [self updateDefaultPreferences];
     
     //Register for drag and drop
-    [self.mainTableview registerForDraggedTypes: [NSArray arrayWithObject:CLDragSessionKey]];
+    [self.mainTableview registerForDraggedTypes: @[CLDragSessionKey]];
     
     self.window.titlebarAppearsTransparent = YES;
     self.window.titleVisibility = NSWindowTitleHidden;
@@ -120,11 +120,8 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
     NSNumber *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
     if (theme.integerValue == 1)
     {
-        [cell updateTextColorWithColor:[NSColor whiteColor] andCell:cell];
-        [self.mainTableview setBackgroundColor:[NSColor blackColor]];
+        (self.mainTableview).backgroundColor = [NSColor blackColor];
         self.window.alphaValue = 0.90;
-        [cell.customName setDrawsBackground:YES];
-        [cell.customName setBackgroundColor:[NSColor blackColor]];
         customLabel.insertionPointColor = [NSColor whiteColor];
         cell.sunriseSetImage.image = dataObject.sunriseOrSunset ?
         [NSImage imageNamed:@"White Sunrise"] : [NSImage imageNamed:@"White Sunset"];
@@ -132,9 +129,7 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
     else
     {
         
-        [cell updateTextColorWithColor:[NSColor blackColor] andCell:cell];
-        [cell.customName setDrawsBackground:NO];
-        [self.mainTableview setBackgroundColor:[NSColor whiteColor]];
+        (self.mainTableview).backgroundColor = [NSColor whiteColor];
         self.window.alphaValue = 1;
         customLabel.insertionPointColor = [NSColor blackColor];
         cell.sunriseSetImage.image = dataObject.sunriseOrSunset ?
@@ -151,7 +146,7 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
     
     NSNumber *displayFutureSlider = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey];
     
-    self.futureSlider.hidden = [displayFutureSlider isEqualToNumber:[NSNumber numberWithInteger:1]] ? YES : NO;
+    self.futureSlider.hidden = [displayFutureSlider isEqualToNumber:@1] ? YES : NO;
     
     NSNumber *displaySunriseSunsetTime = [[NSUserDefaults standardUserDefaults] objectForKey:CLSunriseSunsetTime];
     
@@ -168,7 +163,7 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
         cell.sunriseSetTime.hidden = YES;
     }
 
-    [cell setUpAutoLayoutWithCell];
+    [cell setUpLayout];
     
     return cell;
 }
@@ -180,7 +175,7 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
 {
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
-    [pboard declareTypes:[NSArray arrayWithObject:CLDragSessionKey] owner:self];
+    [pboard declareTypes:@[CLDragSessionKey] owner:self];
     [pboard setData:data forType:CLDragSessionKey];
     return YES;
 }
@@ -198,7 +193,7 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
         }
         
         dataObject.customLabel = object;
-        [self.defaultPreferences replaceObjectAtIndex:row withObject:dataObject];
+        (self.defaultPreferences)[row] = dataObject;
         [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences forKey:CLDefaultPreferenceKey];
         [self.mainTableview reloadData];
     }
@@ -228,8 +223,8 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
     
     [[NSApplication sharedApplication].windows enumerateObjectsUsingBlock:^(NSWindow * _Nonnull window, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([window.windowController isMemberOfClass:[CLOneWindowController class]]) {
-            CLOneWindowController *ref = (CLOneWindowController *) window.windowController;
-            [ref.preferencesView refereshTimezoneTableView];
+            CLOneWindowController *oneWindowController = (CLOneWindowController *) window.windowController;
+            [oneWindowController.preferencesView refereshTimezoneTableView];
         }
         
     }];
@@ -248,11 +243,11 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
 {
     [super updateDefaultPreferences];
     
-    NSRect frame = [self.window frame];
+    NSRect frame = (self.window).frame;
     frame.size = NSMakeSize(self.window.frame.size.width, self.scrollViewHeight.constant+10);
     [self.window setFrame: frame display: YES animate:YES];
     
-    [self.window setContentMaxSize:NSMakeSize(self.window.frame.size.width+50, self.scrollViewHeight.constant+100)];
+    (self.window).contentMaxSize = NSMakeSize(self.window.frame.size.width+50, self.scrollViewHeight.constant+100);
     
     [self updateTime];
 }
@@ -341,7 +336,7 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
 {
     [super updatePanelColor];
     
-    NSPanel *panel = (id)[self window];
+    NSPanel *panel = (id)self.window;
     [panel setAcceptsMouseMovedEvents:YES];
     [panel setLevel:NSPopUpMenuWindowLevel];
     [panel setOpaque:NO];
@@ -354,14 +349,14 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
         self.shutdownButton.image = [NSImage imageNamed:@"PowerIcon-White"];
         self.preferencesButton.image = [NSImage imageNamed:@"Settings-White"];
         self.window.backgroundColor = [NSColor blackColor];
-        [panel setBackgroundColor:[NSColor blackColor]];
+        panel.backgroundColor = [NSColor blackColor];
     }
     else
     {
         self.shutdownButton.image = [NSImage imageNamed:@"PowerIcon"];
         self.preferencesButton.image = [NSImage imageNamed:NSImageNameActionTemplate];
         self.window.backgroundColor = [NSColor whiteColor];
-        [panel setBackgroundColor:[NSColor whiteColor]];
+        panel.backgroundColor = [NSColor whiteColor];
     }
 
 }

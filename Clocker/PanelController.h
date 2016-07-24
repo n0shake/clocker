@@ -58,7 +58,8 @@
 @property (nonatomic, unsafe_unretained) IBOutlet BackgroundView *backgroundView;
 @property (strong, nonatomic) PanelController *panelWindow;
 
-- (id)initWithDelegate:(id<PanelControllerDelegate>)delegate;
++ (instancetype)getPanelControllerInstance;
+- (instancetype)initWithDelegate:(id<PanelControllerDelegate>)delegate;
 - (void)openPanel;
 - (void)closePanel;
 - (void)updateDefaultPreferences;

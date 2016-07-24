@@ -33,8 +33,8 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 #pragma mark - Time Ago
 + (NSString*)timeAgoSinceDate:(NSDate*)date;
 + (NSString*)shortTimeAgoSinceDate:(NSDate*)date;
-- (NSString*)timeAgoSinceNow;
-- (NSString *)shortTimeAgoSinceNow;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *timeAgoSinceNow;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *shortTimeAgoSinceNow;
 - (NSString *)timeAgoSinceDate:(NSDate *)date;
 - (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates;
 - (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates numericTimes:(BOOL)useNumericTimes;
@@ -42,27 +42,27 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 
 
 #pragma mark - Date Components Without Calendar
-- (NSInteger)era;
-- (NSInteger)year;
-- (NSInteger)month;
-- (NSInteger)day;
-- (NSInteger)hour;
-- (NSInteger)minute;
-- (NSInteger)second;
-- (NSInteger)weekday;
-- (NSInteger)weekdayOrdinal;
-- (NSInteger)quarter;
-- (NSInteger)weekOfMonth;
-- (NSInteger)weekOfYear;
-- (NSInteger)yearForWeekOfYear;
-- (NSInteger)daysInMonth;
-- (NSInteger)dayOfYear;
--(NSInteger)daysInYear;
--(BOOL)isInLeapYear;
-- (BOOL)isToday;
-- (BOOL)isTomorrow;
--(BOOL)isYesterday;
-- (BOOL)isWeekend;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger era;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger year;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger month;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger day;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger hour;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger minute;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger second;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger weekday;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger weekdayOrdinal;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger quarter;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger weekOfMonth;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger weekOfYear;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger yearForWeekOfYear;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger daysInMonth;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger dayOfYear;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger daysInYear;
+@property (NS_NONATOMIC_IOSONLY, getter=isInLeapYear, readonly) BOOL inLeapYear;
+@property (NS_NONATOMIC_IOSONLY, getter=isToday, readonly) BOOL today;
+@property (NS_NONATOMIC_IOSONLY, getter=isTomorrow, readonly) BOOL tomorrow;
+@property (NS_NONATOMIC_IOSONLY, getter=isYesterday, readonly) BOOL yesterday;
+@property (NS_NONATOMIC_IOSONLY, getter=isWeekend, readonly) BOOL weekend;
 -(BOOL)isSameDay:(NSDate *)date;
 + (BOOL)isSameDay:(NSDate *)date asDate:(NSDate *)compareDate;
 
@@ -125,21 +125,21 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 -(NSInteger)daysFrom:(NSDate *)date calendar:(NSCalendar *)calendar;
 
 #pragma mark Time Until
--(NSInteger)yearsUntil;
--(NSInteger)monthsUntil;
--(NSInteger)weeksUntil;
--(NSInteger)daysUntil;
--(double)hoursUntil;
--(double)minutesUntil;
--(double)secondsUntil;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger yearsUntil;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger monthsUntil;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger weeksUntil;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger daysUntil;
+@property (NS_NONATOMIC_IOSONLY, readonly) double hoursUntil;
+@property (NS_NONATOMIC_IOSONLY, readonly) double minutesUntil;
+@property (NS_NONATOMIC_IOSONLY, readonly) double secondsUntil;
 #pragma mark Time Ago
--(NSInteger)yearsAgo;
--(NSInteger)monthsAgo;
--(NSInteger)weeksAgo;
--(NSInteger)daysAgo;
--(double)hoursAgo;
--(double)minutesAgo;
--(double)secondsAgo;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger yearsAgo;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger monthsAgo;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger weeksAgo;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger daysAgo;
+@property (NS_NONATOMIC_IOSONLY, readonly) double hoursAgo;
+@property (NS_NONATOMIC_IOSONLY, readonly) double minutesAgo;
+@property (NS_NONATOMIC_IOSONLY, readonly) double secondsAgo;
 #pragma mark Earlier Than
 -(NSInteger)yearsEarlierThan:(NSDate *)date;
 -(NSInteger)monthsEarlierThan:(NSDate *)date;

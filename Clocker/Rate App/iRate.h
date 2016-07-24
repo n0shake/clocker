@@ -96,12 +96,12 @@ typedef NS_ENUM(NSUInteger, iRateErrorCode)
 
 - (void)iRateCouldNotConnectToAppStore:(NSError *)error;
 - (void)iRateDidDetectAppUpdate;
-- (BOOL)iRateShouldPromptForRating;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL iRateShouldPromptForRating;
 - (void)iRateDidPromptForRating;
 - (void)iRateUserDidAttemptToRateApp;
 - (void)iRateUserDidDeclineToRateApp;
 - (void)iRateUserDidRequestReminderToRateApp;
-- (BOOL)iRateShouldOpenAppStore;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL iRateShouldOpenAppStore;
 - (void)iRateDidOpenAppStore;
 
 @end
@@ -161,7 +161,7 @@ typedef NS_ENUM(NSUInteger, iRateErrorCode)
 @property (nonatomic, weak_delegate) id<iRateDelegate> delegate;
 
 //manually control behaviour
-- (BOOL)shouldPromptForRating;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL shouldPromptForRating;
 - (void)promptForRating;
 - (void)promptIfNetworkAvailable;
 - (void)promptIfAllCriteriaMet;

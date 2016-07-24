@@ -132,12 +132,12 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
         if (self.useAllAvailableLanguages)
         {
             bundle = [NSBundle bundleWithPath:bundlePath];
-            NSString *language = [[NSLocale preferredLanguages] count]? [NSLocale preferredLanguages][0]: @"en";
-            if (![[bundle localizations] containsObject:language])
+            NSString *language = [NSLocale preferredLanguages].count? [NSLocale preferredLanguages][0]: @"en";
+            if (![bundle.localizations containsObject:language])
             {
                 language = [language componentsSeparatedByString:@"-"][0];
             }
-            if ([[bundle localizations] containsObject:language])
+            if ([bundle.localizations containsObject:language])
             {
                 bundlePath = [bundle pathForResource:language ofType:@"lproj"];
             }
@@ -177,20 +177,20 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
         {
             self.appStoreCountry = @"eu";
         }
-        else if ([[self.appStoreCountry stringByReplacingOccurrencesOfString:@"[A-Za-z]{2}" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, 2)] length])
+        else if ([self.appStoreCountry stringByReplacingOccurrencesOfString:@"[A-Za-z]{2}" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, 2)].length)
         {
             self.appStoreCountry = @"us";
         }
         
         //application version (use short version preferentially)
         self.applicationVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-        if ([self.applicationVersion length] == 0)
+        if ((self.applicationVersion).length == 0)
         {
             self.applicationVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
         }
         
         //bundle id
-        self.applicationBundleID = [[NSBundle mainBundle] bundleIdentifier];
+        self.applicationBundleID = [NSBundle mainBundle].bundleIdentifier;
         
         //default settings
         self.updatePriority = iVersionUpdatePriorityDefault;
@@ -224,7 +224,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
 #define APP_CLASS NSApplication
 #endif
         
-        _delegate = (id<iVersionDelegate>)[[APP_CLASS sharedApplication] delegate];
+        _delegate = (id<iVersionDelegate>)[APP_CLASS sharedApplication].delegate;
     }
     return _delegate;
 }
@@ -369,13 +369,13 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
         }
         else
         {
-            NSString *versionsFile = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:self.localVersionsPlistPath];
+            NSString *versionsFile = [[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:self.localVersionsPlistPath];
             versionsDict = [[NSDictionary alloc] initWithContentsOfFile:versionsFile];
             if (!versionsDict)
             {
                 // Get the path to versions plist in localized directory
                 NSArray *pathComponents = [self.localVersionsPlistPath componentsSeparatedByString:@"."];
-                versionsFile = ([pathComponents count] == 2) ? [[NSBundle mainBundle] pathForResource:pathComponents[0] ofType:pathComponents[1]] : nil;
+                versionsFile = (pathComponents.count == 2) ? [[NSBundle mainBundle] pathForResource:pathComponents[0] ofType:pathComponents[1]] : nil;
                 versionsDict = [[NSDictionary alloc] initWithContentsOfFile:versionsFile];
             }
         }
@@ -385,7 +385,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
 
 - (NSString *)mostRecentVersionInDict:(NSDictionary *)dict
 {
-    return [[[dict allKeys] sortedArrayUsingSelector:@selector(compareVersion:)] lastObject];
+    return [dict.allKeys sortedArrayUsingSelector:@selector(compareVersion:)].lastObject;
 }
 
 - (NSString *)versionDetails:(NSString *)version inDict:(NSDictionary *)dict
@@ -410,7 +410,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
     }
     BOOL newVersionFound = NO;
     NSMutableString *details = [NSMutableString string];
-    NSArray *versions = [[dict allKeys] sortedArrayUsingSelector:@selector(compareVersionDescending:)];
+    NSArray *versions = [dict.allKeys sortedArrayUsingSelector:@selector(compareVersionDescending:)];
     for (NSString *version in versions)
     {
         if ([version compareVersion:lastVersion] == NSOrderedDescending)
@@ -466,7 +466,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
 #if !TARGET_OS_IPHONE
     
     //only show when main window is available
-    if (self.onlyPromptIfMainWindowIsAvailable && ![[NSApplication sharedApplication] mainWindow])
+    if (self.onlyPromptIfMainWindowIsAvailable && ![NSApplication sharedApplication].mainWindow)
     {
         [self performSelector:@selector(downloadedVersionsData) withObject:nil afterDelay:0.5];
         return;
@@ -485,7 +485,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
             //log the error
             if (self.downloadError)
             {
-                NSLog(@"iVersion update check failed because: %@", [self.downloadError localizedDescription]);
+                NSLog(@"iVersion update check failed because: %@", (self.downloadError).localizedDescription);
             }
             else
             {
@@ -623,11 +623,11 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
         if (keyRange.location != NSNotFound)
         {
             NSInteger start = keyRange.location + keyRange.length;
-            NSRange valueStart = [json rangeOfString:@":" options:(NSStringCompareOptions)0 range:NSMakeRange(start, [(NSString *)json length] - start)];
+            NSRange valueStart = [json rangeOfString:@":" options:(NSStringCompareOptions)0 range:NSMakeRange(start, ((NSString *)json).length - start)];
             if (valueStart.location != NSNotFound)
             {
                 start = valueStart.location + 1;
-                NSRange valueEnd = [json rangeOfString:@"," options:(NSStringCompareOptions)0 range:NSMakeRange(start, [(NSString *)json length] - start)];
+                NSRange valueEnd = [json rangeOfString:@"," options:(NSStringCompareOptions)0 range:NSMakeRange(start, ((NSString *)json).length - start)];
                 if (valueEnd.location != NSNotFound)
                 {
                     NSString *value = [json substringWithRange:NSMakeRange(start, valueEnd.location - start)];
@@ -639,7 +639,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
                             break;
                         }
                         NSInteger newStart = valueEnd.location + 1;
-                        valueEnd = [json rangeOfString:@"," options:(NSStringCompareOptions)0 range:NSMakeRange(newStart, [(NSString *)json length] - newStart)];
+                        valueEnd = [json rangeOfString:@"," options:(NSStringCompareOptions)0 range:NSMakeRange(newStart, ((NSString *)json).length - newStart)];
                         value = [json substringWithRange:NSMakeRange(start, valueEnd.location - start)];
                         value = [value stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                     }
@@ -697,7 +697,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
 
 - (void)setAppStoreIDOnMainThread:(NSString *)appStoreIDString
 {
-    self.appStoreID = [appStoreIDString longLongValue];
+    self.appStoreID = appStoreIDString.longLongValue;
 }
 
 - (void)checkForNewVersionInBackground
@@ -931,7 +931,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
 #if !TARGET_OS_IPHONE
     
     //only show when main window is available
-    if (self.onlyPromptIfMainWindowIsAvailable && ![[NSApplication sharedApplication] mainWindow])
+    if (self.onlyPromptIfMainWindowIsAvailable && ![NSApplication sharedApplication].mainWindow)
     {
         [self performSelector:@selector(checkIfNewVersion) withObject:nil afterDelay:0.5];
         return;
@@ -973,12 +973,12 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
 
 - (BOOL)showIgnoreButton
 {
-    return [self.ignoreButtonLabel length] && self.updatePriority < iVersionUpdatePriorityMedium;
+    return (self.ignoreButtonLabel).length && self.updatePriority < iVersionUpdatePriorityMedium;
 }
 
 - (BOOL)showRemindButton
 {
-    return [self.remindButtonLabel length] && self.updatePriority < iVersionUpdatePriorityHigh;
+    return (self.remindButtonLabel).length && self.updatePriority < iVersionUpdatePriorityHigh;
 }
 
 - (id)showAlertWithTitle:(NSString *)title
@@ -1057,7 +1057,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
     [alert addButtonWithTitle:defaultButton];
     
     NSScrollView *scrollview = [[NSScrollView alloc] initWithFrame:NSMakeRect(0.0, 0.0, 380.0, 15.0)];
-    NSSize contentSize = [scrollview contentSize];
+    NSSize contentSize = scrollview.contentSize;
     scrollview.borderType = NSBezelBorder;
     scrollview.hasVerticalScroller = YES;
     scrollview.hasHorizontalScroller = NO;
@@ -1357,7 +1357,7 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
 - (void)openAppPageWhenAppStoreLaunched
 {
     //check if app store is running
-    for (NSRunningApplication *app in [[NSWorkspace sharedWorkspace] runningApplications])
+    for (NSRunningApplication *app in [NSWorkspace sharedWorkspace].runningApplications)
     {
         if ([app.bundleIdentifier isEqualToString:iVersionMacAppStoreBundleID])
         {

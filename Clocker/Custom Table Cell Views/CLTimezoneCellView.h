@@ -17,9 +17,8 @@
 @property (weak) IBOutlet NSImageView *sunriseSetImage;
 @property (nonatomic, assign) NSInteger rowNumber;
 
-
-- (void)updateTextColorWithColor:(NSColor *)color andCell:(CLTimezoneCellView*)cell;
-- (void)setUpAutoLayoutWithCell;
+- (void)setTextColor:(NSColor *)color;
+- (void)setUpLayout;
 
 @end
 

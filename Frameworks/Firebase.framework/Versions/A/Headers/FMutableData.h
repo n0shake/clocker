@@ -54,7 +54,7 @@
  *
  * @return YES if this data contains child nodes.
  */
-- (BOOL) hasChildren;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL hasChildren;
 
 
 /**

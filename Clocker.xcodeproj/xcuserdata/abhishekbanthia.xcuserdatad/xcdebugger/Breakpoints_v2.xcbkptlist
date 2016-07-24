@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Clocker/Custom Slider/CLCustomSliderCell.m"
-            timestampString = "485926507.475266"
+            filePath = "Clocker/Preferences/CLPreferencesViewController.m"
+            timestampString = "491092836.331017"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "-drawBarInside:flipped:"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "-acceptsFirstResponder"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

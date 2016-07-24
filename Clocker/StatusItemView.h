@@ -36,7 +36,7 @@
     __unsafe_unretained id _target;
 }
 
-- (id)initWithStatusItem:(NSStatusItem *)statusItem;
+- (instancetype)initWithStatusItem:(NSStatusItem *)statusItem;
 
 @property (nonatomic, strong) NSStatusItem *statusItem;
 @property (nonatomic, strong) NSImage *image;

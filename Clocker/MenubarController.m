@@ -11,14 +11,13 @@
 
 #pragma mark -
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self != nil)
     {
         // Install status item into the menu bar
         NSData *dataObject = [[NSUserDefaults standardUserDefaults] objectForKey:@"favouriteTimezone"];
-        NSString *menuTitle = [NSString new];
         
         NSStatusItem *statusItem;
         NSTextField *textField;
@@ -26,78 +25,77 @@
         if (dataObject)
         {
             CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:dataObject];
-            menuTitle = [timezoneObject getMenuTitle];
+            NSString *menuTitle = [timezoneObject getMenuTitle];
             
-            textField= [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, STATUS_ITEM_VIEW_WIDTH, 18)];
-            textField.backgroundColor = [NSColor whiteColor];
-            textField.bordered = NO;
-            textField.textColor = [NSColor blackColor];
-            textField.alignment = NSTextAlignmentCenter;
+            textField = [self setUpTextfieldForMenubar];
             textField.stringValue = (menuTitle.length > 0) ? menuTitle : @"Icon";
             [textField sizeToFit];
             
            statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:textField.frame.size.width+3];
             
-            [self shouldIconBeUpdated:YES];
+            [self setUpTimerForUpdatingMenubar];
             
         }
         else
         {
             statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:STATUS_ITEM_VIEW_WIDTH];
             
-            [self shouldIconBeUpdated:NO];
+            [self invalidateTimerForMenubar];
         }
        
-     
         _statusItemView = [[StatusItemView alloc] initWithStatusItem:statusItem];
-        _statusItemView.image = dataObject ? [self imageWithSubviewsWithTextField:textField] : [NSImage imageNamed:@"MenuIcon"];
+        _statusItemView.image = dataObject ? [self convertTextfieldRepresentationToImage:textField] : [NSImage imageNamed:@"MenuIcon"];
         _statusItemView.alternateImage = [NSImage imageNamed:@"StatusHighlighted"];
         _statusItemView.action = @selector(togglePanel:);
-           }
+        
+    }
+    
     return self;
 }
 
-- (void)setInitialTimezoneData
+- (NSTextField *)setUpTextfieldForMenubar
 {
-    [CLTimezoneData setInitialTimezoneData];
+    NSTextField *textField= [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, STATUS_ITEM_VIEW_WIDTH, 18)];
+    textField.backgroundColor = [NSColor whiteColor];
+    textField.bordered = NO;
+    textField.textColor = [NSColor blackColor];
+    textField.alignment = NSTextAlignmentCenter;
+    
+    return textField;
 }
 
-- (void)updateIconDisplay
+- (void)updateMenubar
 {
     [self.statusItemView setNeedsDisplay:YES];
 }
 
-- (void)shouldIconBeUpdated:(BOOL)value
+- (void)setUpTimerForUpdatingMenubar
 {
-    if (value)
-    {
-       self.iconUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                         target:self
-                                       selector:@selector(updateIconDisplay)
-                                       userInfo:nil
-                                        repeats:YES];
-
-    }
-    else
-    {
-        //Call setNeedsDisplay to change the icon and then invalidate the timer
-        [self.statusItemView setNeedsDisplay:YES];
-        [self.iconUpdateTimer invalidate];
-        self.iconUpdateTimer = nil;
-    }
+    self.menubarUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                            target:self
+                                                          selector:@selector(updateMenubar)
+                                                          userInfo:nil
+                                                           repeats:YES];
 }
 
-- (NSImage *)imageWithSubviewsWithTextField:(NSTextField *)textField
+- (void)invalidateTimerForMenubar
 {
-    NSSize mySize = textField.bounds.size;
-    NSSize imgSize = NSMakeSize( mySize.width, mySize.height );
+    [self.statusItemView setNeedsDisplay:YES];
+    [self.menubarUpdateTimer invalidate];
+    self.menubarUpdateTimer = nil;
+}
+
+- (NSImage *)convertTextfieldRepresentationToImage:(NSTextField *)textField
+{
+    NSSize textfieldSize = textField.bounds.size;
+    NSSize imgSize = NSMakeSize(textfieldSize.width, textfieldSize.height);
     
-    NSBitmapImageRep *bir = [textField bitmapImageRepForCachingDisplayInRect:[textField bounds]];
-    [bir setSize:imgSize];
-    [textField cacheDisplayInRect:[textField bounds] toBitmapImageRep:bir];
+    NSBitmapImageRep *bitmapRepresentation = [textField bitmapImageRepForCachingDisplayInRect:textField.bounds];
+    bitmapRepresentation.size = imgSize;
+    [textField cacheDisplayInRect:textField.bounds toBitmapImageRep:bitmapRepresentation];
     
-    NSImage* image = [[NSImage alloc]initWithSize:imgSize];
-    [image addRepresentation:bir];
+    NSImage* image = [[NSImage alloc] initWithSize:imgSize];
+    [image addRepresentation:bitmapRepresentation];
     return image;
     
 }

@@ -59,7 +59,7 @@
     
     /*No Future Slider when no timezones duh*/
     
-    self.futureSlider.hidden = [displayFutureSlider isEqualToNumber:[NSNumber numberWithInteger:1]] || (self.defaultPreferences.count == 0) ? YES : NO;
+    self.futureSlider.hidden = [displayFutureSlider isEqualToNumber:@1] || (self.defaultPreferences.count == 0) ? YES : NO;
     
     [self updatePanelColor];
 }
@@ -69,12 +69,12 @@
     NSNumber *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
     if (theme.integerValue == 1)
     {
-        [self.mainTableview setBackgroundColor:[NSColor blackColor]];
+        (self.mainTableview).backgroundColor = [NSColor blackColor];
         self.window.alphaValue = 0.90;
     }
     else
     {
-        [self.mainTableview setBackgroundColor:[NSColor whiteColor]];
+        (self.mainTableview).backgroundColor = [NSColor whiteColor];
         self.window.alphaValue = 1;
     }
 }
@@ -168,8 +168,6 @@
     
     CGRect oldFrame = CGRectMake(self.oneWindow.window.frame.origin.x, 730,self.oneWindow.window.frame.size.width, self.oneWindow.window.frame.size.height);
     
-   
-    
     [self performBoundsAnimationWithOldRect:oldFrame andNewRect:originalFrame andShouldOpenTimezonePanel:value];
     
     [NSApp activateIgnoringOtherApps:YES];
@@ -195,6 +193,10 @@
     };
 }
 
+- (void)updateTableContent
+{
+    [self.mainTableview reloadData];
+}
 
 
 @end

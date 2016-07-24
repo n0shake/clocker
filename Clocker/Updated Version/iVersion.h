@@ -100,7 +100,7 @@ typedef NS_ENUM(NSInteger, iVersionUpdatePriority)
 @protocol iVersionDelegate <NSObject>
 @optional
 
-- (BOOL)iVersionShouldCheckForNewVersion;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL iVersionShouldCheckForNewVersion;
 - (void)iVersionDidNotDetectNewVersion;
 - (void)iVersionVersionCheckDidFailWithError:(NSError *)error;
 - (void)iVersionDidDetectNewVersion:(NSString *)version details:(NSString *)versionDetails;
@@ -109,7 +109,7 @@ typedef NS_ENUM(NSInteger, iVersionUpdatePriority)
 - (void)iVersionUserDidAttemptToDownloadUpdate:(NSString *)version;
 - (void)iVersionUserDidRequestReminderForUpdate:(NSString *)version;
 - (void)iVersionUserDidIgnoreUpdate:(NSString *)version;
-- (BOOL)iVersionShouldOpenAppStore;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL iVersionShouldOpenAppStore;
 - (void)iVersionDidPresentStoreKitModal;
 - (void)iVersionDidDismissStoreKitModal;
 
@@ -165,10 +165,10 @@ typedef NS_ENUM(NSInteger, iVersionUpdatePriority)
 @property (nonatomic, weak_delegate) id<iVersionDelegate> delegate;
 
 //manually control behaviour
-- (BOOL)openAppPageInAppStore;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL openAppPageInAppStore;
 - (void)checkIfNewVersion;
-- (NSString *)versionDetails;
-- (BOOL)shouldCheckForNewVersion;
+@property (readonly, copy) NSString *versionDetails;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL shouldCheckForNewVersion;
 - (void)checkForNewVersion;
 
 @end

@@ -12,11 +12,10 @@
 #import <Firebase/Firebase.h>
 
 NSString *const CLAppFeedbackNibIdentifier = @"CLAppFeedbackWindow";
-NSString *const CLParseAppFeedbackClassIdentifier = @"CLAppFeedback";
-NSString *const CLParseAppFeedbackNoResponseString = @"Not Provided";
-NSString *const CLParseAppFeedbackNameProperty = @"name";
-NSString *const CLParseAppFeedbackEmailProperty = @"email";
-NSString *const CLParseAppFeedbackFeedbackProperty = @"feedback";
+NSString *const CLAppFeedbackNoResponseString = @"Not Provided";
+NSString *const CLAppFeedbackNameProperty = @"name";
+NSString *const CLAppFeedbackEmailProperty = @"email";
+NSString *const CLAppFeedbackFeedbackProperty = @"feedback";
 NSString *const CLFeedbackAlertTitle = @"Thank you for helping make Clocker even better!";
 NSString *const CLFeedbackAlertInformativeText = @"We owe you a candy. 😇";
 NSString *const CLFeedbackAlertButtonTitle = @"Close";
@@ -39,7 +38,6 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
     [super windowDidLoad];
     
     self.window.backgroundColor = [NSColor whiteColor];
-    
     self.window.titleVisibility = NSWindowTitleHidden;
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
@@ -73,38 +71,60 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
 
 - (IBAction)sendFeedback:(id)sender
 {
-    [self cleanUp];
+    [self resetInformativeTextLabel];
     
     self.activityInProgress = YES;
     
+    if (![self didUserEnterFeedback]){
+        return;
+    }
+    
+    NSMutableDictionary *feedbackInfo = [self retrieveDataForSending];
+    [self sendDataToFirebase:feedbackInfo];
+    [self showDataConfirmation];
+
+}
+
+- (BOOL)didUserEnterFeedback
+{
     if (self.feedbackTextView.string.length == 0)
     {
         self.informativeText.stringValue = CLFeedbackNotEnteredErrorMessage;
         [NSTimer scheduledTimerWithTimeInterval:5.0
                                          target:self
-                                       selector:@selector(cleanUp)
+                                       selector:@selector(resetInformativeTextLabel)
                                        userInfo:nil
                                         repeats:NO];
         self.activityInProgress = NO;
-        return;
+        return NO;
     }
     
-    
+    return YES;
+}
+
+- (NSMutableDictionary *)retrieveDataForSending
+{
     NSMutableDictionary *feedbackInfo = [[NSMutableDictionary alloc] init];
-    [feedbackInfo setObject:(self.nameField.stringValue.length > 0) ?
-    self.nameField.stringValue : CLParseAppFeedbackNoResponseString forKey:CLParseAppFeedbackNameProperty];
-    [feedbackInfo setObject:(self.emailField.stringValue.length > 0) ?
-     self.emailField.stringValue : CLParseAppFeedbackNoResponseString forKey:CLParseAppFeedbackEmailProperty];
-    [feedbackInfo setObject:self.feedbackTextView.string forKey:CLParseAppFeedbackFeedbackProperty ];
+    feedbackInfo[CLAppFeedbackNameProperty] = (self.nameField.stringValue.length > 0) ?
+    self.nameField.stringValue : CLAppFeedbackNoResponseString;
+    feedbackInfo[CLAppFeedbackEmailProperty] = (self.emailField.stringValue.length > 0) ?
+    self.emailField.stringValue : CLAppFeedbackNoResponseString;
+    feedbackInfo[CLAppFeedbackFeedbackProperty] = self.feedbackTextView.string;
     
-    // Create a reference to a Firebase database URL
+    return feedbackInfo;
+}
+
+- (void)sendDataToFirebase:(NSDictionary *)feedbackInfo
+{
     Firebase *myRootRef = [[Firebase alloc] initWithUrl:@"https://fiery-heat-5237.firebaseio.com/Feedback"];
     Firebase *feedbackRef = [myRootRef childByAppendingPath:[self getSerialNumber]];
-    // Write data to Firebase
-    
     [feedbackRef setValue:feedbackInfo];
-   
+}
+
+- (void)showDataConfirmation
+{
     self.activityInProgress = NO;
+    
     NSAlert *alert = [NSAlert new];
     alert.messageText = NSLocalizedString(CLFeedbackAlertTitle, @"Thank you for helping make Clocker even better!");
     alert.informativeText = CLFeedbackAlertInformativeText;
@@ -115,7 +135,7 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
                   }];
 }
 
-- (void)cleanUp
+- (void)resetInformativeTextLabel
 {
     self.informativeText.stringValue = CLEmptyString;
 }
@@ -127,26 +147,30 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
 
 -(void)windowWillClose:(NSNotification *)notification
 {
-    [self cleanUp];
+    [self resetInformativeTextLabel];
+    [self performClosingCleanUp];
+    [self bringPreferencesWindowToFront];
+}
+
+- (void)performClosingCleanUp
+{
     self.nameField.stringValue = CLEmptyString;
     self.emailField.stringValue = CLEmptyString;
     self.feedbackTextView.string = CLEmptyString;
     self.activityInProgress = NO;
-    
-    [[NSApplication sharedApplication].windows enumerateObjectsUsingBlock:^(NSWindow * _Nonnull window, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([window.windowController isMemberOfClass:[CLOneWindowController class]]) {
-            [window makeKeyAndOrderFront:self];
-            [NSApp activateIgnoringOtherApps:YES];
-        }
-    }];
-    
 }
-     
+
+-(void)bringPreferencesWindowToFront
+{
+    CLOneWindowController *oneWindowController = [CLOneWindowController sharedWindow];
+    [oneWindowController.window makeKeyAndOrderFront:self];
+    [NSApp activateIgnoringOtherApps:YES];
+}
+
+
 - (NSString *)getSerialNumber
 {
-    io_service_t    platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault,
-                                                                 
-                                                                 IOServiceMatching("IOPlatformExpertDevice"));
+    io_service_t platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice"));
     CFStringRef serialNumberAsCFString = NULL;
     
     if (platformExpert) {

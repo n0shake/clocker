@@ -10,7 +10,6 @@
 #import "iRate.h"
 #import <QuartzCore/QuartzCore.h>
 #import "PanelController.h"
-#import "CLAppFeedbackWindowController.h"
 
 @implementation CLRatingCellView
 
@@ -41,7 +40,7 @@ NSString *const CLYesWithExclamation = @"Yes!";
     else
     {
         //Make the row disappear and call remind later
-        PanelController *panelRef = [[[NSApplication sharedApplication] mainWindow] windowController];
+        PanelController *panelRef = [PanelController getPanelControllerInstance];
         panelRef.showReviewCell = NO;
         [panelRef updateDefaultPreferences];
         [panelRef closePanel];
@@ -75,7 +74,7 @@ NSString *const CLYesWithExclamation = @"Yes!";
 
 - (void)updateMainTableView
 {
-    PanelController *panelRef = [[[NSApplication sharedApplication] mainWindow] windowController];
+    PanelController *panelRef = [PanelController getPanelControllerInstance];
     panelRef.showReviewCell = NO;
     [panelRef updateDefaultPreferences];
 }
@@ -85,37 +84,37 @@ NSString *const CLYesWithExclamation = @"Yes!";
             withLeftButtonTitle:(NSString *)leftTitle
             andRightButtonTitle:(NSString *)rightTitle
 {
-    if ([[textfield stringValue] isEqual: aString])
+    if ([textfield.stringValue isEqual: aString])
     {
         return;
     }
     
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-        [context setDuration: 1.0];
-        [context setTimingFunction: [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseOut]];
-        [self.imageView.animator setAlphaValue:0.0];
-        [self.leftButton.animator setAlphaValue:0.0];
-        [self.rightButton.animator setAlphaValue:0.0];
-        [textfield.animator setAlphaValue: 0.0];
+        context.duration = 1.0;
+        context.timingFunction = [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseOut];
+        (self.imageView.animator).alphaValue = 0.0;
+        (self.leftButton.animator).alphaValue = 0.0;
+        (self.rightButton.animator).alphaValue = 0.0;
+        (textfield.animator).alphaValue = 0.0;
     }
                         completionHandler:^{
-                            [textfield setStringValue: aString];
+                            textfield.stringValue = aString;
                             [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-                                [context setDuration: 1.0];
-                                [context setTimingFunction: [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseIn]];
-                                [self.imageView.animator setAlphaValue: 1.0];
-                                [textfield.animator setAlphaValue: 1.0];
-                                [self.leftButton.animator setAlphaValue:1.0];
-                                [self.rightButton.animator setAlphaValue:1.0];
+                                context.duration = 1.0;
+                                context.timingFunction = [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseIn];
+                                (self.imageView.animator).alphaValue = 1.0;
+                                (textfield.animator).alphaValue = 1.0;
+                                (self.leftButton.animator).alphaValue = 1.0;
+                                (self.rightButton.animator).alphaValue = 1.0;
                                 if ([self.leftButton.title isEqualToString:@"Not Really"]) {
-                                    [self.leftButton.animator setTitle:CLNoThanksTitle];
+                                    (self.leftButton.animator).title = CLNoThanksTitle;
                                 }
                                 if ([self.rightButton.title isEqualToString:CLYesWithExclamation]) {
-                                    [self.rightButton.animator setTitle:@"Yes, sure"];
+                                    (self.rightButton.animator).title = @"Yes, sure";
                                 }
                                 
-                                [self.leftButton.animator setTitle:leftTitle];
-                                 [self.rightButton.animator setTitle:rightTitle];
+                                (self.leftButton.animator).title = leftTitle;
+                                 (self.rightButton.animator).title = rightTitle;
 
                             } completionHandler: ^{
                                                             }];

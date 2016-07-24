@@ -40,11 +40,11 @@
 #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
 #else
 @interface NSBezierPath (Path)
-- (CGPathRef)quartzPath;
+@property (NS_NONATOMIC_IOSONLY, readonly) CGPathRef quartzPath;
 @end
 
 @interface NSImage (cgImage)
--(CGImageRef)cgImage;
+@property (NS_NONATOMIC_IOSONLY, readonly) CGImageRef cgImage;
 @end
 
 

@@ -52,7 +52,7 @@
 		CAKeyframeAnimation *keyAnim = (CAKeyframeAnimation*)anim;
 		
 		if (!anim.autoreverses) {
-			NSArray *values = [[keyAnim.values reverseObjectEnumerator] allObjects];
+			NSArray *values = [keyAnim.values reverseObjectEnumerator].allObjects;
 			keyAnim.values = values;
 			reverseTimingFunction(keyAnim);
 		}
@@ -226,7 +226,7 @@
 			}
 			
 			groupAnim.animations = newSubAnimations;
-			NSArray *animations  = [(CAAnimationGroup*)groupAnim animations];
+			NSArray *animations  = ((CAAnimationGroup*)groupAnim).animations;
 			for (CABasicAnimation *sub in animations) {
 				setBeginTime(sub, idx);
 				
@@ -277,10 +277,11 @@
 #else
 @implementation NSBezierPath (Path)
 
-- (CGPathRef)quartzPath{
+- (CGPathRef)quartzPath
+{
 	NSInteger i, numElements;
 	CGPathRef           immutablePath = NULL;
-	numElements = [self elementCount];
+	numElements = self.elementCount;
 	
 	if (numElements > 0)
 	{
@@ -321,6 +322,7 @@
 		immutablePath = CGPathCreateCopy(path);
 		CGPathRelease(path);
 	}
+    
 	return immutablePath;
 }
 
@@ -329,7 +331,7 @@
 @implementation NSImage (cgImage)
 
 -(CGImageRef)cgImage{
-		NSData* data = [self TIFFRepresentation];
+		NSData* data = self.TIFFRepresentation;
 	    CGImageRef        imageRef = NULL;
 	    CGImageSourceRef  sourceRef;
 	    

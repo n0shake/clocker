@@ -1068,7 +1068,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0700;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					0755AE4E1BEA15950094AB41 = {
@@ -1645,7 +1645,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/pop-tests/pop-tests-tvos-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "pop-tests";
 				SDKROOT = appletvos;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
@@ -1678,7 +1678,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/pop-tests/pop-tests-tvos-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "pop-tests";
 				SDKROOT = appletvos;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
@@ -1712,7 +1712,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/pop-tests/pop-tests-tvos-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "pop-tests";
 				SDKROOT = appletvos;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
@@ -1733,6 +1733,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/pop/pop-ios-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "$(SRCROOT)/pop/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = pop;
 			};
 			name = Debug;
@@ -1750,6 +1751,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/pop/pop-ios-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "$(SRCROOT)/pop/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = pop;
 			};
 			name = Release;
@@ -1767,6 +1769,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/pop/pop-ios-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "$(SRCROOT)/pop/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = pop;
 			};
 			name = Profile;
@@ -1804,6 +1807,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1856,6 +1860,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = "$(SRCROOT)/pop/pop-osx-Info.plist";
 				INSTALL_PATH = "@rpath";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = pop;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Headers";
 			};
@@ -1870,6 +1875,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = "$(SRCROOT)/pop/pop-osx-Info.plist";
 				INSTALL_PATH = "@rpath";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = pop;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Headers";
 			};
@@ -1884,6 +1890,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = "$(SRCROOT)/pop/pop-osx-Info.plist";
 				INSTALL_PATH = "@rpath";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = pop;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Headers";
 			};
@@ -1902,6 +1909,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/pop-tests/pop-tests-osx-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "pop-tests";
 				SDKROOT = macosx;
 			};
@@ -1919,6 +1927,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/pop-tests/pop-tests-osx-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "pop-tests";
 				SDKROOT = macosx;
 			};
@@ -1936,6 +1945,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/pop-tests/pop-tests-osx-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "pop-tests";
 				SDKROOT = macosx;
 			};
@@ -1952,6 +1962,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/pop-tests/pop-tests-ios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "pop-tests";
 			};
 			name = Debug;
@@ -1967,6 +1978,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/pop-tests/pop-tests-ios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "pop-tests";
 			};
 			name = Release;
@@ -1982,6 +1994,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/pop-tests/pop-tests-ios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "pop-tests";
 			};
 			name = Profile;

@@ -34,27 +34,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do view setup here.
-    
-//     self.view.window.titleVisibility = NSWindowTitleHidden;
     
     self.headerLabelString = @[@"Now, Clocker stays on top of all the windows", @"Access Clocker through keyboard shortcuts", @"Customize your menubar with Favourites"];
     
     [self.headerView setWantsLayer:YES];
     
-    CALayer *viewLayer = [CALayer layer];
-    [viewLayer setBackgroundColor:CGColorCreateGenericRGB(255.0, 255.0, 255.0, 0.8)]; //RGB plus Alpha Channel
-    [self.view setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
-    [self.view setLayer:viewLayer];
-    
     self.view.window.styleMask = NSFullSizeContentViewWindowMask;
     
     [self initializeViews];
-    
-    /*
-        Hide continue button until the animations are over.
-        Faltu me animations waste hoga nahi toh.
-     */
     
     self.nextActionButton.hidden = YES;
     
@@ -164,15 +151,15 @@
 - (IBAction)continueOnboarding:(NSButton *)sender
 {
     
-    if ([[sender title] isEqualToString:@"Continue"])
+    if ([sender.title isEqualToString:@"Continue"])
     {
         [self performContinueButtonAnimationWithValue:YES];
         
         [self addAnimationInOrderWithTag:CLKeyboardShortcutFeature];
         
-        [sender setTitle:@"Next"];
+        sender.title = @"Next";
     }
-    else if ([[sender title] isEqualToString:@"Next"])
+    else if ([sender.title isEqualToString:@"Next"])
     {
        [self performContinueButtonAnimationWithValue:YES];
         
@@ -226,15 +213,13 @@
     [self performSkipEvent];
 }
 
-- (BOOL) performSkipEvent
+- (void) performSkipEvent
 {
     [self.view.window close];
     
     ApplicationDelegate *delegate = (ApplicationDelegate*)[NSApplication sharedApplication].delegate;
     
     [delegate togglePanel:nil];
-    
-    return YES;
 }
 
 - (void)openPreferences

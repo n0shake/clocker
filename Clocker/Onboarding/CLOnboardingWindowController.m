@@ -58,15 +58,10 @@ static CLOnboardingWindowController *sharedOnboardingWindow;
     CGRect newFrame = self.introViewController.view.frame;
     
     [self performBoundsAnimationWithOldRect:oldFrame andNewRect:newFrame];
-
-
 }
 
 - (void)performBoundsAnimationWithOldRect:(CGRect)fromRect andNewRect:(CGRect)newRect
 {
-    
-
-    
     [self.window setFrame:fromRect display:NO animate:NO];
     
     self.window.contentView.wantsLayer = YES;
@@ -81,7 +76,7 @@ static CLOnboardingWindowController *sharedOnboardingWindow;
     
     [self.window setContentSize:self.introViewController.view.frame.size];
     
-    [self.window setContentView:self.introViewController.view];
+    (self.window).contentView = self.introViewController.view;
 }
 
 

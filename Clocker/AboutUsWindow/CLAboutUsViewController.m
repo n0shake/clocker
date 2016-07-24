@@ -8,6 +8,7 @@
 
 #import "CLAboutUsViewController.h"
 #import "CommonStrings.h"
+#import "CLAppFeedbackWindowController.h"
 
 @interface CLAboutUsViewController ()
 
@@ -28,11 +29,6 @@ NSString *const CLFacebookPageURL = @"https://www.facebook.com/ClockerMenubarClo
     [super viewDidLoad];
     
     self.versionField.stringValue = NSLocalizedFormatString(@"ClockerVersion", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]);
-    
-    CALayer *viewLayer = [CALayer layer];
-    [viewLayer setBackgroundColor:CGColorCreateGenericRGB(255.0, 255.0, 255.0, 0.8)]; //RGB plus Alpha Channel
-    [self.view setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
-    [self.view setLayer:viewLayer];
 
     // Do view setup here.
 }
@@ -53,29 +49,5 @@ NSString *const CLFacebookPageURL = @"https://www.facebook.com/ClockerMenubarClo
 {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLFacebookPageURL]];
 }
-
-- (NSString *)getSerialNumber
-{
-    io_service_t    platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault,
-                                                                 
-                                                                 IOServiceMatching("IOPlatformExpertDevice"));
-    CFStringRef serialNumberAsCFString = NULL;
-    
-    if (platformExpert) {
-        serialNumberAsCFString = IORegistryEntryCreateCFProperty(platformExpert,
-                                                                 CFSTR(kIOPlatformSerialNumberKey),
-                                                                 kCFAllocatorDefault, 0);
-        IOObjectRelease(platformExpert);
-    }
-    
-    NSString *serialNumberAsNSString = nil;
-    if (serialNumberAsCFString) {
-        serialNumberAsNSString = [NSString stringWithString:(__bridge NSString *)serialNumberAsCFString];
-        CFRelease(serialNumberAsCFString);
-    }
-    
-    return serialNumberAsNSString;
-}
-
 
 @end

@@ -18,5 +18,4 @@
 - (void)updatePanelColor;
 - (void)startWindowTimer;
 
-
 @end

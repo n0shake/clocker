@@ -19,10 +19,10 @@
     CGFloat barRadius = 2.5;
     
     // Knob position depending on control min/max value and current control value.
-    CGFloat value = ([self doubleValue]  - [self minValue]) / ([self maxValue] - [self minValue]);
+    CGFloat value = (self.doubleValue  - self.minValue) / (self.maxValue - self.minValue);
     
     // Final Left Part Width
-    CGFloat finalWidth = value * ([[self controlView] frame].size.width - 8);
+    CGFloat finalWidth = value * (self.controlView.frame.size.width - 8);
     
     // Left Part Rect
     NSRect leftRect = rect;

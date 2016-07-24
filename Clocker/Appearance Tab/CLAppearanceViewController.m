@@ -13,6 +13,11 @@
 #import "CLTimezoneData.h"
 #import "CLFloatingWindowController.h"
 
+typedef NS_ENUM(NSUInteger, CLClockerMode) {
+    CLMenubarMode = 0,
+    CLFloatingMode
+};
+
 @interface CLAppearanceViewController ()
 @property (weak) IBOutlet NSSegmentedControl *timeFormat;
 @property (weak) IBOutlet NSSegmentedControl *theme;
@@ -26,11 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CALayer *viewLayer = [CALayer layer];
-    [viewLayer setBackgroundColor:CGColorCreateGenericRGB(255.0, 255.0, 255.0, 0.8)]; //RGB plus Alpha Channel
-    [self.view setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
-    [self.view setLayer:viewLayer];
-    
     self.informationLabel.stringValue = @"Select a favourite timezone to enable menubar display options.";
     self.informationLabel.textColor = [NSColor secondaryLabelColor];
     
@@ -38,14 +38,11 @@
     
 }
 
-
-
-
 - (IBAction)timeFormatSelectionChanged:(id)sender
 {
     NSSegmentedControl *timeFormat = (NSSegmentedControl *)sender;
     
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:timeFormat.selectedSegment] forKey:CL24hourFormatSelectedKey];
+    [[NSUserDefaults standardUserDefaults] setObject:@(timeFormat.selectedSegment) forKey:CL24hourFormatSelectedKey];
     
     [self refreshMainTableview:YES andUpdateFloatingWindow:YES];
 }
@@ -57,8 +54,8 @@
     //Get the current display mode
     [self refreshMainTableview:NO andUpdateFloatingWindow:YES];
     
-    ApplicationDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-    PanelController *panelController = appDelegate.panelController;
+    PanelController *panelController = [PanelController getPanelControllerInstance];
+    
     [panelController.backgroundView setNeedsDisplay:YES];
     
     if (themeSegment.selectedSegment == CLBlackTheme) {
@@ -76,37 +73,37 @@
         [panelController updatePanelColor];
     }
     
-    [panelController.mainTableview reloadData];
+    [panelController updateTableContent];
 
 }
 
-- (IBAction)displayModeChanged:(id)sender
+- (IBAction)displayModeChanged:(NSSegmentedControl *)modeSegment
 {
-    NSSegmentedControl *modeSegment = (NSSegmentedControl *)sender;
-    ApplicationDelegate *sharedDelege = (ApplicationDelegate*)[NSApplication sharedApplication].delegate;
+    ApplicationDelegate *sharedDelegate = (ApplicationDelegate*)[NSApplication sharedApplication].delegate;
     
-    if (modeSegment.selectedSegment == 1)
+    if (modeSegment.selectedSegment == CLFloatingMode)
     {
-        sharedDelege.floatingWindow = [CLFloatingWindowController sharedFloatingWindow];
-        [sharedDelege.floatingWindow showWindow:nil];
-        [sharedDelege.floatingWindow updateDefaultPreferences];
-        [sharedDelege.floatingWindow startWindowTimer];
+        sharedDelegate.floatingWindow = [CLFloatingWindowController sharedFloatingWindow];
+        [sharedDelegate.floatingWindow showWindow:nil];
+        [sharedDelegate.floatingWindow updateDefaultPreferences];
+        [sharedDelegate.floatingWindow startWindowTimer];
         [NSApp activateIgnoringOtherApps:YES];
     }
     else
     {
-        sharedDelege.floatingWindow = [CLFloatingWindowController sharedFloatingWindow];
-        [sharedDelege.floatingWindow.window close];
-        [sharedDelege.panelController updateDefaultPreferences];
+        sharedDelegate.floatingWindow = [CLFloatingWindowController sharedFloatingWindow];
+        [sharedDelegate.floatingWindow.window close];
+        [sharedDelegate.panelController updateDefaultPreferences];
     }
 }
 
 
-- (IBAction)changeRelativeDayDisplay:(id)sender
+- (IBAction)changeRelativeDayDisplay:(NSSegmentedControl *)relativeDayControl
 {
-    NSSegmentedControl *relativeDayControl = (NSSegmentedControl*) sender;
-    NSNumber *selectedIndex = [NSNumber numberWithInteger:relativeDayControl.selectedSegment];
+    NSNumber *selectedIndex = @(relativeDayControl.selectedSegment);
+    
     [[NSUserDefaults standardUserDefaults] setObject:selectedIndex forKey:CLRelativeDateKey];
+    
     [self refreshMainTableview:YES andUpdateFloatingWindow:YES];
 }
 
@@ -117,15 +114,15 @@
         
         if (panel)
         {
-            ApplicationDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+            ApplicationDelegate *appDelegate = (ApplicationDelegate *)[NSApplication sharedApplication].delegate;
             
-            PanelController *panelController = appDelegate.panelController;
+            PanelController *panelController = [PanelController getPanelControllerInstance];
             
             [panelController updateDefaultPreferences];
             
-            [panelController.mainTableview reloadData];
+            [panelController updateTableContent];
             
-            [appDelegate.menubarController shouldIconBeUpdated:YES];
+            [appDelegate.menubarController setUpTimerForUpdatingMenubar];
         }
         
         if (value)
@@ -133,38 +130,21 @@
             //Get the current display mode
             NSNumber *displayMode = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowAppInForeground];
             
-            if (displayMode.integerValue == 1)
+            if (displayMode.integerValue == CLFloatingMode)
             {
-                //Get the Floating window instance
-                for (NSWindow *window in [NSApplication sharedApplication].windows)
+    
+                CLFloatingWindowController *floatingWindowInstance = [CLFloatingWindowController sharedFloatingWindow];
+                
+                [floatingWindowInstance updateTableContent];
+                //Only one instance where we need to update panel color and in that instance we pass panel as NO
+                
+                if (!panel)
                 {
-                    if ([window.windowController isKindOfClass:[CLFloatingWindowController class]])
-                    {
-                        CLFloatingWindowController *currentInstance = (CLFloatingWindowController *)window.windowController;
-                        [currentInstance.mainTableview reloadData];
-                        
-                        //Only one instance where we need to update panel color and in that instance we pass panel as NO
-                        
-                        if (!panel)
-                        {
-                             [currentInstance updatePanelColor];
-                        }
-                    }
+                    [floatingWindowInstance updatePanelColor];
                 }
             }
         }
     });
-}
-
-- (IBAction)changeMenuBarDisplayPreferences:(id)sender
-{
-    NSSegmentedControl *segmentedControl = (NSSegmentedControl *)sender;
-    NSNumber *shouldDayBeShown = [NSNumber numberWithBool:[segmentedControl isSelectedForSegment:0]];
-    NSNumber *shouldCityBeShown = [NSNumber numberWithBool:[segmentedControl isSelectedForSegment:1]];
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:shouldDayBeShown forKey:@"shouldDayBeShown"];
-    [userDefaults setObject:shouldCityBeShown forKey:@"shouldCityBeShown"];
 }
 
 - (IBAction)showFutureSlider:(id)sender

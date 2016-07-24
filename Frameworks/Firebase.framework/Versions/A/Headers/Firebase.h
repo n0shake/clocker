@@ -57,7 +57,7 @@
  *
  * @param url The Firebase URL (ie: https://SampleChat.firebaseIO-demo.com)
  */
-- (id)initWithUrl:(NSString *)url;
+- (instancetype)initWithUrl:(NSString *)url;
 
 /** @name Getting references to children locations */
 
@@ -82,7 +82,7 @@
  *
  * @return A Firebase reference for the generated location.
  */
-- (Firebase *) childByAutoId;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) Firebase *childByAutoId;
 
 
 /** @name Writing data */
@@ -498,7 +498,7 @@ that will automatically be populated by the Firebase Server.
  *
  * @return An FQuery instance, ordered by child keys.
  */
-- (FQuery *) queryOrderedByKey;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) FQuery *queryOrderedByKey;
 
 /**
  * queryOrderedByPriority: is used to generate a reference to a view of the data that's been sorted by child
@@ -507,7 +507,7 @@ that will automatically be populated by the Firebase Server.
  *
  * @return An FQuery instance, ordered by child priorities.
  */
-- (FQuery *) queryOrderedByPriority;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) FQuery *queryOrderedByPriority;
 
 /**
  * queryStartingAtValue: is used to generate a reference to a limited view of the data at this location.
@@ -986,7 +986,7 @@ that will automatically be populated by the Firebase Server.
  *
  * @return The absolute URL of the referenced Firebase location.
  */
-- (NSString *) description;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *description;
 
 /** @name Properties */
 

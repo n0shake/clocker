@@ -9,15 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "CLTimezoneCellView.h"
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, CLDateDisplayType) {
     CLPanelDisplay,
     CLMenuDisplay
-} CLDateDisplayType;
+};
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, CLSelection) {
     CLCitySelection,
     CLTimezoneSelection
-} CLSelection;
+};
 
 @interface CLTimezoneData : NSObject<NSCoding>
 
@@ -35,21 +35,14 @@ typedef enum : NSUInteger {
 @property (assign, nonatomic) CLSelection selectionType;
 
 + (instancetype)getCustomObject:(NSData *)encodedData;
-+ (void)setInitialTimezoneData;
-
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
-- (BOOL)saveObjectToPreferences;
 - (NSString *)getTimeForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue;
-- (NSString *)getLocalCurrentDate;
 - (NSString *)compareSystemDate:(NSString *)systemDate toTimezoneDate:(NSString *)date;
 - (NSString *)getDateForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue andDisplayType:(CLDateDisplayType)type;
 - (NSString *)formatStringShouldContainCity:(BOOL)value;
-- (NSString *)getMenuTitle;
+@property (NS_NONATOMIC_IOSONLY, getter=getMenuTitle, readonly, copy) NSString *menuTitle;
 -(NSString *)getFormattedSunriseOrSunsetTimeAndSliderValue:(NSInteger)sliderValue;
-
-/*
- - (NSString *)getFormattedSunriseOrSunsetTimeAndSunImage:(CLTimezoneCellView *)cell;
- */
+- (void)save;
 
 @end

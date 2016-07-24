@@ -7,12 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "CLParentViewController.h"
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, CLFeature) {
     CLFloatingViewFeature,
     CLKeyboardShortcutFeature,
     CLFavouriteFeature
-} CLFeature;
+};
 
-@interface CLIntroViewController : NSViewController
+@interface CLIntroViewController : CLParentViewController
+
 @end

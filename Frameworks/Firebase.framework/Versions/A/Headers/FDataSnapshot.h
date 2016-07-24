@@ -70,7 +70,7 @@
  * 
  * @return YES if this snapshot has any children, else NO.
  */
-- (BOOL) hasChildren;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL hasChildren;
 
 
 /**
@@ -78,7 +78,7 @@
  *
  * @return YES if this snapshot contains a non-null value, otherwise NO.
  */
-- (BOOL) exists;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL exists;
 
 
 /** @name Data export */
@@ -89,7 +89,7 @@
  * Priorities, where they exist, are accessible under the ".priority" key in instances of NSDictionary. 
  * For leaf locations with priorities, the value will be under the ".value" key.
  */
-- (id) valueInExportFormat;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) id valueInExportFormat;
 
 
 /** @name Properties */

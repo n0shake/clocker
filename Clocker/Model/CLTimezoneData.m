@@ -6,7 +6,7 @@
 //
 //
 
-#import "CLAPI.h"
+#import "CLAPIConnector.h"
 #import "CLTimezoneData.h"
 #import "CommonStrings.h"
 #import "DateTools.h"
@@ -29,32 +29,11 @@
         self.longitude = dictionary[@"longitude"];
         self.place_id = dictionary[CLPlaceIdentifier];
         self.formattedAddress = dictionary[CLTimezoneName];
-        self.isFavourite = [NSNumber numberWithInt:NSOffState];
+        self.isFavourite = @(NSOffState);
         self.selectionType = CLCitySelection;
     }
     
     return self;
-}
-
-+ (void)setInitialTimezoneData
-{
-    CLTimezoneData *newData = [self new];
-    newData.timezoneID = [[NSTimeZone systemTimeZone] name];
-    newData.formattedAddress = newData.timezoneID;
-    
-    [newData saveObjectToPreferences];
-}
-
-- (BOOL)saveObjectToPreferences
-{
-    
-    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:self];
-    NSMutableArray *array = [NSMutableArray new];
-    [array addObject:encodedObject];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:array forKey:CLDefaultPreferenceKey];
-    
-    return YES;
 }
 
 + (instancetype)getCustomObject:(NSData *)encodedData
@@ -67,13 +46,13 @@
             CLTimezoneData *newObject = [[self alloc] initWithDictionary:(NSDictionary *)encodedData];
             return newObject;
         }
+        
         CLTimezoneData *object = [NSKeyedUnarchiver unarchiveObjectWithData:encodedData];
         return object;
         
     }
     
     return nil;
-    
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder
@@ -168,7 +147,7 @@
     
     NSNumber *is24HourFormatSelected = [[NSUserDefaults standardUserDefaults] objectForKey:CL24hourFormatSelectedKey];
     
-    is24HourFormatSelected.boolValue ? [dateFormatter setDateFormat:@"HH:mm"] : [dateFormatter setDateFormat:@"hh:mm a"];
+    dateFormatter.dateFormat = is24HourFormatSelected.boolValue ?  @"HH:mm" : @"hh:mm a";
     
     dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.timezoneID];
     //In the format 22:10
@@ -180,7 +159,7 @@
 {
     NSString *preferredLanguage = [NSLocale preferredLanguages][0];
     
-    if (![CLAPI isUserConnectedToInternet])
+    if (![CLAPIConnector isUserConnectedToInternet])
     {
         /*Show some kind of information label*/
         return;
@@ -192,7 +171,7 @@
     
     NSString *urlString = [NSString stringWithFormat:CLLocationSearchURL, formattedString, preferredLanguage];
     
-    [CLAPI dataTaskWithServicePath:urlString
+    [CLAPIConnector dataTaskWithServicePath:urlString
                           bySender:self
                withCompletionBlock:^(NSError *error, NSDictionary *json) {
                    
@@ -212,7 +191,7 @@
                            {
                                //We have a match
                                
-                               NSDictionary *latLang = [[dictionary objectForKey:@"geometry"] objectForKey:@"location"];
+                               NSDictionary *latLang = dictionary[@"geometry"][@"location"];
                                self.latitude = [NSString stringWithFormat:@"%@", latLang[@"lat"]];
                                self.longitude = [NSString stringWithFormat:@"%@", latLang[@"lng"]];
                            }
@@ -268,18 +247,12 @@
         newDataObject.customLabel = self.customLabel;
         newDataObject.place_id = self.place_id;
         newDataObject.nextUpdate = tomorrowMidnight;
-        newDataObject.isFavourite = [NSNumber numberWithInt:NSOffState];
+        newDataObject.isFavourite = @(NSOffState);
         
-        __block PanelController *panelController;
+        PanelController *panelController = [PanelController getPanelControllerInstance];
         
-        [[NSApplication sharedApplication].windows enumerateObjectsUsingBlock:^(NSWindow * _Nonnull window, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ([window.windowController isMemberOfClass:[PanelController class]])
-            {
-                panelController = window.windowController;
-            }
-        }];
+        (panelController.defaultPreferences)[[panelController.defaultPreferences indexOfObject:self]] = newDataObject;
         
-        [panelController.defaultPreferences replaceObjectAtIndex:[panelController.defaultPreferences indexOfObject:self] withObject:newDataObject];
         [[NSUserDefaults standardUserDefaults] setObject:panelController.defaultPreferences forKey:CLDefaultPreferenceKey];
     }
     
@@ -482,11 +455,11 @@
     
     dateFormatter.dateStyle = kCFDateFormatterNoStyle;
     
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:self.timezoneID]];
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.timezoneID];
     
     NSNumber *is24HourFormatSelected = [[NSUserDefaults standardUserDefaults] objectForKey:CL24hourFormatSelectedKey];
     
-    is24HourFormatSelected.boolValue ? [dateFormatter setDateFormat:@"HH:mm"] : [dateFormatter setDateFormat:@"hh:mm a"];
+    dateFormatter.dateFormat = is24HourFormatSelected.boolValue ?  @"HH:mm" : @"hh:mm a";
 
     //In the format 22:10
     
@@ -494,22 +467,22 @@
     
 }
 
-- (NSString *)getFullFledgedDateForTimeWithDate:(NSDate *)date
+- (void)save
 {
-    NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
+    NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
     
-    NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
-                                                  value:0
-                                                 toDate:date
-                                                options:kNilOptions];
+    if (defaultPreference == nil)
+    {
+        defaultPreference = [NSMutableArray new];
+    }
     
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:self];
     
-    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm a"];
+    NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:defaultPreference];
     
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:self.timezoneID]];
+    [newArray addObject:encodedObject];
     
-    return [dateFormatter stringFromDate:newDate];
+    [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:CLDefaultPreferenceKey];
 }
 
 @end

@@ -24,36 +24,30 @@
 - (IBAction)labelDidChange:(NSTextField *)sender
 {
     NSTextField *customLabelCell = (NSTextField*) sender;
-    __block PanelController *panelController;
-    __block CLFloatingWindowController *floatingWindow;
+    
+    PanelController *panelController;
+    CLFloatingWindowController *floatingWindow;
     
     NSNumber *displayMode = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowAppInForeground];
     
-    [[[NSApplication sharedApplication] windows] enumerateObjectsUsingBlock:^(NSWindow * _Nonnull window, NSUInteger idx, BOOL * _Nonnull stop)
+    
+    if (displayMode.integerValue == 0)
     {
-        if (displayMode.integerValue == 0)
-        {
-            if ([window.windowController isMemberOfClass:[PanelController class]])
-            {
-                panelController = window.windowController;
-            }
-        }
-        else if (displayMode.integerValue == 1)
-        {
-            if ([window.windowController isMemberOfClass:[CLFloatingWindowController class]])
-            {
-                floatingWindow = window.windowController;
-            }
-        }
-    }];
+        panelController = [PanelController getPanelControllerInstance];
+    }
+    else if (displayMode.integerValue == 1)
+    {
+        floatingWindow = [CLFloatingWindowController sharedFloatingWindow];
+    }
+
     
     NSString *originalValue = customLabelCell.stringValue;
     NSString *customLabelValue = [originalValue stringByTrimmingCharactersInSet:
                                   [NSCharacterSet whitespaceCharacterSet]];
     
-    if ([[sender superview] isKindOfClass:[self class]])
+    if ([sender.superview isKindOfClass:[self class]])
     {
-        CLTimezoneCellView *cellView = (CLTimezoneCellView *)[sender superview];
+        CLTimezoneCellView *cellView = (CLTimezoneCellView *)sender.superview;
         
         /*
          
@@ -106,17 +100,17 @@
         
         if (displayMode.integerValue == 0)
         {
-            [panelController.defaultPreferences replaceObjectAtIndex:cellView.rowNumber withObject:newObject];
+            (panelController.defaultPreferences)[cellView.rowNumber] = newObject;
             [[NSUserDefaults standardUserDefaults] setObject:panelController.defaultPreferences forKey:CLDefaultPreferenceKey];
             [panelController updateDefaultPreferences];
-            [panelController.mainTableview reloadData];
+            [panelController updateTableContent];
         }
         else if(displayMode.integerValue == 1)
         {
-            [floatingWindow.defaultPreferences replaceObjectAtIndex:cellView.rowNumber withObject:newObject];
+            (floatingWindow.defaultPreferences)[cellView.rowNumber] = newObject;
             [[NSUserDefaults standardUserDefaults] setObject:floatingWindow.defaultPreferences forKey:CLDefaultPreferenceKey];
             [floatingWindow updateDefaultPreferences];
-            [floatingWindow.mainTableview reloadData];
+            [floatingWindow updateTableContent];
         }
         
         [[NSNotificationCenter defaultCenter]
@@ -130,15 +124,15 @@
     [self.window endEditingFor:nil];
 }
 
-- (void)updateTextColorWithColor:(NSColor *)color andCell:(CLTimezoneCellView*)cell
+- (void)setTextColor:(NSColor *)color
 {
-    cell.relativeDate.textColor = color;
-    cell.customName.textColor = color;
-    cell.time.textColor = color;
-    cell.sunriseSetTime.textColor = color;
+    self.relativeDate.textColor = color;
+    self.customName.textColor = color;
+    self.time.textColor = color;
+    self.sunriseSetTime.textColor = color;
 }
 
-- (void)setUpAutoLayoutWithCell
+- (void)setUpLayout
 {
     CGFloat width = [self.relativeDate.stringValue
                      sizeWithAttributes: @{NSFontAttributeName:self.relativeDate.font}].width;
@@ -162,6 +156,28 @@
     [self.relativeDate setNeedsUpdateConstraints:YES];
     [self.sunriseSetTime setNeedsUpdateConstraints:YES];
     
+    [self setUpTheme];
+    
+}
+
+- (void)setUpTheme
+{
+    
+    NSNumber *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
+    
+    if (theme.integerValue == 1)
+    {
+        [self setTextColor:[NSColor whiteColor]];
+        [self.customName setDrawsBackground:YES];
+        (self.customName).backgroundColor = [NSColor blackColor];
+    }
+    else
+    {
+        
+        [self setTextColor:[NSColor blackColor]];
+        [self.customName setDrawsBackground:NO];
+    }
+
 }
 
 - (void)controlTextDidEndEditing:(NSNotification *)obj

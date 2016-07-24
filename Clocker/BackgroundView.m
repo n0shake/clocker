@@ -50,7 +50,7 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    NSRect contentRect = NSInsetRect([self bounds], LINE_THICKNESS, LINE_THICKNESS);
+    NSRect contentRect = NSInsetRect(self.bounds, LINE_THICKNESS, LINE_THICKNESS);
     NSBezierPath *path = [NSBezierPath bezierPath];
     
     [path moveToPoint:NSMakePoint(_arrowX, NSMaxY(contentRect))];
@@ -90,7 +90,7 @@
     
     [NSGraphicsContext saveGraphicsState];
 
-    NSBezierPath *clip = [NSBezierPath bezierPathWithRect:[self bounds]];
+    NSBezierPath *clip = [NSBezierPath bezierPathWithRect:self.bounds];
     [clip appendBezierPath:path];
     [clip addClip];
     
@@ -105,21 +105,36 @@
 {
     [super mouseEntered:theEvent];
     
-    ApplicationDelegate *delegate = (ApplicationDelegate*)[NSApplication sharedApplication].delegate;
-    PanelController *controller = delegate.panelController;
-    
-    [controller showOptions:YES];
+    [self shouldHideButtons:YES];
 }
 
 -(void)mouseExited:(NSEvent *)theEvent
 {
     [super mouseExited:theEvent];
+
+    [self shouldHideButtons:NO];
+
+}
+
+- (void)shouldHideButtons:(BOOL)shouldHide
+{
+    PanelController *controller = [self getPanelControllerInstance];
+        
+    [controller showOptions:shouldHide];
     
+    if (!shouldHide){
+         [controller removeContextHelpForSlider];
+    }
+
+}
+
+- (PanelController *)getPanelControllerInstance
+{
     ApplicationDelegate *delegate = (ApplicationDelegate*) [NSApplication sharedApplication].delegate;
+    
     PanelController *controller = delegate.panelController;
     
-    [controller showOptions:NO];
-    [controller removeContextHelpForSlider];
+    return controller;
 }
 
 -(void)updateTrackingAreas
@@ -129,7 +144,7 @@
     }
     
     int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways);
-    self.trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
+    self.trackingArea = [ [NSTrackingArea alloc] initWithRect:self.bounds
                                                       options:opts
                                                         owner:self
                                                      userInfo:nil];

@@ -42,10 +42,10 @@
 
 #pragma mark -
 
-- (id)initWithStatusItem:(NSStatusItem *)statusItem
+- (instancetype)initWithStatusItem:(NSStatusItem *)statusItem
 {
-    CGFloat itemWidth = [statusItem length];
-    CGFloat itemHeight = [[NSStatusBar systemStatusBar] thickness];
+    CGFloat itemWidth = statusItem.length;
+    CGFloat itemHeight = [NSStatusBar systemStatusBar].thickness;
     NSRect itemRect = NSMakeRect(0.0, 0.0, itemWidth, itemHeight);
     
     self = [super initWithFrame:itemRect];
@@ -92,7 +92,7 @@
         [textField sizeToFit];
         
         NSDisableScreenUpdates();
-        [self.statusItem setLength:textField.frame.size.width+10];
+        (self.statusItem).length = textField.frame.size.width+10;
         NSEnableScreenUpdates();
         
         CGRect newRect = CGRectMake(dirtyRect.origin.x, dirtyRect.origin.y, textField.frame.size.width+5, dirtyRect.size.height);
@@ -108,7 +108,7 @@
     
     
     NSImage *icon = self.image;
-    NSSize iconSize = [icon size];
+    NSSize iconSize = icon.size;
     NSRect bounds = self.bounds;
     CGFloat iconX = roundf((NSWidth(bounds) - iconSize.width) / 2);
     CGFloat iconY = roundf((NSHeight(bounds) - iconSize.height) / 2);
@@ -125,9 +125,9 @@
     NSSize mySize = textField.bounds.size;
     NSSize imgSize = NSMakeSize( mySize.width, mySize.height );
     
-    NSBitmapImageRep *bir = [textField bitmapImageRepForCachingDisplayInRect:[textField bounds]];
-    [bir setSize:imgSize];
-    [textField cacheDisplayInRect:[textField bounds] toBitmapImageRep:bir];
+    NSBitmapImageRep *bir = [textField bitmapImageRepForCachingDisplayInRect:textField.bounds];
+    bir.size = imgSize;
+    [textField cacheDisplayInRect:textField.bounds toBitmapImageRep:bir];
     
     NSImage* image = [[NSImage alloc]initWithSize:imgSize];
     [image addRepresentation:bir];
@@ -180,7 +180,7 @@
 
 - (NSRect)globalRect
 {
-    NSRect frame = [self frame];
+    NSRect frame = self.frame;
     return [self.window convertRectToScreen:frame];
 }
 @end

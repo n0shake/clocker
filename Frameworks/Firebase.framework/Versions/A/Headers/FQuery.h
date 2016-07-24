@@ -314,7 +314,7 @@ typedef NSUInteger FirebaseHandle;
  *
  * @return An FQuery instance, ordered by child keys.
  */
-- (FQuery *) queryOrderedByKey;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) FQuery *queryOrderedByKey;
 
 /**
  * queryOrderedByValue: is used to generate a reference to a view of the data that's been sorted by child value.
@@ -323,7 +323,7 @@ typedef NSUInteger FirebaseHandle;
  *
  * @return An FQuery instance, ordered by child value.
  */
-- (FQuery *) queryOrderedByValue;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) FQuery *queryOrderedByValue;
 
 /**
  * queryOrderedByPriority: is used to generate a reference to a view of the data that's been sorted by child
@@ -332,7 +332,7 @@ typedef NSUInteger FirebaseHandle;
  *
  * @return An FQuery instance, ordered by child priorities.
  */
-- (FQuery *) queryOrderedByPriority;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) FQuery *queryOrderedByPriority;
 
 /**
  * queryStartingAtValue: is used to generate a reference to a limited view of the data at this location.

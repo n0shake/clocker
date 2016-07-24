@@ -7,7 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "CLParentViewController.h"
 
-@interface CLAppearanceViewController : NSViewController
+@interface CLAppearanceViewController : CLParentViewController
 
 @end

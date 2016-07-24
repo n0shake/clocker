@@ -33,9 +33,6 @@
 #import "iVersion.h"
 #import "CLOnboardingWindowController.h"
 
-#define helperAppBundleIdentifier @"com.abhishek.Clocker-Helper" // change as appropriate to help app bundle identifier
-#define terminateNotification @"TERMINATEHELPER" // can be basically any string
-
 @implementation ApplicationDelegate
 
 @synthesize panelController = _panelController;
@@ -78,35 +75,15 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    BOOL startedAtLogin = NO;
-    
     NSNumber *opened = [[NSUserDefaults standardUserDefaults] objectForKey:@"noOfTimes"];
     if (opened == nil)
     {
         [[NSUserDefaults standardUserDefaults] setObject:[NSMutableArray array]
                                                   forKey:CLDefaultPreferenceKey];
         NSInteger noOfTimes = opened.integerValue + 1;
-        NSNumber *noOfTime = [NSNumber numberWithInteger:noOfTimes];
+        NSNumber *noOfTime = @(noOfTimes);
         [[NSUserDefaults standardUserDefaults] setObject:noOfTime forKey:@"noOfTimes"];;
         
-    }
-    
-    NSArray *apps = [[NSWorkspace sharedWorkspace] runningApplications];
-    
-    for (NSRunningApplication *app in apps)
-    {
-        if ([app.bundleIdentifier isEqualToString:helperAppBundleIdentifier])
-        {
-            startedAtLogin = YES;
-            break;
-        }
-    }
-    
-    if (startedAtLogin)
-    {
-        [[NSDistributedNotificationCenter defaultCenter]
-         postNotificationName:terminateNotification
-                       object:[[NSBundle mainBundle] bundleIdentifier]];
     }
     
     // Install icon into the menu bar
@@ -142,7 +119,7 @@ void *kContextActivePanel = &kContextActivePanel;
     NSNumber *displayFutureSlider = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey];
     if (displayFutureSlider == nil)
     {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:0] forKey:CLDisplayFutureSliderKey];
+        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLDisplayFutureSliderKey];
     }
     
     NSNumber *defaultTimeFormat = [[NSUserDefaults standardUserDefaults] objectForKey:CL24hourFormatSelectedKey];
@@ -174,11 +151,6 @@ void *kContextActivePanel = &kContextActivePanel;
         [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowPlaceInMenu];
     }
     
-    NSNumber *showAppInForeground = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowAppInForeground];
-    if (showAppInForeground == nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowAppInForeground];
-    }
-    
     NSNumber *startClockerAtLogin = [[NSUserDefaults standardUserDefaults] objectForKey:CLStartAtLogin];
     if (startClockerAtLogin == nil) {
         [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLStartAtLogin];
@@ -199,7 +171,7 @@ void *kContextActivePanel = &kContextActivePanel;
     {
         self.floatingWindow = [CLFloatingWindowController sharedFloatingWindow];
         [self.floatingWindow showWindow:nil];
-        [self.floatingWindow.mainTableview reloadData];
+        [self.floatingWindow updateTableContent];
         [self.floatingWindow startWindowTimer];
         
         [NSApp activateIgnoringOtherApps:YES];
