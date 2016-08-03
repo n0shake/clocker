@@ -110,74 +110,80 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)initializeDefaults
 {
-    NSString *defaultTheme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *defaultTheme = [userDefaults objectForKey:CLThemeKey];
     if (defaultTheme == nil)
     {
-        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLThemeKey];
+        [userDefaults setObject:@0 forKey:CLThemeKey];
     }
     
-    NSNumber *displayFutureSlider = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey];
+    NSNumber *displayFutureSlider = [userDefaults objectForKey:CLDisplayFutureSliderKey];
     if (displayFutureSlider == nil)
     {
-        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLDisplayFutureSliderKey];
+        [userDefaults setObject:@0 forKey:CLDisplayFutureSliderKey];
     }
     
-    NSNumber *defaultTimeFormat = [[NSUserDefaults standardUserDefaults] objectForKey:CL24hourFormatSelectedKey];
+    NSNumber *defaultTimeFormat = [userDefaults objectForKey:CL24hourFormatSelectedKey];
     if (defaultTimeFormat == nil)
     {
-        [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:CL24hourFormatSelectedKey];
+        [userDefaults setObject:@1 forKey:CL24hourFormatSelectedKey];
     }
     
-    NSNumber *relativeDate = [[NSUserDefaults standardUserDefaults] objectForKey:CLRelativeDateKey];
+    NSNumber *relativeDate = [userDefaults objectForKey:CLRelativeDateKey];
     if (relativeDate == nil)
     {
-        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLRelativeDateKey];
+        [userDefaults setObject:@0 forKey:CLRelativeDateKey];
     }
     
-    NSNumber *showDayInMenuBar = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowDayInMenu];
+    NSNumber *showDayInMenuBar = [userDefaults objectForKey:CLShowDayInMenu];
     if (showDayInMenuBar == nil)
     {
-        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowDayInMenu];
+        [userDefaults setObject:@0 forKey:CLShowDayInMenu];
     }
     
-    NSNumber *showDateInMenu = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowDateInMenu];
+    NSNumber *showDateInMenu = [userDefaults objectForKey:CLShowDateInMenu];
     if (showDateInMenu == nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:CLShowDateInMenu];
+        [userDefaults setObject:@1 forKey:CLShowDateInMenu];
     }
     
-    NSNumber *showCityInMenu = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowPlaceInMenu];
+    NSNumber *showCityInMenu = [userDefaults objectForKey:CLShowPlaceInMenu];
     if (showCityInMenu == nil)
     {
-        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowPlaceInMenu];
+        [userDefaults setObject:@0 forKey:CLShowPlaceInMenu];
     }
     
-    NSNumber *startClockerAtLogin = [[NSUserDefaults standardUserDefaults] objectForKey:CLStartAtLogin];
+    NSNumber *startClockerAtLogin = [userDefaults objectForKey:CLStartAtLogin];
     if (startClockerAtLogin == nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLStartAtLogin];
+        [userDefaults setObject:@0 forKey:CLStartAtLogin];
     }
     
-    NSNumber *displayMode = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowAppInForeground];
+    NSNumber *displayMode = [userDefaults objectForKey:CLShowAppInForeground];
     if (displayMode == nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:CLShowAppInForeground];
+        [userDefaults setObject:@0 forKey:CLShowAppInForeground];
     }
     
-    NSNumber *showSunriseSunsetTime = [[NSUserDefaults standardUserDefaults] objectForKey:CLSunriseSunsetTime];
+    NSNumber *showSunriseSunsetTime = [userDefaults objectForKey:CLSunriseSunsetTime];
     if (showSunriseSunsetTime == nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:CLSunriseSunsetTime];
+        [userDefaults setObject:@1 forKey:CLSunriseSunsetTime];
     }
     
     //If mode selected is 1, then show the window when the app starts
     if (displayMode.integerValue == 1)
     {
-        self.floatingWindow = [CLFloatingWindowController sharedFloatingWindow];
-        [self.floatingWindow showWindow:nil];
-        [self.floatingWindow updateTableContent];
-        [self.floatingWindow startWindowTimer];
-        
-        [NSApp activateIgnoringOtherApps:YES];
+        [self showFloatingWindow];
     }
 }
 
+- (void)showFloatingWindow
+{
+    self.floatingWindow = [CLFloatingWindowController sharedFloatingWindow];
+    [self.floatingWindow showWindow:nil];
+    [self.floatingWindow updateTableContent];
+    [self.floatingWindow startWindowTimer];
+    
+    [NSApp activateIgnoringOtherApps:YES];
+}
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
 {

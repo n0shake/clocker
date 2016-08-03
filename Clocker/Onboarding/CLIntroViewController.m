@@ -24,7 +24,7 @@
 @property (strong) CLShortcutAnimatedView *shortCutView;
 @property (strong) CLFavouriteAnimatedView *favouriteView;
 @property (strong) NSString *informativeText;
-@property (strong) NSArray *headerLabelString;
+@property (strong) NSArray<NSString *> *headerLabelString;
 @property (weak) IBOutlet NSButton *nextActionButton;
 
 @end
@@ -35,18 +35,22 @@
 {
     [super viewDidLoad];
     
-    self.headerLabelString = @[@"Now, Clocker stays on top of all the windows", @"Access Clocker through keyboard shortcuts", @"Customize your menubar with Favourites"];
-    
-    [self.headerView setWantsLayer:YES];
-    
-    self.view.window.styleMask = NSFullSizeContentViewWindowMask;
+    [self setUpDefaults];
     
     [self initializeViews];
     
-    self.nextActionButton.hidden = YES;
-    
     [self addAnimationInOrderWithTag:CLFloatingViewFeature];
     
+}
+
+- (void)setUpDefaults
+{
+    self.headerLabelString = @[@"Now, Clocker stays on top of all the windows", @"Access Clocker through keyboard shortcuts", @"Customize your menubar with Favourites"];
+    [self.headerView setWantsLayer:YES];
+    
+    self.view.window.styleMask = NSFullSizeContentViewWindowMask;
+
+    self.nextActionButton.hidden = YES;
 }
 
 - (void)initializeViews

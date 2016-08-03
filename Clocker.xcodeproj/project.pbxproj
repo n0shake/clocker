@@ -43,6 +43,8 @@
 		9A5951FD1C1D592D009C17AA /* iVersion.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A5951FC1C1D592D009C17AA /* iVersion.bundle */; };
 		9A5B6C6E1D3DF6E4000EAAF1 /* CLParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5B6C6D1D3DF6E4000EAAF1 /* CLParentViewController.m */; };
 		9A5B6C711D4087A5000EAAF1 /* NSString+CLStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5B6C701D4087A5000EAAF1 /* NSString+CLStringAdditions.m */; };
+		9A5B6C781D459438000EAAF1 /* CLTimezoneDataOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5B6C771D459438000EAAF1 /* CLTimezoneDataOperations.m */; };
+		9A5B6C7C1D470ECB000EAAF1 /* CLTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5B6C7B1D470ECB000EAAF1 /* CLTableViewDataSource.m */; };
 		9A5E6BAB1CAF8DFA006E7C5C /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A5E6BAA1CAF8DFA006E7C5C /* iRate.bundle */; };
 		9A63620A1C432F68004AD010 /* CLAPIConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6362091C432F68004AD010 /* CLAPIConnector.m */; };
 		9A6D93371CF3E82F005A8690 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6D93361CF3E82F005A8690 /* CoreImage.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -255,6 +257,10 @@
 		9A5B6C6D1D3DF6E4000EAAF1 /* CLParentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLParentViewController.m; path = Clocker/CLParentViewController.m; sourceTree = "<group>"; };
 		9A5B6C6F1D4087A5000EAAF1 /* NSString+CLStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+CLStringAdditions.h"; path = "Clocker/Utilities/NSString+CLStringAdditions.h"; sourceTree = "<group>"; };
 		9A5B6C701D4087A5000EAAF1 /* NSString+CLStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+CLStringAdditions.m"; path = "Clocker/Utilities/NSString+CLStringAdditions.m"; sourceTree = "<group>"; };
+		9A5B6C761D459438000EAAF1 /* CLTimezoneDataOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLTimezoneDataOperations.h; path = Clocker/Model/CLTimezoneDataOperations.h; sourceTree = "<group>"; };
+		9A5B6C771D459438000EAAF1 /* CLTimezoneDataOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLTimezoneDataOperations.m; path = Clocker/Model/CLTimezoneDataOperations.m; sourceTree = "<group>"; };
+		9A5B6C7A1D470ECB000EAAF1 /* CLTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLTableViewDataSource.h; path = Clocker/Utilities/CLTableViewDataSource.h; sourceTree = "<group>"; };
+		9A5B6C7B1D470ECB000EAAF1 /* CLTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLTableViewDataSource.m; path = Clocker/Utilities/CLTableViewDataSource.m; sourceTree = "<group>"; };
 		9A5E6B9F1CAF71C1006E7C5C /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		9A5E6BA11CAF794D006E7C5C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		9A5E6BA21CAF794D006E7C5C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -397,6 +403,8 @@
 				9A10C68E1CDAC8B500D474F1 /* CLPanelTextField.m */,
 				9A5B6C6F1D4087A5000EAAF1 /* NSString+CLStringAdditions.h */,
 				9A5B6C701D4087A5000EAAF1 /* NSString+CLStringAdditions.m */,
+				9A5B6C7A1D470ECB000EAAF1 /* CLTableViewDataSource.h */,
+				9A5B6C7B1D470ECB000EAAF1 /* CLTableViewDataSource.m */,
 			);
 			name = Utilties;
 			sourceTree = "<group>";
@@ -598,6 +606,8 @@
 			children = (
 				9ABF58701C29A80600BD0187 /* CLTimezoneData.h */,
 				9ABF58711C29A80600BD0187 /* CLTimezoneData.m */,
+				9A5B6C761D459438000EAAF1 /* CLTimezoneDataOperations.h */,
+				9A5B6C771D459438000EAAF1 /* CLTimezoneDataOperations.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -876,6 +886,7 @@
 				9A79E9901CB34B6800BA7916 /* CLParentPanelController.m in Sources */,
 				9A87DAC51C358FA800A8CF3B /* DTConstants.m in Sources */,
 				9AB9357B1C1AD8F7001285A0 /* CLRatingCellView.m in Sources */,
+				9A5B6C781D459438000EAAF1 /* CLTimezoneDataOperations.m in Sources */,
 				9A63620A1C432F68004AD010 /* CLAPIConnector.m in Sources */,
 				9A87DAC81C358FA800A8CF3B /* DTTimePeriodChain.m in Sources */,
 				9A87DAC71C358FA800A8CF3B /* DTTimePeriod.m in Sources */,
@@ -886,6 +897,7 @@
 				9A5951FA1C1D5214009C17AA /* iVersion.m in Sources */,
 				9A87DAC61C358FA800A8CF3B /* DTError.m in Sources */,
 				9A20A0781C4EA53600FB45AB /* CLOnboardingWindowController.m in Sources */,
+				9A5B6C7C1D470ECB000EAAF1 /* CLTableViewDataSource.m in Sources */,
 				9AA4AC8D1CEC0FA60054ACB7 /* CLShortcutAnimatedView.m in Sources */,
 				9A87DACA1C358FA800A8CF3B /* DTTimePeriodGroup.m in Sources */,
 				9AA4AC8E1CEC0FA60054ACB7 /* CLFavouriteAnimatedView.m in Sources */,

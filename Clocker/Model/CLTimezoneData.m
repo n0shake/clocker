@@ -13,7 +13,24 @@
 #import "PanelController.h"
 #include <CoreFoundation/CoreFoundation.h>
 #include <IOKit/IOKitLib.h>
-#include "EDSunriseSet.h"
+#import "CLTimezoneDataOperations.h"
+
+@interface CLTimezoneData ()
+
+@property (copy, nonatomic) NSString *customLabel;
+@property (copy, nonatomic) NSString *formattedAddress;
+@property (copy, nonatomic) NSString *place_id;
+@property (copy, nonatomic) NSString *timezoneID;
+@property (copy, nonatomic) NSString *latitude;
+@property (copy, nonatomic) NSString *longitude;
+@property (strong, nonatomic) NSDate *nextUpdate;
+@property (strong, nonatomic) NSNumber *isFavourite;
+@property (strong, nonatomic) NSDate *sunriseTime;
+@property (strong, nonatomic) NSDate *sunsetTime;
+@property (assign, nonatomic) BOOL sunriseOrSunset; //YES for Sunrise, NO for Sunset
+@property (assign, nonatomic) CLSelection selectionType;
+
+@end
 
 @implementation CLTimezoneData
 
@@ -31,6 +48,19 @@
         self.formattedAddress = dictionary[CLTimezoneName];
         self.isFavourite = @(NSOffState);
         self.selectionType = CLCitySelection;
+    }
+    
+    return self;
+}
+
+-(instancetype)init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        self.selectionType = CLTimezoneSelection;
+        self.isFavourite = @(NSOffState);
     }
     
     return self;
@@ -106,7 +136,7 @@
             self.selectionType];
 }
 
-- (NSString *)formatStringShouldContainCity:(BOOL)value
+- (NSString *)getFormattedTimezoneLabel
 {
     if (self.customLabel.length > 0)
     {
@@ -135,354 +165,54 @@
     
 }
 
-- (NSString *)getTimeForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue
+- (void)setLabelForTimezone:(NSString *)customLabel
 {
-    NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
-    NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
-                                                  value:futureSliderValue
-                                                 toDate:[NSDate date]
-                                                options:kNilOptions];
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateStyle = kCFDateFormatterNoStyle;
-    
-    NSNumber *is24HourFormatSelected = [[NSUserDefaults standardUserDefaults] objectForKey:CL24hourFormatSelectedKey];
-    
-    dateFormatter.dateFormat = is24HourFormatSelected.boolValue ?  @"HH:mm" : @"hh:mm a";
-    
-    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.timezoneID];
-    //In the format 22:10
-    
-    return [dateFormatter stringFromDate:newDate];
+   self.customLabel = customLabel.length > 0 ? customLabel : CLEmptyString;
 }
 
-- (void)retrieveLatitudeAndLongitudeWithSearchString:(NSString *)formattedString
+- (void)setIDForTimezone:(NSString *)uniqueID
 {
-    NSString *preferredLanguage = [NSLocale preferredLanguages][0];
-    
-    if (![CLAPIConnector isUserConnectedToInternet])
-    {
-        /*Show some kind of information label*/
-        return;
-    }
-    
-    NSArray* words = [formattedString componentsSeparatedByCharactersInSet :[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-    formattedString = [words componentsJoinedByString:CLEmptyString];
-    
-    NSString *urlString = [NSString stringWithFormat:CLLocationSearchURL, formattedString, preferredLanguage];
-    
-    [CLAPIConnector dataTaskWithServicePath:urlString
-                          bySender:self
-               withCompletionBlock:^(NSError *error, NSDictionary *json) {
-                   
-                   
-                   dispatch_async(dispatch_get_main_queue(), ^{
-                       
-                       if (error || [json[@"status"] isEqualToString:@"ZERO_RESULTS"])
-                       {
-                           return;
-                       }
-                       
-                       
-                       [json[@"results"] enumerateObjectsUsingBlock:^(NSDictionary *  _Nonnull dictionary, NSUInteger idx, BOOL * _Nonnull stop)
-                       {
-                           
-                           if ([dictionary[CLPlaceIdentifier] isEqualToString:self.place_id])
-                           {
-                               //We have a match
-                               
-                               NSDictionary *latLang = dictionary[@"geometry"][@"location"];
-                               self.latitude = [NSString stringWithFormat:@"%@", latLang[@"lat"]];
-                               self.longitude = [NSString stringWithFormat:@"%@", latLang[@"lng"]];
-                           }
-                           
-                       }];
-                       
-                   });
-                   
-               }];
-
+    self.timezoneID = uniqueID;
 }
 
-- (NSString *)getLocalCurrentDate
+-(void)setFormattedAddressForTimezone:(NSString *)address
 {
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateStyle = kCFDateFormatterShortStyle;
-    dateFormatter.timeStyle = kCFDateFormatterNoStyle;
-    dateFormatter.timeZone = [NSTimeZone systemTimeZone];
-    
-    return [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                          dateStyle:NSDateFormatterShortStyle
-                                          timeStyle:NSDateFormatterNoStyle];
-    
+    self.formattedAddress = address;
 }
 
-- (NSString *)compareSystemDate:(NSString *)systemDate toTimezoneDate:(NSString *)date
-{    
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    formatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"MM/dd/yyyy"
-                                                           options:0
-                                                            locale:[NSLocale currentLocale]];
-    
-    NSDate *localDate = [formatter dateFromString:systemDate];
-    NSDate *timezoneDate = [formatter dateFromString:date];
-    
-    // Specify which units we would like to use
-    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
-    NSInteger weekday = [calendar component:NSCalendarUnitWeekday fromDate:localDate];
-    
-    if ([self.nextUpdate isKindOfClass:[NSString class]])
-    {
-        
-        NSUInteger units = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
-        NSDateComponents *comps = [[NSCalendar currentCalendar] components:units fromDate:timezoneDate];
-        comps.day = comps.day + 1;
-        NSDate *tomorrowMidnight = [[NSCalendar currentCalendar] dateFromComponents:comps];
-        
-        CLTimezoneData *newDataObject = [CLTimezoneData new];
-        newDataObject.timezoneID = self.timezoneID;
-        newDataObject.formattedAddress = self.formattedAddress;
-        newDataObject.latitude = self.latitude;
-        newDataObject.longitude = self.longitude;
-        newDataObject.customLabel = self.customLabel;
-        newDataObject.place_id = self.place_id;
-        newDataObject.nextUpdate = tomorrowMidnight;
-        newDataObject.isFavourite = @(NSOffState);
-        
-        PanelController *panelController = [PanelController getPanelControllerInstance];
-        
-        (panelController.defaultPreferences)[[panelController.defaultPreferences indexOfObject:self]] = newDataObject;
-        
-        [[NSUserDefaults standardUserDefaults] setObject:panelController.defaultPreferences forKey:CLDefaultPreferenceKey];
-    }
-    
-    NSInteger daysApart = [timezoneDate daysFrom:localDate];
-    
-    if (daysApart == 0) {
-        return @"Today";
-    }
-    else if (daysApart == -1)
-    {
-        return @"Yesterday";
-    }
-    else if (daysApart == 1)
-    {
-        return @"Tomorrow";
-    }
-    else
-    {
-        return [self getWeekdayFromInteger:weekday+2];
-    }
+-(void)setFavouriteValueForTimezone:(NSNumber *)favouriteValue
+{
+    self.isFavourite = favouriteValue;
 }
 
-- (NSString *)getDateForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue
-                                       andDisplayType:(CLDateDisplayType)type
+-(void)setNextUpdateForSunriseSet:(NSDate *)nextUpdate
 {
-    NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
-    NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
-                                                  value:futureSliderValue
-                                                 toDate:[NSDate date]
-                                                options:kNilOptions];
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateStyle = kCFDateFormatterShortStyle;
-    dateFormatter.timeStyle = kCFDateFormatterNoStyle;
-    
-    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.timezoneID];
-    
-    NSNumber *relativeDayPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLRelativeDateKey];
-    if (relativeDayPreference.integerValue == 0 && type == CLPanelDisplay) {
-        return [self compareSystemDate:[self getLocalCurrentDate]
-                        toTimezoneDate:[dateFormatter stringFromDate:newDate]];
-    }
-    else
-    {
-        NSDateFormatter *formatter = [NSDateFormatter new];
-        formatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"MM/dd/yyyy" options:0 locale:[NSLocale currentLocale]];
-        
-        NSDate *convertedDate = [formatter dateFromString:[dateFormatter stringFromDate:newDate]];
-        
-        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
-        NSInteger weekday = [calendar component:NSCalendarUnitWeekday fromDate:convertedDate];
-        return [self getWeekdayFromInteger:weekday];
-    }
+    self.nextUpdate = nextUpdate;
 }
 
-- (NSString *)getWeekdayFromInteger:(NSInteger)weekdayInteger
+-(void)setSunsetTimeForTimezone:(NSDate *)sunsetTime
 {
-    
-    if (weekdayInteger > 7) {
-        weekdayInteger = weekdayInteger - 7;
-    }
-    
-    switch (weekdayInteger) {
-        case 1:
-            return @"Sunday";
-            break;
-            
-        case 2:
-            return @"Monday";
-            break;
-            
-        case 3:
-            return @"Tuesday";
-            break;
-            
-        case 4:
-            return @"Wednesday";
-            break;
-            
-        case 5:
-            return @"Thursday";
-            break;
-            
-        case 6:
-            return @"Friday";
-            break;
-            
-        case 7:
-            return @"Saturday";
-            break;
-            
-        default:
-            return @"Error";
-            break;
-    }
+    self.sunsetTime = sunsetTime;
 }
 
-- (NSString *)getMenuTitle
+-(void)setSunriseTimeForTimezone:(NSDate *)sunriseTime
 {
-    NSMutableString *menuTitle = [NSMutableString new];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *shouldCityBeShown = [userDefaults objectForKey:CLShowPlaceInMenu];
-    NSNumber *shouldDayBeShown = [userDefaults objectForKey:CLShowDayInMenu];
-    NSNumber *shouldDateBeShown = [userDefaults objectForKey:CLShowDateInMenu];
-    
-    if (shouldCityBeShown.boolValue == 0)
-    {
-        
-        self.customLabel.length > 0 ?
-        [menuTitle appendString:self.customLabel] :
-        [menuTitle appendString:self.formattedAddress];
-        
-    }
-    
-    if (shouldDayBeShown.boolValue == 0)
-    {
-        NSString *substring = [self getDateForTimeZoneWithFutureSliderValue:0 andDisplayType:CLMenuDisplay];
-        
-        substring = [substring substringToIndex:3];
-        
-        if (menuTitle.length > 0)
-        {
-            [menuTitle appendFormat:@" %@",substring.capitalizedString];
-        }
-        else
-        {
-            [menuTitle appendString:substring.capitalizedString];
-        }
-    }
-    
-    if (shouldDateBeShown.boolValue == 0)
-    {
-        NSString *date = [[NSDate date] formattedDateWithFormat:@"MMM dd" timeZone:[NSTimeZone timeZoneWithName:self.timezoneID] locale:[NSLocale currentLocale]];
-        
-        if (menuTitle.length > 0)
-        {
-            [menuTitle appendFormat:@" %@",date];
-        }
-        else
-        {
-            [menuTitle appendString:date];
-        }
-    }
-    
-    menuTitle.length > 0 ?
-    [menuTitle appendFormat:@" %@",[self getTimeForTimeZoneWithFutureSliderValue:0]] :
-    [menuTitle appendString:[self getTimeForTimeZoneWithFutureSliderValue:0]];
-    
-    return menuTitle;
+    self.sunriseTime = sunriseTime;
 }
 
--(void)initializeSunriseSunsetWithSliderValue:(NSInteger)sliderValue
+- (void)setSunriseOrSunsetForTimezone:(BOOL)sunriseOrSunset
 {
-    
-    if (!self.latitude || !self.longitude)
-    {
-        //Retrieve the values using Google Places API
-        
-        if (self.selectionType == CLTimezoneSelection)
-        {
-            /* A timezone has been selected*/
-            
-            NSLog(@"%@", self);
-            
-            return;
-        }
-        
-        [self retrieveLatitudeAndLongitudeWithSearchString:self.formattedAddress];
-        
-    }
-    
-    EDSunriseSet *sunriseSetObject = [EDSunriseSet sunrisesetWithDate:[[NSCalendar autoupdatingCurrentCalendar]
-                                                                       dateByAddingUnit:NSCalendarUnitMinute
-                                                                       value:sliderValue
-                                                                       toDate:[NSDate date]
-                                                                       options:kNilOptions]
-                                                             timezone:[NSTimeZone timeZoneWithName:self.timezoneID]
-                                                             latitude:self.latitude.doubleValue
-                                                            longitude:self.longitude.doubleValue];
-    self.sunriseTime = sunriseSetObject.sunrise;
-    self.sunsetTime = sunriseSetObject.sunset;
+    self.sunriseOrSunset = sunriseOrSunset;
 }
 
-
--(NSString *)getFormattedSunriseOrSunsetTimeAndSliderValue:(NSInteger)sliderValue
+- (void)setLatitudeForTimezone:(NSString *)latitude
 {
-    /* We have to call this everytime so that we get an updated value everytime! */
-    
-    [self initializeSunriseSunsetWithSliderValue:sliderValue];
-    
-    if (!self.sunriseTime && !self.sunsetTime)
-    {
-        return CLEmptyString;
-    }
-    
-    self.sunriseOrSunset = [self.sunriseTime isLaterThanOrEqualTo:[NSDate date]];
-    
-    NSDate *newDate = self.sunriseOrSunset ? self.sunriseTime : self.sunsetTime;
-    
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    
-    dateFormatter.dateStyle = kCFDateFormatterNoStyle;
-    
-    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.timezoneID];
-    
-    NSNumber *is24HourFormatSelected = [[NSUserDefaults standardUserDefaults] objectForKey:CL24hourFormatSelectedKey];
-    
-    dateFormatter.dateFormat = is24HourFormatSelected.boolValue ?  @"HH:mm" : @"hh:mm a";
-
-    //In the format 22:10
-    
-    return [dateFormatter stringFromDate:newDate];
-    
+    self.latitude = latitude;
 }
 
-- (void)save
+- (void)setLongitudeForTimezone:(NSString *)longitude
 {
-    NSArray *defaultPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
-    
-    if (defaultPreference == nil)
-    {
-        defaultPreference = [NSMutableArray new];
-    }
-    
-    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:self];
-    
-    NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:defaultPreference];
-    
-    [newArray addObject:encodedObject];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:CLDefaultPreferenceKey];
+    self.longitude = longitude;
 }
 
 @end

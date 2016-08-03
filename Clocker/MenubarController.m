@@ -4,6 +4,7 @@
 #import "StatusItemView.h"
 #import "CLTimezoneData.h"
 #import "ApplicationDelegate.h"
+#import "CLTimezoneDataOperations.h"
 
 @implementation MenubarController
 
@@ -25,7 +26,10 @@
         if (dataObject)
         {
             CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:dataObject];
-            NSString *menuTitle = [timezoneObject getMenuTitle];
+            CLTimezoneDataOperations *operationObject = [[CLTimezoneDataOperations alloc] initWithTimezoneData:timezoneObject];
+            
+            
+            NSString *menuTitle = [operationObject getMenuTitle];
             
             textField = [self setUpTextfieldForMenubar];
             textField.stringValue = (menuTitle.length > 0) ? menuTitle : @"Icon";

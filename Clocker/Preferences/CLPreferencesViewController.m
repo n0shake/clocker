@@ -16,7 +16,7 @@
 #import "CLAPIConnector.h"
 #import "EDSunriseSet.h"
 #import "NSString+CLStringAdditions.h"
-
+#import "CLTimezoneDataOperations.h"
 
 NSString *const CLSearchPredicateKey = @"SELF CONTAINS[cd]%@";
 NSString *const CLPreferencesTimezoneNameIdentifier = @"formattedAddress";
@@ -177,16 +177,18 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
+    NSInteger numberOfRows = 0;
+    
     if (tableView == self.timezoneTableView)
     {
-        return self.selectedTimeZones.count;
+        numberOfRows = self.selectedTimeZones.count;
     }
     else
     {
-        return [self numberOfSearchResults];
+        numberOfRows = [self numberOfSearchResults];
     }
     
-    return 0;
+    return numberOfRows;
 }
 
 - (NSInteger)numberOfSearchResults
@@ -290,44 +292,33 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                                       [NSCharacterSet whitespaceCharacterSet]];
         
         CLTimezoneData *dataObject = [CLTimezoneData getCustomObject:self.selectedTimeZones[row]];
-        dataObject.customLabel = formattedValue.length > 0 ? formattedValue : CLEmptyString;
-        NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:dataObject];
-        (self.selectedTimeZones)[row] = encodedObject;
-        [[NSUserDefaults standardUserDefaults] setObject:self.selectedTimeZones forKey:CLDefaultPreferenceKey];
+        [dataObject setLabelForTimezone:formattedValue];
+        
+        [self insertTimezoneInDefaultPreferences:dataObject atIndex:row];
         
         if ([dataObject.isFavourite isEqualToNumber:@1])
         {
-            [[NSUserDefaults standardUserDefaults] setObject:encodedObject
+            [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:dataObject]
                                                       forKey:@"favouriteTimezone"];
         }
 
-        [self refreshMainTableview];
     }
     else
     {
-        NSMutableArray *newArray = [NSMutableArray new];
+        [self resetAllFavouriteValues];
+        
         NSNumber *isFavouriteValue = (NSNumber *)object;
         
-        [self.selectedTimeZones enumerateObjectsUsingBlock:^(NSData *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
-         {
-             CLTimezoneData *timezone = [CLTimezoneData getCustomObject:obj];
-             timezone.isFavourite = @0;
-             NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:timezone];
-             [newArray addObject:encodedObject];
-             
-         }];
+        CLTimezoneData *dataObject = [CLTimezoneData getCustomObject:self.selectedTimeZones[row]];
+        [dataObject setFavouriteValueForTimezone:isFavouriteValue];
         
-        CLTimezoneData *dataObject = [CLTimezoneData getCustomObject:newArray[row]];
-        dataObject.isFavourite = isFavouriteValue;
-        NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:dataObject];
-        newArray[row] = encodedObject;
-        [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:CLDefaultPreferenceKey];
+        [self insertTimezoneInDefaultPreferences:dataObject atIndex:row];
         
         ApplicationDelegate *appDelegate = (ApplicationDelegate*)[NSApplication sharedApplication].delegate;
         
         if (dataObject.isFavourite.integerValue == 1)
         {
-            [[NSUserDefaults standardUserDefaults] setObject:encodedObject
+            [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:dataObject]
                                                       forKey:@"favouriteTimezone"];
             [appDelegate.menubarController setUpTimerForUpdatingMenubar];
             
@@ -341,8 +332,32 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         
         [self refereshTimezoneTableView];
         
-        [self refreshMainTableview];
     }
+    
+    [self refreshMainTableview];
+}
+
+- (void)resetAllFavouriteValues
+{
+    NSMutableArray *newArray = [NSMutableArray new];
+    
+    [self.selectedTimeZones enumerateObjectsUsingBlock:^(NSData *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+     {
+         CLTimezoneData *timezone = [CLTimezoneData getCustomObject:obj];
+         [timezone setFavouriteValueForTimezone:@0];
+         NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:timezone];
+         [newArray addObject:encodedObject];
+         
+     }];
+    
+    self.selectedTimeZones = [NSMutableArray arrayWithArray:newArray];
+}
+
+- (void)insertTimezoneInDefaultPreferences:(CLTimezoneData *)timezoneObject atIndex:(NSInteger)index
+{
+    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:timezoneObject];
+    self.selectedTimeZones[index] = encodedObject;
+    [[NSUserDefaults standardUserDefaults] setObject:self.selectedTimeZones forKey:CLDefaultPreferenceKey];
 }
 
 - (IBAction)addTimeZone:(id)sender
@@ -392,7 +407,6 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         [self.selectedTimeZones enumerateObjectsUsingBlock:^(NSData *  _Nonnull encodedData, NSUInteger idx, BOOL * _Nonnull stop) {
             
             CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:encodedData];
-            timezoneObject.selectionType = CLCitySelection;
             NSString *name = timezoneObject.place_id;
             NSString *selectedPlaceID = dataObject.place_id;
             
@@ -421,22 +435,23 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     else
     {
         CLTimezoneData *data = [CLTimezoneData new];
-        data.selectionType = CLTimezoneSelection;
-        data.isFavourite = @(NSOffState);
-        data.customLabel = CLEmptyString;
+        [data setLabelForTimezone:CLEmptyString];
         
         if (self.searchField.stringValue.length > 0)
         {
-            data.timezoneID = self.timeZoneFilteredArray[self.availableTimezoneTableView.selectedRow];
-            data.formattedAddress = self.timeZoneFilteredArray[self.availableTimezoneTableView.selectedRow];
+            [data setIDForTimezone:self.timeZoneFilteredArray[self.availableTimezoneTableView.selectedRow]];
+            [data setFormattedAddressForTimezone:self.timeZoneFilteredArray[self.availableTimezoneTableView.selectedRow]];
+            
         }
         else
         {
-            data.timezoneID = self.timeZoneArray[self.availableTimezoneTableView.selectedRow];
-            data.formattedAddress = self.timeZoneArray[self.availableTimezoneTableView.selectedRow];
+            [data setIDForTimezone:self.timeZoneArray[self.availableTimezoneTableView.selectedRow]];
+            [data setFormattedAddressForTimezone:self.timeZoneArray[self.availableTimezoneTableView.selectedRow]];
         }
         
-        [data save];
+        CLTimezoneDataOperations *operationObject = [[CLTimezoneDataOperations alloc] initWithTimezoneData:data];
+        
+        [operationObject save];
         
         self.timeZoneFilteredArray = [NSMutableArray array];
         
@@ -681,6 +696,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     self.placeholderLabel.placeholderString = [NSString stringWithFormat:@"Searching for '%@'", searchString];
     
     NSArray* words = [searchString componentsSeparatedByCharactersInSet :[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
     searchString = [words componentsJoinedByString:CLEmptyString];
     
     NSString *urlString = [NSString stringWithFormat:CLLocationSearchURL, searchString, userPreferredLanguage];
@@ -793,7 +809,9 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                                
                                CLTimezoneData *timezoneObject = [[CLTimezoneData alloc] initWithDictionary:newTimezone];
                                
-                               [timezoneObject save];
+                               CLTimezoneDataOperations *operationObject = [[CLTimezoneDataOperations alloc] initWithTimezoneData:timezoneObject];
+                               
+                               [operationObject save];
 
                            }
                            

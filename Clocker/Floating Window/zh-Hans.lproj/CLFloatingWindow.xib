@@ -206,10 +206,6 @@
                                             </prototypeCellViews>
                                         </tableColumn>
                                     </tableColumns>
-                                    <connections>
-                                        <outlet property="dataSource" destination="-2" id="sdp-E0-ew9"/>
-                                        <outlet property="delegate" destination="-2" id="xWJ-Wh-Aqu"/>
-                                    </connections>
                                 </tableView>
                             </subviews>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>

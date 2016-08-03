@@ -30,6 +30,7 @@
 #import "CommonStrings.h"
 #import "CLTimezoneData.h"
 #import "DateTools.h"
+#import "CLTimezoneDataOperations.h"
 
 @implementation StatusItemView
 
@@ -73,7 +74,10 @@
     if (dataObject)
     {
         CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:dataObject];
-        textField.stringValue = [timezoneObject getMenuTitle];
+        
+        CLTimezoneDataOperations *operationObject = [[CLTimezoneDataOperations alloc] initWithTimezoneData:timezoneObject];
+        
+        textField.stringValue = [operationObject getMenuTitle];
         
         // Set up dark mode for icon
         if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"]  isEqualToString:@"Dark"])

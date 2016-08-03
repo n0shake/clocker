@@ -21,28 +21,31 @@ typedef NS_ENUM(NSUInteger, CLSelection) {
 
 @interface CLTimezoneData : NSObject<NSCoding>
 
-@property (copy, nonatomic) NSString *customLabel;
-@property (copy, nonatomic) NSString *formattedAddress;
-@property (copy, nonatomic) NSString *place_id;
-@property (copy, nonatomic) NSString *timezoneID;
-@property (copy, nonatomic) NSString *latitude;
-@property (copy, nonatomic) NSString *longitude;
-@property (strong, nonatomic) NSDate *nextUpdate;
-@property (strong, nonatomic) NSNumber *isFavourite;
-@property (strong, nonatomic) NSDate *sunriseTime;
-@property (strong, nonatomic) NSDate *sunsetTime;
-@property (assign, nonatomic) BOOL sunriseOrSunset; //YES for Sunrise, NO for Sunset
-@property (assign, nonatomic) CLSelection selectionType;
+@property (copy, nonatomic, readonly) NSString *customLabel;
+@property (copy, nonatomic, readonly) NSString *formattedAddress;
+@property (copy, nonatomic, readonly) NSString *place_id;
+@property (copy, nonatomic, readonly) NSString *timezoneID;
+@property (copy, nonatomic, readonly) NSString *latitude;
+@property (copy, nonatomic, readonly) NSString *longitude;
+@property (strong, nonatomic, readonly) NSDate *nextUpdate;
+@property (strong, nonatomic, readonly) NSNumber *isFavourite;
+@property (strong, nonatomic, readonly) NSDate *sunriseTime;
+@property (strong, nonatomic, readonly) NSDate *sunsetTime;
+@property (assign, nonatomic, readonly) BOOL sunriseOrSunset; //YES for Sunrise, NO for Sunset
+@property (assign, nonatomic,readonly) CLSelection selectionType;
 
 + (instancetype)getCustomObject:(NSData *)encodedData;
-
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
-- (NSString *)getTimeForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue;
-- (NSString *)compareSystemDate:(NSString *)systemDate toTimezoneDate:(NSString *)date;
-- (NSString *)getDateForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue andDisplayType:(CLDateDisplayType)type;
-- (NSString *)formatStringShouldContainCity:(BOOL)value;
-@property (NS_NONATOMIC_IOSONLY, getter=getMenuTitle, readonly, copy) NSString *menuTitle;
--(NSString *)getFormattedSunriseOrSunsetTimeAndSliderValue:(NSInteger)sliderValue;
-- (void)save;
+- (void)setLabelForTimezone:(NSString *)customLabel;
+- (void)setIDForTimezone:(NSString *)uniqueID;
+- (void)setFormattedAddressForTimezone:(NSString *)address;
+- (void)setFavouriteValueForTimezone:(NSNumber *)favouriteValue;
+- (void)setNextUpdateForSunriseSet:(NSDate *)nextUpdate;
+- (void)setSunsetTimeForTimezone:(NSDate *)sunsetTime;
+- (void)setSunriseTimeForTimezone:(NSDate *)sunriseTime;
+- (void)setSunriseOrSunsetForTimezone:(BOOL)sunriseOrSunset;
+- (void)setLatitudeForTimezone:(NSString *)latitude;
+- (void)setLongitudeForTimezone:(NSString *)longitude;
+- (NSString *)getFormattedTimezoneLabel;
 
 @end

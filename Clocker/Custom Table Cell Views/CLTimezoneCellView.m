@@ -72,7 +72,7 @@
                 
                 CLTimezoneData *timeObject = [CLTimezoneData getCustomObject:object];
                 if ([timeObject.formattedAddress isEqualToString:customLabelValue]) {
-                    timeObject.customLabel = CLEmptyString;
+                    [timeObject setLabelForTimezone:CLEmptyString];
                 }
             }];
         }
@@ -82,12 +82,12 @@
                 
                 CLTimezoneData *timeObject = [CLTimezoneData getCustomObject:object];
                 if ([timeObject.formattedAddress isEqualToString:customLabelValue]) {
-                    timeObject.customLabel = CLEmptyString;
+                     [timeObject setLabelForTimezone:CLEmptyString];
                 }
             }];
         }
  
-        timezoneObject.customLabel = (customLabelValue.length > 0) ? customLabelValue : CLEmptyString;
+        [timezoneObject setLabelForTimezone:customLabelValue];
         
         if ([timezoneObject.isFavourite isEqualToNumber:@1])
         {

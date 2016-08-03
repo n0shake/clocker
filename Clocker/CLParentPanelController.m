@@ -12,9 +12,10 @@
 #import "CommonStrings.h"
 #import "CLOneWindowController.h"
 #import <pop/POP.h>
+#import "CLTableViewDataSource.h"
 
 @interface CLParentPanelController ()
-
+@property (strong) CLTableViewDataSource *timezoneDataSource;
 @end
 
 @implementation CLParentPanelController
@@ -41,13 +42,11 @@
     }
     
     self.mainTableview.selectionHighlightStyle = NSTableViewSelectionHighlightStyleNone;
-    
    
 }
 
 - (void) updateDefaultPreferences
 {
-    
     NSArray *defaultZones = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
     
     self.defaultPreferences = self.defaultPreferences == nil ? [[NSMutableArray alloc] initWithArray:defaultZones] : [NSMutableArray arrayWithArray:defaultZones];
@@ -62,6 +61,18 @@
     self.futureSlider.hidden = [displayFutureSlider isEqualToNumber:@1] || (self.defaultPreferences.count == 0) ? YES : NO;
     
     [self updatePanelColor];
+    
+    if (!self.timezoneDataSource) {
+        self.timezoneDataSource = [[CLTableViewDataSource alloc] initWithItems:self.defaultPreferences];
+        self.mainTableview.dataSource = self.timezoneDataSource;
+        self.mainTableview.delegate = self.timezoneDataSource;
+    }
+}
+
+
+- (void)dealloc
+{
+    self.timezoneDataSource = nil;
 }
 
 - (void)updatePanelColor
@@ -91,7 +102,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         self.shutdownButton.hidden = !value;
         self.preferencesButton.hidden = !value;
-        
     });
     
 }

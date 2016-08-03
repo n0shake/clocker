@@ -7,8 +7,6 @@
 //
 
 #import "CLFloatingWindowController.h"
-#import "CLRatingCellView.h"
-#import "CLTimezoneData.h"
 #import "CommonStrings.h"
 #import "CLOneWindowController.h"
 
@@ -19,6 +17,10 @@
 static CLFloatingWindowController *sharedFloatingWindow = nil;
 NSString *const CLRatingCellIdentifier = @"ratingCellView";
 NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
+
+@interface CLFloatingWindowController()
+
+@end
 
 @implementation CLFloatingWindowController
 
@@ -66,8 +68,6 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
     
     self.window.titlebarAppearsTransparent = YES;
     self.window.titleVisibility = NSWindowTitleHidden;
-
-    
        
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
@@ -84,159 +84,6 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
         });
     }
     return sharedFloatingWindow;
-}
-
-#pragma mark -
-#pragma mark NSTableview Datasource
-#pragma mark -
-
--(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
-{
-    if (self.showReviewCell) {
-        return self.defaultPreferences.count+1;
-    }
-    return self.defaultPreferences.count;
-}
-
--(NSView*)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
-{
-    if (self.showReviewCell && row == self.defaultPreferences.count) {
-        CLRatingCellView *cellView = [self.mainTableview
-                                      makeViewWithIdentifier:CLRatingCellIdentifier
-                                      owner:self];
-        return cellView;
-    }
-    
-    CLTimezoneCellView *cell = [tableView makeViewWithIdentifier:CLTimezoneCellIdentifier owner:self];
-    
-    CLTimezoneData *dataObject = [CLTimezoneData getCustomObject:self.defaultPreferences[row]];
-    
-    cell.sunriseSetTime.stringValue = [dataObject getFormattedSunriseOrSunsetTimeAndSliderValue:self.futureSliderValue];
-    
-    NSTextView *customLabel = (NSTextView*)[cell.relativeDate.window
-                                            fieldEditor:YES
-                                            forObject:cell.relativeDate];
-    
-    NSNumber *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
-    if (theme.integerValue == 1)
-    {
-        (self.mainTableview).backgroundColor = [NSColor blackColor];
-        self.window.alphaValue = 0.90;
-        customLabel.insertionPointColor = [NSColor whiteColor];
-        cell.sunriseSetImage.image = dataObject.sunriseOrSunset ?
-        [NSImage imageNamed:@"White Sunrise"] : [NSImage imageNamed:@"White Sunset"];
-    }
-    else
-    {
-        
-        (self.mainTableview).backgroundColor = [NSColor whiteColor];
-        self.window.alphaValue = 1;
-        customLabel.insertionPointColor = [NSColor blackColor];
-        cell.sunriseSetImage.image = dataObject.sunriseOrSunset ?
-        [NSImage imageNamed:@"Sunrise"] : [NSImage imageNamed:@"Sunset"];
-    }
-    
-    cell.relativeDate.stringValue = [dataObject getDateForTimeZoneWithFutureSliderValue:self.futureSliderValue andDisplayType:CLPanelDisplay];
-    
-    cell.time.stringValue = [dataObject getTimeForTimeZoneWithFutureSliderValue:self.futureSliderValue];
-    
-    cell.rowNumber = row;
-    
-    cell.customName.stringValue = [dataObject formatStringShouldContainCity:YES];
-    
-    NSNumber *displayFutureSlider = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey];
-    
-    self.futureSlider.hidden = [displayFutureSlider isEqualToNumber:@1] ? YES : NO;
-    
-    NSNumber *displaySunriseSunsetTime = [[NSUserDefaults standardUserDefaults] objectForKey:CLSunriseSunsetTime];
-    
-    cell.sunriseSetTime.hidden = ([displaySunriseSunsetTime isEqualToNumber:@(0)] && cell.sunriseSetTime.stringValue.length > 0) ? NO : YES;
-    
-    cell.sunriseSetImage.hidden = [displaySunriseSunsetTime isEqualToNumber:@(0)] && cell.sunriseSetTime.stringValue.length > 0 ? NO : YES;
-    
-    /*WE hide the Sunrise or set details because of chances of incorrect date calculations
-     */
-    
-    if (self.futureSliderValue > 0)
-    {
-        cell.sunriseSetImage.hidden = YES;
-        cell.sunriseSetTime.hidden = YES;
-    }
-
-    [cell setUpLayout];
-    
-    return cell;
-}
-
-#pragma mark -
-#pragma mark NSTableview Drag and Drop
-#pragma mark -
-
-- (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
-{
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
-    [pboard declareTypes:@[CLDragSessionKey] owner:self];
-    [pboard setData:data forType:CLDragSessionKey];
-    return YES;
-}
-
-
--(void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
-{
-    if ([object isKindOfClass:[NSString class]])
-    {
-        CLTimezoneData *dataObject = self.defaultPreferences[row];
-        
-        if ([dataObject.formattedAddress isEqualToString:object])
-        {
-            return;
-        }
-        
-        dataObject.customLabel = object;
-        (self.defaultPreferences)[row] = dataObject;
-        [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences forKey:CLDefaultPreferenceKey];
-        [self.mainTableview reloadData];
-    }
-}
-
- 
--(BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation
-{
-    
-    if (row == self.defaultPreferences.count)
-    {
-        row -= 1;
-    }
-    
-    NSPasteboard *pBoard = [info draggingPasteboard];
-    
-    NSData *data = [pBoard dataForType:CLDragSessionKey];
-    
-    NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    
-    [self.defaultPreferences exchangeObjectAtIndex:rowIndexes.firstIndex
-                                 withObjectAtIndex:row];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:self.defaultPreferences
-                                              forKey:CLDefaultPreferenceKey];
-    
-    
-    [[NSApplication sharedApplication].windows enumerateObjectsUsingBlock:^(NSWindow * _Nonnull window, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([window.windowController isMemberOfClass:[CLOneWindowController class]]) {
-            CLOneWindowController *oneWindowController = (CLOneWindowController *) window.windowController;
-            [oneWindowController.preferencesView refereshTimezoneTableView];
-        }
-        
-    }];
-    
-    [self.mainTableview reloadData];
-    
-    return YES;
-}
-
--(NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation
-{
-    return NSDragOperationEvery;
 }
 
 - (void) updateDefaultPreferences
