@@ -10,6 +10,9 @@
 
 @interface CLTableViewDataSource : NSObject <NSTableViewDataSource, NSTableViewDelegate>
 
+@property (assign) BOOL showReviewCell;
+@property (assign) NSInteger futureSliderValue;
+
 - (instancetype)initWithItems:(NSArray *)objects;
 
 @end

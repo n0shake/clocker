@@ -20,8 +20,7 @@ NSString *const CLTimezoneCellViewID = @"timeZoneCell";
 @interface CLTableViewDataSource()
 
 @property (strong) NSMutableArray *timezoneObjects;
-@property (assign) BOOL showReviewCell;
-@property (assign) NSInteger futureSliderValue;
+
 
 @end
 
@@ -75,6 +74,12 @@ NSString *const CLTimezoneCellViewID = @"timeZoneCell";
 
 -(void)tableView:(NSTableView *)tableView didAddRowView:(NSTableRowView *)rowView forRow:(NSInteger)row
 {
+
+    if (self.showReviewCell && row == self.timezoneObjects.count) {
+        return;
+    }
+    
+    
     NSNumber *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
     
     CLTimezoneCellView *cell = (CLTimezoneCellView *)[rowView viewAtColumn:0];
