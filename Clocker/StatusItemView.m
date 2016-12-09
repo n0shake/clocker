@@ -140,44 +140,12 @@
 }
 
 
-
-
 #pragma mark -
 #pragma mark Mouse tracking
 
 - (void)mouseDown:(NSEvent *)theEvent
 {
     [NSApp sendAction:self.action to:self.target from:self];
-}
-
-#pragma mark -
-#pragma mark Accessors
-
-- (void)setHighlighted:(BOOL)newFlag
-{
-    if (_isHighlighted == newFlag) return;
-    _isHighlighted = newFlag;
-    [self setNeedsDisplay:YES];
-}
-
-#pragma mark -
-
-- (void)setImage:(NSImage *)newImage
-{
-    if (_image != newImage) {
-        _image = newImage;
-        [self setNeedsDisplay:YES];
-    }
-}
-
-- (void)setAlternateImage:(NSImage *)newImage
-{
-    if (_alternateImage != newImage) {
-        _alternateImage = newImage;
-        if (self.isHighlighted) {
-            [self setNeedsDisplay:YES];
-        }
-    }
 }
 
 #pragma mark -
