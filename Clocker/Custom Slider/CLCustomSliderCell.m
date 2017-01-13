@@ -28,15 +28,16 @@
     NSRect leftRect = rect;
     leftRect.size.width = finalWidth;
     
-     NSBezierPath* bg = [NSBezierPath bezierPathWithRoundedRect: rect xRadius: barRadius yRadius: barRadius];
+    NSBezierPath* bg = [NSBezierPath bezierPathWithRoundedRect: rect xRadius: barRadius yRadius: barRadius];
     NSNumber *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
-    (theme.integerValue == 1) ? [NSColor.whiteColor setFill] :  [[NSColor colorWithCalibratedRed:67.0/255.0 green:138.0/255.0 blue:250.0/255.0 alpha:1.0] setFill];
+//    (theme.integerValue == 1) ? [NSColor.whiteColor setFill] :  [[NSColor colorWithCalibratedRed:67.0/255.0 green:138.0/255.0 blue:250.0/255.0 alpha:1.0] setFill];
+    [[NSColor colorWithCalibratedRed:67.0/255.0 green:138.0/255.0 blue:250.0/255.0 alpha:1.0] setFill];
     [bg fill];
 
     // Draw Right Part
     NSBezierPath* active = [NSBezierPath bezierPathWithRoundedRect: leftRect xRadius: barRadius yRadius: barRadius];
-    [[NSColor colorWithCalibratedRed:67.0/255.0 green:138.0/255.0 blue:250.0/255.0 alpha:1.0] setFill];
-    (theme.integerValue == 1) ? [[NSColor colorWithCalibratedRed:67.0/255.0 green:138.0/255.0 blue:250.0/255.0 alpha:1.0] setFill] : [NSColor.grayColor setFill];
+    (theme.integerValue == 1) ? [[NSColor whiteColor] setFill] : [NSColor.grayColor setFill];
+//    [[NSColor colorWithCalibratedRed:67.0/255.0 green:138.0/255.0 blue:250.0/255.0 alpha:1.0] setFill];
     [active fill];
 
 }
