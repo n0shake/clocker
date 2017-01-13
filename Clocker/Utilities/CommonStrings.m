@@ -29,5 +29,7 @@ NSString *const CLStartAtLogin = @"startAtLogin";
 NSString *const CLShowAppInForeground = @"displayAppAsForegroundApp";
 NSString *const CLSunriseSunsetTime = @"showSunriseSetTime";
 NSString *const CLLocationSearchURL = @"https://maps.googleapis.com/maps/api/geocode/json?address=%@&key=AIzaSyCyf2knCi6KiKuDJLYDBD3Odq5dt4c-_KI&language=%@";
+NSString *const CLShowSecondsInMenubar = @"showSeconds";
+NSString *const CLUserFontSizePreference = @"userFontSize";
 
 @end
