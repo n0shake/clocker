@@ -10,11 +10,9 @@
 #import "CLTimezoneCellView.h"
 #import "CLTimezoneData.h"
 #import "CLTimezoneDataOperations.h"
-#import "CLRatingCellView.h"
 #import "CommonStrings.h"
 #import "CLOneWindowController.h"
 
-NSString *const CLRatingCellViewID = @"ratingCellView";
 NSString *const CLTimezoneCellViewID = @"timeZoneCell";
 
 @interface CLTableViewDataSource()
@@ -39,20 +37,10 @@ NSString *const CLTimezoneCellViewID = @"timeZoneCell";
 
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-    if (self.showReviewCell) {
-        return self.timezoneObjects.count+1;
-    }
     return self.timezoneObjects.count;
 }
 -(NSView*)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    if (self.showReviewCell && row == self.timezoneObjects.count) {
-        CLRatingCellView *cellView = [tableView
-                                      makeViewWithIdentifier:CLRatingCellViewID
-                                      owner:self];
-        return cellView;
-    }
-    
     CLTimezoneCellView *cell = [tableView makeViewWithIdentifier:CLTimezoneCellViewID owner:self];
     
     CLTimezoneData *dataObject = [CLTimezoneData getCustomObject:self.timezoneObjects[row]];
@@ -69,20 +57,15 @@ NSString *const CLTimezoneCellViewID = @"timeZoneCell";
     
     cell.customName.stringValue = [dataObject getFormattedTimezoneLabel];
     
+    [self tableView:tableView setupCell:cell forRow:row];
+    
     return cell;
 }
 
--(void)tableView:(NSTableView *)tableView didAddRowView:(NSTableRowView *)rowView forRow:(NSInteger)row
+- (void)tableView:(NSTableView *)tableView setupCell:(CLTimezoneCellView *)cell forRow:(NSInteger)row
 {
-
-    if (self.showReviewCell && row == self.timezoneObjects.count) {
-        return;
-    }
-    
     
     NSNumber *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
-    
-    CLTimezoneCellView *cell = (CLTimezoneCellView *)[rowView viewAtColumn:0];
     
     CLTimezoneData *dataObject = [CLTimezoneData getCustomObject:self.timezoneObjects[row]];
     
@@ -95,7 +78,7 @@ NSString *const CLTimezoneCellViewID = @"timeZoneCell";
         tableView.backgroundColor = [NSColor blackColor];
         customLabel.insertionPointColor = [NSColor whiteColor];
         cell.sunriseSetImage.image = dataObject.sunriseOrSunset ?
-        [NSImage imageNamed:@"White Sunrise"] : [NSImage imageNamed:@"White Sunset"];
+        [NSImage imageNamed:@"WhiteSunrise"] : [NSImage imageNamed:@"WhiteSunset"];
     }
     else
     {
@@ -112,18 +95,11 @@ NSString *const CLTimezoneCellViewID = @"timeZoneCell";
     
     cell.sunriseSetImage.hidden = [displaySunriseSunsetTime isEqualToNumber:@(0)] && cell.sunriseSetTime.stringValue.length > 0 ? NO : YES;
     
-    /*WE hide the Sunrise or set details because of chances of incorrect date calculations
-     */
-    
-    if (self.futureSliderValue > 0)
-    {
-        cell.sunriseSetImage.hidden = YES;
-        cell.sunriseSetTime.hidden = YES;
-    }
-    
     [cell setUpLayout];
 
 }
+
+
 
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
 {
@@ -190,6 +166,11 @@ NSString *const CLTimezoneCellViewID = @"timeZoneCell";
     return NSDragOperationEvery;
 }
 
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
+{
+    NSNumber *userFontSize = [[NSUserDefaults standardUserDefaults] objectForKey:CLUserFontSizePreference];
+    return 61 + userFontSize.integerValue;
+}
 
 
 @end
