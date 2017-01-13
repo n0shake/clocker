@@ -120,6 +120,8 @@ typedef NS_ENUM(NSUInteger, CLClockerMode) {
             
             [panelController updateDefaultPreferences];
             
+            [panelController.futureSlider setNeedsDisplay:YES];
+            
             [panelController updateTableContent];
             
             [appDelegate.menubarController setUpTimerForUpdatingMenubar];
@@ -136,6 +138,8 @@ typedef NS_ENUM(NSUInteger, CLClockerMode) {
                 CLFloatingWindowController *floatingWindowInstance = [CLFloatingWindowController sharedFloatingWindow];
                 
                 [floatingWindowInstance updateTableContent];
+                
+                [floatingWindowInstance.futureSlider setNeedsDisplay:YES];
                 //Only one instance where we need to update panel color and in that instance we pass panel as NO
                 
                 if (!panel)
