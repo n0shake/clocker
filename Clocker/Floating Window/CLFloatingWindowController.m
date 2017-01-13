@@ -15,7 +15,6 @@
 @end
 
 static CLFloatingWindowController *sharedFloatingWindow = nil;
-NSString *const CLRatingCellIdentifier = @"ratingCellView";
 NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
 
 @interface CLFloatingWindowController()
@@ -90,44 +89,11 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
 {
     [super updateDefaultPreferences];
     
-    NSRect frame = (self.window).frame;
-    frame.size = NSMakeSize(self.window.frame.size.width, self.scrollViewHeight.constant+10);
-    [self.window setFrame: frame display: YES animate:YES];
-    
-    (self.window).contentMaxSize = NSMakeSize(self.window.frame.size.width+50, self.scrollViewHeight.constant+100);
-    
     [self updateTime];
 }
 
-- (void)updateTime
+- (void)updateTime  
 {
-    [self.mainTableview reloadData];
-}
-
-- (IBAction)sliderMoved:(id)sender
-{
-    NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
-    NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
-                                                  value:self.futureSliderValue
-                                                 toDate:[NSDate date]
-                                                options:kNilOptions];
-    
-    self.dateFormatter.dateStyle = kCFDateFormatterNoStyle;
-    self.dateFormatter.timeStyle = kCFDateFormatterShortStyle;
-    
-    NSString *relativeDate = [currentCalendar isDateInToday:newDate] ? @"Today" : @"Tomorrow";
-    
-    NSString *helper = [self.dateFormatter stringFromDate:newDate];
-    
-    NSHelpManager *helpManager = [NSHelpManager sharedHelpManager];
-    
-    NSPoint pointInScreen = [NSEvent mouseLocation];
-    pointInScreen.y -= 5;
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ %@", relativeDate, helper]];
-    [NSHelpManager setContextHelpModeActive:YES];
-    [helpManager setContextHelp:attributedString forObject:self.futureSlider];
-    [helpManager showContextHelpForObject:self.futureSlider locationHint:pointInScreen];
-    
     [self.mainTableview reloadData];
 }
 
@@ -171,7 +137,7 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
 {
     if (!self.floatingWindowTimer)
     {
-        self.floatingWindowTimer = [CLPausableTimer timerWithTimeInterval:2.0
+        self.floatingWindowTimer = [CLPausableTimer timerWithTimeInterval:1.0
                                                                     target:self
                                                                   selector:@selector(updateTime) userInfo:nil
                                                                    repeats:YES];

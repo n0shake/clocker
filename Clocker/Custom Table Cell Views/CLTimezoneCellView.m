@@ -12,6 +12,8 @@
 #import "CLTimezoneData.h"
 #import "CLFloatingWindowController.h"
 
+#define MIN_FONT_SIZE 13
+
 @implementation CLTimezoneCellView
 
 - (void)drawRect:(NSRect)dirtyRect
@@ -168,17 +170,44 @@
     if (theme.integerValue == 1)
     {
         [self setTextColor:[NSColor whiteColor]];
-        [self.customName setDrawsBackground:YES];
-        (self.customName).backgroundColor = [NSColor blackColor];
+        self.customName.drawsBackground = YES;
+        self.customName.backgroundColor = [NSColor blackColor];
     }
     else
     {
-        
+        self.customName.drawsBackground = NO;
+        self.customName.backgroundColor = [NSColor whiteColor];
         [self setTextColor:[NSColor blackColor]];
-        [self.customName setDrawsBackground:NO];
     }
 
+    [self setUpTextSize];
 }
+
+- (void)setUpTextSize
+{
+    NSNumber *userFontSize = [[NSUserDefaults standardUserDefaults] objectForKey:CLUserFontSizePreference];
+    NSInteger newFontSize = MIN_FONT_SIZE + (userFontSize.integerValue*2);
+    NSFontManager *fontManager = [NSFontManager sharedFontManager];
+    NSFont *customPlaceFont = [fontManager convertFont:self.customName.font toSize:newFontSize];
+    NSFont *customTimeFont = [fontManager convertFont:self.time.font toSize:MIN_FONT_SIZE + (userFontSize.integerValue*3)];
+    [self.customName setFont:customPlaceFont];
+    [self.time setFont:customTimeFont];
+    CGFloat timeHeight = [self.time.stringValue
+                            sizeWithAttributes: @{NSFontAttributeName:self.time.font}].height;
+    CGFloat timeWidth = [self.time.stringValue
+                          sizeWithAttributes: @{NSFontAttributeName:self.time.font}].width;
+    [self.time.constraints enumerateObjectsUsingBlock:^(NSLayoutConstraint * _Nonnull constraint, NSUInteger idx, BOOL * _Nonnull stop) {
+        if([constraint.identifier isEqualToString:@"height"])
+        {
+            constraint.constant = timeHeight;
+        }
+        else
+        {
+            constraint.constant = timeWidth;
+        }
+    }];
+}
+
 
 - (void)controlTextDidEndEditing:(NSNotification *)obj
 {
