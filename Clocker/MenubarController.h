@@ -41,6 +41,7 @@
 @property (nonatomic, strong, readonly) NSStatusItem *statusItem;
 @property (nonatomic, strong, readonly) StatusItemView *statusItemView;
 @property (nonatomic, strong) NSTimer *menubarUpdateTimer;
+@property (nonatomic, assign) BOOL checkIfMenubarUpdatingWasCancelled;
 
 - (void)setUpTimerForUpdatingMenubar;
 - (void)invalidateTimerForMenubar;

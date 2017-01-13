@@ -6,6 +6,8 @@
 #import "ApplicationDelegate.h"
 #import "CLTimezoneDataOperations.h"
 
+typedef void (^CompletionType)(void);
+
 @implementation MenubarController
 
 @synthesize statusItemView = _statusItemView;
@@ -59,7 +61,7 @@
 
 - (NSTextField *)setUpTextfieldForMenubar
 {
-    NSTextField *textField= [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, STATUS_ITEM_VIEW_WIDTH, 18)];
+    NSTextField *textField= [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, STATUS_ITEM_VIEW_WIDTH, 22)];
     textField.backgroundColor = [NSColor whiteColor];
     textField.bordered = NO;
     textField.textColor = [NSColor blackColor];
@@ -75,18 +77,45 @@
 
 - (void)setUpTimerForUpdatingMenubar
 {
-    self.menubarUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                            target:self
-                                                          selector:@selector(updateMenubar)
-                                                          userInfo:nil
-                                                           repeats:YES];
+    self.checkIfMenubarUpdatingWasCancelled = NO;
+    [self tryingSomethingHere];
+}
+
+- (void)tryingSomethingHere
+{
+
+    //a block calling itself without the ARC retain warning
+    __block CompletionType completionBlock = nil;
+    __block __weak CompletionType weakCompletionBlock = nil;
+    completionBlock = ^(void) {
+        
+        
+        double delayInSeconds = 1.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            
+            
+            if(!self.checkIfMenubarUpdatingWasCancelled)
+            {
+                [self updateMenubar];
+                weakCompletionBlock = completionBlock;
+                weakCompletionBlock();
+            }
+        });
+    };
+    
+    completionBlock();
+}
+
+- (void)stoppingTheMenubar
+{
+    self.checkIfMenubarUpdatingWasCancelled = YES;
+    [self.statusItemView setNeedsDisplay:YES];
 }
 
 - (void)invalidateTimerForMenubar
 {
-    [self.statusItemView setNeedsDisplay:YES];
-    [self.menubarUpdateTimer invalidate];
-    self.menubarUpdateTimer = nil;
+    [self stoppingTheMenubar];
 }
 
 - (NSImage *)convertTextfieldRepresentationToImage:(NSTextField *)textField
