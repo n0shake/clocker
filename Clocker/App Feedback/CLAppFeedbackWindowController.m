@@ -87,7 +87,9 @@ static CLAppFeedbackWindowController *sharedFeedbackWindow = nil;
 
 - (BOOL)didUserEnterFeedback
 {
-    if (self.feedbackTextView.string.length == 0)
+    NSString *cleanedUpString = [self.feedbackTextView.string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if (cleanedUpString.length == 0)
     {
         self.informativeText.stringValue = CLFeedbackNotEnteredErrorMessage;
         [NSTimer scheduledTimerWithTimeInterval:5.0
