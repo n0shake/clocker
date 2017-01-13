@@ -99,7 +99,7 @@ static PanelController *sharedPanel = nil;
     [super updatePanelColor];
     
     [super updateDefaultPreferences];
-    
+
 }
 
 
@@ -133,6 +133,12 @@ static PanelController *sharedPanel = nil;
 
 - (void)windowWillClose:(NSNotification *)notification
 {
+    if (self.tableViewTimer)
+    {
+        [self.tableViewTimer.timer invalidate];
+        self.tableViewTimer = nil;
+    }
+    
     self.hasActivePanel = NO;
 }
 
@@ -167,7 +173,18 @@ static PanelController *sharedPanel = nil;
 
 - (NSRect)statusRectForWindow:(NSWindow *)window
 {
-    NSRect screenRect = [NSScreen screens][0].frame;
+    /*Display on currently active monitor*/
+    NSScreen *currentScreen = nil;
+    for (NSScreen *screen in [NSScreen screens])
+    {
+        unsigned int value = [[[screen deviceDescription] objectForKey:@"NSScreenNumber"] unsignedIntValue];
+        if (CGDisplayIsActive(value)) {
+            currentScreen = screen;
+        }
+    }
+    
+    
+    NSRect screenRect = currentScreen.frame;
     NSRect statusRect = NSZeroRect;
     
     StatusItemView *statusItemView = nil;
@@ -194,15 +211,31 @@ static PanelController *sharedPanel = nil;
 {
     self.futureSliderValue = 0;
     
-    NSWindow *panel = self.window;
+    self.reviewView.hidden = !self.showReviewCell;
     
-    NSRect screenRect = [NSScreen screens][0].frame;
+    NSNumber *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
+    
+    self.reviewView.layer.backgroundColor = (theme.integerValue == 0) ? [NSColor whiteColor].CGColor :  [NSColor blackColor].CGColor;
+    
+    NSWindow *panel = self.window;
+    NSScreen *currentScreen = nil;
+    
+
+    for (NSScreen *screen in [NSScreen screens])
+    {
+        unsigned int value = [[[screen deviceDescription] objectForKey:@"NSScreenNumber"] unsignedIntValue];
+            if (CGDisplayIsActive(value)) {
+                currentScreen = screen;
+        }
+    }
+    
+    NSRect screenRect = currentScreen.frame;
     NSRect statusRect = [self statusRectForWindow:panel];
     
     NSRect panelRect = panel.frame;
     panelRect.size.width = PANEL_WIDTH;
     
-    panelRect.size.height = self.showReviewCell ? (self.defaultPreferences.count+1)*55+40: self.defaultPreferences.count*55 + 30;
+    panelRect.size.height = self.defaultPreferences.count*55;
     
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
@@ -212,7 +245,7 @@ static PanelController *sharedPanel = nil;
     
     [NSApp activateIgnoringOtherApps:NO];
     panel.alphaValue = 0;
-    [panel setFrame:statusRect display:YES];
+    [panel setFrame:panelRect display:YES];
     [panel makeKeyAndOrderFront:nil];
     
     NSTimeInterval openDuration = OPEN_DURATION;
@@ -236,9 +269,29 @@ static PanelController *sharedPanel = nil;
     [panel animator].alphaValue = 1;
     [NSAnimationContext endGrouping];
     
-    [self.mainTableview reloadData];
+    NSNumber *showSeconds = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowSecondsInMenubar];
+    
+    [showSeconds isEqualToNumber:@(1)] ? [self.mainTableview reloadData] : [self startWindowTimer];
     
 }
+
+- (void)startWindowTimer
+{
+    if (!self.tableViewTimer)
+    {
+        self.tableViewTimer = [CLPausableTimer timerWithTimeInterval:1.0
+                                                                   target:self
+                                                                 selector:@selector(updateTime) userInfo:nil
+                                                                  repeats:YES];
+        [self.tableViewTimer start]; //Explicitly start the timer
+    }
+}
+
+- (void)updateTime
+{
+    [self.mainTableview reloadData];
+}
+
 
 - (void)closePanel
 {
@@ -262,7 +315,7 @@ static PanelController *sharedPanel = nil;
     self.oneWindow = [CLOneWindowController sharedWindow];
     [self.oneWindow showWindow:nil];
     [NSApp activateIgnoringOtherApps:YES];
-
+    
 }
 
 #pragma mark -
@@ -294,6 +347,5 @@ static PanelController *sharedPanel = nil;
     
     return panelController;
 }
-
 
 @end

@@ -29,6 +29,7 @@
 #import "BackgroundView.h"
 #import "StatusItemView.h"
 #import "CLParentPanelController.h"
+#import "CLPausableTimer.h"
 
 @class PanelController;
 @class CLTimezoneData;
@@ -53,10 +54,12 @@
 }
 
 
+
 @property (nonatomic) BOOL hasActivePanel;
 @property (nonatomic, unsafe_unretained, readonly) id<PanelControllerDelegate> delegate;
 @property (nonatomic, unsafe_unretained) IBOutlet BackgroundView *backgroundView;
 @property (strong, nonatomic) PanelController *panelWindow;
+@property (strong, nonatomic) CLPausableTimer *tableViewTimer;
 
 + (instancetype)getPanelControllerInstance;
 - (instancetype)initWithDelegate:(id<PanelControllerDelegate>)delegate;
