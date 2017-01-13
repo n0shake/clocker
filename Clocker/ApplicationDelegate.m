@@ -103,8 +103,8 @@ void *kContextActivePanel = &kContextActivePanel;
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
     
-    [[Crashlytics sharedInstance] setDebugMode:NO];
-    [Fabric with:@[[Crashlytics class]]];
+//    [[Crashlytics sharedInstance] setDebugMode:NO];
+//    [Fabric with:@[[Crashlytics class]]];
     
 }
 
@@ -166,6 +166,16 @@ void *kContextActivePanel = &kContextActivePanel;
     NSNumber *showSunriseSunsetTime = [userDefaults objectForKey:CLSunriseSunsetTime];
     if (showSunriseSunsetTime == nil) {
         [userDefaults setObject:@1 forKey:CLSunriseSunsetTime];
+    }
+    
+    NSNumber *showSeconds = [userDefaults objectForKey:CLShowSecondsInMenubar];
+    if (showSeconds == nil) {
+        [userDefaults setObject:@1 forKey:CLShowSecondsInMenubar];
+    }
+
+    NSNumber *userFontSize = [userDefaults objectForKey:CLUserFontSizePreference];
+    if (userFontSize == nil) {
+        [userDefaults setObject:@4 forKey:CLUserFontSizePreference];
     }
     
     //If mode selected is 1, then show the window when the app starts
