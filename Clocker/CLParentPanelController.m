@@ -7,12 +7,18 @@
 //
 
 #import "CLParentPanelController.h"
-#import "CLRatingCellView.h"
 #import "CLTimezoneData.h"
 #import "CommonStrings.h"
 #import "CLOneWindowController.h"
 #import <pop/POP.h>
+#import "iRate.h"
 #import "CLTableViewDataSource.h"
+
+NSString *const CLNotReallyButtonTitle = @"Not Really";
+NSString *const CLFeedbackString = @"Mind giving feedback?";
+NSString *const CLNoThanksTitle = @"No, thanks";
+NSString *const CLYesWithQuestionMark = @"Yes?";
+NSString *const CLYesWithExclamation = @"Yes!";
 
 @interface CLParentPanelController ()
 @property (strong) CLTableViewDataSource *timezoneDataSource;
@@ -42,7 +48,54 @@
     }
     
     self.mainTableview.selectionHighlightStyle = NSTableViewSelectionHighlightStyleNone;
-   
+    
+    [[NSUserDefaults standardUserDefaults] addObserver:self
+                                            forKeyPath:CLDisplayFutureSliderKey options:NSKeyValueObservingOptionNew context:nil];
+    [[NSUserDefaults standardUserDefaults] addObserver:self
+                                            forKeyPath:CLUserFontSizePreference options:NSKeyValueObservingOptionNew context:nil];
+    [[NSUserDefaults standardUserDefaults] addObserver:self
+                                            forKeyPath:CLThemeKey options:NSKeyValueObservingOptionNew context:nil];
+    [self updateReviewViewFontColor];
+    
+    self.futureSliderView.wantsLayer = YES;
+    self.reviewView.wantsLayer = YES;
+    
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:CLDisplayFutureSliderKey]) {
+        self.futureSlider.hidden = [change[@"new"] isEqualToNumber:@(1)] ? YES : NO;
+    }
+    else if([keyPath isEqualToString:CLUserFontSizePreference])
+    {
+        NSNumber *userFontSize = [[NSUserDefaults standardUserDefaults] objectForKey:CLUserFontSizePreference];
+        self.scrollViewHeight.constant = self.defaultPreferences.count * (self.mainTableview.rowHeight + userFontSize.integerValue*1.5);
+        [self.mainTableview reloadData];
+        
+    }
+    else if([keyPath isEqualToString:CLThemeKey])
+    {
+        [self updateReviewViewFontColor];
+    }
+    else
+    {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
+- (void)updateReviewViewFontColor
+{
+    NSNumber *theme = [[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey];
+    if (theme.integerValue == 0) {
+        self.leftField.textColor = [NSColor blackColor];
+        self.futureSliderView.layer.backgroundColor = [NSColor whiteColor].CGColor;
+    }
+    else
+    {
+        self.futureSliderView.layer.backgroundColor = [NSColor blackColor].CGColor;
+        self.leftField.textColor = [NSColor whiteColor];
+    }
 }
 
 - (void) updateDefaultPreferences
@@ -51,24 +104,19 @@
     
     self.defaultPreferences = self.defaultPreferences == nil ? [[NSMutableArray alloc] initWithArray:defaultZones] : [NSMutableArray arrayWithArray:defaultZones];
     
-    self.scrollViewHeight.constant = self.showReviewCell ?
-    (self.defaultPreferences.count+1)*55+40 : self.defaultPreferences.count*55 + 30;
+    NSNumber *userFontSize = [[NSUserDefaults standardUserDefaults] objectForKey:CLUserFontSizePreference];
     
-    NSNumber *displayFutureSlider = [[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey];
-    
-    /*No Future Slider when no timezones duh*/
-    
-    self.futureSlider.hidden = [displayFutureSlider isEqualToNumber:@1] || (self.defaultPreferences.count == 0) ? YES : NO;
+    self.scrollViewHeight.constant = self.defaultPreferences.count * (self.mainTableview.rowHeight + userFontSize.integerValue*1.5);
     
     [self updatePanelColor];
     
     if (!self.timezoneDataSource) {
         self.timezoneDataSource = [[CLTableViewDataSource alloc] initWithItems:self.defaultPreferences];
+        self.timezoneDataSource.futureSliderValue = self.futureSliderValue;
         self.mainTableview.dataSource = self.timezoneDataSource;
         self.mainTableview.delegate = self.timezoneDataSource;
     }
 }
-
 
 - (void)dealloc
 {
@@ -81,7 +129,7 @@
     if (theme.integerValue == 1)
     {
         (self.mainTableview).backgroundColor = [NSColor blackColor];
-        self.window.alphaValue = 0.90;
+        self.window.alphaValue = 1;
     }
     else
     {
@@ -130,6 +178,8 @@
     [NSHelpManager setContextHelpModeActive:YES];
     [helpManager setContextHelp:attributedString forObject:self.futureSlider];
     [helpManager showContextHelpForObject:self.futureSlider locationHint:pointInScreen];
+    
+    self.timezoneDataSource.futureSliderValue = self.futureSliderValue;
     
     [self.mainTableview reloadData];
 }
@@ -186,7 +236,7 @@
 
 - (void)performBoundsAnimationWithOldRect:(CGRect)fromRect andNewRect:(CGRect)newRect andShouldOpenTimezonePanel:(BOOL)shouldOpen
 {
-     [self.oneWindow.window setFrame:fromRect display:NO animate:NO];
+    [self.oneWindow.window setFrame:fromRect display:NO animate:NO];
     
     self.window.contentView.wantsLayer = YES;
     POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPWindowFrame];
@@ -207,6 +257,99 @@
 {
     [self.mainTableview reloadData];
 }
+
+- (IBAction)actionOnNegativeFeedback:(id)sender
+{
+    NSButton *leftButton = (NSButton *)sender;
+    
+    if ([leftButton.title isEqualToString:CLNotReallyButtonTitle]) {
+        [self setAnimatedStringValue:CLFeedbackString
+                        andTextField:self.leftField
+                 withLeftButtonTitle:CLNoThanksTitle
+                 andRightButtonTitle:CLYesWithQuestionMark];
+    }
+    else
+    {
+        [self updateReviewView];
+        [[iRate sharedInstance] remindLater];
+    }
+}
+
+- (IBAction)actionOnPositiveFeedback:(id)sender
+{
+    NSButton *rightButton = (NSButton *)sender;
+    
+    if ([rightButton.title isEqualToString:CLYesWithExclamation]) {
+        [self setAnimatedStringValue:@"Mind rating us?"
+                        andTextField:self.leftField
+                 withLeftButtonTitle:CLNoThanksTitle
+                 andRightButtonTitle:@"Yes"];
+    }
+    else if ([rightButton.title isEqualToString:CLYesWithQuestionMark])
+    {
+        [self updateReviewView];
+        self.feedbackWindow = [CLAppFeedbackWindowController sharedWindow];
+        [self.feedbackWindow showWindow:nil];
+        [NSApp activateIgnoringOtherApps:YES];
+    }
+    else
+    {
+        [[iRate sharedInstance] rate];
+        [self updateReviewView];
+    }
+}
+
+- (void)updateReviewView
+{
+    self.reviewView.hidden = YES;
+    self.showReviewCell = NO;
+    self.leftField.stringValue = @"Enjoy using Clocker?";
+    self.leftButton.title = @"Not Really";
+    self.rightButton.title = @"Yes!";
+}
+
+- (void) setAnimatedStringValue:(NSString *)aString
+                   andTextField:(NSTextField *)textfield
+            withLeftButtonTitle:(NSString *)leftTitle
+            andRightButtonTitle:(NSString *)rightTitle
+{
+    if ([textfield.stringValue isEqual: aString])
+    {
+        return;
+    }
+    
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+        context.duration = 1.0;
+        context.timingFunction = [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseOut];
+        (self.imageView.animator).alphaValue = 0.0;
+        (self.leftButton.animator).alphaValue = 0.0;
+        (self.rightButton.animator).alphaValue = 0.0;
+        (textfield.animator).alphaValue = 0.0;
+    }
+                        completionHandler:^{
+                            textfield.stringValue = aString;
+                            [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+                                context.duration = 1.0;
+                                context.timingFunction = [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseIn];
+                                (self.imageView.animator).alphaValue = 1.0;
+                                (textfield.animator).alphaValue = 1.0;
+                                (self.leftButton.animator).alphaValue = 1.0;
+                                (self.rightButton.animator).alphaValue = 1.0;
+                                if ([self.leftButton.title isEqualToString:@"Not Really"]) {
+                                    (self.leftButton.animator).title = CLNoThanksTitle;
+                                }
+                                if ([self.rightButton.title isEqualToString:CLYesWithExclamation]) {
+                                    (self.rightButton.animator).title = @"Yes, sure";
+                                }
+                                
+                                (self.leftButton.animator).title = leftTitle;
+                                (self.rightButton.animator).title = rightTitle;
+                                
+                            } completionHandler: ^{
+                            }];
+                        }];
+}
+
 
 
 @end
