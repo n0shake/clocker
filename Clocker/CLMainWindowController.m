@@ -18,7 +18,7 @@
     [super windowDidLoad];
     
     CALayer *viewLayer = [CALayer layer];
-    viewLayer.backgroundColor = CGColorCreateGenericRGB(255.0, 255.0, 255.0, 0.8); //RGB plus Alpha Channel
+    viewLayer.backgroundColor = CGColorCreateGenericRGB(255.0, 255.0, 255.0, 1); //RGB plus Alpha Channel
     [self.window.contentView setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
     (self.window.contentView).layer = viewLayer;
     self.window.titlebarAppearsTransparent = YES;
