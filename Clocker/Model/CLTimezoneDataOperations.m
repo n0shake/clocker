@@ -45,7 +45,16 @@
     
     NSNumber *is24HourFormatSelected = [[NSUserDefaults standardUserDefaults] objectForKey:CL24hourFormatSelectedKey];
     
-    dateFormatter.dateFormat = is24HourFormatSelected.boolValue ?  @"HH:mm" : @"hh:mm a";
+    NSNumber *showSeconds = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowSecondsInMenubar];
+    
+    if([showSeconds isEqualToNumber:@(0)])
+    {
+        dateFormatter.dateFormat = is24HourFormatSelected.boolValue ?  @"HH:mm:ss" : @"hh:mm:ss a";
+    }
+    else
+    {
+        dateFormatter.dateFormat = is24HourFormatSelected.boolValue ?  @"HH:mm" : @"hh:mm a";
+    }
     
     dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.dataObject.timezoneID];
     //In the format 22:10
@@ -172,7 +181,7 @@
                                                  toDate:[NSDate date]
                                                 options:kNilOptions];
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateStyle = kCFDateFormatterShortStyle;
+    dateFormatter.dateStyle = kCFDateFormatterLongStyle;
     dateFormatter.timeStyle = kCFDateFormatterNoStyle;
     
     dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.dataObject.timezoneID];
@@ -198,13 +207,11 @@
 - (NSString *)getLocalCurrentDate
 {
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateStyle = kCFDateFormatterShortStyle;
+    dateFormatter.dateStyle = kCFDateFormatterLongStyle;
     dateFormatter.timeStyle = kCFDateFormatterNoStyle;
     dateFormatter.timeZone = [NSTimeZone systemTimeZone];
     
-    return [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                          dateStyle:NSDateFormatterShortStyle
-                                          timeStyle:NSDateFormatterNoStyle];
+    return [dateFormatter stringFromDate:[NSDate date]];
     
 }
 
@@ -292,8 +299,6 @@
         if (self.dataObject.selectionType == CLTimezoneSelection)
         {
             /* A timezone has been selected*/
-            
-            NSLog(@"%@", self);
             
             return;
         }
