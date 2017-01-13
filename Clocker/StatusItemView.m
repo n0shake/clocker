@@ -65,7 +65,7 @@
 {
     [super drawRect:dirtyRect];
     
-    NSTextField *textField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, self.frame.size.width, 18)];
+    NSTextField *textField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, self.frame.size.width, 22)];
     textField.bordered = NO;
     textField.alignment = NSTextAlignmentCenter;
     
@@ -78,6 +78,7 @@
         CLTimezoneDataOperations *operationObject = [[CLTimezoneDataOperations alloc] initWithTimezoneData:timezoneObject];
         
         textField.stringValue = [operationObject getMenuTitle];
+        textField.font = [NSFont systemFontOfSize:14];
         
         // Set up dark mode for icon
         if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"]  isEqualToString:@"Dark"])
