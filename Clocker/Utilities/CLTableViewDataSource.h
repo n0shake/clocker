@@ -11,6 +11,7 @@
 @interface CLTableViewDataSource : NSObject <NSTableViewDataSource, NSTableViewDelegate>
 
 @property (assign) NSInteger futureSliderValue;
+@property (strong) NSMutableArray *timezoneObjects;
 
 - (instancetype)initWithItems:(NSArray *)objects;
 

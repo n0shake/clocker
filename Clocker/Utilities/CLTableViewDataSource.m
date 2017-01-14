@@ -17,8 +17,6 @@ NSString *const CLTimezoneCellViewID = @"timeZoneCell";
 
 @interface CLTableViewDataSource()
 
-@property (strong) NSMutableArray *timezoneObjects;
-
 
 @end
 
