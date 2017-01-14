@@ -66,7 +66,7 @@ void *kContextActivePanel = &kContextActivePanel;
     //Configure iRate
     [iRate sharedInstance].useAllAvailableLanguages = YES;
     [iVersion sharedInstance].useAllAvailableLanguages = YES;
-    [[iRate sharedInstance] setVerboseLogging:NO];
+    [[iRate sharedInstance] setVerboseLogging:YES];
     [[iVersion sharedInstance] setVerboseLogging:NO];
     [iRate sharedInstance].promptForNewVersionIfUserRated = YES;
 }

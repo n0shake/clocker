@@ -450,7 +450,7 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
         {
             NSLog(@"iRate did not prompt for rating because the user has already rated this version");
         }
-        return YES;
+        return NO;
     }
 
     //check if we've rated any version
