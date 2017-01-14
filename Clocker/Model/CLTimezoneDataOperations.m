@@ -73,9 +73,18 @@
     if (shouldCityBeShown.boolValue == 0)
     {
         
-        self.dataObject.customLabel.length > 0 ?
-        [menuTitle appendString:self.dataObject.customLabel] :
-        [menuTitle appendString:self.dataObject.formattedAddress];
+        if (self.dataObject.formattedAddress.length > 0) {
+            self.dataObject.customLabel.length > 0 ?
+            [menuTitle appendString:self.dataObject.customLabel] :
+            [menuTitle appendString:self.dataObject.formattedAddress];
+        }
+        else
+        {
+            self.dataObject.customLabel.length > 0 ?
+            [menuTitle appendString:self.dataObject.customLabel] :
+            [menuTitle appendString:self.dataObject.timezoneID];
+        }
+
         
     }
     
