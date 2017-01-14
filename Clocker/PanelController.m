@@ -41,7 +41,7 @@
 #define SEARCH_INSET 17
 
 #define POPUP_HEIGHT 300
-#define PANEL_WIDTH 280
+//#define PANEL_WIDTH 280
 #define MENU_ANIMATION_DURATION .1
 
 #define BUFFER 2
@@ -233,9 +233,9 @@ static PanelController *sharedPanel = nil;
     NSRect statusRect = [self statusRectForWindow:panel];
     
     NSRect panelRect = panel.frame;
-    panelRect.size.width = PANEL_WIDTH;
+    panelRect.size.width = panel.frame.size.width;
     
-    panelRect.size.height = self.defaultPreferences.count*55;
+    panelRect.size.height = self.window.frame.size.height;
     
     panelRect.origin.x = roundf(NSMidX(statusRect) - NSWidth(panelRect) / 2);
     panelRect.origin.y = NSMaxY(statusRect) - NSHeight(panelRect);
