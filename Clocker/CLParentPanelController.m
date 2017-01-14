@@ -13,6 +13,7 @@
 #import <pop/POP.h>
 #import "iRate.h"
 #import "CLTableViewDataSource.h"
+#import <Crashlytics/Crashlytics.h>
 
 NSString *const CLNotReallyButtonTitle = @"Not Really";
 NSString *const CLFeedbackString = @"Mind giving feedback?";
@@ -66,10 +67,12 @@ NSString *const CLYesWithExclamation = @"Yes!";
 {
     if ([keyPath isEqualToString:CLDisplayFutureSliderKey]) {
         self.futureSlider.hidden = [change[@"new"] isEqualToNumber:@(1)] ? YES : NO;
+        [Answers logCustomEventWithName:@"Is Future Slider Displayed" customAttributes:@{@"Display Value" : self.futureSlider.isHidden ? @"NO" : @"YES"}];
     }
     else if([keyPath isEqualToString:CLUserFontSizePreference])
     {
         NSNumber *userFontSize = [[NSUserDefaults standardUserDefaults] objectForKey:CLUserFontSizePreference];
+        [Answers logCustomEventWithName:@"User Font Size Preference" customAttributes:@{@"Font Size" : userFontSize}];
         self.scrollViewHeight.constant = self.defaultPreferences.count * (self.mainTableview.rowHeight + userFontSize.integerValue*1.5);
         [self.mainTableview reloadData];
         
@@ -112,10 +115,12 @@ NSString *const CLYesWithExclamation = @"Yes!";
     
     if (!self.timezoneDataSource) {
         self.timezoneDataSource = [[CLTableViewDataSource alloc] initWithItems:self.defaultPreferences];
-        self.timezoneDataSource.futureSliderValue = self.futureSliderValue;
         self.mainTableview.dataSource = self.timezoneDataSource;
         self.mainTableview.delegate = self.timezoneDataSource;
     }
+    
+    self.timezoneDataSource.timezoneObjects = self.defaultPreferences;
+    self.timezoneDataSource.futureSliderValue = self.futureSliderValue;
 }
 
 - (void)dealloc

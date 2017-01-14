@@ -103,8 +103,8 @@ void *kContextActivePanel = &kContextActivePanel;
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
     
-//    [[Crashlytics sharedInstance] setDebugMode:NO];
-//    [Fabric with:@[[Crashlytics class]]];
+    [[Crashlytics sharedInstance] setDebugMode:NO];
+    [Fabric with:@[[Crashlytics class]]];
     
 }
 

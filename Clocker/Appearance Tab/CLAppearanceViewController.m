@@ -12,6 +12,7 @@
 #import "CommonStrings.h"
 #import "CLTimezoneData.h"
 #import "CLFloatingWindowController.h"
+#import <Crashlytics/Crashlytics.h>
 
 typedef NS_ENUM(NSUInteger, CLClockerMode) {
     CLMenubarMode = 0,
@@ -44,6 +45,8 @@ typedef NS_ENUM(NSUInteger, CLClockerMode) {
     
     [[NSUserDefaults standardUserDefaults] setObject:@(timeFormat.selectedSegment) forKey:CL24hourFormatSelectedKey];
     
+    [Answers logCustomEventWithName:@"Time Format Selected" customAttributes:@{@"Time Format" : timeFormat.selectedSegment == 0 ? @"12 Hour Format" : @"24 Hour Format"}];
+    
     [self refreshMainTableview:YES andUpdateFloatingWindow:YES];
 }
 
@@ -74,6 +77,8 @@ typedef NS_ENUM(NSUInteger, CLClockerMode) {
     }
     
     [panelController updateTableContent];
+    
+    [Answers logCustomEventWithName:@"Theme" customAttributes:@{@"themeSelected" : themeSegment.selectedSegment == CLBlackTheme ? @"Black" : @"White"}];
 
 }
 
@@ -95,12 +100,17 @@ typedef NS_ENUM(NSUInteger, CLClockerMode) {
         [sharedDelegate.floatingWindow.window close];
         [sharedDelegate.panelController updateDefaultPreferences];
     }
+    
+    [Answers logCustomEventWithName:@"RelativeDate" customAttributes:@{@"displayMode" : modeSegment.selectedSegment == CLFloatingMode ? @"Floating Mode" : @"Menubar Mode"}];
 }
 
 
 - (IBAction)changeRelativeDayDisplay:(NSSegmentedControl *)relativeDayControl
 {
+   
     NSNumber *selectedIndex = @(relativeDayControl.selectedSegment);
+    
+    [Answers logCustomEventWithName:@"RelativeDate" customAttributes:@{@"dayPreference" : selectedIndex.integerValue == 0 ? @"Relative Day" : @"Actual Day"}];
     
     [[NSUserDefaults standardUserDefaults] setObject:selectedIndex forKey:CLRelativeDateKey];
     
@@ -155,6 +165,16 @@ typedef NS_ENUM(NSUInteger, CLClockerMode) {
 {
     //Get the current display mode
     [self refreshMainTableview:NO andUpdateFloatingWindow:YES];
+}
+
+- (IBAction)showSunriseSunset:(NSSegmentedControl *)sender {
+    
+    [Answers logCustomEventWithName:@"Sunrise Sunset" customAttributes:@{@"Is It Displayed" : sender.selectedSegment == 0 ? @"YES" : @"NO"}];
+    
+}
+- (IBAction)displayTimeWithSeconds:(NSSegmentedControl *)sender {
+    
+    [Answers logCustomEventWithName:@"Display Time With Seconds" customAttributes:@{@"Displayed" : sender.selectedSegment == 0 ? @"YES" : @"NO"}];
 }
 
 @end

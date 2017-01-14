@@ -168,6 +168,7 @@
                         </segments>
                     </segmentedCell>
                     <connections>
+                        <action selector="showSunriseSunset:" target="-2" id="ckh-bB-nda"/>
                         <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.showSunriseSetTime" id="ISl-9Q-Snd"/>
                     </connections>
                 </segmentedControl>
@@ -281,6 +282,7 @@
                         </segments>
                     </segmentedCell>
                     <connections>
+                        <action selector="displayTimeWithSeconds:" target="-2" id="WSc-qj-YR7"/>
                         <binding destination="WGI-5h-l6M" name="selectedIndex" keyPath="values.showSeconds" id="Zjy-8n-mQV"/>
                     </connections>
                 </segmentedControl>

@@ -10,6 +10,7 @@
 #import "CommonStrings.h"
 #import "CLAppFeedbackWindowController.h"
 #import "CLUnderlinedButton.h"
+#import <Crashlytics/Crashlytics.h>
 
 @interface CLAboutUsViewController ()
 
@@ -80,11 +81,13 @@ NSString *const CLPersonalWebsite = @"http://abhishekbanthia.com";
 - (IBAction)openMyTwitter:(id)sender
 {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLTwitterLink]];
+    [Answers logCustomEventWithName:@"openedTwitterProfile" customAttributes:@{}];
 }
 
 - (IBAction)viewSource:(id)sender
 {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLGitHubURL]];
+    [Answers logCustomEventWithName:@"openedGitHub" customAttributes:@{}];
 }
 - (IBAction)reportIssue:(id)sender
 {
@@ -92,15 +95,18 @@ NSString *const CLPersonalWebsite = @"http://abhishekbanthia.com";
     [self.feedbackWindow showWindow:nil];
     [NSApp activateIgnoringOtherApps:YES];
     [self.view.window orderOut:self];
+    [Answers logCustomEventWithName:@"reportIssueOpened" customAttributes:@{}];
 }
 
 - (IBAction)openFacebookPage:(id)sender
 {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLFacebookPageURL]];
+    [Answers logCustomEventWithName:@"openedFacebookPage" customAttributes:@{}];
 }
 
 - (IBAction)openWebsite:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLPersonalWebsite]];
+     [Answers logCustomEventWithName:@"openedPersonalWebsite" customAttributes:@{}];
 }
 
 @end
