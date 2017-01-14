@@ -33,6 +33,7 @@
             <rect key="contentRect" x="1000" y="379" width="306" height="343"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
             <value key="minSize" type="size" width="150" height="50"/>
+            <value key="maxSize" type="size" width="306" height="800"/>
             <view key="contentView" id="qEx-SC-5Qd">
                 <rect key="frame" x="0.0" y="0.0" width="306" height="343"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
