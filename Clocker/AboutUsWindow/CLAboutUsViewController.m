@@ -9,11 +9,18 @@
 #import "CLAboutUsViewController.h"
 #import "CommonStrings.h"
 #import "CLAppFeedbackWindowController.h"
+#import "CLUnderlinedButton.h"
 
 @interface CLAboutUsViewController ()
 
 @property (strong, nonatomic) CLAppFeedbackWindowController *feedbackWindow;
 @property (weak) IBOutlet NSTextField *versionField;
+@property (weak) IBOutlet CLUnderlinedButton *makerButton;
+@property (weak) IBOutlet CLUnderlinedButton *quickCommentAction;
+@property (weak) IBOutlet CLUnderlinedButton *privateFeedback;
+@property (weak) IBOutlet CLUnderlinedButton *supportClocker;
+@property (weak) IBOutlet CLUnderlinedButton *facebookButton;
+
 
 @end
 
@@ -22,15 +29,57 @@ NSString *const CLAboutUsNibIdentifier = @"CLAboutWindow";
 NSString *const CLGitHubURL = @"https://github.com/Abhishaker17/Clocker";
 NSString *const CLIssueURL =@"https://github.com/Abhishaker17/Clocker/issues";
 NSString *const CLFacebookPageURL = @"https://www.facebook.com/ClockerMenubarClock/";
+NSString *const CLTwitterLink = @"https://twitter.com/abgbm";
+NSString *const CLPersonalWebsite = @"http://abhishekbanthia.com";
 
 @implementation CLAboutUsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.versionField.stringValue = NSLocalizedFormatString(@"ClockerVersion", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]);
+    [self underlineTextForActionButton];
+    
+    self.versionField.stringValue = [NSString stringWithFormat:@"Clocker %@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
 
     // Do view setup here.
+}
+
+- (void)underlineTextForActionButton
+{
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithAttributedString:self.makerButton.attributedTitle];
+    
+    [str addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleSingle] range:NSMakeRange(3, str.length-3)];
+    
+    [self.makerButton setAttributedTitle:str];
+    
+    NSMutableAttributedString *quickComment = [[NSMutableAttributedString alloc] initWithAttributedString:self.quickCommentAction.attributedTitle];
+    
+    [quickComment addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleSingle] range:NSMakeRange(3, 6)];
+    
+    [self.quickCommentAction setAttributedTitle:quickComment];
+     
+     NSMutableAttributedString *privateFeed = [[NSMutableAttributedString alloc] initWithAttributedString:self.privateFeedback.attributedTitle];
+     
+     [privateFeed addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleSingle] range:NSMakeRange(7, privateFeed.length-7)];
+     
+     [self.privateFeedback setAttributedTitle:privateFeed];
+    
+    NSMutableAttributedString *supportClocker = [[NSMutableAttributedString alloc] initWithAttributedString:self.supportClocker.attributedTitle];
+    
+    [supportClocker addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleSingle] range:NSMakeRange(27, 19)];
+    
+    [self.supportClocker setAttributedTitle:supportClocker];
+    
+    [self.quickCommentAction setCursor:[NSCursor pointingHandCursor]];
+    [self.supportClocker setCursor:[NSCursor pointingHandCursor]];
+    [self.privateFeedback setCursor:[NSCursor pointingHandCursor]];
+    [self.makerButton setCursor:[NSCursor pointingHandCursor]];
+     [self.facebookButton setCursor:[NSCursor pointingHandCursor]];
+}
+
+- (IBAction)openMyTwitter:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLTwitterLink]];
 }
 
 - (IBAction)viewSource:(id)sender
@@ -48,6 +97,10 @@ NSString *const CLFacebookPageURL = @"https://www.facebook.com/ClockerMenubarClo
 - (IBAction)openFacebookPage:(id)sender
 {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLFacebookPageURL]];
+}
+
+- (IBAction)openWebsite:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLPersonalWebsite]];
 }
 
 @end

@@ -47,6 +47,7 @@
 		9A5B6C7C1D470ECB000EAAF1 /* CLTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5B6C7B1D470ECB000EAAF1 /* CLTableViewDataSource.m */; };
 		9A5E6BAB1CAF8DFA006E7C5C /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A5E6BAA1CAF8DFA006E7C5C /* iRate.bundle */; };
 		9A63620A1C432F68004AD010 /* CLAPIConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6362091C432F68004AD010 /* CLAPIConnector.m */; };
+		9A6AAD3F1E2A8268003C826E /* CLUnderlinedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6AAD3E1E2A8268003C826E /* CLUnderlinedButton.m */; };
 		9A6D93371CF3E82F005A8690 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6D93361CF3E82F005A8690 /* CoreImage.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9A79E9901CB34B6800BA7916 /* CLParentPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A79E98F1CB34B6800BA7916 /* CLParentPanelController.m */; };
 		9A8605AE1BEC148400A810A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605AD1BEC148400A810A4 /* main.m */; };
@@ -256,6 +257,8 @@
 		9A5E6BAA1CAF8DFA006E7C5C /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		9A6362081C432F68004AD010 /* CLAPIConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAPIConnector.h; path = Clocker/API/CLAPIConnector.h; sourceTree = "<group>"; };
 		9A6362091C432F68004AD010 /* CLAPIConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAPIConnector.m; path = Clocker/API/CLAPIConnector.m; sourceTree = "<group>"; };
+		9A6AAD3D1E2A8268003C826E /* CLUnderlinedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLUnderlinedButton.h; path = Clocker/Utilities/CLUnderlinedButton.h; sourceTree = "<group>"; };
+		9A6AAD3E1E2A8268003C826E /* CLUnderlinedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLUnderlinedButton.m; path = Clocker/Utilities/CLUnderlinedButton.m; sourceTree = "<group>"; };
 		9A6D93361CF3E82F005A8690 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		9A79E98E1CB34B6800BA7916 /* CLParentPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLParentPanelController.h; path = Clocker/CLParentPanelController.h; sourceTree = "<group>"; };
 		9A79E98F1CB34B6800BA7916 /* CLParentPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLParentPanelController.m; path = Clocker/CLParentPanelController.m; sourceTree = "<group>"; };
@@ -475,6 +478,8 @@
 				9ABA2B021C671D49009DC0EF /* CLMainWindowController.m */,
 				9A79E98E1CB34B6800BA7916 /* CLParentPanelController.h */,
 				9A79E98F1CB34B6800BA7916 /* CLParentPanelController.m */,
+				9A6AAD3D1E2A8268003C826E /* CLUnderlinedButton.h */,
+				9A6AAD3E1E2A8268003C826E /* CLUnderlinedButton.m */,
 			);
 			name = Superclass;
 			sourceTree = "<group>";
@@ -860,6 +865,7 @@
 				9A392EED1C1CE9950072C10A /* CLPreferencesViewController.m in Sources */,
 				9A5951BD1C1D0A8D009C17AA /* CommonStrings.m in Sources */,
 				9A5951FA1C1D5214009C17AA /* iVersion.m in Sources */,
+				9A6AAD3F1E2A8268003C826E /* CLUnderlinedButton.m in Sources */,
 				9A87DAC61C358FA800A8CF3B /* DTError.m in Sources */,
 				9A20A0781C4EA53600FB45AB /* CLOnboardingWindowController.m in Sources */,
 				9A5B6C7C1D470ECB000EAAF1 /* CLTableViewDataSource.m in Sources */,
