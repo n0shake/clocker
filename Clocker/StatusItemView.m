@@ -78,7 +78,7 @@
         CLTimezoneDataOperations *operationObject = [[CLTimezoneDataOperations alloc] initWithTimezoneData:timezoneObject];
         
         textField.stringValue = [operationObject getMenuTitle];
-        textField.font = [NSFont systemFontOfSize:14];
+        textField.font = [NSFont monospacedDigitSystemFontOfSize:14.0 weight:0];
         
         // Set up dark mode for icon
         if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"]  isEqualToString:@"Dark"])
@@ -128,7 +128,7 @@
 - (NSImage *)imageWithSubviewsWithTextField:(NSTextField *)textField
 {
     NSSize mySize = textField.bounds.size;
-    NSSize imgSize = NSMakeSize( mySize.width, mySize.height );
+    NSSize imgSize = NSMakeSize( mySize.width, mySize.height+1.2);
     
     NSBitmapImageRep *bir = [textField bitmapImageRepForCachingDisplayInRect:textField.bounds];
     bir.size = imgSize;
