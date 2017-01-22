@@ -45,5 +45,7 @@
 @property (nonatomic, readonly) NSRect globalRect;
 @property (nonatomic) SEL action;
 @property (nonatomic, unsafe_unretained) id target;
+@property (assign) BOOL flashingTicker;
+
 
 @end

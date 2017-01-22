@@ -177,4 +177,8 @@ typedef NS_ENUM(NSUInteger, CLClockerMode) {
     [Answers logCustomEventWithName:@"Display Time With Seconds" customAttributes:@{@"Displayed" : sender.selectedSegment == 0 ? @"YES" : @"NO"}];
 }
 
+- (IBAction)flashTheTimeSeperators:(NSSegmentedControl *)sender {
+    [Answers logCustomEventWithName:@"Flashing Time Seperators" customAttributes:@{@"Displayed" : sender.selectedSegment == 0 ? @"YES" : @"NO"}];
+}
+
 @end

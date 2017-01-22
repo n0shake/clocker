@@ -33,5 +33,6 @@ extern NSString *const CLSunriseSunsetTime;
 extern NSString *const CLLocationSearchURL;
 extern NSString *const CLShowSecondsInMenubar;
 extern NSString *const CLUserFontSizePreference;
+extern NSString *const CLSeperatorFlashUserPreference;
 
 @end

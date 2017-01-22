@@ -54,6 +54,7 @@
     if (self != nil) {
         _statusItem = statusItem;
         _statusItem.view = self;
+        self.flashingTicker = NO;
     }
     return self;
 }
@@ -77,8 +78,8 @@
         
         CLTimezoneDataOperations *operationObject = [[CLTimezoneDataOperations alloc] initWithTimezoneData:timezoneObject];
         
-        textField.stringValue = [operationObject getMenuTitle];
-        textField.font = [NSFont monospacedDigitSystemFontOfSize:14.0 weight:0];
+        textField.stringValue = [self textWithFlashingTicker:[operationObject getMenuTitle]];
+        textField.font = [NSFont fontWithName:@"Menlo" size:13];
         
         // Set up dark mode for icon
         if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"]  isEqualToString:@"Dark"])
@@ -122,6 +123,23 @@
 	[icon drawAtPoint:iconPoint fromRect:NSZeroRect
             operation:NSCompositeSourceOver
              fraction:1.0];
+}
+
+- (NSString *)textWithFlashingTicker:(NSString *)originalText
+{
+    self.flashingTicker = !self.flashingTicker;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *flashingSeperators = [userDefaults objectForKey:CLSeperatorFlashUserPreference];
+    if (flashingSeperators.boolValue == 0) {
+        
+        if (originalText.length > 0 && self.flashingTicker) {
+            
+            originalText = [NSMutableString stringWithString:[originalText stringByReplacingOccurrencesOfString:@":" withString:@" "]];
+        }
+    }
+    
+    return originalText;
+
 }
 
 
