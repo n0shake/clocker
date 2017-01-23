@@ -90,6 +90,8 @@ void *kContextActivePanel = &kContextActivePanel;
     self.menubarController = [MenubarController new];
     
     [self initializeDefaults];
+    
+    /*
 
     NSString *onboarding = [[NSUserDefaults standardUserDefaults] objectForKey:@"initialLaunch"];
     
@@ -101,6 +103,8 @@ void *kContextActivePanel = &kContextActivePanel;
         [[NSUserDefaults standardUserDefaults] setObject:@"OnboardingDone" forKey:@"initialLaunch"];
     }
     
+     */
+     
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
     
     [[Crashlytics sharedInstance] setDebugMode:NO];
