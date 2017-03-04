@@ -12,7 +12,6 @@
 #import "CLOneWindowController.h"
 #import <pop/POP.h>
 #import "iRate.h"
-#import "CLTableViewDataSource.h"
 #import <Crashlytics/Crashlytics.h>
 
 NSString *const CLNotReallyButtonTitle = @"Not Really";
@@ -22,7 +21,7 @@ NSString *const CLYesWithQuestionMark = @"Yes?";
 NSString *const CLYesWithExclamation = @"Yes!";
 
 @interface CLParentPanelController ()
-@property (strong) CLTableViewDataSource *timezoneDataSource;
+
 @end
 
 @implementation CLParentPanelController

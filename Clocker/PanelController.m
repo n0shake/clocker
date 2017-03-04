@@ -209,6 +209,8 @@ static PanelController *sharedPanel = nil;
 
 - (void)openPanel
 {
+    self.timezoneDataSource.futureSliderValue = 0;
+    
     self.futureSliderValue = 0;
     
     self.reviewView.hidden = !self.showReviewCell;

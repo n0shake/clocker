@@ -32,6 +32,7 @@
 #import "CommonStrings.h"
 #import "iVersion.h"
 #import "CLOnboardingWindowController.h"
+#import "MoLoginItem/MoLoginItem.h"
 
 @implementation ApplicationDelegate
 
@@ -63,12 +64,9 @@ void *kContextActivePanel = &kContextActivePanel;
 
 + (void)initialize
 {
-    //Configure iRate
-    [iRate sharedInstance].useAllAvailableLanguages = YES;
     [iVersion sharedInstance].useAllAvailableLanguages = YES;
-    [[iRate sharedInstance] setVerboseLogging:YES];
     [[iVersion sharedInstance] setVerboseLogging:NO];
-    [iRate sharedInstance].promptForNewVersionIfUserRated = YES;
+    [iRate sharedInstance].promptForNewVersionIfUserRated = NO;
 }
 
 #pragma mark - NSApplicationDelegate
@@ -90,16 +88,6 @@ void *kContextActivePanel = &kContextActivePanel;
     self.menubarController = [MenubarController new];
     
     [self initializeDefaults];
-
-    NSString *onboarding = [[NSUserDefaults standardUserDefaults] objectForKey:@"initialLaunch"];
-    
-    if (onboarding == nil)
-    {
-        CLOnboardingWindowController *windowController = [CLOnboardingWindowController sharedWindow];
-        [windowController showWindow:nil];
-        [NSApp activateIgnoringOtherApps:YES];
-        [[NSUserDefaults standardUserDefaults] setObject:@"OnboardingDone" forKey:@"initialLaunch"];
-    }
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
     
@@ -156,6 +144,11 @@ void *kContextActivePanel = &kContextActivePanel;
     NSNumber *startClockerAtLogin = [userDefaults objectForKey:CLStartAtLogin];
     if (startClockerAtLogin == nil) {
         [userDefaults setObject:@0 forKey:CLStartAtLogin];
+    }
+    else
+    {
+        //Set yes to the start at login!
+        MOEnableLoginItem(YES);
     }
     
     NSNumber *displayMode = [userDefaults objectForKey:CLShowAppInForeground];

@@ -67,9 +67,15 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
     
     self.window.titlebarAppearsTransparent = YES;
     self.window.titleVisibility = NSWindowTitleHidden;
-       
+    
+    self.reviewView.hidden = !self.showReviewCell;
+    
+    self.reviewView.layer.backgroundColor = (theme.integerValue == 0) ? [NSColor whiteColor].CGColor :  [NSColor blackColor].CGColor;
+    
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
+
+
 
 + (instancetype)sharedFloatingWindow
 {
@@ -125,6 +131,8 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
 -(void)windowWillClose:(NSNotification *)notification
 {
     self.futureSliderValue = 0;
+    
+    self.timezoneDataSource.futureSliderValue = 0;
     
     if (self.floatingWindowTimer)
     {

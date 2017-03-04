@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A0E94681E6A5F010089B552 /* MoLoginItem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E94671E6A5F010089B552 /* MoLoginItem.framework */; };
+		9A0E94691E6A5F010089B552 /* MoLoginItem.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A0E94671E6A5F010089B552 /* MoLoginItem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9A10C6881CDAAB3000D474F1 /* CLPausableTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A10C6871CDAAB3000D474F1 /* CLPausableTimer.m */; };
 		9A10C68F1CDAC8B500D474F1 /* CLPanelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A10C68E1CDAC8B500D474F1 /* CLPanelTextField.m */; };
 		9A13BAC61CA86A88007C6CBE /* CLAboutUsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAC81CA86A88007C6CBE /* CLAboutUsView.xib */; };
@@ -187,6 +189,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				9A86E2C41CE04F7B00547EE7 /* ShortcutRecorder.framework in CopyFiles */,
+				9A0E94691E6A5F010089B552 /* MoLoginItem.framework in CopyFiles */,
 				9A3169BD1D2CB9B40079FDF8 /* pop.framework in CopyFiles */,
 				9A86E2C51CE04F7B00547EE7 /* PTHotKey.framework in CopyFiles */,
 			);
@@ -195,6 +198,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9A0E94671E6A5F010089B552 /* MoLoginItem.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MoLoginItem.framework; path = Frameworks/MoLoginItem.framework; sourceTree = "<group>"; };
 		9A10C6861CDAAB3000D474F1 /* CLPausableTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLPausableTimer.h; path = Clocker/CLPausableTimer.h; sourceTree = "<group>"; };
 		9A10C6871CDAAB3000D474F1 /* CLPausableTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLPausableTimer.m; path = Clocker/CLPausableTimer.m; sourceTree = "<group>"; };
 		9A10C68D1CDAC8B500D474F1 /* CLPanelTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLPanelTextField.h; path = Clocker/CLPanelTextField.h; sourceTree = "<group>"; };
@@ -352,6 +356,7 @@
 				DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */,
 				9A4379271BEC223900F4E27F /* Fabric.framework in Frameworks */,
 				9ACE03EF1CB0ADE00039FC01 /* Firebase.framework in Frameworks */,
+				9A0E94681E6A5F010089B552 /* MoLoginItem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +602,7 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
+				9A0E94671E6A5F010089B552 /* MoLoginItem.framework */,
 				9AA4AC851CEC0EE40054ACB7 /* Onboarding Animated Views */,
 				9AB89E021CE97A4900EC8EB1 /* Media.xcassets */,
 				9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */,

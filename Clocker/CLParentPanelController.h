@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "CLOneWindowController.h"
 #import "CLAppFeedbackWindowController.h"
+#import "CLTableViewDataSource.h"
 
 @interface CLParentPanelController : NSWindowController<NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate>
 
@@ -26,6 +27,7 @@
 @property (weak) IBOutlet NSSlider *futureSlider;
 @property (weak) IBOutlet NSTableView *mainTableview;
 @property (weak) IBOutlet NSLayoutConstraint *scrollViewHeight;
+@property (strong) CLTableViewDataSource *timezoneDataSource;
 @property (nonatomic, strong) CLOneWindowController *oneWindow;
 
 @property (weak, nonatomic) IBOutlet NSImageView *imageView;
