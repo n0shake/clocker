@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9A0E94681E6A5F010089B552 /* MoLoginItem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E94671E6A5F010089B552 /* MoLoginItem.framework */; };
 		9A0E94691E6A5F010089B552 /* MoLoginItem.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A0E94671E6A5F010089B552 /* MoLoginItem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9A0E948D1E6A649E0089B552 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E948C1E6A649E0089B552 /* ShortcutRecorder.framework */; };
+		9A0E948E1E6A649E0089B552 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A0E948C1E6A649E0089B552 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9A10C6881CDAAB3000D474F1 /* CLPausableTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A10C6871CDAAB3000D474F1 /* CLPausableTimer.m */; };
 		9A10C68F1CDAC8B500D474F1 /* CLPanelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A10C68E1CDAC8B500D474F1 /* CLPanelTextField.m */; };
 		9A13BAC61CA86A88007C6CBE /* CLAboutUsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAC81CA86A88007C6CBE /* CLAboutUsView.xib */; };
@@ -60,9 +62,7 @@
 		9A8605BF1BEC14F600A810A4 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BC1BEC14F600A810A4 /* BackgroundView.m */; };
 		9A8605C01BEC14F600A810A4 /* Panel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605BD1BEC14F600A810A4 /* Panel.m */; };
 		9A86E2B41CE0351C00547EE7 /* EDSunriseSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A86E2B31CE0351C00547EE7 /* EDSunriseSet.m */; };
-		9A86E2C11CE04F4300547EE7 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86E2BC1CE04F1600547EE7 /* ShortcutRecorder.framework */; };
 		9A86E2C21CE04F4A00547EE7 /* PTHotKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86E2BE1CE04F1600547EE7 /* PTHotKey.framework */; };
-		9A86E2C41CE04F7B00547EE7 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A86E2BC1CE04F1600547EE7 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9A86E2C51CE04F7B00547EE7 /* PTHotKey.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A86E2BE1CE04F1600547EE7 /* PTHotKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9A87DAC41C358FA800A8CF3B /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A87DAB41C358FA800A8CF3B /* DateTools.bundle */; };
 		9A87DAC51C358FA800A8CF3B /* DTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A87DAB71C358FA800A8CF3B /* DTConstants.m */; };
@@ -93,6 +93,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		9A0E94861E6A643F0089B552 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A0E94801E6A643F0089B552 /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 939837800DA42965007F53F3;
+			remoteInfo = ShortcutRecorder.framework;
+		};
+		9A0E94881E6A643F0089B552 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A0E94801E6A643F0089B552 /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E273122E1349EC9000A84433;
+			remoteInfo = PTHotKey.framework;
+		};
+		9A0E948A1E6A643F0089B552 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A0E94801E6A643F0089B552 /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0D6B2468180304DE00CE1142;
+			remoteInfo = Demo;
+		};
 		9A3169BE1D2CB9B40079FDF8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9A82F32B1CDFF8CE00CC8906 /* pop.xcodeproj */;
@@ -188,7 +209,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9A86E2C41CE04F7B00547EE7 /* ShortcutRecorder.framework in CopyFiles */,
+				9A0E948E1E6A649E0089B552 /* ShortcutRecorder.framework in CopyFiles */,
 				9A0E94691E6A5F010089B552 /* MoLoginItem.framework in CopyFiles */,
 				9A3169BD1D2CB9B40079FDF8 /* pop.framework in CopyFiles */,
 				9A86E2C51CE04F7B00547EE7 /* PTHotKey.framework in CopyFiles */,
@@ -199,6 +220,8 @@
 
 /* Begin PBXFileReference section */
 		9A0E94671E6A5F010089B552 /* MoLoginItem.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MoLoginItem.framework; path = Frameworks/MoLoginItem.framework; sourceTree = "<group>"; };
+		9A0E94801E6A643F0089B552 /* ShortcutRecorder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShortcutRecorder.xcodeproj; path = "Clocker/ShortcutRecorder-master/ShortcutRecorder.xcodeproj"; sourceTree = "<group>"; };
+		9A0E948C1E6A649E0089B552 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = Frameworks/ShortcutRecorder.framework; sourceTree = "<group>"; };
 		9A10C6861CDAAB3000D474F1 /* CLPausableTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLPausableTimer.h; path = Clocker/CLPausableTimer.h; sourceTree = "<group>"; };
 		9A10C6871CDAAB3000D474F1 /* CLPausableTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLPausableTimer.m; path = Clocker/CLPausableTimer.m; sourceTree = "<group>"; };
 		9A10C68D1CDAC8B500D474F1 /* CLPanelTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLPanelTextField.h; path = Clocker/CLPanelTextField.h; sourceTree = "<group>"; };
@@ -343,7 +366,6 @@
 				9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */,
 				9A6D93371CF3E82F005A8690 /* CoreImage.framework in Frameworks */,
 				9A86E2C21CE04F4A00547EE7 /* PTHotKey.framework in Frameworks */,
-				9A86E2C11CE04F4300547EE7 /* ShortcutRecorder.framework in Frameworks */,
 				9A9E876A1C1FEDDB00A7A2DF /* SystemConfiguration.framework in Frameworks */,
 				9A9E87621C1FEDB500A7A2DF /* CFNetwork.framework in Frameworks */,
 				9ABFB3801CA6882000E10745 /* ApplicationServices.framework in Frameworks */,
@@ -352,6 +374,7 @@
 				9A9E87681C1FEDD300A7A2DF /* Security.framework in Frameworks */,
 				9A5951BA1C1D0A22009C17AA /* Crashlytics.framework in Frameworks */,
 				9A43792A1BEC230A00F4E27F /* libc++.tbd in Frameworks */,
+				9A0E948D1E6A649E0089B552 /* ShortcutRecorder.framework in Frameworks */,
 				9A4379251BEC223900F4E27F /* Security.framework in Frameworks */,
 				DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */,
 				9A4379271BEC223900F4E27F /* Fabric.framework in Frameworks */,
@@ -363,6 +386,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A0E94811E6A643F0089B552 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A0E94871E6A643F0089B552 /* ShortcutRecorder.framework */,
+				9A0E94891E6A643F0089B552 /* PTHotKey.framework */,
+				9A0E948B1E6A643F0089B552 /* Demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9A2000C61BFBCEF6002BFDE8 /* Utilties */ = {
 			isa = PBXGroup;
 			children = (
@@ -602,6 +635,8 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
+				9A0E948C1E6A649E0089B552 /* ShortcutRecorder.framework */,
+				9A0E94801E6A643F0089B552 /* ShortcutRecorder.xcodeproj */,
 				9A0E94671E6A5F010089B552 /* MoLoginItem.framework */,
 				9AA4AC851CEC0EE40054ACB7 /* Onboarding Animated Views */,
 				9AB89E021CE97A4900EC8EB1 /* Media.xcassets */,
@@ -730,6 +765,10 @@
 					ProductGroup = 9A86E2B61CE04F1600547EE7 /* Products */;
 					ProjectRef = 9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */;
 				},
+				{
+					ProductGroup = 9A0E94811E6A643F0089B552 /* Products */;
+					ProjectRef = 9A0E94801E6A643F0089B552 /* ShortcutRecorder.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -739,6 +778,27 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		9A0E94871E6A643F0089B552 /* ShortcutRecorder.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ShortcutRecorder.framework;
+			remoteRef = 9A0E94861E6A643F0089B552 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A0E94891E6A643F0089B552 /* PTHotKey.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PTHotKey.framework;
+			remoteRef = 9A0E94881E6A643F0089B552 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A0E948B1E6A643F0089B552 /* Demo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Demo.app;
+			remoteRef = 9A0E948A1E6A643F0089B552 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		9A82F3371CDFF8CF00CC8906 /* libpop.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1052,8 +1112,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = "";
@@ -1161,8 +1221,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1197,8 +1257,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: Abhishek Banthia (AJS5SNW8EY)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = AJS5SNW8EY;

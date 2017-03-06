@@ -32,7 +32,7 @@
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" ignoresCycle="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1000" y="379" width="306" height="343"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" focusRingType="none" id="6" customClass="BackgroundView">
                 <rect key="frame" x="0.0" y="0.0" width="306" height="343"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -249,7 +249,7 @@
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="B8X-sx-cjT">
                                 <rect key="frame" x="0.0" y="0.0" width="306" height="28"/>
                                 <subviews>
-                                    <button toolTip="Open Preferences" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xb-dy-XLC">
+                                    <button toolTip="Close Clocker" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xb-dy-XLC">
                                         <rect key="frame" x="10" y="5" width="30" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="PowerIcon" imagePosition="only" alignment="center" alternateImage="PowerIcon" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dXQ-9P-1HU">
@@ -269,7 +269,7 @@
                                             <binding destination="-2" name="value" keyPath="self.futureSliderValue" id="pyB-jC-66p"/>
                                         </connections>
                                     </slider>
-                                    <button toolTip="Close Clocker" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ctq-BV-GPN">
+                                    <button toolTip="Open Preferences" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ctq-BV-GPN">
                                         <rect key="frame" x="264" y="5" width="29" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="NSActionTemplate" imagePosition="only" alignment="center" alternateImage="NSActionTemplate" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SIv-Ve-UkG">
