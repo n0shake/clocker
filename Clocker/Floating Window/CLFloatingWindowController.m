@@ -32,6 +32,7 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
     if (!self.dateFormatter)
     {
         self.dateFormatter = [NSDateFormatter new];
+        self.dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
     }
     
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey] isKindOfClass:[NSString class]]){
@@ -67,7 +68,11 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
     
     self.window.titlebarAppearsTransparent = YES;
     self.window.titleVisibility = NSWindowTitleHidden;
-       
+    
+    self.reviewView.hidden = !self.showReviewCell;
+    
+    self.reviewView.layer.backgroundColor = (theme.integerValue == 0) ? [NSColor whiteColor].CGColor :  [NSColor blackColor].CGColor;
+    
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
