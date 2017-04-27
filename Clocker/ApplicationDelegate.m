@@ -32,6 +32,10 @@
 #import "CommonStrings.h"
 #import "iVersion.h"
 #import "CLOnboardingWindowController.h"
+#import <FMDB/FMDB.h>
+#import "CLTimezoneData.h"
+#import "CLTimezoneDataOperations.h"
+#import "MoLoginItem/MoLoginItem.h"
 
 @implementation ApplicationDelegate
 
@@ -66,7 +70,7 @@ void *kContextActivePanel = &kContextActivePanel;
     //Configure iRate
     [iRate sharedInstance].useAllAvailableLanguages = YES;
     [iVersion sharedInstance].useAllAvailableLanguages = YES;
-    [[iRate sharedInstance] setVerboseLogging:YES];
+    [[iRate sharedInstance] setVerboseLogging:NO];
     [[iVersion sharedInstance] setVerboseLogging:NO];
     [iRate sharedInstance].promptForNewVersionIfUserRated = YES;
 }
@@ -75,6 +79,8 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
+     [self setupDatabase];
+    
     NSNumber *opened = [[NSUserDefaults standardUserDefaults] objectForKey:@"noOfTimes"];
     if (opened == nil)
     {
@@ -111,6 +117,127 @@ void *kContextActivePanel = &kContextActivePanel;
     [Fabric with:@[[Crashlytics class]]];
     
 }
+
+- (void)setupDatabase
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+    NSString *applicationSupportDirectory = [[paths firstObject] stringByAppendingPathComponent:@"Clocker"];;
+    
+    NSError *error = nil;
+    
+    if(![[NSFileManager defaultManager] createDirectoryAtPath:applicationSupportDirectory withIntermediateDirectories:YES attributes:NULL error:&error]){
+        NSLog(@"%@", error);
+        return;
+    }
+    
+    NSString *dbPath = [applicationSupportDirectory stringByAppendingPathComponent:@"Timezones.db"];
+    FMDatabase *database = [FMDatabase databaseWithPath:dbPath];
+    database.crashOnErrors = YES;
+    if (![database open]) {
+        NSLog(@"%@", database.lastErrorMessage);
+        
+    }
+    else
+    {
+        NSString *checkIfTableExistsStatement = @"select sql from SQLITE_MASTER where name = 'CLTimezoneData'";
+        FMResultSet *checkIfTableExistsResult = [database executeQuery:checkIfTableExistsStatement];
+        
+        
+        if (![checkIfTableExistsResult next])
+        {
+            NSString *tableCreationStatement = [NSString stringWithFormat:@"create table CLTimezoneData (timezoneNumber INT primary key , timezoneID TEXT, custom_label TEXT, formatted_address TEXT, latitude TEXT, longitude TEXT, is_favourite INT, place_id TEXT,selectionType INT)"];
+            
+            FMResultSet *resultSet = [database executeQuery:tableCreationStatement];
+            
+            if ([resultSet next]) {
+                [self addObjectsToDatabase:database];
+            }
+        }
+        
+        [self addObjectsToDatabase:database];
+
+    }
+    
+}
+
+- (void)addObjectsToDatabase:(FMDatabase *)database
+{
+    __block NSInteger emptyTimezones = 0;
+    __block NSMutableArray *workingTimezones = [NSMutableArray array];
+    
+    FMResultSet *resultSet = [database executeQuery:@"SELECT COUNT(*) FROM CLTimezoneData"];
+    if ([resultSet next]) {
+        
+        NSInteger totalCount = [resultSet intForColumnIndex:0];
+        
+        if (totalCount == 0) {
+            
+            NSArray *defaultZones = [[NSUserDefaults standardUserDefaults] objectForKey:CLDefaultPreferenceKey];
+            
+            [defaultZones enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                CLTimezoneData *dataObject = [CLTimezoneData getCustomObject:obj];
+                
+                if ([dataObject isEmpty]) {
+                    
+                    emptyTimezones++;
+                    /*Remove it from the goddarn collection.*/
+                }
+                else
+                {
+                    
+                    [workingTimezones addObject:dataObject];
+                    
+                    BOOL success = [database executeUpdate:@"INSERT INTO CLTimezoneData (timezoneNumber, timezoneID, custom_label, formatted_address, latitude, longitude, is_favourite,place_id, selectionType) VALUES (?, ?, ?, ?, ?, ? , ?, ?, ?)", @(idx+1), dataObject.timezoneID, dataObject.customLabel ?: [NSNull null], dataObject.formattedAddress, dataObject.latitude, dataObject.longitude, dataObject.isFavourite, dataObject.place_id,@(dataObject.selectionType)];
+                    
+                    !success ? NSLog(@"error = %@", [database lastErrorMessage]) : NSLog(@"Data inserted successfully");
+                }
+                
+            }];
+        }
+        else
+        {
+            NSLog(@"Count is not zero :%zd", totalCount);
+        }
+    }
+    
+    if (emptyTimezones > 0) {
+        
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:CLDefaultPreferenceKey];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"favouriteTimezone"];
+        
+        for (id object in workingTimezones)
+        {
+            CLTimezoneDataOperations *dataOperations = [[CLTimezoneDataOperations alloc] initWithTimezoneData:object];
+            [dataOperations save];
+        }
+        
+          [self showErrorMessageForEmptyTimezones];
+    }
+}
+
+- (void)showErrorMessageForEmptyTimezones
+{
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+    NSAlert *alert = [NSAlert new];
+    alert.messageText = @"Please add your timezones again 😅";
+    alert.informativeText = [NSString stringWithFormat:@"Clocker has encountered an error while reading certain timezones. Please add them again."];
+    [alert addButtonWithTitle:@"Okay"];
+    NSModalResponse response = [alert runModal];
+    if (response == NSModalResponseStop) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self openPreferences];
+        });
+        
+    }
+}
+
+- (void)openPreferences
+{
+    [self.panelController openPreferenceWindowWithValue:YES];
+}
+
 
 - (void)initializeDefaults
 {
@@ -161,6 +288,10 @@ void *kContextActivePanel = &kContextActivePanel;
     if (startClockerAtLogin == nil) {
         [userDefaults setObject:@0 forKey:CLStartAtLogin];
     }
+    else if([startClockerAtLogin isEqualToNumber:@(1)])
+    {
+        MOEnableLoginItem(YES);
+    }
     
     NSNumber *displayMode = [userDefaults objectForKey:CLShowAppInForeground];
     if (displayMode == nil) {
@@ -181,6 +312,8 @@ void *kContextActivePanel = &kContextActivePanel;
     if (userFontSize == nil) {
         [userDefaults setObject:@4 forKey:CLUserFontSizePreference];
     }
+    
+    
     
     //If mode selected is 1, then show the window when the app starts
     if (displayMode.integerValue == 1)

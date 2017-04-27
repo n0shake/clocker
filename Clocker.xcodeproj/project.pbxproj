@@ -41,6 +41,8 @@
 		9A5951F51C1D3D81009C17AA /* CLTimezoneCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5951F41C1D3D81009C17AA /* CLTimezoneCellView.m */; };
 		9A5951FA1C1D5214009C17AA /* iVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5951F91C1D5214009C17AA /* iVersion.m */; };
 		9A5951FD1C1D592D009C17AA /* iVersion.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A5951FC1C1D592D009C17AA /* iVersion.bundle */; };
+		9A5B3D3A1E3C3588006E8DD2 /* MoLoginItem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5B3D391E3C3588006E8DD2 /* MoLoginItem.framework */; };
+		9A5B3D3B1E3C3588006E8DD2 /* MoLoginItem.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9A5B3D391E3C3588006E8DD2 /* MoLoginItem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9A5B6C6E1D3DF6E4000EAAF1 /* CLParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5B6C6D1D3DF6E4000EAAF1 /* CLParentViewController.m */; };
 		9A5B6C711D4087A5000EAAF1 /* NSString+CLStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5B6C701D4087A5000EAAF1 /* NSString+CLStringAdditions.m */; };
 		9A5B6C781D459438000EAAF1 /* CLTimezoneDataOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5B6C771D459438000EAAF1 /* CLTimezoneDataOperations.m */; };
@@ -72,7 +74,6 @@
 		9A87DACB1C358FA800A8CF3B /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A87DAC31C358FA800A8CF3B /* NSDate+DateTools.m */; };
 		9A9E63861C2C673E009A299B /* CLAppFeedbackWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E63841C2C673E009A299B /* CLAppFeedbackWindowController.m */; };
 		9A9E87621C1FEDB500A7A2DF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87611C1FEDB500A7A2DF /* CFNetwork.framework */; };
-		9A9E87681C1FEDD300A7A2DF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87671C1FEDD300A7A2DF /* Security.framework */; };
 		9A9E876A1C1FEDDB00A7A2DF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87691C1FEDDB00A7A2DF /* SystemConfiguration.framework */; };
 		9AA4AC8C1CEC0FA60054ACB7 /* FloatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4AC871CEC0FA60054ACB7 /* FloatingView.m */; };
 		9AA4AC8D1CEC0FA60054ACB7 /* CLShortcutAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4AC891CEC0FA60054ACB7 /* CLShortcutAnimatedView.m */; };
@@ -86,6 +87,8 @@
 		9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9ACE03EF1CB0ADE00039FC01 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACE03EE1CB0ADE00039FC01 /* Firebase.framework */; };
 		9ACF469D1DCBD45200C49B51 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACF469C1DCBD45200C49B51 /* Quartz.framework */; };
+		9AF6721A1E3BEE6B00210A1B /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF672101E3BE83A00210A1B /* FMDB.framework */; };
+		9AF6721B1E3BEE6B00210A1B /* FMDB.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9AF672101E3BE83A00210A1B /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9AF9A16B1C250AB300EE7C2A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9A16A1C250AB300EE7C2A /* Reachability.m */; };
 		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -168,6 +171,55 @@
 			remoteGlobalIDString = 0D6B2468180304DE00CE1142;
 			remoteInfo = Demo;
 		};
+		9AF672051E3BE83A00210A1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AF671FC1E3BE83A00210A1B /* fmdb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DD76FA10486AA7600D96B5E;
+			remoteInfo = fmdb;
+		};
+		9AF672071E3BE83A00210A1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AF671FC1E3BE83A00210A1B /* fmdb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE4290EF12B42F870088BD94;
+			remoteInfo = FMDB;
+		};
+		9AF672091E3BE83A00210A1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AF671FC1E3BE83A00210A1B /* fmdb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BF5D041618416BB2008C5AA9;
+			remoteInfo = Tests;
+		};
+		9AF6720B1E3BE83A00210A1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AF671FC1E3BE83A00210A1B /* fmdb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6290CBB5188FE836009790F8;
+			remoteInfo = "FMDB-IOS";
+		};
+		9AF6720D1E3BE83A00210A1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AF671FC1E3BE83A00210A1B /* fmdb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 83C73EFE1C326AB000FFC730;
+			remoteInfo = "FMDB iOS";
+		};
+		9AF6720F1E3BE83A00210A1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AF671FC1E3BE83A00210A1B /* fmdb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 83C73F0B1C326ADA00FFC730;
+			remoteInfo = "FMDB MacOS";
+		};
+		9AF6721C1E3BEE6B00210A1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AF671FC1E3BE83A00210A1B /* fmdb.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 83C73F0A1C326ADA00FFC730;
+			remoteInfo = "FMDB MacOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -187,8 +239,10 @@
 			dstSubfolderSpec = 10;
 			files = (
 				9A86E2C41CE04F7B00547EE7 /* ShortcutRecorder.framework in CopyFiles */,
+				9A5B3D3B1E3C3588006E8DD2 /* MoLoginItem.framework in CopyFiles */,
 				9A3169BD1D2CB9B40079FDF8 /* pop.framework in CopyFiles */,
 				9A86E2C51CE04F7B00547EE7 /* PTHotKey.framework in CopyFiles */,
+				9AF6721B1E3BEE6B00210A1B /* FMDB.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +299,7 @@
 		9A5951F91C1D5214009C17AA /* iVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iVersion.m; path = "Clocker/Updated Version/iVersion.m"; sourceTree = "<group>"; };
 		9A5951FC1C1D592D009C17AA /* iVersion.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = iVersion.bundle; path = "Clocker/Updated Version/iVersion.bundle"; sourceTree = "<group>"; };
 		9A5B1A8D1BECDFB700A77C68 /* Clocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Clocker.entitlements; path = Clocker/Clocker.entitlements; sourceTree = "<group>"; };
+		9A5B3D391E3C3588006E8DD2 /* MoLoginItem.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MoLoginItem.framework; path = Frameworks/MoLoginItem.framework; sourceTree = "<group>"; };
 		9A5B6C6C1D3DF6E4000EAAF1 /* CLParentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLParentViewController.h; path = Clocker/CLParentViewController.h; sourceTree = "<group>"; };
 		9A5B6C6D1D3DF6E4000EAAF1 /* CLParentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLParentViewController.m; path = Clocker/CLParentViewController.m; sourceTree = "<group>"; };
 		9A5B6C6F1D4087A5000EAAF1 /* NSString+CLStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+CLStringAdditions.h"; path = "Clocker/Utilities/NSString+CLStringAdditions.h"; sourceTree = "<group>"; };
@@ -323,6 +378,7 @@
 		9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9ACE03EE1CB0ADE00039FC01 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Frameworks/Firebase.framework; sourceTree = "<group>"; };
 		9ACF469C1DCBD45200C49B51 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		9AF671FC1E3BE83A00210A1B /* fmdb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = fmdb.xcodeproj; path = Clocker/FMDB/fmdb.xcodeproj; sourceTree = "<group>"; };
 		9AF9A1691C250AB300EE7C2A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Clocker/Reachability/Reachability.h; sourceTree = "<group>"; };
 		9AF9A16A1C250AB300EE7C2A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Clocker/Reachability/Reachability.m; sourceTree = "<group>"; };
 		DD4F7C0413C30F9F00825C6E /* Clocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -342,16 +398,17 @@
 				9A86E2C11CE04F4300547EE7 /* ShortcutRecorder.framework in Frameworks */,
 				9A9E876A1C1FEDDB00A7A2DF /* SystemConfiguration.framework in Frameworks */,
 				9A9E87621C1FEDB500A7A2DF /* CFNetwork.framework in Frameworks */,
+				9AF6721A1E3BEE6B00210A1B /* FMDB.framework in Frameworks */,
 				9ABFB3801CA6882000E10745 /* ApplicationServices.framework in Frameworks */,
 				9A20A04B1C4DEED200FB45AB /* IOKit.framework in Frameworks */,
 				9A3169BC1D2CB9B40079FDF8 /* pop.framework in Frameworks */,
-				9A9E87681C1FEDD300A7A2DF /* Security.framework in Frameworks */,
 				9A5951BA1C1D0A22009C17AA /* Crashlytics.framework in Frameworks */,
 				9A43792A1BEC230A00F4E27F /* libc++.tbd in Frameworks */,
 				9A4379251BEC223900F4E27F /* Security.framework in Frameworks */,
 				DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */,
 				9A4379271BEC223900F4E27F /* Fabric.framework in Frameworks */,
 				9ACE03EF1CB0ADE00039FC01 /* Firebase.framework in Frameworks */,
+				9A5B3D3A1E3C3588006E8DD2 /* MoLoginItem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +642,19 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		9AF671FD1E3BE83A00210A1B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9AF672061E3BE83A00210A1B /* fmdb */,
+				9AF672081E3BE83A00210A1B /* libFMDB.a */,
+				9AF6720A1E3BE83A00210A1B /* Tests.xctest */,
+				9AF6720C1E3BE83A00210A1B /* libFMDB-IOS.a */,
+				9AF6720E1E3BE83A00210A1B /* FMDB.framework */,
+				9AF672101E3BE83A00210A1B /* FMDB.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9AF9A1681C250AA300EE7C2A /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -597,6 +667,8 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
+				9A5B3D391E3C3588006E8DD2 /* MoLoginItem.framework */,
+				9AF671FC1E3BE83A00210A1B /* fmdb.xcodeproj */,
 				9AA4AC851CEC0EE40054ACB7 /* Onboarding Animated Views */,
 				9AB89E021CE97A4900EC8EB1 /* Media.xcassets */,
 				9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */,
@@ -675,6 +747,7 @@
 			);
 			dependencies = (
 				9A3169BF1D2CB9B40079FDF8 /* PBXTargetDependency */,
+				9AF6721D1E3BEE6B00210A1B /* PBXTargetDependency */,
 			);
 			name = Clocker;
 			productName = Popup;
@@ -701,6 +774,9 @@
 							com.apple.Sandbox = {
 								enabled = 1;
 							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
 						};
 					};
 				};
@@ -716,6 +792,10 @@
 			productRefGroup = DD4F7C0513C30F9F00825C6E /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 9AF671FD1E3BE83A00210A1B /* Products */;
+					ProjectRef = 9AF671FC1E3BE83A00210A1B /* fmdb.xcodeproj */;
+				},
 				{
 					ProductGroup = 9A82F32C1CDFF8CE00CC8906 /* Products */;
 					ProjectRef = 9A82F32B1CDFF8CE00CC8906 /* pop.xcodeproj */;
@@ -801,6 +881,48 @@
 			fileType = wrapper.application;
 			path = Demo.app;
 			remoteRef = 9A86E2BF1CE04F1600547EE7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9AF672061E3BE83A00210A1B /* fmdb */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = fmdb;
+			remoteRef = 9AF672051E3BE83A00210A1B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9AF672081E3BE83A00210A1B /* libFMDB.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFMDB.a;
+			remoteRef = 9AF672071E3BE83A00210A1B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9AF6720A1E3BE83A00210A1B /* Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Tests.xctest;
+			remoteRef = 9AF672091E3BE83A00210A1B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9AF6720C1E3BE83A00210A1B /* libFMDB-IOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libFMDB-IOS.a";
+			remoteRef = 9AF6720B1E3BE83A00210A1B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9AF6720E1E3BE83A00210A1B /* FMDB.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FMDB.framework;
+			remoteRef = 9AF6720D1E3BE83A00210A1B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9AF672101E3BE83A00210A1B /* FMDB.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FMDB.framework;
+			remoteRef = 9AF6720F1E3BE83A00210A1B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -908,6 +1030,11 @@
 			isa = PBXTargetDependency;
 			name = "pop-osx-framework";
 			targetProxy = 9A3169BE1D2CB9B40079FDF8 /* PBXContainerItemProxy */;
+		};
+		9AF6721D1E3BEE6B00210A1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "FMDB MacOS";
+			targetProxy = 9AF6721C1E3BEE6B00210A1B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1058,6 +1185,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
@@ -1168,6 +1296,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
@@ -1203,6 +1332,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";

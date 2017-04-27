@@ -101,7 +101,7 @@ typedef NS_ENUM(NSUInteger, CLClockerMode) {
         [sharedDelegate.panelController updateDefaultPreferences];
     }
     
-    [Answers logCustomEventWithName:@"RelativeDate" customAttributes:@{@"displayMode" : modeSegment.selectedSegment == CLFloatingMode ? @"Floating Mode" : @"Menubar Mode"}];
+    [Answers logCustomEventWithName:@"Clocker Mode" customAttributes:@{@"displayMode" : modeSegment.selectedSegment == CLFloatingMode ? @"Floating Mode" : @"Menubar Mode"}];
 }
 
 
