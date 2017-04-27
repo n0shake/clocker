@@ -388,7 +388,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         return;
     }
     
-    if (self.selectedTimeZones.count >= 10)
+    if (self.selectedTimeZones.count >= 20)
     {
         self.messageLabel.stringValue = CLMaxTimezonesErrorMessage;
         [NSTimer scheduledTimerWithTimeInterval:5 target:self

@@ -79,6 +79,12 @@ NSString *const CLYesWithExclamation = @"Yes!";
         NSNumber *userFontSize = [[NSUserDefaults standardUserDefaults] objectForKey:CLUserFontSizePreference];
         [Answers logCustomEventWithName:@"User Font Size Preference" customAttributes:@{@"Font Size" : userFontSize}];
         self.scrollViewHeight.constant = self.defaultPreferences.count * (self.mainTableview.rowHeight + userFontSize.integerValue*1.5);
+        
+        if (self.scrollViewHeight.constant > [self getScreenHeight] - 100)
+        {
+            self.scrollViewHeight.constant = [self getScreenHeight] - 100;
+        }
+        
         [self.mainTableview reloadData];
         
     }
@@ -90,6 +96,12 @@ NSString *const CLYesWithExclamation = @"Yes!";
     {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
+}
+
+- (CGFloat)getScreenHeight
+{
+    NSRect frame = [[NSScreen mainScreen] frame];
+    return frame.size.height;
 }
 
 - (void)updateReviewViewFontColor
@@ -115,6 +127,11 @@ NSString *const CLYesWithExclamation = @"Yes!";
     NSNumber *userFontSize = [[NSUserDefaults standardUserDefaults] objectForKey:CLUserFontSizePreference];
     
     self.scrollViewHeight.constant = self.defaultPreferences.count * (self.mainTableview.rowHeight + userFontSize.integerValue*1.5);
+    
+    if (self.scrollViewHeight.constant > [self getScreenHeight] - 100)
+    {
+        self.scrollViewHeight.constant = [self getScreenHeight] - 100;
+    }
     
     [self updatePanelColor];
     
