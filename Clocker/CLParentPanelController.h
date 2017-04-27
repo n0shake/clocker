@@ -35,7 +35,6 @@
 @property (strong, nonatomic) CLAppFeedbackWindowController *feedbackWindow;
 
 - (void)updateDefaultPreferences;
-- (void)showOptions:(BOOL)value;
 - (void)removeContextHelpForSlider;
 - (void)updatePanelColor;
 - (void)openPreferenceWindowWithValue:(BOOL)value;

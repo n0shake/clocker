@@ -148,23 +148,6 @@ NSString *const CLYesWithExclamation = @"Yes!";
     }
 }
 
-
-- (void)showOptions:(BOOL)value
-{
-    
-    if (self.defaultPreferences.count == 0)
-    {
-        value = YES;
-    }
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.shutdownButton.hidden = !value;
-        self.preferencesButton.hidden = !value;
-    });
-    
-}
-
-
 - (IBAction)sliderMoved:(id)sender
 {
     NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];

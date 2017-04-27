@@ -318,22 +318,6 @@ static PanelController *sharedPanel = nil;
     
 }
 
-#pragma mark -
-#pragma mark Hiding Buttons on Mouse Exit
-#pragma mark -
-
-- (void)showOptions:(BOOL)value
-{
-    if (self.defaultPreferences.count == 0)
-    {
-        value = YES;
-    }
-   
-    self.shutdownButton.hidden = !value;
-    self.preferencesButton.hidden = !value;
-    
-}
-
 + (instancetype)getPanelControllerInstance
 {
     __block PanelController *panelController;

@@ -119,8 +119,6 @@
 - (void)shouldHideButtons:(BOOL)shouldHide
 {
     PanelController *controller = [self getPanelControllerInstance];
-        
-    [controller showOptions:shouldHide];
     
     if (!shouldHide){
          [controller removeContextHelpForSlider];
