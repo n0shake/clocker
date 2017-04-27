@@ -175,7 +175,7 @@
     }
     else
     {
-        self.customName.drawsBackground = NO;
+        self.customName.drawsBackground = YES;
         self.customName.backgroundColor = [NSColor whiteColor];
         [self setTextColor:[NSColor blackColor]];
     }
