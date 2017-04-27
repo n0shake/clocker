@@ -215,4 +215,24 @@
     self.longitude = longitude;
 }
 
+- (BOOL)isEmpty
+{
+    if ([self checkPropertyForNil:self.timezoneID] || [self checkPropertyForNil:self.place_id] ||
+        [self checkPropertyForNil:self.formattedAddress] || [self checkPropertyForNil:self.latitude] || [self checkPropertyForNil:self.longitude]) {
+        
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (BOOL)checkPropertyForNil:(id)property
+{
+    if (property == nil || property == [NSNull null]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 @end

@@ -17,6 +17,7 @@
 #import "EDSunriseSet.h"
 #import "NSString+CLStringAdditions.h"
 #import "CLTimezoneDataOperations.h"
+#import "MoLoginItem/MoLoginItem.h"
 
 NSString *const CLSearchPredicateKey = @"SELF CONTAINS[cd]%@";
 NSString *const CLPreferencesTimezoneNameIdentifier = @"formattedAddress";
@@ -903,33 +904,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 - (IBAction)loginPreferenceChanged:(NSButton *)sender
 {
-    NSError *fileCopyError = nil;
-    
-    if(sender.state == 0)
-    {
-        NSString *destinationDirectory = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:@"LaunchAgents/com.abhishek.ClockerHelper.plist"];
-        
-        if ([[NSFileManager defaultManager] fileExistsAtPath:destinationDirectory])
-        {
-            [[NSFileManager defaultManager] removeItemAtPath:destinationDirectory error:&fileCopyError];
-        }
-    }
-    else
-    {
-        NSString *source = [[NSBundle mainBundle] pathForResource:@"com.abhishek.ClockerHelper" ofType:@"plist"];
-    
-        NSString *destinationDirectory = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:@"LaunchAgents/com.abhishek.ClockerHelper.plist"];
-        
-        
-        if ( [[NSFileManager defaultManager] isReadableFileAtPath:source] )
-            [[NSFileManager defaultManager] copyItemAtPath:source toPath:destinationDirectory error:&fileCopyError];
-    }
-
-    if(fileCopyError)
-    {
-        NSLog(@"Following error was encountered while copying the file: %@", fileCopyError);
-    }
-    
+        MOEnableLoginItem(sender.state == NSOnState);
 }
 
 @end

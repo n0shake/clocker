@@ -47,5 +47,6 @@ typedef NS_ENUM(NSUInteger, CLSelection) {
 - (void)setLatitudeForTimezone:(NSString *)latitude;
 - (void)setLongitudeForTimezone:(NSString *)longitude;
 - (NSString *)getFormattedTimezoneLabel;
+- (BOOL)isEmpty;
 
 @end
