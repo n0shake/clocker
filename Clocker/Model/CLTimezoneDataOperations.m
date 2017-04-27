@@ -35,13 +35,14 @@
 
 - (NSString *)getTimeForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue
 {
-    NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
+    NSCalendar *currentCalendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
                                                   value:futureSliderValue
                                                  toDate:[NSDate date]
                                                 options:kNilOptions];
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.dateStyle = kCFDateFormatterNoStyle;
+    dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
     
     NSNumber *is24HourFormatSelected = [[NSUserDefaults standardUserDefaults] objectForKey:CL24hourFormatSelectedKey];
     
@@ -128,15 +129,15 @@
 - (NSString *)compareSystemDate:(NSString *)systemDate toTimezoneDate:(NSString *)date
 {
     NSDateFormatter *formatter = [NSDateFormatter new];
-    formatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"MM/dd/yyyy"
-                                                           options:0
-                                                            locale:[NSLocale currentLocale]];
+    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    formatter.timeStyle = NSDateFormatterMediumStyle;
+    formatter.dateStyle = NSDateFormatterMediumStyle;
     
     NSDate *localDate = [formatter dateFromString:systemDate];
     NSDate *timezoneDate = [formatter dateFromString:date];
     
     // Specify which units we would like to use
-    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSInteger weekday = [calendar component:NSCalendarUnitWeekday fromDate:localDate];
     
     if ([self.dataObject.nextUpdate isKindOfClass:[NSString class]])
@@ -184,15 +185,17 @@
 - (NSString *)getDateForTimeZoneWithFutureSliderValue:(NSInteger)futureSliderValue
                                        andDisplayType:(CLDateDisplayType)type
 {
-    NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
+    NSCalendar *currentCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    currentCalendar.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    
     NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
                                                   value:futureSliderValue
                                                  toDate:[NSDate date]
                                                 options:kNilOptions];
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateStyle = kCFDateFormatterLongStyle;
-    dateFormatter.timeStyle = kCFDateFormatterNoStyle;
-    
+    dateFormatter.dateStyle = kCFDateFormatterMediumStyle;
+    dateFormatter.timeStyle = kCFDateFormatterMediumStyle;
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
     dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.dataObject.timezoneID];
     
     NSNumber *relativeDayPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLRelativeDateKey];
@@ -203,11 +206,13 @@
     else
     {
         NSDateFormatter *formatter = [NSDateFormatter new];
-        formatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"MM/dd/yyyy" options:0 locale:[NSLocale currentLocale]];
+        formatter.dateStyle = NSDateFormatterMediumStyle;
+        formatter.timeStyle = NSDateFormatterMediumStyle;
+        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
         
-        NSDate *convertedDate = [formatter dateFromString:[dateFormatter stringFromDate:newDate]];
+        NSDate *convertedDate = [formatter dateFromString:[formatter stringFromDate:newDate]];
         
-        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+        NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
         NSInteger weekday = [calendar component:NSCalendarUnitWeekday fromDate:convertedDate];
         return [self getWeekdayFromInteger:weekday];
     }
@@ -216,8 +221,9 @@
 - (NSString *)getLocalCurrentDate
 {
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateStyle = kCFDateFormatterLongStyle;
-    dateFormatter.timeStyle = kCFDateFormatterNoStyle;
+    dateFormatter.dateStyle = kCFDateFormatterMediumStyle;
+    dateFormatter.timeStyle = kCFDateFormatterMediumStyle;
+    dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
     dateFormatter.timeZone = [NSTimeZone systemTimeZone];
     
     return [dateFormatter stringFromDate:[NSDate date]];
@@ -285,7 +291,7 @@
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     
     dateFormatter.dateStyle = kCFDateFormatterNoStyle;
-    
+    dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
     dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.dataObject.timezoneID];
     
     NSNumber *is24HourFormatSelected = [[NSUserDefaults standardUserDefaults] objectForKey:CL24hourFormatSelectedKey];
@@ -316,7 +322,7 @@
         
     }
     
-    EDSunriseSet *sunriseSetObject = [EDSunriseSet sunrisesetWithDate:[[NSCalendar autoupdatingCurrentCalendar]
+    EDSunriseSet *sunriseSetObject = [EDSunriseSet sunrisesetWithDate:[[NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian]
                                                                        dateByAddingUnit:NSCalendarUnitMinute
                                                                        value:sliderValue
                                                                        toDate:[NSDate date]

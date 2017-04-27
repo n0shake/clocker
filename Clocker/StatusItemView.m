@@ -32,6 +32,12 @@
 #import "DateTools.h"
 #import "CLTimezoneDataOperations.h"
 
+@interface StatusItemView ()
+
+@property (strong) NSNumber *flashingSeperators;
+
+@end
+
 @implementation StatusItemView
 
 @synthesize statusItem = _statusItem;
@@ -55,6 +61,9 @@
         _statusItem = statusItem;
         _statusItem.view = self;
         self.flashingTicker = NO;
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        self.flashingSeperators = [userDefaults objectForKey:CLSeperatorFlashUserPreference];
     }
     return self;
 }
@@ -78,8 +87,8 @@
         
         CLTimezoneDataOperations *operationObject = [[CLTimezoneDataOperations alloc] initWithTimezoneData:timezoneObject];
         
-        textField.stringValue = [self textWithFlashingTicker:[operationObject getMenuTitle]];
-        textField.font = [NSFont fontWithName:@"Menlo" size:13];
+        textField.stringValue = [operationObject getMenuTitle];
+        textField.font = [NSFont monospacedDigitSystemFontOfSize:14.0 weight:NSFontWeightRegular];
         
         // Set up dark mode for icon
         if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"]  isEqualToString:@"Dark"])
@@ -128,9 +137,9 @@
 - (NSString *)textWithFlashingTicker:(NSString *)originalText
 {
     self.flashingTicker = !self.flashingTicker;
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *flashingSeperators = [userDefaults objectForKey:CLSeperatorFlashUserPreference];
-    if (flashingSeperators.boolValue == 0) {
+
+    
+    if (self.flashingSeperators.boolValue == 0) {
         
         if (originalText.length > 0 && self.flashingTicker) {
             

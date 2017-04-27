@@ -47,5 +47,4 @@
 @property (nonatomic, unsafe_unretained) id target;
 @property (assign) BOOL flashingTicker;
 
-
 @end

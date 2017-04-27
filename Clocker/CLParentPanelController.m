@@ -167,14 +167,14 @@ NSString *const CLYesWithExclamation = @"Yes!";
 
 - (IBAction)sliderMoved:(id)sender
 {
-    NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
+    NSCalendar *currentCalendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
                                                   value:self.futureSliderValue
                                                  toDate:[NSDate date]
                                                 options:kNilOptions];
     
-    self.dateFormatter.dateStyle = kCFDateFormatterNoStyle;
-    self.dateFormatter.timeStyle = kCFDateFormatterShortStyle;
+    self.dateFormatter.dateStyle = kCFDateFormatterMediumStyle;
+    self.dateFormatter.timeStyle = kCFDateFormatterMediumStyle;
     
     NSString *relativeDate = [currentCalendar isDateInToday:newDate] ? @"Today" : @"Tomorrow";
     
