@@ -66,8 +66,13 @@ NSString *const CLYesWithExclamation = @"Yes!";
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
     if ([keyPath isEqualToString:CLDisplayFutureSliderKey]) {
-        self.futureSlider.hidden = [change[@"new"] isEqualToNumber:@(1)] ? YES : NO;
-        [Answers logCustomEventWithName:@"Is Future Slider Displayed" customAttributes:@{@"Display Value" : self.futureSlider.isHidden ? @"NO" : @"YES"}];
+        
+        if ([change[@"new"] isKindOfClass:[NSNumber class]])
+        {
+            self.futureSlider.hidden = [change[@"new"] isEqualToNumber:@(1)] ? YES : NO;
+            [Answers logCustomEventWithName:@"Is Future Slider Displayed" customAttributes:@{@"Display Value" : self.futureSlider.isHidden ? @"NO" : @"YES"}];
+        }
+
     }
     else if([keyPath isEqualToString:CLUserFontSizePreference])
     {
