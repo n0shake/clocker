@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16F60a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
@@ -8,8 +8,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CLAboutUsViewController">
             <connections>
-                <outlet property="facebookButton" destination="P3u-Um-Nby" id="1FD-e6-gKd"/>
                 <outlet property="makerButton" destination="VA7-HL-mJp" id="Rpf-Aw-SNN"/>
+                <outlet property="paypalButton" destination="LHB-OL-8AM" id="zqR-cJ-DVd"/>
                 <outlet property="privateFeedback" destination="bqr-yN-kPU" id="zNA-FO-nGY"/>
                 <outlet property="quickCommentAction" destination="Qws-7o-2om" id="7Da-u7-gSk"/>
                 <outlet property="supportClocker" destination="UMN-Wx-ukl" id="wUx-g4-Jyz"/>
@@ -34,20 +34,6 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="P3u-Um-Nby" customClass="CLUnderlinedButton">
-                    <rect key="frame" x="237" y="80" width="111" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="111" id="5Yt-bH-NGf"/>
-                        <constraint firstAttribute="height" constant="21" id="8Jh-fm-8up"/>
-                    </constraints>
-                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="FindUsOnFacebook" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="KI2-hO-Wif">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="openFacebookPage:" target="-2" id="gnQ-cM-gbO"/>
-                    </connections>
-                </button>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p2G-hA-MSX">
                     <rect key="frame" x="230" y="363" width="125" height="117"/>
                     <constraints>
@@ -105,7 +91,7 @@
                         <font key="font" size="15" name="HelveticaNeue-Light"/>
                     </buttonCell>
                     <connections>
-                        <action selector="openMyTwitter:" target="-2" id="WkI-eA-Dli"/>
+                        <action selector="openFacebookPage:" target="-2" id="owu-tf-7eX"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bqr-yN-kPU" customClass="CLUnderlinedButton">
@@ -136,15 +122,28 @@
                         <action selector="openWebsite:" target="-2" id="sAx-tW-Cql"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LHB-OL-8AM" customClass="CLUnderlinedButton">
+                    <rect key="frame" x="143" y="73" width="300" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="1bR-4t-n5w"/>
+                        <constraint firstAttribute="width" constant="300" id="4mZ-8l-dOh"/>
+                    </constraints>
+                    <buttonCell key="cell" type="bevel" title="If you'd like to donate, you can do so here." bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="Ap7-LT-rsa">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="15" name="HelveticaNeue-Light"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="openPaypal:" target="-2" id="3TH-cB-hWj"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstItem="P3u-Um-Nby" firstAttribute="top" secondItem="bqr-yN-kPU" secondAttribute="bottom" constant="22" id="4hO-FZ-moc"/>
                 <constraint firstItem="XlC-Xd-67t" firstAttribute="top" secondItem="FS5-f2-b1Z" secondAttribute="top" constant="20" id="5pp-3y-HTt"/>
                 <constraint firstAttribute="bottom" secondItem="VA7-HL-mJp" secondAttribute="bottom" constant="20" id="CVb-Sr-Nw1"/>
                 <constraint firstItem="7VF-oD-eXA" firstAttribute="top" secondItem="p2G-hA-MSX" secondAttribute="bottom" constant="20" id="G3Y-5F-KUP"/>
                 <constraint firstItem="7VF-oD-eXA" firstAttribute="centerX" secondItem="FS5-f2-b1Z" secondAttribute="centerX" id="JBW-tE-GYX"/>
+                <constraint firstItem="LHB-OL-8AM" firstAttribute="centerX" secondItem="FS5-f2-b1Z" secondAttribute="centerX" id="LEs-CM-CHO"/>
                 <constraint firstItem="XlC-Xd-67t" firstAttribute="leading" secondItem="FS5-f2-b1Z" secondAttribute="leading" constant="20" id="Rzt-60-XGW"/>
-                <constraint firstItem="P3u-Um-Nby" firstAttribute="centerX" secondItem="FS5-f2-b1Z" secondAttribute="centerX" id="SZt-zU-0x0"/>
                 <constraint firstItem="VA7-HL-mJp" firstAttribute="centerX" secondItem="FS5-f2-b1Z" secondAttribute="centerX" id="VgM-TG-RMH"/>
                 <constraint firstItem="a6n-UL-Zeg" firstAttribute="centerX" secondItem="FS5-f2-b1Z" secondAttribute="centerX" id="a4A-xB-QPy"/>
                 <constraint firstItem="bqr-yN-kPU" firstAttribute="centerX" secondItem="FS5-f2-b1Z" secondAttribute="centerX" constant="14" id="fZW-Qc-XW7"/>
@@ -155,6 +154,7 @@
                 <constraint firstItem="p2G-hA-MSX" firstAttribute="centerX" secondItem="FS5-f2-b1Z" secondAttribute="centerX" id="iiK-YM-LSX"/>
                 <constraint firstItem="UMN-Wx-ukl" firstAttribute="centerX" secondItem="FS5-f2-b1Z" secondAttribute="centerX" id="mM0-h8-IJQ"/>
                 <constraint firstItem="p2G-hA-MSX" firstAttribute="top" secondItem="XlC-Xd-67t" secondAttribute="bottom" constant="12" id="pYc-F2-F5r"/>
+                <constraint firstItem="VA7-HL-mJp" firstAttribute="top" secondItem="LHB-OL-8AM" secondAttribute="bottom" constant="21" id="tZ2-96-DDn"/>
                 <constraint firstAttribute="trailing" secondItem="XlC-Xd-67t" secondAttribute="trailing" constant="20" id="vpM-Kh-fhm"/>
                 <constraint firstItem="Qws-7o-2om" firstAttribute="centerX" secondItem="FS5-f2-b1Z" secondAttribute="centerX" constant="14.5" id="zEu-sq-MyI"/>
             </constraints>
@@ -163,6 +163,5 @@
     </objects>
     <resources>
         <image name="ClockerIcon-512" width="512" height="512"/>
-        <image name="FindUsOnFacebook" width="512" height="98"/>
     </resources>
 </document>

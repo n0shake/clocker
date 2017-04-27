@@ -20,18 +20,18 @@
 @property (weak) IBOutlet CLUnderlinedButton *quickCommentAction;
 @property (weak) IBOutlet CLUnderlinedButton *privateFeedback;
 @property (weak) IBOutlet CLUnderlinedButton *supportClocker;
-@property (weak) IBOutlet CLUnderlinedButton *facebookButton;
+@property (weak) IBOutlet CLUnderlinedButton *paypalButton;
 
 
 @end
 
 static CLAboutUsViewController *sharedAboutUs = nil;
 NSString *const CLAboutUsNibIdentifier = @"CLAboutWindow";
-NSString *const CLGitHubURL = @"https://github.com/Abhishaker17/Clocker";
-NSString *const CLIssueURL =@"https://github.com/Abhishaker17/Clocker/issues";
-NSString *const CLFacebookPageURL = @"https://www.facebook.com/ClockerMenubarClock/";
-NSString *const CLTwitterLink = @"https://twitter.com/abgbm";
-NSString *const CLPersonalWebsite = @"http://abhishekbanthia.com";
+NSString *const CLGitHubURL = @"https://github.com/Abhishaker17/Clocker/?ref=ClockerApp";
+NSString *const CLIssueURL =@"https://github.com/Abhishaker17/Clocker/issues/?ref=ClockerApp";
+NSString *const CLPayPalURL = @"https://www.paypal.me/AbhishekBanthia";
+NSString *const CLTwitterLink = @"https://twitter.com/abgbm/?ref=ClockerApp";
+NSString *const CLPersonalWebsite = @"http://abhishekbanthia.com/?ref=ClockerApp";
 
 @implementation CLAboutUsViewController
 
@@ -47,6 +47,13 @@ NSString *const CLPersonalWebsite = @"http://abhishekbanthia.com";
 
 - (void)underlineTextForActionButton
 {
+    NSMutableAttributedString *paypal = [[NSMutableAttributedString alloc] initWithAttributedString:self.paypalButton.attributedTitle];
+    
+    [paypal addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleSingle] range:NSMakeRange(paypal.length - 5, 4)];
+    
+    [self.paypalButton setAttributedTitle:paypal];
+    
+    
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithAttributedString:self.makerButton.attributedTitle];
     
     [str addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleSingle] range:NSMakeRange(3, str.length-3)];
@@ -75,7 +82,7 @@ NSString *const CLPersonalWebsite = @"http://abhishekbanthia.com";
     [self.supportClocker setCursor:[NSCursor pointingHandCursor]];
     [self.privateFeedback setCursor:[NSCursor pointingHandCursor]];
     [self.makerButton setCursor:[NSCursor pointingHandCursor]];
-     [self.facebookButton setCursor:[NSCursor pointingHandCursor]];
+     [self.paypalButton setCursor:[NSCursor pointingHandCursor]];
 }
 
 - (IBAction)openMyTwitter:(id)sender
@@ -98,10 +105,10 @@ NSString *const CLPersonalWebsite = @"http://abhishekbanthia.com";
     [Answers logCustomEventWithName:@"reportIssueOpened" customAttributes:@{}];
 }
 
-- (IBAction)openFacebookPage:(id)sender
+- (IBAction)openPaypal:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLFacebookPageURL]];
-    [Answers logCustomEventWithName:@"openedFacebookPage" customAttributes:@{}];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLPayPalURL]];
+    [Answers logCustomEventWithName:@"openedPaypalPage" customAttributes:@{}];
 }
 
 - (IBAction)openWebsite:(id)sender {
