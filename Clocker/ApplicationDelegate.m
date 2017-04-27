@@ -79,7 +79,7 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-     [self setupDatabase];
+//     [self setupDatabase];
     
     NSNumber *opened = [[NSUserDefaults standardUserDefaults] objectForKey:@"noOfTimes"];
     if (opened == nil)
