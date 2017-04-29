@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16F60a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F60a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -40,7 +40,7 @@
                     <stackView focusRingType="none" distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZA-6o-SbE">
                         <rect key="frame" x="0.0" y="0.0" width="306" height="343"/>
                         <subviews>
-                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="62" horizontalPageScroll="10" verticalLineScroll="62" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Gd-Nv-fXr">
+                            <scrollView borderType="none" horizontalLineScroll="62" horizontalPageScroll="10" verticalLineScroll="62" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Gd-Nv-fXr">
                                 <rect key="frame" x="0.0" y="78" width="306" height="265"/>
                                 <clipView key="contentView" copiesOnScroll="NO" id="4MZ-Di-yNR">
                                     <rect key="frame" x="0.0" y="0.0" width="306" height="265"/>
@@ -70,7 +70,7 @@
                                                             <rect key="frame" x="1" y="0.0" width="303" height="59"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" tag="100" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="etF-33-bCB">
+                                                                <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" tag="100" allowsCharacterPickerTouchBarItem="NO" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="etF-33-bCB">
                                                                     <rect key="frame" x="7" y="21" width="154" height="23"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="150" id="32b-h6-joo"/>
@@ -84,7 +84,7 @@
                                                                         <action selector="labelDidChange:" target="qbN-ba-fho" id="7uY-zA-yJS"/>
                                                                     </connections>
                                                                 </textField>
-                                                                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="751" tag="102" preferredMaxLayoutWidth="72" translatesAutoresizingMaskIntoConstraints="NO" id="QUd-7D-q14">
+                                                                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="751" tag="102" allowsCharacterPickerTouchBarItem="NO" preferredMaxLayoutWidth="72" translatesAutoresizingMaskIntoConstraints="NO" id="QUd-7D-q14">
                                                                     <rect key="frame" x="8" y="2" width="76" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="72" id="fkH-oq-qvM"/>
@@ -95,7 +95,7 @@
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="101" preferredMaxLayoutWidth="110" translatesAutoresizingMaskIntoConstraints="NO" id="vnv-J2-7r1">
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="101" allowsCharacterPickerTouchBarItem="NO" preferredMaxLayoutWidth="110" translatesAutoresizingMaskIntoConstraints="NO" id="vnv-J2-7r1">
                                                                     <rect key="frame" x="183" y="23" width="114" height="26"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="26" identifier="height" id="Bwf-I6-2Pc"/>
@@ -115,7 +115,7 @@
                                                                     </constraints>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="U2f-NK-Gua"/>
                                                                 </imageView>
-                                                                <textField verticalHuggingPriority="750" preferredMaxLayoutWidth="50" translatesAutoresizingMaskIntoConstraints="NO" id="uOg-ij-alO">
+                                                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" preferredMaxLayoutWidth="50" translatesAutoresizingMaskIntoConstraints="NO" id="uOg-ij-alO">
                                                                     <rect key="frame" x="243" y="6" width="54" height="17"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="17" id="89H-r0-Dnh"/>
@@ -180,7 +180,7 @@
                                                 <rect key="frame" x="0.0" y="2" width="16" height="16"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-16" id="LX2-la-NW9"/>
                                             </imageView>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" preferredMaxLayoutWidth="185" translatesAutoresizingMaskIntoConstraints="NO" id="8Qj-Y9-Okf">
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" allowsCharacterPickerTouchBarItem="NO" preferredMaxLayoutWidth="185" translatesAutoresizingMaskIntoConstraints="NO" id="8Qj-Y9-Okf">
                                                 <rect key="frame" x="22" y="0.0" width="189" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="185" id="a0R-zl-Wu7"/>
@@ -249,7 +249,7 @@
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="B8X-sx-cjT">
                                 <rect key="frame" x="0.0" y="0.0" width="306" height="28"/>
                                 <subviews>
-                                    <button toolTip="Open Preferences" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xb-dy-XLC">
+                                    <button toolTip="Close Clocker" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xb-dy-XLC">
                                         <rect key="frame" x="10" y="5" width="30" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="PowerIcon" imagePosition="only" alignment="center" alternateImage="PowerIcon" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dXQ-9P-1HU">
@@ -269,7 +269,7 @@
                                             <binding destination="-2" name="value" keyPath="self.futureSliderValue" id="pyB-jC-66p"/>
                                         </connections>
                                     </slider>
-                                    <button toolTip="Close Clocker" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ctq-BV-GPN">
+                                    <button toolTip="Open Preferences" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ctq-BV-GPN">
                                         <rect key="frame" x="264" y="5" width="29" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="NSActionTemplate" imagePosition="only" alignment="center" alternateImage="NSActionTemplate" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SIv-Ve-UkG">

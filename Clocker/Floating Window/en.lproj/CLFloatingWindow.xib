@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16F60a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F60a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -71,7 +71,7 @@
                                                             <rect key="frame" x="1" y="0.0" width="303" height="61"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="100" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="Nov-Lq-MHq">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="100" allowsCharacterPickerTouchBarItem="NO" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="Nov-Lq-MHq">
                                                                     <rect key="frame" x="7" y="21" width="154" height="23"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="150" id="C31-pf-Hhd"/>
@@ -85,7 +85,7 @@
                                                                         <action selector="labelDidChange:" target="UES-Eo-BEf" id="TAk-pl-xIn"/>
                                                                     </connections>
                                                                 </textField>
-                                                                <textField verticalHuggingPriority="750" tag="102" preferredMaxLayoutWidth="72" translatesAutoresizingMaskIntoConstraints="NO" id="KEf-HK-1oi">
+                                                                <textField verticalHuggingPriority="750" tag="102" allowsCharacterPickerTouchBarItem="NO" preferredMaxLayoutWidth="72" translatesAutoresizingMaskIntoConstraints="NO" id="KEf-HK-1oi">
                                                                     <rect key="frame" x="8" y="2" width="76" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="72" id="4Qb-vu-Upf"/>
@@ -96,7 +96,7 @@
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="101" preferredMaxLayoutWidth="110" translatesAutoresizingMaskIntoConstraints="NO" id="vG5-PS-a35">
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="101" allowsCharacterPickerTouchBarItem="NO" preferredMaxLayoutWidth="110" translatesAutoresizingMaskIntoConstraints="NO" id="vG5-PS-a35">
                                                                     <rect key="frame" x="183" y="25" width="114" height="26"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="110" id="DyD-zQ-QUy"/>
@@ -116,7 +116,7 @@
                                                                     </constraints>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="ONL-Vm-fm0"/>
                                                                 </imageView>
-                                                                <textField verticalHuggingPriority="750" preferredMaxLayoutWidth="50" translatesAutoresizingMaskIntoConstraints="NO" id="sXo-5h-Olo">
+                                                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" preferredMaxLayoutWidth="50" translatesAutoresizingMaskIntoConstraints="NO" id="sXo-5h-Olo">
                                                                     <rect key="frame" x="243" y="8" width="54" height="17"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="17" id="PMT-AI-MyM"/>
@@ -181,7 +181,7 @@
                                                 <rect key="frame" x="0.0" y="2" width="16" height="16"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-16" id="ppt-Si-dHb"/>
                                             </imageView>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" preferredMaxLayoutWidth="185" translatesAutoresizingMaskIntoConstraints="NO" id="DHg-ca-UOi">
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" allowsCharacterPickerTouchBarItem="NO" preferredMaxLayoutWidth="185" translatesAutoresizingMaskIntoConstraints="NO" id="DHg-ca-UOi">
                                                 <rect key="frame" x="22" y="0.0" width="189" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="185" id="41v-Z8-YN3"/>
