@@ -50,7 +50,23 @@ typedef void (^CompletionType)(void);
         }
        
         _statusItemView = [[StatusItemView alloc] initWithStatusItem:statusItem];
-        _statusItemView.image = dataObject ? [self convertTextfieldRepresentationToImage:textField] : [NSImage imageNamed:@"MenuIcon"];
+        if (dataObject)
+        {
+            _statusItemView.image = [self convertTextfieldRepresentationToImage:textField];
+        }
+        else
+        {
+            if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"]  isEqualToString:@"Dark"])
+            {
+                _statusItemView.image = [NSImage imageNamed:@"DarkModeIcon"];
+            }
+            else
+            {
+                _statusItemView.image = [NSImage imageNamed:@"LightModeIcon"];
+            }
+
+        }
+
         _statusItemView.alternateImage = [NSImage imageNamed:@"StatusHighlighted"];
         _statusItemView.action = @selector(togglePanel:);
         
