@@ -546,14 +546,13 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 - (IBAction)filterTimezoneArray:(id)sender
 {
-    if (self.searchField.stringValue.length > 0)
-    {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:CLSearchPredicateKey, self.searchField.stringValue];
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:CLSearchPredicateKey, self.searchField.stringValue];
         
-        self.timeZoneFilteredArray = [NSMutableArray arrayWithArray:[self.timeZoneArray filteredArrayUsingPredicate:predicate]];
+    self.timeZoneFilteredArray = [NSMutableArray arrayWithArray:[self.timeZoneArray filteredArrayUsingPredicate:predicate]];
         
-        [self.availableTimezoneTableView reloadData];
-    }
+    [self.availableTimezoneTableView reloadData];
+    
 }
 
 
