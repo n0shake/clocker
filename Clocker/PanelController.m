@@ -173,18 +173,7 @@ static PanelController *sharedPanel = nil;
 
 - (NSRect)statusRectForWindow:(NSWindow *)window
 {
-    /*Display on currently active monitor*/
-    NSScreen *currentScreen = nil;
-    for (NSScreen *screen in [NSScreen screens])
-    {
-        unsigned int value = [[[screen deviceDescription] objectForKey:@"NSScreenNumber"] unsignedIntValue];
-        if (CGDisplayIsActive(value)) {
-            currentScreen = screen;
-        }
-    }
-    
-    
-    NSRect screenRect = currentScreen.frame;
+    NSRect screenRect = self.window.frame;
     NSRect statusRect = NSZeroRect;
     
     StatusItemView *statusItemView = nil;
@@ -218,18 +207,8 @@ static PanelController *sharedPanel = nil;
     self.reviewView.layer.backgroundColor = (theme.integerValue == 0) ? [NSColor whiteColor].CGColor :  [NSColor blackColor].CGColor;
     
     NSWindow *panel = self.window;
-    NSScreen *currentScreen = nil;
     
-
-    for (NSScreen *screen in [NSScreen screens])
-    {
-        unsigned int value = [[[screen deviceDescription] objectForKey:@"NSScreenNumber"] unsignedIntValue];
-            if (CGDisplayIsActive(value)) {
-                currentScreen = screen;
-        }
-    }
-    
-    NSRect screenRect = currentScreen.frame;
+    NSRect screenRect = self.window.frame;
     NSRect statusRect = [self statusRectForWindow:panel];
     
     NSRect panelRect = panel.frame;
