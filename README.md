@@ -19,7 +19,6 @@ You can find a review of the app by SoftPedia [here](http://mac.softpedia.com/ge
 - Drag and drop timezones to rearrange
 - Hundreds of time zones are included
 - 24-hour times or AM/PM are both supported
-- Designed to work efficiently with 10 timezones
 - Optimized for Dark mode and Retina Displays
 
 **Contributing**
@@ -29,4 +28,3 @@ You can find a review of the app by SoftPedia [here](http://mac.softpedia.com/ge
 **License**
 ---
 Copyright (c) 2015 **Abhishek Banthia**. Released under the MIT License.
-
