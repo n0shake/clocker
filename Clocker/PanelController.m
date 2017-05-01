@@ -173,7 +173,14 @@ static PanelController *sharedPanel = nil;
 
 - (NSRect)statusRectForWindow:(NSWindow *)window
 {
-    NSRect screenRect = self.window.frame;
+    NSPoint mouseLoc = [NSEvent mouseLocation];
+    NSEnumerator *screenEnum = [[NSScreen screens] objectEnumerator];
+    NSScreen *screen;
+    while ((screen = [screenEnum nextObject]) && !NSMouseInRect(mouseLoc,
+                                                                [screen frame], NO));
+    
+    
+    NSRect screenRect = screen.frame;
     NSRect statusRect = NSZeroRect;
     
     StatusItemView *statusItemView = nil;
@@ -198,6 +205,12 @@ static PanelController *sharedPanel = nil;
 
 - (void)openPanel
 {
+    NSPoint mouseLoc = [NSEvent mouseLocation];
+    NSEnumerator *screenEnum = [[NSScreen screens] objectEnumerator];
+    NSScreen *screen;
+    while ((screen = [screenEnum nextObject]) && !NSMouseInRect(mouseLoc,
+                                                                [screen frame], NO));
+    
     self.futureSliderValue = 0;
     
     self.reviewView.hidden = !self.showReviewCell;
@@ -208,7 +221,7 @@ static PanelController *sharedPanel = nil;
     
     NSWindow *panel = self.window;
     
-    NSRect screenRect = self.window.frame;
+    NSRect screenRect = screen.frame;
     NSRect statusRect = [self statusRectForWindow:panel];
     
     NSRect panelRect = panel.frame;
