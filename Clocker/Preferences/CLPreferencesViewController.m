@@ -428,10 +428,15 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
             
         }];
         
-        self.searchField.stringValue = CLEmptyString;
         
-        [self getTimeZoneForLatitude:dataObject.latitude
-                        andLongitude:dataObject.longitude];
+        if (self.messageLabel.stringValue.length == 0)
+        {
+            self.searchField.stringValue = CLEmptyString;
+            
+            [self getTimeZoneForLatitude:dataObject.latitude
+                            andLongitude:dataObject.longitude];
+        }
+
     }
     else
     {
@@ -735,7 +740,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                            NSDictionary *totalPackage = @{@"latitude":latitude,
                                                           @"longitude" : longitude,
                                                           CLTimezoneName:formattedAddress,
-                                                          CLCustomLabel: CLEmptyString,
+                                                          CLCustomLabel: formattedAddress,
                                                           CLTimezoneID : CLEmptyString,
                                                           CLPlaceIdentifier : dictionary[CLPlaceIdentifier]};
                            
@@ -805,7 +810,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                                newTimezone[@"latitude"] = dataObject.latitude;
                                newTimezone[@"longitude"] = dataObject.longitude;
                                newTimezone[@"nextUpdate"] = CLEmptyString;
-                               newTimezone[CLCustomLabel] = CLEmptyString;
+                               newTimezone[CLCustomLabel] = filteredAddress;
                                
                                
                                CLTimezoneData *timezoneObject = [[CLTimezoneData alloc] initWithDictionary:newTimezone];
