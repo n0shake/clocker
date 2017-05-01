@@ -24,7 +24,7 @@ NSString *const CLPreferencesTimezoneNameIdentifier = @"formattedAddress";
 NSString *const CLPreferencesCustomLabelIdentifier = @"label";
 NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones";
 NSString *const CLNoTimezoneSelectedErrorMessage =  @"Please select a timezone!";
-NSString *const CLMaxTimezonesErrorMessage =  @"Maximum 10 timezones allowed!";
+NSString *const CLMaxTimezonesErrorMessage =  @"Maximum 100 timezones allowed!";
 NSString *const CLTimezoneAlreadySelectedError = @"Timezone has already been selected!";
 NSString *const CLMaxCharactersReachedError = @"Only 50 characters allowed!";
 NSString *const CLNoInternetConnectivityError = @"You're offline, maybe?";
@@ -388,7 +388,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
         return;
     }
     
-    if (self.selectedTimeZones.count >= 20)
+    if (self.selectedTimeZones.count >= 100)
     {
         self.messageLabel.stringValue = CLMaxTimezonesErrorMessage;
         [NSTimer scheduledTimerWithTimeInterval:5 target:self
