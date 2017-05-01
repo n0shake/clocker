@@ -84,8 +84,7 @@ void *kContextActivePanel = &kContextActivePanel;
     NSNumber *opened = [[NSUserDefaults standardUserDefaults] objectForKey:@"noOfTimes"];
     if (opened == nil)
     {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSMutableArray array]
-                                                  forKey:CLDefaultPreferenceKey];
+        [self getLocalTimezoneObject];
         NSInteger noOfTimes = opened.integerValue + 1;
         NSNumber *noOfTime = @(noOfTimes);
         [[NSUserDefaults standardUserDefaults] setObject:noOfTime forKey:@"noOfTimes"];;
@@ -113,8 +112,21 @@ void *kContextActivePanel = &kContextActivePanel;
      
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
     
-    [[Crashlytics sharedInstance] setDebugMode:NO];
+    [[Crashlytics sharedInstance] setDebugMode:YES];
     [Fabric with:@[[Crashlytics class]]];
+    
+}
+
+- (void)getLocalTimezoneObject
+{
+    CLTimezoneData *currentTimezoneObject = [[CLTimezoneData alloc] init];
+    [currentTimezoneObject setIDForTimezone:[NSTimeZone systemTimeZone].name];
+    [currentTimezoneObject setLabelForTimezone:[NSTimeZone systemTimeZone].name];
+    [currentTimezoneObject setFormattedAddressForTimezone:[NSTimeZone systemTimeZone].name];
+    
+    CLTimezoneDataOperations *dataOperations = [[CLTimezoneDataOperations alloc] initWithTimezoneData:currentTimezoneObject];
+    
+    [dataOperations save];
     
 }
 
