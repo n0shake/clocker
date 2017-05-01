@@ -13,7 +13,7 @@
 
 - (NSString *)getFilteredNameForPlace
 {
-    NSString *filteredAddress;
+    NSString *filteredAddress = self;
     NSRange range = [self rangeOfString:@","];
     
     if (range.location != NSNotFound)
