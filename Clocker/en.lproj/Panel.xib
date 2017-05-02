@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F60a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F67a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
@@ -20,7 +20,7 @@
                 <outlet property="reviewView" destination="TDn-Kk-KkV" id="YdI-Y4-zrg"/>
                 <outlet property="rightButton" destination="w3d-CG-aBO" id="rcF-Gw-CtM"/>
                 <outlet property="scrollViewHeight" destination="dff-DX-W1o" id="vYe-lb-h9x"/>
-                <outlet property="shutdownButton" destination="1xb-dy-XLC" id="4ox-04-pPo"/>
+                <outlet property="shutdownButton" destination="1cR-pI-osG" id="ZFz-9l-yNi"/>
                 <outlet property="stackView" destination="OZA-6o-SbE" id="lIT-4b-8WZ"/>
                 <outlet property="window" destination="5" id="7"/>
             </connections>
@@ -40,9 +40,9 @@
                     <stackView focusRingType="none" distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZA-6o-SbE">
                         <rect key="frame" x="0.0" y="0.0" width="306" height="343"/>
                         <subviews>
-                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="62" horizontalPageScroll="10" verticalLineScroll="62" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Gd-Nv-fXr">
+                            <scrollView focusRingType="none" borderType="none" horizontalLineScroll="62" horizontalPageScroll="1" verticalLineScroll="62" verticalPageScroll="1" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" scrollerKnobStyle="light" translatesAutoresizingMaskIntoConstraints="NO" id="4Gd-Nv-fXr">
                                 <rect key="frame" x="0.0" y="78" width="306" height="265"/>
-                                <clipView key="contentView" copiesOnScroll="NO" id="4MZ-Di-yNR">
+                                <clipView key="contentView" focusRingType="none" drawsBackground="NO" copiesOnScroll="NO" id="4MZ-Di-yNR">
                                     <rect key="frame" x="0.0" y="0.0" width="306" height="265"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -59,7 +59,7 @@
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
-                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="7LK-2q-H3f">
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" refusesFirstResponder="YES" title="Text Cell" id="7LK-2q-H3f">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -155,6 +155,7 @@
                                             </tableColumns>
                                         </tableView>
                                     </subviews>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 </clipView>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="306" id="IKg-tk-f2F"/>
@@ -164,7 +165,7 @@
                                     <rect key="frame" x="-100" y="-100" width="223" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="cfu-8V-LKK">
+                                <scroller key="verticalScroller" focusRingType="none" verticalHuggingPriority="750" arrowsPosition="none" horizontal="NO" id="cfu-8V-LKK">
                                     <rect key="frame" x="290" y="0.0" width="16" height="265"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -249,31 +250,34 @@
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="B8X-sx-cjT">
                                 <rect key="frame" x="0.0" y="0.0" width="306" height="28"/>
                                 <subviews>
-                                    <button toolTip="Close Clocker" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1xb-dy-XLC">
-                                        <rect key="frame" x="10" y="5" width="30" height="19"/>
+                                    <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UMX-eA-G87">
+                                        <rect key="frame" x="8" y="4" width="192" height="19"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="QVc-qj-dSz"/>
-                                            <constraint firstAttribute="width" constant="30" id="oSl-oI-BOG"/>
+                                            <constraint firstAttribute="width" constant="188" id="0df-dM-4hx"/>
+                                            <constraint firstAttribute="height" constant="15" id="X6i-cQ-omb"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="PowerIcon" imagePosition="only" alignment="center" alternateImage="PowerIcon" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dXQ-9P-1HU">
-                                            <behavior key="behavior" lightByContents="YES"/>
-                                            <font key="font" metaFont="systemBold" size="12"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="terminate:" target="-1" id="Fyd-Ar-amO"/>
-                                        </connections>
-                                    </button>
-                                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UMX-eA-G87">
-                                        <rect key="frame" x="48" y="5" width="210" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <sliderCell key="cell" alignment="left" maxValue="1440" doubleValue="726.0119047619047" tickMarkPosition="above" sliderType="linear" id="iIN-od-dj1" customClass="CLCustomSliderCell"/>
                                         <connections>
                                             <action selector="sliderMoved:" target="-2" id="rDx-JW-BA6"/>
                                             <binding destination="-2" name="value" keyPath="self.futureSliderValue" id="pyB-jC-66p"/>
                                         </connections>
                                     </slider>
+                                    <button toolTip="Close Clocker" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1cR-pI-osG">
+                                        <rect key="frame" x="265" y="4" width="30" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="WSi-Xj-Kfl"/>
+                                            <constraint firstAttribute="width" constant="30" id="j2s-C4-pK5"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="PowerIcon" imagePosition="only" alignment="center" alternateImage="PowerIcon" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fp1-89-Nwm">
+                                            <behavior key="behavior" lightByContents="YES"/>
+                                            <font key="font" metaFont="systemBold" size="12"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="terminate:" target="-1" id="ZY8-sG-rkC"/>
+                                        </connections>
+                                    </button>
                                     <button toolTip="Open Preferences" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ctq-BV-GPN">
-                                        <rect key="frame" x="264" y="5" width="29" height="19"/>
+                                        <rect key="frame" x="236" y="4" width="29" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="29" id="oaD-Rr-qht"/>
                                             <constraint firstAttribute="height" constant="18" id="t4M-6L-Vqi"/>
@@ -286,13 +290,28 @@
                                             <action selector="openPreferences:" target="-2" id="Wwy-xc-psI"/>
                                         </connections>
                                     </button>
+                                    <button toolTip="Open Preferences" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IoW-Bx-s8g">
+                                        <rect key="frame" x="210" y="0.0" width="25" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="ItM-KF-5fr"/>
+                                            <constraint firstAttribute="width" constant="25" id="c99-5W-fcf"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="Pin" imagePosition="only" alignment="center" alternateImage="Pin" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PoE-UX-5mR">
+                                            <behavior key="behavior" lightByContents="YES"/>
+                                            <font key="font" metaFont="systemBold" size="12"/>
+                                        </buttonCell>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="1xb-dy-XLC" secondAttribute="bottom" constant="6" id="DTm-FQ-53L"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ctq-BV-GPN" secondAttribute="bottom" constant="6" id="TuW-no-gGF"/>
-                                    <constraint firstItem="1xb-dy-XLC" firstAttribute="leading" secondItem="B8X-sx-cjT" secondAttribute="leading" constant="10" id="VwU-T6-wmc"/>
+                                    <constraint firstItem="Ctq-BV-GPN" firstAttribute="leading" secondItem="IoW-Bx-s8g" secondAttribute="trailing" constant="1" id="3jl-go-NDM"/>
+                                    <constraint firstItem="Ctq-BV-GPN" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" id="6Q7-jc-cTL"/>
+                                    <constraint firstItem="UMX-eA-G87" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" id="HRJ-nU-K9Z"/>
+                                    <constraint firstItem="IoW-Bx-s8g" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" id="OSb-w7-ocG"/>
                                     <constraint firstAttribute="height" constant="28" id="iYW-fj-EE2"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ctq-BV-GPN" secondAttribute="trailing" constant="13" id="sas-6R-mtG"/>
+                                    <constraint firstItem="1cR-pI-osG" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" id="oVJ-Xa-cTw"/>
+                                    <constraint firstAttribute="trailing" secondItem="1cR-pI-osG" secondAttribute="trailing" constant="11" id="rb9-gW-QZS"/>
+                                    <constraint firstItem="UMX-eA-G87" firstAttribute="leading" secondItem="B8X-sx-cjT" secondAttribute="leading" constant="10" id="zG1-HY-Dmo"/>
+                                    <constraint firstItem="1cR-pI-osG" firstAttribute="leading" secondItem="Ctq-BV-GPN" secondAttribute="trailing" id="zo2-95-HDr"/>
                                 </constraints>
                             </customView>
                         </subviews>
@@ -332,6 +351,7 @@
     <resources>
         <image name="ClockerIcon-16" width="16" height="16"/>
         <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="Pin" width="380" height="380"/>
         <image name="PowerIcon" width="270" height="270"/>
     </resources>
 </document>
