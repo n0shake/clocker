@@ -251,9 +251,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="306" height="28"/>
                                 <subviews>
                                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UMX-eA-G87">
-                                        <rect key="frame" x="8" y="4" width="192" height="19"/>
+                                        <rect key="frame" x="8" y="4" width="216" height="19"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="188" id="0df-dM-4hx"/>
+                                            <constraint firstAttribute="width" constant="212" id="0df-dM-4hx"/>
                                             <constraint firstAttribute="height" constant="15" id="X6i-cQ-omb"/>
                                         </constraints>
                                         <sliderCell key="cell" alignment="left" maxValue="1440" doubleValue="726.0119047619047" tickMarkPosition="above" sliderType="linear" id="iIN-od-dj1" customClass="CLCustomSliderCell"/>
@@ -290,23 +290,10 @@
                                             <action selector="openPreferences:" target="-2" id="Wwy-xc-psI"/>
                                         </connections>
                                     </button>
-                                    <button toolTip="Open Preferences" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IoW-Bx-s8g">
-                                        <rect key="frame" x="210" y="0.0" width="25" height="26"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="ItM-KF-5fr"/>
-                                            <constraint firstAttribute="width" constant="25" id="c99-5W-fcf"/>
-                                        </constraints>
-                                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="Pin" imagePosition="only" alignment="center" alternateImage="Pin" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PoE-UX-5mR">
-                                            <behavior key="behavior" lightByContents="YES"/>
-                                            <font key="font" metaFont="systemBold" size="12"/>
-                                        </buttonCell>
-                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Ctq-BV-GPN" firstAttribute="leading" secondItem="IoW-Bx-s8g" secondAttribute="trailing" constant="1" id="3jl-go-NDM"/>
                                     <constraint firstItem="Ctq-BV-GPN" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" id="6Q7-jc-cTL"/>
                                     <constraint firstItem="UMX-eA-G87" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" id="HRJ-nU-K9Z"/>
-                                    <constraint firstItem="IoW-Bx-s8g" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" id="OSb-w7-ocG"/>
                                     <constraint firstAttribute="height" constant="28" id="iYW-fj-EE2"/>
                                     <constraint firstItem="1cR-pI-osG" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" id="oVJ-Xa-cTw"/>
                                     <constraint firstAttribute="trailing" secondItem="1cR-pI-osG" secondAttribute="trailing" constant="11" id="rb9-gW-QZS"/>
@@ -351,7 +338,6 @@
     <resources>
         <image name="ClockerIcon-16" width="16" height="16"/>
         <image name="NSActionTemplate" width="14" height="14"/>
-        <image name="Pin" width="380" height="380"/>
         <image name="PowerIcon" width="270" height="270"/>
     </resources>
 </document>

@@ -251,10 +251,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="306" height="28"/>
                                 <subviews>
                                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vKI-7t-lFg">
-                                        <rect key="frame" x="8" y="4" width="192" height="19"/>
+                                        <rect key="frame" x="8" y="4" width="216" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="3hI-5j-He1"/>
-                                            <constraint firstAttribute="width" constant="188" id="Vib-CH-6ej"/>
+                                            <constraint firstAttribute="width" constant="212" id="Vib-CH-6ej"/>
                                         </constraints>
                                         <sliderCell key="cell" alignment="left" maxValue="1440" doubleValue="726.0119047619047" tickMarkPosition="above" sliderType="linear" id="a3g-9R-U5R" customClass="CLCustomSliderCell"/>
                                         <connections>
@@ -290,23 +290,10 @@
                                             <action selector="openPreferences:" target="-2" id="37E-Lw-Pxb"/>
                                         </connections>
                                     </button>
-                                    <button toolTip="Open Preferences" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mnf-RS-e6C">
-                                        <rect key="frame" x="210" y="0.0" width="25" height="26"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="25" id="7ak-ho-N02"/>
-                                            <constraint firstAttribute="height" constant="25" id="SaG-6m-Uke"/>
-                                        </constraints>
-                                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="Pin" imagePosition="only" alignment="center" alternateImage="Pin" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0zD-4v-JDt">
-                                            <behavior key="behavior" lightByContents="YES"/>
-                                            <font key="font" metaFont="systemBold" size="12"/>
-                                        </buttonCell>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="WWN-nq-wMy" firstAttribute="leading" secondItem="Fbf-Qd-u2V" secondAttribute="trailing" id="1wI-U3-Pxk"/>
                                     <constraint firstItem="WWN-nq-wMy" firstAttribute="centerY" secondItem="Stb-ee-1GS" secondAttribute="centerY" id="6sO-vJ-DiD"/>
-                                    <constraint firstItem="mnf-RS-e6C" firstAttribute="centerY" secondItem="Stb-ee-1GS" secondAttribute="centerY" id="7PM-IQ-sZq"/>
-                                    <constraint firstItem="Fbf-Qd-u2V" firstAttribute="leading" secondItem="mnf-RS-e6C" secondAttribute="trailing" constant="1" id="7hn-8S-QBk"/>
                                     <constraint firstItem="vKI-7t-lFg" firstAttribute="centerY" secondItem="Stb-ee-1GS" secondAttribute="centerY" id="EXd-m0-roh"/>
                                     <constraint firstAttribute="height" constant="28" id="KUZ-Oj-qRa"/>
                                     <constraint firstItem="vKI-7t-lFg" firstAttribute="leading" secondItem="Stb-ee-1GS" secondAttribute="leading" constant="10" id="RJG-i0-Rjh"/>
@@ -349,7 +336,6 @@
     <resources>
         <image name="ClockerIcon-16" width="16" height="16"/>
         <image name="NSActionTemplate" width="14" height="14"/>
-        <image name="Pin" width="380" height="380"/>
         <image name="PowerIcon" width="270" height="270"/>
     </resources>
 </document>

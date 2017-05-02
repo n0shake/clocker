@@ -14,12 +14,19 @@
 #import "iRate.h"
 #import "CLTableViewDataSource.h"
 #import <Crashlytics/Crashlytics.h>
+#import "ApplicationDelegate.h"
+#import <Crashlytics/Crashlytics.h>
 
 NSString *const CLNotReallyButtonTitle = @"Not Really";
 NSString *const CLFeedbackString = @"Mind giving feedback?";
 NSString *const CLNoThanksTitle = @"No, thanks";
 NSString *const CLYesWithQuestionMark = @"Yes?";
 NSString *const CLYesWithExclamation = @"Yes!";
+
+typedef NS_ENUM(NSUInteger, CLClockerMode) {
+    CLMenubarMode = 0,
+    CLFloatingMode
+};
 
 @interface CLParentPanelController ()
 @property (strong) CLTableViewDataSource *timezoneDataSource;
@@ -359,7 +366,5 @@ NSString *const CLYesWithExclamation = @"Yes!";
                             }];
                         }];
 }
-
-
 
 @end
