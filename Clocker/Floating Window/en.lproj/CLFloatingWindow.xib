@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F60a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F67a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
@@ -9,17 +9,17 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CLFloatingWindowController">
             <connections>
-                <outlet property="futureSlider" destination="zSo-zq-zfQ" id="YZV-HD-HKj"/>
-                <outlet property="futureSliderView" destination="JJo-DM-eef" id="L6y-U2-iw8"/>
+                <outlet property="futureSlider" destination="vKI-7t-lFg" id="jmU-Hu-VSz"/>
+                <outlet property="futureSliderView" destination="Stb-ee-1GS" id="1HP-Da-a9H"/>
                 <outlet property="imageView" destination="IiQ-fk-Lnx" id="CbS-Dp-aXh"/>
                 <outlet property="leftButton" destination="7ID-ll-0YN" id="Msx-3N-nDQ"/>
                 <outlet property="leftField" destination="DHg-ca-UOi" id="eOW-Ml-DE8"/>
                 <outlet property="mainTableview" destination="3js-Fl-DdU" id="tYE-k5-hoH"/>
-                <outlet property="preferencesButton" destination="Ock-8p-1U5" id="Aqc-Z6-nnp"/>
+                <outlet property="preferencesButton" destination="Fbf-Qd-u2V" id="OQg-py-ZHr"/>
                 <outlet property="reviewView" destination="HBv-Eh-z9y" id="vt7-in-yQF"/>
                 <outlet property="rightButton" destination="8oB-ID-Dka" id="s0E-Pp-8Eb"/>
                 <outlet property="scrollViewHeight" destination="SQM-7C-DIi" id="bRu-h6-Rvg"/>
-                <outlet property="shutdownButton" destination="VUO-NQ-jFg" id="4P4-gn-JFG"/>
+                <outlet property="shutdownButton" destination="WWN-nq-wMy" id="L4s-Gp-HLD"/>
                 <outlet property="stackView" destination="Bn4-fy-Lm6" id="bdu-HH-FT3"/>
                 <outlet property="window" destination="1gY-Kq-Pzj" id="aEC-1h-f24"/>
             </connections>
@@ -247,52 +247,78 @@
                                 </constraints>
                                 <accessibility description="Review Cell"/>
                             </customView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="JJo-DM-eef">
+                            <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="Stb-ee-1GS">
                                 <rect key="frame" x="0.0" y="0.0" width="306" height="28"/>
                                 <subviews>
-                                    <button toolTip="Close Clocker" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VUO-NQ-jFg">
-                                        <rect key="frame" x="10" y="5" width="30" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="PowerIcon" imagePosition="only" alignment="center" alternateImage="PowerIcon" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sqm-fQ-kSK">
-                                            <behavior key="behavior" lightByContents="YES"/>
-                                            <font key="font" metaFont="systemBold" size="12"/>
-                                        </buttonCell>
+                                    <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vKI-7t-lFg">
+                                        <rect key="frame" x="8" y="4" width="192" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="15" id="3hI-5j-He1"/>
+                                            <constraint firstAttribute="width" constant="188" id="Vib-CH-6ej"/>
+                                        </constraints>
+                                        <sliderCell key="cell" alignment="left" maxValue="1440" doubleValue="726.0119047619047" tickMarkPosition="above" sliderType="linear" id="a3g-9R-U5R" customClass="CLCustomSliderCell"/>
                                         <connections>
-                                            <action selector="terminate:" target="-1" id="fI0-RR-LKL"/>
-                                        </connections>
-                                    </button>
-                                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zSo-zq-zfQ">
-                                        <rect key="frame" x="48" y="5" width="210" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <sliderCell key="cell" state="on" alignment="left" maxValue="1440" doubleValue="175.47619047619048" tickMarkPosition="above" sliderType="linear" id="X3t-BP-33I" customClass="CLCustomSliderCell"/>
-                                        <connections>
-                                            <action selector="sliderMoved:" target="-2" id="0n1-GZ-6Do"/>
-                                            <binding destination="-2" name="value" keyPath="self.futureSliderValue" id="hNe-OR-fFa"/>
+                                            <action selector="sliderMoved:" target="-2" id="pQZ-D5-tyi"/>
+                                            <binding destination="-2" name="value" keyPath="self.futureSliderValue" id="GRv-56-c6o"/>
                                         </connections>
                                     </slider>
-                                    <button toolTip="Open Preferences" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ock-8p-1U5">
-                                        <rect key="frame" x="264" y="5" width="29" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="NSActionTemplate" imagePosition="only" alignment="center" alternateImage="NSActionTemplate" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gYe-WF-TJS">
+                                    <button toolTip="Close Clocker" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WWN-nq-wMy">
+                                        <rect key="frame" x="265" y="4" width="30" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="3Is-lB-NN1"/>
+                                            <constraint firstAttribute="height" constant="18" id="vbF-YH-84J"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="PowerIcon" imagePosition="only" alignment="center" alternateImage="PowerIcon" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hNX-Qa-evX">
                                             <behavior key="behavior" lightByContents="YES"/>
                                             <font key="font" metaFont="systemBold" size="12"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="openPreferences:" target="-2" id="Sbi-np-Quv"/>
+                                            <action selector="terminate:" target="-1" id="A7p-I0-AnO"/>
                                         </connections>
+                                    </button>
+                                    <button toolTip="Open Preferences" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fbf-Qd-u2V">
+                                        <rect key="frame" x="236" y="4" width="29" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="29" id="kdo-qK-wjd"/>
+                                            <constraint firstAttribute="height" constant="18" id="wzU-4Z-lkJ"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="NSActionTemplate" imagePosition="only" alignment="center" alternateImage="NSActionTemplate" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JfA-dj-i0y">
+                                            <behavior key="behavior" lightByContents="YES"/>
+                                            <font key="font" metaFont="systemBold" size="12"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openPreferences:" target="-2" id="37E-Lw-Pxb"/>
+                                        </connections>
+                                    </button>
+                                    <button toolTip="Open Preferences" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mnf-RS-e6C">
+                                        <rect key="frame" x="210" y="0.0" width="25" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="7ak-ho-N02"/>
+                                            <constraint firstAttribute="height" constant="25" id="SaG-6m-Uke"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="Pin" imagePosition="only" alignment="center" alternateImage="Pin" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0zD-4v-JDt">
+                                            <behavior key="behavior" lightByContents="YES"/>
+                                            <font key="font" metaFont="systemBold" size="12"/>
+                                        </buttonCell>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="RXi-ME-Ew3"/>
+                                    <constraint firstItem="WWN-nq-wMy" firstAttribute="leading" secondItem="Fbf-Qd-u2V" secondAttribute="trailing" id="1wI-U3-Pxk"/>
+                                    <constraint firstItem="WWN-nq-wMy" firstAttribute="centerY" secondItem="Stb-ee-1GS" secondAttribute="centerY" id="6sO-vJ-DiD"/>
+                                    <constraint firstItem="mnf-RS-e6C" firstAttribute="centerY" secondItem="Stb-ee-1GS" secondAttribute="centerY" id="7PM-IQ-sZq"/>
+                                    <constraint firstItem="Fbf-Qd-u2V" firstAttribute="leading" secondItem="mnf-RS-e6C" secondAttribute="trailing" constant="1" id="7hn-8S-QBk"/>
+                                    <constraint firstItem="vKI-7t-lFg" firstAttribute="centerY" secondItem="Stb-ee-1GS" secondAttribute="centerY" id="EXd-m0-roh"/>
+                                    <constraint firstAttribute="height" constant="28" id="KUZ-Oj-qRa"/>
+                                    <constraint firstItem="vKI-7t-lFg" firstAttribute="leading" secondItem="Stb-ee-1GS" secondAttribute="leading" constant="10" id="RJG-i0-Rjh"/>
+                                    <constraint firstAttribute="trailing" secondItem="WWN-nq-wMy" secondAttribute="trailing" constant="11" id="b7f-jg-l0l"/>
+                                    <constraint firstItem="Fbf-Qd-u2V" firstAttribute="centerY" secondItem="Stb-ee-1GS" secondAttribute="centerY" id="rdb-6h-XfO"/>
                                 </constraints>
                             </customView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="HBv-Eh-z9y" firstAttribute="leading" secondItem="Bn4-fy-Lm6" secondAttribute="leading" id="1gK-nB-cgS"/>
                             <constraint firstItem="khu-OS-PzP" firstAttribute="top" secondItem="Bn4-fy-Lm6" secondAttribute="top" id="AxZ-D1-B8f"/>
-                            <constraint firstItem="JJo-DM-eef" firstAttribute="leading" secondItem="Bn4-fy-Lm6" secondAttribute="leading" id="MH8-WR-IOl"/>
                             <constraint firstAttribute="trailing" secondItem="HBv-Eh-z9y" secondAttribute="trailing" id="i0H-Z4-5gF"/>
-                            <constraint firstAttribute="trailing" secondItem="JJo-DM-eef" secondAttribute="trailing" id="t3p-Ez-WZD"/>
                         </constraints>
                         <visibilityPriorities>
                             <integer value="1000"/>
@@ -316,12 +342,14 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="8xd-fh-hDu"/>
             </connections>
-            <point key="canvasLocation" x="230" y="392.5"/>
+            <point key="canvasLocation" x="230" y="406.5"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="I8r-sY-f29"/>
     </objects>
     <resources>
         <image name="ClockerIcon-16" width="16" height="16"/>
         <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="Pin" width="380" height="380"/>
         <image name="PowerIcon" width="270" height="270"/>
     </resources>
 </document>
