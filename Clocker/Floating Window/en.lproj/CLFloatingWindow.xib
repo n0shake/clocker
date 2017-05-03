@@ -108,45 +108,45 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h61-7e-wqO">
-                                                                    <rect key="frame" x="222" y="5" width="20" height="20"/>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxG-yy-sRq">
+                                                                    <rect key="frame" x="243" y="2" width="54" height="17"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="20" id="6pX-Ri-Zww"/>
-                                                                        <constraint firstAttribute="width" constant="20" id="oOF-wv-CbW"/>
+                                                                        <constraint firstAttribute="height" constant="17" id="7eL-3n-xFM"/>
+                                                                        <constraint firstAttribute="width" constant="50" id="oqI-Vk-vdM"/>
                                                                     </constraints>
-                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="ONL-Vm-fm0"/>
-                                                                </imageView>
-                                                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" preferredMaxLayoutWidth="50" translatesAutoresizingMaskIntoConstraints="NO" id="sXo-5h-Olo">
-                                                                    <rect key="frame" x="243" y="8" width="54" height="17"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="17" id="PMT-AI-MyM"/>
-                                                                        <constraint firstAttribute="width" constant="50" identifier="width" id="dwB-T9-KjL"/>
-                                                                    </constraints>
-                                                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" alignment="left" placeholderString="" id="ecp-AW-7rT">
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="cFi-UH-Ksx">
                                                                         <font key="font" size="11" name="HelveticaNeue-Light"/>
-                                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
+                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bWX-gF-HXh">
+                                                                    <rect key="frame" x="222" y="1" width="20" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20" id="E9F-Lq-1aM"/>
+                                                                        <constraint firstAttribute="width" constant="20" id="rfP-Wa-mdz"/>
+                                                                    </constraints>
+                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="xZe-y7-JCb"/>
+                                                                </imageView>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="Nov-Lq-MHq" firstAttribute="leading" secondItem="UES-Eo-BEf" secondAttribute="leading" constant="9" id="12v-xb-e52"/>
                                                                 <constraint firstItem="KEf-HK-1oi" firstAttribute="top" secondItem="Nov-Lq-MHq" secondAttribute="bottom" constant="-1" id="36c-S2-UFi"/>
                                                                 <constraint firstItem="KEf-HK-1oi" firstAttribute="leading" secondItem="UES-Eo-BEf" secondAttribute="leading" constant="10" id="3rb-bl-9A5"/>
-                                                                <constraint firstItem="h61-7e-wqO" firstAttribute="top" secondItem="vG5-PS-a35" secondAttribute="bottom" id="GQV-mL-TYT"/>
-                                                                <constraint firstAttribute="trailing" secondItem="sXo-5h-Olo" secondAttribute="trailing" constant="8" id="LJ8-3K-NU0"/>
+                                                                <constraint firstAttribute="bottom" secondItem="bWX-gF-HXh" secondAttribute="bottom" constant="1" id="5he-xP-abe"/>
                                                                 <constraint firstAttribute="trailing" secondItem="vG5-PS-a35" secondAttribute="trailing" constant="8" id="Rcj-BS-Maj"/>
-                                                                <constraint firstItem="sXo-5h-Olo" firstAttribute="top" secondItem="vG5-PS-a35" secondAttribute="bottom" id="UDg-I4-MAs"/>
                                                                 <constraint firstItem="Nov-Lq-MHq" firstAttribute="top" secondItem="UES-Eo-BEf" secondAttribute="top" constant="17" id="WL7-Ub-TXA"/>
                                                                 <constraint firstAttribute="bottom" secondItem="KEf-HK-1oi" secondAttribute="bottom" constant="2" id="XYy-bg-pX7"/>
-                                                                <constraint firstItem="sXo-5h-Olo" firstAttribute="leading" secondItem="h61-7e-wqO" secondAttribute="trailing" constant="3" id="tsJ-ag-MaO"/>
+                                                                <constraint firstItem="qxG-yy-sRq" firstAttribute="leading" secondItem="bWX-gF-HXh" secondAttribute="trailing" constant="3" id="mrc-JY-zWQ"/>
+                                                                <constraint firstAttribute="trailing" secondItem="qxG-yy-sRq" secondAttribute="trailing" constant="8" id="qwC-j8-VE0"/>
+                                                                <constraint firstAttribute="bottom" secondItem="qxG-yy-sRq" secondAttribute="bottom" constant="2" id="vgt-1M-RC6"/>
                                                                 <constraint firstItem="vG5-PS-a35" firstAttribute="top" secondItem="UES-Eo-BEf" secondAttribute="top" constant="10" id="zlT-zp-59t"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="customName" destination="Nov-Lq-MHq" id="dzC-Ec-iqS"/>
                                                                 <outlet property="relativeDate" destination="KEf-HK-1oi" id="3g4-aN-wAi"/>
-                                                                <outlet property="sunriseSetImage" destination="h61-7e-wqO" id="Xxq-X6-Bdc"/>
-                                                                <outlet property="sunriseSetTime" destination="sXo-5h-Olo" id="vOV-3y-Qtq"/>
+                                                                <outlet property="sunriseSetImage" destination="bWX-gF-HXh" id="oLW-1U-jgP"/>
+                                                                <outlet property="sunriseSetTime" destination="qxG-yy-sRq" id="r8A-eC-Nlg"/>
                                                                 <outlet property="textField" destination="Nov-Lq-MHq" id="l1Q-Tw-7Yd"/>
                                                                 <outlet property="time" destination="vG5-PS-a35" id="GzE-qP-aee"/>
                                                             </connections>
