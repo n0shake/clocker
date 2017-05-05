@@ -12,7 +12,6 @@
 #import "CLOneWindowController.h"
 #import <pop/POP.h>
 #import "iRate.h"
-#import "CLTableViewDataSource.h"
 #import <Crashlytics/Crashlytics.h>
 #import "ApplicationDelegate.h"
 #import <Crashlytics/Crashlytics.h>
@@ -29,7 +28,6 @@ typedef NS_ENUM(NSUInteger, CLClockerMode) {
 };
 
 @interface CLParentPanelController ()
-@property (strong) CLTableViewDataSource *timezoneDataSource;
 @end
 
 @implementation CLParentPanelController

@@ -205,6 +205,8 @@ static PanelController *sharedPanel = nil;
 
 - (void)openPanel
 {
+    [Answers logCustomEventWithName:@"openedPanel" customAttributes:@{}];
+    
     NSPoint mouseLoc = [NSEvent mouseLocation];
     NSEnumerator *screenEnum = [[NSScreen screens] objectEnumerator];
     NSScreen *screen;
@@ -212,6 +214,7 @@ static PanelController *sharedPanel = nil;
                                                                 [screen frame], NO));
     
     self.futureSliderValue = 0;
+    self.timezoneDataSource.futureSliderValue = 0;
     
     self.reviewView.hidden = !self.showReviewCell;
     

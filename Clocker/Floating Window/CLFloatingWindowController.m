@@ -130,6 +130,7 @@ NSString *const CLTimezoneCellIdentifier = @"timeZoneCell";
 -(void)windowWillClose:(NSNotification *)notification
 {
     self.futureSliderValue = 0;
+    self.timezoneDataSource.futureSliderValue = 0;
     
     if (self.floatingWindowTimer)
     {
