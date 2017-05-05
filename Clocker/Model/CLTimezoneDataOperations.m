@@ -50,11 +50,11 @@
     
     if([showSeconds isEqualToNumber:@(0)])
     {
-        dateFormatter.dateFormat = is24HourFormatSelected.boolValue ?  @"HH:mm:ss" : @"hh:mm:ss a";
+        dateFormatter.dateFormat = is24HourFormatSelected.boolValue ?  @"H:mm:ss" : @"h:mm:ss a";
     }
     else
     {
-        dateFormatter.dateFormat = is24HourFormatSelected.boolValue ?  @"HH:mm" : @"hh:mm a";
+        dateFormatter.dateFormat = is24HourFormatSelected.boolValue ?  @"H:mm" : @"h:mm a";
     }
     
     dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.dataObject.timezoneID];
@@ -107,7 +107,7 @@
     
     if (shouldDateBeShown.boolValue == 0)
     {
-        NSString *date = [[NSDate date] formattedDateWithFormat:@"MMM dd" timeZone:[NSTimeZone timeZoneWithName:self.dataObject.timezoneID] locale:[NSLocale currentLocale]];
+        NSString *date = [[NSDate date] formattedDateWithFormat:@"MMM d" timeZone:[NSTimeZone timeZoneWithName:self.dataObject.timezoneID] locale:[NSLocale currentLocale]];
         
         if (menuTitle.length > 0)
         {
@@ -169,26 +169,30 @@
         
         if (weekday == timezoneWeekday + 1)
         {
-            return @"Yesterday";
+            NSString *totalRelative = [NSString stringWithFormat:@"Yesterday%@", [self getTimeDifference]];
+            return totalRelative;
         }
         else if (weekday == timezoneWeekday)
         {
-            return @"Today";
+            NSString *totalRelative = [NSString stringWithFormat:@"Today%@", [self getTimeDifference]];
+            return totalRelative;
         }
         else if (weekday + 1 == timezoneWeekday)
         {
-            return @"Tomorrow";
+            NSString *totalRelative = [NSString stringWithFormat:@"Tomorrow%@", [self getTimeDifference]];
+            return totalRelative;
         }
         else
         {
-            return @"Day after Tomorrow";
+            NSString *totalRelative = [NSString stringWithFormat:@"Day after Tomorrow%@", [self getTimeDifference]];
+            return totalRelative;
         }
         
     }
     else
     {
-
-        return [self getWeekdayFromInteger:timezoneWeekday];
+        NSString *totalRelative = [NSString stringWithFormat:@"%@%@", [self getWeekdayFromInteger:timezoneWeekday] , [self getTimeDifference]];
+        return totalRelative;
     }
 }
 
@@ -363,6 +367,50 @@
     
 }
 
+- (NSString *)getTimeDifference
+{
+    NSDateFormatter *localFormatter = [NSDateFormatter new];
+    localFormatter.timeStyle = NSDateFormatterMediumStyle;
+    localFormatter.dateStyle = NSDateFormatterMediumStyle;
+    localFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    
+    NSCalendar *currentCalendar = [NSCalendar autoupdatingCurrentCalendar];
+    NSDate *newDate = [currentCalendar dateByAddingUnit:NSCalendarUnitMinute
+                                                  value:0
+                                                 toDate:[NSDate date]
+                                                options:kNilOptions];
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    dateFormatter.timeStyle = NSDateFormatterMediumStyle;
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:self.dataObject.timezoneID];
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    
+    NSDate *localDate = [localFormatter dateFromString:[self getLocalCurrentDate]];
+    NSDate *timezoneDate = [localFormatter dateFromString:[dateFormatter stringFromDate:newDate]];
+    
+
+    if ([localDate isEarlierThan:timezoneDate])
+    {
+        NSMutableString *replaceAgo = [NSMutableString string];
+        [replaceAgo appendString:@", "];
+        [replaceAgo appendString:[[localDate timeAgoSinceDate:timezoneDate] stringByReplacingOccurrencesOfString:@"ago" withString:@"ahead"]];
+        return replaceAgo;
+    }
+    
+    NSMutableString *replaceAgo = [NSMutableString string];
+    [replaceAgo appendString:@", "];
+    NSString *timeDifference = [localDate timeAgoSinceDate:timezoneDate];
+    
+    if ([timeDifference containsString:@"Just now"])
+    {
+        return CLEmptyString;
+    }
+    
+    [replaceAgo appendString:[timeDifference stringByReplacingOccurrencesOfString:@"ago" withString:@"behind"]];
+    
+    return replaceAgo;
+}
 
 - (void)save
 {
