@@ -43,13 +43,13 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-512" id="pfa-88-uAu"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VF-oD-eXA">
-                    <rect key="frame" x="31" y="321" width="524" height="22"/>
+                    <rect key="frame" x="11" y="321" width="564" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="Mmv-dl-OFq"/>
-                        <constraint firstAttribute="width" constant="520" id="YaO-hR-Rbl"/>
+                        <constraint firstAttribute="width" constant="560" id="YaO-hR-Rbl"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Clocker is completely open-source and is available for reuse under the MIT License" id="sMQ-wY-lxQ">
-                        <font key="font" size="14" name="HelveticaNeue-Light"/>
+                        <font key="font" size="15" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -61,20 +61,20 @@
                         <constraint firstAttribute="width" constant="428" id="uSg-3e-YuD"/>
                     </constraints>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="I built Clocker with no employees, no funding while studying Computer Science. Feedback is welcome:" id="aJa-sU-W5K">
-                        <font key="font" size="14" name="HelveticaNeue-Light"/>
+                        <font key="font" size="15" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UMN-Wx-ukl" customClass="CLUnderlinedButton">
-                    <rect key="frame" x="79" y="269" width="428" height="32"/>
+                    <rect key="frame" x="68" y="269" width="450" height="32"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="428" id="NjU-TB-ANz"/>
+                        <constraint firstAttribute="width" constant="450" id="NjU-TB-ANz"/>
                         <constraint firstAttribute="height" constant="32" id="mu4-sB-ptQ"/>
                     </constraints>
                     <buttonCell key="cell" type="bevel" title="You can support Clocker by starring the source on GitHub! :)" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="0Yv-gv-ofG">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" size="14" name="HelveticaNeue-Bold"/>
+                        <font key="font" size="15" name="HelveticaNeue-Bold"/>
                     </buttonCell>
                     <connections>
                         <action selector="viewSource:" target="-2" id="rTX-2p-IOw"/>
@@ -116,7 +116,7 @@
                     </constraints>
                     <buttonCell key="cell" type="bevel" title="By Abhishek Banthia" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="F5n-7Y-7ST">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" size="13" name="Menlo-Regular"/>
+                        <font key="font" size="15" name="HelveticaNeue-Light"/>
                     </buttonCell>
                     <connections>
                         <action selector="openWebsite:" target="-2" id="sAx-tW-Cql"/>
