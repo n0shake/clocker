@@ -116,14 +116,8 @@
     }
     else
     {
-        if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"]  isEqualToString:@"Dark"])
-        {
-            self.image = [NSImage imageNamed:@"DarkModeIcon"];
-        }
-        else
-        {
-            self.image = [NSImage imageNamed:@"LightModeIcon"];
-        }
+        
+        self.image = [[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"]  isEqualToString:@"Dark"] ?  [NSImage imageNamed:@"DarkModeIcon"] :  [NSImage imageNamed:@"LightModeIcon"];
 
       self.statusItem.length = 24;
       [self.statusItem drawStatusBarBackgroundInRect:CGRectMake(0, 0, self.image.size.width, self.image.size.height) withHighlight:NO];
