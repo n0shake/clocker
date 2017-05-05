@@ -184,7 +184,7 @@
         }
         else
         {
-            NSString *totalRelative = [NSString stringWithFormat:@"Day after Tomorrow%@", [self getTimeDifference]];
+            NSString *totalRelative = [NSString stringWithFormat:@"%@%@", [self getWeekdayFromInteger:timezoneWeekday], [self getTimeDifference]];
             return totalRelative;
         }
         
