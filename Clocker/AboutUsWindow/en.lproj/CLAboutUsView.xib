@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16F60a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F67a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="585" height="555"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XlC-Xd-67t">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlC-Xd-67t">
                     <rect key="frame" x="18" y="492" width="549" height="43"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="dqF-vG-wml"/>
@@ -42,7 +42,7 @@
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-512" id="pfa-88-uAu"/>
                 </imageView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7VF-oD-eXA">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VF-oD-eXA">
                     <rect key="frame" x="31" y="321" width="524" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="Mmv-dl-OFq"/>
@@ -54,7 +54,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a6n-UL-Zeg">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6n-UL-Zeg">
                     <rect key="frame" x="77" y="207" width="432" height="47"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="47" id="Uja-Q8-6Dg"/>
@@ -91,7 +91,7 @@
                         <font key="font" size="15" name="HelveticaNeue-Light"/>
                     </buttonCell>
                     <connections>
-                        <action selector="openFacebookPage:" target="-2" id="owu-tf-7eX"/>
+                        <action selector="openMyTwitter:" target="-2" id="njC-D1-AJY"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bqr-yN-kPU" customClass="CLUnderlinedButton">
