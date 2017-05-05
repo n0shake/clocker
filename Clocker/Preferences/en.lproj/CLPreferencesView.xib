@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F67a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -55,15 +55,16 @@ CA
                 </button>
                 <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="42" horizontalPageScroll="10" verticalLineScroll="42" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBR-OH-6QQ">
                     <rect key="frame" x="10" y="63" width="565" height="484"/>
-                    <clipView key="contentView" id="UZ2-JA-TZe">
+                    <clipView key="contentView" drawsBackground="NO" id="UZ2-JA-TZe">
                         <rect key="frame" x="0.0" y="0.0" width="565" height="484"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="40" headerView="igm-uc-1wh" id="LbJ-dW-ITm">
+                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" autosaveColumns="NO" rowHeight="40" headerView="igm-uc-1wh" id="LbJ-dW-ITm">
                                 <rect key="frame" x="0.0" y="0.0" width="569" height="461"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <tableViewGridLines key="gridStyleMask" dashed="YES"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
                                     <tableColumn identifier="favouriteTimezone" width="55" minWidth="50" maxWidth="55" id="AeF-Ol-OlY">
@@ -111,6 +112,7 @@ CA
                                 </connections>
                             </tableView>
                         </subviews>
+                        <nil key="backgroundColor"/>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="QrG-bP-Ras">
                         <rect key="frame" x="0.0" y="468" width="565" height="16"/>
@@ -174,14 +176,14 @@ CA
             <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES" nonactivatingPanel="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="120" y="64" width="345" height="320"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <value key="minSize" type="size" width="345" height="320"/>
             <value key="maxSize" type="size" width="345" height="320"/>
             <view key="contentView" id="kXo-nl-oxR">
                 <rect key="frame" x="0.0" y="0.0" width="345" height="320"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <searchField toolTip="Search a timezone" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="biT-6m-ElR">
+                    <searchField toolTip="Search a timezone" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biT-6m-ElR">
                         <rect key="frame" x="8" y="287" width="329" height="25"/>
                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Enter a city, state, country name" usesSingleLineMode="YES" maximumRecents="5" id="ijc-z6-99E">
                             <font key="font" size="13" name="HelveticaNeue-Light"/>
@@ -192,7 +194,7 @@ CA
                             <action selector="filterArray:" target="-2" id="MWr-sX-24E"/>
                         </connections>
                     </searchField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KFC-NV-5A3">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KFC-NV-5A3">
                         <rect key="frame" x="106" y="4" width="226" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="rr3-gU-VUn"/>
@@ -278,7 +280,7 @@ DQ
                         <rect key="frame" x="8" y="30" width="329" height="220"/>
                         <clipView key="contentView" id="Z7L-Ef-90Z">
                             <rect key="frame" x="0.0" y="0.0" width="329" height="220"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="20" headerView="85y-4a-860" id="Q0t-hQ-orw">
                                     <rect key="frame" x="0.0" y="0.0" width="329" height="197"/>
@@ -348,7 +350,7 @@ DQ
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="L5U-OI-Tkv">
+                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5U-OI-Tkv">
                         <rect key="frame" x="18" y="118" width="309" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="vJh-uH-1OY"/>
