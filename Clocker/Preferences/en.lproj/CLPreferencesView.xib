@@ -60,7 +60,7 @@ CA
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" autosaveColumns="NO" rowHeight="40" headerView="igm-uc-1wh" id="LbJ-dW-ITm">
-                                <rect key="frame" x="0.0" y="0.0" width="569" height="461"/>
+                                <rect key="frame" x="0.0" y="0.0" width="565" height="461"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -78,27 +78,27 @@ CA
                                         </buttonCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="formattedAddress" editable="NO" width="265" minWidth="80" maxWidth="1000" id="YaU-AD-fOu">
+                                    <tableColumn identifier="formattedAddress" editable="NO" width="260" minWidth="260" maxWidth="260" id="YaU-AD-fOu">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Selected Timezone(s)">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
                                         <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="HJL-uw-ZOC">
-                                            <font key="font" size="24" name="HelveticaNeue-Thin"/>
+                                            <font key="font" size="30" name="HelveticaNeue-Thin"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="label" width="240" minWidth="80" maxWidth="240" id="wmL-jC-Tny">
+                                    <tableColumn identifier="label" width="240" minWidth="240" maxWidth="240" id="wmL-jC-Tny">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Label">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
                                         <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="xOd-3p-ihC">
-                                            <font key="font" size="24" name="HelveticaNeue-Thin"/>
+                                            <font key="font" size="30" name="HelveticaNeue-Thin"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -113,7 +113,7 @@ CA
                         </subviews>
                         <nil key="backgroundColor"/>
                     </clipView>
-                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="QrG-bP-Ras">
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="QrG-bP-Ras">
                         <rect key="frame" x="0.0" y="468" width="565" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -122,7 +122,7 @@ CA
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" focusRingType="none" id="igm-uc-1wh">
-                        <rect key="frame" x="0.0" y="0.0" width="569" height="23"/>
+                        <rect key="frame" x="0.0" y="0.0" width="565" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>

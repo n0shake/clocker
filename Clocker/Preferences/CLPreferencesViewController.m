@@ -18,6 +18,7 @@
 #import "NSString+CLStringAdditions.h"
 #import "CLTimezoneDataOperations.h"
 #import "MoLoginItem/MoLoginItem.h"
+#import <Crashlytics/Crashlytics.h>
 
 NSString *const CLSearchPredicateKey = @"SELF CONTAINS[cd]%@";
 NSString *const CLPreferencesTimezoneNameIdentifier = @"formattedAddress";
@@ -293,6 +294,9 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                                       [NSCharacterSet whitespaceCharacterSet]];
         
         CLTimezoneData *dataObject = [CLTimezoneData getCustomObject:self.selectedTimeZones[row]];
+        
+        [Answers logCustomEventWithName:@"Custom Label Changed" customAttributes:@{@"Old Label" : dataObject.customLabel , @"New Label" : formattedValue}];
+        
         [dataObject setLabelForTimezone:formattedValue];
         
         [self insertTimezoneInDefaultPreferences:dataObject atIndex:row];
@@ -302,7 +306,6 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
             [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:dataObject]
                                                       forKey:@"favouriteTimezone"];
         }
-
     }
     else
     {
@@ -323,12 +326,16 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                                                       forKey:@"favouriteTimezone"];
             [appDelegate.menubarController setUpTimerForUpdatingMenubar];
             
+            [Answers logCustomEventWithName:@"favouriteSelected" customAttributes:@{@"label" : dataObject.customLabel}];
+            
         }
         else
         {
             [[NSUserDefaults standardUserDefaults] setObject:nil
                                                       forKey:@"favouriteTimezone"];
             [appDelegate.menubarController invalidateTimerForMenubar];
+            
+            [Answers logCustomEventWithName:@"favouriteRemoved" customAttributes:@{@"label" : dataObject.customLabel}];
         }
         
         [self refereshTimezoneTableView];
@@ -817,6 +824,8 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                                CLTimezoneDataOperations *operationObject = [[CLTimezoneDataOperations alloc] initWithTimezoneData:timezoneObject];
                                
                                [operationObject save];
+                               
+                               [Answers logCustomEventWithName:@"New Place Added" customAttributes:@{@"Place Name" : filteredAddress , @"Timezone" : json[@"timeZoneId"]}];
 
                            }
                            
