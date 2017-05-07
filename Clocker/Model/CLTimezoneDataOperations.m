@@ -151,6 +151,7 @@
     
     NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     NSInteger timezoneWeekday = [calendar component:NSCalendarUnitWeekday fromDate:convertedDate];
+    timezoneWeekday = timezoneWeekday % 7;
     
     NSNumber *relativeDayPreference = [[NSUserDefaults standardUserDefaults] objectForKey:CLRelativeDateKey];
     
@@ -166,6 +167,8 @@
         // Specify which units we would like to use
         NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
         NSInteger weekday = [calendar component:NSCalendarUnitWeekday fromDate:localDate];
+        
+        weekday = weekday % 7;
         
         if (weekday == timezoneWeekday + 1)
         {
