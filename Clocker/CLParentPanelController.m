@@ -285,8 +285,10 @@ typedef NS_ENUM(NSUInteger, CLClockerMode) {
     }
     else
     {
+        NSString *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
         [self updateReviewView];
         [[iRate sharedInstance] remindLater];
+        [Answers logCustomEventWithName:@"Remind Later for Feedback" customAttributes:@{@"Current Country" : countryCode}];
     }
 }
 
@@ -309,8 +311,10 @@ typedef NS_ENUM(NSUInteger, CLClockerMode) {
     }
     else
     {
+        NSString *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
         [[iRate sharedInstance] rate];
         [self updateReviewView];
+        [Answers logCustomEventWithName:@"Reached App Store for leaving Review" customAttributes:@{@"Current Country" : countryCode}];
     }
 }
 

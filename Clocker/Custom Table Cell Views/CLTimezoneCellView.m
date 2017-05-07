@@ -11,6 +11,7 @@
 #import "CommonStrings.h"
 #import "CLTimezoneData.h"
 #import "CLFloatingWindowController.h"
+#import <Crashlytics/Crashlytics.h>
 
 #define MIN_FONT_SIZE 13
 
@@ -47,6 +48,7 @@
     NSString *customLabelValue = [originalValue stringByTrimmingCharactersInSet:
                                   [NSCharacterSet whitespaceCharacterSet]];
     
+    
     if ([sender.superview isKindOfClass:[self class]])
     {
         CLTimezoneCellView *cellView = (CLTimezoneCellView *)sender.superview;
@@ -66,6 +68,8 @@
         
         NSData *dataObject = displayMode.integerValue == 0 ? panelController.defaultPreferences[cellView.rowNumber] : floatingWindow.defaultPreferences[cellView.rowNumber];
         CLTimezoneData *timezoneObject = [CLTimezoneData getCustomObject:dataObject];
+        
+        [Answers logCustomEventWithName:@"Custom Label Changed" customAttributes:@{@"Old Label" : timezoneObject.customLabel , @"New Label" : customLabelValue}];
         
         if (displayMode.integerValue == 0)
         {
