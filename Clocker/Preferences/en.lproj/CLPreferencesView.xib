@@ -59,7 +59,7 @@ CA
                         <rect key="frame" x="0.0" y="0.0" width="565" height="484"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" autosaveColumns="NO" rowHeight="40" headerView="igm-uc-1wh" id="LbJ-dW-ITm">
+                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" autosaveColumns="NO" rowHeight="40" headerView="igm-uc-1wh" id="LbJ-dW-ITm">
                                 <rect key="frame" x="0.0" y="0.0" width="565" height="461"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
