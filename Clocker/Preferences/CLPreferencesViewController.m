@@ -26,7 +26,6 @@ NSString *const CLPreferencesCustomLabelIdentifier = @"label";
 NSString *const CLPreferencesAvailableTimezoneIdentifier = @"availableTimezones";
 NSString *const CLNoTimezoneSelectedErrorMessage =  @"Please select a timezone!";
 NSString *const CLMaxTimezonesErrorMessage =  @"Maximum 100 timezones allowed!";
-NSString *const CLTimezoneAlreadySelectedError = @"Timezone has already been selected!";
 NSString *const CLMaxCharactersReachedError = @"Only 50 characters allowed!";
 NSString *const CLNoInternetConnectivityError = @"You're offline, maybe?";
 NSString *const CLTimezoneSearchURL = @"https://maps.googleapis.com/maps/api/timezone/json?location=%@&timestamp=%f&key=AIzaSyCyf2knCi6KiKuDJLYDBD3Odq5dt4c-_KI";
@@ -49,6 +48,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 @property (weak) IBOutlet NSTextField *messageLabel;
 @property (weak) IBOutlet NSSegmentedControl *searchCriteria;
 @property (weak) IBOutlet NSTableColumn *abbreviation;
+@property (assign) BOOL arePlacesSortedInAscendingOrder;
 
 @end
 
@@ -56,6 +56,8 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.arePlacesSortedInAscendingOrder = NO;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(refereshTimezoneTableView)
@@ -515,6 +517,8 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 - (IBAction)removeFromFavourites:(id)sender
 {
+    NSMutableIndexSet *indexesToRemove = [NSMutableIndexSet indexSet];
+    
     if (self.timezoneTableView.selectedRow == -1)
     {
         return;
@@ -532,9 +536,11 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
             
         }
         
-        [self.selectedTimeZones removeObjectAtIndex:idx];
+        [indexesToRemove addIndex:idx];
         
     }];
+    
+    [self.selectedTimeZones removeObjectsAtIndexes:indexesToRemove];
     
     NSMutableArray *newDefaults = [[NSMutableArray alloc] initWithArray:self.selectedTimeZones];
     
@@ -631,6 +637,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 }
 
 #pragma mark Reordering
+#pragma mark -
 
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
 {
@@ -657,7 +664,11 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     
     NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
-    [self.selectedTimeZones exchangeObjectAtIndex:rowIndexes.firstIndex withObjectAtIndex:destinationRow];
+    id currentObject = [self.selectedTimeZones objectAtIndex:rowIndexes.firstIndex];
+    
+    [self.selectedTimeZones removeObjectAtIndex:rowIndexes.firstIndex];
+    
+    [self.selectedTimeZones insertObject:currentObject atIndex:destinationRow];
     
     [[NSUserDefaults standardUserDefaults] setObject:self.selectedTimeZones forKey:CLDefaultPreferenceKey];
     
@@ -677,6 +688,66 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 {
     return NSDragOperationEvery;
 }
+
+#pragma mark Sort Descriptors
+#pragma mark -
+
+-(void)tableView:(NSTableView *)tableView didClickTableColumn:(NSTableColumn *)tableColumn
+{
+    static NSStringCompareOptions comparisonOptions = NSCaseInsensitiveSearch | NSNumericSearch | NSForcedOrderingSearch | NSWidthInsensitiveSearch;
+    
+    [self.selectedTimeZones sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2){
+        
+        CLTimezoneData *object1 = [CLTimezoneData getCustomObject:obj1];
+        CLTimezoneData *object2 = [CLTimezoneData getCustomObject:obj2];
+        
+        NSString *formattedAddress1, *formattedAddress2;
+        
+        if ([tableColumn.identifier isEqualToString:CLPreferencesTimezoneNameIdentifier]) {
+            formattedAddress1 = object1.formattedAddress.length > 0 ? object1.formattedAddress : object1.timezoneID;
+            formattedAddress2 = object2.formattedAddress.length > 0 ? object2.formattedAddress : object2.timezoneID;
+        }
+        else
+        {
+            formattedAddress1 = object1.customLabel.length > 0 ? object1.customLabel : object1.formattedAddress.length > 0 ? object1.formattedAddress : object1.timezoneID;
+            formattedAddress2 = object2.customLabel.length > 0 ? object2.customLabel : object2.formattedAddress.length > 0 ? object2.formattedAddress : object2.timezoneID;
+        }
+        
+        NSRange string1Range = NSMakeRange(0, [formattedAddress1 length]);
+        
+        if (!self.arePlacesSortedInAscendingOrder) {
+            return [formattedAddress1 compare:formattedAddress2
+                                      options:comparisonOptions
+                                        range:string1Range
+                                       locale:[NSLocale localeWithLocaleIdentifier:@"en_us"]];
+            
+        }
+        else
+        {
+            return -[formattedAddress1 compare:formattedAddress2
+                                       options:comparisonOptions
+                                         range:string1Range
+                                        locale:[NSLocale localeWithLocaleIdentifier:@"en_us"]];
+        }
+        
+        
+    }];
+    
+    self.arePlacesSortedInAscendingOrder ? [self.timezoneTableView setIndicatorImage:[NSImage imageNamed:@"NSDescendingSortIndicator"] inTableColumn:tableColumn] : [self.timezoneTableView setIndicatorImage:[NSImage imageNamed:@"NSAscendingSortIndicator"] inTableColumn:tableColumn];
+    
+    self.arePlacesSortedInAscendingOrder = !self.arePlacesSortedInAscendingOrder;
+    
+    NSMutableArray *newDefaults = [[NSMutableArray alloc] initWithArray:self.selectedTimeZones];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:CLDefaultPreferenceKey];
+    
+    [self.timezoneTableView reloadData];
+    
+    [self refreshMainTableview];
+}
+
+#pragma mark Other Methods
+#pragma mark -
 
 - (void)callGoogleAPiWithSearchString:(NSString *)searchString
 {

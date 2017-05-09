@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, CLTheme) {
     CLBlackTheme
 };
 
-@interface CLPreferencesViewController : CLParentViewController<SRRecorderControlDelegate>
+@interface CLPreferencesViewController : CLParentViewController<SRRecorderControlDelegate, NSTableViewDelegate, NSTableViewDataSource>
 
 - (void)refereshTimezoneTableView;
 - (IBAction)addTimeZone:(id)sender;
