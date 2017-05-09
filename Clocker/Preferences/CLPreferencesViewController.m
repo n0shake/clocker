@@ -411,6 +411,8 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     {
         CLTimezoneData *dataObject = self.filteredArray[self.availableTimezoneTableView.selectedRow];
         
+        /*
+        
         
         [self.selectedTimeZones enumerateObjectsUsingBlock:^(NSData *  _Nonnull encodedData, NSUInteger idx, BOOL * _Nonnull stop) {
             
@@ -434,6 +436,8 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
             
             
         }];
+         
+         */
         
         
         if (self.messageLabel.stringValue.length == 0)
@@ -511,8 +515,6 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 - (IBAction)removeFromFavourites:(id)sender
 {
-    NSMutableArray *itemsToRemove = [NSMutableArray array];
-    
     if (self.timezoneTableView.selectedRow == -1)
     {
         return;
@@ -530,11 +532,9 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
             
         }
         
-        [itemsToRemove addObject:self.selectedTimeZones[idx]];
+        [self.selectedTimeZones removeObjectAtIndex:idx];
         
     }];
-    
-    [self.selectedTimeZones removeObjectsInArray:itemsToRemove];
     
     NSMutableArray *newDefaults = [[NSMutableArray alloc] initWithArray:self.selectedTimeZones];
     
@@ -644,11 +644,11 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 }
 
 
--(BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation
+-(BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)destinationRow dropOperation:(NSTableViewDropOperation)dropOperation
 {
-    if (row == self.selectedTimeZones.count)
+    if (destinationRow == self.selectedTimeZones.count)
     {
-        row--;
+        destinationRow--;
     }
     
     NSPasteboard *pBoard = [info draggingPasteboard];
@@ -657,7 +657,7 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
     
     NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
-    [self.selectedTimeZones exchangeObjectAtIndex:rowIndexes.firstIndex withObjectAtIndex:row];
+    [self.selectedTimeZones exchangeObjectAtIndex:rowIndexes.firstIndex withObjectAtIndex:destinationRow];
     
     [[NSUserDefaults standardUserDefaults] setObject:self.selectedTimeZones forKey:CLDefaultPreferenceKey];
     
