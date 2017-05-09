@@ -694,56 +694,61 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 
 -(void)tableView:(NSTableView *)tableView didClickTableColumn:(NSTableColumn *)tableColumn
 {
-    static NSStringCompareOptions comparisonOptions = NSCaseInsensitiveSearch | NSNumericSearch | NSForcedOrderingSearch | NSWidthInsensitiveSearch;
     
-    [self.selectedTimeZones sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2){
+    if (tableView == self.timezoneTableView)
+    {
+        static NSStringCompareOptions comparisonOptions = NSCaseInsensitiveSearch | NSNumericSearch | NSForcedOrderingSearch | NSWidthInsensitiveSearch;
         
-        CLTimezoneData *object1 = [CLTimezoneData getCustomObject:obj1];
-        CLTimezoneData *object2 = [CLTimezoneData getCustomObject:obj2];
-        
-        NSString *formattedAddress1, *formattedAddress2;
-        
-        if ([tableColumn.identifier isEqualToString:CLPreferencesTimezoneNameIdentifier]) {
-            formattedAddress1 = object1.formattedAddress.length > 0 ? object1.formattedAddress : object1.timezoneID;
-            formattedAddress2 = object2.formattedAddress.length > 0 ? object2.formattedAddress : object2.timezoneID;
-        }
-        else
-        {
-            formattedAddress1 = object1.customLabel.length > 0 ? object1.customLabel : object1.formattedAddress.length > 0 ? object1.formattedAddress : object1.timezoneID;
-            formattedAddress2 = object2.customLabel.length > 0 ? object2.customLabel : object2.formattedAddress.length > 0 ? object2.formattedAddress : object2.timezoneID;
-        }
-        
-        NSRange string1Range = NSMakeRange(0, [formattedAddress1 length]);
-        
-        if (!self.arePlacesSortedInAscendingOrder) {
-            return [formattedAddress1 compare:formattedAddress2
-                                      options:comparisonOptions
-                                        range:string1Range
-                                       locale:[NSLocale localeWithLocaleIdentifier:@"en_us"]];
+        [self.selectedTimeZones sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2){
             
-        }
-        else
-        {
-            return -[formattedAddress1 compare:formattedAddress2
-                                       options:comparisonOptions
-                                         range:string1Range
-                                        locale:[NSLocale localeWithLocaleIdentifier:@"en_us"]];
-        }
+            CLTimezoneData *object1 = [CLTimezoneData getCustomObject:obj1];
+            CLTimezoneData *object2 = [CLTimezoneData getCustomObject:obj2];
+            
+            NSString *formattedAddress1, *formattedAddress2;
+            
+            if ([tableColumn.identifier isEqualToString:CLPreferencesTimezoneNameIdentifier]) {
+                formattedAddress1 = object1.formattedAddress.length > 0 ? object1.formattedAddress : object1.timezoneID;
+                formattedAddress2 = object2.formattedAddress.length > 0 ? object2.formattedAddress : object2.timezoneID;
+            }
+            else
+            {
+                formattedAddress1 = object1.customLabel.length > 0 ? object1.customLabel : object1.formattedAddress.length > 0 ? object1.formattedAddress : object1.timezoneID;
+                formattedAddress2 = object2.customLabel.length > 0 ? object2.customLabel : object2.formattedAddress.length > 0 ? object2.formattedAddress : object2.timezoneID;
+            }
+            
+            NSRange string1Range = NSMakeRange(0, [formattedAddress1 length]);
+            
+            if (!self.arePlacesSortedInAscendingOrder) {
+                return [formattedAddress1 compare:formattedAddress2
+                                          options:comparisonOptions
+                                            range:string1Range
+                                           locale:[NSLocale localeWithLocaleIdentifier:@"en_us"]];
+                
+            }
+            else
+            {
+                return -[formattedAddress1 compare:formattedAddress2
+                                           options:comparisonOptions
+                                             range:string1Range
+                                            locale:[NSLocale localeWithLocaleIdentifier:@"en_us"]];
+            }
+            
+            
+        }];
         
+        self.arePlacesSortedInAscendingOrder ? [self.timezoneTableView setIndicatorImage:[NSImage imageNamed:@"NSDescendingSortIndicator"] inTableColumn:tableColumn] : [self.timezoneTableView setIndicatorImage:[NSImage imageNamed:@"NSAscendingSortIndicator"] inTableColumn:tableColumn];
         
-    }];
-    
-    self.arePlacesSortedInAscendingOrder ? [self.timezoneTableView setIndicatorImage:[NSImage imageNamed:@"NSDescendingSortIndicator"] inTableColumn:tableColumn] : [self.timezoneTableView setIndicatorImage:[NSImage imageNamed:@"NSAscendingSortIndicator"] inTableColumn:tableColumn];
-    
-    self.arePlacesSortedInAscendingOrder = !self.arePlacesSortedInAscendingOrder;
-    
-    NSMutableArray *newDefaults = [[NSMutableArray alloc] initWithArray:self.selectedTimeZones];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:CLDefaultPreferenceKey];
-    
-    [self.timezoneTableView reloadData];
-    
-    [self refreshMainTableview];
+        self.arePlacesSortedInAscendingOrder = !self.arePlacesSortedInAscendingOrder;
+        
+        NSMutableArray *newDefaults = [[NSMutableArray alloc] initWithArray:self.selectedTimeZones];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:newDefaults forKey:CLDefaultPreferenceKey];
+        
+        [self.timezoneTableView reloadData];
+        
+        [self refreshMainTableview];
+
+    }
 }
 
 #pragma mark Other Methods
