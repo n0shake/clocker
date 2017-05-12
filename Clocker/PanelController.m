@@ -205,8 +205,6 @@ static PanelController *sharedPanel = nil;
 
 - (void)openPanel
 {
-    [Answers logCustomEventWithName:@"openedPanel" customAttributes:@{}];
-    
     NSPoint mouseLoc = [NSEvent mouseLocation];
     NSEnumerator *screenEnum = [[NSScreen screens] objectEnumerator];
     NSScreen *screen;

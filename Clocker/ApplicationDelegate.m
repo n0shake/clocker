@@ -355,6 +355,21 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (IBAction)togglePanel:(id)sender
 {
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    [dictionary setObject:[[[NSUserDefaults standardUserDefaults] objectForKey:CLThemeKey]  isEqual: @(0)] ? @"Default" : @"Black" forKey:@"Theme"];
+    [dictionary setObject:[[[NSUserDefaults standardUserDefaults] objectForKey:CLDisplayFutureSliderKey]  isEqual: @(0)] ? @"Yes" : @"No" forKey:@"Display Future Slider"];
+    [dictionary setObject:[[[NSUserDefaults standardUserDefaults] objectForKey:CLShowAppInForeground]  isEqual: @(0)] ? @"Menubar" : @"Floating" forKey:@"Clocker Mode"];
+    [dictionary setObject:[[[NSUserDefaults standardUserDefaults] objectForKey:CLRelativeDateKey]  isEqual: @(0)] ? @"Relative" : @"Actual" forKey:@"Relative Date"];
+    [dictionary setObject:[[[NSUserDefaults standardUserDefaults] objectForKey:CLShowSecondsInMenubar]  isEqual: @(0)] ? @"Yes" : @"No" forKey:@"Show Seconds in Menubar"];
+    [dictionary setObject:[[NSUserDefaults standardUserDefaults] objectForKey:CLUserFontSizePreference] forKey:@"Font Size"];
+    [dictionary setObject:[[[NSUserDefaults standardUserDefaults] objectForKey:CLSunriseSunsetTime]  isEqual:@(0)] ? @"Yes" : @"No" forKey:@"Sunrise Sunset"];
+    [dictionary setObject:[[[NSUserDefaults standardUserDefaults] objectForKey:CLShowDayInMenu]  isEqual:@(0)] ? @"Yes" : @"No" forKey:@"Show Day in Menu"];
+    [dictionary setObject:[[[NSUserDefaults standardUserDefaults] objectForKey:CLShowDateInMenu]  isEqual:@(0)] ? @"Yes" : @"No" forKey:@"Show Date in Menu"];
+    [dictionary setObject:[[[NSUserDefaults standardUserDefaults] objectForKey:CLShowPlaceInMenu]  isEqual:@(0)] ? @"Yes" : @"No" forKey:@"Show Place in Menu"];
+    
+    [Answers logCustomEventWithName:@"openedPanel" customAttributes:dictionary];
+    
+    
     NSNumber *displayMode = [[NSUserDefaults standardUserDefaults] objectForKey:CLShowAppInForeground];
     
     if (displayMode.integerValue == 1)
