@@ -695,6 +695,10 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
 -(void)tableView:(NSTableView *)tableView didClickTableColumn:(NSTableColumn *)tableColumn
 {
     
+    if ([[tableColumn identifier] isEqualToString:@"favouriteTimezone"]) {
+        return;
+    }
+    
     if (tableView == self.timezoneTableView)
     {
         static NSStringCompareOptions comparisonOptions = NSCaseInsensitiveSearch | NSNumericSearch | NSForcedOrderingSearch | NSWidthInsensitiveSearch;
@@ -901,7 +905,8 @@ NSString *const CLTryAgainMessage = @"Try again, maybe?";
                                
                                [operationObject save];
                                
-                               [Answers logCustomEventWithName:@"New Place Added" customAttributes:@{@"Place Name" : filteredAddress , @"Timezone" : json[@"timeZoneId"]}];
+                               
+                               [Answers logSearchWithQuery:filteredAddress customAttributes:@{@"Place Name" : filteredAddress , @"Timezone" : json[@"timeZoneId"]}];
 
                            }
                            
