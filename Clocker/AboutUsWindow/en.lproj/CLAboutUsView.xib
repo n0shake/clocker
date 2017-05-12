@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="CLAboutUsViewController">
             <connections>
                 <outlet property="makerButton" destination="VA7-HL-mJp" id="Rpf-Aw-SNN"/>
+                <outlet property="openSourceButton" destination="A5u-bK-7vK" id="nzS-1Y-sU8"/>
                 <outlet property="paypalButton" destination="LHB-OL-8AM" id="zqR-cJ-DVd"/>
                 <outlet property="privateFeedback" destination="bqr-yN-kPU" id="zNA-FO-nGY"/>
                 <outlet property="quickCommentAction" destination="Qws-7o-2om" id="7Da-u7-gSk"/>
@@ -42,18 +43,6 @@
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-512" id="pfa-88-uAu"/>
                 </imageView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VF-oD-eXA">
-                    <rect key="frame" x="11" y="321" width="564" height="22"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="22" id="Mmv-dl-OFq"/>
-                        <constraint firstAttribute="width" constant="560" id="YaO-hR-Rbl"/>
-                    </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Clocker is completely open-source and is available for reuse under the MIT License" id="sMQ-wY-lxQ">
-                        <font key="font" size="15" name="HelveticaNeue-Light"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6n-UL-Zeg">
                     <rect key="frame" x="77" y="207" width="432" height="47"/>
                     <constraints>
@@ -72,7 +61,7 @@
                         <constraint firstAttribute="width" constant="450" id="NjU-TB-ANz"/>
                         <constraint firstAttribute="height" constant="32" id="mu4-sB-ptQ"/>
                     </constraints>
-                    <buttonCell key="cell" type="bevel" title="You can support Clocker by starring the source on GitHub! :)" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="0Yv-gv-ofG">
+                    <buttonCell key="cell" type="bevel" title="You can support Clocker by leaving a review on the App Store! :)" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="0Yv-gv-ofG">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="15" name="HelveticaNeue-Bold"/>
                     </buttonCell>
@@ -136,24 +125,38 @@
                         <action selector="openPaypal:" target="-2" id="3TH-cB-hWj"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A5u-bK-7vK" customClass="CLUnderlinedButton">
+                    <rect key="frame" x="43" y="309" width="500" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="6VI-C6-Xmb"/>
+                        <constraint firstAttribute="width" constant="500" id="niq-rG-w0q"/>
+                    </constraints>
+                    <buttonCell key="cell" type="bevel" title="Clocker is Open Source. You can check out the source code here." bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="ioS-jX-IAV">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="15" name="HelveticaNeue-Light"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="openGitHub:" target="-2" id="0ms-0N-ddy"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="XlC-Xd-67t" firstAttribute="top" secondItem="FS5-f2-b1Z" secondAttribute="top" constant="20" id="5pp-3y-HTt"/>
                 <constraint firstAttribute="bottom" secondItem="VA7-HL-mJp" secondAttribute="bottom" constant="20" id="CVb-Sr-Nw1"/>
-                <constraint firstItem="7VF-oD-eXA" firstAttribute="top" secondItem="p2G-hA-MSX" secondAttribute="bottom" constant="20" id="G3Y-5F-KUP"/>
-                <constraint firstItem="7VF-oD-eXA" firstAttribute="centerX" secondItem="FS5-f2-b1Z" secondAttribute="centerX" id="JBW-tE-GYX"/>
+                <constraint firstItem="A5u-bK-7vK" firstAttribute="top" secondItem="p2G-hA-MSX" secondAttribute="bottom" constant="22" id="JWw-fF-jcm"/>
                 <constraint firstItem="LHB-OL-8AM" firstAttribute="centerX" secondItem="FS5-f2-b1Z" secondAttribute="centerX" id="LEs-CM-CHO"/>
                 <constraint firstItem="XlC-Xd-67t" firstAttribute="leading" secondItem="FS5-f2-b1Z" secondAttribute="leading" constant="20" id="Rzt-60-XGW"/>
                 <constraint firstItem="VA7-HL-mJp" firstAttribute="centerX" secondItem="FS5-f2-b1Z" secondAttribute="centerX" id="VgM-TG-RMH"/>
                 <constraint firstItem="a6n-UL-Zeg" firstAttribute="centerX" secondItem="FS5-f2-b1Z" secondAttribute="centerX" id="a4A-xB-QPy"/>
                 <constraint firstItem="bqr-yN-kPU" firstAttribute="centerX" secondItem="FS5-f2-b1Z" secondAttribute="centerX" constant="14" id="fZW-Qc-XW7"/>
                 <constraint firstItem="bqr-yN-kPU" firstAttribute="top" secondItem="Qws-7o-2om" secondAttribute="bottom" id="fqs-sy-IHv"/>
-                <constraint firstItem="UMN-Wx-ukl" firstAttribute="top" secondItem="7VF-oD-eXA" secondAttribute="bottom" constant="20" id="gdN-Rl-UiN"/>
                 <constraint firstItem="Qws-7o-2om" firstAttribute="top" secondItem="a6n-UL-Zeg" secondAttribute="bottom" constant="20" id="gup-Hv-WeJ"/>
                 <constraint firstItem="a6n-UL-Zeg" firstAttribute="top" secondItem="UMN-Wx-ukl" secondAttribute="bottom" constant="15" id="hAl-AD-iaJ"/>
+                <constraint firstItem="UMN-Wx-ukl" firstAttribute="top" secondItem="A5u-bK-7vK" secondAttribute="bottom" constant="8" id="hZI-nn-ucU"/>
                 <constraint firstItem="p2G-hA-MSX" firstAttribute="centerX" secondItem="FS5-f2-b1Z" secondAttribute="centerX" id="iiK-YM-LSX"/>
                 <constraint firstItem="UMN-Wx-ukl" firstAttribute="centerX" secondItem="FS5-f2-b1Z" secondAttribute="centerX" id="mM0-h8-IJQ"/>
                 <constraint firstItem="p2G-hA-MSX" firstAttribute="top" secondItem="XlC-Xd-67t" secondAttribute="bottom" constant="12" id="pYc-F2-F5r"/>
+                <constraint firstItem="A5u-bK-7vK" firstAttribute="centerX" secondItem="FS5-f2-b1Z" secondAttribute="centerX" id="pnM-bt-Pd7"/>
                 <constraint firstItem="VA7-HL-mJp" firstAttribute="top" secondItem="LHB-OL-8AM" secondAttribute="bottom" constant="21" id="tZ2-96-DDn"/>
                 <constraint firstAttribute="trailing" secondItem="XlC-Xd-67t" secondAttribute="trailing" constant="20" id="vpM-Kh-fhm"/>
                 <constraint firstItem="Qws-7o-2om" firstAttribute="centerX" secondItem="FS5-f2-b1Z" secondAttribute="centerX" constant="14.5" id="zEu-sq-MyI"/>

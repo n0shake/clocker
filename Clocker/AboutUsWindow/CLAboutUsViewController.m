@@ -21,14 +21,14 @@
 @property (weak) IBOutlet CLUnderlinedButton *privateFeedback;
 @property (weak) IBOutlet CLUnderlinedButton *supportClocker;
 @property (weak) IBOutlet CLUnderlinedButton *paypalButton;
+@property (weak) IBOutlet CLUnderlinedButton *openSourceButton;
 
 
 @end
 
 static CLAboutUsViewController *sharedAboutUs = nil;
 NSString *const CLAboutUsNibIdentifier = @"CLAboutWindow";
-NSString *const CLGitHubURL = @"https://github.com/Abhishaker17/Clocker/?ref=ClockerApp";
-NSString *const CLIssueURL =@"https://github.com/Abhishaker17/Clocker/issues/?ref=ClockerApp";
+NSString *const CLGitHubURL = @"https://github.com/abhishekbanthia/Clocker/?ref=ClockerApp";
 NSString *const CLPayPalURL = @"https://www.paypal.me/AbhishekBanthia";
 NSString *const CLTwitterLink = @"https://twitter.com/abgbm/?ref=ClockerApp";
 NSString *const CLPersonalWebsite = @"http://abhishekbanthia.com/?ref=ClockerApp";
@@ -74,15 +74,22 @@ NSString *const CLPersonalWebsite = @"http://abhishekbanthia.com/?ref=ClockerApp
     
     NSMutableAttributedString *supportClocker = [[NSMutableAttributedString alloc] initWithAttributedString:self.supportClocker.attributedTitle];
     
-    [supportClocker addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleSingle] range:NSMakeRange(27, 19)];
+    [supportClocker addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleSingle] range:NSMakeRange(27, 33)];
+        [self.supportClocker setAttributedTitle:supportClocker];
     
-    [self.supportClocker setAttributedTitle:supportClocker];
+    NSMutableAttributedString *openGitHub = [[NSMutableAttributedString alloc] initWithAttributedString:self.openSourceButton.attributedTitle];
+    
+    [openGitHub addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleSingle] range:NSMakeRange(32, 30)];
+    
+        [self.openSourceButton setAttributedTitle:openGitHub];
+
     
     [self.quickCommentAction setCursor:[NSCursor pointingHandCursor]];
     [self.supportClocker setCursor:[NSCursor pointingHandCursor]];
     [self.privateFeedback setCursor:[NSCursor pointingHandCursor]];
     [self.makerButton setCursor:[NSCursor pointingHandCursor]];
      [self.paypalButton setCursor:[NSCursor pointingHandCursor]];
+     [self.openSourceButton setCursor:[NSCursor pointingHandCursor]];
 }
 
 - (IBAction)openMyTwitter:(id)sender
@@ -93,8 +100,8 @@ NSString *const CLPersonalWebsite = @"http://abhishekbanthia.com/?ref=ClockerApp
 
 - (IBAction)viewSource:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLGitHubURL]];
-    [Answers logCustomEventWithName:@"openedGitHub" customAttributes:@{}];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://appstore.com/mac/clockermenubarworldclock"]];
+    [Answers logCustomEventWithName:@"Open App Store to Review" customAttributes:@{}];
 }
 - (IBAction)reportIssue:(id)sender
 {
@@ -114,6 +121,12 @@ NSString *const CLPersonalWebsite = @"http://abhishekbanthia.com/?ref=ClockerApp
 - (IBAction)openWebsite:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLPersonalWebsite]];
      [Answers logCustomEventWithName:@"openedPersonalWebsite" customAttributes:@{}];
+}
+
+- (IBAction)openGitHub:(id)sender {
+    
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:CLGitHubURL]];
+    [Answers logCustomEventWithName:@"openedGitHub" customAttributes:@{}];
 }
 
 @end
