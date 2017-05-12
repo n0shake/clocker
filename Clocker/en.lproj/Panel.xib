@@ -84,7 +84,7 @@
                                                                         <action selector="labelDidChange:" target="qbN-ba-fho" id="7uY-zA-yJS"/>
                                                                     </connections>
                                                                 </textField>
-                                                                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="751" tag="102" allowsCharacterPickerTouchBarItem="NO" preferredMaxLayoutWidth="72" translatesAutoresizingMaskIntoConstraints="NO" id="QUd-7D-q14">
+                                                                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="749" tag="102" allowsCharacterPickerTouchBarItem="NO" preferredMaxLayoutWidth="72" translatesAutoresizingMaskIntoConstraints="NO" id="QUd-7D-q14">
                                                                     <rect key="frame" x="8" y="1" width="76" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="72" id="fkH-oq-qvM"/>
