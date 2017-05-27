@@ -1,6 +1,6 @@
 ## Credits and Licenses
 
-Clocker uses the following components and image assets:
+Clocker uses the following open source components and image assets:
 
 **Setyo Ari Wibowo - Creative Commons**
 
