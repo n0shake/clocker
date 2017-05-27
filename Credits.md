@@ -13,17 +13,17 @@ Clocker uses the following components and image assets:
 
 **Icon created by Viktor Vorobyev - Creative Commons**
 
-** DateTools by Matthew York - MIT**
+**DateTools by Matthew York - MIT**
 
-** iRate by Nick Lockwood - zlib**
+**iRate by Nick Lockwood - zlib**
 
-** iVersion by Nick Lockwood - zlib**
+**iVersion by Nick Lockwood - zlib**
 
-** Shortcut Recorder by David Dauer, Jesper and Jamie Kirkpatrick - BSD (See Below)**
+**Shortcut Recorder by David Dauer, Jesper and Jamie Kirkpatrick - BSD (See Below)**
 
-** PTHotKey by Quentin D. Carnicelli - BSD (See Below)**
+**PTHotKey by Quentin D. Carnicelli - BSD (See Below)**
 
-** Sunrise Sunset by Ernesto García - MIT**
+**Sunrise Sunset by Ernesto García - MIT**
 
 
 BSD Clause:
@@ -371,15 +371,3 @@ INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
 DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
 OTHER DEALINGS IN THE FONT SOFTWARE.
-
-
-
-
-
-
-
-
-
-
-
-
