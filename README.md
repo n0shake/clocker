@@ -1,5 +1,3 @@
-**Clocker**
----
 ![Clocker](https://raw.githubusercontent.com/Abhishaker17/Clocker/v1.2.1/GitHub.png "Clocker")
 
 **Clocker** is an OSX menubar utility designed to help you keep track of your friends in different time zones.  It's written using Objective-C and is completely ad-free.
