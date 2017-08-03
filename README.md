@@ -8,15 +8,6 @@ If you'd like to donate, you can do so [here](https://www.paypal.me/AbhishekBant
 
 [![Download on the App Store](https://github.com/Abhishaker17/Clocker/blob/v1.2.1/Clocker/Images/MacAppStore.png)](https://itunes.apple.com/us/app/clocker-menubar-world-clock/id1056643111?mt=12)
 
-**Features**
----
-- Add any timezone you want
-- Relatives dates (e.g. today, tomorrow, yesterday)
-- Drag and drop timezones to rearrange
-- Hundreds of time zones are included
-- 24-hour times or AM/PM are both supported
-- Optimized for Dark mode and Retina Displays
-
 **Contributing**
 ---
 **Clocker** is open for pull requests.
