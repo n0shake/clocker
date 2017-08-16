@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+<channel>
+<title>Clocker Changelog</title>
+<link>https://github.com/abhishekbanthia/Clocker/releases/download/v1.5.1/Clocker.zip</link>
+<description>Most recent changes</description>
+<language>en</language>
+<item>
+<title>Version 1.5.1</title>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<sparkle:releaseNotesLink>https://github.com/abhishekbanthia/Clocker/Releases/changelog.html</sparkle:releaseNotesLink>
+<pubDate>Fri Aug 14 14:59:58 GMT 2017 +0000</pubDate>
+<enclosure url="https://github.com/abhishekbanthia/Clocker/releases/download/v1.5.1/Clocker.zip" sparkle:version="1.0" length="1023128" type="application/octet-stream"/>
+</item>
+</channel>
+</rss>
