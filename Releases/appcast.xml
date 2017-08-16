@@ -8,9 +8,9 @@
 <item>
 <title>Version 1.5.1</title>
 <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-<sparkle:releaseNotesLink>https://github.com/abhishekbanthia/Clocker/Releases/changelog.html</sparkle:releaseNotesLink>
+<sparkle:releaseNotesLink>https://raw.githubusercontent.com/abhishekbanthia/Clocker/v1.4.1/Releases/change.md</sparkle:releaseNotesLink>
 <pubDate>Fri Aug 14 14:59:58 GMT 2017 +0000</pubDate>
-<enclosure url="https://github.com/abhishekbanthia/Clocker/releases/download/v1.5.1/Clocker.zip" sparkle:version="1.0" length="1023128" type="application/octet-stream"/>
+<enclosure url="https://github.com/abhishekbanthia/Clocker/releases/download/v1.5.1/Clocker.zip" sparkle:version="1.5.1" length="1023128" type="application/octet-stream"/>
 </item>
 </channel>
 </rss>
