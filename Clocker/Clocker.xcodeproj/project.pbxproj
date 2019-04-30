@@ -1,0 +1,1924 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		35C36EE422595EFD002FA5C6 /* StatusContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE022595EFD002FA5C6 /* StatusContainerView.swift */; };
+		35C36EE522595EFD002FA5C6 /* MenubarHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE122595EFD002FA5C6 /* MenubarHandler.swift */; };
+		35C36EE622595EFD002FA5C6 /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE222595EFD002FA5C6 /* StatusItemView.swift */; };
+		35C36EE722595EFD002FA5C6 /* StatusItemHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE322595EFD002FA5C6 /* StatusItemHandler.swift */; };
+		35C36EF122595F14002FA5C6 /* OnboardingPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE822595F13002FA5C6 /* OnboardingPermissionsViewController.swift */; };
+		35C36EF222595F14002FA5C6 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE922595F13002FA5C6 /* WelcomeViewController.swift */; };
+		35C36EF322595F14002FA5C6 /* WelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35C36EEA22595F13002FA5C6 /* WelcomeView.xib */; };
+		35C36EF422595F14002FA5C6 /* StartAtLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EEB22595F13002FA5C6 /* StartAtLoginViewController.swift */; };
+		35C36EF522595F14002FA5C6 /* OnboardingSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EEC22595F13002FA5C6 /* OnboardingSearchController.swift */; };
+		35C36EF622595F14002FA5C6 /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EED22595F13002FA5C6 /* OnboardingController.swift */; };
+		35C36EF722595F14002FA5C6 /* FinalOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EEE22595F13002FA5C6 /* FinalOnboardingViewController.swift */; };
+		35C36EF822595F14002FA5C6 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C36EEF22595F14002FA5C6 /* Onboarding.storyboard */; };
+		35C36EF922595F14002FA5C6 /* OnboardingParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EF022595F14002FA5C6 /* OnboardingParentViewController.swift */; };
+		35C36EFB2259616B002FA5C6 /* Solar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EFA2259616B002FA5C6 /* Solar.swift */; };
+		35C36F0D225961DA002FA5C6 /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EFD225961D9002FA5C6 /* TimePeriod.swift */; };
+		35C36F0E225961DA002FA5C6 /* Date+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EFE225961D9002FA5C6 /* Date+Bundle.swift */; };
+		35C36F0F225961DA002FA5C6 /* TimePeriodCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EFF225961D9002FA5C6 /* TimePeriodCollection.swift */; };
+		35C36F10225961DA002FA5C6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F00225961D9002FA5C6 /* Constants.swift */; };
+		35C36F11225961DA002FA5C6 /* TimePeriodGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F01225961D9002FA5C6 /* TimePeriodGroup.swift */; };
+		35C36F12225961DA002FA5C6 /* Date+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F02225961DA002FA5C6 /* Date+Components.swift */; };
+		35C36F13225961DA002FA5C6 /* Date+TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F03225961DA002FA5C6 /* Date+TimeAgo.swift */; };
+		35C36F14225961DA002FA5C6 /* Integer+DateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F04225961DA002FA5C6 /* Integer+DateTools.swift */; };
+		35C36F15225961DA002FA5C6 /* TimeChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F05225961DA002FA5C6 /* TimeChunk.swift */; };
+		35C36F16225961DA002FA5C6 /* Date+Inits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F06225961DA002FA5C6 /* Date+Inits.swift */; };
+		35C36F17225961DA002FA5C6 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 35C36F07225961DA002FA5C6 /* DateTools.bundle */; };
+		35C36F18225961DA002FA5C6 /* Date+Comparators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F08225961DA002FA5C6 /* Date+Comparators.swift */; };
+		35C36F19225961DA002FA5C6 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F09225961DA002FA5C6 /* Enums.swift */; };
+		35C36F1A225961DA002FA5C6 /* Date+Manipulations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F0A225961DA002FA5C6 /* Date+Manipulations.swift */; };
+		35C36F1B225961DA002FA5C6 /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F0B225961DA002FA5C6 /* Date+Format.swift */; };
+		35C36F1C225961DA002FA5C6 /* TimePeriodChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F0C225961DA002FA5C6 /* TimePeriodChain.swift */; };
+		35C36F2022596253002FA5C6 /* OneWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F1E22596253002FA5C6 /* OneWindowController.swift */; };
+		35C36F2122596253002FA5C6 /* AppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F1F22596253002FA5C6 /* AppearanceViewController.swift */; };
+		35C36F2B2259D6FA002FA5C6 /* ParentPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F272259D6FA002FA5C6 /* ParentPanelController.swift */; };
+		35C36F2C2259D6FA002FA5C6 /* PanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F282259D6FA002FA5C6 /* PanelController.swift */; };
+		35C36F372259D7C3002FA5C6 /* AddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F322259D7C3002FA5C6 /* AddTableViewCell.swift */; };
+		35C36F412259D892002FA5C6 /* Themer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F392259D892002FA5C6 /* Themer.swift */; };
+		35C36F422259D892002FA5C6 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F3A2259D892002FA5C6 /* Timer.swift */; };
+		35C36F442259D892002FA5C6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F3C2259D892002FA5C6 /* Logger.swift */; };
+		35C36F452259D892002FA5C6 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F3D2259D892002FA5C6 /* Strings.swift */; };
+		35C36F462259D892002FA5C6 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F3E2259D892002FA5C6 /* DataStore.swift */; };
+		35C36F472259D892002FA5C6 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F3F2259D892002FA5C6 /* Reach.swift */; };
+		35C36F482259D892002FA5C6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F402259D892002FA5C6 /* NetworkManager.swift */; };
+		35C36F4B2259D971002FA5C6 /* UnderlinedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F4A2259D971002FA5C6 /* UnderlinedButton.swift */; };
+		35C36F4E2259D981002FA5C6 /* DateFormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F4C2259D981002FA5C6 /* DateFormatterManager.swift */; };
+		35C36F4F2259D981002FA5C6 /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F4D2259D981002FA5C6 /* AppDefaults.swift */; };
+		35C36F572259DD8A002FA5C6 /* TimezoneDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F532259DD8A002FA5C6 /* TimezoneDataSource.swift */; };
+		35C36F582259DD8A002FA5C6 /* PanelTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F542259DD8A002FA5C6 /* PanelTableView.swift */; };
+		35C36F592259DD8A002FA5C6 /* TimezoneCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F552259DD8A002FA5C6 /* TimezoneCellView.swift */; };
+		35C36F5A2259DD8A002FA5C6 /* Panelr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F562259DD8A002FA5C6 /* Panelr.swift */; };
+		35C36F5D2259DD96002FA5C6 /* TimezoneDataOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F5B2259DD96002FA5C6 /* TimezoneDataOperations.swift */; };
+		35C36F5E2259DD96002FA5C6 /* TimezoneData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F5C2259DD96002FA5C6 /* TimezoneData.swift */; };
+		35C36F612259DE67002FA5C6 /* NotesPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35C36F5F2259DE67002FA5C6 /* NotesPopover.xib */; };
+		35C36F622259DE67002FA5C6 /* NotesPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F602259DE67002FA5C6 /* NotesPopover.swift */; };
+		35C36F662259DF4C002FA5C6 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F642259DF4C002FA5C6 /* ReviewView.swift */; };
+		35C36F672259DF4C002FA5C6 /* RateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F652259DF4C002FA5C6 /* RateController.swift */; };
+		35C36F692259DF55002FA5C6 /* TextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F682259DF55002FA5C6 /* TextViewWithPlaceholder.swift */; };
+		35C36F6B2259E0E1002FA5C6 /* FloatingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35C36F6A2259E0E1002FA5C6 /* FloatingWindow.xib */; };
+		35C36F6F2259E185002FA5C6 /* CustomSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F6C2259E185002FA5C6 /* CustomSliderCell.swift */; };
+		35C36F702259E185002FA5C6 /* BackgroundPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F6D2259E185002FA5C6 /* BackgroundPanelView.swift */; };
+		35C36F712259E185002FA5C6 /* NoTimezoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F6E2259E185002FA5C6 /* NoTimezoneView.swift */; };
+		35C36F732259E1AA002FA5C6 /* FloatingWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F722259E1AA002FA5C6 /* FloatingWindowController.swift */; };
+		35C36F772259E1D0002FA5C6 /* AppKit + Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F742259E1CF002FA5C6 /* AppKit + Additions.swift */; };
+		35C36F782259E1D0002FA5C6 /* Foundation + Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F752259E1CF002FA5C6 /* Foundation + Additions.swift */; };
+		35C36F792259E1D0002FA5C6 /* String + Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F762259E1CF002FA5C6 /* String + Additions.swift */; };
+		35C36F912259EAF4002FA5C6 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C36F902259EAF4002FA5C6 /* Preferences.storyboard */; };
+		35C36F942259EB87002FA5C6 /* CLTimezoneData.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F932259EB87002FA5C6 /* CLTimezoneData.m */; };
+		35C36F972259EBB1002FA5C6 /* AppFeedbackWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35C36F952259EBB1002FA5C6 /* AppFeedbackWindow.xib */; };
+		35C36F982259EBB1002FA5C6 /* AppFeedbackWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F962259EBB1002FA5C6 /* AppFeedbackWindowController.swift */; };
+		35C36FA02259ED6D002FA5C6 /* CalendarHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F9D2259ED6D002FA5C6 /* CalendarHandler.swift */; };
+		35C36FA12259ED6D002FA5C6 /* EventCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F9E2259ED6D002FA5C6 /* EventCenter.swift */; };
+		35C36FA22259ED6D002FA5C6 /* RemindersHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F9F2259ED6D002FA5C6 /* RemindersHandler.swift */; };
+		35C36FA42259EEC2002FA5C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36FA32259EEC2002FA5C6 /* AppDelegate.swift */; };
+		9A0A1C8C20903DBD0012003B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87651C1FEDC500A7A2DF /* CoreLocation.framework */; };
+		9A13BAD61CA87F08007C6CBE /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAD81CA87F08007C6CBE /* Panel.xib */; };
+		9A13BAE01CA882FA007C6CBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAE21CA882FA007C6CBE /* InfoPlist.strings */; };
+		9A13BAEA1CA88A76007C6CBE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAEC1CA88A76007C6CBE /* Localizable.strings */; };
+		9A20A04B1C4DEED200FB45AB /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A20A04A1C4DEED200FB45AB /* IOKit.framework */; };
+		9A24A1881ED902CC0095201E /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A24A1871ED902CC0095201E /* EventKit.framework */; };
+		9A3169C11D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A3169C01D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist */; };
+		9A4379271BEC223900F4E27F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379231BEC223900F4E27F /* Fabric.framework */; };
+		9A43792A1BEC230A00F4E27F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379291BEC230A00F4E27F /* libc++.tbd */; };
+		9A56DB801C1CFB73004CE6AF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A56DB7D1C1CFB73004CE6AF /* MainMenu.xib */; };
+		9A5951BA1C1D0A22009C17AA /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5951B91C1D0A22009C17AA /* Crashlytics.framework */; };
+		9A5951BD1C1D0A8D009C17AA /* CommonStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5951BB1C1D0A8D009C17AA /* CommonStrings.m */; };
+		9A5E75E4204CC39700119939 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86E2BC1CE04F1600547EE7 /* ShortcutRecorder.framework */; };
+		9A5E75E5204CC39700119939 /* ShortcutRecorder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86E2BC1CE04F1600547EE7 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9A5E75E8204CC39700119939 /* PTHotKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86E2BE1CE04F1600547EE7 /* PTHotKey.framework */; };
+		9A5E75E9204CC39700119939 /* PTHotKey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86E2BE1CE04F1600547EE7 /* PTHotKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9A6D93371CF3E82F005A8690 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6D93361CF3E82F005A8690 /* CoreImage.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		9A7547C91F183729004705EF /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A20A06F1C4E804D00FB45AB /* ServiceManagement.framework */; };
+		9A7547D41F184DC3004705EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7547D31F184DC3004705EF /* AppDelegate.m */; };
+		9A7547D71F184DC3004705EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7547D61F184DC3004705EF /* main.m */; };
+		9A7547DC1F184DC3004705EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A7547DB1F184DC3004705EF /* Assets.xcassets */; };
+		9A7547DF1F184DC3004705EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A7547DD1F184DC3004705EF /* Main.storyboard */; };
+		9A7547E51F184E3F004705EF /* ClockerHelper.app in Login Item Helper */ = {isa = PBXBuildFile; fileRef = 9A7547D01F184DC3004705EF /* ClockerHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9A8605AE1BEC148400A810A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605AD1BEC148400A810A4 /* main.m */; };
+		9A9E87621C1FEDB500A7A2DF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87611C1FEDB500A7A2DF /* CFNetwork.framework */; };
+		9A9E876A1C1FEDDB00A7A2DF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87691C1FEDDB00A7A2DF /* SystemConfiguration.framework */; };
+		9AB6F1562259CF3900A44663 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F1552259CF3900A44663 /* CalendarViewController.swift */; };
+		9AB6F1582259CFFC00A44663 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F1572259CFFC00A44663 /* AboutViewController.swift */; };
+		9AB6F15D2259D08300A44663 /* iVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F15A2259D08300A44663 /* iVersion.m */; };
+		9AB6F15E2259D08300A44663 /* iVersion.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9AB6F15C2259D08300A44663 /* iVersion.bundle */; };
+		9AB6F1612259D1B000A44663 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F15F2259D1B000A44663 /* PreferencesViewController.swift */; };
+		9AB6F1622259D1B000A44663 /* PreferencesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F1602259D1B000A44663 /* PreferencesDataSource.swift */; };
+		9AB6F1642259D1B900A44663 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F1632259D1B800A44663 /* ParentViewController.swift */; };
+		9AB6F1672259D23200A44663 /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F1662259D23200A44663 /* PermissionsViewController.swift */; };
+		9AB6F16A2259D2A600A44663 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F1692259D2A600A44663 /* SearchResults.swift */; };
+		9AB89E031CE97A4900EC8EB1 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AB89E021CE97A4900EC8EB1 /* Media.xcassets */; };
+		9ABFB3801CA6882000E10745 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ABFB37F1CA6882000E10745 /* ApplicationServices.framework */; };
+		9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		9ACB31401EDA994200F3E1D3 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACB313F1EDA994200F3E1D3 /* ShortcutRecorder.framework */; };
+		9ACE03EF1CB0ADE00039FC01 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACE03EE1CB0ADE00039FC01 /* Firebase.framework */; };
+		9ACF469D1DCBD45200C49B51 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACF469C1DCBD45200C49B51 /* Quartz.framework */; };
+		C20839CA21515C1E00C86589 /* ClockerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20839C921515C1E00C86589 /* ClockerUnitTests.swift */; };
+		C213713420B4FD920024D5A4 /* FloatingWindowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C213713320B4FD920024D5A4 /* FloatingWindowTests.swift */; };
+		C22F3D802107778A0001D5E1 /* ShortcutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22F3D7F2107778A0001D5E1 /* ShortcutTests.swift */; };
+		C264A0C520B897D800CCD875 /* PreferencesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264A0C420B897D800CCD875 /* PreferencesTest.swift */; };
+		C264A0C820B898D600CCD875 /* PanelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264A0C720B898D600CCD875 /* PanelTests.swift */; };
+		C2AB022421AEED590014A401 /* OnboardingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AB022321AEED590014A401 /* OnboardingTests.swift */; };
+		C2BFE3E62049F82300825BE5 /* ClockerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BFE3E52049F82300825BE5 /* ClockerUITests.m */; };
+		C2CCCD8220619C4C00F2DFC2 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CCCD8120619C4C00F2DFC2 /* LocationController.swift */; };
+		C2D30A8A210245C6000BFAEE /* ReviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D30A89210245C6000BFAEE /* ReviewTests.swift */; };
+		C2D30A8D21025106000BFAEE /* NetworkDisconnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D30A8C21025106000BFAEE /* NetworkDisconnectionTests.swift */; };
+		C2F7821B20B70E3700B6CD07 /* AboutUsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F7821A20B70E3700B6CD07 /* AboutUsTests.swift */; };
+		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9A5E75E6204CC39700119939 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9398377F0DA42965007F53F3;
+			remoteInfo = ShortcutRecorder.framework;
+		};
+		9A5E75EA204CC39700119939 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E273122D1349EC9000A84433;
+			remoteInfo = PTHotKey.framework;
+		};
+		9A86E2BB1CE04F1600547EE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 939837800DA42965007F53F3;
+			remoteInfo = ShortcutRecorder.framework;
+		};
+		9A86E2BD1CE04F1600547EE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E273122E1349EC9000A84433;
+			remoteInfo = PTHotKey.framework;
+		};
+		9A86E2BF1CE04F1600547EE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0D6B2468180304DE00CE1142;
+			remoteInfo = Demo;
+		};
+		C20839CC21515C1F00C86589 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD4F7BFB13C30F9F00825C6E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DD4F7C0313C30F9F00825C6E;
+			remoteInfo = Clocker;
+		};
+		C2BFE3E82049F82300825BE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD4F7BFB13C30F9F00825C6E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DD4F7C0313C30F9F00825C6E;
+			remoteInfo = Clocker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9A20A0711C4E808500FB45AB /* Login Item Helper */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				9A7547E51F184E3F004705EF /* ClockerHelper.app in Login Item Helper */,
+			);
+			name = "Login Item Helper";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A5E75EC204CC39700119939 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9A5E75E9204CC39700119939 /* PTHotKey.framework in Embed Frameworks */,
+				9A5E75E5204CC39700119939 /* ShortcutRecorder.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3545C52A22612BCC00121E25 /* RateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTests.swift; sourceTree = "<group>"; };
+		35C36EE022595EFD002FA5C6 /* StatusContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusContainerView.swift; sourceTree = "<group>"; };
+		35C36EE122595EFD002FA5C6 /* MenubarHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenubarHandler.swift; sourceTree = "<group>"; };
+		35C36EE222595EFD002FA5C6 /* StatusItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
+		35C36EE322595EFD002FA5C6 /* StatusItemHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemHandler.swift; sourceTree = "<group>"; };
+		35C36EE822595F13002FA5C6 /* OnboardingPermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPermissionsViewController.swift; sourceTree = "<group>"; };
+		35C36EE922595F13002FA5C6 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		35C36EEA22595F13002FA5C6 /* WelcomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeView.xib; sourceTree = "<group>"; };
+		35C36EEB22595F13002FA5C6 /* StartAtLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAtLoginViewController.swift; sourceTree = "<group>"; };
+		35C36EEC22595F13002FA5C6 /* OnboardingSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSearchController.swift; sourceTree = "<group>"; };
+		35C36EED22595F13002FA5C6 /* OnboardingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
+		35C36EEE22595F13002FA5C6 /* FinalOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalOnboardingViewController.swift; sourceTree = "<group>"; };
+		35C36EEF22595F14002FA5C6 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		35C36EF022595F14002FA5C6 /* OnboardingParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingParentViewController.swift; sourceTree = "<group>"; };
+		35C36EFA2259616B002FA5C6 /* Solar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solar.swift; sourceTree = "<group>"; };
+		35C36EFD225961D9002FA5C6 /* TimePeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriod.swift; sourceTree = "<group>"; };
+		35C36EFE225961D9002FA5C6 /* Date+Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Bundle.swift"; sourceTree = "<group>"; };
+		35C36EFF225961D9002FA5C6 /* TimePeriodCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodCollection.swift; sourceTree = "<group>"; };
+		35C36F00225961D9002FA5C6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		35C36F01225961D9002FA5C6 /* TimePeriodGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodGroup.swift; sourceTree = "<group>"; };
+		35C36F02225961DA002FA5C6 /* Date+Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Components.swift"; sourceTree = "<group>"; };
+		35C36F03225961DA002FA5C6 /* Date+TimeAgo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+TimeAgo.swift"; sourceTree = "<group>"; };
+		35C36F04225961DA002FA5C6 /* Integer+DateTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Integer+DateTools.swift"; sourceTree = "<group>"; };
+		35C36F05225961DA002FA5C6 /* TimeChunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeChunk.swift; sourceTree = "<group>"; };
+		35C36F06225961DA002FA5C6 /* Date+Inits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Inits.swift"; sourceTree = "<group>"; };
+		35C36F07225961DA002FA5C6 /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DateTools.bundle; sourceTree = "<group>"; };
+		35C36F08225961DA002FA5C6 /* Date+Comparators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Comparators.swift"; sourceTree = "<group>"; };
+		35C36F09225961DA002FA5C6 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		35C36F0A225961DA002FA5C6 /* Date+Manipulations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Manipulations.swift"; sourceTree = "<group>"; };
+		35C36F0B225961DA002FA5C6 /* Date+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
+		35C36F0C225961DA002FA5C6 /* TimePeriodChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodChain.swift; sourceTree = "<group>"; };
+		35C36F1E22596253002FA5C6 /* OneWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneWindowController.swift; sourceTree = "<group>"; };
+		35C36F1F22596253002FA5C6 /* AppearanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceViewController.swift; sourceTree = "<group>"; };
+		35C36F272259D6FA002FA5C6 /* ParentPanelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentPanelController.swift; sourceTree = "<group>"; };
+		35C36F282259D6FA002FA5C6 /* PanelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelController.swift; sourceTree = "<group>"; };
+		35C36F322259D7C3002FA5C6 /* AddTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTableViewCell.swift; sourceTree = "<group>"; };
+		35C36F392259D892002FA5C6 /* Themer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themer.swift; sourceTree = "<group>"; };
+		35C36F3A2259D892002FA5C6 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		35C36F3C2259D892002FA5C6 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		35C36F3D2259D892002FA5C6 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		35C36F3E2259D892002FA5C6 /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		35C36F3F2259D892002FA5C6 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
+		35C36F402259D892002FA5C6 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		35C36F4A2259D971002FA5C6 /* UnderlinedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedButton.swift; sourceTree = "<group>"; };
+		35C36F4C2259D981002FA5C6 /* DateFormatterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterManager.swift; sourceTree = "<group>"; };
+		35C36F4D2259D981002FA5C6 /* AppDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
+		35C36F532259DD8A002FA5C6 /* TimezoneDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimezoneDataSource.swift; sourceTree = "<group>"; };
+		35C36F542259DD8A002FA5C6 /* PanelTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelTableView.swift; sourceTree = "<group>"; };
+		35C36F552259DD8A002FA5C6 /* TimezoneCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimezoneCellView.swift; sourceTree = "<group>"; };
+		35C36F562259DD8A002FA5C6 /* Panelr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panelr.swift; sourceTree = "<group>"; };
+		35C36F5B2259DD96002FA5C6 /* TimezoneDataOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimezoneDataOperations.swift; sourceTree = "<group>"; };
+		35C36F5C2259DD96002FA5C6 /* TimezoneData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimezoneData.swift; sourceTree = "<group>"; };
+		35C36F5F2259DE67002FA5C6 /* NotesPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesPopover.xib; sourceTree = "<group>"; };
+		35C36F602259DE67002FA5C6 /* NotesPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesPopover.swift; sourceTree = "<group>"; };
+		35C36F642259DF4C002FA5C6 /* ReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		35C36F652259DF4C002FA5C6 /* RateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateController.swift; sourceTree = "<group>"; };
+		35C36F682259DF55002FA5C6 /* TextViewWithPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewWithPlaceholder.swift; sourceTree = "<group>"; };
+		35C36F6A2259E0E1002FA5C6 /* FloatingWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloatingWindow.xib; sourceTree = "<group>"; };
+		35C36F6C2259E185002FA5C6 /* CustomSliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSliderCell.swift; sourceTree = "<group>"; };
+		35C36F6D2259E185002FA5C6 /* BackgroundPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundPanelView.swift; sourceTree = "<group>"; };
+		35C36F6E2259E185002FA5C6 /* NoTimezoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoTimezoneView.swift; sourceTree = "<group>"; };
+		35C36F722259E1AA002FA5C6 /* FloatingWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingWindowController.swift; sourceTree = "<group>"; };
+		35C36F742259E1CF002FA5C6 /* AppKit + Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppKit + Additions.swift"; sourceTree = "<group>"; };
+		35C36F752259E1CF002FA5C6 /* Foundation + Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation + Additions.swift"; sourceTree = "<group>"; };
+		35C36F762259E1CF002FA5C6 /* String + Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String + Additions.swift"; sourceTree = "<group>"; };
+		35C36F902259EAF4002FA5C6 /* Preferences.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
+		35C36F922259EB87002FA5C6 /* CLTimezoneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTimezoneData.h; sourceTree = "<group>"; };
+		35C36F932259EB87002FA5C6 /* CLTimezoneData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTimezoneData.m; sourceTree = "<group>"; };
+		35C36F952259EBB1002FA5C6 /* AppFeedbackWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppFeedbackWindow.xib; sourceTree = "<group>"; };
+		35C36F962259EBB1002FA5C6 /* AppFeedbackWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFeedbackWindowController.swift; sourceTree = "<group>"; };
+		35C36F9D2259ED6D002FA5C6 /* CalendarHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHandler.swift; sourceTree = "<group>"; };
+		35C36F9E2259ED6D002FA5C6 /* EventCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenter.swift; sourceTree = "<group>"; };
+		35C36F9F2259ED6D002FA5C6 /* RemindersHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersHandler.swift; sourceTree = "<group>"; };
+		35C36FA32259EEC2002FA5C6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		9A13BAD71CA87F08007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Panel.xib; sourceTree = "<group>"; };
+		9A13BAE11CA882FA007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9A13BAEB1CA88A76007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A20A04A1C4DEED200FB45AB /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		9A20A06F1C4E804D00FB45AB /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		9A24A1871ED902CC0095201E /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		9A3169C01D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = com.abhishek.ClockerHelper.plist; path = Clocker/com.abhishek.ClockerHelper.plist; sourceTree = "<group>"; };
+		9A4379211BEC223900F4E27F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Security.framework; sourceTree = "<group>"; };
+		9A4379231BEC223900F4E27F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		9A4379291BEC230A00F4E27F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		9A43792B1BEC231100F4E27F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		9A56DB7D1C1CFB73004CE6AF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Clocker/MainMenu.xib; sourceTree = "<group>"; };
+		9A5951B91C1D0A22009C17AA /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Frameworks/Crashlytics.framework; sourceTree = "<group>"; };
+		9A5951BB1C1D0A8D009C17AA /* CommonStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommonStrings.m; path = Clocker/Utilities/CommonStrings.m; sourceTree = "<group>"; };
+		9A5951BC1C1D0A8D009C17AA /* CommonStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonStrings.h; path = Clocker/Utilities/CommonStrings.h; sourceTree = "<group>"; };
+		9A5B1A8D1BECDFB700A77C68 /* Clocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Clocker.entitlements; path = Clocker/Clocker.entitlements; sourceTree = "<group>"; };
+		9A5E6B9F1CAF71C1006E7C5C /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		9A6D93361CF3E82F005A8690 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		9A7547D01F184DC3004705EF /* ClockerHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClockerHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A7547D21F184DC3004705EF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9A7547D31F184DC3004705EF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9A7547D61F184DC3004705EF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9A7547DB1F184DC3004705EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9A7547DE1F184DC3004705EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9A7547E01F184DC3004705EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A8605AD1BEC148400A810A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Clocker/main.m; sourceTree = "<group>"; };
+		9A8605C31BEC155B00A810A4 /* Clocker-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Clocker-Info.plist"; path = "Clocker/Clocker-Info.plist"; sourceTree = "<group>"; };
+		9A8605CC1BEC155B00A810A4 /* Clocker-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Clocker-Prefix.pch"; path = "Clocker/Clocker-Prefix.pch"; sourceTree = "<group>"; };
+		9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShortcutRecorder.xcodeproj; path = "Clocker/ShortcutRecorder-master/ShortcutRecorder.xcodeproj"; sourceTree = "<group>"; };
+		9A9E87611C1FEDB500A7A2DF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		9A9E87631C1FEDBD00A7A2DF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9A9E87651C1FEDC500A7A2DF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9A9E87671C1FEDD300A7A2DF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9A9E87691C1FEDDB00A7A2DF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9A9E876B1C1FEDE700A7A2DF /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		9AB6F1552259CF3900A44663 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		9AB6F1572259CFFC00A44663 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		9AB6F15A2259D08300A44663 /* iVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iVersion.m; sourceTree = "<group>"; };
+		9AB6F15B2259D08300A44663 /* iVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iVersion.h; sourceTree = "<group>"; };
+		9AB6F15C2259D08300A44663 /* iVersion.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iVersion.bundle; sourceTree = "<group>"; };
+		9AB6F15F2259D1B000A44663 /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
+		9AB6F1602259D1B000A44663 /* PreferencesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesDataSource.swift; sourceTree = "<group>"; };
+		9AB6F1632259D1B800A44663 /* ParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
+		9AB6F1662259D23200A44663 /* PermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
+		9AB6F1692259D2A600A44663 /* SearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
+		9AB89E021CE97A4900EC8EB1 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		9ABFB37F1CA6882000E10745 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9ACB31391EDA98EA00F3E1D3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		9ACB313A1EDA98EA00F3E1D3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		9ACB313B1EDA98EA00F3E1D3 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		9ACB313C1EDA98EA00F3E1D3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Security.framework; sourceTree = "<group>"; };
+		9ACB313D1EDA98EA00F3E1D3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SystemConfiguration.framework; sourceTree = "<group>"; };
+		9ACB313F1EDA994200F3E1D3 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Clocker-ewkrwqfbimlgoicxkolbqepjsbcy/Build/Products/Release/ShortcutRecorder.framework"; sourceTree = "<group>"; };
+		9ACE03EE1CB0ADE00039FC01 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Frameworks/Firebase.framework; sourceTree = "<group>"; };
+		9ACF469C1DCBD45200C49B51 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		9AFCC7FC1FD668FF00509B9C /* ClockerHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClockerHelper.entitlements; sourceTree = "<group>"; };
+		C20839C721515C1E00C86589 /* ClockerUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClockerUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C20839C921515C1E00C86589 /* ClockerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockerUnitTests.swift; sourceTree = "<group>"; };
+		C20839CB21515C1F00C86589 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C213713220B4FD920024D5A4 /* ClockerUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ClockerUITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		C213713320B4FD920024D5A4 /* FloatingWindowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingWindowTests.swift; sourceTree = "<group>"; };
+		C22F3D7F2107778A0001D5E1 /* ShortcutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutTests.swift; sourceTree = "<group>"; };
+		C264A0C420B897D800CCD875 /* PreferencesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTest.swift; sourceTree = "<group>"; };
+		C264A0C720B898D600CCD875 /* PanelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelTests.swift; sourceTree = "<group>"; };
+		C2AB022321AEED590014A401 /* OnboardingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTests.swift; sourceTree = "<group>"; };
+		C2BFE3E32049F82300825BE5 /* ClockerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClockerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2BFE3E52049F82300825BE5 /* ClockerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClockerUITests.m; sourceTree = "<group>"; };
+		C2BFE3E72049F82300825BE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2CCCD8120619C4C00F2DFC2 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationController.swift; path = Clocker/LocationController.swift; sourceTree = "<group>"; };
+		C2D30A89210245C6000BFAEE /* ReviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTests.swift; sourceTree = "<group>"; };
+		C2D30A8C21025106000BFAEE /* NetworkDisconnectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDisconnectionTests.swift; sourceTree = "<group>"; };
+		C2F7821A20B70E3700B6CD07 /* AboutUsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsTests.swift; sourceTree = "<group>"; };
+		DD4F7C0413C30F9F00825C6E /* Clocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD4F7C0813C30F9F00825C6E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		DD4F7C0B13C30F9F00825C6E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9A7547CD1F184DC3004705EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C20839C421515C1E00C86589 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2BFE3E02049F82300825BE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD4F7C0113C30F9F00825C6E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A0A1C8C20903DBD0012003B /* CoreLocation.framework in Frameworks */,
+				9A7547C91F183729004705EF /* ServiceManagement.framework in Frameworks */,
+				9A24A1881ED902CC0095201E /* EventKit.framework in Frameworks */,
+				9ACF469D1DCBD45200C49B51 /* Quartz.framework in Frameworks */,
+				9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */,
+				9A5E75E4204CC39700119939 /* ShortcutRecorder.framework in Frameworks */,
+				9A6D93371CF3E82F005A8690 /* CoreImage.framework in Frameworks */,
+				9A5E75E8204CC39700119939 /* PTHotKey.framework in Frameworks */,
+				9A9E876A1C1FEDDB00A7A2DF /* SystemConfiguration.framework in Frameworks */,
+				9A9E87621C1FEDB500A7A2DF /* CFNetwork.framework in Frameworks */,
+				9ABFB3801CA6882000E10745 /* ApplicationServices.framework in Frameworks */,
+				9A20A04B1C4DEED200FB45AB /* IOKit.framework in Frameworks */,
+				9A5951BA1C1D0A22009C17AA /* Crashlytics.framework in Frameworks */,
+				9A43792A1BEC230A00F4E27F /* libc++.tbd in Frameworks */,
+				DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */,
+				9A4379271BEC223900F4E27F /* Fabric.framework in Frameworks */,
+				9ACB31401EDA994200F3E1D3 /* ShortcutRecorder.framework in Frameworks */,
+				9ACE03EF1CB0ADE00039FC01 /* Firebase.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		35C36EB522595834002FA5C6 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				9AB6F1592259D05100A44663 /* iVersion */,
+				35C36EFC225961BC002FA5C6 /* Date Additions */,
+				35C36EFA2259616B002FA5C6 /* Solar.swift */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		35C36EDF22595D9C002FA5C6 /* Menu Bar */ = {
+			isa = PBXGroup;
+			children = (
+				35C36EE122595EFD002FA5C6 /* MenubarHandler.swift */,
+				35C36EE022595EFD002FA5C6 /* StatusContainerView.swift */,
+				35C36EE322595EFD002FA5C6 /* StatusItemHandler.swift */,
+				35C36EE222595EFD002FA5C6 /* StatusItemView.swift */,
+			);
+			path = "Menu Bar";
+			sourceTree = "<group>";
+		};
+		35C36EFC225961BC002FA5C6 /* Date Additions */ = {
+			isa = PBXGroup;
+			children = (
+				35C36F00225961D9002FA5C6 /* Constants.swift */,
+				35C36EFE225961D9002FA5C6 /* Date+Bundle.swift */,
+				35C36F08225961DA002FA5C6 /* Date+Comparators.swift */,
+				35C36F02225961DA002FA5C6 /* Date+Components.swift */,
+				35C36F0B225961DA002FA5C6 /* Date+Format.swift */,
+				35C36F06225961DA002FA5C6 /* Date+Inits.swift */,
+				35C36F0A225961DA002FA5C6 /* Date+Manipulations.swift */,
+				35C36F03225961DA002FA5C6 /* Date+TimeAgo.swift */,
+				35C36F07225961DA002FA5C6 /* DateTools.bundle */,
+				35C36F09225961DA002FA5C6 /* Enums.swift */,
+				35C36F04225961DA002FA5C6 /* Integer+DateTools.swift */,
+				35C36F05225961DA002FA5C6 /* TimeChunk.swift */,
+				35C36EFD225961D9002FA5C6 /* TimePeriod.swift */,
+				35C36F0C225961DA002FA5C6 /* TimePeriodChain.swift */,
+				35C36EFF225961D9002FA5C6 /* TimePeriodCollection.swift */,
+				35C36F01225961D9002FA5C6 /* TimePeriodGroup.swift */,
+			);
+			path = "Date Additions";
+			sourceTree = "<group>";
+		};
+		35C36F1D22596212002FA5C6 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				35C36F492259D8E3002FA5C6 /* App Feedback */,
+				9AB6F1652259D1FC00A44663 /* Permissions */,
+				9AB6F1542259CF1B00A44663 /* About */,
+				9AB6F1532259CF0300A44663 /* General */,
+				9AB6F1522259CEF400A44663 /* Appearance */,
+				9AB6F1512259CEE300A44663 /* Calendar */,
+				35C36F1E22596253002FA5C6 /* OneWindowController.swift */,
+				9AB6F1632259D1B800A44663 /* ParentViewController.swift */,
+				35C36F902259EAF4002FA5C6 /* Preferences.storyboard */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		35C36F242259D64D002FA5C6 /* Panel */ = {
+			isa = PBXGroup;
+			children = (
+				35C36F632259DE9D002FA5C6 /* Rate Controller */,
+				35C36F522259DC9B002FA5C6 /* UI */,
+				35C36F512259DC85002FA5C6 /* Data Layer */,
+				35C36F502259DC7C002FA5C6 /* Notes Popover */,
+				35C36F282259D6FA002FA5C6 /* PanelController.swift */,
+				35C36F272259D6FA002FA5C6 /* ParentPanelController.swift */,
+				35C36F722259E1AA002FA5C6 /* FloatingWindowController.swift */,
+			);
+			path = Panel;
+			sourceTree = "<group>";
+		};
+		35C36F382259D80C002FA5C6 /* Overall App */ = {
+			isa = PBXGroup;
+			children = (
+				35C36FA32259EEC2002FA5C6 /* AppDelegate.swift */,
+				35C36F742259E1CF002FA5C6 /* AppKit + Additions.swift */,
+				35C36F752259E1CF002FA5C6 /* Foundation + Additions.swift */,
+				35C36F762259E1CF002FA5C6 /* String + Additions.swift */,
+				35C36F4D2259D981002FA5C6 /* AppDefaults.swift */,
+				35C36F4C2259D981002FA5C6 /* DateFormatterManager.swift */,
+				35C36F3E2259D892002FA5C6 /* DataStore.swift */,
+				35C36F3C2259D892002FA5C6 /* Logger.swift */,
+				35C36F402259D892002FA5C6 /* NetworkManager.swift */,
+				35C36F3F2259D892002FA5C6 /* Reach.swift */,
+				35C36F3D2259D892002FA5C6 /* Strings.swift */,
+				35C36F392259D892002FA5C6 /* Themer.swift */,
+				35C36F3A2259D892002FA5C6 /* Timer.swift */,
+			);
+			path = "Overall App";
+			sourceTree = "<group>";
+		};
+		35C36F492259D8E3002FA5C6 /* App Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				35C36F952259EBB1002FA5C6 /* AppFeedbackWindow.xib */,
+				35C36F962259EBB1002FA5C6 /* AppFeedbackWindowController.swift */,
+			);
+			path = "App Feedback";
+			sourceTree = "<group>";
+		};
+		35C36F502259DC7C002FA5C6 /* Notes Popover */ = {
+			isa = PBXGroup;
+			children = (
+				35C36F682259DF55002FA5C6 /* TextViewWithPlaceholder.swift */,
+				35C36F602259DE67002FA5C6 /* NotesPopover.swift */,
+				35C36F5F2259DE67002FA5C6 /* NotesPopover.xib */,
+			);
+			path = "Notes Popover";
+			sourceTree = "<group>";
+		};
+		35C36F512259DC85002FA5C6 /* Data Layer */ = {
+			isa = PBXGroup;
+			children = (
+				35C36F922259EB87002FA5C6 /* CLTimezoneData.h */,
+				35C36F932259EB87002FA5C6 /* CLTimezoneData.m */,
+				35C36F5C2259DD96002FA5C6 /* TimezoneData.swift */,
+				35C36F5B2259DD96002FA5C6 /* TimezoneDataOperations.swift */,
+			);
+			path = "Data Layer";
+			sourceTree = "<group>";
+		};
+		35C36F522259DC9B002FA5C6 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				35C36F6D2259E185002FA5C6 /* BackgroundPanelView.swift */,
+				35C36F6C2259E185002FA5C6 /* CustomSliderCell.swift */,
+				35C36F6E2259E185002FA5C6 /* NoTimezoneView.swift */,
+				35C36F6A2259E0E1002FA5C6 /* FloatingWindow.xib */,
+				35C36F562259DD8A002FA5C6 /* Panelr.swift */,
+				35C36F542259DD8A002FA5C6 /* PanelTableView.swift */,
+				35C36F552259DD8A002FA5C6 /* TimezoneCellView.swift */,
+				35C36F532259DD8A002FA5C6 /* TimezoneDataSource.swift */,
+				35C36F322259D7C3002FA5C6 /* AddTableViewCell.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		35C36F632259DE9D002FA5C6 /* Rate Controller */ = {
+			isa = PBXGroup;
+			children = (
+				35C36F652259DF4C002FA5C6 /* RateController.swift */,
+				35C36F642259DF4C002FA5C6 /* ReviewView.swift */,
+			);
+			path = "Rate Controller";
+			sourceTree = "<group>";
+		};
+		35C36F9B2259EC97002FA5C6 /* Events and Reminders */ = {
+			isa = PBXGroup;
+			children = (
+				35C36F9D2259ED6D002FA5C6 /* CalendarHandler.swift */,
+				35C36F9E2259ED6D002FA5C6 /* EventCenter.swift */,
+				35C36F9F2259ED6D002FA5C6 /* RemindersHandler.swift */,
+			);
+			path = "Events and Reminders";
+			sourceTree = "<group>";
+		};
+		9A2000C61BFBCEF6002BFDE8 /* Utilties */ = {
+			isa = PBXGroup;
+			children = (
+				9A3169C01D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist */,
+				9A5951BB1C1D0A8D009C17AA /* CommonStrings.m */,
+				9A5951BC1C1D0A8D009C17AA /* CommonStrings.h */,
+				9A13BAE21CA882FA007C6CBE /* InfoPlist.strings */,
+				9A13BAEC1CA88A76007C6CBE /* Localizable.strings */,
+				C2CCCD8120619C4C00F2DFC2 /* LocationController.swift */,
+			);
+			name = Utilties;
+			sourceTree = "<group>";
+		};
+		9A5E6B9C1CAF7174006E7C5C /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				9ACE03EE1CB0ADE00039FC01 /* Firebase.framework */,
+			);
+			name = Firebase;
+			sourceTree = "<group>";
+		};
+		9A7547D11F184DC3004705EF /* ClockerHelper */ = {
+			isa = PBXGroup;
+			children = (
+				9AFCC7FC1FD668FF00509B9C /* ClockerHelper.entitlements */,
+				9A7547D21F184DC3004705EF /* AppDelegate.h */,
+				9A7547D31F184DC3004705EF /* AppDelegate.m */,
+				9A7547DB1F184DC3004705EF /* Assets.xcassets */,
+				9A7547DD1F184DC3004705EF /* Main.storyboard */,
+				9A7547E01F184DC3004705EF /* Info.plist */,
+				9A7547D51F184DC3004705EF /* Supporting Files */,
+			);
+			path = ClockerHelper;
+			sourceTree = "<group>";
+		};
+		9A7547D51F184DC3004705EF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9A7547D61F184DC3004705EF /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9A8605E01BEC15F400A810A4 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				9A56DB7D1C1CFB73004CE6AF /* MainMenu.xib */,
+				9A13BAD81CA87F08007C6CBE /* Panel.xib */,
+			);
+			name = XIB;
+			sourceTree = "<group>";
+		};
+		9A8605E41BEC164C00A810A4 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9A8605C31BEC155B00A810A4 /* Clocker-Info.plist */,
+				9A8605CC1BEC155B00A810A4 /* Clocker-Prefix.pch */,
+				9A8605AD1BEC148400A810A4 /* main.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		9A86E2B61CE04F1600547EE7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A86E2BC1CE04F1600547EE7 /* ShortcutRecorder.framework */,
+				9A86E2BE1CE04F1600547EE7 /* PTHotKey.framework */,
+				9A86E2C01CE04F1600547EE7 /* Demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9AB6F1512259CEE300A44663 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				9AB6F1552259CF3900A44663 /* CalendarViewController.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		9AB6F1522259CEF400A44663 /* Appearance */ = {
+			isa = PBXGroup;
+			children = (
+				35C36F1F22596253002FA5C6 /* AppearanceViewController.swift */,
+			);
+			path = Appearance;
+			sourceTree = "<group>";
+		};
+		9AB6F1532259CF0300A44663 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				9AB6F1682259D26400A44663 /* Models */,
+				9AB6F1602259D1B000A44663 /* PreferencesDataSource.swift */,
+				9AB6F15F2259D1B000A44663 /* PreferencesViewController.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		9AB6F1542259CF1B00A44663 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				35C36F4A2259D971002FA5C6 /* UnderlinedButton.swift */,
+				9AB6F1572259CFFC00A44663 /* AboutViewController.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		9AB6F1592259D05100A44663 /* iVersion */ = {
+			isa = PBXGroup;
+			children = (
+				9AB6F15C2259D08300A44663 /* iVersion.bundle */,
+				9AB6F15B2259D08300A44663 /* iVersion.h */,
+				9AB6F15A2259D08300A44663 /* iVersion.m */,
+			);
+			path = iVersion;
+			sourceTree = "<group>";
+		};
+		9AB6F1652259D1FC00A44663 /* Permissions */ = {
+			isa = PBXGroup;
+			children = (
+				9AB6F1662259D23200A44663 /* PermissionsViewController.swift */,
+			);
+			path = Permissions;
+			sourceTree = "<group>";
+		};
+		9AB6F1682259D26400A44663 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9AB6F1692259D2A600A44663 /* SearchResults.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9ACB31381EDA98EA00F3E1D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9ACB31391EDA98EA00F3E1D3 /* Crashlytics.framework */,
+				9ACB313A1EDA98EA00F3E1D3 /* Fabric.framework */,
+				9ACB313B1EDA98EA00F3E1D3 /* Firebase.framework */,
+				9ACB313C1EDA98EA00F3E1D3 /* Security.framework */,
+				9ACB313D1EDA98EA00F3E1D3 /* SystemConfiguration.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		C2021B89219F30960036C247 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				35C36EEE22595F13002FA5C6 /* FinalOnboardingViewController.swift */,
+				35C36EEF22595F14002FA5C6 /* Onboarding.storyboard */,
+				35C36EED22595F13002FA5C6 /* OnboardingController.swift */,
+				35C36EF022595F14002FA5C6 /* OnboardingParentViewController.swift */,
+				35C36EE822595F13002FA5C6 /* OnboardingPermissionsViewController.swift */,
+				35C36EEC22595F13002FA5C6 /* OnboardingSearchController.swift */,
+				35C36EEB22595F13002FA5C6 /* StartAtLoginViewController.swift */,
+				35C36EEA22595F13002FA5C6 /* WelcomeView.xib */,
+				35C36EE922595F13002FA5C6 /* WelcomeViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		C20839C821515C1E00C86589 /* ClockerUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				C20839C921515C1E00C86589 /* ClockerUnitTests.swift */,
+				C20839CB21515C1F00C86589 /* Info.plist */,
+				3545C52A22612BCC00121E25 /* RateTests.swift */,
+			);
+			path = ClockerUnitTests;
+			sourceTree = "<group>";
+		};
+		C2BFE3E42049F82300825BE5 /* ClockerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C2BFE3E52049F82300825BE5 /* ClockerUITests.m */,
+				C2BFE3E72049F82300825BE5 /* Info.plist */,
+				C213713320B4FD920024D5A4 /* FloatingWindowTests.swift */,
+				C213713220B4FD920024D5A4 /* ClockerUITests-Bridging-Header.h */,
+				C2F7821A20B70E3700B6CD07 /* AboutUsTests.swift */,
+				C264A0C420B897D800CCD875 /* PreferencesTest.swift */,
+				C264A0C720B898D600CCD875 /* PanelTests.swift */,
+				C2D30A89210245C6000BFAEE /* ReviewTests.swift */,
+				C2D30A8C21025106000BFAEE /* NetworkDisconnectionTests.swift */,
+				C22F3D7F2107778A0001D5E1 /* ShortcutTests.swift */,
+				C2AB022321AEED590014A401 /* OnboardingTests.swift */,
+			);
+			path = ClockerUITests;
+			sourceTree = "<group>";
+		};
+		DD4F7BF913C30F9F00825C6E = {
+			isa = PBXGroup;
+			children = (
+				35C36F9B2259EC97002FA5C6 /* Events and Reminders */,
+				35C36F382259D80C002FA5C6 /* Overall App */,
+				35C36F242259D64D002FA5C6 /* Panel */,
+				35C36F1D22596212002FA5C6 /* Preferences */,
+				35C36EDF22595D9C002FA5C6 /* Menu Bar */,
+				35C36EB522595834002FA5C6 /* Dependencies */,
+				C2021B89219F30960036C247 /* Onboarding */,
+				9AB89E021CE97A4900EC8EB1 /* Media.xcassets */,
+				9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */,
+				9A5E6B9C1CAF7174006E7C5C /* Firebase */,
+				9A5B1A8D1BECDFB700A77C68 /* Clocker.entitlements */,
+				9A2000C61BFBCEF6002BFDE8 /* Utilties */,
+				9A8605E01BEC15F400A810A4 /* XIB */,
+				9A8605E41BEC164C00A810A4 /* Main */,
+				9A7547D11F184DC3004705EF /* ClockerHelper */,
+				C2BFE3E42049F82300825BE5 /* ClockerUITests */,
+				C20839C821515C1E00C86589 /* ClockerUnitTests */,
+				DD4F7C0713C30F9F00825C6E /* Frameworks */,
+				DD4F7C0513C30F9F00825C6E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DD4F7C0513C30F9F00825C6E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DD4F7C0413C30F9F00825C6E /* Clocker.app */,
+				9A7547D01F184DC3004705EF /* ClockerHelper.app */,
+				C2BFE3E32049F82300825BE5 /* ClockerUITests.xctest */,
+				C20839C721515C1E00C86589 /* ClockerUnitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DD4F7C0713C30F9F00825C6E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9ACB313F1EDA994200F3E1D3 /* ShortcutRecorder.framework */,
+				9ACB31381EDA98EA00F3E1D3 /* Frameworks */,
+				9A24A1871ED902CC0095201E /* EventKit.framework */,
+				9ACF469C1DCBD45200C49B51 /* Quartz.framework */,
+				9A6D93361CF3E82F005A8690 /* CoreImage.framework */,
+				9A5E6B9F1CAF71C1006E7C5C /* libicucore.tbd */,
+				9ABFB37F1CA6882000E10745 /* ApplicationServices.framework */,
+				9A20A06F1C4E804D00FB45AB /* ServiceManagement.framework */,
+				9A20A04A1C4DEED200FB45AB /* IOKit.framework */,
+				9A9E876B1C1FEDE700A7A2DF /* libsqlite3.tbd */,
+				9A9E87691C1FEDDB00A7A2DF /* SystemConfiguration.framework */,
+				9A9E87671C1FEDD300A7A2DF /* Security.framework */,
+				9A9E87651C1FEDC500A7A2DF /* CoreLocation.framework */,
+				9A9E87631C1FEDBD00A7A2DF /* CoreGraphics.framework */,
+				9A9E87611C1FEDB500A7A2DF /* CFNetwork.framework */,
+				9A5951B91C1D0A22009C17AA /* Crashlytics.framework */,
+				9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */,
+				9A4379211BEC223900F4E27F /* Security.framework */,
+				9A4379231BEC223900F4E27F /* Fabric.framework */,
+				9A43792B1BEC231100F4E27F /* libz.tbd */,
+				9A4379291BEC230A00F4E27F /* libc++.tbd */,
+				DD4F7C0B13C30F9F00825C6E /* AppKit.framework */,
+				DD4F7C0813C30F9F00825C6E /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9A7547CF1F184DC3004705EF /* ClockerHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A7547E11F184DC3004705EF /* Build configuration list for PBXNativeTarget "ClockerHelper" */;
+			buildPhases = (
+				9A7547CC1F184DC3004705EF /* Sources */,
+				9A7547CD1F184DC3004705EF /* Frameworks */,
+				9A7547CE1F184DC3004705EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClockerHelper;
+			productName = ClockerHelper;
+			productReference = 9A7547D01F184DC3004705EF /* ClockerHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C20839C621515C1E00C86589 /* ClockerUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C20839D221515C1F00C86589 /* Build configuration list for PBXNativeTarget "ClockerUnitTests" */;
+			buildPhases = (
+				C20839C321515C1E00C86589 /* Sources */,
+				C20839C421515C1E00C86589 /* Frameworks */,
+				C20839C521515C1E00C86589 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C20839CD21515C1F00C86589 /* PBXTargetDependency */,
+			);
+			name = ClockerUnitTests;
+			productName = ClockerUnitTests;
+			productReference = C20839C721515C1E00C86589 /* ClockerUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C2BFE3E22049F82300825BE5 /* ClockerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2BFE3EA2049F82300825BE5 /* Build configuration list for PBXNativeTarget "ClockerUITests" */;
+			buildPhases = (
+				C2BFE3DF2049F82300825BE5 /* Sources */,
+				C2BFE3E02049F82300825BE5 /* Frameworks */,
+				C2BFE3E12049F82300825BE5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2BFE3E92049F82300825BE5 /* PBXTargetDependency */,
+			);
+			name = ClockerUITests;
+			productName = ClockerUITests;
+			productReference = C2BFE3E32049F82300825BE5 /* ClockerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		DD4F7C0313C30F9F00825C6E /* Clocker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD4F7C2213C30F9F00825C6E /* Build configuration list for PBXNativeTarget "Clocker" */;
+			buildPhases = (
+				DD4F7C0013C30F9F00825C6E /* Sources */,
+				DD4F7C0113C30F9F00825C6E /* Frameworks */,
+				DD4F7C0213C30F9F00825C6E /* Resources */,
+				9A4379201BEC220200F4E27F /* ShellScript */,
+				9A20A0711C4E808500FB45AB /* Login Item Helper */,
+				9A5E75EC204CC39700119939 /* Embed Frameworks */,
+				C2A632A020EAC5EE00EB6BEA /* Move .app to Applications */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9A5E75E7204CC39700119939 /* PBXTargetDependency */,
+				9A5E75EB204CC39700119939 /* PBXTargetDependency */,
+			);
+			name = Clocker;
+			productName = Popup;
+			productReference = DD4F7C0413C30F9F00825C6E /* Clocker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DD4F7BFB13C30F9F00825C6E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = "";
+				DefaultBuildSystemTypeForWorkspace = Latest;
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1020;
+				TargetAttributes = {
+					9A7547CF1F184DC3004705EF = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = AJS5SNW8EY;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+					C20839C621515C1E00C86589 = {
+						DevelopmentTeam = AJS5SNW8EY;
+						LastSwiftMigration = 1020;
+						ProvisioningStyle = Automatic;
+					};
+					C2BFE3E22049F82300825BE5 = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = AJS5SNW8EY;
+						LastSwiftMigration = 1020;
+						ProvisioningStyle = Automatic;
+						TestTargetID = DD4F7C0313C30F9F00825C6E;
+					};
+					DD4F7C0313C30F9F00825C6E = {
+						DevelopmentTeam = AJS5SNW8EY;
+						LastSwiftMigration = 1020;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 0;
+							};
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = DD4F7BFE13C30F9F00825C6E /* Build configuration list for PBXProject "Clocker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+				Base,
+			);
+			mainGroup = DD4F7BF913C30F9F00825C6E;
+			productRefGroup = DD4F7C0513C30F9F00825C6E /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9A86E2B61CE04F1600547EE7 /* Products */;
+					ProjectRef = 9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				DD4F7C0313C30F9F00825C6E /* Clocker */,
+				9A7547CF1F184DC3004705EF /* ClockerHelper */,
+				C2BFE3E22049F82300825BE5 /* ClockerUITests */,
+				C20839C621515C1E00C86589 /* ClockerUnitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9A86E2BC1CE04F1600547EE7 /* ShortcutRecorder.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ShortcutRecorder.framework;
+			remoteRef = 9A86E2BB1CE04F1600547EE7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A86E2BE1CE04F1600547EE7 /* PTHotKey.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PTHotKey.framework;
+			remoteRef = 9A86E2BD1CE04F1600547EE7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A86E2C01CE04F1600547EE7 /* Demo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Demo.app;
+			remoteRef = 9A86E2BF1CE04F1600547EE7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9A7547CE1F184DC3004705EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A7547DC1F184DC3004705EF /* Assets.xcassets in Resources */,
+				9A7547DF1F184DC3004705EF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C20839C521515C1E00C86589 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2BFE3E12049F82300825BE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD4F7C0213C30F9F00825C6E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A13BAEA1CA88A76007C6CBE /* Localizable.strings in Resources */,
+				9AB6F15E2259D08300A44663 /* iVersion.bundle in Resources */,
+				35C36F972259EBB1002FA5C6 /* AppFeedbackWindow.xib in Resources */,
+				9A13BAE01CA882FA007C6CBE /* InfoPlist.strings in Resources */,
+				35C36F912259EAF4002FA5C6 /* Preferences.storyboard in Resources */,
+				9AB89E031CE97A4900EC8EB1 /* Media.xcassets in Resources */,
+				9A13BAD61CA87F08007C6CBE /* Panel.xib in Resources */,
+				35C36F6B2259E0E1002FA5C6 /* FloatingWindow.xib in Resources */,
+				35C36F17225961DA002FA5C6 /* DateTools.bundle in Resources */,
+				35C36EF322595F14002FA5C6 /* WelcomeView.xib in Resources */,
+				35C36EF822595F14002FA5C6 /* Onboarding.storyboard in Resources */,
+				35C36F612259DE67002FA5C6 /* NotesPopover.xib in Resources */,
+				9A3169C11D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist in Resources */,
+				9A56DB801C1CFB73004CE6AF /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9A4379201BEC220200F4E27F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+			showEnvVarsInLog = 0;
+		};
+		C2A632A020EAC5EE00EB6BEA /* Move .app to Applications */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Move .app to Applications";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# sh /Users/abhishek_banthia/Documents/GitLab/Check/Clocker-Private/Clocker/Move.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9A7547CC1F184DC3004705EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A7547D71F184DC3004705EF /* main.m in Sources */,
+				9A7547D41F184DC3004705EF /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C20839C321515C1E00C86589 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C20839CA21515C1E00C86589 /* ClockerUnitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2BFE3DF2049F82300825BE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2F7821B20B70E3700B6CD07 /* AboutUsTests.swift in Sources */,
+				C264A0C820B898D600CCD875 /* PanelTests.swift in Sources */,
+				C2BFE3E62049F82300825BE5 /* ClockerUITests.m in Sources */,
+				C2AB022421AEED590014A401 /* OnboardingTests.swift in Sources */,
+				C264A0C520B897D800CCD875 /* PreferencesTest.swift in Sources */,
+				C213713420B4FD920024D5A4 /* FloatingWindowTests.swift in Sources */,
+				C22F3D802107778A0001D5E1 /* ShortcutTests.swift in Sources */,
+				C2D30A8A210245C6000BFAEE /* ReviewTests.swift in Sources */,
+				C2D30A8D21025106000BFAEE /* NetworkDisconnectionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD4F7C0013C30F9F00825C6E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AB6F15D2259D08300A44663 /* iVersion.m in Sources */,
+				35C36EF622595F14002FA5C6 /* OnboardingController.swift in Sources */,
+				9AB6F1622259D1B000A44663 /* PreferencesDataSource.swift in Sources */,
+				35C36F672259DF4C002FA5C6 /* RateController.swift in Sources */,
+				35C36F472259D892002FA5C6 /* Reach.swift in Sources */,
+				35C36EF222595F14002FA5C6 /* WelcomeViewController.swift in Sources */,
+				35C36F732259E1AA002FA5C6 /* FloatingWindowController.swift in Sources */,
+				35C36F6F2259E185002FA5C6 /* CustomSliderCell.swift in Sources */,
+				35C36EF122595F14002FA5C6 /* OnboardingPermissionsViewController.swift in Sources */,
+				35C36F13225961DA002FA5C6 /* Date+TimeAgo.swift in Sources */,
+				35C36F412259D892002FA5C6 /* Themer.swift in Sources */,
+				35C36F452259D892002FA5C6 /* Strings.swift in Sources */,
+				35C36EF722595F14002FA5C6 /* FinalOnboardingViewController.swift in Sources */,
+				35C36EE622595EFD002FA5C6 /* StatusItemView.swift in Sources */,
+				35C36FA12259ED6D002FA5C6 /* EventCenter.swift in Sources */,
+				9A5951BD1C1D0A8D009C17AA /* CommonStrings.m in Sources */,
+				35C36EE422595EFD002FA5C6 /* StatusContainerView.swift in Sources */,
+				35C36F782259E1D0002FA5C6 /* Foundation + Additions.swift in Sources */,
+				35C36F16225961DA002FA5C6 /* Date+Inits.swift in Sources */,
+				35C36F4F2259D981002FA5C6 /* AppDefaults.swift in Sources */,
+				35C36F942259EB87002FA5C6 /* CLTimezoneData.m in Sources */,
+				35C36F5D2259DD96002FA5C6 /* TimezoneDataOperations.swift in Sources */,
+				35C36F14225961DA002FA5C6 /* Integer+DateTools.swift in Sources */,
+				35C36FA22259ED6D002FA5C6 /* RemindersHandler.swift in Sources */,
+				35C36F622259DE67002FA5C6 /* NotesPopover.swift in Sources */,
+				35C36F692259DF55002FA5C6 /* TextViewWithPlaceholder.swift in Sources */,
+				35C36F982259EBB1002FA5C6 /* AppFeedbackWindowController.swift in Sources */,
+				35C36F792259E1D0002FA5C6 /* String + Additions.swift in Sources */,
+				35C36F422259D892002FA5C6 /* Timer.swift in Sources */,
+				35C36F772259E1D0002FA5C6 /* AppKit + Additions.swift in Sources */,
+				35C36EF422595F14002FA5C6 /* StartAtLoginViewController.swift in Sources */,
+				35C36F702259E185002FA5C6 /* BackgroundPanelView.swift in Sources */,
+				9AB6F1582259CFFC00A44663 /* AboutViewController.swift in Sources */,
+				35C36F2122596253002FA5C6 /* AppearanceViewController.swift in Sources */,
+				35C36EE722595EFD002FA5C6 /* StatusItemHandler.swift in Sources */,
+				35C36F1B225961DA002FA5C6 /* Date+Format.swift in Sources */,
+				35C36F372259D7C3002FA5C6 /* AddTableViewCell.swift in Sources */,
+				35C36F12225961DA002FA5C6 /* Date+Components.swift in Sources */,
+				35C36F2C2259D6FA002FA5C6 /* PanelController.swift in Sources */,
+				35C36F10225961DA002FA5C6 /* Constants.swift in Sources */,
+				35C36FA42259EEC2002FA5C6 /* AppDelegate.swift in Sources */,
+				35C36F5E2259DD96002FA5C6 /* TimezoneData.swift in Sources */,
+				35C36F19225961DA002FA5C6 /* Enums.swift in Sources */,
+				35C36EE522595EFD002FA5C6 /* MenubarHandler.swift in Sources */,
+				35C36F5A2259DD8A002FA5C6 /* Panelr.swift in Sources */,
+				35C36F712259E185002FA5C6 /* NoTimezoneView.swift in Sources */,
+				35C36F2B2259D6FA002FA5C6 /* ParentPanelController.swift in Sources */,
+				35C36F582259DD8A002FA5C6 /* PanelTableView.swift in Sources */,
+				35C36F0F225961DA002FA5C6 /* TimePeriodCollection.swift in Sources */,
+				35C36F18225961DA002FA5C6 /* Date+Comparators.swift in Sources */,
+				35C36FA02259ED6D002FA5C6 /* CalendarHandler.swift in Sources */,
+				35C36F1A225961DA002FA5C6 /* Date+Manipulations.swift in Sources */,
+				35C36F572259DD8A002FA5C6 /* TimezoneDataSource.swift in Sources */,
+				35C36F462259D892002FA5C6 /* DataStore.swift in Sources */,
+				C2CCCD8220619C4C00F2DFC2 /* LocationController.swift in Sources */,
+				35C36F4B2259D971002FA5C6 /* UnderlinedButton.swift in Sources */,
+				9AB6F1562259CF3900A44663 /* CalendarViewController.swift in Sources */,
+				9AB6F1612259D1B000A44663 /* PreferencesViewController.swift in Sources */,
+				35C36F2022596253002FA5C6 /* OneWindowController.swift in Sources */,
+				35C36F442259D892002FA5C6 /* Logger.swift in Sources */,
+				35C36F0E225961DA002FA5C6 /* Date+Bundle.swift in Sources */,
+				9AB6F1672259D23200A44663 /* PermissionsViewController.swift in Sources */,
+				9AB6F1642259D1B900A44663 /* ParentViewController.swift in Sources */,
+				35C36F1C225961DA002FA5C6 /* TimePeriodChain.swift in Sources */,
+				35C36F11225961DA002FA5C6 /* TimePeriodGroup.swift in Sources */,
+				35C36EF922595F14002FA5C6 /* OnboardingParentViewController.swift in Sources */,
+				35C36F4E2259D981002FA5C6 /* DateFormatterManager.swift in Sources */,
+				35C36F0D225961DA002FA5C6 /* TimePeriod.swift in Sources */,
+				9AB6F16A2259D2A600A44663 /* SearchResults.swift in Sources */,
+				35C36EFB2259616B002FA5C6 /* Solar.swift in Sources */,
+				35C36F662259DF4C002FA5C6 /* ReviewView.swift in Sources */,
+				35C36EF522595F14002FA5C6 /* OnboardingSearchController.swift in Sources */,
+				35C36F592259DD8A002FA5C6 /* TimezoneCellView.swift in Sources */,
+				35C36F15225961DA002FA5C6 /* TimeChunk.swift in Sources */,
+				35C36F482259D892002FA5C6 /* NetworkManager.swift in Sources */,
+				9A8605AE1BEC148400A810A4 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9A5E75E7204CC39700119939 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ShortcutRecorder.framework;
+			targetProxy = 9A5E75E6204CC39700119939 /* PBXContainerItemProxy */;
+		};
+		9A5E75EB204CC39700119939 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PTHotKey.framework;
+			targetProxy = 9A5E75EA204CC39700119939 /* PBXContainerItemProxy */;
+		};
+		C20839CD21515C1F00C86589 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DD4F7C0313C30F9F00825C6E /* Clocker */;
+			targetProxy = C20839CC21515C1F00C86589 /* PBXContainerItemProxy */;
+		};
+		C2BFE3E92049F82300825BE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DD4F7C0313C30F9F00825C6E /* Clocker */;
+			targetProxy = C2BFE3E82049F82300825BE5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9A13BAD81CA87F08007C6CBE /* Panel.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A13BAD71CA87F08007C6CBE /* en */,
+			);
+			name = Panel.xib;
+			path = Clocker;
+			sourceTree = "<group>";
+		};
+		9A13BAE21CA882FA007C6CBE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A13BAE11CA882FA007C6CBE /* en */,
+			);
+			name = InfoPlist.strings;
+			path = Clocker;
+			sourceTree = "<group>";
+		};
+		9A13BAEC1CA88A76007C6CBE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A13BAEB1CA88A76007C6CBE /* en */,
+			);
+			name = Localizable.strings;
+			path = Clocker;
+			sourceTree = "<group>";
+		};
+		9A7547DD1F184DC3004705EF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A7547DE1F184DC3004705EF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9A5B1A8B1BECDB5B00A77C68 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = AJS5SNW8EY;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.2;
+			};
+			name = Distribution;
+		};
+		9A5B1A8C1BECDB5B00A77C68 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "";
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
+				PRODUCT_NAME = Clocker;
+				PROVISIONING_PROFILE = "71701bee-fee7-4927-b6e9-20d9a78ef29c";
+				PROVISIONING_PROFILE_SPECIFIER = "Clocker Jan 2017";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "Clocker-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Distribution;
+		};
+		9A7547E21F184DC3004705EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_ENTITLEMENTS = ClockerHelper/ClockerHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = AJS5SNW8EY;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = ClockerHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.ClockerHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		9A7547E31F184DC3004705EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_ENTITLEMENTS = ClockerHelper/ClockerHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = AJS5SNW8EY;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = ClockerHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.ClockerHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		9A7547E41F184DC3004705EF /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_ENTITLEMENTS = ClockerHelper/ClockerHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = AJS5SNW8EY;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = ClockerHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.ClockerHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Distribution;
+		};
+		C20839CE21515C1F00C86589 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = AJS5SNW8EY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = ClockerUnitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.ClockerUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clocker.app/Contents/MacOS/Clocker";
+			};
+			name = Debug;
+		};
+		C20839CF21515C1F00C86589 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = AJS5SNW8EY;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = ClockerUnitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.ClockerUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clocker.app/Contents/MacOS/Clocker";
+			};
+			name = Release;
+		};
+		C20839D021515C1F00C86589 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = AJS5SNW8EY;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = ClockerUnitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.ClockerUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clocker.app/Contents/MacOS/Clocker";
+			};
+			name = Distribution;
+		};
+		C2BFE3EB2049F82300825BE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = AJS5SNW8EY;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = ClockerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.ClockerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ClockerUITests/ClockerUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Clocker;
+			};
+			name = Debug;
+		};
+		C2BFE3EC2049F82300825BE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = AJS5SNW8EY;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = ClockerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.ClockerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ClockerUITests/ClockerUITests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Clocker;
+			};
+			name = Release;
+		};
+		C2BFE3ED2049F82300825BE5 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = AJS5SNW8EY;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = ClockerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.ClockerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ClockerUITests/ClockerUITests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Clocker;
+			};
+			name = Distribution;
+		};
+		DD4F7C2013C30F9F00825C6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = AJS5SNW8EY;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		DD4F7C2113C30F9F00825C6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = AJS5SNW8EY;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		DD4F7C2313C30F9F00825C6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
+				PRODUCT_NAME = Clocker;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "Clocker-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				"TEST_HOST[sdk=*]" = Clocker;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DD4F7C2413C30F9F00825C6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = RELEASE;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_LDFLAGS = "";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-D RELEASE";
+				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
+				PRODUCT_NAME = Clocker;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "Clocker-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9A7547E11F184DC3004705EF /* Build configuration list for PBXNativeTarget "ClockerHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A7547E21F184DC3004705EF /* Debug */,
+				9A7547E31F184DC3004705EF /* Release */,
+				9A7547E41F184DC3004705EF /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C20839D221515C1F00C86589 /* Build configuration list for PBXNativeTarget "ClockerUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C20839CE21515C1F00C86589 /* Debug */,
+				C20839CF21515C1F00C86589 /* Release */,
+				C20839D021515C1F00C86589 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C2BFE3EA2049F82300825BE5 /* Build configuration list for PBXNativeTarget "ClockerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2BFE3EB2049F82300825BE5 /* Debug */,
+				C2BFE3EC2049F82300825BE5 /* Release */,
+				C2BFE3ED2049F82300825BE5 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DD4F7BFE13C30F9F00825C6E /* Build configuration list for PBXProject "Clocker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD4F7C2013C30F9F00825C6E /* Debug */,
+				DD4F7C2113C30F9F00825C6E /* Release */,
+				9A5B1A8B1BECDB5B00A77C68 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DD4F7C2213C30F9F00825C6E /* Build configuration list for PBXNativeTarget "Clocker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD4F7C2313C30F9F00825C6E /* Debug */,
+				DD4F7C2413C30F9F00825C6E /* Release */,
+				9A5B1A8C1BECDB5B00A77C68 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DD4F7BFB13C30F9F00825C6E /* Project object */;
+}

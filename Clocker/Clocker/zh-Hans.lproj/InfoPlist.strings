@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Clocker
+
+  Created by Abhishek Banthia on 3/27/16.
+
+*/
+
+"CFBundleDisplayName" = "计时员";
+"CFBundleName" = "计时员";

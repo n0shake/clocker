@@ -1,0 +1,8 @@
+os: osx
+language: swift
+xcode_project: Clocker.xcodeproj # path to your xcodeproj folder
+osx_image: xcode10.2
+script:
+ - set -o pipefail
+ - xcodebuild -project Clocker/Clocker.xcodeproj -scheme Clocker build analyze | xcpretty
+ - xcodebuild -project Clocker/Clocker.xcodeproj -scheme Tests test-without-building | xcpretty

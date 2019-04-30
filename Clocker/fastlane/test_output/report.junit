@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='ClockerTests.xctest' tests='3' failures='0'>
+  <testsuite name='ClockerTests' tests='3' failures='0'>
+    <testcase classname='ClockerTests' name='testAddingPlaceToUserDefaults' time='0.154'/>
+    <testcase classname='ClockerTests' name='testDeletingPlaceFromUserDefaults' time='0.002'/>
+    <testcase classname='ClockerTests' name='testIfReminderIsCreated' time='0.022'/>
+  </testsuite>
+</testsuites>

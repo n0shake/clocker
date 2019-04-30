@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "79BC31FA35C73FAE9D63749994DC7D1D9E35A66B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "79BC31FA35C73FAE9D63749994DC7D1D9E35A66B" : 0,
+    "F2FE0AAE95F0B87896F2BEE0B176D4FC32D691A3" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "FE3C46F0-59C9-4F38-8281-63F46BD16224",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "79BC31FA35C73FAE9D63749994DC7D1D9E35A66B" : "Clocker\/",
+    "F2FE0AAE95F0B87896F2BEE0B176D4FC32D691A3" : "Clocker\/Clocker\/pop\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Clocker",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Clocker.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Abhishaker17\/Clocker.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "79BC31FA35C73FAE9D63749994DC7D1D9E35A66B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/facebook\/pop.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F2FE0AAE95F0B87896F2BEE0B176D4FC32D691A3"
+    }
+  ]
+}
