@@ -33,16 +33,6 @@
             skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9AC5EE2C1EDA17E400B4CE7B"
-               BuildableName = "ClockerTests.xctest"
-               BlueprintName = "ClockerTests"
-               ReferencedContainer = "container:Clocker.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "C2BFE3E22049F82300825BE5"
                BuildableName = "ClockerUITests.xctest"
                BlueprintName = "ClockerUITests"
