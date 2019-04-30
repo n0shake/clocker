@@ -443,18 +443,6 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
     return _versionDetails;
 }
 
-- (NSString *)URLEncodedString:(NSString *)string
-{
-    CFStringRef stringRef = CFBridgingRetain(string);
-    CFStringRef encoded = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                                                  stringRef,
-                                                                  NULL,
-                                                                  CFSTR("!*'\"();:@&=+$,/?%#[]% "),
-                                                                  kCFStringEncodingUTF8);
-    CFRelease(stringRef);
-    return CFBridgingRelease(encoded);
-}
-
 - (void)downloadedVersionsData
 {
     
@@ -609,87 +597,6 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
     return YES;
 }
 
-- (NSString *)valueForKey:(NSString *)key inJSON:(id)json
-{
-    if ([json isKindOfClass:[NSString class]])
-    {
-        //use legacy parser
-        NSRange keyRange = [json rangeOfString:[NSString stringWithFormat:@"\"%@\"", key]];
-        if (keyRange.location != NSNotFound)
-        {
-            NSInteger start = keyRange.location + keyRange.length;
-            NSRange valueStart = [json rangeOfString:@":" options:(NSStringCompareOptions)0 range:NSMakeRange(start, ((NSString *)json).length - start)];
-            if (valueStart.location != NSNotFound)
-            {
-                start = valueStart.location + 1;
-                NSRange valueEnd = [json rangeOfString:@"," options:(NSStringCompareOptions)0 range:NSMakeRange(start, ((NSString *)json).length - start)];
-                if (valueEnd.location != NSNotFound)
-                {
-                    NSString *value = [json substringWithRange:NSMakeRange(start, valueEnd.location - start)];
-                    value = [value stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                    while ([value hasPrefix:@"\""] && ![value hasSuffix:@"\""])
-                    {
-                        if (valueEnd.location == NSNotFound)
-                        {
-                            break;
-                        }
-                        NSInteger newStart = valueEnd.location + 1;
-                        valueEnd = [json rangeOfString:@"," options:(NSStringCompareOptions)0 range:NSMakeRange(newStart, ((NSString *)json).length - newStart)];
-                        value = [json substringWithRange:NSMakeRange(start, valueEnd.location - start)];
-                        value = [value stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                    }
-                    
-                    value = [value stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\""]];
-                    value = [value stringByReplacingOccurrencesOfString:@"\\\\" withString:@"\\"];
-                    value = [value stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];
-                    value = [value stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\""];
-                    value = [value stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
-                    value = [value stringByReplacingOccurrencesOfString:@"\\r" withString:@"\r"];
-                    value = [value stringByReplacingOccurrencesOfString:@"\\t" withString:@"\t"];
-                    value = [value stringByReplacingOccurrencesOfString:@"\\f" withString:@"\f"];
-                    value = [value stringByReplacingOccurrencesOfString:@"\\b" withString:@"\f"];
-                    
-                    while (YES)
-                    {
-                        NSRange unicode = [value rangeOfString:@"\\u"];
-                        if (unicode.location == NSNotFound || unicode.location + unicode.length == 0)
-                        {
-                            break;
-                        }
-                        
-                        uint32_t c = 0;
-                        NSString *hex = [value substringWithRange:NSMakeRange(unicode.location + 2, 4)];
-                        NSScanner *scanner = [NSScanner scannerWithString:hex];
-                        [scanner scanHexInt:&c];
-                        
-                        if (c <= 0xffff)
-                        {
-                            value = [value stringByReplacingCharactersInRange:NSMakeRange(unicode.location, 6) withString:[NSString stringWithFormat:@"%C", (unichar)c]];
-                        }
-                        else
-                        {
-                            //convert character to surrogate pair
-                            uint16_t x = (uint16_t)c;
-                            uint16_t u = (c >> 16) & ((1 << 5) - 1);
-                            uint16_t w = (uint16_t)u - 1;
-                            unichar high = 0xd800 | (w << 6) | x >> 10;
-                            unichar low = (uint16_t)(0xdc00 | (x & ((1 << 10) - 1)));
-                            
-                            value = [value stringByReplacingCharactersInRange:NSMakeRange(unicode.location, 6) withString:[NSString stringWithFormat:@"%C%C", high, low]];
-                        }
-                    }
-                    return value;
-                }
-            }
-        }
-    }
-    else
-    {
-        return json[key];
-    }
-    return nil;
-}
-
 - (void)setAppStoreIDOnMainThread:(NSString *)appStoreIDString
 {
     self.appStoreID = appStoreIDString.longLongValue;
@@ -701,10 +608,10 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
     {
         @autoreleasepool
         {
-            BOOL newerVersionAvailable = NO;
-            BOOL osVersionSupported = NO;
-            NSString *latestVersion = nil;
-            NSDictionary *versions = nil;
+            __block BOOL newerVersionAvailable = NO;
+            __block BOOL osVersionSupported = NO;
+            __block NSString *latestVersion = nil;
+            __block NSDictionary *versions = nil;
             
             //first check iTunes
             NSString *iTunesServiceURL = [NSString stringWithFormat:iVersionAppLookupURLFormat, self.appStoreCountry];
@@ -722,190 +629,153 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
                 NSLog(@"iVersion is checking %@ for a new app version...", iTunesServiceURL);
             }
             
-            NSError *error = nil;
-            NSURLResponse *response = nil;
+            __block NSError *jsonError = nil;
             NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:iTunesServiceURL]
                                                      cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
                                                  timeoutInterval:REQUEST_TIMEOUT];
-            NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-            NSInteger statusCode = ((NSHTTPURLResponse *)response).statusCode;
-            if (data && statusCode == 200)
-            {
-                //in case error is garbage...
-                error = nil;
+            
+            __weak typeof(self) weakSelf = self;
+            
+            NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+            
+            NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                                        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                                            
+                                                            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                            
+                                                            __strong typeof(self) strongSelf = weakSelf;
+                                                            
+                                                            if (!strongSelf) {
+                                                                return;
+                                                            }
                 
-                id json = nil;
-                if ([NSJSONSerialization class])
-                {
-                    json = [[NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingOptions)0 error:&error][@"results"] lastObject];
-                }
-                else
-                {
-                    //convert to string
-                    json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                }
+                                                            if (error != nil || data == nil) {
+                                                                return;
+                                                            }
+                                                            
+                                                            NSDictionary *json =  [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                                                            
+                                                            if (!jsonError) {
+                                                                //check bundle ID matches
+                                                                NSArray *resultsArray = json[@"results"];
+                                                                
+                                                                if (![resultsArray isKindOfClass:[NSArray class]]) {
+                                                                    return;
+                                                                }
+                                                                
+                                                                NSDictionary *firstResult = [resultsArray firstObject];
+                                                                
+                                                                if (!firstResult) {
+                                                                    return;
+                                                                }
+                                                                
+                                                                NSString *bundleID = firstResult[@"bundleId"];
+                                                                
+                                                                if (![bundleID isKindOfClass:[NSString class]]) {
+                                                                    return;
+                                                                }
+                                                               
+                                                                if (bundleID) {
+                                                                    if ([bundleID isEqualToString:strongSelf.applicationBundleID])
+                                                                    {
+                                                                        //get supported OS version
+                                                                        NSString *minimumSupportedOSVersion = firstResult[@"minimumOsVersion"];
+                                                                        
+                                                                        if (!minimumSupportedOSVersion || ![minimumSupportedOSVersion isKindOfClass:[NSString class]]) {
+                                                                            return;
+                                                                        }
+                                                                        
+                                                                        NSOperatingSystemVersion version = [NSProcessInfo processInfo].operatingSystemVersion;
+                                                                        NSString *systemVersion = [NSString stringWithFormat:@"%zd.%zd.%zd", version.majorVersion, version.minorVersion, version.patchVersion];
+                                                                        
+                                                                        osVersionSupported = ([systemVersion compare:minimumSupportedOSVersion options:NSNumericSearch] != NSOrderedAscending);
+                                                                        if (!osVersionSupported)
+                                                                        {
+                                                                            error = [NSError errorWithDomain:iVersionErrorDomain
+                                                                                                        code:iVersionErrorOSVersionNotSupported
+                                                                                                    userInfo:@{NSLocalizedDescriptionKey: @"Current OS version is not supported."}];
+                                                                        }
+                                                                        
+                                                                        //get version details
+                                                                        NSString *releaseNotes = firstResult[@"releaseNotes"];
+                                                                        latestVersion = firstResult[@"version"];
+                                                                        if (latestVersion && osVersionSupported)
+                                                                        {
+                                                                            versions = @{latestVersion: releaseNotes ?: @""};
+                                                                        }
+                                                                        
+                                                                        //get app id
+                                                                        if (!strongSelf.appStoreID)
+                                                                        {
+                                                                            NSString *appStoreIDString = firstResult[@"trackId"];
+                                                                            [strongSelf performSelectorOnMainThread:@selector(setAppStoreIDOnMainThread:)
+                                                                                                         withObject:appStoreIDString
+                                                                                                      waitUntilDone:YES];
+                                                                            
+                                                                            if (strongSelf.verboseLogging)
+                                                                            {
+                                                                                NSLog(@"iVersion found the app on iTunes. The App Store ID is %@", appStoreIDString);
+                                                                            }
+                                                                        }
+                                                                        
+                                                                        //check for new version
+                                                                        newerVersionAvailable = ([latestVersion compareVersion:strongSelf.applicationVersion] == NSOrderedDescending);
+                                                                        if (strongSelf.verboseLogging)
+                                                                        {
+                                                                            if (newerVersionAvailable)
+                                                                            {
+                                                                                NSLog(@"iVersion found a new version (%@) of the app on iTunes. Current version is %@", latestVersion, strongSelf.applicationVersion);
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                NSLog(@"iVersion did not find a new version of the app on iTunes. Current version is %@, latest version is %@", strongSelf.applicationVersion, latestVersion);
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (strongSelf.verboseLogging)
+                                                                        {
+                                                                            NSLog(@"iVersion found that the application bundle ID (%@) does not match the bundle ID of the app found on iTunes (%@) with the specified App Store ID (%@)", strongSelf.applicationBundleID, bundleID, @(strongSelf.appStoreID));
+                                                                        }
+                                                                        
+                                                                        error = [NSError errorWithDomain:iVersionErrorDomain
+                                                                                                    code:iVersionErrorBundleIdDoesNotMatchAppStore
+                                                                                                userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Application bundle ID does not match expected value of %@", bundleID]}];
+                                                                    }
+                                                                } else if (strongSelf.appStoreID || !strongSelf.remoteVersionsPlistURL)
+                                                                {
+                                                                    if (strongSelf.verboseLogging)
+                                                                    {
+                                                                        NSLog(@"iVersion could not find this application on iTunes. If your app is not intended for App Store release then you must specify a remoteVersionsPlistURL. If this is the first release of your application then it's not a problem that it cannot be found on the store yet");
+                                                                    }
+                                                                    
+                                                                    error = [NSError errorWithDomain:iVersionErrorDomain
+                                                                                                code:iVersionErrorApplicationNotFoundOnAppStore
+                                                                                            userInfo:@{NSLocalizedDescriptionKey: @"The application could not be found on the App Store."}];
+                                                                }
+                                                                else if (!strongSelf.appStoreID && strongSelf.verboseLogging)
+                                                                {
+                                                                    NSLog(@"iVersion could not find your app on iTunes. If your app is not yet on the store or is not intended for App Store release then don't worry about this");
+                                                                }
+                                                                
+                                                                
+                                                            } else {
+                                                                //http error
+                                                                NSString *message = [NSString stringWithFormat:@"The server returned a %@ error", @([httpResponse statusCode])];
+                                                                error = [NSError errorWithDomain:@"HTTPResponseErrorDomain"
+                                                                                            code:[httpResponse statusCode]
+                                                                                        userInfo:@{NSLocalizedDescriptionKey: message}];
+                                                            }
+                                                        
+                                                            [strongSelf performSelectorOnMainThread:@selector(setDownloadError:) withObject:error waitUntilDone:YES];
+                                                            [strongSelf performSelectorOnMainThread:@selector(setRemoteVersionsDict:) withObject:versions waitUntilDone:YES];
+                                                            [strongSelf performSelectorOnMainThread:@selector(setLastChecked:) withObject:[NSDate date] waitUntilDone:YES];
+                                                            [strongSelf performSelectorOnMainThread:@selector(downloadedVersionsData) withObject:nil waitUntilDone:YES];
                 
-                if (!error)
-                {
-                    //check bundle ID matches
-                    NSString *bundleID = [self valueForKey:@"bundleId" inJSON:json];
-                    if (bundleID)
-                    {
-                        if ([bundleID isEqualToString:self.applicationBundleID])
-                        {
-                            //get supported OS version
-                            NSString *minimumSupportedOSVersion = [self valueForKey:@"minimumOsVersion" inJSON:json];
-                            
-#if TARGET_OS_IPHONE
-                            
-                            NSString *systemVersion = [UIDevice currentDevice].systemVersion;
-                            
-#else
-                            NSString *systemVersion = nil;
-                            
-#if __MAC_OS_X_VERSION_MAX_ALLOWED >= 1100
-                            
-                            if ([[NSProcessInfo class] respondsToSelector:@selector(processInfo)])
-                            {
-                                NSOperatingSystemVersion version = [NSProcessInfo processInfo].operatingSystemVersion;
-                                systemVersion = [NSString stringWithFormat:@"%zd.%zd.%zd", version.majorVersion, version.minorVersion, version.patchVersion];
-                            }
-                            else
-#endif
-                            {
-
-#pragma clang diagnostic push
-                            
-                                SInt32 majorVersion = 0, minorVersion = 0, patchVersion = 0;
-                                Gestalt(gestaltSystemVersionMajor, &majorVersion);
-                                Gestalt(gestaltSystemVersionMinor, &minorVersion);
-                                Gestalt(gestaltSystemVersionBugFix, &patchVersion);
-                                systemVersion = [NSString stringWithFormat:@"%d.%d.%d", majorVersion, minorVersion, patchVersion];
-                                
-#pragma clang diagnostic pop
-                                
-                            }
-#endif
-                            osVersionSupported = ([systemVersion compare:minimumSupportedOSVersion options:NSNumericSearch] != NSOrderedAscending);
-                            if (!osVersionSupported)
-                            {
-                                error = [NSError errorWithDomain:iVersionErrorDomain
-                                                            code:iVersionErrorOSVersionNotSupported
-                                                        userInfo:@{NSLocalizedDescriptionKey: @"Current OS version is not supported."}];
-                            }
-
-                            //get version details
-                            NSString *releaseNotes = [self valueForKey:@"releaseNotes" inJSON:json];
-                            latestVersion = [self valueForKey:@"version" inJSON:json];
-                            if (latestVersion && osVersionSupported)
-                            {
-                                versions = @{latestVersion: releaseNotes ?: @""};
-                            }
-                            
-                            //get app id
-                            if (!self.appStoreID)
-                            {
-                                NSString *appStoreIDString = [self valueForKey:@"trackId" inJSON:json];
-                                [self performSelectorOnMainThread:@selector(setAppStoreIDOnMainThread:) withObject:appStoreIDString waitUntilDone:YES];
-                                
-                                if (self.verboseLogging)
-                                {
-                                    NSLog(@"iVersion found the app on iTunes. The App Store ID is %@", appStoreIDString);
-                                }
-                            }
-
-                            //check for new version
-                            newerVersionAvailable = ([latestVersion compareVersion:self.applicationVersion] == NSOrderedDescending);
-                            if (self.verboseLogging)
-                            {
-                                if (newerVersionAvailable)
-                                {
-                                    NSLog(@"iVersion found a new version (%@) of the app on iTunes. Current version is %@", latestVersion, self.applicationVersion);
-                                }
-                                else
-                                {
-                                    NSLog(@"iVersion did not find a new version of the app on iTunes. Current version is %@, latest version is %@", self.applicationVersion, latestVersion);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (self.verboseLogging)
-                            {
-                                NSLog(@"iVersion found that the application bundle ID (%@) does not match the bundle ID of the app found on iTunes (%@) with the specified App Store ID (%@)", self.applicationBundleID, bundleID, @(self.appStoreID));
-                            }
-                            
-                            error = [NSError errorWithDomain:iVersionErrorDomain
-                                                        code:iVersionErrorBundleIdDoesNotMatchAppStore
-                                                    userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Application bundle ID does not match expected value of %@", bundleID]}];
-                        }
-                    }
-                    else if (self.appStoreID || !self.remoteVersionsPlistURL)
-                    {
-                        if (self.verboseLogging)
-                        {
-                            NSLog(@"iVersion could not find this application on iTunes. If your app is not intended for App Store release then you must specify a remoteVersionsPlistURL. If this is the first release of your application then it's not a problem that it cannot be found on the store yet");
-                        }
-                        
-                        error = [NSError errorWithDomain:iVersionErrorDomain
-                                                    code:iVersionErrorApplicationNotFoundOnAppStore
-                                                userInfo:@{NSLocalizedDescriptionKey: @"The application could not be found on the App Store."}];
-                    }
-                    else if (!self.appStoreID && self.verboseLogging)
-                    {
-                        NSLog(@"iVersion could not find your app on iTunes. If your app is not yet on the store or is not intended for App Store release then don't worry about this");
-                    }
-
-                    //now check plist for alternative release notes
-                    if (((self.appStoreID && newerVersionAvailable && osVersionSupported) || !self.appStoreID || self.previewMode) && self.remoteVersionsPlistURL)
-                    {
-                        if (self.verboseLogging)
-                        {
-                            NSLog(@"iVersion will check %@ for %@", self.remoteVersionsPlistURL, self.appStoreID? @"release notes": @"a new app version");
-                        }
-                        
-                        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.remoteVersionsPlistURL] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:REQUEST_TIMEOUT];
-                        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-                        if (data)
-                        {
-                            NSPropertyListFormat format;
-                            NSDictionary *plistVersions = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:&format error:&error];
-                            
-                            if (latestVersion)
-                            {
-                                //remove versions that are greater than latest in app store
-                                NSMutableDictionary *versions = [NSMutableDictionary dictionary];
-                                for (NSString *version in plistVersions)
-                                {
-                                    if ([version compareVersion:latestVersion] != NSOrderedDescending)
-                                    {
-                                        versions[version] = plistVersions[version];
-                                    }
-                                }
-                                plistVersions = versions;
-                            }
-                            if (!latestVersion || plistVersions[latestVersion] || !_useAppStoreDetailsIfNoPlistEntryFound)
-                            {
-                                versions = [plistVersions copy];
-                            }
-                        }
-                        else if (self.verboseLogging)
-                        {
-                            NSLog(@"iVersion was unable to download the user-specified release notes");
-                        }
-                    }
-                }
-                else if (statusCode >= 400)
-                {
-                    //http error
-                    NSString *message = [NSString stringWithFormat:@"The server returned a %@ error", @(statusCode)];
-                    error = [NSError errorWithDomain:@"HTTPResponseErrorDomain" code:statusCode userInfo:@{NSLocalizedDescriptionKey: message}];
-                }
-            }
-            [self performSelectorOnMainThread:@selector(setDownloadError:) withObject:error waitUntilDone:YES];
-            [self performSelectorOnMainThread:@selector(setRemoteVersionsDict:) withObject:versions waitUntilDone:YES];
-            [self performSelectorOnMainThread:@selector(setLastChecked:) withObject:[NSDate date] waitUntilDone:YES];
-            [self performSelectorOnMainThread:@selector(downloadedVersionsData) withObject:nil waitUntilDone:YES];
+            }];
+            
+            [dataTask resume];
         }
     }
 }
@@ -915,7 +785,8 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
     if (!self.checkingForNewVersion)
     {
         self.checkingForNewVersion = YES;
-        [self performSelectorInBackground:@selector(checkForNewVersionInBackground) withObject:nil];
+        [self performSelectorInBackground:@selector(checkForNewVersionInBackground)
+                               withObject:nil];
     }
 }
 
