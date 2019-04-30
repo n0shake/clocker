@@ -6,5 +6,4 @@ before_script:
  - xcodebuild -version
 script:
  - set -o pipefail && env "NSUnbufferedIO=YES"
- - xcodebuild -project Clocker/Clocker.xcodeproj -scheme Clocker build analyze | xcpretty
- - xcodebuild -project Clocker/Clocker.xcodeproj -scheme Tests test-without-building | xcpretty
+ - xcodebuild -project Clocker/Clocker.xcodeproj -scheme Clocker build analyze CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= | xcpretty
