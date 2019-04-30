@@ -2,7 +2,9 @@ os: osx
 language: swift
 xcode_project: Clocker.xcodeproj # path to your xcodeproj folder
 osx_image: xcode10.2
+before_script:
+ - xcodebuild -version
 script:
- - set -o pipefail
+ - set -o pipefail && env "NSUnbufferedIO=YES"
  - xcodebuild -project Clocker/Clocker.xcodeproj -scheme Clocker build analyze | xcpretty
  - xcodebuild -project Clocker/Clocker.xcodeproj -scheme Tests test-without-building | xcpretty
