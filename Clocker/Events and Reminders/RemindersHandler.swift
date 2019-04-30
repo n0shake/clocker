@@ -99,7 +99,8 @@ extension EventCenter {
         do {
             try store.save(reminderEvent, commit: true)
         } catch {
-            Logger.log(object: ["Error": error.localizedDescription], for: "Error saving reminder")
+            Logger.log(object: ["Error": error.localizedDescription],
+                       for: "Error saving reminder")
             return false
         }
 
