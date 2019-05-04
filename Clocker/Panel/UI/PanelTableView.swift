@@ -31,7 +31,7 @@ class PanelTableView: NSTableView {
         let options: NSTrackingArea.Options = [
             .mouseMoved,
             .mouseEnteredAndExited,
-            .activeAlways,
+            .activeAlways
         ]
         let clipRect = enclosingScrollView?.contentView.bounds ?? .zero
 

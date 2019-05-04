@@ -12,9 +12,9 @@ import Foundation
  *  Extends the Date class by adding convenience methods for formatting dates.
  */
 public extension Date {
-    
+
     // MARK: - Formatted Date - Style
-    
+
     /**
      *  Get string representation of date.
      *
@@ -29,10 +29,10 @@ public extension Date {
         dateFormatter.dateStyle = dateStyle
         dateFormatter.timeZone = timeZone
         dateFormatter.locale = locale
-        
+
         return dateFormatter.string(from: self)
     }
-    
+
     /**
      *  Get string representation of date. Locale is automatically selected as the current locale of the system.
      *
@@ -48,7 +48,7 @@ public extension Date {
             return format(with: dateStyle, timeZone: timeZone, locale: Locale.autoupdatingCurrent)
         #endif
     }
-    
+
     /**
      *  Get string representation of date.
      *  Time zone is automatically selected as the current time zone of the system.
@@ -61,7 +61,7 @@ public extension Date {
     func format(with dateStyle: DateFormatter.Style, locale: Locale) -> String {
         return format(with: dateStyle, timeZone: TimeZone.autoupdatingCurrent, locale: locale)
     }
-    
+
     /**
      *  Get string representation of date.
      *  Locale and time zone are automatically selected as the current locale and time zone of the system.
@@ -77,10 +77,9 @@ public extension Date {
             return format(with: dateStyle, timeZone: TimeZone.autoupdatingCurrent, locale: Locale.autoupdatingCurrent)
         #endif
     }
-    
-    
+
     // MARK: - Formatted Date - String
-    
+
     /**
      *  Get string representation of date.
      *
@@ -95,10 +94,10 @@ public extension Date {
         dateFormatter.dateFormat = dateFormat
         dateFormatter.timeZone = timeZone
         dateFormatter.locale = locale
-        
+
         return dateFormatter.string(from: self)
     }
-    
+
     /**
      *  Get string representation of date.
      *  Locale is automatically selected as the current locale of the system.
@@ -115,7 +114,7 @@ public extension Date {
             return format(with: dateFormat, timeZone: timeZone, locale: Locale.autoupdatingCurrent)
         #endif
     }
-    
+
     /**
      *  Get string representation of date.
      *  Time zone is automatically selected as the current time zone of the system.
@@ -128,7 +127,7 @@ public extension Date {
     func format(with dateFormat: String, locale: Locale) -> String {
         return format(with: dateFormat, timeZone: TimeZone.autoupdatingCurrent, locale: locale)
     }
-    
+
     /**
      *  Get string representation of date.
      *  Locale and time zone are automatically selected as the current locale and time zone of the system.

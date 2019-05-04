@@ -29,17 +29,17 @@ class AboutUsTests: XCTestCase {
     func testMockingFeedback() {
         app.tapMenubarIcon()
         app.buttons["Preferences"].click()
-        
+
         tapAboutTab()
-        
+
         let expectedVersion = "Clocker 1.6.09 (64)"
         guard let presentVersion = app.windows["Clocker"].staticTexts["ClockerVersion"].value as? String else {
             XCTFail("Present version not present")
             return
         }
-        
+
         XCTAssertEqual(expectedVersion, presentVersion)
-        
+
         app.checkBoxes["ClockerPrivateFeedback"].click()
         app.buttons["Send Feedback"].click()
 

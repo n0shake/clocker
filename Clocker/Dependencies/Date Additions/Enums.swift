@@ -34,7 +34,6 @@ public enum Relation {
     case none // One or more of the dates does not exist
 }
 
-
 /**
  *  Whether the time period is Open or Closed
  *

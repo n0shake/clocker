@@ -8,8 +8,8 @@ class ParentViewController: NSViewController {
         if let view = view as? ParentView {
             view.wantsLayer = true
         }
-        
-        preferredContentSize = NSMakeSize(view.frame.size.width, view.frame.size.height)
+
+        preferredContentSize = NSSize(width: view.frame.size.width, height: view.frame.size.height)
     }
 }
 

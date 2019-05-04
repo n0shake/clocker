@@ -150,14 +150,14 @@ class TimezoneCellView: NSTableCellView {
                                                                 relativeTo: superview?.convert(bounds, to: nil) ?? relativeRect,
                                                                 andButton: sender)
         }
-        
+
         Logger.log(object: [:], for: "Open Extra Options")
     }
 
     override func mouseDown(with _: NSEvent) {
         window?.endEditing(for: nil)
     }
-    
+
     override func rightMouseDown(with event: NSEvent) {
         super.rightMouseDown(with: event)
         showExtraOptions(extraOptions)

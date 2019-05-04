@@ -88,7 +88,7 @@ class FloatingWindowTests: XCTestCase {
 
         let floatingSlider = app.sliders["FloatingSlider"].exists
         app.buttons["FloatingPreferences"].click()
-        
+
         let appearanceTab = app.toolbars.buttons.element(boundBy: 1)
         appearanceTab.click()
 

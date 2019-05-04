@@ -15,7 +15,7 @@ class OnboardingSearchController: NSViewController {
     @IBOutlet private var resultsTableView: NSTableView!
     @IBOutlet private var accessoryLabel: NSTextField!
     @IBOutlet weak var undoButton: NSButton!
-    
+
     private var results: [TimezoneData] = []
     private var dataTask: URLSessionDataTask? = .none
 
@@ -36,29 +36,29 @@ class OnboardingSearchController: NSViewController {
         }
 
         resultsTableView.reloadData()
-        
+
         func setupUndoButton() {
             let font = NSFont(name: "Avenir", size: 13)!
             let attributes = [NSAttributedString.Key.foregroundColor: NSColor.linkColor,
                               NSAttributedString.Key.font: font]
             undoButton.attributedTitle = NSAttributedString(string: "UNDO", attributes: attributes)
         }
-        
+
         setupUndoButton()
     }
 
     @objc func doubleClickAction(_: NSTableView?) {
         [accessoryLabel].forEach { $0?.isHidden = false }
-        
+
         if resultsTableView.selectedRow >= 0 && resultsTableView.selectedRow < results.count {
             let selectedTimezone = results[resultsTableView.selectedRow]
-            
+
             addTimezoneToDefaults(selectedTimezone)
         }
     }
 
     private func addTimezoneToDefaults(_ timezone: TimezoneData) {
-        
+
         func setupLabelHidingTimer() {
             Timer.scheduledTimer(withTimeInterval: 5,
                                  repeats: false) { _ in
@@ -67,8 +67,7 @@ class OnboardingSearchController: NSViewController {
                                     }
             }
         }
-        
-        
+
         if resultsTableView.selectedRow == -1 {
             setInfoLabel(PreferencesConstants.noTimezoneSelectedErrorMessage)
             setupLabelHidingTimer()
@@ -88,7 +87,7 @@ class OnboardingSearchController: NSViewController {
 
         fetchTimezone(for: latitude, and: longitude, timezone)
     }
-    
+
     // We want to display the undo button only if we've added a timezone.
     // If else, we want it hidden. This below method ensures that.
     private func setInfoLabel(_ text: String) {
@@ -98,12 +97,12 @@ class OnboardingSearchController: NSViewController {
 
     /// Returns true if there's an error.
     private func handleEdgeCase(for response: Data?) -> Bool {
-        
+
         func setErrorPlaceholders() {
             setInfoLabel("No timezone found! Try entering an exact name.")
             searchBar.placeholderString = placeholders.randomElement()
         }
-        
+
         guard let json = response, let jsonUnserialized = try? JSONSerialization.jsonObject(with: json, options: .allowFragments), let unwrapped = jsonUnserialized as? [String: Any] else {
             setErrorPlaceholders()
             return true
@@ -143,7 +142,7 @@ class OnboardingSearchController: NSViewController {
         let urlString = "https://maps.googleapis.com/maps/api/timezone/json?location=\(tuple)&timestamp=\(timeStamp)&key=\(CLGeocodingKey)"
 
         NetworkManager.task(with: urlString) { [weak self] response, error in
-            
+
             guard let `self` = self else { return }
 
             OperationQueue.main.addOperation {
@@ -166,7 +165,7 @@ class OnboardingSearchController: NSViewController {
                             "latitude": latitude,
                             "longitude": longitude,
                             "nextUpdate": CLEmptyString,
-                            CLCustomLabel: filteredAddress,
+                            CLCustomLabel: filteredAddress
                         ] as [String: Any]
 
                         DataStore.shared().addTimezone(TimezoneData(with: newTimeZone))
@@ -175,10 +174,10 @@ class OnboardingSearchController: NSViewController {
 
                         self.accessoryLabel.stringValue = "Added \(filteredAddress)."
                         self.undoButton.isHidden = false
-                        
+
                         Logger.log(object: ["Place Name": filteredAddress], for: "Added Timezone while Onboarding")
                     }
-                    
+
                     // Cleanup.
                     self.resetSearchView()
                 } else {
@@ -210,7 +209,7 @@ class OnboardingSearchController: NSViewController {
     }
 
     @IBAction func search(_ sender: NSSearchField) {
-        
+
         resultsTableView.deselectAll(nil)
 
         let searchString = sender.stringValue
@@ -235,87 +234,87 @@ class OnboardingSearchController: NSViewController {
         NSObject.cancelPreviousPerformRequests(withTarget: self)
         perform(#selector(OnboardingSearchController.actualSearch), with: nil, afterDelay: 0.5)
     }
-    
+
     @objc func actualSearch() {
-        
+
         func setupForError() {
             self.resultsTableView.isHidden = true
         }
-        
+
         let userPreferredLanguage = Locale.preferredLanguages.first ?? "en-US"
-        
+
         var searchString = searchBar.stringValue
-        
+
         let words = searchString.components(separatedBy: CharacterSet.whitespacesAndNewlines)
-        
+
         searchString = words.joined(separator: CLEmptyString)
-        
+
         let urlString = "https://maps.googleapis.com/maps/api/geocode/json?address=\(searchString)&key=\(CLGeocodingKey)&language=\(userPreferredLanguage)"
-        
+
         dataTask = NetworkManager.task(with: urlString,
                                        completionHandler: { [weak self] response, error in
-                                        
+
                                         guard let `self` = self else { return }
-                                        
+
                                         OperationQueue.main.addOperation {
-                                            
+
                                             print("Search string was: \(searchString)")
-                                            
+
                                             let currentSearchBarValue = self.searchBar.stringValue
-                                            
+
                                             let words = currentSearchBarValue.components(separatedBy: CharacterSet.whitespacesAndNewlines)
-                                            
+
                                             if words.joined(separator: CLEmptyString) != searchString {
                                                 return
                                             }
-                                            
+
                                             self.results = []
-                                            
+
                                             if let errorPresent = error {
                                                 if errorPresent.localizedDescription == PreferencesConstants.offlineErrorMessage {
                                                     self.setInfoLabel(PreferencesConstants.noInternetConnectivityError)
                                                 } else {
                                                     self.setInfoLabel(PreferencesConstants.tryAgainMessage)
                                                 }
-                                                
+
                                                 setupForError()
                                                 return
                                             }
-                                            
+
                                             guard let data = response else {
                                                 self.setInfoLabel(PreferencesConstants.tryAgainMessage)
                                                 setupForError()
                                                 return
                                             }
-                                            
+
                                             let searchResults = self.decode(from: data)
-                                            
+
                                             if searchResults?.status == "ZERO_RESULTS" {
                                                 self.setInfoLabel("No results! 😔 Try entering the exact name.")
                                                 setupForError()
                                                 return
                                             }
-                                            
+
                                             for result in searchResults!.results {
                                                 let location = result.geometry.location
                                                 let latitude = location.lat
                                                 let longitude = location.lng
                                                 let formattedAddress = result.formattedAddress
-                                                
+
                                                 let totalPackage = [
                                                     "latitude": latitude,
                                                     "longitude": longitude,
                                                     CLTimezoneName: formattedAddress,
                                                     CLCustomLabel: formattedAddress,
                                                     CLTimezoneID: CLEmptyString,
-                                                    CLPlaceIdentifier: result.placeId,
+                                                    CLPlaceIdentifier: result.placeId
                                                     ] as [String: Any]
-                                                
+
                                                 self.results.append(TimezoneData(with: totalPackage))
                                             }
-                                            
+
                                             self.setInfoLabel(CLEmptyString)
-                                            
+
                                             self.resultsTableView.reloadData()
                                         }
         })
@@ -339,13 +338,12 @@ class OnboardingSearchController: NSViewController {
         searchBar.stringValue = CLEmptyString
         searchBar.placeholderString = placeholders.randomElement()
     }
-    
-    
+
     @IBAction func undoAction(_ sender: Any) {
         DataStore.shared().removeLastTimezone()
         setInfoLabel("Removed.")
     }
-    
+
 }
 
 extension OnboardingSearchController: NSTableViewDataSource {

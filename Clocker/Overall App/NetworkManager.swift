@@ -15,7 +15,7 @@ class NetworkManager: NSObject {
         let error = NSError(domain: "APIError", code: 100, userInfo: userInfoDictionary)
         return error
     }()
-    
+
     static let unableToGenerateURL: NSError = {
         let userInfoDictionary: [String: Any] = [NSLocalizedDescriptionKey: "Unable to generate URL",
                                                  NSLocalizedFailureReasonErrorKey: "There was a problem searching the location. Please try again later. If the problem continues please contact App Support."]

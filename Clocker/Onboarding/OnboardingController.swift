@@ -20,7 +20,7 @@ class OnboardingController: NSWindowController {
         super.showWindow(sender)
         window?.center()
     }
-    
+
     func launch() {
         showWindow(nil)
         NSApp.activate(ignoringOtherApps: true)

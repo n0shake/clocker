@@ -74,7 +74,7 @@ class PreferencesViewController: ParentViewController {
     @IBOutlet private var tableview: NSView!
     @IBOutlet private var additionalSortOptions: NSView!
     @IBOutlet weak var startAtLoginLabel: NSTextField!
-    
+
     @IBOutlet var startupCheckbox: NSButton!
     @IBOutlet var headerLabel: NSTextField!
 
@@ -198,7 +198,7 @@ class PreferencesViewController: ParentViewController {
         }
 
         UserDefaults.standard.set(archivedObjects, forKey: CLMenubarFavorites)
-        
+
         // Update appereance if in compact menubar mode
         if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
             appDelegate.setupMenubarTimer()
@@ -240,7 +240,7 @@ class PreferencesViewController: ParentViewController {
         [timezoneNameSortButton, labelSortButton, timezoneSortButton].forEach {
             $0?.attributedTitle = NSAttributedString(string: $0?.title ?? CLEmptyString, attributes: [
                 NSAttributedString.Key.foregroundColor: Themer.shared().mainTextColor(),
-                NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!,
+                NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!
             ])
         }
 
@@ -378,7 +378,7 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
                 } else if currentSelection == "Anywhere on Earth" {
                     return "GMT+12"
                 }
-                
+
                 return NSTimeZone(name: timezoneFilteredArray[row])?.abbreviation ?? "Error"
             }
 
@@ -387,7 +387,7 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
                 if timezoneArray[row] == "UTC" {
                     return "UTC"
                 }
-                
+
                 if timezoneArray[row] == "Anywhere on Earth" {
                     return "AoE"
                 }
@@ -410,7 +410,7 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
             if selectedTimeZones.count > row {
                 Logger.log(object: [
                     "Old Label": dataObject.customLabel ?? "Error",
-                    "New Label": formattedValue,
+                    "New Label": formattedValue
                 ],
                 for: "Custom Label Changed")
 
@@ -423,7 +423,7 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
                 Logger.log(object: [
                     "MethodName": "SetObjectValue",
                     "Selected Timezone Count": selectedTimeZones.count,
-                    "Current Row": row,
+                    "Current Row": row
                 ],
                 for: "Error in selected row count")
             }
@@ -432,11 +432,11 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
             insert(timezone: dataObject, at: row)
 
             if dataObject.isFavourite == 1, let menubarTitles = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data] {
-                
+
                 var mutableArray = menubarTitles
                 let archivedObject = NSKeyedArchiver.archivedData(withRootObject: dataObject)
                 mutableArray.append(archivedObject)
-                
+
                 UserDefaults.standard.set(mutableArray, forKey: CLMenubarFavorites)
 
                 if dataObject.customLabel != nil {
@@ -446,7 +446,7 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
                 if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
                     appDelegate.setupMenubarTimer()
                 }
-                
+
                 if mutableArray.count > 1 {
                     showAlertIfMoreThanOneTimezoneHasBeenAddedToTheMenubar()
                 }
@@ -472,7 +472,7 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
                 if let appDelegate = NSApplication.shared.delegate as? AppDelegate, let menubarFavourites = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data], menubarFavourites.count <= 0, DataStore.shared().shouldDisplay(.showMeetingInMenubar) == false {
                     appDelegate.invalidateMenubarTimer(true)
                 }
-                
+
                 if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
                     appDelegate.setupMenubarTimer()
                 }
@@ -487,43 +487,43 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
     }
 
     private func showAlertIfMoreThanOneTimezoneHasBeenAddedToTheMenubar() {
-        
+
         let isUITestRunning = ProcessInfo.processInfo.arguments.contains(CLUITestingLaunchArgument)
-        
+
         // If we have seen displayed the message before, abort!
         let haveWeSeenThisMessageBefore = UserDefaults.standard.bool(forKey: CLLongStatusBarWarningMessage)
-        
+
         if haveWeSeenThisMessageBefore && !isUITestRunning {
             return
         }
-        
+
         // If the user is already using the compact mode, abort.
         if DataStore.shared().shouldDisplay(.menubarCompactMode) && !isUITestRunning {
             return
         }
-        
+
         // Time to display the alert.
         NSApplication.shared.activate(ignoringOtherApps: true)
-        
+
         let alert = NSAlert()
         alert.showsSuppressionButton = true
         alert.messageText = "More than one location added to the menubar 😅"
         alert.informativeText = "Multiple timezones occupy space and if macOS determines Clocker is occupying too much space, it'll hide Clocker entirely! Enable Menubar Compact Mode to fit in more timezones in less space."
         alert.addButton(withTitle: "Enable Compact Mode")
         alert.addButton(withTitle: "Cancel")
-        
+
         let response = alert.runModal()
-        
+
         if response.rawValue == 1000 {
             OperationQueue.main.addOperation {
                 UserDefaults.standard.set(0, forKey: CLMenubarCompactMode)
-                
+
                 if alert.suppressionButton?.state == NSControl.StateValue.on {
                     UserDefaults.standard.set(true, forKey: CLLongStatusBarWarningMessage)
                 }
-                
+
                 self.updateStatusBarAppearance()
-                
+
                 Logger.log(object: ["Context": ">1 Menubar Timezone in Preferences"], for: "Switched to Compact Mode")
             }
         }
@@ -656,7 +656,7 @@ extension PreferencesViewController {
 
             self.dataTask = NetworkManager.task(with: urlString,
                                                 completionHandler: { [weak self] response, error in
-                                                    
+
                                                     guard let `self` = self else { return }
 
                                                     OperationQueue.main.addOperation {
@@ -696,7 +696,7 @@ extension PreferencesViewController {
                                                                 CLTimezoneName: formattedAddress,
                                                                 CLCustomLabel: formattedAddress,
                                                                 CLTimezoneID: CLEmptyString,
-                                                                CLPlaceIdentifier: result.placeId,
+                                                                CLPlaceIdentifier: result.placeId
                                                             ] as [String: Any]
 
                                                             self.filteredArray.append(TimezoneData(with: totalPackage))
@@ -765,7 +765,7 @@ extension PreferencesViewController {
         let urlString = "https://maps.googleapis.com/maps/api/timezone/json?location=\(tuple)&timestamp=\(timeStamp)&key=\(CLGeocodingKey)"
 
         NetworkManager.task(with: urlString) { [weak self] response, error in
-            
+
             guard let `self` = self else { return }
 
             OperationQueue.main.addOperation {
@@ -793,7 +793,7 @@ extension PreferencesViewController {
                             "latitude": dataObject.latitude!,
                             "longitude": dataObject.longitude!,
                             "nextUpdate": CLEmptyString,
-                            CLCustomLabel: filteredAddress,
+                            CLCustomLabel: filteredAddress
                         ] as [String: Any]
 
                         let timezoneObject = TimezoneData(with: newTimeZone)
@@ -951,7 +951,7 @@ extension PreferencesViewController {
                 }
 
                 let currentSelection = timezoneFilteredArray[availableTimezoneTableView.selectedRow]
-                
+
                 let metaInfo = metadata(for: currentSelection)
                 data.timezoneID = metaInfo.0
                 data.formattedAddress = metaInfo.1
@@ -992,7 +992,7 @@ extension PreferencesViewController {
             isActivityInProgress = false
         }
     }
-    
+
     private func metadata(for selection: String) -> (String, String) {
         if selection == "Anywhere on Earth" {
             return ("GMT-1200", selection)
@@ -1072,7 +1072,7 @@ extension PreferencesViewController {
         if selectedTimeZones.count == 0 {
             UserDefaults.standard.set(nil, forKey: CLMenubarFavorites)
         }
-        
+
         updateStatusBarAppearance()
 
         updateStatusItem()
@@ -1086,12 +1086,12 @@ extension PreferencesViewController {
 
         statusItem.performTimerWork()
     }
-    
+
     private func updateStatusBarAppearance() {
         guard let statusItem = (NSApplication.shared.delegate as? AppDelegate)?.statusItemForPanel() else {
             return
         }
-        
+
         statusItem.setupStatusItem()
     }
 

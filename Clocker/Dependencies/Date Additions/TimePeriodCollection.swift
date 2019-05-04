@@ -17,9 +17,9 @@ import Foundation
  *  [Visit our github page](https://github.com/MatthewYork/DateTools#time-period-collections) for more information.
  */
 open class TimePeriodCollection: TimePeriodGroup {
-    
+
     // MARK: - Collection Manipulation
-    
+
     /**
      *  Append a TimePeriodProtocol to the periods array and check if the Collection's
      *  beginning and end should change.
@@ -30,7 +30,7 @@ open class TimePeriodCollection: TimePeriodGroup {
         periods.append(period)
         updateExtremes(period: period)
     }
-    
+
     /**
      *  Append a TimePeriodProtocol array to the periods array and check if the Collection's
      *  beginning and end should change.
@@ -43,7 +43,7 @@ open class TimePeriodCollection: TimePeriodGroup {
             updateExtremes(period: period)
         }
     }
-    
+
     /**
      *  Append a TimePeriodGroup's periods array to the periods array of self and check if the Collection's
      *  beginning and end should change.
@@ -56,7 +56,7 @@ open class TimePeriodCollection: TimePeriodGroup {
             updateExtremes(period: period)
         }
     }
-    
+
     /**
      *  Insert period into periods array at given index.
      *
@@ -67,7 +67,7 @@ open class TimePeriodCollection: TimePeriodGroup {
         periods.insert(newElement, at: index)
         updateExtremes(period: newElement)
     }
-    
+
     /**
      *  Remove from period array at the given index.
      *
@@ -77,7 +77,7 @@ open class TimePeriodCollection: TimePeriodGroup {
         periods.remove(at: at)
         updateExtremes()
     }
-    
+
     /**
      *  Remove all periods from period array.
      */
@@ -85,10 +85,9 @@ open class TimePeriodCollection: TimePeriodGroup {
         periods.removeAll()
         updateExtremes()
     }
-    
-    
+
     // MARK: - Sorting
-    
+
     // In place
     /**
      *  Sort periods array in place by beginning
@@ -106,14 +105,14 @@ open class TimePeriodCollection: TimePeriodGroup {
             }
         }
     }
-    
+
     /**
      *  Sort periods array in place
      */
     public func sort(by areInIncreasingOrder: (TimePeriodProtocol, TimePeriodProtocol) -> Bool) {
         self.periods.sort(by: areInIncreasingOrder)
     }
-    
+
     // New collection
     /**
      *  Return collection with sorted periods array by beginning
@@ -136,7 +135,7 @@ open class TimePeriodCollection: TimePeriodGroup {
         collection.append(array)
         return collection
     }
-    
+
     /**
      *  Return collection with sorted periods array
      *
@@ -147,10 +146,9 @@ open class TimePeriodCollection: TimePeriodGroup {
         collection.append(self.periods.sorted(by: areInIncreasingOrder))
         return collection
     }
-    
-    
+
     // MARK: - Collection Relationship
-    
+
     // Potentially use .reduce() instead of these functions
     /**
      *  Returns from the `TimePeriodCollection` a sub-collection of `TimePeriod`s
@@ -168,7 +166,7 @@ open class TimePeriodCollection: TimePeriodGroup {
         })
         return collection
     }
-    
+
     /**
      *  Returns from the `TimePeriodCollection` a sub-collection of `TimePeriod`s containing 
      *  the given date.
@@ -185,7 +183,7 @@ open class TimePeriodCollection: TimePeriodGroup {
         })
         return collection
     }
-    
+
     /**
      *  Returns from the `TimePeriodCollection` a sub-collection of `TimePeriod`s 
      *  containing either the start date or the end date--or both--of the given `TimePeriod`.
@@ -202,9 +200,9 @@ open class TimePeriodCollection: TimePeriodGroup {
         })
         return collection
     }
-    
+
     // MARK: - Map
-    
+
     public func map(_ transform: (TimePeriodProtocol) throws -> TimePeriodProtocol) rethrows -> TimePeriodCollection {
         var mappedArray = [TimePeriodProtocol]()
         mappedArray = try periods.map(transform)
@@ -215,18 +213,18 @@ open class TimePeriodCollection: TimePeriodGroup {
         }
         return mappedCollection
     }
-    
+
     // MARK: - Operator Overloads
-    
+
     /**
      *  Operator overload for comparing `TimePeriodCollection`s to each other
      */
     public static func ==(left: TimePeriodCollection, right: TimePeriodCollection) -> Bool {
         return left.equals(right)
     }
-    
-    //MARK: - Helpers
-    
+
+    // MARK: - Helpers
+
     internal func updateExtremes(period: TimePeriodProtocol) {
         //Check incoming period against previous beginning and end date
         if self.count == 1 {
@@ -236,9 +234,9 @@ open class TimePeriodCollection: TimePeriodGroup {
             _beginning = nilOrEarlier(date1: _beginning, date2: period.beginning)
             _end = nilOrLater(date1: _end, date2: period.end)
         }
-        
+
     }
-    
+
     internal func updateExtremes() {
         if periods.count == 0 {
             _beginning = nil
@@ -252,7 +250,7 @@ open class TimePeriodCollection: TimePeriodGroup {
             }
         }
     }
-    
+
     internal func nilOrEarlier(date1: Date?, date2: Date?) -> Date? {
         if date1 == nil || date2 == nil {
             return nil
@@ -260,7 +258,7 @@ open class TimePeriodCollection: TimePeriodGroup {
             return date1!.earlierDate(date2!)
         }
     }
-    
+
     internal func nilOrLater(date1: Date?, date2: Date?) -> Date? {
         if date1 == nil || date2 == nil {
             return nil

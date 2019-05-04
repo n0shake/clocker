@@ -20,7 +20,7 @@ enum ViewType {
 class DataStore: NSObject {
     private static var sharedStore = DataStore(with: UserDefaults.standard)
     private var userDefaults: UserDefaults!
-    
+
     // Since this pref can accessed every second, let's cache this
     private var shouldDisplayDateInMenubar: Bool = false
 
@@ -41,7 +41,7 @@ class DataStore: NSObject {
 
         return preferences
     }
-    
+
     func updateDayPreference() {
         shouldDisplayDateInMenubar = shouldDisplay(.dayInMenubar)
     }
@@ -49,7 +49,7 @@ class DataStore: NSObject {
     func shouldShowDateInMenubar() -> Bool {
         return shouldDisplayDateInMenubar
     }
-    
+
     func setTimezones(_ timezones: [Data]) {
         userDefaults.set(timezones, forKey: CLDefaultPreferenceKey)
     }
@@ -66,18 +66,18 @@ class DataStore: NSObject {
 
         userDefaults.set(defaults, forKey: CLDefaultPreferenceKey)
     }
-    
+
     func removeLastTimezone() {
         var currentLineup = timezones()
-        
+
         if currentLineup.isEmpty {
             return
         }
-        
+
         currentLineup.removeLast()
-        
+
         Logger.log(object: [:], for: "Undo Action Executed during Onboarding")
-        
+
         userDefaults.set(currentLineup, forKey: CLDefaultPreferenceKey)
     }
 
@@ -157,13 +157,13 @@ class DataStore: NSObject {
                 return false
             }
             return value.isEqual(to: NSNumber(value: 0))
-            
+
         case .menubarCompactMode:
-            
+
             guard let value = retrieve(key: CLMenubarCompactMode) as? Int else {
                 return false
             }
-            
+
             return value == 0
         }
     }

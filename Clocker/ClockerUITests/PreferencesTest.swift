@@ -54,36 +54,36 @@ class PreferencesTest: XCTestCase {
 
         deleteAPlace(place: "UTC", for: app)
     }
-    
+
     func testEditingLabel() {
-        
+
         let placeToAdd = "Auckland"
-        
+
         app.tapMenubarIcon()
         app.tables["mainTableView"].typeKey(",", modifierFlags: .command)
-        
+
         if app.sheets.count == 0 {
             app.windows["Clocker"].checkBoxes["AddTimezone"].click()
         }
-        
+
         addAPlace(place: placeToAdd, to: app)
-        
+
         let matchPredicate = NSPredicate(format: "value == %@", placeToAdd)
         let matchingFields = app.windows["Clocker"].textFields.matching(matchPredicate)
         XCTAssertTrue(matchingFields.count > 1, "Matching Fields count was zero")
-        
+
         matchingFields.element(boundBy: 1).doubleClick()
         matchingFields.element(boundBy: 1).typeText("NZ")
         app.typeKey(XCUIKeyboardKey.return, modifierFlags: [])
         app.tapMenubarIcon()
-        
+
         let labelPredicate = NSPredicate(format: "label == %@", "NZ")
         let cells = app.tables["mainTableView"].cells.matching(labelPredicate)
         XCTAssert(cells.count > 0)
-        
+
         app.tables["mainTableView"].typeKey(",", modifierFlags: .command)
         deleteAPlace(place: placeToAdd, for: app)
-        
+
     }
 
     func testSortingByTimezoneDifference() {
@@ -129,7 +129,7 @@ class PreferencesTest: XCTestCase {
         addAPlace(place: "Omaha", to: app)
         addAPlace(place: "Mumbai", to: app)
     }
-    
+
     func testSortingByTimezoneName() {
         app.tapMenubarIcon()
         app.tables["mainTableView"].typeKey(",", modifierFlags: .command)
@@ -220,22 +220,22 @@ class PreferencesTest: XCTestCase {
     func testSearchingWithMisspelledName() {
         app.tapMenubarIcon()
         app.tables["mainTableView"].typeKey(",", modifierFlags: .command)
-        
+
         if app.sheets.count == 0 {
             app.windows["Clocker"].checkBoxes["AddTimezone"].click()
         }
-        
+
         let searchField = app.searchFields["AvailableSearchField"]
         searchField.reset(text: "StuJjlqh7AcJFnBuOdgNa2dQ4WrIajP9Mo8R83FV7fIZ3B8zE2n")
-        
+
         sleep(1)
-        
+
         let maxCharacterCountPredicate = NSPredicate(format: "value like %@", "Only 50 characters allowed!")
         let currentSheets = app.sheets.firstMatch.staticTexts
         let maxCharacterQuery = currentSheets.matching(maxCharacterCountPredicate)
-        
+
         XCTAssertTrue(maxCharacterQuery.count > 0)
-        
+
         addAPlace(place: "asdakjhdasdahsdasd", to: app, shouldSleep: false)
         XCTAssertTrue(app.sheets.staticTexts["Please select a timezone!"].exists)
 
@@ -276,86 +276,86 @@ class PreferencesTest: XCTestCase {
         XCTAssertTrue(newPlaceholder.exists, "Search Field doesn't exist")
         XCTAssertEqual(newPlaceholder.placeholderValue!, newPlaceholderValue)
     }
-    
+
     func testNoTimezone() {
         app.tapMenubarIcon()
         app.buttons["Preferences"].click()
-        
+
         deleteAllTimezones()
-        
+
         XCTAssertTrue(app.staticTexts["NoTimezoneEmoji"].exists)
         XCTAssertTrue(app.staticTexts["NoTimezoneMessage"].exists)
-        
+
         app.tapMenubarIcon()
         XCTAssertTrue(app.buttons["EmptyAddTimezone"].exists)
-        
+
         addAPlace(place: "Omaha", to: app)
         addAPlace(place: "Mumbai", to: app)
-        
+
         deleteAllTimezones()
-        
+
         XCTAssertTrue(app.staticTexts["NoTimezoneEmoji"].exists)
         XCTAssertTrue(app.staticTexts["NoTimezoneMessage"].exists)
-        
+
         addAPlace(place: "Omaha", to: app)
         addAPlace(place: "Mumbai", to: app)
     }
-    
+
     func testWarningIfMoreThanOneMenubarIsSelected() {
         app.tapMenubarIcon()
         app.buttons["Preferences"].click()
-        
+
         let preferencesTable = app.tables["TimezoneTableView"]
         XCTAssertTrue(preferencesTable.exists)
-        
+
         // Let's reset all checkboxes
         let favouritedMenubarsQuery = preferencesTable.checkBoxes.matching(NSPredicate(format: "value == 1", ""))
-        
+
         if favouritedMenubarsQuery.count > 1 {
             for _ in 0..<favouritedMenubarsQuery.count {
                 let checkbox = favouritedMenubarsQuery.element(boundBy: 0)
                 checkbox.click()
             }
         }
-        
+
         // Let's make sure we have > 1 timezones first
         let favourites = preferencesTable.tableRows
         XCTAssertTrue(favourites.count > 1)
-        
+
         // Select two timezones
         let unfavouritedMenubarsQuery = preferencesTable.checkBoxes.matching(NSPredicate(format: "value == 0", ""))
-        
+
         if unfavouritedMenubarsQuery.count > 1 {
-            for _ in 0..<2{
+            for _ in 0..<2 {
                 let checkbox = unfavouritedMenubarsQuery.element(boundBy: 0)
                 checkbox.click()
             }
         }
-        
+
         XCTAssertTrue(app.dialogs.count > 0)
-        
+
         let compactModeButton = app.dialogs.buttons["Enable Compact Mode"]
-       
+
         if compactModeButton.isHittable {
            compactModeButton.click()
            XCTAssertTrue(app.dialogs.count == 0)
         }
     }
-    
+
     private func deleteAllTimezones() {
         let clockerWindow = app.windows["Clocker"]
         let rowQueryCount = clockerWindow.tables["TimezoneTableView"].tableRows.count
-        
+
         if rowQueryCount > 0 {
-            
+
             let currentElement = clockerWindow.tables["TimezoneTableView"].tableRows.firstMatch
             currentElement.click()
-            
+
             for _ in 0 ..< rowQueryCount {
                 clockerWindow.typeKey(XCUIKeyboardKey.delete,
                                       modifierFlags: XCUIElement.KeyModifierFlags())
             }
-            
+
         }
     }
 }

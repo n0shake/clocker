@@ -4,18 +4,18 @@ import Cocoa
 import EventKit
 
 class ClockerTextBackgroundView: NSView {
-    
+
     override func awakeFromNib() {
         wantsLayer = true
         layer?.cornerRadius = 8.0
         layer?.masksToBounds = false
         layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
-        
-        NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (notification) in
+
+        NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (_) in
             self.layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
         }
     }
-    
+
     override func updateLayer() {
         super.updateLayer()
         layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
@@ -23,7 +23,7 @@ class ClockerTextBackgroundView: NSView {
 }
 
 class CalendarViewController: ParentViewController {
-    
+
     @IBOutlet var showSegmentedControl: NSSegmentedControl!
     @IBOutlet var allDaysSegmentedControl: NSSegmentedControl!
     @IBOutlet var truncateTextField: NSTextField!
@@ -31,35 +31,35 @@ class CalendarViewController: ParentViewController {
     @IBOutlet var informationField: NSTextField!
     @IBOutlet var grantAccessButton: NSButton!
     @IBOutlet weak var calendarsTableView: NSTableView!
-    
+
     @IBOutlet weak var showNextMeetingInMenubarControl: NSSegmentedControl!
     @IBOutlet weak var backgroundView: NSView!
     @IBOutlet weak var nextMeetingBackgroundView: NSView!
-    
+
     private lazy var calendars: [Any] = EventCenter.sharedCenter().fetchSourcesAndCalendars()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setup()
-        
+
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(calendarAccessStatusChanged),
                                                name: .calendarAccessGranted,
                                                object: nil)
-        
-        NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (notification) in
+
+        NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (_) in
             self.setup()
         }
-        
+
         if #available(macOS 10.14, *) {
             noAccessView.material = .underWindowBackground
         }
     }
-    
+
     @objc func calendarAccessStatusChanged() {
         verifyCalendarAccess()
-        
+
         view.window?.windowController?.showWindow(nil)
         view.window?.makeKeyAndOrderFront(nil)
     }
@@ -74,7 +74,7 @@ class CalendarViewController: ParentViewController {
         } else {
             showSegmentedControl.selectedSegment = 1
         }
-        
+
         // If the menubar mode is compact, we can't show meetings in the menubar. So disable toggling that option.
         showNextMeetingInMenubarControl.isEnabled = !(DataStore.shared().shouldDisplay(.menubarCompactMode))
     }
@@ -129,32 +129,32 @@ class CalendarViewController: ParentViewController {
             NSWorkspace.shared.launchApplication("System Preferences")
         }
     }
-    
+
     @IBAction func showNextMeetingAction(_ sender: NSSegmentedControl) {
-        
+
         // We need to start the menubar timer if it hasn't been started already
         guard let delegate = NSApplication.shared.delegate as? AppDelegate else {
             assertionFailure()
             return
         }
-        
+
         let statusItemHandler = delegate.statusItemForPanel()
-        
+
         if sender.selectedSegment == 0 {
-            
+
             if let isValid = statusItemHandler.menubarTimer?.isValid, isValid == true {
                 print("Timer is already in progress")
                 updateStatusItem()
                 return
             }
-            
+
         } else {
-            
+
             statusItemHandler.invalidateTimer(showIcon: true, isSyncing: false)
         }
-        
+
     }
-    
+
     @IBAction func showUpcomingEventView(_ sender: NSSegmentedControl) {
         var showUpcomingEventView = "YES"
 
@@ -179,15 +179,15 @@ class CalendarViewController: ParentViewController {
             Logger.log(object: ["Show": "YES"], for: "Upcoming Event View")
         }
     }
-    
+
     private func updateStatusItem() {
         guard let statusItem = (NSApplication.shared.delegate as? AppDelegate)?.statusItemForPanel() else {
             return
         }
-        
+
         statusItem.performTimerWork()
     }
-    
+
     @IBOutlet weak var headerLabel: NSTextField!
     @IBOutlet weak var upcomingEventView: NSTextField!
     @IBOutlet weak var allDayMeetingsLabel: NSTextField!
@@ -197,7 +197,7 @@ class CalendarViewController: ParentViewController {
     @IBOutlet weak var showEventsFromLabel: NSTextField!
     @IBOutlet weak var charactersField: NSTextField!
     @IBOutlet weak var truncateAccessoryLabel: NSTextField!
-    
+
     private func setup() {
         // Grant access button's text color is taken care above.
         headerLabel.stringValue =  "Upcoming Event View Options"
@@ -208,7 +208,7 @@ class CalendarViewController: ParentViewController {
         charactersField.stringValue =  "characters"
         showEventsFromLabel.stringValue =  "Show events from"
         truncateAccessoryLabel.stringValue =  "If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\""
-        
+
         [headerLabel, upcomingEventView, allDayMeetingsLabel, showNextMeetingLabel, nextMeetingAccessoryLabel, truncateTextLabel, showEventsFromLabel, charactersField, truncateAccessoryLabel].forEach { $0?.textColor = Themer.shared().mainTextColor() }
     }
 }
@@ -222,28 +222,27 @@ extension CalendarViewController: NSTableViewDataSource {
 }
 
 extension CalendarViewController: NSTableViewDelegate {
-    
+
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         return false
     }
-    
+
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        
+
         guard let currentSource = calendars[row] as? String, !currentSource.isEmpty else {
             return 30.0
         }
-        
+
         return 24.0
     }
-    
+
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        
+
         if let currentSource = calendars[row] as? String, let message = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "sourceCellView"), owner: self) as? SourceTableViewCell {
             message.sourceName.stringValue = currentSource
             return message
         }
-        
-        
+
         if let currentSource = calendars[row] as? CalendarInfo, let calendarCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "calendarCellView"), owner: self) as? CalendarTableViewCell {
             calendarCell.calendarName.stringValue = currentSource.calendar.title
             calendarCell.calendarSelected.state = currentSource.selected ? NSControl.StateValue.on : NSControl.StateValue.off
@@ -253,16 +252,16 @@ extension CalendarViewController: NSTableViewDelegate {
             calendarCell.calendarSelected.action = #selector(calendarSelected(_:))
             return calendarCell
         }
-        
+
         return nil
-       
+
     }
-    
+
     @objc func calendarSelected(_ checkbox: NSButton) {
         let currentSelection = checkbox.tag
 
         var sourcesAndCalendars = calendars
-        
+
         if var calInfo = sourcesAndCalendars[currentSelection] as? CalendarInfo {
             calInfo.selected = (checkbox.state == .on)
             sourcesAndCalendars[currentSelection] = calInfo
@@ -270,21 +269,21 @@ extension CalendarViewController: NSTableViewDelegate {
 
         updateSelectedCalendars(sourcesAndCalendars)
     }
-    
+
     private func updateSelectedCalendars(_ selection: [Any]) {
-        
+
         var selectedCalendars: [String] = []
-        
+
         for obj in selection {
             if let calInfo = obj as? CalendarInfo, calInfo.selected {
                 selectedCalendars.append(calInfo.calendar.calendarIdentifier)
             }
         }
-        
+
         UserDefaults.standard.set(selectedCalendars, forKey: CLSelectedCalendars)
-        
+
         calendars = EventCenter.sharedCenter().fetchSourcesAndCalendars()
-        
+
         EventCenter.sharedCenter().filterEvents()
     }
 }
@@ -297,5 +296,3 @@ class CalendarTableViewCell: NSTableCellView {
     @IBOutlet var calendarName: NSTextField!
     @IBOutlet var calendarSelected: NSButton!
 }
-
-

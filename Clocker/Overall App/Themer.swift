@@ -6,7 +6,7 @@ func isDarkModeOn() -> Bool {
     if #available(macOS 10.14, *) {
         return NSAppearance.current.name == NSAppearance.Name.darkAqua
     }
-    
+
     return false
 }
 
@@ -42,11 +42,11 @@ class Themer: NSObject {
         default:
             themeIndex = Theme.light
         }
-        
+
         super.init()
-        
+
         setAppAppearance()
-        
+
         DistributedNotificationCenter.default.addObserver(self,
                                                           selector: #selector(respondToInterfaceStyle),
                                                           name: .interfaceStyleDidChange,
@@ -74,17 +74,17 @@ extension Themer {
         default:
             themeIndex = Theme.light
         }
-        
+
         setAppAppearance()
 
     }
-    
+
     @objc func respondToInterfaceStyle() {
         OperationQueue.main.addOperation {
             self.setAppAppearance()
         }
     }
-    
+
     private func setAppAppearance() {
         if #available(OSX 10.14, *) {
             var appAppearance = NSAppearance(named: .aqua)
@@ -270,7 +270,7 @@ extension Themer {
 
         return themeIndex == .light ? NSImage(named: NSImage.Name("Extra"))! : NSImage(named: NSImage.Name("ExtraWhite"))!
     }
-    
+
     func menubarOnboardingImage() -> NSImage {
         if #available(macOS 10.14, *) {
             switch themeIndex {
@@ -280,7 +280,7 @@ extension Themer {
                 return UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark" ? NSImage(named: NSImage.Name("Dark Menubar"))! : NSImage(named: NSImage.Name("Light Menubar"))!
             }
         }
-        
+
         return UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark" ? NSImage(named: NSImage.Name("Dark Menubar"))! : NSImage(named: NSImage.Name("Light Menubar"))!
     }
 
@@ -315,7 +315,7 @@ extension Themer {
     }
 
     func currentLocationImage() -> NSImage {
-        
+
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:
@@ -326,7 +326,7 @@ extension Themer {
                 return NSImage(named: NSImage.Name("CurrentLocationDynamic"))!
             }
         }
-        
+
         return themeIndex == .light ? NSImage(named: NSImage.Name("CurrentLocation"))! : NSImage(named: NSImage.Name("CurrentLocationWhite"))!
     }
 
@@ -365,7 +365,7 @@ extension Themer {
     }
 
     func privacyTabImage() -> NSImage {
-        
+
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:
@@ -376,12 +376,12 @@ extension Themer {
                 return NSImage(named: .permissionTabIcon)!
             }
         }
-        
+
         return themeIndex == .light ? NSImage(named: NSImage.Name("Privacy"))! : NSImage(named: NSImage.Name("Privacy Dark"))!
     }
 
     func appearanceTabImage() -> NSImage {
-        
+
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:
@@ -392,12 +392,12 @@ extension Themer {
                 return NSImage(named: .appearanceTabIcon)!
             }
         }
-        
+
         return themeIndex == .light ? NSImage(named: NSImage.Name("Appearance"))! : NSImage(named: NSImage.Name("Appearance Dark"))!
     }
 
     func calendarTabImage() -> NSImage {
-        
+
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:
@@ -408,7 +408,7 @@ extension Themer {
                 return NSImage(named: .calendarTabIcon)!
             }
         }
-        
+
         return themeIndex == .light ? NSImage(named: NSImage.Name("Calendar Tab Icon"))! : NSImage(named: NSImage.Name("Calendar Tab Dark"))!
     }
 

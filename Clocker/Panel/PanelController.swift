@@ -42,20 +42,20 @@ class PanelController: ParentPanelController {
     @objc override func updateDefaultPreferences() {
         super.updateDefaultPreferences()
     }
-    
+
     func setFrameTheNewWay(_ rect: NSRect, _ maxX: CGFloat) {
         // Calculate window's top left point.
         // First, center window under status item.
         let w = CGFloat(NSWidth((window?.frame)!))
-        var x = CGFloat(roundf(Float(NSMidX(rect) - w / 2)))
-        let y = CGFloat(NSMinY(rect) - 2)
+        var x = CGFloat(roundf(Float(rect.midX - w / 2)))
+        let y = CGFloat(rect.minY - 2)
         let kMinimumSpaceBetweenWindowAndScreenEdge: CGFloat = 10
 
         if x + w + kMinimumSpaceBetweenWindowAndScreenEdge > maxX {
             x = maxX - w - kMinimumSpaceBetweenWindowAndScreenEdge
         }
 
-        window?.setFrameTopLeftPoint(NSMakePoint(x, y))
+        window?.setFrameTopLeftPoint(NSPoint(x: x, y: y))
 
         window?.invalidateShadow()
     }
@@ -99,20 +99,20 @@ class PanelController: ParentPanelController {
     // New way to set the panel's frame.
     // This takes into account the screen's dimensions.
     private func setPanelFrame() {
-        
+
         guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else {
             return
         }
-        
+
         var statusBackgroundWindow = appDelegate.statusItemForPanel().statusItem.view?.window
         var statusView = appDelegate.statusItemForPanel().statusItem.view
-        
+
         // This below is a better way than actually checking if the menubar compact mode is set.
         if statusBackgroundWindow == nil || statusView == nil {
             statusBackgroundWindow = appDelegate.statusItemForPanel().statusItem.button?.window
             statusView = appDelegate.statusItemForPanel().statusItem.button
         }
-        
+
         if  let statusWindow = statusBackgroundWindow,
             let statusButton = statusView {
             var statusItemFrame = statusWindow.convertToScreen(statusButton.frame)
@@ -175,16 +175,16 @@ class PanelController: ParentPanelController {
             "Show Upcoming Event View": showUpcomingEventView == "YES" ? "Yes" : "No",
             "Country": country,
             "Calendar Access Provided": EventCenter.sharedCenter().calendarAccessGranted() ? "Yes" : "No",
-            "Number of Timezones": preferences.count,
+            "Number of Timezones": preferences.count
         ]
 
         Logger.log(object: panelEvent, for: "openedPanel")
     }
 
     private func startWindowTimer() {
-        
+
         stopMenubarTimerIfNeccesary()
-        
+
         if let timer = parentTimer, timer.state == .paused {
             parentTimer?.start()
             return
@@ -194,9 +194,9 @@ class PanelController: ParentPanelController {
     }
 
     private func startTimer() {
-        
+
         print("Start timer called")
-        
+
         parentTimer = Repeater(interval: .seconds(1), mode: .infinite) { _ in
             OperationQueue.main.addOperation {
                 self.updateTime()
@@ -205,14 +205,14 @@ class PanelController: ParentPanelController {
         parentTimer!.start()
 
     }
-    
+
     private func stopMenubarTimerIfNeccesary() {
         let count = (DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data])?.count ?? 0
-        
+
         if count >= 1 || DataStore.shared().shouldDisplay(.showMeetingInMenubar) {
             if let delegate = NSApplication.shared.delegate as? AppDelegate {
                 print("\nWe will be invalidating the menubar timer as we want the parent timer to take care of both panel and menubar ")
-                
+
                 delegate.invalidateMenubarTimer(false)
             }
         }

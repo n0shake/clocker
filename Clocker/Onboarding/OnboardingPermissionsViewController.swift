@@ -94,16 +94,16 @@ class OnboardingPermissionsViewController: NSViewController {
                     guard let `self` = self else { return }
 
                     self.calendarActivityIndicator.stopAnimation(nil)
-                
+
                     if granted {
                         self.calendarGrantButton.title = "Granted"
-                        
+
                         self.view.window?.orderBack(nil)
                         NSApp.activate(ignoringOtherApps: true)
 
                         // Used to update CalendarViewController's view
                         NotificationCenter.default.post(name: .calendarAccessGranted, object: nil)
-                    
+
                     } else {
                         Logger.log(object: ["Reminder Access Not Granted": "YES"], for: "Reminder Access Not Granted")
                     }
@@ -130,10 +130,10 @@ class OnboardingPermissionsViewController: NSViewController {
 
                 if granted {
                     OperationQueue.main.addOperation {
-                        
+
                         self.view.window?.orderBack(nil)
                         NSApp.activate(ignoringOtherApps: true)
-                        
+
                         self.reminderGrantButton.title = "Granted"
                     }
                 } else {

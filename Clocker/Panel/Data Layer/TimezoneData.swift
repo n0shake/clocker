@@ -12,7 +12,7 @@ struct DateFormat {
 
 // Non-class type cannot conform to NSCoding!
 class TimezoneData: NSObject, NSCoding {
-    
+
     enum SelectionType: Int {
         case city
         case timezone
@@ -28,7 +28,7 @@ class TimezoneData: NSObject, NSCoding {
         case twentyFourFormat
         case globalFormat
     }
-    
+
     enum SecondsOverride: Int {
         case yes
         case no
@@ -170,7 +170,7 @@ class TimezoneData: NSObject, NSCoding {
 
         let override = aDecoder.decodeInteger(forKey: "overrideFormat")
         overrideFormat = TimezoneOverride(rawValue: override)!
-        
+
         let secondsOverride = aDecoder.decodeInteger(forKey: "secondsOverrideFormat")
         overrideSecondsFormat = SecondsOverride(rawValue: secondsOverride)!
     }
@@ -189,20 +189,20 @@ class TimezoneData: NSObject, NSCoding {
 
         return nil
     }
-    
+
     private class func logOldModelUsage() {
         guard let shortVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
             let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String else {
                 return
         }
-        
+
         let operatingSystem = ProcessInfo.processInfo.operatingSystemVersion
         let osVersion = "\(operatingSystem.majorVersion).\(operatingSystem.minorVersion).\(operatingSystem.patchVersion)"
         let versionInfo = "Clocker \(shortVersion) (\(appVersion))"
-        
+
         let feedbackInfo = [
             AppFeedbackConstants.CLOperatingSystemVersion: osVersion,
-            AppFeedbackConstants.CLClockerVersion: versionInfo,
+            AppFeedbackConstants.CLClockerVersion: versionInfo
         ]
 
         Logger.log(object: feedbackInfo, for: "CLTimezoneData is still being used!")
@@ -290,7 +290,7 @@ class TimezoneData: NSObject, NSCoding {
         aCoder.encode(isSystemTimezone, forKey: "isSystemTimezone")
 
         aCoder.encode(overrideFormat.rawValue, forKey: "overrideFormat")
-        
+
         aCoder.encode(overrideSecondsFormat.rawValue, forKey: "secondsOverrideFormat")
     }
 
@@ -335,7 +335,7 @@ class TimezoneData: NSObject, NSCoding {
             overrideFormat = .globalFormat
         }
     }
-    
+
     func setShouldOverrideSecondsFormat(_ shouldOverride: Int) {
         if shouldOverride == 0 {
             overrideSecondsFormat = .yes
@@ -361,7 +361,7 @@ class TimezoneData: NSObject, NSCoding {
             let errorDictionary = [
                 "Formatted Address": name,
                 "Place Identifier": placeIdentifier,
-                "TimezoneID": timezoneIdentifier,
+                "TimezoneID": timezoneIdentifier
             ]
 
             Logger.log(object: errorDictionary, for: "Error fetching timezone() in TimezoneData")
@@ -396,15 +396,15 @@ class TimezoneData: NSObject, NSCoding {
 
         return timeFormat
     }
-    
+
     func shouldDisplayTwelveHourFormat() -> Bool {
         if overrideSecondsFormat == .globalFormat {
             return DataStore.shared().shouldDisplay(.twelveHour)
         }
-        
+
         return overrideFormat == .twelveHourFormat
     }
-    
+
     func shouldShowSeconds() -> Bool {
         if overrideSecondsFormat == .globalFormat {
             return DataStore.shared().shouldDisplay(.seconds)

@@ -12,7 +12,7 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet weak var includeDayInMenubarControl: NSSegmentedControl!
     @IBOutlet weak var includeDateInMenubarControl: NSSegmentedControl!
     @IBOutlet weak var includePlaceNameControl: NSSegmentedControl!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,16 +31,16 @@ class AppearanceViewController: ParentViewController {
             "6 days",
             "7 days"
         ])
-    
+
         setup()
 
-        NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (notification) in
+        NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (_) in
             self.setup()
             self.animateBackgroundColorChange()
             self.view.needsDisplay = true // Let's make the color change permanent.
         }
     }
-    
+
     private func animateBackgroundColorChange() {
         let colorAnimation = CABasicAnimation(keyPath: "backgroundColor")
         colorAnimation.duration = 0.25
@@ -60,18 +60,18 @@ class AppearanceViewController: ParentViewController {
         if let selectedIndex = DataStore.shared().retrieve(key: CLFutureSliderRange) as? NSNumber {
             sliderDayRangePopup.selectItem(at: selectedIndex.intValue)
         }
-        
+
         if #available(macOS 10.14, *) {
             theme.setEnabled(true, forSegment: 2)
         } else {
             theme.setEnabled(false, forSegment: 2)
         }
-        
+
         let shouldDisplayCompact = DataStore.shared().shouldDisplay(.menubarCompactMode)
         menubarMode.setSelected(true, forSegment: shouldDisplayCompact ? 0 : 1)
         updateMenubarControls(!shouldDisplayCompact)
     }
-    
+
     @IBOutlet weak var headerLabel: NSTextField!
     @IBOutlet weak var timeFormatLabel: NSTextField!
     @IBOutlet weak var panelTheme: NSTextField!
@@ -87,7 +87,7 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet weak var menubarDisplayOptionsLabel: NSTextField!
     @IBOutlet weak var appDisplayLabel: NSTextField!
     @IBOutlet weak var menubarModeLabel: NSTextField!
-    
+
     private func setup() {
         headerLabel.stringValue = "Main Panel Options"
         timeFormatLabel.stringValue = "Time Format"
@@ -103,7 +103,7 @@ class AppearanceViewController: ParentViewController {
         includePlaceLabel.stringValue = "Include Place Name"
         menubarDisplayOptionsLabel.stringValue = "Menubar Display Options"
         menubarModeLabel.stringValue = "Menubar Mode"
-        
+
         [headerLabel, timeFormatLabel, panelTheme, dayDisplayOptionsLabel, showSliderLabel, showSecondsLabel, showSunriseLabel, largerTextLabel, futureSliderRangeLabel, includeDayLabel, includeDateLabel, includePlaceLabel, menubarDisplayOptionsLabel, appDisplayLabel, menubarModeLabel].forEach {
             $0?.textColor = Themer.shared().mainTextColor()
         }
@@ -117,16 +117,16 @@ class AppearanceViewController: ParentViewController {
         Logger.log(object: ["Time Format": sender.selectedSegment == 0 ? "12 Hour Format" : "24 Hour Format"], for: "Time Format Selected")
 
         refresh(panel: true, floating: true)
-        
+
         updateStatusItem()
     }
-    
+
     private var previousBackgroundColor: NSColor = NSColor.white
 
     @IBAction func themeChanged(_ sender: NSSegmentedControl) {
-        
+
         previousBackgroundColor = Themer.shared().mainBackgroundColor()
-        
+
         Themer.shared().set(theme: sender.selectedSegment)
 
         refresh(panel: false, floating: true)
@@ -194,9 +194,9 @@ class AppearanceViewController: ParentViewController {
 
         updateStatusItem()
     }
-    
+
     @IBAction func changeAppDisplayOptions(_ sender: NSSegmentedControl) {
-        
+
         if sender.selectedSegment == 0 {
             Logger.log(object: ["Selection": "Menubar"], for: "Dock Mode")
             NSApp.setActivationPolicy(.accessory)
@@ -205,7 +205,6 @@ class AppearanceViewController: ParentViewController {
             NSApp.setActivationPolicy(.regular)
         }
     }
-    
 
     private func refresh(panel: Bool, floating: Bool) {
         OperationQueue.main.addOperation {
@@ -234,54 +233,52 @@ class AppearanceViewController: ParentViewController {
             }
         }
     }
-    
+
     @IBAction func displayDayInMenubarAction(_ sender: Any) {
         DataStore.shared().updateDayPreference()
         updateStatusItem()
     }
-    
+
     @IBAction func displayDateInMenubarAction(_ sender: Any) {
         updateStatusItem()
     }
-    
+
     @IBAction func displayPlaceInMenubarAction(_ sender: Any) {
         updateStatusItem()
     }
-    
-    
+
     private func updateStatusItem() {
         guard let statusItem = (NSApplication.shared.delegate as? AppDelegate)?.statusItemForPanel() else {
             return
         }
-        
+
         if DataStore.shared().shouldDisplay(.menubarCompactMode) {
             statusItem.setupStatusItem()
         } else {
             statusItem.performTimerWork()
         }
     }
-    
+
     @IBAction func menubarModeChanged(_ sender: NSSegmentedControl) {
         updateMenubarControls(sender.selectedSegment == 1)
-        
+
         guard let statusItem = (NSApplication.shared.delegate as? AppDelegate)?.statusItemForPanel() else {
             return
         }
-        
+
         statusItem.setupStatusItem()
-        
-        
+
         if sender.selectedSegment == 0 {
             Logger.log(object: ["Context": "In Appearance View"], for: "Switched to Compact Mode")
         } else {
             Logger.log(object: ["Context": "In Appearance View"], for: "Switched to Standard Mode")
         }
-        
+
     }
-    
+
     // We don't support showing day or date in the menubar for compact mode yet.
     // Disable those options to let the user know.
     private func updateMenubarControls(_ isEnabled: Bool) {
-        [includePlaceNameControl, includeDateInMenubarControl].forEach{ $0?.isEnabled = isEnabled }
+        [includePlaceNameControl, includeDateInMenubarControl].forEach { $0?.isEnabled = isEnabled }
     }
 }

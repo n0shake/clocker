@@ -60,14 +60,14 @@ class OnboardingParentViewController: NSViewController {
     private func setupUI() {
 
         setIdentifiersForTests()
-        
+
         positiveButton.title = "Get Started"
         positiveButton.tag = OnboardingType.welcome.rawValue
         backButton.tag = OnboardingType.welcome.rawValue
 
         [negativeButton, backButton].forEach { $0?.isHidden = true }
     }
-    
+
     private func setIdentifiersForTests() {
         positiveButton.setAccessibilityIdentifier("Forward")
         negativeButton.setAccessibilityIdentifier("Alternate")
@@ -162,21 +162,21 @@ class OnboardingParentViewController: NSViewController {
             }
 
         } else {
-            
+
             self.positiveButton.tag = OnboardingType.complete.rawValue
-            
+
             // Install the menubar option!
             let appDelegate = NSApplication.shared.delegate as? AppDelegate
             appDelegate?.continueUsually()
-            
+
             view.window?.close()
-            
+
             if ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument) == false {
                 UserDefaults.standard.set(true, forKey: CLShowOnboardingFlow)
             }
         }
     }
-    
+
     private func addChildIfNeccessary(_ vc: NSViewController) {
         if children.contains(vc) == false {
             addChild(vc)
@@ -228,12 +228,12 @@ class OnboardingParentViewController: NSViewController {
                 self.negativeButton.isHidden = false
             }
         } else if backButton.tag == OnboardingType.search.rawValue {
-            
+
             guard let fromViewController = finalOnboardingVC, let toViewController = onboardingSearchVC else {
                 assertionFailure()
                 return
             }
-            
+
             transition(from: fromViewController,
                        to: toViewController,
                        options: .slideRight) {
@@ -242,17 +242,17 @@ class OnboardingParentViewController: NSViewController {
                         self.positiveButton.title = "Continue"
                         self.negativeButton.isHidden = true
             }
-            
+
         }
     }
 
     private func shouldStartAtLogin(_ shouldStart: Bool) {
-        
+
         // If tests are going on, we don't want to enable/disable launch at login!
         if ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument) {
             return
         }
-        
+
         UserDefaults.standard.set(shouldStart ? 1 : 0, forKey: CLStartAtLogin)
 
         if !SMLoginItemSetEnabled("com.abhishek.ClockerHelper" as CFString, shouldStart) {
@@ -260,22 +260,22 @@ class OnboardingParentViewController: NSViewController {
         } else {
             Logger.log(object: ["Successful": "YES"], for: "Start Clocker Login")
         }
-        
+
         if shouldStart {
             Logger.log(object: [:], for: "Enable Launch at Login while Onboarding")
         } else {
             Logger.log(object: [:], for: "Disable Launch at Login while Onboarding")
         }
     }
-    
+
     func logExitPoint() {
         let currentViewController = currentController()
         print(currentViewController)
         Logger.log(object: currentViewController, for: "Onboarding Process Exit")
     }
-    
+
     private func currentController() -> [String: String] {
-        
+
         switch positiveButton.tag {
         case 0:
             return ["Onboarding Process Interrupted": "Welcome View"]

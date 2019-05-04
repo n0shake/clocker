@@ -3,60 +3,60 @@
 import Cocoa
 
 open class AppDelegate : NSObject, NSApplicationDelegate {
-    
+
     lazy private var floatingWindow: FloatingWindowController = FloatingWindowController.shared()
     lazy private var panelController: PanelController = PanelController.shared()
     private var statusBarHandler: StatusItemHandler!
-    
+
     deinit {
         panelController.removeObserver(self, forKeyPath: "hasActivePanel")
     }
-    
+
     private var kContextActivePanel = 0
-    
+
     open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        
+
         if context == &kContextActivePanel {
             statusBarHandler.setHasActiveIcon(panelController.hasActivePanelGetter())
         } else if let path = keyPath, path == "values.globalPing" {
-            
+
             let hotKeyCenter = PTHotKeyCenter.shared()
-            
+
             // Unregister old hot key
             let oldHotKey = hotKeyCenter?.hotKey(withIdentifier: path)
             hotKeyCenter?.unregisterHotKey(oldHotKey)
-            
+
             // We don't register unless there's a valid key combination
             guard let newObject = object as? NSObject, let newShortcut = newObject.value(forKeyPath: path) as? [AnyHashable: Any] else {
                 return
             }
-            
+
             // Register new key
             let newHotKey: PTHotKey = PTHotKey(identifier: keyPath,
                                                keyCombo: newShortcut,
                                                target: self,
                                                action: #selector(ping(_:)))
-            
+
             hotKeyCenter?.register(newHotKey)
         }
-        
+
     }
-    
+
     public func applicationWillFinishLaunching(_ notification: Notification) {
         iVersion.sharedInstance().useAllAvailableLanguages = true
         iVersion.sharedInstance().verboseLogging = false
     }
-    
+
     public func applicationDidFinishLaunching(_ notification: Notification) {
-        
+
         // Initializing the event store takes really long
         EventCenter.sharedCenter()
-        
+
         AppDefaults.initialize()
-        
+
         // Check if we can show the onboarding flow!
         showOnboardingFlow()
-        
+
         // Ratings Controller initialization
         RateController.applicationDidLaunch(UserDefaults.standard)
 
@@ -66,26 +66,26 @@ open class AppDelegate : NSObject, NSApplicationDelegate {
             checkIfRunFromApplicationsFolder()
         #endif
     }
-    
+
     public func applicationDockMenu(_ sender: NSApplication) -> NSMenu? {
         let menu = NSMenu(title: "Quick Access")
-        
+
         Logger.log(object: ["Dock Menu Triggered": "YES"], for: "Dock Menu Triggered")
-        
+
         let toggleMenuItem = NSMenuItem(title: "Toggle Panel", action: #selector(AppDelegate.togglePanel(_:)), keyEquivalent: "")
         let openPreferences = NSMenuItem(title: "Preferences", action: #selector(AppDelegate.openPreferencesWindow), keyEquivalent: ",")
-        
+
         [toggleMenuItem, openPreferences].forEach {
             $0.isEnabled = true
             menu.addItem($0)
         }
-        
+
         return menu
     }
-    
+
     @objc private func openPreferencesWindow() {
         let displayMode = UserDefaults.standard.integer(forKey: CLShowAppInForeground)
-        
+
         if displayMode == 1 {
             let floatingWindow = FloatingWindowController.shared()
             floatingWindow.openPreferences(NSButton())
@@ -94,7 +94,7 @@ open class AppDelegate : NSObject, NSApplicationDelegate {
             panelController.openPreferences(NSButton())
         }
     }
-    
+
     private lazy var controller: OnboardingController? = {
        let s = NSStoryboard(name: NSStoryboard.Name("Onboarding"), bundle: nil)
        return s.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("onboardingFlow")) as? OnboardingController
@@ -102,42 +102,42 @@ open class AppDelegate : NSObject, NSApplicationDelegate {
 
     private func showOnboardingFlow() {
         let shouldLaunchOnboarding = (DataStore.shared().retrieve(key: CLShowOnboardingFlow) == nil && DataStore.shared().timezones().isEmpty) || (ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument))
-        
+
         shouldLaunchOnboarding ? controller?.launch() : continueUsually()
     }
-    
+
     func continueUsually() {
         // Check if another instance of the app is already running. If so, then stop this one.
         checkIfAppIsAlreadyOpen()
-        
+
         // Make sure the old models are not used anymore
         TimezoneData.convert()
-        
+
         // Install the menubar item!
         statusBarHandler = StatusItemHandler()
-        
+
         if UserDefaults.standard.object(forKey: CLInstallHomeIndicatorObject) == nil {
             fetchLocalTimezone()
             UserDefaults.standard.set(1, forKey: CLInstallHomeIndicatorObject)
         }
-        
+
         if ProcessInfo.processInfo.arguments.contains(CLUITestingLaunchArgument) {
             RateController.setPreviewMode(true)
         }
-        
+
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
-        
+
         assignShortcut()
-        
+
         panelController.addObserver(self,
                                     forKeyPath: "hasActivePanel",
                                     options: [.new],
                                     context: &kContextActivePanel)
-        
+
         let defaults = UserDefaults.standard
-        
+
         setActivationPolicy()
-        
+
         // Set the display mode default as panel!
         if let displayMode = defaults.object(forKey: CLShowAppInForeground) as? NSNumber, displayMode.intValue == 1 {
             showFloatingWindow()
@@ -145,22 +145,22 @@ open class AppDelegate : NSObject, NSApplicationDelegate {
             showFloatingWindow()
         }
     }
-    
+
     // Should we have a dock icon or just stay in the menubar?
     private func setActivationPolicy() {
         let defaults = UserDefaults.standard
-        
+
         let activationPolicy: NSApplication.ActivationPolicy = defaults.integer(forKey: CLAppDislayOptions) == 0 ? .accessory : .regular
         NSApp.setActivationPolicy(activationPolicy)
     }
-    
+
     private func checkIfAppIsAlreadyOpen() {
         guard let bundleID = Bundle.main.bundleIdentifier else {
              return
         }
-        
+
         let apps = NSRunningApplication.runningApplications(withBundleIdentifier: bundleID)
-        
+
         if apps.count > 1 {
             let currentApplication = NSRunningApplication.current
             for app in apps where app != currentApplication {
@@ -168,13 +168,13 @@ open class AppDelegate : NSObject, NSApplicationDelegate {
             }
         }
     }
-    
+
     private func showAppAlreadyOpenMessage() {
         showAlert(message: "An instance of Clocker is already open 😅",
                   informativeText: "This instance of Clocker will terminate now.",
                   buttonTitle: "Close")
     }
-    
+
     private func showAlert(message: String, informativeText: String, buttonTitle: String) {
         NSApplication.shared.activate(ignoringOtherApps: true)
         let alert = NSAlert()
@@ -183,24 +183,24 @@ open class AppDelegate : NSObject, NSApplicationDelegate {
         alert.addButton(withTitle: buttonTitle)
         alert.runModal()
     }
-    
+
     private func fetchLocalTimezone() {
         let identifier = TimeZone.autoupdatingCurrent.identifier
-        
+
         let currentTimezone = TimezoneData()
         currentTimezone.timezoneID = identifier
         currentTimezone.setLabel(identifier)
         currentTimezone.formattedAddress = identifier
         currentTimezone.isSystemTimezone = true
         currentTimezone.placeID = "Home"
-        
+
         let operations = TimezoneDataOperations(with: currentTimezone)
         operations.saveObject(at: 0)
-        
+
         // Retrieve Location
         // retrieveLatestLocation()
     }
-    
+
     @IBAction func ping(_ sender: Any) {
         togglePanel(sender)
     }
@@ -209,29 +209,29 @@ open class AppDelegate : NSObject, NSApplicationDelegate {
         let locationController = LocationController.sharedController()
         locationController.determineAndRequestLocationAuthorization()
     }
-    
+
     private func showFloatingWindow() {
         // Display the Floating Window!
         floatingWindow.showWindow(nil)
         floatingWindow.updateTableContent()
         floatingWindow.startWindowTimer()
-        
+
         NSApp.activate(ignoringOtherApps: true)
     }
-    
+
     private func assignShortcut() {
         NSUserDefaultsController.shared.addObserver(self,
                                        forKeyPath: "values.globalPing",
                                        options: [.initial, .new],
                                        context: nil)
     }
-    
+
     private func checkIfRunFromApplicationsFolder() {
-        
+
         if let shortCircuit = UserDefaults.standard.object(forKey: "AllowOutsideApplicationsFolder") as? Bool, shortCircuit == true {
             return
         }
-        
+
         let bundlePath = Bundle.main.bundlePath
         let applicationDirectory = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.applicationDirectory,
                                                                        FileManager.SearchPathDomainMask.localDomainMask,
@@ -241,21 +241,21 @@ open class AppDelegate : NSObject, NSApplicationDelegate {
                 return
             }
         }
-        
+
         // Clocker is installed out of Applications directory
         // This breaks start at login! Time to show an alert and terminate
         showAlert(message: "Move Clocker to the Applications folder",
                   informativeText: "Clocker must be run from the Applications folder in order to work properly.\n\nPlease quit Clocker, move it to the Applications folder, and relaunch. Current folder: \(applicationDirectory)",
             buttonTitle: "Quit")
-        
+
         // Terminate
         NSApp.terminate(nil)
     }
-    
+
     @IBAction open func togglePanel(_ sender: Any) {
-        
+
         let displayMode = UserDefaults.standard.integer(forKey: CLShowAppInForeground)
-        
+
         if displayMode == 1 {
             floatingWindow.showWindow(nil)
             floatingWindow.updateTableContent()
@@ -271,23 +271,23 @@ open class AppDelegate : NSObject, NSApplicationDelegate {
     open func setupFloatingWindow() {
         showFloatingWindow()
     }
-    
+
     open func closeFloatingWindow() {
         floatingWindow.window?.close()
     }
-    
+
     func statusItemForPanel() -> StatusItemHandler {
         return statusBarHandler
     }
-    
+
     open func setPanelDefaults() {
         panelController.updateDefaultPreferences()
     }
-    
+
     open func setupMenubarTimer() {
         statusBarHandler.setupStatusItem()
     }
-    
+
     open func invalidateMenubarTimer(_ showIcon: Bool) {
         statusBarHandler.invalidateTimer(showIcon: showIcon, isSyncing: true)
     }

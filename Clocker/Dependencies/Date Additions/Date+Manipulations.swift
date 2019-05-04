@@ -12,9 +12,9 @@ import Foundation
  *  Extends the Date class by adding manipulation methods for transforming dates
  */
 public extension Date {
-    
+
     // MARK: - StartOf
-    
+
     /**
      *  Return a date set to the start of a given component.
      *
@@ -24,11 +24,10 @@ public extension Date {
      *  with all smaller components set to their minimum
      */
     func start(of component: Component) -> Date {
-        var newDate = self;
+        var newDate = self
         if component == .second {
             newDate.second(self.second)
-        }
-        else if component == .minute {
+        } else if component == .minute {
             newDate.second(0)
         } else if component == .hour {
             newDate.second(0)
@@ -51,7 +50,7 @@ public extension Date {
         }
         return newDate
     }
-    
+
     /**
      *  Return a date set to the end of a given component.
      *
@@ -61,12 +60,11 @@ public extension Date {
      *  with all smaller components set to their maximum
      */
     func end(of component: Component) -> Date {
-        var newDate = self;
+        var newDate = self
         if component == .second {
             newDate.second(newDate.second + 1)
             newDate = newDate - 0.001
-        }
-        else if component == .minute {
+        } else if component == .minute {
             newDate.second(60)
             newDate = newDate - 0.001
         } else if component == .hour {
@@ -92,10 +90,10 @@ public extension Date {
             newDate.month(12)
             newDate.day(31)
         }
-        
+
         return newDate
     }
-    
+
     func daysInMonth(date: Date) -> Int {
         let month = date.month
         if month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 {
@@ -112,10 +110,9 @@ public extension Date {
             return 30
         }
     }
-    
-    
+
     // MARK: - Addition / Subtractions
-    
+
     /**
      *  # Add (TimeChunk to Date)
      *  Increase a date by the value of a given `TimeChunk`.
@@ -136,7 +133,7 @@ public extension Date {
         components.second = chunk.seconds
         return calendar.date(byAdding: components, to: self)!
     }
-    
+
     /**
      *  # Subtract (TimeChunk from Date)
      *  Decrease a date by the value of a given `TimeChunk`.
@@ -157,36 +154,35 @@ public extension Date {
         components.second = -chunk.seconds
         return calendar.date(byAdding: components, to: self)!
     }
-    
-    
+
     // MARK: - Operator Overloads
-    
+
     /**
      *  Operator overload for adding a `TimeChunk` to a date.
      */
     static func +(leftAddend: Date, rightAddend: TimeChunk) -> Date {
         return leftAddend.add(rightAddend)
     }
-    
+
     /**
      *  Operator overload for subtracting a `TimeChunk` from a date.
      */
     static func -(minuend: Date, subtrahend: TimeChunk) -> Date {
         return minuend.subtract(subtrahend)
     }
-    
+
     /**
      *  Operator overload for adding a `TimeInterval` to a date.
      */
     static func +(leftAddend: Date, rightAddend: Int) -> Date {
         return leftAddend.addingTimeInterval((TimeInterval(rightAddend)))
     }
-    
+
     /**
      *  Operator overload for subtracting a `TimeInterval` from a date.
      */
     static func -(minuend: Date, subtrahend: Int) -> Date {
         return minuend.addingTimeInterval(-(TimeInterval(subtrahend)))
     }
-    
+
 }

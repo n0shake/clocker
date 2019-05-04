@@ -11,9 +11,9 @@ private enum MenubarState {
 class StatusItemHandler: NSObject {
 
     var hasActiveIcon: Bool = false
-    
+
     var menubarTimer: Timer?
-    
+
     var statusItem: NSStatusItem = {
         let s = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         s.highlightMode = false
@@ -25,9 +25,9 @@ class StatusItemHandler: NSObject {
     private var parentView: StatusContainerView?
 
     private var nsCalendar = Calendar.autoupdatingCurrent
-    
+
     private lazy var units: Set<Calendar.Component> = Set([.era, .year, .month, .day, .hour, .minute])
-    
+
     // Current State is set twice when the user first launches an app.
     // First, when StatusItemHandler() is instantiated in AppDelegate
     // Second, when AppDelegate.fetchLocalTimezone() is called triggering a customLabel didSet.
@@ -44,7 +44,7 @@ class StatusItemHandler: NSObject {
             case .icon:
                 statusItem.button?.image = nil
             }
-            
+
             // Now setup for the new menubar state
             switch currentState {
             case .compactText:
@@ -54,7 +54,7 @@ class StatusItemHandler: NSObject {
             case .icon:
                 setClockerIcon()
             }
-            
+
             print("\nStatus Bar Current State changed: \(currentState)\n")
         }
     }
@@ -120,7 +120,7 @@ class StatusItemHandler: NSObject {
         parentView = nil
 
         let menubarTimezones = retrieveSyncedMenubarTimezones()
-        
+
         if menubarTimezones.isEmpty {
             currentState = .icon
             return
@@ -130,10 +130,10 @@ class StatusItemHandler: NSObject {
         statusItem.view = parentView
         statusItem.view?.window?.backgroundColor = NSColor.clear
     }
-    
+
     private func retrieveSyncedMenubarTimezones() -> [Data] {
         let defaultPreferences = DataStore.shared().retrieve(key: CLDefaultPreferenceKey) as? [Data] ?? []
-        
+
         let menubarTimezones = defaultPreferences.filter { (data) -> Bool in
             if let timezoneObj = TimezoneData.customObject(from: data) {
                 return timezoneObj.isFavourite == 1
@@ -190,10 +190,10 @@ class StatusItemHandler: NSObject {
 
         RunLoop.main.add(runLoopTimer, forMode: .common)
     }
-    
+
     private func shouldDisplaySecondsInMenubar() -> Bool {
         let syncedTimezones = retrieveSyncedMenubarTimezones()
-        
+
         for timezone in syncedTimezones {
             if let timezoneObj = TimezoneData.customObject(from: timezone) {
                 let shouldShowSeconds = timezoneObj.shouldShowSeconds()
@@ -203,7 +203,7 @@ class StatusItemHandler: NSObject {
             }
             continue
         }
-        
+
         return false
     }
 

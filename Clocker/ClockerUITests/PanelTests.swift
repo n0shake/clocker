@@ -107,15 +107,15 @@ class PanelTests: XCTestCase {
 
         XCTAssertNotEqual(afterUpcomingEventViewExists, beforeUpcomingEventViewExist)
     }
-    
+
     func testRightMouseDownToShowPopover() {
-        
+
         app.tapMenubarIcon()
-        
+
         let cell = app.tables["mainTableView"].cells.firstMatch
         cell.rightClick()
-        
+
         XCTAssert(app.popovers.count > 0)
     }
-    
+
 }

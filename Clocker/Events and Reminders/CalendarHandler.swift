@@ -116,7 +116,7 @@ extension EventCenter {
             if let `self` = self, entity == .event, granted {
                 self.saveDefaultIdentifiersList()
             }
-            
+
             completionHandler(granted)
         }
     }
@@ -146,12 +146,12 @@ extension EventCenter {
 
         print("Unable to filter events because user hasn't selected calendars")
     }
-    
+
     func saveDefaultIdentifiersList() {
         OperationQueue.main.addOperation { [weak self] in
             guard let `self` = self else { return }
             let allCalendars = self.retrieveAllCalendarIdentifiers()
-            
+
             if !allCalendars.isEmpty {
                 UserDefaults.standard.set(allCalendars, forKey: CLSelectedCalendars)
                 print("Finished saving all calendar identifiers in default")
@@ -165,7 +165,7 @@ extension EventCenter {
             return calendar.calendarIdentifier
         }
     }
-    
+
     func fetchEvents(_ start: Int, _ end: Int) {
         if calendarAccessDenied() || calendarAccessNotDetermined() {
             print("Refetching aborted because we don't have permission!")
@@ -258,9 +258,7 @@ extension EventCenter {
 
         for date in eventsForDateMapper.keys {
             let sortedEvents = eventsForDateMapper[date]?.sorted(by: { (e1, e2) -> Bool in
-                if e1.isAllDay { return true }
-                else if e2.isAllDay { return false }
-                else { return e1.event.startDate < e2.event.startDate }
+                if e1.isAllDay { return true } else if e2.isAllDay { return false } else { return e1.event.startDate < e2.event.startDate }
             })
             eventsForDateMapper[date] = sortedEvents
         }

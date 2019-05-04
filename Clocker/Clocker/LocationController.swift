@@ -89,7 +89,7 @@ class LocationController: NSObject {
 
 extension LocationController: CLLocationManagerDelegate {
     func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+
         guard locations.count > 0, let coordinates = locations.first?.coordinate else { return }
 
         let reverseGeoCoder = CLGeocoder()
@@ -99,7 +99,7 @@ extension LocationController: CLLocationManagerDelegate {
             guard let customLabel = placemarks?.first?.locality else { return }
 
             self.updateHomeObject(with: customLabel, coordinates: coordinates)
-            
+
             self.locationManager.stopUpdatingLocation()
         }
     }

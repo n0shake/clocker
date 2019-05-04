@@ -4,7 +4,7 @@ import XCTest
 @testable import Clocker
 
 class RateTests: XCTestCase {
-    
+
     let rateController = RateController.applicationDidLaunch(UserDefaults())
 
     override func setUp() {

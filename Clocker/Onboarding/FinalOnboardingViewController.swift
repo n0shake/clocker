@@ -7,7 +7,7 @@ class FinalOnboardingViewController: NSViewController {
     @IBOutlet var subtitleLabel: NSTextField!
     @IBOutlet var accesoryLabel: NSTextField!
     @IBOutlet var accessoryImageView: NSImageView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.stringValue = "You're all set!"

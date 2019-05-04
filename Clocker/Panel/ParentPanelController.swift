@@ -27,7 +27,7 @@ class ParentPanelController: NSWindowController {
     var morePopover: NSPopover?
 
     var datasource: TimezoneDataSource?
-    
+
     private lazy var feedbackWindow: AppFeedbackWindowController = AppFeedbackWindowController.shared()
 
     private var note: NotesPopover?
@@ -71,7 +71,7 @@ class ParentPanelController: NSWindowController {
     @IBOutlet var calendarButton: NSButton!
 
     @IBOutlet var sliderDatePicker: NSDatePicker!
-    
+
     @IBOutlet var debugVersionView: NSView!
 
     var defaultPreferences: [Data] {
@@ -132,17 +132,17 @@ class ParentPanelController: NSWindowController {
                                                selector: #selector(timezoneGonnaChange),
                                                name: NSNotification.Name.NSSystemTimeZoneDidChange,
                                                object: nil)
-        
+
         showDebugVersionViewIfNeccesary()
     }
-    
+
     private func showDebugVersionViewIfNeccesary() {
-        
+
         if debugVersionView != nil {
             debugVersionView.wantsLayer = true
             debugVersionView.layer?.backgroundColor = NSColor.systemRed.cgColor
         }
-        
+
         #if RELEASE
         if debugVersionView != nil && stackView.arrangedSubviews.contains(debugVersionView) {
             stackView.removeView(debugVersionView)
@@ -248,7 +248,7 @@ class ParentPanelController: NSWindowController {
 
         let styleAttributes = [
             NSAttributedString.Key.paragraphStyle: paragraphStyle,
-            NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13) ?? NSFont.systemFont(ofSize: 13),
+            NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13) ?? NSFont.systemFont(ofSize: 13)
         ]
 
         let leftButtonAttributedTitle = NSAttributedString(string: leftButton.title, attributes: styleAttributes)
@@ -562,13 +562,13 @@ class ParentPanelController: NSWindowController {
         target.image = Themer.shared().extraOptionsHighlightedImage()
 
         popover.animates = true
-        
+
         if note == nil {
             note = NotesPopover(nibName: NSNib.Name.notesPopover, bundle: nil)
             popover.behavior = .applicationDefined
             popover.delegate = self
         }
-    
+
         // Found a case where row number was 8 but we had only 2 timezones
         if correctRow >= defaults.count {
             correctRow = defaults.count - 1
@@ -812,7 +812,7 @@ class ParentPanelController: NSWindowController {
 
         let styleAttributes = [
             NSAttributedString.Key.paragraphStyle: paragraphStyle,
-            NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!,
+            NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!
         ]
         leftButton.attributedTitle = NSAttributedString(string: "Not Really", attributes: styleAttributes)
         rightButton.attributedTitle = NSAttributedString(string: "Yes!", attributes: styleAttributes)
@@ -842,7 +842,7 @@ class ParentPanelController: NSWindowController {
 
                 let styleAttributes = [
                     NSAttributedString.Key.paragraphStyle: paragraphStyle,
-                    NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!,
+                    NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!
                 ]
 
                 if self.leftButton.attributedTitle.string == "Not Really" {

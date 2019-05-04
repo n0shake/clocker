@@ -31,20 +31,20 @@ extension TimezoneDataOperations {
 
         return dateFormatter.string(from: newDate)
     }
-    
+
     func compactMenuHeader() -> String {
-        
+
         var subtitle = CLEmptyString
-        
+
         let shouldDayBeShown = DataStore.shared().shouldShowDateInMenubar()
-        
+
         if shouldDayBeShown {
             let substring = date(with: 0, displayType: CLDateDisplayType.menuDisplay)
             subtitle.append(substring)
         }
-        
+
         subtitle.isEmpty ? subtitle.append(time(with: 0)) : subtitle.append(" \(time(with: 0))")
-        
+
         return subtitle
     }
 
@@ -99,26 +99,26 @@ extension TimezoneDataOperations {
 
         return menuTitle
     }
-    
+
     private func timezoneDate(with sliderValue: Int, _ calendar: Calendar) -> Date {
         let source = timezoneDateByAdding(minutesToAdd: sliderValue, calendar)
         let sourceTimezone = TimeZone.current
         let destinationTimezone = TimeZone(identifier: dataObject.timezone())
-        
+
         let sourceGMTOffset: Double =  Double(sourceTimezone.secondsFromGMT(for: source))
         let destinationGMTOffset: Double = Double(destinationTimezone?.secondsFromGMT(for: source) ?? 0)
         let interval = destinationGMTOffset - sourceGMTOffset
-        
+
         return Date(timeInterval: interval, since: source)
     }
-    
+
     // calendar.dateByAdding takes a 0.1% or 0.2% according to TimeProfiler
     // Let's not use it unless neccesary!
     private func timezoneDateByAdding(minutesToAdd: Int, _ calendar: Calendar?) -> Date {
         if minutesToAdd == 0 {
             return Date()
         }
-        
+
         return calendar?.date(byAdding: .minute,
                              value: minutesToAdd,
                              to: Date()) ?? Date()
@@ -127,7 +127,7 @@ extension TimezoneDataOperations {
     func date(with sliderValue: Int, displayType: CLDateDisplayType) -> String {
         var currentCalendar = Calendar(identifier: .gregorian)
         currentCalendar.locale = Locale.autoupdatingCurrent
-        
+
         let convertedDate = timezoneDate(with: sliderValue, currentCalendar)
 
         guard let relativeDayPreference = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber else {
@@ -136,17 +136,17 @@ extension TimezoneDataOperations {
         }
 
         if displayType == CLDateDisplayType.panelDisplay {
-            
+
             // Yesterday, tomorrow, etc
             if relativeDayPreference.intValue == 0 {
-                
+
                 let localFormatter = DateFormatterManager.localizedSimpleFormatter("EEEE")
                 let local = localFormatter.date(from: localeDate(with: "EEEE"))
-                
+
                 // Gets local week day number and timezone's week day number for comparison
                 let weekDay = currentCalendar.component(.weekday, from: local!)
                 let timezoneWeekday = currentCalendar.component(.weekday, from: convertedDate)
-                
+
                 if weekDay == timezoneWeekday + 1 {
                     return "Yesterday\(timeDifference())"
                 } else if weekDay == timezoneWeekday {
@@ -157,7 +157,7 @@ extension TimezoneDataOperations {
                     return "\(weekdayText(from: convertedDate))\(timeDifference())"
                 }
             }
-    
+
             // Day name: Thursday, Friday etc
             if relativeDayPreference.intValue == 1 {
                 return "\(weekdayText(from: convertedDate))\(timeDifference())"
@@ -167,27 +167,27 @@ extension TimezoneDataOperations {
             if relativeDayPreference.intValue == 2 {
                 return "\(todaysDate(with: sliderValue))\(timeDifference())"
             }
-            
+
             let errorDictionary: [String: Any] = ["Timezone" : dataObject.timezone(),
                                    "Current Locale": Locale.autoupdatingCurrent.identifier,
                                    "Slider Value": sliderValue,
                                    "Today's Date": Date()]
             Logger.log(object: errorDictionary, for: "Unable to get date")
-            
+
             return "Error"
-            
+
         } else {
             return "\(shortWeekdayText(convertedDate))"
         }
     }
-    
+
     // Returns shortened weekday given a date
     // For eg. Thu or Thursday, Tues for Tuesday etc
     private func shortWeekdayText(_ date: Date) -> String {
         let localizedFormatter = DateFormatterManager.localizedSimpleFormatter("E")
         return localizedFormatter.string(from: date)
     }
-    
+
     // Returns proper weekday given a date
     // For eg. Thursday, Sunday, Friday etc
     private func weekdayText(from date: Date) -> String {
@@ -207,12 +207,12 @@ extension TimezoneDataOperations {
             let unableToConvertDateParameters = [
                 "New Date": newDate,
                 "Timezone": dataObject.timezone(),
-                "Locale": dateFormatter.locale.identifier,
+                "Locale": dateFormatter.locale.identifier
                 ] as [String: Any]
             Logger.log(object: unableToConvertDateParameters, for: "Date conversion failure - New Date is nil")
             return CLEmptyString
         }
-        
+
         let timeDifference = local.timeAgo(since: timezoneDate)
 
         if timeDifference.contains("Just now") {
@@ -310,12 +310,12 @@ extension TimezoneDataOperations {
 
         return date
     }
-    
+
     private func localDate() -> String {
         let dateFormatter = DateFormatterManager.dateFormatter(with: .medium, for: TimeZone.autoupdatingCurrent.identifier)
         return dateFormatter.string(from: Date())
     }
-    
+
     private func localeDate(with format: String) -> String {
         let dateFormatter = DateFormatterManager.localizedFormatter(with: format, for: TimeZone.autoupdatingCurrent.identifier)
         return dateFormatter.string(from: Date())
