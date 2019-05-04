@@ -154,7 +154,7 @@ class PreferencesViewController: ParentViewController {
             return
         }
 
-        if selectedTimeZones.count > 0 {
+        if selectedTimeZones.isEmpty == false {
             headerView.isHidden = false
 
             if tableview.subviews.count > 1, let zeroView = notimezoneView, tableview.subviews.contains(zeroView) {
@@ -340,7 +340,7 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
                 return nil
             }
 
-            if let address = model.formattedAddress, address.count > 0 {
+            if let address = model.formattedAddress, address.isEmpty == false {
                 return model.formattedAddress
             }
 
@@ -355,7 +355,7 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
                     return dataSource?.formattedAddress
                 }
             } else {
-                if searchField.stringValue.count > 0 && row < timezoneFilteredArray.count {
+                if searchField.stringValue.isEmpty == false && row < timezoneFilteredArray.count {
                     return timezoneFilteredArray[row]
                 }
                 return timezoneArray[row]
@@ -371,7 +371,7 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
         }
 
         if tableColumn?.identifier.rawValue == "abbreviation" {
-            if searchField.stringValue.count > 0 && (row < timezoneFilteredArray.count) {
+            if searchField.stringValue.isEmpty == false && (row < timezoneFilteredArray.count) {
                 let currentSelection = timezoneFilteredArray[row]
                 if currentSelection == "UTC" {
                     return "UTC"
@@ -945,7 +945,7 @@ extension PreferencesViewController {
             let data = TimezoneData()
             data.setLabel(CLEmptyString)
 
-            if searchField.stringValue.count > 0 {
+            if searchField.stringValue.isEmpty == false {
                 if timezoneFilteredArray.count <= availableTimezoneTableView.selectedRow {
                     return
                 }
@@ -1141,7 +1141,7 @@ extension PreferencesViewController {
             return
         }
 
-        if searchField.stringValue.count > 0 {
+        if searchField.stringValue.isEmpty == false {
             dataTask?.cancel()
             NSObject.cancelPreviousPerformRequests(withTarget: self)
             perform(#selector(search), with: nil, afterDelay: 0.5)
@@ -1279,7 +1279,7 @@ extension PreferencesViewController {
             return filteredArray.count
         }
 
-        if searchField.stringValue.count > 0 {
+        if searchField.stringValue.isEmpty == false {
             return timezoneFilteredArray.count
         }
 

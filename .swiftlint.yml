@@ -2,10 +2,12 @@ disabled_rules: # rule identifiers to exclude from running
   - colon
   - comma
   - control_statement
+  - line_length
+  - type_body_length
+  - file_length
+  - nesting
 opt_in_rules: # some rules are only opt-in
   - empty_count
-  # Find all the available rules by running:
-  # swiftlint rules
 # included: # paths to include during linting. `--path` is ignored if present.
 #   - Clocker
 # excluded: # paths to ignore during linting. Takes precedence over `included`.
@@ -24,7 +26,7 @@ force_try:
   severity: warning # explicitly
 # rules that have both warning and error levels, can set just the warning level
 # implicitly
-line_length: 110
+line_length: 200
 # they can set both implicitly with an array
 type_body_length:
   - 300 # warning

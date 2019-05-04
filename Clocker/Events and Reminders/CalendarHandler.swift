@@ -33,7 +33,7 @@ extension EventCenter {
         // Fetch the user-selected calendars. Initially, all the calendars will be selected
         var setOfCalendars: Set<String> = Set()
 
-        if let userCalendars = UserDefaults.standard.array(forKey: CLSelectedCalendars) as? [String], userCalendars.count > 0 {
+        if let userCalendars = UserDefaults.standard.array(forKey: CLSelectedCalendars) as? [String], !userCalendars.isEmpty {
             setOfCalendars = Set(userCalendars)
         }
 

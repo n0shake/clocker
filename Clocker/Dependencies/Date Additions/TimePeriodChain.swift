@@ -28,7 +28,7 @@ open class TimePeriodChain: TimePeriodGroup {
      * - parameter period: TimePeriodProtocol to add to the collection
      */
     public func append(_ period: TimePeriodProtocol) {
-        let beginning = (self.periods.count > 0) ? self.periods.last!.end! : period.beginning
+        let beginning = (self.periods.isEmpty == false) ? self.periods.last!.end! : period.beginning
 
         let newPeriod = TimePeriod(beginning: beginning!, duration: period.duration)
         self.periods.append(newPeriod)
@@ -50,7 +50,7 @@ open class TimePeriodChain: TimePeriodGroup {
      */
     public func append<G: TimePeriodGroup>(contentsOf group: G) {
         for period in group.periods {
-            let beginning = (self.periods.count > 0) ? self.periods.last!.end! : period.beginning
+            let beginning = (self.periods.isEmpty == false) ? self.periods.last!.end! : period.beginning
 
             let newPeriod = TimePeriod(beginning: beginning!, duration: period.duration)
             self.periods.append(newPeriod)

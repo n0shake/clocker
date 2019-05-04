@@ -35,7 +35,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func tableView(_ tableView: NSTableView, viewFor _: NSTableColumn?, row: Int) -> NSView? {
-        guard timezones.count > 0 else {
+        guard !timezones.isEmpty else {
             if let addCellView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "addCell"), owner: self) as? AddTableViewCell {
                 return addCellView
             }
@@ -71,14 +71,14 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func tableView(_: NSTableView, heightOfRow row: Int) -> CGFloat {
-        guard timezones.count > 0 else {
+        guard !timezones.isEmpty else {
             return 100
         }
 
         if let userFontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber, timezones.count > row {
             let model = timezones[row]
 
-            if let note = model.note, note.count > 0 {
+            if let note = model.note, !note.isEmpty {
                 return CGFloat(65 + userFontSize.floatValue + 30)
             }
 
@@ -89,7 +89,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func tableView(_ tableView: NSTableView, rowActionsForRow row: Int, edge: NSTableView.RowActionEdge) -> [NSTableViewRowAction] {
-        guard timezones.count > 0 else {
+        guard !timezones.isEmpty else {
             return []
         }
 
@@ -171,7 +171,7 @@ extension TimezoneDataSource: PanelTableViewDelegate {
 
 extension TimezoneCellView {
     func layout(with model: TimezoneData) {
-        let shouldDisplay = DataStore.shared().shouldDisplay(.sunrise) && sunriseSetTime.stringValue.count > 0
+        let shouldDisplay = DataStore.shared().shouldDisplay(.sunrise) && !sunriseSetTime.stringValue.isEmpty
 
         sunriseSetTime.isHidden = !shouldDisplay
         sunriseImage.isHidden = !shouldDisplay

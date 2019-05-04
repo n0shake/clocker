@@ -353,7 +353,7 @@ class ParentPanelController: NSWindowController {
 
             if height >= 68.0 {
                 height = 75.0
-                if let note = currentObject?.note, note.count > 0 {
+                if let note = currentObject?.note, note.isEmpty == false {
                     height += 30
                 }
             }
@@ -700,7 +700,7 @@ class ParentPanelController: NSWindowController {
         let eventCenter = EventCenter.sharedCenter()
         let now = Date()
 
-        if let events = eventCenter.eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: now)], events.count > 0 {
+        if let events = eventCenter.eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: now)], events.isEmpty == false {
             OperationQueue.main.addOperation {
                 guard let upcomingEvent = eventCenter.nextOccuring(events) else {
                     self.setPlaceholdersForUpcomingCalendarView()

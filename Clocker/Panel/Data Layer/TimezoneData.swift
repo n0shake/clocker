@@ -210,7 +210,7 @@ class TimezoneData: NSObject, NSCoding {
 
     /// Converts the Obj-C model objects into Swift
     class func convert() {
-        if let timezones = DataStore.shared().retrieve(key: CLDefaultPreferenceKey) as? [Data], timezones.count > 0 {
+        if let timezones = DataStore.shared().retrieve(key: CLDefaultPreferenceKey) as? [Data], !timezones.isEmpty {
             let newModels = converter(timezones)
 
             if newModels.count == timezones.count {
@@ -224,7 +224,7 @@ class TimezoneData: NSObject, NSCoding {
             }
         }
 
-        if let menubarTimezones = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data], menubarTimezones.count > 0 {
+        if let menubarTimezones = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data], !menubarTimezones.isEmpty {
             let newMenubarModels = converter(menubarTimezones)
 
             if newMenubarModels.count == menubarTimezones.count {
@@ -296,17 +296,17 @@ class TimezoneData: NSObject, NSCoding {
 
     func formattedTimezoneLabel() -> String {
         // First check if there's an user preferred custom label set
-        if let label = customLabel, label.count > 0 {
+        if let label = customLabel, !label.isEmpty {
             return label
         }
 
         // No custom label, return the formatted address/timezone
-        if let address = formattedAddress, address.count > 0 {
+        if let address = formattedAddress, !address.isEmpty {
             return address
         }
 
         // No formatted address, return the timezoneID
-        if let timezone = timezoneID, timezone.count > 0 {
+        if let timezone = timezoneID, !timezone.isEmpty {
             let hashSeperatedString = timezone.components(separatedBy: "/")
 
             // Return the second component!
@@ -323,7 +323,7 @@ class TimezoneData: NSObject, NSCoding {
     }
 
     func setLabel(_ label: String) {
-        customLabel = label.count > 0 ? label : CLEmptyString
+        customLabel = !label.isEmpty ? label : CLEmptyString
     }
 
     func setShouldOverrideGlobalTimeFormat(_ shouldOverride: Int) {

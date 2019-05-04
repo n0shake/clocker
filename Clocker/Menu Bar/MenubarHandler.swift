@@ -19,7 +19,7 @@ class MenubarHandler: NSObject {
             return nil
         }
 
-        if menubarTitles.count > 0 {
+        if menubarTitles.isEmpty == false {
             let titles = menubarTitles.map({ (data) -> String? in
                 let timezone = TimezoneData.customObject(from: data)
                 let operationsObject = TimezoneDataOperations(with: timezone!)

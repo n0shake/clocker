@@ -58,16 +58,16 @@ extension TimezoneDataOperations {
         let shouldDateBeShown = dataStore.shouldDisplay(.dateInMenubar)
 
         if shouldCityBeShown {
-            if let address = dataObject.formattedAddress, address.count > 0 {
+            if let address = dataObject.formattedAddress, address.isEmpty == false {
                 if let label = dataObject.customLabel {
-                    label.count > 0 ? menuTitle.append(label) : menuTitle.append(address)
+                    label.isEmpty == false ? menuTitle.append(label) : menuTitle.append(address)
                 } else {
                     menuTitle.append(address)
                 }
 
             } else {
                 if let label = dataObject.customLabel {
-                    label.count > 0 ? menuTitle.append(label) : menuTitle.append(dataObject.timezone())
+                    label.isEmpty == false ? menuTitle.append(label) : menuTitle.append(dataObject.timezone())
                 } else {
                     menuTitle.append(dataObject.timezone())
                 }
@@ -79,7 +79,7 @@ extension TimezoneDataOperations {
             let endIndex = substring.index(substring.startIndex, offsetBy: 2)
             substring = String(substring[substring.startIndex ... endIndex])
 
-            if menuTitle.count > 0 {
+            if menuTitle.isEmpty == false {
                 menuTitle.append(" \(substring.capitalized)")
             } else {
                 menuTitle.append(substring.capitalized)
@@ -88,14 +88,14 @@ extension TimezoneDataOperations {
 
         if shouldDateBeShown {
             let date = Date().formatter(with: "MMM d", timeZone: dataObject.timezone())
-            if menuTitle.count > 0 {
+            if menuTitle.isEmpty == false {
                 menuTitle.append(" \(date)")
             } else {
                 menuTitle.append("\(date)")
             }
         }
 
-        menuTitle.count > 0 ? menuTitle.append(" \(time(with: 0))") : menuTitle.append(time(with: 0))
+        menuTitle.isEmpty == false ? menuTitle.append(" \(time(with: 0))") : menuTitle.append(time(with: 0))
 
         return menuTitle
     }

@@ -244,7 +244,7 @@ class NotesPopover: NSViewController {
             let remindersScript = NSAppleScript(source: source)
             let eventDescriptor = remindersScript?.executeAndReturnError(&scriptExecutionErrors)
 
-            if let errors = scriptExecutionErrors, errors.allKeys.count > 0 {
+            if let errors = scriptExecutionErrors, errors.allKeys.isEmpty == false {
                 if let convertedType = errors as? [String: Any] {
                     Logger.log(object: convertedType, for: "Script Execution Errors")
                 }

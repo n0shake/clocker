@@ -13,7 +13,7 @@ extension EventCenter {
             let predicate = NSPredicate(format: "title matches %@", calendarTitle)
             let filtered = calendars.filter({ predicate.evaluate(with: $0) })
 
-            if filtered.count > 0 {
+            if !filtered.isEmpty {
                 calendar = filtered.first
             } else {
                 calendar = EKCalendar(for: .reminder, eventStore: store)
