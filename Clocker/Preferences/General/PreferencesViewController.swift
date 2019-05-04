@@ -29,7 +29,6 @@ class PreferencesViewController: ParentViewController {
     private var selectedTimeZones: [Data] {
         get {
             return DataStore.shared().timezones()
-        } set {
         }
     }
 
@@ -79,6 +78,7 @@ class PreferencesViewController: ParentViewController {
     @IBOutlet var headerLabel: NSTextField!
 
     @IBOutlet var sortToggle: NSButton!
+    private var themeDidChangeNotification: NSObjectProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,8 +98,14 @@ class PreferencesViewController: ParentViewController {
 
         darkModeChanges()
 
-        NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { _ in
+        themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { _ in
             self.setup()
+        }
+    }
+
+    deinit {
+        if let themeDidChangeNotif = themeDidChangeNotification {
+            NotificationCenter.default.removeObserver(themeDidChangeNotif)
         }
     }
 

@@ -13,6 +13,8 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet weak var includeDateInMenubarControl: NSSegmentedControl!
     @IBOutlet weak var includePlaceNameControl: NSSegmentedControl!
 
+    private var themeDidChangeNotification: NSObjectProtocol?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,10 +36,16 @@ class AppearanceViewController: ParentViewController {
 
         setup()
 
-        NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (_) in
+        themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (_) in
             self.setup()
             self.animateBackgroundColorChange()
             self.view.needsDisplay = true // Let's make the color change permanent.
+        }
+    }
+
+    deinit {
+        if let themeDidChangeNotif = themeDidChangeNotification {
+            NotificationCenter.default.removeObserver(themeDidChangeNotif)
         }
     }
 

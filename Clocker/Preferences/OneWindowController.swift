@@ -25,12 +25,13 @@ class CenteredTabViewController: NSTabViewController {
 class OneWindowController: NSWindowController {
 
     private static var sharedWindow: OneWindowController!
+    private var themeDidChangeNotification: NSObjectProtocol?
 
     override func windowDidLoad() {
         super.windowDidLoad()
         setup()
 
-        NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (_) in
+        themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (_) in
 
             NSAnimationContext.runAnimationGroup({ (context) in
                 context.duration = 1
@@ -39,6 +40,12 @@ class OneWindowController: NSWindowController {
             })
 
             self.setupToolbarImages()
+        }
+    }
+
+    deinit {
+        if let themeDidChangeNotif = themeDidChangeNotification {
+            NotificationCenter.default.removeObserver(themeDidChangeNotif)
         }
     }
 

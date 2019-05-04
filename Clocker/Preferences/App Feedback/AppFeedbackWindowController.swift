@@ -31,6 +31,7 @@ class AppFeedbackWindowController: NSWindowController {
     @IBOutlet var informativeText: NSTextField!
     @IBOutlet var progressIndicator: NSProgressIndicator!
 
+    private var themeDidChangeNotification: NSObjectProtocol?
     private var serialNumber: String? {
         let platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
 
@@ -72,7 +73,9 @@ class AppFeedbackWindowController: NSWindowController {
 
         setup()
 
-        NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { _ in
+        themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification,
+                                                                            object: nil,
+                                                                            queue: OperationQueue.main) { _ in
             self.window?.backgroundColor = Themer.shared().mainBackgroundColor()
             self.setup()
         }
@@ -84,6 +87,12 @@ class AppFeedbackWindowController: NSWindowController {
 
     override init(window: NSWindow!) {
         super.init(window: window)
+    }
+
+    deinit {
+        if let themeDidChangeNotif = themeDidChangeNotification {
+            NotificationCenter.default.removeObserver(themeDidChangeNotif)
+        }
     }
 
     required init?(coder _: NSCoder) {

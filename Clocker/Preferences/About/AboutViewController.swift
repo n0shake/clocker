@@ -18,6 +18,7 @@ class AboutViewController: ParentViewController {
     @IBOutlet var openSourceButton: UnderlinedButton!
     @IBOutlet var versionField: NSTextField!
 
+    private var themeDidChangeNotification: NSObjectProtocol?
     private lazy var feedbackWindow = AppFeedbackWindowController.shared()
 
     override func viewDidLoad() {
@@ -32,8 +33,14 @@ class AboutViewController: ParentViewController {
 
         setup()
 
-        NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (_) in
+        themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (_) in
             self.setup()
+        }
+    }
+
+    deinit {
+        if let themeDidChangeNotif = themeDidChangeNotification {
+            NotificationCenter.default.removeObserver(themeDidChangeNotif)
         }
     }
 

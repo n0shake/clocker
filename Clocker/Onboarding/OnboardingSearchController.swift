@@ -18,6 +18,7 @@ class OnboardingSearchController: NSViewController {
 
     private var results: [TimezoneData] = []
     private var dataTask: URLSessionDataTask? = .none
+    private var themeDidChangeNotification: NSObjectProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,7 @@ class OnboardingSearchController: NSViewController {
 
         setup()
 
-        NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { _ in
+        themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { _ in
             self.setup()
         }
 
@@ -45,6 +46,12 @@ class OnboardingSearchController: NSViewController {
         }
 
         setupUndoButton()
+    }
+
+    deinit {
+        if let themeDidChangeNotif = themeDidChangeNotification {
+            NotificationCenter.default.removeObserver(themeDidChangeNotif)
+        }
     }
 
     @objc func doubleClickAction(_: NSTableView?) {

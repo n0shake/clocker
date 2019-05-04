@@ -5,14 +5,22 @@ import EventKit
 
 class ClockerTextBackgroundView: NSView {
 
+    private var themeDidChangeNotification: NSObjectProtocol?
+
     override func awakeFromNib() {
         wantsLayer = true
         layer?.cornerRadius = 8.0
         layer?.masksToBounds = false
         layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
 
-        NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (_) in
+        themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (_) in
             self.layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
+        }
+    }
+
+    deinit {
+        if let themeDidChangeNotif = themeDidChangeNotification {
+            NotificationCenter.default.removeObserver(themeDidChangeNotif)
         }
     }
 
@@ -35,6 +43,7 @@ class CalendarViewController: ParentViewController {
     @IBOutlet weak var showNextMeetingInMenubarControl: NSSegmentedControl!
     @IBOutlet weak var backgroundView: NSView!
     @IBOutlet weak var nextMeetingBackgroundView: NSView!
+    private var themeDidChangeNotification: NSObjectProtocol?
 
     private lazy var calendars: [Any] = EventCenter.sharedCenter().fetchSourcesAndCalendars()
 
@@ -48,12 +57,18 @@ class CalendarViewController: ParentViewController {
                                                name: .calendarAccessGranted,
                                                object: nil)
 
-        NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (_) in
+        themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (_) in
             self.setup()
         }
 
         if #available(macOS 10.14, *) {
             noAccessView.material = .underWindowBackground
+        }
+    }
+
+    deinit {
+        if let themeDidChangeNotif = themeDidChangeNotification {
+            NotificationCenter.default.removeObserver(themeDidChangeNotif)
         }
     }
 

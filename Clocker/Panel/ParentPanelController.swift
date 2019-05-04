@@ -12,6 +12,9 @@ struct PanelConstants {
 }
 
 class ParentPanelController: NSWindowController {
+
+    private var eventStoreChangedNotification: NSObjectProtocol?
+
     var dateFormatter = DateFormatter()
 
     var futureSliderValue: Int {
@@ -80,6 +83,10 @@ class ParentPanelController: NSWindowController {
 
     deinit {
         datasource = nil
+
+        if let eventStoreNotif = eventStoreChangedNotification {
+            NotificationCenter.default.removeObserver(eventStoreNotif)
+        }
     }
 
     override func awakeFromNib() {
@@ -200,7 +207,7 @@ class ParentPanelController: NSWindowController {
         } else {
             upcomingEventView?.isHidden = false
             setupUpcomingEventView()
-            NotificationCenter.default.addObserver(forName: NSNotification.Name.EKEventStoreChanged, object: self, queue: OperationQueue.main) { _ in
+            eventStoreChangedNotification = NotificationCenter.default.addObserver(forName: NSNotification.Name.EKEventStoreChanged, object: self, queue: OperationQueue.main) { _ in
                 self.fetchCalendarEvents()
             }
         }

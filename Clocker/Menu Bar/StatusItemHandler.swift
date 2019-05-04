@@ -28,6 +28,8 @@ class StatusItemHandler: NSObject {
 
     private lazy var units: Set<Calendar.Component> = Set([.era, .year, .month, .day, .hour, .minute])
 
+    private var userNotificationsDidChangeNotif: NSObjectProtocol?
+
     // Current State is set twice when the user first launches an app.
     // First, when StatusItemHandler() is instantiated in AppDelegate
     // Second, when AppDelegate.fetchLocalTimezone() is called triggering a customLabel didSet.
@@ -109,10 +111,16 @@ class StatusItemHandler: NSObject {
                                                           name: .interfaceStyleDidChange,
                                                           object: nil)
 
-        center.addObserver(forName: UserDefaults.didChangeNotification,
+        userNotificationsDidChangeNotif = center.addObserver(forName: UserDefaults.didChangeNotification,
                            object: self,
                            queue: mainQueue) { _ in
             self.setupStatusItem()
+        }
+    }
+
+    deinit {
+        if let userNotifsDidChange = userNotificationsDidChangeNotif {
+            NotificationCenter.default.removeObserver(userNotifsDidChange)
         }
     }
 

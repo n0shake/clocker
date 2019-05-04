@@ -22,12 +22,14 @@ class PermissionsViewController: ParentViewController {
     @IBOutlet private var privacyLabel: NSTextField!
     @IBOutlet private var headerLabel: NSTextField!
 
+    private var themeDidChangeNotification: NSObjectProtocol?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         [calendarContainerView, remindersContainerView].forEach { $0?.applyShadow() }
         setupLocalizedText()
 
-        NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { _ in
+        themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { _ in
             self.setupLocalizedText()
             [self.calendarContainerView, self.remindersContainerView].forEach { $0?.applyShadow() }
         }
@@ -36,6 +38,12 @@ class PermissionsViewController: ParentViewController {
     override func viewWillAppear() {
         super.viewDidLoad()
         setup()
+    }
+
+    deinit {
+        if let themeDidChangeNotif = themeDidChangeNotification {
+            NotificationCenter.default.removeObserver(themeDidChangeNotif)
+        }
     }
 
     private func setup() {
