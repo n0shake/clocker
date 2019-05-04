@@ -66,13 +66,11 @@ class LocationController: NSObject {
             }
         }
 
-        for timezoneObject in timezoneObjects {
-            if timezoneObject.isSystemTimezone == true {
-                timezoneObject.setLabel(customLabel)
-                if let latlong = coordinates {
-                    timezoneObject.longitude = latlong.longitude
-                    timezoneObject.latitude = latlong.latitude
-                }
+        for timezoneObject in timezoneObjects where timezoneObject.isSystemTimezone == true {
+            timezoneObject.setLabel(customLabel)
+            if let latlong = coordinates {
+                timezoneObject.longitude = latlong.longitude
+                timezoneObject.latitude = latlong.latitude
             }
         }
 
