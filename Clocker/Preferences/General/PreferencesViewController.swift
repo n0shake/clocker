@@ -27,9 +27,7 @@ class PreferencesViewController: ParentViewController {
     }
 
     private var selectedTimeZones: [Data] {
-        get {
-            return DataStore.shared().timezones()
-        }
+        return DataStore.shared().timezones()
     }
 
     private var filteredArray: [Any] = []
