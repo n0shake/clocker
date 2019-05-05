@@ -7,18 +7,15 @@ open class AppDelegate : NSObject, NSApplicationDelegate {
     lazy private var floatingWindow: FloatingWindowController = FloatingWindowController.shared()
     lazy private var panelController: PanelController = PanelController.shared()
     private var statusBarHandler: StatusItemHandler!
+    private var panelObserver: NSKeyValueObservation?
 
     deinit {
-        panelController.removeObserver(self, forKeyPath: "hasActivePanel")
+        panelObserver?.invalidate()
     }
-
-    private var kContextActivePanel = 0
 
     open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
 
-        if context == &kContextActivePanel {
-            statusBarHandler.setHasActiveIcon(panelController.hasActivePanelGetter())
-        } else if let path = keyPath, path == "values.globalPing" {
+        if let path = keyPath, path == "values.globalPing" {
 
             let hotKeyCenter = PTHotKeyCenter.shared()
 
@@ -129,10 +126,9 @@ open class AppDelegate : NSObject, NSApplicationDelegate {
 
         assignShortcut()
 
-        panelController.addObserver(self,
-                                    forKeyPath: "hasActivePanel",
-                                    options: [.new],
-                                    context: &kContextActivePanel)
+        panelObserver = panelController.observe(\.hasActivePanel, options: [.new]) { (obj, change) in
+             self.statusBarHandler.setHasActiveIcon(obj.hasActivePanelGetter())
+        }
 
         let defaults = UserDefaults.standard
 
