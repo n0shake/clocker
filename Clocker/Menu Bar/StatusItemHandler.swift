@@ -15,9 +15,9 @@ class StatusItemHandler: NSObject {
     var menubarTimer: Timer?
 
     var statusItem: NSStatusItem = {
-        let s = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        s.highlightMode = false
-        return s
+        let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        statusItem.highlightMode = false
+        return statusItem
     }()
 
     private var menubarTitleHandler = MenubarHandler()

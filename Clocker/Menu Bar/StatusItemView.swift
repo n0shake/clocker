@@ -3,10 +3,10 @@
 import Cocoa
 
 private var defaultParagraphStyle: NSMutableParagraphStyle {
-    let p = NSMutableParagraphStyle()
-    p.alignment = .center
-    p.lineBreakMode = .byTruncatingTail
-    return p
+    let paragraphStyle = NSMutableParagraphStyle()
+    paragraphStyle.alignment = .center
+    paragraphStyle.lineBreakMode = .byTruncatingTail
+    return paragraphStyle
 }
 
 var compactModeTimeFont: NSFont {

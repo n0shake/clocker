@@ -257,8 +257,8 @@ extension EventCenter {
         // We now sort the array so that AllDay Events are first, then sort by startTime
 
         for date in eventsForDateMapper.keys {
-            let sortedEvents = eventsForDateMapper[date]?.sorted(by: { (e1, e2) -> Bool in
-                if e1.isAllDay { return true } else if e2.isAllDay { return false } else { return e1.event.startDate < e2.event.startDate }
+            let sortedEvents = eventsForDateMapper[date]?.sorted(by: { (event1, event2) -> Bool in
+                if event1.isAllDay { return true } else if event2.isAllDay { return false } else { return event1.event.startDate < event2.event.startDate }
             })
             eventsForDateMapper[date] = sortedEvents
         }

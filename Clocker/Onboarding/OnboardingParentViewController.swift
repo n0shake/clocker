@@ -177,9 +177,9 @@ class OnboardingParentViewController: NSViewController {
         }
     }
 
-    private func addChildIfNeccessary(_ vc: NSViewController) {
-        if children.contains(vc) == false {
-            addChild(vc)
+    private func addChildIfNeccessary(_ viewController: NSViewController) {
+        if children.contains(viewController) == false {
+            addChild(viewController)
         }
     }
 

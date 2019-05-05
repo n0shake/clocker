@@ -11,8 +11,8 @@ opt_in_rules: # some rules are only opt-in
   - empty_count
 # included: # paths to include during linting. `--path` is ignored if present.
 #   - Clocker
-# excluded: # paths to ignore during linting. Takes precedence over `included`.
-  # - Carthage
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Clocker/Dependencies
   # - Pods
   # - Source/ExcludedFolder
   # - Source/ExcludedFile.swift

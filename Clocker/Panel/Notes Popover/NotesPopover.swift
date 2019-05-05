@@ -292,7 +292,7 @@ class NotesPopover: NSViewController {
         let menubarIndex = timezones.firstIndex { (menubarLocation) -> Bool in
 
             if let convertedObject = TimezoneData.customObject(from: menubarLocation) {
-                return convertedObject == dataObject
+                return convertedObject.isEqual(dataObject)
             }
 
             return false
@@ -320,7 +320,7 @@ class NotesPopover: NSViewController {
             }
         }
 
-        for timezoneObject in timezoneObjects where timezoneObject == dataObject {
+        for timezoneObject in timezoneObjects where timezoneObject.isEqual(dataObject) {
             overrideType == .timezoneFormat ?
                 timezoneObject.setShouldOverrideGlobalTimeFormat(override) :
                 timezoneObject.setShouldOverrideSecondsFormat(override)
@@ -349,7 +349,7 @@ class NotesPopover: NSViewController {
             }
         }
 
-        for timezoneObject in timezoneObjects where timezoneObject == dataObject {
+        for timezoneObject in timezoneObjects where timezoneObject.isEqual(dataObject) {
             overrideType == .timezoneFormat ?
                 timezoneObject.setShouldOverrideGlobalTimeFormat(override) :
                 timezoneObject.setShouldOverrideSecondsFormat(override)

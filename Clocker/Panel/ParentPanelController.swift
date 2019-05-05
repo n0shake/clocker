@@ -367,7 +367,7 @@ class ParentPanelController: NSWindowController {
                 // Set it to 95 expicity in case the row height is calculated be higher.
                 height = 95.0
 
-                if let note = currentObject?.note, note.count <= 0 {
+                if let note = currentObject?.note, note.isEmpty {
                     height -= 30.0
                 }
             }

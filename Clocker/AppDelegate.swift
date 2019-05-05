@@ -96,8 +96,8 @@ open class AppDelegate : NSObject, NSApplicationDelegate {
     }
 
     private lazy var controller: OnboardingController? = {
-       let s = NSStoryboard(name: NSStoryboard.Name("Onboarding"), bundle: nil)
-       return s.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("onboardingFlow")) as? OnboardingController
+       let onboardingStoryboard = NSStoryboard(name: NSStoryboard.Name("Onboarding"), bundle: nil)
+       return onboardingStoryboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("onboardingFlow")) as? OnboardingController
     }()
 
     private func showOnboardingFlow() {

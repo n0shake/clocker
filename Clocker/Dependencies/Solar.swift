@@ -98,12 +98,12 @@ public struct Solar {
         rightAscenscion = normalise(rightAscenscion, withMaximum: 360)
 
         // Right ascension value needs to be in the same quadrant as L...
-        let Lquadrant = floor(longitude / 90) * 90
-        let RAquadrant = floor(rightAscenscion / 90) * 90
-        rightAscenscion = rightAscenscion + (Lquadrant - RAquadrant)
+        let leftQuadrant = floor(longitude / 90) * 90
+        let rightQuadrant = floor(rightAscenscion / 90) * 90
+        rightAscenscion += (leftQuadrant - rightQuadrant)
 
         // Convert RA into hours
-        rightAscenscion = rightAscenscion / 15
+        rightAscenscion /= 15
 
         // Calculate Sun's declination
         let sinDec = 0.39782 * sin(longitude.degreesToRadians)

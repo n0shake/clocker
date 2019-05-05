@@ -242,28 +242,28 @@ public struct TimeChunk {
     /**
      *  Operator overload for adding two `TimeChunk`s
      */
-    public static func +(leftAddend: TimeChunk, rightAddend: TimeChunk) -> TimeChunk {
+    public static func + (leftAddend: TimeChunk, rightAddend: TimeChunk) -> TimeChunk {
         return leftAddend.lengthened(by: rightAddend)
     }
 
     /**
      *  Operator overload for subtracting two `TimeChunk`s
      */
-    public static func -(minuend: TimeChunk, subtrahend: TimeChunk) -> TimeChunk {
+    public static func - (minuend: TimeChunk, subtrahend: TimeChunk) -> TimeChunk {
         return minuend.shortened(by: subtrahend)
     }
 
     /**
      *  Operator overload for checking if two `TimeChunk`s are equal
      */
-    public static func ==(left: TimeChunk, right: TimeChunk) -> Bool {
+    public static func == (left: TimeChunk, right: TimeChunk) -> Bool {
         return left.equals(chunk: right)
     }
 
     /**
      *  Operator overload for inverting (negating all variables) a `TimeChunk`
      */
-    public static prefix func -(chunk: TimeChunk) -> TimeChunk {
+    public static prefix func - (chunk: TimeChunk) -> TimeChunk {
         var invertedChunk = chunk
         invertedChunk.seconds = -chunk.seconds
         invertedChunk.minutes = -chunk.minutes

@@ -114,11 +114,9 @@ class FloatingWindowTests: XCTestCase {
         let menubarDisplayQuery = app.tables.checkBoxes.matching(NSPredicate(format: "value == 1", ""))
         let menubarDisplayQueryCount = menubarDisplayQuery.count
 
-        for i in 0..<menubarDisplayQueryCount {
-            if i < menubarDisplayQueryCount {
-                menubarDisplayQuery.element(boundBy: 0).click()
-                sleep(1)
-            }
+        for index in 0..<menubarDisplayQueryCount where index < menubarDisplayQueryCount {
+            menubarDisplayQuery.element(boundBy: 0).click()
+            sleep(1)
         }
 
         let appearanceTab = app.toolbars.buttons.element(boundBy: 1)
@@ -149,8 +147,8 @@ class FloatingWindowTests: XCTestCase {
 
             var previousValues: [String] = []
 
-            for i in 0 ..< tomorrow.count {
-                let element = tomorrow.element(boundBy: i)
+            for index in 0 ..< tomorrow.count {
+                let element = tomorrow.element(boundBy: index)
                 guard let supplementaryText = element.value as? String else {
                     continue
                 }
@@ -165,8 +163,8 @@ class FloatingWindowTests: XCTestCase {
 
             var newValues: [String] = []
 
-            for i in 0 ..< newTomorrow.count {
-                let element = newTomorrow.element(boundBy: i)
+            for index in 0 ..< newTomorrow.count {
+                let element = newTomorrow.element(boundBy: index)
                 guard let supplementaryText = element.value as? String else {
                     continue
                 }

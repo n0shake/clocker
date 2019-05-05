@@ -132,10 +132,10 @@ class TimezoneCellView: NSTableCellView {
 
         let count = range.length
         let currentRow = labs(rowNumber + 1 - count)
-        let y = CGFloat(currentRow * 68 + 34)
+        let yCoordinate = CGFloat(currentRow * 68 + 34)
 
         let relativeRect = CGRect(x: 0,
-                                  y: y,
+                                  y: yCoordinate,
                                   width: frame.size.width,
                                   height: frame.size.height)
 

@@ -80,7 +80,7 @@ class DataStore: NSObject {
 
         userDefaults.set(currentLineup, forKey: CLDefaultPreferenceKey)
     }
-    
+
     private func shouldDisplayHelper(_ key: String) -> Bool {
         guard let value = retrieve(key: key) as? NSNumber else {
             return false

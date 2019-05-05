@@ -7,9 +7,9 @@ class LocationController: NSObject {
     public static let sharedInstance = LocationController()
 
     private var locationManager: CLLocationManager = {
-        let l = CLLocationManager()
-        l.desiredAccuracy = kCLLocationAccuracyThreeKilometers
-        return l
+        let locationManager = CLLocationManager()
+        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+        return locationManager
     }()
 
     @objc class func sharedController() -> LocationController {

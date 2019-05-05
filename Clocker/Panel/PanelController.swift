@@ -46,16 +46,16 @@ class PanelController: ParentPanelController {
     func setFrameTheNewWay(_ rect: NSRect, _ maxX: CGFloat) {
         // Calculate window's top left point.
         // First, center window under status item.
-        let w = (window?.frame)!.width
-        var x = CGFloat(roundf(Float(rect.midX - w / 2)))
-        let y = CGFloat(rect.minY - 2)
+        let width = (window?.frame)!.width
+        var xPoint = CGFloat(roundf(Float(rect.midX - width / 2)))
+        let yPoint = CGFloat(rect.minY - 2)
         let kMinimumSpaceBetweenWindowAndScreenEdge: CGFloat = 10
 
-        if x + w + kMinimumSpaceBetweenWindowAndScreenEdge > maxX {
-            x = maxX - w - kMinimumSpaceBetweenWindowAndScreenEdge
+        if xPoint + width + kMinimumSpaceBetweenWindowAndScreenEdge > maxX {
+            xPoint = maxX - width - kMinimumSpaceBetweenWindowAndScreenEdge
         }
 
-        window?.setFrameTopLeftPoint(NSPoint(x: x, y: y))
+        window?.setFrameTopLeftPoint(NSPoint(x: xPoint, y: yPoint))
 
         window?.invalidateShadow()
     }

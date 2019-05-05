@@ -5,40 +5,40 @@ import QuartzCore
 
 class NoTimezoneView: NSView {
     private lazy var emoji: NSTextField = {
-        let l = NSTextField(frame: NSRect(x: frame.size.width / 2 - 50,
+        let emoji = NSTextField(frame: NSRect(x: frame.size.width / 2 - 50,
                                           y: frame.size.height / 2 - 50,
                                           width: 100,
                                           height: 100))
-        l.wantsLayer = true
-        l.stringValue = "🌏"
-        l.isBordered = false
-        l.isEditable = false
-        l.focusRingType = .none
-        l.alignment = .center
-        l.font = NSFont.systemFont(ofSize: 80)
-        l.backgroundColor = .clear
-        l.setAccessibilityIdentifier("NoTimezoneEmoji")
-        return l
+        emoji.wantsLayer = true
+        emoji.stringValue = "🌏"
+        emoji.isBordered = false
+        emoji.isEditable = false
+        emoji.focusRingType = .none
+        emoji.alignment = .center
+        emoji.font = NSFont.systemFont(ofSize: 80)
+        emoji.backgroundColor = .clear
+        emoji.setAccessibilityIdentifier("NoTimezoneEmoji")
+        return emoji
     }()
 
     private lazy var message: NSTextField = {
-        let m = NSTextField(frame: NSRect(x: frame.size.width / 2 - 250,
+        let messageField = NSTextField(frame: NSRect(x: frame.size.width / 2 - 250,
                                           y: frame.size.height / 2 - 275,
                                           width: 500,
                                           height: 200))
-        m.wantsLayer = true
-        m.setAccessibilityIdentifier("NoTimezoneMessage")
-        m.placeholderString = "No places added"
-        m.stringValue = "No places added"
-        m.isBordered = false
-        m.isEditable = false
-        m.maximumNumberOfLines = 2
-        m.focusRingType = .none
-        m.alignment = .center
-        m.font = NSFont(name: "Avenir", size: 24)
-        m.backgroundColor = .clear
-        m.textColor = .darkGray
-        return m
+        messageField.wantsLayer = true
+        messageField.setAccessibilityIdentifier("NoTimezoneMessage")
+        messageField.placeholderString = "No places added"
+        messageField.stringValue = "No places added"
+        messageField.isBordered = false
+        messageField.isEditable = false
+        messageField.maximumNumberOfLines = 2
+        messageField.focusRingType = .none
+        messageField.alignment = .center
+        messageField.font = NSFont(name: "Avenir", size: 24)
+        messageField.backgroundColor = .clear
+        messageField.textColor = .darkGray
+        return messageField
     }()
 
     override func layout() {

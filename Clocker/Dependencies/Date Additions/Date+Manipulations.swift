@@ -63,28 +63,28 @@ public extension Date {
         var newDate = self
         if component == .second {
             newDate.second(newDate.second + 1)
-            newDate = newDate - 0.001
+            newDate -= 0.001
         } else if component == .minute {
             newDate.second(60)
-            newDate = newDate - 0.001
+            newDate -= 0.001
         } else if component == .hour {
             newDate.second(60)
-            newDate = newDate - 0.001
+            newDate -= 0.001
             newDate.minute(59)
         } else if component == .day {
             newDate.second(60)
-            newDate = newDate - 0.001
+            newDate -= 0.001
             newDate.minute(59)
             newDate.hour(23)
         } else if component == .month {
             newDate.second(60)
-            newDate = newDate - 0.001
+            newDate -= 0.001
             newDate.minute(59)
             newDate.hour(23)
             newDate.day(daysInMonth(date: newDate))
         } else if component == .year {
             newDate.second(60)
-            newDate = newDate - 0.001
+            newDate -= 0.001
             newDate.minute(59)
             newDate.hour(23)
             newDate.month(12)
@@ -160,28 +160,28 @@ public extension Date {
     /**
      *  Operator overload for adding a `TimeChunk` to a date.
      */
-    static func +(leftAddend: Date, rightAddend: TimeChunk) -> Date {
+    static func + (leftAddend: Date, rightAddend: TimeChunk) -> Date {
         return leftAddend.add(rightAddend)
     }
 
     /**
      *  Operator overload for subtracting a `TimeChunk` from a date.
      */
-    static func -(minuend: Date, subtrahend: TimeChunk) -> Date {
+    static func - (minuend: Date, subtrahend: TimeChunk) -> Date {
         return minuend.subtract(subtrahend)
     }
 
     /**
      *  Operator overload for adding a `TimeInterval` to a date.
      */
-    static func +(leftAddend: Date, rightAddend: Int) -> Date {
+    static func + (leftAddend: Date, rightAddend: Int) -> Date {
         return leftAddend.addingTimeInterval((TimeInterval(rightAddend)))
     }
 
     /**
      *  Operator overload for subtracting a `TimeInterval` from a date.
      */
-    static func -(minuend: Date, subtrahend: Int) -> Date {
+    static func - (minuend: Date, subtrahend: Int) -> Date {
         return minuend.addingTimeInterval(-(TimeInterval(subtrahend)))
     }
 

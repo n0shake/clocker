@@ -20,12 +20,12 @@ class CustomSliderCell: NSSliderCell {
         var leftRect = rect
         leftRect.size.width = finalWidth
 
-        let bg = NSBezierPath(roundedRect: rect,
+        let background = NSBezierPath(roundedRect: rect,
                               xRadius: barRadius,
                               yRadius: barRadius)
         NSColor(calibratedRed: 67.0 / 255.0, green: 138.0 / 255.0, blue: 250.0 / 255.0, alpha: 1.0).setFill()
 
-        bg.fill()
+        background.fill()
 
         // Right Part
 

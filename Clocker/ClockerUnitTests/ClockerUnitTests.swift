@@ -90,7 +90,7 @@ class ClockerUnitTests: XCTestCase {
 
     func testDeletingATimezone() {
         let defaults = UserDefaults.standard
-        
+
         guard var currentFavourites = defaults.object(forKey: CLDefaultPreferenceKey) as? [Data] else {
             XCTFail("Default preferences aren't in the correct format")
             return

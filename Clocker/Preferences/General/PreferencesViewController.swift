@@ -473,7 +473,7 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
 
                 UserDefaults.standard.set(filteredMenubars, forKey: CLMenubarFavorites)
 
-                if let appDelegate = NSApplication.shared.delegate as? AppDelegate, let menubarFavourites = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data], menubarFavourites.count <= 0, DataStore.shared().shouldDisplay(.showMeetingInMenubar) == false {
+                if let appDelegate = NSApplication.shared.delegate as? AppDelegate, let menubarFavourites = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data], menubarFavourites.isEmpty, DataStore.shared().shouldDisplay(.showMeetingInMenubar) == false {
                     appDelegate.invalidateMenubarTimer(true)
                 }
 
@@ -624,7 +624,7 @@ extension PreferencesViewController {
     @objc private func search() {
         var searchString = searchField.stringValue
 
-        if searchString.count <= 0 {
+        if searchString.isEmpty {
             dataTask?.cancel()
             resetSearchView()
             return
