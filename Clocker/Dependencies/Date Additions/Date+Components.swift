@@ -69,7 +69,6 @@ public extension Date {
                     stepLarger = Calendar.Component.era
                     stepSmaller = Calendar.Component.year
                     unitRange = calendar.range(of: stepSmaller, in: stepLarger, for: self)
-                    break
                 case 1:
                     if smaller.hashValue > 2 {
                         break
@@ -78,7 +77,6 @@ public extension Date {
                         stepSmaller = Calendar.Component.month
                         unitRange = calendar.range(of: stepSmaller, in: stepLarger, for: self)
                     }
-                    break
                 case 2:
                     if larger.hashValue < 2 {
                         if self.isInLeapYear {
@@ -91,22 +89,18 @@ public extension Date {
                         stepSmaller = Calendar.Component.day
                         unitRange = calendar.range(of: stepSmaller, in: stepLarger, for: self)
                     }
-                    break
                 case 3:
                     stepLarger = Calendar.Component.day
                     stepSmaller = Calendar.Component.hour
                     unitRange = calendar.range(of: stepSmaller, in: stepLarger, for: self)
-                    break
                 case 4:
                     stepLarger = Calendar.Component.hour
                     stepSmaller = Calendar.Component.minute
                     unitRange = calendar.range(of: stepSmaller, in: stepLarger, for: self)
-                    break
                 case 5:
                     stepLarger = Calendar.Component.minute
                     stepSmaller = Calendar.Component.second
                     unitRange = calendar.range(of: stepSmaller, in: stepLarger, for: self)
-                    break
                 default:
                     return nil
                 }

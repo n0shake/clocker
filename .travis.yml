@@ -2,9 +2,11 @@ os: osx
 language: swift
 xcode_project: Clocker.xcodeproj # path to your xcodeproj folder
 osx_image: xcode10.2
+before_install:
+- export TZ=America/Los_Angeles
 before_script:
  - xcodebuild -version
 script:
  - set -o pipefail && env "NSUnbufferedIO=YES"
- - xcodebuild -project Clocker/Clocker.xcodeproj -scheme Clocker build analyze CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= | xcpretty
- - xcodebuild -project Clocker/Clocker.xcodeproj -scheme Clocker test-without-building CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=  | xcpretty
+ - xcodebuild -project Clocker/Clocker.xcodeproj -scheme Clocker build analyze CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO CODE_SIGN_IDENTITY= | xcpretty
+ - xcodebuild -project Clocker/Clocker.xcodeproj -scheme Clocker test CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO CODE_SIGN_IDENTITY=  | xcpretty

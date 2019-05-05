@@ -373,14 +373,11 @@ public extension TimePeriodProtocol {
         switch anchor {
         case .beginning:
             self.end = self.end?.addingTimeInterval(timeInterval)
-            break
         case .center:
             self.beginning = self.beginning?.addingTimeInterval(-timeInterval/2.0)
             self.end = self.end?.addingTimeInterval(timeInterval/2.0)
-            break
         case .end:
             self.beginning = self.beginning?.addingTimeInterval(-timeInterval)
-            break
         }
     }
 
@@ -394,14 +391,11 @@ public extension TimePeriodProtocol {
         switch anchor {
         case .beginning:
             self.end = self.end?.add(chunk)
-            break
         case .center:
             // Do not lengthen by TimeChunk at center
             print("Mutation via chunk from center anchor is not supported.")
-            break
         case .end:
             self.beginning = self.beginning?.subtract(chunk)
-            break
         }
     }
 
@@ -415,14 +409,11 @@ public extension TimePeriodProtocol {
         switch anchor {
         case .beginning:
             self.end = self.end?.addingTimeInterval(-timeInterval)
-            break
         case .center:
             self.beginning = self.beginning?.addingTimeInterval(timeInterval/2.0)
             self.end = self.end?.addingTimeInterval(-timeInterval/2.0)
-            break
         case .end:
             self.beginning = self.beginning?.addingTimeInterval(timeInterval)
-            break
         }
     }
 
@@ -436,14 +427,11 @@ public extension TimePeriodProtocol {
         switch anchor {
         case .beginning:
             self.end = self.end?.subtract(chunk)
-            break
         case .center:
             // Do not shorten by TimeChunk at center
             print("Mutation via chunk from center anchor is not supported.")
-            break
         case .end:
             self.beginning = self.beginning?.add(chunk)
-            break
         }
     }
 }
@@ -552,15 +540,12 @@ open class TimePeriod: TimePeriodProtocol {
         case .beginning:
             timePeriod.beginning = self.beginning
             timePeriod.end = self.end?.addingTimeInterval(timeInterval)
-            break
         case .center:
             timePeriod.beginning = self.beginning?.addingTimeInterval(-timeInterval)
             timePeriod.end = self.end?.addingTimeInterval(timeInterval)
-            break
         case .end:
             timePeriod.beginning = self.beginning?.addingTimeInterval(-timeInterval)
             timePeriod.end = self.end
-            break
         }
 
         return timePeriod
@@ -580,14 +565,11 @@ open class TimePeriod: TimePeriodProtocol {
         case .beginning:
             timePeriod.beginning = beginning
             timePeriod.end = end?.add(chunk)
-            break
         case .center:
             print("Mutation via chunk from center anchor is not supported.")
-            break
         case .end:
             timePeriod.beginning = beginning?.add(-chunk)
             timePeriod.end = end
-            break
         }
 
         return timePeriod
@@ -607,15 +589,12 @@ open class TimePeriod: TimePeriodProtocol {
         case .beginning:
             timePeriod.beginning = beginning
             timePeriod.end = end?.addingTimeInterval(-timeInterval)
-            break
         case .center:
             timePeriod.beginning = beginning?.addingTimeInterval(-timeInterval/2)
             timePeriod.end = end?.addingTimeInterval(timeInterval/2)
-            break
         case .end:
             timePeriod.beginning = beginning?.addingTimeInterval(timeInterval)
             timePeriod.end = end
-            break
         }
 
         return timePeriod
@@ -635,14 +614,11 @@ open class TimePeriod: TimePeriodProtocol {
         case .beginning:
             timePeriod.beginning = beginning
             timePeriod.end = end?.subtract(chunk)
-            break
         case .center:
             print("Mutation via chunk from center anchor is not supported.")
-            break
         case .end:
             timePeriod.beginning = beginning?.add(-chunk)
             timePeriod.end = end
-            break
         }
 
         return timePeriod
