@@ -67,10 +67,24 @@ extension EventCenter {
         reminderEvent.startDateComponents = reminderComponents
         reminderEvent.dueDateComponents = reminderComponents
 
-        if alertIndex != 0 {
-            var offset: TimeInterval = 0
+        addAlarmIfNeccesary(for: reminderEvent, alertIndex)
 
-            switch alertIndex {
+        // Commit the event
+        do {
+            try store.save(reminderEvent, commit: true)
+        } catch {
+            Logger.log(object: ["Error": error.localizedDescription],
+                       for: "Error saving reminder")
+            return false
+        }
+
+        return true
+    }
+
+    private func addAlarmIfNeccesary(for event: EKReminder, _ selection: Int) {
+        if selection != 0 {
+           var offset: TimeInterval = 0
+            switch selection {
             case 2:
                 offset = -300
             case 3:
@@ -90,20 +104,8 @@ extension EventCenter {
             default:
                 offset = 0
             }
-
             let alarm = EKAlarm(relativeOffset: offset)
-            reminderEvent.addAlarm(alarm)
+            event.addAlarm(alarm)
         }
-
-        // Commit the event
-        do {
-            try store.save(reminderEvent, commit: true)
-        } catch {
-            Logger.log(object: ["Error": error.localizedDescription],
-                       for: "Error saving reminder")
-            return false
-        }
-
-        return true
     }
 }

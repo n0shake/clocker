@@ -166,6 +166,27 @@ extension EventCenter {
         }
     }
 
+    private func createDateComponents(with calendar: NSCalendar?, _ day: Int) -> Date {
+        var dateComps = DateComponents()
+        dateComps.day = day
+        guard let convertedDate = calendar?.date(byAdding: dateComps,
+                                                 to: Date(),
+                                                 options: NSCalendar.Options.matchFirst) else {
+                                                return Date()
+        }
+        return convertedDate
+    }
+
+    private func shouldSkipEvent(_ event: EKEvent) -> Bool {
+        if event.hasAttendees, let attendes = event.attendees {
+            for participant in attendes where participant.isCurrentUser && participant.participantStatus == .declined {
+                return true
+            }
+        }
+
+        return false
+    }
+
     func fetchEvents(_ start: Int, _ end: Int) {
         if calendarAccessDenied() || calendarAccessNotDetermined() {
             print("Refetching aborted because we don't have permission!")
@@ -174,21 +195,8 @@ extension EventCenter {
 
         let calendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
 
-        var startDateComponents = DateComponents()
-        startDateComponents.day = start
-        guard let startDate = calendar?.date(byAdding: startDateComponents,
-                                             to: Date(),
-                                             options: NSCalendar.Options.matchFirst) else {
-            return
-        }
-
-        var endDateComponents = DateComponents()
-        endDateComponents.day = end
-        guard let endDate = calendar?.date(byAdding: endDateComponents,
-                                           to: Date(),
-                                           options: NSCalendar.Options.matchFirst) else {
-            return
-        }
+        let startDate = createDateComponents(with: calendar, start)
+        let endDate = createDateComponents(with: calendar, end)
 
         // Passing in nil for calendars to search all calendars
         let predicate = store.predicateForEvents(withStart: startDate,
@@ -202,22 +210,10 @@ extension EventCenter {
         // Populate our cache with events that match our startDate and endDate.
         // We map eachDate to array of events happening on that day
 
-        var skipEventBecauseUserDeclined = false
-
-        for event in events {
-            if event.hasAttendees, let attendes = event.attendees {
-                for participant in attendes {
-                    if participant.isCurrentUser && participant.participantStatus == .declined {
-                        skipEventBecauseUserDeclined = true
-                    }
-                }
-            }
-
-            if skipEventBecauseUserDeclined { continue }
+        for event in events where shouldSkipEvent(event) == false {
 
             // Iterate through the days this event spans. We only care about
             // days for this event that are between startDate and endDate
-
             let eventStartDate = event.startDate as NSDate
             let eventEndDate = event.endDate as NSDate
 
