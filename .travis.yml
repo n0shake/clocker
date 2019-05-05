@@ -2,6 +2,8 @@ os: osx
 language: swift
 xcode_project: Clocker.xcodeproj # path to your xcodeproj folder
 osx_image: xcode10.2
+before_install:
+- export TZ=America/Los_Angeles
 before_script:
  - xcodebuild -version
 script:
