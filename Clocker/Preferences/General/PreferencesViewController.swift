@@ -423,85 +423,94 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
         }
 
         if let edit = object as? String {
-            let formattedValue = edit.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-
-            if selectedTimeZones.count > row {
-                Logger.log(object: [
-                    "Old Label": dataObject.customLabel ?? "Error",
-                    "New Label": formattedValue
-                ],
-                for: "Custom Label Changed")
-
-                dataObject.setLabel(formattedValue)
-
-                insert(timezone: dataObject, at: row)
-
-                updateMenubarTitles()
-            } else {
-                Logger.log(object: [
-                    "MethodName": "SetObjectValue",
-                    "Selected Timezone Count": selectedTimeZones.count,
-                    "Current Row": row
-                ],
-                for: "Error in selected row count")
-            }
+            setNewLabel(edit, for: dataObject, at: row)
         } else if let isFavouriteValue = object as? NSNumber {
             dataObject.isFavourite = isFavouriteValue.intValue
             insert(timezone: dataObject, at: row)
-
-            if dataObject.isFavourite == 1, let menubarTitles = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data] {
-
-                var mutableArray = menubarTitles
-                let archivedObject = NSKeyedArchiver.archivedData(withRootObject: dataObject)
-                mutableArray.append(archivedObject)
-
-                UserDefaults.standard.set(mutableArray, forKey: CLMenubarFavorites)
-
-                if dataObject.customLabel != nil {
-                    Logger.log(object: ["label": dataObject.customLabel ?? "Error"], for: "favouriteSelected")
-                }
-
-                if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
-                    appDelegate.setupMenubarTimer()
-                }
-
-                if mutableArray.count > 1 {
-                    showAlertIfMoreThanOneTimezoneHasBeenAddedToTheMenubar()
-                }
-
-            } else {
-                guard let menubarTimers = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data] else {
-                    assertionFailure("Menubar timers is unexpectedly nil")
-                    return
-                }
-
-                Logger.log(object: ["label": dataObject.customLabel ?? "Error"],
-                           for: "favouriteRemoved")
-
-                let filteredMenubars = menubarTimers.filter {
-                    guard let current = NSKeyedUnarchiver.unarchiveObject(with: $0) as? TimezoneData else {
-                        return false
-                    }
-                    return current != dataObject
-                }
-
-                UserDefaults.standard.set(filteredMenubars, forKey: CLMenubarFavorites)
-
-                if let appDelegate = NSApplication.shared.delegate as? AppDelegate, let menubarFavourites = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data], menubarFavourites.isEmpty, DataStore.shared().shouldDisplay(.showMeetingInMenubar) == false {
-                    appDelegate.invalidateMenubarTimer(true)
-                }
-
-                if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
-                    appDelegate.setupMenubarTimer()
-                }
-            }
-
+            dataObject.isFavourite == 1 ?
+                markAsFavorite(dataObject) :
+                unfavourite(dataObject)
             updateStatusItem()
-
             refreshTimezoneTableView()
         }
 
         refreshMainTable()
+    }
+
+    private func markAsFavorite(_ dataObject: TimezoneData) {
+        guard let menubarTitles = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data] else {
+            return
+        }
+
+        var mutableArray = menubarTitles
+        let archivedObject = NSKeyedArchiver.archivedData(withRootObject: dataObject)
+        mutableArray.append(archivedObject)
+
+        UserDefaults.standard.set(mutableArray, forKey: CLMenubarFavorites)
+
+        if dataObject.customLabel != nil {
+            Logger.log(object: ["label": dataObject.customLabel ?? "Error"], for: "favouriteSelected")
+        }
+
+        if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
+            appDelegate.setupMenubarTimer()
+        }
+
+        if mutableArray.count > 1 {
+            showAlertIfMoreThanOneTimezoneHasBeenAddedToTheMenubar()
+        }
+    }
+
+    private func unfavourite(_ dataObject: TimezoneData) {
+        guard let menubarTimers = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data] else {
+            assertionFailure("Menubar timers is unexpectedly nil")
+            return
+        }
+
+        Logger.log(object: ["label": dataObject.customLabel ?? "Error"],
+                   for: "favouriteRemoved")
+
+        let filteredMenubars = menubarTimers.filter {
+            guard let current = NSKeyedUnarchiver.unarchiveObject(with: $0) as? TimezoneData else {
+                return false
+            }
+            return current.isEqual(dataObject) == false
+        }
+
+        UserDefaults.standard.set(filteredMenubars, forKey: CLMenubarFavorites)
+
+        if let appDelegate = NSApplication.shared.delegate as? AppDelegate, let menubarFavourites = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data], menubarFavourites.isEmpty, DataStore.shared().shouldDisplay(.showMeetingInMenubar) == false {
+            appDelegate.invalidateMenubarTimer(true)
+        }
+
+        if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
+            appDelegate.setupMenubarTimer()
+        }
+    }
+
+    private func setNewLabel(_ label: String, for dataObject: TimezoneData, at row: Int) {
+        let formattedValue = label.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+
+        if selectedTimeZones.count > row {
+            Logger.log(object: [
+                "Old Label": dataObject.customLabel ?? "Error",
+                "New Label": formattedValue
+                ],
+                       for: "Custom Label Changed")
+
+            dataObject.setLabel(formattedValue)
+
+            insert(timezone: dataObject, at: row)
+
+            updateMenubarTitles()
+        } else {
+            Logger.log(object: [
+                "MethodName": "SetObjectValue",
+                "Selected Timezone Count": selectedTimeZones.count,
+                "Current Row": row
+                ],
+                       for: "Error in selected row count")
+        }
     }
 
     private func showAlertIfMoreThanOneTimezoneHasBeenAddedToTheMenubar() {
