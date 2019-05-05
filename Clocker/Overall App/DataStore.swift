@@ -80,86 +80,45 @@ class DataStore: NSObject {
 
         userDefaults.set(currentLineup, forKey: CLDefaultPreferenceKey)
     }
+    
+    private func shouldDisplayHelper(_ key: String) -> Bool {
+        guard let value = retrieve(key: key) as? NSNumber else {
+            return false
+        }
+        return value.isEqual(to: NSNumber(value: 0))
+    }
 
     func shouldDisplay(_ type: ViewType) -> Bool {
         switch type {
         case .futureSlider:
-            guard let value = retrieve(key: CLDisplayFutureSliderKey) as? NSNumber else {
-                return false
-            }
-            return value.isEqual(to: NSNumber(value: 0))
-
+            return shouldDisplayHelper(CLDisplayFutureSliderKey)
         case .upcomingEventView:
             guard let value = retrieve(key: CLShowUpcomingEventView) as? NSString else {
                 return false
             }
             return value == "YES"
-
         case .twelveHour:
-
-            guard let value = retrieve(key: CL24hourFormatSelectedKey) as? NSNumber else {
-                return false
-            }
-            return value.isEqual(to: NSNumber(value: 0))
-
+            return shouldDisplayHelper(CL24hourFormatSelectedKey)
         case .showAllDayEventsInMenubar:
-
-            guard let value = retrieve(key: CLShowAllDayEventsInUpcomingView) as? NSNumber else {
-                return false
-            }
-            return value.isEqual(to: NSNumber(value: 0))
-
+            return shouldDisplayHelper(CLShowAllDayEventsInUpcomingView)
         case .sunrise:
-
-            guard let value = retrieve(key: CLSunriseSunsetTime) as? NSNumber else {
-                return false
-            }
-            return value.isEqual(to: NSNumber(value: 0))
-
+            return shouldDisplayHelper(CLSunriseSunsetTime)
         case .seconds:
-
-            guard let value = retrieve(key: CLShowSecondsInMenubar) as? NSNumber else {
-                return false
-            }
-            return value.isEqual(to: NSNumber(value: 0))
-
+            return shouldDisplayHelper(CLShowSecondsInMenubar)
         case .showMeetingInMenubar:
-
-            guard let value = retrieve(key: CLShowMeetingInMenubar) as? NSNumber else {
-                return false
-            }
-            return value.isEqual(to: NSNumber(value: 0))
-
+            return shouldDisplayHelper(CLShowMeetingInMenubar)
         case .showAppInForeground:
-
             guard let value = retrieve(key: CLShowAppInForeground) as? NSNumber else {
                 return false
             }
             return value.isEqual(to: NSNumber(value: 1))
-
         case .dateInMenubar:
-
-            guard let value = retrieve(key: CLShowDateInMenu) as? NSNumber else {
-                return false
-            }
-            return value.isEqual(to: NSNumber(value: 0))
-
+            return shouldDisplayHelper(CLShowDateInMenu)
         case .placeInMenubar:
-
-            guard let value = retrieve(key: CLShowPlaceInMenu) as? NSNumber else {
-                return false
-            }
-            return value.isEqual(to: NSNumber(value: 0))
-
+            return shouldDisplayHelper(CLShowPlaceInMenu)
         case .dayInMenubar:
-
-            guard let value = retrieve(key: CLShowDayInMenu) as? NSNumber else {
-                return false
-            }
-            return value.isEqual(to: NSNumber(value: 0))
-
+            return shouldDisplayHelper(CLShowDayInMenu)
         case .menubarCompactMode:
-
             guard let value = retrieve(key: CLMenubarCompactMode) as? Int else {
                 return false
             }

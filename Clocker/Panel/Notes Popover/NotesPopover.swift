@@ -320,12 +320,10 @@ class NotesPopover: NSViewController {
             }
         }
 
-        for timezoneObject in timezoneObjects {
-            if timezoneObject == dataObject {
-                overrideType == .timezoneFormat ?
-                    timezoneObject.setShouldOverrideGlobalTimeFormat(override) :
-                    timezoneObject.setShouldOverrideSecondsFormat(override)
-            }
+        for timezoneObject in timezoneObjects where timezoneObject == dataObject {
+            overrideType == .timezoneFormat ?
+                timezoneObject.setShouldOverrideGlobalTimeFormat(override) :
+                timezoneObject.setShouldOverrideSecondsFormat(override)
         }
 
         var datas: [Data] = []
@@ -351,12 +349,10 @@ class NotesPopover: NSViewController {
             }
         }
 
-        for timezoneObject in timezoneObjects {
-            if timezoneObject == dataObject {
-                overrideType == .timezoneFormat ?
-                    timezoneObject.setShouldOverrideGlobalTimeFormat(override) :
-                    timezoneObject.setShouldOverrideSecondsFormat(override)
-            }
+        for timezoneObject in timezoneObjects where timezoneObject == dataObject {
+            overrideType == .timezoneFormat ?
+                timezoneObject.setShouldOverrideGlobalTimeFormat(override) :
+                timezoneObject.setShouldOverrideSecondsFormat(override)
         }
 
         var datas: [Data] = []

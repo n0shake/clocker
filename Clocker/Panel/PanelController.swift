@@ -46,7 +46,7 @@ class PanelController: ParentPanelController {
     func setFrameTheNewWay(_ rect: NSRect, _ maxX: CGFloat) {
         // Calculate window's top left point.
         // First, center window under status item.
-        let w = CGFloat(NSWidth((window?.frame)!))
+        let w = (window?.frame)!.width
         var x = CGFloat(roundf(Float(rect.midX - w / 2)))
         let y = CGFloat(rect.minY - 2)
         let kMinimumSpaceBetweenWindowAndScreenEdge: CGFloat = 10
@@ -120,15 +120,15 @@ class PanelController: ParentPanelController {
             var testPoint = statusItemFrame.origin
             testPoint.y -= 100
 
-            for screen in NSScreen.screens {
-                if NSPointInRect(testPoint, screen.frame) {
-                    statusItemScreen = screen
-                    break
-                }
+            for screen in NSScreen.screens where screen.frame.contains(testPoint) {
+                statusItemScreen = screen
+                break
             }
 
-            let screenMaxX = NSMaxX((statusItemScreen?.frame)!)
-            let minY = statusItemFrame.origin.y < NSMaxY((statusItemScreen?.frame)!) ? statusItemFrame.origin.y : NSMaxY((statusItemScreen?.frame)!)
+            let screenMaxX = (statusItemScreen?.frame)!.maxX
+            let minY = statusItemFrame.origin.y < (statusItemScreen?.frame)!.maxY ?
+                statusItemFrame.origin.y :
+                (statusItemScreen?.frame)!.maxY
             statusItemFrame.origin.y = minY
 
             setFrameTheNewWay(statusItemFrame, screenMaxX)

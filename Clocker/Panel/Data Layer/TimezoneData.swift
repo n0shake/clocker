@@ -30,8 +30,8 @@ class TimezoneData: NSObject, NSCoding {
     }
 
     enum SecondsOverride: Int {
-        case yes
-        case no
+        case showSeconds
+        case hideSeconds
         case globalFormat
     }
 
@@ -87,7 +87,7 @@ class TimezoneData: NSObject, NSCoding {
         overrideSecondsFormat = .globalFormat
     }
 
-    init(with dictionary: Dictionary<String, Any>) {
+    init(with dictionary: [String: Any]) {
         if let label = dictionary[CLCustomLabel] as? String {
             customLabel = label
         } else {
@@ -338,9 +338,9 @@ class TimezoneData: NSObject, NSCoding {
 
     func setShouldOverrideSecondsFormat(_ shouldOverride: Int) {
         if shouldOverride == 0 {
-            overrideSecondsFormat = .yes
+            overrideSecondsFormat = .showSeconds
         } else if shouldOverride == 1 {
-            overrideSecondsFormat = .no
+            overrideSecondsFormat = .hideSeconds
         } else {
             overrideSecondsFormat = .globalFormat
         }
@@ -410,7 +410,7 @@ class TimezoneData: NSObject, NSCoding {
             return DataStore.shared().shouldDisplay(.seconds)
         }
 
-        return overrideSecondsFormat == .yes
+        return overrideSecondsFormat == .showSeconds
     }
 
     override var hash: Int {
@@ -423,6 +423,13 @@ class TimezoneData: NSObject, NSCoding {
 
     static func == (lhs: TimezoneData, rhs: TimezoneData) -> Bool {
         return lhs.placeID == rhs.placeID
+    }
+    
+    override func isEqual(to object: Any?) -> Bool {
+        if let other = object as? TimezoneData {
+            return placeID == other.placeID
+        }
+        return false
     }
 
     override func isEqual(_ object: Any?) -> Bool {

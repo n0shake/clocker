@@ -238,7 +238,7 @@ open class TimePeriodCollection: TimePeriodGroup {
     }
 
     internal func updateExtremes() {
-        if periods.count == 0 {
+        if periods.isEmpty {
             _beginning = nil
             _end = nil
         } else {

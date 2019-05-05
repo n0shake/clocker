@@ -218,7 +218,7 @@ class PreferencesViewController: ParentViewController {
 
         [placeholderLabel, additionalSortOptions].forEach { $0.isHidden = true }
 
-        if timezoneArray.count == 0 {
+        if timezoneArray.isEmpty {
             timezoneArray.append("UTC")
             timezoneArray.append("Anywhere on Earth")
             timezoneArray.append(contentsOf: NSTimeZone.knownTimeZoneNames)
@@ -936,7 +936,7 @@ extension PreferencesViewController {
                 return
             }
 
-            if messageLabel.stringValue.count == 0 {
+            if messageLabel.stringValue.isEmpty {
                 searchField.stringValue = CLEmptyString
 
                 guard let latitude = dataObject.latitude, let longitude = dataObject.longitude else {
@@ -1075,7 +1075,7 @@ extension PreferencesViewController {
 
         refreshMainTable()
 
-        if selectedTimeZones.count == 0 {
+        if selectedTimeZones.isEmpty {
             UserDefaults.standard.set(nil, forKey: CLMenubarFavorites)
         }
 

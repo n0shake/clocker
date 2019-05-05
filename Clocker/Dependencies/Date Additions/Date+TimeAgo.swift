@@ -173,12 +173,7 @@ public extension Date {
     }
 
     private func logicalLocalizedStringFromFormat(format: String, value: Int) -> String {
-        #if os(Linux)
-            let localeFormat = String.init(format: format, getLocaleFormatUnderscoresWithValue(Double(value)) as! CVarArg)  // this may not work, unclear!!
-        #else
-            let localeFormat = String.init(format: format, getLocaleFormatUnderscoresWithValue(Double(value)))
-        #endif
-
+        let localeFormat = String.init(format: format, getLocaleFormatUnderscoresWithValue(Double(value)))
         return String.init(format: DateToolsLocalizedStrings(localeFormat), value)
     }
 

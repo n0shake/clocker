@@ -151,7 +151,7 @@ class AppearanceViewController: ParentViewController {
         panelController.sharingButton.image = Themer.shared().sharingImage()
 
         let defaultTimezones = panelController.defaultPreferences
-        if defaultTimezones.count == 0 {
+        if defaultTimezones.isEmpty {
             panelController.updatePanelColor()
         }
 

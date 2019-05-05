@@ -14,7 +14,7 @@ class CustomSliderCell: NSSliderCell {
             return
         }
 
-        let finalWidth = value * (NSWidth(control.frame) - 8)
+        let finalWidth = value * (control.frame.width - 8)
 
         // Left Part
         var leftRect = rect

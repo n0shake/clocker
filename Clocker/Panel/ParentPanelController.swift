@@ -378,7 +378,7 @@ class ParentPanelController: NSWindowController {
         }
 
         // This is for the Add Cell View case
-        if preferences.count == 0 {
+        if preferences.isEmpty {
             scrollViewHeight.constant = 100.0
             return
         }
