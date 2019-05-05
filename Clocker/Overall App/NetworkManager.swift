@@ -10,15 +10,23 @@ class NetworkManager: NSObject {
     }()
 
     static let internalServerError: NSError = {
+        let localizedError = """
+        There was a problem retrieving your information. Please try again later.
+        If the problem continues please contact App Support.
+        """
         let userInfoDictionary: [String: Any] = [NSLocalizedDescriptionKey: "Internal Error",
-                                                 NSLocalizedFailureReasonErrorKey: "There was a problem retrieving your information. Please try again later. If the problem continues please contact App Support."]
+                                                 NSLocalizedFailureReasonErrorKey: localizedError]
         let error = NSError(domain: "APIError", code: 100, userInfo: userInfoDictionary)
         return error
     }()
 
     static let unableToGenerateURL: NSError = {
+        let localizedError = """
+        There was a problem searching the location. Please try again later.
+        If the problem continues please contact App Support.
+        """
         let userInfoDictionary: [String: Any] = [NSLocalizedDescriptionKey: "Unable to generate URL",
-                                                 NSLocalizedFailureReasonErrorKey: "There was a problem searching the location. Please try again later. If the problem continues please contact App Support."]
+                                                 NSLocalizedFailureReasonErrorKey: localizedError]
         let error = NSError(domain: "APIError", code: 100, userInfo: userInfoDictionary)
         return error
     }()

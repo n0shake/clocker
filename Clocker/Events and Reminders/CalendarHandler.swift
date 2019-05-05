@@ -228,23 +228,11 @@ extension EventCenter {
                 }
                 nextDate = autoupdatingCalendar.startOfDay(for: nextDate)
 
-                // Make a customized struct
-                let isStartDate = autoupdatingCalendar.isDate(date, inSameDayAs: event.startDate) && (event.endDate.compare(date) == .orderedDescending)
-                let isEndDate = autoupdatingCalendar.isDate(date, inSameDayAs: event.endDate) && (event.startDate.compare(date) == .orderedAscending)
-                let isAllDay = event.isAllDay || (event.startDate.compare(date) == .orderedAscending && event.endDate.compare(nextDate) == .orderedSame)
-                let isSingleDay = event.isAllDay && (event.startDate.compare(date) == .orderedSame && event.endDate.compare(nextDate) == .orderedSame)
-
-                let eventInfo = EventInfo(event: event,
-                                          isStartDate: isStartDate,
-                                          isEndDate: isEndDate,
-                                          isAllDay: isAllDay,
-                                          isSingleDay: isSingleDay)
-
                 if eventsForDateMapper[date] == nil {
                     eventsForDateMapper[date] = []
                 }
 
-                eventsForDateMapper[date]?.append(eventInfo)
+                eventsForDateMapper[date]?.append(generateEventInfo(for: event, date, nextDate))
 
                 date = nextDate
             }
@@ -264,6 +252,21 @@ extension EventCenter {
         print("Fetched events for \(eventsForDate.count) days")
 
         filterEvents()
+    }
+
+    private func generateEventInfo(for event: EKEvent, _ date: Date, _ nextDate: Date) -> EventInfo {
+        // Make a customized struct
+        let isStartDate = autoupdatingCalendar.isDate(date, inSameDayAs: event.startDate) && (event.endDate.compare(date) == .orderedDescending)
+        let isEndDate = autoupdatingCalendar.isDate(date, inSameDayAs: event.endDate) && (event.startDate.compare(date) == .orderedAscending)
+        let isAllDay = event.isAllDay || (event.startDate.compare(date) == .orderedAscending && event.endDate.compare(nextDate) == .orderedSame)
+        let isSingleDay = event.isAllDay && (event.startDate.compare(date) == .orderedSame && event.endDate.compare(nextDate) == .orderedSame)
+
+        let eventInfo = EventInfo(event: event,
+                                  isStartDate: isStartDate,
+                                  isEndDate: isEndDate,
+                                  isAllDay: isAllDay,
+                                  isSingleDay: isSingleDay)
+        return eventInfo
     }
 }
 

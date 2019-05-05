@@ -26,15 +26,15 @@ class OnboardingParentViewController: NSViewController {
     @IBOutlet private var backButton: NSButton!
     @IBOutlet private var positiveButton: NSButton!
 
-    private lazy var welcomeVC: WelcomeViewController? = (storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier.welcomeIdentifier) as? WelcomeViewController)
+    private lazy var welcomeVC = (storyboard?.instantiateController(withIdentifier: .welcomeIdentifier) as? WelcomeViewController)
 
-    private lazy var permissionsVC: OnboardingPermissionsViewController? = (storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier.onboardingPermissionsIdentifier) as? OnboardingPermissionsViewController)
+    private lazy var permissionsVC = (storyboard?.instantiateController(withIdentifier: .onboardingPermissionsIdentifier) as? OnboardingPermissionsViewController)
 
-    private lazy var startAtLoginVC: StartAtLoginViewController? = (storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier.startAtLoginIdentifier) as? StartAtLoginViewController)
+    private lazy var startAtLoginVC = (storyboard?.instantiateController(withIdentifier: .startAtLoginIdentifier) as? StartAtLoginViewController)
 
-    private lazy var onboardingSearchVC: OnboardingSearchController? = (self.storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier.onboardingSearchIdentifier) as? OnboardingSearchController)
+    private lazy var onboardingSearchVC = (storyboard?.instantiateController(withIdentifier: .onboardingSearchIdentifier) as? OnboardingSearchController)
 
-    private lazy var finalOnboardingVC: FinalOnboardingViewController? = (self.storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier.finalOnboardingIdentifier) as? FinalOnboardingViewController)
+    private lazy var finalOnboardingVC = (storyboard?.instantiateController(withIdentifier: .finalOnboardingIdentifier) as? FinalOnboardingViewController)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,84 +96,102 @@ class OnboardingParentViewController: NSViewController {
 
     @IBAction func continueOnboarding(_: NSButton) {
         if positiveButton.tag == OnboardingType.welcome.rawValue {
-            guard let fromViewController = welcomeVC, let toViewController = permissionsVC else {
-                assertionFailure()
-                return
-            }
-
-            addChildIfNeccessary(toViewController)
-
-            transition(from: fromViewController,
-                       to: toViewController,
-                       options: .slideLeft) {
-                self.positiveButton.tag = OnboardingType.permissions.rawValue
-                self.positiveButton.title = "Continue"
-                self.backButton.isHidden = false
-            }
-
+            navigateToPermissions()
         } else if positiveButton.tag == OnboardingType.permissions.rawValue {
-            guard let fromViewController = permissionsVC, let toViewController = startAtLoginVC else {
-                assertionFailure()
-                return
-            }
-
-            addChildIfNeccessary(toViewController)
-
-            transition(from: fromViewController,
-                       to: toViewController,
-                       options: .slideLeft) {
-                self.backButton.tag = OnboardingType.permissions.rawValue
-                self.positiveButton.tag = OnboardingType.launchAtLogin.rawValue
-                self.positiveButton.title = "Open Clocker At Login"
-                self.negativeButton.isHidden = false
-            }
+            navigateToStartAtLogin()
         } else if positiveButton.tag == OnboardingType.launchAtLogin.rawValue {
-            guard let fromViewController = startAtLoginVC, let toViewController = onboardingSearchVC else {
-                assertionFailure()
-                return
-            }
-
-            addChildIfNeccessary(toViewController)
-
-            shouldStartAtLogin(true)
-
-            transition(from: fromViewController,
-                       to: toViewController,
-                       options: .slideLeft) {
-                self.backButton.tag = OnboardingType.launchAtLogin.rawValue
-                self.positiveButton.tag = OnboardingType.search.rawValue
-                self.positiveButton.title = "Continue"
-                self.negativeButton.isHidden = true
-            }
+            navigateToSearch()
         } else if positiveButton.tag == OnboardingType.search.rawValue {
-            guard let fromViewController = onboardingSearchVC, let toViewController = finalOnboardingVC else {
-                assertionFailure()
-                return
-            }
-
-            addChildIfNeccessary(toViewController)
-
-            transition(from: fromViewController,
-                       to: toViewController,
-                       options: .slideLeft) {
-                self.backButton.tag = OnboardingType.search.rawValue
-                self.positiveButton.tag = OnboardingType.final.rawValue
-                self.positiveButton.title = "Launch Clocker"
-            }
-
+            navigateToFinalStage()
         } else {
+            performFinalStepsBeforeFinishing()
+        }
+    }
 
-            self.positiveButton.tag = OnboardingType.complete.rawValue
+    private func navigateToPermissions() {
+        guard let fromViewController = welcomeVC, let toViewController = permissionsVC else {
+            assertionFailure()
+            return
+        }
 
-            // Install the menubar option!
-            let appDelegate = NSApplication.shared.delegate as? AppDelegate
-            appDelegate?.continueUsually()
+        addChildIfNeccessary(toViewController)
 
-            view.window?.close()
+        transition(from: fromViewController,
+                   to: toViewController,
+                   options: .slideLeft) {
+                    self.positiveButton.tag = OnboardingType.permissions.rawValue
+                    self.positiveButton.title = "Continue"
+                    self.backButton.isHidden = false
+        }
+    }
 
-            if ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument) == false {
-                UserDefaults.standard.set(true, forKey: CLShowOnboardingFlow)
-            }
+    private func navigateToStartAtLogin() {
+        guard let fromViewController = permissionsVC, let toViewController = startAtLoginVC else {
+            assertionFailure()
+            return
+        }
+
+        addChildIfNeccessary(toViewController)
+
+        transition(from: fromViewController,
+                   to: toViewController,
+                   options: .slideLeft) {
+                    self.backButton.tag = OnboardingType.permissions.rawValue
+                    self.positiveButton.tag = OnboardingType.launchAtLogin.rawValue
+                    self.positiveButton.title = "Open Clocker At Login"
+                    self.negativeButton.isHidden = false
+        }
+    }
+
+    private func navigateToSearch() {
+        guard let fromViewController = startAtLoginVC, let toViewController = onboardingSearchVC else {
+            assertionFailure()
+            return
+        }
+
+        addChildIfNeccessary(toViewController)
+
+        shouldStartAtLogin(true)
+
+        transition(from: fromViewController,
+                   to: toViewController,
+                   options: .slideLeft) {
+                    self.backButton.tag = OnboardingType.launchAtLogin.rawValue
+                    self.positiveButton.tag = OnboardingType.search.rawValue
+                    self.positiveButton.title = "Continue"
+                    self.negativeButton.isHidden = true
+        }
+    }
+
+    private func navigateToFinalStage() {
+        guard let fromViewController = onboardingSearchVC, let toViewController = finalOnboardingVC else {
+            assertionFailure()
+            return
+        }
+
+        addChildIfNeccessary(toViewController)
+
+        transition(from: fromViewController,
+                   to: toViewController,
+                   options: .slideLeft) {
+                    self.backButton.tag = OnboardingType.search.rawValue
+                    self.positiveButton.tag = OnboardingType.final.rawValue
+                    self.positiveButton.title = "Launch Clocker"
+        }
+
+    }
+
+    private func performFinalStepsBeforeFinishing() {
+        self.positiveButton.tag = OnboardingType.complete.rawValue
+
+        // Install the menubar option!
+        let appDelegate = NSApplication.shared.delegate as? AppDelegate
+        appDelegate?.continueUsually()
+
+        view.window?.close()
+
+        if ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument) == false {
+            UserDefaults.standard.set(true, forKey: CLShowOnboardingFlow)
         }
     }
 
@@ -185,64 +203,78 @@ class OnboardingParentViewController: NSViewController {
 
     @IBAction func back(_: Any) {
         if backButton.tag == OnboardingType.welcome.rawValue {
-            guard let fromViewController = permissionsVC, let toViewController = welcomeVC else {
-                assertionFailure()
-                return
-            }
-
-            transition(from: fromViewController,
-                       to: toViewController,
-                       options: .slideRight) {
-                self.positiveButton.tag = OnboardingType.welcome.rawValue
-                self.backButton.isHidden = true
-                self.positiveButton.title = "Get Started"
-            }
+            goBackToWelcomeScreen()
         } else if backButton.tag == OnboardingType.permissions.rawValue {
-            // We're on StartAtLogin VC and we have to go back to Permissions
-
-            guard let fromViewController = startAtLoginVC, let toViewController = permissionsVC else {
-                assertionFailure()
-                return
-            }
-
-            transition(from: fromViewController,
-                       to: toViewController,
-                       options: .slideRight) {
-                self.positiveButton.tag = OnboardingType.permissions.rawValue
-                self.backButton.tag = OnboardingType.welcome.rawValue
-                self.negativeButton.isHidden = true
-                self.positiveButton.title = "Continue"
-            }
+            goBackToPermissions()
         } else if backButton.tag == OnboardingType.launchAtLogin.rawValue {
-            guard let fromViewController = onboardingSearchVC, let toViewController = startAtLoginVC else {
-                assertionFailure()
-                return
-            }
-
-            transition(from: fromViewController,
-                       to: toViewController,
-                       options: .slideRight) {
-                self.positiveButton.tag = OnboardingType.launchAtLogin.rawValue
-                self.backButton.tag = OnboardingType.permissions.rawValue
-                self.positiveButton.title = "Open Clocker At Login"
-                self.negativeButton.isHidden = false
-            }
+            goBackToStartAtLogin()
         } else if backButton.tag == OnboardingType.search.rawValue {
+            goBackToSearch()
+        }
+    }
 
-            guard let fromViewController = finalOnboardingVC, let toViewController = onboardingSearchVC else {
-                assertionFailure()
-                return
-            }
+    private func goBackToSearch() {
+        guard let fromViewController = finalOnboardingVC, let toViewController = onboardingSearchVC else {
+            assertionFailure()
+            return
+        }
 
-            transition(from: fromViewController,
-                       to: toViewController,
-                       options: .slideRight) {
-                        self.positiveButton.tag = OnboardingType.search.rawValue
-                        self.backButton.tag = OnboardingType.launchAtLogin.rawValue
-                        self.positiveButton.title = "Continue"
-                        self.negativeButton.isHidden = true
-            }
+        transition(from: fromViewController,
+                   to: toViewController,
+                   options: .slideRight) {
+                    self.positiveButton.tag = OnboardingType.search.rawValue
+                    self.backButton.tag = OnboardingType.launchAtLogin.rawValue
+                    self.positiveButton.title = "Continue"
+                    self.negativeButton.isHidden = true
+        }
+    }
 
+    private func goBackToStartAtLogin() {
+        guard let fromViewController = onboardingSearchVC, let toViewController = startAtLoginVC else {
+            assertionFailure()
+            return
+        }
+
+        transition(from: fromViewController,
+                   to: toViewController,
+                   options: .slideRight) {
+                    self.positiveButton.tag = OnboardingType.launchAtLogin.rawValue
+                    self.backButton.tag = OnboardingType.permissions.rawValue
+                    self.positiveButton.title = "Open Clocker At Login"
+                    self.negativeButton.isHidden = false
+        }
+    }
+
+    private func goBackToPermissions() {
+        // We're on StartAtLogin VC and we have to go back to Permissions
+
+        guard let fromViewController = startAtLoginVC, let toViewController = permissionsVC else {
+            assertionFailure()
+            return
+        }
+
+        transition(from: fromViewController,
+                   to: toViewController,
+                   options: .slideRight) {
+                    self.positiveButton.tag = OnboardingType.permissions.rawValue
+                    self.backButton.tag = OnboardingType.welcome.rawValue
+                    self.negativeButton.isHidden = true
+                    self.positiveButton.title = "Continue"
+        }
+    }
+
+    private func goBackToWelcomeScreen() {
+        guard let fromViewController = permissionsVC, let toViewController = welcomeVC else {
+            assertionFailure()
+            return
+        }
+
+        transition(from: fromViewController,
+                   to: toViewController,
+                   options: .slideRight) {
+                    self.positiveButton.tag = OnboardingType.welcome.rawValue
+                    self.backButton.isHidden = true
+                    self.positiveButton.title = "Get Started"
         }
     }
 

@@ -2,7 +2,7 @@
 
 import Cocoa
 
-open class AppDelegate : NSObject, NSApplicationDelegate {
+open class AppDelegate: NSObject, NSApplicationDelegate {
 
     lazy private var floatingWindow: FloatingWindowController = FloatingWindowController.shared()
     lazy private var panelController: PanelController = PanelController.shared()
@@ -13,7 +13,7 @@ open class AppDelegate : NSObject, NSApplicationDelegate {
         panelObserver?.invalidate()
     }
 
-    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
 
         if let path = keyPath, path == "values.globalPing" {
 
@@ -98,7 +98,8 @@ open class AppDelegate : NSObject, NSApplicationDelegate {
     }()
 
     private func showOnboardingFlow() {
-        let shouldLaunchOnboarding = (DataStore.shared().retrieve(key: CLShowOnboardingFlow) == nil && DataStore.shared().timezones().isEmpty) || (ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument))
+        let shouldLaunchOnboarding = (DataStore.shared().retrieve(key: CLShowOnboardingFlow) == nil && DataStore.shared().timezones().isEmpty)
+            || (ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument))
 
         shouldLaunchOnboarding ? controller?.launch() : continueUsually()
     }
@@ -238,11 +239,17 @@ open class AppDelegate : NSObject, NSApplicationDelegate {
             }
         }
 
+        let informativeText = """
+            Clocker must be run from the Applications folder in order to work properly.
+            Please quit Clocker, move it to the Applications folder, and relaunch.
+            Current folder: \(applicationDirectory)"
+            """
+
         // Clocker is installed out of Applications directory
         // This breaks start at login! Time to show an alert and terminate
         showAlert(message: "Move Clocker to the Applications folder",
-                  informativeText: "Clocker must be run from the Applications folder in order to work properly.\n\nPlease quit Clocker, move it to the Applications folder, and relaunch. Current folder: \(applicationDirectory)",
-            buttonTitle: "Quit")
+                  informativeText: informativeText,
+                  buttonTitle: "Quit")
 
         // Terminate
         NSApp.terminate(nil)

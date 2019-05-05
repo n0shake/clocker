@@ -40,7 +40,10 @@ class BackgroundPanelView: NSView {
             let xOrdinate = arrowMidX - BackgroundPanelConstants.kArrowHeight - curveOffset
             let yOrdinate = frame.height - BackgroundPanelConstants.kArrowHeight - BackgroundPanelConstants.kBorderWidth
             arrowPath.move(to: NSPoint(x: xOrdinate, y: yOrdinate))
-            arrowPath.relativeCurve(to: NSPoint(x: BackgroundPanelConstants.kArrowHeight + curveOffset, y: BackgroundPanelConstants.kBorderWidth), controlPoint1: NSPoint(x: curveOffset, y: 0), controlPoint2: NSPoint(x: BackgroundPanelConstants.kArrowHeight, y: BackgroundPanelConstants.kArrowHeight))
+            arrowPath.relativeCurve(to: NSPoint(x: BackgroundPanelConstants.kArrowHeight + curveOffset,
+                                                y: BackgroundPanelConstants.kBorderWidth),
+                                    controlPoint1: NSPoint(x: curveOffset, y: 0),
+                                    controlPoint2: NSPoint(x: BackgroundPanelConstants.kArrowHeight, y: BackgroundPanelConstants.kArrowHeight))
         }
 
         Themer.shared().mainBackgroundColor().setFill()

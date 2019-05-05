@@ -278,34 +278,24 @@ class NotesPopover: NSViewController {
 
     private func insertTimezoneInDefaultPreferences() {
         guard let model = dataObject, var timezones = timezoneObjects else { return }
-
         let encodedObject = NSKeyedArchiver.archivedData(withRootObject: model)
-
         timezones[currentRow] = encodedObject
-
         DataStore.shared().setTimezones(timezones)
     }
 
     private func updateMenubarTitles() {
         guard let model = dataObject, model.isFavourite == 1, var timezones = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data] else { return }
-
         let menubarIndex = timezones.firstIndex { (menubarLocation) -> Bool in
-
             if let convertedObject = TimezoneData.customObject(from: menubarLocation) {
                 return convertedObject.isEqual(dataObject)
             }
-
             return false
         }
 
         if let index = menubarIndex {
-
             let encodedObject = NSKeyedArchiver.archivedData(withRootObject: model)
-
             timezones[index] = encodedObject
-
             UserDefaults.standard.set(timezones, forKey: CLMenubarFavorites)
-
         }
     }
 
@@ -370,7 +360,6 @@ class NotesPopover: NSViewController {
 
         if eventCenter.reminderAccessNotDetermined() {
             eventCenter.requestAccess(to: .reminder, completionHandler: { granted in
-
                 if granted {
                     OperationQueue.main.addOperation {
                         self.createReminder()
@@ -402,7 +391,6 @@ class NotesPopover: NSViewController {
 
     private func createReminder() {
         guard let model = dataObject else { return }
-
         if setReminderCheckbox.state == .on {
             let eventCenter = EventCenter.sharedCenter()
             let alertIndex = alertPopupButton.indexOfSelectedItem
@@ -507,29 +495,19 @@ class NotesPopover: NSViewController {
         }
 
         setInitialReminderTime()
-
         updateTimeFormat()
-
         updateSecondsFormat()
     }
 
     private func updateTimeFormat() {
-        if dataObject?.overrideFormat.rawValue == 0 {
-            timeFormatControl.setSelected(true, forSegment: 0)
-        } else if dataObject?.overrideFormat.rawValue == 1 {
-            timeFormatControl.setSelected(true, forSegment: 1)
-        } else {
-            timeFormatControl.setSelected(true, forSegment: 2)
+        if let overrideFormat = dataObject?.overrideFormat.rawValue {
+            timeFormatControl.setSelected(true, forSegment: overrideFormat)
         }
     }
 
     private func updateSecondsFormat() {
-        if dataObject?.overrideSecondsFormat.rawValue == 0 {
-            secondsFormatControl.setSelected(true, forSegment: 0)
-        } else if dataObject?.overrideSecondsFormat.rawValue == 1 {
-            secondsFormatControl.setSelected(true, forSegment: 1)
-        } else {
-            secondsFormatControl.setSelected(true, forSegment: 2)
+        if let overrideFormat = dataObject?.overrideSecondsFormat.rawValue {
+            secondsFormatControl.setSelected(true, forSegment: overrideFormat)
         }
     }
 
@@ -549,13 +527,10 @@ extension NotesPopover: NSTextFieldDelegate {
         // We need to do a couple of things if the customLabel is updated
         // 1. Update the userDefaults
         // 2. Check if the timezone is displayed in the menubar; if so, update the model
-
         guard let model = dataObject else { return }
-
         model.setLabel(customLabel.stringValue)
 
         insertTimezoneInDefaultPreferences()
-
         updateMenubarTitles()
 
         NotificationCenter.default.post(name: NSNotification.Name.customLabelChanged,

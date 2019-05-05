@@ -168,7 +168,7 @@ extension TimezoneDataOperations {
                 return "\(todaysDate(with: sliderValue))\(timeDifference())"
             }
 
-            let errorDictionary: [String: Any] = ["Timezone" : dataObject.timezone(),
+            let errorDictionary: [String: Any] = ["Timezone": dataObject.timezone(),
                                    "Current Locale": Locale.autoupdatingCurrent.identifier,
                                    "Slider Value": sliderValue,
                                    "Today's Date": Date()]

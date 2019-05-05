@@ -224,7 +224,9 @@ class CalendarViewController: ParentViewController {
         showEventsFromLabel.stringValue =  "Show events from"
         truncateAccessoryLabel.stringValue =  "If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\""
 
-        [headerLabel, upcomingEventView, allDayMeetingsLabel, showNextMeetingLabel, nextMeetingAccessoryLabel, truncateTextLabel, showEventsFromLabel, charactersField, truncateAccessoryLabel].forEach { $0?.textColor = Themer.shared().mainTextColor() }
+        [headerLabel, upcomingEventView, allDayMeetingsLabel,
+         showNextMeetingLabel, nextMeetingAccessoryLabel, truncateTextLabel,
+         showEventsFromLabel, charactersField, truncateAccessoryLabel].forEach { $0?.textColor = Themer.shared().mainTextColor() }
     }
 }
 
@@ -253,12 +255,14 @@ extension CalendarViewController: NSTableViewDelegate {
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
 
-        if let currentSource = calendars[row] as? String, let message = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "sourceCellView"), owner: self) as? SourceTableViewCell {
+        if let currentSource = calendars[row] as? String,
+            let message = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "sourceCellView"), owner: self) as? SourceTableViewCell {
             message.sourceName.stringValue = currentSource
             return message
         }
 
-        if let currentSource = calendars[row] as? CalendarInfo, let calendarCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "calendarCellView"), owner: self) as? CalendarTableViewCell {
+        if let currentSource = calendars[row] as? CalendarInfo,
+            let calendarCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "calendarCellView"), owner: self) as? CalendarTableViewCell {
             calendarCell.calendarName.stringValue = currentSource.calendar.title
             calendarCell.calendarSelected.state = currentSource.selected ? NSControl.StateValue.on : NSControl.StateValue.off
             calendarCell.calendarSelected.target = self

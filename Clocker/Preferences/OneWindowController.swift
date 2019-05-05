@@ -35,7 +35,7 @@ class OneWindowController: NSWindowController {
 
             NSAnimationContext.runAnimationGroup({ (context) in
                 context.duration = 1
-                context.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeOut)
+                context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
                 self.window?.animator().backgroundColor = Themer.shared().mainBackgroundColor()
             })
 
@@ -60,8 +60,8 @@ class OneWindowController: NSWindowController {
     }
 
     class func shared() -> OneWindowController {
-        if (sharedWindow == nil) {
-             let prefStoryboard = NSStoryboard.init(name: "Preferences", bundle: nil)
+        if sharedWindow == nil {
+            let prefStoryboard = NSStoryboard.init(name: "Preferences", bundle: nil)
             sharedWindow = prefStoryboard.instantiateInitialController() as? OneWindowController
         }
         return sharedWindow
@@ -95,7 +95,7 @@ class OneWindowController: NSWindowController {
 
         tabViewController.tabViewItems.forEach { (tabViewItem) in
             let identity = (tabViewItem.identifier as? String) ?? ""
-            if (identifierTOImageMapping[identity] != nil) {
+            if identifierTOImageMapping[identity] != nil {
                 tabViewItem.image = identifierTOImageMapping[identity]
             }
         }

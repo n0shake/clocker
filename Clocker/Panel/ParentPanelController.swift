@@ -536,7 +536,9 @@ class ParentPanelController: NSWindowController {
         stride(from: 0, to: preferences.count, by: 1).forEach {
             let current = preferences[$0]
 
-            if $0 < mainTableView.numberOfRows, let cellView = mainTableView.view(atColumn: 0, row: $0, makeIfNecessary: false) as? TimezoneCellView, let model = TimezoneData.customObject(from: current) {
+            if $0 < mainTableView.numberOfRows,
+                let cellView = mainTableView.view(atColumn: 0, row: $0, makeIfNecessary: false) as? TimezoneCellView,
+                let model = TimezoneData.customObject(from: current) {
                 if let futureSliderCell = futureSlider.cell as? CustomSliderCell, futureSliderCell.tracking == true {
                     return
                 }

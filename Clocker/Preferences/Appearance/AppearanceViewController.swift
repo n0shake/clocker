@@ -112,7 +112,11 @@ class AppearanceViewController: ParentViewController {
         menubarDisplayOptionsLabel.stringValue = "Menubar Display Options"
         menubarModeLabel.stringValue = "Menubar Mode"
 
-        [headerLabel, timeFormatLabel, panelTheme, dayDisplayOptionsLabel, showSliderLabel, showSecondsLabel, showSunriseLabel, largerTextLabel, futureSliderRangeLabel, includeDayLabel, includeDateLabel, includePlaceLabel, menubarDisplayOptionsLabel, appDisplayLabel, menubarModeLabel].forEach {
+        [headerLabel, timeFormatLabel, panelTheme,
+         dayDisplayOptionsLabel, showSliderLabel, showSecondsLabel,
+         showSunriseLabel, largerTextLabel, futureSliderRangeLabel,
+         includeDayLabel, includeDateLabel, includePlaceLabel,
+         menubarDisplayOptionsLabel, appDisplayLabel, menubarModeLabel].forEach {
             $0?.textColor = Themer.shared().mainTextColor()
         }
     }

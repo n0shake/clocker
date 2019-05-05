@@ -200,7 +200,13 @@ class OnboardingSearchController: NSViewController {
         }
     }
 
-    private var placeholders: [String] = ["New York", "Los Angeles", "Chicago", "Moscow", "Tokyo", "Istanbul", "Beijing", "Shanghai", "Sao Paulo", "Cairo", "Mexico City", "London", "Seoul", "Copenhagen", "Tel Aviv", "Bern", "San Francisco", "Los Angeles", "Sydney NSW", "Berlin"]
+    private var placeholders: [String] = ["New York", "Los Angeles", "Chicago",
+                                          "Moscow", "Tokyo", "Istanbul",
+                                          "Beijing", "Shanghai", "Sao Paulo",
+                                          "Cairo", "Mexico City", "London",
+                                          "Seoul", "Copenhagen", "Tel Aviv",
+                                          "Bern", "San Francisco", "Los Angeles",
+                                          "Sydney NSW", "Berlin"]
 
     private func setup() {
         appName.stringValue = "Quick Add Locations"
@@ -278,12 +284,7 @@ class OnboardingSearchController: NSViewController {
                                             self.results = []
 
                                             if let errorPresent = error {
-                                                if errorPresent.localizedDescription == PreferencesConstants.offlineErrorMessage {
-                                                    self.setInfoLabel(PreferencesConstants.noInternetConnectivityError)
-                                                } else {
-                                                    self.setInfoLabel(PreferencesConstants.tryAgainMessage)
-                                                }
-
+                                                self.presentErrorMessage(errorPresent.localizedDescription)
                                                 setupForError()
                                                 return
                                             }
@@ -302,29 +303,41 @@ class OnboardingSearchController: NSViewController {
                                                 return
                                             }
 
-                                            for result in searchResults!.results {
-                                                let location = result.geometry.location
-                                                let latitude = location.lat
-                                                let longitude = location.lng
-                                                let formattedAddress = result.formattedAddress
-
-                                                let totalPackage = [
-                                                    "latitude": latitude,
-                                                    "longitude": longitude,
-                                                    CLTimezoneName: formattedAddress,
-                                                    CLCustomLabel: formattedAddress,
-                                                    CLTimezoneID: CLEmptyString,
-                                                    CLPlaceIdentifier: result.placeId
-                                                    ] as [String: Any]
-
-                                                self.results.append(TimezoneData(with: totalPackage))
-                                            }
+                                            self.appendResultsToFilteredArray(searchResults!.results)
 
                                             self.setInfoLabel(CLEmptyString)
 
                                             self.resultsTableView.reloadData()
                                         }
         })
+    }
+
+    private func presentErrorMessage(_ errorMessage: String) {
+        if errorMessage == PreferencesConstants.offlineErrorMessage {
+            self.setInfoLabel(PreferencesConstants.noInternetConnectivityError)
+        } else {
+            self.setInfoLabel(PreferencesConstants.tryAgainMessage)
+        }
+    }
+
+    private func appendResultsToFilteredArray(_ results: [SearchResult.Result]) {
+        results.forEach {
+            let location = $0.geometry.location
+            let latitude = location.lat
+            let longitude = location.lng
+            let formattedAddress = $0.formattedAddress
+
+            let totalPackage = [
+                "latitude": latitude,
+                "longitude": longitude,
+                CLTimezoneName: formattedAddress,
+                CLCustomLabel: formattedAddress,
+                CLTimezoneID: CLEmptyString,
+                CLPlaceIdentifier: $0.placeId
+                ] as [String: Any]
+
+            self.results.append(TimezoneData(with: totalPackage))
+        }
     }
 
     // Extracting this out for tests
