@@ -6,7 +6,10 @@ before_install:
 - export TZ=America/Los_Angeles
 before_script:
  - xcodebuild -version
+install:
+ - ./swiftlint-install.sh
 script:
  - set -o pipefail && env "NSUnbufferedIO=YES"
+ - swiftlint
  - xcodebuild -project Clocker/Clocker.xcodeproj -scheme Clocker build analyze CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO CODE_SIGN_IDENTITY= | xcpretty
  - xcodebuild -project Clocker/Clocker.xcodeproj -scheme Clocker test CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO CODE_SIGN_IDENTITY=  | xcpretty
