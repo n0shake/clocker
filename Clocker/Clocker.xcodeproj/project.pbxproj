@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3595FAD0227F88BC0044A12A /* UserDefaults + KVOExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */; };
 		35C36EE422595EFD002FA5C6 /* StatusContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE022595EFD002FA5C6 /* StatusContainerView.swift */; };
 		35C36EE522595EFD002FA5C6 /* MenubarHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE122595EFD002FA5C6 /* MenubarHandler.swift */; };
 		35C36EE622595EFD002FA5C6 /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE222595EFD002FA5C6 /* StatusItemView.swift */; };
@@ -214,6 +215,7 @@
 
 /* Begin PBXFileReference section */
 		3545C52A22612BCC00121E25 /* RateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTests.swift; sourceTree = "<group>"; };
+		3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults + KVOExtensions.swift"; sourceTree = "<group>"; };
 		35C36EE022595EFD002FA5C6 /* StatusContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusContainerView.swift; sourceTree = "<group>"; };
 		35C36EE122595EFD002FA5C6 /* MenubarHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenubarHandler.swift; sourceTree = "<group>"; };
 		35C36EE222595EFD002FA5C6 /* StatusItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 				35C36F3D2259D892002FA5C6 /* Strings.swift */,
 				35C36F392259D892002FA5C6 /* Themer.swift */,
 				35C36F3A2259D892002FA5C6 /* Timer.swift */,
+				3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */,
 			);
 			path = "Overall App";
 			sourceTree = "<group>";
@@ -1178,6 +1181,7 @@
 				C2CCCD8220619C4C00F2DFC2 /* LocationController.swift in Sources */,
 				35C36F4B2259D971002FA5C6 /* UnderlinedButton.swift in Sources */,
 				9AB6F1562259CF3900A44663 /* CalendarViewController.swift in Sources */,
+				3595FAD0227F88BC0044A12A /* UserDefaults + KVOExtensions.swift in Sources */,
 				9AB6F1612259D1B000A44663 /* PreferencesViewController.swift in Sources */,
 				35C36F2022596253002FA5C6 /* OneWindowController.swift in Sources */,
 				35C36F442259D892002FA5C6 /* Logger.swift in Sources */,

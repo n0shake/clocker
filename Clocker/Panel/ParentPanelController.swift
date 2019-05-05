@@ -13,6 +13,10 @@ struct PanelConstants {
 
 class ParentPanelController: NSWindowController {
 
+    private var futureSliderObserver: NSKeyValueObservation?
+    private var userFontSizeSelectionObserver: NSKeyValueObservation?
+    private var futureSliderRangeObserver: NSKeyValueObservation?
+
     private var eventStoreChangedNotification: NSObjectProtocol?
 
     var dateFormatter = DateFormatter()
@@ -87,6 +91,32 @@ class ParentPanelController: NSWindowController {
         if let eventStoreNotif = eventStoreChangedNotification {
             NotificationCenter.default.removeObserver(eventStoreNotif)
         }
+
+        [futureSliderObserver, userFontSizeSelectionObserver, futureSliderRangeObserver].forEach {
+            $0?.invalidate()
+        }
+    }
+
+    private func setupObservers() {
+        futureSliderObserver = UserDefaults.standard.observe(\.displayFutureSlider, options: [.new]) { (_, change) in
+            if let changedValue = change.newValue {
+                self.futureSliderView.isHidden = changedValue == 1
+            }
+        }
+
+        userFontSizeSelectionObserver = UserDefaults.standard.observe(\.userFontSize, options: [.new]) { (_, change) in
+            if let newFontSize = change.newValue {
+                Logger.log(object: ["FontSize": newFontSize], for: "User Font Size Preference")
+                self.mainTableView.reloadData()
+                self.setScrollViewConstraint()
+            }
+        }
+
+        futureSliderRangeObserver = UserDefaults.standard.observe(\.sliderDayRange, options: [.new]) { (_, change) in
+            if change.newValue != nil {
+                self.adjustFutureSliderBasedOnPreferences()
+            }
+        }
     }
 
     override func awakeFromNib() {
@@ -107,13 +137,7 @@ class ParentPanelController: NSWindowController {
         mainTableView.selectionHighlightStyle = .none
         mainTableView.enclosingScrollView?.hasVerticalScroller = false
 
-        [CLDisplayFutureSliderKey, CLUserFontSizePreference, CLThemeKey, CLFutureSliderRange].forEach { key in
-
-            UserDefaults.standard.addObserver(self,
-                                              forKeyPath: key,
-                                              options: .new,
-                                              context: nil)
-        }
+        setupObservers()
 
         updateReviewViewFontColor()
 
@@ -281,6 +305,8 @@ class ParentPanelController: NSWindowController {
         sharingButton.image = sharedThemer.sharingImage()
 
         sliderDatePicker.textColor = sharedThemer.mainTextColor()
+
+        updateReviewViewFontColor()
     }
 
     override func windowDidLoad() {
@@ -299,25 +325,6 @@ class ParentPanelController: NSWindowController {
             let attributedString = NSAttributedString(string: buttonTitle, attributes: attributes)
             calendarButton.attributedTitle = attributedString
             calendarButton.toolTip = attributedString.string
-        }
-    }
-
-    override func observeValue(forKeyPath keyPath: String?, of _: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == CLDisplayFutureSliderKey, let changes = change, let new = changes[NSKeyValueChangeKey.newKey] as? NSNumber {
-            futureSliderView.isHidden = new.isEqual(to: NSNumber(value: 1))
-        } else if keyPath == CLUserFontSizePreference, let userFontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber {
-            Logger.log(object: ["FontSize": userFontSize], for: "User Font Size Preference")
-            mainTableView.reloadData()
-            setScrollViewConstraint()
-        } else if keyPath == CLThemeKey {
-            updateReviewViewFontColor()
-        } else if keyPath == CLFutureSliderRange {
-            adjustFutureSliderBasedOnPreferences()
-        } else {
-            super.observeValue(forKeyPath: keyPath,
-                               of: keyPath,
-                               change: change,
-                               context: context)
         }
     }
 
@@ -343,6 +350,34 @@ class ParentPanelController: NSWindowController {
         parentTimer = nil
     }
 
+    private func getAdjustedRowHeight(for object: TimezoneData?, _ currentHeight: CGFloat) -> CGFloat {
+        var newHeight = currentHeight
+
+        if newHeight <= 68.0 {
+            newHeight = 69.0
+        }
+
+        if newHeight >= 68.0 {
+            newHeight = 75.0
+            if let note = object?.note, note.isEmpty == false {
+                newHeight += 30
+            }
+        }
+
+        if newHeight >= 88.0 {
+            // Set it to 95 expicity in case the row height is calculated be higher.
+            newHeight = 95.0
+
+            if let note = object?.note, note.isEmpty {
+                newHeight -= 30.0
+            }
+        }
+
+        newHeight += mainTableView.intercellSpacing.height
+
+        return newHeight
+    }
+
     func setScrollViewConstraint() {
         var totalHeight: CGFloat = 0.0
         let preferences = defaultPreferences
@@ -350,31 +385,7 @@ class ParentPanelController: NSWindowController {
         for cellIndex in 0 ..< preferences.count {
             let currentObject = TimezoneData.customObject(from: preferences[cellIndex])
             let rowRect = mainTableView.rect(ofRow: cellIndex)
-            var height: CGFloat = rowRect.size.height
-
-            if height <= 68.0 {
-                height = 69.0
-            }
-
-            if height >= 68.0 {
-                height = 75.0
-                if let note = currentObject?.note, note.isEmpty == false {
-                    height += 30
-                }
-            }
-
-            if height >= 88.0 {
-                // Set it to 95 expicity in case the row height is calculated be higher.
-                height = 95.0
-
-                if let note = currentObject?.note, note.isEmpty {
-                    height -= 30.0
-                }
-            }
-
-            height += mainTableView.intercellSpacing.height
-
-            totalHeight += height
+            totalHeight += getAdjustedRowHeight(for: currentObject, rowRect.size.height)
         }
 
         // This is for the Add Cell View case
@@ -828,41 +839,44 @@ class ParentPanelController: NSWindowController {
             return
         }
 
-        NSAnimationContext.runAnimationGroup({ context in
+        NSAnimationContext.runAnimationGroup({ (context) in
             context.duration = 1
             context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
             leftButton.animator().alphaValue = 0.0
             rightButton.animator().alphaValue = 0.0
-        }) {
+        }, completionHandler: {
             field.stringValue = title
 
-            NSAnimationContext.runAnimationGroup({ context in
+            NSAnimationContext.runAnimationGroup({ (context) in
                 context.duration = 1
                 context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
-                self.leftButton.animator().alphaValue = 1.0
-                self.rightButton.animator().alphaValue = 1.0
+                self.runAnimationCompletionBlock(leftTitle, rightTitle)
+            }, completionHandler: {})
+        })
+    }
 
-                let paragraphStyle = NSMutableParagraphStyle()
-                paragraphStyle.alignment = .center
+    private func runAnimationCompletionBlock(_ leftButtonTitle: String, _ rightButtonTitle: String) {
+        self.leftButton.animator().alphaValue = 1.0
+        self.rightButton.animator().alphaValue = 1.0
 
-                let styleAttributes = [
-                    NSAttributedString.Key.paragraphStyle: paragraphStyle,
-                    NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!
-                ]
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
 
-                if self.leftButton.attributedTitle.string == "Not Really" {
-                    self.leftButton.animator().attributedTitle = NSAttributedString(string: PanelConstants.noThanksTitle, attributes: styleAttributes)
-                }
+        let styleAttributes = [
+            NSAttributedString.Key.paragraphStyle: paragraphStyle,
+            NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!
+        ]
 
-                if self.rightButton.attributedTitle.string == PanelConstants.yesWithExclamation {
-                    self.rightButton.animator().attributedTitle = NSAttributedString(string: "Yes, sure", attributes: styleAttributes)
-                }
-
-                self.leftButton.animator().attributedTitle = NSAttributedString(string: leftTitle, attributes: styleAttributes)
-                self.rightButton.animator().attributedTitle = NSAttributedString(string: rightTitle, attributes: styleAttributes)
-
-            }) {}
+        if self.leftButton.attributedTitle.string == "Not Really" {
+            self.leftButton.animator().attributedTitle = NSAttributedString(string: PanelConstants.noThanksTitle, attributes: styleAttributes)
         }
+
+        if self.rightButton.attributedTitle.string == PanelConstants.yesWithExclamation {
+            self.rightButton.animator().attributedTitle = NSAttributedString(string: "Yes, sure", attributes: styleAttributes)
+        }
+
+        self.leftButton.animator().attributedTitle = NSAttributedString(string: leftButtonTitle, attributes: styleAttributes)
+        self.rightButton.animator().attributedTitle = NSAttributedString(string: rightButtonTitle, attributes: styleAttributes)
     }
 
     // MARK: Date Picker + Slider

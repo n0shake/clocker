@@ -340,30 +340,11 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
         }
 
         if tableColumn?.identifier.rawValue == PreferencesConstants.timezoneNameIdentifier {
-            guard let model = selectedDataSource else {
-                return nil
-            }
-
-            if let address = model.formattedAddress, address.isEmpty == false {
-                return model.formattedAddress
-            }
-
-            return model.timezoneID
+            return handleTimezoneNameIdentifier(for: row, selectedDataSource)
         }
 
         if tableColumn?.identifier.rawValue == PreferencesConstants.availableTimezoneIdentifier {
-            let criteria = searchCriteria.selectedSegment
-
-            if criteria == 0 {
-                if row < filteredArray.count {
-                    return dataSource?.formattedAddress
-                }
-            } else {
-                if searchField.stringValue.isEmpty == false && row < timezoneFilteredArray.count {
-                    return timezoneFilteredArray[row]
-                }
-                return timezoneArray[row]
-            }
+            return handleAvailableTimezoneColumn(for: row, dataSource)
         }
 
         if tableColumn?.identifier.rawValue == PreferencesConstants.customLabelIdentifier {
@@ -375,31 +356,64 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
         }
 
         if tableColumn?.identifier.rawValue == "abbreviation" {
-            if searchField.stringValue.isEmpty == false && (row < timezoneFilteredArray.count) {
-                let currentSelection = timezoneFilteredArray[row]
-                if currentSelection == "UTC" {
-                    return "UTC"
-                } else if currentSelection == "Anywhere on Earth" {
-                    return "GMT+12"
-                }
-
-                return NSTimeZone(name: timezoneFilteredArray[row])?.abbreviation ?? "Error"
-            }
-
-            if timezoneArray.count > row {
-                // Special return for manually inserted 'UTC'
-                if timezoneArray[row] == "UTC" {
-                    return "UTC"
-                }
-
-                if timezoneArray[row] == "Anywhere on Earth" {
-                    return "AoE"
-                }
-
-                return NSTimeZone(name: timezoneArray[row])?.abbreviation ?? "Error"
-            }
+            return handleAbbreviationColumn(for: row)
         }
 
+        return nil
+    }
+
+    private func handleTimezoneNameIdentifier(for row: Int, _ selectedDataSource: TimezoneData?) -> Any? {
+        guard let model = selectedDataSource else {
+            return nil
+        }
+
+        if let address = model.formattedAddress, address.isEmpty == false {
+            return model.formattedAddress
+        }
+
+        return model.timezoneID
+    }
+
+    private func handleAvailableTimezoneColumn(for row: Int, _ dataSource: TimezoneData?) -> Any? {
+        let criteria = searchCriteria.selectedSegment
+
+        if criteria == 0 {
+            if row < filteredArray.count {
+                return dataSource?.formattedAddress
+            }
+        } else {
+            if searchField.stringValue.isEmpty == false && row < timezoneFilteredArray.count {
+                return timezoneFilteredArray[row]
+            }
+            return timezoneArray[row]
+        }
+        return nil
+    }
+
+    private func handleAbbreviationColumn(for row: Int) -> Any? {
+        if searchField.stringValue.isEmpty == false && (row < timezoneFilteredArray.count) {
+            let currentSelection = timezoneFilteredArray[row]
+            if currentSelection == "UTC" {
+                return "UTC"
+            } else if currentSelection == "Anywhere on Earth" {
+                return "GMT+12"
+            }
+
+            return NSTimeZone(name: timezoneFilteredArray[row])?.abbreviation ?? "Error"
+        }
+
+        if timezoneArray.count > row {
+            // Special return for manually inserted 'UTC'
+            if timezoneArray[row] == "UTC" {
+                return "UTC"
+            }
+
+            if timezoneArray[row] == "Anywhere on Earth" {
+                return "AoE"
+            }
+
+            return NSTimeZone(name: timezoneArray[row])?.abbreviation ?? "Error"
+        }
         return nil
     }
 

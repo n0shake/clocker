@@ -3,7 +3,7 @@
 import Cocoa
 
 class PanelController: ParentPanelController {
-    
+
     @objc dynamic var hasActivePanel: Bool = false
 
     static var sharedWindow = PanelController(windowNibName: .panel)

@@ -126,7 +126,7 @@ open class AppDelegate : NSObject, NSApplicationDelegate {
 
         assignShortcut()
 
-        panelObserver = panelController.observe(\.hasActivePanel, options: [.new]) { (obj, change) in
+        panelObserver = panelController.observe(\.hasActivePanel, options: [.new]) { (obj, _) in
              self.statusBarHandler.setHasActiveIcon(obj.hasActivePanelGetter())
         }
 
