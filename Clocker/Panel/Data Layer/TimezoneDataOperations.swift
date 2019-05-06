@@ -33,7 +33,6 @@ extension TimezoneDataOperations {
     }
 
     func compactMenuHeader() -> String {
-
         var subtitle = CLEmptyString
 
         let shouldDayBeShown = DataStore.shared().shouldShowDateInMenubar()
@@ -105,7 +104,7 @@ extension TimezoneDataOperations {
         let sourceTimezone = TimeZone.current
         let destinationTimezone = TimeZone(identifier: dataObject.timezone())
 
-        let sourceGMTOffset: Double =  Double(sourceTimezone.secondsFromGMT(for: source))
+        let sourceGMTOffset: Double = Double(sourceTimezone.secondsFromGMT(for: source))
         let destinationGMTOffset: Double = Double(destinationTimezone?.secondsFromGMT(for: source) ?? 0)
         let interval = destinationGMTOffset - sourceGMTOffset
 
@@ -120,8 +119,8 @@ extension TimezoneDataOperations {
         }
 
         return calendar?.date(byAdding: .minute,
-                             value: minutesToAdd,
-                             to: Date()) ?? Date()
+                              value: minutesToAdd,
+                              to: Date()) ?? Date()
     }
 
     func date(with sliderValue: Int, displayType: CLDateDisplayType) -> String {
@@ -136,10 +135,8 @@ extension TimezoneDataOperations {
         }
 
         if displayType == CLDateDisplayType.panelDisplay {
-
             // Yesterday, tomorrow, etc
             if relativeDayPreference.intValue == 0 {
-
                 let localFormatter = DateFormatterManager.localizedSimpleFormatter("EEEE")
                 let local = localFormatter.date(from: localeDate(with: "EEEE"))
 
@@ -169,9 +166,9 @@ extension TimezoneDataOperations {
             }
 
             let errorDictionary: [String: Any] = ["Timezone": dataObject.timezone(),
-                                   "Current Locale": Locale.autoupdatingCurrent.identifier,
-                                   "Slider Value": sliderValue,
-                                   "Today's Date": Date()]
+                                                  "Current Locale": Locale.autoupdatingCurrent.identifier,
+                                                  "Slider Value": sliderValue,
+                                                  "Today's Date": Date()]
             Logger.log(object: errorDictionary, for: "Unable to get date")
 
             return "Error"
@@ -207,8 +204,8 @@ extension TimezoneDataOperations {
             let unableToConvertDateParameters = [
                 "New Date": newDate,
                 "Timezone": dataObject.timezone(),
-                "Locale": dateFormatter.locale.identifier
-                ] as [String: Any]
+                "Locale": dateFormatter.locale.identifier,
+            ] as [String: Any]
             Logger.log(object: unableToConvertDateParameters, for: "Date conversion failure - New Date is nil")
             return CLEmptyString
         }

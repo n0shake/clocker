@@ -14,7 +14,7 @@ class OnboardingSearchController: NSViewController {
     @IBOutlet private var searchBar: ClockerSearchField!
     @IBOutlet private var resultsTableView: NSTableView!
     @IBOutlet private var accessoryLabel: NSTextField!
-    @IBOutlet weak var undoButton: NSButton!
+    @IBOutlet var undoButton: NSButton!
 
     private var results: [TimezoneData] = []
     private var dataTask: URLSessionDataTask? = .none
@@ -57,7 +57,7 @@ class OnboardingSearchController: NSViewController {
     @objc func doubleClickAction(_: NSTableView?) {
         [accessoryLabel].forEach { $0?.isHidden = false }
 
-        if resultsTableView.selectedRow >= 0 && resultsTableView.selectedRow < results.count {
+        if resultsTableView.selectedRow >= 0, resultsTableView.selectedRow < results.count {
             let selectedTimezone = results[resultsTableView.selectedRow]
 
             addTimezoneToDefaults(selectedTimezone)
@@ -65,13 +65,12 @@ class OnboardingSearchController: NSViewController {
     }
 
     private func addTimezoneToDefaults(_ timezone: TimezoneData) {
-
         func setupLabelHidingTimer() {
             Timer.scheduledTimer(withTimeInterval: 5,
                                  repeats: false) { _ in
-                                    OperationQueue.main.addOperation {
-                                        self.accessoryLabel.stringValue = CLEmptyString
-                                    }
+                OperationQueue.main.addOperation {
+                    self.accessoryLabel.stringValue = CLEmptyString
+                }
             }
         }
 
@@ -104,7 +103,6 @@ class OnboardingSearchController: NSViewController {
 
     /// Returns true if there's an error.
     private func handleEdgeCase(for response: Data?) -> Bool {
-
         func setErrorPlaceholders() {
             setInfoLabel("No timezone found! Try entering an exact name.")
             searchBar.placeholderString = placeholders.randomElement()
@@ -150,7 +148,7 @@ class OnboardingSearchController: NSViewController {
 
         NetworkManager.task(with: urlString) { [weak self] response, error in
 
-            guard let `self` = self else { return }
+            guard let self = self else { return }
 
             OperationQueue.main.addOperation {
                 if self.handleEdgeCase(for: response) == true {
@@ -158,7 +156,7 @@ class OnboardingSearchController: NSViewController {
                 }
 
                 if error == nil, let json = response, let response = self.decodeTimezone(from: json) {
-                    if self.resultsTableView.selectedRow >= 0 && self.resultsTableView.selectedRow < self.results.count {
+                    if self.resultsTableView.selectedRow >= 0, self.resultsTableView.selectedRow < self.results.count {
                         var filteredAddress = "Error"
 
                         if let address = dataObject.formattedAddress {
@@ -172,7 +170,7 @@ class OnboardingSearchController: NSViewController {
                             "latitude": latitude,
                             "longitude": longitude,
                             "nextUpdate": CLEmptyString,
-                            CLCustomLabel: filteredAddress
+                            CLCustomLabel: filteredAddress,
                         ] as [String: Any]
 
                         DataStore.shared().addTimezone(TimezoneData(with: newTimeZone))
@@ -222,7 +220,6 @@ class OnboardingSearchController: NSViewController {
     }
 
     @IBAction func search(_ sender: NSSearchField) {
-
         resultsTableView.deselectAll(nil)
 
         let searchString = sender.stringValue
@@ -249,9 +246,8 @@ class OnboardingSearchController: NSViewController {
     }
 
     @objc func actualSearch() {
-
         func setupForError() {
-            self.resultsTableView.isHidden = true
+            resultsTableView.isHidden = true
         }
 
         let userPreferredLanguage = Locale.preferredLanguages.first ?? "en-US"
@@ -267,56 +263,55 @@ class OnboardingSearchController: NSViewController {
         dataTask = NetworkManager.task(with: urlString,
                                        completionHandler: { [weak self] response, error in
 
-                                        guard let `self` = self else { return }
+                                           guard let self = self else { return }
 
-                                        OperationQueue.main.addOperation {
+                                           OperationQueue.main.addOperation {
+                                               print("Search string was: \(searchString)")
 
-                                            print("Search string was: \(searchString)")
+                                               let currentSearchBarValue = self.searchBar.stringValue
 
-                                            let currentSearchBarValue = self.searchBar.stringValue
+                                               let words = currentSearchBarValue.components(separatedBy: CharacterSet.whitespacesAndNewlines)
 
-                                            let words = currentSearchBarValue.components(separatedBy: CharacterSet.whitespacesAndNewlines)
+                                               if words.joined(separator: CLEmptyString) != searchString {
+                                                   return
+                                               }
 
-                                            if words.joined(separator: CLEmptyString) != searchString {
-                                                return
-                                            }
+                                               self.results = []
 
-                                            self.results = []
+                                               if let errorPresent = error {
+                                                   self.presentErrorMessage(errorPresent.localizedDescription)
+                                                   setupForError()
+                                                   return
+                                               }
 
-                                            if let errorPresent = error {
-                                                self.presentErrorMessage(errorPresent.localizedDescription)
-                                                setupForError()
-                                                return
-                                            }
+                                               guard let data = response else {
+                                                   self.setInfoLabel(PreferencesConstants.tryAgainMessage)
+                                                   setupForError()
+                                                   return
+                                               }
 
-                                            guard let data = response else {
-                                                self.setInfoLabel(PreferencesConstants.tryAgainMessage)
-                                                setupForError()
-                                                return
-                                            }
+                                               let searchResults = self.decode(from: data)
 
-                                            let searchResults = self.decode(from: data)
+                                               if searchResults?.status == "ZERO_RESULTS" {
+                                                   self.setInfoLabel("No results! 😔 Try entering the exact name.")
+                                                   setupForError()
+                                                   return
+                                               }
 
-                                            if searchResults?.status == "ZERO_RESULTS" {
-                                                self.setInfoLabel("No results! 😔 Try entering the exact name.")
-                                                setupForError()
-                                                return
-                                            }
+                                               self.appendResultsToFilteredArray(searchResults!.results)
 
-                                            self.appendResultsToFilteredArray(searchResults!.results)
+                                               self.setInfoLabel(CLEmptyString)
 
-                                            self.setInfoLabel(CLEmptyString)
-
-                                            self.resultsTableView.reloadData()
-                                        }
+                                               self.resultsTableView.reloadData()
+                                           }
         })
     }
 
     private func presentErrorMessage(_ errorMessage: String) {
         if errorMessage == PreferencesConstants.offlineErrorMessage {
-            self.setInfoLabel(PreferencesConstants.noInternetConnectivityError)
+            setInfoLabel(PreferencesConstants.noInternetConnectivityError)
         } else {
-            self.setInfoLabel(PreferencesConstants.tryAgainMessage)
+            setInfoLabel(PreferencesConstants.tryAgainMessage)
         }
     }
 
@@ -333,8 +328,8 @@ class OnboardingSearchController: NSViewController {
                 CLTimezoneName: formattedAddress,
                 CLCustomLabel: formattedAddress,
                 CLTimezoneID: CLEmptyString,
-                CLPlaceIdentifier: $0.placeId
-                ] as [String: Any]
+                CLPlaceIdentifier: $0.placeId,
+            ] as [String: Any]
 
             self.results.append(TimezoneData(with: totalPackage))
         }
@@ -359,11 +354,10 @@ class OnboardingSearchController: NSViewController {
         searchBar.placeholderString = placeholders.randomElement()
     }
 
-    @IBAction func undoAction(_ sender: Any) {
+    @IBAction func undoAction(_: Any) {
         DataStore.shared().removeLastTimezone()
         setInfoLabel("Removed.")
     }
-
 }
 
 extension OnboardingSearchController: NSTableViewDataSource {
@@ -385,7 +379,7 @@ extension OnboardingSearchController: NSTableViewDataSource {
 
 extension OnboardingSearchController: NSTableViewDelegate {
     func tableView(_: NSTableView, heightOfRow row: Int) -> CGFloat {
-        if row == 0 && results.isEmpty {
+        if row == 0, results.isEmpty {
             return 30
         }
 

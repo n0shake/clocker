@@ -46,7 +46,7 @@ class DateFormatterManager: NSObject {
         return specializedFormatter
     }
 
-    @objc class func localizedFormatter(with format: String, for timezoneIdentifier: String, locale: Locale = Locale.autoupdatingCurrent) -> DateFormatter {
+    @objc class func localizedFormatter(with format: String, for timezoneIdentifier: String, locale _: Locale = Locale.autoupdatingCurrent) -> DateFormatter {
         dateFormatter.dateStyle = .none
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale.autoupdatingCurrent

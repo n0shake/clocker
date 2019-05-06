@@ -12,7 +12,6 @@ import Foundation
  *  Extends the Date class by adding convenience methods for formatting dates.
  */
 public extension Date {
-
     // MARK: - Formatted Date - Style
 
     /**

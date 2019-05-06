@@ -11,7 +11,7 @@ import Foundation
 /**
  * TimeChunk represents an abstract collection of `DateComponent`s intended for use in date manipulation. A `TimeChunk` differs from a
  * TimeInterval in that the former depends on the `Calendar` class (and takes into account daylight savings, leap year, etc.) while the
- * latter depends on hard, second based adjustments that are independent from calendar constructs. 
+ * latter depends on hard, second based adjustments that are independent from calendar constructs.
  *
  * In essence, TimeChunk is meant to be a thin, more flexible layer over the `Calender` and `DateComponent` classes for ease of use.
  * `TimeChunk`s may be created either by calling the provided initializer or shorthand like `2.days`. TimeChunks are manipulable and combine
@@ -20,7 +20,6 @@ import Foundation
  * For more information about the utility of TimeChunks in relation to Dates, see the `Date+Manipulations` class.
  */
 public struct TimeChunk {
-
     // MARK: - Variables
 
     public var seconds = 0
@@ -67,57 +66,57 @@ public struct TimeChunk {
      *  well defined unit of time without the context of a calendar. !
      */
     public func to(_ unit: TimeUnits) -> Int {
-        if self.months != 0 {
+        if months != 0 {
             print("Months are not supported for conversion due to their uncertain number of days.")
             return 0
         }
-        if (unit == .seconds) {
-            var total = self.seconds
-            total += self.minutes * 60
-            total += self.hours * 60 * 60
-            total += self.days * 24 * 60 * 60
-            total += self.weeks * 7 * 24 * 60 * 60
-            total += self.years * 365 * 24 * 60 * 60
+        if unit == .seconds {
+            var total = seconds
+            total += minutes * 60
+            total += hours * 60 * 60
+            total += days * 24 * 60 * 60
+            total += weeks * 7 * 24 * 60 * 60
+            total += years * 365 * 24 * 60 * 60
             return total
-        } else if (unit == .minutes) {
-            var total = self.minutes
-            total += self.seconds / 60
-            total += self.hours * 60
-            total += self.days * 24 * 60
-            total += self.weeks * 7 * 24 * 60
-            total += self.years * 365 * 24 * 60
+        } else if unit == .minutes {
+            var total = minutes
+            total += seconds / 60
+            total += hours * 60
+            total += days * 24 * 60
+            total += weeks * 7 * 24 * 60
+            total += years * 365 * 24 * 60
             return total
-        } else if (unit == .hours) {
-            var total = self.hours
-            let secondsToMinutes = self.seconds / 60
-            total += (self.minutes + secondsToMinutes) / 60
-            total += self.days * 24
-            total += self.weeks * 7 * 24
-            total += self.years * 365 * 24
+        } else if unit == .hours {
+            var total = hours
+            let secondsToMinutes = seconds / 60
+            total += (minutes + secondsToMinutes) / 60
+            total += days * 24
+            total += weeks * 7 * 24
+            total += years * 365 * 24
             return total
-        } else if (unit == .days) {
-            var total = self.days
-            let secondsToMinutes = self.seconds / 60
-            let minutesToHours = (self.minutes + secondsToMinutes) / 60
-            total += (self.hours + minutesToHours) / 24
-            total += self.weeks * 7
-            total += self.years * 365
+        } else if unit == .days {
+            var total = days
+            let secondsToMinutes = seconds / 60
+            let minutesToHours = (minutes + secondsToMinutes) / 60
+            total += (hours + minutesToHours) / 24
+            total += weeks * 7
+            total += years * 365
             return total
-        } else if (unit == .weeks) {
-            var total = self.weeks
-            let secondsToMinutes = self.seconds / 60
-            let minutesToHours = (self.minutes + secondsToMinutes) / 60
-            let hoursToDays = (self.hours + minutesToHours) / 24
-            total += (self.days + hoursToDays) / 7
-            total += self.years * 52
+        } else if unit == .weeks {
+            var total = weeks
+            let secondsToMinutes = seconds / 60
+            let minutesToHours = (minutes + secondsToMinutes) / 60
+            let hoursToDays = (hours + minutesToHours) / 24
+            total += (days + hoursToDays) / 7
+            total += years * 52
             return total
-        } else if (unit == .years) {
-            var total = self.years
-            let secondsToMinutes = self.seconds / 60
-            let minutesToHours = (self.minutes + secondsToMinutes) / 60
-            let hoursToDays = (self.hours + minutesToHours) / 24
+        } else if unit == .years {
+            var total = years
+            let secondsToMinutes = seconds / 60
+            let minutesToHours = (minutes + secondsToMinutes) / 60
+            let hoursToDays = (hours + minutesToHours) / 24
             let weeksToDays = weeks * 7
-            total += (self.days + hoursToDays + weeksToDays) / 365
+            total += (days + hoursToDays + weeksToDays) / 365
             return total
         }
         return 0
@@ -274,5 +273,4 @@ public struct TimeChunk {
         invertedChunk.years = -chunk.years
         return invertedChunk
     }
-
 }

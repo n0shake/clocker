@@ -4,21 +4,20 @@ import Cocoa
 import CoreLocation
 
 public struct Solar {
-
     /// The coordinate that is used for the calculation
     public let coordinate: CLLocationCoordinate2D
 
     /// The date to generate sunrise / sunset times for
-    public fileprivate(set) var date: Date
+    public private(set) var date: Date
 
-    public fileprivate(set) var sunrise: Date?
-    public fileprivate(set) var sunset: Date?
-    public fileprivate(set) var civilSunrise: Date?
-    public fileprivate(set) var civilSunset: Date?
-    public fileprivate(set) var nauticalSunrise: Date?
-    public fileprivate(set) var nauticalSunset: Date?
-    public fileprivate(set) var astronomicalSunrise: Date?
-    public fileprivate(set) var astronomicalSunset: Date?
+    public private(set) var sunrise: Date?
+    public private(set) var sunset: Date?
+    public private(set) var civilSunrise: Date?
+    public private(set) var civilSunset: Date?
+    public private(set) var nauticalSunrise: Date?
+    public private(set) var nauticalSunset: Date?
+    public private(set) var astronomicalSunrise: Date?
+    public private(set) var astronomicalSunset: Date?
 
     // MARK: Init
 
@@ -52,20 +51,20 @@ public struct Solar {
 
     // MARK: - Private functions
 
-    fileprivate enum SunriseSunset {
+    private enum SunriseSunset {
         case sunrise
         case sunset
     }
 
     /// Used for generating several of the possible sunrise / sunset times
-    fileprivate enum Zenith: Double {
+    private enum Zenith: Double {
         case official = 90.83
         case civil = 96
         case nautical = 102
         case astronimical = 108
     }
 
-    fileprivate func calculate(_ sunriseSunset: SunriseSunset, for date: Date, and zenith: Zenith) -> Date? {
+    private func calculate(_ sunriseSunset: SunriseSunset, for date: Date, and zenith: Zenith) -> Date? {
         guard let utcTimezone = TimeZone(identifier: "UTC") else { return nil }
 
         // Get the day of the year
@@ -147,7 +146,7 @@ public struct Solar {
         if shouldBeYesterday {
             setDate = Date(timeInterval: -(60 * 60 * 24), since: date)
         } else if shouldBeTomorrow {
-            setDate = Date(timeInterval: (60 * 60 * 24), since: date)
+            setDate = Date(timeInterval: 60 * 60 * 24, since: date)
         } else {
             setDate = date
         }
@@ -162,7 +161,7 @@ public struct Solar {
     }
 
     /// Normalises a value between 0 and `maximum`, by adding or subtracting `maximum`
-    fileprivate func normalise(_ value: Double, withMaximum maximum: Double) -> Double {
+    private func normalise(_ value: Double, withMaximum maximum: Double) -> Double {
         var value = value
 
         if value < 0 {
@@ -175,24 +174,22 @@ public struct Solar {
 
         return value
     }
-
 }
 
 extension Solar {
-
     /// Whether the location specified by the `latitude` and `longitude` is in daytime on `date`
     /// - Complexity: O(1)
     public var isDaytime: Bool {
         guard
             let sunrise = sunrise,
             let sunset = sunset
-            else {
-                return false
+        else {
+            return false
         }
 
         let beginningOfDay = sunrise.timeIntervalSince1970
         let endOfDay = sunset.timeIntervalSince1970
-        let currentTime = self.date.timeIntervalSince1970
+        let currentTime = date.timeIntervalSince1970
 
         let isSunriseOrLater = currentTime >= beginningOfDay
         let isBeforeSunset = currentTime < endOfDay
@@ -205,7 +202,6 @@ extension Solar {
     public var isNighttime: Bool {
         return !isDaytime
     }
-
 }
 
 // MARK: - Helper extensions

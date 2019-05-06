@@ -7,7 +7,7 @@ class ReviewView: NSView {
 
     override func mouseEntered(with event: NSEvent) {
         super.mouseEntered(with: event)
-        let dismissalButton = subviews.filter({ $0.tag == 55 }).first
+        let dismissalButton = subviews.filter { $0.tag == 55 }.first
         if let firstMatch = dismissalButton, firstMatch.isHidden {
             firstMatch.isHidden = false
         }
@@ -15,7 +15,7 @@ class ReviewView: NSView {
 
     override func mouseExited(with event: NSEvent) {
         super.mouseExited(with: event)
-        let dismissalButton = subviews.filter({ $0.tag == 55 }).first
+        let dismissalButton = subviews.filter { $0.tag == 55 }.first
         if let firstMatch = dismissalButton, !firstMatch.isHidden {
             firstMatch.isHidden = true
         }

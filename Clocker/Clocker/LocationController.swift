@@ -87,7 +87,6 @@ class LocationController: NSObject {
 
 extension LocationController: CLLocationManagerDelegate {
     func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
         guard !locations.isEmpty, let coordinates = locations.first?.coordinate else { return }
 
         let reverseGeoCoder = CLGeocoder()

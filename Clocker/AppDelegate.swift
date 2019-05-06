@@ -3,9 +3,8 @@
 import Cocoa
 
 open class AppDelegate: NSObject, NSApplicationDelegate {
-
-    lazy private var floatingWindow: FloatingWindowController = FloatingWindowController.shared()
-    lazy private var panelController: PanelController = PanelController.shared()
+    private lazy var floatingWindow: FloatingWindowController = FloatingWindowController.shared()
+    private lazy var panelController: PanelController = PanelController.shared()
     private var statusBarHandler: StatusItemHandler!
     private var panelObserver: NSKeyValueObservation?
 
@@ -13,10 +12,8 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         panelObserver?.invalidate()
     }
 
-    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-
+    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change _: [NSKeyValueChangeKey: Any]?, context _: UnsafeMutableRawPointer?) {
         if let path = keyPath, path == "values.globalPing" {
-
             let hotKeyCenter = PTHotKeyCenter.shared()
 
             // Unregister old hot key
@@ -36,16 +33,14 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
 
             hotKeyCenter?.register(newHotKey)
         }
-
     }
 
-    public func applicationWillFinishLaunching(_ notification: Notification) {
+    public func applicationWillFinishLaunching(_: Notification) {
         iVersion.sharedInstance().useAllAvailableLanguages = true
         iVersion.sharedInstance().verboseLogging = false
     }
 
-    public func applicationDidFinishLaunching(_ notification: Notification) {
-
+    public func applicationDidFinishLaunching(_: Notification) {
         // Initializing the event store takes really long
         EventCenter.sharedCenter()
 
@@ -64,7 +59,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         #endif
     }
 
-    public func applicationDockMenu(_ sender: NSApplication) -> NSMenu? {
+    public func applicationDockMenu(_: NSApplication) -> NSMenu? {
         let menu = NSMenu(title: "Quick Access")
 
         Logger.log(object: ["Dock Menu Triggered": "YES"], for: "Dock Menu Triggered")
@@ -93,13 +88,13 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private lazy var controller: OnboardingController? = {
-       let onboardingStoryboard = NSStoryboard(name: NSStoryboard.Name("Onboarding"), bundle: nil)
-       return onboardingStoryboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("onboardingFlow")) as? OnboardingController
+        let onboardingStoryboard = NSStoryboard(name: NSStoryboard.Name("Onboarding"), bundle: nil)
+        return onboardingStoryboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("onboardingFlow")) as? OnboardingController
     }()
 
     private func showOnboardingFlow() {
         let shouldLaunchOnboarding = (DataStore.shared().retrieve(key: CLShowOnboardingFlow) == nil && DataStore.shared().timezones().isEmpty)
-            || (ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument))
+            || ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument)
 
         shouldLaunchOnboarding ? controller?.launch() : continueUsually()
     }
@@ -127,8 +122,8 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
 
         assignShortcut()
 
-        panelObserver = panelController.observe(\.hasActivePanel, options: [.new]) { (obj, _) in
-             self.statusBarHandler.setHasActiveIcon(obj.hasActivePanelGetter())
+        panelObserver = panelController.observe(\.hasActivePanel, options: [.new]) { obj, _ in
+            self.statusBarHandler.setHasActiveIcon(obj.hasActivePanelGetter())
         }
 
         let defaults = UserDefaults.standard
@@ -153,7 +148,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func checkIfAppIsAlreadyOpen() {
         guard let bundleID = Bundle.main.bundleIdentifier else {
-             return
+            return
         }
 
         let apps = NSRunningApplication.runningApplications(withBundleIdentifier: bundleID)
@@ -218,13 +213,12 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func assignShortcut() {
         NSUserDefaultsController.shared.addObserver(self,
-                                       forKeyPath: "values.globalPing",
-                                       options: [.initial, .new],
-                                       context: nil)
+                                                    forKeyPath: "values.globalPing",
+                                                    options: [.initial, .new],
+                                                    context: nil)
     }
 
     private func checkIfRunFromApplicationsFolder() {
-
         if let shortCircuit = UserDefaults.standard.object(forKey: "AllowOutsideApplicationsFolder") as? Bool, shortCircuit == true {
             return
         }
@@ -240,10 +234,10 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         let informativeText = """
-            Clocker must be run from the Applications folder in order to work properly.
-            Please quit Clocker, move it to the Applications folder, and relaunch.
-            Current folder: \(applicationDirectory)"
-            """
+        Clocker must be run from the Applications folder in order to work properly.
+        Please quit Clocker, move it to the Applications folder, and relaunch.
+        Current folder: \(applicationDirectory)"
+        """
 
         // Clocker is installed out of Applications directory
         // This breaks start at login! Time to show an alert and terminate
@@ -255,8 +249,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.terminate(nil)
     }
 
-    @IBAction open func togglePanel(_ sender: Any) {
-
+    @IBAction open func togglePanel(_: Any) {
         let displayMode = UserDefaults.standard.integer(forKey: CLShowAppInForeground)
 
         if displayMode == 1 {

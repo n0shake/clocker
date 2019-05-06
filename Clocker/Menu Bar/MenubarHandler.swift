@@ -5,7 +5,6 @@ import EventKit
 
 class MenubarHandler: NSObject {
     @objc func titleForMenubar() -> String? {
-
         if let nextEvent = checkForUpcomingEvents() {
             return nextEvent
         }
@@ -20,11 +19,11 @@ class MenubarHandler: NSObject {
         }
 
         if menubarTitles.isEmpty == false {
-            let titles = menubarTitles.map({ (data) -> String? in
+            let titles = menubarTitles.map { (data) -> String? in
                 let timezone = TimezoneData.customObject(from: data)
                 let operationsObject = TimezoneDataOperations(with: timezone!)
                 return "\(operationsObject.menuTitle().trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines))"
-            })
+            }
 
             let titlesStringified = titles.compactMap { $0 }
             return titlesStringified.joined(separator: " ")
@@ -34,9 +33,7 @@ class MenubarHandler: NSObject {
     }
 
     private func checkForUpcomingEvents() -> String? {
-
         if DataStore.shared().shouldDisplay(.showMeetingInMenubar) {
-
             let filteredDates = EventCenter.sharedCenter().eventsForDate
             let autoupdatingCal = EventCenter.sharedCenter().autoupdatingCalendar
             guard let events = filteredDates[autoupdatingCal.startOfDay(for: Date())] else {
@@ -44,13 +41,10 @@ class MenubarHandler: NSObject {
             }
 
             for event in events {
-
-                if event.event.startDate.timeIntervalSinceNow > 0 && !event.isAllDay {
-
+                if event.event.startDate.timeIntervalSinceNow > 0, !event.isAllDay {
                     let timeForEventToStart = event.event.startDate.timeIntervalSinceNow / 60
 
                     if timeForEventToStart > 30 {
-
                         print("Our next event: \(event.event.title ?? "Error") starts in \(timeForEventToStart) mins")
 
                         continue

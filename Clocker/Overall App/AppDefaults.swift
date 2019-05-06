@@ -3,13 +3,12 @@
 import Cocoa
 
 class AppDefaults {
-
     class func initialize() {
         initializeDefaults()
     }
 
     private class func deleteOldUserDefaults() {
-         let userDefaults = UserDefaults.standard
+        let userDefaults = UserDefaults.standard
 
         // Now delete the old preferences
         if let bundleID = Bundle.main.bundleIdentifier, userDefaults.object(forKey: "PreferencesHaveBeenWiped") == nil {
@@ -19,7 +18,6 @@ class AppDefaults {
     }
 
     private class func initializeDefaults() {
-
         let userDefaults = UserDefaults.standard
 
         let menubarFavourites = userDefaults.object(forKey: CLMenubarFavorites)
@@ -43,7 +41,6 @@ class AppDefaults {
         // If we already have timezones to display in menubar, do nothing.
         // Else, we switch the menubar mode default to compact mode for new users
         if userDefaults.bool(forKey: CLDefaultMenubarMode) == false {
-
             if let menubarFavourites = userDefaults.object(forKey: CLDefaultPreferenceKey) as? [Data], menubarFavourites.isEmpty == false {
                 userDefaults.set(1, forKey: CLMenubarCompactMode)
             } else {
@@ -54,11 +51,9 @@ class AppDefaults {
         }
 
         if userDefaults.bool(forKey: CLSwitchToCompactModeAlert) == false {
-
             userDefaults.set(true, forKey: CLSwitchToCompactModeAlert)
 
             if let menubarFavourites = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data], menubarFavourites.count > 1 {
-
                 // If the user is already using the compact mode, abort.
                 if DataStore.shared().shouldDisplay(.menubarCompactMode) {
                     return
@@ -78,7 +73,6 @@ class AppDefaults {
 
         // Set default to System theme for Mojave
         if #available(macOS 10.14, *) {
-
             if defaults.bool(forKey: CLDefaultThemeOnMojave) == false {
                 if isDarkModeOn() {
                     Themer.shared().set(theme: 2)
@@ -139,16 +133,13 @@ class AppDefaults {
                 CLAppDislayOptions: 0,
                 CLMenubarCompactMode: 1]
     }
-
 }
 
 extension UserDefaults {
-
     func wipeIfNeccesary() {
         if let bundleID = Bundle.main.bundleIdentifier, object(forKey: "PreferencesHaveBeenWiped") == nil {
             removePersistentDomain(forName: bundleID)
             set(true, forKey: "PreferencesHaveBeenWiped")
         }
     }
-
 }

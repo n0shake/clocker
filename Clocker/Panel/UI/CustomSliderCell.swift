@@ -21,8 +21,8 @@ class CustomSliderCell: NSSliderCell {
         leftRect.size.width = finalWidth
 
         let background = NSBezierPath(roundedRect: rect,
-                              xRadius: barRadius,
-                              yRadius: barRadius)
+                                      xRadius: barRadius,
+                                      yRadius: barRadius)
         NSColor(calibratedRed: 67.0 / 255.0, green: 138.0 / 255.0, blue: 250.0 / 255.0, alpha: 1.0).setFill()
 
         background.fill()

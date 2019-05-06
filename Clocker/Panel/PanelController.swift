@@ -3,7 +3,6 @@
 import Cocoa
 
 class PanelController: ParentPanelController {
-
     @objc dynamic var hasActivePanel: Bool = false
 
     static var sharedWindow = PanelController(windowNibName: .panel)
@@ -76,7 +75,7 @@ class PanelController: ParentPanelController {
 
         setTimezoneDatasourceSlider(sliderValue: 0)
 
-        reviewView.isHidden = !(RateController.canPrompt())
+        reviewView.isHidden = !RateController.canPrompt()
 
         reviewView.layer?.backgroundColor = NSColor.clear.cgColor
 
@@ -100,7 +99,6 @@ class PanelController: ParentPanelController {
     // New way to set the panel's frame.
     // This takes into account the screen's dimensions.
     private func setPanelFrame() {
-
         guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -114,7 +112,7 @@ class PanelController: ParentPanelController {
             statusView = appDelegate.statusItemForPanel().statusItem.button
         }
 
-        if  let statusWindow = statusBackgroundWindow,
+        if let statusWindow = statusBackgroundWindow,
             let statusButton = statusView {
             var statusItemFrame = statusWindow.convertToScreen(statusButton.frame)
             var statusItemScreen = NSScreen.main
@@ -176,14 +174,13 @@ class PanelController: ParentPanelController {
             "Show Upcoming Event View": showUpcomingEventView == "YES" ? "Yes" : "No",
             "Country": country,
             "Calendar Access Provided": EventCenter.sharedCenter().calendarAccessGranted() ? "Yes" : "No",
-            "Number of Timezones": preferences.count
+            "Number of Timezones": preferences.count,
         ]
 
         Logger.log(object: panelEvent, for: "openedPanel")
     }
 
     private func startWindowTimer() {
-
         stopMenubarTimerIfNeccesary()
 
         if let timer = parentTimer, timer.state == .paused {
@@ -195,7 +192,6 @@ class PanelController: ParentPanelController {
     }
 
     private func startTimer() {
-
         print("Start timer called")
 
         parentTimer = Repeater(interval: .seconds(1), mode: .infinite) { _ in
@@ -204,7 +200,6 @@ class PanelController: ParentPanelController {
             }
         }
         parentTimer!.start()
-
     }
 
     private func stopMenubarTimerIfNeccesary() {
@@ -278,7 +273,7 @@ class PanelController: ParentPanelController {
 
         target.image = Themer.shared().extraOptionsHighlightedImage()
 
-        if popover.isShown && row == previousPopoverRow {
+        if popover.isShown, row == previousPopoverRow {
             popover.close()
             target.image = Themer.shared().extraOptionsImage()
             previousPopoverRow = -1

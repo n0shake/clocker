@@ -116,7 +116,7 @@ class TimezoneCellView: NSTableCellView {
 
         var searchView = superview
 
-        while searchView != nil && searchView is PanelTableView == false {
+        while searchView != nil, searchView is PanelTableView == false {
             searchView = searchView?.superview
         }
 

@@ -3,15 +3,14 @@
 import Cocoa
 
 class CenteredTabViewController: NSTabViewController {
-
     override func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
         super.toolbarDefaultItemIdentifiers(toolbar)
 
         var toolbarItems: [NSToolbarItem.Identifier] = [NSToolbarItem.Identifier.flexibleSpace]
 
-        tabViewItems.forEach { (item) in
+        tabViewItems.forEach { item in
             if let identifier = item.identifier as? String {
-                toolbarItems.append(NSToolbarItem.Identifier.init(identifier))
+                toolbarItems.append(NSToolbarItem.Identifier(identifier))
             }
         }
 
@@ -19,11 +18,9 @@ class CenteredTabViewController: NSTabViewController {
 
         return toolbarItems
     }
-
 }
 
 class OneWindowController: NSWindowController {
-
     private static var sharedWindow: OneWindowController!
     private var themeDidChangeNotification: NSObjectProtocol?
 
@@ -31,13 +28,13 @@ class OneWindowController: NSWindowController {
         super.windowDidLoad()
         setup()
 
-        themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (_) in
+        themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { _ in
 
-            NSAnimationContext.runAnimationGroup({ (context) in
+            NSAnimationContext.runAnimationGroup { context in
                 context.duration = 1
                 context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
                 self.window?.animator().backgroundColor = Themer.shared().mainBackgroundColor()
-            })
+            }
 
             self.setupToolbarImages()
         }
@@ -61,7 +58,7 @@ class OneWindowController: NSWindowController {
 
     class func shared() -> OneWindowController {
         if sharedWindow == nil {
-            let prefStoryboard = NSStoryboard.init(name: "Preferences", bundle: nil)
+            let prefStoryboard = NSStoryboard(name: "Preferences", bundle: nil)
             sharedWindow = prefStoryboard.instantiateInitialController() as? OneWindowController
         }
         return sharedWindow
@@ -72,7 +69,7 @@ class OneWindowController: NSWindowController {
             return
         }
 
-        if !(window.isMainWindow) || !(window.isVisible) {
+        if !window.isMainWindow || !window.isVisible {
             showWindow(nil)
         }
 
@@ -93,12 +90,11 @@ class OneWindowController: NSWindowController {
                                                            "Calendar": themer.calendarTabImage(),
                                                            "Permissions": themer.privacyTabImage()]
 
-        tabViewController.tabViewItems.forEach { (tabViewItem) in
+        tabViewController.tabViewItems.forEach { tabViewItem in
             let identity = (tabViewItem.identifier as? String) ?? ""
             if identifierTOImageMapping[identity] != nil {
                 tabViewItem.image = identifierTOImageMapping[identity]
             }
         }
     }
-
 }

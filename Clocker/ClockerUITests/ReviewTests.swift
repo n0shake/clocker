@@ -3,7 +3,6 @@
 import XCTest
 
 class ReviewTests: XCTestCase {
-
     var app: XCUIApplication!
 
     override func setUp() {
@@ -19,7 +18,6 @@ class ReviewTests: XCTestCase {
     }
 
     func testIfReviewIsNegativeAndUserWantsToProvideFeedback() {
-
         guard app.buttons["Not Really"].exists else { return }
         XCTAssertTrue(app.staticTexts["ReviewLabel"].exists)
         app.buttons["Not Really"].click()
@@ -55,5 +53,4 @@ class ReviewTests: XCTestCase {
         app.buttons["Yes"].click()
         XCTAssertFalse(app.staticTexts["ReviewLabel"].exists)
     }
-
 }

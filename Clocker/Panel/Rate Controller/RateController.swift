@@ -3,9 +3,8 @@
 import Cocoa
 
 final class RateController {
-
     private static var storage = UserDefaults.standard
-    private static let version: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String  ?? "N/A"
+    private static let version: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "N/A"
     private static var debugging = false
 
     private enum Keys {
@@ -43,12 +42,12 @@ final class RateController {
         // Check if the app has been installed for atleast 7 days
         guard let install = storage.object(forKey: Keys.install) as? Date,
             install.timeIntervalSinceNow < minInstall
-            else { return false }
+        else { return false }
 
         // If we have never been prompted before, go ahead and prompt
         guard let lastPrompt = storage.object(forKey: Keys.lastPrompt) as? Date,
             let lastVersion = storage.object(forKey: Keys.lastVersion) as? String
-            else { return true }
+        else { return true }
 
         // Minimum interval between two versions should be 45
         let minInterval: TimeInterval = day * 45
@@ -66,5 +65,4 @@ final class RateController {
         NSWorkspace.shared.open(ratingsURL)
         prompted()
     }
-
 }

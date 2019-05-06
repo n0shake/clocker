@@ -5,7 +5,6 @@ import XCTest
 let CLOnboaringTestsLaunchArgument = "isTestingTheOnboardingFlow"
 
 class OnboardingTests: XCTestCase {
-
     var app: XCUIApplication!
 
     override func setUp() {
@@ -19,7 +18,6 @@ class OnboardingTests: XCTestCase {
     // 1. The flow (forward button and back button take the user to the correct screen)
     // 2. Static texts and button title's are appropriate
     func testForwardButton() {
-
         welcomeControllerTests()
 
         // Let's go to the Permissions View
@@ -42,7 +40,6 @@ class OnboardingTests: XCTestCase {
     }
 
     func backButtonTests() {
-
         moveBackward()
         searchControllerTests()
 
@@ -59,7 +56,6 @@ class OnboardingTests: XCTestCase {
     }
 
     func alternateStartupFlowTests() {
-
         // Let's go to the Permissions View
         moveForward()
         permissionsControllerTests()
@@ -114,7 +110,6 @@ class OnboardingTests: XCTestCase {
     }
 
     private func permissionsControllerTests() {
-
         let onboardingWindow = app.windows["OnboardingWindow"]
 
         XCTAssertTrue(onboardingWindow.staticTexts["Permissions"].exists, "Header label's static text was unexpectedly wrong.")
@@ -126,7 +121,6 @@ class OnboardingTests: XCTestCase {
     }
 
     private func startupControllerTests() {
-
         let onboardingWindow = app.windows["OnboardingWindow"]
 
         XCTAssertTrue(onboardingWindow.buttons["Forward"].title == "Open Clocker At Login", "Forward button title's was unexpectedly wrong")
@@ -137,8 +131,7 @@ class OnboardingTests: XCTestCase {
     }
 
     private func searchControllerTests() {
-
-         let onboardingWindow = app.windows["OnboardingWindow"]
+        let onboardingWindow = app.windows["OnboardingWindow"]
 
         XCTAssertFalse(onboardingWindow.buttons["Alternate"].exists, "Alternate button was unexpectedly present.")
         XCTAssertTrue(onboardingWindow.buttons["Forward"].title == "Continue", "Forward button title's was unexpectedly wrong")
@@ -148,7 +141,6 @@ class OnboardingTests: XCTestCase {
     }
 
     private func finalOnboardingControllerTests() {
-
         let onboardingWindow = app.windows["OnboardingWindow"]
 
         // Let's test the buttons
@@ -158,5 +150,4 @@ class OnboardingTests: XCTestCase {
         XCTAssertFalse(onboardingWindow.buttons["Alternate"].exists, "Alternate button was unexpectedly present.")
         XCTAssertTrue(onboardingWindow.buttons["Forward"].title == "Launch Clocker", "Forward button's title was unexpectedly wrong.")
     }
-
 }

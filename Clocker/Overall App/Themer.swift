@@ -76,7 +76,6 @@ extension Themer {
         }
 
         setAppAppearance()
-
     }
 
     @objc func respondToInterfaceStyle() {
@@ -315,7 +314,6 @@ extension Themer {
     }
 
     func currentLocationImage() -> NSImage {
-
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:
@@ -365,7 +363,6 @@ extension Themer {
     }
 
     func privacyTabImage() -> NSImage {
-
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:
@@ -381,7 +378,6 @@ extension Themer {
     }
 
     func appearanceTabImage() -> NSImage {
-
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:
@@ -397,7 +393,6 @@ extension Themer {
     }
 
     func calendarTabImage() -> NSImage {
-
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:

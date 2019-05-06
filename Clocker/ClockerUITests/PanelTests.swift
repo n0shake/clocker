@@ -37,11 +37,10 @@ class PanelTests: XCTestCase {
     }
 
     func testChangingLabelFromPopover() {
+        app.tapMenubarIcon()
 
-       app.tapMenubarIcon()
-
-       let cell = app.tables["mainTableView"].cells.firstMatch
-       let originalField = cell.staticTexts["CustomNameLabelForCell"]
+        let cell = app.tables["mainTableView"].cells.firstMatch
+        let originalField = cell.staticTexts["CustomNameLabelForCell"]
 
         guard let originalValue = originalField.value as? String else {
             XCTFail("Original Field's value was unexpectedly nil")
@@ -109,7 +108,6 @@ class PanelTests: XCTestCase {
     }
 
     func testRightMouseDownToShowPopover() {
-
         app.tapMenubarIcon()
 
         let cell = app.tables["mainTableView"].cells.firstMatch
@@ -117,5 +115,4 @@ class PanelTests: XCTestCase {
 
         XCTAssert(app.popovers.count > 0)
     }
-
 }

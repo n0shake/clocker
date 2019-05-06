@@ -12,7 +12,6 @@ import Foundation
  *  Extends the Date class by adding manipulation methods for transforming dates
  */
 public extension Date {
-
     // MARK: - StartOf
 
     /**
@@ -26,7 +25,7 @@ public extension Date {
     func start(of component: Component) -> Date {
         var newDate = self
         if component == .second {
-            newDate.second(self.second)
+            newDate.second(second)
         } else if component == .minute {
             newDate.second(0)
         } else if component == .hour {
@@ -99,10 +98,10 @@ public extension Date {
         if month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 {
             // 31 day month
             return 31
-        } else if month == 2 && date.isInLeapYear {
+        } else if month == 2, date.isInLeapYear {
             // February with leap year
             return 29
-        } else if month == 2 && !date.isInLeapYear {
+        } else if month == 2, !date.isInLeapYear {
             // February without leap year
             return 28
         } else {
@@ -127,7 +126,7 @@ public extension Date {
         var components = DateComponents()
         components.year = chunk.years
         components.month = chunk.months
-        components.day = chunk.days + (chunk.weeks*7)
+        components.day = chunk.days + (chunk.weeks * 7)
         components.hour = chunk.hours
         components.minute = chunk.minutes
         components.second = chunk.seconds
@@ -148,7 +147,7 @@ public extension Date {
         var components = DateComponents()
         components.year = -chunk.years
         components.month = -chunk.months
-        components.day = -(chunk.days + (chunk.weeks*7))
+        components.day = -(chunk.days + (chunk.weeks * 7))
         components.hour = -chunk.hours
         components.minute = -chunk.minutes
         components.second = -chunk.seconds
@@ -175,14 +174,13 @@ public extension Date {
      *  Operator overload for adding a `TimeInterval` to a date.
      */
     static func + (leftAddend: Date, rightAddend: Int) -> Date {
-        return leftAddend.addingTimeInterval((TimeInterval(rightAddend)))
+        return leftAddend.addingTimeInterval(TimeInterval(rightAddend))
     }
 
     /**
      *  Operator overload for subtracting a `TimeInterval` from a date.
      */
     static func - (minuend: Date, subtrahend: Int) -> Date {
-        return minuend.addingTimeInterval(-(TimeInterval(subtrahend)))
+        return minuend.addingTimeInterval(-TimeInterval(subtrahend))
     }
-
 }

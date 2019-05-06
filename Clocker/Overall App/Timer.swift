@@ -126,7 +126,7 @@ open class Repeater: Equatable {
     /// Current state of the timer
     public private(set) var state: State = .paused {
         didSet {
-            self.onStateChanged?(self, state)
+            onStateChanged?(self, state)
         }
     }
 
@@ -334,7 +334,7 @@ open class Repeater: Equatable {
     /// Pause a running timer. If timer is paused it does nothing.
     @discardableResult
     public func pause() -> Bool {
-        guard state != .paused && state != .finished else {
+        guard state != .paused, state != .finished else {
             return false
         }
 

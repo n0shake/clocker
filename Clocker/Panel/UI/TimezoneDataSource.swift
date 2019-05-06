@@ -60,7 +60,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
         cellView.time.stringValue = operation.time(with: sliderValue)
         cellView.noteLabel.stringValue = currentModel.note ?? CLEmptyString
         cellView.noteLabel.toolTip = currentModel.note ?? CLEmptyString
-        cellView.currentLocationIndicator.isHidden = !(currentModel.isSystemTimezone)
+        cellView.currentLocationIndicator.isHidden = !currentModel.isSystemTimezone
         cellView.time.setAccessibilityIdentifier("ActualTime")
         cellView.layout(with: currentModel)
 
@@ -177,7 +177,7 @@ extension TimezoneCellView {
         sunriseImage.isHidden = !shouldDisplay
 
         // If it's a timezone and not a place, we can't determine the sunrise/sunset time; hide the sunrise image
-        if model.selectionType == .timezone && (model.latitude == nil && model.longitude == nil) {
+        if model.selectionType == .timezone, model.latitude == nil, model.longitude == nil {
             sunriseImage.isHidden = true
         }
 

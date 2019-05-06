@@ -8,10 +8,10 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet var informationLabel: NSTextField!
     @IBOutlet var sliderDayRangePopup: NSPopUpButton!
     @IBOutlet var visualEffectView: NSVisualEffectView!
-    @IBOutlet weak var menubarMode: NSSegmentedControl!
-    @IBOutlet weak var includeDayInMenubarControl: NSSegmentedControl!
-    @IBOutlet weak var includeDateInMenubarControl: NSSegmentedControl!
-    @IBOutlet weak var includePlaceNameControl: NSSegmentedControl!
+    @IBOutlet var menubarMode: NSSegmentedControl!
+    @IBOutlet var includeDayInMenubarControl: NSSegmentedControl!
+    @IBOutlet var includeDateInMenubarControl: NSSegmentedControl!
+    @IBOutlet var includePlaceNameControl: NSSegmentedControl!
 
     private var themeDidChangeNotification: NSObjectProtocol?
 
@@ -31,12 +31,12 @@ class AppearanceViewController: ParentViewController {
             "4 days",
             "5 days",
             "6 days",
-            "7 days"
+            "7 days",
         ])
 
         setup()
 
-        themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (_) in
+        themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { _ in
             self.setup()
             self.animateBackgroundColorChange()
             self.view.needsDisplay = true // Let's make the color change permanent.
@@ -54,7 +54,7 @@ class AppearanceViewController: ParentViewController {
         colorAnimation.duration = 0.25
         colorAnimation.fromValue = previousBackgroundColor.cgColor
         colorAnimation.toValue = Themer.shared().mainBackgroundColor().cgColor
-        self.view.layer?.add(colorAnimation, forKey: "backgroundColor")
+        view.layer?.add(colorAnimation, forKey: "backgroundColor")
     }
 
     override func viewWillAppear() {
@@ -80,21 +80,21 @@ class AppearanceViewController: ParentViewController {
         updateMenubarControls(!shouldDisplayCompact)
     }
 
-    @IBOutlet weak var headerLabel: NSTextField!
-    @IBOutlet weak var timeFormatLabel: NSTextField!
-    @IBOutlet weak var panelTheme: NSTextField!
-    @IBOutlet weak var dayDisplayOptionsLabel: NSTextField!
-    @IBOutlet weak var showSliderLabel: NSTextField!
-    @IBOutlet weak var showSunriseLabel: NSTextField!
-    @IBOutlet weak var showSecondsLabel: NSTextField!
-    @IBOutlet weak var largerTextLabel: NSTextField!
-    @IBOutlet weak var futureSliderRangeLabel: NSTextField!
-    @IBOutlet weak var includeDateLabel: NSTextField!
-    @IBOutlet weak var includeDayLabel: NSTextField!
-    @IBOutlet weak var includePlaceLabel: NSTextField!
-    @IBOutlet weak var menubarDisplayOptionsLabel: NSTextField!
-    @IBOutlet weak var appDisplayLabel: NSTextField!
-    @IBOutlet weak var menubarModeLabel: NSTextField!
+    @IBOutlet var headerLabel: NSTextField!
+    @IBOutlet var timeFormatLabel: NSTextField!
+    @IBOutlet var panelTheme: NSTextField!
+    @IBOutlet var dayDisplayOptionsLabel: NSTextField!
+    @IBOutlet var showSliderLabel: NSTextField!
+    @IBOutlet var showSunriseLabel: NSTextField!
+    @IBOutlet var showSecondsLabel: NSTextField!
+    @IBOutlet var largerTextLabel: NSTextField!
+    @IBOutlet var futureSliderRangeLabel: NSTextField!
+    @IBOutlet var includeDateLabel: NSTextField!
+    @IBOutlet var includeDayLabel: NSTextField!
+    @IBOutlet var includePlaceLabel: NSTextField!
+    @IBOutlet var menubarDisplayOptionsLabel: NSTextField!
+    @IBOutlet var appDisplayLabel: NSTextField!
+    @IBOutlet var menubarModeLabel: NSTextField!
 
     private func setup() {
         headerLabel.stringValue = "Main Panel Options"
@@ -136,7 +136,6 @@ class AppearanceViewController: ParentViewController {
     private var previousBackgroundColor: NSColor = NSColor.white
 
     @IBAction func themeChanged(_ sender: NSSegmentedControl) {
-
         previousBackgroundColor = Themer.shared().mainBackgroundColor()
 
         Themer.shared().set(theme: sender.selectedSegment)
@@ -208,7 +207,6 @@ class AppearanceViewController: ParentViewController {
     }
 
     @IBAction func changeAppDisplayOptions(_ sender: NSSegmentedControl) {
-
         if sender.selectedSegment == 0 {
             Logger.log(object: ["Selection": "Menubar"], for: "Dock Mode")
             NSApp.setActivationPolicy(.accessory)
@@ -220,7 +218,7 @@ class AppearanceViewController: ParentViewController {
 
     private func refresh(panel: Bool, floating: Bool) {
         OperationQueue.main.addOperation {
-            if panel && DataStore.shared().shouldDisplay(ViewType.showAppInForeground) == false {
+            if panel, DataStore.shared().shouldDisplay(ViewType.showAppInForeground) == false {
                 guard let panelController = PanelController.panel() else { return }
 
                 let futureSliderBounds = panelController.futureSlider.bounds
@@ -232,7 +230,7 @@ class AppearanceViewController: ParentViewController {
                 panelController.setupMenubarTimer()
             }
 
-            if floating && DataStore.shared().shouldDisplay(ViewType.showAppInForeground) {
+            if floating, DataStore.shared().shouldDisplay(ViewType.showAppInForeground) {
                 if DataStore.shared().shouldDisplay(ViewType.showAppInForeground) {
                     let floatingWindow = FloatingWindowController.shared()
                     floatingWindow.updateTableContent()
@@ -246,16 +244,16 @@ class AppearanceViewController: ParentViewController {
         }
     }
 
-    @IBAction func displayDayInMenubarAction(_ sender: Any) {
+    @IBAction func displayDayInMenubarAction(_: Any) {
         DataStore.shared().updateDayPreference()
         updateStatusItem()
     }
 
-    @IBAction func displayDateInMenubarAction(_ sender: Any) {
+    @IBAction func displayDateInMenubarAction(_: Any) {
         updateStatusItem()
     }
 
-    @IBAction func displayPlaceInMenubarAction(_ sender: Any) {
+    @IBAction func displayPlaceInMenubarAction(_: Any) {
         updateStatusItem()
     }
 
@@ -285,7 +283,6 @@ class AppearanceViewController: ParentViewController {
         } else {
             Logger.log(object: ["Context": "In Appearance View"], for: "Switched to Standard Mode")
         }
-
     }
 
     // We don't support showing day or date in the menubar for compact mode yet.

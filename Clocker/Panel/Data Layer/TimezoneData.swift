@@ -12,7 +12,6 @@ struct DateFormat {
 
 // Non-class type cannot conform to NSCoding!
 class TimezoneData: NSObject, NSCoding {
-
     enum SelectionType: Int {
         case city
         case timezone
@@ -193,7 +192,7 @@ class TimezoneData: NSObject, NSCoding {
     private class func logOldModelUsage() {
         guard let shortVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
             let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String else {
-                return
+            return
         }
 
         let operatingSystem = ProcessInfo.processInfo.operatingSystemVersion
@@ -202,7 +201,7 @@ class TimezoneData: NSObject, NSCoding {
 
         let feedbackInfo = [
             AppFeedbackConstants.CLOperatingSystemVersion: osVersion,
-            AppFeedbackConstants.CLClockerVersion: versionInfo
+            AppFeedbackConstants.CLClockerVersion: versionInfo,
         ]
 
         Logger.log(object: feedbackInfo, for: "CLTimezoneData is still being used!")
@@ -256,7 +255,7 @@ class TimezoneData: NSObject, NSCoding {
 
         // Do the serialization
         let serializedModels = newModels.map { (place) -> Data in
-            return NSKeyedArchiver.archivedData(withRootObject: place)
+            NSKeyedArchiver.archivedData(withRootObject: place)
         }
 
         return serializedModels
@@ -361,7 +360,7 @@ class TimezoneData: NSObject, NSCoding {
             let errorDictionary = [
                 "Formatted Address": name,
                 "Place Identifier": placeIdentifier,
-                "TimezoneID": timezoneIdentifier
+                "TimezoneID": timezoneIdentifier,
             ]
 
             Logger.log(object: errorDictionary, for: "Error fetching timezone() in TimezoneData")

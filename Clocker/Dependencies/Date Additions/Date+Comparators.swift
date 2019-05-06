@@ -15,7 +15,6 @@ import Foundation
  *  for a given unit of time.
  */
 public extension Date {
-
     // MARK: - Comparisons
 
     /**
@@ -28,15 +27,15 @@ public extension Date {
      *  let age = birthday.chunkBetween(date: formatter.date(from: "2016 10 07 15:27:12.000")!)
      *  ```
      *
-     *  The age variable will have a chunk of time with year, month, day, hour, minute, 
-     *  and second components (note that we do not use weeks since they are not components 
+     *  The age variable will have a chunk of time with year, month, day, hour, minute,
+     *  and second components (note that we do not use weeks since they are not components
      *  of `Calendar`). So if you just wanted the age in years, you could then say: age.years.
      *
-     *  The chunk is calculated exactly as you'd say it in real life, always converting up 
-     *  when a lower unit equals 1 of the unit above it. The above example returns 
+     *  The chunk is calculated exactly as you'd say it in real life, always converting up
+     *  when a lower unit equals 1 of the unit above it. The above example returns
      *  `TimeChunk(seconds: 0, minutes: 37, hours: 0, days: 13, weeks: 0, months: 10, years: 0)`.
      *
-     *  Passing a future date returns a TimeChunk with all positive components and passing 
+     *  Passing a future date returns a TimeChunk with all positive components and passing
      *  a date in the past returns one with all negative components.
      *
      *  - parameter date: The date of reference from the date called on
@@ -56,9 +55,9 @@ public extension Date {
      *
      *  - returns: Bool representing comparison result
      */
-	func equals(_ date: Date) -> Bool {
-		return self.compare(date) == .orderedSame
-	}
+    func equals(_ date: Date) -> Bool {
+        return compare(date) == .orderedSame
+    }
 
     /**
      *  Returns a true if receiver is later than provided comparison date, otherwise
@@ -68,9 +67,9 @@ public extension Date {
      *
      *  - returns: Bool representing comparison result
      */
-	func isLater(than date: Date) -> Bool {
-		return self.compare(date) == .orderedDescending
-	}
+    func isLater(than date: Date) -> Bool {
+        return compare(date) == .orderedDescending
+    }
 
     /**
      *  Returns a true if receiver is later than or equal to provided comparison date,
@@ -81,7 +80,7 @@ public extension Date {
      *  - returns: Bool representing comparison result
      */
     func isLaterThanOrEqual(to date: Date) -> Bool {
-        return self.compare(date) == .orderedDescending || self.compare(date) == .orderedSame
+        return compare(date) == .orderedDescending || compare(date) == .orderedSame
     }
 
     /**
@@ -92,9 +91,9 @@ public extension Date {
      *
      *  - returns: Bool representing comparison result
      */
-	func isEarlier(than date: Date) -> Bool {
-		return self.compare(date) == .orderedAscending
-	}
+    func isEarlier(than date: Date) -> Bool {
+        return compare(date) == .orderedAscending
+    }
 
     /**
      *  Returns a true if receiver is earlier than or equal to the provided comparison date,
@@ -105,7 +104,7 @@ public extension Date {
      *  - returns:  Bool representing comparison result
      */
     func isEarlierThanOrEqual(to date: Date) -> Bool {
-        return self.compare(date) == .orderedAscending || self.compare(date) == .orderedSame
+        return compare(date) == .orderedAscending || compare(date) == .orderedSame
     }
 
     /**
@@ -115,7 +114,7 @@ public extension Date {
      *
      *  - returns: True if both paramter dates fall on the same day, false otherwise
      */
-    func isSameDay(date : Date ) -> Bool {
+    func isSameDay(date: Date) -> Bool {
         return Date.isSameDay(date: self, as: date)
     }
 
@@ -154,7 +153,7 @@ public extension Date {
      *  - returns: The years between receiver and provided date
      */
     func years(from date: Date) -> Int {
-        return years(from: date, calendar:nil)
+        return years(from: date, calendar: nil)
     }
 
     /**
@@ -169,7 +168,7 @@ public extension Date {
      *  - returns: The years between receiver and provided date
      */
     func months(from date: Date) -> Int {
-        return months(from: date, calendar:nil)
+        return months(from: date, calendar: nil)
     }
 
     /**
@@ -184,7 +183,7 @@ public extension Date {
      *  - returns: The weeks between receiver and provided date
      */
     func weeks(from date: Date) -> Int {
-        return weeks(from: date, calendar:nil)
+        return weeks(from: date, calendar: nil)
     }
 
     /**
@@ -199,7 +198,7 @@ public extension Date {
      *  - returns: The days between receiver and provided date
      */
     func days(from date: Date) -> Int {
-        return days(from: date, calendar:nil)
+        return days(from: date, calendar: nil)
     }
 
     /**
@@ -213,7 +212,7 @@ public extension Date {
      *  - returns: The hours between receiver and provided date
      */
     func hours(from date: Date) -> Int {
-        return Int(self.timeIntervalSince(date)/Constants.SecondsInHour)
+        return Int(timeIntervalSince(date) / Constants.SecondsInHour)
     }
 
     /**
@@ -227,7 +226,7 @@ public extension Date {
      *  - returns: The minutes between receiver and provided date
      */
     func minutes(from date: Date) -> Int {
-        return Int(self.timeIntervalSince(date)/Constants.SecondsInMinute)
+        return Int(timeIntervalSince(date) / Constants.SecondsInMinute)
     }
 
     /**
@@ -259,7 +258,7 @@ public extension Date {
      */
     func years(from date: Date, calendar: Calendar?) -> Int {
         var calendarCopy = calendar
-        if (calendar == nil) {
+        if calendar == nil {
             calendarCopy = Calendar.autoupdatingCurrent
         }
 
@@ -283,7 +282,7 @@ public extension Date {
      */
     func months(from date: Date, calendar: Calendar?) -> Int {
         var calendarCopy = calendar
-        if (calendar == nil) {
+        if calendar == nil {
             calendarCopy = Calendar.autoupdatingCurrent
         }
 
@@ -291,7 +290,7 @@ public extension Date {
         let latest = (earliest == self) ? date : self
         let multiplier = (earliest == self) ? -1 : 1
         let components = calendarCopy!.dateComponents(Constants.AllCalendarUnitFlags, from: earliest, to: latest)
-        return multiplier*(components.month! + 12*components.year!)
+        return multiplier * (components.month! + 12 * components.year!)
     }
 
     /**
@@ -307,7 +306,7 @@ public extension Date {
      */
     func weeks(from date: Date, calendar: Calendar?) -> Int {
         var calendarCopy = calendar
-        if (calendar == nil) {
+        if calendar == nil {
             calendarCopy = Calendar.autoupdatingCurrent
         }
 
@@ -315,7 +314,7 @@ public extension Date {
         let latest = (earliest == self) ? date : self
         let multiplier = (earliest == self) ? -1 : 1
         let components = calendarCopy!.dateComponents([.weekOfYear], from: earliest, to: latest)
-        return multiplier*components.weekOfYear!
+        return multiplier * components.weekOfYear!
     }
 
     /**
@@ -331,7 +330,7 @@ public extension Date {
      */
     func days(from date: Date, calendar: Calendar?) -> Int {
         var calendarCopy = calendar
-        if (calendar == nil) {
+        if calendar == nil {
             calendarCopy = Calendar.autoupdatingCurrent
         }
 
@@ -339,13 +338,13 @@ public extension Date {
         let latest = (earliest == self) ? date : self
         let multiplier = (earliest == self) ? -1 : 1
         let components = calendarCopy!.dateComponents([.day], from: earliest, to: latest)
-        return multiplier*components.day!
+        return multiplier * components.day!
     }
 
     // MARK: Time Until
 
     /**
-     *  The number of years until the receiver's date (0 if the receiver is the same or 
+     *  The number of years until the receiver's date (0 if the receiver is the same or
      *  earlier than now).
      */
     var yearsUntil: Int {
@@ -353,7 +352,7 @@ public extension Date {
     }
 
     /**
-     *  The number of months until the receiver's date (0 if the receiver is the same or 
+     *  The number of months until the receiver's date (0 if the receiver is the same or
      *  earlier than now).
      */
     var monthsUntil: Int {
@@ -361,7 +360,7 @@ public extension Date {
     }
 
     /**
-     *  The number of weeks until the receiver's date (0 if the receiver is the same or 
+     *  The number of weeks until the receiver's date (0 if the receiver is the same or
      *  earlier than now).
      */
     var weeksUntil: Int {
@@ -369,7 +368,7 @@ public extension Date {
     }
 
     /**
-     *  The number of days until the receiver's date (0 if the receiver is the same or 
+     *  The number of days until the receiver's date (0 if the receiver is the same or
      *  earlier than now).
      */
     var daysUntil: Int {
@@ -377,7 +376,7 @@ public extension Date {
     }
 
     /**
-     *  The number of hours until the receiver's date (0 if the receiver is the same or 
+     *  The number of hours until the receiver's date (0 if the receiver is the same or
      *  earlier than now).
      */
     var hoursUntil: Int {
@@ -385,7 +384,7 @@ public extension Date {
     }
 
     /**
-     *  The number of minutes until the receiver's date (0 if the receiver is the same or 
+     *  The number of minutes until the receiver's date (0 if the receiver is the same or
      *  earlier than now).
      */
     var minutesUntil: Int {
@@ -393,7 +392,7 @@ public extension Date {
     }
 
     /**
-     *  The number of seconds until the receiver's date (0 if the receiver is the same or 
+     *  The number of seconds until the receiver's date (0 if the receiver is the same or
      *  earlier than now).
      */
     var secondsUntil: Int {
@@ -403,7 +402,7 @@ public extension Date {
     // MARK: Time Ago
 
     /**
-     *  The number of years the receiver's date is earlier than now (0 if the receiver is 
+     *  The number of years the receiver's date is earlier than now (0 if the receiver is
      *  the same or earlier than now).
      */
     var yearsAgo: Int {
@@ -411,7 +410,7 @@ public extension Date {
     }
 
     /**
-     *  The number of months the receiver's date is earlier than now (0 if the receiver is 
+     *  The number of months the receiver's date is earlier than now (0 if the receiver is
      *  the same or earlier than now).
      */
     var monthsAgo: Int {
@@ -419,7 +418,7 @@ public extension Date {
     }
 
     /**
-     *  The number of weeks the receiver's date is earlier than now (0 if the receiver is 
+     *  The number of weeks the receiver's date is earlier than now (0 if the receiver is
      *  the same or earlier than now).
      */
     var weeksAgo: Int {
@@ -427,7 +426,7 @@ public extension Date {
     }
 
     /**
-     *  The number of days the receiver's date is earlier than now (0 if the receiver is 
+     *  The number of days the receiver's date is earlier than now (0 if the receiver is
      *  the same or earlier than now).
      */
     var daysAgo: Int {
@@ -435,7 +434,7 @@ public extension Date {
     }
 
     /**
-     *  The number of hours the receiver's date is earlier than now (0 if the receiver is 
+     *  The number of hours the receiver's date is earlier than now (0 if the receiver is
      *  the same or earlier than now).
      */
     var hoursAgo: Int {
@@ -443,7 +442,7 @@ public extension Date {
     }
 
     /**
-     *  The number of minutes the receiver's date is earlier than now (0 if the receiver is 
+     *  The number of minutes the receiver's date is earlier than now (0 if the receiver is
      *  the same or earlier than now).
      */
     var minutesAgo: Int {
@@ -451,7 +450,7 @@ public extension Date {
     }
 
     /**
-     *  The number of seconds the receiver's date is earlier than now (0 if the receiver is 
+     *  The number of seconds the receiver's date is earlier than now (0 if the receiver is
      *  the same or earlier than now).
      */
     var secondsAgo: Int {
@@ -548,7 +547,7 @@ public extension Date {
 
     /**
      *  Returns the number of years the receiver's date is later than the provided
-     *  comparison date, 0 if the receiver's date is earlier than or equal to the provided 
+     *  comparison date, 0 if the receiver's date is earlier than or equal to the provided
      *  comparison date.
      *
      *  - parameter date: Provided date for comparison
@@ -561,7 +560,7 @@ public extension Date {
 
     /**
      *  Returns the number of months the receiver's date is later than the provided
-     *  comparison date, 0 if the receiver's date is earlier than or equal to the provided 
+     *  comparison date, 0 if the receiver's date is earlier than or equal to the provided
      *  comparison date.
      *
      *  - parameter date: Provided date for comparison

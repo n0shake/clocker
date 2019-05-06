@@ -896,7 +896,7 @@
 				9A4379201BEC220200F4E27F /* ShellScript */,
 				9A20A0711C4E808500FB45AB /* Login Item Helper */,
 				9A5E75EC204CC39700119939 /* Embed Frameworks */,
-				C2A632A020EAC5EE00EB6BEA /* Move .app to Applications */,
+				C2A632A020EAC5EE00EB6BEA /* SwiftFormat */,
 			);
 			buildRules = (
 			);
@@ -1070,19 +1070,19 @@
 			shellScript = "";
 			showEnvVarsInLog = 0;
 		};
-		C2A632A020EAC5EE00EB6BEA /* Move .app to Applications */ = {
+		C2A632A020EAC5EE00EB6BEA /* SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Move .app to Applications";
+			name = SwiftFormat;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# sh /Users/abhishek_banthia/Documents/GitLab/Check/Clocker-Private/Clocker/Move.sh\n";
+			shellScript = "if which swiftformat >/dev/null; then\n    swiftformat . --swiftversion 5\nelse\n    echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

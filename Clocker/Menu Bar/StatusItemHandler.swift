@@ -9,7 +9,6 @@ private enum MenubarState {
 }
 
 class StatusItemHandler: NSObject {
-
     var hasActiveIcon: Bool = false
 
     var menubarTimer: Timer?
@@ -112,8 +111,8 @@ class StatusItemHandler: NSObject {
                                                           object: nil)
 
         userNotificationsDidChangeNotif = center.addObserver(forName: UserDefaults.didChangeNotification,
-                           object: self,
-                           queue: mainQueue) { _ in
+                                                             object: self,
+                                                             queue: mainQueue) { _ in
             self.setupStatusItem()
         }
     }
@@ -219,7 +218,7 @@ class StatusItemHandler: NSObject {
         let shouldDisplaySeconds = shouldDisplaySecondsInMenubar()
         let menubarFavourites = DataStore.shared().retrieve(key: CLMenubarFavorites)
 
-        if !units.contains(.second) && shouldDisplaySeconds {
+        if !units.contains(.second), shouldDisplaySeconds {
             units.insert(.second)
         }
 
@@ -281,7 +280,7 @@ class StatusItemHandler: NSObject {
 
         let menubarFavourites = (DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data]) ?? []
 
-        if menubarFavourites.isEmpty && DataStore.shared().shouldDisplay(.showMeetingInMenubar) == false {
+        if menubarFavourites.isEmpty, DataStore.shared().shouldDisplay(.showMeetingInMenubar) == false {
             print("Invalidating menubar timer!")
 
             invalidation()

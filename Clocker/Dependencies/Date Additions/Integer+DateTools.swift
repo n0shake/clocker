@@ -9,7 +9,6 @@
 import Foundation
 
 public extension Int {
-
     // MARK: TimePeriod
 
     /**

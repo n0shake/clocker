@@ -155,7 +155,7 @@ class AppFeedbackWindowController: NSWindowController {
             AppFeedbackConstants.CLAppFeedbackEmailProperty: email,
             AppFeedbackConstants.CLAppFeedbackFeedbackProperty: appFeedbackProperty,
             AppFeedbackConstants.CLOperatingSystemVersion: osVersion,
-            AppFeedbackConstants.CLClockerVersion: versionInfo
+            AppFeedbackConstants.CLClockerVersion: versionInfo,
         ]
 
         return feedbackInfo

@@ -3,7 +3,6 @@
 import XCTest
 
 class NetworkDisconnectionTests: XCTestCase {
-
     var app: XCUIApplication!
 
     override func setUp() {
@@ -41,7 +40,6 @@ class NetworkDisconnectionTests: XCTestCase {
     }
 
     func testFetchingATimezone() {
-
         app.launchArguments.append("mockTimezoneDown")
         precondition()
         app.buttons["FloatingPreferences"].click()
@@ -70,5 +68,4 @@ class NetworkDisconnectionTests: XCTestCase {
         XCTAssertTrue(app.sheets.staticTexts["ErrorPlaceholder"].exists)
         app.sheets.buttons["Close"].click()
     }
-
 }

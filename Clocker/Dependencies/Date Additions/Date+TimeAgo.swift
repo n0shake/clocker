@@ -13,7 +13,6 @@ import Foundation
  *  time in String format.
  */
 public extension Date {
-
     // MARK: - Time Ago
 
     /**
@@ -24,7 +23,7 @@ public extension Date {
      *
      *  - returns String - Formatted return string
      */
-    static func timeAgo(since date:Date) -> String {
+    static func timeAgo(since date: Date) -> String {
         return date.timeAgo(since: Date(), numericDates: false, numericTimes: false)
     }
 
@@ -36,8 +35,8 @@ public extension Date {
      *
      *  - returns String - Formatted return string
      */
-    static func shortTimeAgo(since date:Date) -> String {
-        return date.shortTimeAgo(since:Date())
+    static func shortTimeAgo(since date: Date) -> String {
+        return date.shortTimeAgo(since: Date())
     }
 
     /**
@@ -47,7 +46,7 @@ public extension Date {
      *  - returns String - Formatted return string
      */
     var timeAgoSinceNow: String {
-        return self.timeAgo(since:Date())
+        return timeAgo(since: Date())
     }
 
     /**
@@ -57,82 +56,76 @@ public extension Date {
      *  - returns String - Formatted return string
      */
     var shortTimeAgoSinceNow: String {
-        return self.shortTimeAgo(since:Date())
+        return shortTimeAgo(since: Date())
     }
 
-    func timeAgo(since date:Date, numericDates: Bool = false, numericTimes: Bool = false) -> String {
+    func timeAgo(since date: Date, numericDates: Bool = false, numericTimes: Bool = false) -> String {
         let calendar = NSCalendar.current
-        let unitFlags = Set<Calendar.Component>([.second,.minute,.hour,.day,.weekOfYear,.month,.year])
-        let earliest = self.earlierDate(date)
-        let latest = (earliest == self) ? date : self //Should be triple equals, but not extended to Date at this time
+        let unitFlags = Set<Calendar.Component>([.second, .minute, .hour, .day, .weekOfYear, .month, .year])
+        let earliest = earlierDate(date)
+        let latest = (earliest == self) ? date : self // Should be triple equals, but not extended to Date at this time
 
         let components = calendar.dateComponents(unitFlags, from: earliest, to: latest)
         let yesterday = date.subtract(1.days)
-        let isYesterday = yesterday.day == self.day
+        let isYesterday = yesterday.day == day
 
-        //Not Yet Implemented/Optional
-        //The following strings are present in the translation files but lack logic as of 2014.04.05
-        //@"Today", @"This week", @"This month", @"This year"
-        //and @"This morning", @"This afternoon"
+        // Not Yet Implemented/Optional
+        // The following strings are present in the translation files but lack logic as of 2014.04.05
+        // @"Today", @"This week", @"This month", @"This year"
+        // and @"This morning", @"This afternoon"
 
-        if (components.year! >= 2) {
-            return self.logicalLocalizedStringFromFormat(format: "%%d %@years ago", value: components.year!)
-        } else if (components.year! >= 1) {
-
-            if (numericDates) {
+        if components.year! >= 2 {
+            return logicalLocalizedStringFromFormat(format: "%%d %@years ago", value: components.year!)
+        } else if components.year! >= 1 {
+            if numericDates {
                 return DateToolsLocalizedStrings("1 year ago")
             }
 
             return DateToolsLocalizedStrings("Last year")
-        } else if (components.month! >= 2) {
-            return self.logicalLocalizedStringFromFormat(format: "%%d %@months ago", value: components.month!)
-        } else if (components.month! >= 1) {
-
-            if (numericDates) {
+        } else if components.month! >= 2 {
+            return logicalLocalizedStringFromFormat(format: "%%d %@months ago", value: components.month!)
+        } else if components.month! >= 1 {
+            if numericDates {
                 return DateToolsLocalizedStrings("1 month ago")
             }
 
             return DateToolsLocalizedStrings("Last month")
-        } else if (components.weekOfYear! >= 2) {
-            return self.logicalLocalizedStringFromFormat(format: "%%d %@weeks ago", value: components.weekOfYear!)
-        } else if (components.weekOfYear! >= 1) {
-
-            if (numericDates) {
+        } else if components.weekOfYear! >= 2 {
+            return logicalLocalizedStringFromFormat(format: "%%d %@weeks ago", value: components.weekOfYear!)
+        } else if components.weekOfYear! >= 1 {
+            if numericDates {
                 return DateToolsLocalizedStrings("1 week ago")
             }
 
             return DateToolsLocalizedStrings("Last week")
-        } else if (components.day! >= 2) {
-            return self.logicalLocalizedStringFromFormat(format: "%%d %@days ago", value: components.day!)
-        } else if (isYesterday) {
-            if (numericDates) {
+        } else if components.day! >= 2 {
+            return logicalLocalizedStringFromFormat(format: "%%d %@days ago", value: components.day!)
+        } else if isYesterday {
+            if numericDates {
                 return DateToolsLocalizedStrings("1 day ago")
             }
 
             return DateToolsLocalizedStrings("Yesterday")
-        } else if (components.hour! >= 2) {
-            return self.logicalLocalizedStringFromFormat(format: "%%d %@hours ago", value: components.hour!)
-        } else if (components.hour! >= 1) {
-
-            if (numericTimes) {
+        } else if components.hour! >= 2 {
+            return logicalLocalizedStringFromFormat(format: "%%d %@hours ago", value: components.hour!)
+        } else if components.hour! >= 1 {
+            if numericTimes {
                 return DateToolsLocalizedStrings("1 hour ago")
             }
 
             return DateToolsLocalizedStrings("An hour ago")
-        } else if (components.minute! >= 2) {
-            return self.logicalLocalizedStringFromFormat(format: "%%d %@minutes ago", value: components.minute!)
-        } else if (components.minute! >= 1) {
-
-            if (numericTimes) {
+        } else if components.minute! >= 2 {
+            return logicalLocalizedStringFromFormat(format: "%%d %@minutes ago", value: components.minute!)
+        } else if components.minute! >= 1 {
+            if numericTimes {
                 return DateToolsLocalizedStrings("1 minute ago")
             }
 
             return DateToolsLocalizedStrings("A minute ago")
-        } else if (components.second! >= 3) {
-            return self.logicalLocalizedStringFromFormat(format: "%%d %@seconds ago", value: components.second!)
+        } else if components.second! >= 3 {
+            return logicalLocalizedStringFromFormat(format: "%%d %@seconds ago", value: components.second!)
         } else {
-
-            if (numericTimes) {
+            if numericTimes {
                 return DateToolsLocalizedStrings("1 second ago")
             }
 
@@ -140,58 +133,58 @@ public extension Date {
         }
     }
 
-    func shortTimeAgo(since date:Date) -> String {
+    func shortTimeAgo(since date: Date) -> String {
         let calendar = NSCalendar.current
-        let unitFlags = Set<Calendar.Component>([.second,.minute,.hour,.day,.weekOfYear,.month,.year])
-        let earliest = self.earlierDate(date)
-        let latest = (earliest == self) ? date : self //Should pbe triple equals, but not extended to Date at this time
+        let unitFlags = Set<Calendar.Component>([.second, .minute, .hour, .day, .weekOfYear, .month, .year])
+        let earliest = earlierDate(date)
+        let latest = (earliest == self) ? date : self // Should pbe triple equals, but not extended to Date at this time
 
         let components = calendar.dateComponents(unitFlags, from: earliest, to: latest)
         let yesterday = date.subtract(1.days)
-        let isYesterday = yesterday.day == self.day
+        let isYesterday = yesterday.day == day
 
-        if (components.year! >= 1) {
-            return self.logicalLocalizedStringFromFormat(format: "%%d%@y", value: components.year!)
-        } else if (components.month! >= 1) {
-            return self.logicalLocalizedStringFromFormat(format: "%%d%@M", value: components.month!)
-        } else if (components.weekOfYear! >= 1) {
-            return self.logicalLocalizedStringFromFormat(format: "%%d%@w", value: components.weekOfYear!)
-        } else if (components.day! >= 2) {
-            return self.logicalLocalizedStringFromFormat(format: "%%d%@d", value: components.day!)
-        } else if (isYesterday) {
-            return self.logicalLocalizedStringFromFormat(format: "%%d%@d", value: 1)
-        } else if (components.hour! >= 1) {
-            return self.logicalLocalizedStringFromFormat(format: "%%d%@h", value: components.hour!)
-        } else if (components.minute! >= 1) {
-            return self.logicalLocalizedStringFromFormat(format: "%%d%@m", value: components.minute!)
-        } else if (components.second! >= 3) {
-            return self.logicalLocalizedStringFromFormat(format: "%%d%@s", value: components.second!)
+        if components.year! >= 1 {
+            return logicalLocalizedStringFromFormat(format: "%%d%@y", value: components.year!)
+        } else if components.month! >= 1 {
+            return logicalLocalizedStringFromFormat(format: "%%d%@M", value: components.month!)
+        } else if components.weekOfYear! >= 1 {
+            return logicalLocalizedStringFromFormat(format: "%%d%@w", value: components.weekOfYear!)
+        } else if components.day! >= 2 {
+            return logicalLocalizedStringFromFormat(format: "%%d%@d", value: components.day!)
+        } else if isYesterday {
+            return logicalLocalizedStringFromFormat(format: "%%d%@d", value: 1)
+        } else if components.hour! >= 1 {
+            return logicalLocalizedStringFromFormat(format: "%%d%@h", value: components.hour!)
+        } else if components.minute! >= 1 {
+            return logicalLocalizedStringFromFormat(format: "%%d%@m", value: components.minute!)
+        } else if components.second! >= 3 {
+            return logicalLocalizedStringFromFormat(format: "%%d%@s", value: components.second!)
         } else {
-            return self.logicalLocalizedStringFromFormat(format: "%%d%@s", value: components.second!)
-            //return DateToolsLocalizedStrings(@"Now"); //string not yet translated 2014.04.05
+            return logicalLocalizedStringFromFormat(format: "%%d%@s", value: components.second!)
+            // return DateToolsLocalizedStrings(@"Now"); //string not yet translated 2014.04.05
         }
     }
 
     private func logicalLocalizedStringFromFormat(format: String, value: Int) -> String {
-        let localeFormat = String.init(format: format, getLocaleFormatUnderscoresWithValue(Double(value)))
-        return String.init(format: DateToolsLocalizedStrings(localeFormat), value)
+        let localeFormat = String(format: format, getLocaleFormatUnderscoresWithValue(Double(value)))
+        return String(format: DateToolsLocalizedStrings(localeFormat), value)
     }
 
     private func getLocaleFormatUnderscoresWithValue(_ value: Double) -> String {
         let localCode = Bundle.main.preferredLocalizations[0]
-        if (localCode == "ru" || localCode == "uk") {
+        if localCode == "ru" || localCode == "uk" {
             let XY = Int(floor(value).truncatingRemainder(dividingBy: 100))
             let Y = Int(floor(value).truncatingRemainder(dividingBy: 10))
 
-            if(Y == 0 || Y > 4 || (XY > 10 && XY < 15)) {
+            if Y == 0 || Y > 4 || (XY > 10 && XY < 15) {
                 return ""
             }
 
-            if(Y > 1 && Y < 5 && (XY < 10 || XY > 20)) {
+            if Y > 1, Y < 5, XY < 10 || XY > 20 {
                 return "_"
             }
 
-            if(Y == 1 && XY != 11) {
+            if Y == 1, XY != 11 {
                 return "__"
             }
         }
@@ -202,12 +195,12 @@ public extension Date {
     // MARK: - Localization
 
     private func DateToolsLocalizedStrings(_ string: String) -> String {
-        //let classBundle = Bundle(for:TimeChunk.self as! AnyClass.Type).resourcePath!.appending("DateTools.bundle")
+        // let classBundle = Bundle(for:TimeChunk.self as! AnyClass.Type).resourcePath!.appending("DateTools.bundle")
 
-        //let bundelPath = Bundle(path:classBundle)!
+        // let bundelPath = Bundle(path:classBundle)!
         #if os(Linux)
-        // NSLocalizedString() is not available yet, see: https://github.com/apple/swift-corelibs-foundation/blob/16f83ddcd311b768e30a93637af161676b0a5f2f/Foundation/NSData.swift
-        // However, a seemingly-equivalent method from NSBundle is: https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/NSBundle.swift
+            // NSLocalizedString() is not available yet, see: https://github.com/apple/swift-corelibs-foundation/blob/16f83ddcd311b768e30a93637af161676b0a5f2f/Foundation/NSData.swift
+            // However, a seemingly-equivalent method from NSBundle is: https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/NSBundle.swift
             return Bundle.main.localizedString(forKey: string, value: "", table: "DateTools")
         #else
             return NSLocalizedString(string, tableName: "DateTools", bundle: Bundle.dateToolsBundle(), value: "", comment: "")
@@ -218,13 +211,13 @@ public extension Date {
 
     /**
      *  Return the earlier of two dates, between self and a given date.
-     *  
+     *
      *  - parameter date: The date to compare to self
      *
      *  - returns: The date that is earlier
      */
-    func earlierDate(_ date:Date) -> Date {
-        return (self.timeIntervalSince1970 <= date.timeIntervalSince1970) ? self : date
+    func earlierDate(_ date: Date) -> Date {
+        return (timeIntervalSince1970 <= date.timeIntervalSince1970) ? self : date
     }
 
     /**
@@ -234,8 +227,7 @@ public extension Date {
      *
      *  - returns: The date that is later
      */
-    func laterDate(_ date:Date) -> Date {
-        return (self.timeIntervalSince1970 >= date.timeIntervalSince1970) ? self : date
+    func laterDate(_ date: Date) -> Date {
+        return (timeIntervalSince1970 >= date.timeIntervalSince1970) ? self : date
     }
-
 }

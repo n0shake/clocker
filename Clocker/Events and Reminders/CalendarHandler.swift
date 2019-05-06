@@ -94,17 +94,17 @@ extension EventCenter {
 
         let relevantEvents = filteredEvents[autoupdatingCalendar.startOfDay(for: Date())] ?? []
 
-        let filteredEvent = relevantEvents.filter({
+        let filteredEvent = relevantEvents.filter {
             $0.event.isAllDay == false && $0.event.startDate.timeIntervalSinceNow > 0
-        }).first
+        }.first
 
         if let firstEvent = filteredEvent {
             return firstEvent.event
         }
 
-        let filteredAllDayEvent = relevantEvents.filter({
+        let filteredAllDayEvent = relevantEvents.filter {
             $0.isAllDay
-        }).first
+        }.first
 
         return filteredAllDayEvent?.event
     }
@@ -113,7 +113,7 @@ extension EventCenter {
         store.requestAccess(to: entity) { [weak self] granted, _ in
 
             // On successful granting of calendar permission, we default to showing events from all calendars
-            if let `self` = self, entity == .event, granted {
+            if let self = self, entity == .event, granted {
                 self.saveDefaultIdentifiersList()
             }
 
@@ -149,7 +149,7 @@ extension EventCenter {
 
     func saveDefaultIdentifiersList() {
         OperationQueue.main.addOperation { [weak self] in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
             let allCalendars = self.retrieveAllCalendarIdentifiers()
 
             if !allCalendars.isEmpty {
@@ -162,7 +162,7 @@ extension EventCenter {
 
     func retrieveAllCalendarIdentifiers() -> [String] {
         return store.calendars(for: .event).map { (calendar) -> String in
-            return calendar.calendarIdentifier
+            calendar.calendarIdentifier
         }
     }
 
@@ -172,7 +172,7 @@ extension EventCenter {
         guard let convertedDate = calendar?.date(byAdding: dateComps,
                                                  to: Date(),
                                                  options: NSCalendar.Options.matchFirst) else {
-                                                return Date()
+            return Date()
         }
         return convertedDate
     }
@@ -211,7 +211,6 @@ extension EventCenter {
         // We map eachDate to array of events happening on that day
 
         for event in events where shouldSkipEvent(event) == false {
-
             // Iterate through the days this event spans. We only care about
             // days for this event that are between startDate and endDate
             let eventStartDate = event.startDate as NSDate

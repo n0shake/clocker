@@ -3,7 +3,6 @@
 import XCTest
 
 class PreferencesTest: XCTestCase {
-
     var app: XCUIApplication!
 
     override func setUp() {
@@ -56,7 +55,6 @@ class PreferencesTest: XCTestCase {
     }
 
     func testEditingLabel() {
-
         let placeToAdd = "Auckland"
 
         app.tapMenubarIcon()
@@ -83,7 +81,6 @@ class PreferencesTest: XCTestCase {
 
         app.tables["mainTableView"].typeKey(",", modifierFlags: .command)
         deleteAPlace(place: placeToAdd, for: app)
-
     }
 
     func testSortingByTimezoneDifference() {
@@ -312,7 +309,7 @@ class PreferencesTest: XCTestCase {
         let favouritedMenubarsQuery = preferencesTable.checkBoxes.matching(NSPredicate(format: "value == 1", ""))
 
         if favouritedMenubarsQuery.count > 1 {
-            for _ in 0..<favouritedMenubarsQuery.count {
+            for _ in 0 ..< favouritedMenubarsQuery.count {
                 let checkbox = favouritedMenubarsQuery.element(boundBy: 0)
                 checkbox.click()
             }
@@ -326,7 +323,7 @@ class PreferencesTest: XCTestCase {
         let unfavouritedMenubarsQuery = preferencesTable.checkBoxes.matching(NSPredicate(format: "value == 0", ""))
 
         if unfavouritedMenubarsQuery.count > 1 {
-            for _ in 0..<2 {
+            for _ in 0 ..< 2 {
                 let checkbox = unfavouritedMenubarsQuery.element(boundBy: 0)
                 checkbox.click()
             }
@@ -337,8 +334,8 @@ class PreferencesTest: XCTestCase {
         let compactModeButton = app.dialogs.buttons["Enable Compact Mode"]
 
         if compactModeButton.isHittable {
-           compactModeButton.click()
-           XCTAssertTrue(app.dialogs.count == 0)
+            compactModeButton.click()
+            XCTAssertTrue(app.dialogs.count == 0)
         }
     }
 
@@ -347,7 +344,6 @@ class PreferencesTest: XCTestCase {
         let rowQueryCount = clockerWindow.tables["TimezoneTableView"].tableRows.count
 
         if rowQueryCount > 0 {
-
             let currentElement = clockerWindow.tables["TimezoneTableView"].tableRows.firstMatch
             currentElement.click()
 
@@ -355,7 +351,6 @@ class PreferencesTest: XCTestCase {
                 clockerWindow.typeKey(XCUIKeyboardKey.delete,
                                       modifierFlags: XCUIElement.KeyModifierFlags())
             }
-
         }
     }
 }

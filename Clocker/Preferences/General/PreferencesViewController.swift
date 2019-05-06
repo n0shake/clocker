@@ -70,7 +70,7 @@ class PreferencesViewController: ParentViewController {
     @IBOutlet private var headerView: NSView!
     @IBOutlet private var tableview: NSView!
     @IBOutlet private var additionalSortOptions: NSView!
-    @IBOutlet weak var startAtLoginLabel: NSTextField!
+    @IBOutlet var startAtLoginLabel: NSTextField!
 
     @IBOutlet var startupCheckbox: NSButton!
     @IBOutlet var headerLabel: NSTextField!
@@ -198,7 +198,7 @@ class PreferencesViewController: ParentViewController {
         }
 
         let archivedObjects = menubarTimes.map { (timezone) -> Data in
-            return NSKeyedArchiver.archivedData(withRootObject: timezone)
+            NSKeyedArchiver.archivedData(withRootObject: timezone)
         }
 
         UserDefaults.standard.set(archivedObjects, forKey: CLMenubarFavorites)
@@ -244,7 +244,7 @@ class PreferencesViewController: ParentViewController {
         [timezoneNameSortButton, labelSortButton, timezoneSortButton].forEach {
             $0?.attributedTitle = NSAttributedString(string: $0?.title ?? CLEmptyString, attributes: [
                 NSAttributedString.Key.foregroundColor: Themer.shared().mainTextColor(),
-                NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!
+                NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!,
             ])
         }
 
@@ -362,7 +362,7 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
         return nil
     }
 
-    private func handleTimezoneNameIdentifier(for row: Int, _ selectedDataSource: TimezoneData?) -> Any? {
+    private func handleTimezoneNameIdentifier(for _: Int, _ selectedDataSource: TimezoneData?) -> Any? {
         guard let model = selectedDataSource else {
             return nil
         }
@@ -382,7 +382,7 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
                 return dataSource?.formattedAddress
             }
         } else {
-            if searchField.stringValue.isEmpty == false && row < timezoneFilteredArray.count {
+            if searchField.stringValue.isEmpty == false, row < timezoneFilteredArray.count {
                 return timezoneFilteredArray[row]
             }
             return timezoneArray[row]
@@ -391,7 +391,7 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
     }
 
     private func handleAbbreviationColumn(for row: Int) -> Any? {
-        if searchField.stringValue.isEmpty == false && (row < timezoneFilteredArray.count) {
+        if searchField.stringValue.isEmpty == false, row < timezoneFilteredArray.count {
             let currentSelection = timezoneFilteredArray[row]
             if currentSelection == "UTC" {
                 return "UTC"
@@ -497,8 +497,8 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
         if selectedTimeZones.count > row {
             Logger.log(object: [
                 "Old Label": dataObject.customLabel ?? "Error",
-                "New Label": formattedValue
-                ],
+                "New Label": formattedValue,
+            ],
                        for: "Custom Label Changed")
 
             dataObject.setLabel(formattedValue)
@@ -510,25 +510,24 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
             Logger.log(object: [
                 "MethodName": "SetObjectValue",
                 "Selected Timezone Count": selectedTimeZones.count,
-                "Current Row": row
-                ],
+                "Current Row": row,
+            ],
                        for: "Error in selected row count")
         }
     }
 
     private func showAlertIfMoreThanOneTimezoneHasBeenAddedToTheMenubar() {
-
         let isUITestRunning = ProcessInfo.processInfo.arguments.contains(CLUITestingLaunchArgument)
 
         // If we have seen displayed the message before, abort!
         let haveWeSeenThisMessageBefore = UserDefaults.standard.bool(forKey: CLLongStatusBarWarningMessage)
 
-        if haveWeSeenThisMessageBefore && !isUITestRunning {
+        if haveWeSeenThisMessageBefore, !isUITestRunning {
             return
         }
 
         // If the user is already using the compact mode, abort.
-        if DataStore.shared().shouldDisplay(.menubarCompactMode) && !isUITestRunning {
+        if DataStore.shared().shouldDisplay(.menubarCompactMode), !isUITestRunning {
             return
         }
 
@@ -692,7 +691,7 @@ extension PreferencesViewController {
             self.dataTask = NetworkManager.task(with: self.generateSearchURL(),
                                                 completionHandler: { [weak self] response, error in
 
-                                                    guard let `self` = self else { return }
+                                                    guard let self = self else { return }
 
                                                     OperationQueue.main.addOperation {
                                                         if let errorPresent = error {
@@ -734,12 +733,12 @@ extension PreferencesViewController {
 
     private func presentError(_ errorMessage: String) {
         if errorMessage == PreferencesConstants.offlineErrorMessage {
-            self.placeholderLabel.placeholderString = PreferencesConstants.noInternetConnectivityError
+            placeholderLabel.placeholderString = PreferencesConstants.noInternetConnectivityError
         } else {
-            self.placeholderLabel.placeholderString = PreferencesConstants.tryAgainMessage
+            placeholderLabel.placeholderString = PreferencesConstants.tryAgainMessage
         }
 
-        self.isActivityInProgress = false
+        isActivityInProgress = false
     }
 
     private func appendResultsToFilteredArray(_ results: [SearchResult.Result]) {
@@ -755,17 +754,17 @@ extension PreferencesViewController {
                 CLTimezoneName: formattedAddress,
                 CLCustomLabel: formattedAddress,
                 CLTimezoneID: CLEmptyString,
-                CLPlaceIdentifier: $0.placeId
-                ] as [String: Any]
+                CLPlaceIdentifier: $0.placeId,
+            ] as [String: Any]
 
             self.filteredArray.append(TimezoneData(with: totalPackage))
         }
     }
 
     private func prepareUIForPresentingResults() {
-        self.placeholderLabel.placeholderString = CLEmptyString
-        self.isActivityInProgress = false
-        self.availableTimezoneTableView.reloadData()
+        placeholderLabel.placeholderString = CLEmptyString
+        isActivityInProgress = false
+        availableTimezoneTableView.reloadData()
     }
 
     // Extracting this out for tests
@@ -821,7 +820,7 @@ extension PreferencesViewController {
 
         NetworkManager.task(with: urlString) { [weak self] response, error in
 
-            guard let `self` = self else { return }
+            guard let self = self else { return }
 
             OperationQueue.main.addOperation {
                 if self.handleEdgeCase(for: response) == true {
@@ -829,7 +828,7 @@ extension PreferencesViewController {
                 }
 
                 if error == nil, let json = response, let timezone = self.decodeTimezone(from: json) {
-                    if self.availableTimezoneTableView.selectedRow >= 0 && self.availableTimezoneTableView.selectedRow < self.filteredArray.count {
+                    if self.availableTimezoneTableView.selectedRow >= 0, self.availableTimezoneTableView.selectedRow < self.filteredArray.count {
                         self.installTimezone(timezone)
                     }
                     self.updateViewState()
@@ -867,8 +866,8 @@ extension PreferencesViewController {
             "latitude": dataObject.latitude!,
             "longitude": dataObject.longitude!,
             "nextUpdate": CLEmptyString,
-            CLCustomLabel: filteredAddress
-            ] as [String: Any]
+            CLCustomLabel: filteredAddress,
+        ] as [String: Any]
 
         let timezoneObject = TimezoneData(with: newTimeZone)
         let operationsObject = TimezoneDataOperations(with: timezoneObject)
@@ -1118,7 +1117,7 @@ extension PreferencesViewController {
         var newDefaults = selectedTimeZones
 
         let objectsToRemove = timezoneTableView.selectedRowIndexes.map { (index) -> Data in
-            return selectedTimeZones[index]
+            selectedTimeZones[index]
         }
 
         newDefaults = newDefaults.filter { !objectsToRemove.contains($0) }
@@ -1331,8 +1330,7 @@ extension PreferencesViewController {
     }
 }
 
-extension PreferencesViewController: SRRecorderControlDelegate {
-}
+extension PreferencesViewController: SRRecorderControlDelegate {}
 
 // Helpers
 extension PreferencesViewController {

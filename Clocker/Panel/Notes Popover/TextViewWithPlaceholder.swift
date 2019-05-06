@@ -18,7 +18,7 @@ class TextViewWithPlaceholder: NSTextView {
         if let placeHolderFont = NSFont(name: "Avenir", size: 14) {
             let textDict = [
                 NSAttributedString.Key.foregroundColor: NSColor.gray,
-                NSAttributedString.Key.font: placeHolderFont
+                NSAttributedString.Key.font: placeHolderFont,
             ]
             return NSAttributedString(string: " Add your notes here.", attributes: textDict)
         }
@@ -32,7 +32,7 @@ class TextViewWithPlaceholder: NSTextView {
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        if string == CLEmptyString && self != window?.firstResponder {
+        if string == CLEmptyString, self != window?.firstResponder {
             placeholder.draw(at: NSPoint(x: 0, y: 0))
         }
     }

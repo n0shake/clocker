@@ -33,7 +33,7 @@ class AboutViewController: ParentViewController {
 
         setup()
 
-        themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { (_) in
+        themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { _ in
             self.setup()
         }
     }
@@ -46,16 +46,14 @@ class AboutViewController: ParentViewController {
 
     private func underlineTextForActionButton() {
         let rangesInOrder = [NSRange(location: 3, length: 8),
-            NSRange(location: 7, length: privateFeedback.attributedTitle.length - 7),
-            NSRange(location: 27, length: 33),
-            NSRange(location: 32, length: 30)
-        ]
+                             NSRange(location: 7, length: privateFeedback.attributedTitle.length - 7),
+                             NSRange(location: 27, length: 33),
+                             NSRange(location: 32, length: 30)]
 
         let buttonsInOrder = [quickCommentAction,
-            privateFeedback,
-            supportClocker,
-            openSourceButton
-        ]
+                              privateFeedback,
+                              supportClocker,
+                              openSourceButton]
 
         let localizedKeys = ["1. @n0shake on Twitter for quick comments",
                              "2. For Private Feedback",
@@ -87,10 +85,10 @@ class AboutViewController: ParentViewController {
                                   value: Themer.shared().mainTextColor(),
                                   range: NSRange(location: 0, length: underlinedButton.attributedTitle.string.count))
         originalText.addAttribute(NSAttributedString.Key.font,
-                                  value: (button?.font)! ,
+                                  value: (button?.font)!,
                                   range: NSRange(location: 0, length: underlinedButton.attributedTitle.string.count))
         originalText.addAttribute(NSAttributedString.Key.paragraphStyle,
-                                  value: mutableParaghStyle ,
+                                  value: mutableParaghStyle,
                                   range: NSRange(location: 0, length: underlinedButton.attributedTitle.string.count))
         underlinedButton.attributedTitle = originalText
     }
@@ -126,7 +124,6 @@ class AboutViewController: ParentViewController {
             let custom: [String: Any] = ["Country": countryCode]
             Logger.log(object: custom, for: "Report Issue Opened")
         }
-
     }
 
     @IBAction func openGitHub(_: Any) {
@@ -139,7 +136,7 @@ class AboutViewController: ParentViewController {
         Logger.log(object: custom, for: "Opened GitHub")
     }
 
-    @IBOutlet weak var feedbackLabel: NSTextField!
+    @IBOutlet var feedbackLabel: NSTextField!
 
     private func setup() {
         feedbackLabel.stringValue = "Feedback is always welcome:"

@@ -55,7 +55,7 @@ class FloatingWindowController: ParentPanelController {
 
         target.image = Themer.shared().extraOptionsHighlightedImage()
 
-        if popover.isShown && row == previousPopoverRow {
+        if popover.isShown, row == previousPopoverRow {
             popover.close()
             target.image = Themer.shared().extraOptionsImage()
             previousPopoverRow = -1

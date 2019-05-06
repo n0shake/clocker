@@ -1,55 +1,54 @@
 // Copyright © 2015 Abhishek Banthia
 
-import XCTest
 @testable import Clocker
+import XCTest
 
 class ClockerUnitTests: XCTestCase {
+    private let california = ["customLabel": "Test",
+                              "formattedAddress": "San Francisco",
+                              "place_id": "TestIdentifier",
+                              "timezoneID": "America/Los_Angeles",
+                              "nextUpdate": "",
+                              "latitude": "37.7749295",
+                              "longitude": "-122.4194155"]
 
-    private let california = ["customLabel" : "Test",
-                      "formattedAddress" : "San Francisco",
-                      "place_id" : "TestIdentifier",
-                      "timezoneID" : "America/Los_Angeles",
-                      "nextUpdate" : "",
-                      "latitude" : "37.7749295",
-                      "longitude" : "-122.4194155"]
+    private let mumbai = ["customLabel": "Ghar",
+                          "formattedAddress": "Mumbai",
+                          "place_id": "ChIJwe1EZjDG5zsRaYxkjY_tpF0",
+                          "timezoneID": "Asia/Calcutta",
+                          "nextUpdate": "",
+                          "latitude": "19.0759837",
+                          "longitude": "72.8776559"]
 
-    private let mumbai = ["customLabel" : "Ghar",
-                  "formattedAddress" : "Mumbai",
-                  "place_id" : "ChIJwe1EZjDG5zsRaYxkjY_tpF0",
-                  "timezoneID" : "Asia/Calcutta",
-                  "nextUpdate" : "",
-                  "latitude" : "19.0759837",
-                  "longitude" : "72.8776559"]
+    private let auckland = ["customLabel": "Auckland",
+                            "formattedAddress": "New Zealand",
+                            "place_id": "ChIJh5Z3Fw4gLG0RM0dqdeIY1rE",
+                            "timezoneID": "Pacific/Auckland",
+                            "nextUpdate": "",
+                            "latitude": "-40.900557",
+                            "longitude": "174.885971"]
 
-    private let auckland = ["customLabel" : "Auckland",
-                          "formattedAddress" : "New Zealand",
-                          "place_id" : "ChIJh5Z3Fw4gLG0RM0dqdeIY1rE",
-                          "timezoneID" : "Pacific/Auckland",
-                          "nextUpdate" : "",
-                          "latitude" : "-40.900557",
-                          "longitude" : "174.885971"]
-
-    private let florida = ["customLabel" : "Gainesville",
-                            "formattedAddress" : "Florida",
-                            "place_id" : "ChIJvypWkWV2wYgR0E7HW9MTLvc",
-                            "timezoneID" : "America/New_York",
-                            "nextUpdate" : "",
-                            "latitude" : "27.664827",
-                            "longitude" : "-81.5157535"]
+    private let florida = ["customLabel": "Gainesville",
+                           "formattedAddress": "Florida",
+                           "place_id": "ChIJvypWkWV2wYgR0E7HW9MTLvc",
+                           "timezoneID": "America/New_York",
+                           "nextUpdate": "",
+                           "latitude": "27.664827",
+                           "longitude": "-81.5157535"]
 
     private let onlyTimezone: [String: Any] = ["timezoneID": "Africa/Algiers",
-                                               "formattedAddress" : "Africa/Algiers",
+                                               "formattedAddress": "Africa/Algiers",
                                                "place_id": "",
                                                "customLabel": "",
                                                "latitude": "",
                                                "longitude": ""]
 
     private let omaha: [String: Any] = ["timezoneID": "America/Chicago",
-                                               "formattedAddress" : "Omaha",
-                                               "place_id": "ChIJ7fwMtciNk4cRBLY3rk9NQkY",
-                                               "customLabel": "",
-                                               "latitude": "41.2565369",
-                                               "longitude": "-95.9345034"]
+                                        "formattedAddress": "Omaha",
+                                        "place_id": "ChIJ7fwMtciNk4cRBLY3rk9NQkY",
+                                        "customLabel": "",
+                                        "latitude": "41.2565369",
+                                        "longitude": "-95.9345034"]
 
     private var operations: TimezoneDataOperations {
         return TimezoneDataOperations(with: TimezoneData(with: mumbai))
@@ -72,7 +71,6 @@ class ClockerUnitTests: XCTestCase {
     }
 
     func testAddingATimezoneToDefaults() {
-
         let timezoneData = TimezoneData(with: california)
 
         let defaults = UserDefaults.standard
@@ -134,7 +132,6 @@ class ClockerUnitTests: XCTestCase {
     }
 
     func testDateWithSliderValue() {
-
         let dataObject = TimezoneData(with: mumbai)
         let operations = TimezoneDataOperations(with: dataObject)
 
@@ -174,7 +171,6 @@ class ClockerUnitTests: XCTestCase {
     }
 
     func testFormattedLabel() {
-
         let dataObject = TimezoneData(with: mumbai)
         XCTAssertTrue(dataObject.formattedTimezoneLabel() == "Ghar", "Incorrect custom label returned by model.")
 
@@ -200,7 +196,6 @@ class ClockerUnitTests: XCTestCase {
     }
 
     func testWithAllLocales() {
-
         let dataObject1 = TimezoneData(with: mumbai)
         let operations = TimezoneDataOperations(with: dataObject1)
 
@@ -212,17 +207,16 @@ class ClockerUnitTests: XCTestCase {
     }
 
     func testTimeWithAllLocales() {
-
         let dataObject = TimezoneData(with: mumbai)
 
         let cal = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
 
         guard let newDate = cal?.date(byAdding: .minute,
-                                                                           value: 0,
-                                                                           to: Date(),
-                                                                           options: .matchFirst) else {
-                                                                           XCTFail("Unable to add dates!")
-                                                                            return
+                                      value: 0,
+                                      to: Date(),
+                                      options: .matchFirst) else {
+            XCTFail("Unable to add dates!")
+            return
         }
 
         for locale in Locale.availableIdentifiers {
@@ -235,5 +229,4 @@ class ClockerUnitTests: XCTestCase {
             XCTAssertNotNil(convertedDate)
         }
     }
-
 }

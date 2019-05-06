@@ -3,7 +3,6 @@
 import Cocoa
 
 class NotesPopover: NSViewController {
-
     private enum OverrideType {
         case timezoneFormat
         case seconds
@@ -37,7 +36,7 @@ class NotesPopover: NSViewController {
 
     @IBOutlet var timeFormatControl: NSSegmentedControl!
 
-    @IBOutlet weak var secondsFormatControl: NSSegmentedControl!
+    @IBOutlet var secondsFormatControl: NSSegmentedControl!
 
     @IBOutlet var notesTextView: TextViewWithPlaceholder!
 
@@ -62,7 +61,7 @@ class NotesPopover: NSViewController {
             "1 hour before",
             "2 hour before",
             "1 day before",
-            "2 days before"
+            "2 days before",
         ]
 
         alertPopupButton.removeAllItems()
@@ -200,7 +199,7 @@ class NotesPopover: NSViewController {
         let attributesDictionary = [
             NSAttributedString.Key.font: font,
             NSAttributedString.Key.foregroundColor: Themer.shared().mainTextColor(),
-            NSAttributedString.Key.paragraphStyle: style
+            NSAttributedString.Key.paragraphStyle: style,
         ]
 
         button.attributedTitle = NSAttributedString(string: title,
@@ -448,7 +447,6 @@ class NotesPopover: NSViewController {
             handler.setupStatusItem()
         }
     }
-
 }
 
 @objc extension NotesPopover {

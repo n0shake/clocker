@@ -76,7 +76,7 @@ extension ReachabilityStatus {
         let connectionRequired = flags.contains(.connectionRequired)
         let isReachable = flags.contains(.reachable)
 
-        if !connectionRequired && isReachable {
+        if !connectionRequired, isReachable {
             self = .online(.wiFi)
         } else {
             self = .offline

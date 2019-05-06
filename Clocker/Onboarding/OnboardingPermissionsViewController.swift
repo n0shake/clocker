@@ -91,7 +91,7 @@ class OnboardingPermissionsViewController: NSViewController {
 
             eventCenter.requestAccess(to: .event, completionHandler: { [weak self] granted in
                 OperationQueue.main.addOperation {
-                    guard let `self` = self else { return }
+                    guard let self = self else { return }
 
                     self.calendarActivityIndicator.stopAnimation(nil)
 
@@ -130,7 +130,6 @@ class OnboardingPermissionsViewController: NSViewController {
 
                 if granted {
                     OperationQueue.main.addOperation {
-
                         self.view.window?.orderBack(nil)
                         NSApp.activate(ignoringOtherApps: true)
 

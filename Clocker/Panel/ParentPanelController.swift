@@ -12,7 +12,6 @@ struct PanelConstants {
 }
 
 class ParentPanelController: NSWindowController {
-
     private var futureSliderObserver: NSKeyValueObservation?
     private var userFontSizeSelectionObserver: NSKeyValueObservation?
     private var futureSliderRangeObserver: NSKeyValueObservation?
@@ -98,13 +97,13 @@ class ParentPanelController: NSWindowController {
     }
 
     private func setupObservers() {
-        futureSliderObserver = UserDefaults.standard.observe(\.displayFutureSlider, options: [.new]) { (_, change) in
+        futureSliderObserver = UserDefaults.standard.observe(\.displayFutureSlider, options: [.new]) { _, change in
             if let changedValue = change.newValue {
                 self.futureSliderView.isHidden = changedValue == 1
             }
         }
 
-        userFontSizeSelectionObserver = UserDefaults.standard.observe(\.userFontSize, options: [.new]) { (_, change) in
+        userFontSizeSelectionObserver = UserDefaults.standard.observe(\.userFontSize, options: [.new]) { _, change in
             if let newFontSize = change.newValue {
                 Logger.log(object: ["FontSize": newFontSize], for: "User Font Size Preference")
                 self.mainTableView.reloadData()
@@ -112,7 +111,7 @@ class ParentPanelController: NSWindowController {
             }
         }
 
-        futureSliderRangeObserver = UserDefaults.standard.observe(\.sliderDayRange, options: [.new]) { (_, change) in
+        futureSliderRangeObserver = UserDefaults.standard.observe(\.sliderDayRange, options: [.new]) { _, change in
             if change.newValue != nil {
                 self.adjustFutureSliderBasedOnPreferences()
             }
@@ -153,7 +152,7 @@ class ParentPanelController: NSWindowController {
 
         themeChanged()
 
-        futureSliderView.isHidden = !(DataStore.shared().shouldDisplay(.futureSlider))
+        futureSliderView.isHidden = !DataStore.shared().shouldDisplay(.futureSlider)
 
         sharingButton.sendAction(on: .leftMouseDown)
 
@@ -168,16 +167,15 @@ class ParentPanelController: NSWindowController {
     }
 
     private func showDebugVersionViewIfNeccesary() {
-
         if debugVersionView != nil {
             debugVersionView.wantsLayer = true
             debugVersionView.layer?.backgroundColor = NSColor.systemRed.cgColor
         }
 
         #if RELEASE
-        if debugVersionView != nil && stackView.arrangedSubviews.contains(debugVersionView) {
-            stackView.removeView(debugVersionView)
-        }
+            if debugVersionView != nil, stackView.arrangedSubviews.contains(debugVersionView) {
+                stackView.removeView(debugVersionView)
+            }
         #endif
     }
 
@@ -277,7 +275,7 @@ class ParentPanelController: NSWindowController {
 
         let styleAttributes = [
             NSAttributedString.Key.paragraphStyle: paragraphStyle,
-            NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13) ?? NSFont.systemFont(ofSize: 13)
+            NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13) ?? NSFont.systemFont(ofSize: 13),
         ]
 
         let leftButtonAttributedTitle = NSAttributedString(string: leftButton.title, attributes: styleAttributes)
@@ -830,7 +828,7 @@ class ParentPanelController: NSWindowController {
 
         let styleAttributes = [
             NSAttributedString.Key.paragraphStyle: paragraphStyle,
-            NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!
+            NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!,
         ]
         leftButton.attributedTitle = NSAttributedString(string: "Not Really", attributes: styleAttributes)
         rightButton.attributedTitle = NSAttributedString(string: "Yes!", attributes: styleAttributes)
@@ -841,7 +839,7 @@ class ParentPanelController: NSWindowController {
             return
         }
 
-        NSAnimationContext.runAnimationGroup({ (context) in
+        NSAnimationContext.runAnimationGroup({ context in
             context.duration = 1
             context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
             leftButton.animator().alphaValue = 0.0
@@ -849,7 +847,7 @@ class ParentPanelController: NSWindowController {
         }, completionHandler: {
             field.stringValue = title
 
-            NSAnimationContext.runAnimationGroup({ (context) in
+            NSAnimationContext.runAnimationGroup({ context in
                 context.duration = 1
                 context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
                 self.runAnimationCompletionBlock(leftTitle, rightTitle)
@@ -858,27 +856,27 @@ class ParentPanelController: NSWindowController {
     }
 
     private func runAnimationCompletionBlock(_ leftButtonTitle: String, _ rightButtonTitle: String) {
-        self.leftButton.animator().alphaValue = 1.0
-        self.rightButton.animator().alphaValue = 1.0
+        leftButton.animator().alphaValue = 1.0
+        rightButton.animator().alphaValue = 1.0
 
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
 
         let styleAttributes = [
             NSAttributedString.Key.paragraphStyle: paragraphStyle,
-            NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!
+            NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!,
         ]
 
-        if self.leftButton.attributedTitle.string == "Not Really" {
-            self.leftButton.animator().attributedTitle = NSAttributedString(string: PanelConstants.noThanksTitle, attributes: styleAttributes)
+        if leftButton.attributedTitle.string == "Not Really" {
+            leftButton.animator().attributedTitle = NSAttributedString(string: PanelConstants.noThanksTitle, attributes: styleAttributes)
         }
 
-        if self.rightButton.attributedTitle.string == PanelConstants.yesWithExclamation {
-            self.rightButton.animator().attributedTitle = NSAttributedString(string: "Yes, sure", attributes: styleAttributes)
+        if rightButton.attributedTitle.string == PanelConstants.yesWithExclamation {
+            rightButton.animator().attributedTitle = NSAttributedString(string: "Yes, sure", attributes: styleAttributes)
         }
 
-        self.leftButton.animator().attributedTitle = NSAttributedString(string: leftButtonTitle, attributes: styleAttributes)
-        self.rightButton.animator().attributedTitle = NSAttributedString(string: rightButtonTitle, attributes: styleAttributes)
+        leftButton.animator().attributedTitle = NSAttributedString(string: leftButtonTitle, attributes: styleAttributes)
+        rightButton.animator().attributedTitle = NSAttributedString(string: rightButtonTitle, attributes: styleAttributes)
     }
 
     // MARK: Date Picker + Slider

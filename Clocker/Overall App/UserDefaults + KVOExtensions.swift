@@ -3,7 +3,6 @@
 import Cocoa
 
 extension UserDefaults {
-
     @objc dynamic var displayFutureSlider: Int {
         return integer(forKey: CLDisplayFutureSliderKey)
     }

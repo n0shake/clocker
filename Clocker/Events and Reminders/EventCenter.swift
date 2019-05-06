@@ -29,7 +29,7 @@ class EventCenter: NSObject {
                                                object: nil)
     }
 
-    @objc func eventStoreDidChange(_ sender: Any) {
+    @objc func eventStoreDidChange(_: Any) {
         refetchAll()
     }
 

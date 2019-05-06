@@ -3,7 +3,6 @@
 import EventKit
 
 extension EventCenter {
-
     // MARK: Private helper methods
 
     private func retrieveCalendar() -> EKCalendar? {
@@ -11,7 +10,7 @@ extension EventCenter {
             let calendars = store.calendars(for: .reminder)
             let calendarTitle = "Clocker Reminders"
             let predicate = NSPredicate(format: "title matches %@", calendarTitle)
-            let filtered = calendars.filter({ predicate.evaluate(with: $0) })
+            let filtered = calendars.filter { predicate.evaluate(with: $0) }
 
             if !filtered.isEmpty {
                 calendar = filtered.first
@@ -83,7 +82,7 @@ extension EventCenter {
 
     private func addAlarmIfNeccesary(for event: EKReminder, _ selection: Int) {
         if selection != 0 {
-           var offset: TimeInterval = 0
+            var offset: TimeInterval = 0
             switch selection {
             case 2:
                 offset = -300

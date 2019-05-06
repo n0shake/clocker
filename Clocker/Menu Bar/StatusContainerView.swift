@@ -21,7 +21,6 @@ func bufferCalculatedWidth() -> Int {
 }
 
 func compactWidth(for timezone: TimezoneData) -> Int {
-
     var totalWidth = 55
     let timeFormat = timezone.timezoneFormat()
 
@@ -47,7 +46,6 @@ func compactWidth(for timezone: TimezoneData) -> Int {
 let bufferWidth: CGFloat = 9.5
 
 class StatusContainerView: NSView {
-
     private var previousX: Int = 0
 
     override func awakeFromNib() {
@@ -57,7 +55,6 @@ class StatusContainerView: NSView {
     }
 
     init(with timezones: [Data]) {
-
         func addSubviews() {
             timezones.forEach {
                 if let timezoneObject = TimezoneData.customObject(from: $0) {
@@ -91,12 +88,11 @@ class StatusContainerView: NSView {
         addSubviews()
     }
 
-    required init?(coder decoder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     func addTimezone(_ timezone: TimezoneData) {
-
         let calculatedWidth = bestWidth(for: timezone)
 
         let frame = NSRect(x: previousX, y: 0, width: calculatedWidth, height: 30)
@@ -118,7 +114,6 @@ class StatusContainerView: NSView {
     }
 
     func updateTime() {
-
         if subviews.isEmpty {
             assertionFailure("Subviews count should > 0")
         }
@@ -129,5 +124,4 @@ class StatusContainerView: NSView {
             }
         }
     }
-
 }

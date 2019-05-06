@@ -114,7 +114,7 @@ class FloatingWindowTests: XCTestCase {
         let menubarDisplayQuery = app.tables.checkBoxes.matching(NSPredicate(format: "value == 1", ""))
         let menubarDisplayQueryCount = menubarDisplayQuery.count
 
-        for index in 0..<menubarDisplayQueryCount where index < menubarDisplayQueryCount {
+        for index in 0 ..< menubarDisplayQueryCount where index < menubarDisplayQueryCount {
             menubarDisplayQuery.element(boundBy: 0).click()
             sleep(1)
         }

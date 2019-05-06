@@ -8,15 +8,14 @@
 
 import Foundation
 
-/** 
- *  Time period groups are the final abstraction of date and time in DateTools. Here, time 
+/**
+ *  Time period groups are the final abstraction of date and time in DateTools. Here, time
  *  periods are gathered and organized into something useful. There are two main types of time
  *  period groups, `TimePeriodCollection` and `TimePeriodChain`.
  *
  *  [Visit our github page](https://github.com/MatthewYork/DateTools#time-period-groups) for more information.
  */
 open class TimePeriodGroup: Sequence {
-
     // MARK: - Variables
 
     /**
@@ -57,7 +56,7 @@ open class TimePeriodGroup: Sequence {
      *  periods array. Nil if any beginning or end date in any contained period is nil.
      */
     public var duration: TimeInterval? {
-        if beginning != nil && end != nil {
+        if beginning != nil, end != nil {
             return end!.timeIntervalSince(beginning!)
         }
         return nil
@@ -65,9 +64,7 @@ open class TimePeriodGroup: Sequence {
 
     // MARK: - Initializers
 
-    public init() {
-
-    }
+    public init() {}
 
     // MARK: - Comparisons
 
@@ -79,12 +76,12 @@ open class TimePeriodGroup: Sequence {
      *  - returns: True if the periods arrays are the same
      */
     public func equals(_ group: TimePeriodGroup) -> Bool {
-        return containSameElements(array1: self.periods, group.periods)
+        return containSameElements(array1: periods, group.periods)
     }
 
     // MARK: - Sequence Protocol
 
-    public func makeIterator() -> IndexingIterator<Array<TimePeriodProtocol>> {
+    public func makeIterator() -> IndexingIterator<[TimePeriodProtocol]> {
         return periods.makeIterator()
     }
 
@@ -105,9 +102,7 @@ open class TimePeriodGroup: Sequence {
     }
 
     subscript(index: Int) -> TimePeriodProtocol {
-        get {
-            return periods[index]
-        }
+        return periods[index]
     }
 
     internal func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, TimePeriodProtocol) throws -> Result) rethrows -> Result {
@@ -120,28 +115,28 @@ open class TimePeriodGroup: Sequence {
         }
 
         var compArray1: [TimePeriodProtocol] = array1.sorted { (period1: TimePeriodProtocol, period2: TimePeriodProtocol) -> Bool in
-            if period1.beginning == nil && period2.beginning == nil {
+            if period1.beginning == nil, period2.beginning == nil {
                 return false
-            } else if (period1.beginning == nil) {
+            } else if period1.beginning == nil {
                 return true
-            } else if (period2.beginning == nil) {
+            } else if period2.beginning == nil {
                 return false
             } else {
                 return period2.beginning! < period1.beginning!
             }
         }
         var compArray2: [TimePeriodProtocol] = array2.sorted { (period1: TimePeriodProtocol, period2: TimePeriodProtocol) -> Bool in
-            if period1.beginning == nil && period2.beginning == nil {
+            if period1.beginning == nil, period2.beginning == nil {
                 return false
-            } else if (period1.beginning == nil) {
+            } else if period1.beginning == nil {
                 return true
-            } else if (period2.beginning == nil) {
+            } else if period2.beginning == nil {
                 return false
             } else {
                 return period2.beginning! < period1.beginning!
             }
         }
-        for x in 0..<compArray1.count {
+        for x in 0 ..< compArray1.count {
             if !compArray1[x].equals(compArray2[x]) {
                 return false
             }

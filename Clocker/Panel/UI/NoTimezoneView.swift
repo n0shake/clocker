@@ -6,9 +6,9 @@ import QuartzCore
 class NoTimezoneView: NSView {
     private lazy var emoji: NSTextField = {
         let emoji = NSTextField(frame: NSRect(x: frame.size.width / 2 - 50,
-                                          y: frame.size.height / 2 - 50,
-                                          width: 100,
-                                          height: 100))
+                                              y: frame.size.height / 2 - 50,
+                                              width: 100,
+                                              height: 100))
         emoji.wantsLayer = true
         emoji.stringValue = "🌏"
         emoji.isBordered = false
@@ -23,9 +23,9 @@ class NoTimezoneView: NSView {
 
     private lazy var message: NSTextField = {
         let messageField = NSTextField(frame: NSRect(x: frame.size.width / 2 - 250,
-                                          y: frame.size.height / 2 - 275,
-                                          width: 500,
-                                          height: 200))
+                                                     y: frame.size.height / 2 - 275,
+                                                     width: 500,
+                                                     height: 200))
         messageField.wantsLayer = true
         messageField.setAccessibilityIdentifier("NoTimezoneMessage")
         messageField.placeholderString = "No places added"

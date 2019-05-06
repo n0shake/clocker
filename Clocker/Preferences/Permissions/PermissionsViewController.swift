@@ -3,7 +3,6 @@
 import Cocoa
 
 class PermissionsViewController: ParentViewController {
-
     @IBOutlet var calendarContainerView: NSView!
     @IBOutlet var remindersContainerView: NSView!
 
@@ -129,7 +128,6 @@ class PermissionsViewController: ParentViewController {
 
                 if granted {
                     OperationQueue.main.addOperation {
-
                         self.view.window?.orderBack(nil)
                         NSApp.activate(ignoringOtherApps: true)
 
@@ -163,7 +161,6 @@ class PermissionsViewController: ParentViewController {
 
                 if granted {
                     OperationQueue.main.addOperation {
-
                         self.view.window?.orderBack(nil)
                         NSApp.activate(ignoringOtherApps: true)
 

@@ -14,7 +14,6 @@ import Foundation
  *  several computed Bools.
  */
 public extension Date {
-
     /**
      *  Convenient accessor of the date's `Calendar` components.
      *
@@ -24,9 +23,9 @@ public extension Date {
      *
      */
     func component(_ component: Calendar.Component) -> Int {
-		let calendar = Calendar.autoupdatingCurrent
-		return calendar.component(component, from: self)
-	}
+        let calendar = Calendar.autoupdatingCurrent
+        return calendar.component(component, from: self)
+    }
 
     /**
      *  Convenient accessor of the date's `Calendar` components ordinality.
@@ -37,10 +36,10 @@ public extension Date {
      *  - returns: The ordinal number of a smaller calendar component within a specified larger calendar component
      *
      */
-	func ordinality(of smaller: Calendar.Component, in larger: Calendar.Component) -> Int? {
-		let calendar = Calendar.autoupdatingCurrent
-		return calendar.ordinality(of: smaller, in: larger, for: self)
-	}
+    func ordinality(of smaller: Calendar.Component, in larger: Calendar.Component) -> Int? {
+        let calendar = Calendar.autoupdatingCurrent
+        return calendar.ordinality(of: smaller, in: larger, for: self)
+    }
 
     /**
      *  Use calendar components to determine how many units of a smaller component are inside 1 larger unit.
@@ -54,17 +53,16 @@ public extension Date {
      *  - returns: The number of smaller units required to equal in 1 larger unit, given the date called on
      *
      */
-	func unit(of smaller: Calendar.Component, in larger: Calendar.Component) -> Int? {
-		let calendar = Calendar.autoupdatingCurrent
+    func unit(of smaller: Calendar.Component, in larger: Calendar.Component) -> Int? {
+        let calendar = Calendar.autoupdatingCurrent
         var units = 1
         var unitRange: Range<Int>?
         if larger.hashValue < smaller.hashValue {
-            for x in larger.hashValue..<smaller.hashValue {
-
+            for x in larger.hashValue ..< smaller.hashValue {
                 var stepLarger: Calendar.Component
                 var stepSmaller: Calendar.Component
 
-                switch(x) {
+                switch x {
                 case 0:
                     stepLarger = Calendar.Component.era
                     stepSmaller = Calendar.Component.year
@@ -79,10 +77,10 @@ public extension Date {
                     }
                 case 2:
                     if larger.hashValue < 2 {
-                        if self.isInLeapYear {
-                            unitRange = Range.init(uncheckedBounds: (lower: 0, upper: 366))
+                        if isInLeapYear {
+                            unitRange = Range(uncheckedBounds: (lower: 0, upper: 366))
                         } else {
-                            unitRange = Range.init(uncheckedBounds: (lower: 0, upper: 365))
+                            unitRange = Range(uncheckedBounds: (lower: 0, upper: 365))
                         }
                     } else {
                         stepLarger = Calendar.Component.month
@@ -112,107 +110,107 @@ public extension Date {
             return units
         }
         return nil
-	}
+    }
 
-	// MARK: - Components
+    // MARK: - Components
 
     /**
      *  Convenience getter for the date's `era` component
      */
-	var era: Int {
-		return component(.era)
-	}
+    var era: Int {
+        return component(.era)
+    }
 
     /**
      *  Convenience getter for the date's `year` component
      */
-	var year: Int {
-		return component(.year)
-	}
+    var year: Int {
+        return component(.year)
+    }
 
     /**
      *  Convenience getter for the date's `month` component
      */
-	var month: Int {
-		return component(.month)
-	}
+    var month: Int {
+        return component(.month)
+    }
 
     /**
      *  Convenience getter for the date's `week` component
      */
-	var week: Int {
-		return component(.weekday)
-	}
+    var week: Int {
+        return component(.weekday)
+    }
 
     /**
      *  Convenience getter for the date's `day` component
      */
-	var day: Int {
-		return component(.day)
-	}
+    var day: Int {
+        return component(.day)
+    }
 
     /**
      *  Convenience getter for the date's `hour` component
      */
-	var hour: Int {
-		return component(.hour)
-	}
+    var hour: Int {
+        return component(.hour)
+    }
 
     /**
      *  Convenience getter for the date's `minute` component
      */
-	var minute: Int {
-		return component(.minute)
-	}
+    var minute: Int {
+        return component(.minute)
+    }
 
     /**
      *  Convenience getter for the date's `second` component
      */
-	var second: Int {
-		return component(.second)
-	}
+    var second: Int {
+        return component(.second)
+    }
 
     /**
      *  Convenience getter for the date's `weekday` component
      */
-	var weekday: Int {
-		return component(.weekday)
-	}
+    var weekday: Int {
+        return component(.weekday)
+    }
 
     /**
      *  Convenience getter for the date's `weekdayOrdinal` component
      */
-	var weekdayOrdinal: Int {
-		return component(.weekdayOrdinal)
-	}
+    var weekdayOrdinal: Int {
+        return component(.weekdayOrdinal)
+    }
 
     /**
      *  Convenience getter for the date's `quarter` component
      */
-	var quarter: Int {
-		return component(.quarter)
-	}
+    var quarter: Int {
+        return component(.quarter)
+    }
 
     /**
      *  Convenience getter for the date's `weekOfYear` component
      */
-	var weekOfMonth: Int {
-		return component(.weekOfMonth)
-	}
+    var weekOfMonth: Int {
+        return component(.weekOfMonth)
+    }
 
     /**
      *  Convenience getter for the date's `weekOfYear` component
      */
-	var weekOfYear: Int {
-		return component(.weekOfYear)
-	}
+    var weekOfYear: Int {
+        return component(.weekOfYear)
+    }
 
     /**
      *  Convenience getter for the date's `yearForWeekOfYear` component
      */
-	var yearForWeekOfYear: Int {
-		return component(.yearForWeekOfYear)
-	}
+    var yearForWeekOfYear: Int {
+        return component(.yearForWeekOfYear)
+    }
 
     /**
      *  Convenience getter for the date's `daysInMonth` component
@@ -229,42 +227,42 @@ public extension Date {
      *  Convenience setter for the date's `year` component
      */
     mutating func year(_ year: Int) {
-        self = Date.init(year: year, month: self.month, day: self.day, hour: self.hour, minute: self.minute, second: self.second)
+        self = Date(year: year, month: month, day: day, hour: hour, minute: minute, second: second)
     }
 
     /**
      *  Convenience setter for the date's `month` component
      */
     mutating func month(_ month: Int) {
-        self = Date.init(year: self.year, month: month, day: self.day, hour: self.hour, minute: self.minute, second: self.second)
+        self = Date(year: year, month: month, day: day, hour: hour, minute: minute, second: second)
     }
 
     /**
      *  Convenience setter for the date's `day` component
      */
     mutating func day(_ day: Int) {
-        self = Date.init(year: self.year, month: self.month, day: day, hour: self.hour, minute: self.minute, second: self.second)
+        self = Date(year: year, month: month, day: day, hour: hour, minute: minute, second: second)
     }
 
     /**
      *  Convenience setter for the date's `hour` component
      */
     mutating func hour(_ hour: Int) {
-        self = Date.init(year: self.year, month: self.month, day: self.day, hour: hour, minute: self.minute, second: self.second)
+        self = Date(year: year, month: month, day: day, hour: hour, minute: minute, second: second)
     }
 
     /**
      *  Convenience setter for the date's `minute` component
      */
     mutating func minute(_ minute: Int) {
-        self = Date.init(year: self.year, month: self.month, day: self.day, hour: self.hour, minute: minute, second: self.second)
+        self = Date(year: year, month: month, day: day, hour: hour, minute: minute, second: second)
     }
 
     /**
      *  Convenience setter for the date's `second` component
      */
     mutating func second(_ second: Int) {
-        self = Date.init(year: self.year, month: self.month, day: self.day, hour: self.hour, minute: self.minute, second: second)
+        self = Date(year: year, month: month, day: day, hour: hour, minute: minute, second: second)
     }
 
     // MARK: - Bools
@@ -272,52 +270,52 @@ public extension Date {
     /**
      *  Determine if date is in a leap year
      */
-	var isInLeapYear: Bool {
-		let yearComponent = component(.year)
+    var isInLeapYear: Bool {
+        let yearComponent = component(.year)
 
-		if yearComponent % 400 == 0 {
-			return true
-		}
-		if yearComponent % 100 == 0 {
-			return false
-		}
-		if yearComponent % 4 == 0 {
-			return true
-		}
-		return false
-	}
+        if yearComponent % 400 == 0 {
+            return true
+        }
+        if yearComponent % 100 == 0 {
+            return false
+        }
+        if yearComponent % 4 == 0 {
+            return true
+        }
+        return false
+    }
 
     /**
      *  Determine if date is within the current day
      */
-	var isToday: Bool {
-		let calendar = Calendar.autoupdatingCurrent
-		return calendar.isDateInToday(self)
-	}
+    var isToday: Bool {
+        let calendar = Calendar.autoupdatingCurrent
+        return calendar.isDateInToday(self)
+    }
 
     /**
      *  Determine if date is within the day tomorrow
      */
-	var isTomorrow: Bool {
-		let calendar = Calendar.autoupdatingCurrent
+    var isTomorrow: Bool {
+        let calendar = Calendar.autoupdatingCurrent
         return calendar.isDateInTomorrow(self)
-	}
+    }
 
     /**
      *  Determine if date is within yesterday
      */
-	var isYesterday: Bool {
-		let calendar = Calendar.autoupdatingCurrent
+    var isYesterday: Bool {
+        let calendar = Calendar.autoupdatingCurrent
         return calendar.isDateInYesterday(self)
-	}
+    }
 
     /**
      *  Determine if date is in a weekend
      */
-	var isWeekend: Bool {
-		if weekday == 7 || weekday == 1 {
-			return true
-		}
-		return false
-	}
+    var isWeekend: Bool {
+        if weekday == 7 || weekday == 1 {
+            return true
+        }
+        return false
+    }
 }

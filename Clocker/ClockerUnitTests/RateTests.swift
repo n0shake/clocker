@@ -1,10 +1,9 @@
 // Copyright © 2015 Abhishek Banthia
 
-import XCTest
 @testable import Clocker
+import XCTest
 
 class RateTests: XCTestCase {
-
     let rateController = RateController.applicationDidLaunch(UserDefaults())
 
     override func setUp() {
@@ -15,5 +14,4 @@ class RateTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-
 }
