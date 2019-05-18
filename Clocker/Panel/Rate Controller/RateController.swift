@@ -50,7 +50,7 @@ final class RateController {
         else { return true }
 
         // Minimum interval between two versions should be 45
-        let minInterval: TimeInterval = day * 45
+        let minInterval: TimeInterval = day * 90
 
         // never prompt w/in the same version
         return lastVersion != version
