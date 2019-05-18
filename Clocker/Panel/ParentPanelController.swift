@@ -797,7 +797,7 @@ class ParentPanelController: NSWindowController {
 
     @IBAction func actionOnPositiveFeedback(_ sender: NSButton) {
         if sender.title == PanelConstants.yesWithExclamation {
-            setAnimated(title: "Mind rating us?",
+            setAnimated(title: "Would you like to rate us?",
                         field: leftField,
                         leftTitle: PanelConstants.noThanksTitle,
                         rightTitle: "Yes")
