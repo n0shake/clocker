@@ -22,6 +22,8 @@ struct AppFeedbackConstants {
     static let CLFeedbackAlertInformativeText = "We owe you a candy. 😇"
     static let CLFeedbackAlertButtonTitle = "Close"
     static let CLFeedbackNotEnteredErrorMessage = "Please enter some feedback."
+    static let CLAppFeedbackDateProperty = "date"
+    static let CLCaliforniaTimezoneIdentifier = "America/Los_Angeles"
 }
 
 class AppFeedbackWindowController: NSWindowController {
@@ -156,9 +158,18 @@ class AppFeedbackWindowController: NSWindowController {
             AppFeedbackConstants.CLAppFeedbackFeedbackProperty: appFeedbackProperty,
             AppFeedbackConstants.CLOperatingSystemVersion: osVersion,
             AppFeedbackConstants.CLClockerVersion: versionInfo,
+            AppFeedbackConstants.CLAppFeedbackDateProperty: todaysDate(),
         ]
 
         return feedbackInfo
+    }
+
+    private func todaysDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        dateFormatter.timeZone = TimeZone(identifier: AppFeedbackConstants.CLCaliforniaTimezoneIdentifier)
+        return dateFormatter.string(from: Date())
     }
 
     private func sendDataToFirebase(feedbackInfo: [String: String]) {
