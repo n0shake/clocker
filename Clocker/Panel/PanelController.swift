@@ -61,6 +61,10 @@ class PanelController: ParentPanelController {
     }
 
     func open() {
+        if #available(OSX 10.14, *) {
+            PerfLogger.signpostBegin()
+        }
+
         guard isWindowLoaded == true else {
             return
         }
@@ -94,6 +98,10 @@ class PanelController: ParentPanelController {
         mainTableView.reloadData()
 
         log()
+
+        if #available(OSX 10.14, *) {
+            PerfLogger.signpostEnd()
+        }
     }
 
     // New way to set the panel's frame.
