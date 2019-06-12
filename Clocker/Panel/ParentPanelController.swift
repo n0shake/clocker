@@ -408,6 +408,10 @@ class ParentPanelController: NSWindowController {
     }
 
     @objc func updateDefaultPreferences() {
+        if #available(OSX 10.14, *) {
+            PerfLogger.startMarker("Update Default Preferences")
+        }
+        
         updatePanelColor()
 
         let defaults = DataStore.shared().timezones()
@@ -421,6 +425,10 @@ class ParentPanelController: NSWindowController {
         mainTableView.panelDelegate = datasource
 
         updateDatasource(with: convertedTimezones)
+        
+        if #available(OSX 10.14, *) {
+            PerfLogger.endMarker("Update Default Preferences")
+        }
     }
 
     func updateDatasource(with timezones: [TimezoneData]) {
@@ -646,15 +654,22 @@ class ParentPanelController: NSWindowController {
     }
 
     func retrieveCalendarEvents() {
+        if #available(OSX 10.14, *) {
+            PerfLogger.startMarker("Retrieve Calendar Events")
+        }
+        
         let eventCenter = EventCenter.sharedCenter()
 
         if eventCenter.calendarAccessGranted() {
             fetchCalendarEvents()
         } else if eventCenter.calendarAccessNotDetermined() {
             /* Wait till we get the thumbs up. */
-            return
         } else {
             removeUpcomingEventView()
+        }
+        
+        if #available(OSX 10.14, *) {
+            PerfLogger.endMarker("Retrieve Calendar Events")
         }
     }
 
@@ -713,6 +728,10 @@ class ParentPanelController: NSWindowController {
     }
 
     private func fetchCalendarEvents() {
+        if #available(OSX 10.14, *) {
+            PerfLogger.startMarker("Fetch Calendar Events")
+        }
+        
         let eventCenter = EventCenter.sharedCenter()
         let now = Date()
 
@@ -720,6 +739,9 @@ class ParentPanelController: NSWindowController {
             OperationQueue.main.addOperation {
                 guard let upcomingEvent = eventCenter.nextOccuring(events) else {
                     self.setPlaceholdersForUpcomingCalendarView()
+                    if #available(OSX 10.14, *) {
+                        PerfLogger.endMarker("Fetch Calendar Events")
+                    }
                     return
                 }
 
@@ -729,6 +751,9 @@ class ParentPanelController: NSWindowController {
                 if upcomingEvent.isAllDay == true {
                     let title = events.count == 1 ? "All-Day" : "All Day - Total \(events.count) events today"
                     self.setCalendarButtonTitle(buttonTitle: title)
+                    if #available(OSX 10.14, *) {
+                        PerfLogger.endMarker("Fetch Calendar Events")
+                    }
                     return
                 }
 
@@ -737,9 +762,16 @@ class ParentPanelController: NSWindowController {
                 let withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
 
                 self.setCalendarButtonTitle(buttonTitle: "in \(withoutAgo.lowercased())")
+                
+                if #available(OSX 10.14, *) {
+                    PerfLogger.endMarker("Fetch Calendar Events")
+                }
             }
         } else {
             setPlaceholdersForUpcomingCalendarView()
+            if #available(OSX 10.14, *) {
+                PerfLogger.endMarker("Fetch Calendar Events")
+            }
         }
     }
 

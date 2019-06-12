@@ -19,6 +19,8 @@ class PanelController: ParentPanelController {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        enablePerformanceLoggingIfNeccessary()
 
         window?.title = "Clocker Panel"
         window?.setAccessibilityIdentifier("Clocker Panel")
@@ -37,6 +39,14 @@ class PanelController: ParentPanelController {
         super.updatePanelColor()
 
         super.updateDefaultPreferences()
+    }
+    
+    private func enablePerformanceLoggingIfNeccessary() {
+        if !ProcessInfo.processInfo.environment.keys.contains("ENABLE_PERF_LOGGING") {
+            if #available(OSX 10.14, *) {
+                PerfLogger.disable()
+            }
+        }
     }
 
     @objc override func updateDefaultPreferences() {
@@ -62,7 +72,7 @@ class PanelController: ParentPanelController {
 
     func open() {
         if #available(OSX 10.14, *) {
-            PerfLogger.signpostBegin()
+            PerfLogger.startMarker("Open")
         }
 
         guard isWindowLoaded == true else {
@@ -100,13 +110,17 @@ class PanelController: ParentPanelController {
         log()
 
         if #available(OSX 10.14, *) {
-            PerfLogger.signpostEnd()
+            PerfLogger.endMarker("Open")
         }
     }
 
     // New way to set the panel's frame.
     // This takes into account the screen's dimensions.
     private func setPanelFrame() {
+        if #available(OSX 10.14, *) {
+            PerfLogger.startMarker("Set Panel Frame")
+        }
+        
         guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -139,10 +153,17 @@ class PanelController: ParentPanelController {
             statusItemFrame.origin.y = minY
 
             setFrameTheNewWay(statusItemFrame, screenMaxX)
+            if #available(OSX 10.14, *) {
+                PerfLogger.endMarker("Set Panel Frame")
+            }
         }
     }
 
     private func log() {
+        if #available(OSX 10.14, *) {
+            PerfLogger.startMarker("Logging")
+        }
+        
         let preferences = DataStore.shared().timezones()
 
         guard let theme = DataStore.shared().retrieve(key: CLThemeKey) as? NSNumber,
@@ -186,17 +207,34 @@ class PanelController: ParentPanelController {
         ]
 
         Logger.log(object: panelEvent, for: "openedPanel")
+        
+        if #available(OSX 10.14, *) {
+            PerfLogger.endMarker("Logging")
+        }
     }
 
     private func startWindowTimer() {
+        if #available(OSX 10.14, *) {
+            PerfLogger.startMarker("Start Window Timer")
+        }
+        
         stopMenubarTimerIfNeccesary()
 
         if let timer = parentTimer, timer.state == .paused {
             parentTimer?.start()
+            
+            if #available(OSX 10.14, *) {
+                PerfLogger.endMarker("Start Window Timer")
+            }
+            
             return
         }
 
         startTimer()
+        
+        if #available(OSX 10.14, *) {
+            PerfLogger.endMarker("Start Window Timer")
+        }
     }
 
     private func startTimer() {

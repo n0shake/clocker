@@ -14,14 +14,28 @@ class Logger: NSObject {
 
 @available(OSX 10.14, *)
 class PerfLogger: NSObject {
-    static let openPanelLog = OSLog(subsystem: "com.abhishek.Clocker", category: "Open Panel")
-    static let signpostID = OSSignpostID(log: openPanelLog)
-
-    @objc class func signpostBegin() {
-        os_signpost(.begin, log: openPanelLog, name: "Open Panel", signpostID: signpostID)
+    
+    static var panelLog = OSLog(subsystem: "com.abhishek.Clocker",
+                                category: "Open Panel")
+    static let signpostID = OSSignpostID(log: panelLog)
+    
+    class func disable() {
+        panelLog = .disabled
+    }
+    
+    class func startMarker(_ name: StaticString) {
+        os_signpost(.begin,
+                    log: panelLog,
+                    name: name,
+                    signpostID: signpostID)
     }
 
-    @objc class func signpostEnd() {
-        os_signpost(.end, log: openPanelLog, name: "Open Panel", signpostID: signpostID)
+    class func endMarker(_ name: StaticString) {
+        os_signpost(.end,
+                    log: panelLog,
+                    name: name,
+                    signpostID: signpostID)
     }
 }
+
+
