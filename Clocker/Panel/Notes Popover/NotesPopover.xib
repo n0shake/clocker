@@ -169,24 +169,15 @@
                                         </menu>
                                     </popUpButtonCell>
                                 </popUpButton>
-                                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Az8-Ut-Rcj">
-                                    <rect key="frame" x="0.0" y="-2" width="300" height="5"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="0.5" id="N6C-uC-YhO"/>
-                                    </constraints>
-                                </box>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="5UW-2m-WFy" firstAttribute="leading" secondItem="O1q-Z3-TBB" secondAttribute="trailing" constant="21" id="0hS-If-vFW"/>
-                                <constraint firstItem="Az8-Ut-Rcj" firstAttribute="leading" secondItem="oyr-RC-N9X" secondAttribute="leading" id="3h3-Mq-0UC"/>
                                 <constraint firstItem="O1q-Z3-TBB" firstAttribute="leading" secondItem="oyr-RC-N9X" secondAttribute="leading" constant="5" id="6ER-Lp-Pq1"/>
                                 <constraint firstAttribute="trailing" secondItem="BTo-6Z-o0e" secondAttribute="trailing" constant="11" id="7fG-4P-KMs"/>
                                 <constraint firstAttribute="trailing" secondItem="5UW-2m-WFy" secondAttribute="trailing" constant="10" id="WLx-74-dRF"/>
-                                <constraint firstAttribute="trailing" secondItem="Az8-Ut-Rcj" secondAttribute="trailing" id="XZT-0p-lMa"/>
                                 <constraint firstItem="BTo-6Z-o0e" firstAttribute="leading" secondItem="5UW-2m-WFy" secondAttribute="leading" id="YTy-Sm-HOV"/>
                                 <constraint firstItem="O1q-Z3-TBB" firstAttribute="top" secondItem="BTo-6Z-o0e" secondAttribute="bottom" constant="8" id="Zlc-v4-rtw"/>
                                 <constraint firstAttribute="height" constant="70" id="bus-dz-cBf"/>
-                                <constraint firstAttribute="bottom" secondItem="Az8-Ut-Rcj" secondAttribute="bottom" id="i0u-0d-ONL"/>
                                 <constraint firstItem="5UW-2m-WFy" firstAttribute="centerY" secondItem="O1q-Z3-TBB" secondAttribute="centerY" id="ptW-Ui-r97"/>
                                 <constraint firstAttribute="width" constant="300" id="xzP-b7-NWH"/>
                                 <constraint firstItem="BTo-6Z-o0e" firstAttribute="top" secondItem="oyr-RC-N9X" secondAttribute="top" constant="8" id="zRB-do-WjP"/>
@@ -210,11 +201,8 @@
                                     </connections>
                                 </segmentedControl>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wqz-cF-lhm">
-                                    <rect key="frame" x="8" y="38" width="284" height="22"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="22" id="Jeh-w8-m8c"/>
-                                    </constraints>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="TIMEZONE FORMAT" id="JnF-g8-GLM">
+                                    <rect key="frame" x="18" y="35" width="274" height="14"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="TIMEZONE FORMAT" id="JnF-g8-GLM">
                                         <font key="font" metaFont="smallSystem"/>
                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -222,14 +210,13 @@
                                 </textField>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="Wqz-cF-lhm" firstAttribute="leading" secondItem="seL-7y-MOc" secondAttribute="leading" id="19h-CF-DBW"/>
                                 <constraint firstAttribute="height" constant="60" id="6tP-1d-ufg"/>
                                 <constraint firstItem="seL-7y-MOc" firstAttribute="leading" secondItem="Rxa-0J-YeW" secondAttribute="leading" constant="20" id="9RJ-d9-2KM"/>
                                 <constraint firstAttribute="trailing" secondItem="Wqz-cF-lhm" secondAttribute="trailing" constant="10" id="G6S-5h-12V"/>
                                 <constraint firstAttribute="trailing" secondItem="seL-7y-MOc" secondAttribute="trailing" constant="19" id="Ysa-Xl-mPa"/>
                                 <constraint firstAttribute="bottom" secondItem="seL-7y-MOc" secondAttribute="bottom" constant="12" id="cjQ-Yb-gta"/>
-                                <constraint firstItem="seL-7y-MOc" firstAttribute="top" secondItem="Wqz-cF-lhm" secondAttribute="bottom" constant="5" id="eNO-El-GVH"/>
-                                <constraint firstItem="Wqz-cF-lhm" firstAttribute="leading" secondItem="Rxa-0J-YeW" secondAttribute="leading" constant="10" id="hxM-n1-nfU"/>
-                                <constraint firstItem="Wqz-cF-lhm" firstAttribute="centerX" secondItem="Rxa-0J-YeW" secondAttribute="centerX" id="xOa-zc-RIF"/>
+                                <constraint firstItem="seL-7y-MOc" firstAttribute="top" secondItem="Wqz-cF-lhm" secondAttribute="bottom" constant="2" id="eNO-El-GVH"/>
                                 <constraint firstAttribute="width" constant="300" id="xeM-Ue-etB"/>
                             </constraints>
                         </customView>
@@ -251,11 +238,8 @@
                                     </connections>
                                 </segmentedControl>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WVk-sH-CqF">
-                                    <rect key="frame" x="8" y="38" width="284" height="22"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="22" id="tMC-YN-IAB"/>
-                                    </constraints>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="DISPLAY SECONDS" id="lCg-ZI-gIk">
+                                    <rect key="frame" x="18" y="35" width="274" height="14"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="DISPLAY SECONDS" id="lCg-ZI-gIk">
                                         <font key="font" metaFont="smallSystem"/>
                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -265,13 +249,12 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="eiB-dp-56X" secondAttribute="trailing" constant="19" id="8oV-s6-Rrd"/>
                                 <constraint firstAttribute="height" constant="60" id="CRo-FH-m9V"/>
-                                <constraint firstItem="WVk-sH-CqF" firstAttribute="leading" secondItem="pIj-e1-8y2" secondAttribute="leading" constant="10" id="EdQ-j0-awO"/>
                                 <constraint firstItem="eiB-dp-56X" firstAttribute="leading" secondItem="pIj-e1-8y2" secondAttribute="leading" constant="20" id="J1Q-fm-hfX"/>
-                                <constraint firstItem="WVk-sH-CqF" firstAttribute="centerX" secondItem="pIj-e1-8y2" secondAttribute="centerX" id="Qhd-Jy-fhB"/>
                                 <constraint firstAttribute="bottom" secondItem="eiB-dp-56X" secondAttribute="bottom" constant="12" id="SKm-79-Rau"/>
-                                <constraint firstItem="eiB-dp-56X" firstAttribute="top" secondItem="WVk-sH-CqF" secondAttribute="bottom" constant="5" id="aSa-Fz-Iu3"/>
+                                <constraint firstItem="eiB-dp-56X" firstAttribute="top" secondItem="WVk-sH-CqF" secondAttribute="bottom" constant="2" id="aSa-Fz-Iu3"/>
                                 <constraint firstAttribute="width" constant="300" id="nQb-1g-SNX"/>
                                 <constraint firstAttribute="trailing" secondItem="WVk-sH-CqF" secondAttribute="trailing" constant="10" id="pZi-8V-Pah"/>
+                                <constraint firstItem="WVk-sH-CqF" firstAttribute="leading" secondItem="eiB-dp-56X" secondAttribute="leading" id="yuf-gH-ud1"/>
                             </constraints>
                         </customView>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="yYA-ih-eGS" userLabel="Notes ">
