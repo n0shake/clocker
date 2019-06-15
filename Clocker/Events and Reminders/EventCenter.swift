@@ -16,7 +16,7 @@ class EventCenter: NSObject {
 
     var filteredEvents: [Date: [EventInfo]] = [:]
 
-    @discardableResult @objc class func sharedCenter() -> EventCenter {
+    @discardableResult class func sharedCenter() -> EventCenter {
         return shared
     }
 

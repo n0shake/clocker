@@ -449,7 +449,7 @@ class NotesPopover: NSViewController {
     }
 }
 
-@objc extension NotesPopover {
+extension NotesPopover {
     func setRow(row: Int) {
         currentRow = row
     }
@@ -462,7 +462,7 @@ class NotesPopover: NSViewController {
         self.popover = popover
     }
 
-    func themeChanged() {
+    @objc func themeChanged() {
         notesTextView.textColor = Themer.shared().mainTextColor()
         customLabel.textColor = Themer.shared().mainTextColor()
         reminderPicker.textColor = Themer.shared().mainTextColor()

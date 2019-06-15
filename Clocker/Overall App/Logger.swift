@@ -6,7 +6,7 @@ import os.log
 import os.signpost
 
 class Logger: NSObject {
-    @objc class func log(object: [String: Any], for key: NSString) {
+    class func log(object: [String: Any], for key: NSString) {
         Answers.logCustomEvent(withName: key as String,
                                customAttributes: object)
     }

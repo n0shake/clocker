@@ -57,7 +57,7 @@ class BackgroundPanelView: NSView {
         return true
     }
 
-    @objc func setArrowX(value: CGFloat) {
+    func setArrowX(value: CGFloat) {
         arrowX = value
         setNeedsDisplay(bounds)
     }

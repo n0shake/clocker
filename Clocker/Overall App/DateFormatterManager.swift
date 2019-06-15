@@ -14,7 +14,7 @@ class DateFormatterManager: NSObject {
     private static var gregorianCalendar = Calendar(identifier: Calendar.Identifier.gregorian)
     private static var USLocale = Locale(identifier: "en_US")
 
-    @objc class func dateFormatter(with style: DateFormatter.Style, for timezoneIdentifier: String) -> DateFormatter {
+    class func dateFormatter(with style: DateFormatter.Style, for timezoneIdentifier: String) -> DateFormatter {
         dateFormatter.dateStyle = style
         dateFormatter.timeStyle = style
         dateFormatter.locale = USLocale
@@ -22,7 +22,7 @@ class DateFormatterManager: NSObject {
         return dateFormatter
     }
 
-    @objc class func dateFormatterWithCalendar(with style: DateFormatter.Style) -> DateFormatter {
+    class func dateFormatterWithCalendar(with style: DateFormatter.Style) -> DateFormatter {
         calendarDateFormatter.dateStyle = style
         calendarDateFormatter.timeStyle = style
         calendarDateFormatter.locale = USLocale
@@ -30,14 +30,14 @@ class DateFormatterManager: NSObject {
         return calendarDateFormatter
     }
 
-    @objc class func simpleFormatter(with style: DateFormatter.Style) -> DateFormatter {
+    class func simpleFormatter(with style: DateFormatter.Style) -> DateFormatter {
         simpleFormatter.dateStyle = style
         simpleFormatter.timeStyle = style
         simpleFormatter.locale = USLocale
         return simpleFormatter
     }
 
-    @objc class func dateFormatterWithFormat(with style: DateFormatter.Style, format: String, timezoneIdentifier: String, locale: Locale = Locale(identifier: "en_US")) -> DateFormatter {
+    class func dateFormatterWithFormat(with style: DateFormatter.Style, format: String, timezoneIdentifier: String, locale: Locale = Locale(identifier: "en_US")) -> DateFormatter {
         specializedFormatter.dateStyle = style
         specializedFormatter.timeStyle = style
         specializedFormatter.dateFormat = format
@@ -46,7 +46,7 @@ class DateFormatterManager: NSObject {
         return specializedFormatter
     }
 
-    @objc class func localizedFormatter(with format: String, for timezoneIdentifier: String, locale _: Locale = Locale.autoupdatingCurrent) -> DateFormatter {
+    class func localizedFormatter(with format: String, for timezoneIdentifier: String, locale _: Locale = Locale.autoupdatingCurrent) -> DateFormatter {
         dateFormatter.dateStyle = .none
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale.autoupdatingCurrent
@@ -55,7 +55,7 @@ class DateFormatterManager: NSObject {
         return dateFormatter
     }
 
-    @objc class func localizedCalendaricalDateFormatter(with format: String) -> DateFormatter {
+    class func localizedCalendaricalDateFormatter(with format: String) -> DateFormatter {
         calendarDateFormatter.dateStyle = .none
         calendarDateFormatter.timeStyle = .none
         calendarDateFormatter.locale = Locale.autoupdatingCurrent
@@ -64,7 +64,7 @@ class DateFormatterManager: NSObject {
         return calendarDateFormatter
     }
 
-    @objc class func localizedSimpleFormatter(_ format: String) -> DateFormatter {
+    class func localizedSimpleFormatter(_ format: String) -> DateFormatter {
         localizedSimpleFormatter.dateStyle = .none
         localizedSimpleFormatter.timeStyle = .none
         localizedSimpleFormatter.dateFormat = format

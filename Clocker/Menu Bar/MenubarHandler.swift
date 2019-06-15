@@ -4,7 +4,7 @@ import Cocoa
 import EventKit
 
 class MenubarHandler: NSObject {
-    @objc func titleForMenubar() -> String? {
+    func titleForMenubar() -> String? {
         if let nextEvent = checkForUpcomingEvents() {
             return nextEvent
         }

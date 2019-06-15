@@ -13,7 +13,7 @@ class PanelController: ParentPanelController {
         super.windowDidLoad()
     }
 
-    @objc class func shared() -> PanelController {
+    class func shared() -> PanelController {
         return sharedWindow
     }
 
@@ -49,7 +49,7 @@ class PanelController: ParentPanelController {
         }
     }
 
-    @objc override func updateDefaultPreferences() {
+    override func updateDefaultPreferences() {
         super.updateDefaultPreferences()
     }
 
@@ -264,7 +264,7 @@ class PanelController: ParentPanelController {
         setActivePanel(newValue: false)
     }
 
-    @objc func hasActivePanelGetter() -> Bool {
+    func hasActivePanelGetter() -> Bool {
         return hasActivePanel
     }
 
@@ -294,7 +294,7 @@ class PanelController: ParentPanelController {
         datasource = nil
     }
 
-    @objc func setActivePanel(newValue: Bool) {
+    func setActivePanel(newValue: Bool) {
         hasActivePanel = newValue
         hasActivePanel ? open() : minimize()
     }

@@ -9,7 +9,7 @@ class TimezoneDataOperations: NSObject {
     private static var gregorianCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
     private static var swiftyCalendar = Calendar(identifier: .gregorian)
 
-    @objc init(with timezone: TimezoneData) {
+    init(with timezone: TimezoneData) {
         dataObject = timezone
     }
 }
@@ -318,7 +318,7 @@ extension TimezoneDataOperations {
         return dateFormatter.string(from: Date())
     }
 
-    @objc func saveObject(at index: Int = -1) {
+     func saveObject(at index: Int = -1) {
         var defaults = DataStore.shared().timezones()
         let encodedObject = NSKeyedArchiver.archivedData(withRootObject: dataObject as Any)
         index == -1 ? defaults.append(encodedObject) : defaults.insert(encodedObject, at: index)

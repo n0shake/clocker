@@ -407,7 +407,7 @@ class ParentPanelController: NSWindowController {
         }
     }
 
-    @objc func updateDefaultPreferences() {
+    func updateDefaultPreferences() {
         if #available(OSX 10.14, *) {
             PerfLogger.startMarker("Update Default Preferences")
         }

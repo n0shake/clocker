@@ -32,7 +32,7 @@ class NetworkManager: NSObject {
     }()
 }
 
-@objc extension NetworkManager {
+extension NetworkManager {
     @discardableResult
     class func task(with path: String, completionHandler: @escaping (_ response: Data?, _ error: NSError?) -> Void) -> URLSessionDataTask? {
         let configuration = URLSessionConfiguration.default

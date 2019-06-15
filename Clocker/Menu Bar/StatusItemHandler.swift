@@ -273,7 +273,7 @@ class StatusItemHandler: NSObject {
         updateMenubar()
     }
 
-    @objc func invalidateTimer(showIcon show: Bool, isSyncing sync: Bool) {
+    func invalidateTimer(showIcon show: Bool, isSyncing sync: Bool) {
         // Check if user is not showing
         // 1. Timezones
         // 2. Upcoming Event

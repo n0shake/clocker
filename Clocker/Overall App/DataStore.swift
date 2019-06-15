@@ -24,7 +24,7 @@ class DataStore: NSObject {
     // Since this pref can accessed every second, let's cache this
     private var shouldDisplayDateInMenubar: Bool = false
 
-    @objc class func shared() -> DataStore {
+    class func shared() -> DataStore {
         return sharedStore
     }
 
@@ -34,7 +34,7 @@ class DataStore: NSObject {
         shouldDisplayDateInMenubar = shouldDisplay(.dayInMenubar)
     }
 
-    @objc func timezones() -> [Data] {
+    func timezones() -> [Data] {
         guard let preferences = userDefaults.object(forKey: CLDefaultPreferenceKey) as? [Data] else {
             return []
         }

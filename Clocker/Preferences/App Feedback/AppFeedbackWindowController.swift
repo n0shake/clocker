@@ -83,7 +83,7 @@ class AppFeedbackWindowController: NSWindowController {
         }
     }
 
-    @objc class func shared() -> AppFeedbackWindowController {
+    class func shared() -> AppFeedbackWindowController {
         return sharedWindow
     }
 

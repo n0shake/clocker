@@ -12,7 +12,7 @@ class LocationController: NSObject {
         return locationManager
     }()
 
-    @objc class func sharedController() -> LocationController {
+    class func sharedController() -> LocationController {
         return sharedInstance
     }
 
@@ -20,23 +20,23 @@ class LocationController: NSObject {
         return CLLocationManager.authorizationStatus()
     }
 
-    @objc func locationAccessNotDetermined() -> Bool {
+    func locationAccessNotDetermined() -> Bool {
         return CLLocationManager.authorizationStatus() == .notDetermined
     }
 
-    @objc func locationAccessGranted() -> Bool {
+    func locationAccessGranted() -> Bool {
         return CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorized
     }
 
-    @objc func locationAccessDenied() -> Bool {
+    func locationAccessDenied() -> Bool {
         return CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .denied
     }
 
-    @objc func setDelegate() {
+    func setDelegate() {
         locationManager.delegate = self
     }
 
-    @objc func determineAndRequestLocationAuthorization() {
+    func determineAndRequestLocationAuthorization() {
         setDelegate()
 
         if CLLocationManager.locationServicesEnabled() {

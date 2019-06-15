@@ -123,7 +123,7 @@ class FloatingWindowController: ParentPanelController {
         window?.backgroundColor = NSColor.clear
     }
 
-    @objc func startWindowTimer() {
+    func startWindowTimer() {
         repeater = Repeater(interval: .seconds(1), mode: .infinite) { _ in
             OperationQueue.main.addOperation {
                 self.updateTime()
