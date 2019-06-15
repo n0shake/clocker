@@ -13,7 +13,7 @@ class FloatingWindowController: ParentPanelController {
         window?.standardWindowButton(.zoomButton)?.isHidden = true
     }
 
-    @objc class func shared() -> FloatingWindowController {
+    class func shared() -> FloatingWindowController {
         return sharedWindow
     }
 
@@ -43,7 +43,7 @@ class FloatingWindowController: ParentPanelController {
         mainTableView.setAccessibility("FloatingTableView")
     }
 
-    @objc override func updatePanelColor() {
+   override func updatePanelColor() {
         super.updatePanelColor()
         updateTheme()
     }
