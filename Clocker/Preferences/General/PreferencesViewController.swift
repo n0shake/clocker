@@ -76,6 +76,8 @@ class PreferencesViewController: ParentViewController {
     @IBOutlet var sortToggle: NSButton!
     private var themeDidChangeNotification: NSObjectProtocol?
 
+    private var selectionsDataSource: PreferencesDataSource!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -97,9 +99,13 @@ class PreferencesViewController: ParentViewController {
         themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { _ in
             self.setup()
         }
-        
+
         searchField.placeholderString = "Enter city, state, country or timezone name"
         setupTimezoneDatasource()
+
+        selectionsDataSource = PreferencesDataSource(callbackDelegate: self)
+        timezoneTableView.dataSource = selectionsDataSource
+        timezoneTableView.delegate = selectionsDataSource
     }
 
     deinit {
@@ -316,59 +322,34 @@ class PreferencesViewController: ParentViewController {
 }
 
 extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate {
-    func numberOfRows(in tableView: NSTableView) -> Int {
-        var numberOfRows = 0
-
-        if tableView == timezoneTableView {
-            numberOfRows = selectedTimeZones.count
-        } else {
-            numberOfRows = numberOfSearchResults()
-        }
-
-        return numberOfRows
+    func numberOfRows(in _: NSTableView) -> Int {
+        return numberOfSearchResults()
     }
-    
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+
+    func tableView(_ tableView: NSTableView, viewFor _: NSTableColumn?, row _: Int) -> NSView? {
         if let message = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "resultCell"), owner: self) as? SearchResultTableViewCell {
             message.sourceName.stringValue = "Nicaragua"
             return message
         }
-        
-        return nil;
+
+        return nil
     }
 
     func tableView(_: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         var dataSource: TimezoneData?
-        var selectedDataSource: TimezoneData?
 
         if filteredArray.count > row, let currentFilteredObject = filteredArray[row] as? TimezoneData {
             dataSource = currentFilteredObject
-        }
-
-        if selectedTimeZones.count > row, let model = TimezoneData.customObject(from: selectedTimeZones[row]) {
-            selectedDataSource = model
-        }
-
-        if tableColumn?.identifier.rawValue == PreferencesConstants.timezoneNameIdentifier {
-            return handleTimezoneNameIdentifier(for: row, selectedDataSource)
         }
 
         if tableColumn?.identifier.rawValue == PreferencesConstants.availableTimezoneIdentifier {
             if filteredArray.isEmpty {
                 return timezoneArray[row]
             }
-            
+
             return dataSource != nil ?
-            handleAvailableTimezoneColumn(for: row, dataSource) :
-            filteredArray[row] as? String
-        }
-
-        if tableColumn?.identifier.rawValue == PreferencesConstants.customLabelIdentifier {
-            return selectedDataSource?.customLabel ?? "Error"
-        }
-
-        if tableColumn?.identifier.rawValue == "favouriteTimezone" {
-            return selectedDataSource?.isFavourite ?? 0
+                handleAvailableTimezoneColumn(for: row, dataSource) :
+                filteredArray[row] as? String
         }
 
         if tableColumn?.identifier.rawValue == "abbreviation" {
@@ -376,18 +357,6 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
         }
 
         return nil
-    }
-
-    private func handleTimezoneNameIdentifier(for _: Int, _ selectedDataSource: TimezoneData?) -> Any? {
-        guard let model = selectedDataSource else {
-            return nil
-        }
-
-        if let address = model.formattedAddress, address.isEmpty == false {
-            return model.formattedAddress
-        }
-
-        return model.timezoneID
     }
 
     private func handleAvailableTimezoneColumn(for row: Int, _ dataSource: TimezoneData?) -> Any? {
@@ -413,27 +382,7 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
         return nil
     }
 
-    func tableView(_: NSTableView, setObjectValue object: Any?, for _: NSTableColumn?, row: Int) {
-        guard !selectedTimeZones.isEmpty, let dataObject = TimezoneData.customObject(from: selectedTimeZones[row]) else {
-            return
-        }
-
-        if let edit = object as? String {
-            setNewLabel(edit, for: dataObject, at: row)
-        } else if let isFavouriteValue = object as? NSNumber {
-            dataObject.isFavourite = isFavouriteValue.intValue
-            insert(timezone: dataObject, at: row)
-            dataObject.isFavourite == 1 ?
-                markAsFavorite(dataObject) :
-                unfavourite(dataObject)
-            updateStatusItem()
-            refreshTimezoneTableView()
-        }
-
-        refreshMainTable()
-    }
-
-    private func markAsFavorite(_ dataObject: TimezoneData) {
+    private func _markAsFavorite(_ dataObject: TimezoneData) {
         guard let menubarTitles = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data] else {
             return
         }
@@ -457,7 +406,7 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
         }
     }
 
-    private func unfavourite(_ dataObject: TimezoneData) {
+    private func _unfavourite(_ dataObject: TimezoneData) {
         guard let menubarTimers = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data] else {
             assertionFailure("Menubar timers is unexpectedly nil")
             return
@@ -484,31 +433,6 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
 
         if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
             appDelegate.setupMenubarTimer()
-        }
-    }
-
-    private func setNewLabel(_ label: String, for dataObject: TimezoneData, at row: Int) {
-        let formattedValue = label.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-
-        if selectedTimeZones.count > row {
-            Logger.log(object: [
-                "Old Label": dataObject.customLabel ?? "Error",
-                "New Label": formattedValue,
-            ],
-                       for: "Custom Label Changed")
-
-            dataObject.setLabel(formattedValue)
-
-            insert(timezone: dataObject, at: row)
-
-            updateMenubarTitles()
-        } else {
-            Logger.log(object: [
-                "MethodName": "SetObjectValue",
-                "Selected Timezone Count": selectedTimeZones.count,
-                "Current Row": row,
-            ],
-                       for: "Error in selected row count")
         }
     }
 
@@ -556,100 +480,6 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
 
                 Logger.log(object: ["Context": ">1 Menubar Timezone in Preferences"], for: "Switched to Compact Mode")
             }
-        }
-    }
-
-    func tableView(_: NSTableView, writeRowsWith rowIndexes: IndexSet, to pboard: NSPasteboard) -> Bool {
-        let data = NSKeyedArchiver.archivedData(withRootObject: rowIndexes)
-
-        pboard.declareTypes([.dragSession], owner: self)
-        pboard.setData(data, forType: .dragSession)
-
-        return true
-    }
-
-    func tableView(_: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation _: NSTableView.DropOperation) -> Bool {
-        var newOrder = selectedTimeZones
-
-        var destination = row
-
-        if row == newOrder.count {
-            destination -= 1
-        }
-
-        let pBoard = info.draggingPasteboard
-
-        guard let data = pBoard.data(forType: .dragSession) else {
-            assertionFailure("Data was unexpectedly nil")
-            return false
-        }
-
-        guard let rowIndexes = NSKeyedUnarchiver.unarchiveObject(with: data) as? IndexSet, let first = rowIndexes.first else {
-            assertionFailure("Row was unexpectedly nil")
-            return false
-        }
-
-        let currentObject = newOrder[first]
-
-        newOrder.remove(at: first)
-
-        newOrder.insert(currentObject, at: destination)
-
-        DataStore.shared().setTimezones(newOrder)
-
-        timezoneTableView.reloadData()
-
-        refreshMainTable()
-
-        timezoneTableView.deselectRow(timezoneTableView.selectedRow)
-
-        return true
-    }
-
-    func tableView(_: NSTableView, validateDrop _: NSDraggingInfo, proposedRow _: Int, proposedDropOperation _: NSTableView.DropOperation) -> NSDragOperation {
-        return .every
-    }
-
-    func tableViewSelectionDidChange(_: Notification) {
-        deleteButton.isEnabled = !(timezoneTableView.selectedRow == -1)
-    }
-
-    func tableView(_ tableView: NSTableView, didClick tableColumn: NSTableColumn) {
-        if tableColumn.identifier.rawValue == "favouriteTimezone" {
-            return
-        }
-
-        if tableView == timezoneTableView {
-            let sortedTimezones = selectedTimeZones.sorted { (obj1, obj2) -> Bool in
-
-                guard let object1 = TimezoneData.customObject(from: obj1),
-                    let object2 = TimezoneData.customObject(from: obj2) else {
-                    assertionFailure("Data was unexpectedly nil")
-                    return false
-                }
-
-                if tableColumn.identifier.rawValue == "formattedAddress" {
-                    return arePlacesSortedInAscendingOrder ?
-                        object1.formattedAddress! > object2.formattedAddress! :
-                        object1.formattedAddress! < object2.formattedAddress!
-                } else {
-                    return arePlacesSortedInAscendingOrder ?
-                        object1.customLabel! > object2.customLabel! :
-                        object1.customLabel! < object2.customLabel!
-                }
-            }
-
-            let indicatorImage = arePlacesSortedInAscendingOrder ?
-                NSImage(named: NSImage.Name("NSDescendingSortIndicator"))! :
-                NSImage(named: NSImage.Name("NSAscendingSortIndicator"))!
-
-            timezoneTableView.setIndicatorImage(indicatorImage, in: tableColumn)
-
-            arePlacesSortedInAscendingOrder.toggle()
-
-            DataStore.shared().setTimezones(sortedTimezones)
-
-            updateAfterSorting()
         }
     }
 }
@@ -716,7 +546,7 @@ extension PreferencesViewController {
             })
         }
     }
-    
+
     private func findLocalSearchResultsForTimezones() {
         timezoneFilteredArray = []
         let lowercasedSearchString = searchField.stringValue.lowercased()
@@ -763,7 +593,6 @@ extension PreferencesViewController {
 
             self.filteredArray.append(TimezoneData(with: totalPackage))
         }
-        
     }
 
     private func prepareUIForPresentingResults() {
@@ -925,7 +754,7 @@ extension PreferencesViewController {
         availableTimezoneTableView.isHidden = false
         isActivityInProgress = false
     }
-    
+
     private func setupTimezoneDatasource() {
         timezoneArray = []
         timezoneArray.append("UTC")
@@ -973,20 +802,20 @@ extension PreferencesViewController {
             cleanupAfterInstallingTimezone()
             return
         }
-        
+
         guard let dataObject = filteredArray[availableTimezoneTableView.selectedRow] as? TimezoneData else {
             assertionFailure("Data was unexpectedly nil")
             return
         }
-        
+
         if messageLabel.stringValue.isEmpty {
             searchField.stringValue = CLEmptyString
-            
+
             guard let latitude = dataObject.latitude, let longitude = dataObject.longitude else {
                 assertionFailure("Data was unexpectedly nil")
                 return
             }
-            
+
             getTimezone(for: latitude, and: longitude)
         }
     }
@@ -1001,7 +830,7 @@ extension PreferencesViewController {
             }
 
             let currentSelection = filteredArray[availableTimezoneTableView.selectedRow]
-            
+
             guard let selection = currentSelection as? String else {
                 assertionFailure()
                 return
@@ -1168,7 +997,7 @@ extension PreferencesViewController {
         availableTimezoneTableView.reloadData()
     }
 
-    @IBAction func filterArray(_ sender: Any?) {
+    @IBAction func filterArray(_: Any?) {
         messageLabel.stringValue = CLEmptyString
 
         filteredArray = []
@@ -1335,4 +1164,64 @@ extension PreferencesViewController {
 
 class SearchResultTableViewCell: NSTableCellView {
     @IBOutlet var sourceName: NSTextField!
+}
+
+extension PreferencesViewController: PreferenceSelectionUpdates {
+    func didAddTimezone(_: TimezoneData) {}
+    func markAsFavorite(_ dataObject: TimezoneData) {
+        _markAsFavorite(dataObject)
+    }
+
+    func unfavourite(_ dataObject: TimezoneData) {
+        _unfavourite(dataObject)
+    }
+
+    func refreshTimezoneTable() {
+        refreshTimezoneTableView()
+    }
+
+    func refreshMainTableView() {
+        refreshMainTable()
+    }
+
+    func tableViewSelectionDidChange(_ status: Bool) {
+        deleteButton.isEnabled = !status
+    }
+
+    func table(didClick tableColumn: NSTableColumn) {
+        if tableColumn.identifier.rawValue == "favouriteTimezone" {
+            return
+        }
+
+        let sortedTimezones = selectedTimeZones.sorted { (obj1, obj2) -> Bool in
+
+            guard let object1 = TimezoneData.customObject(from: obj1),
+                let object2 = TimezoneData.customObject(from: obj2) else {
+                assertionFailure("Data was unexpectedly nil")
+                return false
+            }
+
+            if tableColumn.identifier.rawValue == "formattedAddress" {
+                return arePlacesSortedInAscendingOrder ?
+                    object1.formattedAddress! > object2.formattedAddress! :
+                    object1.formattedAddress! < object2.formattedAddress!
+            } else {
+                return arePlacesSortedInAscendingOrder ?
+                    object1.customLabel! > object2.customLabel! :
+                    object1.customLabel! < object2.customLabel!
+            }
+        }
+
+        let indicatorImage = arePlacesSortedInAscendingOrder ?
+            NSImage(named: NSImage.Name("NSDescendingSortIndicator"))! :
+            NSImage(named: NSImage.Name("NSAscendingSortIndicator"))!
+
+        timezoneTableView.setIndicatorImage(indicatorImage, in: tableColumn)
+
+        arePlacesSortedInAscendingOrder.toggle()
+
+        DataStore.shared().setTimezones(sortedTimezones)
+
+        updateAfterSorting()
+    }
 }

@@ -43,7 +43,7 @@ class FloatingWindowController: ParentPanelController {
         mainTableView.setAccessibility("FloatingTableView")
     }
 
-   override func updatePanelColor() {
+    override func updatePanelColor() {
         super.updatePanelColor()
         updateTheme()
     }

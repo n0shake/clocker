@@ -1472,10 +1472,6 @@
                                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                 </tableColumn>
                                                             </tableColumns>
-                                                            <connections>
-                                                                <outlet property="dataSource" destination="ZT5-cA-xLj" id="xIY-n8-day"/>
-                                                                <outlet property="delegate" destination="ZT5-cA-xLj" id="NtV-GS-sHC"/>
-                                                            </connections>
                                                         </tableView>
                                                     </subviews>
                                                     <nil key="backgroundColor"/>
@@ -1649,7 +1645,7 @@ CA
                     <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES" nonactivatingPanel="YES"/>
                     <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                     <rect key="contentRect" x="120" y="64" width="345" height="320"/>
-                    <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+                    <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     <value key="minSize" type="size" width="345" height="320"/>
                     <value key="maxSize" type="size" width="345" height="320"/>
                     <view key="contentView" id="MAe-t5-3A2">

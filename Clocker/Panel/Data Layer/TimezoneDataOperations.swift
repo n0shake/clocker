@@ -318,7 +318,7 @@ extension TimezoneDataOperations {
         return dateFormatter.string(from: Date())
     }
 
-     func saveObject(at index: Int = -1) {
+    func saveObject(at index: Int = -1) {
         var defaults = DataStore.shared().timezones()
         let encodedObject = NSKeyedArchiver.archivedData(withRootObject: dataObject as Any)
         index == -1 ? defaults.append(encodedObject) : defaults.insert(encodedObject, at: index)

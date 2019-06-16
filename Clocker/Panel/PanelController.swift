@@ -19,7 +19,7 @@ class PanelController: ParentPanelController {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         enablePerformanceLoggingIfNeccessary()
 
         window?.title = "Clocker Panel"
@@ -40,7 +40,7 @@ class PanelController: ParentPanelController {
 
         super.updateDefaultPreferences()
     }
-    
+
     private func enablePerformanceLoggingIfNeccessary() {
         if !ProcessInfo.processInfo.environment.keys.contains("ENABLE_PERF_LOGGING") {
             if #available(OSX 10.14, *) {
@@ -120,7 +120,7 @@ class PanelController: ParentPanelController {
         if #available(OSX 10.14, *) {
             PerfLogger.startMarker("Set Panel Frame")
         }
-        
+
         guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -163,7 +163,7 @@ class PanelController: ParentPanelController {
         if #available(OSX 10.14, *) {
             PerfLogger.startMarker("Logging")
         }
-        
+
         let preferences = DataStore.shared().timezones()
 
         guard let theme = DataStore.shared().retrieve(key: CLThemeKey) as? NSNumber,
@@ -207,7 +207,7 @@ class PanelController: ParentPanelController {
         ]
 
         Logger.log(object: panelEvent, for: "openedPanel")
-        
+
         if #available(OSX 10.14, *) {
             PerfLogger.endMarker("Logging")
         }
@@ -217,21 +217,21 @@ class PanelController: ParentPanelController {
         if #available(OSX 10.14, *) {
             PerfLogger.startMarker("Start Window Timer")
         }
-        
+
         stopMenubarTimerIfNeccesary()
 
         if let timer = parentTimer, timer.state == .paused {
             parentTimer?.start()
-            
+
             if #available(OSX 10.14, *) {
                 PerfLogger.endMarker("Start Window Timer")
             }
-            
+
             return
         }
 
         startTimer()
-        
+
         if #available(OSX 10.14, *) {
             PerfLogger.endMarker("Start Window Timer")
         }

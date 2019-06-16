@@ -411,7 +411,7 @@ class ParentPanelController: NSWindowController {
         if #available(OSX 10.14, *) {
             PerfLogger.startMarker("Update Default Preferences")
         }
-        
+
         updatePanelColor()
 
         let defaults = DataStore.shared().timezones()
@@ -425,7 +425,7 @@ class ParentPanelController: NSWindowController {
         mainTableView.panelDelegate = datasource
 
         updateDatasource(with: convertedTimezones)
-        
+
         if #available(OSX 10.14, *) {
             PerfLogger.endMarker("Update Default Preferences")
         }
@@ -657,7 +657,7 @@ class ParentPanelController: NSWindowController {
         if #available(OSX 10.14, *) {
             PerfLogger.startMarker("Retrieve Calendar Events")
         }
-        
+
         let eventCenter = EventCenter.sharedCenter()
 
         if eventCenter.calendarAccessGranted() {
@@ -667,7 +667,7 @@ class ParentPanelController: NSWindowController {
         } else {
             removeUpcomingEventView()
         }
-        
+
         if #available(OSX 10.14, *) {
             PerfLogger.endMarker("Retrieve Calendar Events")
         }
@@ -731,7 +731,7 @@ class ParentPanelController: NSWindowController {
         if #available(OSX 10.14, *) {
             PerfLogger.startMarker("Fetch Calendar Events")
         }
-        
+
         let eventCenter = EventCenter.sharedCenter()
         let now = Date()
 
@@ -762,7 +762,7 @@ class ParentPanelController: NSWindowController {
                 let withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
 
                 self.setCalendarButtonTitle(buttonTitle: "in \(withoutAgo.lowercased())")
-                
+
                 if #available(OSX 10.14, *) {
                     PerfLogger.endMarker("Fetch Calendar Events")
                 }
