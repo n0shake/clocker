@@ -103,6 +103,7 @@
 		9A7547DC1F184DC3004705EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A7547DB1F184DC3004705EF /* Assets.xcassets */; };
 		9A7547DF1F184DC3004705EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A7547DD1F184DC3004705EF /* Main.storyboard */; };
 		9A7547E51F184E3F004705EF /* ClockerHelper.app in Login Item Helper */ = {isa = PBXBuildFile; fileRef = 9A7547D01F184DC3004705EF /* ClockerHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9A7CDC1B22BEC2170035902D /* StartupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7CDC1A22BEC2170035902D /* StartupManager.swift */; };
 		9A8605AE1BEC148400A810A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605AD1BEC148400A810A4 /* main.m */; };
 		9A9E87621C1FEDB500A7A2DF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87611C1FEDB500A7A2DF /* CFNetwork.framework */; };
 		9A9E876A1C1FEDDB00A7A2DF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87691C1FEDDB00A7A2DF /* SystemConfiguration.framework */; };
@@ -313,6 +314,7 @@
 		9A7547DB1F184DC3004705EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A7547DE1F184DC3004705EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9A7547E01F184DC3004705EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A7CDC1A22BEC2170035902D /* StartupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupManager.swift; sourceTree = "<group>"; };
 		9A8605AD1BEC148400A810A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Clocker/main.m; sourceTree = "<group>"; };
 		9A8605C31BEC155B00A810A4 /* Clocker-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Clocker-Info.plist"; path = "Clocker/Clocker-Info.plist"; sourceTree = "<group>"; };
 		9A8605CC1BEC155B00A810A4 /* Clocker-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Clocker-Prefix.pch"; path = "Clocker/Clocker-Prefix.pch"; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 				35C36F1E22596253002FA5C6 /* OneWindowController.swift */,
 				9AB6F1632259D1B800A44663 /* ParentViewController.swift */,
 				35C36F902259EAF4002FA5C6 /* Preferences.storyboard */,
+				9A7CDC1A22BEC2170035902D /* StartupManager.swift */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -1171,6 +1174,7 @@
 				35C36F5A2259DD8A002FA5C6 /* Panelr.swift in Sources */,
 				35C36F712259E185002FA5C6 /* NoTimezoneView.swift in Sources */,
 				35C36F2B2259D6FA002FA5C6 /* ParentPanelController.swift in Sources */,
+				9A7CDC1B22BEC2170035902D /* StartupManager.swift in Sources */,
 				35C36F582259DD8A002FA5C6 /* PanelTableView.swift in Sources */,
 				35C36F0F225961DA002FA5C6 /* TimePeriodCollection.swift in Sources */,
 				35C36F18225961DA002FA5C6 /* Date+Comparators.swift in Sources */,
