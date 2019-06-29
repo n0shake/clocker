@@ -3,7 +3,6 @@
 import Cocoa
 
 protocol PreferenceSelectionUpdates: AnyObject {
-    func didAddTimezone(_ timezone: TimezoneData)
     func markAsFavorite(_ dataObject: TimezoneData)
     func unfavourite(_ dataObject: TimezoneData)
     func refreshTimezoneTable()

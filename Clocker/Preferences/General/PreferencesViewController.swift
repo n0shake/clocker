@@ -14,6 +14,18 @@ struct PreferencesConstants {
     static let offlineErrorMessage = "The Internet connection appears to be offline."
 }
 
+enum RowType {
+    case timezoneHeader
+    case cityHeader
+    case city
+    case timezone
+}
+
+struct TimezoneMetadata {
+    let timezone: Timezone
+    let tages: Set<String> = Set()
+}
+
 class PreferencesViewController: ParentViewController {
     private var isActivityInProgress = false {
         didSet {
@@ -33,7 +45,6 @@ class PreferencesViewController: ParentViewController {
     private var filteredArray: [Any] = []
     private var timezoneArray: [String] = []
     private var timezoneFilteredArray: [String] = []
-    private var columnName = "Place(s)"
     private var dataTask: URLSessionDataTask? = .none
 
     private lazy var notimezoneView: NoTimezoneView? = {
@@ -75,8 +86,8 @@ class PreferencesViewController: ParentViewController {
 
     @IBOutlet var sortToggle: NSButton!
     private var themeDidChangeNotification: NSObjectProtocol?
-
     private var selectionsDataSource: PreferencesDataSource!
+    private var finalArray: [RowType] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,8 +100,6 @@ class PreferencesViewController: ParentViewController {
         refreshTimezoneTableView()
 
         setup()
-
-        availableTimezoneTableView.reloadData()
 
         setupShortcutObserver()
 
@@ -106,9 +115,37 @@ class PreferencesViewController: ParentViewController {
         selectionsDataSource = PreferencesDataSource(callbackDelegate: self)
         timezoneTableView.dataSource = selectionsDataSource
         timezoneTableView.delegate = selectionsDataSource
+
+        reloadSearchResults()
+    }
+    
+    private func calculateArray() {
+        finalArray = []
+        
+        func addTimezonesIfNeeded(_ data: [String]) {
+            if !data.isEmpty {
+                finalArray.append(.timezoneHeader)
+            }
+            data.forEach { (_) in
+                finalArray.append(.timezone)
+            }
+        }
+        
+        if searchField.stringValue.isEmpty {
+            addTimezonesIfNeeded(timezoneArray)
+        } else {
+            if !filteredArray.isEmpty {
+                finalArray.append(.cityHeader)
+            }
+            filteredArray.forEach { (_) in
+                finalArray.append(.city)
+            }
+            addTimezonesIfNeeded(timezoneFilteredArray)
+        }
     }
 
     deinit {
+        // We still need to remove observers set using NotificationCenter block: APIs
         if let themeDidChangeNotif = themeDidChangeNotification {
             NotificationCenter.default.removeObserver(themeDidChangeNotif)
         }
@@ -223,12 +260,6 @@ class PreferencesViewController: ParentViewController {
 
         [placeholderLabel, additionalSortOptions].forEach { $0.isHidden = true }
 
-        if timezoneArray.isEmpty {
-            timezoneArray.append("UTC")
-            timezoneArray.append("Anywhere on Earth")
-            timezoneArray.append(contentsOf: NSTimeZone.knownTimeZoneNames)
-        }
-
         messageLabel.stringValue = CLEmptyString
 
         timezoneTableView.registerForDraggedTypes([.dragSession])
@@ -325,60 +356,72 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
     func numberOfRows(in _: NSTableView) -> Int {
         return numberOfSearchResults()
     }
+    
+    func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {
+        let currentRowType = finalArray[row]
+        return
+            currentRowType == .timezoneHeader ||
+                currentRowType == .cityHeader
+    }
+    
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+       print("Should Select Row")
+       let currentRowType = finalArray[row]
+       return !(currentRowType == .timezoneHeader || currentRowType == .cityHeader)
+    }
+    
+    func tableView(_ tableView: NSTableView, selectionIndexesForProposedSelection proposedSelectionIndexes: IndexSet) -> IndexSet {
+//        print("Selection Indexes for Proposed Selection: \(proposedSelectionIndexes.first!)")
+        return proposedSelectionIndexes
+    }
 
-    func tableView(_ tableView: NSTableView, viewFor _: NSTableColumn?, row _: Int) -> NSView? {
+    func tableView(_ tableView: NSTableView, viewFor _: NSTableColumn?, row: Int) -> NSView? {
+        let currentRowType = finalArray[row]
+        
+        switch currentRowType {
+        case .timezoneHeader, .cityHeader:
+            return headerCell(tableView, currentRowType)
+        case .timezone:
+            return timezoneCell(tableView, currentRowType, row)
+        case .city:
+            return cityCell(tableView, currentRowType, row)
+        }
+    }
+
+    private func timezoneCell(_ tableView: NSTableView, _ rowType: RowType, _ row: Int) -> NSView? {
         if let message = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "resultCell"), owner: self) as? SearchResultTableViewCell {
-            message.sourceName.stringValue = "Nicaragua"
+            let datasource = searchField.stringValue.isEmpty ? timezoneArray : timezoneFilteredArray
+            guard !datasource.isEmpty else {
+                return nil
+            }
+            let index = searchField.stringValue.isEmpty ? row - 1 : row
+            message.sourceName.stringValue = datasource[index % datasource.count]
             return message
         }
-
         return nil
     }
-
-    func tableView(_: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        var dataSource: TimezoneData?
-
-        if filteredArray.count > row, let currentFilteredObject = filteredArray[row] as? TimezoneData {
-            dataSource = currentFilteredObject
-        }
-
-        if tableColumn?.identifier.rawValue == PreferencesConstants.availableTimezoneIdentifier {
-            if filteredArray.isEmpty {
-                return timezoneArray[row]
+    
+    private func cityCell(_ tableView: NSTableView, _ rowType: RowType, _ row: Int) -> NSView? {
+        if let cityCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "resultCell"), owner: self) as? SearchResultTableViewCell {
+            
+            guard let timezoneData = filteredArray[row % filteredArray.count] as? TimezoneData else {
+                assertionFailure()
+                return nil
             }
-
-            return dataSource != nil ?
-                handleAvailableTimezoneColumn(for: row, dataSource) :
-                filteredArray[row] as? String
+            
+            cityCell.sourceName.stringValue = timezoneData.formattedAddress ?? "Error"
+            return cityCell
         }
-
-        if tableColumn?.identifier.rawValue == "abbreviation" {
-            return handleAbbreviationColumn(for: row)
-        }
-
+        
         return nil
     }
-
-    private func handleAvailableTimezoneColumn(for row: Int, _ dataSource: TimezoneData?) -> Any? {
-        if row < filteredArray.count {
-            return dataSource?.formattedAddress
+    
+    private func headerCell(_ tableView: NSTableView, _ headerType: RowType) -> NSView? {
+        if let message = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "headerCell"), owner: self) as? HeaderTableViewCell {
+            message.headerField.stringValue = headerType == .timezoneHeader ? "Timezones" : "Places"
+            return message
         }
-        return nil
-    }
-
-    private func handleAbbreviationColumn(for row: Int) -> Any? {
-        if timezoneArray.count > row {
-            // Special return for manually inserted 'UTC'
-            if timezoneArray[row] == "UTC" {
-                return "UTC"
-            }
-
-            if timezoneArray[row] == "Anywhere on Earth" {
-                return "AoE"
-            }
-
-            return NSTimeZone(name: timezoneArray[row])?.abbreviation ?? "Error"
-        }
+        
         return nil
     }
 
@@ -534,6 +577,8 @@ extension PreferencesViewController {
 
                                                         if searchResults?.status == "ZERO_RESULTS" {
                                                             self.placeholderLabel.placeholderString = "No results! 😔 Try entering the exact name."
+                                                            self.findLocalSearchResultsForTimezones()
+                                                            self.reloadSearchResults()
                                                             self.isActivityInProgress = false
                                                             return
                                                         }
@@ -551,7 +596,6 @@ extension PreferencesViewController {
         timezoneFilteredArray = []
         let lowercasedSearchString = searchField.stringValue.lowercased()
         timezoneFilteredArray = timezoneArray.filter { $0.lowercased().contains(lowercasedSearchString) }
-        filteredArray.append(contentsOf: timezoneFilteredArray)
     }
 
     private func generateSearchURL() -> String {
@@ -598,6 +642,12 @@ extension PreferencesViewController {
     private func prepareUIForPresentingResults() {
         placeholderLabel.placeholderString = CLEmptyString
         isActivityInProgress = false
+        reloadSearchResults()
+    }
+    
+    private func reloadSearchResults() {
+        print("Reloading Search Results")
+        calculateArray()
         availableTimezoneTableView.reloadData()
     }
 
@@ -647,7 +697,7 @@ extension PreferencesViewController {
         searchField.placeholderString = "Fetching data might take some time!"
         placeholderLabel.placeholderString = "Retrieving timezone data"
         availableTimezoneTableView.isHidden = true
-
+        
         let tuple = "\(latitude),\(longitude)"
         let timeStamp = Date().timeIntervalSince1970
         let urlString = "https://maps.googleapis.com/maps/api/timezone/json?location=\(tuple)&timestamp=\(timeStamp)&key=\(CLGeocodingKey)"
@@ -658,11 +708,12 @@ extension PreferencesViewController {
 
             OperationQueue.main.addOperation {
                 if self.handleEdgeCase(for: response) == true {
+                    self.reloadSearchResults()
                     return
                 }
 
                 if error == nil, let json = response, let timezone = self.decodeTimezone(from: json) {
-                    if self.availableTimezoneTableView.selectedRow >= 0, self.availableTimezoneTableView.selectedRow < self.filteredArray.count {
+                    if self.availableTimezoneTableView.selectedRow >= 0 {
                         self.installTimezone(timezone)
                     }
                     self.updateViewState()
@@ -682,7 +733,7 @@ extension PreferencesViewController {
     }
 
     private func installTimezone(_ timezone: Timezone) {
-        guard let dataObject = self.filteredArray[self.availableTimezoneTableView.selectedRow] as? TimezoneData else {
+        guard let dataObject = self.filteredArray[self.availableTimezoneTableView.selectedRow % filteredArray.count] as? TimezoneData else {
             assertionFailure("Data was unexpectedly nil")
             return
         }
@@ -720,7 +771,7 @@ extension PreferencesViewController {
         placeholderLabel.placeholderString = PreferencesConstants.noInternetConnectivityError
         isActivityInProgress = false
         filteredArray = []
-        availableTimezoneTableView.reloadData()
+        reloadSearchResults()
     }
 
     /// Returns true if there's an error.
@@ -745,7 +796,7 @@ extension PreferencesViewController {
 
     private func updateViewState() {
         filteredArray = []
-        availableTimezoneTableView.reloadData()
+        reloadSearchResults()
         refreshTimezoneTableView()
         refreshMainTable()
         timezonePanel.close()
@@ -797,25 +848,56 @@ extension PreferencesViewController {
             isActivityInProgress = false
             return
         }
-
-        if let dataObject = filteredArray[availableTimezoneTableView.selectedRow] as? String, dataObject != nil {
+        
+        if searchField.stringValue.isEmpty {
+          addTimezoneIfSearchStringIsEmpty()
+        } else {
+            addTimezoneIfSearchStringIsNotEmpty()
+        }
+    }
+    
+    private func addTimezoneIfSearchStringIsEmpty() {
+        let currentRowType = finalArray[availableTimezoneTableView.selectedRow]
+        
+        switch currentRowType {
+        case .timezoneHeader, .cityHeader:
+            isActivityInProgress = false
+            return
+        case .timezone:
             cleanupAfterInstallingTimezone()
+        default:
             return
         }
-
-        guard let dataObject = filteredArray[availableTimezoneTableView.selectedRow] as? TimezoneData else {
+    }
+    
+    private func addTimezoneIfSearchStringIsNotEmpty() {
+        let currentRowType = finalArray[availableTimezoneTableView.selectedRow]
+        
+        switch currentRowType {
+        case .timezoneHeader, .cityHeader:
+            isActivityInProgress = false
+            return
+        case .timezone:
+            cleanupAfterInstallingTimezone()
+        case .city:
+            cleanupAfterInstallingCity()
+        }
+    }
+    
+    private func cleanupAfterInstallingCity() {
+        guard let dataObject = filteredArray[availableTimezoneTableView.selectedRow % filteredArray.count] as? TimezoneData else {
             assertionFailure("Data was unexpectedly nil")
             return
         }
-
+        
         if messageLabel.stringValue.isEmpty {
             searchField.stringValue = CLEmptyString
-
+            
             guard let latitude = dataObject.latitude, let longitude = dataObject.longitude else {
                 assertionFailure("Data was unexpectedly nil")
                 return
             }
-
+            
             getTimezone(for: latitude, and: longitude)
         }
     }
@@ -825,23 +907,14 @@ extension PreferencesViewController {
         data.setLabel(CLEmptyString)
 
         if searchField.stringValue.isEmpty == false {
-            if filteredArray.count <= availableTimezoneTableView.selectedRow {
-                return
-            }
-
-            let currentSelection = filteredArray[availableTimezoneTableView.selectedRow]
-
-            guard let selection = currentSelection as? String else {
-                assertionFailure()
-                return
-            }
-
-            let metaInfo = metadata(for: selection)
+            let currentSelection = timezoneFilteredArray[availableTimezoneTableView.selectedRow % timezoneFilteredArray.count]
+            
+            let metaInfo = metadata(for: currentSelection)
             data.timezoneID = metaInfo.0
             data.formattedAddress = metaInfo.1
 
         } else {
-            let currentSelection = timezoneArray[availableTimezoneTableView.selectedRow]
+            let currentSelection = timezoneArray[availableTimezoneTableView.selectedRow - 1]
 
             let metaInfo = metadata(for: currentSelection)
             data.timezoneID = metaInfo.0
@@ -856,7 +929,7 @@ extension PreferencesViewController {
         filteredArray = []
         timezoneFilteredArray = []
 
-        availableTimezoneTableView.reloadData()
+        reloadSearchResults()
 
         refreshTimezoneTableView()
 
@@ -887,21 +960,15 @@ extension PreferencesViewController {
 
     @IBAction func closePanel(_: NSButton) {
         filteredArray = []
-
-        columnName = "Place(s)"
-
-        availableTimezoneTableView.reloadData()
-
+        timezoneFilteredArray = []
         searchField.stringValue = CLEmptyString
-
         placeholderLabel.placeholderString = CLEmptyString
-
         searchField.placeholderString = "Enter a city, state or country name"
+        
+        reloadSearchResults()
 
         timezonePanel.close()
-
         isActivityInProgress = false
-
         addTimezoneButton.state = .off
 
         // The table might be hidden because of an early exit especially
@@ -994,7 +1061,6 @@ extension PreferencesViewController {
     @IBAction func filterTimezoneArray(_: Any?) {
         let lowercasedSearchString = searchField.stringValue.lowercased()
         timezoneFilteredArray = timezoneArray.filter { $0.lowercased().contains(lowercasedSearchString) }
-        availableTimezoneTableView.reloadData()
     }
 
     @IBAction func filterArray(_: Any?) {
@@ -1005,6 +1071,7 @@ extension PreferencesViewController {
         if searchField.stringValue.count > 50 {
             isActivityInProgress = false
             messageLabel.stringValue = PreferencesConstants.maxCharactersAllowed
+            reloadSearchResults()
             Timer.scheduledTimer(withTimeInterval: 5,
                                  repeats: false) { _ in
                 OperationQueue.main.addOperation {
@@ -1021,8 +1088,8 @@ extension PreferencesViewController {
         } else {
             resetSearchView()
         }
-
-        availableTimezoneTableView.reloadData()
+        
+        reloadSearchResults()
     }
 }
 
@@ -1079,7 +1146,9 @@ extension PreferencesViewController {
             return isLabelOptionSelected ? object1.customLabel! > object2.customLabel! : object1.customLabel! < object2.customLabel!
         }
 
-        sender.image = isLabelOptionSelected ? NSImage(named: NSImage.Name("NSDescendingSortIndicator"))! : NSImage(named: NSImage.Name("NSAscendingSortIndicator"))!
+        sender.image = isLabelOptionSelected ?
+            NSImage(named: NSImage.Name("NSDescendingSortIndicator"))! :
+            NSImage(named: NSImage.Name("NSAscendingSortIndicator"))!
 
         isLabelOptionSelected.toggle()
 
@@ -1111,9 +1180,7 @@ extension PreferencesViewController {
 
     private func updateAfterSorting() {
         let newDefaults = selectedTimeZones
-
         DataStore.shared().setTimezones(newDefaults)
-
         refreshTimezoneTableView()
         refreshMainTable()
     }
@@ -1124,11 +1191,7 @@ extension PreferencesViewController: SRRecorderControlDelegate {}
 // Helpers
 extension PreferencesViewController {
     private func numberOfSearchResults() -> Int {
-        if searchField.stringValue.isEmpty == false {
-            return filteredArray.count
-        }
-
-        return timezoneArray.count
+        return finalArray.count
     }
 
     private func insert(timezone: TimezoneData, at index: Int) {
@@ -1143,8 +1206,11 @@ class SearchResultTableViewCell: NSTableCellView {
     @IBOutlet var sourceName: NSTextField!
 }
 
+class HeaderTableViewCell: NSTableCellView {
+    @IBOutlet var headerField: NSTextField!
+}
+
 extension PreferencesViewController: PreferenceSelectionUpdates {
-    func didAddTimezone(_: TimezoneData) {}
     func markAsFavorite(_ dataObject: TimezoneData) {
         _markAsFavorite(dataObject)
     }

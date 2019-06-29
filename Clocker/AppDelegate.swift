@@ -47,7 +47,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         AppDefaults.initialize()
 
         // Check if we can show the onboarding flow!
-        showOnboardingFlow()
+        showOnboardingFlowIfEligible()
 
         // Ratings Controller initialization
         RateController.applicationDidLaunch(UserDefaults.standard)
@@ -92,7 +92,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         return onboardingStoryboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("onboardingFlow")) as? OnboardingController
     }()
 
-    private func showOnboardingFlow() {
+    private func showOnboardingFlowIfEligible() {
         let shouldLaunchOnboarding = (DataStore.shared().retrieve(key: CLShowOnboardingFlow) == nil && DataStore.shared().timezones().isEmpty)
             || ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument)
 

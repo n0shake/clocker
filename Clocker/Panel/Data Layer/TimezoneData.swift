@@ -218,8 +218,6 @@ class TimezoneData: NSObject, NSCoding {
 
                 // Now point it to new models
                 DataStore.shared().setTimezones(newModels)
-
-                print("Successfully converted: \(newModels.count) timezones")
             }
         }
 
@@ -246,6 +244,7 @@ class TimezoneData: NSObject, NSCoding {
             let old = NSKeyedUnarchiver.unarchiveObject(with: timezone)
             if let oldModel = old as? CLTimezoneData {
                 // Convert it to new model and add it
+                print("We're still using old Objective-C models");
                 let newTimezone = TimezoneData(with: oldModel)
                 newModels.append(newTimezone)
             } else if let newModel = old as? TimezoneData {

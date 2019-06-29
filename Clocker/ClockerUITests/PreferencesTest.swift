@@ -43,12 +43,10 @@ class PreferencesTest: XCTestCase {
             app.windows["Clocker"].checkBoxes["AddTimezone"].click()
         }
 
-        app.sheets.radioGroups.radioButtons["Search by Timezone(s)"].click()
-
         addAPlace(place: "UTC", to: app)
 
         let matchPredicate = NSPredicate(format: "value == %@", "UTC")
-        let matchingFields = app.windows["Clocker"].textFields.matching(matchPredicate)
+        let matchingFields = app.tables["TimezoneTableView"].textFields.matching(matchPredicate)
         XCTAssertTrue(matchingFields.count > 0, "Matching Fields count was zero")
 
         deleteAPlace(place: "UTC", for: app)
@@ -225,7 +223,7 @@ class PreferencesTest: XCTestCase {
         let searchField = app.searchFields["AvailableSearchField"]
         searchField.reset(text: "StuJjlqh7AcJFnBuOdgNa2dQ4WrIajP9Mo8R83FV7fIZ3B8zE2n")
 
-        sleep(1)
+        sleep(2)
 
         let maxCharacterCountPredicate = NSPredicate(format: "value like %@", "Only 50 characters allowed!")
         let currentSheets = app.sheets.firstMatch.staticTexts
@@ -251,27 +249,6 @@ class PreferencesTest: XCTestCase {
         XCTAssertFalse(app.sheets.staticTexts["Please select a timezone!"].exists)
 
         deleteAPlace(place: "Cambodia", for: app, shouldSleep: false)
-    }
-
-    func testPlaceholderStrings() {
-        app.tapMenubarIcon()
-        app.tables["mainTableView"].typeKey(",", modifierFlags: .command)
-
-        if app.sheets.count == 0 {
-            app.windows["Clocker"].checkBoxes["AddTimezone"].click()
-        }
-
-        app.sheets.radioGroups.radioButtons["Search by Timezone(s)"].click()
-        let expectedPlaceholder = "Enter a timezone name"
-        let currentPlaceholder = app.sheets.searchFields["AvailableSearchField"]
-        XCTAssertTrue(currentPlaceholder.exists, "Search Field doesn't exist")
-        XCTAssertEqual(currentPlaceholder.placeholderValue!, expectedPlaceholder)
-
-        let newPlaceholderValue = "Enter a city, state or country name"
-        app.sheets.radioGroups.radioButtons["Search By City"].click()
-        let newPlaceholder = app.sheets.searchFields["AvailableSearchField"]
-        XCTAssertTrue(newPlaceholder.exists, "Search Field doesn't exist")
-        XCTAssertEqual(newPlaceholder.placeholderValue!, newPlaceholderValue)
     }
 
     func testNoTimezone() {

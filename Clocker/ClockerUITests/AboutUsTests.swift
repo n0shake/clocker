@@ -109,7 +109,7 @@ extension XCTestCase {
     func addAPlace(place: String, to app: XCUIApplication, shouldSleep: Bool = true) {
         // Let's first check if the place is already present in the list
 
-        let matchPredicate = NSPredicate(format: "value == %@", place)
+        let matchPredicate = NSPredicate(format: "value contains %@", place)
         let matchingFields = app.windows["Clocker"].tables["TimezoneTableView"].textFields.matching(matchPredicate)
         if matchingFields.count > 0 {
             return
@@ -121,18 +121,25 @@ extension XCTestCase {
 
         let searchField = app.searchFields["AvailableSearchField"]
         searchField.reset(text: place)
-
-        let firstResult = app.tables["AvailableTimezoneTableView"].tableRows.firstMatch
+        
+        let results = app.tables["AvailableTimezoneTableView"].cells.staticTexts.matching(matchPredicate)
 
         let waiter = XCTWaiter()
         let isHittable = NSPredicate(format: "exists == true", "")
         let addExpectation = expectation(for: isHittable,
-                                         evaluatedWith: firstResult,
-                                         handler: nil)
+                                         evaluatedWith: results.firstMatch) { () -> Bool in
+                                            print("Handler called")
+                                            return true
+        }
+        
         waiter.wait(for: [addExpectation], timeout: 5)
-        app.tables["AvailableTimezoneTableView"].click()
+        
+        if results.count > 0 {
+            results.firstMatch.click()
+        }
+        
         app.buttons["AddAvailableTimezone"].click()
-
+        
         if shouldSleep {
             sleep(2)
         }
@@ -154,7 +161,8 @@ extension XCTestCase {
     }
 
     func deleteAPlace(place: String, for app: XCUIApplication, shouldSleep: Bool = true) {
-        let row = app.windows["Clocker"].textFields[place].firstMatch
+        let matchPredicate = NSPredicate(format: "value == %@", place)
+        let row = app.tables["TimezoneTableView"].textFields.matching(matchPredicate).firstMatch
         row.click()
         row.typeKey(XCUIKeyboardKey.delete, modifierFlags: XCUIElement.KeyModifierFlags())
         if shouldSleep {
