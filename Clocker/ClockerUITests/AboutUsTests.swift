@@ -121,25 +121,25 @@ extension XCTestCase {
 
         let searchField = app.searchFields["AvailableSearchField"]
         searchField.reset(text: place)
-        
+
         let results = app.tables["AvailableTimezoneTableView"].cells.staticTexts.matching(matchPredicate)
 
         let waiter = XCTWaiter()
         let isHittable = NSPredicate(format: "exists == true", "")
         let addExpectation = expectation(for: isHittable,
                                          evaluatedWith: results.firstMatch) { () -> Bool in
-                                            print("Handler called")
-                                            return true
+            print("Handler called")
+            return true
         }
-        
+
         waiter.wait(for: [addExpectation], timeout: 5)
-        
+
         if results.count > 0 {
             results.firstMatch.click()
         }
-        
+
         app.buttons["AddAvailableTimezone"].click()
-        
+
         if shouldSleep {
             sleep(2)
         }

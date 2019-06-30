@@ -1,7 +1,6 @@
 // Copyright © 2015 Abhishek Banthia
 
 import Cocoa
-import ServiceManagement
 
 extension NSStoryboard.SceneIdentifier {
     static let welcomeIdentifier = NSStoryboard.SceneIdentifier("welcomeVC")
@@ -25,6 +24,8 @@ class OnboardingParentViewController: NSViewController {
     @IBOutlet private var negativeButton: NSButton!
     @IBOutlet private var backButton: NSButton!
     @IBOutlet private var positiveButton: NSButton!
+
+    private lazy var startupManager = StartupManager()
 
     private lazy var welcomeVC = (storyboard?.instantiateController(withIdentifier: .welcomeIdentifier) as? WelcomeViewController)
 
@@ -283,18 +284,10 @@ class OnboardingParentViewController: NSViewController {
         }
 
         UserDefaults.standard.set(shouldStart ? 1 : 0, forKey: CLStartAtLogin)
-
-        if !SMLoginItemSetEnabled("com.abhishek.ClockerHelper" as CFString, shouldStart) {
-            Logger.log(object: ["Successful": "NO"], for: "Start Clocker Login")
-        } else {
-            Logger.log(object: ["Successful": "YES"], for: "Start Clocker Login")
-        }
-
-        if shouldStart {
-            Logger.log(object: [:], for: "Enable Launch at Login while Onboarding")
-        } else {
+        startupManager.toggleLogin(shouldStart)
+        shouldStart ?
+            Logger.log(object: [:], for: "Enable Launch at Login while Onboarding") :
             Logger.log(object: [:], for: "Disable Launch at Login while Onboarding")
-        }
     }
 
     func logExitPoint() {
