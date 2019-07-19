@@ -57,10 +57,6 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
             Fabric.with([Crashlytics.self])
             checkIfRunFromApplicationsFolder()
         #endif
-
-        if let bundleID = Bundle.main.bundleIdentifier {
-            UserDefaults.standard.removePersistentDomain(forName: bundleID)
-        }
     }
 
     public func applicationDockMenu(_: NSApplication) -> NSMenu? {
