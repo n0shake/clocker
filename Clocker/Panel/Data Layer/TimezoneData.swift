@@ -248,6 +248,7 @@ class TimezoneData: NSObject, NSCoding {
                 let newTimezone = TimezoneData(with: oldModel)
                 newModels.append(newTimezone)
             } else if let newModel = old as? TimezoneData {
+                shouldOverrideSecondsFormatBugFix(model: newModel)
                 newModels.append(newModel)
             }
         }
@@ -258,6 +259,14 @@ class TimezoneData: NSObject, NSCoding {
         }
 
         return serializedModels
+    }
+
+    private class func shouldOverrideSecondsFormatBugFix(model: TimezoneData) {
+        if UserDefaults.standard.object(forKey: "shouldOverrideSecondsFormatBugFix") == nil {
+            model.setShouldOverrideSecondsFormat(2)
+            UserDefaults.standard.set("YES", forKey: "shouldOverrideSecondsFormatBugFix")
+            return
+        }
     }
 
     func encode(with aCoder: NSCoder) {
