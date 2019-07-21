@@ -252,7 +252,11 @@ class TimezoneData: NSObject, NSCoding {
                 newModels.append(newModel)
             }
         }
-
+        
+        if UserDefaults.standard.object(forKey: "shouldOverrideSecondsFormatBug") == nil {
+            UserDefaults.standard.set("YES", forKey: "shouldOverrideSecondsFormatBug")
+        }
+        
         // Do the serialization
         let serializedModels = newModels.map { (place) -> Data in
             NSKeyedArchiver.archivedData(withRootObject: place)
@@ -262,10 +266,8 @@ class TimezoneData: NSObject, NSCoding {
     }
 
     private class func shouldOverrideSecondsFormatBugFix(model: TimezoneData) {
-        if UserDefaults.standard.object(forKey: "shouldOverrideSecondsFormatBugFix") == nil {
+        if UserDefaults.standard.object(forKey: "shouldOverrideSecondsFormatBug") == nil {
             model.setShouldOverrideSecondsFormat(2)
-            UserDefaults.standard.set("YES", forKey: "shouldOverrideSecondsFormatBugFix")
-            return
         }
     }
 
