@@ -42,6 +42,7 @@ class PreferencesViewController: ParentViewController {
         return DataStore.shared().timezones()
     }
 
+    private var timezoneMetadataDictionary: [String: [String]] = [:]
     private lazy var startupManager = StartupManager()
     private var filteredArray: [Any] = []
     private var timezoneArray: [TimezoneMetadata] = []
@@ -548,10 +549,11 @@ extension PreferencesViewController {
 
             self.placeholderLabel.isHidden = false
 
-            if NetworkManager.isConnected() == false {
-                self.placeholderLabel.placeholderString = PreferencesConstants.noInternetConnectivityError
-                return
-            }
+            /*
+             if NetworkManager.isConnected() == false {
+                 self.placeholderLabel.placeholderString = PreferencesConstants.noInternetConnectivityError
+                 return
+             }*/
 
             self.isActivityInProgress = true
 
@@ -564,7 +566,12 @@ extension PreferencesViewController {
 
                                                     OperationQueue.main.addOperation {
                                                         if let errorPresent = error {
-                                                            self.presentError(errorPresent.localizedDescription)
+                                                            self.findLocalSearchResultsForTimezones()
+                                                            if self.timezoneFilteredArray.isEmpty {
+                                                                self.presentError(errorPresent.localizedDescription)
+                                                                return
+                                                            }
+                                                            self.prepareUIForPresentingResults()
                                                             return
                                                         }
 
@@ -698,10 +705,10 @@ extension PreferencesViewController {
             placeholderLabel.isHidden = false
         }
 
-        if NetworkManager.isConnected() == false || ProcessInfo.processInfo.arguments.contains("mockTimezoneDown") {
-            resetStateAndShowDisconnectedMessage()
-            return
-        }
+//        if NetworkManager.isConnected() == false || ProcessInfo.processInfo.arguments.contains("mockTimezoneDown") {
+//            resetStateAndShowDisconnectedMessage()
+//            return
+//        }
 
         searchField.placeholderString = "Fetching data might take some time!"
         placeholderLabel.placeholderString = "Retrieving timezone data"
@@ -813,6 +820,12 @@ extension PreferencesViewController {
         searchField.placeholderString = "Enter a city, state or country name"
         availableTimezoneTableView.isHidden = false
         isActivityInProgress = false
+
+        timezoneMetadataDictionary =
+            ["IST": ["india", "indian", "kolkata", "calcutta", "mumbai", "delhi", "hyderabad", "noida"],
+             "PST": ["los", "los angeles", "california", "san francisco", "bay area", "pacific standard time"],
+             "UTC": ["utc", "universal"],
+             "EST": ["florida", "new york"]]
     }
 
     private func setupTimezoneDatasource() {
@@ -826,20 +839,8 @@ extension PreferencesViewController {
         for (abbreviation, timezone) in TimeZone.abbreviationDictionary {
             var tags: Set<String> = [abbreviation.lowercased(), timezone.lowercased()]
             var extraTags: [String] = []
-            if abbreviation == "IST" {
-                extraTags = ["india", "indian", "kolkata", "calcutta", "mumbai", "delhi", "hyderabad", "noida"]
-            }
-
-            if abbreviation == "PST" {
-                extraTags = ["los", "los angeles", "california", "san francisco", "bay area", "pacific standard time"]
-            }
-
-            if abbreviation == "UTC" {
-                extraTags = ["utc", "universal"]
-            }
-
-            if abbreviation == "EST" {
-                extraTags = ["florida", "new york"]
+            if let tagsPresent = timezoneMetadataDictionary[abbreviation] {
+                extraTags = tagsPresent
             }
 
             extraTags.forEach { tag in

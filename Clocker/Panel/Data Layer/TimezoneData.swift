@@ -252,11 +252,11 @@ class TimezoneData: NSObject, NSCoding {
                 newModels.append(newModel)
             }
         }
-        
+
         if UserDefaults.standard.object(forKey: "shouldOverrideSecondsFormatBug") == nil {
             UserDefaults.standard.set("YES", forKey: "shouldOverrideSecondsFormatBug")
         }
-        
+
         // Do the serialization
         let serializedModels = newModels.map { (place) -> Data in
             NSKeyedArchiver.archivedData(withRootObject: place)
