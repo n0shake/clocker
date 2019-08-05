@@ -2,6 +2,13 @@
 
 import Cocoa
 
+struct PreferencesDataSourceConstants {
+    static let timezoneNameIdentifier = "formattedAddress"
+    static let customLabelIdentifier = "label"
+    static let availableTimezoneIdentifier = "availableTimezones"
+    static let favoriteTimezoneIdentifier = "favouriteTimezone"
+}
+
 protocol PreferenceSelectionUpdates: AnyObject {
     func markAsFavorite(_ dataObject: TimezoneData)
     func unfavourite(_ dataObject: TimezoneData)
@@ -99,15 +106,15 @@ extension PreferencesDataSource: NSTableViewDataSource {
             selectedDataSource = model
         }
 
-        if tableColumn?.identifier.rawValue == PreferencesConstants.timezoneNameIdentifier {
+        if tableColumn?.identifier.rawValue == PreferencesDataSourceConstants.timezoneNameIdentifier {
             return handleTimezoneNameIdentifier(selectedDataSource)
         }
 
-        if tableColumn?.identifier.rawValue == PreferencesConstants.customLabelIdentifier {
+        if tableColumn?.identifier.rawValue == PreferencesDataSourceConstants.customLabelIdentifier {
             return selectedDataSource?.customLabel ?? "Error"
         }
 
-        if tableColumn?.identifier.rawValue == "favouriteTimezone" {
+        if tableColumn?.identifier.rawValue == PreferencesDataSourceConstants.favoriteTimezoneIdentifier {
             return selectedDataSource?.isFavourite ?? 0
         }
 

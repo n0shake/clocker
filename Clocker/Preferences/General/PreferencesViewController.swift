@@ -3,15 +3,13 @@
 import Cocoa
 
 struct PreferencesConstants {
-    static let timezoneNameIdentifier = "formattedAddress"
-    static let customLabelIdentifier = "label"
-    static let availableTimezoneIdentifier = "availableTimezones"
     static let noTimezoneSelectedErrorMessage = "Please select a timezone!"
     static let maxTimezonesErrorMessage = "Maximum 100 timezones allowed!"
     static let maxCharactersAllowed = "Only 50 characters allowed!"
     static let noInternetConnectivityError = "You're offline, maybe?"
     static let tryAgainMessage = "Try again, maybe?"
     static let offlineErrorMessage = "The Internet connection appears to be offline."
+    static let hotKeyPathIdentifier = "values.globalPing"
 }
 
 enum RowType {
@@ -299,14 +297,14 @@ class PreferencesViewController: ParentViewController {
 
         recorderControl.bind(NSBindingName.value,
                              to: defaults,
-                             withKeyPath: "values.globalPing",
+                             withKeyPath: PreferencesConstants.hotKeyPathIdentifier,
                              options: nil)
 
         recorderControl.delegate = self
     }
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change _: [NSKeyValueChangeKey: Any]?, context _: UnsafeMutableRawPointer?) {
-        if let path = keyPath, path == "values.globalPing" {
+        if let path = keyPath, path == PreferencesConstants.hotKeyPathIdentifier {
             let hotKeyCenter = PTHotKeyCenter.shared()
             let oldHotKey = hotKeyCenter?.hotKey(withIdentifier: path)
             hotKeyCenter?.unregisterHotKey(oldHotKey)
@@ -367,13 +365,11 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
     }
 
     func tableView(_: NSTableView, shouldSelectRow row: Int) -> Bool {
-        print("Should Select Row")
         let currentRowType = finalArray[row]
         return !(currentRowType == .timezoneHeader || currentRowType == .cityHeader)
     }
 
     func tableView(_: NSTableView, selectionIndexesForProposedSelection proposedSelectionIndexes: IndexSet) -> IndexSet {
-//        print("Selection Indexes for Proposed Selection: \(proposedSelectionIndexes.first!)")
         return proposedSelectionIndexes
     }
 

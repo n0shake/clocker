@@ -13,7 +13,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change _: [NSKeyValueChangeKey: Any]?, context _: UnsafeMutableRawPointer?) {
-        if let path = keyPath, path == "values.globalPing" {
+        if let path = keyPath, path == PreferencesConstants.hotKeyPathIdentifier {
             let hotKeyCenter = PTHotKeyCenter.shared()
 
             // Unregister old hot key
@@ -213,7 +213,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func assignShortcut() {
         NSUserDefaultsController.shared.addObserver(self,
-                                                    forKeyPath: "values.globalPing",
+                                                    forKeyPath: PreferencesConstants.hotKeyPathIdentifier,
                                                     options: [.initial, .new],
                                                     context: nil)
     }
