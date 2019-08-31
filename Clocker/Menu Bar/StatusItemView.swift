@@ -82,6 +82,7 @@ class StatusItemView: NSView {
     }
 
     func updateTimeInMenubar() {
+        locationView.attributedStringValue = NSAttributedString(string: dataObject.formattedTimezoneLabel(), attributes: textFontAttributes)
         timeView.attributedStringValue = NSAttributedString(string: operationsObject.compactMenuHeader(), attributes: timeAttributes)
     }
 
