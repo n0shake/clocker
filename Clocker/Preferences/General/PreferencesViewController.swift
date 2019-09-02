@@ -844,7 +844,10 @@ extension PreferencesViewController {
             }
 
             let timezoneIdentifier = NSTimeZone(name: timezone)!
-            let timezoneMetadata = TimezoneMetadata(timezone: timezoneIdentifier, tags: tags, formattedName: timezone)
+            let formattedName = timezone + " (\(abbreviation))"
+            let timezoneMetadata = TimezoneMetadata(timezone: timezoneIdentifier,
+                                                    tags: tags,
+                                                    formattedName: formattedName)
             timezoneArray.append(timezoneMetadata)
         }
 
