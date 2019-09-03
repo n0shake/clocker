@@ -122,6 +122,7 @@
 		9ACB31401EDA994200F3E1D3 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACB313F1EDA994200F3E1D3 /* ShortcutRecorder.framework */; };
 		9ACE03EF1CB0ADE00039FC01 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACE03EE1CB0ADE00039FC01 /* Firebase.framework */; };
 		9ACF469D1DCBD45200C49B51 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACF469C1DCBD45200C49B51 /* Quartz.framework */; };
+		9ACF618D231DABAE00F5E51E /* SearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF618C231DABAE00F5E51E /* SearchDataSource.swift */; };
 		C20839CA21515C1E00C86589 /* ClockerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20839C921515C1E00C86589 /* ClockerUnitTests.swift */; };
 		C213713420B4FD920024D5A4 /* FloatingWindowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C213713320B4FD920024D5A4 /* FloatingWindowTests.swift */; };
 		C22F3D802107778A0001D5E1 /* ShortcutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22F3D7F2107778A0001D5E1 /* ShortcutTests.swift */; };
@@ -346,6 +347,7 @@
 		9ACB313F1EDA994200F3E1D3 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Clocker-ewkrwqfbimlgoicxkolbqepjsbcy/Build/Products/Release/ShortcutRecorder.framework"; sourceTree = "<group>"; };
 		9ACE03EE1CB0ADE00039FC01 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Frameworks/Firebase.framework; sourceTree = "<group>"; };
 		9ACF469C1DCBD45200C49B51 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		9ACF618C231DABAE00F5E51E /* SearchDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataSource.swift; sourceTree = "<group>"; };
 		9AFCC7FC1FD668FF00509B9C /* ClockerHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClockerHelper.entitlements; sourceTree = "<group>"; };
 		C20839C721515C1E00C86589 /* ClockerUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClockerUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C20839C921515C1E00C86589 /* ClockerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockerUnitTests.swift; sourceTree = "<group>"; };
@@ -673,6 +675,7 @@
 				9AB6F1682259D26400A44663 /* Models */,
 				9AB6F1602259D1B000A44663 /* PreferencesDataSource.swift */,
 				9AB6F15F2259D1B000A44663 /* PreferencesViewController.swift */,
+				9ACF618C231DABAE00F5E51E /* SearchDataSource.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -1182,6 +1185,7 @@
 				35C36F1A225961DA002FA5C6 /* Date+Manipulations.swift in Sources */,
 				35C36F572259DD8A002FA5C6 /* TimezoneDataSource.swift in Sources */,
 				35C36F462259D892002FA5C6 /* DataStore.swift in Sources */,
+				9ACF618D231DABAE00F5E51E /* SearchDataSource.swift in Sources */,
 				C2CCCD8220619C4C00F2DFC2 /* LocationController.swift in Sources */,
 				35C36F4B2259D971002FA5C6 /* UnderlinedButton.swift in Sources */,
 				9AB6F1562259CF3900A44663 /* CalendarViewController.swift in Sources */,
