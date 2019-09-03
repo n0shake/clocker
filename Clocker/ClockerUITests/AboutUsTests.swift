@@ -32,7 +32,7 @@ class AboutUsTests: XCTestCase {
 
         tapAboutTab()
 
-        let expectedVersion = "Clocker 1.6.09 (64)"
+        let expectedVersion = "Clocker 1.6.12 (67)"
         guard let presentVersion = app.windows["Clocker"].staticTexts["ClockerVersion"].value as? String else {
             XCTFail("Present version not present")
             return
@@ -92,81 +92,5 @@ class AboutUsTests: XCTestCase {
         XCTAssertTrue(app.sheets.staticTexts["We owe you a candy. 😇"].exists)
 
         app.windows["Clocker Feedback"].sheets.buttons["Close"].click()
-    }
-}
-
-extension XCTestCase {
-    func inverseWaiterFor(element: XCUIElement, time: TimeInterval = 25) {
-        let spinnerPredicate = NSPredicate(format: "exists == false")
-        let spinnerExpectation = expectation(for: spinnerPredicate, evaluatedWith: element, handler: nil)
-        let spinnerResult = XCTWaiter().wait(for: [spinnerExpectation], timeout: time)
-
-        if spinnerResult != .completed {
-            XCTFail("Still seeing Spinner after 25 seconds. Something's wrong")
-        }
-    }
-
-    func addAPlace(place: String, to app: XCUIApplication, shouldSleep: Bool = true) {
-        // Let's first check if the place is already present in the list
-
-        let matchPredicate = NSPredicate(format: "value contains %@", place)
-        let matchingFields = app.windows["Clocker"].tables["TimezoneTableView"].textFields.matching(matchPredicate)
-        if matchingFields.count > 0 {
-            return
-        }
-
-        if app.sheets.count == 0 {
-            app.windows["Clocker"].checkBoxes["AddTimezone"].click()
-        }
-
-        let searchField = app.searchFields["AvailableSearchField"]
-        searchField.reset(text: place)
-
-        let results = app.tables["AvailableTimezoneTableView"].cells.staticTexts.matching(matchPredicate)
-
-        let waiter = XCTWaiter()
-        let isHittable = NSPredicate(format: "exists == true", "")
-        let addExpectation = expectation(for: isHittable,
-                                         evaluatedWith: results.firstMatch) { () -> Bool in
-            print("Handler called")
-            return true
-        }
-
-        waiter.wait(for: [addExpectation], timeout: 5)
-
-        if results.count > 0 {
-            results.firstMatch.click()
-        }
-
-        app.buttons["AddAvailableTimezone"].click()
-
-        if shouldSleep {
-            sleep(2)
-        }
-    }
-
-    func deleteAllPlaces(app: XCUIApplication) {
-        var rowQueryCount = app.windows["Clocker"].tables["TimezoneTableView"].tableRows.count
-        if rowQueryCount == 0 {
-            return
-        }
-
-        let currentElement = app.windows["Clocker"].tableRows.firstMatch
-        currentElement.click()
-
-        while rowQueryCount > 0 {
-            app.windows["Clocker"].typeKey(XCUIKeyboardKey.delete, modifierFlags: XCUIElement.KeyModifierFlags())
-            rowQueryCount -= 1
-        }
-    }
-
-    func deleteAPlace(place: String, for app: XCUIApplication, shouldSleep: Bool = true) {
-        let matchPredicate = NSPredicate(format: "value == %@", place)
-        let row = app.tables["TimezoneTableView"].textFields.matching(matchPredicate).firstMatch
-        row.click()
-        row.typeKey(XCUIKeyboardKey.delete, modifierFlags: XCUIElement.KeyModifierFlags())
-        if shouldSleep {
-            sleep(2)
-        }
     }
 }
