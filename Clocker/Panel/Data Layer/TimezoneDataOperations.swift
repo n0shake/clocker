@@ -35,11 +35,21 @@ extension TimezoneDataOperations {
     func compactMenuHeader() -> String {
         var subtitle = CLEmptyString
 
-        let shouldDayBeShown = DataStore.shared().shouldShowDateInMenubar()
+        let shouldDayBeShown = DataStore.shared().shouldShowDayInMenubar()
 
         if shouldDayBeShown {
             let substring = date(with: 0, displayType: CLDateDisplayType.menuDisplay)
             subtitle.append(substring)
+        }
+
+        let shouldDateBeShown = DataStore.shared().shouldShowDateInMenubar()
+        if shouldDateBeShown {
+            let date = Date().formatter(with: "MMM d", timeZone: dataObject.timezone())
+            if subtitle.isEmpty == false {
+                subtitle.append(" \(date)")
+            } else {
+                subtitle.append("\(date)")
+            }
         }
 
         subtitle.isEmpty ? subtitle.append(time(with: 0)) : subtitle.append(" \(time(with: 0))")
@@ -53,8 +63,8 @@ extension TimezoneDataOperations {
         let dataStore = DataStore.shared()
 
         let shouldCityBeShown = dataStore.shouldDisplay(.placeInMenubar)
-        let shouldDayBeShown = dataStore.shouldShowDateInMenubar()
-        let shouldDateBeShown = dataStore.shouldDisplay(.dateInMenubar)
+        let shouldDayBeShown = dataStore.shouldShowDayInMenubar()
+        let shouldDateBeShown = dataStore.shouldShowDateInMenubar()
 
         if shouldCityBeShown {
             if let address = dataObject.formattedAddress, address.isEmpty == false {

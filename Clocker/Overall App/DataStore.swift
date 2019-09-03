@@ -21,7 +21,8 @@ class DataStore: NSObject {
     private static var sharedStore = DataStore(with: UserDefaults.standard)
     private var userDefaults: UserDefaults!
 
-    // Since this pref can accessed every second, let's cache this
+    // Since these pref can accessed every second, let's cache this
+    private var shouldDisplayDayInMenubar: Bool = false
     private var shouldDisplayDateInMenubar: Bool = false
 
     class func shared() -> DataStore {
@@ -31,7 +32,8 @@ class DataStore: NSObject {
     init(with defaults: UserDefaults) {
         super.init()
         userDefaults = defaults
-        shouldDisplayDateInMenubar = shouldDisplay(.dayInMenubar)
+        shouldDisplayDayInMenubar = shouldDisplay(.dayInMenubar)
+        shouldDisplayDateInMenubar = shouldDisplay(.dateInMenubar)
     }
 
     func timezones() -> [Data] {
@@ -43,7 +45,15 @@ class DataStore: NSObject {
     }
 
     func updateDayPreference() {
-        shouldDisplayDateInMenubar = shouldDisplay(.dayInMenubar)
+        shouldDisplayDayInMenubar = shouldDisplay(.dayInMenubar)
+    }
+
+    func updateDateInPreference() {
+        shouldDisplayDateInMenubar = shouldDisplay(.dateInMenubar)
+    }
+
+    func shouldShowDayInMenubar() -> Bool {
+        return shouldDisplayDayInMenubar
     }
 
     func shouldShowDateInMenubar() -> Bool {

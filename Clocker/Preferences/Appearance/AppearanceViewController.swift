@@ -250,6 +250,7 @@ class AppearanceViewController: ParentViewController {
     }
 
     @IBAction func displayDateInMenubarAction(_: Any) {
+        DataStore.shared().updateDateInPreference()
         updateStatusItem()
     }
 
@@ -288,6 +289,6 @@ class AppearanceViewController: ParentViewController {
     // We don't support showing day or date in the menubar for compact mode yet.
     // Disable those options to let the user know.
     private func updateMenubarControls(_ isEnabled: Bool) {
-        [includePlaceNameControl, includeDateInMenubarControl].forEach { $0?.isEnabled = isEnabled }
+        [includePlaceNameControl].forEach { $0?.isEnabled = isEnabled }
     }
 }

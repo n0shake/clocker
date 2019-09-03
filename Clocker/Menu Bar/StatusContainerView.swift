@@ -5,16 +5,20 @@ import Cocoa
 func bufferCalculatedWidth() -> Int {
     var totalWidth = 55
 
-    if DataStore.shared().shouldShowDateInMenubar() {
-        totalWidth += 8
+    if DataStore.shared().shouldShowDayInMenubar() {
+        totalWidth += 12
     }
 
     if DataStore.shared().shouldDisplay(.twelveHour) {
-        totalWidth += 18
+        totalWidth += 20
     }
 
     if DataStore.shared().shouldDisplay(.seconds) {
         totalWidth += 15
+    }
+
+    if DataStore.shared().shouldShowDateInMenubar() {
+        totalWidth += 20
     }
 
     return totalWidth
@@ -24,12 +28,12 @@ func compactWidth(for timezone: TimezoneData) -> Int {
     var totalWidth = 55
     let timeFormat = timezone.timezoneFormat()
 
-    if DataStore.shared().shouldShowDateInMenubar() {
-        totalWidth += 8
+    if DataStore.shared().shouldShowDayInMenubar() {
+        totalWidth += 12
     }
 
     if timeFormat == DateFormat.twelveHour || timeFormat == DateFormat.twelveHourWithSeconds {
-        totalWidth += 18
+        totalWidth += 20
     } else if timeFormat == DateFormat.twentyFourHour || timeFormat == DateFormat.twentyFourHourWithSeconds {
         totalWidth += 0
     }
@@ -37,6 +41,10 @@ func compactWidth(for timezone: TimezoneData) -> Int {
     if timezone.shouldShowSeconds() {
         // Slight buffer needed when the Menubar supplementary text was Mon 9:27:58 AM
         totalWidth += 15
+    }
+
+    if DataStore.shared().shouldShowDateInMenubar() {
+        totalWidth += 20
     }
 
     return totalWidth
