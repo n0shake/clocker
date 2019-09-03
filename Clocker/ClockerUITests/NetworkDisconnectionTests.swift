@@ -20,25 +20,6 @@ class NetworkDisconnectionTests: XCTestCase {
         }
     }
 
-    // User should be still be able to add a timezone
-    func testAddingATimezone() {
-        app.launchArguments.append("mockNetworkDown")
-        precondition()
-        app.buttons["FloatingPreferences"].click()
-
-        if app.sheets.count == 0 {
-            app.windows["Clocker"].checkBoxes["AddTimezone"].click()
-        }
-
-        XCTAssertFalse(app.sheets.staticTexts["ErrorPlaceholder"].exists)
-
-        let searchField = app.searchFields["AvailableSearchField"]
-        searchField.reset(text: "Kolkata")
-        addAPlace(place: "Kolkata", to: app)
-
-        app.sheets.buttons["Close"].click()
-    }
-
     func testAddingACity() {
         app.launchArguments.append("mockNetworkDown")
         precondition()

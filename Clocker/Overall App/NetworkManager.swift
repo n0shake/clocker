@@ -52,6 +52,12 @@ extension NetworkManager {
 
         let dataTask = session.dataTask(with: request) { data, urlResponse, error in
 
+            // Check if we're running a network UI test
+            if ProcessInfo.processInfo.arguments.contains("mockTimezoneDown") {
+                completionHandler(nil, internalServerError)
+                return
+            }
+
             guard error == nil, let httpURLResponse = urlResponse as? HTTPURLResponse, let json = data else {
                 completionHandler(nil, internalServerError)
                 return
