@@ -3,7 +3,7 @@
 
 [![Twitter: @abgbm](https://img.shields.io/badge/contact-@n0shake-blue.svg?style=flat)](https://twitter.com/n0shake) [![Build Status](https://travis-ci.org/n0shake/Clocker.svg?branch=master)](https://travis-ci.org/n0shake/Clocker) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-![Clocker](https://raw.githubusercontent.com/n0shake/Clocker/New%20Icons/GitHub.png "Clocker")
+![Clocker](https://raw.githubusercontent.com/n0shake/Clocker/master/New%20Icons/Github.png "Clocker")
 
 **Clocker** is an OSX menubar utility designed to help you keep track of your friends in different time zones.  It's written using ~~Objective-C~~ Swift 5 and is completely ad-free.
 
