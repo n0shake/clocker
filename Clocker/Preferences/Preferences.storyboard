@@ -489,7 +489,7 @@
                                     <rect key="frame" x="-100" y="-100" width="219" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" arrowsPosition="none" controlSize="mini" horizontal="NO" id="1lL-VM-dm3" customClass="ClockerScroller" customModule="Clocker" customModuleProvider="target">
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" arrowsPosition="none" controlSize="mini" horizontal="NO" id="1lL-VM-dm3">
                                     <rect key="frame" x="325" y="1" width="14" height="180"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -1630,7 +1630,6 @@ CA
                         <outlet property="recorderControl" destination="PbD-dt-goz" id="ZH4-DH-X0L"/>
                         <outlet property="searchField" destination="Dha-h9-Nd0" id="SNI-zE-aNT"/>
                         <outlet property="sortToggle" destination="VGu-Z8-ktt" id="7dH-BI-HrP"/>
-                        <outlet property="stackView" destination="1sT-pO-jK4" id="VKO-mK-cJO"/>
                         <outlet property="startAtLoginLabel" destination="aCf-xC-UkE" id="dZk-TD-VBU"/>
                         <outlet property="startupCheckbox" destination="aGE-ap-6NE" id="G1Q-Rq-gYE"/>
                         <outlet property="tableview" destination="eI7-Vb-R7J" id="vgV-nN-mEQ"/>
@@ -1645,7 +1644,7 @@ CA
                     <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES" nonactivatingPanel="YES"/>
                     <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                     <rect key="contentRect" x="120" y="64" width="345" height="320"/>
-                    <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+                    <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     <value key="minSize" type="size" width="345" height="320"/>
                     <value key="maxSize" type="size" width="345" height="320"/>
                     <view key="contentView" id="MAe-t5-3A2">

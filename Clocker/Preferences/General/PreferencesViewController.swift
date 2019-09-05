@@ -45,7 +45,6 @@ class PreferencesViewController: ParentViewController {
     @IBOutlet private var timezoneTableView: NSTableView!
     @IBOutlet private var availableTimezoneTableView: NSTableView!
     @IBOutlet private var timezonePanel: Panelr!
-    @IBOutlet private var stackView: NSStackView!
     @IBOutlet private var progressIndicator: NSProgressIndicator!
     @IBOutlet private var addButton: NSButton!
     @IBOutlet private var recorderControl: SRRecorderControl!
@@ -69,8 +68,9 @@ class PreferencesViewController: ParentViewController {
 
     @IBOutlet var sortToggle: NSButton!
     private var themeDidChangeNotification: NSObjectProtocol?
-    private var selectionsDataSource: PreferencesDataSource!
 
+    // Selected Timezones Data Source
+    private var selectionsDataSource: PreferencesDataSource!
     // Search Results Data Source Handler
     private var searchResultsDataSource: SearchDataSource!
 
@@ -219,7 +219,7 @@ class PreferencesViewController: ParentViewController {
 
         deleteButton.isEnabled = false
 
-        [placeholderLabel, additionalSortOptions].forEach { $0.isHidden = true }
+        [placeholderLabel].forEach { $0.isHidden = true }
 
         messageLabel.stringValue = CLEmptyString
 
