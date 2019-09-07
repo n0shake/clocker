@@ -69,13 +69,15 @@
     XCUIElement *clockerWindow = self.app.windows[@"Clocker"];
     
     if (clockerWindow.tables.count == 0) {
-         XCTFail("We don't have any timezones added");
+        XCTFail("We don't have any timezones added");
+        return;
     }
     
     NSInteger rowQueryCount = [[clockerWindow.tables[@"TimezoneTableView"] tableRows] count];
     
     if (rowQueryCount == 0) {
         XCTFail("We don't have any timezones added");
+        return;
     }
     
     XCUIElement *currentElement = [[clockerWindow.tables[@"TimezoneTableView"] tableRows] elementBoundByIndex:0];

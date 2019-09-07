@@ -28,6 +28,7 @@ class PreferencesTest: XCTestCase {
 
         if app.tables["TimezoneTableView"].tableRows.count <= 0 {
             XCTFail("There are no timezones.")
+            return
         }
 
         app.windows["Clocker"].tables["TimezoneTableView"].tableRows.firstMatch.click()
@@ -61,8 +62,6 @@ class PreferencesTest: XCTestCase {
         addAPlace(place: "New Zealand", to: app)
         addAPlace(place: "San Francisco", to: app)
         addAPlace(place: "Florida", to: app, shouldSleep: false) // Last elements don't need to sleep
-
-        app.windows["Clocker"].checkBoxes["SortButton"].click()
 
         XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Time Difference"].exists)
 
@@ -99,7 +98,7 @@ class PreferencesTest: XCTestCase {
     func testSortingByTimezoneName() {
         app.tapMenubarIcon()
         app.tables["mainTableView"].typeKey(",", modifierFlags: .command)
-        app.windows["Clocker"].checkBoxes["SortButton"].click()
+//        app.windows["Clocker"].checkBoxes["SortButton"].click()
 
         XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Time Difference"].exists)
         XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Label"].exists)
@@ -146,8 +145,6 @@ class PreferencesTest: XCTestCase {
         addAPlace(place: "Aurangabad", to: app)
         addAPlace(place: "Zimbabwe", to: app)
         addAPlace(place: "Portland", to: app, shouldSleep: false)
-
-        app.windows["Clocker"].checkBoxes["SortButton"].click()
 
         XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Label"].exists)
 
@@ -307,6 +304,7 @@ extension XCUIApplication {
     func tapMenubarIcon() {
         if menuBars.count < 2 {
             XCTFail("Unable to find menubar options")
+            return
         }
 
         statusItems.firstMatch.click()
@@ -321,6 +319,7 @@ extension XCTestCase {
 
         if spinnerResult != .completed {
             XCTFail("Still seeing Spinner after 25 seconds. Something's wrong")
+            return
         }
     }
 

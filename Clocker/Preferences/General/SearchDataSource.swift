@@ -13,6 +13,7 @@ struct TimezoneMetadata {
     let timezone: NSTimeZone
     let tags: Set<String>
     let formattedName: String
+    let abbreviation: String
 }
 
 class SearchDataSource: NSObject {
@@ -53,7 +54,8 @@ class SearchDataSource: NSObject {
 
         let anywhereOnEarth = TimezoneMetadata(timezone: NSTimeZone(abbreviation: "GMT-1200")!,
                                                tags: ["aoe", "anywhere on earth"],
-                                               formattedName: "Anywhere on Earth")
+                                               formattedName: "Anywhere on Earth",
+                                               abbreviation: "AOE")
         timezoneArray.append(anywhereOnEarth)
 
         for (abbreviation, timezone) in TimeZone.abbreviationDictionary {
@@ -68,10 +70,10 @@ class SearchDataSource: NSObject {
             }
 
             let timezoneIdentifier = NSTimeZone(name: timezone)!
-            let formattedName = timezone + " (\(abbreviation))"
             let timezoneMetadata = TimezoneMetadata(timezone: timezoneIdentifier,
                                                     tags: tags,
-                                                    formattedName: formattedName)
+                                                    formattedName: timezone,
+                                                    abbreviation: abbreviation)
             timezoneArray.append(timezoneMetadata)
         }
 
@@ -146,7 +148,7 @@ extension SearchDataSource {
                 return nil
             }
             let index = searchField.stringValue.isEmpty ? row - 1 : row
-            message.sourceName.stringValue = datasource[index % datasource.count].formattedName
+            message.sourceName.stringValue = datasource[index % datasource.count].formattedName + " (\(datasource[index % datasource.count].abbreviation))"
             return message
         }
         return nil

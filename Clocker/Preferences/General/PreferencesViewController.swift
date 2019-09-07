@@ -165,7 +165,7 @@ class PreferencesViewController: ParentViewController {
 
         if selectedTimeZones.isEmpty == false {
             headerView.isHidden = false
-
+            additionalSortOptions.isHidden = false
             if tableview.subviews.count > 1, let zeroView = notimezoneView, tableview.subviews.contains(zeroView) {
                 zeroView.removeFromSuperview()
                 timezoneTableView.enclosingScrollView?.isHidden = false
@@ -297,6 +297,7 @@ class PreferencesViewController: ParentViewController {
             tableview.addSubview(zeroView)
             Logger.log(object: ["Showing Empty View": "YES"], for: "Showing Empty View")
         }
+        additionalSortOptions.isHidden = true
     }
 
     private func setupAccessibilityIdentifiers() {
