@@ -76,9 +76,6 @@ class SearchDataSource: NSObject {
                                                     abbreviation: abbreviation)
             timezoneArray.append(timezoneMetadata)
         }
-
-        print(TimeZone.knownTimeZoneIdentifiers.count)
-        print(timezoneArray.count)
     }
 
     func calculateArray() {
