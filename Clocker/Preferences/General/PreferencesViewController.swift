@@ -803,21 +803,12 @@ extension PreferencesViewController {
         let data = TimezoneData()
         data.setLabel(CLEmptyString)
 
-        if searchField.stringValue.isEmpty == false {
-            let currentSelection = searchResultsDataSource.timezoneFilteredArray[availableTimezoneTableView.selectedRow % searchResultsDataSource.timezoneFilteredArray.count]
+        let currentSelection = searchField.stringValue.isEmpty == false ? searchResultsDataSource.timezoneFilteredArray[availableTimezoneTableView.selectedRow % searchResultsDataSource.timezoneFilteredArray.count] :
+            searchResultsDataSource.timezoneArray[availableTimezoneTableView.selectedRow - 1]
 
-            let metaInfo = metadata(for: currentSelection)
-            data.timezoneID = metaInfo.0.name
-            data.formattedAddress = metaInfo.1.formattedName
-
-        } else {
-            let currentSelection = searchResultsDataSource.timezoneArray[availableTimezoneTableView.selectedRow - 1]
-
-            let metaInfo = metadata(for: currentSelection)
-            data.timezoneID = metaInfo.0.name
-            data.formattedAddress = metaInfo.1.formattedName
-        }
-
+        let metaInfo = metadata(for: currentSelection)
+        data.timezoneID = metaInfo.0.name
+        data.formattedAddress = metaInfo.1.formattedName
         data.selectionType = .timezone
 
         let operationObject = TimezoneDataOperations(with: data)
