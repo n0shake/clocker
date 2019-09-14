@@ -807,14 +807,14 @@ extension PreferencesViewController {
             let currentSelection = searchResultsDataSource.timezoneFilteredArray[availableTimezoneTableView.selectedRow % searchResultsDataSource.timezoneFilteredArray.count]
 
             let metaInfo = metadata(for: currentSelection)
-            data.timezoneID = metaInfo.0
+            data.timezoneID = metaInfo.0.name
             data.formattedAddress = metaInfo.1.formattedName
 
         } else {
             let currentSelection = searchResultsDataSource.timezoneArray[availableTimezoneTableView.selectedRow - 1]
 
             let metaInfo = metadata(for: currentSelection)
-            data.timezoneID = metaInfo.0
+            data.timezoneID = metaInfo.0.name
             data.formattedAddress = metaInfo.1.formattedName
         }
 
@@ -838,13 +838,13 @@ extension PreferencesViewController {
         isActivityInProgress = false
     }
 
-    private func metadata(for selection: TimezoneMetadata) -> (String, TimezoneMetadata) {
+    private func metadata(for selection: TimezoneMetadata) -> (NSTimeZone, TimezoneMetadata) {
         if selection.formattedName == "Anywhere on Earth" {
-            return ("GMT-1200", selection)
+            return (NSTimeZone(name: "GMT-1200")!, selection)
         } else if selection.formattedName == "UTC" {
-            return ("GMT", selection)
+            return (NSTimeZone(name: "GMT")!, selection)
         } else {
-            return (selection.formattedName, selection)
+            return (selection.timezone, selection)
         }
     }
 
