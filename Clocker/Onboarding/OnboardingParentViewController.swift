@@ -181,6 +181,8 @@ class OnboardingParentViewController: NSViewController {
     }
 
     private func performFinalStepsBeforeFinishing() {
+        finalOnboardingVC?.sendUpEmailIfValid()
+
         positiveButton.tag = OnboardingType.complete.rawValue
 
         // Install the menubar option!
