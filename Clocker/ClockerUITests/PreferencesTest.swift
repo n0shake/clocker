@@ -53,7 +53,7 @@ class PreferencesTest: XCTestCase {
         deleteAPlace(place: "UTC", for: app)
     }
 
-    func testSortingByTimezoneDifference() {
+    func testSortingCitiesByTimezoneDifference() {
         app.tapMenubarIcon()
         app.tables["mainTableView"].typeKey(",", modifierFlags: .command)
 
@@ -95,10 +95,9 @@ class PreferencesTest: XCTestCase {
         addAPlace(place: "Mumbai", to: app)
     }
 
-    func testSortingByTimezoneName() {
+    func testSortingCitiesByTimezoneName() {
         app.tapMenubarIcon()
         app.tables["mainTableView"].typeKey(",", modifierFlags: .command)
-//        app.windows["Clocker"].checkBoxes["SortButton"].click()
 
         XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Time Difference"].exists)
         XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Label"].exists)
@@ -138,7 +137,7 @@ class PreferencesTest: XCTestCase {
         XCTAssertFalse(app.windows["Clocker"].checkBoxes["Sort by Name"].exists)
     }
 
-    func testSortingByCustomLabel() {
+    func testSortingCitiesByCustomLabel() {
         app.tapMenubarIcon()
         app.tables["mainTableView"].typeKey(",", modifierFlags: .command)
 
@@ -178,6 +177,48 @@ class PreferencesTest: XCTestCase {
         deleteAPlace(place: "Aurangabad", for: app)
         deleteAPlace(place: "Zimbabwe", for: app)
         deleteAPlace(place: "Portland", for: app, shouldSleep: false)
+    }
+
+    func testSortingTimezonesByCustomLabel() {
+        app.tapMenubarIcon()
+        app.tables["mainTableView"].typeKey(",", modifierFlags: .command)
+
+        addAPlace(place: "Europe/Lisbon", to: app)
+        addAPlace(place: "Asia/Kolkata", to: app)
+        addAPlace(place: "Anywhere on Earth", to: app, shouldSleep: false)
+
+        XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Label"].exists)
+
+        var expectedLabels: [String] = []
+
+        let formattedAddressQuery = app.windows["Clocker"].textFields
+
+        for elementIndex in 0 ..< formattedAddressQuery.count {
+            if let currentValue = formattedAddressQuery.element(boundBy: elementIndex).value as? String, elementIndex % 2 == 1 {
+                expectedLabels.append(currentValue)
+            }
+        }
+
+        expectedLabels.sort()
+
+        if let value = app.windows["Clocker"].checkBoxes["Sort by Label"].value as? Int, value == 0 {
+            app.windows["Clocker"].checkBoxes["Sort by Label"].click()
+        }
+
+        var actualLabels: [String] = []
+        let newFormattedAddressQuery = app.windows["Clocker"].textFields
+
+        for elementIndex in 0 ..< newFormattedAddressQuery.count {
+            if let currentValue = newFormattedAddressQuery.element(boundBy: elementIndex).value as? String, elementIndex % 2 == 1 {
+                actualLabels.append(currentValue)
+            }
+        }
+
+        XCTAssertEqual(actualLabels, expectedLabels)
+
+        deleteAPlace(place: "Europe/Lisbon", for: app)
+        deleteAPlace(place: "Asia/Kolkata", for: app)
+        deleteAPlace(place: "Anywhere on Earth", for: app, shouldSleep: false)
     }
 
     func testSearchingWithMisspelledName() {
