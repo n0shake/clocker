@@ -76,6 +76,15 @@ class FloatingWindowTests: XCTestCase {
         let remindersCheckbox = app.checkBoxes["ReminderCheckbox"]
         remindersCheckbox.click()
 
+        addUIInterruptionMonitor(withDescription: "Reminders Access") { (alert) -> Bool in
+            let alertButton = alert.buttons["OK"]
+            if alertButton.exists {
+                alertButton.tap()
+                return true
+            }
+            return false
+        }
+
         app.buttons["SaveButton"].click()
 
         app.tapMenubarIcon()
@@ -109,7 +118,7 @@ class FloatingWindowTests: XCTestCase {
         }
 
         app.buttons["FloatingPreferences"].click()
-        app.windows["Clocker"].toolbars.buttons["General"].click()
+        app.windows["Clocker"].toolbars.buttons["Preferences"].click()
 
         let menubarDisplayQuery = app.tables.checkBoxes.matching(NSPredicate(format: "value == 1", ""))
         let menubarDisplayQueryCount = menubarDisplayQuery.count

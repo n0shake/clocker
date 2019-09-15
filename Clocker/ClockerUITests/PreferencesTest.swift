@@ -144,6 +144,8 @@ class PreferencesTest: XCTestCase {
         addAPlace(place: "Aurangabad", to: app)
         addAPlace(place: "Zimbabwe", to: app)
         addAPlace(place: "Portland", to: app, shouldSleep: false)
+        addAPlace(place: "Asia/Kolkata", to: app)
+        addAPlace(place: "Anywhere on Earth", to: app, shouldSleep: false)
 
         XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Label"].exists)
 
@@ -176,7 +178,9 @@ class PreferencesTest: XCTestCase {
 
         deleteAPlace(place: "Aurangabad", for: app)
         deleteAPlace(place: "Zimbabwe", for: app)
-        deleteAPlace(place: "Portland", for: app, shouldSleep: false)
+        deleteAPlace(place: "Portland", for: app)
+        deleteAPlace(place: "Asia/Kolkata", for: app)
+        deleteAPlace(place: "Anywhere on Earth", for: app, shouldSleep: false)
     }
 
     func testSortingTimezonesByCustomLabel() {
