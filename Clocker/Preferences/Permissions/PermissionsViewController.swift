@@ -50,16 +50,20 @@ class PermissionsViewController: ParentViewController {
     }
 
     private func setupLocalizedText() {
-        headerLabel.stringValue = "Permissions"
+        headerLabel.stringValue = NSLocalizedString("Permissions", comment: "Permissions Tab Titles")
 
-        reminderHeaderLabel.stringValue = "Reminders Access"
-        reminderDetailLabel.stringValue = "Set reminders in the timezone of the location of your choice. Your reminders are stored in the default Reminders app. "
+        reminderHeaderLabel.stringValue = NSLocalizedString("Reminders Access",
+                                                            comment: "Reminders Permission Title")
+        reminderDetailLabel.stringValue = NSLocalizedString("Reminders Detail",
+                                                            comment: "Reminders Detail Text")
 
-        calendarHeaderLabel.stringValue = "Calendar Access"
-        calendarDetailLabel.stringValue = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel."
+        calendarHeaderLabel.stringValue = NSLocalizedString("Calendar Access",
+                                                            comment: "Calendar Permission Title")
+        calendarDetailLabel.stringValue = NSLocalizedString("Calendar Detail",
+                                                            comment: "Calendar Detail Text")
 
-        privacyLabel.stringValue = "You can change this later in the Privacy section of the System Preferences."
-
+        privacyLabel.stringValue = NSLocalizedString("Privacy Text",
+                                                     comment: "Text explaining options can be changed in the future through System Preferences")
         [calendarHeaderLabel, calendarDetailLabel, privacyLabel, reminderDetailLabel, reminderHeaderLabel, headerLabel].forEach { $0?.textColor = Themer.shared().mainTextColor()
         }
     }
@@ -77,21 +81,27 @@ class PermissionsViewController: ParentViewController {
          } */
 
         if EventCenter.sharedCenter().calendarAccessGranted() {
-            calendarButton.title = "Granted"
+            calendarButton.title = NSLocalizedString("Granted Button Text",
+                                                     comment: "Granted Button Text")
         } else if EventCenter.sharedCenter().calendarAccessDenied() {
-            calendarButton.title = "Denied"
+            calendarButton.title = NSLocalizedString("Denied Button Text",
+                                                     comment: "Denied Button Text")
         } else if EventCenter.sharedCenter().calendarAccessNotDetermined() {
-            calendarButton.title = "Grant"
+            calendarButton.title = NSLocalizedString("Grant Button Text",
+                                                     comment: "Grant Button Text")
         } else {
             calendarButton.title = "Unexpected"
         }
 
         if EventCenter.sharedCenter().reminderAccessGranted() {
-            remindersButton.title = "Granted"
+            remindersButton.title = NSLocalizedString("Granted Button Text",
+                                                      comment: "Granted Button Text")
         } else if EventCenter.sharedCenter().reminderAccessDenied() {
-            remindersButton.title = "Denied"
+            remindersButton.title = NSLocalizedString("Denied Button Text",
+                                                      comment: "Denied Button Text")
         } else if EventCenter.sharedCenter().reminderAccessNotDetermined() {
-            remindersButton.title = "Grant"
+            remindersButton.title = NSLocalizedString("Grant Button Text",
+                                                      comment: "Grant Button Text")
         } else {
             remindersButton.title = "Unexpected"
         }
@@ -131,19 +141,23 @@ class PermissionsViewController: ParentViewController {
                         self.view.window?.orderBack(nil)
                         NSApp.activate(ignoringOtherApps: true)
 
-                        self.calendarButton.title = "Granted"
+                        self.calendarButton.title = NSLocalizedString("Granted Button Text",
+                                                                      comment: "Granted Button Text")
 
                         // Used to update CalendarViewController's view
                         NotificationCenter.default.post(name: .calendarAccessGranted, object: nil)
                     }
                 } else {
-                    Logger.log(object: ["Reminder Access Not Granted": "YES"], for: "Reminder Access Not Granted")
+                    Logger.log(object: ["Reminder Access Not Granted": "YES"],
+                               for: "Reminder Access Not Granted")
                 }
             })
         } else if eventCenter.calendarAccessGranted() {
-            calendarButton.title = "Granted"
+            calendarButton.title = NSLocalizedString("Granted Button Text",
+                                                     comment: "Granted Button Text")
         } else {
-            calendarButton.title = "Denied"
+            calendarButton.title = NSLocalizedString("Denied Button Text",
+                                                     comment: "Denied Button Text")
         }
     }
 
@@ -164,16 +178,19 @@ class PermissionsViewController: ParentViewController {
                         self.view.window?.orderBack(nil)
                         NSApp.activate(ignoringOtherApps: true)
 
-                        self.remindersButton.title = "Granted"
+                        self.remindersButton.title = NSLocalizedString("Granted Button Text",
+                                                                       comment: "Granted Button Text")
                     }
                 } else {
                     Logger.log(object: ["Reminder Access Not Granted": "YES"], for: "Reminder Access Not Granted")
                 }
             })
         } else if eventCenter.reminderAccessGranted() {
-            remindersButton.title = "Granted"
+            remindersButton.title = NSLocalizedString("Granted Button Text",
+                                                      comment: "Granted Button Text")
         } else {
-            remindersButton.title = "Denied"
+            remindersButton.title = NSLocalizedString("Denied Button Text",
+                                                      comment: "Denied Button Text")
         }
     }
 }

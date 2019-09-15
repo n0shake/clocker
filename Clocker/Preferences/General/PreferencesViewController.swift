@@ -122,11 +122,11 @@ class PreferencesViewController: ParentViewController {
     }
 
     private func setupLocalizedText() {
-        startAtLoginLabel.stringValue = "Start Clocker at Login"
-        headerLabel.stringValue = "Selected Timezones"
-        timezoneSortButton.title = "Sort by Time Difference"
-        timezoneNameSortButton.title = "Sort by Name"
-        labelSortButton.title = "Sort by Label"
+        startAtLoginLabel.stringValue = NSLocalizedString("Start at Login", comment: "Start at Login")
+        headerLabel.stringValue = NSLocalizedString("Selected Timezones", comment: "Start at Login")
+        timezoneSortButton.title = NSLocalizedString("Sort by Time Difference", comment: "Start at Login")
+        timezoneNameSortButton.title = NSLocalizedString("Sort by Name", comment: "Start at Login")
+        labelSortButton.title = NSLocalizedString("Sort by Label", comment: "Start at Login")
     }
 
     @objc func refreshTimezoneTableView() {

@@ -129,7 +129,9 @@ public extension Date {
                 return DateToolsLocalizedStrings("1 second ago")
             }
 
-            return DateToolsLocalizedStrings("Just now")
+            // Instead of returning "Just now" or the equivalent localized version; let's return an empty string
+            // Previously, we returned DateToolsLocalizedStrings("Just now")
+            return CLEmptyString
         }
     }
 

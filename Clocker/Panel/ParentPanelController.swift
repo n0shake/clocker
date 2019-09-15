@@ -256,8 +256,10 @@ class ParentPanelController: NSWindowController {
         if eventCenter.calendarAccessGranted() {
             // Nice. Events will be retrieved when we open the panel
         } else if eventCenter.calendarAccessNotDetermined() {
-            nextEventLabel.stringValue = "See your next Calendar event here."
-            setCalendarButtonTitle(buttonTitle: "Click here to start.")
+            nextEventLabel.stringValue = NSLocalizedString("See your next Calendar event here.",
+                                                           comment: "Next Event Label for no Calendar access")
+            setCalendarButtonTitle(buttonTitle: NSLocalizedString("Click here to start.",
+                                                                  comment: "Button Title for no Calendar access"))
         } else {
             removeUpcomingEventView()
         }
@@ -641,7 +643,8 @@ class ParentPanelController: NSWindowController {
     }
 
     @IBAction func calendarButtonAction(_: NSButton) {
-        if calendarButton.title == "Click here to start." {
+        if calendarButton.title == NSLocalizedString("Click here to start.",
+                                                     comment: "Button Title for no Calendar access") {
             showPermissionsWindow()
         } else {
             retrieveCalendarEvents()

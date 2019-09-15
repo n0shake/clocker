@@ -1,0 +1,38 @@
+/* 
+  Localizable.strings
+  Clocker
+
+  Created by Abhishek Banthia on 3/27/16.
+
+*/
+
+"Thank you for helping make Clocker even better!" = "Thank you for helping make Clocker even better!";
+"iRateMessageTitle" = "Rate %@";
+"iRateAppMessage" = "If you enjoy using %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
+"iRateGameMessage" = "If you enjoy playing %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
+"iRateCancelButton" = "No, Thanks";
+"iRateRateButton" = "Rate It Now";
+"iRateRemindButton" = "Remind Me Later";
+"iRateUpdateMessage" = "Update now?";
+"ClockerVersion" = "Version %@";
+"CLFeedbackAlertTitle" = "Thank you for helping make Clocker even better!";
+"app-name" = "Clocker";
+"start-at-login" = "Start At Login";
+"setup-steps" = "It only takes 3 steps to set up Clocker";
+"Permissions-Header" = "अनुमति";
+"See your next Calendar event here." = "अपना अगला कैलेंडर कार्यक्रम यहां देखें।";
+"Click here to start." = "शुरू करने के लिए यहाँ क्लिक करें।";
+"Reminders Access" = "रिमाइंडर अनुमति";
+"Calendar Access" = "कैलेंडर अनुमति";
+"Permissions" = "अनुमति";
+"Reminders Detail" = "अपनी पसंद के स्थान के समय क्षेत्र में रिमाइंडर सेट करें। आपके रिमाइंडर डिफ़ॉल्ट रिमाइंडर ऐप में संग्रहीत किए जाते हैं।";
+"Calendar Detail" = "अपने निजी और साझा कैलेंडर से आने वाली घटनाओं मेनूबार और पैनल में दिखाया जा सकता है।";
+"Privacy Text" = "आप आपकी पसंद भविष्य में सिस्टम प्रिफ्रेंसेज के प्राइवसी अनुभाग में बदल सकते हैं।";
+"Granted Button Text" = "स्वीकृत";
+"Denied Button Text" = "इनकार किया";
+"Grant Button Text" = "अनुदान";
+"Start at Login" = "लॉगिन पर शुरू करें";
+"Selected Timezones" = "चयनित स्थान";
+"Sort by Time Difference" = "समय अंतर द्वारा सॉर्ट करें";
+"Sort by Name" = "नाम द्वारा सॉर्ट करें";
+"Sort by Label" = "लेबल द्वारा सॉर्ट करें";

@@ -8,6 +8,7 @@ class TimezoneDataOperations: NSObject {
     private lazy var nsCalendar: Calendar = Calendar.autoupdatingCurrent
     private static var gregorianCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
     private static var swiftyCalendar = Calendar(identifier: .gregorian)
+    private static let currentLocale = Locale.current.identifier
 
     init(with timezone: TimezoneData) {
         dataObject = timezone
@@ -222,7 +223,7 @@ extension TimezoneDataOperations {
 
         let timeDifference = local.timeAgo(since: timezoneDate)
 
-        if timeDifference.contains("Just now") {
+        if timeDifference.isEmpty {
             return CLEmptyString
         }
 
@@ -231,6 +232,10 @@ extension TimezoneDataOperations {
             replaceAgo.append(", ")
             let agoString = timezoneDate.timeAgo(since: local, numericDates: true)
             replaceAgo.append(agoString.replacingOccurrences(of: "ago", with: CLEmptyString))
+
+            if !TimezoneDataOperations.currentLocale.contains("en") {
+                return replaceAgo
+            }
 
             let minuteDifference = calculateTimeDifference(with: local as NSDate, timezoneDate: timezoneDate as NSDate)
             minuteDifference == 0 ? replaceAgo.append("ahead") : replaceAgo.append("\(minuteDifference) mins ahead")

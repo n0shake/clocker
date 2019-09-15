@@ -216,6 +216,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		352AF497232E07B400D96FA7 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		352AF499232E07B400D96FA7 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3545C52A22612BCC00121E25 /* RateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTests.swift; sourceTree = "<group>"; };
 		3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults + KVOExtensions.swift"; sourceTree = "<group>"; };
 		35C36EE022595EFD002FA5C6 /* StatusContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusContainerView.swift; sourceTree = "<group>"; };
@@ -970,6 +972,7 @@
 				English,
 				en,
 				Base,
+				hi,
 			);
 			mainGroup = DD4F7BF913C30F9F00825C6E;
 			productRefGroup = DD4F7C0513C30F9F00825C6E /* Products */;
@@ -1251,6 +1254,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9A13BAE11CA882FA007C6CBE /* en */,
+				352AF497232E07B400D96FA7 /* hi */,
 			);
 			name = InfoPlist.strings;
 			path = Clocker;
@@ -1260,6 +1264,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9A13BAEB1CA88A76007C6CBE /* en */,
+				352AF499232E07B400D96FA7 /* hi */,
 			);
 			name = Localizable.strings;
 			path = Clocker;

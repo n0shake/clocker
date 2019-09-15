@@ -26,10 +26,11 @@ class AboutViewController: ParentViewController {
 
         privateFeedback.setAccessibilityIdentifier("ClockerPrivateFeedback")
 
+        let appDisplayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") ?? "Clocker"
         let shortVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") ?? "N/A"
         let longVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") ?? "N/A"
 
-        versionField.stringValue = "Clocker \(shortVersion) (\(longVersion))"
+        versionField.stringValue = "\(appDisplayName) \(shortVersion) (\(longVersion))"
 
         setup()
 
