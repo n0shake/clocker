@@ -3,9 +3,12 @@
 import Cocoa
 
 struct PreferencesConstants {
-    static let noTimezoneSelectedErrorMessage = "Please select a timezone!"
-    static let maxTimezonesErrorMessage = "Maximum 100 timezones allowed!"
-    static let maxCharactersAllowed = "Only 50 characters allowed!"
+    static let noTimezoneSelectedErrorMessage = NSLocalizedString("No Timezone Selected",
+                                                                  comment: "Message shown when the user taps on Add without selecting a timezone")
+    static let maxTimezonesErrorMessage = NSLocalizedString("Max Timezones Selected",
+                                                            comment: "Max Timezones Error Message")
+    static let maxCharactersAllowed = NSLocalizedString("Max Search Characters Error Message",
+                                                        comment: "Max Character Count Allowed Error Message")
     static let noInternetConnectivityError = "You're offline, maybe?"
     static let tryAgainMessage = "Try again, maybe?"
     static let offlineErrorMessage = "The Internet connection appears to be offline."
@@ -48,6 +51,7 @@ class PreferencesViewController: ParentViewController {
     @IBOutlet private var progressIndicator: NSProgressIndicator!
     @IBOutlet private var addButton: NSButton!
     @IBOutlet private var recorderControl: SRRecorderControl!
+    @IBOutlet private var closeButton: NSButton!
 
     @IBOutlet private var timezoneSortButton: NSButton!
     @IBOutlet private var timezoneNameSortButton: NSButton!
@@ -122,11 +126,20 @@ class PreferencesViewController: ParentViewController {
     }
 
     private func setupLocalizedText() {
-        startAtLoginLabel.stringValue = NSLocalizedString("Start at Login", comment: "Start at Login")
-        headerLabel.stringValue = NSLocalizedString("Selected Timezones", comment: "Start at Login")
-        timezoneSortButton.title = NSLocalizedString("Sort by Time Difference", comment: "Start at Login")
-        timezoneNameSortButton.title = NSLocalizedString("Sort by Name", comment: "Start at Login")
-        labelSortButton.title = NSLocalizedString("Sort by Label", comment: "Start at Login")
+        startAtLoginLabel.stringValue = NSLocalizedString("Start at Login",
+                                                          comment: "Start at Login")
+        headerLabel.stringValue = NSLocalizedString("Selected Timezones",
+                                                    comment: "Start at Login")
+        timezoneSortButton.title = NSLocalizedString("Sort by Time Difference",
+                                                     comment: "Start at Login")
+        timezoneNameSortButton.title = NSLocalizedString("Sort by Name",
+                                                         comment: "Start at Login")
+        labelSortButton.title = NSLocalizedString("Sort by Label",
+                                                  comment: "Start at Login")
+        addButton.title = NSLocalizedString("Add Button Title",
+                                            comment: "Button to add a location")
+        closeButton.title = NSLocalizedString("Close Button Title",
+                                              comment: "Button to close the panel")
     }
 
     @objc func refreshTimezoneTableView() {
@@ -694,7 +707,8 @@ extension PreferencesViewController {
 
     private func setErrorPlaceholders() {
         placeholderLabel.placeholderString = "No timezone found! Try entering an exact name."
-        searchField.placeholderString = "Enter a city, state or country name"
+        searchField.placeholderString = NSLocalizedString("Search Field Placeholder",
+                                                          comment: "Search Field Placeholder")
         isActivityInProgress = false
     }
 
@@ -705,7 +719,8 @@ extension PreferencesViewController {
         refreshMainTable()
         timezonePanel.close()
         placeholderLabel.placeholderString = CLEmptyString
-        searchField.placeholderString = "Enter a city, state or country name"
+        searchField.placeholderString = NSLocalizedString("Search Field Placeholder",
+                                                          comment: "Search Field Placeholder")
         availableTimezoneTableView.isHidden = false
         isActivityInProgress = false
     }
@@ -824,7 +839,8 @@ extension PreferencesViewController {
         refreshMainTable()
 
         timezonePanel.close()
-        searchField.placeholderString = "Enter a city, state or country name"
+        searchField.placeholderString = NSLocalizedString("Search Field Placeholder",
+                                                          comment: "Search Field Placeholder")
         availableTimezoneTableView.isHidden = false
         isActivityInProgress = false
     }
@@ -844,7 +860,8 @@ extension PreferencesViewController {
         searchResultsDataSource.timezoneFilteredArray = []
         searchField.stringValue = CLEmptyString
         placeholderLabel.placeholderString = CLEmptyString
-        searchField.placeholderString = "Enter a city, state or country name"
+        searchField.placeholderString = NSLocalizedString("Search Field Placeholder",
+                                                          comment: "Search Field Placeholder")
 
         reloadSearchResults()
 

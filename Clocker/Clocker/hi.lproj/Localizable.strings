@@ -31,8 +31,23 @@
 "Granted Button Text" = "स्वीकृत";
 "Denied Button Text" = "इनकार किया";
 "Grant Button Text" = "अनुदान";
+
+// Tab Item Titles
+"Preferences Tab" = "प्रिफ्रेंसेज";
+"Appearance Tab" = "दिखावट";
+"Calendar Tab" = "कैलेंडर";
+"About Tab" = "अबाउट";
+"Permissions Tab" = "अनुमति";
+
+// General Preferencess
 "Start at Login" = "लॉगिन पर शुरू करें";
 "Selected Timezones" = "चयनित स्थान";
 "Sort by Time Difference" = "समय अंतर द्वारा सॉर्ट करें";
 "Sort by Name" = "नाम द्वारा सॉर्ट करें";
 "Sort by Label" = "लेबल द्वारा सॉर्ट करें";
+"Search Field Placeholder" = "Enter a city, state or country name";
+"No Timezone Selected Error Message" = "Please select a timezone!";
+"Max Timezones Selected Error Message" = "Maximum 100 timezones allowed!";
+"Max Search Characters Error Message" = "Only 50 characters allowed!";
+"Add Button Title" = "ऐड ";
+"Close Button Title" = "बंद करे";

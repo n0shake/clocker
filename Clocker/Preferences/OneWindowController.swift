@@ -15,8 +15,19 @@ class CenteredTabViewController: NSTabViewController {
         }
 
         toolbarItems.append(NSToolbarItem.Identifier.flexibleSpace)
-
         return toolbarItems
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Setup localized tab labels
+        tabViewItems.forEach { item in
+            if let identifier = item.identifier as? String {
+                print(identifier)
+                item.label = NSLocalizedString(identifier, comment: "Tab View Item Label for \(identifier)")
+            }
+        }
     }
 }
 

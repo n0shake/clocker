@@ -33,11 +33,11 @@
             <objects>
                 <tabViewController selectedTabViewItemIndex="0" tabStyle="toolbar" id="SH5-GG-x4O" customClass="CenteredTabViewController" customModule="Clocker" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
-                        <tabViewItem label="General" identifier="Preferences" image="NSPreferencesGeneral" id="KX2-eQ-kpC"/>
-                        <tabViewItem label=" Appearance " identifier="Appearance" image="Appearance Dynamic" id="UFb-Xx-XzY"/>
-                        <tabViewItem label=" Calendar " identifier="Calendar" image="Calendar Tab Dynamic" id="dtc-kZ-ICY"/>
-                        <tabViewItem label=" Permissions " identifier="Permissions" image="Privacy" id="0LV-gD-HSJ" userLabel="Permissions"/>
-                        <tabViewItem label=" About  " identifier="AboutClocker" image="NSInfo" id="H6X-F4-LIW"/>
+                        <tabViewItem label="General" identifier="Preferences Tab" image="NSPreferencesGeneral" id="KX2-eQ-kpC"/>
+                        <tabViewItem label=" Appearance " identifier="Appearance Tab" image="Appearance Dynamic" id="UFb-Xx-XzY"/>
+                        <tabViewItem label=" Calendar " identifier="Calendar Tab" image="Calendar Tab Dynamic" id="dtc-kZ-ICY"/>
+                        <tabViewItem label=" Permissions " identifier="Permissions Tab" image="Privacy" id="0LV-gD-HSJ" userLabel="Permissions"/>
+                        <tabViewItem label=" About  " identifier="About Tab" image="NSInfo" id="H6X-F4-LIW"/>
                     </tabViewItems>
                     <viewControllerTransitionOptions key="transitionOptions" crossfade="YES" slideRight="YES" slideBackward="YES" allowUserInteraction="YES"/>
                     <tabView key="tabView" type="noTabsNoBorder" id="gdR-rH-VZM">
@@ -1620,6 +1620,7 @@ CA
                         <outlet property="addTimezoneButton" destination="1FY-Nb-ZXb" id="mzu-MA-c0E"/>
                         <outlet property="additionalSortOptions" destination="J2K-hR-0jv" id="oXh-9H-RRO"/>
                         <outlet property="availableTimezoneTableView" destination="xkl-2X-ZCb" id="HPB-cB-egR"/>
+                        <outlet property="closeButton" destination="woG-LO-TxX" id="Jwl-Cd-Fzd"/>
                         <outlet property="deleteButton" destination="48a-Zz-oQg" id="zEg-aT-Mzj"/>
                         <outlet property="headerLabel" destination="m5V-sS-Na7" id="l5h-Wa-dbC"/>
                         <outlet property="headerView" destination="YQR-N6-uZO" id="D71-8n-deV"/>

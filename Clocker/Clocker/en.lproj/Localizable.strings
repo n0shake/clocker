@@ -31,8 +31,24 @@
 "Granted Button Text" = "Granted";
 "Denied Button Text" = "Denied";
 "Grant Button Text" = "Grant";
+
+// Tab Item Titles
+"Preferences Tab" = "Preferences";
+"Appearance Tab" = "Appearance";
+"Calendar Tab" = "Calendar";
+"About Tab" = "About";
+"Permissions Tab" = "Permissions";
+
+// General Preferences Screen
 "Start at Login" = "Start Clocker at Login";
 "Selected Timezones" = "Selected Timezones";
 "Sort by Time Difference" = "Sort by Time Difference";
 "Sort by Name" = "Sort by Name";
 "Sort by Label" = "Sort by Label";
+"Search Field Placeholder" = "Enter a city, state or country name";
+"No Timezone Selected Error Message" = "Please select a timezone!";
+"Max Timezones Selected Error Message" = "Maximum 100 timezones allowed!";
+"Max Search Characters Error Message" = "Only 50 characters allowed!";
+"Add Button Title" = "Add";
+"Close Button Title" = "Close";
+
