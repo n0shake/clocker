@@ -105,6 +105,7 @@
 		9A7547E51F184E3F004705EF /* ClockerHelper.app in Login Item Helper */ = {isa = PBXBuildFile; fileRef = 9A7547D01F184DC3004705EF /* ClockerHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9A7CDC1B22BEC2170035902D /* StartupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7CDC1A22BEC2170035902D /* StartupManager.swift */; };
 		9A8605AE1BEC148400A810A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605AD1BEC148400A810A4 /* main.m */; };
+		9A8B256A232EFAD300204CAD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAEC1CA88A76007C6CBE /* Localizable.strings */; };
 		9A9E87621C1FEDB500A7A2DF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87611C1FEDB500A7A2DF /* CFNetwork.framework */; };
 		9A9E876A1C1FEDDB00A7A2DF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87691C1FEDDB00A7A2DF /* SystemConfiguration.framework */; };
 		9AB6F1562259CF3900A44663 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F1552259CF3900A44663 /* CalendarViewController.swift */; };
@@ -1038,6 +1039,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A8B256A232EFAD300204CAD /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

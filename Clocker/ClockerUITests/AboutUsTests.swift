@@ -32,7 +32,8 @@ class AboutUsTests: XCTestCase {
 
         tapAboutTab()
 
-        let expectedVersion = "Clocker 1.6.15 (70)"
+        let appDisplayName = "CFBundleDisplayName".localizedString()
+        let expectedVersion = "\(appDisplayName) 1.6.15 (70)"
         guard let presentVersion = app.windows["Clocker"].staticTexts["ClockerVersion"].value as? String else {
             XCTFail("Present version not present")
             return

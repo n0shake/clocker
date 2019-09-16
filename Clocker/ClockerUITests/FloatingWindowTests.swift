@@ -2,6 +2,16 @@
 
 import XCTest
 
+extension String {
+    func localizedString() -> String {
+        let bundle = Bundle(for: AboutUsTests.self)
+        let deviceLanguage = Locale.preferredLanguages.first
+        let localizationBundle = Bundle(path: bundle.path(forResource: deviceLanguage,
+                                                          ofType: "lproj")!)
+        return NSLocalizedString(self, bundle: localizationBundle!, comment: "")
+    }
+}
+
 class FloatingWindowTests: XCTestCase {
     var app: XCUIApplication!
 
@@ -77,8 +87,11 @@ class FloatingWindowTests: XCTestCase {
         remindersCheckbox.click()
 
         addUIInterruptionMonitor(withDescription: "Reminders Access") { (alert) -> Bool in
+            print("Interruption Handler called")
+            print(alert)
             let alertButton = alert.buttons["OK"]
             if alertButton.exists {
+                print("Okay button found")
                 alertButton.tap()
                 return true
             }
@@ -118,7 +131,7 @@ class FloatingWindowTests: XCTestCase {
         }
 
         app.buttons["FloatingPreferences"].click()
-        app.windows["Clocker"].toolbars.buttons["Preferences"].click()
+        app.windows["Clocker"].toolbars.buttons["Preferences Tab".localizedString()].click()
 
         let menubarDisplayQuery = app.tables.checkBoxes.matching(NSPredicate(format: "value == 1", ""))
         let menubarDisplayQueryCount = menubarDisplayQuery.count

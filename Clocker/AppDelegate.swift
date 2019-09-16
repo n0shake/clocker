@@ -57,6 +57,16 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
             Fabric.with([Crashlytics.self])
             checkIfRunFromApplicationsFolder()
         #endif
+
+        logCurrentLanguagePreferences()
+    }
+
+    // Help us priortize our localization efforts
+    private func logCurrentLanguagePreferences() {
+        let annotations = [
+            "Language": Locale.preferredLanguages.first ?? "en-US",
+        ]
+        Logger.log(object: annotations, for: "Locale")
     }
 
     public func applicationDockMenu(_: NSApplication) -> NSMenu? {
