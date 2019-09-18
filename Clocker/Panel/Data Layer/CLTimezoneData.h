@@ -39,7 +39,7 @@ typedef NS_ENUM(NSUInteger, CLTimezoneOverride) {
 @property (assign, nonatomic, readonly) CLTimezoneOverride overrideFormat;
 
 + (instancetype)getCustomObject:(NSData *)encodedData;
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithTimezoneInfo:(NSDictionary *)dictionary;
 
 - (void)setLabelForTimezone:(NSString *)customLabel;
 - (void)setIDForTimezone:(NSString *)uniqueID;

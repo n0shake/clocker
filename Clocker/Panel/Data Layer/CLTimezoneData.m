@@ -27,7 +27,7 @@
 
 @implementation CLTimezoneData
 
--(instancetype)initWithDictionary:(NSDictionary *)dictionary
+-(instancetype)initWithTimezoneInfo:(NSDictionary *)dictionary
 {
     self = [super init];
     
@@ -72,7 +72,7 @@
     {
         if ([encodedData isKindOfClass:[NSDictionary class]])
         {
-            CLTimezoneData *newObject = [[self alloc] initWithDictionary:(NSDictionary *)encodedData];
+            CLTimezoneData *newObject = [[self alloc] initWithTimezoneInfo:(NSDictionary *)encodedData];
             return newObject;
         }
         
