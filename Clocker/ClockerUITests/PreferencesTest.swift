@@ -63,9 +63,9 @@ class PreferencesTest: XCTestCase {
         addAPlace(place: "San Francisco", to: app)
         addAPlace(place: "Florida", to: app, shouldSleep: false) // Last elements don't need to sleep
 
-        XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Time Difference"].exists)
+        XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Time Difference".localizedString()].exists)
 
-        app.windows["Clocker"].checkBoxes["Sort by Time Difference"].click()
+        app.windows["Clocker"].checkBoxes["Sort by Time Difference".localizedString()].click()
 
         var actualLabels: [String] = []
         let newFormattedAddressQuery = app.windows["Clocker"].textFields
@@ -78,7 +78,7 @@ class PreferencesTest: XCTestCase {
 
         XCTAssertEqual(actualLabels, ["New Zealand", "Florida", "San Francisco"])
 
-        app.windows["Clocker"].checkBoxes["Sort by Time Difference"].click()
+        app.windows["Clocker"].checkBoxes["Sort by Time Difference".localizedString()].click()
 
         var actualReversedLabels: [String] = []
         let newReversedQuery = app.windows["Clocker"].textFields
@@ -99,9 +99,9 @@ class PreferencesTest: XCTestCase {
         app.tapMenubarIcon()
         app.tables["mainTableView"].typeKey(",", modifierFlags: .command)
 
-        XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Time Difference"].exists)
-        XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Label"].exists)
-        XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Name"].exists)
+        XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Time Difference".localizedString()].exists)
+        XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Label".localizedString()].exists)
+        XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Name".localizedString()].exists)
 
         var formattedAddress: [String] = []
 
@@ -115,8 +115,8 @@ class PreferencesTest: XCTestCase {
 
         formattedAddress.sort()
 
-        if let value = app.windows["Clocker"].checkBoxes["Sort by Name"].value as? Int, value == 0 {
-            app.windows["Clocker"].checkBoxes["Sort by Name"].click()
+        if let value = app.windows["Clocker"].checkBoxes["Sort by Name".localizedString()].value as? Int, value == 0 {
+            app.windows["Clocker"].checkBoxes["Sort by Name".localizedString()].click()
         }
 
         var newformattedAddress: [String] = []
@@ -132,9 +132,9 @@ class PreferencesTest: XCTestCase {
 
         app.windows["Clocker"].checkBoxes["SortButton"].click()
 
-        XCTAssertFalse(app.windows["Clocker"].checkBoxes["Sort by Time Difference"].exists)
-        XCTAssertFalse(app.windows["Clocker"].checkBoxes["Sort by Label"].exists)
-        XCTAssertFalse(app.windows["Clocker"].checkBoxes["Sort by Name"].exists)
+        XCTAssertFalse(app.windows["Clocker"].checkBoxes["Sort by Time Difference".localizedString()].exists)
+        XCTAssertFalse(app.windows["Clocker"].checkBoxes["Sort by Label".localizedString()].exists)
+        XCTAssertFalse(app.windows["Clocker"].checkBoxes["Sort by Name".localizedString()].exists)
     }
 
     func testSortingCitiesByCustomLabel() {
@@ -144,8 +144,10 @@ class PreferencesTest: XCTestCase {
         addAPlace(place: "Aurangabad", to: app)
         addAPlace(place: "Zimbabwe", to: app)
         addAPlace(place: "Portland", to: app, shouldSleep: false)
+        addAPlace(place: "Asia/Kolkata", to: app)
+        addAPlace(place: "Anywhere on Earth", to: app, shouldSleep: false)
 
-        XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Label"].exists)
+        XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Label".localizedString()].exists)
 
         var expectedLabels: [String] = []
 
@@ -159,8 +161,8 @@ class PreferencesTest: XCTestCase {
 
         expectedLabels.sort()
 
-        if let value = app.windows["Clocker"].checkBoxes["Sort by Label"].value as? Int, value == 0 {
-            app.windows["Clocker"].checkBoxes["Sort by Label"].click()
+        if let value = app.windows["Clocker"].checkBoxes["Sort by Label".localizedString()].value as? Int, value == 0 {
+            app.windows["Clocker"].checkBoxes["Sort by Label".localizedString()].click()
         }
 
         var actualLabels: [String] = []
@@ -176,7 +178,9 @@ class PreferencesTest: XCTestCase {
 
         deleteAPlace(place: "Aurangabad", for: app)
         deleteAPlace(place: "Zimbabwe", for: app)
-        deleteAPlace(place: "Portland", for: app, shouldSleep: false)
+        deleteAPlace(place: "Portland", for: app)
+        deleteAPlace(place: "Asia/Kolkata", for: app)
+        deleteAPlace(place: "Anywhere on Earth", for: app, shouldSleep: false)
     }
 
     func testSortingTimezonesByCustomLabel() {
@@ -187,7 +191,7 @@ class PreferencesTest: XCTestCase {
         addAPlace(place: "Asia/Kolkata", to: app)
         addAPlace(place: "Anywhere on Earth", to: app, shouldSleep: false)
 
-        XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Label"].exists)
+        XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Label".localizedString()].exists)
 
         var expectedLabels: [String] = []
 
@@ -201,8 +205,8 @@ class PreferencesTest: XCTestCase {
 
         expectedLabels.sort()
 
-        if let value = app.windows["Clocker"].checkBoxes["Sort by Label"].value as? Int, value == 0 {
-            app.windows["Clocker"].checkBoxes["Sort by Label"].click()
+        if let value = app.windows["Clocker"].checkBoxes["Sort by Label".localizedString()].value as? Int, value == 0 {
+            app.windows["Clocker"].checkBoxes["Sort by Label".localizedString()].click()
         }
 
         var actualLabels: [String] = []
@@ -234,7 +238,7 @@ class PreferencesTest: XCTestCase {
 
         sleep(2)
 
-        let maxCharacterCountPredicate = NSPredicate(format: "value like %@", "Only 50 characters allowed!")
+        let maxCharacterCountPredicate = NSPredicate(format: "value like %@", "Max Search Characters".localizedString())
         let currentSheets = app.sheets.firstMatch.staticTexts
         let maxCharacterQuery = currentSheets.matching(maxCharacterCountPredicate)
 
@@ -419,10 +423,24 @@ extension XCTestCase {
     }
 
     func deleteAPlace(place: String, for app: XCUIApplication, shouldSleep: Bool = true) {
+        let userPrefferedLanguage = Locale.preferredLanguages.first ?? "en-US"
+        if !userPrefferedLanguage.lowercased().contains("en") {
+            // We're testing in a different user language. We can't do string matching here.
+            // Delete the last row
+            let rowCount = app.tables["TimezoneTableView"].tableRows.count
+            let rowToDelete = app.tables["TimezoneTableView"].tableRows.element(boundBy: rowCount - 1)
+            deleteAtRow(rowToDelete, for: app, shouldSleep: shouldSleep)
+            return
+        }
+
         let matchPredicate = NSPredicate(format: "value contains %@", place)
         let row = app.tables["TimezoneTableView"].textFields.matching(matchPredicate).firstMatch
-        row.click()
-        row.typeKey(XCUIKeyboardKey.delete, modifierFlags: XCUIElement.KeyModifierFlags())
+        deleteAtRow(row, for: app, shouldSleep: shouldSleep)
+    }
+
+    private func deleteAtRow(_ rowToDelete: XCUIElement, for _: XCUIApplication, shouldSleep: Bool) {
+        rowToDelete.click()
+        rowToDelete.typeKey(XCUIKeyboardKey.delete, modifierFlags: XCUIElement.KeyModifierFlags())
         if shouldSleep {
             sleep(2)
         }

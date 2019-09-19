@@ -36,7 +36,7 @@ class NetworkDisconnectionTests: XCTestCase {
         sleep(1)
         XCTAssertTrue(app.sheets.staticTexts["ErrorPlaceholder"].exists)
 
-        app.sheets.buttons["Close"].click()
+        app.sheets.buttons["Close Button Title".localizedString()].click()
     }
 
     func testFetchingATimezone() {
@@ -66,6 +66,6 @@ class NetworkDisconnectionTests: XCTestCase {
 
         sleep(1)
         XCTAssertTrue(app.sheets.staticTexts["ErrorPlaceholder"].exists)
-        app.sheets.buttons["Close"].click()
+        app.sheets.buttons["Close Button Title".localizedString()].click()
     }
 }

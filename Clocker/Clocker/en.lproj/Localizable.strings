@@ -46,9 +46,9 @@
 "Sort by Name" = "Sort by Name";
 "Sort by Label" = "Sort by Label";
 "Search Field Placeholder" = "Enter a city, state or country name";
-"No Timezone Selected Error Message" = "Please select a timezone!";
-"Max Timezones Selected Error Message" = "Maximum 100 timezones allowed!";
-"Max Search Characters Error Message" = "Only 50 characters allowed!";
+"No Timezone Selected" = "Please select a timezone!";
+"Max Timezones Selected" = "Maximum 100 timezones allowed!";
+"Max Search Characters" = "Only 50 characters allowed!";
 "Add Button Title" = "Add";
 "Close Button Title" = "Close";
 

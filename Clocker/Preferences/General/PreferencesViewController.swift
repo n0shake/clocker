@@ -7,7 +7,7 @@ struct PreferencesConstants {
                                                                   comment: "Message shown when the user taps on Add without selecting a timezone")
     static let maxTimezonesErrorMessage = NSLocalizedString("Max Timezones Selected",
                                                             comment: "Max Timezones Error Message")
-    static let maxCharactersAllowed = NSLocalizedString("Max Search Characters Error Message",
+    static let maxCharactersAllowed = NSLocalizedString("Max Search Characters",
                                                         comment: "Max Character Count Allowed Error Message")
     static let noInternetConnectivityError = "You're offline, maybe?"
     static let tryAgainMessage = "Try again, maybe?"

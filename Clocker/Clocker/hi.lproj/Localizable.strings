@@ -6,6 +6,7 @@
 
 */
 
+"CFBundleDisplayName" = "विश्व का समय";
 "Thank you for helping make Clocker even better!" = "Thank you for helping make Clocker even better!";
 "iRateMessageTitle" = "Rate %@";
 "iRateAppMessage" = "If you enjoy using %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
@@ -46,8 +47,8 @@
 "Sort by Name" = "नाम द्वारा सॉर्ट करें";
 "Sort by Label" = "लेबल द्वारा सॉर्ट करें";
 "Search Field Placeholder" = "Enter a city, state or country name";
-"No Timezone Selected Error Message" = "Please select a timezone!";
-"Max Timezones Selected Error Message" = "Maximum 100 timezones allowed!";
-"Max Search Characters Error Message" = "Only 50 characters allowed!";
+"No Timezone Selected" = "Please select a timezone!";
+"Max Timezones Selected" = "Maximum 100 timezones allowed!";
+"Max Search Characters" = "Only 50 characters allowed!";
 "Add Button Title" = "ऐड ";
 "Close Button Title" = "बंद करे";
