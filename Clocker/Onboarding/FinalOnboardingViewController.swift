@@ -8,7 +8,7 @@ struct EmailSignupConstants {
     static let CLOperatingSystemVersion = "OS"
     static let CLClockerVersion = "Clocker version"
     static let CLAppFeedbackDateProperty = "date"
-    static let CLAppLanguageKey = "Language"
+    static let CLAppLanguageKey = "language"
 }
 
 class FinalOnboardingViewController: NSViewController {
@@ -59,15 +59,15 @@ class FinalOnboardingViewController: NSViewController {
         return dateFormatter.string(from: Date())
     }
 
-    private func extraData() -> [String: String] {
+    private func extraData() -> [String: String]? {
         guard let validEmail = emailValidator.validate(field: emailTextField) else {
             print("Not sending up email because it was invalid")
-            return [:]
+            return nil
         }
 
         guard let shortVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
             let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String else {
-            return [:]
+            return nil
         }
         let operatingSystem = ProcessInfo.processInfo.operatingSystemVersion
         let osVersion = "\(operatingSystem.majorVersion).\(operatingSystem.minorVersion).\(operatingSystem.patchVersion)"
@@ -83,9 +83,8 @@ class FinalOnboardingViewController: NSViewController {
     }
 
     func sendUpEmailIfValid() {
-        let annotations = extraData()
-        guard let identifier = serialNumber else {
-            assertionFailure("Serial Identifier was unexpectedly nil")
+        guard let identifier = serialNumber, let annotations = extraData() else {
+            // Either serial number wasn't present or email wasn't added. Abort.
             return
         }
 
