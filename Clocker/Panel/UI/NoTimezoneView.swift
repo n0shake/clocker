@@ -28,8 +28,10 @@ class NoTimezoneView: NSView {
                                                      height: 200))
         messageField.wantsLayer = true
         messageField.setAccessibilityIdentifier("NoTimezoneMessage")
-        messageField.placeholderString = "No places added"
-        messageField.stringValue = "No places added"
+        messageField.placeholderString = NSLocalizedString("No places added",
+                                                           comment: "Subtitle for no places added")
+        messageField.stringValue = NSLocalizedString("No places added",
+                                                     comment: "Subtitle for no places added")
         messageField.isBordered = false
         messageField.isEditable = false
         messageField.maximumNumberOfLines = 2

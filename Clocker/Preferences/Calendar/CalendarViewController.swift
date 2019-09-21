@@ -100,8 +100,8 @@ class CalendarViewController: ParentViewController {
         noAccessView.isHidden = hasCalendarAccess
 
         if hasNotDeterminedCalendarAccess {
-            informationField.stringValue = "Clocker is more useful when it can display events from your calendars."
-            setGrantAccess(title: "Grant Access")
+            informationField.stringValue = "Clocker is more useful when it can display events from your calendars.".localized()
+            setGrantAccess(title: "Grant Access".localized())
         } else if hasDeniedCalendarAccess {
             // The informationField text is taken care off in the XIB. Just set the grant button to empty because we can't do anything.
             setGrantAccess(title: CLEmptyString)
@@ -127,8 +127,8 @@ class CalendarViewController: ParentViewController {
     }
 
     private func onCalendarAccessDenial() {
-        informationField.stringValue = "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy."
-        setGrantAccess(title: "Launch Preferences")
+        informationField.stringValue = "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy.".localized()
+        setGrantAccess(title: "Launch Preferences".localized())
 
         // Remove upcoming event view if possible
         UserDefaults.standard.set("NO", forKey: CLShowUpcomingEventView)
@@ -209,14 +209,14 @@ class CalendarViewController: ParentViewController {
 
     private func setup() {
         // Grant access button's text color is taken care above.
-        headerLabel.stringValue = "Upcoming Event View Options"
-        upcomingEventView.stringValue = "Show Upcoming Event View"
-        allDayMeetingsLabel.stringValue = "Show All Day Meetings"
-        showNextMeetingLabel.stringValue = "Show Next Meeting Title in Menubar"
-        truncateTextLabel.stringValue = "Truncate menubar text longer than"
-        charactersField.stringValue = "characters"
-        showEventsFromLabel.stringValue = "Show events from"
-        truncateAccessoryLabel.stringValue = "If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\""
+        headerLabel.stringValue = "Upcoming Event View Options".localized()
+        upcomingEventView.stringValue = "Show Upcoming Event View".localized()
+        allDayMeetingsLabel.stringValue = "Show All Day Meetings".localized()
+        showNextMeetingLabel.stringValue = "Show Next Meeting Title in Menubar".localized()
+        truncateTextLabel.stringValue = "Truncate menubar text longer than".localized()
+        charactersField.stringValue = "characters".localized()
+        showEventsFromLabel.stringValue = "Show events from".localized()
+        truncateAccessoryLabel.stringValue = "If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"".localized()
 
         [headerLabel, upcomingEventView, allDayMeetingsLabel,
          showNextMeetingLabel, nextMeetingAccessoryLabel, truncateTextLabel,

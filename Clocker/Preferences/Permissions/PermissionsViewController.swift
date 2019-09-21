@@ -90,7 +90,7 @@ class PermissionsViewController: ParentViewController {
             calendarButton.title = NSLocalizedString("Grant Button Text",
                                                      comment: "Grant Button Text")
         } else {
-            calendarButton.title = "Unexpected"
+            calendarButton.title = "Unexpected".localized()
         }
 
         if EventCenter.sharedCenter().reminderAccessGranted() {
@@ -103,7 +103,7 @@ class PermissionsViewController: ParentViewController {
             remindersButton.title = NSLocalizedString("Grant Button Text",
                                                       comment: "Grant Button Text")
         } else {
-            remindersButton.title = "Unexpected"
+            remindersButton.title = "Unexpected".localized()
         }
     }
 

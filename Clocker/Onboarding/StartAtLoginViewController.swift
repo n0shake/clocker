@@ -14,11 +14,11 @@ class StartAtLoginViewController: NSViewController {
     }
 
     private func setup() {
-        appName.stringValue = "Launch at Login"
-        onboardingType.stringValue = "This can be configured later in Clocker Preferences."
+        appName.stringValue = "Launch at Login".localized()
+        onboardingType.stringValue = "This can be configured later in Clocker Preferences.".localized()
 
         // स्टार्टअप पर स्वचालित रूप से ऐप खोलना चाहिए
-        accessoryLabel.stringValue = "Should Clocker open automatically on startup?"
+        accessoryLabel.stringValue = "Should Clocker open automatically on startup?".localized()
         privacyLabel.stringValue = " "
 
         [privacyLabel, accessoryLabel, onboardingType, appName].forEach { $0?.textColor = Themer.shared().mainTextColor() }

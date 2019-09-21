@@ -56,3 +56,96 @@
 "Add Button Title" = "Add";
 "Close Button Title" = "Close";
 
+// Onboarding
+"Open Clocker At Login" = "Open Clocker At Login";
+"Launch Clocker" = "Launch Clocker";
+
+// Welcome Onboarding
+"It only takes 3 steps to set up Clocker." = "It only takes 3 steps to setup Clocker.";
+"Get Started" = "Get Started";
+
+// Permissions
+"Calendar Access Title" = "Calendar Access";
+"Reminders Access Title" = "Reminders Access";
+"Later Config Description" = "These can be configured later in System Preferences.";
+"Back" = "Back";
+"Continue" = "Continue";
+"Clocker is more useful when it can display events from your calendars." = "Clocker is more useful when it can display events from your calendars.";
+"Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy.";
+"Launch Preferences" = "Launch Preferences";
+"Grant Access" = "Grant Access";
+"Upcoming events from your personal and shared calendars can be shown in the menubar and the panel." = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.";
+"Granted" = "Granted";
+"Denied" = "Denied";
+"Grant" = "Grant";
+"Unexpected" = "Unexpected";
+
+// Onboarding Search
+"Quick Add Locations" = "Quick Add Locations";
+"More search options in Clocker Preferences." = "More search options in Clocker Preferences.";
+"Search Locations" = "Search Locations";
+
+// Start at Login
+"Launch at Login" = "Launch at Login";
+"This can be configured later in Clocker Preferences." = "This can be configured later in Clocker Preferences.";
+"Should Clocker open automatically on startup?" = "Should Clocker open automatically on startup?";
+
+// Final Onboarding Screen
+"You're all set!" = "You're all set!";
+"Thank you for the details." = "Thank you for the details.";
+"You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences." = "You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences.";
+"If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!";
+
+// Appearance Tab
+"Panel Theme" = "Panel Theme";
+"Favourite a timezone to enable menubar display options." = "Favourite a timezone to enable menubar display options.";
+"Main Panel Options" = "Main Panel Options";
+"Time Format" = "Time Format";
+"Day Display Options" = "Day Display Options";
+"Show Future Slider" = "Show Future Slider";
+"Show Sunrise/Sunset" = "Show Sunrise/Sunset";
+"Display the time in seconds" = "Display the time in seconds";
+"Larger Text" = "Larger Text";
+"Future Slider Range" = "Future Slider Range";
+"Include Date" = "Include Date";
+"Include Day" = "Include Day";
+"Include Place Name" = "Include Place Name";
+"Menubar Display Options" = "Menubar Display Options";
+"Menubar Mode" = "Menubar Mode";
+
+// Empty View
+"No places added" = "No places added";
+
+// Panel
+"No upcoming event." = "No upcoming event.";
+"You have no events scheduled for tomorrow." = "You have no events scheduled for tomorrow.";
+
+// Review
+"Enjoy using Clocker?" = "Enjoy using Clocker?";
+
+// App Feedback
+"Tell us what you think!" = "Tell us what you think!";
+"Contact Information (Optional)" = "Contact Information (Optional)";
+"Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!" = "Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!";
+
+// About View Screen
+"Feedback is always welcome:" = "Feedback is always welcome:";
+
+// Calendars View
+"Upcoming Event View Options" = "Upcoming Event View Options";
+"Show Upcoming Event View" = "Show Upcoming Event View";
+"Show All Day Meetings" = "Show All Day Meetings";
+"Show Next Meeting Title in Menubar" = "Show Next Meeting Title in Menubar";
+"Truncate menubar text longer than" = "Truncate menubar text longer than";
+"characters" = "characters";
+"Show events from" = "Show events from";
+"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"";
+
+// Notes Popover
+"Reminder Set" = "Reminder Set";
+"Successfully set." = "Successfully set.";
+
+// Errors
+"You're offline, maybe?" = "You're offline, maybe?";
+"Try again, maybe?" =  "Try again, maybe?";
+"The Internet connection appears to be offline." = "The Internet connection appears to be offline.";

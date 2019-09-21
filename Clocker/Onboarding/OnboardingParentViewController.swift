@@ -143,7 +143,7 @@ class OnboardingParentViewController: NSViewController {
                    options: .slideLeft) {
             self.backButton.tag = OnboardingType.permissions.rawValue
             self.positiveButton.tag = OnboardingType.launchAtLogin.rawValue
-            self.positiveButton.title = "Open Clocker At Login"
+            self.positiveButton.title = "Open Clocker At Login".localized()
             self.negativeButton.isHidden = false
         }
     }
@@ -182,7 +182,7 @@ class OnboardingParentViewController: NSViewController {
                    options: .slideLeft) {
             self.backButton.tag = OnboardingType.search.rawValue
             self.positiveButton.tag = OnboardingType.final.rawValue
-            self.positiveButton.title = "Launch Clocker"
+            self.positiveButton.title = "Launch Clocker".localized()
         }
     }
 
@@ -248,7 +248,7 @@ class OnboardingParentViewController: NSViewController {
                    options: .slideRight) {
             self.positiveButton.tag = OnboardingType.launchAtLogin.rawValue
             self.backButton.tag = OnboardingType.permissions.rawValue
-            self.positiveButton.title = "Open Clocker At Login"
+            self.positiveButton.title = "Open Clocker At Login".localized()
             self.negativeButton.isHidden = false
         }
     }

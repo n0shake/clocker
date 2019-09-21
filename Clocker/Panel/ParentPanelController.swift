@@ -788,7 +788,8 @@ class ParentPanelController: NSWindowController {
             return
         }
 
-        nextEventLabel.stringValue = "No upcoming event."
+        nextEventLabel.stringValue = NSLocalizedString("No upcoming event.",
+                                                       comment: "Title when there's no upcoming event")
         calendarColorView.layer?.backgroundColor = NSColor(red: 97 / 255.0, green: 194 / 255.0, blue: 80 / 255.0, alpha: 1.0).cgColor
 
         let events = eventCenter.filteredEvents[NSCalendar.autoupdatingCurrent.startOfDay(for: tomorrowDate)]
@@ -799,7 +800,8 @@ class ParentPanelController: NSWindowController {
         } else if let first = events?.first?.event.title {
             setCalendarButtonTitle(buttonTitle: "\(first) coming up.")
         } else {
-            setCalendarButtonTitle(buttonTitle: "You have no events scheduled for tomorrow.")
+            setCalendarButtonTitle(buttonTitle: NSLocalizedString("You have no events scheduled for tomorrow.",
+                                                                  comment: "Title when there's no event scheduled for tomorrow"))
         }
     }
 
@@ -856,7 +858,8 @@ class ParentPanelController: NSWindowController {
     private func updateReviewView() {
         reviewView.isHidden = true
         showReviewCell = false
-        leftField.stringValue = "Enjoy using Clocker?"
+        leftField.stringValue = NSLocalizedString("Enjoy using Clocker",
+                                                  comment: "Title asking users if they like the app")
 
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center

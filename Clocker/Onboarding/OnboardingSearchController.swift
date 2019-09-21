@@ -180,7 +180,8 @@ class OnboardingSearchController: NSViewController {
                         self.accessoryLabel.stringValue = "Added \(filteredAddress)."
                         self.undoButton.isHidden = false
 
-                        Logger.log(object: ["Place Name": filteredAddress], for: "Added Timezone while Onboarding")
+                        Logger.log(object: ["Place Name": filteredAddress],
+                                   for: "Added Timezone while Onboarding")
                     }
 
                     // Cleanup.
@@ -207,10 +208,10 @@ class OnboardingSearchController: NSViewController {
                                           "Sydney NSW", "Berlin"]
 
     private func setup() {
-        appName.stringValue = "Quick Add Locations"
-        onboardingTypeLabel.stringValue = "More search options in Clocker Preferences."
+        appName.stringValue = "Quick Add Locations".localized()
+        onboardingTypeLabel.stringValue = "More search options in Clocker Preferences.".localized()
         setInfoLabel(CLEmptyString)
-        searchBar.placeholderString = "Search Locations"
+        searchBar.placeholderString = "Search Locations".localized()
 
         resultsTableView.backgroundColor = Themer.shared().mainBackgroundColor()
         resultsTableView.enclosingScrollView?.backgroundColor = Themer.shared().mainBackgroundColor()

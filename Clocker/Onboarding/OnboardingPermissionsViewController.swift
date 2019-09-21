@@ -46,7 +46,7 @@ class OnboardingPermissionsViewController: NSViewController {
 
         calendarHeaderLabel.stringValue = NSLocalizedString("Calendar Access Title",
                                                             comment: "Title for Calendar access label")
-        calendarDetailLabel.stringValue = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel."
+        calendarDetailLabel.stringValue = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.".localized()
 
         privacyLabel.stringValue = CLEmptyString
 
@@ -67,23 +67,23 @@ class OnboardingPermissionsViewController: NSViewController {
          } */
 
         if EventCenter.sharedCenter().calendarAccessGranted() {
-            calendarGrantButton.title = "Granted"
+            calendarGrantButton.title = "Granted".localized()
         } else if EventCenter.sharedCenter().calendarAccessDenied() {
-            calendarGrantButton.title = "Denied"
+            calendarGrantButton.title = "Denied".localized()
         } else if EventCenter.sharedCenter().calendarAccessNotDetermined() {
-            calendarGrantButton.title = "Grant"
+            calendarGrantButton.title = "Grant".localized()
         } else {
-            calendarGrantButton.title = "Unexpected"
+            calendarGrantButton.title = "Unexpected".localized()
         }
 
         if EventCenter.sharedCenter().reminderAccessGranted() {
-            reminderGrantButton.title = "Granted"
+            reminderGrantButton.title = "Granted".localized()
         } else if EventCenter.sharedCenter().reminderAccessDenied() {
-            reminderGrantButton.title = "Denied"
+            reminderGrantButton.title = "Denied".localized()
         } else if EventCenter.sharedCenter().reminderAccessNotDetermined() {
-            reminderGrantButton.title = "Grant"
+            reminderGrantButton.title = "Grant".localized()
         } else {
-            reminderGrantButton.title = "Unexpected"
+            reminderGrantButton.title = "Unexpected".localized()
         }
     }
 
@@ -100,7 +100,7 @@ class OnboardingPermissionsViewController: NSViewController {
                     self.calendarActivityIndicator.stopAnimation(nil)
 
                     if granted {
-                        self.calendarGrantButton.title = "Granted"
+                        self.calendarGrantButton.title = "Granted".localized()
 
                         self.view.window?.orderBack(nil)
                         NSApp.activate(ignoringOtherApps: true)
@@ -114,9 +114,9 @@ class OnboardingPermissionsViewController: NSViewController {
                 }
             })
         } else if eventCenter.calendarAccessGranted() {
-            calendarGrantButton.title = "Granted"
+            calendarGrantButton.title = "Granted".localized()
         } else {
-            calendarGrantButton.title = "Denied"
+            calendarGrantButton.title = "Denied".localized()
         }
     }
 
@@ -137,16 +137,16 @@ class OnboardingPermissionsViewController: NSViewController {
                         self.view.window?.orderBack(nil)
                         NSApp.activate(ignoringOtherApps: true)
 
-                        self.reminderGrantButton.title = "Granted"
+                        self.reminderGrantButton.title = "Granted".localized()
                     }
                 } else {
                     Logger.log(object: ["Reminder Access Not Granted": "YES"], for: "Reminder Access Not Granted")
                 }
             })
         } else if eventCenter.reminderAccessGranted() {
-            reminderGrantButton.title = "Granted"
+            reminderGrantButton.title = "Granted".localized()
         } else {
-            reminderGrantButton.title = "Denied"
+            reminderGrantButton.title = "Denied".localized()
         }
     }
 }

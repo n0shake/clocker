@@ -140,7 +140,7 @@ class AboutViewController: ParentViewController {
     @IBOutlet var feedbackLabel: NSTextField!
 
     private func setup() {
-        feedbackLabel.stringValue = "Feedback is always welcome:"
+        feedbackLabel.stringValue = "Feedback is always welcome:".localized()
         feedbackLabel.textColor = Themer.shared().mainTextColor()
         versionField.textColor = Themer.shared().mainTextColor()
         underlineTextForActionButton()

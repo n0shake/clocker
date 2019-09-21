@@ -18,7 +18,7 @@ class AppearanceViewController: ParentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        informationLabel.stringValue = "Favourite a timezone to enable menubar display options."
+        informationLabel.stringValue = "Favourite a timezone to enable menubar display options.".localized()
         informationLabel.textColor = NSColor.secondaryLabelColor
 
         informationLabel.setAccessibilityIdentifier("InformationLabel")
@@ -97,21 +97,20 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet var menubarModeLabel: NSTextField!
 
     private func setup() {
-        headerLabel.stringValue = "Main Panel Options"
-        timeFormatLabel.stringValue = "Time Format"
-        panelTheme.stringValue = NSLocalizedString("Panel Theme",
-                                                   comment: "String for theme")
-        dayDisplayOptionsLabel.stringValue = "Day Display Options"
-        showSliderLabel.stringValue = "Show Future Slider"
-        showSunriseLabel.stringValue = "Show Sunrise/Sunset"
-        showSecondsLabel.stringValue = "Display the time in seconds"
-        largerTextLabel.stringValue = "Larger Text"
-        futureSliderRangeLabel.stringValue = "Future Slider Range"
-        includeDateLabel.stringValue = "Include Date"
-        includeDayLabel.stringValue = "Include Day"
-        includePlaceLabel.stringValue = "Include Place Name"
-        menubarDisplayOptionsLabel.stringValue = "Menubar Display Options"
-        menubarModeLabel.stringValue = "Menubar Mode"
+        headerLabel.stringValue = "Main Panel Options".localized()
+        timeFormatLabel.stringValue = "Time Format".localized()
+        panelTheme.stringValue = "Panel Theme".localized()
+        dayDisplayOptionsLabel.stringValue = "Day Display Options".localized()
+        showSliderLabel.stringValue = "Show Future Slider".localized()
+        showSunriseLabel.stringValue = "Show Sunrise/Sunset".localized()
+        showSecondsLabel.stringValue = "Display the time in seconds".localized()
+        largerTextLabel.stringValue = "Larger Text".localized()
+        futureSliderRangeLabel.stringValue = "Future Slider Range".localized()
+        includeDateLabel.stringValue = "Include Date".localized()
+        includeDayLabel.stringValue = "Include Day".localized()
+        includePlaceLabel.stringValue = "Include Place Name".localized()
+        menubarDisplayOptionsLabel.stringValue = "Menubar Display Options".localized()
+        menubarModeLabel.stringValue = "Menubar Mode".localized()
 
         [headerLabel, timeFormatLabel, panelTheme,
          dayDisplayOptionsLabel, showSliderLabel, showSecondsLabel,

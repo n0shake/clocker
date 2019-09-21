@@ -9,9 +9,9 @@ struct PreferencesConstants {
                                                             comment: "Max Timezones Error Message")
     static let maxCharactersAllowed = NSLocalizedString("Max Search Characters",
                                                         comment: "Max Character Count Allowed Error Message")
-    static let noInternetConnectivityError = "You're offline, maybe?"
-    static let tryAgainMessage = "Try again, maybe?"
-    static let offlineErrorMessage = "The Internet connection appears to be offline."
+    static let noInternetConnectivityError = "You're offline, maybe?".localized()
+    static let tryAgainMessage = "Try again, maybe?".localized()
+    static let offlineErrorMessage = "The Internet connection appears to be offline.".localized()
     static let hotKeyPathIdentifier = "values.globalPing"
 }
 

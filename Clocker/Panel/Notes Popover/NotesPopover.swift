@@ -422,8 +422,8 @@ class NotesPopover: NSViewController {
 
     private func showSuccessMessage() {
         let reminderNotification = NSUserNotification()
-        reminderNotification.title = "Reminder Set"
-        reminderNotification.subtitle = "Successfully set."
+        reminderNotification.title = "Reminder Set".localized()
+        reminderNotification.subtitle = "Successfully set.".localized()
 
         NSUserNotificationCenter.default.scheduleNotification(reminderNotification)
     }

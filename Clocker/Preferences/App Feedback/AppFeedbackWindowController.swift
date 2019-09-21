@@ -209,9 +209,9 @@ class AppFeedbackWindowController: NSWindowController {
     @IBOutlet var accessoryInfo: NSTextField!
 
     private func setup() {
-        headerLabel.stringValue = "Tell us what you think!"
-        contactBox.title = "Contact Information (Optional)"
-        accessoryInfo.stringValue = "Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!"
+        headerLabel.stringValue = "Tell us what you think!".localized()
+        contactBox.title = "Contact Information (Optional)".localized()
+        accessoryInfo.stringValue = "Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!".localized()
 
         [headerLabel, accessoryInfo].forEach { $0?.textColor = Themer.shared().mainTextColor() }
 

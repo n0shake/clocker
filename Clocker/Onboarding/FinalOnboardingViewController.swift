@@ -39,11 +39,11 @@ class FinalOnboardingViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.stringValue = "You're all set!"
-        subtitleLabel.stringValue = "Thank you for the details."
-        accesoryLabel.stringValue = "You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences."
+        titleLabel.stringValue = "You're all set!".localized()
+        subtitleLabel.stringValue = "Thank you for the details.".localized()
+        accesoryLabel.stringValue = "You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences.".localized()
         accessoryImageView.image = Themer.shared().menubarOnboardingImage()
-        emailExplanationLabel.stringValue = "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!"
+        emailExplanationLabel.stringValue = "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!".localized()
     }
 
     override func viewWillAppear() {
