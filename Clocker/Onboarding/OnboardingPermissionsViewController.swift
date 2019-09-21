@@ -35,13 +35,17 @@ class OnboardingPermissionsViewController: NSViewController {
     }
 
     private func setup() {
-        appLabel.stringValue = "Permissions"
-        onboardingTypeLabel.stringValue = "These can be configured later in System Preferences."
+        appLabel.stringValue = NSLocalizedString("Permissions Tab",
+                                                 comment: "Title for Permissions screen")
+        onboardingTypeLabel.stringValue = NSLocalizedString("Later Config Description",
+                                                            comment: "Describing we can change the options later in System Preferences")
 
-        reminderHeaderLabel.stringValue = "Reminders Access"
+        reminderHeaderLabel.stringValue = NSLocalizedString("Reminders Access Title",
+                                                            comment: "Title for Reminders Access Label")
         reminderDetailLabel.stringValue = "Set reminders in the timezone of the location of your choice. Your reminders are stored in the default Reminders app. "
 
-        calendarHeaderLabel.stringValue = "Calendar Access"
+        calendarHeaderLabel.stringValue = NSLocalizedString("Calendar Access Title",
+                                                            comment: "Title for Calendar access label")
         calendarDetailLabel.stringValue = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel."
 
         privacyLabel.stringValue = CLEmptyString

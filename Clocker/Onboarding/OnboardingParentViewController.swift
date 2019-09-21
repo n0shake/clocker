@@ -27,7 +27,7 @@ class OnboardingParentViewController: NSViewController {
 
     private lazy var startupManager = StartupManager()
 
-    private lazy var welcomeVC = (storyboard?.instantiateController(withIdentifier: .welcomeIdentifier) as? WelcomeViewController)
+    private lazy var welcomeVC = (storyboard?.instantiateController(withIdentifier: .welcomeIdentifier) as? OnboardingWelcomeViewController)
 
     private lazy var permissionsVC = (storyboard?.instantiateController(withIdentifier: .onboardingPermissionsIdentifier) as? OnboardingPermissionsViewController)
 
@@ -61,7 +61,10 @@ class OnboardingParentViewController: NSViewController {
     private func setupUI() {
         setIdentifiersForTests()
 
-        positiveButton.title = "Get Started"
+        positiveButton.title = NSLocalizedString("Get Started",
+                                                 comment: "Title for Welcome View Controller's Continue Button")
+        backButton.title = NSLocalizedString("Back",
+                                             comment: "Button title for going back to the previous screen")
         positiveButton.tag = OnboardingType.welcome.rawValue
         backButton.tag = OnboardingType.welcome.rawValue
 
@@ -89,7 +92,8 @@ class OnboardingParentViewController: NSViewController {
                    options: .slideLeft) {
             self.positiveButton.tag = OnboardingType.search.rawValue
             self.backButton.tag = OnboardingType.launchAtLogin.rawValue
-            self.positiveButton.title = "Continue"
+            self.positiveButton.title = NSLocalizedString("Continue",
+                                                          comment: "Continue Button Title")
             self.negativeButton.isHidden = true
         }
     }
@@ -120,7 +124,8 @@ class OnboardingParentViewController: NSViewController {
                    to: toViewController,
                    options: .slideLeft) {
             self.positiveButton.tag = OnboardingType.permissions.rawValue
-            self.positiveButton.title = "Continue"
+            self.positiveButton.title = NSLocalizedString("Continue",
+                                                          comment: "Continue Button Title")
             self.backButton.isHidden = false
         }
     }
@@ -158,7 +163,8 @@ class OnboardingParentViewController: NSViewController {
                    options: .slideLeft) {
             self.backButton.tag = OnboardingType.launchAtLogin.rawValue
             self.positiveButton.tag = OnboardingType.search.rawValue
-            self.positiveButton.title = "Continue"
+            self.positiveButton.title = NSLocalizedString("Continue",
+                                                          comment: "Continue Button Title")
             self.negativeButton.isHidden = true
         }
     }
@@ -225,7 +231,8 @@ class OnboardingParentViewController: NSViewController {
                    options: .slideRight) {
             self.positiveButton.tag = OnboardingType.search.rawValue
             self.backButton.tag = OnboardingType.launchAtLogin.rawValue
-            self.positiveButton.title = "Continue"
+            self.positiveButton.title = NSLocalizedString("Continue",
+                                                          comment: "Continue Button Title")
             self.negativeButton.isHidden = true
         }
     }
@@ -260,7 +267,8 @@ class OnboardingParentViewController: NSViewController {
             self.positiveButton.tag = OnboardingType.permissions.rawValue
             self.backButton.tag = OnboardingType.welcome.rawValue
             self.negativeButton.isHidden = true
-            self.positiveButton.title = "Continue"
+            self.positiveButton.title = NSLocalizedString("Continue",
+                                                          comment: "Continue Button Title")
         }
     }
 
@@ -275,7 +283,8 @@ class OnboardingParentViewController: NSViewController {
                    options: .slideRight) {
             self.positiveButton.tag = OnboardingType.welcome.rawValue
             self.backButton.isHidden = true
-            self.positiveButton.title = "Get Started"
+            self.positiveButton.title = NSLocalizedString("Get Started",
+                                                          comment: "Title for Welcome View Controller's Continue Button")
         }
     }
 

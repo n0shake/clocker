@@ -17,6 +17,7 @@ class StartAtLoginViewController: NSViewController {
         appName.stringValue = "Launch at Login"
         onboardingType.stringValue = "This can be configured later in Clocker Preferences."
 
+        // स्टार्टअप पर स्वचालित रूप से ऐप खोलना चाहिए
         accessoryLabel.stringValue = "Should Clocker open automatically on startup?"
         privacyLabel.stringValue = " "
 

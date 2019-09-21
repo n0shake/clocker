@@ -52,3 +52,17 @@
 "Max Search Characters" = "Only 50 characters allowed!";
 "Add Button Title" = "ऐड ";
 "Close Button Title" = "बंद करे";
+
+// Welcome Onboarding
+"It only takes 3 steps to set up Clocker." = "बस तीन स्टेप् और एप्लिकेशन तैयार।";
+"Get Started" = "शुरु करे";
+
+// Permissions
+"Calendar Access Title" = "कैलेंडर एक्सेस";
+"Reminders Access Title" = "रिमाइंडर एक्सेस";
+"Later Config Description" = "इन्हें बाद में सिस्टम प्राथमिकता में कॉन्फ़िगर किया जा सकता है।";
+"Back" = "वापस";
+"Continue" = "जारी रखें";
+
+// Appearance Tab
+"Panel Theme" = "प्रकटन";

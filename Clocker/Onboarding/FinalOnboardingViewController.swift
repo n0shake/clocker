@@ -8,6 +8,7 @@ struct EmailSignupConstants {
     static let CLOperatingSystemVersion = "OS"
     static let CLClockerVersion = "Clocker version"
     static let CLAppFeedbackDateProperty = "date"
+    static let CLAppLanguageKey = "Language"
 }
 
 class FinalOnboardingViewController: NSViewController {
@@ -77,6 +78,7 @@ class FinalOnboardingViewController: NSViewController {
             EmailSignupConstants.CLOperatingSystemVersion: osVersion,
             EmailSignupConstants.CLClockerVersion: versionInfo,
             EmailSignupConstants.CLAppFeedbackDateProperty: todaysDate(),
+            EmailSignupConstants.CLAppLanguageKey: Locale.preferredLanguages.first ?? "en-US",
         ]
     }
 

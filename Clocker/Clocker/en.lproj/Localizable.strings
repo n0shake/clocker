@@ -32,6 +32,10 @@
 "Denied Button Text" = "Denied";
 "Grant Button Text" = "Grant";
 
+// Welcome Onboarding
+"It only takes 3 steps to setup Clocker." = "It only takes 3 steps to setup Clocker.";
+"Get Started" = "Get Started";
+
 // Tab Item Titles
 "Preferences Tab" = "Preferences";
 "Appearance Tab" = "Appearance";

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fde-UX-327">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -102,10 +101,10 @@ DQ
             </objects>
             <point key="canvasLocation" x="814" y="175"/>
         </scene>
-        <!--Welcome View Controller-->
+        <!--Onboarding Welcome View Controller-->
         <scene sceneID="Xhh-wb-YNe">
             <objects>
-                <viewController storyboardIdentifier="welcomeVC" id="AlZ-fA-HYH" customClass="WelcomeViewController" customModule="Clocker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcomeVC" id="AlZ-fA-HYH" customClass="OnboardingWelcomeViewController" customModule="Clocker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="65Q-Jl-OEb">
                         <rect key="frame" x="0.0" y="0.0" width="436" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -465,7 +464,7 @@ DQ
                                 <rect key="frame" x="20" y="49" width="396" height="160"/>
                                 <clipView key="contentView" id="XpR-1t-AQy">
                                     <rect key="frame" x="0.0" y="0.0" width="396" height="160"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="33" rowSizeStyle="automatic" viewBased="YES" id="30y-X6-i7I">
                                             <rect key="frame" x="0.0" y="0.0" width="396" height="160"/>
