@@ -136,6 +136,13 @@ class AppDefaults {
 }
 
 extension UserDefaults {
+    // Use this with caution. Exposing this for debugging purposes only.
+    func wipe() {
+        if let bundleID = Bundle.main.bundleIdentifier {
+            removePersistentDomain(forName: bundleID)
+        }
+    }
+
     func wipeIfNeccesary() {
         if let bundleID = Bundle.main.bundleIdentifier, object(forKey: "PreferencesHaveBeenWiped") == nil {
             removePersistentDomain(forName: bundleID)

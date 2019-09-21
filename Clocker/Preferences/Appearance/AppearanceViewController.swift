@@ -99,7 +99,8 @@ class AppearanceViewController: ParentViewController {
     private func setup() {
         headerLabel.stringValue = "Main Panel Options"
         timeFormatLabel.stringValue = "Time Format"
-        panelTheme.stringValue = "Panel Theme"
+        panelTheme.stringValue = NSLocalizedString("Panel Theme",
+                                                   comment: "String for theme")
         dayDisplayOptionsLabel.stringValue = "Day Display Options"
         showSliderLabel.stringValue = "Show Future Slider"
         showSunriseLabel.stringValue = "Show Sunrise/Sunset"
