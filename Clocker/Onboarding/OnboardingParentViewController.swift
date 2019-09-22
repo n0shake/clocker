@@ -186,7 +186,7 @@ class OnboardingParentViewController: NSViewController {
         }
     }
 
-    private func performFinalStepsBeforeFinishing() {
+    func performFinalStepsBeforeFinishing() {
         finalOnboardingVC?.sendUpEmailIfValid()
 
         positiveButton.tag = OnboardingType.complete.rawValue

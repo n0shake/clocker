@@ -78,6 +78,9 @@ class FinalOnboardingViewController: NSViewController {
         // Log this
         let custom: [String: Any] = ["Language": languageCode]
         Logger.log(object: custom, for: "Opened Localization Link")
+
+        guard let parentVC = parent as? OnboardingParentViewController else { return }
+        parentVC.performFinalStepsBeforeFinishing()
     }
 
     override func viewWillAppear() {
