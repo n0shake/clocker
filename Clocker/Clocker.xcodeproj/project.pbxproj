@@ -304,6 +304,10 @@
 		9A4379231BEC223900F4E27F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9A4379291BEC230A00F4E27F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		9A43792B1BEC231100F4E27F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		9A4DC4DF2337F2EB00F03FA4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9A4DC4E12337F2EB00F03FA4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A4DC4E22337F31200F03FA4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		9A4DC4E32337F31200F03FA4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		9A56DB7D1C1CFB73004CE6AF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Clocker/MainMenu.xib; sourceTree = "<group>"; };
 		9A5951B91C1D0A22009C17AA /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Frameworks/Crashlytics.framework; sourceTree = "<group>"; };
 		9A5951BB1C1D0A8D009C17AA /* CommonStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommonStrings.m; path = Clocker/Utilities/CommonStrings.m; sourceTree = "<group>"; };
@@ -974,6 +978,8 @@
 				en,
 				Base,
 				hi,
+				ru,
+				"zh-Hans",
 			);
 			mainGroup = DD4F7BF913C30F9F00825C6E;
 			productRefGroup = DD4F7C0513C30F9F00825C6E /* Products */;
@@ -1257,6 +1263,8 @@
 			children = (
 				9A13BAE11CA882FA007C6CBE /* en */,
 				352AF497232E07B400D96FA7 /* hi */,
+				9A4DC4DF2337F2EB00F03FA4 /* ru */,
+				9A4DC4E22337F31200F03FA4 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			path = Clocker;
@@ -1267,6 +1275,8 @@
 			children = (
 				9A13BAEB1CA88A76007C6CBE /* en */,
 				352AF499232E07B400D96FA7 /* hi */,
+				9A4DC4E12337F2EB00F03FA4 /* ru */,
+				9A4DC4E32337F31200F03FA4 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			path = Clocker;
