@@ -12,8 +12,7 @@ class OnboardingWelcomeViewController: NSViewController {
     }
 
     private func setup() {
-        appLabel.stringValue = NSLocalizedString("CFBundleDisplayName",
-                                                 comment: "App Name")
+        appLabel.stringValue = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ?? "Clocker"
         accessoryLabel.stringValue = NSLocalizedString("It only takes 3 steps to set up Clocker.",
                                                        comment: "App Setup Description")
 

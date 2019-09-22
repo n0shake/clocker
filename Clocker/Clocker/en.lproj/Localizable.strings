@@ -149,3 +149,8 @@
 "You're offline, maybe?" = "You're offline, maybe?";
 "Try again, maybe?" =  "Try again, maybe?";
 "The Internet connection appears to be offline." = "The Internet connection appears to be offline.";
+
+// UI Tests
+"New Zealand" = "New Zealand";
+"Florida" = "Florida";
+"San Francisco" = "San Francisco";

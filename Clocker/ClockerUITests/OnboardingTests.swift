@@ -98,8 +98,8 @@ class OnboardingTests: XCTestCase {
         let onboardingWindow = app.windows["OnboardingWindow"]
 
         // Tests static texts
-        XCTAssertTrue(onboardingWindow.staticTexts["Clocker"].exists, "Static text Clocker was unexpectedly missing")
-        XCTAssertTrue(onboardingWindow.staticTexts["It only takes 3 steps to set up Clocker."].exists, "Accessory label's static text was unexpectedly wrong.")
+        XCTAssertTrue(onboardingWindow.staticTexts["CFBundleDisplayName".localizedString()].exists, "Static text Clocker was unexpectedly missing")
+        XCTAssertTrue(onboardingWindow.staticTexts["It only takes 3 steps to set up Clocker.".localizedString()].exists, "Accessory label's static text was unexpectedly wrong.")
 
         let button = onboardingWindow.buttons["Forward"]
 
@@ -112,10 +112,10 @@ class OnboardingTests: XCTestCase {
     private func permissionsControllerTests() {
         let onboardingWindow = app.windows["OnboardingWindow"]
 
-        XCTAssertTrue(onboardingWindow.staticTexts["Permissions"].exists, "Header label's static text was unexpectedly wrong.")
-        XCTAssertTrue(onboardingWindow.staticTexts["These can be configured later in System Preferences."].exists, "Onboarding Info label's static text was unexpectedly wrong.")
+        XCTAssertTrue(onboardingWindow.staticTexts["Permissions".localizedString()].exists, "Header label's static text was unexpectedly wrong.")
+        XCTAssertTrue(onboardingWindow.staticTexts["Later Config Description".localizedString()].exists, "Onboarding Info label's static text was unexpectedly wrong.")
 
-        XCTAssertTrue(onboardingWindow.buttons["Forward"].title == "Continue", "Forward button title's was unexpectedly wrong")
+        XCTAssertTrue(onboardingWindow.buttons["Forward"].title == "Continue".localizedString(), "Forward button title's was unexpectedly wrong")
         XCTAssertTrue(onboardingWindow.buttons["Backward"].exists, "Back button was unexpectedly missing")
         XCTAssertFalse(onboardingWindow.buttons["Alternate"].exists, "Alternate button was unexpectedly present.")
     }
@@ -126,17 +126,17 @@ class OnboardingTests: XCTestCase {
         XCTAssertTrue(onboardingWindow.buttons["Forward"].title == "Open Clocker At Login", "Forward button title's was unexpectedly wrong")
         XCTAssertTrue(onboardingWindow.buttons["Alternate"].title == "Don't Open", "Alternate button title's was unexpectedly wrong")
 
-        XCTAssertTrue(onboardingWindow.staticTexts["Launch at Login"].exists, "Header label's static text was unexpectedly wrong.")
-        XCTAssertTrue(onboardingWindow.staticTexts["Should Clocker open automatically on startup?"].exists, "Accessory label's static text was unexpectedly wrong.")
+        XCTAssertTrue(onboardingWindow.staticTexts["Launch at Login".localizedString()].exists, "Header label's static text was unexpectedly wrong.")
+        XCTAssertTrue(onboardingWindow.staticTexts["Should Clocker open automatically on startup?".localizedString()].exists, "Accessory label's static text was unexpectedly wrong.")
     }
 
     private func searchControllerTests() {
         let onboardingWindow = app.windows["OnboardingWindow"]
 
         XCTAssertFalse(onboardingWindow.buttons["Alternate"].exists, "Alternate button was unexpectedly present.")
-        XCTAssertTrue(onboardingWindow.buttons["Forward"].title == "Continue", "Forward button title's was unexpectedly wrong")
+        XCTAssertTrue(onboardingWindow.buttons["Forward"].title == "Continue".localizedString(), "Forward button title's was unexpectedly wrong")
 
-        XCTAssertTrue(onboardingWindow.staticTexts["Quick Add Locations"].exists, "Header label's static text was unexpectedly wrong.")
+        XCTAssertTrue(onboardingWindow.staticTexts["Quick Add Locations".localizedString()].exists, "Header label's static text was unexpectedly wrong.")
         XCTAssertTrue(onboardingWindow.staticTexts["More search options in Clocker Preferences."].exists, "Accessory label's static text was unexpectedly wrong.")
     }
 

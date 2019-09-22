@@ -76,7 +76,10 @@ class PreferencesTest: XCTestCase {
             }
         }
 
-        XCTAssertEqual(actualLabels, ["New Zealand", "Florida", "San Francisco"])
+        XCTAssertEqual(actualLabels,
+                       ["New Zealand".localizedString(),
+                        "Florida".localizedString(),
+                        "San Francisco".localizedString()])
 
         app.windows["Clocker"].checkBoxes["Sort by Time Difference".localizedString()].click()
 
@@ -89,7 +92,9 @@ class PreferencesTest: XCTestCase {
             }
         }
 
-        XCTAssertEqual(actualReversedLabels, ["San Francisco", "Florida", "New Zealand"])
+        XCTAssertEqual(actualReversedLabels, ["San Francisco".localizedString(),
+                                              "Florida".localizedString(),
+                                              "New Zealand".localizedString()])
 
         addAPlace(place: "Omaha", to: app)
         addAPlace(place: "Mumbai", to: app)
