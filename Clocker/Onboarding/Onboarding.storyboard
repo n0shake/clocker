@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fde-UX-327">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -464,7 +465,7 @@ DQ
                                 <rect key="frame" x="20" y="49" width="396" height="160"/>
                                 <clipView key="contentView" id="XpR-1t-AQy">
                                     <rect key="frame" x="0.0" y="0.0" width="396" height="160"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="33" rowSizeStyle="automatic" viewBased="YES" id="30y-X6-i7I">
                                             <rect key="frame" x="0.0" y="0.0" width="396" height="160"/>
@@ -651,28 +652,31 @@ DQ
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="OvB-hh-3zl"/>
                                 </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="border" placeholderString="Email ID" drawsBackground="YES" id="sOr-bC-0RP">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="border" placeholderString="Optional email for infrequent app-related updates" drawsBackground="YES" id="sOr-bC-0RP">
                                     <font key="font" size="12" name="Avenir-Book"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="vVa-Wi-DxT">
-                                <rect key="frame" x="120" y="78" width="292" height="20"/>
-                                <textFieldCell key="cell" selectable="YES" title="Email Explanation Text" id="aOm-4b-2yt">
-                                    <font key="font" size="12" name="Avenir-Book"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qLP-tx-m41" customClass="UnderlinedButton" customModule="Clocker" customModuleProvider="target">
+                                <rect key="frame" x="117" y="84" width="293" height="15"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="left" imageScaling="proportionallyDown" inset="2" id="o87-us-e82">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name="Avenir-Book"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="localizationAction:" target="oRb-Hw-hrj" id="2LJ-4J-C6S"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="nbC-4o-Xjf" firstAttribute="leading" secondItem="fEE-QM-0Pi" secondAttribute="leading" id="0e8-gV-Vtv"/>
                             <constraint firstItem="rQQ-Iw-KIs" firstAttribute="top" secondItem="Hbh-9r-F30" secondAttribute="top" id="5HI-nS-H0q"/>
                             <constraint firstAttribute="trailing" secondItem="kMo-BE-OAn" secondAttribute="trailing" constant="20" id="Blg-oa-r4s"/>
+                            <constraint firstItem="qLP-tx-m41" firstAttribute="trailing" secondItem="6WD-GP-iz1" secondAttribute="trailing" id="EkL-nC-9Ks"/>
                             <constraint firstItem="6WD-GP-iz1" firstAttribute="top" secondItem="kMo-BE-OAn" secondAttribute="bottom" constant="28" id="JBL-3r-4rQ"/>
                             <constraint firstItem="fEE-QM-0Pi" firstAttribute="leading" secondItem="rQQ-Iw-KIs" secondAttribute="leading" constant="2" id="ONk-e6-XAu"/>
-                            <constraint firstItem="vVa-Wi-DxT" firstAttribute="trailing" secondItem="6WD-GP-iz1" secondAttribute="trailing" id="OSn-gm-o2b"/>
+                            <constraint firstItem="qLP-tx-m41" firstAttribute="top" secondItem="6WD-GP-iz1" secondAttribute="bottom" constant="23" id="POY-qL-OZY"/>
                             <constraint firstAttribute="trailing" secondItem="nbC-4o-Xjf" secondAttribute="trailing" constant="20" id="TOW-1R-mJC"/>
                             <constraint firstItem="Hbh-9r-F30" firstAttribute="top" secondItem="DF5-si-VO7" secondAttribute="top" constant="20" id="Ttw-wI-zuQ"/>
                             <constraint firstAttribute="trailing" secondItem="6WD-GP-iz1" secondAttribute="trailing" constant="26" id="VBH-zO-odL"/>
@@ -680,18 +684,17 @@ DQ
                             <constraint firstItem="kMo-BE-OAn" firstAttribute="top" secondItem="nbC-4o-Xjf" secondAttribute="bottom" constant="40" id="ZFQ-Wg-6MB"/>
                             <constraint firstItem="rQQ-Iw-KIs" firstAttribute="leading" secondItem="Hbh-9r-F30" secondAttribute="trailing" constant="20" id="ZQY-pi-fPT"/>
                             <constraint firstItem="fEE-QM-0Pi" firstAttribute="top" secondItem="rQQ-Iw-KIs" secondAttribute="bottom" constant="-5" id="eCn-Co-mzu"/>
+                            <constraint firstItem="qLP-tx-m41" firstAttribute="leading" secondItem="6WD-GP-iz1" secondAttribute="leading" constant="-5" id="g2A-ra-jpG"/>
                             <constraint firstItem="nbC-4o-Xjf" firstAttribute="top" secondItem="fEE-QM-0Pi" secondAttribute="bottom" constant="42" id="j7b-Af-bcv"/>
                             <constraint firstItem="Hbh-9r-F30" firstAttribute="leading" secondItem="DF5-si-VO7" secondAttribute="leading" constant="20" id="jof-jK-gX8"/>
-                            <constraint firstItem="vVa-Wi-DxT" firstAttribute="leading" secondItem="6WD-GP-iz1" secondAttribute="leading" id="mns-Ph-FKK"/>
-                            <constraint firstItem="vVa-Wi-DxT" firstAttribute="top" secondItem="6WD-GP-iz1" secondAttribute="bottom" constant="24" id="qe3-dK-63b"/>
                             <constraint firstItem="kMo-BE-OAn" firstAttribute="leading" secondItem="fEE-QM-0Pi" secondAttribute="leading" id="z80-9e-u9d"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="accesoryLabel" destination="kMo-BE-OAn" id="zmK-wY-Ptp"/>
                         <outlet property="accessoryImageView" destination="nbC-4o-Xjf" id="bzc-jC-v0k"/>
-                        <outlet property="emailExplanationLabel" destination="vVa-Wi-DxT" id="oD8-p1-DJo"/>
                         <outlet property="emailTextField" destination="6WD-GP-iz1" id="tbr-Ld-eMc"/>
+                        <outlet property="localizationButton" destination="qLP-tx-m41" id="BfA-or-Lxp"/>
                         <outlet property="subtitleLabel" destination="fEE-QM-0Pi" id="BkA-rd-TKV"/>
                         <outlet property="titleLabel" destination="rQQ-Iw-KIs" id="Bka-gU-05I"/>
                     </connections>
@@ -702,7 +705,7 @@ DQ
         </scene>
     </scenes>
     <resources>
-        <image name="ClockerIcon-512" width="512" height="512"/>
+        <image name="ClockerIcon-512" width="1024" height="1024"/>
         <image name="Dark Menubar" width="285" height="23"/>
     </resources>
 </document>

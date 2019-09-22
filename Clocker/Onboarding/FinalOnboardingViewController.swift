@@ -17,7 +17,7 @@ class FinalOnboardingViewController: NSViewController {
     @IBOutlet var accesoryLabel: NSTextField!
     @IBOutlet var accessoryImageView: NSImageView!
     @IBOutlet var emailTextField: NSTextField!
-    @IBOutlet var emailExplanationLabel: NSTextField!
+    @IBOutlet var localizationButton: UnderlinedButton!
 
     private let emailValidator = EmailTextFieldValidator()
 
@@ -43,7 +43,41 @@ class FinalOnboardingViewController: NSViewController {
         subtitleLabel.stringValue = "Thank you for the details.".localized()
         accesoryLabel.stringValue = "You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences.".localized()
         accessoryImageView.image = Themer.shared().menubarOnboardingImage()
-        emailExplanationLabel.stringValue = "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!".localized()
+        emailTextField.isHidden = true
+        setupLocalizationButton()
+    }
+
+    private func setupLocalizationButton() {
+        let mutableParaghStyle = NSMutableParagraphStyle()
+        mutableParaghStyle.alignment = .center
+
+        let underlineRange = NSRange(location: 42, length: 14)
+        let originalText = NSMutableAttributedString(string: "Help localize Clocker in your language by clicking here!")
+        originalText.addAttribute(NSAttributedString.Key.underlineStyle,
+                                  value: NSNumber(value: Int8(NSUnderlineStyle.single.rawValue)),
+                                  range: underlineRange)
+        originalText.addAttribute(NSAttributedString.Key.foregroundColor,
+                                  value: Themer.shared().mainTextColor(),
+                                  range: NSRange(location: 0, length: localizationButton.attributedTitle.string.count))
+        originalText.addAttribute(NSAttributedString.Key.font,
+                                  value: (localizationButton?.font)!,
+                                  range: NSRange(location: 0, length: localizationButton.attributedTitle.string.count))
+        originalText.addAttribute(NSAttributedString.Key.paragraphStyle,
+                                  value: mutableParaghStyle,
+                                  range: NSRange(location: 0, length: localizationButton.attributedTitle.string.count))
+
+        localizationButton.attributedTitle = originalText
+    }
+
+    @IBAction func localizationAction(_: Any) {
+        guard let localizationURL = URL(string: AboutUsConstants.CrowdInLocalizationLink),
+            let languageCode = Locale.preferredLanguages.first else { return }
+
+        NSWorkspace.shared.open(localizationURL)
+
+        // Log this
+        let custom: [String: Any] = ["Language": languageCode]
+        Logger.log(object: custom, for: "Opened Localization Link")
     }
 
     override func viewWillAppear() {

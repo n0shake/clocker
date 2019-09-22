@@ -41,6 +41,8 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     public func applicationDidFinishLaunching(_: Notification) {
+        UserDefaults.standard.wipe()
+
         // Initializing the event store takes really long
         EventCenter.sharedCenter()
 
@@ -106,7 +108,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         let shouldLaunchOnboarding = (DataStore.shared().retrieve(key: CLShowOnboardingFlow) == nil && DataStore.shared().timezones().isEmpty)
             || ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument)
 
-        shouldLaunchOnboarding ? controller?.launch() : continueUsually()
+        shouldLaunchOnboarding ? controller?.launch() : controller?.launch()
     }
 
     func continueUsually() {
