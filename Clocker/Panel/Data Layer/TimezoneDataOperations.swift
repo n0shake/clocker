@@ -86,8 +86,11 @@ extension TimezoneDataOperations {
 
         if shouldDayBeShown {
             var substring = date(with: 0, displayType: CLDateDisplayType.menuDisplay)
-            let endIndex = substring.index(substring.startIndex, offsetBy: 2)
-            substring = String(substring[substring.startIndex ... endIndex])
+            
+            if (substring.count > 3) {
+                let endIndex = substring.index(substring.startIndex, offsetBy: 2)
+                substring = String(substring[substring.startIndex ... endIndex])
+            }
 
             if menuTitle.isEmpty == false {
                 menuTitle.append(" \(substring.capitalized)")
