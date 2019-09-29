@@ -108,6 +108,8 @@
 		9A8B256A232EFAD300204CAD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAEC1CA88A76007C6CBE /* Localizable.strings */; };
 		9A9E87621C1FEDB500A7A2DF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87611C1FEDB500A7A2DF /* CFNetwork.framework */; };
 		9A9E876A1C1FEDDB00A7A2DF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87691C1FEDDB00A7A2DF /* SystemConfiguration.framework */; };
+		9AA522C023415BDD00C9E005 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AA522BE23415BDD00C9E005 /* InfoPlist.strings */; };
+		9AA522C323415BDD00C9E005 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AA522C123415BDD00C9E005 /* InfoPlist.strings */; };
 		9AB6F1562259CF3900A44663 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F1552259CF3900A44663 /* CalendarViewController.swift */; };
 		9AB6F1582259CFFC00A44663 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F1572259CFFC00A44663 /* AboutViewController.swift */; };
 		9AB6F15D2259D08300A44663 /* iVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F15A2259D08300A44663 /* iVersion.m */; };
@@ -339,6 +341,15 @@
 		9A9E87671C1FEDD300A7A2DF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9A9E87691C1FEDDB00A7A2DF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9A9E876B1C1FEDE700A7A2DF /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		9AA522BF23415BDD00C9E005 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9AA522C223415BDD00C9E005 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9AA522C423415BDD00C9E005 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		9AA522C623415BF600C9E005 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9AA522C723415BF600C9E005 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9AA522C823415BF600C9E005 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		9AA522C923415C4F00C9E005 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		9AA522CA23415C4F00C9E005 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		9AA522CB23415C4F00C9E005 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		9AB6F1552259CF3900A44663 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		9AB6F1572259CFFC00A44663 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		9AB6F15A2259D08300A44663 /* iVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iVersion.m; sourceTree = "<group>"; };
@@ -624,6 +635,7 @@
 				9A7547DB1F184DC3004705EF /* Assets.xcassets */,
 				9A7547DD1F184DC3004705EF /* Main.storyboard */,
 				9A7547E01F184DC3004705EF /* Info.plist */,
+				9AA522C123415BDD00C9E005 /* InfoPlist.strings */,
 				9A7547D51F184DC3004705EF /* Supporting Files */,
 			);
 			path = ClockerHelper;
@@ -771,6 +783,7 @@
 			children = (
 				C2BFE3E52049F82300825BE5 /* ClockerUITests.m */,
 				C2BFE3E72049F82300825BE5 /* Info.plist */,
+				9AA522BE23415BDD00C9E005 /* InfoPlist.strings */,
 				C213713320B4FD920024D5A4 /* FloatingWindowTests.swift */,
 				C213713220B4FD920024D5A4 /* ClockerUITests-Bridging-Header.h */,
 				C2F7821A20B70E3700B6CD07 /* AboutUsTests.swift */,
@@ -1039,6 +1052,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A7547DC1F184DC3004705EF /* Assets.xcassets in Resources */,
+				9AA522C323415BDD00C9E005 /* InfoPlist.strings in Resources */,
 				9A7547DF1F184DC3004705EF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1055,6 +1069,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A8B256A232EFAD300204CAD /* Localizable.strings in Resources */,
+				9AA522C023415BDD00C9E005 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1301,8 +1316,31 @@
 			isa = PBXVariantGroup;
 			children = (
 				9A7547DE1F184DC3004705EF /* Base */,
+				9AA522C423415BDD00C9E005 /* de */,
+				9AA522C823415BF600C9E005 /* ru */,
+				9AA522CB23415C4F00C9E005 /* zh-Hans */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9AA522BE23415BDD00C9E005 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AA522BF23415BDD00C9E005 /* de */,
+				9AA522C723415BF600C9E005 /* ru */,
+				9AA522C923415C4F00C9E005 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9AA522C123415BDD00C9E005 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AA522C223415BDD00C9E005 /* de */,
+				9AA522C623415BF600C9E005 /* ru */,
+				9AA522CA23415C4F00C9E005 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

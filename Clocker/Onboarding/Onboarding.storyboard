@@ -286,7 +286,7 @@ DQ
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-512" id="Ykz-ej-1Nf"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iMf-Uy-zAf">
-                                <rect key="frame" x="120" y="310" width="94" height="20"/>
+                                <rect key="frame" x="120" y="310" width="308" height="20"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" placeholderString="Onboarding Info" id="MOO-BA-qzM">
                                     <font key="font" size="12" name="Avenir-Book"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -318,6 +318,7 @@ DQ
                             <constraint firstItem="mF9-1w-sxR" firstAttribute="leading" secondItem="sib-OR-ym5" secondAttribute="leading" constant="20" id="pco-hw-yLC"/>
                             <constraint firstItem="pC3-D3-DSa" firstAttribute="top" secondItem="XfU-36-tPs" secondAttribute="top" id="tD2-vW-0Qp"/>
                             <constraint firstItem="N6Z-mh-pET" firstAttribute="trailing" secondItem="4eB-eD-0jK" secondAttribute="trailing" id="uAP-KZ-kV2"/>
+                            <constraint firstAttribute="trailing" secondItem="iMf-Uy-zAf" secondAttribute="trailing" constant="10" id="vPf-CV-JBC"/>
                         </constraints>
                     </view>
                     <connections>

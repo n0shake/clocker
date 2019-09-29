@@ -148,6 +148,6 @@ class OnboardingTests: XCTestCase {
         XCTAssertTrue(onboardingWindow.staticTexts["Thank you for the details."].exists, "Accessory label's static text was unexpectedly wrong.")
 
         XCTAssertFalse(onboardingWindow.buttons["Alternate"].exists, "Alternate button was unexpectedly present.")
-        XCTAssertTrue(onboardingWindow.buttons["Forward"].title == "Launch Clocker", "Forward button's title was unexpectedly wrong.")
+        XCTAssertTrue(onboardingWindow.buttons["Forward"].title == "Launch Clocker".localizedString(), "Forward button's title was unexpectedly wrong.")
     }
 }

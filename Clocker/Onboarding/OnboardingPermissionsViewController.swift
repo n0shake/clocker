@@ -46,7 +46,7 @@ class OnboardingPermissionsViewController: NSViewController {
 
         calendarHeaderLabel.stringValue = NSLocalizedString("Calendar Access Title",
                                                             comment: "Title for Calendar access label")
-        calendarDetailLabel.stringValue = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.".localized()
+        calendarDetailLabel.stringValue = "Calendar Detail".localized()
 
         privacyLabel.stringValue = CLEmptyString
 
