@@ -203,6 +203,7 @@ class ParentPanelController: NSWindowController {
 
         for timezoneObject in timezoneObjects where timezoneObject.isSystemTimezone == true {
             timezoneObject.setLabel(customLabel)
+            timezoneObject.formattedAddress = customLabel
             if let latlong = coordinates {
                 timezoneObject.longitude = latlong.longitude
                 timezoneObject.latitude = latlong.latitude
