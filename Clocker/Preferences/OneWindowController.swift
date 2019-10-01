@@ -102,7 +102,6 @@ class OneWindowController: NSWindowController {
 
         tabViewController.tabViewItems.forEach { tabViewItem in
             let identity = (tabViewItem.identifier as? String) ?? ""
-            print(identity)
             if identifierTOImageMapping[identity] != nil {
                 tabViewItem.image = identifierTOImageMapping[identity]
             }
