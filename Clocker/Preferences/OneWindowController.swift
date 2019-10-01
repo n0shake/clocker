@@ -96,12 +96,13 @@ class OneWindowController: NSWindowController {
         }
 
         let themer = Themer.shared()
-        let identifierTOImageMapping: [String: NSImage] = ["Appearance": themer.appearanceTabImage(),
-                                                           "Calendar": themer.calendarTabImage(),
-                                                           "Permissions": themer.privacyTabImage()]
+        let identifierTOImageMapping: [String: NSImage] = ["Appearance Tab": themer.appearanceTabImage(),
+                                                           "Calendar Tab": themer.calendarTabImage(),
+                                                           "Permissions Tab": themer.privacyTabImage()]
 
         tabViewController.tabViewItems.forEach { tabViewItem in
             let identity = (tabViewItem.identifier as? String) ?? ""
+            print(identity)
             if identifierTOImageMapping[identity] != nil {
                 tabViewItem.image = identifierTOImageMapping[identity]
             }
