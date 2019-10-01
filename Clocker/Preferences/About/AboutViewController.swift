@@ -9,6 +9,7 @@ struct AboutUsConstants {
     static let TwitterLink = "https://twitter.com/n0shake/?ref=ClockerApp"
     static let PersonalWebsite = "http://abhishekbanthia.com/?ref=ClockerApp"
     static let AppStoreLink = "macappstore://itunes.apple.com/us/app/clocker/id1056643111?action=write-review"
+    static let CrowdInLocalizationLink = "https://crwd.in/clocker"
 }
 
 class AboutViewController: ParentViewController {
@@ -49,7 +50,7 @@ class AboutViewController: ParentViewController {
         let rangesInOrder = [NSRange(location: 3, length: 8),
                              NSRange(location: 7, length: privateFeedback.attributedTitle.length - 7),
                              NSRange(location: 27, length: 33),
-                             NSRange(location: 32, length: 30)]
+                             NSRange(location: 42, length: 14)]
 
         let buttonsInOrder = [quickCommentAction,
                               privateFeedback,
@@ -59,7 +60,7 @@ class AboutViewController: ParentViewController {
         let localizedKeys = ["1. @n0shake on Twitter for quick comments",
                              "2. For Private Feedback",
                              "You can support Clocker by leaving a review on the App Store! :)",
-                             "Clocker is Open Source. You can check out the source code here."]
+                             "Help localize Clocker in your language by clicking here!"]
 
         zip(buttonsInOrder, localizedKeys).forEach { arg in
             let (button, title) = arg
@@ -128,13 +129,14 @@ class AboutViewController: ParentViewController {
     }
 
     @IBAction func openGitHub(_: Any) {
-        guard let githubURL = URL(string: AboutUsConstants.GitHubURL),
-            let countryCode = Locale.autoupdatingCurrent.regionCode else { return }
+        guard let localizationURL = URL(string: AboutUsConstants.CrowdInLocalizationLink),
+            let languageCode = Locale.preferredLanguages.first else { return }
 
-        NSWorkspace.shared.open(githubURL)
+        NSWorkspace.shared.open(localizationURL)
 
-        let custom: [String: Any] = ["Country": countryCode]
-        Logger.log(object: custom, for: "Opened GitHub")
+        // Log this
+        let custom: [String: Any] = ["Language": languageCode]
+        Logger.log(object: custom, for: "Opened Localization Link")
     }
 
     @IBOutlet var feedbackLabel: NSTextField!

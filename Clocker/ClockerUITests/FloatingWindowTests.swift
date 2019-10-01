@@ -5,10 +5,7 @@ import XCTest
 extension String {
     func localizedString() -> String {
         let bundle = Bundle(for: AboutUsTests.self)
-        let deviceLanguage = Locale.preferredLanguages.first
-        let localizationBundle = Bundle(path: bundle.path(forResource: deviceLanguage,
-                                                          ofType: "lproj")!)
-        return NSLocalizedString(self, bundle: localizationBundle!, comment: "")
+        return NSLocalizedString(self, bundle: bundle, comment: "")
     }
 }
 

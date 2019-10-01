@@ -63,9 +63,17 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
 
     // Help us priortize our localization efforts
     private func logCurrentLanguagePreferences() {
+        let firstLanguage = Locale.preferredLanguages.first ?? "en-US"
+
+        // We don't care if the language is English!
+        if firstLanguage.contains("en") {
+            return
+        }
+
         let annotations = [
-            "Language": Locale.preferredLanguages.first ?? "en-US",
+            "Language": firstLanguage,
         ]
+
         Logger.log(object: annotations, for: "Locale")
     }
 

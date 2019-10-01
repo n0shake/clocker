@@ -1,124 +1,124 @@
 /* (No Comment) */
-"About Tab" = "About";
+"About Tab" = "Über Clocker";
 
 "CFBundleDisplayName" = "Clocker";
 
 /* Button to add a location */
-"Add Button Title" = "Add";
+"Add Button Title" = "Hinzufügen";
 
 /* (No Comment) */
 "app-name" = "Clocker";
 
 /* (No Comment) */
-"Appearance Tab" = "Appearance";
+"Appearance Tab" = "Darstellungen";
 
 /* Button title for going back to the previous screen */
-"Back" = "Back";
+"Back" = "Zurück";
 
 /* Calendar Permission Title */
-"Calendar Access" = "Calendar Access";
+"Calendar Access" = "Kalender-Zugriff";
 
 /* Title for Calendar access label */
-"Calendar Access Title" = "Calendar Access";
+"Calendar Access Title" = "Kalender-Zugriff";
 
 /* Calendar Detail Text */
-"Calendar Detail" = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.";
+"Calendar Detail" = "Die nächsten Termine Ihrer persönlichen und geteilten Kalender können in der Menüleiste und im Panel angezeigt werden.";
 
 /* (No Comment) */
-"Calendar Tab" = "Calendar";
+"Calendar Tab" = "Kalender";
 
 /* (No Comment) */
 "characters" = "characters";
 
 /* (No Comment) */
-"CLFeedbackAlertTitle" = "Thank you for helping make Clocker even better!";
+"CLFeedbackAlertTitle" = "Vielen Dank, dass Sie Clocker noch besser machen!";
 
 /* Button Title for no Calendar access */
-"Click here to start." = "Click here to start.";
+"Click here to start." = "Klicken Sie hier, um zu starten.";
 
 /* (No Comment) */
-"Clocker is more useful when it can display events from your calendars." = "Clocker is more useful when it can display events from your calendars.";
+"Clocker is more useful when it can display events from your calendars." = "Clocker ist nützlicher, wenn es Ereignisse von Ihren Kalender anzeigen kann.";
 
 /* (No Comment) */
-"Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy.";
+"Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker ist nützlicher, wenn es Ereignisse von Ihren Kalender anzeigen kann. Sie können diese Einstellung in Systemeinstellungen › Sicherheit und Privatsphäre › Privatsphäre ändern.";
 
 /* (No Comment) */
 "ClockerVersion" = "Version %@";
 
 /* Button to close the panel */
-"Close Button Title" = "Close";
+"Close Button Title" = "Schließen";
 
 /* (No Comment) */
-"Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!" = "Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!";
+"Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!" = "Kontaktfelder sind optional! Ihre Kontaktinformationen läßt uns Sie kontaktieren, falls wir weitere Informationen benötigen oder helfen können!";
 
 /* (No Comment) */
-"Contact Information (Optional)" = "Contact Information (Optional)";
+"Contact Information (Optional)" = "Kontaktinformationen (optional)";
 
 /* Continue Button Title */
-"Continue" = "Continue";
+"Continue" = "Fortfahren";
 
 /* (No Comment) */
-"Day Display Options" = "Day Display Options";
+"Day Display Options" = "Tagesanzeige Optionen";
 
 /* (No Comment) */
-"Denied" = "Denied";
+"Denied" = "Abgelehnt";
 
 /* Denied Button Text */
-"Denied Button Text" = "Denied";
+"Denied Button Text" = "Abgelehnt";
 
 /* (No Comment) */
-"Display the time in seconds" = "Display the time in seconds";
+"Display the time in seconds" = "Zeit in Sekunden anzeigen";
 
 /* Title asking users if they like the app */
-"Enjoy using Clocker" = "Enjoy using Clocker";
+"Enjoy using Clocker" = "Gefällt Ihnen Clocker";
 
 /* Review */
-"Enjoy using Clocker?" = "Enjoy using Clocker?";
+"Enjoy using Clocker?" = "Gefällt Ihnen Clocker?";
 
 /* (No Comment) */
-"Favourite a timezone to enable menubar display options." = "Favourite a timezone to enable menubar display options.";
+"Favourite a timezone to enable menubar display options." = "Favorisieren Sie eine Zeitzone, um die Menüleiste-Anzeigeoptionen zu aktivieren.";
 
 /* About View Screen */
-"Feedback is always welcome:" = "Feedback is always welcome:";
+"Feedback is always welcome:" = "Feedback ist immer willkommen:";
 
 /* (No Comment) */
 "Florida" = "Florida";
 
 /* (No Comment) */
-"Future Slider Range" = "Future Slider Range";
+"Future Slider Range" = "Zukünftige Slider-Bereich";
 
 /* Title for Welcome View Controller's Continue Button */
-"Get Started" = "立刻开始！";
+"Get Started" = "Jetzt Anfangen";
 
 /* (No Comment) */
-"Grant" = "授权";
+"Grant" = "Gewähren";
 
 /* (No Comment) */
-"Grant Access" = "授予访问权限";
+"Grant Access" = "Zugriff gewähren";
 
 /* Grant Button Text */
-"Grant Button Text" = "授权";
+"Grant Button Text" = "Zulassen";
 
 /* (No Comment) */
-"Granted" = "已授权";
+"Granted" = "Zugelassen";
 
 /* Granted Button Text */
-"Granted Button Text" = "已授权";
+"Granted Button Text" = "Zugelassen";
 
 /* (No Comment) */
-"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"";
+"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "Wenn der Besprechung Titel \"Meeting with Neel\" ist und die Kurzlänge auf fünf gesetzt ist, erscheint der Text in der Menüleiste als \"Meeti...\"";
 
 /* (No Comment) */
-"If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!";
+"If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "Wenn Sie uns helfen möchten, die App in Ihrer Sprache zu lokalisieren oder seltene app-bezogene Nachrichten erhalten wollen, geben Sie bitte Ihre E-Mail ein!";
 
 /* (No Comment) */
-"Include Date" = "包含日期";
+"Include Date" = "Datum Anzeigen";
 
 /* (No Comment) */
-"Include Day" = "Include Day";
+"Include Day" = "Tag Anzeigen";
 
 /* (No Comment) */
-"Include Place Name" = "Include Place Name";
+"Include Place Name" = "Ortsname Anzeigen";
 
 /* (No Comment) */
 "iRateAppMessage" = "If you enjoy using %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
@@ -136,28 +136,28 @@
 "iRateRateButton" = "Rate It Now";
 
 /* (No Comment) */
-"iRateRemindButton" = "稍后提醒";
+"iRateRemindButton" = "Remind Me Later";
 
 /* (No Comment) */
-"iRateUpdateMessage" = "立即更新";
+"iRateUpdateMessage" = "Update now?";
 
 /* App Setup Description */
-"It only takes 3 steps to set up Clocker." = "It only takes 3 steps to setup Clocker.";
+"It only takes 3 steps to set up Clocker." = "Es sind nur 3 Schritte Clocker einzurichten.";
 
 /* Welcome Onboarding */
-"It only takes 3 steps to setup Clocker." = "It only takes 3 steps to setup Clocker.";
+"It only takes 3 steps to setup Clocker." = "Es sind nur 3 Schritte Clocker einzurichten.";
 
 /* (No Comment) */
-"Larger Text" = "Larger Text";
+"Larger Text" = "Größerer Text";
 
 /* Describing we can change the options later in System Preferences */
-"Later Config Description" = "These can be configured later in System Preferences.";
+"Later Config Description" = "Diese können später in Systemeinstellungen konfiguriert werden.";
 
 /* Start at Login */
-"Launch at Login" = "登录时启动";
+"Launch at Login" = "Launch at Login";
 
 /* (No Comment) */
-"Launch Clocker" = "Launch Clocker";
+"Launch Clocker" = "Clocker Starten";
 
 /* (No Comment) */
 "Launch Preferences" = "Launch Preferences";
@@ -181,7 +181,7 @@
 "More search options in Clocker Preferences." = "More search options in Clocker Preferences.";
 
 /* UI Tests */
-"New Zealand" = "New Zealand";
+"New Zealand" = "Neuseeland";
 
 /* Subtitle for no places added */
 "No places added" = "No places added";
@@ -280,7 +280,7 @@
 "Start at Login" = "Start Clocker at Login";
 
 /* (No Comment) */
-"start-at-login" = "登录时启动";
+"start-at-login" = "Start At Login";
 
 /* (No Comment) */
 "Successfully set." = "Successfully set.";
@@ -304,16 +304,16 @@
 "Time Format" = "Time Format";
 
 /* (No Comment) */
-"Truncate menubar text longer than" = "Truncate menubar text longer than";
+"Truncate menubar text longer than" = "Menüleisten Text kürzen länger als";
 
 /* (No Comment) */
-"Try again, maybe?" = "Try again, maybe?";
+"Try again, maybe?" = "Vielleicht erneut versuchen?";
 
 /* (No Comment) */
-"Unexpected" = "Unexpected";
+"Unexpected" = "Unerwartet";
 
 /* Calendars View */
-"Upcoming Event View Options" = "Upcoming Event View Options";
+"Upcoming Event View Options" = "Kommende Ereignis Anzeige Optionen";
 
 /* (No Comment) */
 "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel." = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.";

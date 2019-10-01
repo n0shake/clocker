@@ -5,7 +5,7 @@
 
 ![Clocker](https://raw.githubusercontent.com/n0shake/Clocker/master/New%20Icons/Github.png "Clocker")
 
-**Clocker** is an OSX menubar utility designed to help you keep track of your friends in different time zones.  It's written using ~~Objective-C~~ Swift 5 and is completely ad-free.
+**Clocker** is an macOS menubar utility designed to help you keep track of your friends in different time zones.  It's written using ~~Objective-C~~ Swift 5 and is completely ad-free. If you'd like to help translate Clocker in your language, [here's the invite link](https://crwd.in/clocker).
 
 If you'd like to donate, you can do so [here](https://www.paypal.me/AbhishekBanthia). You can find a review of the app by SoftPedia [here](http://mac.softpedia.com/get/Utilities/Clocker-Banthia.shtml). Need any help? Open an issue!
 

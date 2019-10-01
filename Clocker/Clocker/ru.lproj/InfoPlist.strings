@@ -8,10 +8,10 @@
 "CFBundleName" = "Clocker";
 
 /* Privacy - Calendars Usage Description */
-"NSCalendarsUsageDescription" = "Clocker在展示你即将到来的日程时非常有用。你可以在 系统设置› 安全和隐私› 隐私 中更改设置。";
+"NSCalendarsUsageDescription" = "Clocker can be more useful when it can display upcoming events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy";
 
 /* Copyright (human-readable) */
-"NSHumanReadableCopyright" = "版权所有© 2016, Abhishek Banthia";
+"NSHumanReadableCopyright" = "Авторское право © 2016, Абхишек Бантия";
 
 /* Privacy - Location Always and When In Use Usage Description */
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "Clocker can be more useful when it can use your location to determine your current timezone.";

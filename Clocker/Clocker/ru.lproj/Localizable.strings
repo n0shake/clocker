@@ -1,10 +1,10 @@
 /* (No Comment) */
-"About Tab" = "About";
-
-"CFBundleDisplayName" = "Clocker";
+"About Tab" = "О программе";
 
 /* Button to add a location */
-"Add Button Title" = "Add";
+"Add Button Title" = "Добавить";
+
+"CFBundleDisplayName" = "Clocker";
 
 /* (No Comment) */
 "app-name" = "Clocker";
@@ -13,7 +13,7 @@
 "Appearance Tab" = "Appearance";
 
 /* Button title for going back to the previous screen */
-"Back" = "Back";
+"Back" = "Назад";
 
 /* Calendar Permission Title */
 "Calendar Access" = "Calendar Access";
@@ -25,7 +25,7 @@
 "Calendar Detail" = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.";
 
 /* (No Comment) */
-"Calendar Tab" = "Calendar";
+"Calendar Tab" = "Календарь";
 
 /* (No Comment) */
 "characters" = "characters";
@@ -34,7 +34,7 @@
 "CLFeedbackAlertTitle" = "Thank you for helping make Clocker even better!";
 
 /* Button Title for no Calendar access */
-"Click here to start." = "Click here to start.";
+"Click here to start." = "Нажмите здесь, чтобы начать.";
 
 /* (No Comment) */
 "Clocker is more useful when it can display events from your calendars." = "Clocker is more useful when it can display events from your calendars.";
@@ -43,10 +43,10 @@
 "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy.";
 
 /* (No Comment) */
-"ClockerVersion" = "Version %@";
+"ClockerVersion" = "Версия %@";
 
 /* Button to close the panel */
-"Close Button Title" = "Close";
+"Close Button Title" = "Закрыть";
 
 /* (No Comment) */
 "Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!" = "Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!";
@@ -55,7 +55,7 @@
 "Contact Information (Optional)" = "Contact Information (Optional)";
 
 /* Continue Button Title */
-"Continue" = "Continue";
+"Continue" = "Продолжить";
 
 /* (No Comment) */
 "Day Display Options" = "Day Display Options";
@@ -70,10 +70,10 @@
 "Display the time in seconds" = "Display the time in seconds";
 
 /* Title asking users if they like the app */
-"Enjoy using Clocker" = "Enjoy using Clocker";
+"Enjoy using Clocker" = "Наслаждайтесь использованием Clocker";
 
 /* Review */
-"Enjoy using Clocker?" = "Enjoy using Clocker?";
+"Enjoy using Clocker?" = "Понравилось приложение Clocker?";
 
 /* (No Comment) */
 "Favourite a timezone to enable menubar display options." = "Favourite a timezone to enable menubar display options.";
@@ -82,28 +82,28 @@
 "Feedback is always welcome:" = "Feedback is always welcome:";
 
 /* (No Comment) */
-"Florida" = "Florida";
+"Florida" = "Флорида";
 
 /* (No Comment) */
 "Future Slider Range" = "Future Slider Range";
 
 /* Title for Welcome View Controller's Continue Button */
-"Get Started" = "立刻开始！";
+"Get Started" = "Начать";
 
 /* (No Comment) */
-"Grant" = "授权";
+"Grant" = "Grant";
 
 /* (No Comment) */
-"Grant Access" = "授予访问权限";
+"Grant Access" = "Grant Access";
 
 /* Grant Button Text */
-"Grant Button Text" = "授权";
+"Grant Button Text" = "Grant";
 
 /* (No Comment) */
-"Granted" = "已授权";
+"Granted" = "Granted";
 
 /* Granted Button Text */
-"Granted Button Text" = "已授权";
+"Granted Button Text" = "Granted";
 
 /* (No Comment) */
 "If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"";
@@ -112,7 +112,7 @@
 "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!";
 
 /* (No Comment) */
-"Include Date" = "包含日期";
+"Include Date" = "Include Date";
 
 /* (No Comment) */
 "Include Day" = "Include Day";
@@ -124,7 +124,7 @@
 "iRateAppMessage" = "If you enjoy using %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
 
 /* (No Comment) */
-"iRateCancelButton" = "No, Thanks";
+"iRateCancelButton" = "Нет, спасибо";
 
 /* (No Comment) */
 "iRateGameMessage" = "If you enjoy playing %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
@@ -136,10 +136,10 @@
 "iRateRateButton" = "Rate It Now";
 
 /* (No Comment) */
-"iRateRemindButton" = "稍后提醒";
+"iRateRemindButton" = "Remind Me Later";
 
 /* (No Comment) */
-"iRateUpdateMessage" = "立即更新";
+"iRateUpdateMessage" = "Update now?";
 
 /* App Setup Description */
 "It only takes 3 steps to set up Clocker." = "It only takes 3 steps to setup Clocker.";
@@ -154,13 +154,13 @@
 "Later Config Description" = "These can be configured later in System Preferences.";
 
 /* Start at Login */
-"Launch at Login" = "登录时启动";
+"Launch at Login" = "Launch at Login";
 
 /* (No Comment) */
-"Launch Clocker" = "Launch Clocker";
+"Launch Clocker" = "Запустить Clocker";
 
 /* (No Comment) */
-"Launch Preferences" = "Launch Preferences";
+"Launch Preferences" = "Параметры запуска";
 
 /* (No Comment) */
 "Main Panel Options" = "Main Panel Options";
@@ -181,13 +181,13 @@
 "More search options in Clocker Preferences." = "More search options in Clocker Preferences.";
 
 /* UI Tests */
-"New Zealand" = "New Zealand";
+"New Zealand" = "Новая Зеландия";
 
 /* Subtitle for no places added */
 "No places added" = "No places added";
 
 /* Message shown when the user taps on Add without selecting a timezone */
-"No Timezone Selected" = "Please select a timezone!";
+"No Timezone Selected" = "Пожалуйста, выберите часовой пояс!";
 
 /* Title when there's no upcoming event */
 "No upcoming event." = "No upcoming event.";
@@ -229,7 +229,7 @@
 "Reminders Detail" = "Set reminders in the timezone of the location of your choice. Your reminders are stored in the default Reminders app.";
 
 /* (No Comment) */
-"San Francisco" = "San Francisco";
+"San Francisco" = "Сан-Франциско";
 
 /* Search Field Placeholder */
 "Search Field Placeholder" = "Enter a city, state or country name";
@@ -271,7 +271,7 @@
 "Sort by Label" = "Sort by Label";
 
 /* Start at Login */
-"Sort by Name" = "Sort by Name";
+"Sort by Name" = "Сортировка по названию";
 
 /* Start at Login */
 "Sort by Time Difference" = "Sort by Time Difference";
@@ -280,7 +280,7 @@
 "Start at Login" = "Start Clocker at Login";
 
 /* (No Comment) */
-"start-at-login" = "登录时启动";
+"start-at-login" = "Start At Login";
 
 /* (No Comment) */
 "Successfully set." = "Successfully set.";
@@ -301,13 +301,13 @@
 "This can be configured later in Clocker Preferences." = "This can be configured later in Clocker Preferences.";
 
 /* (No Comment) */
-"Time Format" = "Time Format";
+"Time Format" = "Формат времени";
 
 /* (No Comment) */
 "Truncate menubar text longer than" = "Truncate menubar text longer than";
 
 /* (No Comment) */
-"Try again, maybe?" = "Try again, maybe?";
+"Try again, maybe?" = "Может, попробуем еще раз?";
 
 /* (No Comment) */
 "Unexpected" = "Unexpected";
@@ -325,7 +325,7 @@
 "You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences." = "You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences.";
 
 /* Final Onboarding Screen */
-"You're all set!" = "You're all set!";
+"You're all set!" = "Все готово!";
 
 /* Errors */
 "You're offline, maybe?" = "You're offline, maybe?";

@@ -135,7 +135,7 @@ class CalendarViewController: ParentViewController {
     }
 
     @IBAction func grantAccess(_: Any) {
-        if grantAccessButton.title == "Grant Access" {
+        if grantAccessButton.title == "Grant Access".localized() {
             OneWindowController.shared().openPermissions()
             NSApp.activate(ignoringOtherApps: true)
         } else if grantAccessButton.title == "Launch Preferences" {
