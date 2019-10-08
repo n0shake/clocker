@@ -70,6 +70,53 @@ class ClockerUnitTests: XCTestCase {
         return TimezoneDataOperations(with: TimezoneData(with: omaha))
     }
 
+    func testOverridingSecondsComponent_shouldHideSeconds() {
+        let dummyDefaults = UserDefaults.standard
+        dummyDefaults.set(NSNumber(value: 0), forKey: CLShowSecondsInMenubar)
+        dummyDefaults.set(NSNumber(value: 1), forKey: CL24hourFormatSelectedKey)
+
+        let timezoneObjects = [TimezoneData(with: mumbai),
+                               TimezoneData(with: auckland),
+                               TimezoneData(with: california)]
+
+        timezoneObjects.forEach {
+            let operationsObject = TimezoneDataOperations(with: $0)
+            let currentTime = operationsObject.time(with: 0)
+            XCTAssert(currentTime.count == 8) // 8 includes 2 colons
+
+            $0.setShouldOverrideSecondsFormat(1)
+            let newTime = operationsObject.time(with: 0)
+
+            XCTAssert(newTime.count == 5) // 5 includes colon
+        }
+        // Reset
+        dummyDefaults.set(NSNumber(value: 1), forKey: CLShowSecondsInMenubar)
+    }
+
+    func testOverridingSecondsComponentFor12HourFormat_shouldHideSeconds() {
+        let dummyDefaults = UserDefaults.standard
+        dummyDefaults.set(NSNumber(value: 0), forKey: CLShowSecondsInMenubar)
+        dummyDefaults.set(NSNumber(value: 0), forKey: CL24hourFormatSelectedKey)
+
+        let timezoneObjects = [TimezoneData(with: mumbai),
+                               TimezoneData(with: auckland),
+                               TimezoneData(with: california)]
+
+        timezoneObjects.forEach {
+            let operationsObject = TimezoneDataOperations(with: $0)
+            let currentTime = operationsObject.time(with: 0)
+            XCTAssert(currentTime.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count >= 10) // 8 includes 2 colons
+
+            $0.setShouldOverrideSecondsFormat(1)
+            let newTime = operationsObject.time(with: 0)
+
+            XCTAssert(newTime.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count >= 7) // 5 includes colon
+        }
+        // Reset
+        dummyDefaults.set(NSNumber(value: 1), forKey: CLShowSecondsInMenubar)
+        dummyDefaults.set(NSNumber(value: 1), forKey: CL24hourFormatSelectedKey)
+    }
+
     func testAddingATimezoneToDefaults() {
         let timezoneData = TimezoneData(with: california)
 
@@ -110,7 +157,7 @@ class ClockerUnitTests: XCTestCase {
         XCTAssertTrue(operations.timeDifference() == ", 12 hours 30 mins ahead", "Difference was unexpectedly: \(operations.timeDifference())")
         XCTAssertTrue(californiaOperations.timeDifference() == "", "Difference was unexpectedly: \(californiaOperations.timeDifference())")
         XCTAssertTrue(floridaOperations.timeDifference() == ", 3 hours ahead", "Difference was unexpectedly: \(floridaOperations.timeDifference())")
-        XCTAssertTrue(aucklandOperations.timeDifference() == ", 19 hours ahead", "Difference was unexpectedly: \(aucklandOperations.timeDifference())")
+        XCTAssertTrue(aucklandOperations.timeDifference() == ", 20 hours ahead", "Difference was unexpectedly: \(aucklandOperations.timeDifference())")
         XCTAssertTrue(omahaOperations.timeDifference() == ", 2 hours ahead", "Difference was unexpectedly: \(omahaOperations.timeDifference())")
     }
 
