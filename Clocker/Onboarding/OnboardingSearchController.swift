@@ -211,7 +211,7 @@ class OnboardingSearchController: NSViewController {
         appName.stringValue = "Quick Add Locations".localized()
         onboardingTypeLabel.stringValue = "More search options in Clocker Preferences.".localized()
         setInfoLabel(CLEmptyString)
-        searchBar.placeholderString = "Search Locations".localized()
+        searchBar.placeholderString = "Enter 3 or more characters for locations you'll like to add".localized()
 
         resultsTableView.backgroundColor = Themer.shared().mainBackgroundColor()
         resultsTableView.enclosingScrollView?.backgroundColor = Themer.shared().mainBackgroundColor()
@@ -258,6 +258,10 @@ class OnboardingSearchController: NSViewController {
         let words = searchString.components(separatedBy: CharacterSet.whitespacesAndNewlines)
 
         searchString = words.joined(separator: CLEmptyString)
+
+        if searchString.count < 3 {
+            return
+        }
 
         let urlString = "https://maps.googleapis.com/maps/api/geocode/json?address=\(searchString)&key=\(CLGeocodingKey)&language=\(userPreferredLanguage)"
 
