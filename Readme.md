@@ -1,7 +1,7 @@
 **Clocker** 
 ---
 
-[![Twitter: @abgbm](https://img.shields.io/badge/contact-@n0shake-blue.svg?style=flat)](https://twitter.com/n0shake) [![Build Status](https://travis-ci.org/n0shake/Clocker.svg?branch=master)](https://travis-ci.org/n0shake/Clocker) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![Twitter: @abgbm](https://img.shields.io/badge/contact-@n0shake-blue.svg?style=flat)](https://twitter.com/n0shake) [![Build Status](https://travis-ci.org/n0shake/Clocker.svg?branch=master)](https://travis-ci.org/n0shake/Clocker) [![Crowdin](https://badges.crowdin.net/clocker/localized.svg)](https://crowdin.com/project/clocker)
 
 ![Clocker](https://raw.githubusercontent.com/n0shake/Clocker/master/New%20Icons/Github.png "Clocker")
 

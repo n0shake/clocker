@@ -6,13 +6,14 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "1x",
+      "filename" : "Privacy Dynamic.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
           "value" : "dark"
         }
-      ]
+      ],
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
@@ -21,7 +22,7 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "Privacy Dynamic.png",
+      "filename" : "Privacy Dynamic-1.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
