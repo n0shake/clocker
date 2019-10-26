@@ -86,8 +86,8 @@ class TimezoneCellView: NSTableCellView {
             return
         }
 
-        let newFontSize = CGFloat(13 + (userFontSize.intValue * 1))
-        let newTimeFontSize = CGFloat(13 + (userFontSize.intValue * 2))
+        let newFontSize = CGFloat(11 + (userFontSize.intValue * 1))
+        let newTimeFontSize = CGFloat(12 + (userFontSize.intValue * 2))
 
         let fontManager = NSFontManager.shared
 

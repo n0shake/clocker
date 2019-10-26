@@ -355,22 +355,22 @@ class ParentPanelController: NSWindowController {
         var newHeight = currentHeight
 
         if newHeight <= 68.0 {
-            newHeight = 69.0
+            newHeight = 68.0
         }
 
         if newHeight >= 68.0 {
-            newHeight = 75.0
+            newHeight = 72.0
             if let note = object?.note, note.isEmpty == false {
-                newHeight += 30
+                newHeight += 25
             }
         }
 
         if newHeight >= 88.0 {
-            // Set it to 95 expicity in case the row height is calculated be higher.
-            newHeight = 95.0
+            // Set it to 90 expicity in case the row height is calculated be higher.
+            newHeight = 90.0
 
             if let note = object?.note, note.isEmpty {
-                newHeight -= 30.0
+                newHeight -= 25.0
             }
         }
 
