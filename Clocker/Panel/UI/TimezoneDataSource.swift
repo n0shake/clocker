@@ -79,10 +79,10 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
             let model = timezones[row]
 
             if let note = model.note, !note.isEmpty {
-                return CGFloat(65 + userFontSize.floatValue + 30)
+                return CGFloat(65 + userFontSize.floatValue + 25)
             }
 
-            return CGFloat(65 + (userFontSize.intValue * 3))
+            return CGFloat(65 + (userFontSize.intValue * 2))
         }
 
         return 0

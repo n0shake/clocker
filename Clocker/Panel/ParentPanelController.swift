@@ -396,7 +396,7 @@ class ParentPanelController: NSWindowController {
         }
 
         if let userFontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber {
-            scrollViewHeight.constant = totalHeight + CGFloat(userFontSize.intValue * 3) + 5.0
+            scrollViewHeight.constant = totalHeight + CGFloat(userFontSize.intValue * 2) + 5.0
         }
 
         if DataStore.shared().shouldDisplay(ViewType.upcomingEventView) {
