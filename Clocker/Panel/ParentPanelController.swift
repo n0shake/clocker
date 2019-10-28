@@ -38,7 +38,10 @@ class ParentPanelController: NSWindowController {
 
     private var note: NotesPopover?
 
-    private lazy var oneWindow = OneWindowController.shared()
+    private lazy var oneWindow: OneWindowController? = {
+        let preferencesStoryboard = NSStoryboard(name: "Preferences", bundle: nil)
+        return preferencesStoryboard.instantiateInitialController() as? OneWindowController
+    }()
 
     @IBOutlet var mainTableView: PanelTableView!
 
@@ -625,7 +628,7 @@ class ParentPanelController: NSWindowController {
     }
 
     private func openPreferences() {
-        oneWindow.showWindow(nil)
+        oneWindow?.showWindow(nil)
         NSApp.activate(ignoringOtherApps: true)
     }
 
@@ -653,7 +656,7 @@ class ParentPanelController: NSWindowController {
     }
 
     private func showPermissionsWindow() {
-        oneWindow.openPermissions()
+        oneWindow?.openPermissions()
         NSApp.activate(ignoringOtherApps: true)
     }
 
