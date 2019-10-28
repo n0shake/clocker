@@ -35,6 +35,9 @@ class StatusItemHandler: NSObject {
     // TODO: Make sure it's set just once.
     private var currentState: MenubarState = .standardText {
         didSet {
+            if oldValue == currentState {
+                assert(oldValue == currentState, "We have the same status bar state")
+            }
             // Do some cleanup
             switch oldValue {
             case .compactText:

@@ -34,7 +34,7 @@ class SearchDataSource: NSObject {
         super.init()
         self.searchField = searchField
         setupTimezoneDatasource()
-        _ = calculateChangesets()
+        calculateChangesets()
     }
 
     func cleanupFilterArray() {
@@ -78,7 +78,7 @@ class SearchDataSource: NSObject {
         }
     }
 
-    func calculateChangesets() -> Bool {
+    @discardableResult func calculateChangesets() -> Bool {
         var changesets: [RowType] = []
 
         func addTimezonesIfNeeded(_ data: [TimezoneMetadata]) {
