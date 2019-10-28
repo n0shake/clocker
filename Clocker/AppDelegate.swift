@@ -160,8 +160,12 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     private func setActivationPolicy() {
         let defaults = UserDefaults.standard
 
+        let currentActivationPolicy = NSRunningApplication.current.activationPolicy
         let activationPolicy: NSApplication.ActivationPolicy = defaults.integer(forKey: CLAppDislayOptions) == 0 ? .accessory : .regular
-        NSApp.setActivationPolicy(activationPolicy)
+
+        if currentActivationPolicy != activationPolicy {
+            NSApp.setActivationPolicy(activationPolicy)
+        }
     }
 
     private func checkIfAppIsAlreadyOpen() {
