@@ -556,9 +556,10 @@ extension PreferencesViewController {
     }
 
     private func reloadSearchResults() {
-        print("Reloading Search Results")
-        searchResultsDataSource.calculateArray()
-        availableTimezoneTableView.reloadData()
+        if searchResultsDataSource.calculateChangesets() {
+            print("Reloading Search Results")
+            availableTimezoneTableView.reloadData()
+        }
     }
 
     // Extracting this out for tests
