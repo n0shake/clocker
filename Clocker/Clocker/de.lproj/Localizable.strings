@@ -240,9 +240,6 @@
 /* Next Event Label for no Calendar access */
 "See your next Calendar event here." = "See your next Calendar event here.";
 
-/* Start at Login */
-"Selected Timezones" = "Selected Timezones";
-
 /* (No Comment) */
 "setup-steps" = "It only takes 3 steps to set up Clocker";
 

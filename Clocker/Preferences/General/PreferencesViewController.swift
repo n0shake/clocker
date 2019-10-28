@@ -62,15 +62,12 @@ class PreferencesViewController: ParentViewController {
     @IBOutlet private var searchField: NSSearchField!
     @IBOutlet private var messageLabel: NSTextField!
 
-    @IBOutlet private var headerView: NSView!
     @IBOutlet private var tableview: NSView!
     @IBOutlet private var additionalSortOptions: NSView!
     @IBOutlet var startAtLoginLabel: NSTextField!
 
     @IBOutlet var startupCheckbox: NSButton!
-    @IBOutlet var headerLabel: NSTextField!
 
-    @IBOutlet var sortToggle: NSButton!
     private var themeDidChangeNotification: NSObjectProtocol?
 
     // Selected Timezones Data Source
@@ -119,8 +116,6 @@ class PreferencesViewController: ParentViewController {
     private func darkModeChanges() {
         if #available(macOS 10.14, *) {
             addTimezoneButton.image = NSImage(named: .addDynamicIcon)
-            sortToggle.image = NSImage(named: .sortToggleIcon)
-            sortToggle.alternateImage = NSImage(named: .sortToggleAlternateIcon)
             deleteButton.image = NSImage(named: NSImage.Name("Remove Dynamic"))!
         }
     }
@@ -128,8 +123,6 @@ class PreferencesViewController: ParentViewController {
     private func setupLocalizedText() {
         startAtLoginLabel.stringValue = NSLocalizedString("Start at Login",
                                                           comment: "Start at Login")
-        headerLabel.stringValue = NSLocalizedString("Selected Timezones",
-                                                    comment: "Start at Login")
         timezoneSortButton.title = NSLocalizedString("Sort by Time Difference",
                                                      comment: "Start at Login")
         timezoneNameSortButton.title = NSLocalizedString("Sort by Name",
@@ -177,7 +170,6 @@ class PreferencesViewController: ParentViewController {
         }
 
         if selectedTimeZones.isEmpty == false {
-            headerView.isHidden = false
             additionalSortOptions.isHidden = false
             if tableview.subviews.count > 1, let zeroView = notimezoneView, tableview.subviews.contains(zeroView) {
                 zeroView.removeFromSuperview()
@@ -193,7 +185,6 @@ class PreferencesViewController: ParentViewController {
 
     private func housekeeping() {
         timezoneTableView.enclosingScrollView?.isHidden = true
-        headerView.isHidden = true
         showNoTimezoneState()
         cleanup()
         return
@@ -250,7 +241,6 @@ class PreferencesViewController: ParentViewController {
     private func setupColor() {
         let themer = Themer.shared()
 
-        headerLabel.textColor = themer.mainTextColor()
         startAtLoginLabel.textColor = Themer.shared().mainTextColor()
 
         [timezoneNameSortButton, labelSortButton, timezoneSortButton].forEach {
@@ -262,8 +252,6 @@ class PreferencesViewController: ParentViewController {
 
         addTimezoneButton.image = themer.addImage()
         deleteButton.image = themer.removeImage()
-        sortToggle.image = themer.additionalPreferencesImage()
-        sortToggle.alternateImage = themer.additionalPreferencesHighlightedImage()
     }
 
     private func setupShortcutObserver() {

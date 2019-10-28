@@ -407,14 +407,6 @@ extension Themer {
         return themeIndex == .light ? NSImage(named: NSImage.Name("Calendar Tab Icon"))! : NSImage(named: NSImage.Name("Calendar Tab Dark"))!
     }
 
-    func additionalPreferencesImage() -> NSImage {
-        return themeIndex == .light ? NSImage(named: NSImage.Name("AdditionalPreferences"))! : NSImage(named: NSImage.Name("Additional Preferences Dark"))!
-    }
-
-    func additionalPreferencesHighlightedImage() -> NSImage {
-        return themeIndex == .light ? NSImage(named: NSImage.Name("AdditionalPreferencesHighlighted"))! : NSImage(named: NSImage.Name("Additional Preferences Highlighted Dark"))!
-    }
-
     func textBackgroundColor() -> NSColor {
         if #available(macOS 10.14, *) {
             switch themeIndex {
