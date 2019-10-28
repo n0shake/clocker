@@ -10,7 +10,7 @@ private var defaultParagraphStyle: NSMutableParagraphStyle {
 }
 
 var compactModeTimeFont: NSFont {
-    return NSFont.monospacedDigitSystemFont(ofSize: 10, weight: .thin)
+    return NSFont.monospacedDigitSystemFont(ofSize: 10, weight: .regular)
 }
 
 var timeAttributes: [NSAttributedString.Key: AnyObject] {

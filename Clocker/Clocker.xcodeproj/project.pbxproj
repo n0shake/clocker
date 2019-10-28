@@ -359,6 +359,10 @@
 		9AA522D323416A1B00C9E005 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		9AA522D423416A6000C9E005 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9AA522D523416A6000C9E005 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9AA522D623416E6000C9E005 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9AA522D723416E6000C9E005 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9AA522D923416E6A00C9E005 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9AA522DB23416E7600C9E005 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9AB6F1552259CF3900A44663 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		9AB6F1572259CFFC00A44663 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		9AB6F15A2259D08300A44663 /* iVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iVersion.m; sourceTree = "<group>"; };
@@ -1015,6 +1019,9 @@
 				es,
 				"pt-PT",
 				nl,
+				it,
+				tr,
+				ar,
 			);
 			mainGroup = DD4F7BF913C30F9F00825C6E;
 			productRefGroup = DD4F7C0513C30F9F00825C6E /* Products */;
@@ -1310,6 +1317,9 @@
 				9AA522D023416A0E00C9E005 /* es */,
 				9AA522D323416A1B00C9E005 /* pt-PT */,
 				9AA522D423416A6000C9E005 /* nl */,
+				9AA522D623416E6000C9E005 /* it */,
+				9AA522D923416E6A00C9E005 /* tr */,
+				9AA522DB23416E7600C9E005 /* ar */,
 			);
 			name = InfoPlist.strings;
 			path = Clocker;
@@ -1329,6 +1339,7 @@
 				9AA522CF234169F200C9E005 /* ca */,
 				9AA522D123416A0E00C9E005 /* es */,
 				9AA522D523416A6000C9E005 /* nl */,
+				9AA522D723416E6000C9E005 /* it */,
 			);
 			name = Localizable.strings;
 			path = Clocker;
