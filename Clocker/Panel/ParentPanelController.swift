@@ -355,25 +355,27 @@ class ParentPanelController: NSWindowController {
     }
 
     private func getAdjustedRowHeight(for object: TimezoneData?, _ currentHeight: CGFloat) -> CGFloat {
+        let userFontSize: NSNumber = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber ?? 4
+
         var newHeight = currentHeight
 
         if newHeight <= 68.0 {
-            newHeight = 68.0
+            newHeight = 60.0
         }
 
         if newHeight >= 68.0 {
-            newHeight = 72.0
+            newHeight = userFontSize == 4 ? 68.0 : 68.0
             if let note = object?.note, note.isEmpty == false {
-                newHeight += 25
+                newHeight += 20
             }
         }
 
         if newHeight >= 88.0 {
             // Set it to 90 expicity in case the row height is calculated be higher.
-            newHeight = 90.0
+            newHeight = 88.0
 
             if let note = object?.note, note.isEmpty {
-                newHeight -= 25.0
+                newHeight -= 20.0
             }
         }
 
@@ -399,7 +401,11 @@ class ParentPanelController: NSWindowController {
         }
 
         if let userFontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber {
-            scrollViewHeight.constant = totalHeight + CGFloat(userFontSize.intValue * 2) + 5.0
+            if userFontSize == 4 {
+                scrollViewHeight.constant = totalHeight + CGFloat(userFontSize.intValue * 2)
+            } else {
+                scrollViewHeight.constant = totalHeight + CGFloat(userFontSize.intValue * 2) * 3.0
+            }
         }
 
         if DataStore.shared().shouldDisplay(ViewType.upcomingEventView) {
