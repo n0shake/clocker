@@ -191,7 +191,6 @@ class PreferencesViewController: ParentViewController {
     }
 
     private func cleanup() {
-        timezoneTableView.scrollRowToVisible(selectedTimeZones.count - 1)
         updateMenubarTitles() // Update the menubar titles, the custom labels might have changed.
     }
 
