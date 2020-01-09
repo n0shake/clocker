@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -77,7 +77,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="749" tag="102" preferredMaxLayoutWidth="72" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUd-7D-q14">
-                                                                    <rect key="frame" x="28" y="45" width="189" height="22"/>
+                                                                    <rect key="frame" x="28" y="50" width="189" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="JkG-8f-zhJ"/>
                                                                     </constraints>
@@ -131,18 +131,18 @@
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="right" imageScaling="proportionallyDown" id="cfP-C4-ENJ"/>
                                                                 </imageView>
                                                                 <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="751" tag="100" preferredMaxLayoutWidth="150" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etF-33-bCB">
-                                                                    <rect key="frame" x="28" y="74" width="181" height="25"/>
+                                                                    <rect key="frame" x="28" y="79" width="181" height="20"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" placeholderString="Timezone Name" id="rnh-AP-ooc">
                                                                         <font key="font" size="15" name="Avenir-Light"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cbs-xa-uR7">
-                                                                    <rect key="frame" x="0.0" y="27" width="30" height="64"/>
+                                                                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="-5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cbs-xa-uR7">
+                                                                    <rect key="frame" x="0.0" y="32" width="30" height="59"/>
                                                                     <subviews>
                                                                         <imageView toolTip="Current Timezone" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SVj-Xy-zG5">
-                                                                            <rect key="frame" x="3" y="39" width="25" height="25"/>
+                                                                            <rect key="frame" x="3" y="34" width="25" height="25"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="25" id="FqJ-7B-iG3"/>
                                                                                 <constraint firstAttribute="height" constant="25" id="N9m-Hj-a3D"/>
@@ -252,7 +252,7 @@
                                     <rect key="frame" x="-100" y="-100" width="223" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" arrowsPosition="none" horizontal="NO" id="cfu-8V-LKK">
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" horizontal="NO" id="cfu-8V-LKK">
                                     <rect key="frame" x="290" y="0.0" width="16" height="265"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -538,10 +538,10 @@
                         </constraints>
                         <visibilityPriorities>
                             <integer value="1000"/>
-                            <real value="1000"/>
                             <integer value="1000"/>
                             <integer value="1000"/>
-                            <real value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
                         </visibilityPriorities>
                         <customSpacing>
                             <real value="3.4028234663852886e+38"/>
@@ -569,7 +569,7 @@
     <resources>
         <image name="Add Highlighted" width="700" height="700"/>
         <image name="Add Icon" width="700" height="700"/>
-        <image name="CurrentLocation" width="700" height="700"/>
+        <image name="CurrentLocation" width="350" height="350"/>
         <image name="Extra" width="700" height="700"/>
         <image name="Float" width="700" height="700"/>
         <image name="NSActionTemplate" width="14" height="14"/>
