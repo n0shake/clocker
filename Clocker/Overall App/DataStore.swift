@@ -44,6 +44,10 @@ class DataStore: NSObject {
         return preferences
     }
 
+    func menubarTimezones() -> [Data]? {
+        return DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data]
+    }
+
     func updateDayPreference() {
         shouldDisplayDayInMenubar = shouldDisplay(.dayInMenubar)
     }

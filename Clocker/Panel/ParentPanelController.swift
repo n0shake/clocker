@@ -221,6 +221,11 @@ class ParentPanelController: NSWindowController {
         }
 
         DataStore.shared().setTimezones(datas)
+
+        // Update appereance if in compact menubar mode
+        if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
+            appDelegate.setupMenubarTimer()
+        }
     }
 
     func determineUpcomingViewVisibility() {

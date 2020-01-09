@@ -9,7 +9,7 @@ class MenubarHandler: NSObject {
             return nextEvent
         }
 
-        guard let menubarTitles = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data] else {
+        guard let menubarTitles = DataStore.shared().menubarTimezones() else {
             return nil
         }
 
