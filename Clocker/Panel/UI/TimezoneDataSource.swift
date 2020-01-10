@@ -78,11 +78,12 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
         if let userFontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber, timezones.count > row {
             let model = timezones[row]
 
+            let rowHeight: Int = userFontSize == 4 ? 60 : 65
             if let note = model.note, !note.isEmpty {
-                return CGFloat(65 + userFontSize.floatValue + 25)
+                return CGFloat(rowHeight + userFontSize.intValue + 25)
             }
 
-            return CGFloat(65 + (userFontSize.intValue * 2))
+            return CGFloat(rowHeight + (userFontSize.intValue * 2))
         }
 
         return 0

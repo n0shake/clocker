@@ -134,12 +134,6 @@ class PreferencesTest: XCTestCase {
         }
 
         XCTAssertEqual(newformattedAddress, formattedAddress)
-
-        app.windows["Clocker"].checkBoxes["SortButton"].click()
-
-        XCTAssertFalse(app.windows["Clocker"].checkBoxes["Sort by Time Difference".localizedString()].exists)
-        XCTAssertFalse(app.windows["Clocker"].checkBoxes["Sort by Label".localizedString()].exists)
-        XCTAssertFalse(app.windows["Clocker"].checkBoxes["Sort by Name".localizedString()].exists)
     }
 
     func testSortingCitiesByCustomLabel() {
