@@ -74,7 +74,7 @@ class StatusItemHandler: NSObject {
         // Let's figure out the initial menubar state
         var menubarState = MenubarState.icon
 
-        let shouldTextBeDisplayed = (DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data])?.isEmpty ?? true
+        let shouldTextBeDisplayed = DataStore.shared().menubarTimezones()?.isEmpty ?? true
 
         if !shouldTextBeDisplayed || DataStore.shared().shouldDisplay(.showMeetingInMenubar) {
             if DataStore.shared().shouldDisplay(.menubarCompactMode) {
@@ -219,7 +219,7 @@ class StatusItemHandler: NSObject {
 
     private func calculateFireDate() -> Date? {
         let shouldDisplaySeconds = shouldDisplaySecondsInMenubar()
-        let menubarFavourites = DataStore.shared().retrieve(key: CLMenubarFavorites)
+        let menubarFavourites = DataStore.shared().menubarTimezones()
 
         if !units.contains(.second), shouldDisplaySeconds {
             units.insert(.second)
@@ -228,7 +228,7 @@ class StatusItemHandler: NSObject {
         var components = nsCalendar.dateComponents(units, from: Date())
 
         // We want to update every second only when there's a timezone present!
-        if shouldDisplaySeconds, let seconds = components.second, let favourites = menubarFavourites as? [Data], !favourites.isEmpty {
+        if shouldDisplaySeconds, let seconds = components.second, let favourites = menubarFavourites, !favourites.isEmpty {
             components.second = seconds + 1
         } else if let minutes = components.minute {
             components.minute = minutes + 1
@@ -281,7 +281,7 @@ class StatusItemHandler: NSObject {
         // 1. Timezones
         // 2. Upcoming Event
 
-        let menubarFavourites = (DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data]) ?? []
+        let menubarFavourites = DataStore.shared().menubarTimezones() ?? []
 
         if menubarFavourites.isEmpty, DataStore.shared().shouldDisplay(.showMeetingInMenubar) == false {
             print("Invalidating menubar timer!")

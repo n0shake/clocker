@@ -60,7 +60,7 @@ class AppearanceViewController: ParentViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
 
-        if let menubarFavourites = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data] {
+        if let menubarFavourites = DataStore.shared().menubarTimezones() {
             visualEffectView.isHidden = menubarFavourites.isEmpty ? false : true
             informationLabel.isHidden = menubarFavourites.isEmpty ? false : true
         }

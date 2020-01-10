@@ -20,7 +20,6 @@ class AppDefaults {
     private class func initializeDefaults() {
         let userDefaults = UserDefaults.standard
 
-        let menubarFavourites = userDefaults.object(forKey: CLMenubarFavorites)
         let timezones = userDefaults.object(forKey: CLDefaultPreferenceKey)
         let selectedCalendars = userDefaults.object(forKey: CLSelectedCalendars)
 
@@ -30,8 +29,6 @@ class AppDefaults {
         // Register the usual suspects
         userDefaults.register(defaults: defaultsDictionary())
 
-        // Set arrays and our custom objects
-        userDefaults.set(menubarFavourites, forKey: CLMenubarFavorites)
         userDefaults.set(timezones, forKey: CLDefaultPreferenceKey)
         userDefaults.set(selectedCalendars, forKey: CLSelectedCalendars)
 
@@ -53,7 +50,7 @@ class AppDefaults {
         if userDefaults.bool(forKey: CLSwitchToCompactModeAlert) == false {
             userDefaults.set(true, forKey: CLSwitchToCompactModeAlert)
 
-            if let menubarFavourites = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data], menubarFavourites.count > 1 {
+            if let menubarFavourites = DataStore.shared().menubarTimezones(), menubarFavourites.count > 1 {
                 // If the user is already using the compact mode, abort.
                 if DataStore.shared().shouldDisplay(.menubarCompactMode) {
                     return
@@ -124,7 +121,6 @@ class AppDefaults {
                 CLUserFontSizePreference: 4,
                 CLShowUpcomingEventView: "YES",
                 CLShowAppInForeground: 0,
-                CLMenubarFavorites: [],
                 CLFutureSliderRange: 0,
                 CLShowAllDayEventsInUpcomingView: 1,
                 CLShowMeetingInMenubar: 1,

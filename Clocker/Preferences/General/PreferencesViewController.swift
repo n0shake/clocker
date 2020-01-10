@@ -195,23 +195,6 @@ class PreferencesViewController: ParentViewController {
     }
 
     private func updateMenubarTitles() {
-        let defaultTimezones = DataStore.shared().timezones()
-        UserDefaults.standard.set([], forKey: CLMenubarFavorites)
-
-        let menubarTimes = defaultTimezones.compactMap { (data) -> TimezoneData? in
-            if let model = TimezoneData.customObject(from: data), model.isFavourite == 1 {
-                return model
-            }
-            return nil
-        }
-
-        let archivedObjects = menubarTimes.map { (timezone) -> Data in
-            NSKeyedArchiver.archivedData(withRootObject: timezone)
-        }
-
-        UserDefaults.standard.set(archivedObjects, forKey: CLMenubarFavorites)
-
-        // Update appereance if in compact menubar mode
         if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
             appDelegate.setupMenubarTimer()
         }
@@ -316,16 +299,6 @@ class PreferencesViewController: ParentViewController {
 
 extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate {
     private func _markAsFavorite(_ dataObject: TimezoneData) {
-        guard let menubarTitles = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data] else {
-            return
-        }
-
-        var mutableArray = menubarTitles
-        let archivedObject = NSKeyedArchiver.archivedData(withRootObject: dataObject)
-        mutableArray.append(archivedObject)
-
-        UserDefaults.standard.set(mutableArray, forKey: CLMenubarFavorites)
-
         if dataObject.customLabel != nil {
             Logger.log(object: ["label": dataObject.customLabel ?? "Error"], for: "favouriteSelected")
         }
@@ -334,31 +307,17 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
             appDelegate.setupMenubarTimer()
         }
 
-        if mutableArray.count > 1 {
+        if let menubarTimezones = DataStore.shared().menubarTimezones(), menubarTimezones.count > 1 {
             showAlertIfMoreThanOneTimezoneHasBeenAddedToTheMenubar()
         }
     }
 
     private func _unfavourite(_ dataObject: TimezoneData) {
-        guard let menubarTimers = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data] else {
-            assertionFailure("Menubar timers is unexpectedly nil")
-            return
-        }
-
         Logger.log(object: ["label": dataObject.customLabel ?? "Error"],
                    for: "favouriteRemoved")
 
-        let filteredMenubars = menubarTimers.filter {
-            guard let current = NSKeyedUnarchiver.unarchiveObject(with: $0) as? TimezoneData else {
-                return false
-            }
-            return current.isEqual(dataObject) == false
-        }
-
-        UserDefaults.standard.set(filteredMenubars, forKey: CLMenubarFavorites)
-
         if let appDelegate = NSApplication.shared.delegate as? AppDelegate,
-            let menubarFavourites = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data],
+            let menubarFavourites = DataStore.shared().menubarTimezones(),
             menubarFavourites.isEmpty,
             DataStore.shared().shouldDisplay(.showMeetingInMenubar) == false {
             appDelegate.invalidateMenubarTimer(true)
@@ -874,16 +833,6 @@ extension PreferencesViewController {
             return
         }
 
-        let currentObject = selectedTimeZones[timezoneTableView.selectedRow]
-        guard let model = TimezoneData.customObject(from: currentObject) else {
-            assertionFailure("Data was unexpectedly nil")
-            return
-        }
-
-        if model.isFavourite == 1 {
-            removeFromMenubarFavourites(object: model)
-        }
-
         var newDefaults = selectedTimeZones
 
         let objectsToRemove = timezoneTableView.selectedRowIndexes.map { (index) -> Data in
@@ -899,10 +848,6 @@ extension PreferencesViewController {
         refreshTimezoneTableView()
 
         refreshMainTable()
-
-        if selectedTimeZones.isEmpty {
-            UserDefaults.standard.set(nil, forKey: CLMenubarFavorites)
-        }
 
         updateStatusBarAppearance()
 
@@ -924,24 +869,6 @@ extension PreferencesViewController {
         }
 
         statusItem.setupStatusItem()
-    }
-
-    private func removeFromMenubarFavourites(object: TimezoneData?) {
-        guard let model = object else {
-            assertionFailure("Data was unexpectedly nil")
-            return
-        }
-
-        if model.isFavourite == 1 {
-            if let menubarTitles = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data] {
-                let updated = menubarTitles.filter { (data) -> Bool in
-                    let current = TimezoneData.customObject(from: data)
-                    return current != model
-                }
-
-                UserDefaults.standard.set(updated, forKey: CLMenubarFavorites)
-            }
-        }
     }
 
     @IBAction func filterArray(_: Any?) {

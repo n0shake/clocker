@@ -222,7 +222,6 @@ class ParentPanelController: NSWindowController {
 
         DataStore.shared().setTimezones(datas)
 
-        // Update appereance if in compact menubar mode
         if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
             appDelegate.setupMenubarTimer()
         }
@@ -487,19 +486,10 @@ class ParentPanelController: NSWindowController {
     func deleteTimezone(at row: Int) {
         var defaults = defaultPreferences
 
-        // Remove object from menubar favourites if present
-        if let dataObject = TimezoneData.customObject(from: defaults[row]) {
-            removeFromMenubarFavourites(timezone: dataObject)
-        }
-
         // Remove from panel
         defaults.remove(at: row)
         DataStore.shared().setTimezones(defaults)
         updateDefaultPreferences()
-
-        if defaults.isEmpty {
-            UserDefaults.standard.set([], forKey: CLMenubarFavorites)
-        }
 
         NotificationCenter.default.post(name: Notification.Name.customLabelChanged,
                                         object: nil)
@@ -508,35 +498,12 @@ class ParentPanelController: NSWindowController {
         Logger.log(object: [:], for: "Deleted Timezone Through Swipe")
     }
 
-    private func removeFromMenubarFavourites(timezone: TimezoneData) {
-        if timezone.isFavourite == 1, let menubarTitles = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data] {
-            let filtered = menubarTitles.filter {
-                let dataObject = TimezoneData.customObject(from: $0)
-
-                // Special check for home indicator objects!
-                if timezone.isSystemTimezone, let isSystem = dataObject?.isSystemTimezone, isSystem {
-                    return false
-                }
-
-                return dataObject?.placeID != timezone.placeID
-            }
-
-            UserDefaults.standard.set(filtered, forKey: CLMenubarFavorites)
-
-            // Update the status bar's appearance if it is in custom mode.
-            if let delegate = NSApplication.shared.delegate as? AppDelegate {
-                let statusItemPanel = delegate.statusItemForPanel()
-                statusItemPanel.setupStatusItem()
-            }
-        }
-    }
-
     private lazy var menubarTitleHandler = MenubarHandler()
 
     @objc func updateTime() {
         let store = DataStore.shared()
 
-        let menubarCount = (store.retrieve(key: CLMenubarFavorites) as? [Data])?.count ?? 0
+        let menubarCount = store.menubarTimezones()?.count ?? 0
 
         if menubarCount >= 1 || store.shouldDisplay(.showMeetingInMenubar) == true {
             if let status = (NSApplication.shared.delegate as? AppDelegate)?.statusItemForPanel() {

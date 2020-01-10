@@ -24,7 +24,6 @@ NSString *const CLSunriseSunsetTime = @"showSunriseSetTime";
 NSString *const CLShowSecondsInMenubar = @"showSeconds";
 NSString *const CLUserFontSizePreference = @"userFontSize";
 NSString *const CLShowUpcomingEventView = @"ShowUpcomingEventView";
-NSString *const CLMenubarFavorites = @"menubarFavourites";
 NSString *const CLFutureSliderRange = @"sliderDayRange";
 NSString *const CLShowAllDayEventsInUpcomingView = @"showAllDayEventsInUpcomingView";
 NSString *const CLShowMeetingInMenubar = @"showMeetingInfoInMenubar";

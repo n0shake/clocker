@@ -25,7 +25,6 @@ extern NSString *const CLLocationSearchURL;
 extern NSString *const CLShowSecondsInMenubar;
 extern NSString *const CLUserFontSizePreference;
 extern NSString *const CLShowUpcomingEventView;
-extern NSString *const CLMenubarFavorites;
 extern NSString *const CLShowAllDayEventsInUpcomingView;
 extern NSString *const CLShowMeetingInMenubar;
 extern NSString *const CLTruncateTextLength;

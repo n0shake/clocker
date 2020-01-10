@@ -186,23 +186,6 @@ extension PreferencesDataSource: NSTableViewDataSource {
     }
 
     private func updateMenubarTitles() {
-        let defaultTimezones = DataStore.shared().timezones()
-        UserDefaults.standard.set([], forKey: CLMenubarFavorites)
-
-        let menubarTimes = defaultTimezones.compactMap { (data) -> TimezoneData? in
-            if let model = TimezoneData.customObject(from: data), model.isFavourite == 1 {
-                return model
-            }
-            return nil
-        }
-
-        let archivedObjects = menubarTimes.map { (timezone) -> Data in
-            NSKeyedArchiver.archivedData(withRootObject: timezone)
-        }
-
-        UserDefaults.standard.set(archivedObjects, forKey: CLMenubarFavorites)
-
-        // Update appereance if in compact menubar mode
         if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
             appDelegate.setupMenubarTimer()
         }

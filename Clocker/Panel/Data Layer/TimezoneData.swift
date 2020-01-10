@@ -220,20 +220,6 @@ class TimezoneData: NSObject, NSCoding {
                 DataStore.shared().setTimezones(newModels)
             }
         }
-
-        if let menubarTimezones = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data], !menubarTimezones.isEmpty {
-            let newMenubarModels = converter(menubarTimezones)
-
-            if newMenubarModels.count == menubarTimezones.count {
-                // Now point preferences to empty
-                UserDefaults.standard.set(nil, forKey: CLMenubarFavorites)
-
-                // Now point it to new models
-                UserDefaults.standard.set(newMenubarModels, forKey: CLMenubarFavorites)
-
-                print("Successfully converted: \(newMenubarModels.count) menubar objects.")
-            }
-        }
     }
 
     private class func converter(_ timezones: [Data]) -> [Data] {

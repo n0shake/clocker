@@ -265,7 +265,6 @@ class NotesPopover: NSViewController {
 
     @IBAction func customizeTimeFormat(_ sender: NSSegmentedControl) {
         updateTimezoneInDefaultPreferences(with: sender.selectedSegment, .timezoneFormat)
-        updateMenubarTimezoneInDefaultPreferences(with: sender.selectedSegment, .timezoneFormat)
         refreshMainTableView()
 
         // Update the display if the chosen menubar mode is compact!
@@ -280,22 +279,6 @@ class NotesPopover: NSViewController {
         let encodedObject = NSKeyedArchiver.archivedData(withRootObject: model)
         timezones[currentRow] = encodedObject
         DataStore.shared().setTimezones(timezones)
-    }
-
-    private func updateMenubarTitles() {
-        guard let model = dataObject, model.isFavourite == 1, var timezones = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data] else { return }
-        let menubarIndex = timezones.firstIndex { (menubarLocation) -> Bool in
-            if let convertedObject = TimezoneData.customObject(from: menubarLocation) {
-                return convertedObject.isEqual(dataObject)
-            }
-            return false
-        }
-
-        if let index = menubarIndex {
-            let encodedObject = NSKeyedArchiver.archivedData(withRootObject: model)
-            timezones[index] = encodedObject
-            UserDefaults.standard.set(timezones, forKey: CLMenubarFavorites)
-        }
     }
 
     private func updateTimezoneInDefaultPreferences(with override: Int, _ overrideType: OverrideType) {
@@ -323,35 +306,6 @@ class NotesPopover: NSViewController {
         }
 
         DataStore.shared().setTimezones(datas)
-    }
-
-    private func updateMenubarTimezoneInDefaultPreferences(with override: Int, _ overrideType: OverrideType) {
-        guard let timezones = DataStore.shared().retrieve(key: CLMenubarFavorites) as? [Data] else {
-            return
-        }
-
-        var timezoneObjects: [TimezoneData] = []
-
-        for timezone in timezones {
-            if let model = TimezoneData.customObject(from: timezone) {
-                timezoneObjects.append(model)
-            }
-        }
-
-        for timezoneObject in timezoneObjects where timezoneObject.isEqual(dataObject) {
-            overrideType == .timezoneFormat ?
-                timezoneObject.setShouldOverrideGlobalTimeFormat(override) :
-                timezoneObject.setShouldOverrideSecondsFormat(override)
-        }
-
-        var datas: [Data] = []
-
-        for updatedObject in timezoneObjects {
-            let dataObject = NSKeyedArchiver.archivedData(withRootObject: updatedObject)
-            datas.append(dataObject)
-        }
-
-        UserDefaults.standard.set(datas, forKey: CLMenubarFavorites)
     }
 
     private func setReminderAlarm() {
@@ -438,7 +392,6 @@ class NotesPopover: NSViewController {
 
     @IBAction func customizeSecondsFormat(_ sender: NSSegmentedControl) {
         updateTimezoneInDefaultPreferences(with: sender.selectedSegment, .seconds)
-        updateMenubarTimezoneInDefaultPreferences(with: sender.selectedSegment, .seconds)
         refreshMainTableView()
 
         // Update the display if the chosen menubar mode is compact!
@@ -529,7 +482,6 @@ extension NotesPopover: NSTextFieldDelegate {
         model.setLabel(customLabel.stringValue)
 
         insertTimezoneInDefaultPreferences()
-        updateMenubarTitles()
 
         NotificationCenter.default.post(name: NSNotification.Name.customLabelChanged,
                                         object: nil)
