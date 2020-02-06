@@ -102,7 +102,6 @@ class StatusContainerView: NSView {
 
     func addTimezone(_ timezone: TimezoneData) {
         let calculatedWidth = bestWidth(for: timezone)
-
         let frame = NSRect(x: previousX, y: 0, width: calculatedWidth, height: 30)
 
         let statusItemView = StatusItemView(frame: frame)
@@ -131,5 +130,7 @@ class StatusContainerView: NSView {
                 statusItem.updateTimeInMenubar()
             }
         }
+
+        layoutSubtreeIfNeeded()
     }
 }
