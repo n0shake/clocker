@@ -568,28 +568,28 @@ extension PreferencesViewController {
 
         NetworkManager.task(with: urlString) { [weak self] response, error in
 
-            guard let self = self else { return }
+            guard let strongSelf = self else { return }
 
             OperationQueue.main.addOperation {
-                if self.handleEdgeCase(for: response) == true {
-                    self.reloadSearchResults()
+                if strongSelf.handleEdgeCase(for: response) == true {
+                    strongSelf.reloadSearchResults()
                     return
                 }
 
-                if error == nil, let json = response, let timezone = self.decodeTimezone(from: json) {
-                    if self.availableTimezoneTableView.selectedRow >= 0 {
-                        self.installTimezone(timezone)
+                if error == nil, let json = response, let timezone = strongSelf .decodeTimezone(from: json) {
+                    if strongSelf.availableTimezoneTableView.selectedRow >= 0 {
+                        strongSelf.installTimezone(timezone)
                     }
-                    self.updateViewState()
+                    strongSelf.updateViewState()
                 } else {
                     OperationQueue.main.addOperation {
                         if error?.localizedDescription == "The Internet connection appears to be offline." {
-                            self.placeholderLabel.placeholderString = PreferencesConstants.noInternetConnectivityError
+                            strongSelf.placeholderLabel.placeholderString = PreferencesConstants.noInternetConnectivityError
                         } else {
-                            self.placeholderLabel.placeholderString = PreferencesConstants.tryAgainMessage
+                            strongSelf.placeholderLabel.placeholderString = PreferencesConstants.tryAgainMessage
                         }
 
-                        self.isActivityInProgress = false
+                        strongSelf.isActivityInProgress = false
                     }
                 }
             }
