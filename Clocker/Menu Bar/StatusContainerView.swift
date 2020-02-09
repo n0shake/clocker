@@ -130,7 +130,5 @@ class StatusContainerView: NSView {
                 statusItem.updateTimeInMenubar()
             }
         }
-
-        layoutSubtreeIfNeeded()
     }
 }
