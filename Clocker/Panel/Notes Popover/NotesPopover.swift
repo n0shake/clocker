@@ -216,7 +216,7 @@ class NotesPopover: NSViewController {
 
         if setReminderCheckbox.state == .on {
             setReminderAlarm()
-            Logger.log(object: [:], for: "Reminder Set")
+            Logger.log(object: nil, for: "Reminder Set")
         }
 
         refreshMainTableView()
@@ -249,7 +249,7 @@ class NotesPopover: NSViewController {
                 }
                 NSWorkspace.shared.launchApplication("Reminders")
             } else if eventDescriptor == nil {
-                Logger.log(object: [:], for: "Event Description is unexpectedly nil")
+                Logger.log(object: nil, for: "Event Description is unexpectedly nil")
                 NSWorkspace.shared.launchApplication("Reminders")
             } else {
                 Logger.log(object: ["Successfully Executed Apple Script": "YES"], for: "Successfully Executed Apple Script")

@@ -297,8 +297,8 @@ class OnboardingParentViewController: NSViewController {
         UserDefaults.standard.set(shouldStart ? 1 : 0, forKey: CLStartAtLogin)
         startupManager.toggleLogin(shouldStart)
         shouldStart ?
-            Logger.log(object: [:], for: "Enable Launch at Login while Onboarding") :
-            Logger.log(object: [:], for: "Disable Launch at Login while Onboarding")
+            Logger.log(object: nil, for: "Enable Launch at Login while Onboarding") :
+            Logger.log(object: nil, for: "Disable Launch at Login while Onboarding")
     }
 
     func logExitPoint() {

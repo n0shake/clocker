@@ -576,7 +576,7 @@ extension PreferencesViewController {
                     return
                 }
 
-                if error == nil, let json = response, let timezone = strongSelf .decodeTimezone(from: json) {
+                if error == nil, let json = response, let timezone = strongSelf.decodeTimezone(from: json) {
                     if strongSelf.availableTimezoneTableView.selectedRow >= 0 {
                         strongSelf.installTimezone(timezone)
                     }

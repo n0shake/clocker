@@ -501,7 +501,7 @@ class ParentPanelController: NSWindowController {
                                         object: nil)
 
         // Now log!
-        Logger.log(object: [:], for: "Deleted Timezone Through Swipe")
+        Logger.log(object: nil, for: "Deleted Timezone Through Swipe")
     }
 
     private lazy var menubarTitleHandler = MenubarHandler()

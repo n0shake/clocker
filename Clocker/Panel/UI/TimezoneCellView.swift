@@ -151,7 +151,7 @@ class TimezoneCellView: NSTableCellView {
                                                                 andButton: sender)
         }
 
-        Logger.log(object: [:], for: "Open Extra Options")
+        Logger.log(object: nil, for: "Open Extra Options")
     }
 
     override func mouseDown(with _: NSEvent) {
@@ -161,6 +161,6 @@ class TimezoneCellView: NSTableCellView {
     override func rightMouseDown(with event: NSEvent) {
         super.rightMouseDown(with: event)
         showExtraOptions(extraOptions)
-        Logger.log(object: [:], for: "Right Click Open Options")
+        Logger.log(object: nil, for: "Right Click Open Options")
     }
 }

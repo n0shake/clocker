@@ -356,6 +356,15 @@ class PanelController: ParentPanelController {
     func refreshBackgroundView() {
         backgroundView.setNeedsDisplay(backgroundView.bounds)
     }
+
+    override func scrollWheel(with event: NSEvent) {
+        if event.phase == NSEvent.Phase.ended {
+            Logger.log(object: nil, for: "Scroll Event Ended")
+        }
+
+        futureSlider.doubleValue += Double(event.scrollingDeltaX)
+        sliderMoved(futureSlider!)
+    }
 }
 
 extension PanelController: NSWindowDelegate {
