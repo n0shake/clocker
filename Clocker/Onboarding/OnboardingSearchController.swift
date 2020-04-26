@@ -368,7 +368,7 @@ class OnboardingSearchController: NSViewController {
         results = []
         resultsTableView.reloadData()
         searchBar.stringValue = CLEmptyString
-        searchBar.placeholderString = placeholders.randomElement()
+        searchBar.placeholderString = "Press Enter to Search"
     }
 
     @IBAction func undoAction(_: Any) {
