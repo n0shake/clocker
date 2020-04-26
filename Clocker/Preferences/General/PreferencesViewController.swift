@@ -597,7 +597,7 @@ extension PreferencesViewController {
     }
 
     private func installTimezone(_ timezone: Timezone) {
-        guard let dataObject = self.searchResultsDataSource.filteredArray[self.availableTimezoneTableView.selectedRow % searchResultsDataSource.filteredArray.count] as? TimezoneData else {
+        guard let dataObject = searchResultsDataSource.filteredArray[availableTimezoneTableView.selectedRow % searchResultsDataSource.filteredArray.count] as? TimezoneData else {
             assertionFailure("Data was unexpectedly nil")
             return
         }

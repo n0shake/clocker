@@ -211,7 +211,8 @@ class OnboardingSearchController: NSViewController {
         appName.stringValue = "Quick Add Locations".localized()
         onboardingTypeLabel.stringValue = "More search options in Clocker Preferences.".localized()
         setInfoLabel(CLEmptyString)
-        searchBar.placeholderString = "Enter 3 or more characters for locations you'll like to add".localized()
+        searchBar.placeholderString = "Press Enter to Search!"
+        searchBar.delegate = self
 
         resultsTableView.backgroundColor = Themer.shared().mainBackgroundColor()
         resultsTableView.enclosingScrollView?.backgroundColor = Themer.shared().mainBackgroundColor()
@@ -243,7 +244,14 @@ class OnboardingSearchController: NSViewController {
         }
 
         NSObject.cancelPreviousPerformRequests(withTarget: self)
-        perform(#selector(OnboardingSearchController.actualSearch), with: nil, afterDelay: 0.5)
+        perform(#selector(OnboardingSearchController.actualSearch), with: nil, afterDelay: 0.2)
+    }
+
+    fileprivate func resetIfNeccesary(_ searchString: String) {
+        if searchString.isEmpty {
+            resetSearchView()
+            setInfoLabel(CLEmptyString)
+        }
     }
 
     @objc func actualSearch() {
@@ -260,6 +268,7 @@ class OnboardingSearchController: NSViewController {
         searchString = words.joined(separator: CLEmptyString)
 
         if searchString.count < 3 {
+            resetIfNeccesary(searchString)
             return
         }
 
@@ -402,4 +411,25 @@ class ResultSectionHeaderTableViewCell: NSTableCellView {
 
 class ResultTableViewCell: NSTableCellView {
     @IBOutlet var result: NSTextField!
+}
+
+extension OnboardingSearchController: NSSearchFieldDelegate {
+    func control(_ control: NSControl, textView _: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+        guard let searchField = control as? NSSearchField else {
+            return false
+        }
+
+        if commandSelector == #selector(NSResponder.insertNewline(_:)) {
+            self.search(searchField)
+            return true
+        } else if commandSelector == #selector(NSResponder.deleteForward(_:)) || commandSelector == #selector(NSResponder.deleteBackward(_:)) {
+            // Handle DELETE key
+            self.search(searchField)
+            return false
+        }
+
+        print("Not Handled")
+        // return true if the action was handled; otherwise false
+        return false
+    }
 }
