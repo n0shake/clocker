@@ -161,7 +161,11 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         let defaults = UserDefaults.standard
 
         let currentActivationPolicy = NSRunningApplication.current.activationPolicy
-        let activationPolicy: NSApplication.ActivationPolicy = defaults.integer(forKey: CLAppDislayOptions) == 0 ? .accessory : .regular
+        var activationPolicy: NSApplication.ActivationPolicy = defaults.integer(forKey: CLAppDislayOptions) == 0 ? .accessory : .regular
+
+        #if DEBUG
+            activationPolicy = .regular
+        #endif
 
         if currentActivationPolicy != activationPolicy {
             NSApp.setActivationPolicy(activationPolicy)
