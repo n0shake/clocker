@@ -26,6 +26,7 @@ class OnboardingSearchController: NSViewController {
         view.wantsLayer = true
 
         resultsTableView.delegate = self
+        resultsTableView.setAccessibility("ResultsTableView")
         resultsTableView.dataSource = self
         resultsTableView.target = self
         resultsTableView.doubleAction = #selector(doubleClickAction(_:))
@@ -43,6 +44,7 @@ class OnboardingSearchController: NSViewController {
             let attributes = [NSAttributedString.Key.foregroundColor: NSColor.linkColor,
                               NSAttributedString.Key.font: font]
             undoButton.attributedTitle = NSAttributedString(string: "UNDO", attributes: attributes)
+            undoButton.setAccessibility("UndoButton")
         }
 
         setupUndoButton()
@@ -213,6 +215,7 @@ class OnboardingSearchController: NSViewController {
         setInfoLabel(CLEmptyString)
         searchBar.placeholderString = "Press Enter to Search!"
         searchBar.delegate = self
+        searchBar.setAccessibility("MainSearchField")
 
         resultsTableView.backgroundColor = Themer.shared().mainBackgroundColor()
         resultsTableView.enclosingScrollView?.backgroundColor = Themer.shared().mainBackgroundColor()
@@ -382,7 +385,7 @@ extension OnboardingSearchController: NSTableViewDataSource {
     func tableView(_ tableView: NSTableView, viewFor _: NSTableColumn?, row: Int) -> NSView? {
         if let result = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "resultCellView"), owner: self) as? ResultTableViewCell, row >= 0, row < results.count {
             let currentTimezone = results[row]
-            result.result.stringValue = currentTimezone.formattedAddress ?? "Place Name"
+            result.result.stringValue = " \(currentTimezone.formattedAddress ?? "Place Name")"
             result.result.textColor = Themer.shared().mainTextColor()
             return result
         }
@@ -403,10 +406,27 @@ extension OnboardingSearchController: NSTableViewDelegate {
     func tableView(_: NSTableView, shouldSelectRow row: Int) -> Bool {
         return results.isEmpty ? row != 0 : true
     }
+
+    func tableView(_: NSTableView, rowViewForRow _: Int) -> NSTableRowView? {
+        return OnboardingSelectionTableRowView()
+    }
 }
 
 class ResultSectionHeaderTableViewCell: NSTableCellView {
     @IBOutlet var headerLabel: NSTextField!
+}
+
+class OnboardingSelectionTableRowView: NSTableRowView {
+    override func drawSelection(in _: NSRect) {
+        if selectionHighlightStyle != .none {
+            let selectionRect = NSInsetRect(bounds, 1, 1)
+            NSColor(calibratedWhite: 0.4, alpha: 1).setStroke()
+            NSColor(calibratedWhite: 0.4, alpha: 1).setFill()
+            let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
+            selectionPath.fill()
+            selectionPath.stroke()
+        }
+    }
 }
 
 class ResultTableViewCell: NSTableCellView {

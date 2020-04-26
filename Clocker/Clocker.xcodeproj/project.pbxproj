@@ -106,6 +106,7 @@
 		9A7CDC1B22BEC2170035902D /* StartupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7CDC1A22BEC2170035902D /* StartupManager.swift */; };
 		9A8605AE1BEC148400A810A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8605AD1BEC148400A810A4 /* main.m */; };
 		9A8B256A232EFAD300204CAD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAEC1CA88A76007C6CBE /* Localizable.strings */; };
+		9A97419B2455442100087B0D /* OnboardingSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A97419A2455442100087B0D /* OnboardingSearchTests.swift */; };
 		9A9E87621C1FEDB500A7A2DF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87611C1FEDB500A7A2DF /* CFNetwork.framework */; };
 		9A9E876A1C1FEDDB00A7A2DF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87691C1FEDDB00A7A2DF /* SystemConfiguration.framework */; };
 		9AA522C023415BDD00C9E005 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AA522BE23415BDD00C9E005 /* InfoPlist.strings */; };
@@ -335,6 +336,7 @@
 		9A8605C31BEC155B00A810A4 /* Clocker-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Clocker-Info.plist"; path = "Clocker/Clocker-Info.plist"; sourceTree = "<group>"; };
 		9A8605CC1BEC155B00A810A4 /* Clocker-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Clocker-Prefix.pch"; path = "Clocker/Clocker-Prefix.pch"; sourceTree = "<group>"; };
 		9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShortcutRecorder.xcodeproj; path = "Clocker/ShortcutRecorder-master/ShortcutRecorder.xcodeproj"; sourceTree = "<group>"; };
+		9A97419A2455442100087B0D /* OnboardingSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSearchTests.swift; sourceTree = "<group>"; };
 		9A9E87611C1FEDB500A7A2DF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		9A9E87631C1FEDBD00A7A2DF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		9A9E87651C1FEDC500A7A2DF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -806,6 +808,7 @@
 				C2D30A8C21025106000BFAEE /* NetworkDisconnectionTests.swift */,
 				C22F3D7F2107778A0001D5E1 /* ShortcutTests.swift */,
 				C2AB022321AEED590014A401 /* OnboardingTests.swift */,
+				9A97419A2455442100087B0D /* OnboardingSearchTests.swift */,
 			);
 			path = ClockerUITests;
 			sourceTree = "<group>";
@@ -963,7 +966,7 @@
 				CLASSPREFIX = "";
 				DefaultBuildSystemTypeForWorkspace = Latest;
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1140;
 				TargetAttributes = {
 					9A7547CF1F184DC3004705EF = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -1177,6 +1180,7 @@
 				C213713420B4FD920024D5A4 /* FloatingWindowTests.swift in Sources */,
 				C22F3D802107778A0001D5E1 /* ShortcutTests.swift in Sources */,
 				C2D30A8A210245C6000BFAEE /* ReviewTests.swift in Sources */,
+				9A97419B2455442100087B0D /* OnboardingSearchTests.swift in Sources */,
 				C2D30A8D21025106000BFAEE /* NetworkDisconnectionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1931,6 +1935,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
