@@ -53,7 +53,6 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         RateController.applicationDidLaunch(UserDefaults.standard)
 
         #if RELEASE
-            Crashlytics.sharedInstance().debugMode = true
             Fabric.with([Crashlytics.self])
             checkIfRunFromApplicationsFolder()
         #endif
