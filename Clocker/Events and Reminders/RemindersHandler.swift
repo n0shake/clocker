@@ -7,7 +7,7 @@ extension EventCenter {
 
     private func retrieveCalendar() -> EKCalendar? {
         if calendar == nil {
-            let calendars = store.calendars(for: .reminder)
+            let calendars = eventStore.calendars(for: .reminder)
             let calendarTitle = "Clocker Reminders"
             let predicate = NSPredicate(format: "title matches %@", calendarTitle)
             let filtered = calendars.filter { predicate.evaluate(with: $0) }
@@ -15,14 +15,14 @@ extension EventCenter {
             if !filtered.isEmpty {
                 calendar = filtered.first
             } else {
-                calendar = EKCalendar(for: .reminder, eventStore: store)
+                calendar = EKCalendar(for: .reminder, eventStore: eventStore)
                 calendar?.title = "Clocker Reminders"
-                calendar?.source = store.defaultCalendarForNewReminders()?.source
+                calendar?.source = eventStore.defaultCalendarForNewReminders()?.source
 
                 guard let calendar = calendar else { return nil }
 
                 do {
-                    try store.saveCalendar(calendar, commit: true)
+                    try eventStore.saveCalendar(calendar, commit: true)
                 } catch {
                     assertionFailure("Unable to store calendar")
                 }
@@ -60,7 +60,7 @@ extension EventCenter {
                                                                               from: reminderDate)) else { return false }
         reminderComponents.timeZone = TimeZone(identifier: timezone)
 
-        let reminderEvent = EKReminder(eventStore: store)
+        let reminderEvent = EKReminder(eventStore: eventStore)
         reminderEvent.calendar = retrieveCalendar()
         reminderEvent.title = "\(title) - Clocker"
         reminderEvent.startDateComponents = reminderComponents
@@ -70,7 +70,7 @@ extension EventCenter {
 
         // Commit the event
         do {
-            try store.save(reminderEvent, commit: true)
+            try eventStore.save(reminderEvent, commit: true)
         } catch {
             Logger.log(object: ["Error": error.localizedDescription],
                        for: "Error saving reminder")

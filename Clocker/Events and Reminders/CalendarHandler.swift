@@ -20,7 +20,7 @@ extension EventCenter {
         var sourcesAndCalendars: [Any] = []
 
         // Fetch array of user's calendars sorted first by source title and then by calendar title
-        let calendars = store.calendars(for: .event).sorted { (cal1, cal2) -> Bool in
+        let calendars = eventStore.calendars(for: .event).sorted { (cal1, cal2) -> Bool in
 
             if cal1.source.sourceIdentifier == cal2.source.sourceIdentifier {
                 return cal1.title < cal2.title
@@ -109,8 +109,16 @@ extension EventCenter {
         return filteredAllDayEvent?.event
     }
 
+    private func initializeStoreIfNeccesary() {
+        if eventStore == nil {
+            eventStore = EKEventStore()
+        }
+    }
+
     func requestAccess(to entity: EKEntityType, completionHandler: @escaping (_ granted: Bool) -> Void) {
-        store.requestAccess(to: entity) { [weak self] granted, _ in
+        initializeStoreIfNeccesary()
+
+        eventStore.requestAccess(to: entity) { [weak self] granted, _ in
 
             // On successful granting of calendar permission, we default to showing events from all calendars
             if let self = self, entity == .event, granted {
@@ -161,7 +169,7 @@ extension EventCenter {
     }
 
     func retrieveAllCalendarIdentifiers() -> [String] {
-        return store.calendars(for: .event).map { (calendar) -> String in
+        return eventStore.calendars(for: .event).map { (calendar) -> String in
             calendar.calendarIdentifier
         }
     }
@@ -193,19 +201,21 @@ extension EventCenter {
             return
         }
 
+        initializeStoreIfNeccesary()
+
         let calendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
 
         let startDate = createDateComponents(with: calendar, start)
         let endDate = createDateComponents(with: calendar, end)
 
         // Passing in nil for calendars to search all calendars
-        let predicate = store.predicateForEvents(withStart: startDate,
-                                                 end: endDate,
-                                                 calendars: nil)
+        let predicate = eventStore.predicateForEvents(withStart: startDate,
+                                                      end: endDate,
+                                                      calendars: nil)
 
         var eventsForDateMapper: [Date: [EventInfo]] = [:]
 
-        let events = store.events(matching: predicate)
+        let events = eventStore.events(matching: predicate)
 
         // Populate our cache with events that match our startDate and endDate.
         // We map eachDate to array of events happening on that day
