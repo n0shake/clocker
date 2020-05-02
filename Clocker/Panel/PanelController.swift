@@ -313,6 +313,10 @@ class PanelController: ParentPanelController {
     }
 
     override func showNotesPopover(forRow row: Int, relativeTo positioningRect: NSRect, andButton target: NSButton!) -> Bool {
+        if morePopover == nil {
+            morePopover = NSPopover()
+        }
+
         guard let popover = morePopover else {
             return false
         }
