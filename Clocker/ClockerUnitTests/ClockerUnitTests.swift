@@ -157,7 +157,7 @@ class ClockerUnitTests: XCTestCase {
         XCTAssertTrue(operations.timeDifference() == ", 12 hours 30 mins ahead", "Difference was unexpectedly: \(operations.timeDifference())")
         XCTAssertTrue(californiaOperations.timeDifference() == "", "Difference was unexpectedly: \(californiaOperations.timeDifference())")
         XCTAssertTrue(floridaOperations.timeDifference() == ", 3 hours ahead", "Difference was unexpectedly: \(floridaOperations.timeDifference())")
-        XCTAssertTrue(aucklandOperations.timeDifference() == ", 21 hours ahead", "Difference was unexpectedly: \(aucklandOperations.timeDifference())")
+        XCTAssertTrue(aucklandOperations.timeDifference() == ", 19 hours ahead", "Difference was unexpectedly: \(aucklandOperations.timeDifference())")
         XCTAssertTrue(omahaOperations.timeDifference() == ", 2 hours ahead", "Difference was unexpectedly: \(omahaOperations.timeDifference())")
     }
 
