@@ -5,7 +5,9 @@ import XCTest
 class OnboardingSearchTests: XCTestCase {
     var app: XCUIApplication!
 
-    override func setUpWithError() throws {
+    override func setUp() {
+        super.setUp()
+
         continueAfterFailure = false
         app = XCUIApplication()
         app.launchArguments.append(CLOnboaringTestsLaunchArgument)
@@ -15,10 +17,6 @@ class OnboardingSearchTests: XCTestCase {
         moveForward()
         moveForward()
         moveForward()
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
     func testRegularSearch() throws {
