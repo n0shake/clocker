@@ -37,6 +37,16 @@ class PreferencesViewController: ParentViewController {
         NoTimezoneView(frame: tableview.frame)
     }()
 
+    private var geocodingKey: String = {
+        guard let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
+            let dictionary = NSDictionary(contentsOfFile: path),
+            let apiKey = dictionary["GeocodingKey"] as? String else {
+            assertionFailure("Unable to find the API key")
+            return ""
+        }
+        return apiKey
+    }()
+
     // Sorting
     private var arePlacesSortedInAscendingOrder = false
     private var arePlacesSortedInAscendingTimezoneOrder = false
@@ -471,7 +481,7 @@ extension PreferencesViewController {
         let words = searchString.components(separatedBy: CharacterSet.whitespacesAndNewlines)
         searchString = words.joined(separator: CLEmptyString)
 
-        let url = "https://maps.googleapis.com/maps/api/geocode/json?address=\(searchString)&key=\(CLGeocodingKey)&language=\(userPreferredLanguage)"
+        let url = "https://maps.googleapis.com/maps/api/geocode/json?address=\(searchString)&key=\(geocodingKey)&language=\(userPreferredLanguage)"
         return url
     }
 
@@ -564,7 +574,7 @@ extension PreferencesViewController {
 
         let tuple = "\(latitude),\(longitude)"
         let timeStamp = Date().timeIntervalSince1970
-        let urlString = "https://maps.googleapis.com/maps/api/timezone/json?location=\(tuple)&timestamp=\(timeStamp)&key=\(CLGeocodingKey)"
+        let urlString = "https://maps.googleapis.com/maps/api/timezone/json?location=\(tuple)&timestamp=\(timeStamp)&key=\(geocodingKey)"
 
         NetworkManager.task(with: urlString) { [weak self] response, error in
 
