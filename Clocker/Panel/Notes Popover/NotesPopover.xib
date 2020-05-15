@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -87,13 +87,13 @@
                                         <constraint firstAttribute="height" constant="22" id="wGh-4g-gQ3"/>
                                     </constraints>
                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="CUSTOMIZE" id="AWQ-XX-6Ai">
-                                        <font key="font" metaFont="smallSystem"/>
+                                        <font key="font" metaFont="toolTip"/>
                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cHT-i6-Wuh">
-                                    <rect key="frame" x="126" y="5" width="176" height="23"/>
+                                    <rect key="frame" x="126" y="7" width="176" height="18"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="at a specific time" id="a2p-dK-ANa">
                                         <font key="font" size="13" name="Avenir-Book"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -202,8 +202,8 @@
                                 </segmentedControl>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wqz-cF-lhm">
                                     <rect key="frame" x="18" y="35" width="274" height="14"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="TIMEZONE FORMAT" id="JnF-g8-GLM">
-                                        <font key="font" metaFont="smallSystem"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Timezone Format" id="JnF-g8-GLM">
+                                        <font key="font" metaFont="toolTip"/>
                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -239,8 +239,8 @@
                                 </segmentedControl>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WVk-sH-CqF">
                                     <rect key="frame" x="18" y="35" width="274" height="14"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="DISPLAY SECONDS" id="lCg-ZI-gIk">
-                                        <font key="font" metaFont="smallSystem"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Display Seconds" id="lCg-ZI-gIk">
+                                        <font key="font" metaFont="toolTip"/>
                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
