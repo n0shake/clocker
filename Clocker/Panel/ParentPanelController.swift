@@ -125,6 +125,8 @@ class ParentPanelController: NSWindowController {
         super.awakeFromNib()
 
         mainTableView.backgroundColor = NSColor.clear
+        mainTableView.selectionHighlightStyle = .none
+        mainTableView.enclosingScrollView?.hasVerticalScroller = false
 
         let sharedThemer = Themer.shared()
         shutdownButton.image = sharedThemer.shutdownImage()
@@ -135,9 +137,6 @@ class ParentPanelController: NSWindowController {
         if let upcomingView = upcomingEventView {
             upcomingView.setAccessibility("UpcomingEventView")
         }
-
-        mainTableView.selectionHighlightStyle = .none
-        mainTableView.enclosingScrollView?.hasVerticalScroller = false
 
         setupObservers()
 

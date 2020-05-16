@@ -15,6 +15,8 @@ class AppearanceViewController: ParentViewController {
 
     private var themeDidChangeNotification: NSObjectProtocol?
 
+    private var previewTimezones: [TimezoneData] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,7 +42,24 @@ class AppearanceViewController: ParentViewController {
             self.setup()
             self.animateBackgroundColorChange()
             self.view.needsDisplay = true // Let's make the color change permanent.
+            self.previewPanelTableView.reloadData()
         }
+
+        previewTimezones = [TimezoneData(with: ["customLabel": "San Francisco",
+                                                "formattedAddress": "San Francisco",
+                                                "place_id": "TestIdentifier",
+                                                "timezoneID": "America/Los_Angeles",
+                                                "nextUpdate": "",
+                                                "note": "Remember to finish setting up Clocker!",
+                                                "latitude": "37.7749295",
+                                                "longitude": "-122.4194155"])]
+
+        // Setup Preview Pane
+        previewPanelTableView.dataSource = self
+        previewPanelTableView.delegate = self
+        previewPanelTableView.reloadData()
+        previewPanelTableView.selectionHighlightStyle = .none
+        previewPanelTableView.enclosingScrollView?.hasVerticalScroller = false
     }
 
     deinit {
@@ -80,7 +99,6 @@ class AppearanceViewController: ParentViewController {
         updateMenubarControls(!shouldDisplayCompact)
     }
 
-    @IBOutlet var headerLabel: NSTextField!
     @IBOutlet var timeFormatLabel: NSTextField!
     @IBOutlet var panelTheme: NSTextField!
     @IBOutlet var dayDisplayOptionsLabel: NSTextField!
@@ -96,8 +114,11 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet var appDisplayLabel: NSTextField!
     @IBOutlet var menubarModeLabel: NSTextField!
 
+    // Panel Preview
+
+    @IBOutlet var previewPanelTableView: NSTableView!
+
     private func setup() {
-        headerLabel.stringValue = "Main Panel Options".localized()
         timeFormatLabel.stringValue = "Time Format".localized()
         panelTheme.stringValue = "Panel Theme".localized()
         dayDisplayOptionsLabel.stringValue = "Day Display Options".localized()
@@ -112,7 +133,7 @@ class AppearanceViewController: ParentViewController {
         menubarDisplayOptionsLabel.stringValue = "Menubar Display Options".localized()
         menubarModeLabel.stringValue = "Menubar Mode".localized()
 
-        [headerLabel, timeFormatLabel, panelTheme,
+        [timeFormatLabel, panelTheme,
          dayDisplayOptionsLabel, showSliderLabel, showSecondsLabel,
          showSunriseLabel, largerTextLabel, futureSliderRangeLabel,
          includeDayLabel, includeDateLabel, includePlaceLabel,
@@ -131,6 +152,8 @@ class AppearanceViewController: ParentViewController {
         refresh(panel: true, floating: true)
 
         updateStatusItem()
+
+        previewPanelTableView.reloadData()
     }
 
     private var previousBackgroundColor: NSColor = NSColor.white
@@ -185,6 +208,8 @@ class AppearanceViewController: ParentViewController {
         Logger.log(object: ["dayPreference": selection], for: "RelativeDate")
 
         refresh(panel: true, floating: true)
+
+        previewPanelTableView.reloadData()
     }
 
     @IBAction func showFutureSlider(_: Any) {
@@ -193,6 +218,7 @@ class AppearanceViewController: ParentViewController {
 
     @IBAction func showSunriseSunset(_ sender: NSSegmentedControl) {
         Logger.log(object: ["Is It Displayed": sender.selectedSegment == 0 ? "YES" : "NO"], for: "Sunrise Sunset")
+        previewPanelTableView.reloadData()
     }
 
     @IBAction func displayTimeWithSeconds(_ sender: NSSegmentedControl) {
@@ -204,6 +230,7 @@ class AppearanceViewController: ParentViewController {
         }
 
         updateStatusItem()
+        previewPanelTableView.reloadData()
     }
 
     @IBAction func changeAppDisplayOptions(_ sender: NSSegmentedControl) {
@@ -290,5 +317,61 @@ class AppearanceViewController: ParentViewController {
     // Disable those options to let the user know.
     private func updateMenubarControls(_ isEnabled: Bool) {
         [includePlaceNameControl].forEach { $0?.isEnabled = isEnabled }
+    }
+
+    @IBAction func fontSliderChanged(_: Any) {
+        previewPanelTableView.reloadData()
+    }
+}
+
+extension AppearanceViewController: NSTableViewDataSource, NSTableViewDelegate {
+    func numberOfRows(in _: NSTableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: NSTableView, viewFor _: NSTableColumn?, row: Int) -> NSView? {
+        guard !previewTimezones.isEmpty else {
+            return nil
+        }
+
+        guard let cellView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "previewTimezoneCell"), owner: self) as? TimezoneCellView else {
+            assertionFailure("Unable to create tableviewcell")
+            return NSView()
+        }
+
+        let currentModel = previewTimezones[row]
+        let operation = TimezoneDataOperations(with: currentModel)
+
+        cellView.sunriseSetTime.stringValue = operation.formattedSunriseTime(with: 0)
+        cellView.sunriseImage.image = currentModel.isSunriseOrSunset ? Themer.shared().sunriseImage() : Themer.shared().sunsetImage()
+        cellView.relativeDate.stringValue = operation.date(with: 0, displayType: .panelDisplay)
+        cellView.rowNumber = row
+        cellView.customName.stringValue = currentModel.formattedTimezoneLabel()
+        cellView.time.stringValue = operation.time(with: 0)
+        cellView.noteLabel.stringValue = currentModel.note ?? CLEmptyString
+        cellView.noteLabel.toolTip = currentModel.note ?? CLEmptyString
+        cellView.currentLocationIndicator.isHidden = !currentModel.isSystemTimezone
+        cellView.time.setAccessibilityIdentifier("ActualTime")
+        cellView.layout(with: currentModel)
+
+        cellView.setAccessibilityIdentifier(currentModel.formattedTimezoneLabel())
+        cellView.setAccessibilityLabel(currentModel.formattedTimezoneLabel())
+
+        return cellView
+    }
+
+    func tableView(_: NSTableView, heightOfRow row: Int) -> CGFloat {
+        if let userFontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber, previewTimezones.count > row {
+            let model = previewTimezones[row]
+
+            let rowHeight: Int = userFontSize == 4 ? 60 : 65
+            if let note = model.note, !note.isEmpty {
+                return CGFloat(rowHeight + userFontSize.intValue + 25)
+            }
+
+            return CGFloat(rowHeight + (userFontSize.intValue * 2))
+        }
+
+        return 0
     }
 }

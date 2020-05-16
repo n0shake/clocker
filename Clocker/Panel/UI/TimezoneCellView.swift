@@ -123,7 +123,7 @@ class TimezoneCellView: NSTableCellView {
         guard let panelTableView = searchView as? PanelTableView,
             let enclosingScroller = panelTableView.enclosingScrollView
         else {
-            assertionFailure("Unable to find panel table view in hierarchy")
+            // We might be coming from the preview tableview!
             return
         }
 
