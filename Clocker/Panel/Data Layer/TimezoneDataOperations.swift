@@ -138,15 +138,19 @@ extension TimezoneDataOperations {
     }
 
     func date(with sliderValue: Int, displayType: CLDateDisplayType) -> String {
-        var currentCalendar = Calendar(identifier: .gregorian)
-        currentCalendar.locale = Locale.autoupdatingCurrent
-
-        let convertedDate = timezoneDate(with: sliderValue, currentCalendar)
-
         guard let relativeDayPreference = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber else {
             assertionFailure("Data was unexpectedly nil")
             return CLEmptyString
         }
+
+        if relativeDayPreference.intValue == 3 {
+            return CLEmptyString
+        }
+
+        var currentCalendar = Calendar(identifier: .gregorian)
+        currentCalendar.locale = Locale.autoupdatingCurrent
+
+        let convertedDate = timezoneDate(with: sliderValue, currentCalendar)
 
         if displayType == CLDateDisplayType.panelDisplay {
             // Yesterday, tomorrow, etc
