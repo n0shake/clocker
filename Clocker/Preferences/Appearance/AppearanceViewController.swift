@@ -130,7 +130,6 @@ class AppearanceViewController: ParentViewController {
         includeDateLabel.stringValue = "Include Date".localized()
         includeDayLabel.stringValue = "Include Day".localized()
         includePlaceLabel.stringValue = "Include Place Name".localized()
-        menubarDisplayOptionsLabel.stringValue = "Menubar Display Options".localized()
         menubarModeLabel.stringValue = "Menubar Mode".localized()
 
         [timeFormatLabel, panelTheme,
