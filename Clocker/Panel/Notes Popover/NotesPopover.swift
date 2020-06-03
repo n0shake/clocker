@@ -351,7 +351,8 @@ class NotesPopover: NSViewController {
             if eventCenter.createReminder(with: model.customLabel!,
                                           timezone: model.timezoneID!,
                                           alertIndex: alertIndex,
-                                          reminderDate: reminderPicker.dateValue) {
+                                          reminderDate: reminderPicker.dateValue,
+                                          additionalNotes: model.note) {
                 showSuccessMessage()
             }
         }
