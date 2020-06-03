@@ -49,7 +49,8 @@ extension EventCenter {
     func createReminder(with title: String,
                         timezone: String,
                         alertIndex: Int,
-                        reminderDate: Date) -> Bool {
+                        reminderDate: Date,
+                        additionalNotes: String?) -> Bool {
         if reminderAccessNotDetermined() || reminderAccessDenied() {
             return false
         }
@@ -65,6 +66,7 @@ extension EventCenter {
         reminderEvent.title = "\(title) - Clocker"
         reminderEvent.startDateComponents = reminderComponents
         reminderEvent.dueDateComponents = reminderComponents
+        reminderEvent.notes = additionalNotes
 
         addAlarmIfNeccesary(for: reminderEvent, alertIndex)
 
