@@ -198,15 +198,6 @@ static NSString *mostRecentVersionInDict(NSDictionary *dictionary)
   return self;
 }
 
-- (id<iVersionDelegate>)delegate
-{
-  if (_delegate == nil)
-  {
-    _delegate = (id<iVersionDelegate>)[NSApplication sharedApplication].delegate;
-  }
-  return _delegate;
-}
-
 - (NSString *)inThisVersionTitle
 {
   return _inThisVersionTitle ?: [self localizedStringForKey:iVersionInThisVersionTitleKey withDefault:@"New in this version"];
@@ -433,18 +424,6 @@ static NSString *mostRecentVersionInDict(NSDictionary *dictionary)
       {
         NSLog(@"iVersion update check failed because an unknown error occured");
       }
-      
-      if ([self.delegate respondsToSelector:@selector(iVersionVersionCheckDidFailWithError:)])
-      {
-        [self.delegate iVersionVersionCheckDidFailWithError:self.downloadError];
-      }
-      
-      //deprecated code path
-      else if ([self.delegate respondsToSelector:@selector(iVersionVersionCheckFailed:)])
-      {
-        NSLog(@"iVersionVersionCheckFailed: delegate method is deprecated, use iVersionVersionCheckDidFailWithError: instead");
-        [self.delegate performSelector:@selector(iVersionVersionCheckFailed:) withObject:self.downloadError];
-      }
       return;
     }
     
@@ -453,36 +432,8 @@ static NSString *mostRecentVersionInDict(NSDictionary *dictionary)
     NSString *mostRecentVersion = mostRecentVersionInDict(self.remoteVersionsDict);
     if (details)
     {
-      //inform delegate of new version
-      if ([self.delegate respondsToSelector:@selector(iVersionDidDetectNewVersion:details:)])
-      {
-        [self.delegate iVersionDidDetectNewVersion:mostRecentVersion details:details];
-      }
-      
-      //deprecated code path
-      else if ([self.delegate respondsToSelector:@selector(iVersionDetectedNewVersion:details:)])
-      {
-        NSLog(@"iVersionDetectedNewVersion:details: delegate method is deprecated, use iVersionDidDetectNewVersion:details: instead");
-        [self.delegate performSelector:@selector(iVersionDetectedNewVersion:details:) withObject:mostRecentVersion withObject:details];
-      }
-      
       //check if ignored
       BOOL showDetails = ![self.ignoredVersion isEqualToString:mostRecentVersion] || self.previewMode;
-      if (showDetails)
-      {
-        if ([self.delegate respondsToSelector:@selector(iVersionShouldDisplayNewVersion:details:)])
-        {
-          showDetails = [self.delegate iVersionShouldDisplayNewVersion:mostRecentVersion details:details];
-          if (!showDetails && self.verboseLogging)
-          {
-            NSLog(@"iVersion did not display the new version because the iVersionShouldDisplayNewVersion:details: delegate method returned NO");
-          }
-        }
-      }
-      else if (self.verboseLogging)
-      {
-        NSLog(@"iVersion did not display the new version because it was marked as ignored");
-      }
       
       //show details
       if (showDetails && !self.visibleRemoteAlert)
@@ -499,10 +450,6 @@ static NSString *mostRecentVersionInDict(NSDictionary *dictionary)
                                               ignoreButton:[self showIgnoreButton]? self.ignoreButtonLabel: nil
                                               remindButton:[self showRemindButton]? self.remindButtonLabel: nil];
       }
-    }
-    else if ([self.delegate respondsToSelector:@selector(iVersionDidNotDetectNewVersion)])
-    {
-      [self.delegate iVersionDidNotDetectNewVersion];
     }
   }
 }
@@ -539,17 +486,6 @@ static NSString *mostRecentVersionInDict(NSDictionary *dictionary)
   else if (self.verboseLogging)
   {
     NSLog(@"iVersion debug mode is enabled - make sure you disable this for release");
-  }
-  
-  //confirm with delegate
-  if ([self.delegate respondsToSelector:@selector(iVersionShouldCheckForNewVersion)])
-  {
-    BOOL shouldCheck = [self.delegate iVersionShouldCheckForNewVersion];
-    if (!shouldCheck && self.verboseLogging)
-    {
-      NSLog(@"iVersion did not check for a new version because the iVersionShouldCheckForNewVersion delegate method returned NO");
-    }
-    return shouldCheck;
   }
   
   //perform the check
@@ -767,10 +703,6 @@ static NSString *mostRecentVersionInDict(NSDictionary *dictionary)
       
       //get version details
       BOOL showDetails = !!self.versionDetails;
-      if (showDetails && [self.delegate respondsToSelector:@selector(iVersionShouldDisplayCurrentVersionDetails:)])
-      {
-        showDetails = [self.delegate iVersionShouldDisplayCurrentVersionDetails:self.versionDetails];
-      }
       
       //show details
       if (showDetails && !self.visibleLocalAlert && !self.visibleRemoteAlert)
@@ -889,42 +821,17 @@ static NSString *mostRecentVersionInDict(NSDictionary *dictionary)
     {
       //clear reminder
       self.lastReminded = nil;
-      
-      //log event
-      if ([self.delegate respondsToSelector:@selector(iVersionUserDidAttemptToDownloadUpdate:)])
-      {
-        [self.delegate iVersionUserDidAttemptToDownloadUpdate:latestVersion];
-      }
-      
-      if (![self.delegate respondsToSelector:@selector(iVersionShouldOpenAppStore)] ||
-          [self.delegate iVersionShouldOpenAppStore])
-      {
-        //go to download page
-        [self openAppPageInAppStore];
-      }
     }
     else if (buttonIndex == ignoreButtonIndex)
     {
       //ignore this version
       self.ignoredVersion = latestVersion;
       self.lastReminded = nil;
-      
-      //log event
-      if ([self.delegate respondsToSelector:@selector(iVersionUserDidIgnoreUpdate:)])
-      {
-        [self.delegate iVersionUserDidIgnoreUpdate:latestVersion];
-      }
     }
     else if (buttonIndex == remindButtonIndex)
     {
       //remind later
       self.lastReminded = [NSDate date];
-      
-      //log event
-      if ([self.delegate respondsToSelector:@selector(iVersionUserDidRequestReminderForUpdate:)])
-      {
-        [self.delegate iVersionUserDidRequestReminderForUpdate:latestVersion];
-      }
     }
     
     //release alert

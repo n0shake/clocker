@@ -96,26 +96,6 @@ typedef NS_ENUM(NSInteger, iVersionUpdatePriority)
 
 @end
 
-
-@protocol iVersionDelegate <NSObject>
-@optional
-
-@property (NS_NONATOMIC_IOSONLY, readonly) BOOL iVersionShouldCheckForNewVersion;
-- (void)iVersionDidNotDetectNewVersion;
-- (void)iVersionVersionCheckDidFailWithError:(NSError *)error;
-- (void)iVersionDidDetectNewVersion:(NSString *)version details:(NSString *)versionDetails;
-- (BOOL)iVersionShouldDisplayNewVersion:(NSString *)version details:(NSString *)versionDetails;
-- (BOOL)iVersionShouldDisplayCurrentVersionDetails:(NSString *)versionDetails;
-- (void)iVersionUserDidAttemptToDownloadUpdate:(NSString *)version;
-- (void)iVersionUserDidRequestReminderForUpdate:(NSString *)version;
-- (void)iVersionUserDidIgnoreUpdate:(NSString *)version;
-@property (NS_NONATOMIC_IOSONLY, readonly) BOOL iVersionShouldOpenAppStore;
-- (void)iVersionDidPresentStoreKitModal;
-- (void)iVersionDidDismissStoreKitModal;
-
-@end
-
-
 @interface iVersion : NSObject
 
 + (iVersion *)sharedInstance;
@@ -162,7 +142,6 @@ typedef NS_ENUM(NSInteger, iVersionUpdatePriority)
 @property (nonatomic, strong) NSDate *lastReminded;
 @property (nonatomic, strong) NSURL *updateURL;
 @property (nonatomic, assign) BOOL viewedVersionDetails;
-@property (nonatomic, weak_delegate) id<iVersionDelegate> delegate;
 
 //manually control behaviour
 @property (NS_NONATOMIC_IOSONLY, readonly) BOOL openAppPageInAppStore;
