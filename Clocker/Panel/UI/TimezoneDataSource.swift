@@ -75,10 +75,15 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
             return 100
         }
 
-        if let userFontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber, timezones.count > row {
+        if let userFontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber, timezones.count > row, let relativeDisplay = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber {
             let model = timezones[row]
 
-            let rowHeight: Int = userFontSize == 4 ? 60 : 65
+            var rowHeight: Int = userFontSize == 4 ? 60 : 65
+
+            if relativeDisplay.intValue == 3 {
+                rowHeight -= 5
+            }
+
             if let note = model.note, !note.isEmpty {
                 return CGFloat(rowHeight + userFontSize.intValue + 25)
             }

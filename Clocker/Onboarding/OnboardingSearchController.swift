@@ -20,12 +20,23 @@ class OnboardingSearchController: NSViewController {
     private var dataTask: URLSessionDataTask? = .none
     private var themeDidChangeNotification: NSObjectProtocol?
 
+    private var geocodingKey: String = {
+        guard let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
+            let dictionary = NSDictionary(contentsOfFile: path),
+            let apiKey = dictionary["GeocodingKey"] as? String else {
+            assertionFailure("Unable to find the API key")
+            return ""
+        }
+        return apiKey
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.wantsLayer = true
 
         resultsTableView.delegate = self
+        resultsTableView.setAccessibility("ResultsTableView")
         resultsTableView.dataSource = self
         resultsTableView.target = self
         resultsTableView.doubleAction = #selector(doubleClickAction(_:))
@@ -43,6 +54,7 @@ class OnboardingSearchController: NSViewController {
             let attributes = [NSAttributedString.Key.foregroundColor: NSColor.linkColor,
                               NSAttributedString.Key.font: font]
             undoButton.attributedTitle = NSAttributedString(string: "UNDO", attributes: attributes)
+            undoButton.setAccessibility("UndoButton")
         }
 
         setupUndoButton()
@@ -144,7 +156,7 @@ class OnboardingSearchController: NSViewController {
 
         let tuple = "\(latitude),\(longitude)"
         let timeStamp = Date().timeIntervalSince1970
-        let urlString = "https://maps.googleapis.com/maps/api/timezone/json?location=\(tuple)&timestamp=\(timeStamp)&key=\(CLGeocodingKey)"
+        let urlString = "https://maps.googleapis.com/maps/api/timezone/json?location=\(tuple)&timestamp=\(timeStamp)&key=\(geocodingKey)"
 
         NetworkManager.task(with: urlString) { [weak self] response, error in
 
@@ -211,7 +223,9 @@ class OnboardingSearchController: NSViewController {
         appName.stringValue = "Quick Add Locations".localized()
         onboardingTypeLabel.stringValue = "More search options in Clocker Preferences.".localized()
         setInfoLabel(CLEmptyString)
-        searchBar.placeholderString = "Enter 3 or more characters for locations you'll like to add".localized()
+        searchBar.placeholderString = "Press Enter to Search!"
+        searchBar.delegate = self
+        searchBar.setAccessibility("MainSearchField")
 
         resultsTableView.backgroundColor = Themer.shared().mainBackgroundColor()
         resultsTableView.enclosingScrollView?.backgroundColor = Themer.shared().mainBackgroundColor()
@@ -243,7 +257,14 @@ class OnboardingSearchController: NSViewController {
         }
 
         NSObject.cancelPreviousPerformRequests(withTarget: self)
-        perform(#selector(OnboardingSearchController.actualSearch), with: nil, afterDelay: 0.5)
+        perform(#selector(OnboardingSearchController.actualSearch), with: nil, afterDelay: 0.2)
+    }
+
+    fileprivate func resetIfNeccesary(_ searchString: String) {
+        if searchString.isEmpty {
+            resetSearchView()
+            setInfoLabel(CLEmptyString)
+        }
     }
 
     @objc func actualSearch() {
@@ -260,10 +281,11 @@ class OnboardingSearchController: NSViewController {
         searchString = words.joined(separator: CLEmptyString)
 
         if searchString.count < 3 {
+            resetIfNeccesary(searchString)
             return
         }
 
-        let urlString = "https://maps.googleapis.com/maps/api/geocode/json?address=\(searchString)&key=\(CLGeocodingKey)&language=\(userPreferredLanguage)"
+        let urlString = "https://maps.googleapis.com/maps/api/geocode/json?address=\(searchString)&key=\(geocodingKey)&language=\(userPreferredLanguage)"
 
         dataTask = NetworkManager.task(with: urlString,
                                        completionHandler: { [weak self] response, error in
@@ -356,7 +378,7 @@ class OnboardingSearchController: NSViewController {
         results = []
         resultsTableView.reloadData()
         searchBar.stringValue = CLEmptyString
-        searchBar.placeholderString = placeholders.randomElement()
+        searchBar.placeholderString = "Press Enter to Search"
     }
 
     @IBAction func undoAction(_: Any) {
@@ -373,7 +395,7 @@ extension OnboardingSearchController: NSTableViewDataSource {
     func tableView(_ tableView: NSTableView, viewFor _: NSTableColumn?, row: Int) -> NSView? {
         if let result = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "resultCellView"), owner: self) as? ResultTableViewCell, row >= 0, row < results.count {
             let currentTimezone = results[row]
-            result.result.stringValue = currentTimezone.formattedAddress ?? "Place Name"
+            result.result.stringValue = " \(currentTimezone.formattedAddress ?? "Place Name")"
             result.result.textColor = Themer.shared().mainTextColor()
             return result
         }
@@ -394,12 +416,50 @@ extension OnboardingSearchController: NSTableViewDelegate {
     func tableView(_: NSTableView, shouldSelectRow row: Int) -> Bool {
         return results.isEmpty ? row != 0 : true
     }
+
+    func tableView(_: NSTableView, rowViewForRow _: Int) -> NSTableRowView? {
+        return OnboardingSelectionTableRowView()
+    }
 }
 
 class ResultSectionHeaderTableViewCell: NSTableCellView {
     @IBOutlet var headerLabel: NSTextField!
 }
 
+class OnboardingSelectionTableRowView: NSTableRowView {
+    override func drawSelection(in _: NSRect) {
+        if selectionHighlightStyle != .none {
+            let selectionRect = NSInsetRect(bounds, 1, 1)
+            NSColor(calibratedWhite: 0.4, alpha: 1).setStroke()
+            NSColor(calibratedWhite: 0.4, alpha: 1).setFill()
+            let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
+            selectionPath.fill()
+            selectionPath.stroke()
+        }
+    }
+}
+
 class ResultTableViewCell: NSTableCellView {
     @IBOutlet var result: NSTextField!
+}
+
+extension OnboardingSearchController: NSSearchFieldDelegate {
+    func control(_ control: NSControl, textView _: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+        guard let searchField = control as? NSSearchField else {
+            return false
+        }
+
+        if commandSelector == #selector(NSResponder.insertNewline(_:)) {
+            self.search(searchField)
+            return true
+        } else if commandSelector == #selector(NSResponder.deleteForward(_:)) || commandSelector == #selector(NSResponder.deleteBackward(_:)) {
+            // Handle DELETE key
+            self.search(searchField)
+            return false
+        }
+
+        print("Not Handled")
+        // return true if the action was handled; otherwise false
+        return false
+    }
 }

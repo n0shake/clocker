@@ -36,7 +36,7 @@ class ParentPanelController: NSWindowController {
 
     private lazy var feedbackWindow: AppFeedbackWindowController = AppFeedbackWindowController.shared()
 
-    private var note: NotesPopover?
+    private var notePopover: NotesPopover?
 
     private lazy var oneWindow: OneWindowController? = {
         let preferencesStoryboard = NSStoryboard(name: "Preferences", bundle: nil)
@@ -125,6 +125,8 @@ class ParentPanelController: NSWindowController {
         super.awakeFromNib()
 
         mainTableView.backgroundColor = NSColor.clear
+        mainTableView.selectionHighlightStyle = .none
+        mainTableView.enclosingScrollView?.hasVerticalScroller = false
 
         let sharedThemer = Themer.shared()
         shutdownButton.image = sharedThemer.shutdownImage()
@@ -135,9 +137,6 @@ class ParentPanelController: NSWindowController {
         if let upcomingView = upcomingEventView {
             upcomingView.setAccessibility("UpcomingEventView")
         }
-
-        mainTableView.selectionHighlightStyle = .none
-        mainTableView.enclosingScrollView?.hasVerticalScroller = false
 
         setupObservers()
 
@@ -571,8 +570,8 @@ class ParentPanelController: NSWindowController {
 
         popover.animates = true
 
-        if note == nil {
-            note = NotesPopover(nibName: NSNib.Name.notesPopover, bundle: nil)
+        if notePopover == nil {
+            notePopover = NotesPopover(nibName: NSNib.Name.notesPopover, bundle: nil)
             popover.behavior = .applicationDefined
             popover.delegate = self
         }
@@ -585,12 +584,12 @@ class ParentPanelController: NSWindowController {
         let current = defaults[correctRow]
 
         if let model = TimezoneData.customObject(from: current) {
-            note?.setDataSource(data: model)
-            note?.setRow(row: correctRow)
-            note?.set(timezones: defaults)
+            notePopover?.setDataSource(data: model)
+            notePopover?.setRow(row: correctRow)
+            notePopover?.set(timezones: defaults)
 
-            popover.contentViewController = note
-            note?.set(with: popover)
+            popover.contentViewController = notePopover
+            notePopover?.set(with: popover)
             return true
         }
 
@@ -790,9 +789,10 @@ class ParentPanelController: NSWindowController {
     // If the popover is displayed, close it
     // Called when preferences are going to be displayed!
     func updatePopoverDisplayState() {
-        if note != nil, let isShown = note?.popover?.isShown, isShown {
-            note?.popover?.close()
+        if notePopover != nil, let isShown = notePopover?.popover?.isShown, isShown {
+            notePopover?.popover?.close()
         }
+        morePopover = nil
     }
 
     // MARK: Review

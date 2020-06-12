@@ -50,8 +50,55 @@ class TimezoneCellView: NSTableCellView {
         let width = relativeDateString.size(withAttributes: [NSAttributedString.Key.font: relativeFont]).width
         let sunriseWidth = sunriseString.size(withAttributes: [NSAttributedString.Key.font: sunriseFont]).width
 
-        for constraint in relativeDate.constraints where constraint.identifier == "width" {
-            constraint.constant = width + 8
+        if relativeDateString.length > 0 {
+            if relativeDate.isHidden {
+                relativeDate.isHidden.toggle()
+            }
+            for constraint in relativeDate.constraints where constraint.identifier == "width" {
+                constraint.constant = width + 8
+            }
+            for constraint in constraints where constraint.identifier == "custom-name-top-space" {
+                if constraint.constant != 12 {
+                    constraint.constant = 12
+                }
+            }
+
+            // If sunrise/sunset times are shown, adjust the time's top space to be closer to cell's top
+
+            if !sunriseSetTime.isHidden, relativeDate.isHidden {
+                for constraint in constraints where constraint.identifier == "time-top-space" {
+                    if constraint.constant == -5.0 {
+                        constraint.constant -= 10.0
+                    }
+                }
+            } else {
+                for constraint in constraints where constraint.identifier == "time-top-space" {
+                    if constraint.constant != -5.0 {
+                        constraint.constant = -3.0
+                    }
+                }
+            }
+
+        } else {
+            relativeDate.isHidden = true
+            for constraint in constraints where constraint.identifier == "custom-name-top-space" {
+                if constraint.constant == 12 {
+                    constraint.constant += 15
+                }
+            }
+            if !sunriseSetTime.isHidden {
+                for constraint in constraints where constraint.identifier == "time-top-space" {
+                    if constraint.constant == -5.0 {
+                        constraint.constant -= 10.0
+                    }
+                }
+            } else {
+                for constraint in constraints where constraint.identifier == "time-top-space" {
+                    if constraint.constant != -5.0 {
+                        constraint.constant = -5.0
+                    }
+                }
+            }
         }
 
         for constraint in sunriseSetTime.constraints where constraint.identifier == "width" {
@@ -123,7 +170,7 @@ class TimezoneCellView: NSTableCellView {
         guard let panelTableView = searchView as? PanelTableView,
             let enclosingScroller = panelTableView.enclosingScrollView
         else {
-            assertionFailure("Unable to find panel table view in hierarchy")
+            // We might be coming from the preview tableview!
             return
         }
 

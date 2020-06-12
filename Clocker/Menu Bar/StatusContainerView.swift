@@ -125,10 +125,24 @@ class StatusContainerView: NSView {
             assertionFailure("Subviews count should > 0")
         }
 
+        // See if frame's width needs any adjustment
+        var newWidth: CGFloat = 0
+
         subviews.forEach {
             if let statusItem = $0 as? StatusItemView {
+                // Determine what's the best width required to display the current string.
+                let newBestWidth = CGFloat(bestWidth(for: statusItem.dataObject))
+
+                // Let's note if the current width is too small/correct
+                newWidth += statusItem.frame.size.width != newBestWidth ? newBestWidth : statusItem.frame.size.width
+
                 statusItem.updateTimeInMenubar()
             }
+        }
+
+        if newWidth != frame.size.width {
+            print("Correcting our width to \(newWidth) and the previous width was \(frame.size.width)")
+            frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: newWidth, height: frame.size.height)
         }
     }
 }

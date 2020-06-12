@@ -6,7 +6,7 @@ import EventKit
 class EventCenter: NSObject {
     private static var shared = EventCenter()
 
-    let store = EKEventStore()
+    var eventStore: EKEventStore!
 
     var calendar: EKCalendar?
 
