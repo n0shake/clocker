@@ -163,6 +163,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         var activationPolicy: NSApplication.ActivationPolicy = defaults.integer(forKey: CLAppDislayOptions) == 0 ? .accessory : .regular
 
         #if DEBUG
+            UserDefaults.standard.set(1, forKey: CLAppDislayOptions)
             activationPolicy = .regular
         #endif
 

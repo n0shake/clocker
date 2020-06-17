@@ -359,6 +359,7 @@ class ParentPanelController: NSWindowController {
 
     private func getAdjustedRowHeight(for object: TimezoneData?, _ currentHeight: CGFloat) -> CGFloat {
         let userFontSize: NSNumber = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber ?? 4
+        let shouldShowSunrise = DataStore.shared().shouldDisplay(.sunrise)
 
         var newHeight = currentHeight
 
@@ -380,6 +381,10 @@ class ParentPanelController: NSWindowController {
             if let note = object?.note, note.isEmpty {
                 newHeight -= 20.0
             }
+        }
+
+        if shouldShowSunrise, object?.selectionType == .city {
+            newHeight += 8.0
         }
 
         newHeight += mainTableView.intercellSpacing.height

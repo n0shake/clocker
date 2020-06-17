@@ -66,7 +66,6 @@ class PanelController: ParentPanelController {
         }
 
         window?.setFrameTopLeftPoint(NSPoint(x: xPoint, y: yPoint))
-
         window?.invalidateShadow()
     }
 
