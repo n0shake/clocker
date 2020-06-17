@@ -82,13 +82,13 @@ class StatusItemView: NSView {
     }
 
     func updateTimeInMenubar() {
-        locationView.attributedStringValue = NSAttributedString(string: dataObject.formattedTimezoneLabel(), attributes: textFontAttributes)
-        timeView.attributedStringValue = NSAttributedString(string: operationsObject.compactMenuHeader(), attributes: timeAttributes)
+        locationView.attributedStringValue = NSAttributedString(string: operationsObject.compactMenuTitle(), attributes: textFontAttributes)
+        timeView.attributedStringValue = NSAttributedString(string: operationsObject.compactMenuSubtitle(), attributes: timeAttributes)
     }
 
     private func initialSetup() {
-        locationView.attributedStringValue = NSAttributedString(string: dataObject.formattedTimezoneLabel(), attributes: textFontAttributes)
-        timeView.attributedStringValue = NSAttributedString(string: operationsObject.compactMenuHeader(), attributes: timeAttributes)
+        locationView.attributedStringValue = NSAttributedString(string: operationsObject.compactMenuTitle(), attributes: textFontAttributes)
+        timeView.attributedStringValue = NSAttributedString(string: operationsObject.compactMenuSubtitle(), attributes: timeAttributes)
     }
 
     required init?(coder _: NSCoder) {

@@ -102,7 +102,6 @@ class AppearanceViewController: ParentViewController {
 
         let shouldDisplayCompact = DataStore.shared().shouldDisplay(.menubarCompactMode)
         menubarMode.setSelected(true, forSegment: shouldDisplayCompact ? 0 : 1)
-        updateMenubarControls(!shouldDisplayCompact)
     }
 
     @IBOutlet var timeFormatLabel: NSTextField!
@@ -311,8 +310,6 @@ class AppearanceViewController: ParentViewController {
     }
 
     @IBAction func menubarModeChanged(_ sender: NSSegmentedControl) {
-        updateMenubarControls(sender.selectedSegment == 1)
-
         guard let statusItem = (NSApplication.shared.delegate as? AppDelegate)?.statusItemForPanel() else {
             return
         }
@@ -324,12 +321,6 @@ class AppearanceViewController: ParentViewController {
         } else {
             Logger.log(object: ["Context": "In Appearance View"], for: "Switched to Standard Mode")
         }
-    }
-
-    // We don't support showing day or date in the menubar for compact mode yet.
-    // Disable those options to let the user know.
-    private func updateMenubarControls(_ isEnabled: Bool) {
-        [includePlaceNameControl].forEach { $0?.isEnabled = isEnabled }
     }
 
     @IBAction func fontSliderChanged(_: Any) {
