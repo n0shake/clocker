@@ -1169,7 +1169,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="fTA-lS-4wJ">
-                                                    <rect key="frame" x="31" y="364" width="143" height="18"/>
+                                                    <rect key="frame" x="78" y="364" width="143" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="139" id="w0W-x9-xCJ"/>
                                                     </constraints>
@@ -1180,7 +1180,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Axn-Tb-Cdx">
-                                                    <rect key="frame" x="219" y="361" width="83" height="24"/>
+                                                    <rect key="frame" x="242" y="361" width="83" height="24"/>
                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="04s-TY-ltB">
                                                         <font key="font" size="12" name="Avenir-Light"/>
                                                         <segments>
@@ -1194,7 +1194,7 @@
                                                     </connections>
                                                 </segmentedControl>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="pZd-Wg-YPL">
-                                                    <rect key="frame" x="101" y="326" width="73" height="18"/>
+                                                    <rect key="frame" x="148" y="326" width="73" height="18"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Include Day" id="dBJ-Pj-utm">
                                                         <font key="font" size="13" name="Avenir-Light"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1202,7 +1202,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KeW-e2-uQE">
-                                                    <rect key="frame" x="219" y="285" width="83" height="24"/>
+                                                    <rect key="frame" x="242" y="285" width="83" height="24"/>
                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="n7R-Fj-KSe">
                                                         <font key="font" size="12" name="Avenir-Light"/>
                                                         <segments>
@@ -1216,7 +1216,7 @@
                                                     </connections>
                                                 </segmentedControl>
                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AxB-VD-lXm">
-                                                    <rect key="frame" x="219" y="323" width="83" height="24"/>
+                                                    <rect key="frame" x="242" y="323" width="83" height="24"/>
                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="0UT-Io-qfp">
                                                         <font key="font" size="12" name="Avenir-Light"/>
                                                         <segments>
@@ -1233,7 +1233,7 @@
                                                     </connections>
                                                 </segmentedControl>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="bhJ-MT-NBP">
-                                                    <rect key="frame" x="54" y="288" width="120" height="18"/>
+                                                    <rect key="frame" x="101" y="288" width="120" height="18"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Include Place Name" id="YQC-xV-1Ig">
                                                         <font key="font" size="13" name="Avenir-Light"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1241,7 +1241,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="Utg-yF-Rso" userLabel="Menubar Mode">
-                                                    <rect key="frame" x="79" y="250" width="95" height="18"/>
+                                                    <rect key="frame" x="126" y="250" width="95" height="18"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Menubar Mode" id="6xJ-Vn-e39">
                                                         <font key="font" size="13" name="Avenir-Light"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1249,7 +1249,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mai-SZ-AEi">
-                                                    <rect key="frame" x="219" y="247" width="146" height="24"/>
+                                                    <rect key="frame" x="242" y="247" width="146" height="24"/>
                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="tbg-LS-tZH">
                                                         <font key="font" size="12" name="Avenir-Light"/>
                                                         <segments>
@@ -1302,7 +1302,7 @@
                                                     </constraints>
                                                 </visualEffectView>
                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DjV-qq-hr9">
-                                                    <rect key="frame" x="219" y="144" width="230" height="24"/>
+                                                    <rect key="frame" x="242" y="144" width="230" height="24"/>
                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="kvB-5f-IK4">
                                                         <font key="font" size="12" name="Avenir-Light"/>
                                                         <segments>
@@ -1316,7 +1316,7 @@
                                                     </connections>
                                                 </segmentedControl>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="GaR-Qm-7u4">
-                                                    <rect key="frame" x="59" y="110" width="118" height="18"/>
+                                                    <rect key="frame" x="103" y="110" width="118" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="114" id="lod-PT-AI5"/>
                                                     </constraints>
@@ -1327,7 +1327,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="HNj-dh-8gr">
-                                                    <rect key="frame" x="80" y="148" width="97" height="18"/>
+                                                    <rect key="frame" x="124" y="148" width="97" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="93" id="7zy-Fe-aNw"/>
                                                     </constraints>
@@ -1338,7 +1338,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pk6-co-N73">
-                                                    <rect key="frame" x="219" y="68" width="79" height="24"/>
+                                                    <rect key="frame" x="242" y="68" width="79" height="24"/>
                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="jUA-fY-nhn">
                                                         <font key="font" size="12" name="Avenir-Light"/>
                                                         <segments>
@@ -1353,7 +1353,7 @@
                                                     </connections>
                                                 </segmentedControl>
                                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Nx-Xq-XDU">
-                                                    <rect key="frame" x="217" y="105" width="223" height="25"/>
+                                                    <rect key="frame" x="240" y="105" width="223" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="218" id="0qW-So-4cc"/>
                                                     </constraints>
@@ -1367,7 +1367,7 @@
                                                     </connections>
                                                 </popUpButton>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="8Jv-Cf-blJ">
-                                                    <rect key="frame" x="64" y="72" width="113" height="18"/>
+                                                    <rect key="frame" x="108" y="72" width="113" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="109" id="DXS-zG-LoB"/>
                                                     </constraints>
@@ -1399,8 +1399,7 @@
                                                 <constraint firstItem="Q3M-Kz-XV3" firstAttribute="top" secondItem="mF4-bp-EID" secondAttribute="top" constant="7" id="Gaf-bX-kgP"/>
                                                 <constraint firstItem="bhJ-MT-NBP" firstAttribute="top" secondItem="pZd-Wg-YPL" secondAttribute="bottom" constant="20" id="IoV-WF-2Ka"/>
                                                 <constraint firstItem="8Jv-Cf-blJ" firstAttribute="top" secondItem="GaR-Qm-7u4" secondAttribute="bottom" constant="20" id="JEu-wF-GfU"/>
-                                                <constraint firstItem="HNj-dh-8gr" firstAttribute="leading" secondItem="mF4-bp-EID" secondAttribute="leading" constant="82" id="K6V-yK-tP6"/>
-                                                <constraint firstItem="fTA-lS-4wJ" firstAttribute="leading" secondItem="mF4-bp-EID" secondAttribute="leading" constant="33" id="MkT-cl-OdZ"/>
+                                                <constraint firstItem="fTA-lS-4wJ" firstAttribute="leading" secondItem="mF4-bp-EID" secondAttribute="leading" constant="80" id="MkT-cl-OdZ"/>
                                                 <constraint firstItem="8Jv-Cf-blJ" firstAttribute="trailing" secondItem="GaR-Qm-7u4" secondAttribute="trailing" id="NUW-UR-fQ1"/>
                                                 <constraint firstItem="ffU-Ce-sfU" firstAttribute="centerX" secondItem="mF4-bp-EID" secondAttribute="centerX" id="NtD-tv-DLi"/>
                                                 <constraint firstAttribute="trailing" secondItem="XeT-rJ-1io" secondAttribute="trailing" constant="-3" id="PrP-aA-Zhl"/>
@@ -1410,7 +1409,7 @@
                                                 <constraint firstItem="XeT-rJ-1io" firstAttribute="leading" secondItem="mF4-bp-EID" secondAttribute="leading" constant="-3" id="afb-db-nsk"/>
                                                 <constraint firstItem="Mai-SZ-AEi" firstAttribute="leading" secondItem="KeW-e2-uQE" secondAttribute="leading" id="bhh-nt-9cb"/>
                                                 <constraint firstAttribute="trailing" secondItem="Wj2-aw-ZDm" secondAttribute="trailing" id="c7U-11-oja"/>
-                                                <constraint firstItem="Axn-Tb-Cdx" firstAttribute="leading" secondItem="fTA-lS-4wJ" secondAttribute="trailing" constant="49" id="cpc-PS-JXb"/>
+                                                <constraint firstItem="Axn-Tb-Cdx" firstAttribute="leading" secondItem="fTA-lS-4wJ" secondAttribute="trailing" constant="25" id="cpc-PS-JXb"/>
                                                 <constraint firstItem="Wj2-aw-ZDm" firstAttribute="bottom" secondItem="XeT-rJ-1io" secondAttribute="bottom" id="d1X-nE-5Z1"/>
                                                 <constraint firstItem="XeT-rJ-1io" firstAttribute="top" secondItem="Mai-SZ-AEi" secondAttribute="bottom" constant="20" id="dK0-pf-XzU"/>
                                                 <constraint firstItem="HNj-dh-8gr" firstAttribute="top" secondItem="ffU-Ce-sfU" secondAttribute="bottom" constant="20" id="e9q-JE-9cD"/>
@@ -1428,6 +1427,7 @@
                                                 <constraint firstItem="AxB-VD-lXm" firstAttribute="leading" secondItem="Axn-Tb-Cdx" secondAttribute="leading" id="x1o-YB-Aes"/>
                                                 <constraint firstItem="pk6-co-N73" firstAttribute="leading" secondItem="DjV-qq-hr9" secondAttribute="leading" id="y9n-Tk-GUK"/>
                                                 <constraint firstItem="Q3M-Kz-XV3" firstAttribute="centerX" secondItem="mF4-bp-EID" secondAttribute="centerX" id="yKZ-7i-UKv"/>
+                                                <constraint firstItem="HNj-dh-8gr" firstAttribute="trailing" secondItem="Utg-yF-Rso" secondAttribute="trailing" id="yPE-hM-Mbb"/>
                                                 <constraint firstItem="DjV-qq-hr9" firstAttribute="leading" secondItem="Mai-SZ-AEi" secondAttribute="leading" id="ykI-Ig-kwf"/>
                                                 <constraint firstItem="GaR-Qm-7u4" firstAttribute="top" secondItem="HNj-dh-8gr" secondAttribute="bottom" constant="20" id="z8z-AY-l8y"/>
                                             </constraints>
