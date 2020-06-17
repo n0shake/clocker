@@ -51,6 +51,8 @@ extension EventCenter {
                         alertIndex: Int,
                         reminderDate: Date,
                         additionalNotes: String?) -> Bool {
+        initializeStoreIfNeccesary()
+
         if reminderAccessNotDetermined() || reminderAccessDenied() {
             return false
         }
