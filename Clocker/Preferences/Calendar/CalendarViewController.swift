@@ -87,9 +87,6 @@ class CalendarViewController: ParentViewController {
         } else {
             showSegmentedControl.selectedSegment = 1
         }
-
-        // If the menubar mode is compact, we can't show meetings in the menubar. So disable toggling that option.
-        showNextMeetingInMenubarControl.isEnabled = !DataStore.shared().shouldDisplay(.menubarCompactMode)
     }
 
     private func verifyCalendarAccess() {

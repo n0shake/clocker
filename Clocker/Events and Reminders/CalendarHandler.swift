@@ -53,6 +53,40 @@ extension EventCenter {
         return sourcesAndCalendars
     }
 
+    func separateFormat(event: EKEvent) -> (String, String)? {
+        guard let truncateLength = DataStore.shared().retrieve(key: CLTruncateTextLength) as? NSNumber, let eventTitle = event.title else {
+            return nil
+        }
+
+        let seconds = event.startDate.timeIntervalSinceNow
+        var formattedTitle: String = CLEmptyString
+
+        if eventTitle.count > truncateLength.intValue {
+            let truncateIndex = eventTitle.index(eventTitle.startIndex, offsetBy: truncateLength.intValue)
+            let truncatedTitle = String(eventTitle[..<truncateIndex])
+
+            formattedTitle.append(truncatedTitle)
+            formattedTitle.append("...")
+        } else {
+            formattedTitle.append(eventTitle)
+        }
+
+        var menubarText: String = CLEmptyString
+        let minutes = seconds / 60
+
+        if minutes > 2 {
+            let suffix = String(format: " in %0.f mins", minutes)
+            menubarText.append(suffix)
+        } else if minutes == 1 {
+            let suffix = String(format: " in %0.f min", minutes)
+            menubarText.append(suffix)
+        } else {
+            menubarText.append(" starts now.")
+        }
+
+        return (formattedTitle, menubarText)
+    }
+
     func format(event: EKEvent) -> String {
         guard let truncateLength = DataStore.shared().retrieve(key: CLTruncateTextLength) as? NSNumber, let eventTitle = event.title else {
             return CLEmptyString
