@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -465,12 +465,12 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Switch between Menubar/Floating mode." verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YXE-4J-5cn">
-                                        <rect key="frame" x="278" y="10" width="29" height="19"/>
+                                        <rect key="frame" x="275" y="10" width="29" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="29" id="fWo-31-i3M"/>
                                             <constraint firstAttribute="height" constant="18" id="v7I-PR-eTK"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="Float" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iwC-c9-CBS">
+                                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="Float-White" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iwC-c9-CBS">
                                             <behavior key="behavior" lightByContents="YES"/>
                                             <font key="font" metaFont="systemBold" size="12"/>
                                         </buttonCell>
@@ -480,12 +480,12 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Share Clocker!" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hc7-fH-V7i">
-                                        <rect key="frame" x="248" y="7" width="30" height="26"/>
+                                        <rect key="frame" x="240" y="10" width="30" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="Bnf-E1-uaE"/>
+                                            <constraint firstAttribute="height" constant="20" id="Bnf-E1-uaE"/>
                                             <constraint firstAttribute="width" constant="30" id="pke-4M-ob5"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="NSShareTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jZm-RN-msv">
+                                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="SharingDarkIcon" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jZm-RN-msv">
                                             <behavior key="behavior" lightByContents="YES"/>
                                             <font key="font" metaFont="systemBold" size="12"/>
                                         </buttonCell>
@@ -514,13 +514,13 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Ctq-BV-GPN" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" id="6Q7-jc-cTL"/>
-                                    <constraint firstItem="YXE-4J-5cn" firstAttribute="leading" secondItem="Hc7-fH-V7i" secondAttribute="trailing" id="GF2-UV-dDg"/>
+                                    <constraint firstItem="YXE-4J-5cn" firstAttribute="leading" secondItem="Hc7-fH-V7i" secondAttribute="trailing" constant="5" id="GF2-UV-dDg"/>
                                     <constraint firstItem="YXE-4J-5cn" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" id="OHe-Tc-b0V"/>
                                     <constraint firstAttribute="height" constant="40" id="iYW-fj-EE2"/>
                                     <constraint firstItem="1cR-pI-osG" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" id="oVJ-Xa-cTw"/>
                                     <constraint firstAttribute="trailing" secondItem="1cR-pI-osG" secondAttribute="trailing" constant="11" id="rb9-gW-QZS"/>
-                                    <constraint firstItem="1cR-pI-osG" firstAttribute="leading" secondItem="YXE-4J-5cn" secondAttribute="trailing" constant="2" id="tCt-DB-tt2"/>
-                                    <constraint firstItem="Hc7-fH-V7i" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" id="vPp-mQ-wgE"/>
+                                    <constraint firstItem="1cR-pI-osG" firstAttribute="leading" secondItem="YXE-4J-5cn" secondAttribute="trailing" constant="5" id="tCt-DB-tt2"/>
+                                    <constraint firstItem="Hc7-fH-V7i" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" constant="-1" id="vPp-mQ-wgE"/>
                                     <constraint firstItem="Ctq-BV-GPN" firstAttribute="leading" secondItem="B8X-sx-cjT" secondAttribute="leading" constant="8" id="ydm-oF-sVc"/>
                                 </constraints>
                             </customView>
@@ -570,10 +570,10 @@
         <image name="Add Icon" width="700" height="700"/>
         <image name="CurrentLocation" width="350" height="350"/>
         <image name="Extra" width="700" height="700"/>
-        <image name="Float" width="700" height="700"/>
+        <image name="Float-White" width="15" height="13"/>
         <image name="NSActionTemplate" width="14" height="14"/>
-        <image name="NSShareTemplate" width="11" height="16"/>
         <image name="PowerIcon" width="270" height="270"/>
         <image name="Remove" width="700" height="700"/>
+        <image name="SharingDarkIcon" width="19" height="22"/>
     </resources>
 </document>

@@ -1,12 +1,13 @@
 {
   "images" : [
     {
+      "filename" : "share1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "share2x.png",
       "idiom" : "universal",
-      "filename" : "Sharing_Dark.png",
       "scale" : "2x"
     },
     {
@@ -15,7 +16,7 @@
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }
