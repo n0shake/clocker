@@ -955,20 +955,38 @@ class ParentPanelController: NSWindowController {
         Logger.log(object: custom, for: "Opened Localization Link")
     }
 
+    @objc func rate() {
+        guard let sourceURL = URL(string: AboutUsConstants.AppStoreLink) else { return }
+
+        NSWorkspace.shared.open(sourceURL)
+    }
+
     @IBAction func showMoreOptions(_ sender: NSButton) {
         let menuItem = NSMenu(title: "More Options")
         let terminateOption = NSMenuItem(title: "Quit Clocker",
                                          action: #selector(terminateClocker), keyEquivalent: "")
-        let rateClocker = NSMenuItem(title: "Support Clocker",
-                                     action: #selector(terminateClocker), keyEquivalent: "")
-        let sendFeedback = NSMenuItem(title: "Send Feedback",
+        let rateClocker = NSMenuItem(title: "Support Clocker...",
+                                     action: #selector(rate), keyEquivalent: "")
+        let sendFeedback = NSMenuItem(title: "Send Feedback...",
                                       action: #selector(reportIssue), keyEquivalent: "")
-        let localizeClocker = NSMenuItem(title: "Localize Clocker in your own language",
+        let localizeClocker = NSMenuItem(title: "Localize Clocker...",
                                          action: #selector(openCrowdin), keyEquivalent: "")
-        menuItem.addItem(terminateOption)
+
+        let appDisplayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") ?? "Clocker"
+        let shortVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") ?? "N/A"
+        let longVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") ?? "N/A"
+
+        let versionInfo = "\(appDisplayName) \(shortVersion) (\(longVersion))"
+        let clockerVersionInfo = NSMenuItem(title: versionInfo, action: nil, keyEquivalent: "")
+        clockerVersionInfo.isEnabled = false
         menuItem.addItem(rateClocker)
         menuItem.addItem(sendFeedback)
         menuItem.addItem(localizeClocker)
+        menuItem.addItem(NSMenuItem.separator())
+        menuItem.addItem(clockerVersionInfo)
+
+        menuItem.addItem(NSMenuItem.separator())
+        menuItem.addItem(terminateOption)
         NSMenu.popUpContextMenu(menuItem,
                                 with: NSApp.currentEvent!,
                                 for: sender)
