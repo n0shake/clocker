@@ -67,6 +67,12 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
         cellView.setAccessibilityIdentifier(currentModel.formattedTimezoneLabel())
         cellView.setAccessibilityLabel(currentModel.formattedTimezoneLabel())
 
+        #if DEBUG
+            if row == 0 {
+                cellView.currentLocationIndicator.isHidden = false
+            }
+        #endif
+
         return cellView
     }
 

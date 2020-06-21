@@ -546,6 +546,12 @@ class ParentPanelController: NSWindowController {
                 cellView.sunriseImage.image = model.isSunriseOrSunset ? Themer.shared().sunriseImage() : Themer.shared().sunsetImage()
                 cellView.layout(with: model)
                 updateDatePicker()
+
+                #if DEBUG
+                    if $0 == 0 {
+                        cellView.currentLocationIndicator.isHidden = false
+                    }
+                #endif
             }
         }
     }
