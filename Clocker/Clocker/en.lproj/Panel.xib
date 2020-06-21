@@ -461,7 +461,7 @@
                                         </buttonCell>
                                         <accessibility identifier="Close"/>
                                         <connections>
-                                            <action selector="terminate:" target="-1" id="ZY8-sG-rkC"/>
+                                            <action selector="showMoreOptions:" target="-2" id="xl5-rm-4JK"/>
                                         </connections>
                                     </button>
                                     <button toolTip="Switch between Menubar/Floating mode." verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YXE-4J-5cn">

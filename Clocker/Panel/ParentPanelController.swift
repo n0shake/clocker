@@ -922,6 +922,51 @@ class ParentPanelController: NSWindowController {
         sliderDatePicker.dateValue = Date()
         setTimezoneDatasourceSlider(sliderValue: 0)
     }
+
+    @objc func terminateClocker() {
+        NSApplication.shared.terminate(nil)
+    }
+
+    @objc func reportIssue() {
+        feedbackWindow.showWindow(nil)
+        NSApp.activate(ignoringOtherApps: true)
+        window?.orderOut(nil)
+
+        if let countryCode = Locale.autoupdatingCurrent.regionCode {
+            let custom: [String: Any] = ["Country": countryCode]
+            Logger.log(object: custom, for: "Report Issue Opened")
+        }
+    }
+
+    @objc func openCrowdin() {
+        guard let localizationURL = URL(string: AboutUsConstants.CrowdInLocalizationLink),
+            let languageCode = Locale.preferredLanguages.first else { return }
+
+        NSWorkspace.shared.open(localizationURL)
+
+        // Log this
+        let custom: [String: Any] = ["Language": languageCode]
+        Logger.log(object: custom, for: "Opened Localization Link")
+    }
+
+    @IBAction func showMoreOptions(_ sender: NSButton) {
+        let menuItem = NSMenu(title: "More Options")
+        let terminateOption = NSMenuItem(title: "Quit Clocker",
+                                         action: #selector(terminateClocker), keyEquivalent: "")
+        let rateClocker = NSMenuItem(title: "Support Clocker",
+                                     action: #selector(terminateClocker), keyEquivalent: "")
+        let sendFeedback = NSMenuItem(title: "Send Feedback",
+                                      action: #selector(reportIssue), keyEquivalent: "")
+        let localizeClocker = NSMenuItem(title: "Localize Clocker in your own language",
+                                         action: #selector(openCrowdin), keyEquivalent: "")
+        menuItem.addItem(terminateOption)
+        menuItem.addItem(rateClocker)
+        menuItem.addItem(sendFeedback)
+        menuItem.addItem(localizeClocker)
+        NSMenu.popUpContextMenu(menuItem,
+                                with: NSApp.currentEvent!,
+                                for: sender)
+    }
 }
 
 extension ParentPanelController: NSPopoverDelegate {
