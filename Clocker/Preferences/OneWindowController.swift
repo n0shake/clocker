@@ -3,21 +3,6 @@
 import Cocoa
 
 class CenteredTabViewController: NSTabViewController {
-    override func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        super.toolbarDefaultItemIdentifiers(toolbar)
-
-        var toolbarItems: [NSToolbarItem.Identifier] = [NSToolbarItem.Identifier.flexibleSpace]
-
-        tabViewItems.forEach { item in
-            if let identifier = item.identifier as? String {
-                toolbarItems.append(NSToolbarItem.Identifier(identifier))
-            }
-        }
-
-        toolbarItems.append(NSToolbarItem.Identifier.flexibleSpace)
-        return toolbarItems
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
