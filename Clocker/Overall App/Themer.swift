@@ -151,6 +151,11 @@ extension Themer {
     }
 
     func shutdownImage() -> NSImage {
+        if #available(macOS 10.16, *) {
+            return NSImage(systemSymbolName: "ellipsis.circle",
+                           accessibilityDescription: nil)!
+        }
+
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:
@@ -189,6 +194,11 @@ extension Themer {
     }
 
     func pinImage() -> NSImage {
+        if #available(macOS 10.16, *) {
+            return NSImage(systemSymbolName: "macwindow.on.rectangle",
+                           accessibilityDescription: nil)!
+        }
+
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:
@@ -309,6 +319,11 @@ extension Themer {
     }
 
     func sharingImage() -> NSImage {
+        if #available(macOS 10.16, *) {
+            return NSImage(systemSymbolName: "square.and.arrow.up.on.square.fill",
+                           accessibilityDescription: nil)!
+        }
+
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:
