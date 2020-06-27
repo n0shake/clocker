@@ -166,6 +166,11 @@ extension Themer {
     }
 
     func preferenceImage() -> NSImage {
+        if #available(macOS 10.16, *) {
+            return NSImage(systemSymbolName: "gear",
+                           accessibilityDescription: nil)!
+        }
+
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:
@@ -177,7 +182,10 @@ extension Themer {
             }
         }
 
-        return themeIndex == .light ? NSImage(named: NSImage.Name("Settings"))! : NSImage(named: NSImage.Name("Settings-White"))!
+        return
+            themeIndex == .light
+            ? NSImage(named: NSImage.Name("Settings"))!
+            : NSImage(named: NSImage.Name("Settings-White"))!
     }
 
     func pinImage() -> NSImage {
@@ -192,7 +200,9 @@ extension Themer {
             }
         }
 
-        return themeIndex == .light ? NSImage(named: NSImage.Name("Float"))! : NSImage(named: NSImage.Name("Float-White"))!
+        return themeIndex == .light
+            ? NSImage(named: NSImage.Name("Float"))!
+            : NSImage(named: NSImage.Name("Float-White"))!
     }
 
     func sunriseImage() -> NSImage {
