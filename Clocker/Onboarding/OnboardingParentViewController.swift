@@ -63,8 +63,6 @@ class OnboardingParentViewController: NSViewController {
 
         positiveButton.title = NSLocalizedString("Get Started",
                                                  comment: "Title for Welcome View Controller's Continue Button")
-        backButton.title = NSLocalizedString("Back",
-                                             comment: "Button title for going back to the previous screen")
         positiveButton.tag = OnboardingType.welcome.rawValue
         backButton.tag = OnboardingType.welcome.rawValue
 
@@ -73,7 +71,11 @@ class OnboardingParentViewController: NSViewController {
         if #available(OSX 10.16, *) {
             negativeButton.controlSize = .large
             positiveButton.controlSize = .large
-            backButton.controlSize = .large
+            backButton.image = NSImage(systemSymbolName: "chevron.left.circle.fill",
+                                       accessibilityDescription: nil)
+        } else {
+            backButton.title = NSLocalizedString("Back",
+                                                 comment: "Button title for going back to the previous screen")
         }
     }
 

@@ -49,10 +49,6 @@ class PanelController: ParentPanelController {
         }
     }
 
-    override func updateDefaultPreferences() {
-        super.updateDefaultPreferences()
-    }
-
     func setFrameTheNewWay(_ rect: NSRect, _ maxX: CGFloat) {
         // Calculate window's top left point.
         // First, center window under status item.
@@ -81,6 +77,12 @@ class PanelController: ParentPanelController {
         super.dismissRowActions()
 
         updateDefaultPreferences()
+
+        if DataStore.shared().timezones().isEmpty {
+            futureSliderView.isHidden = true
+        } else if futureSliderView.isHidden == DataStore.shared().shouldDisplay(.futureSlider) {
+            futureSliderView.isHidden = false
+        }
 
         futureSlider.integerValue = 0
 
