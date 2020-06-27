@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="RHq-9Z-auA">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="RHq-9Z-auA">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -768,20 +768,20 @@
             <objects>
                 <viewController title=" Appearance " id="1aL-zR-8L4" userLabel="Appearance" customClass="AppearanceViewController" customModule="Clocker" customModuleProvider="target" sceneMemberID="viewController">
                     <customView key="view" wantsLayer="YES" id="7EQ-1G-xRP" customClass="ParentView" customModule="Clocker" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="624" height="652"/>
+                        <rect key="frame" x="0.0" y="0.0" width="654" height="502"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
-                            <tabView translatesAutoresizingMaskIntoConstraints="NO" id="SGu-yd-JQh">
-                                <rect key="frame" x="13" y="23" width="606" height="615"/>
+                            <tabView initialItem="ztQ-ui-wYI" translatesAutoresizingMaskIntoConstraints="NO" id="SGu-yd-JQh">
+                                <rect key="frame" x="13" y="10" width="628" height="478"/>
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Panel" identifier="" id="vnW-vq-Ote">
                                         <view key="view" id="zFb-Gb-3dB">
-                                            <rect key="frame" x="10" y="33" width="603" height="569"/>
+                                            <rect key="frame" x="10" y="33" width="608" height="432"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9WW-jp-NeO">
-                                                    <rect key="frame" x="203" y="366" width="138" height="24"/>
+                                                    <rect key="frame" x="203" y="267" width="143" height="24"/>
                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="CcB-5w-IoG">
                                                         <font key="font" size="12" name="Avenir-Light"/>
                                                         <segments>
@@ -795,7 +795,7 @@
                                                     </connections>
                                                 </segmentedControl>
                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gEH-vT-EqV">
-                                                    <rect key="frame" x="203" y="328" width="155" height="24"/>
+                                                    <rect key="frame" x="203" y="229" width="160" height="24"/>
                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="5Rz-xo-JB7">
                                                         <font key="font" size="12" name="Avenir-Light"/>
                                                         <segments>
@@ -809,7 +809,7 @@
                                                     </connections>
                                                 </segmentedControl>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="xwt-pY-1w9">
-                                                    <rect key="frame" x="30" y="293" width="152" height="18"/>
+                                                    <rect key="frame" x="30" y="194" width="152" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="148" id="7fj-Em-Lyh"/>
                                                     </constraints>
@@ -820,7 +820,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="gFE-hZ-J92">
-                                                    <rect key="frame" x="45" y="445" width="137" height="18"/>
+                                                    <rect key="frame" x="45" y="308" width="137" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="133" id="SCi-hT-hxG"/>
                                                     </constraints>
@@ -830,19 +830,8 @@
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="cmK-rb-Px7">
-                                                    <rect key="frame" x="69" y="407" width="113" height="18"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="109" id="YJQ-Mw-oTQ"/>
-                                                    </constraints>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Show Future Slider" id="dG1-hI-A31">
-                                                        <font key="font" size="13" name="Avenir-Light"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="wtO-uL-QBf">
-                                                    <rect key="frame" x="78" y="521" width="104" height="18"/>
+                                                    <rect key="frame" x="78" y="384" width="104" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="WNN-Le-h1b"/>
                                                     </constraints>
@@ -853,7 +842,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d4S-hM-MSP">
-                                                    <rect key="frame" x="203" y="442" width="287" height="24"/>
+                                                    <rect key="frame" x="203" y="305" width="292" height="24"/>
                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="564-Re-f1d">
                                                         <font key="font" size="12" name="Avenir-Light"/>
                                                         <segments>
@@ -868,22 +857,8 @@
                                                         <binding destination="Gpv-Gr-MxZ" name="selectedIndex" keyPath="values.relativeDate" id="KQP-ft-dxC"/>
                                                     </connections>
                                                 </segmentedControl>
-                                                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zTJ-p9-7Tx">
-                                                    <rect key="frame" x="203" y="214" width="293" height="24"/>
-                                                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="dxE-KM-01Y">
-                                                        <font key="font" size="12" name="Avenir-Light"/>
-                                                        <segments>
-                                                            <segment label="Menu Bar only"/>
-                                                            <segment label="Dock and Menu Bar" selected="YES" tag="1"/>
-                                                        </segments>
-                                                    </segmentedCell>
-                                                    <connections>
-                                                        <action selector="changeAppDisplayOptions:" target="1aL-zR-8L4" id="rre-rx-3Py"/>
-                                                        <binding destination="Gpv-Gr-MxZ" name="selectedIndex" keyPath="values.com.abhishek.appDisplayOptions" id="cvt-EV-Ncg"/>
-                                                    </connections>
-                                                </segmentedControl>
                                                 <segmentedControl toolTip="Select a time-format!" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="699-dn-eyN">
-                                                    <rect key="frame" x="203" y="518" width="236" height="24"/>
+                                                    <rect key="frame" x="203" y="381" width="236" height="24"/>
                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="R6T-Ym-jpK">
                                                         <font key="font" size="13" name="Avenir-Light"/>
                                                         <segments>
@@ -896,53 +871,16 @@
                                                         <binding destination="Gpv-Gr-MxZ" name="selectedIndex" keyPath="values.is24HourFormatSelected" id="SlE-o5-83r"/>
                                                     </connections>
                                                 </segmentedControl>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="saM-0J-1YU">
-                                                    <rect key="frame" x="64" y="255" width="118" height="18"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="114" id="l24-oY-7d0"/>
-                                                    </constraints>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Future Slider Range" id="TFk-yf-oBS">
-                                                        <font key="font" size="13" name="Avenir-Light"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="Gia-TI-eki">
-                                                    <rect key="frame" x="85" y="217" width="97" height="18"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="93" id="y7H-C5-fA6"/>
-                                                    </constraints>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Show Clocker in" id="5K9-XV-kHb">
-                                                        <font key="font" size="13" name="Avenir-Light"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="60" translatesAutoresizingMaskIntoConstraints="NO" id="vrm-cg-RMn">
-                                                    <rect key="frame" x="81" y="483" width="101" height="18"/>
+                                                    <rect key="frame" x="81" y="346" width="101" height="18"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Panel Theme" id="ZKN-5V-B4D">
                                                         <font key="font" size="13" name="Avenir-Light"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CYe-co-1Ey">
-                                                    <rect key="frame" x="203" y="404" width="131" height="24"/>
-                                                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="17B-LG-dAa">
-                                                        <font key="font" size="12" name="Avenir-Light"/>
-                                                        <segments>
-                                                            <segment label="Yes" width="36"/>
-                                                            <segment label="No" width="36" selected="YES" tag="1"/>
-                                                        </segments>
-                                                    </segmentedCell>
-                                                    <accessibility identifier="FutureSlider"/>
-                                                    <connections>
-                                                        <action selector="showFutureSlider:" target="1aL-zR-8L4" id="4Qb-fh-feh"/>
-                                                        <binding destination="Gpv-Gr-MxZ" name="selectedIndex" keyPath="values.displayFutureSlider" id="PHz-wd-EDE"/>
-                                                    </connections>
-                                                </segmentedControl>
                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8IA-JL-fje">
-                                                    <rect key="frame" x="554" y="276" width="32" height="52"/>
+                                                    <rect key="frame" x="559" y="177" width="32" height="52"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="32" id="GZK-Zb-UYb"/>
                                                         <constraint firstAttribute="height" constant="52" id="SSv-hh-RFa"/>
@@ -950,7 +888,7 @@
                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSFontPanel" id="yoa-s4-khY"/>
                                                 </imageView>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="w0y-UQ-RC0">
-                                                    <rect key="frame" x="19" y="331" width="163" height="18"/>
+                                                    <rect key="frame" x="19" y="232" width="163" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="159" id="mNx-18-sdT"/>
                                                     </constraints>
@@ -961,7 +899,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <segmentedControl toolTip="Choose a theme for the main panel!" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FZb-fP-hMJ">
-                                                    <rect key="frame" x="203" y="480" width="260" height="24"/>
+                                                    <rect key="frame" x="203" y="343" width="265" height="24"/>
                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="hcQ-xa-e2V">
                                                         <font key="font" size="12" name="Avenir-Light"/>
                                                         <segments>
@@ -975,19 +913,8 @@
                                                         <binding destination="Gpv-Gr-MxZ" name="selectedIndex" keyPath="values.defaultTheme" id="gVc-Yf-3h5"/>
                                                     </connections>
                                                 </segmentedControl>
-                                                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IW2-Bb-lEZ">
-                                                    <rect key="frame" x="203" y="251" width="219" height="25"/>
-                                                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" arrowPosition="noArrow" preferredEdge="maxX" id="5oE-dn-DjN">
-                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" size="12" name="Avenir-Light"/>
-                                                        <menu key="menu" id="7qp-wG-Emb"/>
-                                                    </popUpButtonCell>
-                                                    <connections>
-                                                        <binding destination="Gpv-Gr-MxZ" name="selectedIndex" keyPath="values.sliderDayRange" id="HGl-TA-fRj"/>
-                                                    </connections>
-                                                </popUpButton>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="4lt-X6-3uU">
-                                                    <rect key="frame" x="38" y="369" width="144" height="18"/>
+                                                    <rect key="frame" x="38" y="270" width="144" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="140" id="hAp-By-Lzj"/>
                                                     </constraints>
@@ -998,7 +925,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <slider verticalHuggingPriority="750" alphaValue="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="3cU-IS-3Qu">
-                                                    <rect key="frame" x="203" y="289" width="345" height="24"/>
+                                                    <rect key="frame" x="203" y="190" width="350" height="24"/>
                                                     <sliderCell key="cell" state="on" alignment="left" minValue="4" maxValue="7" doubleValue="4" tickMarkPosition="above" numberOfTickMarks="4" allowsTickMarkValuesOnly="YES" sliderType="linear" id="eAh-k3-cof"/>
                                                     <connections>
                                                         <action selector="fontSliderChanged:" target="1aL-zR-8L4" id="YAW-aA-5aR"/>
@@ -1006,12 +933,12 @@
                                                     </connections>
                                                 </slider>
                                                 <scrollView borderType="line" autohidesScrollers="YES" horizontalLineScroll="113" horizontalPageScroll="10" verticalLineScroll="113" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ytg-0u-Mtu">
-                                                    <rect key="frame" x="102" y="67" width="400" height="100"/>
-                                                    <clipView key="contentView" ambiguous="YES" id="gnX-f5-31D">
+                                                    <rect key="frame" x="104" y="40" width="400" height="100"/>
+                                                    <clipView key="contentView" id="gnX-f5-31D">
                                                         <rect key="frame" x="1" y="1" width="398" height="98"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
-                                                            <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="111" rowSizeStyle="automatic" viewBased="YES" id="KbJ-p4-i6E">
+                                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="111" rowSizeStyle="automatic" viewBased="YES" id="KbJ-p4-i6E">
                                                                 <rect key="frame" x="0.0" y="0.0" width="398" height="113"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -1182,78 +1109,78 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZNm-TN-RRJ">
+                                                    <rect key="frame" x="248" y="150" width="112" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="108" id="KwL-So-Ymu"/>
+                                                        <constraint firstAttribute="height" constant="22" id="bBD-fJ-Xm7"/>
+                                                    </constraints>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Preview" id="knp-DB-v8Y">
+                                                        <font key="font" size="13" name="Avenir-Heavy"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="IW2-Bb-lEZ" secondAttribute="trailing" constant="184" id="36q-fn-4Zm"/>
-                                                <constraint firstItem="4lt-X6-3uU" firstAttribute="trailing" secondItem="cmK-rb-Px7" secondAttribute="trailing" id="5yS-5r-a6b"/>
+                                                <constraint firstItem="4lt-X6-3uU" firstAttribute="trailing" secondItem="gFE-hZ-J92" secondAttribute="trailing" id="0LC-R1-cwL"/>
+                                                <constraint firstItem="4lt-X6-3uU" firstAttribute="top" secondItem="gFE-hZ-J92" secondAttribute="bottom" constant="20" id="0zz-yr-dkd"/>
                                                 <constraint firstAttribute="trailing" secondItem="d4S-hM-MSP" secondAttribute="trailing" constant="115" id="6EI-oM-u6q"/>
                                                 <constraint firstItem="d4S-hM-MSP" firstAttribute="leading" secondItem="FZb-fP-hMJ" secondAttribute="leading" id="6GY-mg-50H"/>
-                                                <constraint firstItem="9WW-jp-NeO" firstAttribute="leading" secondItem="CYe-co-1Ey" secondAttribute="leading" id="7lw-aQ-Mfo"/>
-                                                <constraint firstItem="saM-0J-1YU" firstAttribute="trailing" secondItem="xwt-pY-1w9" secondAttribute="trailing" id="Bjj-Ny-CrI"/>
                                                 <constraint firstAttribute="trailing" secondItem="FZb-fP-hMJ" secondAttribute="trailing" constant="142" id="Dfr-Sc-kQB"/>
                                                 <constraint firstItem="vrm-cg-RMn" firstAttribute="trailing" secondItem="wtO-uL-QBf" secondAttribute="trailing" id="Dz6-2y-0Kj"/>
                                                 <constraint firstItem="vrm-cg-RMn" firstAttribute="top" secondItem="wtO-uL-QBf" secondAttribute="bottom" constant="20" id="E8U-ve-Yq8"/>
                                                 <constraint firstItem="Ytg-0u-Mtu" firstAttribute="centerX" secondItem="zFb-Gb-3dB" secondAttribute="centerX" id="EHm-Kq-6Nq"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="699-dn-eyN" secondAttribute="trailing" constant="10" id="EdO-mM-G6w"/>
-                                                <constraint firstItem="cmK-rb-Px7" firstAttribute="trailing" secondItem="gFE-hZ-J92" secondAttribute="trailing" id="J2Z-aK-Xee"/>
+                                                <constraint firstItem="ZNm-TN-RRJ" firstAttribute="top" secondItem="3cU-IS-3Qu" secondAttribute="bottom" constant="20" id="KJj-ji-SG9"/>
                                                 <constraint firstItem="wtO-uL-QBf" firstAttribute="leading" secondItem="zFb-Gb-3dB" secondAttribute="leading" constant="80" id="KPc-a4-RWW"/>
-                                                <constraint firstItem="zTJ-p9-7Tx" firstAttribute="centerY" secondItem="Gia-TI-eki" secondAttribute="centerY" id="Lmw-yp-Yzd"/>
                                                 <constraint firstItem="d4S-hM-MSP" firstAttribute="centerY" secondItem="gFE-hZ-J92" secondAttribute="centerY" id="MB4-vU-XFQ"/>
                                                 <constraint firstItem="gEH-vT-EqV" firstAttribute="leading" secondItem="9WW-jp-NeO" secondAttribute="leading" id="NBM-n8-g9p"/>
-                                                <constraint firstItem="IW2-Bb-lEZ" firstAttribute="centerY" secondItem="saM-0J-1YU" secondAttribute="centerY" id="NO9-Yo-OjC"/>
-                                                <constraint firstItem="saM-0J-1YU" firstAttribute="top" secondItem="xwt-pY-1w9" secondAttribute="bottom" constant="20" id="NcM-Mc-WZC"/>
-                                                <constraint firstItem="Gia-TI-eki" firstAttribute="top" secondItem="saM-0J-1YU" secondAttribute="bottom" constant="20" id="Pwo-Eu-BEI"/>
+                                                <constraint firstItem="9WW-jp-NeO" firstAttribute="leading" secondItem="d4S-hM-MSP" secondAttribute="leading" id="Nfi-6H-7VR"/>
                                                 <constraint firstItem="8IA-JL-fje" firstAttribute="centerY" secondItem="3cU-IS-3Qu" secondAttribute="centerY" id="QZn-RJ-b2s"/>
                                                 <constraint firstItem="wtO-uL-QBf" firstAttribute="top" secondItem="zFb-Gb-3dB" secondAttribute="top" constant="30" id="TUd-Wc-XZL"/>
                                                 <constraint firstItem="w0y-UQ-RC0" firstAttribute="top" secondItem="4lt-X6-3uU" secondAttribute="bottom" constant="20" id="ULM-L5-4EP"/>
-                                                <constraint firstItem="Ytg-0u-Mtu" firstAttribute="top" secondItem="zTJ-p9-7Tx" secondAttribute="bottom" constant="49" id="VSd-Gm-eIq"/>
-                                                <constraint firstItem="CYe-co-1Ey" firstAttribute="leading" secondItem="d4S-hM-MSP" secondAttribute="leading" id="ViU-LF-3Re"/>
                                                 <constraint firstItem="vrm-cg-RMn" firstAttribute="width" secondItem="wtO-uL-QBf" secondAttribute="width" multiplier="0.97" id="W8Z-wH-RJT"/>
                                                 <constraint firstAttribute="trailing" secondItem="8IA-JL-fje" secondAttribute="trailing" constant="17" id="XEc-lD-5Pt"/>
-                                                <constraint firstAttribute="trailing" secondItem="CYe-co-1Ey" secondAttribute="trailing" constant="271" id="a8e-U0-Mcv"/>
-                                                <constraint firstItem="4lt-X6-3uU" firstAttribute="top" secondItem="cmK-rb-Px7" secondAttribute="bottom" constant="20" id="ajL-PS-c6Q"/>
+                                                <constraint firstItem="ZNm-TN-RRJ" firstAttribute="centerX" secondItem="zFb-Gb-3dB" secondAttribute="centerX" id="bWQ-fX-DZe"/>
                                                 <constraint firstItem="699-dn-eyN" firstAttribute="centerY" secondItem="wtO-uL-QBf" secondAttribute="centerY" id="bfw-Ln-spi"/>
                                                 <constraint firstItem="3cU-IS-3Qu" firstAttribute="leading" secondItem="gEH-vT-EqV" secondAttribute="leading" id="dwP-Gf-Jak"/>
-                                                <constraint firstItem="cmK-rb-Px7" firstAttribute="top" secondItem="gFE-hZ-J92" secondAttribute="bottom" constant="20" id="eft-8t-T27"/>
                                                 <constraint firstItem="8IA-JL-fje" firstAttribute="leading" secondItem="3cU-IS-3Qu" secondAttribute="trailing" constant="8" id="fCD-kc-Rzh"/>
-                                                <constraint firstItem="IW2-Bb-lEZ" firstAttribute="leading" secondItem="3cU-IS-3Qu" secondAttribute="leading" id="gN7-HX-hXW"/>
                                                 <constraint firstItem="xwt-pY-1w9" firstAttribute="trailing" secondItem="w0y-UQ-RC0" secondAttribute="trailing" id="hi7-BQ-ZDh"/>
                                                 <constraint firstItem="gFE-hZ-J92" firstAttribute="top" secondItem="vrm-cg-RMn" secondAttribute="bottom" constant="20" id="ijE-Xu-svg"/>
-                                                <constraint firstAttribute="trailing" secondItem="zTJ-p9-7Tx" secondAttribute="trailing" constant="109" id="j2l-3z-W3I"/>
                                                 <constraint firstAttribute="trailing" secondItem="gEH-vT-EqV" secondAttribute="trailing" constant="247" id="jQj-Gf-XPT"/>
                                                 <constraint firstItem="xwt-pY-1w9" firstAttribute="top" secondItem="w0y-UQ-RC0" secondAttribute="bottom" constant="20" id="krm-S3-2y5"/>
                                                 <constraint firstItem="699-dn-eyN" firstAttribute="leading" secondItem="wtO-uL-QBf" secondAttribute="trailing" constant="25" id="nM0-Kn-lTZ"/>
                                                 <constraint firstItem="3cU-IS-3Qu" firstAttribute="centerY" secondItem="xwt-pY-1w9" secondAttribute="centerY" id="oM8-iJ-okk"/>
                                                 <constraint firstItem="9WW-jp-NeO" firstAttribute="centerY" secondItem="4lt-X6-3uU" secondAttribute="centerY" id="oPk-1s-bdu"/>
+                                                <constraint firstItem="Ytg-0u-Mtu" firstAttribute="top" secondItem="ZNm-TN-RRJ" secondAttribute="bottom" constant="10" id="ouW-SE-Jmn"/>
                                                 <constraint firstItem="FZb-fP-hMJ" firstAttribute="leading" secondItem="699-dn-eyN" secondAttribute="leading" id="rCV-e3-pae"/>
-                                                <constraint firstItem="CYe-co-1Ey" firstAttribute="centerY" secondItem="cmK-rb-Px7" secondAttribute="centerY" id="s1f-0L-lUl"/>
                                                 <constraint firstAttribute="trailing" secondItem="9WW-jp-NeO" secondAttribute="trailing" constant="264" id="s9R-1X-ZOO"/>
-                                                <constraint firstItem="Gia-TI-eki" firstAttribute="trailing" secondItem="saM-0J-1YU" secondAttribute="trailing" id="tFi-8L-tCR"/>
                                                 <constraint firstItem="w0y-UQ-RC0" firstAttribute="trailing" secondItem="4lt-X6-3uU" secondAttribute="trailing" id="ubu-xP-pha"/>
                                                 <constraint firstItem="FZb-fP-hMJ" firstAttribute="centerY" secondItem="vrm-cg-RMn" secondAttribute="centerY" id="vtc-Ea-gV5"/>
                                                 <constraint firstItem="gFE-hZ-J92" firstAttribute="trailing" secondItem="vrm-cg-RMn" secondAttribute="trailing" id="xAU-f3-yVy"/>
                                                 <constraint firstItem="gEH-vT-EqV" firstAttribute="centerY" secondItem="w0y-UQ-RC0" secondAttribute="centerY" id="xC0-2B-rEr"/>
-                                                <constraint firstItem="zTJ-p9-7Tx" firstAttribute="leading" secondItem="IW2-Bb-lEZ" secondAttribute="leading" id="ygH-sX-B63"/>
                                             </constraints>
                                         </view>
                                     </tabViewItem>
-                                    <tabViewItem label="Menubar" identifier="" id="ztQ-ui-wYI">
+                                    <tabViewItem label="Misc" identifier="" id="ztQ-ui-wYI">
                                         <view key="view" id="mF4-bp-EID">
-                                            <rect key="frame" x="10" y="33" width="586" height="569"/>
+                                            <rect key="frame" x="10" y="33" width="608" height="432"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="fTA-lS-4wJ">
-                                                    <rect key="frame" x="-21" y="496" width="179" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="fTA-lS-4wJ">
+                                                    <rect key="frame" x="78" y="364" width="143" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="139" id="w0W-x9-xCJ"/>
+                                                    </constraints>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Include Date" id="CTM-FL-m3p">
                                                         <font key="font" size="13" name="Avenir-Light"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Axn-Tb-Cdx">
-                                                    <rect key="frame" x="199" y="503" width="84" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Axn-Tb-Cdx">
+                                                    <rect key="frame" x="242" y="361" width="83" height="24"/>
                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="04s-TY-ltB">
                                                         <font key="font" size="12" name="Avenir-Light"/>
                                                         <segments>
@@ -1266,18 +1193,16 @@
                                                         <binding destination="Gpv-Gr-MxZ" name="selectedIndex" keyPath="values.showDate" id="NI6-wf-sMv"/>
                                                     </connections>
                                                 </segmentedControl>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="pZd-Wg-YPL">
-                                                    <rect key="frame" x="-21" y="447" width="179" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="pZd-Wg-YPL">
+                                                    <rect key="frame" x="148" y="326" width="73" height="18"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Include Day" id="dBJ-Pj-utm">
                                                         <font key="font" size="13" name="Avenir-Light"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KeW-e2-uQE">
-                                                    <rect key="frame" x="199" y="405" width="84" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KeW-e2-uQE">
+                                                    <rect key="frame" x="242" y="285" width="83" height="24"/>
                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="n7R-Fj-KSe">
                                                         <font key="font" size="12" name="Avenir-Light"/>
                                                         <segments>
@@ -1290,9 +1215,8 @@
                                                         <binding destination="Gpv-Gr-MxZ" name="selectedIndex" keyPath="values.showPlaceName" id="a2r-XT-uf5"/>
                                                     </connections>
                                                 </segmentedControl>
-                                                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AxB-VD-lXm">
-                                                    <rect key="frame" x="199" y="448" width="84" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AxB-VD-lXm">
+                                                    <rect key="frame" x="242" y="323" width="83" height="24"/>
                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="0UT-Io-qfp">
                                                         <font key="font" size="12" name="Avenir-Light"/>
                                                         <segments>
@@ -1308,27 +1232,24 @@
                                                         <binding destination="Gpv-Gr-MxZ" name="selectedIndex" keyPath="values.showDay" id="94x-Xq-60W"/>
                                                     </connections>
                                                 </segmentedControl>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="bhJ-MT-NBP">
-                                                    <rect key="frame" x="-21" y="402" width="179" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="bhJ-MT-NBP">
+                                                    <rect key="frame" x="101" y="288" width="120" height="18"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Include Place Name" id="YQC-xV-1Ig">
                                                         <font key="font" size="13" name="Avenir-Light"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="Utg-yF-Rso" userLabel="Menubar Mode">
-                                                    <rect key="frame" x="-24" y="359" width="182" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="Utg-yF-Rso" userLabel="Menubar Mode">
+                                                    <rect key="frame" x="126" y="250" width="95" height="18"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Menubar Mode" id="6xJ-Vn-e39">
                                                         <font key="font" size="13" name="Avenir-Light"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mai-SZ-AEi">
-                                                    <rect key="frame" x="201" y="355" width="146" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mai-SZ-AEi">
+                                                    <rect key="frame" x="242" y="247" width="146" height="24"/>
                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="tbg-LS-tZH">
                                                         <font key="font" size="12" name="Avenir-Light"/>
                                                         <segments>
@@ -1341,64 +1262,220 @@
                                                         <binding destination="Gpv-Gr-MxZ" name="selectedIndex" keyPath="values.com.abhishek.menubarCompactMode" id="zuN-fl-ZH2"/>
                                                     </connections>
                                                 </segmentedControl>
-                                                <visualEffectView hidden="YES" focusRingType="none" fixedFrame="YES" blendingMode="withinWindow" material="light" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="D6P-38-4c5">
-                                                    <rect key="frame" x="-19" y="54" width="563" height="253"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Q3M-Kz-XV3">
+                                                    <rect key="frame" x="248" y="403" width="112" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="eJS-Lu-Avz"/>
+                                                        <constraint firstAttribute="width" constant="108" id="y01-ys-4L6"/>
+                                                    </constraints>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Menubar Options" id="Gjt-mt-SQR">
+                                                        <font key="font" size="13" name="Avenir-Heavy"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="XeT-rJ-1io">
+                                                    <rect key="frame" x="-3" y="226" width="614" height="5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="SdH-Fo-qYn"/>
+                                                    </constraints>
+                                                </box>
+                                                <visualEffectView hidden="YES" focusRingType="none" blendingMode="withinWindow" material="light" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Wj2-aw-ZDm">
+                                                    <rect key="frame" x="0.0" y="228" width="608" height="204"/>
                                                     <subviews>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2gG-g8-lbC">
-                                                            <rect key="frame" x="203" y="80" width="126" height="80"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                            <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="center" title="Multiline Label" id="qqG-OR-J7w">
+                                                        <textField hidden="YES" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="dtb-8u-6gN">
+                                                            <rect key="frame" x="52" y="82" width="504" height="40"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="40" id="7tY-09-nYM"/>
+                                                                <constraint firstAttribute="width" constant="500" id="Taz-W1-qVP"/>
+                                                            </constraints>
+                                                            <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="center" title="Multiline Label" id="WYa-RV-fDa">
                                                                 <font key="font" size="18" name="Avenir-Book"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="dtb-8u-6gN" firstAttribute="centerX" secondItem="Wj2-aw-ZDm" secondAttribute="centerX" id="J3T-cO-qq1"/>
+                                                        <constraint firstItem="dtb-8u-6gN" firstAttribute="centerY" secondItem="Wj2-aw-ZDm" secondAttribute="centerY" id="VPn-r5-viR"/>
+                                                    </constraints>
                                                 </visualEffectView>
+                                                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DjV-qq-hr9">
+                                                    <rect key="frame" x="242" y="144" width="230" height="24"/>
+                                                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="kvB-5f-IK4">
+                                                        <font key="font" size="12" name="Avenir-Light"/>
+                                                        <segments>
+                                                            <segment label="Menu Bar only"/>
+                                                            <segment label="Dock and Menu Bar" selected="YES" tag="1"/>
+                                                        </segments>
+                                                    </segmentedCell>
+                                                    <connections>
+                                                        <action selector="changeAppDisplayOptions:" target="1aL-zR-8L4" id="ipf-3c-Bsn"/>
+                                                        <binding destination="Gpv-Gr-MxZ" name="selectedIndex" keyPath="values.com.abhishek.appDisplayOptions" id="4Ix-iO-C4I"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="GaR-Qm-7u4">
+                                                    <rect key="frame" x="103" y="110" width="118" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="114" id="lod-PT-AI5"/>
+                                                    </constraints>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Future Slider Range" id="BYJ-7P-E0I">
+                                                        <font key="font" size="13" name="Avenir-Light"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="HNj-dh-8gr">
+                                                    <rect key="frame" x="124" y="148" width="97" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="93" id="7zy-Fe-aNw"/>
+                                                    </constraints>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Show Clocker in" id="Ujt-R0-aDS">
+                                                        <font key="font" size="13" name="Avenir-Light"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pk6-co-N73">
+                                                    <rect key="frame" x="242" y="68" width="79" height="24"/>
+                                                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="jUA-fY-nhn">
+                                                        <font key="font" size="12" name="Avenir-Light"/>
+                                                        <segments>
+                                                            <segment label="Yes" width="36"/>
+                                                            <segment label="No" width="36" selected="YES" tag="1"/>
+                                                        </segments>
+                                                    </segmentedCell>
+                                                    <accessibility identifier="FutureSlider"/>
+                                                    <connections>
+                                                        <action selector="showFutureSlider:" target="1aL-zR-8L4" id="c1a-KS-oo3"/>
+                                                        <binding destination="Gpv-Gr-MxZ" name="selectedIndex" keyPath="values.displayFutureSlider" id="ha9-nW-Rv2"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Nx-Xq-XDU">
+                                                    <rect key="frame" x="240" y="105" width="223" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="218" id="0qW-So-4cc"/>
+                                                    </constraints>
+                                                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" arrowPosition="noArrow" preferredEdge="maxX" id="mqv-tQ-0rf">
+                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" size="12" name="Avenir-Light"/>
+                                                        <menu key="menu" id="9lV-R9-bzr"/>
+                                                    </popUpButtonCell>
+                                                    <connections>
+                                                        <binding destination="Gpv-Gr-MxZ" name="selectedIndex" keyPath="values.sliderDayRange" id="pnp-PO-t4w"/>
+                                                    </connections>
+                                                </popUpButton>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="8Jv-Cf-blJ">
+                                                    <rect key="frame" x="108" y="72" width="113" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="109" id="DXS-zG-LoB"/>
+                                                    </constraints>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Show Future Slider" id="pfG-By-On0">
+                                                        <font key="font" size="13" name="Avenir-Light"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ffU-Ce-sfU">
+                                                    <rect key="frame" x="248" y="186" width="112" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="108" id="3Ch-Kc-bLG"/>
+                                                        <constraint firstAttribute="height" constant="22" id="tHL-bd-6Pl"/>
+                                                    </constraints>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Miscelleaneous" id="bgq-pM-LNm">
+                                                        <font key="font" size="13" name="Avenir-Heavy"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="AxB-VD-lXm" firstAttribute="centerY" secondItem="pZd-Wg-YPL" secondAttribute="centerY" id="5wa-d2-jaz"/>
+                                                <constraint firstItem="fTA-lS-4wJ" firstAttribute="top" secondItem="mF4-bp-EID" secondAttribute="top" constant="50" id="7tO-Cp-OiK"/>
+                                                <constraint firstItem="Axn-Tb-Cdx" firstAttribute="centerY" secondItem="fTA-lS-4wJ" secondAttribute="centerY" id="A5h-9Z-lkQ"/>
+                                                <constraint firstItem="KeW-e2-uQE" firstAttribute="centerY" secondItem="bhJ-MT-NBP" secondAttribute="centerY" id="B1W-4F-zAU"/>
+                                                <constraint firstItem="KeW-e2-uQE" firstAttribute="leading" secondItem="AxB-VD-lXm" secondAttribute="leading" id="DYk-jT-Swc"/>
+                                                <constraint firstItem="Q3M-Kz-XV3" firstAttribute="top" secondItem="mF4-bp-EID" secondAttribute="top" constant="7" id="Gaf-bX-kgP"/>
+                                                <constraint firstItem="bhJ-MT-NBP" firstAttribute="top" secondItem="pZd-Wg-YPL" secondAttribute="bottom" constant="20" id="IoV-WF-2Ka"/>
+                                                <constraint firstItem="8Jv-Cf-blJ" firstAttribute="top" secondItem="GaR-Qm-7u4" secondAttribute="bottom" constant="20" id="JEu-wF-GfU"/>
+                                                <constraint firstItem="fTA-lS-4wJ" firstAttribute="leading" secondItem="mF4-bp-EID" secondAttribute="leading" constant="80" id="MkT-cl-OdZ"/>
+                                                <constraint firstItem="8Jv-Cf-blJ" firstAttribute="trailing" secondItem="GaR-Qm-7u4" secondAttribute="trailing" id="NUW-UR-fQ1"/>
+                                                <constraint firstItem="ffU-Ce-sfU" firstAttribute="centerX" secondItem="mF4-bp-EID" secondAttribute="centerX" id="NtD-tv-DLi"/>
+                                                <constraint firstAttribute="trailing" secondItem="XeT-rJ-1io" secondAttribute="trailing" constant="-3" id="PrP-aA-Zhl"/>
+                                                <constraint firstItem="Utg-yF-Rso" firstAttribute="trailing" secondItem="bhJ-MT-NBP" secondAttribute="trailing" id="RVT-XO-vH3"/>
+                                                <constraint firstItem="pk6-co-N73" firstAttribute="centerY" secondItem="8Jv-Cf-blJ" secondAttribute="centerY" id="XeK-R2-Z7W"/>
+                                                <constraint firstItem="pZd-Wg-YPL" firstAttribute="trailing" secondItem="fTA-lS-4wJ" secondAttribute="trailing" id="ZcE-Iu-M9g"/>
+                                                <constraint firstItem="XeT-rJ-1io" firstAttribute="leading" secondItem="mF4-bp-EID" secondAttribute="leading" constant="-3" id="afb-db-nsk"/>
+                                                <constraint firstItem="Mai-SZ-AEi" firstAttribute="leading" secondItem="KeW-e2-uQE" secondAttribute="leading" id="bhh-nt-9cb"/>
+                                                <constraint firstAttribute="trailing" secondItem="Wj2-aw-ZDm" secondAttribute="trailing" id="c7U-11-oja"/>
+                                                <constraint firstItem="Axn-Tb-Cdx" firstAttribute="leading" secondItem="fTA-lS-4wJ" secondAttribute="trailing" constant="25" id="cpc-PS-JXb"/>
+                                                <constraint firstItem="Wj2-aw-ZDm" firstAttribute="bottom" secondItem="XeT-rJ-1io" secondAttribute="bottom" id="d1X-nE-5Z1"/>
+                                                <constraint firstItem="XeT-rJ-1io" firstAttribute="top" secondItem="Mai-SZ-AEi" secondAttribute="bottom" constant="20" id="dK0-pf-XzU"/>
+                                                <constraint firstItem="HNj-dh-8gr" firstAttribute="top" secondItem="ffU-Ce-sfU" secondAttribute="bottom" constant="20" id="e9q-JE-9cD"/>
+                                                <constraint firstItem="ffU-Ce-sfU" firstAttribute="top" secondItem="XeT-rJ-1io" secondAttribute="bottom" constant="20" id="ed3-Oa-Uso"/>
+                                                <constraint firstItem="DjV-qq-hr9" firstAttribute="centerY" secondItem="HNj-dh-8gr" secondAttribute="centerY" id="ezB-Gf-m1M"/>
+                                                <constraint firstItem="Wj2-aw-ZDm" firstAttribute="top" secondItem="mF4-bp-EID" secondAttribute="top" id="g9Z-bG-q6C"/>
+                                                <constraint firstItem="Mai-SZ-AEi" firstAttribute="centerY" secondItem="Utg-yF-Rso" secondAttribute="centerY" id="gaG-hL-cPZ"/>
+                                                <constraint firstItem="bhJ-MT-NBP" firstAttribute="trailing" secondItem="pZd-Wg-YPL" secondAttribute="trailing" id="glb-jO-783"/>
+                                                <constraint firstItem="Utg-yF-Rso" firstAttribute="top" secondItem="bhJ-MT-NBP" secondAttribute="bottom" constant="20" id="i0V-V6-4Ry"/>
+                                                <constraint firstItem="8Nx-Xq-XDU" firstAttribute="leading" secondItem="DjV-qq-hr9" secondAttribute="leading" constant="-2" id="n70-Hh-rVD"/>
+                                                <constraint firstItem="GaR-Qm-7u4" firstAttribute="trailing" secondItem="HNj-dh-8gr" secondAttribute="trailing" id="rdt-gt-K0k"/>
+                                                <constraint firstItem="8Nx-Xq-XDU" firstAttribute="centerY" secondItem="GaR-Qm-7u4" secondAttribute="centerY" id="s0m-wC-dVO"/>
+                                                <constraint firstItem="Wj2-aw-ZDm" firstAttribute="leading" secondItem="mF4-bp-EID" secondAttribute="leading" id="wTr-VP-p2w"/>
+                                                <constraint firstItem="pZd-Wg-YPL" firstAttribute="top" secondItem="fTA-lS-4wJ" secondAttribute="bottom" constant="20" id="whe-Ex-bIB"/>
+                                                <constraint firstItem="AxB-VD-lXm" firstAttribute="leading" secondItem="Axn-Tb-Cdx" secondAttribute="leading" id="x1o-YB-Aes"/>
+                                                <constraint firstItem="pk6-co-N73" firstAttribute="leading" secondItem="DjV-qq-hr9" secondAttribute="leading" id="y9n-Tk-GUK"/>
+                                                <constraint firstItem="Q3M-Kz-XV3" firstAttribute="centerX" secondItem="mF4-bp-EID" secondAttribute="centerX" id="yKZ-7i-UKv"/>
+                                                <constraint firstItem="HNj-dh-8gr" firstAttribute="trailing" secondItem="Utg-yF-Rso" secondAttribute="trailing" id="yPE-hM-Mbb"/>
+                                                <constraint firstItem="DjV-qq-hr9" firstAttribute="leading" secondItem="Mai-SZ-AEi" secondAttribute="leading" id="ykI-Ig-kwf"/>
+                                                <constraint firstItem="GaR-Qm-7u4" firstAttribute="top" secondItem="HNj-dh-8gr" secondAttribute="bottom" constant="20" id="z8z-AY-l8y"/>
+                                            </constraints>
                                         </view>
                                     </tabViewItem>
                                 </tabViewItems>
                             </tabView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="SGu-yd-JQh" secondAttribute="trailing" constant="12" id="0To-sH-uEy"/>
+                            <constraint firstAttribute="trailing" secondItem="SGu-yd-JQh" secondAttribute="trailing" constant="20" id="0To-sH-uEy"/>
                             <constraint firstItem="SGu-yd-JQh" firstAttribute="top" secondItem="7EQ-1G-xRP" secondAttribute="top" constant="20" id="BVY-gd-4Je"/>
-                            <constraint firstAttribute="bottom" secondItem="SGu-yd-JQh" secondAttribute="bottom" constant="33" id="WCa-7K-01j"/>
+                            <constraint firstAttribute="bottom" secondItem="SGu-yd-JQh" secondAttribute="bottom" constant="20" id="WCa-7K-01j"/>
                             <constraint firstItem="SGu-yd-JQh" firstAttribute="leading" secondItem="7EQ-1G-xRP" secondAttribute="leading" constant="20" id="Yei-Ge-6Ol"/>
                         </constraints>
                     </customView>
                     <connections>
-                        <outlet property="appDisplayLabel" destination="Gia-TI-eki" id="nIg-Vf-Ens"/>
+                        <outlet property="appDisplayLabel" destination="HNj-dh-8gr" id="A6U-gp-sje"/>
+                        <outlet property="appearanceTab" destination="SGu-yd-JQh" id="CJn-3E-Ujd"/>
                         <outlet property="dayDisplayOptionsLabel" destination="gFE-hZ-J92" id="tVv-pC-MSW"/>
-                        <outlet property="futureSliderRangeLabel" destination="saM-0J-1YU" id="1Qo-vC-6ML"/>
+                        <outlet property="futureSliderRangeLabel" destination="GaR-Qm-7u4" id="0aB-BK-7fN"/>
                         <outlet property="includeDateInMenubarControl" destination="Axn-Tb-Cdx" id="M5x-Qt-zvs"/>
                         <outlet property="includeDateLabel" destination="fTA-lS-4wJ" id="J1i-yl-JmT"/>
                         <outlet property="includeDayInMenubarControl" destination="AxB-VD-lXm" id="IEy-hk-yMN"/>
                         <outlet property="includeDayLabel" destination="pZd-Wg-YPL" id="JtJ-MQ-bRG"/>
                         <outlet property="includePlaceLabel" destination="bhJ-MT-NBP" id="Gyi-t8-NpL"/>
                         <outlet property="includePlaceNameControl" destination="KeW-e2-uQE" id="SeV-uy-oKg"/>
-                        <outlet property="informationLabel" destination="2gG-g8-lbC" id="pfN-uc-PIv"/>
+                        <outlet property="informationLabel" destination="dtb-8u-6gN" id="1Mo-hH-VNA"/>
                         <outlet property="largerTextLabel" destination="xwt-pY-1w9" id="XbF-MZ-dMx"/>
                         <outlet property="menubarMode" destination="Mai-SZ-AEi" id="PPv-1D-lnt"/>
                         <outlet property="menubarModeLabel" destination="Utg-yF-Rso" id="Pda-Aj-81M"/>
+                        <outlet property="miscelleaneousLabel" destination="ffU-Ce-sfU" id="JbJ-IR-3IL"/>
                         <outlet property="panelTheme" destination="vrm-cg-RMn" id="yPO-LZ-Egp"/>
+                        <outlet property="previewLabel" destination="ZNm-TN-RRJ" id="63F-Zc-KV3"/>
                         <outlet property="previewPanelTableView" destination="KbJ-p4-i6E" id="coQ-qV-XTs"/>
                         <outlet property="showSecondsLabel" destination="w0y-UQ-RC0" id="wGv-J3-mea"/>
-                        <outlet property="showSliderLabel" destination="cmK-rb-Px7" id="Iul-pr-8y4"/>
+                        <outlet property="showSliderLabel" destination="8Jv-Cf-blJ" id="UHb-hK-VVl"/>
                         <outlet property="showSunriseLabel" destination="4lt-X6-3uU" id="tez-s5-RzL"/>
-                        <outlet property="sliderDayRangePopup" destination="IW2-Bb-lEZ" id="VEi-7o-H4P"/>
+                        <outlet property="sliderDayRangePopup" destination="8Nx-Xq-XDU" id="PBM-yB-Yo1"/>
                         <outlet property="theme" destination="FZb-fP-hMJ" id="MuM-9G-MfG"/>
                         <outlet property="timeFormat" destination="699-dn-eyN" id="eAC-GR-28E"/>
                         <outlet property="timeFormatLabel" destination="wtO-uL-QBf" id="udS-d6-Tep"/>
-                        <outlet property="visualEffectView" destination="D6P-38-4c5" id="wZV-B0-T1s"/>
+                        <outlet property="visualEffectView" destination="Wj2-aw-ZDm" id="TZy-V2-JFS"/>
                     </connections>
                 </viewController>
                 <customObject id="u7K-hb-gdM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="Gpv-Gr-MxZ"/>
             </objects>
-            <point key="canvasLocation" x="-367" y="-755"/>
+            <point key="canvasLocation" x="-419" y="-830"/>
         </scene>
         <!-- Preferences -->
         <scene sceneID="udr-95-hTV">
@@ -1415,7 +1492,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <searchField toolTip="Search a timezone" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dha-h9-Nd0" customClass="ClockerSearchField" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="8" y="217" width="329" height="23"/>
+                                <rect key="frame" x="8" y="169" width="329" height="23"/>
                                 <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Enter a city, state, country name" usesSingleLineMode="YES" maximumRecents="5" id="ikU-Tm-0WZ">
                                     <font key="font" size="13" name="Avenir-Light"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1472,13 +1549,13 @@ DQ
                                 </connections>
                             </button>
                             <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wY-ff-FLW">
-                                <rect key="frame" x="8" y="30" width="329" height="177"/>
+                                <rect key="frame" x="8" y="30" width="329" height="129"/>
                                 <clipView key="contentView" drawsBackground="NO" id="rGc-3M-cCq">
-                                    <rect key="frame" x="0.0" y="0.0" width="329" height="177"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="329" height="129"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="xkl-2X-ZCb">
-                                            <rect key="frame" x="0.0" y="0.0" width="329" height="177"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="329" height="129"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1568,14 +1645,14 @@ DQ
                                 </scroller>
                             </scrollView>
                             <progressIndicator wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="0A5-gp-lay">
-                                <rect key="frame" x="165" y="138" width="16" height="16"/>
+                                <rect key="frame" x="165" y="114" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="fgE-77-Vda"/>
                                     <constraint firstAttribute="width" constant="16" id="pwe-em-e0a"/>
                                 </constraints>
                             </progressIndicator>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xgb-wU-8RU">
-                                <rect key="frame" x="18" y="108" width="309" height="22"/>
+                                <rect key="frame" x="18" y="84" width="309" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="zqt-d8-yas"/>
                                 </constraints>
@@ -1613,14 +1690,14 @@ DQ
                 <customObject id="Udi-3T-gMi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController title=" Preferences " id="ZT5-cA-xLj" customClass="PreferencesViewController" customModule="Clocker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="DlQ-34-TgP" customClass="ParentView" customModule="Clocker" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="633" height="506"/>
+                        <rect key="frame" x="0.0" y="0.0" width="633" height="514"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView wantsLayer="YES" distribution="fill" orientation="vertical" alignment="centerX" spacing="6" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1sT-pO-jK4">
-                                <rect key="frame" x="7" y="0.0" width="618" height="506"/>
+                            <stackView wantsLayer="YES" distribution="fill" orientation="vertical" alignment="centerX" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1sT-pO-jK4">
+                                <rect key="frame" x="7" y="0.0" width="618" height="514"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="J2K-hR-0jv">
-                                        <rect key="frame" x="0.0" y="476" width="613" height="30"/>
+                                        <rect key="frame" x="0.0" y="484" width="613" height="30"/>
                                         <subviews>
                                             <button toolTip="Sorts by time difference from your current timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="P6d-qq-ycq">
                                                 <rect key="frame" x="277" y="3" width="13" height="25"/>
@@ -1679,7 +1756,7 @@ DQ
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="eI7-Vb-R7J">
-                                        <rect key="frame" x="0.0" y="58" width="618" height="412"/>
+                                        <rect key="frame" x="0.0" y="62" width="618" height="412"/>
                                         <subviews>
                                             <scrollView wantsLayer="YES" focusRingType="none" borderType="none" horizontalLineScroll="62" horizontalPageScroll="10" verticalLineScroll="62" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpF-gE-u0C">
                                                 <rect key="frame" x="0.0" y="0.0" width="618" height="412"/>
@@ -1688,7 +1765,7 @@ DQ
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" autosaveColumns="NO" rowHeight="60" headerView="1hb-YT-szP" id="p9D-mN-dTa">
-                                                            <rect key="frame" x="0.0" y="0.0" width="618" height="387"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="624" height="387"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1705,7 +1782,7 @@ DQ
                                                                     </buttonCell>
                                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                 </tableColumn>
-                                                                <tableColumn identifier="formattedAddress" editable="NO" width="260" minWidth="260" maxWidth="260" id="Kib-up-9ur">
+                                                                <tableColumn identifier="formattedAddress" editable="NO" width="280" minWidth="280" maxWidth="280" id="Kib-up-9ur">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Name">
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -1717,7 +1794,7 @@ DQ
                                                                     </textFieldCell>
                                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                 </tableColumn>
-                                                                <tableColumn identifier="label" width="240" minWidth="240" maxWidth="240" id="Fbd-Q4-EZ0">
+                                                                <tableColumn identifier="label" width="280" minWidth="280" maxWidth="280" id="Fbd-Q4-EZ0">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Label">
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1746,7 +1823,7 @@ DQ
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <tableHeaderView key="headerView" focusRingType="none" id="1hb-YT-szP">
-                                                    <rect key="frame" x="0.0" y="0.0" width="618" height="25"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="624" height="25"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableHeaderView>
                                             </scrollView>

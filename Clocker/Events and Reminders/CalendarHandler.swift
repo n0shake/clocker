@@ -53,6 +53,68 @@ extension EventCenter {
         return sourcesAndCalendars
     }
 
+    func isThereAnUpcomingCalendarEvent() -> Bool {
+        if DataStore.shared().shouldDisplay(.showMeetingInMenubar) {
+            let filteredDates = EventCenter.sharedCenter().eventsForDate
+            let autoupdatingCal = EventCenter.sharedCenter().autoupdatingCalendar
+            guard let events = filteredDates[autoupdatingCal.startOfDay(for: Date())] else {
+                return false
+            }
+
+            for event in events {
+                if event.event.startDate.timeIntervalSinceNow > 0, !event.isAllDay {
+                    let timeForEventToStart = event.event.startDate.timeIntervalSinceNow / 60
+
+                    if timeForEventToStart > 30 {
+                        print("Our next event: \(event.event.title ?? "Error") starts in \(timeForEventToStart) mins")
+                        continue
+                    }
+
+                    return true
+                }
+            }
+        }
+
+        return false
+    }
+
+    /* Used for the compact menubar mode.
+     Returns a tuple with 0 as the header string and 1 as the subtitle string
+     */
+    func separateFormat(event: EKEvent) -> (String, String)? {
+        guard let truncateLength = DataStore.shared().retrieve(key: CLTruncateTextLength) as? NSNumber, let eventTitle = event.title else {
+            return nil
+        }
+
+        let seconds = event.startDate.timeIntervalSinceNow
+        var formattedTitle: String = CLEmptyString
+
+        if eventTitle.count > truncateLength.intValue {
+            let truncateIndex = eventTitle.index(eventTitle.startIndex, offsetBy: truncateLength.intValue)
+            let truncatedTitle = String(eventTitle[..<truncateIndex])
+
+            formattedTitle.append(truncatedTitle)
+            formattedTitle.append("...")
+        } else {
+            formattedTitle.append(eventTitle)
+        }
+
+        var menubarText: String = CLEmptyString
+        let minutes = seconds / 60
+
+        if minutes > 2 {
+            let suffix = String(format: " in %0.f mins", minutes)
+            menubarText.append(suffix)
+        } else if minutes == 1 {
+            let suffix = String(format: " in %0.f min", minutes)
+            menubarText.append(suffix)
+        } else {
+            menubarText.append(" starts now.")
+        }
+
+        return (formattedTitle, menubarText)
+    }
+
     func format(event: EKEvent) -> String {
         guard let truncateLength = DataStore.shared().retrieve(key: CLTruncateTextLength) as? NSNumber, let eventTitle = event.title else {
             return CLEmptyString

@@ -12,6 +12,7 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet var includeDayInMenubarControl: NSSegmentedControl!
     @IBOutlet var includeDateInMenubarControl: NSSegmentedControl!
     @IBOutlet var includePlaceNameControl: NSSegmentedControl!
+    @IBOutlet var appearanceTab: NSTabView!
 
     private var themeDidChangeNotification: NSObjectProtocol?
 
@@ -50,9 +51,12 @@ class AppearanceViewController: ParentViewController {
                                                 "place_id": "TestIdentifier",
                                                 "timezoneID": "America/Los_Angeles",
                                                 "nextUpdate": "",
-                                                "note": "Remember to finish setting up Clocker!",
+                                                "note": "Your individual note about this location goes here!",
                                                 "latitude": "37.7749295",
                                                 "longitude": "-122.4194155"])]
+
+        // Ensure the more beautiful tab is selected
+        appearanceTab.selectTabViewItem(at: 0)
 
         // Setup Preview Pane
         previewPanelTableView.dataSource = self
@@ -60,6 +64,8 @@ class AppearanceViewController: ParentViewController {
         previewPanelTableView.reloadData()
         previewPanelTableView.selectionHighlightStyle = .none
         previewPanelTableView.enclosingScrollView?.hasVerticalScroller = false
+        previewPanelTableView.enclosingScrollView?.wantsLayer = true
+        previewPanelTableView.enclosingScrollView?.layer?.cornerRadius = 12
     }
 
     deinit {
@@ -96,7 +102,6 @@ class AppearanceViewController: ParentViewController {
 
         let shouldDisplayCompact = DataStore.shared().shouldDisplay(.menubarCompactMode)
         menubarMode.setSelected(true, forSegment: shouldDisplayCompact ? 0 : 1)
-        updateMenubarControls(!shouldDisplayCompact)
     }
 
     @IBOutlet var timeFormatLabel: NSTextField!
@@ -110,12 +115,12 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet var includeDateLabel: NSTextField!
     @IBOutlet var includeDayLabel: NSTextField!
     @IBOutlet var includePlaceLabel: NSTextField!
-    @IBOutlet var menubarDisplayOptionsLabel: NSTextField!
     @IBOutlet var appDisplayLabel: NSTextField!
     @IBOutlet var menubarModeLabel: NSTextField!
+    @IBOutlet var previewLabel: NSTextField!
+    @IBOutlet var miscelleaneousLabel: NSTextField!
 
     // Panel Preview
-
     @IBOutlet var previewPanelTableView: NSTableView!
 
     private func setup() {
@@ -131,12 +136,14 @@ class AppearanceViewController: ParentViewController {
         includeDayLabel.stringValue = "Include Day".localized()
         includePlaceLabel.stringValue = "Include Place Name".localized()
         menubarModeLabel.stringValue = "Menubar Mode".localized()
+        previewLabel.stringValue = "Preview".localized()
+        miscelleaneousLabel.stringValue = "Miscellaneous".localized()
 
         [timeFormatLabel, panelTheme,
          dayDisplayOptionsLabel, showSliderLabel, showSecondsLabel,
          showSunriseLabel, largerTextLabel, futureSliderRangeLabel,
-         includeDayLabel, includeDateLabel, includePlaceLabel,
-         menubarDisplayOptionsLabel, appDisplayLabel, menubarModeLabel].forEach {
+         includeDayLabel, includeDateLabel, includePlaceLabel, appDisplayLabel, menubarModeLabel,
+         previewLabel, miscelleaneousLabel].forEach {
             $0?.textColor = Themer.shared().mainTextColor()
         }
     }
@@ -194,17 +201,23 @@ class AppearanceViewController: ParentViewController {
         }
     }
 
-    @IBAction func changeRelativeDayDisplay(_ sender: NSSegmentedControl) {
-        let selectedIndex = NSNumber(value: sender.selectedSegment)
-        var selection = "Relative Day"
-
-        if selectedIndex == 1 {
-            selection = "Actual Day"
-        } else if selectedIndex == 2 {
-            selection = "Actual Date Day"
+    private func loggingStringForRelativeDisplaySelection(_ selection: Int) -> String {
+        switch selection {
+        case 0:
+            return "Relative Day"
+        case 1:
+            return "Actual Day"
+        case 2:
+            return "Actual Date Day"
+        case 3:
+            return "Hide"
+        default:
+            return "Unexpected Selection"
         }
+    }
 
-        Logger.log(object: ["dayPreference": selection], for: "RelativeDate")
+    @IBAction func changeRelativeDayDisplay(_ sender: NSSegmentedControl) {
+        Logger.log(object: ["dayPreference": loggingStringForRelativeDisplaySelection(sender.selectedSegment)], for: "RelativeDate")
 
         refresh(panel: true, floating: true)
 
@@ -297,8 +310,6 @@ class AppearanceViewController: ParentViewController {
     }
 
     @IBAction func menubarModeChanged(_ sender: NSSegmentedControl) {
-        updateMenubarControls(sender.selectedSegment == 1)
-
         guard let statusItem = (NSApplication.shared.delegate as? AppDelegate)?.statusItemForPanel() else {
             return
         }
@@ -310,12 +321,6 @@ class AppearanceViewController: ParentViewController {
         } else {
             Logger.log(object: ["Context": "In Appearance View"], for: "Switched to Standard Mode")
         }
-    }
-
-    // We don't support showing day or date in the menubar for compact mode yet.
-    // Disable those options to let the user know.
-    private func updateMenubarControls(_ isEnabled: Bool) {
-        [includePlaceNameControl].forEach { $0?.isEnabled = isEnabled }
     }
 
     @IBAction func fontSliderChanged(_: Any) {

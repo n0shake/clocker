@@ -306,7 +306,7 @@ extension Themer {
             case .dark:
                 return NSImage(named: NSImage.Name("SharingDarkIcon"))!
             case .system:
-                return NSImage(named: NSImage.shareTemplateName)!
+                return NSImage(named: NSImage.Name("Sharing Dynamic"))!
             }
         }
 

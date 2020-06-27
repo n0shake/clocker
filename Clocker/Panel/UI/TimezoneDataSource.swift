@@ -67,6 +67,12 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
         cellView.setAccessibilityIdentifier(currentModel.formattedTimezoneLabel())
         cellView.setAccessibilityLabel(currentModel.formattedTimezoneLabel())
 
+        #if DEBUG
+            if row == 0 {
+                cellView.currentLocationIndicator.isHidden = false
+            }
+        #endif
+
         return cellView
     }
 
@@ -77,6 +83,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
 
         if let userFontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber, timezones.count > row, let relativeDisplay = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber {
             let model = timezones[row]
+            let shouldShowSunrise = DataStore.shared().shouldDisplay(.sunrise)
 
             var rowHeight: Int = userFontSize == 4 ? 60 : 65
 
@@ -84,11 +91,16 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
                 rowHeight -= 5
             }
 
-            if let note = model.note, !note.isEmpty {
-                return CGFloat(rowHeight + userFontSize.intValue + 25)
+            if shouldShowSunrise, model.selectionType == .city {
+                rowHeight += 8
             }
 
-            return CGFloat(rowHeight + (userFontSize.intValue * 2))
+            if let note = model.note, !note.isEmpty {
+                rowHeight += userFontSize.intValue + 25
+            }
+
+            rowHeight += (userFontSize.intValue * 2)
+            return CGFloat(rowHeight)
         }
 
         return 0

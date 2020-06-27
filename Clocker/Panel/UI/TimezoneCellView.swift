@@ -64,7 +64,6 @@ class TimezoneCellView: NSTableCellView {
             }
 
             // If sunrise/sunset times are shown, adjust the time's top space to be closer to cell's top
-
             if !sunriseSetTime.isHidden, relativeDate.isHidden {
                 for constraint in constraints where constraint.identifier == "time-top-space" {
                     if constraint.constant == -5.0 {
@@ -89,7 +88,7 @@ class TimezoneCellView: NSTableCellView {
             if !sunriseSetTime.isHidden {
                 for constraint in constraints where constraint.identifier == "time-top-space" {
                     if constraint.constant == -5.0 {
-                        constraint.constant -= 10.0
+                        constraint.constant -= 15.0
                     }
                 }
             } else {

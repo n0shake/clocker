@@ -359,6 +359,7 @@ class ParentPanelController: NSWindowController {
 
     private func getAdjustedRowHeight(for object: TimezoneData?, _ currentHeight: CGFloat) -> CGFloat {
         let userFontSize: NSNumber = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber ?? 4
+        let shouldShowSunrise = DataStore.shared().shouldDisplay(.sunrise)
 
         var newHeight = currentHeight
 
@@ -380,6 +381,10 @@ class ParentPanelController: NSWindowController {
             if let note = object?.note, note.isEmpty {
                 newHeight -= 20.0
             }
+        }
+
+        if shouldShowSunrise, object?.selectionType == .city {
+            newHeight += 8.0
         }
 
         newHeight += mainTableView.intercellSpacing.height
@@ -541,6 +546,12 @@ class ParentPanelController: NSWindowController {
                 cellView.sunriseImage.image = model.isSunriseOrSunset ? Themer.shared().sunriseImage() : Themer.shared().sunsetImage()
                 cellView.layout(with: model)
                 updateDatePicker()
+
+                #if DEBUG
+                    if $0 == 0 {
+                        cellView.currentLocationIndicator.isHidden = false
+                    }
+                #endif
             }
         }
     }
@@ -916,6 +927,69 @@ class ParentPanelController: NSWindowController {
         futureSlider.integerValue = 0
         sliderDatePicker.dateValue = Date()
         setTimezoneDatasourceSlider(sliderValue: 0)
+    }
+
+    @objc func terminateClocker() {
+        NSApplication.shared.terminate(nil)
+    }
+
+    @objc func reportIssue() {
+        feedbackWindow.showWindow(nil)
+        NSApp.activate(ignoringOtherApps: true)
+        window?.orderOut(nil)
+
+        if let countryCode = Locale.autoupdatingCurrent.regionCode {
+            let custom: [String: Any] = ["Country": countryCode]
+            Logger.log(object: custom, for: "Report Issue Opened")
+        }
+    }
+
+    @objc func openCrowdin() {
+        guard let localizationURL = URL(string: AboutUsConstants.CrowdInLocalizationLink),
+            let languageCode = Locale.preferredLanguages.first else { return }
+
+        NSWorkspace.shared.open(localizationURL)
+
+        // Log this
+        let custom: [String: Any] = ["Language": languageCode]
+        Logger.log(object: custom, for: "Opened Localization Link")
+    }
+
+    @objc func rate() {
+        guard let sourceURL = URL(string: AboutUsConstants.AppStoreLink) else { return }
+
+        NSWorkspace.shared.open(sourceURL)
+    }
+
+    @IBAction func showMoreOptions(_ sender: NSButton) {
+        let menuItem = NSMenu(title: "More Options")
+        let terminateOption = NSMenuItem(title: "Quit Clocker",
+                                         action: #selector(terminateClocker), keyEquivalent: "")
+        let rateClocker = NSMenuItem(title: "Support Clocker...",
+                                     action: #selector(rate), keyEquivalent: "")
+        let sendFeedback = NSMenuItem(title: "Send Feedback...",
+                                      action: #selector(reportIssue), keyEquivalent: "")
+        let localizeClocker = NSMenuItem(title: "Localize Clocker...",
+                                         action: #selector(openCrowdin), keyEquivalent: "")
+
+        let appDisplayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") ?? "Clocker"
+        let shortVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") ?? "N/A"
+        let longVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") ?? "N/A"
+
+        let versionInfo = "\(appDisplayName) \(shortVersion) (\(longVersion))"
+        let clockerVersionInfo = NSMenuItem(title: versionInfo, action: nil, keyEquivalent: "")
+        clockerVersionInfo.isEnabled = false
+        menuItem.addItem(rateClocker)
+        menuItem.addItem(sendFeedback)
+        menuItem.addItem(localizeClocker)
+        menuItem.addItem(NSMenuItem.separator())
+        menuItem.addItem(clockerVersionInfo)
+
+        menuItem.addItem(NSMenuItem.separator())
+        menuItem.addItem(terminateOption)
+        NSMenu.popUpContextMenu(menuItem,
+                                with: NSApp.currentEvent!,
+                                for: sender)
     }
 }
 

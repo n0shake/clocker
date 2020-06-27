@@ -77,8 +77,9 @@ class StatusContainerView: NSView {
                 if let timezoneObject = TimezoneData.customObject(from: timezone) {
                     let precalculatedWidth = Double(compactWidth(for: timezoneObject))
                     let operationObject = TimezoneDataOperations(with: timezoneObject)
-                    let calculatedSize = compactModeTimeFont.size(operationObject.compactMenuHeader(), precalculatedWidth, attributes: timeAttributes)
-                    return result + calculatedSize.width + bufferWidth
+                    let calculatedSubtitleSize = compactModeTimeFont.size(operationObject.compactMenuSubtitle(), precalculatedWidth, attributes: timeAttributes)
+                    let calculatedTitleSize = compactModeTimeFont.size(operationObject.compactMenuTitle(), precalculatedWidth, attributes: timeAttributes)
+                    return result + max(calculatedTitleSize.width, calculatedSubtitleSize.width) + bufferWidth
                 }
 
                 return result + CGFloat(bufferCalculatedWidth())
@@ -114,10 +115,11 @@ class StatusContainerView: NSView {
 
     private func bestWidth(for timezone: TimezoneData) -> Int {
         let operation = TimezoneDataOperations(with: timezone)
+        let bestSize = compactModeTimeFont.size(operation.compactMenuSubtitle(),
+                                                Double(compactWidth(for: timezone)), attributes: timeAttributes)
+        let bestTitleSize = compactModeTimeFont.size(operation.compactMenuTitle(), Double(compactWidth(for: timezone)), attributes: timeAttributes)
 
-        let bestSize = compactModeTimeFont.size(operation.compactMenuHeader(), Double(compactWidth(for: timezone)), attributes: timeAttributes)
-
-        return Int(bestSize.width + bufferWidth)
+        return Int(max(bestSize.width, bestTitleSize.width) + bufferWidth)
     }
 
     func updateTime() {
@@ -126,15 +128,24 @@ class StatusContainerView: NSView {
         }
 
         // See if frame's width needs any adjustment
+        adjustWidthIfNeccessary()
+    }
+
+    private func adjustWidthIfNeccessary() {
         var newWidth: CGFloat = 0
 
         subviews.forEach {
-            if let statusItem = $0 as? StatusItemView {
+            if let statusItem = $0 as? StatusItemView, statusItem.isHidden == false {
                 // Determine what's the best width required to display the current string.
                 let newBestWidth = CGFloat(bestWidth(for: statusItem.dataObject))
 
                 // Let's note if the current width is too small/correct
                 newWidth += statusItem.frame.size.width != newBestWidth ? newBestWidth : statusItem.frame.size.width
+
+                statusItem.frame = CGRect(x: statusItem.frame.origin.x,
+                                          y: statusItem.frame.origin.y,
+                                          width: newBestWidth,
+                                          height: statusItem.frame.size.height)
 
                 statusItem.updateTimeInMenubar()
             }

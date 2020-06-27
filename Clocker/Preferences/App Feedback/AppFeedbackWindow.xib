@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -12,10 +12,10 @@
                 <outlet property="contactBox" destination="JzF-Oq-qhW" id="CUI-1V-SfW"/>
                 <outlet property="emailField" destination="zlM-Cf-OxV" id="uRw-dZ-JGR"/>
                 <outlet property="feedbackTextView" destination="sCg-gV-TTr" id="Evh-WS-epn"/>
-                <outlet property="headerLabel" destination="gej-YH-9dt" id="mgE-2k-ioK"/>
                 <outlet property="informativeText" destination="W3a-Hi-ryk" id="qhv-iC-svS"/>
                 <outlet property="nameField" destination="Qzm-kE-Igl" id="miJ-7A-VPC"/>
                 <outlet property="progressIndicator" destination="h17-og-9PU" id="AE2-Gh-DpO"/>
+                <outlet property="quickCommentsLabel" destination="j4P-EU-Uso" id="TSm-DN-QeM"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -23,24 +23,24 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Clocker Feedback" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-            <rect key="contentRect" x="437" y="172" width="319" height="392"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="contentRect" x="437" y="172" width="319" height="440"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="319" height="392"/>
+                <rect key="frame" x="0.0" y="0.0" width="319" height="440"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNX-kV-RGt">
-                        <rect key="frame" x="12" y="205" width="295" height="145"/>
+                        <rect key="frame" x="12" y="230" width="295" height="122"/>
                         <clipView key="contentView" drawsBackground="NO" id="NNn-eZ-8Je">
-                            <rect key="frame" x="1" y="1" width="293" height="143"/>
+                            <rect key="frame" x="1" y="1" width="293" height="120"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="sCg-gV-TTr">
-                                    <rect key="frame" x="0.0" y="0.0" width="293" height="143"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="293" height="120"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="293" height="143"/>
+                                    <size key="minSize" width="293" height="120"/>
                                     <size key="maxSize" width="463" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
@@ -55,14 +55,14 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <box boxType="custom" borderType="line" title="Box Title" translatesAutoresizingMaskIntoConstraints="NO" id="JzF-Oq-qhW">
-                        <rect key="frame" x="12" y="67" width="295" height="125"/>
+                    <box translatesAutoresizingMaskIntoConstraints="NO" id="JzF-Oq-qhW">
+                        <rect key="frame" x="9" y="63" width="301" height="154"/>
                         <view key="contentView" id="moX-Vc-vMc">
-                            <rect key="frame" x="1" y="1" width="293" height="123"/>
+                            <rect key="frame" x="3" y="3" width="295" height="135"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" preferredMaxLayoutWidth="269" translatesAutoresizingMaskIntoConstraints="NO" id="Qzm-kE-Igl">
-                                    <rect key="frame" x="10" y="88" width="273" height="24"/>
+                                    <rect key="frame" x="10" y="100" width="275" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="6DY-uj-pMG"/>
                                     </constraints>
@@ -73,7 +73,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" preferredMaxLayoutWidth="269" translatesAutoresizingMaskIntoConstraints="NO" id="zlM-Cf-OxV">
-                                    <rect key="frame" x="10" y="54" width="266" height="24"/>
+                                    <rect key="frame" x="10" y="66" width="267" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="b3M-Sc-y8S"/>
                                     </constraints>
@@ -84,7 +84,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="269" translatesAutoresizingMaskIntoConstraints="NO" id="LVY-Qw-MYC">
-                                    <rect key="frame" x="6" y="0.0" width="281" height="44"/>
+                                    <rect key="frame" x="6" y="0.0" width="283" height="56"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" placeholderString="Accessory Info" id="yEq-6I-HBq">
                                         <font key="font" size="10" name="Avenir-Book"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -98,6 +98,7 @@
                                 <constraint firstItem="Qzm-kE-Igl" firstAttribute="top" secondItem="moX-Vc-vMc" secondAttribute="top" constant="11" id="Dpz-4F-hN7"/>
                                 <constraint firstItem="Qzm-kE-Igl" firstAttribute="leading" secondItem="moX-Vc-vMc" secondAttribute="leading" constant="10" id="GKZ-24-t7t"/>
                                 <constraint firstItem="LVY-Qw-MYC" firstAttribute="top" secondItem="zlM-Cf-OxV" secondAttribute="bottom" constant="10" id="Xck-iy-cZk"/>
+                                <constraint firstAttribute="trailing" secondItem="LVY-Qw-MYC" secondAttribute="trailing" constant="8" id="b5X-pR-y2N"/>
                                 <constraint firstItem="LVY-Qw-MYC" firstAttribute="leading" secondItem="moX-Vc-vMc" secondAttribute="leading" constant="8" id="iLs-Ob-MZC"/>
                                 <constraint firstItem="LVY-Qw-MYC" firstAttribute="centerX" secondItem="moX-Vc-vMc" secondAttribute="centerX" id="k3n-00-eiV"/>
                                 <constraint firstAttribute="bottom" secondItem="LVY-Qw-MYC" secondAttribute="bottom" id="p1w-eh-TeV"/>
@@ -105,7 +106,7 @@
                             </constraints>
                         </view>
                         <constraints>
-                            <constraint firstAttribute="height" constant="125" id="lwa-Yt-uxh"/>
+                            <constraint firstAttribute="height" constant="150" id="lwa-Yt-uxh"/>
                         </constraints>
                         <font key="titleFont" size="11" name="Avenir-Book"/>
                     </box>
@@ -143,17 +144,6 @@ DQ
                             <action selector="sendFeedback:" target="-2" id="lrL-0l-Jbd"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gej-YH-9dt">
-                        <rect key="frame" x="10" y="358" width="299" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="a7O-DC-irX"/>
-                        </constraints>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="Header Text" id="oHe-hu-bQn">
-                            <font key="font" size="13" name="Avenir-Book"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W3a-Hi-ryk">
                         <rect key="frame" x="10" y="47" width="289" height="22"/>
                         <constraints>
@@ -168,6 +158,36 @@ DQ
                     <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="h17-og-9PU">
                         <rect key="frame" x="12" y="19" width="79" height="20"/>
                     </progressIndicator>
+                    <box translatesAutoresizingMaskIntoConstraints="NO" id="bGc-DH-2iw">
+                        <rect key="frame" x="9" y="356" width="301" height="84"/>
+                        <view key="contentView" id="6oZ-b5-xPJ">
+                            <rect key="frame" x="3" y="3" width="295" height="65"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j4P-EU-Uso" customClass="UnderlinedButton" customModule="Clocker" customModuleProvider="target">
+                                    <rect key="frame" x="5" y="25" width="285" height="15"/>
+                                    <buttonCell key="cell" type="bevel" title="Quick Comments Button" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="FQy-Mb-DcS">
+                                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                        <font key="font" size="11" name="Avenir-Light"/>
+                                    </buttonCell>
+                                    <accessibility identifier="ClockerOpenSourceText"/>
+                                    <connections>
+                                        <action selector="navigateToSupportTwitter:" target="-2" id="kr0-Ks-qua"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="j4P-EU-Uso" firstAttribute="centerX" secondItem="6oZ-b5-xPJ" secondAttribute="centerX" id="Lzk-D8-sUJ"/>
+                                <constraint firstItem="j4P-EU-Uso" firstAttribute="centerY" secondItem="6oZ-b5-xPJ" secondAttribute="centerY" id="Zio-We-YXV"/>
+                                <constraint firstAttribute="trailing" secondItem="j4P-EU-Uso" secondAttribute="trailing" constant="5" id="geY-fl-hwn"/>
+                                <constraint firstItem="j4P-EU-Uso" firstAttribute="leading" secondItem="6oZ-b5-xPJ" secondAttribute="leading" constant="5" id="ilm-9x-zlx"/>
+                            </constraints>
+                        </view>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="9IW-uw-ubx"/>
+                        </constraints>
+                        <font key="titleFont" size="11" name="Avenir-Light"/>
+                    </box>
                 </subviews>
                 <constraints>
                     <constraint firstItem="JzF-Oq-qhW" firstAttribute="trailing" secondItem="oNX-kV-RGt" secondAttribute="trailing" id="4Vq-PW-upG"/>
@@ -175,22 +195,22 @@ DQ
                     <constraint firstAttribute="trailing" secondItem="zlM-Cf-OxV" secondAttribute="trailing" constant="30" id="Arj-b2-oje"/>
                     <constraint firstItem="sJq-1o-Bft" firstAttribute="top" secondItem="JzF-Oq-qhW" secondAttribute="bottom" constant="26" id="Epm-On-lNy"/>
                     <constraint firstAttribute="trailing" secondItem="oNX-kV-RGt" secondAttribute="trailing" constant="12" id="IqR-EG-ga3"/>
+                    <constraint firstItem="bGc-DH-2iw" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="12" id="JMO-BF-p3W"/>
                     <constraint firstItem="sJq-1o-Bft" firstAttribute="leading" secondItem="szs-8j-SMN" secondAttribute="trailing" constant="8" id="JSB-K6-cbX"/>
                     <constraint firstAttribute="trailing" secondItem="sJq-1o-Bft" secondAttribute="trailing" constant="20" id="KuW-ez-Od9"/>
                     <constraint firstItem="JzF-Oq-qhW" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="12" id="NCF-RW-EvZ"/>
                     <constraint firstAttribute="bottom" secondItem="h17-og-9PU" secondAttribute="bottom" constant="20" id="OLS-kL-muQ"/>
                     <constraint firstItem="oNX-kV-RGt" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="12" id="P0X-Hb-ZtS"/>
                     <constraint firstItem="szs-8j-SMN" firstAttribute="leading" secondItem="h17-og-9PU" secondAttribute="trailing" constant="8" id="S7a-To-K83"/>
+                    <constraint firstAttribute="trailing" secondItem="bGc-DH-2iw" secondAttribute="trailing" constant="12" id="Swh-0I-anu"/>
                     <constraint firstAttribute="bottom" secondItem="sJq-1o-Bft" secondAttribute="bottom" constant="20" id="cft-qs-VMz"/>
+                    <constraint firstItem="oNX-kV-RGt" firstAttribute="top" secondItem="6oZ-b5-xPJ" secondAttribute="bottom" constant="7" id="dlq-R6-ar3"/>
                     <constraint firstItem="h17-og-9PU" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="12" id="iIH-oN-lBO"/>
                     <constraint firstAttribute="trailing" secondItem="W3a-Hi-ryk" secondAttribute="trailing" constant="22" id="j6H-0M-Cux"/>
-                    <constraint firstAttribute="trailing" secondItem="gej-YH-9dt" secondAttribute="trailing" constant="12" id="qjH-ND-NKx"/>
-                    <constraint firstItem="gej-YH-9dt" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="12" id="tlA-wq-Gts"/>
+                    <constraint firstItem="bGc-DH-2iw" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="o8t-tV-qS6"/>
                     <constraint firstItem="JzF-Oq-qhW" firstAttribute="top" secondItem="oNX-kV-RGt" secondAttribute="bottom" constant="13" id="v2l-OZ-epC"/>
                     <constraint firstItem="szs-8j-SMN" firstAttribute="top" secondItem="W3a-Hi-ryk" secondAttribute="bottom" constant="6" id="vlm-Yj-d84"/>
                     <constraint firstAttribute="bottom" secondItem="szs-8j-SMN" secondAttribute="bottom" constant="20" id="xos-N8-d1k"/>
-                    <constraint firstItem="gej-YH-9dt" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="14" id="yZE-PY-8EZ"/>
-                    <constraint firstItem="oNX-kV-RGt" firstAttribute="top" secondItem="gej-YH-9dt" secondAttribute="bottom" constant="8" id="yec-Eo-Jb9"/>
                 </constraints>
             </view>
             <connections>

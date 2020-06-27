@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "share1x_light.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -11,11 +12,12 @@
           "value" : "dark"
         }
       ],
+      "filename" : "share1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "More.png",
+      "filename" : "share2x_light.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -26,7 +28,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "More-Dark.png",
+      "filename" : "share2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

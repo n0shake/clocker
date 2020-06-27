@@ -443,8 +443,8 @@ extension PreferencesViewController {
                                                         let searchResults = self.decode(from: data)
 
                                                         if searchResults?.status == "ZERO_RESULTS" {
-                                                            self.placeholderLabel.placeholderString = "No results! 😔 Try entering the exact name."
                                                             self.findLocalSearchResultsForTimezones()
+                                                            self.placeholderLabel.placeholderString = self.searchResultsDataSource.timezoneFilteredArray.isEmpty ? "No results! 😔 Try entering the exact name." : CLEmptyString
                                                             self.reloadSearchResults()
                                                             self.isActivityInProgress = false
                                                             return

@@ -33,6 +33,7 @@ class AppFeedbackWindowController: NSWindowController {
     @IBOutlet var informativeText: NSTextField!
     @IBOutlet var progressIndicator: NSProgressIndicator!
 
+    @IBOutlet var quickCommentsLabel: UnderlinedButton!
     private var themeDidChangeNotification: NSObjectProtocol?
     private var serialNumber: String? {
         let platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
@@ -72,6 +73,7 @@ class AppFeedbackWindowController: NSWindowController {
         nameField.setAccessibilityIdentifier("NameField")
         emailField.setAccessibilityIdentifier("EmailField")
         progressIndicator.setAccessibilityIdentifier("ProgressIndicator")
+        quickCommentsLabel.setAccessibility("QuickCommentLabel")
 
         setup()
 
@@ -204,18 +206,53 @@ class AppFeedbackWindowController: NSWindowController {
         informativeText.stringValue = CLEmptyString
     }
 
-    @IBOutlet var headerLabel: NSTextField!
     @IBOutlet var contactBox: NSBox!
     @IBOutlet var accessoryInfo: NSTextField!
 
     private func setup() {
-        headerLabel.stringValue = "Tell us what you think!".localized()
         contactBox.title = "Contact Information (Optional)".localized()
         accessoryInfo.stringValue = "Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!".localized()
 
-        [headerLabel, accessoryInfo].forEach { $0?.textColor = Themer.shared().mainTextColor() }
+        let range = NSRange(location: 9, length: 15)
+        quickCommentsLabel.title = "Tweet to @ClockerSupport if you have a quick comment!"
+        setUnderline(for: quickCommentsLabel, range: range)
+
+        [accessoryInfo].forEach { $0?.textColor = Themer.shared().mainTextColor() }
 
         contactBox.borderColor = Themer.shared().mainTextColor()
+    }
+
+    private func setUnderline(for button: UnderlinedButton?, range: NSRange) {
+        guard let underlinedButton = button else { return }
+
+        let mutableParaghStyle = NSMutableParagraphStyle()
+        mutableParaghStyle.alignment = .center
+
+        let originalText = NSMutableAttributedString(string: underlinedButton.title)
+        originalText.addAttribute(NSAttributedString.Key.underlineStyle,
+                                  value: NSNumber(value: Int8(NSUnderlineStyle.single.rawValue)),
+                                  range: range)
+        originalText.addAttribute(NSAttributedString.Key.foregroundColor,
+                                  value: Themer.shared().mainTextColor(),
+                                  range: NSRange(location: 0, length: underlinedButton.attributedTitle.string.count))
+        originalText.addAttribute(NSAttributedString.Key.font,
+                                  value: (button?.font)!,
+                                  range: NSRange(location: 0, length: underlinedButton.attributedTitle.string.count))
+        originalText.addAttribute(NSAttributedString.Key.paragraphStyle,
+                                  value: mutableParaghStyle,
+                                  range: NSRange(location: 0, length: underlinedButton.attributedTitle.string.count))
+        underlinedButton.attributedTitle = originalText
+    }
+
+    @IBAction func navigateToSupportTwitter(_: Any) {
+        guard let twitterURL = URL(string: AboutUsConstants.TwitterLink),
+            let countryCode = Locale.autoupdatingCurrent.regionCode else { return }
+
+        NSWorkspace.shared.open(twitterURL)
+
+        // Log this
+        let custom: [String: Any] = ["Country": countryCode]
+        Logger.log(object: custom, for: "Opened Twitter")
     }
 }
 
