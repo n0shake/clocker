@@ -153,7 +153,7 @@ extension Themer {
     func shutdownImage() -> NSImage {
         if #available(macOS 10.16, *) {
             return NSImage(systemSymbolName: "ellipsis.circle",
-                           accessibilityDescription: nil)!
+                           accessibilityDescription: "power-down-image")!
         }
 
         if #available(macOS 10.14, *) {
@@ -173,7 +173,7 @@ extension Themer {
     func preferenceImage() -> NSImage {
         if #available(macOS 10.16, *) {
             return NSImage(systemSymbolName: "gear",
-                           accessibilityDescription: nil)!
+                           accessibilityDescription: "new-preference-image")!
         }
 
         if #available(macOS 10.14, *) {
@@ -196,7 +196,7 @@ extension Themer {
     func pinImage() -> NSImage {
         if #available(macOS 10.16, *) {
             return NSImage(systemSymbolName: "macwindow.on.rectangle",
-                           accessibilityDescription: nil)!
+                           accessibilityDescription: "pin-image")!
         }
 
         if #available(macOS 10.14, *) {
@@ -321,7 +321,7 @@ extension Themer {
     func sharingImage() -> NSImage {
         if #available(macOS 10.16, *) {
             return NSImage(systemSymbolName: "square.and.arrow.up.on.square.fill",
-                           accessibilityDescription: nil)!
+                           accessibilityDescription: "share-button")!
         }
 
         if #available(macOS 10.14, *) {

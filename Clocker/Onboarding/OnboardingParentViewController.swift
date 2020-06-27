@@ -72,7 +72,7 @@ class OnboardingParentViewController: NSViewController {
             negativeButton.controlSize = .large
             positiveButton.controlSize = .large
             backButton.image = NSImage(systemSymbolName: "chevron.left.circle.fill",
-                                       accessibilityDescription: nil)
+                                       accessibilityDescription: "back-button")
         } else {
             backButton.title = NSLocalizedString("Back",
                                                  comment: "Button title for going back to the previous screen")
