@@ -437,7 +437,7 @@ DQ
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-512" id="bjq-tD-CZ4"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2ra-RP-SYR">
-                                <rect key="frame" x="120" y="311" width="94" height="16"/>
+                                <rect key="frame" x="120" y="304" width="94" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" placeholderString="Onboarding Info" id="SIV-aM-Wjg">
                                     <font key="font" size="12" name="Avenir-Book"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -445,7 +445,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hqW-RG-UOt">
-                                <rect key="frame" x="118" y="322" width="203" height="45"/>
+                                <rect key="frame" x="118" y="315" width="203" height="45"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" placeholderString="Screen Name" id="QDu-mo-gtb">
                                     <font key="font" size="33" name="Avenir-Book"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -599,10 +599,10 @@ DQ
                             <constraint firstItem="D2w-fr-zQp" firstAttribute="top" secondItem="16a-9S-3hj" secondAttribute="bottom" constant="30" id="Hmb-4J-wVF"/>
                             <constraint firstItem="2ra-RP-SYR" firstAttribute="top" secondItem="hqW-RG-UOt" secondAttribute="bottom" constant="-5" id="N5D-cY-fuJ"/>
                             <constraint firstItem="RGd-Ev-FdZ" firstAttribute="top" secondItem="D2w-fr-zQp" secondAttribute="bottom" constant="26" id="Un4-zl-ZCZ"/>
+                            <constraint firstItem="hqW-RG-UOt" firstAttribute="centerY" secondItem="16a-9S-3hj" secondAttribute="centerY" constant="-10" id="Z0R-lN-mSQ"/>
                             <constraint firstItem="D2w-fr-zQp" firstAttribute="leading" secondItem="r3Q-VK-VHF" secondAttribute="leading" constant="20" id="fut-DD-1Uj"/>
                             <constraint firstAttribute="trailing" secondItem="D2w-fr-zQp" secondAttribute="trailing" constant="20" id="g4d-q3-JXg"/>
                             <constraint firstItem="16a-9S-3hj" firstAttribute="top" secondItem="r3Q-VK-VHF" secondAttribute="top" constant="20" id="p9J-gq-Fqy"/>
-                            <constraint firstItem="hqW-RG-UOt" firstAttribute="top" secondItem="16a-9S-3hj" secondAttribute="top" id="sQX-el-0aw"/>
                             <constraint firstAttribute="trailing" secondItem="RGd-Ev-FdZ" secondAttribute="trailing" constant="20" id="sSL-Ae-eYf"/>
                             <constraint firstItem="hqW-RG-UOt" firstAttribute="leading" secondItem="16a-9S-3hj" secondAttribute="trailing" constant="20" id="yQc-Ub-zMT"/>
                         </constraints>

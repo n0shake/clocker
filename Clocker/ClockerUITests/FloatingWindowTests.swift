@@ -161,7 +161,7 @@ class FloatingWindowTests: XCTestCase {
         XCTAssertFalse(app.staticTexts["InformationLabel"].exists)
     }
 
-  /// Make sure to ensure supplementary/relative date label is turned on!
+    /// Make sure to ensure supplementary/relative date label is turned on!
     func testMovingSlider() {
         if app.buttons["Pin"].exists {
             app.buttons["Pin"].click()
