@@ -411,7 +411,7 @@
                                 <rect key="frame" x="0.0" y="40" width="350" height="30"/>
                                 <subviews>
                                     <datePicker focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zN8-JF-j7O">
-                                        <rect key="frame" x="203" y="2" width="137" height="26"/>
+                                        <rect key="frame" x="203" y="0.0" width="137" height="23"/>
                                         <datePickerCell key="cell" focusRingType="none" alignment="left" drawsBackground="NO" datePickerStyle="textField" id="Zg1-OT-OMw">
                                             <font key="font" size="13" name="Avenir-Roman"/>
                                             <date key="date" timeIntervalSinceReferenceDate="-595929600">
@@ -439,10 +439,9 @@
                                 <constraints>
                                     <constraint firstItem="zN8-JF-j7O" firstAttribute="leading" secondItem="Vf2-uI-yf3" secondAttribute="trailing" constant="2" id="AKG-Oj-pRQ"/>
                                     <constraint firstAttribute="height" constant="30" id="ELw-ee-72z"/>
-                                    <constraint firstAttribute="bottom" secondItem="zN8-JF-j7O" secondAttribute="bottom" constant="2" id="T2p-SQ-dvn"/>
                                     <constraint firstItem="Vf2-uI-yf3" firstAttribute="leading" secondItem="C7R-Dq-MFr" secondAttribute="leading" constant="9" id="UPM-fg-1uv"/>
                                     <constraint firstItem="Vf2-uI-yf3" firstAttribute="centerY" secondItem="C7R-Dq-MFr" secondAttribute="centerY" id="Wno-LD-sb9"/>
-                                    <constraint firstItem="zN8-JF-j7O" firstAttribute="top" secondItem="C7R-Dq-MFr" secondAttribute="top" constant="2" id="cdB-o2-dPr"/>
+                                    <constraint firstItem="zN8-JF-j7O" firstAttribute="firstBaseline" secondItem="Vf2-uI-yf3" secondAttribute="firstBaseline" id="Zwq-PS-gg2"/>
                                     <constraint firstAttribute="trailing" secondItem="zN8-JF-j7O" secondAttribute="trailing" constant="10" id="ci5-6v-klf"/>
                                 </constraints>
                             </customView>

@@ -401,7 +401,7 @@
                                 <rect key="frame" x="0.0" y="40" width="350" height="30"/>
                                 <subviews>
                                     <datePicker focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ngk-LZ-J2y">
-                                        <rect key="frame" x="203" y="2" width="137" height="26"/>
+                                        <rect key="frame" x="203" y="0.0" width="137" height="23"/>
                                         <datePickerCell key="cell" focusRingType="none" alignment="left" drawsBackground="NO" datePickerStyle="textField" id="fj6-ZG-8ff">
                                             <font key="font" size="13" name="Avenir-Roman"/>
                                             <date key="date" timeIntervalSinceReferenceDate="-595929600">
@@ -428,9 +428,8 @@
                                     </slider>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="Ngk-LZ-J2y" firstAttribute="firstBaseline" secondItem="XQc-HF-TrM" secondAttribute="firstBaseline" id="FhF-Ij-XvK"/>
                                     <constraint firstItem="Ngk-LZ-J2y" firstAttribute="leading" secondItem="XQc-HF-TrM" secondAttribute="trailing" constant="2" id="GZh-tD-ZEU"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ngk-LZ-J2y" secondAttribute="bottom" constant="2" id="MBn-Ru-qXi"/>
-                                    <constraint firstItem="Ngk-LZ-J2y" firstAttribute="top" secondItem="6vv-g2-Z63" secondAttribute="top" constant="2" id="MTp-Xi-H8s"/>
                                     <constraint firstAttribute="trailing" secondItem="Ngk-LZ-J2y" secondAttribute="trailing" constant="10" id="QMe-St-qSH"/>
                                     <constraint firstAttribute="height" constant="30" id="YVW-Xj-U2r"/>
                                     <constraint firstItem="XQc-HF-TrM" firstAttribute="leading" secondItem="6vv-g2-Z63" secondAttribute="leading" constant="9" id="gvD-R0-ANg"/>
