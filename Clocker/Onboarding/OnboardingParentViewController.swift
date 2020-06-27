@@ -69,6 +69,12 @@ class OnboardingParentViewController: NSViewController {
         backButton.tag = OnboardingType.welcome.rawValue
 
         [negativeButton, backButton].forEach { $0?.isHidden = true }
+
+        if #available(OSX 10.16, *) {
+            negativeButton.controlSize = .large
+            positiveButton.controlSize = .large
+            backButton.controlSize = .large
+        }
     }
 
     private func setIdentifiersForTests() {
