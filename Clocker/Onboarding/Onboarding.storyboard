@@ -553,27 +553,46 @@ DQ
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wDx-nO-z0M">
-                                <rect key="frame" x="20" y="29" width="4" height="18"/>
-                                <textFieldCell key="cell" lineBreakMode="truncatingTail" id="c1w-j2-JT6">
-                                    <font key="font" size="13" name="Avenir-Book"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="51r-DX-fZU">
-                                <rect key="frame" x="22" y="30" width="414" height="16"/>
-                                <buttonCell key="cell" type="bevel" title="UNDO" bezelStyle="rounded" alignment="left" imageScaling="proportionallyDown" inset="2" id="h5W-mQ-yIP">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="12" name="Avenir-Medium"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="undoAction:" target="bMm-q2-fpd" id="Pw9-bY-SW6"/>
-                                </connections>
-                            </button>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Rl-sY-QlZ">
+                                <rect key="frame" x="22" y="27" width="414" height="22"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="51r-DX-fZU">
+                                        <rect key="frame" x="0.0" y="3" width="40" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="8ki-mv-aIb"/>
+                                            <constraint firstAttribute="height" constant="16" id="yfw-So-jv7"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" title="UNDO" bezelStyle="rounded" alignment="left" imageScaling="proportionallyDown" inset="2" id="h5W-mQ-yIP">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="12" name="Avenir-Medium"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="undoAction:" target="bMm-q2-fpd" id="Pw9-bY-SW6"/>
+                                        </connections>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wDx-nO-z0M">
+                                        <rect key="frame" x="43" y="0.0" width="373" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="72Z-Pw-gHg"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" id="c1w-j2-JT6">
+                                            <font key="font" size="13" name="Avenir-Book"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="wDx-nO-z0M" firstAttribute="top" secondItem="30y-X6-i7I" secondAttribute="bottom" constant="2" id="4og-pY-dHR"/>
                             <constraint firstItem="2ra-RP-SYR" firstAttribute="leading" secondItem="hqW-RG-UOt" secondAttribute="leading" constant="2" id="7mH-Ln-u0a"/>
                             <constraint firstItem="16a-9S-3hj" firstAttribute="leading" secondItem="r3Q-VK-VHF" secondAttribute="leading" constant="20" id="9fu-69-cfH"/>
                             <constraint firstItem="RGd-Ev-FdZ" firstAttribute="leading" secondItem="r3Q-VK-VHF" secondAttribute="leading" constant="20" id="ApV-Wr-6Gy"/>
@@ -582,13 +601,9 @@ DQ
                             <constraint firstItem="RGd-Ev-FdZ" firstAttribute="top" secondItem="D2w-fr-zQp" secondAttribute="bottom" constant="26" id="Un4-zl-ZCZ"/>
                             <constraint firstItem="D2w-fr-zQp" firstAttribute="leading" secondItem="r3Q-VK-VHF" secondAttribute="leading" constant="20" id="fut-DD-1Uj"/>
                             <constraint firstAttribute="trailing" secondItem="D2w-fr-zQp" secondAttribute="trailing" constant="20" id="g4d-q3-JXg"/>
-                            <constraint firstAttribute="trailing" secondItem="51r-DX-fZU" secondAttribute="trailing" constant="20" id="ixH-7I-UQ5"/>
-                            <constraint firstItem="wDx-nO-z0M" firstAttribute="leading" secondItem="r3Q-VK-VHF" secondAttribute="leading" constant="22" id="kbZ-Gb-IFo"/>
-                            <constraint firstItem="51r-DX-fZU" firstAttribute="centerY" secondItem="wDx-nO-z0M" secondAttribute="centerY" id="nPE-UG-l8T"/>
                             <constraint firstItem="16a-9S-3hj" firstAttribute="top" secondItem="r3Q-VK-VHF" secondAttribute="top" constant="20" id="p9J-gq-Fqy"/>
                             <constraint firstItem="hqW-RG-UOt" firstAttribute="top" secondItem="16a-9S-3hj" secondAttribute="top" id="sQX-el-0aw"/>
                             <constraint firstAttribute="trailing" secondItem="RGd-Ev-FdZ" secondAttribute="trailing" constant="20" id="sSL-Ae-eYf"/>
-                            <constraint firstItem="51r-DX-fZU" firstAttribute="leading" secondItem="wDx-nO-z0M" secondAttribute="trailing" id="waW-dn-Plp"/>
                             <constraint firstItem="hqW-RG-UOt" firstAttribute="leading" secondItem="16a-9S-3hj" secondAttribute="trailing" constant="20" id="yQc-Ub-zMT"/>
                         </constraints>
                     </view>
@@ -603,7 +618,7 @@ DQ
                 </viewController>
                 <customObject id="VtX-cF-vU0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1984.5" y="749.5"/>
+            <point key="canvasLocation" x="1984" y="749.5"/>
         </scene>
         <!--Final Onboarding View Controller-->
         <scene sceneID="5L4-Km-YMW">
