@@ -62,6 +62,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
         cellView.noteLabel.toolTip = currentModel.note ?? CLEmptyString
         cellView.currentLocationIndicator.isHidden = !currentModel.isSystemTimezone
         cellView.time.setAccessibilityIdentifier("ActualTime")
+        cellView.relativeDate.setAccessibilityIdentifier("RelativeDate")
         cellView.layout(with: currentModel)
 
         cellView.setAccessibilityIdentifier(currentModel.formattedTimezoneLabel())
