@@ -67,12 +67,6 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
         cellView.setAccessibilityIdentifier(currentModel.formattedTimezoneLabel())
         cellView.setAccessibilityLabel(currentModel.formattedTimezoneLabel())
 
-        #if DEBUG
-            if row == 0 {
-                cellView.currentLocationIndicator.isHidden = false
-            }
-        #endif
-
         return cellView
     }
 
@@ -97,6 +91,10 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
 
             if let note = model.note, !note.isEmpty {
                 rowHeight += userFontSize.intValue + 25
+            }
+
+            if model.isSystemTimezone {
+                rowHeight += 5
             }
 
             rowHeight += (userFontSize.intValue * 2)

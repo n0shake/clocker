@@ -166,6 +166,10 @@ class ParentPanelController: NSWindowController {
                                                object: nil)
 
         showDebugVersionViewIfNeccesary()
+
+        if #available(macOS 10.16, *) {
+            mainTableView.style = .fullWidth
+        }
     }
 
     private func showDebugVersionViewIfNeccesary() {
@@ -387,6 +391,10 @@ class ParentPanelController: NSWindowController {
             newHeight += 8.0
         }
 
+        if object?.isSystemTimezone == true {
+            newHeight += 5
+        }
+
         newHeight += mainTableView.intercellSpacing.height
 
         return newHeight
@@ -546,12 +554,6 @@ class ParentPanelController: NSWindowController {
                 cellView.sunriseImage.image = model.isSunriseOrSunset ? Themer.shared().sunriseImage() : Themer.shared().sunsetImage()
                 cellView.layout(with: model)
                 updateDatePicker()
-
-                #if DEBUG
-                    if $0 == 0 {
-                        cellView.currentLocationIndicator.isHidden = false
-                    }
-                #endif
             }
         }
     }
