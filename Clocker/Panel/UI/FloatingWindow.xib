@@ -139,13 +139,13 @@
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Sunrise" id="jMh-PW-Exi"/>
                                                                 </imageView>
                                                                 <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xGh-3b-9zf">
-                                                                    <rect key="frame" x="5" y="1" width="30" height="64"/>
+                                                                    <rect key="frame" x="5" y="4" width="30" height="61"/>
                                                                     <subviews>
                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k4t-Nn-Fzn">
-                                                                            <rect key="frame" x="3" y="39" width="25" height="25"/>
+                                                                            <rect key="frame" x="4" y="39" width="22" height="22"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="25" id="3Xl-5P-qip"/>
-                                                                                <constraint firstAttribute="width" constant="25" id="wef-ia-KFo"/>
+                                                                                <constraint firstAttribute="height" constant="22" id="3Xl-5P-qip"/>
+                                                                                <constraint firstAttribute="width" constant="22" id="wef-ia-KFo"/>
                                                                             </constraints>
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="CurrentLocation" id="7CP-TW-ZBQ"/>
                                                                         </imageView>
