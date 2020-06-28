@@ -152,8 +152,7 @@ extension Themer {
 
     func shutdownImage() -> NSImage {
         if #available(macOS 10.16, *) {
-            return NSImage(systemSymbolName: "ellipsis.circle",
-                           accessibilityDescription: "power-down-image")!
+            return symbolImage(for: "ellipsis.circle", nil)
         }
 
         if #available(macOS 10.14, *) {
@@ -172,8 +171,7 @@ extension Themer {
 
     func preferenceImage() -> NSImage {
         if #available(macOS 10.16, *) {
-            return NSImage(systemSymbolName: "gear",
-                           accessibilityDescription: "new-preference-image")!
+            return symbolImage(for: "gear", nil)
         }
 
         if #available(macOS 10.14, *) {
@@ -189,14 +187,13 @@ extension Themer {
 
         return
             themeIndex == .light
-            ? NSImage(named: NSImage.Name("Settings"))!
-            : NSImage(named: NSImage.Name("Settings-White"))!
+                ? NSImage(named: NSImage.Name("Settings"))!
+                : NSImage(named: NSImage.Name("Settings-White"))!
     }
 
     func pinImage() -> NSImage {
         if #available(macOS 10.16, *) {
-            return NSImage(systemSymbolName: "macwindow.on.rectangle",
-                           accessibilityDescription: "pin-image")!
+            return symbolImage(for: "macwindow.on.rectangle", nil)
         }
 
         if #available(macOS 10.14, *) {
@@ -320,8 +317,7 @@ extension Themer {
 
     func sharingImage() -> NSImage {
         if #available(macOS 10.16, *) {
-            return NSImage(systemSymbolName: "square.and.arrow.up.on.square.fill",
-                           accessibilityDescription: "share-button")!
+            return symbolImage(for: "square.and.arrow.up.on.square.fill", nil)
         }
 
         if #available(macOS 10.14, *) {
@@ -447,5 +443,11 @@ extension Themer {
         return themeIndex == .light ?
             NSColor(deviceRed: 241.0 / 255.0, green: 241.0 / 255.0, blue: 241.0 / 255.0, alpha: 1.0) :
             NSColor(deviceRed: 42.0 / 255.0, green: 55.0 / 255.0, blue: 62.0 / 255.0, alpha: 1.0)
+    }
+
+    func symbolImage(for _: String, _: String?) -> NSImage {
+        // Dummy image for older xcodes
+        return NSImage(named: NSImage.Name("Calendar Tab Icon"))!
+//    return NSImage(systemSymbolName: name, accessibilityDescription: accessibilityDescription)!
     }
 }
