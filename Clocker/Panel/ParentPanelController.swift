@@ -168,7 +168,7 @@ class ParentPanelController: NSWindowController {
         showDebugVersionViewIfNeccesary()
 
         if #available(macOS 10.16, *) {
-            mainTableView.style = .fullWidth
+//            mainTableView.style = .fullWidth
         }
     }
 
