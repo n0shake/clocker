@@ -71,7 +71,7 @@ class OnboardingParentViewController: NSViewController {
         if #available(OSX 10.16, *) {
             negativeButton.controlSize = .large
             positiveButton.controlSize = .large
-            backButton.image = Themer.shared().symbolImage(for: "chevron.left.circle.fill", accessibilityDescription: "back-button")
+            backButton.image = Themer.shared().symbolImage(for: "chevron.left.circle.fill")
             backButton.bezelStyle = .recessed
             backButton.isBordered = false
             backButton.font = NSFont.systemFont(ofSize: 24)
