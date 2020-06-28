@@ -113,7 +113,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         let shouldLaunchOnboarding = (DataStore.shared().retrieve(key: CLShowOnboardingFlow) == nil && DataStore.shared().timezones().isEmpty)
             || ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument)
 
-        shouldLaunchOnboarding ? controller?.launch() : controller?.launch()
+        shouldLaunchOnboarding ? controller?.launch() : continueUsually()
     }
 
     func continueUsually() {
