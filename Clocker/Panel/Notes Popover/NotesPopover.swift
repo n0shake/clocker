@@ -75,6 +75,10 @@ class NotesPopover: NSViewController {
         setReminderCheckbox.setAccessibilityIdentifier("ReminderCheckbox")
         alertPopupButton.setAccessibilityIdentifier("RemindersAlertPopup")
         reminderView.setAccessibilityIdentifier("RemindersView")
+
+        if #available(macOS 10.16, *) {
+            alertPopupButton.controlSize = .large
+        }
     }
 
     override func viewWillAppear() {

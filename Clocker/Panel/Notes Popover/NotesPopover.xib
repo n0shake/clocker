@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -87,7 +87,7 @@
                                         <constraint firstAttribute="height" constant="22" id="wGh-4g-gQ3"/>
                                     </constraints>
                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="CUSTOMIZE" id="AWQ-XX-6Ai">
-                                        <font key="font" metaFont="toolTip"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -187,7 +187,7 @@
                             <rect key="frame" x="0.0" y="137" width="300" height="60"/>
                             <subviews>
                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="seL-7y-MOc">
-                                    <rect key="frame" x="18" y="10" width="265" height="24"/>
+                                    <rect key="frame" x="18" y="11" width="265" height="24"/>
                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Low-Q8-K5h">
                                         <font key="font" size="12" name="Avenir-Book"/>
                                         <segments>
@@ -201,9 +201,9 @@
                                     </connections>
                                 </segmentedControl>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wqz-cF-lhm">
-                                    <rect key="frame" x="18" y="35" width="274" height="14"/>
+                                    <rect key="frame" x="18" y="36" width="274" height="14"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Timezone Format" id="JnF-g8-GLM">
-                                        <font key="font" metaFont="toolTip"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -224,7 +224,7 @@
                             <rect key="frame" x="0.0" y="77" width="300" height="60"/>
                             <subviews>
                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eiB-dp-56X">
-                                    <rect key="frame" x="18" y="10" width="265" height="24"/>
+                                    <rect key="frame" x="18" y="11" width="265" height="24"/>
                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="E2D-Y2-kok">
                                         <font key="font" size="12" name="Avenir-Book"/>
                                         <segments>
@@ -238,9 +238,9 @@
                                     </connections>
                                 </segmentedControl>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WVk-sH-CqF">
-                                    <rect key="frame" x="18" y="35" width="274" height="14"/>
+                                    <rect key="frame" x="18" y="36" width="274" height="14"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Display Seconds" id="lCg-ZI-gIk">
-                                        <font key="font" metaFont="toolTip"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -324,7 +324,7 @@
                                     </constraints>
                                 </progressIndicator>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9hd-54-hYl">
-                                    <rect key="frame" x="103" y="-2" width="132" height="36"/>
+                                    <rect key="frame" x="102" y="-2" width="134" height="37"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="8tH-mx-HuL"/>
                                         <constraint firstAttribute="width" constant="120" id="gn2-zr-ZRp"/>
@@ -338,7 +338,7 @@
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qgx-Yf-bP8">
-                                    <rect key="frame" x="233" y="-2" width="62" height="36"/>
+                                    <rect key="frame" x="232" y="-2" width="64" height="37"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="50" id="n5J-f7-aqy"/>
                                         <constraint firstAttribute="height" constant="25" id="oQ5-uv-Gfg"/>
@@ -346,9 +346,6 @@
                                     <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xa4-rw-FBZ">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" size="12" name="Avenir-Light"/>
-                                        <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
                                     </buttonCell>
                                     <accessibility identifier="SaveButton"/>
                                     <connections>

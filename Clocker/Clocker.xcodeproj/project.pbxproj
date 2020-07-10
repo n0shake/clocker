@@ -81,7 +81,6 @@
 		35C36FA12259ED6D002FA5C6 /* EventCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F9E2259ED6D002FA5C6 /* EventCenter.swift */; };
 		35C36FA22259ED6D002FA5C6 /* RemindersHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F9F2259ED6D002FA5C6 /* RemindersHandler.swift */; };
 		35C36FA42259EEC2002FA5C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36FA32259EEC2002FA5C6 /* AppDelegate.swift */; };
-		35E05E4424621A40008CA0A9 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35E05E4324621A40008CA0A9 /* Keys.plist */; };
 		9A0A1C8C20903DBD0012003B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87651C1FEDC500A7A2DF /* CoreLocation.framework */; };
 		9A13BAD61CA87F08007C6CBE /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAD81CA87F08007C6CBE /* Panel.xib */; };
 		9A13BAE01CA882FA007C6CBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAE21CA882FA007C6CBE /* InfoPlist.strings */; };
@@ -300,7 +299,7 @@
 		35C36F9E2259ED6D002FA5C6 /* EventCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenter.swift; sourceTree = "<group>"; };
 		35C36F9F2259ED6D002FA5C6 /* RemindersHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersHandler.swift; sourceTree = "<group>"; };
 		35C36FA32259EEC2002FA5C6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
-		35E05E4324621A40008CA0A9 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Keys.plist; path = ../Internal/Keys.plist; sourceTree = "<group>"; };
+		35E2A6D324A6E4F300D2773B /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Keys.plist; path = Internal/Keys.plist; sourceTree = "<group>"; };
 		9A13BAD71CA87F08007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Panel.xib; sourceTree = "<group>"; };
 		9A13BAE11CA882FA007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A13BAEB1CA88A76007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -821,7 +820,7 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
-				35E05E4324621A40008CA0A9 /* Keys.plist */,
+				35E2A6D324A6E4F300D2773B /* Keys.plist */,
 				35C36F9B2259EC97002FA5C6 /* Events and Reminders */,
 				35C36F382259D80C002FA5C6 /* Overall App */,
 				35C36F242259D64D002FA5C6 /* Panel */,
@@ -1115,7 +1114,6 @@
 				9A13BAD61CA87F08007C6CBE /* Panel.xib in Resources */,
 				35C36F6B2259E0E1002FA5C6 /* FloatingWindow.xib in Resources */,
 				35C36F17225961DA002FA5C6 /* DateTools.bundle in Resources */,
-				35E05E4424621A40008CA0A9 /* Keys.plist in Resources */,
 				35C36EF322595F14002FA5C6 /* WelcomeView.xib in Resources */,
 				35C36EF822595F14002FA5C6 /* Onboarding.storyboard in Resources */,
 				35C36F612259DE67002FA5C6 /* NotesPopover.xib in Resources */,
@@ -1440,6 +1438,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1925,6 +1924,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1988,6 +1988,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;

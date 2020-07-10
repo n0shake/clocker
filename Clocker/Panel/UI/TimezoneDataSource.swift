@@ -62,6 +62,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
         cellView.noteLabel.toolTip = currentModel.note ?? CLEmptyString
         cellView.currentLocationIndicator.isHidden = !currentModel.isSystemTimezone
         cellView.time.setAccessibilityIdentifier("ActualTime")
+        cellView.relativeDate.setAccessibilityIdentifier("RelativeDate")
         cellView.layout(with: currentModel)
 
         cellView.setAccessibilityIdentifier(currentModel.formattedTimezoneLabel())
@@ -136,6 +137,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
 
             if #available(OSX 10.16, *) {
                 swipeToDelete.image = Themer.shared().symbolImage(for: "trash.fill", "Trash Button")
+
             } else {
                 swipeToDelete.image = NSImage(named: NSImage.Name("Trash"))
             }
