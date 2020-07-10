@@ -109,6 +109,12 @@ class StatusItemView: NSView {
         ])
     }
 
+    @available(OSX 10.14, *)
+    override func viewDidChangeEffectiveAppearance() {
+        super.viewDidChangeEffectiveAppearance()
+        updateTimeInMenubar()
+    }
+
     func updateTimeInMenubar() {
         locationView.attributedStringValue = NSAttributedString(string: operationsObject.compactMenuTitle(), attributes: textFontAttributes)
         timeView.attributedStringValue = NSAttributedString(string: operationsObject.compactMenuSubtitle(), attributes: timeAttributes)
