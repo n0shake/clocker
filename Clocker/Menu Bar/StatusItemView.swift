@@ -2,7 +2,7 @@
 
 import Cocoa
 
-private var defaultParagraphStyle: NSMutableParagraphStyle {
+var defaultParagraphStyle: NSMutableParagraphStyle {
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = .center
     paragraphStyle.lineBreakMode = .byTruncatingTail
@@ -13,20 +13,24 @@ var compactModeTimeFont: NSFont {
     return NSFont.monospacedDigitSystemFont(ofSize: 10, weight: .regular)
 }
 
-var timeAttributes: [NSAttributedString.Key: AnyObject] {
-    var textColor = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark" ? NSColor.white : NSColor.black
-
-    if #available(macOS 10.15, *) {
-        textColor = NSColor.white
+extension NSView {
+    var hasDarkAppearance: Bool {
+        if #available(OSX 10.14, *) {
+            switch effectiveAppearance.name {
+            case .darkAqua, .vibrantDark, .accessibilityHighContrastDarkAqua, .accessibilityHighContrastVibrantDark:
+                return true
+            default:
+                return false
+            }
+        } else {
+            switch effectiveAppearance.name {
+            case .vibrantDark:
+                return true
+            default:
+                return false
+            }
+        }
     }
-
-    let attributes = [
-        NSAttributedString.Key.font: compactModeTimeFont,
-        NSAttributedString.Key.foregroundColor: textColor,
-        NSAttributedString.Key.backgroundColor: NSColor.clear,
-        NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
-    ]
-    return attributes
 }
 
 class StatusItemView: NSView {
@@ -38,10 +42,26 @@ class StatusItemView: NSView {
         return TimezoneDataOperations(with: dataObject)
     }
 
-    private var textFontAttributes: [NSAttributedString.Key: Any] {
-        var textColor = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark" ? NSColor.white : NSColor.black
+    private var timeAttributes: [NSAttributedString.Key: AnyObject] {
+        var textColor = hasDarkAppearance ? NSColor.white : NSColor.black
 
-        if #available(macOS 10.15, *) {
+        if #available(macOS 10.16, *) {
+            textColor = NSColor.white
+        }
+
+        let attributes = [
+            NSAttributedString.Key.font: compactModeTimeFont,
+            NSAttributedString.Key.foregroundColor: textColor,
+            NSAttributedString.Key.backgroundColor: NSColor.clear,
+            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
+        ]
+        return attributes
+    }
+
+    private var textFontAttributes: [NSAttributedString.Key: Any] {
+        var textColor = hasDarkAppearance ? NSColor.white : NSColor.black
+
+        if #available(macOS 10.16, *) {
             textColor = NSColor.white
         }
 

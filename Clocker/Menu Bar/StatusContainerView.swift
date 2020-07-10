@@ -71,14 +71,20 @@ class StatusContainerView: NSView {
             }
         }
 
+        let timeBasedAttributes = [
+            NSAttributedString.Key.font: compactModeTimeFont,
+            NSAttributedString.Key.backgroundColor: NSColor.clear,
+            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
+        ]
+
         func containerWidth(for timezones: [Data]) -> CGFloat {
             let compressedWidth = timezones.reduce(0.0) { (result, timezone) -> CGFloat in
 
                 if let timezoneObject = TimezoneData.customObject(from: timezone) {
                     let precalculatedWidth = Double(compactWidth(for: timezoneObject))
                     let operationObject = TimezoneDataOperations(with: timezoneObject)
-                    let calculatedSubtitleSize = compactModeTimeFont.size(operationObject.compactMenuSubtitle(), precalculatedWidth, attributes: timeAttributes)
-                    let calculatedTitleSize = compactModeTimeFont.size(operationObject.compactMenuTitle(), precalculatedWidth, attributes: timeAttributes)
+                    let calculatedSubtitleSize = compactModeTimeFont.size(operationObject.compactMenuSubtitle(), precalculatedWidth, attributes: timeBasedAttributes)
+                    let calculatedTitleSize = compactModeTimeFont.size(operationObject.compactMenuTitle(), precalculatedWidth, attributes: timeBasedAttributes)
                     return result + max(calculatedTitleSize.width, calculatedSubtitleSize.width) + bufferWidth
                 }
 
@@ -114,10 +120,23 @@ class StatusContainerView: NSView {
     }
 
     private func bestWidth(for timezone: TimezoneData) -> Int {
+        var textColor = hasDarkAppearance ? NSColor.white : NSColor.black
+
+        if #available(macOS 10.15, *) {
+            textColor = NSColor.white
+        }
+
+        let timeBasedAttributes = [
+            NSAttributedString.Key.font: compactModeTimeFont,
+            NSAttributedString.Key.foregroundColor: textColor,
+            NSAttributedString.Key.backgroundColor: NSColor.clear,
+            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
+        ]
+
         let operation = TimezoneDataOperations(with: timezone)
         let bestSize = compactModeTimeFont.size(operation.compactMenuSubtitle(),
-                                                Double(compactWidth(for: timezone)), attributes: timeAttributes)
-        let bestTitleSize = compactModeTimeFont.size(operation.compactMenuTitle(), Double(compactWidth(for: timezone)), attributes: timeAttributes)
+                                                Double(compactWidth(for: timezone)), attributes: timeBasedAttributes)
+        let bestTitleSize = compactModeTimeFont.size(operation.compactMenuTitle(), Double(compactWidth(for: timezone)), attributes: timeBasedAttributes)
 
         return Int(max(bestSize.width, bestTitleSize.width) + bufferWidth)
     }
