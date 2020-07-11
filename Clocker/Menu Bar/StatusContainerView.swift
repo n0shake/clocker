@@ -122,7 +122,7 @@ class StatusContainerView: NSView {
     private func bestWidth(for timezone: TimezoneData) -> Int {
         var textColor = hasDarkAppearance ? NSColor.white : NSColor.black
 
-        if #available(macOS 10.15, *) {
+        if #available(macOS 10.16, *) {
             textColor = NSColor.white
         }
 
