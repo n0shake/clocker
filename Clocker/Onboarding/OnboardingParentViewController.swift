@@ -63,12 +63,19 @@ class OnboardingParentViewController: NSViewController {
 
         positiveButton.title = NSLocalizedString("Get Started",
                                                  comment: "Title for Welcome View Controller's Continue Button")
-        backButton.title = NSLocalizedString("Back",
-                                             comment: "Button title for going back to the previous screen")
         positiveButton.tag = OnboardingType.welcome.rawValue
         backButton.tag = OnboardingType.welcome.rawValue
 
         [negativeButton, backButton].forEach { $0?.isHidden = true }
+
+        if #available(OSX 10.16, *) {
+//          negativeButton.controlSize = .large
+//          positiveButton.controlSize = .large
+            backButton.image = Themer.shared().symbolImage(for: "chevron.left.circle.fill", "back-button")
+        } else {
+            backButton.title = NSLocalizedString("Back",
+                                                 comment: "Button title for going back to the previous screen")
+        }
     }
 
     private func setIdentifiersForTests() {

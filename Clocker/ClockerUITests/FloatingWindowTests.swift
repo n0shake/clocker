@@ -4,7 +4,7 @@ import XCTest
 
 extension String {
     func localizedString() -> String {
-        let bundle = Bundle(for: AboutUsTests.self)
+        let bundle = Bundle(for: FloatingWindowTests.self)
         return NSLocalizedString(self, bundle: bundle, comment: "")
     }
 }
@@ -144,6 +144,7 @@ class FloatingWindowTests: XCTestCase {
         let appearanceTab = app.toolbars.buttons.element(boundBy: 1)
         appearanceTab.click()
 
+        // Select Misc tab
         let miscTab = app.tabs.element(boundBy: 1)
         miscTab.click()
 
@@ -159,6 +160,7 @@ class FloatingWindowTests: XCTestCase {
         XCTAssertFalse(app.staticTexts["InformationLabel"].exists)
     }
 
+    /// Make sure to ensure supplementary/relative date label is turned on!
     func testMovingSlider() {
         if app.buttons["Pin"].exists {
             app.buttons["Pin"].click()
@@ -167,7 +169,7 @@ class FloatingWindowTests: XCTestCase {
         let floatingSlider = app.sliders["FloatingSlider"].exists
 
         if floatingSlider {
-            let tomorrowPredicate = NSPredicate(format: "placeholderValue like %@", "Tomorrow")
+            let tomorrowPredicate = NSPredicate(format: "identifier like %@", "RelativeDate")
             let tomorrow = app.tables.tableRows.staticTexts.matching(tomorrowPredicate)
 
             var previousValues: [String] = []

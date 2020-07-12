@@ -81,15 +81,8 @@ class CalendarViewController: ParentViewController {
         super.viewWillAppear()
 
         verifyCalendarAccess()
-
-        if DataStore.shared().shouldDisplay(ViewType.upcomingEventView) {
-            showSegmentedControl.selectedSegment = 0
-        } else {
-            showSegmentedControl.selectedSegment = 1
-        }
-
-        // If the menubar mode is compact, we can't show meetings in the menubar. So disable toggling that option.
-        showNextMeetingInMenubarControl.isEnabled = !DataStore.shared().shouldDisplay(.menubarCompactMode)
+        showSegmentedControl.selectedSegment = DataStore.shared().shouldDisplay(ViewType.upcomingEventView) ? 0 : 1
+        showNextMeetingInMenubarControl.isEnabled = DataStore.shared().shouldDisplay(.menubarCompactMode) ? false : true
     }
 
     private func verifyCalendarAccess() {

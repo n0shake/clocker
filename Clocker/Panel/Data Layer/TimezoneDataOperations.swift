@@ -33,6 +33,32 @@ extension TimezoneDataOperations {
         return dateFormatter.string(from: newDate)
     }
 
+    private func checkForUpcomingEvents() -> (String, String)? {
+        if DataStore.shared().shouldDisplay(.showMeetingInMenubar) {
+            let filteredDates = EventCenter.sharedCenter().eventsForDate
+            let autoupdatingCal = EventCenter.sharedCenter().autoupdatingCalendar
+            guard let events = filteredDates[autoupdatingCal.startOfDay(for: Date())] else {
+                return nil
+            }
+
+            for event in events {
+                if event.event.startDate.timeIntervalSinceNow > 0, !event.isAllDay {
+                    let timeForEventToStart = event.event.startDate.timeIntervalSinceNow / 60
+
+                    if timeForEventToStart > 30 {
+                        print("Our next event: \(event.event.title ?? "Error") starts in \(timeForEventToStart) mins")
+
+                        continue
+                    }
+
+                    return EventCenter.sharedCenter().separateFormat(event: event.event)
+                }
+            }
+        }
+
+        return nil
+    }
+
     func compactMenuTitle() -> String {
         var subtitle = CLEmptyString
 

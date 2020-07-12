@@ -2,7 +2,7 @@
 
 import Cocoa
 
-private var defaultParagraphStyle: NSMutableParagraphStyle {
+var defaultParagraphStyle: NSMutableParagraphStyle {
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = .center
     paragraphStyle.lineBreakMode = .byTruncatingTail
@@ -13,16 +13,24 @@ var compactModeTimeFont: NSFont {
     return NSFont.monospacedDigitSystemFont(ofSize: 10, weight: .regular)
 }
 
-var timeAttributes: [NSAttributedString.Key: AnyObject] {
-    let textColor = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark" ? NSColor.white : NSColor.black
-
-    let attributes = [
-        NSAttributedString.Key.font: compactModeTimeFont,
-        NSAttributedString.Key.foregroundColor: textColor,
-        NSAttributedString.Key.backgroundColor: NSColor.clear,
-        NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
-    ]
-    return attributes
+extension NSView {
+    var hasDarkAppearance: Bool {
+        if #available(OSX 10.14, *) {
+            switch effectiveAppearance.name {
+            case .darkAqua, .vibrantDark, .accessibilityHighContrastDarkAqua, .accessibilityHighContrastVibrantDark:
+                return true
+            default:
+                return false
+            }
+        } else {
+            switch effectiveAppearance.name {
+            case .vibrantDark:
+                return true
+            default:
+                return false
+            }
+        }
+    }
 }
 
 class StatusItemView: NSView {
@@ -34,8 +42,28 @@ class StatusItemView: NSView {
         return TimezoneDataOperations(with: dataObject)
     }
 
+    private var timeAttributes: [NSAttributedString.Key: AnyObject] {
+        var textColor = hasDarkAppearance ? NSColor.white : NSColor.black
+
+        if #available(macOS 10.16, *) {
+            textColor = NSColor.white
+        }
+
+        let attributes = [
+            NSAttributedString.Key.font: compactModeTimeFont,
+            NSAttributedString.Key.foregroundColor: textColor,
+            NSAttributedString.Key.backgroundColor: NSColor.clear,
+            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
+        ]
+        return attributes
+    }
+
     private var textFontAttributes: [NSAttributedString.Key: Any] {
-        let textColor = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark" ? NSColor.white : NSColor.black
+        var textColor = hasDarkAppearance ? NSColor.white : NSColor.black
+
+        if #available(macOS 10.16, *) {
+            textColor = NSColor.white
+        }
 
         let textFontAttributes = [
             NSAttributedString.Key.font: NSFont.boldSystemFont(ofSize: 10),
@@ -79,6 +107,12 @@ class StatusItemView: NSView {
             timeView.topAnchor.constraint(equalTo: locationView.bottomAnchor),
             timeView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+    }
+
+    @available(OSX 10.14, *)
+    override func viewDidChangeEffectiveAppearance() {
+        super.viewDidChangeEffectiveAppearance()
+        updateTimeInMenubar()
     }
 
     func updateTimeInMenubar() {
