@@ -6,3 +6,4 @@ Clocker/Clocker.xcodeproj/project.xcworkspace/xcuserdata/abhishek_banthia.xcuser
 Clocker/Clocker.xcodeproj/xcuserdata/abhishek_banthia.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
 *.xcuserstate
 .DS_Store
+Clocker/Internal/Keys.plist

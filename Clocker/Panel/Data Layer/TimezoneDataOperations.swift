@@ -60,10 +60,6 @@ extension TimezoneDataOperations {
     }
 
     func compactMenuTitle() -> String {
-        if let upcomingEvent = checkForUpcomingEvents() {
-            return upcomingEvent.0
-        }
-
         var subtitle = CLEmptyString
 
         let shouldDayBeShown = DataStore.shared().shouldShowDayInMenubar()
@@ -84,10 +80,6 @@ extension TimezoneDataOperations {
     }
 
     func compactMenuSubtitle() -> String {
-        if let upcomingEvent = checkForUpcomingEvents() {
-            return upcomingEvent.1
-        }
-
         var subtitle = CLEmptyString
 
         let shouldDayBeShown = DataStore.shared().shouldShowDayInMenubar()
