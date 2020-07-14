@@ -171,7 +171,7 @@ extension EventCenter {
         return filteredAllDayEvent?.event
     }
 
-    private func initializeStoreIfNeccesary() {
+    func initializeStoreIfNeccesary() {
         if eventStore == nil {
             eventStore = EKEventStore()
         }

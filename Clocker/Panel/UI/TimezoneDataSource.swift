@@ -136,7 +136,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
             })
 
             if #available(OSX 10.16, *) {
-                swipeToDelete.image = Themer.shared().symbolImage(for: "trash.fill", "Trash Button")
+                swipeToDelete.image = Themer.shared().symbolImage(for: "trash.fill")
 
             } else {
                 swipeToDelete.image = NSImage(named: NSImage.Name("Trash"))
