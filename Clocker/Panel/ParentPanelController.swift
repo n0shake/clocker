@@ -167,11 +167,11 @@ class ParentPanelController: NSWindowController {
 
         showDebugVersionViewIfNeccesary()
 
-        #if DEBUG
-            if #available(macOS 10.16, *) {
-                mainTableView.style = .fullWidth
-            }
-        #endif
+//        #if DEBUG
+//            if #available(macOS 10.16, *) {
+//                mainTableView.style = .fullWidth
+//            }
+//        #endif
     }
 
     private func showDebugVersionViewIfNeccesary() {
