@@ -26,4 +26,4 @@ If you'd like to donate, you can do so [here](https://www.paypal.me/AbhishekBant
 
 **License**
 ---
-Copyright (c) 2015 **Abhishek Banthia**. Released under the MIT License.
+Copyright (c) 2020 **Abhishek Banthia**. Released under the MIT License.
