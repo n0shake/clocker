@@ -79,12 +79,11 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     public func applicationDockMenu(_: NSApplication) -> NSMenu? {
         let menu = NSMenu(title: "Quick Access")
 
-        Logger.log(object: ["Dock Menu Triggered": "YES"], for: "Dock Menu Triggered")
-
         let toggleMenuItem = NSMenuItem(title: "Toggle Panel", action: #selector(AppDelegate.togglePanel(_:)), keyEquivalent: "")
         let openPreferences = NSMenuItem(title: "Preferences", action: #selector(AppDelegate.openPreferencesWindow), keyEquivalent: ",")
+        let hideFromDockMenuItem = NSMenuItem(title: "Hide from Dock", action: #selector(AppDelegate.hideFromDock), keyEquivalent: "")
 
-        [toggleMenuItem, openPreferences].forEach {
+        [toggleMenuItem, openPreferences, hideFromDockMenuItem].forEach {
             $0.isEnabled = true
             menu.addItem($0)
         }
@@ -102,6 +101,11 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
             let panelController = PanelController.shared()
             panelController.openPreferences(NSButton())
         }
+    }
+
+    @objc func hideFromDock() {
+        UserDefaults.standard.set(0, forKey: CLAppDislayOptions)
+        NSApp.setActivationPolicy(.accessory)
     }
 
     private lazy var controller: OnboardingController? = {
