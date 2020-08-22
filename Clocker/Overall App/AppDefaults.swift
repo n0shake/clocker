@@ -126,7 +126,7 @@ class AppDefaults {
                 CLShowMeetingInMenubar: 1,
                 CLTruncateTextLength: 30,
                 CLSelectedCalendars: [],
-                CLAppDislayOptions: 0,
+                CLAppDisplayOptions: 1,
                 CLMenubarCompactMode: 1]
     }
 }
