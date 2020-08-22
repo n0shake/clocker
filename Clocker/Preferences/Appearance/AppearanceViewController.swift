@@ -104,7 +104,7 @@ class AppearanceViewController: ParentViewController {
         let shouldDisplayCompact = DataStore.shared().shouldDisplay(.menubarCompactMode)
         menubarMode.setSelected(true, forSegment: shouldDisplayCompact ? 0 : 1)
 
-        let appDisplayOptions = DataStore.shared().shouldDisplay(.showAppInForeground)
+        let appDisplayOptions = DataStore.shared().shouldDisplay(.appDisplayOptions)
         appDisplayControl.setSelected(true, forSegment: appDisplayOptions ? 1 : 0)
     }
 

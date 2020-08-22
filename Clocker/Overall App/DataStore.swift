@@ -11,6 +11,7 @@ enum ViewType {
     case showMeetingInMenubar
     case showAllDayEventsInMenubar
     case showAppInForeground
+    case appDisplayOptions
     case dateInMenubar
     case placeInMenubar
     case dayInMenubar
@@ -135,6 +136,8 @@ class DataStore: NSObject {
             return shouldDisplayHelper(CLShowPlaceInMenu)
         case .dayInMenubar:
             return shouldDisplayHelper(CLShowDayInMenu)
+        case .appDisplayOptions:
+          return shouldDisplayHelper(CLAppDisplayOptions)
         case .menubarCompactMode:
             guard let value = retrieve(key: CLMenubarCompactMode) as? Int else {
                 return false
