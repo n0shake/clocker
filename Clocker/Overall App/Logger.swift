@@ -1,15 +1,13 @@
 // Copyright © 2015 Abhishek Banthia
 
 import Cocoa
-import Crashlytics
 import os.log
 import os.signpost
 
 class Logger: NSObject {
-    class func log(object: [String: Any]?, for key: NSString) {
-        Answers.logCustomEvent(withName: key as String,
-                               customAttributes: object)
-    }
+  class func log(object: [String: Any]?, for key: NSString) {
+    // TODO: Use a new analytics solution!
+  }
 }
 
 @available(OSX 10.14, *)
