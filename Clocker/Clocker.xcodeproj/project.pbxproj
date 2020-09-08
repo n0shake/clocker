@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		357391872507277500D30819 /* HourMarkerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357391852507277500D30819 /* HourMarkerViewItem.swift */; };
+		357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357391862507277500D30819 /* HourMarkerViewItem.xib */; };
 		3595FAD0227F88BC0044A12A /* UserDefaults + KVOExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */; };
 		35C11E2124873A550031F18C /* VersionUpdateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C11E2024873A550031F18C /* VersionUpdateHandler.swift */; };
 		35C36EE422595EFD002FA5C6 /* StatusContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE022595EFD002FA5C6 /* StatusContainerView.swift */; };
@@ -225,6 +227,8 @@
 		352AF497232E07B400D96FA7 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		352AF499232E07B400D96FA7 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3545C52A22612BCC00121E25 /* RateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTests.swift; sourceTree = "<group>"; };
+		357391852507277500D30819 /* HourMarkerViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourMarkerViewItem.swift; sourceTree = "<group>"; };
+		357391862507277500D30819 /* HourMarkerViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourMarkerViewItem.xib; sourceTree = "<group>"; };
 		3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults + KVOExtensions.swift"; sourceTree = "<group>"; };
 		35C11E2024873A550031F18C /* VersionUpdateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUpdateHandler.swift; sourceTree = "<group>"; };
 		35C36EE022595EFD002FA5C6 /* StatusContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusContainerView.swift; sourceTree = "<group>"; };
@@ -602,6 +606,8 @@
 				35C36F552259DD8A002FA5C6 /* TimezoneCellView.swift */,
 				35C36F532259DD8A002FA5C6 /* TimezoneDataSource.swift */,
 				35C36F322259D7C3002FA5C6 /* AddTableViewCell.swift */,
+				357391852507277500D30819 /* HourMarkerViewItem.swift */,
+				357391862507277500D30819 /* HourMarkerViewItem.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1107,6 +1113,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A13BAEA1CA88A76007C6CBE /* Localizable.strings in Resources */,
+				357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */,
 				9AB6F15E2259D08300A44663 /* iVersion.bundle in Resources */,
 				35C36F972259EBB1002FA5C6 /* AppFeedbackWindow.xib in Resources */,
 				9A13BAE01CA882FA007C6CBE /* InfoPlist.strings in Resources */,
@@ -1212,6 +1219,7 @@
 				35C36EE622595EFD002FA5C6 /* StatusItemView.swift in Sources */,
 				35C36FA12259ED6D002FA5C6 /* EventCenter.swift in Sources */,
 				9A5951BD1C1D0A8D009C17AA /* CommonStrings.m in Sources */,
+				357391872507277500D30819 /* HourMarkerViewItem.swift in Sources */,
 				35C36EE422595EFD002FA5C6 /* StatusContainerView.swift in Sources */,
 				35C36F782259E1D0002FA5C6 /* Foundation + Additions.swift in Sources */,
 				35C36F16225961DA002FA5C6 /* Date+Inits.swift in Sources */,
@@ -1439,6 +1447,7 @@
 		9A5B1A8C1BECDB5B00A77C68 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CLANG_ENABLE_MODULES = YES;
@@ -1925,6 +1934,7 @@
 		DD4F7C2313C30F9F00825C6E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CLANG_ENABLE_MODULES = YES;
@@ -1989,6 +1999,7 @@
 		DD4F7C2413C30F9F00825C6E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CLANG_ENABLE_MODULES = YES;

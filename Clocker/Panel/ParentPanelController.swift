@@ -83,6 +83,8 @@ class ParentPanelController: NSWindowController {
 
     @IBOutlet var debugVersionView: NSView!
 
+    @IBOutlet var modernSlider: NSCollectionView!
+
     var defaultPreferences: [Data] {
         return DataStore.shared().timezones()
     }
@@ -172,6 +174,9 @@ class ParentPanelController: NSWindowController {
 //                mainTableView.style = .fullWidth
 //            }
 //        #endif
+
+        modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+        modernSlider.delegate = self
     }
 
     private func showDebugVersionViewIfNeccesary() {
@@ -1008,5 +1013,27 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
         Logger.log(object: ["Service Title": sharingService.title],
                    for: "Sharing Service Executed")
         return self as? NSSharingServiceDelegate
+    }
+}
+
+extension ParentPanelController: NSCollectionViewDataSource, NSCollectionViewDelegate {
+    static let markerUserIdentifier = "HourMarkerViewItem"
+
+    func collectionView(_: NSCollectionView, numberOfItemsInSection _: Int) -> Int {
+        return 24
+    }
+
+    func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
+        let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(ParentPanelController.markerUserIdentifier), for: indexPath) as! HourMarkerViewItem
+        item.setup(with: indexPath)
+        return item
+    }
+
+    func collectionView(_: NSCollectionView, willDisplay _: NSCollectionViewItem, forRepresentedObjectAt indexPath: IndexPath) {
+        Swift.print("Will Display Item at \(indexPath.item)")
+    }
+
+    func collectionView(_: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+        Swift.print("Did Select Item at \(indexPaths.description)")
     }
 }
