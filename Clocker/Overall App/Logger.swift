@@ -5,9 +5,9 @@ import os.log
 import os.signpost
 
 class Logger: NSObject {
-  class func log(object: [String: Any]?, for key: NSString) {
-    // TODO: Use a new analytics solution!
-  }
+    class func log(object _: [String: Any]?, for _: NSString) {
+        // TODO: Use a new analytics solution!
+    }
 }
 
 @available(OSX 10.14, *)
