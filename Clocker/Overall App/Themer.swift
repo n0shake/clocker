@@ -448,11 +448,13 @@ extension Themer {
     func symbolImage(for name: String) -> NSImage {
         assert(name.count > 0)
 
-        if #available(OSX 10.16, *) {
-            return NSImage(systemSymbolName: name, accessibilityDescription: name)!
-        } else {
-            // Dummy image for older xcodes
-            return NSImage(named: NSImage.Name("Calendar Tab Icon"))!
-        }
+        return NSImage(named: NSImage.Name("Calendar Tab Icon"))!
+//        if #available(OSX 10.16, *) {
+//            return NSImage(systemSymbolName: name,
+//                           accessibilityDescription: name)!
+//        } else {
+//            // Dummy image for older xcodes
+//            return NSImage(named: NSImage.Name("Calendar Tab Icon"))!
+//        }
     }
 }

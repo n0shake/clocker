@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		357391872507277500D30819 /* HourMarkerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357391852507277500D30819 /* HourMarkerViewItem.swift */; };
+		357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357391862507277500D30819 /* HourMarkerViewItem.xib */; };
 		3595FAD0227F88BC0044A12A /* UserDefaults + KVOExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */; };
 		35C11E2124873A550031F18C /* VersionUpdateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C11E2024873A550031F18C /* VersionUpdateHandler.swift */; };
 		35C36EE422595EFD002FA5C6 /* StatusContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE022595EFD002FA5C6 /* StatusContainerView.swift */; };
@@ -123,12 +125,12 @@
 		9AB6F16A2259D2A600A44663 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F1692259D2A600A44663 /* SearchResults.swift */; };
 		9AB89E031CE97A4900EC8EB1 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AB89E021CE97A4900EC8EB1 /* Media.xcassets */; };
 		9ABFB3801CA6882000E10745 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ABFB37F1CA6882000E10745 /* ApplicationServices.framework */; };
+		9AC26B6E24BE3DBE0020D0EA /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AC26B6C24BE3DBE0020D0EA /* Keys.plist */; };
 		9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9ACB31401EDA994200F3E1D3 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACB313F1EDA994200F3E1D3 /* ShortcutRecorder.framework */; };
 		9ACE03EF1CB0ADE00039FC01 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACE03EE1CB0ADE00039FC01 /* Firebase.framework */; };
 		9ACF469D1DCBD45200C49B51 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACF469C1DCBD45200C49B51 /* Quartz.framework */; };
 		9ACF618D231DABAE00F5E51E /* SearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF618C231DABAE00F5E51E /* SearchDataSource.swift */; };
-		9AEC7109249A93DA006520FA /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AEC7108249A93DA006520FA /* Keys.plist */; };
 		C20839CA21515C1E00C86589 /* ClockerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20839C921515C1E00C86589 /* ClockerUnitTests.swift */; };
 		C213713420B4FD920024D5A4 /* FloatingWindowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C213713320B4FD920024D5A4 /* FloatingWindowTests.swift */; };
 		C22F3D802107778A0001D5E1 /* ShortcutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22F3D7F2107778A0001D5E1 /* ShortcutTests.swift */; };
@@ -225,6 +227,8 @@
 		352AF497232E07B400D96FA7 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		352AF499232E07B400D96FA7 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3545C52A22612BCC00121E25 /* RateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTests.swift; sourceTree = "<group>"; };
+		357391852507277500D30819 /* HourMarkerViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourMarkerViewItem.swift; sourceTree = "<group>"; };
+		357391862507277500D30819 /* HourMarkerViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourMarkerViewItem.xib; sourceTree = "<group>"; };
 		3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults + KVOExtensions.swift"; sourceTree = "<group>"; };
 		35C11E2024873A550031F18C /* VersionUpdateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUpdateHandler.swift; sourceTree = "<group>"; };
 		35C36EE022595EFD002FA5C6 /* StatusContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusContainerView.swift; sourceTree = "<group>"; };
@@ -380,6 +384,7 @@
 		9AB6F1692259D2A600A44663 /* SearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
 		9AB89E021CE97A4900EC8EB1 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		9ABFB37F1CA6882000E10745 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		9AC26B6C24BE3DBE0020D0EA /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Keys.plist; path = Internal/Keys.plist; sourceTree = "<group>"; };
 		9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9ACB31391EDA98EA00F3E1D3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		9ACB313A1EDA98EA00F3E1D3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -390,7 +395,6 @@
 		9ACE03EE1CB0ADE00039FC01 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Frameworks/Firebase.framework; sourceTree = "<group>"; };
 		9ACF469C1DCBD45200C49B51 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		9ACF618C231DABAE00F5E51E /* SearchDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataSource.swift; sourceTree = "<group>"; };
-		9AEC7108249A93DA006520FA /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Keys.plist; path = Internal/Keys.plist; sourceTree = "<group>"; };
 		9AFCC7FC1FD668FF00509B9C /* ClockerHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClockerHelper.entitlements; sourceTree = "<group>"; };
 		C20839C721515C1E00C86589 /* ClockerUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClockerUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C20839C921515C1E00C86589 /* ClockerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockerUnitTests.swift; sourceTree = "<group>"; };
@@ -602,6 +606,8 @@
 				35C36F552259DD8A002FA5C6 /* TimezoneCellView.swift */,
 				35C36F532259DD8A002FA5C6 /* TimezoneDataSource.swift */,
 				35C36F322259D7C3002FA5C6 /* AddTableViewCell.swift */,
+				357391852507277500D30819 /* HourMarkerViewItem.swift */,
+				357391862507277500D30819 /* HourMarkerViewItem.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -821,6 +827,7 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
+				9AC26B6C24BE3DBE0020D0EA /* Keys.plist */,
 				35C36F9B2259EC97002FA5C6 /* Events and Reminders */,
 				35C36F382259D80C002FA5C6 /* Overall App */,
 				35C36F242259D64D002FA5C6 /* Panel */,
@@ -1106,6 +1113,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A13BAEA1CA88A76007C6CBE /* Localizable.strings in Resources */,
+				357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */,
 				9AB6F15E2259D08300A44663 /* iVersion.bundle in Resources */,
 				35C36F972259EBB1002FA5C6 /* AppFeedbackWindow.xib in Resources */,
 				9A13BAE01CA882FA007C6CBE /* InfoPlist.strings in Resources */,
@@ -1114,6 +1122,7 @@
 				9A13BAD61CA87F08007C6CBE /* Panel.xib in Resources */,
 				35C36F6B2259E0E1002FA5C6 /* FloatingWindow.xib in Resources */,
 				35C36F17225961DA002FA5C6 /* DateTools.bundle in Resources */,
+				9AC26B6E24BE3DBE0020D0EA /* Keys.plist in Resources */,
 				35C36EF322595F14002FA5C6 /* WelcomeView.xib in Resources */,
 				35C36EF822595F14002FA5C6 /* Onboarding.storyboard in Resources */,
 				35C36F612259DE67002FA5C6 /* NotesPopover.xib in Resources */,
@@ -1210,6 +1219,7 @@
 				35C36EE622595EFD002FA5C6 /* StatusItemView.swift in Sources */,
 				35C36FA12259ED6D002FA5C6 /* EventCenter.swift in Sources */,
 				9A5951BD1C1D0A8D009C17AA /* CommonStrings.m in Sources */,
+				357391872507277500D30819 /* HourMarkerViewItem.swift in Sources */,
 				35C36EE422595EFD002FA5C6 /* StatusContainerView.swift in Sources */,
 				35C36F782259E1D0002FA5C6 /* Foundation + Additions.swift in Sources */,
 				35C36F16225961DA002FA5C6 /* Date+Inits.swift in Sources */,
@@ -1437,6 +1447,7 @@
 		9A5B1A8C1BECDB5B00A77C68 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CLANG_ENABLE_MODULES = YES;
@@ -1453,7 +1464,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 79;
+				CURRENT_PROJECT_VERSION = 80;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1478,7 +1489,7 @@
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 20.05.01;
+				MARKETING_VERSION = 20.07.01;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
@@ -1923,6 +1934,7 @@
 		DD4F7C2313C30F9F00825C6E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CLANG_ENABLE_MODULES = YES;
@@ -1939,7 +1951,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 79;
+				CURRENT_PROJECT_VERSION = 80;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -1966,7 +1978,7 @@
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 20.05.01;
+				MARKETING_VERSION = 20.07.01;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
@@ -1987,6 +1999,7 @@
 		DD4F7C2413C30F9F00825C6E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CLANG_ENABLE_MODULES = YES;
@@ -2003,7 +2016,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 79;
+				CURRENT_PROJECT_VERSION = 80;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2028,7 +2041,7 @@
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 20.05.01;
+				MARKETING_VERSION = 20.07.01;
 				OTHER_LDFLAGS = "";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
