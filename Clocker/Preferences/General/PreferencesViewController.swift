@@ -145,9 +145,9 @@ class PreferencesViewController: ParentViewController {
                                               comment: "Button to close the panel")
     }
 
-    @objc func refreshTimezoneTableView() {
+    @objc func refreshTimezoneTableView(_ shouldSelectNewlyInsertedTimezone: Bool = false) {
         OperationQueue.main.addOperation {
-            self.build()
+            self.build(shouldSelectNewlyInsertedTimezone)
         }
     }
 
@@ -173,7 +173,7 @@ class PreferencesViewController: ParentViewController {
         current.updateTableContent()
     }
 
-    private func build() {
+    private func build(_ shouldSelectLastRow: Bool = false) {
         if DataStore.shared().timezones() == [] {
             housekeeping()
             return
@@ -186,6 +186,9 @@ class PreferencesViewController: ParentViewController {
                 timezoneTableView.enclosingScrollView?.isHidden = false
             }
             timezoneTableView.reloadData()
+            if shouldSelectLastRow {
+                selectNewlyInsertedTimezone()
+            }
         } else {
             housekeeping()
         }
@@ -675,7 +678,7 @@ extension PreferencesViewController {
     private func updateViewState() {
         searchResultsDataSource.cleanupFilterArray()
         reloadSearchResults()
-        refreshTimezoneTableView()
+        refreshTimezoneTableView(true)
         refreshMainTable()
         timezonePanel.close()
         placeholderLabel.placeholderString = CLEmptyString
@@ -795,7 +798,7 @@ extension PreferencesViewController {
         searchField.stringValue = CLEmptyString
 
         reloadSearchResults()
-        refreshTimezoneTableView()
+        refreshTimezoneTableView(true)
         refreshMainTable()
 
         timezonePanel.close()
@@ -803,8 +806,6 @@ extension PreferencesViewController {
                                                           comment: "Search Field Placeholder")
         availableTimezoneTableView.isHidden = false
         isActivityInProgress = false
-
-        selectNewlyInsertedTimezone()
     }
 
     private func selectNewlyInsertedTimezone() {
