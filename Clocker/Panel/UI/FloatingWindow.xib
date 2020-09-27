@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -45,16 +45,16 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView focusRingType="none" distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bn4-fy-Lm6">
-                        <rect key="frame" x="0.0" y="0.0" width="370" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="379" height="460"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="81" horizontalPageScroll="10" verticalLineScroll="81" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khu-OS-PzP">
-                                <rect key="frame" x="0.0" y="195" width="370" height="265"/>
+                                <rect key="frame" x="0.0" y="195" width="379" height="265"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="2rS-3B-A3C">
-                                    <rect key="frame" x="0.0" y="0.0" width="370" height="265"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="379" height="265"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="80" viewBased="YES" id="3js-Fl-DdU" customClass="PanelTableView" customModule="Clocker" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="370" height="265"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="379" height="265"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="1"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -73,11 +73,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="timeZoneCell" id="UES-Eo-BEf" customClass="TimezoneCellView" customModule="Clocker" customModuleProvider="target">
-                                                            <rect key="frame" x="11" y="0.0" width="347" height="80"/>
+                                                            <rect key="frame" x="1" y="0.0" width="338" height="80"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="751" tag="100" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="Nov-Lq-MHq">
-                                                                    <rect key="frame" x="33" y="50" width="178" height="20"/>
+                                                                    <rect key="frame" x="33" y="50" width="169" height="20"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" placeholderString="Timezone Name" id="NN9-pF-Axo">
                                                                         <font key="font" size="15" name="Avenir-Light"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -97,7 +97,7 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="751" tag="101" preferredMaxLayoutWidth="110" translatesAutoresizingMaskIntoConstraints="NO" id="vG5-PS-a35">
-                                                                    <rect key="frame" x="215" y="43" width="114" height="30"/>
+                                                                    <rect key="frame" x="206" y="43" width="114" height="30"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="DyD-zQ-QUy"/>
                                                                     </constraints>
@@ -108,7 +108,7 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NYh-Nx-Z7X">
-                                                                    <rect key="frame" x="33" y="2" width="296" height="22"/>
+                                                                    <rect key="frame" x="33" y="2" width="287" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="S78-bF-ZaL"/>
                                                                     </constraints>
@@ -119,7 +119,7 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fsY-Co-wno">
-                                                                    <rect key="frame" x="279" y="27" width="50" height="17"/>
+                                                                    <rect key="frame" x="270" y="27" width="50" height="17"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="59" id="UUh-5p-Mx2"/>
                                                                         <constraint firstAttribute="height" constant="17" id="qB5-wj-dAu"/>
@@ -131,7 +131,7 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WfK-L4-OKG">
-                                                                    <rect key="frame" x="259" y="26" width="20" height="20"/>
+                                                                    <rect key="frame" x="250" y="26" width="20" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="20" id="gDq-Uj-NYZ"/>
                                                                         <constraint firstAttribute="height" constant="20" id="rIi-uA-qtx"/>
@@ -208,11 +208,11 @@
                                                             </connections>
                                                         </tableCellView>
                                                         <tableCellView identifier="addCell" id="ort-42-Yhe" customClass="AddTableViewCell" customModule="Clocker" customModuleProvider="target">
-                                                            <rect key="frame" x="11" y="81" width="347" height="100"/>
+                                                            <rect key="frame" x="1" y="81" width="338" height="100"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1o3-e8-MQn">
-                                                                    <rect key="frame" x="134" y="10" width="80" height="80"/>
+                                                                    <rect key="frame" x="129" y="10" width="80" height="80"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="80" id="Quz-2f-tUq"/>
                                                                         <constraint firstAttribute="height" constant="80" id="bJL-T6-r6z"/>
@@ -254,7 +254,7 @@
                                 </scroller>
                             </scrollView>
                             <customView identifier="Review Cell" translatesAutoresizingMaskIntoConstraints="NO" id="HBv-Eh-z9y">
-                                <rect key="frame" x="0.0" y="145" width="370" height="50"/>
+                                <rect key="frame" x="0.0" y="145" width="379" height="50"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y83-Ew-CDw">
                                         <rect key="frame" x="80" y="30" width="185" height="20"/>
@@ -323,13 +323,13 @@
                                 <accessibility description="Review Cell"/>
                             </customView>
                             <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z63-pM-8OA" customClass="ReviewView" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="70" width="370" height="75"/>
+                                <rect key="frame" x="0.0" y="70" width="379" height="75"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="PpA-GH-1PV" customClass="ClockerTextBackgroundView" customModule="Clocker" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="350" height="55"/>
+                                        <rect key="frame" x="10" y="10" width="359" height="55"/>
                                         <subviews>
                                             <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8q4-YZ-gkb">
-                                                <rect key="frame" x="21" y="11" width="289" height="18"/>
+                                                <rect key="frame" x="21" y="11" width="298" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="IIB-zJ-L1u"/>
                                                 </constraints>
@@ -349,7 +349,7 @@
                                                 </constraints>
                                             </customView>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9a-aM-BNn">
-                                                <rect key="frame" x="21" y="26" width="271" height="24"/>
+                                                <rect key="frame" x="21" y="26" width="280" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="Ted-52-5mp"/>
                                                 </constraints>
@@ -360,7 +360,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <button verticalHuggingPriority="750" tag="55" translatesAutoresizingMaskIntoConstraints="NO" id="0xk-Sz-MQU">
-                                                <rect key="frame" x="310" y="10" width="35" height="35"/>
+                                                <rect key="frame" x="319" y="10" width="35" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="35" id="n4G-W9-0Xp"/>
                                                     <constraint firstAttribute="height" constant="35" id="viN-NC-XR0"/>
@@ -401,7 +401,7 @@
                                 <rect key="frame" x="0.0" y="40" width="350" height="30"/>
                                 <subviews>
                                     <datePicker focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ngk-LZ-J2y">
-                                        <rect key="frame" x="203" y="0.0" width="137" height="23"/>
+                                        <rect key="frame" x="203" y="14" width="137" height="23"/>
                                         <datePickerCell key="cell" focusRingType="none" alignment="left" drawsBackground="NO" datePickerStyle="textField" id="fj6-ZG-8ff">
                                             <font key="font" size="13" name="Avenir-Roman"/>
                                             <date key="date" timeIntervalSinceReferenceDate="-595929600">
@@ -416,7 +416,7 @@
                                         </connections>
                                     </datePicker>
                                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XQc-HF-TrM">
-                                        <rect key="frame" x="7" y="2" width="196" height="23"/>
+                                        <rect key="frame" x="7" y="6" width="196" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="UT0-Yf-jfk"/>
                                         </constraints>
@@ -490,7 +490,7 @@
                                             <constraint firstAttribute="width" constant="29" id="Rbf-3O-59g"/>
                                             <constraint firstAttribute="height" constant="18" id="eTh-dT-52B"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="NSActionTemplate" imagePosition="only" alignment="center" alternateImage="NSActionTemplate" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9cQ-lG-snH">
+                                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9cQ-lG-snH">
                                             <behavior key="behavior" lightByContents="YES"/>
                                             <font key="font" metaFont="systemBold" size="12"/>
                                             <string key="keyEquivalent">,</string>
@@ -559,8 +559,7 @@
         <image name="CurrentLocation" width="350" height="350"/>
         <image name="Extra" width="700" height="700"/>
         <image name="Float" width="15" height="13"/>
-        <image name="NSActionTemplate" width="17" height="15"/>
-        <image name="NSShareTemplate" width="16" height="15"/>
+        <image name="NSShareTemplate" width="15" height="17"/>
         <image name="PowerIcon" width="350" height="350"/>
         <image name="Remove" width="700" height="700"/>
         <image name="Sunrise" width="700" height="700"/>
