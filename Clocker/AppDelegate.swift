@@ -79,12 +79,11 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     public func applicationDockMenu(_: NSApplication) -> NSMenu? {
         let menu = NSMenu(title: "Quick Access")
 
-        Logger.log(object: ["Dock Menu Triggered": "YES"], for: "Dock Menu Triggered")
-
         let toggleMenuItem = NSMenuItem(title: "Toggle Panel", action: #selector(AppDelegate.togglePanel(_:)), keyEquivalent: "")
         let openPreferences = NSMenuItem(title: "Preferences", action: #selector(AppDelegate.openPreferencesWindow), keyEquivalent: ",")
+        let hideFromDockMenuItem = NSMenuItem(title: "Hide from Dock", action: #selector(AppDelegate.hideFromDock), keyEquivalent: "")
 
-        [toggleMenuItem, openPreferences].forEach {
+        [toggleMenuItem, openPreferences, hideFromDockMenuItem].forEach {
             $0.isEnabled = true
             menu.addItem($0)
         }
@@ -102,6 +101,11 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
             let panelController = PanelController.shared()
             panelController.openPreferences(NSButton())
         }
+    }
+
+    @objc func hideFromDock() {
+        UserDefaults.standard.set(0, forKey: CLAppDisplayOptions)
+        NSApp.setActivationPolicy(.accessory)
     }
 
     private lazy var controller: OnboardingController? = {
@@ -160,10 +164,10 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         let defaults = UserDefaults.standard
 
         let currentActivationPolicy = NSRunningApplication.current.activationPolicy
-        var activationPolicy: NSApplication.ActivationPolicy = defaults.integer(forKey: CLAppDislayOptions) == 0 ? .accessory : .regular
+        var activationPolicy: NSApplication.ActivationPolicy = defaults.integer(forKey: CLAppDisplayOptions) == 0 ? .accessory : .regular
 
         #if DEBUG
-            UserDefaults.standard.set(1, forKey: CLAppDislayOptions)
+            UserDefaults.standard.set(1, forKey: CLAppDisplayOptions)
             activationPolicy = .regular
         #endif
 

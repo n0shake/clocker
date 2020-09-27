@@ -13,6 +13,7 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet var includeDateInMenubarControl: NSSegmentedControl!
     @IBOutlet var includePlaceNameControl: NSSegmentedControl!
     @IBOutlet var appearanceTab: NSTabView!
+    @IBOutlet var appDisplayControl: NSSegmentedControl!
 
     private var themeDidChangeNotification: NSObjectProtocol?
 
@@ -102,6 +103,9 @@ class AppearanceViewController: ParentViewController {
 
         let shouldDisplayCompact = DataStore.shared().shouldDisplay(.menubarCompactMode)
         menubarMode.setSelected(true, forSegment: shouldDisplayCompact ? 0 : 1)
+
+        let appDisplayOptions = DataStore.shared().shouldDisplay(.appDisplayOptions)
+        appDisplayControl.setSelected(true, forSegment: appDisplayOptions ? 1 : 0)
     }
 
     @IBOutlet var timeFormatLabel: NSTextField!
