@@ -683,7 +683,6 @@ extension PreferencesViewController {
                                                           comment: "Search Field Placeholder")
         availableTimezoneTableView.isHidden = false
         isActivityInProgress = false
-        selectNewlyInsertedTimezone()
     }
 
     @IBAction func addTimeZone(_: NSButton) {
