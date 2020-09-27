@@ -137,7 +137,7 @@ class DataStore: NSObject {
         case .dayInMenubar:
             return shouldDisplayHelper(CLShowDayInMenu)
         case .appDisplayOptions:
-          return shouldDisplayHelper(CLAppDisplayOptions)
+            return shouldDisplayHelper(CLAppDisplayOptions)
         case .menubarCompactMode:
             guard let value = retrieve(key: CLMenubarCompactMode) as? Int else {
                 return false
