@@ -457,7 +457,7 @@
                                             <subviews>
                                                 <collectionView selectable="YES" allowsEmptySelection="NO" id="WXe-YT-bXl">
                                                     <rect key="frame" x="0.0" y="0.0" width="350" height="158"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="tAZ-IB-sLl">
                                                         <size key="itemSize" width="50" height="50"/>
                                                     </collectionViewFlowLayout>
@@ -544,7 +544,7 @@
                                             <constraint firstAttribute="width" constant="29" id="oaD-Rr-qht"/>
                                             <constraint firstAttribute="height" constant="18" id="t4M-6L-Vqi"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="NSActionTemplate" imagePosition="only" alignment="center" alternateImage="NSActionTemplate" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SIv-Ve-UkG">
+                                        <buttonCell key="cell" type="recessed" bezelStyle="recessed" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SIv-Ve-UkG">
                                             <behavior key="behavior" lightByContents="YES"/>
                                             <font key="font" metaFont="systemBold" size="12"/>
                                             <string key="keyEquivalent">,</string>
@@ -617,7 +617,6 @@
         <image name="CurrentLocation" width="350" height="350"/>
         <image name="Extra" width="700" height="700"/>
         <image name="Float-White" width="15" height="13"/>
-        <image name="NSActionTemplate" width="15" height="15"/>
         <image name="PowerIcon" width="350" height="350"/>
         <image name="Remove" width="700" height="700"/>
         <image name="SharingDarkIcon" width="19" height="22"/>
