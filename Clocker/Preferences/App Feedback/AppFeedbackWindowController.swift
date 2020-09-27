@@ -214,7 +214,7 @@ class AppFeedbackWindowController: NSWindowController {
         accessoryInfo.stringValue = "Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!".localized()
 
         let range = NSRange(location: 9, length: 15)
-        quickCommentsLabel.title = "Tweet to @ClockerSupport if you have a quick comment!"
+        quickCommentsLabel.title = "Tweet to @Clocker_Support if you have a quick comment!"
         setUnderline(for: quickCommentsLabel, range: range)
 
         [accessoryInfo].forEach { $0?.textColor = Themer.shared().mainTextColor() }
