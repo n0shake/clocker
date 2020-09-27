@@ -170,7 +170,7 @@ class StatusContainerView: NSView {
             }
         }
 
-        if newWidth != frame.size.width {
+        if newWidth != frame.size.width, newWidth >= frame.size.width + 1.5 {
             print("Correcting our width to \(newWidth) and the previous width was \(frame.size.width)")
             frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: newWidth, height: frame.size.height)
         }
