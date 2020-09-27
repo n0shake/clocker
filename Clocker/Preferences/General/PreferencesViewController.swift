@@ -628,7 +628,10 @@ extension PreferencesViewController {
             CLCustomLabel: filteredAddress,
         ] as [String: Any]
 
+        // Mark if the timezone is same as local timezone
         let timezoneObject = TimezoneData(with: newTimeZone)
+        timezoneObject.isSystemTimezone = timezoneObject.timezoneID == NSTimeZone.system.identifier
+
         let operationsObject = TimezoneDataOperations(with: timezoneObject)
         operationsObject.saveObject()
 
@@ -680,6 +683,7 @@ extension PreferencesViewController {
                                                           comment: "Search Field Placeholder")
         availableTimezoneTableView.isHidden = false
         isActivityInProgress = false
+        selectNewlyInsertedTimezone()
     }
 
     @IBAction func addTimeZone(_: NSButton) {
@@ -801,6 +805,10 @@ extension PreferencesViewController {
         availableTimezoneTableView.isHidden = false
         isActivityInProgress = false
 
+        selectNewlyInsertedTimezone()
+    }
+
+    private func selectNewlyInsertedTimezone() {
         // Let's highlight the newly added row. If the number of timezones is greater than 6, the newly added timezone isn't visible. Since we hide the scrollbars as well, the user might get the impression that something is broken!
         if timezoneTableView.numberOfRows > 6 {
             timezoneTableView.scrollRowToVisible(timezoneTableView.numberOfRows - 1)
