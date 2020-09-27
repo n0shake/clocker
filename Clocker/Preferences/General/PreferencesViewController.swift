@@ -800,6 +800,14 @@ extension PreferencesViewController {
                                                           comment: "Search Field Placeholder")
         availableTimezoneTableView.isHidden = false
         isActivityInProgress = false
+
+        // Let's highlight the newly added row. If the number of timezones is greater than 6, the newly added timezone isn't visible. Since we hide the scrollbars as well, the user might get the impression that something is broken!
+        if timezoneTableView.numberOfRows > 6 {
+            timezoneTableView.scrollRowToVisible(timezoneTableView.numberOfRows - 1)
+        }
+
+        let indexSet = IndexSet(integer: IndexSet.Element(timezoneTableView.numberOfRows - 1))
+        timezoneTableView.selectRowIndexes(indexSet, byExtendingSelection: false)
     }
 
     private func metadata(for selection: TimezoneMetadata) -> (NSTimeZone, TimezoneMetadata) {
