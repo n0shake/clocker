@@ -81,8 +81,6 @@ class ParentPanelController: NSWindowController {
 
     @IBOutlet var sliderDatePicker: NSDatePicker!
 
-    @IBOutlet var debugVersionView: NSView!
-
     @IBOutlet var modernSlider: NSCollectionView!
 
     var defaultPreferences: [Data] {
@@ -167,8 +165,6 @@ class ParentPanelController: NSWindowController {
                                                name: NSNotification.Name.NSSystemTimeZoneDidChange,
                                                object: nil)
 
-        showDebugVersionViewIfNeccesary()
-
         #if DEBUG
             if #available(OSX 11.0, *) {
                 mainTableView.style = .fullWidth
@@ -179,19 +175,6 @@ class ParentPanelController: NSWindowController {
             modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
             modernSlider.delegate = self
         }
-    }
-
-    private func showDebugVersionViewIfNeccesary() {
-        if debugVersionView != nil {
-            debugVersionView.wantsLayer = true
-            debugVersionView.layer?.backgroundColor = NSColor.systemRed.cgColor
-        }
-
-        #if RELEASE
-            if debugVersionView != nil, stackView.arrangedSubviews.contains(debugVersionView) {
-                stackView.removeView(debugVersionView)
-            }
-        #endif
     }
 
     @objc func timezoneGonnaChange() {
