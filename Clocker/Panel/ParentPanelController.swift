@@ -1031,10 +1031,6 @@ extension ParentPanelController: NSCollectionViewDataSource, NSCollectionViewDel
         return item
     }
 
-    func collectionView(_: NSCollectionView, willDisplay _: NSCollectionViewItem, forRepresentedObjectAt indexPath: IndexPath) {
-        Swift.print("Will Display Item at \(indexPath.item)")
-    }
-
     func collectionView(_: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         Swift.print("Did Select Item at \(indexPaths.description)")
     }

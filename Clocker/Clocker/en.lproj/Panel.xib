@@ -40,15 +40,15 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1000" y="379" width="350" height="460"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
-            <view key="contentView" focusRingType="none" id="6" customClass="BackgroundPanelView" customModule="Clocker" customModuleProvider="target">
-                <rect key="frame" x="0.0" y="0.0" width="350" height="510"/>
+            <view key="contentView" focusRingType="none" misplaced="YES" id="6" customClass="BackgroundPanelView" customModule="Clocker" customModuleProvider="target">
+                <rect key="frame" x="0.0" y="0.0" width="350" height="460"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView focusRingType="none" distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZA-6o-SbE">
-                        <rect key="frame" x="0.0" y="0.0" width="350" height="510"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="460"/>
                         <subviews>
                             <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="96" horizontalPageScroll="1" verticalLineScroll="96" verticalPageScroll="1" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" scrollerKnobStyle="light" translatesAutoresizingMaskIntoConstraints="NO" id="4Gd-Nv-fXr">
-                                <rect key="frame" x="-29" y="245" width="379" height="265"/>
+                                <rect key="frame" x="-29" y="195" width="379" height="265"/>
                                 <clipView key="contentView" focusRingType="none" drawsBackground="NO" copiesOnScroll="NO" id="4MZ-Di-yNR">
                                     <rect key="frame" x="0.0" y="0.0" width="379" height="265"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -258,7 +258,7 @@
                                 </scroller>
                             </scrollView>
                             <customView identifier="Review Cell" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="TDn-Kk-KkV">
-                                <rect key="frame" x="0.0" y="195" width="350" height="50"/>
+                                <rect key="frame" x="0.0" y="145" width="350" height="50"/>
                                 <subviews>
                                     <stackView focusRingType="none" distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uys-ww-duA">
                                         <rect key="frame" x="25" y="25" width="300" height="20"/>
@@ -332,7 +332,7 @@
                                 <accessibility description="ReviewCell" identifier="ReviewCell"/>
                             </customView>
                             <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Akn-cR-W4G" customClass="ReviewView" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="120" width="350" height="75"/>
+                                <rect key="frame" x="0.0" y="70" width="350" height="75"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Etf-aa-udM" customClass="ClockerTextBackgroundView" customModule="Clocker" customModuleProvider="target">
                                         <rect key="frame" x="10" y="10" width="330" height="55"/>
@@ -409,7 +409,7 @@
                                 <accessibility identifier="UpcomingEventView"/>
                             </customView>
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="C7R-Dq-MFr" userLabel="Slider View">
-                                <rect key="frame" x="0.0" y="90" width="350" height="30"/>
+                                <rect key="frame" x="0.0" y="40" width="350" height="30"/>
                                 <subviews>
                                     <datePicker focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zN8-JF-j7O">
                                         <rect key="frame" x="203" y="14" width="137" height="23"/>
@@ -446,8 +446,8 @@
                                     <constraint firstAttribute="trailing" secondItem="zN8-JF-j7O" secondAttribute="trailing" constant="10" id="ci5-6v-klf"/>
                                 </constraints>
                             </customView>
-                            <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="LOl-EQ-xe8" userLabel="Slider v2 View">
-                                <rect key="frame" x="0.0" y="40" width="350" height="50"/>
+                            <customView hidden="YES" wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="LOl-EQ-xe8" userLabel="Slider v2 View">
+                                <rect key="frame" x="0.0" y="410" width="350" height="50"/>
                                 <subviews>
                                     <scrollView wantsLayer="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IvD-gH-GZs">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="50"/>
