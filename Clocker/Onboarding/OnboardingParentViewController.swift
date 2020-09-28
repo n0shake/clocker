@@ -69,12 +69,9 @@ class OnboardingParentViewController: NSViewController {
         [negativeButton, backButton].forEach { $0?.isHidden = true }
 
         if #available(OSX 10.16, *) {
-//            negativeButton.controlSize = .large
-//            positiveButton.controlSize = .large
-            backButton.image = Themer.shared().symbolImage(for: "chevron.left.circle.fill")
-            backButton.bezelStyle = .recessed
-            backButton.isBordered = false
-            backButton.font = NSFont.systemFont(ofSize: 24)
+            negativeButton.controlSize = .large
+            positiveButton.controlSize = .large
+            backButton.controlSize = .large
         } else {
             backButton.title = NSLocalizedString("Back",
                                                  comment: "Button title for going back to the previous screen")
