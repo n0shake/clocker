@@ -22,6 +22,7 @@
                 <outlet property="preferencesButton" destination="Ctq-BV-GPN" id="cdL-5h-qmx"/>
                 <outlet property="reviewView" destination="TDn-Kk-KkV" id="YdI-Y4-zrg"/>
                 <outlet property="rightButton" destination="w3d-CG-aBO" id="rcF-Gw-CtM"/>
+                <outlet property="roundedDateView" destination="I2Z-NZ-795" id="Oa9-q9-gZx"/>
                 <outlet property="scrollViewHeight" destination="dff-DX-W1o" id="vYe-lb-h9x"/>
                 <outlet property="sharingButton" destination="Hc7-fH-V7i" id="sXz-Cx-VaA"/>
                 <outlet property="shutdownButton" destination="1cR-pI-osG" id="ZFz-9l-yNi"/>
@@ -40,7 +41,7 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1000" y="379" width="350" height="460"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
-            <view key="contentView" focusRingType="none" misplaced="YES" id="6" customClass="BackgroundPanelView" customModule="Clocker" customModuleProvider="target">
+            <view key="contentView" focusRingType="none" id="6" customClass="BackgroundPanelView" customModule="Clocker" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="350" height="460"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
@@ -411,23 +412,8 @@
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="C7R-Dq-MFr" userLabel="Slider View">
                                 <rect key="frame" x="0.0" y="40" width="350" height="30"/>
                                 <subviews>
-                                    <datePicker focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zN8-JF-j7O">
-                                        <rect key="frame" x="203" y="14" width="137" height="23"/>
-                                        <datePickerCell key="cell" focusRingType="none" alignment="left" drawsBackground="NO" datePickerStyle="textField" id="Zg1-OT-OMw">
-                                            <font key="font" size="13" name="Avenir-Roman"/>
-                                            <date key="date" timeIntervalSinceReferenceDate="-595929600">
-                                                <!--1982-02-12 16:00:00 +0000-->
-                                            </date>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <datePickerElements key="datePickerElements" year="YES" month="YES" day="YES" hour="YES" minute="YES"/>
-                                        </datePickerCell>
-                                        <connections>
-                                            <action selector="sliderPickerChanged:" target="-2" id="Rek-ik-2Tt"/>
-                                        </connections>
-                                    </datePicker>
                                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vf2-uI-yf3">
-                                        <rect key="frame" x="7" y="6" width="196" height="19"/>
+                                        <rect key="frame" x="7" y="6" width="201" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="cS7-i2-mHU"/>
                                         </constraints>
@@ -436,14 +422,40 @@
                                             <action selector="sliderMoved:" target="-2" id="WsJ-lL-tRO"/>
                                         </connections>
                                     </slider>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="I2Z-NZ-795">
+                                        <rect key="frame" x="208" y="2" width="137" height="27"/>
+                                        <subviews>
+                                            <datePicker focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zN8-JF-j7O">
+                                                <rect key="frame" x="0.0" y="2" width="137" height="23"/>
+                                                <datePickerCell key="cell" focusRingType="none" alignment="left" drawsBackground="NO" datePickerStyle="textField" id="Zg1-OT-OMw">
+                                                    <font key="font" size="13" name="Avenir-Roman"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="622949605.16002405">
+                                                        <!--2020-09-28 01:33:25 +0000-->
+                                                    </date>
+                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <datePickerElements key="datePickerElements" year="YES" month="YES" day="YES" hour="YES" minute="YES"/>
+                                                </datePickerCell>
+                                                <connections>
+                                                    <action selector="sliderPickerChanged:" target="-2" id="Rek-ik-2Tt"/>
+                                                </connections>
+                                            </datePicker>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="zN8-JF-j7O" firstAttribute="top" secondItem="I2Z-NZ-795" secondAttribute="top" constant="2" id="aiD-wv-HEn"/>
+                                            <constraint firstItem="zN8-JF-j7O" firstAttribute="leading" secondItem="I2Z-NZ-795" secondAttribute="leading" id="beq-J7-oUI"/>
+                                            <constraint firstAttribute="trailing" secondItem="zN8-JF-j7O" secondAttribute="trailing" id="elj-hH-a8y"/>
+                                            <constraint firstAttribute="bottom" secondItem="zN8-JF-j7O" secondAttribute="bottom" constant="2" id="swV-fS-frm"/>
+                                        </constraints>
+                                    </customView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="zN8-JF-j7O" firstAttribute="leading" secondItem="Vf2-uI-yf3" secondAttribute="trailing" constant="2" id="AKG-Oj-pRQ"/>
                                     <constraint firstAttribute="height" constant="30" id="ELw-ee-72z"/>
+                                    <constraint firstItem="I2Z-NZ-795" firstAttribute="centerY" secondItem="Vf2-uI-yf3" secondAttribute="centerY" id="GHK-f6-nwX"/>
                                     <constraint firstItem="Vf2-uI-yf3" firstAttribute="leading" secondItem="C7R-Dq-MFr" secondAttribute="leading" constant="9" id="UPM-fg-1uv"/>
+                                    <constraint firstItem="I2Z-NZ-795" firstAttribute="leading" secondItem="Vf2-uI-yf3" secondAttribute="trailing" constant="2" id="Vt7-Rs-Liq"/>
                                     <constraint firstItem="Vf2-uI-yf3" firstAttribute="centerY" secondItem="C7R-Dq-MFr" secondAttribute="centerY" id="Wno-LD-sb9"/>
-                                    <constraint firstItem="zN8-JF-j7O" firstAttribute="firstBaseline" secondItem="Vf2-uI-yf3" secondAttribute="firstBaseline" id="Zwq-PS-gg2"/>
-                                    <constraint firstAttribute="trailing" secondItem="zN8-JF-j7O" secondAttribute="trailing" constant="10" id="ci5-6v-klf"/>
+                                    <constraint firstAttribute="trailing" secondItem="I2Z-NZ-795" secondAttribute="trailing" constant="5" id="ju8-FH-nE8"/>
                                 </constraints>
                             </customView>
                             <customView hidden="YES" wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="LOl-EQ-xe8" userLabel="Slider v2 View">

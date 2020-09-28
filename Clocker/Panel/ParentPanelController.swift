@@ -83,6 +83,8 @@ class ParentPanelController: NSWindowController {
 
     @IBOutlet var modernSlider: NSCollectionView!
 
+    @IBOutlet var roundedDateView: NSView!
+
     var defaultPreferences: [Data] {
         return DataStore.shared().timezones()
     }
@@ -175,6 +177,17 @@ class ParentPanelController: NSWindowController {
             modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
             modernSlider.delegate = self
         }
+
+        if roundedDateView != nil {
+            setupRoundedDateView()
+        }
+    }
+
+    private func setupRoundedDateView() {
+        roundedDateView.wantsLayer = true
+        roundedDateView.layer?.cornerRadius = 12.0
+        roundedDateView.layer?.masksToBounds = false
+        roundedDateView.layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
     }
 
     @objc func timezoneGonnaChange() {
@@ -308,6 +321,7 @@ class ParentPanelController: NSWindowController {
         sharingButton.image = sharedThemer.sharingImage()
 
         sliderDatePicker.textColor = sharedThemer.mainTextColor()
+        roundedDateView.layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
 
         updateReviewViewFontColor()
     }
