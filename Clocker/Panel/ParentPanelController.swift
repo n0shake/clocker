@@ -169,14 +169,16 @@ class ParentPanelController: NSWindowController {
 
         showDebugVersionViewIfNeccesary()
 
-//        #if DEBUG
-//            if #available(macOS 10.16, *) {
-//                mainTableView.style = .fullWidth
-//            }
-//        #endif
+        #if DEBUG
+            if #available(macOS 10.16, *) {
+                mainTableView.style = .fullWidth
+            }
+        #endif
 
-        modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
-        modernSlider.delegate = self
+        if modernSlider != nil {
+            modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+            modernSlider.delegate = self
+        }
     }
 
     private func showDebugVersionViewIfNeccesary() {
