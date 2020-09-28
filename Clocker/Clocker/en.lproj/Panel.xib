@@ -339,7 +339,7 @@
                                         <rect key="frame" x="10" y="10" width="330" height="55"/>
                                         <subviews>
                                             <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OmF-0e-AfS">
-                                                <rect key="frame" x="21" y="11" width="269" height="18"/>
+                                                <rect key="frame" x="23" y="11" width="267" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="ouD-k5-ZNV"/>
                                                 </constraints>
@@ -387,7 +387,7 @@
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="OmF-0e-AfS" firstAttribute="leading" secondItem="rld-Ag-KL1" secondAttribute="leading" constant="-2" id="78b-Ic-Ont"/>
+                                            <constraint firstItem="OmF-0e-AfS" firstAttribute="leading" secondItem="rld-Ag-KL1" secondAttribute="leading" id="78b-Ic-Ont"/>
                                             <constraint firstItem="rld-Ag-KL1" firstAttribute="leading" secondItem="KFy-Xe-qhq" secondAttribute="trailing" constant="10" id="Dbc-Ua-6LK"/>
                                             <constraint firstItem="OmF-0e-AfS" firstAttribute="bottom" secondItem="KFy-Xe-qhq" secondAttribute="bottom" id="EaO-VK-aSp"/>
                                             <constraint firstItem="rld-Ag-KL1" firstAttribute="centerY" secondItem="Etf-aa-udM" secondAttribute="centerY" constant="-10" id="ZL3-an-mCL"/>

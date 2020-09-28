@@ -276,6 +276,7 @@ class ParentPanelController: NSWindowController {
                                                            comment: "Next Event Label for no Calendar access")
             setCalendarButtonTitle(buttonTitle: NSLocalizedString("Click here to start.",
                                                                   comment: "Button Title for no Calendar access"))
+            calendarColorView.layer?.backgroundColor = NSColor(red: 97 / 255.0, green: 194 / 255.0, blue: 80 / 255.0, alpha: 1.0).cgColor
         } else {
             removeUpcomingEventView()
         }
