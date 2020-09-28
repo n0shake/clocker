@@ -124,7 +124,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
 
                                                          let indexSet = IndexSet(integer: row)
 
-                                                         tableView.removeRows(at: indexSet, withAnimation: NSTableView.AnimationOptions.slideUp)
+                                                         tableView.removeRows(at: indexSet, withAnimation: NSTableView.AnimationOptions())
 
                                                          if DataStore.shared().shouldDisplay(ViewType.showAppInForeground) {
                                                              windowController.deleteTimezone(at: row)
