@@ -2,12 +2,6 @@
 
 import Cocoa
 
-enum States {
-    case initial
-    case search
-    case error
-}
-
 class OnboardingSearchController: NSViewController {
     @IBOutlet private var appName: NSTextField!
     @IBOutlet private var onboardingTypeLabel: NSTextField!
@@ -40,6 +34,9 @@ class OnboardingSearchController: NSViewController {
         resultsTableView.dataSource = self
         resultsTableView.target = self
         resultsTableView.doubleAction = #selector(doubleClickAction(_:))
+        if #available(OSX 11.0, *) {
+            resultsTableView.style = .fullWidth
+        }
 
         setup()
 
@@ -293,8 +290,6 @@ class OnboardingSearchController: NSViewController {
                                            guard let self = self else { return }
 
                                            OperationQueue.main.addOperation {
-                                               print("Search string was: \(searchString)")
-
                                                let currentSearchBarValue = self.searchBar.stringValue
 
                                                let words = currentSearchBarValue.components(separatedBy: CharacterSet.whitespacesAndNewlines)

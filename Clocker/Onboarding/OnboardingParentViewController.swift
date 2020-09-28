@@ -68,14 +68,14 @@ class OnboardingParentViewController: NSViewController {
 
         [negativeButton, backButton].forEach { $0?.isHidden = true }
 
-        if #available(OSX 10.16, *) {
+        if #available(OSX 11.0, *) {
             negativeButton.controlSize = .large
             positiveButton.controlSize = .large
             backButton.controlSize = .large
-        } else {
-            backButton.title = NSLocalizedString("Back",
-                                                 comment: "Button title for going back to the previous screen")
         }
+
+        backButton.title = NSLocalizedString("Back",
+                                             comment: "Button title for going back to the previous screen")
     }
 
     private func setIdentifiersForTests() {

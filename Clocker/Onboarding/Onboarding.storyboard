@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fde-UX-327">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fde-UX-327">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -46,7 +46,7 @@
                                 </constraints>
                             </containerView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m1D-bY-RlD">
-                                <rect key="frame" x="367" y="13" width="95" height="32"/>
+                                <rect key="frame" x="362" y="13" width="101" height="32"/>
                                 <buttonCell key="cell" type="push" title="Continue" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5qt-i6-wXk">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -59,7 +59,7 @@ DQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kbp-ED-vvP">
-                                <rect key="frame" x="14" y="-1" width="62" height="61"/>
+                                <rect key="frame" x="13" y="-2" width="64" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="nfD-s1-MfF"/>
                                     <constraint firstAttribute="width" constant="50" id="opl-FH-00w"/>
@@ -73,7 +73,7 @@ DQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W3z-nZ-e6B">
-                                <rect key="frame" x="258" y="13" width="109" height="32"/>
+                                <rect key="frame" x="248" y="13" width="116" height="32"/>
                                 <buttonCell key="cell" type="push" title="Don't Open" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tPS-m0-NWm">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -187,7 +187,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O0s-Bu-IPq">
-                                        <rect key="frame" x="303" y="62" width="79" height="32"/>
+                                        <rect key="frame" x="298" y="62" width="85" height="32"/>
                                         <buttonCell key="cell" type="push" title="Action" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BW3-qu-NiR">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -205,7 +205,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Zhi-9z-C2u">
-                                        <rect key="frame" x="253" y="71" width="16" height="16"/>
+                                        <rect key="frame" x="249" y="71" width="16" height="16"/>
                                     </progressIndicator>
                                 </subviews>
                                 <constraints>
@@ -250,7 +250,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dI2-oA-MBA">
-                                        <rect key="frame" x="303" y="52" width="79" height="32"/>
+                                        <rect key="frame" x="298" y="52" width="85" height="32"/>
                                         <buttonCell key="cell" type="push" title="Action" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i5r-db-Pnw">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -260,7 +260,7 @@ DQ
                                         </connections>
                                     </button>
                                     <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="0GH-vY-2Du">
-                                        <rect key="frame" x="253" y="61" width="16" height="16"/>
+                                        <rect key="frame" x="249" y="61" width="16" height="16"/>
                                     </progressIndicator>
                                 </subviews>
                                 <constraints>
@@ -457,7 +457,7 @@ DQ
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="7wX-F5-PaV"/>
                                 </constraints>
-                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="VA8-gb-SS5">
+                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="VA8-gb-SS5">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -553,24 +553,37 @@ DQ
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wDx-nO-z0M">
-                                <rect key="frame" x="20" y="29" width="4" height="18"/>
-                                <textFieldCell key="cell" lineBreakMode="truncatingTail" id="c1w-j2-JT6">
-                                    <font key="font" size="13" name="Avenir-Book"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="51r-DX-fZU">
-                                <rect key="frame" x="22" y="30" width="423" height="16"/>
-                                <buttonCell key="cell" type="bevel" title="UNDO" bezelStyle="rounded" alignment="left" imageScaling="proportionallyDown" inset="2" id="h5W-mQ-yIP">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="12" name="Avenir-Medium"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="undoAction:" target="bMm-q2-fpd" id="Pw9-bY-SW6"/>
-                                </connections>
-                            </button>
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="19u-fb-YoO">
+                                <rect key="frame" x="22" y="29" width="91" height="18"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="51r-DX-fZU">
+                                        <rect key="frame" x="0.0" y="2" width="41" height="16"/>
+                                        <buttonCell key="cell" type="bevel" title="UNDO" bezelStyle="rounded" alignment="left" imageScaling="proportionallyDown" inset="2" id="h5W-mQ-yIP">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="12" name="Avenir-Medium"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="undoAction:" target="bMm-q2-fpd" id="Pw9-bY-SW6"/>
+                                        </connections>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wDx-nO-z0M">
+                                        <rect key="frame" x="39" y="0.0" width="54" height="18"/>
+                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" id="c1w-j2-JT6">
+                                            <font key="font" size="13" name="Avenir-Book"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="2ra-RP-SYR" firstAttribute="leading" secondItem="hqW-RG-UOt" secondAttribute="leading" constant="2" id="7mH-Ln-u0a"/>
@@ -656,7 +669,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qLP-tx-m41" customClass="UnderlinedButton" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="117" y="103" width="293" height="14"/>
+                                <rect key="frame" x="117" y="117" width="293" height="0.0"/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="left" imageScaling="proportionallyDown" inset="2" id="o87-us-e82">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="13" name="Avenir-Book"/>

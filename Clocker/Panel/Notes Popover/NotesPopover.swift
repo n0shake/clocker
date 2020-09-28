@@ -76,7 +76,7 @@ class NotesPopover: NSViewController {
         alertPopupButton.setAccessibilityIdentifier("RemindersAlertPopup")
         reminderView.setAccessibilityIdentifier("RemindersView")
 
-//        if #available(macOS 10.16, *) {
+//        if #available(OSX 11.0, *) {
 //            alertPopupButton.controlSize = .large
 //        }
     }

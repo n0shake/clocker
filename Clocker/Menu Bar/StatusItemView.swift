@@ -45,7 +45,7 @@ class StatusItemView: NSView {
     private var timeAttributes: [NSAttributedString.Key: AnyObject] {
         var textColor = hasDarkAppearance ? NSColor.white : NSColor.black
 
-        if #available(macOS 10.16, *) {
+        if #available(OSX 11.0, *) {
             textColor = NSColor.white
         }
 
@@ -61,7 +61,7 @@ class StatusItemView: NSView {
     private var textFontAttributes: [NSAttributedString.Key: Any] {
         var textColor = hasDarkAppearance ? NSColor.white : NSColor.black
 
-        if #available(macOS 10.16, *) {
+        if #available(OSX 11.0, *) {
             textColor = NSColor.white
         }
 

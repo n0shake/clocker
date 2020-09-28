@@ -170,7 +170,7 @@ class ParentPanelController: NSWindowController {
         showDebugVersionViewIfNeccesary()
 
         #if DEBUG
-            if #available(macOS 10.16, *) {
+            if #available(OSX 11.0, *) {
                 mainTableView.style = .fullWidth
             }
         #endif
