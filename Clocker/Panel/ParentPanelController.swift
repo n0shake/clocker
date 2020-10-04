@@ -168,9 +168,9 @@ class ParentPanelController: NSWindowController {
                                                object: nil)
 
         #if DEBUG
-            if #available(OSX 11.0, *) {
-                mainTableView.style = .fullWidth
-            }
+//            if #available(OSX 11.0, *) {
+//                mainTableView.style = .fullWidth
+//            }
         #endif
 
         if modernSlider != nil {
@@ -322,7 +322,10 @@ class ParentPanelController: NSWindowController {
         sharingButton.image = sharedThemer.sharingImage()
 
         sliderDatePicker.textColor = sharedThemer.mainTextColor()
-        roundedDateView.layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
+
+        if roundedDateView != nil {
+            roundedDateView.layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
+        }
 
         updateReviewViewFontColor()
     }
