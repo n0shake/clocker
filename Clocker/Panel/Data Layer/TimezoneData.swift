@@ -431,8 +431,8 @@ class TimezoneData: NSObject, NSCoding {
         guard let compared = object as? TimezoneData else {
             return false
         }
-      
-      // Plain timezones might have similar placeID. Adding another check for timezone identifier.
+
+        // Plain timezones might have similar placeID. Adding another check for timezone identifier.
         return placeID == compared.placeID && timezoneID == compared.timezoneID
     }
 }
