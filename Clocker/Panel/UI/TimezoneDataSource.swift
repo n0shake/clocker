@@ -102,7 +102,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
             return CGFloat(rowHeight)
         }
 
-        return 0
+        return 1
     }
 
     func tableView(_ tableView: NSTableView, rowActionsForRow row: Int, edge: NSTableView.RowActionEdge) -> [NSTableViewRowAction] {
