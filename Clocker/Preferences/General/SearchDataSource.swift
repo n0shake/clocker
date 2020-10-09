@@ -58,8 +58,13 @@ class SearchDataSource: NSObject {
                                                abbreviation: "AOE")
         timezoneArray.append(anywhereOnEarth)
 
-        for (abbreviation, timezone) in TimeZone.abbreviationDictionary {
-            var tags: Set<String> = [abbreviation.lowercased(), timezone.lowercased()]
+        for identifier in TimeZone.knownTimeZoneIdentifiers {
+            guard let timezoneObject = TimeZone(identifier: identifier) else {
+                continue
+            }
+            let abbreviation = timezoneObject.abbreviation() ?? "Empty"
+            let identifier = timezoneObject.identifier
+            var tags: Set<String> = [abbreviation.lowercased(), identifier.lowercased()]
             var extraTags: [String] = []
             if let tagsPresent = timezoneMetadataDictionary[abbreviation] {
                 extraTags = tagsPresent
@@ -69,10 +74,10 @@ class SearchDataSource: NSObject {
                 tags.insert(tag)
             }
 
-            let timezoneIdentifier = NSTimeZone(name: timezone)!
+            let timezoneIdentifier = NSTimeZone(name: identifier)!
             let timezoneMetadata = TimezoneMetadata(timezone: timezoneIdentifier,
                                                     tags: tags,
-                                                    formattedName: timezone,
+                                                    formattedName: identifier,
                                                     abbreviation: abbreviation)
             timezoneArray.append(timezoneMetadata)
         }
