@@ -6,7 +6,6 @@ import Foundation
 import XCTest
 
 class TimezoneDataEqualityTests: XCTestCase {
-
     func testEqualityWhenTimezoneIdentifiersDiffer() {
         let timezone1 = TimezoneData()
         timezone1.timezoneID = TimeZone.autoupdatingCurrent.identifier
