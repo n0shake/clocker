@@ -779,7 +779,6 @@ extension PreferencesViewController {
 
     private func cleanupAfterInstallingTimezone() {
         let data = TimezoneData()
-        data.placeID = UUID().uuidString
         data.setLabel(CLEmptyString)
 
         let currentSelection = searchField.stringValue.isEmpty == false ? searchResultsDataSource.timezoneFilteredArray[availableTimezoneTableView.selectedRow % searchResultsDataSource.timezoneFilteredArray.count] :

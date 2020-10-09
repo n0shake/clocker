@@ -58,6 +58,7 @@ class TimezoneData: NSObject, NSCoding {
         isSystemTimezone = false
         overrideFormat = .globalFormat
         overrideSecondsFormat = .globalFormat
+        placeID = UUID().uuidString
     }
 
     init(with originalTimezone: CLTimezoneData) {
