@@ -56,7 +56,13 @@ class SearchDataSource: NSObject {
                                                tags: ["aoe", "anywhere on earth"],
                                                formattedName: "Anywhere on Earth",
                                                abbreviation: "AOE")
+        let utcTimezone = TimezoneMetadata(timezone: NSTimeZone(abbreviation: "GMT")!,
+                                           tags: ["utc", "gmt", "universal"],
+                                           formattedName: "UTC",
+                                           abbreviation: "GMT")
+
         timezoneArray.append(anywhereOnEarth)
+        timezoneArray.append(utcTimezone)
 
         for identifier in TimeZone.knownTimeZoneIdentifiers {
             guard let timezoneObject = TimeZone(identifier: identifier) else {
