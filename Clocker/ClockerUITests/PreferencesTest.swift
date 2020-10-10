@@ -31,7 +31,7 @@ class PreferencesTest: XCTestCase {
             return
         }
 
-        app.windows["Clocker"].tables["TimezoneTableView"].tableRows.firstMatch.click()
+        app.windows["Clocker"].tables["TimezoneTableView"].tableRows.firstMatch.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0)).click()
 
         XCTAssertTrue(app.checkBoxes["DeleteTimezone"].isEnabled)
     }
@@ -143,7 +143,7 @@ class PreferencesTest: XCTestCase {
         addAPlace(place: "Aurangabad", to: app)
         addAPlace(place: "Zimbabwe", to: app)
         addAPlace(place: "Portland", to: app, shouldSleep: false)
-        addAPlace(place: "Asia/Kolkata", to: app)
+        addAPlace(place: "Asia/Calcutta", to: app)
         addAPlace(place: "Anywhere on Earth", to: app, shouldSleep: false)
 
         XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Label".localizedString()].exists)
@@ -178,7 +178,7 @@ class PreferencesTest: XCTestCase {
         deleteAPlace(place: "Aurangabad", for: app)
         deleteAPlace(place: "Zimbabwe", for: app)
         deleteAPlace(place: "Portland", for: app)
-        deleteAPlace(place: "Asia/Kolkata", for: app)
+        deleteAPlace(place: "Asia/Calcutta", for: app)
         deleteAPlace(place: "Anywhere on Earth", for: app, shouldSleep: false)
     }
 
@@ -187,7 +187,7 @@ class PreferencesTest: XCTestCase {
         app.tables["mainTableView"].typeKey(",", modifierFlags: .command)
 
         addAPlace(place: "Europe/Lisbon", to: app)
-        addAPlace(place: "Asia/Kolkata", to: app)
+        addAPlace(place: "Asia/Calcutta", to: app)
         addAPlace(place: "Anywhere on Earth", to: app, shouldSleep: false)
 
         XCTAssertTrue(app.windows["Clocker"].checkBoxes["Sort by Label".localizedString()].exists)
@@ -220,7 +220,7 @@ class PreferencesTest: XCTestCase {
         XCTAssertEqual(actualLabels, expectedLabels)
 
         deleteAPlace(place: "Europe/Lisbon", for: app)
-        deleteAPlace(place: "Asia/Kolkata", for: app)
+        deleteAPlace(place: "Asia/Calcutta", for: app)
         deleteAPlace(place: "Anywhere on Earth", for: app, shouldSleep: false)
     }
 
@@ -333,7 +333,8 @@ class PreferencesTest: XCTestCase {
         let rowQueryCount = clockerWindow.tables["TimezoneTableView"].tableRows.count
 
         if rowQueryCount > 0 {
-            let currentElement = clockerWindow.tables["TimezoneTableView"].tableRows.firstMatch
+            // Table Rows aren't hittable in Xcode 12.0 (10/7/20) and so we need to find a closer co-ordinate and perform click()
+            let currentElement = clockerWindow.tables["TimezoneTableView"].tableRows.firstMatch.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
             currentElement.click()
 
             for _ in 0 ..< rowQueryCount {
@@ -412,7 +413,7 @@ extension XCTestCase {
             return
         }
 
-        let currentElement = app.windows["Clocker"].tableRows.firstMatch
+        let currentElement = app.windows["Clocker"].tableRows.firstMatch.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
         currentElement.click()
 
         while rowQueryCount > 0 {
@@ -438,7 +439,7 @@ extension XCTestCase {
     }
 
     private func deleteAtRow(_ rowToDelete: XCUIElement, for _: XCUIApplication, shouldSleep: Bool) {
-        rowToDelete.click()
+        rowToDelete.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0)).click()
         rowToDelete.typeKey(XCUIKeyboardKey.delete, modifierFlags: XCUIElement.KeyModifierFlags())
         if shouldSleep {
             sleep(2)

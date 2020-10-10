@@ -21,10 +21,12 @@ class SearchDataSource: NSObject {
     private var finalArray: [RowType] = []
     private var dataTask: URLSessionDataTask? = .none
     private var timezoneMetadataDictionary: [String: [String]] =
-        ["IST": ["india", "indian", "kolkata", "calcutta", "mumbai", "delhi", "hyderabad", "noida"],
+        ["GMT+5:30": ["india", "indian", "kolkata", "calcutta", "mumbai", "delhi", "hyderabad", "noida"],
          "PST": ["los", "los angeles", "california", "san francisco", "bay area", "pacific standard time"],
+         "PDT": ["los", "los angeles", "california", "san francisco", "bay area", "pacific standard time"],
          "UTC": ["utc", "universal"],
-         "EST": ["florida", "new york"]]
+         "EST": ["florida", "new york"],
+         "EDT": ["florida", "new york"]]
 
     var filteredArray: [Any] = []
     var timezoneArray: [TimezoneMetadata] = []
