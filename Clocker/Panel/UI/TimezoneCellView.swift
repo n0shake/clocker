@@ -149,11 +149,7 @@ class TimezoneCellView: NSTableCellView {
         let timeWidth = timeString.size(withAttributes: [NSAttributedString.Key.font: customTimeFont]).width
 
         for constraint in time.constraints {
-            if constraint.identifier == "height" {
-                constraint.constant = timeHeight
-            } else {
-                constraint.constant = timeWidth
-            }
+          constraint.constant = constraint.identifier == "height" ? timeHeight : timeWidth
         }
     }
 
