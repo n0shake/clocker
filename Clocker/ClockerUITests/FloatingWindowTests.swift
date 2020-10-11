@@ -198,7 +198,7 @@ class FloatingWindowTests: XCTestCase {
                 newValues.append(supplementaryText)
             }
 
-//            XCTAssertNotEqual(newValues, previousValues)
+            XCTAssertNotEqual(newValues, previousValues)
         }
     }
 }
