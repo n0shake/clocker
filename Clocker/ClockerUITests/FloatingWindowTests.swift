@@ -23,6 +23,18 @@ class FloatingWindowTests: XCTestCase {
             app.tapMenubarIcon()
             app.buttons["Pin"].click()
         }
+
+        addUIInterruptionMonitor(withDescription: "Reminders Access") { (alert) -> Bool in
+            print("Interruption Handler called")
+            print(alert)
+            let alertButton = alert.buttons["OK"]
+            if alertButton.exists {
+                print("Okay button found")
+                alertButton.tap()
+                return true
+            }
+            return false
+        }
     }
 
     override func tearDown() {
@@ -82,18 +94,6 @@ class FloatingWindowTests: XCTestCase {
 
         let remindersCheckbox = app.checkBoxes["ReminderCheckbox"]
         remindersCheckbox.click()
-
-        addUIInterruptionMonitor(withDescription: "Reminders Access") { (alert) -> Bool in
-            print("Interruption Handler called")
-            print(alert)
-            let alertButton = alert.buttons["OK"]
-            if alertButton.exists {
-                print("Okay button found")
-                alertButton.tap()
-                return true
-            }
-            return false
-        }
 
         app.buttons["SaveButton"].click()
 

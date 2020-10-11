@@ -167,11 +167,9 @@ class ParentPanelController: NSWindowController {
                                                name: NSNotification.Name.NSSystemTimeZoneDidChange,
                                                object: nil)
 
-        #if DEBUG
-//            if #available(OSX 11.0, *) {
-//                mainTableView.style = .fullWidth
-//            }
-        #endif
+        if #available(OSX 11.0, *) {
+            mainTableView.style = .fullWidth
+        }
 
         if modernSlider != nil {
             modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)

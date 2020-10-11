@@ -382,7 +382,9 @@ extension XCTestCase {
         }
 
         let searchField = app.searchFields["AvailableSearchField"]
-        searchField.reset(text: place)
+        if searchField.isHittable {
+            searchField.reset(text: place)
+        }
 
         let results = app.tables["AvailableTimezoneTableView"].cells.staticTexts.matching(matchPredicate)
 
@@ -400,7 +402,9 @@ extension XCTestCase {
             results.firstMatch.click()
         }
 
-        app.buttons["AddAvailableTimezone"].click()
+        if app.buttons["AddAvailableTimezone"].exists {
+            app.buttons["AddAvailableTimezone"].click()
+        }
 
         if shouldSleep {
             sleep(2)
