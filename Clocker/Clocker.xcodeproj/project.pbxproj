@@ -228,6 +228,7 @@
 		352AF497232E07B400D96FA7 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		352AF499232E07B400D96FA7 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3545C52A22612BCC00121E25 /* TimezoneDataEqualityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneDataEqualityTests.swift; sourceTree = "<group>"; };
+		3569A44E25441F320087E254 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		357391852507277500D30819 /* HourMarkerViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourMarkerViewItem.swift; sourceTree = "<group>"; };
 		357391862507277500D30819 /* HourMarkerViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourMarkerViewItem.xib; sourceTree = "<group>"; };
 		3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults + KVOExtensions.swift"; sourceTree = "<group>"; };
@@ -1038,6 +1039,7 @@
 				it,
 				tr,
 				ar,
+				"pt-BR",
 			);
 			mainGroup = DD4F7BF913C30F9F00825C6E;
 			productRefGroup = DD4F7C0513C30F9F00825C6E /* Products */;
@@ -1362,6 +1364,7 @@
 				9AA522D123416A0E00C9E005 /* es */,
 				9AA522D523416A6000C9E005 /* nl */,
 				9AA522D723416E6000C9E005 /* it */,
+				3569A44E25441F320087E254 /* pt-BR */,
 			);
 			name = Localizable.strings;
 			path = Clocker;
