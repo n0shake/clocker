@@ -81,9 +81,10 @@ class ParentPanelController: NSWindowController {
 
     @IBOutlet var sliderDatePicker: NSDatePicker!
 
-    @IBOutlet var modernSlider: NSCollectionView!
-
     @IBOutlet var roundedDateView: NSView!
+
+    // Modern Slider
+    @IBOutlet var modernSlider: NSCollectionView!
 
     var defaultPreferences: [Data] {
         return DataStore.shared().timezones()
@@ -168,7 +169,7 @@ class ParentPanelController: NSWindowController {
                                                object: nil)
 
         if #available(OSX 11.0, *) {
-            mainTableView.style = .fullWidth
+//            mainTableView.style = .fullWidth
         }
 
         if modernSlider != nil {
@@ -383,6 +384,8 @@ class ParentPanelController: NSWindowController {
             newHeight = userFontSize == 4 ? 68.0 : 68.0
             if let note = object?.note, note.isEmpty == false {
                 newHeight += 20
+            } else if let obj = object, TimezoneDataOperations(with: obj).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) != nil {
+                newHeight += 20
             }
         }
 
@@ -390,7 +393,7 @@ class ParentPanelController: NSWindowController {
             // Set it to 90 expicity in case the row height is calculated be higher.
             newHeight = 88.0
 
-            if let note = object?.note, note.isEmpty {
+            if let note = object?.note, note.isEmpty, let obj = object, TimezoneDataOperations(with: obj).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) == nil {
                 newHeight -= 20.0
             }
         }
@@ -560,6 +563,13 @@ class ParentPanelController: NSWindowController {
                 cellView.relativeDate.stringValue = dataOperation.date(with: futureSliderValue, displayType: .panelDisplay)
                 cellView.currentLocationIndicator.isHidden = !model.isSystemTimezone
                 cellView.sunriseImage.image = model.isSunriseOrSunset ? Themer.shared().sunriseImage() : Themer.shared().sunsetImage()
+                if let note = model.note, !note.isEmpty {
+                    cellView.noteLabel.stringValue = note
+                } else if let value = TimezoneDataOperations(with: model).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) {
+                    cellView.noteLabel.stringValue = value
+                } else {
+                    cellView.noteLabel.stringValue = CLEmptyString
+                }
                 cellView.layout(with: model)
                 updateDatePicker()
             }
@@ -1018,15 +1028,13 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
 }
 
 extension ParentPanelController: NSCollectionViewDataSource, NSCollectionViewDelegate {
-    static let markerUserIdentifier = "HourMarkerViewItem"
-
     func collectionView(_: NSCollectionView, numberOfItemsInSection _: Int) -> Int {
         return 24
     }
 
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(ParentPanelController.markerUserIdentifier), for: indexPath) as! HourMarkerViewItem
-        item.setup(with: indexPath)
+        let item = collectionView.makeItem(withIdentifier: HourMarkerViewItem.reuseIdentifier, for: indexPath) as! HourMarkerViewItem
+        item.setup(with: indexPath.item)
         return item
     }
 
