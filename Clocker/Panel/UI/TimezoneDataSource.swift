@@ -104,7 +104,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
             }
 
             if model.isSystemTimezone {
-                rowHeight += 5
+                rowHeight += 2
             }
 
             rowHeight += (userFontSize.intValue * 2)
