@@ -385,8 +385,8 @@ class ParentPanelController: NSWindowController {
             if let note = object?.note, note.isEmpty == false {
                 newHeight += 20
             } else if DataStore.shared().shouldDisplay(.dstTransitionInfo),
-                      let obj = object,
-                      TimezoneDataOperations(with: obj).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) != nil {
+                let obj = object,
+                TimezoneDataOperations(with: obj).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) != nil {
                 newHeight += 20
             }
         }
@@ -568,7 +568,7 @@ class ParentPanelController: NSWindowController {
                 if let note = model.note, !note.isEmpty {
                     cellView.noteLabel.stringValue = note
                 } else if DataStore.shared().shouldDisplay(.dstTransitionInfo),
-                          let value = TimezoneDataOperations(with: model).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) {
+                    let value = TimezoneDataOperations(with: model).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) {
                     cellView.noteLabel.stringValue = value
                 } else {
                     cellView.noteLabel.stringValue = CLEmptyString
