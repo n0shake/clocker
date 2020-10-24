@@ -169,7 +169,7 @@ class ParentPanelController: NSWindowController {
                                                object: nil)
 
         if #available(OSX 11.0, *) {
-            mainTableView.style = .fullWidth
+//            mainTableView.style = .fullWidth
         }
 
         if modernSlider != nil {
@@ -384,7 +384,9 @@ class ParentPanelController: NSWindowController {
             newHeight = userFontSize == 4 ? 68.0 : 68.0
             if let note = object?.note, note.isEmpty == false {
                 newHeight += 20
-            } else if let obj = object, TimezoneDataOperations(with: obj).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) != nil {
+            } else if DataStore.shared().shouldDisplay(.dstTransitionInfo),
+                      let obj = object,
+                      TimezoneDataOperations(with: obj).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) != nil {
                 newHeight += 20
             }
         }
@@ -393,7 +395,7 @@ class ParentPanelController: NSWindowController {
             // Set it to 90 expicity in case the row height is calculated be higher.
             newHeight = 88.0
 
-            if let note = object?.note, note.isEmpty, let obj = object, TimezoneDataOperations(with: obj).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) == nil {
+            if let note = object?.note, note.isEmpty, DataStore.shared().shouldDisplay(.dstTransitionInfo) == false, let obj = object, TimezoneDataOperations(with: obj).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) == nil {
                 newHeight -= 20.0
             }
         }
@@ -565,7 +567,8 @@ class ParentPanelController: NSWindowController {
                 cellView.sunriseImage.image = model.isSunriseOrSunset ? Themer.shared().sunriseImage() : Themer.shared().sunsetImage()
                 if let note = model.note, !note.isEmpty {
                     cellView.noteLabel.stringValue = note
-                } else if let value = TimezoneDataOperations(with: model).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) {
+                } else if DataStore.shared().shouldDisplay(.dstTransitionInfo),
+                          let value = TimezoneDataOperations(with: model).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) {
                     cellView.noteLabel.stringValue = value
                 } else {
                     cellView.noteLabel.stringValue = CLEmptyString

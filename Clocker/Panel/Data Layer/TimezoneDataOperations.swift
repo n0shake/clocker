@@ -34,10 +34,6 @@ extension TimezoneDataOperations {
     }
 
     func nextDaylightSavingsTransitionIfAvailable(with sliderValue: Int) -> String? {
-        if DataStore.shared().shouldDisplay(.dstTransitionInfo) == false {
-            return nil
-        }
-
         let currentTimezone = TimeZone(identifier: dataObject.timezone())
         guard let nextDaylightSavingsTransition = currentTimezone?.nextDaylightSavingTimeTransition else {
             return nil

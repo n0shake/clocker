@@ -64,7 +64,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
         cellView.relativeDate.setAccessibilityIdentifier("RelativeDate")
         if let note = currentModel.note, !note.isEmpty {
             cellView.noteLabel.stringValue = note
-        } else if let value = operation.nextDaylightSavingsTransitionIfAvailable(with: sliderValue) {
+        } else if DataStore.shared().shouldDisplay(.dstTransitionInfo), let value = operation.nextDaylightSavingsTransitionIfAvailable(with: sliderValue) {
             cellView.noteLabel.stringValue = value
         } else {
             cellView.noteLabel.stringValue = CLEmptyString
@@ -84,7 +84,6 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
 
         if let userFontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber, timezones.count > row, let relativeDisplay = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber {
             let model = timezones[row]
-            let operation = TimezoneDataOperations(with: model)
             let shouldShowSunrise = DataStore.shared().shouldDisplay(.sunrise)
 
             var rowHeight: Int = userFontSize == 4 ? 60 : 65
@@ -99,7 +98,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
 
             if let note = model.note, !note.isEmpty {
                 rowHeight += userFontSize.intValue + 15
-            } else if operation.nextDaylightSavingsTransitionIfAvailable(with: sliderValue) != nil {
+            } else if DataStore.shared().shouldDisplay(.dstTransitionInfo), TimezoneDataOperations(with: model).nextDaylightSavingsTransitionIfAvailable(with: sliderValue) != nil {
                 rowHeight += userFontSize.intValue + 15
             }
 
