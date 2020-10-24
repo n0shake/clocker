@@ -127,7 +127,8 @@ class AppDefaults {
                 CLTruncateTextLength: 30,
                 CLSelectedCalendars: [],
                 CLAppDisplayOptions: 1,
-                CLMenubarCompactMode: 1]
+                CLMenubarCompactMode: 1,
+                CLDisplayDSTTransitionInfo: 0]
     }
 }
 
