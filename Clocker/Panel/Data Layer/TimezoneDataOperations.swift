@@ -33,6 +33,32 @@ extension TimezoneDataOperations {
         return dateFormatter.string(from: newDate)
     }
 
+    func nextDaylightSavingsTransitionIfAvailable(with sliderValue: Int) -> String? {
+        let currentTimezone = TimeZone(identifier: dataObject.timezone())
+        guard let nextDaylightSavingsTransition = currentTimezone?.nextDaylightSavingTimeTransition else {
+            return nil
+        }
+
+        guard let newDate = TimezoneDataOperations.gregorianCalendar?.date(byAdding: .minute,
+                                                                           value: sliderValue,
+                                                                           to: Date(),
+                                                                           options: .matchFirst) else {
+            assertionFailure("Data was unexpectedly nil")
+            return nil
+        }
+
+        let calendar = Calendar.autoupdatingCurrent
+        let numberOfDays = nextDaylightSavingsTransition.days(from: newDate, calendar: calendar)
+
+        // We'd like to show upcoming DST changes within the 7 day range.
+        // Using 8 as a fail-safe as timezones behind CDT can sometimes be wrongly attributed
+        if numberOfDays > 8 || numberOfDays <= 0 {
+            return nil
+        }
+
+        return "Daylight Savings transition will occur in \(numberOfDays) days!"
+    }
+
     private func checkForUpcomingEvents() -> (String, String)? {
         if DataStore.shared().shouldDisplay(.showMeetingInMenubar) {
             let filteredDates = EventCenter.sharedCenter().eventsForDate
