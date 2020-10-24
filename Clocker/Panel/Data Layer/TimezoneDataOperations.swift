@@ -56,11 +56,14 @@ extension TimezoneDataOperations {
             return nil
         }
 
+        if numberOfDays == 0 {
+            let hoursLeft = nextDaylightSavingsTransition.hours(from: newDate)
+            let suffix = hoursLeft == 1 ? "hour" : "hours"
+            return "Heads up! DST transition will occur in \(hoursLeft) \(suffix)."
+        }
+
         let suffix = numberOfDays == 1 ? "day" : "days"
-        return numberOfDays == 0 ?
-            NSLocalizedString("Daylights Saving transition will occur in < 24 hours",
-                              comment: "Daylights Saving transition will occur in < 24 hours") :
-            "Daylight Savings transition will occur in \(numberOfDays) \(suffix)!"
+        return "Heads up! DST transition will occur in \(numberOfDays) \(suffix)."
     }
 
     private func checkForUpcomingEvents() -> (String, String)? {
