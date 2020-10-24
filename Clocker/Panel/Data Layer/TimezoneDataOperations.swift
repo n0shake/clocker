@@ -52,11 +52,15 @@ extension TimezoneDataOperations {
 
         // We'd like to show upcoming DST changes within the 7 day range.
         // Using 8 as a fail-safe as timezones behind CDT can sometimes be wrongly attributed
-        if numberOfDays > 8 || numberOfDays <= 0 {
+        if numberOfDays > 8 || numberOfDays < 0 {
             return nil
         }
 
-        return "Daylight Savings transition will occur in \(numberOfDays) days!"
+        let suffix = numberOfDays == 1 ? "day" : "days"
+        return numberOfDays == 0 ?
+            NSLocalizedString("Daylights Saving transition will occur in < 24 hours",
+                              comment: "Daylights Saving transition will occur in < 24 hours") :
+            "Daylight Savings transition will occur in \(numberOfDays) \(suffix)!"
     }
 
     private func checkForUpcomingEvents() -> (String, String)? {
