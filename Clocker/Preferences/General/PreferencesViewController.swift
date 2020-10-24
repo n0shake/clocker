@@ -633,7 +633,7 @@ extension PreferencesViewController {
 
         // Mark if the timezone is same as local timezone
         let timezoneObject = TimezoneData(with: newTimeZone)
-        timezoneObject.isSystemTimezone = timezoneObject.timezoneID == NSTimeZone.system.identifier
+        timezoneObject.isSystemTimezone = timezoneObject.timezone() == NSTimeZone.system.identifier
 
         let operationsObject = TimezoneDataOperations(with: timezoneObject)
         operationsObject.saveObject()
@@ -950,8 +950,8 @@ extension PreferencesViewController {
                 return false
             }
 
-            let timezone1 = NSTimeZone(name: object1.timezoneID!)
-            let timezone2 = NSTimeZone(name: object2.timezoneID!)
+            let timezone1 = NSTimeZone(name: object1.timezone())
+            let timezone2 = NSTimeZone(name: object2.timezone())
 
             let difference1 = system.secondsFromGMT() - timezone1!.secondsFromGMT
             let difference2 = system.secondsFromGMT() - timezone2!.secondsFromGMT
