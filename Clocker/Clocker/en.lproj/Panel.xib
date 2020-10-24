@@ -16,6 +16,7 @@
                 <outlet property="leftButton" destination="WVY-D9-AAX" id="M2W-xG-chN"/>
                 <outlet property="leftField" destination="8Qj-Y9-Okf" id="q3N-ht-jCd"/>
                 <outlet property="mainTableView" destination="dFw-ts-8OZ" id="2kY-dd-rDV"/>
+                <outlet property="modernSlider" destination="lxA-64-3QU" id="kS5-ub-7gV"/>
                 <outlet property="nextEventLabel" destination="rld-Ag-KL1" id="GTY-j3-A1g"/>
                 <outlet property="pinButton" destination="YXE-4J-5cn" id="k6V-HK-7XG"/>
                 <outlet property="preferencesButton" destination="Ctq-BV-GPN" id="cdL-5h-qmx"/>
@@ -41,7 +42,7 @@
             <rect key="contentRect" x="1000" y="379" width="350" height="460"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" focusRingType="none" misplaced="YES" id="6" customClass="BackgroundPanelView" customModule="Clocker" customModuleProvider="target">
-                <rect key="frame" x="0.0" y="0.0" width="379" height="460"/>
+                <rect key="frame" x="0.0" y="0.0" width="350" height="460"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView focusRingType="none" distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZA-6o-SbE">
@@ -534,6 +535,48 @@
                                     <constraint firstItem="Ctq-BV-GPN" firstAttribute="leading" secondItem="B8X-sx-cjT" secondAttribute="leading" constant="8" id="ydm-oF-sVc"/>
                                 </constraints>
                             </customView>
+                            <customView hidden="YES" wantsLayer="YES" focusRingType="none" id="8W7-rS-Uob" userLabel="Slider View">
+                                <rect key="frame" x="0.0" y="205" width="365" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htc-pO-AqH">
+                                        <rect key="frame" x="0.0" y="0.0" width="365" height="50"/>
+                                        <clipView key="contentView" id="N1e-zE-F86">
+                                            <rect key="frame" x="0.0" y="0.0" width="365" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <collectionView id="lxA-64-3QU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="365" height="158"/>
+                                                    <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" id="mgM-vQ-fB7">
+                                                        <size key="itemSize" width="50" height="50"/>
+                                                    </collectionViewFlowLayout>
+                                                    <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="-2" id="Exd-5i-4cB"/>
+                                                        <outlet property="delegate" destination="-2" id="r49-5r-Rx5"/>
+                                                    </connections>
+                                                </collectionView>
+                                            </subviews>
+                                        </clipView>
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="8II-oP-xbd">
+                                            <rect key="frame" x="1" y="33" width="363" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="f9b-8n-Bt1">
+                                            <rect key="frame" x="349" y="0.0" width="16" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="htc-pO-AqH" firstAttribute="leading" secondItem="8W7-rS-Uob" secondAttribute="leading" id="0QY-hT-XLg"/>
+                                    <constraint firstAttribute="height" constant="50" id="5HT-Ps-YH3"/>
+                                    <constraint firstItem="htc-pO-AqH" firstAttribute="top" secondItem="8W7-rS-Uob" secondAttribute="top" id="Ag8-2G-tVA"/>
+                                    <constraint firstAttribute="bottom" secondItem="htc-pO-AqH" secondAttribute="bottom" id="YCJ-zB-dvc"/>
+                                    <constraint firstAttribute="trailing" secondItem="htc-pO-AqH" secondAttribute="trailing" id="d7f-wV-lqc"/>
+                                </constraints>
+                            </customView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="B8X-sx-cjT" firstAttribute="leading" secondItem="OZA-6o-SbE" secondAttribute="leading" id="AUz-54-0mE"/>
@@ -551,8 +594,10 @@
                             <integer value="1000"/>
                             <integer value="1000"/>
                             <integer value="1000"/>
+                            <integer value="1000"/>
                         </visibilityPriorities>
                         <customSpacing>
+                            <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
