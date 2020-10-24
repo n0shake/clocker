@@ -169,7 +169,7 @@ class ParentPanelController: NSWindowController {
                                                object: nil)
 
         if #available(OSX 11.0, *) {
-//            mainTableView.style = .fullWidth
+            mainTableView.style = .fullWidth
         }
 
         if modernSlider != nil {
