@@ -330,3 +330,6 @@
 "Preview" = "Preview";
 
 "Miscellaneous" = "Miscellaneous";
+
+// DST changes
+"Daylights Saving transition will occur in < 24 hours" = "Daylights Saving transition will occur in < 24 hours";

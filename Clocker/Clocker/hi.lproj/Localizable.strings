@@ -152,3 +152,6 @@
 "New Zealand" = "न्यूज़ीलैंड";
 "Florida" = "फ्लोरिडा";
 "San Francisco" = "सान फ्रांसिस्को";
+
+// DST changes
+"Daylights Saving transition will occur in < 24 hours" = "Daylights Saving transition will occur in < 24 hours";
