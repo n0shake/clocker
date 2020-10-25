@@ -59,10 +59,10 @@ DQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kbp-ED-vvP">
-                                <rect key="frame" x="14" y="-1" width="62" height="61"/>
+                                <rect key="frame" x="14" y="-1" width="70" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="nfD-s1-MfF"/>
-                                    <constraint firstAttribute="width" constant="50" id="opl-FH-00w"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="opl-FH-00w"/>
                                 </constraints>
                                 <buttonCell key="cell" type="push" title="Back" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Tfk-vV-OpF">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
