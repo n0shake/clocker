@@ -84,7 +84,6 @@
 		35C36FA22259ED6D002FA5C6 /* RemindersHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F9F2259ED6D002FA5C6 /* RemindersHandler.swift */; };
 		35C36FA42259EEC2002FA5C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36FA32259EEC2002FA5C6 /* AppDelegate.swift */; };
 		35EB537325310FD200311068 /* TimezoneDataEqualityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3545C52A22612BCC00121E25 /* TimezoneDataEqualityTests.swift */; };
-		35F14BDE25073E4C0052B240 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35F14BDD25073E4C0052B240 /* Keys.plist */; };
 		9A0A1C8C20903DBD0012003B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87651C1FEDC500A7A2DF /* CoreLocation.framework */; };
 		9A13BAD61CA87F08007C6CBE /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAD81CA87F08007C6CBE /* Panel.xib */; };
 		9A13BAE01CA882FA007C6CBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAE21CA882FA007C6CBE /* InfoPlist.strings */; };
@@ -92,6 +91,7 @@
 		9A20A04B1C4DEED200FB45AB /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A20A04A1C4DEED200FB45AB /* IOKit.framework */; };
 		9A24A1881ED902CC0095201E /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A24A1871ED902CC0095201E /* EventKit.framework */; };
 		9A3169C11D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A3169C01D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist */; };
+		9A348B312545DE18000E846F /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A348B302545DE17000E846F /* Keys.plist */; };
 		9A4379271BEC223900F4E27F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379231BEC223900F4E27F /* Fabric.framework */; };
 		9A43792A1BEC230A00F4E27F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379291BEC230A00F4E27F /* libc++.tbd */; };
 		9A56DB801C1CFB73004CE6AF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A56DB7D1C1CFB73004CE6AF /* MainMenu.xib */; };
@@ -306,7 +306,6 @@
 		35C36F9E2259ED6D002FA5C6 /* EventCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenter.swift; sourceTree = "<group>"; };
 		35C36F9F2259ED6D002FA5C6 /* RemindersHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersHandler.swift; sourceTree = "<group>"; };
 		35C36FA32259EEC2002FA5C6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
-		35F14BDD25073E4C0052B240 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Keys.plist; path = ../Internal/Keys.plist; sourceTree = "<group>"; };
 		9A13BAD71CA87F08007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Panel.xib; sourceTree = "<group>"; };
 		9A13BAE11CA882FA007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A13BAEB1CA88A76007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -314,6 +313,7 @@
 		9A20A06F1C4E804D00FB45AB /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		9A24A1871ED902CC0095201E /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		9A3169C01D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = com.abhishek.ClockerHelper.plist; path = Clocker/com.abhishek.ClockerHelper.plist; sourceTree = "<group>"; };
+		9A348B302545DE17000E846F /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Keys.plist; path = Internal/Keys.plist; sourceTree = "<group>"; };
 		9A4379231BEC223900F4E27F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9A4379291BEC230A00F4E27F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		9A43792B1BEC231100F4E27F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -829,7 +829,7 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
-				35F14BDD25073E4C0052B240 /* Keys.plist */,
+				9A348B302545DE17000E846F /* Keys.plist */,
 				35C36F9B2259EC97002FA5C6 /* Events and Reminders */,
 				35C36F382259D80C002FA5C6 /* Overall App */,
 				35C36F242259D64D002FA5C6 /* Panel */,
@@ -1115,7 +1115,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35F14BDE25073E4C0052B240 /* Keys.plist in Resources */,
+				9A348B312545DE18000E846F /* Keys.plist in Resources */,
 				9A13BAEA1CA88A76007C6CBE /* Localizable.strings in Resources */,
 				357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */,
 				9AB6F15E2259D08300A44663 /* iVersion.bundle in Resources */,
@@ -1469,7 +1469,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 81;
+				CURRENT_PROJECT_VERSION = 82;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1956,7 +1956,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 81;
+				CURRENT_PROJECT_VERSION = 82;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -2021,7 +2021,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 81;
+				CURRENT_PROJECT_VERSION = 82;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
