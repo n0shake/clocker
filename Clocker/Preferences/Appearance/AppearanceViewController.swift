@@ -104,8 +104,9 @@ class AppearanceViewController: ParentViewController {
         let shouldDisplayCompact = DataStore.shared().shouldDisplay(.menubarCompactMode)
         menubarMode.setSelected(true, forSegment: shouldDisplayCompact ? 0 : 1)
 
+        // True is Menubar Only and False is Menubar + Dock
         let appDisplayOptions = DataStore.shared().shouldDisplay(.appDisplayOptions)
-        appDisplayControl.setSelected(true, forSegment: appDisplayOptions ? 1 : 0)
+        appDisplayControl.setSelected(true, forSegment: appDisplayOptions ? 0 : 1)
     }
 
     @IBOutlet var timeFormatLabel: NSTextField!
