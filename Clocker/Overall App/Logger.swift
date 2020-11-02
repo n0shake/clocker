@@ -13,7 +13,7 @@ class Logger: NSObject {
 
     class func info(_ message: String) {
         if #available(OSX 10.14, *) {
-            os_log(.info, "[%@]", message)
+            os_log(.info, "%@", message)
         }
     }
 }
