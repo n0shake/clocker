@@ -67,7 +67,7 @@ public struct TimeChunk {
      */
     public func to(_ unit: TimeUnits) -> Int {
         if months != 0 {
-            print("Months are not supported for conversion due to their uncertain number of days.")
+            Logger.info("Months are not supported for conversion due to their uncertain number of days.")
             return 0
         }
         if unit == .seconds {

@@ -1025,7 +1025,7 @@ extension ParentPanelController: NSPopoverDelegate {
 extension ParentPanelController: NSSharingServicePickerDelegate {
     func sharingServicePicker(_: NSSharingServicePicker, delegateFor sharingService: NSSharingService) -> NSSharingServiceDelegate? {
         Logger.log(object: ["Service Title": sharingService.title],
-                        for: "Sharing Service Executed")
+                   for: "Sharing Service Executed")
         return self as? NSSharingServiceDelegate
     }
 }
@@ -1042,6 +1042,6 @@ extension ParentPanelController: NSCollectionViewDataSource, NSCollectionViewDel
     }
 
     func collectionView(_: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-        Swift.print("Did Select Item at \(indexPaths.description)")
+        Logger.info("Did Select Item at \(indexPaths.description)")
     }
 }

@@ -7,7 +7,13 @@ import os.signpost
 class Logger: NSObject {
     class func log(object annotations: [String: Any]?, for event: NSString) {
         if #available(OSX 10.14, *) {
-            os_log(.info, "[%@] - [%@]", event, annotations ?? [:])
+            os_log(.default, "[%@] - [%@]", event, annotations ?? [:])
+        }
+    }
+
+    class func info(_ message: String) {
+        if #available(OSX 10.14, *) {
+            os_log(.info, "[%@]", message)
         }
     }
 }

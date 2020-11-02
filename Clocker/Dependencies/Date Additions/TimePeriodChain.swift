@@ -79,7 +79,7 @@ open class TimePeriodChain: TimePeriodGroup {
             // Insert new period
             periods.insert(period, at: index)
         } else {
-            print("All TimePeriods in a TimePeriodChain must contain a defined start and end date")
+            Logger.info("All TimePeriods in a TimePeriodChain must contain a defined start and end date")
             return
         }
 

@@ -239,7 +239,7 @@ class PanelController: ParentPanelController {
     }
 
     private func startTimer() {
-        print("Start timer called")
+        Logger.info("Start timer called")
 
         parentTimer = Repeater(interval: .seconds(1), mode: .infinite) { _ in
             OperationQueue.main.addOperation {
@@ -254,7 +254,7 @@ class PanelController: ParentPanelController {
 
         if count >= 1 || DataStore.shared().shouldDisplay(.showMeetingInMenubar) {
             if let delegate = NSApplication.shared.delegate as? AppDelegate {
-                print("\nWe will be invalidating the menubar timer as we want the parent timer to take care of both panel and menubar ")
+                Logger.info("\nWe will be invalidating the menubar timer as we want the parent timer to take care of both panel and menubar ")
 
                 delegate.invalidateMenubarTimer(false)
             }

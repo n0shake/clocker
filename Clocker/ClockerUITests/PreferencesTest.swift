@@ -392,7 +392,7 @@ extension XCTestCase {
         let isHittable = NSPredicate(format: "exists == true", "")
         let addExpectation = expectation(for: isHittable,
                                          evaluatedWith: results.firstMatch) { () -> Bool in
-            print("Handler called")
+            Logger.info("Handler called")
             return true
         }
 

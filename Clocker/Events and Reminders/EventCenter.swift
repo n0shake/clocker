@@ -34,7 +34,7 @@ class EventCenter: NSObject {
     }
 
     private func refetchAll() {
-        print("\nRefetching events from the store")
+        Logger.info("\nRefetching events from the store")
         eventsForDate = [:]
         filteredEvents = [:]
 

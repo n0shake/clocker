@@ -149,7 +149,7 @@ class PermissionsViewController: ParentViewController {
                     }
                 } else {
                     Logger.log(object: ["Reminder Access Not Granted": "YES"],
-                                    for: "Reminder Access Not Granted")
+                               for: "Reminder Access Not Granted")
                 }
             })
         } else if eventCenter.calendarAccessGranted() {

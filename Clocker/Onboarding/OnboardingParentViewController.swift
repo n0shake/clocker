@@ -310,7 +310,6 @@ class OnboardingParentViewController: NSViewController {
 
     func logExitPoint() {
         let currentViewController = currentController()
-        print(currentViewController)
         Logger.log(object: currentViewController, for: "Onboarding Process Exit")
     }
 

@@ -45,7 +45,7 @@ class MenubarHandler: NSObject {
                     let timeForEventToStart = event.event.startDate.timeIntervalSinceNow / 60
 
                     if timeForEventToStart > 30 {
-                        print("Our next event: \(event.event.title ?? "Error") starts in \(timeForEventToStart) mins")
+                        Logger.info("Our next event: \(event.event.title ?? "Error") starts in \(timeForEventToStart) mins")
 
                         continue
                     }

@@ -161,7 +161,7 @@ extension PreferencesDataSource: NSTableViewDataSource {
                 "Old Label": dataObject.customLabel ?? "Error",
                 "New Label": formattedValue,
             ],
-                            for: "Custom Label Changed")
+                       for: "Custom Label Changed")
 
             dataObject.setLabel(formattedValue)
 
@@ -174,7 +174,7 @@ extension PreferencesDataSource: NSTableViewDataSource {
                 "Selected Timezone Count": selectedTimezones.count,
                 "Current Row": row,
             ],
-                            for: "Error in selected row count")
+                       for: "Error in selected row count")
         }
     }
 

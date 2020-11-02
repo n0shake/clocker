@@ -98,7 +98,7 @@ class FinalOnboardingViewController: NSViewController {
 
     private func extraData() -> [String: String]? {
         guard let validEmail = emailValidator.validate(field: emailTextField) else {
-            print("Not sending up email because it was invalid")
+            Logger.info("Not sending up email because it was invalid")
             return nil
         }
 
