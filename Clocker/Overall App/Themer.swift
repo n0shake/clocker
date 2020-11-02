@@ -151,8 +151,8 @@ extension Themer {
     }
 
     func shutdownImage() -> NSImage {
-        if #available(macOS 10.16, *) {
-            return symbolImage(for: "ellipsis.circle")
+        if let symbolImageForShutdown = symbolImage(for: "ellipsis.circle") {
+            return symbolImageForShutdown
         }
 
         if #available(macOS 10.14, *) {
@@ -170,8 +170,8 @@ extension Themer {
     }
 
     func preferenceImage() -> NSImage {
-        if #available(macOS 10.16, *) {
-            return symbolImage(for: "gear")
+        if let symbolImageForPreference = symbolImage(for: "gear") {
+            return symbolImageForPreference
         }
 
         if #available(macOS 10.14, *) {
@@ -192,8 +192,8 @@ extension Themer {
     }
 
     func pinImage() -> NSImage {
-        if #available(macOS 10.16, *) {
-            return symbolImage(for: "macwindow.on.rectangle")
+        if let pinImage = symbolImage(for: "macwindow.on.rectangle") {
+            return pinImage
         }
 
         if #available(macOS 10.14, *) {
@@ -316,8 +316,8 @@ extension Themer {
     }
 
     func sharingImage() -> NSImage {
-        if #available(macOS 10.16, *) {
-            return symbolImage(for: "square.and.arrow.up.on.square.fill")
+        if let sharingImage = symbolImage(for: "square.and.arrow.up.on.square.fill") {
+            return sharingImage
         }
 
         if #available(macOS 10.14, *) {
@@ -445,15 +445,14 @@ extension Themer {
             NSColor(deviceRed: 42.0 / 255.0, green: 55.0 / 255.0, blue: 62.0 / 255.0, alpha: 1.0)
     }
 
-    func symbolImage(for name: String) -> NSImage {
+    func symbolImage(for name: String) -> NSImage? {
         assert(name.count > 0)
 
         if #available(OSX 10.16, *) {
-            return NSImage(systemSymbolName: name,
-                           accessibilityDescription: name)!
-        } else {
-            // Dummy image for older xcodes
-            return NSImage(named: NSImage.Name("Calendar Tab Icon"))!
+//            return NSImage(systemSymbolName: name,
+//                           accessibilityDescription: name)!
         }
+
+        return nil
     }
 }
