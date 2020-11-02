@@ -1025,7 +1025,7 @@ extension ParentPanelController: NSPopoverDelegate {
 extension ParentPanelController: NSSharingServicePickerDelegate {
     func sharingServicePicker(_: NSSharingServicePicker, delegateFor sharingService: NSSharingService) -> NSSharingServiceDelegate? {
         Logger.log(object: ["Service Title": sharingService.title],
-                   for: "Sharing Service Executed")
+                        for: "Sharing Service Executed")
         return self as? NSSharingServiceDelegate
     }
 }

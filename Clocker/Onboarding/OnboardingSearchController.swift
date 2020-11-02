@@ -190,7 +190,7 @@ class OnboardingSearchController: NSViewController {
                         self.undoButton.isHidden = false
 
                         Logger.log(object: ["Place Name": filteredAddress],
-                                   for: "Added Timezone while Onboarding")
+                                        for: "Added Timezone while Onboarding")
                     }
 
                     // Cleanup.

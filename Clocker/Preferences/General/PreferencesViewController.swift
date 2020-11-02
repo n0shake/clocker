@@ -41,7 +41,7 @@ class PreferencesViewController: ParentViewController {
         guard let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
             let dictionary = NSDictionary(contentsOfFile: path),
             let apiKey = dictionary["GeocodingKey"] as? String else {
-            assertionFailure("Unable to find the API key")
+//            assertionFailure("Unable to find the API key")
             return ""
         }
         return apiKey
@@ -327,7 +327,7 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
 
     private func _unfavourite(_ dataObject: TimezoneData) {
         Logger.log(object: ["label": dataObject.customLabel ?? "Error"],
-                   for: "favouriteRemoved")
+                        for: "favouriteRemoved")
 
         if let appDelegate = NSApplication.shared.delegate as? AppDelegate,
             let menubarFavourites = DataStore.shared().menubarTimezones(),
