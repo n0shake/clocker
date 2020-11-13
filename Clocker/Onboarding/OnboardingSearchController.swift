@@ -34,9 +34,9 @@ class OnboardingSearchController: NSViewController {
         resultsTableView.dataSource = self
         resultsTableView.target = self
         resultsTableView.doubleAction = #selector(doubleClickAction(_:))
-//        if #available(OSX 11.0, *) {
-//            resultsTableView.style = .fullWidth
-//        }
+        if #available(OSX 11.0, *) {
+            resultsTableView.style = .fullWidth
+        }
 
         setup()
 

@@ -1,10 +1,13 @@
 // Copyright © 2015 Abhishek Banthia
 
 import Cocoa
+import os
 import os.log
 import os.signpost
 
 class Logger: NSObject {
+    let logObjc = OSLog(subsystem: "com.abhishek.Clocker", category: "app")
+
     class func log(object annotations: [String: Any]?, for event: NSString) {
         if #available(OSX 10.14, *) {
             os_log(.default, "[%@] - [%@]", event, annotations ?? [:])
