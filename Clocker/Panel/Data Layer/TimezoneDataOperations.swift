@@ -331,6 +331,10 @@ extension TimezoneDataOperations {
         let replaced = timeDifference.replacingOccurrences(of: "ago", with: CLEmptyString)
         replaceAgo.append(replaced)
 
+        if !TimezoneDataOperations.currentLocale.contains("en") {
+            return replaceAgo
+        }
+
         let minuteDifference = calculateTimeDifference(with: local as NSDate, timezoneDate: timezoneDate as NSDate)
 
         minuteDifference == 0 ? replaceAgo.append("behind") : replaceAgo.append("\(minuteDifference) mins behind")
