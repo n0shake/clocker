@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,24 +23,24 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Clocker Feedback" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-            <rect key="contentRect" x="437" y="172" width="319" height="440"/>
+            <rect key="contentRect" x="437" y="172" width="319" height="456"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="319" height="440"/>
+                <rect key="frame" x="0.0" y="0.0" width="319" height="456"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNX-kV-RGt">
-                        <rect key="frame" x="12" y="230" width="295" height="122"/>
+                        <rect key="frame" x="12" y="245" width="295" height="123"/>
                         <clipView key="contentView" drawsBackground="NO" id="NNn-eZ-8Je">
-                            <rect key="frame" x="1" y="1" width="293" height="120"/>
+                            <rect key="frame" x="1" y="1" width="293" height="121"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="sCg-gV-TTr">
-                                    <rect key="frame" x="0.0" y="0.0" width="293" height="120"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="293" height="121"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="293" height="120"/>
+                                    <size key="minSize" width="293" height="121"/>
                                     <size key="maxSize" width="463" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
@@ -56,13 +56,13 @@
                         </scroller>
                     </scrollView>
                     <box translatesAutoresizingMaskIntoConstraints="NO" id="JzF-Oq-qhW">
-                        <rect key="frame" x="9" y="63" width="301" height="154"/>
+                        <rect key="frame" x="9" y="63" width="301" height="169"/>
                         <view key="contentView" id="moX-Vc-vMc">
-                            <rect key="frame" x="3" y="3" width="295" height="135"/>
+                            <rect key="frame" x="3" y="3" width="295" height="150"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" preferredMaxLayoutWidth="269" translatesAutoresizingMaskIntoConstraints="NO" id="Qzm-kE-Igl">
-                                    <rect key="frame" x="10" y="100" width="275" height="24"/>
+                                    <rect key="frame" x="10" y="115" width="275" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="6DY-uj-pMG"/>
                                     </constraints>
@@ -73,7 +73,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" preferredMaxLayoutWidth="269" translatesAutoresizingMaskIntoConstraints="NO" id="zlM-Cf-OxV">
-                                    <rect key="frame" x="10" y="66" width="267" height="24"/>
+                                    <rect key="frame" x="10" y="81" width="267" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="b3M-Sc-y8S"/>
                                     </constraints>
@@ -84,7 +84,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="269" translatesAutoresizingMaskIntoConstraints="NO" id="LVY-Qw-MYC">
-                                    <rect key="frame" x="6" y="0.0" width="283" height="56"/>
+                                    <rect key="frame" x="6" y="0.0" width="283" height="71"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" placeholderString="Accessory Info" id="yEq-6I-HBq">
                                         <font key="font" size="10" name="Avenir-Book"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -106,7 +106,7 @@
                             </constraints>
                         </view>
                         <constraints>
-                            <constraint firstAttribute="height" constant="150" id="lwa-Yt-uxh"/>
+                            <constraint firstAttribute="height" constant="165" id="lwa-Yt-uxh"/>
                         </constraints>
                         <font key="titleFont" size="11" name="Avenir-Book"/>
                     </box>
@@ -159,7 +159,7 @@ DQ
                         <rect key="frame" x="12" y="19" width="79" height="20"/>
                     </progressIndicator>
                     <box translatesAutoresizingMaskIntoConstraints="NO" id="bGc-DH-2iw">
-                        <rect key="frame" x="9" y="356" width="301" height="84"/>
+                        <rect key="frame" x="9" y="372" width="301" height="84"/>
                         <view key="contentView" id="6oZ-b5-xPJ">
                             <rect key="frame" x="3" y="3" width="295" height="65"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -216,7 +216,7 @@ DQ
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="148.5" y="273"/>
+            <point key="canvasLocation" x="148.5" y="281"/>
         </window>
     </objects>
 </document>
