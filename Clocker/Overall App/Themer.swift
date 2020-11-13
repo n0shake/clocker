@@ -151,7 +151,7 @@ extension Themer {
     }
 
     func shutdownImage() -> NSImage {
-        if #available(macOS 10.16, *) {
+        if #available(OSX 11.0, *) {
             return symbolImage(for: "ellipsis.circle")
         }
 
@@ -170,7 +170,7 @@ extension Themer {
     }
 
     func preferenceImage() -> NSImage {
-        if #available(macOS 10.16, *) {
+        if #available(OSX 11.0, *) {
             return symbolImage(for: "gear")
         }
 
@@ -192,7 +192,7 @@ extension Themer {
     }
 
     func pinImage() -> NSImage {
-        if #available(macOS 10.16, *) {
+        if #available(OSX 11.0, *) {
             return symbolImage(for: "macwindow.on.rectangle")
         }
 
@@ -316,7 +316,7 @@ extension Themer {
     }
 
     func sharingImage() -> NSImage {
-        if #available(macOS 10.16, *) {
+        if #available(OSX 11.0, *) {
             return symbolImage(for: "square.and.arrow.up.on.square.fill")
         }
 
@@ -447,14 +447,12 @@ extension Themer {
 
     func symbolImage(for name: String) -> NSImage {
         assert(name.count > 0)
-
-        return NSImage(named: NSImage.Name("Calendar Tab Icon"))!
-//        if #available(OSX 10.16, *) {
-//            return NSImage(systemSymbolName: name,
-//                           accessibilityDescription: name)!
-//        } else {
-//            // Dummy image for older xcodes
-//            return NSImage(named: NSImage.Name("Calendar Tab Icon"))!
-//        }
+        if #available(OSX 11.0, *) {
+            return NSImage(systemSymbolName: name,
+                           accessibilityDescription: name)!
+        } else {
+            // Dummy image for older xcodes
+            return NSImage(named: NSImage.Name("Calendar Tab Icon"))!
+        }
     }
 }
