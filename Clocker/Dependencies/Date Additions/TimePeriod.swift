@@ -390,7 +390,7 @@ public extension TimePeriodProtocol {
             end = end?.add(chunk)
         case .center:
             // Do not lengthen by TimeChunk at center
-            print("Mutation via chunk from center anchor is not supported.")
+            Logger.info("Mutation via chunk from center anchor is not supported.")
         case .end:
             beginning = beginning?.subtract(chunk)
         }
@@ -426,7 +426,7 @@ public extension TimePeriodProtocol {
             end = end?.subtract(chunk)
         case .center:
             // Do not shorten by TimeChunk at center
-            print("Mutation via chunk from center anchor is not supported.")
+            Logger.info("Mutation via chunk from center anchor is not supported.")
         case .end:
             beginning = beginning?.add(chunk)
         }
@@ -561,7 +561,7 @@ open class TimePeriod: TimePeriodProtocol {
             timePeriod.beginning = beginning
             timePeriod.end = end?.add(chunk)
         case .center:
-            print("Mutation via chunk from center anchor is not supported.")
+            Logger.info("Mutation via chunk from center anchor is not supported.")
         case .end:
             timePeriod.beginning = beginning?.add(-chunk)
             timePeriod.end = end
@@ -610,7 +610,7 @@ open class TimePeriod: TimePeriodProtocol {
             timePeriod.beginning = beginning
             timePeriod.end = end?.subtract(chunk)
         case .center:
-            print("Mutation via chunk from center anchor is not supported.")
+            Logger.info("Mutation via chunk from center anchor is not supported.")
         case .end:
             timePeriod.beginning = beginning?.add(-chunk)
             timePeriod.end = end

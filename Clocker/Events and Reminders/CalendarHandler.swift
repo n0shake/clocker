@@ -66,7 +66,7 @@ extension EventCenter {
                     let timeForEventToStart = event.event.startDate.timeIntervalSinceNow / 60
 
                     if timeForEventToStart > 30 {
-                        print("Our next event: \(event.event.title ?? "Error") starts in \(timeForEventToStart) mins")
+                        Logger.info("Our next event: \(event.event.title ?? "Error") starts in \(timeForEventToStart) mins")
                         continue
                     }
 
@@ -209,12 +209,12 @@ extension EventCenter {
                 }
             }
 
-            print("Fetched filtered events for \(filteredEvents.count) days\n")
+            Logger.info("Fetched filtered events for \(filteredEvents.count) days\n")
 
             return
         }
 
-        print("Unable to filter events because user hasn't selected calendars")
+        Logger.info("Unable to filter events because user hasn't selected calendars")
     }
 
     func saveDefaultIdentifiersList() {
@@ -224,7 +224,7 @@ extension EventCenter {
 
             if !allCalendars.isEmpty {
                 UserDefaults.standard.set(allCalendars, forKey: CLSelectedCalendars)
-                print("Finished saving all calendar identifiers in default")
+                Logger.info("Finished saving all calendar identifiers in default")
                 self.filterEvents()
             }
         }
@@ -259,7 +259,7 @@ extension EventCenter {
 
     func fetchEvents(_ start: Int, _ end: Int) {
         if calendarAccessDenied() || calendarAccessNotDetermined() {
-            print("Refetching aborted because we don't have permission!")
+            Logger.info("Refetching aborted because we don't have permission!")
             return
         }
 
@@ -294,7 +294,7 @@ extension EventCenter {
 
             while date.compare(final) == .orderedAscending {
                 guard var nextDate = autoupdatingCalendar.date(byAdding: Calendar.Component.day, value: 1, to: date) else {
-                    print("Could not calculate end date")
+                    Logger.info("Could not calculate end date")
                     return
                 }
                 nextDate = autoupdatingCalendar.startOfDay(for: nextDate)
@@ -320,7 +320,7 @@ extension EventCenter {
 
         eventsForDate = eventsForDateMapper
 
-        print("Fetched events for \(eventsForDate.count) days")
+        Logger.info("Fetched events for \(eventsForDate.count) days")
 
         filterEvents()
     }

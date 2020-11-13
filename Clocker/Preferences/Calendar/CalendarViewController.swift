@@ -146,7 +146,7 @@ class CalendarViewController: ParentViewController {
 
         if sender.selectedSegment == 0 {
             if let isValid = statusItemHandler.menubarTimer?.isValid, isValid == true {
-                print("Timer is already in progress")
+                Logger.info("Timer is already in progress")
                 updateStatusItem()
                 return
             }

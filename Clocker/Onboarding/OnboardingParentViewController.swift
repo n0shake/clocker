@@ -68,11 +68,11 @@ class OnboardingParentViewController: NSViewController {
 
         [negativeButton, backButton].forEach { $0?.isHidden = true }
 
-        if #available(OSX 11.0, *) {
-            negativeButton.controlSize = .large
-            positiveButton.controlSize = .large
-            backButton.controlSize = .large
-        }
+//        if #available(OSX 11.0, *) {
+//            negativeButton.controlSize = .large
+//            positiveButton.controlSize = .large
+//            backButton.controlSize = .large
+//        }
 
         backButton.title = NSLocalizedString("Back",
                                              comment: "Button title for going back to the previous screen")
@@ -310,7 +310,6 @@ class OnboardingParentViewController: NSViewController {
 
     func logExitPoint() {
         let currentViewController = currentController()
-        print(currentViewController)
         Logger.log(object: currentViewController, for: "Onboarding Process Exit")
     }
 

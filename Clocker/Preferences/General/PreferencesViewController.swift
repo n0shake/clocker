@@ -41,7 +41,7 @@ class PreferencesViewController: ParentViewController {
         guard let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
             let dictionary = NSDictionary(contentsOfFile: path),
             let apiKey = dictionary["GeocodingKey"] as? String else {
-            assertionFailure("Unable to find the API key")
+//            assertionFailure("Unable to find the API key")
             return ""
         }
         return apiKey
@@ -420,7 +420,7 @@ extension PreferencesViewController {
 
             self.placeholderLabel.placeholderString = "Searching for \(searchString)"
 
-            print(self.placeholderLabel.placeholderString ?? "")
+            Logger.info(self.placeholderLabel.placeholderString ?? "")
 
             self.dataTask = NetworkManager.task(with: self.generateSearchURL(),
                                                 completionHandler: { [weak self] response, error in
@@ -474,7 +474,7 @@ extension PreferencesViewController {
             return false
         }
 
-        print(searchResultsDataSource.timezoneFilteredArray)
+        Logger.info(searchResultsDataSource.timezoneFilteredArray.debugDescription)
     }
 
     private func generateSearchURL() -> String {
@@ -528,7 +528,7 @@ extension PreferencesViewController {
 
     private func reloadSearchResults() {
         if searchResultsDataSource.calculateChangesets() {
-            print("Reloading Search Results")
+            Logger.info("Reloading Search Results")
             availableTimezoneTableView.reloadData()
         }
     }
@@ -540,7 +540,7 @@ extension PreferencesViewController {
             let decodedObject = try jsonDecoder.decode(SearchResult.self, from: data)
             return decodedObject
         } catch {
-            print("decodedObject error: \n\(error)")
+            Logger.info("decodedObject error: \n\(error)")
             return nil
         }
     }
@@ -552,7 +552,7 @@ extension PreferencesViewController {
             let decodedObject = try jsonDecoder.decode(Timezone.self, from: data)
             return decodedObject
         } catch {
-            print("decodedObject error: \n\(error)")
+            Logger.info("decodedObject error: \n\(error)")
             return nil
         }
     }
@@ -633,7 +633,7 @@ extension PreferencesViewController {
 
         // Mark if the timezone is same as local timezone
         let timezoneObject = TimezoneData(with: newTimeZone)
-        timezoneObject.isSystemTimezone = timezoneObject.timezoneID == NSTimeZone.system.identifier
+        timezoneObject.isSystemTimezone = timezoneObject.timezone() == NSTimeZone.system.identifier
 
         let operationsObject = TimezoneDataOperations(with: timezoneObject)
         operationsObject.saveObject()
@@ -950,8 +950,8 @@ extension PreferencesViewController {
                 return false
             }
 
-            let timezone1 = NSTimeZone(name: object1.timezoneID!)
-            let timezone2 = NSTimeZone(name: object2.timezoneID!)
+            let timezone1 = NSTimeZone(name: object1.timezone())
+            let timezone2 = NSTimeZone(name: object2.timezone())
 
             let difference1 = system.secondsFromGMT() - timezone1!.secondsFromGMT
             let difference2 = system.secondsFromGMT() - timezone2!.secondsFromGMT

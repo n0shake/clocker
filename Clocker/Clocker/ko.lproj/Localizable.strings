@@ -6,26 +6,27 @@
 
 */
 
-"Thank you for helping make Clocker even better!" = "Thank you for helping make Clocker even better!";
-"iRateMessageTitle" = "Rate %@";
-"iRateAppMessage" = "If you enjoy using %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
-"iRateGameMessage" = "If you enjoy playing %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
-"iRateCancelButton" = "No, Thanks";
-"iRateRateButton" = "Rate It Now";
-"iRateRemindButton" = "Remind Me Later";
-"iRateUpdateMessage" = "Update now?";
-"ClockerVersion" = "Version %@";
-"CLFeedbackAlertTitle" = "Thank you for helping make Clocker even better!";
-"app-name" = "Clocker";
-"start-at-login" = "Start At Login";
-"setup-steps" = "It only takes 3 steps to set up Clocker";
-"Permissions-Header" = "Permissions";
-"See your next Calendar event here." = "See your next Calendar event here.";
-"Click here to start." = "Click here to start.";
-"Reminders Access" = "Reminders Access";
-"Calendar Access" = "Calendar Access";
-"Permissions" = "Permissions";
-"Calendar Detail" = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.";
+"CFBundleDisplayName" = "시계";
+"Thank you for helping make Clocker even better!" = "Clocker가 더 발전할 수 있도록 도와주셔서 정말 감사합니다!";
+"iRateMessageTitle" = "비율 %@ ";
+"iRateAppMessage" = "%@을 즐기고 계신다면, 잠시 평가를 위해 시간을 내주시겠습니까? 단 1분도 걸리지 않겠습니다. 지원해주셔서 감사합니다!";
+"iRateGameMessage" = "%@을 즐기고 계신다면, 잠시 평가를 위해 시간을 내주시겠습니까? 단 1분도 걸리지 않겠습니다. 지원해주셔서 감사합니다!";
+"iRateCancelButton" = "나중에 할게요";
+"iRateRateButton" = "지금 평가하기";
+"iRateRemindButton" = "나중에 다시 알리기";
+"iRateUpdateMessage" = "지금 업데이트를 진행할까요?";
+"ClockerVersion" = "버전 %@";
+"CLFeedbackAlertTitle" = "Clocker가 더 발전할 수 있도록 도와주셔서 정말 감사합니다!";
+"app-name" = "시계";
+"start-at-login" = "로그인을 해주세요";
+"setup-steps" = "시계를 설정하는데 3가지만 하시면 됩니다";
+"Permissions-Header" = "권한";
+"See your next Calendar event here." = "당신의 다음 일정을 여기서 보세요";
+"Click here to start." = "여기를 눌러서 시작합니다.";
+"Reminders Access" = "리마인더 권한";
+"Calendar Access" = "캘린더 권한";
+"Permissions" = "권한";
+"Calendar Detail" = "여러분의 개인&공유 캘린더에서 다가오는 이벤트들은 메뉴바와 패널에서 보여질 수 있습니다.";
 "Reminders Detail" = "Set reminders in the timezone of the location of your choice. Your reminders are stored in the default Reminders app.";
 "Privacy Text" = "You can change this later in the Privacy section of the System Preferences.";
 "Granted Button Text" = "Granted";
@@ -51,22 +52,22 @@
 "Search Field Placeholder" = "Enter a city, state or country name";
 "No Timezone Selected" = "Please select a timezone!";
 "Max Timezones Selected" = "Maximum 100 timezones allowed!";
-"Max Search Characters" = "Only 50 characters allowed!";
-"Add Button Title" = "Add";
-"Close Button Title" = "Close";
+"Max Search Characters" = "50 문자까지만 허용됩니다!";
+"Add Button Title" = "추가";
+"Close Button Title" = "닫기";
 
 // Onboarding
-"Open Clocker At Login" = "Open Clocker At Login";
-"Launch Clocker" = "Launch Clocker";
+"Open Clocker At Login" = "로그인해서 Clocker 열기";
+"Launch Clocker" = "Clocker 실행하기";
 
 // Welcome Onboarding
 "It only takes 3 steps to set up Clocker." = "It only takes 3 steps to setup Clocker.";
 "Get Started" = "Get Started";
 
 // Permissions
-"Calendar Access Title" = "Calendar Access";
-"Reminders Access Title" = "Reminders Access";
-"Later Config Description" = "These can be configured later in System Preferences.";
+"Calendar Access Title" = "캘린더 접근";
+"Reminders Access Title" = "리마인더 권한";
+"Later Config Description" = "이것들은 나중에 설정에서 바꾸실 수 있습니다";
 "Back" = "Back";
 "Continue" = "Continue";
 "Clocker is more useful when it can display events from your calendars." = "Clocker is more useful when it can display events from your calendars.";
@@ -104,54 +105,60 @@
 "Show Future Slider" = "Show Future Slider";
 "Show Sunrise/Sunset" = "Show Sunrise/Sunset";
 "Display the time in seconds" = "Display the time in seconds";
-"Larger Text" = "Larger Text";
-"Future Slider Range" = "Future Slider Range";
-"Include Date" = "Include Date";
-"Include Day" = "Include Day";
-"Include Place Name" = "Include Place Name";
-"Menubar Display Options" = "Menubar Display Options";
-"Menubar Mode" = "Menubar Mode";
-"Preview" = "Preview";
-"Miscellaneous" = "Miscellaneous";
+"Larger Text" = "글씨를 크게하기";
+"Future Slider Range" = "미래 슬라이더 범위";
+"Include Date" = "날짜 추가하기";
+"Include Day" = "시간 추가하기";
+"Include Place Name" = "장소 이름";
+"Menubar Display Options" = "메뉴바 화면표시 설정";
+"Menubar Mode" = "메뉴바 모드";
+"Preview" = "미리보기";
+"Miscellaneous" = "기타";
 
 // Empty View
-"No places added" = "No places added";
+"No places added" = "추가된 장소가 없음";
 
 // Panel
-"No upcoming event." = "No upcoming event.";
-"You have no events scheduled for tomorrow." = "You have no events scheduled for tomorrow.";
+"No upcoming event." = "예정된 이벤트 없음";
+"You have no events scheduled for tomorrow." = "내일 일정이 없어요!";
 
 // Review
-"Enjoy using Clocker?" = "Enjoy using Clocker?";
+"Enjoy using Clocker?" = "Clocker 사용에 만족하십니까?";
 
 // App Feedback
-"Tell us what you think!" = "Tell us what you think!";
-"Contact Information (Optional)" = "Contact Information (Optional)";
-"Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!" = "Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!";
+"Tell us what you think!" = "여러분의 의견을 들려주세요.";
+"Contact Information (Optional)" = "연락처 정보 (선택)";
+"Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!" = "연락처 필드는 선택 사항입니다! 귀하의 연락처 정보는 추가 정보가 필요하거나 도움이 필요한 경우 연락을 드릴 것입니다!";
 
 // About View Screen
-"Feedback is always welcome:" = "Feedback is always welcome:";
+"Feedback is always welcome:" = "피드백은 언제나 환영입니다:";
 
 // Calendars View
-"Upcoming Event View Options" = "Upcoming Event View Options";
-"Show Upcoming Event View" = "Show Upcoming Event View";
-"Show All Day Meetings" = "Show All Day Meetings";
-"Show Next Meeting Title in Menubar" = "Show Next Meeting Title in Menubar";
-"Truncate menubar text longer than" = "Truncate menubar text longer than";
-"characters" = "characters";
-"Show events from" = "Show events from";
-"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"";
+"Upcoming Event View Options" = "다가오는 이벤트 보기 옵션";
+"Show Upcoming Event View" = "다가오는 일정 보기";
+"Show All Day Meetings" = "모든 일정 보기";
+"Show Next Meeting Title in Menubar" = "다음 일정을 메뉴바에서 보기";
+"Truncate menubar text longer than" = "다음보다 긴 메뉴 표시 줄 텍스트를 자릅니다.
+
+";
+"characters" = "글자";
+"Show events from" = "오늘부터 이벤트 표시";
+"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "만약 미팅 제목이 \"Meeting with Neel\" 이면 5글자만 보여지기 때문에 주의해주세요. (\"Meeti...\")";
 
 // Notes Popover
-"Reminder Set" = "Reminder Set";
-"Successfully set." = "Successfully set.";
+"Reminder Set" = "알림 설정";
+"Successfully set." = "설정이 완료되었습니다";
 
 // Errors
-"You're offline, maybe?" = "You're offline, maybe?";
-"Try again, maybe?" =  "Try again, maybe?";
-"The Internet connection appears to be offline." = "The Internet connection appears to be offline.";
+"You're offline, maybe?" = "당신은 오프라인입니다. 아마도?";
+"Try again, maybe?" = "다시 시도 해보세요";
+"The Internet connection appears to be offline." = "인터넷 연결이 오프라인 상태입니다.";
 
 // UI Tests
-"New Zealand" = "New Zealand";
-"Florida" = "Florida";
-"San Francisco" = "San Francisco";
+"New Zealand" = "뉴질랜드";
+"Florida" = "플로리다";
+"San Francisco" = "샌프란시스코";
+
+
+// DST changes
+"Daylights Saving transition will occur in < 24 hours" = "Daylights Saving transition will occur in < 24 hours";

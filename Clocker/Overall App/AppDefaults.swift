@@ -67,17 +67,6 @@ class AppDefaults {
         if defaults.object(forKey: CLThemeKey) == nil {
             Themer.shared().set(theme: 0)
         }
-
-        // Set default to System theme for Mojave
-        if #available(macOS 10.14, *) {
-            if defaults.bool(forKey: CLDefaultThemeOnMojave) == false {
-                if isDarkModeOn() {
-                    Themer.shared().set(theme: 2)
-                    defaults.set(2, forKey: CLThemeKey)
-                }
-                defaults.set(true, forKey: CLDefaultThemeOnMojave)
-            }
-        }
     }
 
     private class func showCompactModeAlert() {
@@ -126,8 +115,9 @@ class AppDefaults {
                 CLShowMeetingInMenubar: 1,
                 CLTruncateTextLength: 30,
                 CLSelectedCalendars: [],
-                CLAppDisplayOptions: 1,
-                CLMenubarCompactMode: 1]
+                CLAppDisplayOptions: 0,
+                CLMenubarCompactMode: 1,
+                CLDisplayDSTTransitionInfo: 0]
     }
 }
 

@@ -123,8 +123,8 @@ class OnboardingTests: XCTestCase {
     private func startupControllerTests() {
         let onboardingWindow = app.windows["OnboardingWindow"]
 
-        XCTAssertTrue(onboardingWindow.buttons["Forward"].title == "Open Clocker At Login", "Forward button title's was unexpectedly wrong")
-        XCTAssertTrue(onboardingWindow.buttons["Alternate"].title == "Don't Open", "Alternate button title's was unexpectedly wrong")
+        XCTAssertTrue(onboardingWindow.buttons["Forward"].title == "Open Clocker At Login".localizedString(), "Forward button title's was unexpectedly wrong")
+        XCTAssertTrue(onboardingWindow.buttons["Alternate"].title == "Don't Open".localizedString(), "Alternate button title's was unexpectedly wrong")
 
         XCTAssertTrue(onboardingWindow.staticTexts["Launch at Login".localizedString()].exists, "Header label's static text was unexpectedly wrong.")
         XCTAssertTrue(onboardingWindow.staticTexts["Should Clocker open automatically on startup?".localizedString()].exists, "Accessory label's static text was unexpectedly wrong.")
@@ -137,17 +137,17 @@ class OnboardingTests: XCTestCase {
         XCTAssertTrue(onboardingWindow.buttons["Forward"].title == "Continue".localizedString(), "Forward button title's was unexpectedly wrong")
 
         XCTAssertTrue(onboardingWindow.staticTexts["Quick Add Locations".localizedString()].exists, "Header label's static text was unexpectedly wrong.")
-        XCTAssertTrue(onboardingWindow.staticTexts["More search options in Clocker Preferences."].exists, "Accessory label's static text was unexpectedly wrong.")
+        XCTAssertTrue(onboardingWindow.staticTexts["More search options in Clocker Preferences.".localizedString()].exists, "Accessory label's static text was unexpectedly wrong.")
     }
 
     private func finalOnboardingControllerTests() {
         let onboardingWindow = app.windows["OnboardingWindow"]
 
         // Let's test the buttons
-        XCTAssertTrue(onboardingWindow.staticTexts["You're all set!"].exists, "Header label's static text was unexpectedly wrong.")
-        XCTAssertTrue(onboardingWindow.staticTexts["Thank you for the details."].exists, "Accessory label's static text was unexpectedly wrong.")
+        XCTAssertTrue(onboardingWindow.staticTexts["You're all set!".localizedString()].exists, "Header label's static text was unexpectedly wrong.")
+        XCTAssertTrue(onboardingWindow.staticTexts["Thank you for the details.".localizedString()].exists, "Accessory label's static text was unexpectedly wrong.")
 
-        XCTAssertFalse(onboardingWindow.buttons["Alternate"].exists, "Alternate button was unexpectedly present.")
-        XCTAssertTrue(onboardingWindow.buttons["Forward"].title == "Launch Clocker".localizedString(), "Forward button's title was unexpectedly wrong.")
+        XCTAssertFalse(onboardingWindow.buttons["Alternate".localizedString()].exists, "Alternate button was unexpectedly present.")
+        XCTAssertTrue(onboardingWindow.buttons["Forward".localizedString()].title == "Launch Clocker".localizedString(), "Forward button's title was unexpectedly wrong.")
     }
 }

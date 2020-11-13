@@ -34,9 +34,9 @@ class OnboardingSearchController: NSViewController {
         resultsTableView.dataSource = self
         resultsTableView.target = self
         resultsTableView.doubleAction = #selector(doubleClickAction(_:))
-        if #available(OSX 11.0, *) {
-            resultsTableView.style = .fullWidth
-        }
+//        if #available(OSX 11.0, *) {
+//            resultsTableView.style = .fullWidth
+//        }
 
         setup()
 
@@ -136,7 +136,7 @@ class OnboardingSearchController: NSViewController {
             let decodedObject = try jsonDecoder.decode(Timezone.self, from: data)
             return decodedObject
         } catch {
-            print("decodedObject error: \n\(error)")
+            Logger.info("decodedObject error: \n\(error)")
             return nil
         }
     }
@@ -364,7 +364,7 @@ class OnboardingSearchController: NSViewController {
             let decodedObject = try jsonDecoder.decode(SearchResult.self, from: data)
             return decodedObject
         } catch {
-            print("decodedObject error: \n\(error)")
+            Logger.info("decodedObject error: \n\(error)")
             return nil
         }
     }
@@ -453,7 +453,7 @@ extension OnboardingSearchController: NSSearchFieldDelegate {
             return false
         }
 
-        print("Not Handled")
+        Logger.info("Not Handled")
         // return true if the action was handled; otherwise false
         return false
     }

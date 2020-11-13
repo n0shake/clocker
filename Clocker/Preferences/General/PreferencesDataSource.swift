@@ -130,7 +130,7 @@ extension PreferencesDataSource: NSTableViewDataSource {
             return model.formattedAddress
         }
 
-        return model.timezoneID
+        return model.timezone()
     }
 
     func tableView(_: NSTableView, setObjectValue object: Any?, for _: NSTableColumn?, row: Int) {

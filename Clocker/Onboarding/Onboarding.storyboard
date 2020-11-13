@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fde-UX-327">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fde-UX-327">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -46,7 +46,7 @@
                                 </constraints>
                             </containerView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m1D-bY-RlD">
-                                <rect key="frame" x="362" y="13" width="101" height="32"/>
+                                <rect key="frame" x="367" y="13" width="95" height="32"/>
                                 <buttonCell key="cell" type="push" title="Continue" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5qt-i6-wXk">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -59,10 +59,10 @@ DQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kbp-ED-vvP">
-                                <rect key="frame" x="13" y="-2" width="64" height="62"/>
+                                <rect key="frame" x="14" y="-1" width="70" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="nfD-s1-MfF"/>
-                                    <constraint firstAttribute="width" constant="50" id="opl-FH-00w"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="opl-FH-00w"/>
                                 </constraints>
                                 <buttonCell key="cell" type="push" title="Back" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Tfk-vV-OpF">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -73,7 +73,7 @@ DQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W3z-nZ-e6B">
-                                <rect key="frame" x="248" y="13" width="116" height="32"/>
+                                <rect key="frame" x="258" y="13" width="109" height="32"/>
                                 <buttonCell key="cell" type="push" title="Don't Open" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tPS-m0-NWm">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -168,7 +168,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N6Z-mh-pET">
-                                <rect key="frame" x="18" y="1" width="400" height="18"/>
+                                <rect key="frame" x="18" y="6" width="400" height="18"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="lMj-6p-4uB">
                                     <font key="font" size="13" name="Avenir-Book"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -176,7 +176,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="mF9-1w-sxR">
-                                <rect key="frame" x="20" y="179" width="396" height="100"/>
+                                <rect key="frame" x="20" y="184" width="396" height="100"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="Lef-GT-zuM">
                                         <rect key="frame" x="8" y="72" width="157" height="18"/>
@@ -187,7 +187,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O0s-Bu-IPq">
-                                        <rect key="frame" x="298" y="62" width="85" height="32"/>
+                                        <rect key="frame" x="303" y="62" width="79" height="32"/>
                                         <buttonCell key="cell" type="push" title="Action" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BW3-qu-NiR">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -205,7 +205,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Zhi-9z-C2u">
-                                        <rect key="frame" x="249" y="71" width="16" height="16"/>
+                                        <rect key="frame" x="253" y="71" width="16" height="16"/>
                                     </progressIndicator>
                                 </subviews>
                                 <constraints>
@@ -223,7 +223,7 @@ DQ
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="4eB-eD-0jK">
-                                <rect key="frame" x="20" y="39" width="396" height="100"/>
+                                <rect key="frame" x="20" y="44" width="396" height="100"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="noJ-fx-c1b">
                                         <rect key="frame" x="8" y="48" width="148" height="42"/>
@@ -250,7 +250,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dI2-oA-MBA">
-                                        <rect key="frame" x="298" y="52" width="85" height="32"/>
+                                        <rect key="frame" x="303" y="52" width="79" height="32"/>
                                         <buttonCell key="cell" type="push" title="Action" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i5r-db-Pnw">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -260,7 +260,7 @@ DQ
                                         </connections>
                                     </button>
                                     <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="0GH-vY-2Du">
-                                        <rect key="frame" x="249" y="61" width="16" height="16"/>
+                                        <rect key="frame" x="253" y="61" width="16" height="16"/>
                                     </progressIndicator>
                                 </subviews>
                                 <constraints>
@@ -291,7 +291,7 @@ DQ
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iMf-Uy-zAf">
                                 <rect key="frame" x="120" y="324" width="308" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" placeholderString="Onboarding Info" id="MOO-BA-qzM">
+                                <textFieldCell key="cell" placeholderString="Onboarding Info" id="MOO-BA-qzM">
                                     <font key="font" size="12" name="Avenir-Book"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -314,7 +314,7 @@ DQ
                             <constraint firstItem="N6Z-mh-pET" firstAttribute="leading" secondItem="mF9-1w-sxR" secondAttribute="leading" id="M5v-XW-L1V"/>
                             <constraint firstItem="XfU-36-tPs" firstAttribute="top" secondItem="sib-OR-ym5" secondAttribute="top" constant="20" id="Ps0-DI-VvS"/>
                             <constraint firstItem="4eB-eD-0jK" firstAttribute="trailing" secondItem="mF9-1w-sxR" secondAttribute="trailing" id="Twh-8s-2qe"/>
-                            <constraint firstItem="mF9-1w-sxR" firstAttribute="top" secondItem="iMf-Uy-zAf" secondAttribute="bottom" constant="45" id="X3I-8c-Qgd"/>
+                            <constraint firstItem="mF9-1w-sxR" firstAttribute="top" secondItem="iMf-Uy-zAf" secondAttribute="bottom" constant="40" id="X3I-8c-Qgd"/>
                             <constraint firstItem="N6Z-mh-pET" firstAttribute="top" secondItem="4eB-eD-0jK" secondAttribute="bottom" constant="20" id="bDb-bD-u40"/>
                             <constraint firstItem="4eB-eD-0jK" firstAttribute="top" secondItem="mF9-1w-sxR" secondAttribute="bottom" constant="40" id="eDT-5v-xZY"/>
                             <constraint firstItem="pC3-D3-DSa" firstAttribute="leading" secondItem="XfU-36-tPs" secondAttribute="trailing" constant="20" id="lUs-se-BHO"/>
@@ -361,24 +361,16 @@ DQ
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ClockerIcon-512" id="p3m-Oi-4D1"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OpV-ID-Ygr">
-                                <rect key="frame" x="120" y="324" width="94" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" placeholderString="Onboarding Info" id="Y20-SO-sAO">
-                                    <font key="font" size="12" name="Avenir-Book"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="70Q-lk-Lwh">
-                                <rect key="frame" x="118" y="335" width="203" height="45"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" placeholderString="Screen Name" id="L5w-Cd-KTt">
+                                <rect key="frame" x="118" y="335" width="318" height="45"/>
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="left" placeholderString="Screen Name" id="L5w-Cd-KTt">
                                     <font key="font" size="33" name="Avenir-Book"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hLN-Aq-g8b">
-                                <rect key="frame" x="120" y="266" width="298" height="18"/>
+                                <rect key="frame" x="118" y="257" width="300" height="18"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" placeholderString="Accessory Label" id="N7I-qA-txi">
                                     <font key="font" size="13" name="Avenir-Book"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -386,8 +378,16 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mDt-zc-oSU">
-                                <rect key="frame" x="120" y="34" width="298" height="16"/>
+                                <rect key="frame" x="118" y="34" width="300" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" placeholderString="Alternate Way Description" id="TQL-aE-8L2">
+                                    <font key="font" size="12" name="Avenir-Book"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="EFy-SB-jXa">
+                                <rect key="frame" x="118" y="300" width="320" height="32"/>
+                                <textFieldCell key="cell" selectable="YES" placeholderString="Multiline Label that can span multiple lines in the window. Languages like German have really long words." id="RrM-dN-89g">
                                     <font key="font" size="12" name="Avenir-Book"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -395,16 +395,18 @@ DQ
                             </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="hLN-Aq-g8b" firstAttribute="leading" secondItem="OpV-ID-Ygr" secondAttribute="leading" id="8tu-GJ-fhS"/>
-                            <constraint firstItem="OpV-ID-Ygr" firstAttribute="leading" secondItem="70Q-lk-Lwh" secondAttribute="leading" constant="2" id="A14-rJ-Ein"/>
-                            <constraint firstItem="hLN-Aq-g8b" firstAttribute="top" secondItem="OpV-ID-Ygr" secondAttribute="bottom" constant="40" id="DOy-tp-XHM"/>
+                            <constraint firstItem="EFy-SB-jXa" firstAttribute="top" secondItem="70Q-lk-Lwh" secondAttribute="bottom" constant="3" id="Ikv-w3-jqY"/>
+                            <constraint firstItem="hLN-Aq-g8b" firstAttribute="leading" secondItem="EFy-SB-jXa" secondAttribute="leading" id="LOk-bE-f0r"/>
                             <constraint firstAttribute="trailing" secondItem="mDt-zc-oSU" secondAttribute="trailing" constant="20" id="Nc6-gO-D8h"/>
+                            <constraint firstItem="EFy-SB-jXa" firstAttribute="leading" secondItem="70Q-lk-Lwh" secondAttribute="leading" id="UbP-E5-dUs"/>
                             <constraint firstItem="5Hu-Am-awL" firstAttribute="leading" secondItem="1dd-7B-Qgn" secondAttribute="leading" constant="20" id="YbY-Nf-3WG"/>
                             <constraint firstItem="70Q-lk-Lwh" firstAttribute="top" secondItem="5Hu-Am-awL" secondAttribute="top" id="aUd-GN-V5c"/>
                             <constraint firstAttribute="trailing" secondItem="hLN-Aq-g8b" secondAttribute="trailing" constant="20" id="e3v-NL-soi"/>
-                            <constraint firstItem="OpV-ID-Ygr" firstAttribute="top" secondItem="70Q-lk-Lwh" secondAttribute="bottom" constant="-5" id="flv-ch-gpx"/>
+                            <constraint firstAttribute="trailing" secondItem="EFy-SB-jXa" secondAttribute="trailing" id="jTF-1F-7Wy"/>
+                            <constraint firstAttribute="trailing" secondItem="70Q-lk-Lwh" secondAttribute="trailing" constant="2" id="kbz-wE-TJq"/>
                             <constraint firstItem="5Hu-Am-awL" firstAttribute="top" secondItem="1dd-7B-Qgn" secondAttribute="top" constant="20" id="leb-oe-hz0"/>
                             <constraint firstAttribute="bottom" secondItem="mDt-zc-oSU" secondAttribute="bottom" constant="34" id="nJd-hW-vtc"/>
+                            <constraint firstItem="hLN-Aq-g8b" firstAttribute="top" secondItem="EFy-SB-jXa" secondAttribute="bottom" constant="25" id="qEJ-Pz-FwK"/>
                             <constraint firstItem="mDt-zc-oSU" firstAttribute="leading" secondItem="hLN-Aq-g8b" secondAttribute="leading" id="vjW-P3-Q1E"/>
                             <constraint firstItem="70Q-lk-Lwh" firstAttribute="leading" secondItem="5Hu-Am-awL" secondAttribute="trailing" constant="20" id="z2h-c5-SFb"/>
                         </constraints>
@@ -412,13 +414,13 @@ DQ
                     <connections>
                         <outlet property="accessoryLabel" destination="hLN-Aq-g8b" id="O18-AV-96s"/>
                         <outlet property="appName" destination="70Q-lk-Lwh" id="HwJ-Yk-mzy"/>
-                        <outlet property="onboardingType" destination="OpV-ID-Ygr" id="R0V-0H-8jr"/>
+                        <outlet property="onboardingType" destination="EFy-SB-jXa" id="a0n-bM-ssq"/>
                         <outlet property="privacyLabel" destination="mDt-zc-oSU" id="rJ9-Hv-65Y"/>
                     </connections>
                 </viewController>
                 <customObject id="gdU-Lx-HEm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1495.5" y="750"/>
+            <point key="canvasLocation" x="1495" y="750"/>
         </scene>
         <!--Onboarding Search Controller-->
         <scene sceneID="u6P-zw-bJP">
@@ -646,11 +648,11 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nbC-4o-Xjf">
-                                <rect key="frame" x="122" y="246" width="294" height="23"/>
+                                <rect key="frame" x="122" y="245" width="294" height="24"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="left" imageScaling="proportionallyDown" image="Dark Menubar" id="cZ2-x0-bJ2"/>
                             </imageView>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="kMo-BE-OAn">
-                                <rect key="frame" x="120" y="190" width="298" height="16"/>
+                                <rect key="frame" x="120" y="189" width="298" height="16"/>
                                 <textFieldCell key="cell" selectable="YES" title="Multiline Label" id="M4F-nv-Eyo">
                                     <font key="font" size="12" name="Avenir-Book"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -658,7 +660,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6WD-GP-iz1">
-                                <rect key="frame" x="122" y="140" width="288" height="22"/>
+                                <rect key="frame" x="122" y="139" width="288" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="OvB-hh-3zl"/>
                                 </constraints>
@@ -669,7 +671,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qLP-tx-m41" customClass="UnderlinedButton" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="117" y="117" width="293" height="0.0"/>
+                                <rect key="frame" x="117" y="102" width="293" height="14"/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="left" imageScaling="proportionallyDown" inset="2" id="o87-us-e82">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="13" name="Avenir-Book"/>
@@ -716,6 +718,6 @@ DQ
     </scenes>
     <resources>
         <image name="ClockerIcon-512" width="1024" height="1024"/>
-        <image name="Dark Menubar" width="285" height="23"/>
+        <image name="Dark Menubar" width="276" height="24"/>
     </resources>
 </document>

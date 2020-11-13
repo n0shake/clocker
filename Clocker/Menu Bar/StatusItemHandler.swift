@@ -56,7 +56,7 @@ class StatusItemHandler: NSObject {
                 setClockerIcon()
             }
 
-            print("\nStatus Bar Current State changed: \(currentState)\n")
+            Logger.info("\nStatus Bar Current State changed: \(currentState)\n")
         }
     }
 
@@ -191,7 +191,7 @@ class StatusItemHandler: NSObject {
         menubarTimer?.tolerance = shouldDisplaySeconds ? 0.5 : 20
 
         guard let runLoopTimer = menubarTimer else {
-            print("Timer is unexpectedly nil")
+            Logger.info("Timer is unexpectedly nil")
             return
         }
 
@@ -230,12 +230,12 @@ class StatusItemHandler: NSObject {
         } else if let minutes = components.minute {
             components.minute = minutes + 1
         } else {
-            print("Unable to create date components for the menubar timewr")
+            Logger.info("Unable to create date components for the menubar timewr")
             return nil
         }
 
         guard let fireDate = nsCalendar.date(from: components) else {
-            print("Unable to form Fire Date")
+            Logger.info("Unable to form Fire Date")
             return nil
         }
 
@@ -263,7 +263,7 @@ class StatusItemHandler: NSObject {
     }
 
     private func setupForStandardTextMode() {
-        print("Initializing menubar timer")
+        Logger.info("Initializing menubar timer")
 
         // Let's invalidate the previous timer
         menubarTimer?.invalidate()
@@ -281,7 +281,7 @@ class StatusItemHandler: NSObject {
         let menubarFavourites = DataStore.shared().menubarTimezones() ?? []
 
         if menubarFavourites.isEmpty, DataStore.shared().shouldDisplay(.showMeetingInMenubar) == false {
-            print("Invalidating menubar timer!")
+            Logger.info("Invalidating menubar timer!")
 
             invalidation()
 
@@ -290,7 +290,7 @@ class StatusItemHandler: NSObject {
             }
 
         } else if sync {
-            print("Invalidating menubar timer for sync purposes!")
+            Logger.info("Invalidating menubar timer for sync purposes!")
 
             invalidation()
 
@@ -299,7 +299,7 @@ class StatusItemHandler: NSObject {
             }
 
         } else {
-            print("Not stopping menubar timer!")
+            Logger.info("Not stopping menubar timer!")
         }
     }
 

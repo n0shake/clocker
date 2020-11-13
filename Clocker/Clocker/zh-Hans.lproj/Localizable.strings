@@ -1,332 +1,155 @@
 /* (No Comment) */
-"About Tab" = "About";
-
-"CFBundleDisplayName" = "Clocker";
-
-/* Button to add a location */
-"Add Button Title" = "Add";
-
-/* (No Comment) */
+"CFBundleDisplayName" = "解锁器";
+"Thank you for helping make Clocker even better!" = "感谢您帮助 Clocker 做得更好！";
+"iRateMessageTitle" = "评价 %@";
+"iRateAppMessage" = "如果您喜欢使用 %@，能否请您抽出时间来对它进行评价？评价不会超过一分钟。感谢您的支持 ！";
+"iRateGameMessage" = "如果您喜欢使用 %@，能否请您抽出时间来对它进行评价？评价不会超过一分钟。感谢您的支持 ！";
+"iRateCancelButton" = "不用了，谢谢";
+"iRateRateButton" = "立即评分";
+"iRateRemindButton" = "稍后提醒我";
+"iRateUpdateMessage" = "现在更新？";
+"ClockerVersion" = "版本 %@";
+"CLFeedbackAlertTitle" = "感谢您帮助 Clocker 做得更好！";
 "app-name" = "Clocker";
-
-/* (No Comment) */
-"Appearance Tab" = "Appearance";
-
-/* Button title for going back to the previous screen */
-"Back" = "Back";
-
-/* Calendar Permission Title */
-"Calendar Access" = "Calendar Access";
-
-/* Title for Calendar access label */
-"Calendar Access Title" = "Calendar Access";
-
-/* Calendar Detail Text */
-"Calendar Detail" = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.";
-
-/* (No Comment) */
-"Calendar Tab" = "Calendar";
-
-/* (No Comment) */
-"characters" = "characters";
-
-/* (No Comment) */
-"CLFeedbackAlertTitle" = "Thank you for helping make Clocker even better!";
-
-/* Button Title for no Calendar access */
-"Click here to start." = "Click here to start.";
-
-/* (No Comment) */
-"Clocker is more useful when it can display events from your calendars." = "Clocker is more useful when it can display events from your calendars.";
-
-/* (No Comment) */
-"Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy.";
-
-/* (No Comment) */
-"ClockerVersion" = "Version %@";
-
-/* Button to close the panel */
-"Close Button Title" = "Close";
-
-/* (No Comment) */
-"Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!" = "Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!";
-
-/* (No Comment) */
-"Contact Information (Optional)" = "Contact Information (Optional)";
-
-/* Continue Button Title */
-"Continue" = "Continue";
-
-/* (No Comment) */
-"Day Display Options" = "Day Display Options";
-
-/* (No Comment) */
-"Denied" = "Denied";
-
-/* Denied Button Text */
-"Denied Button Text" = "Denied";
-
-/* (No Comment) */
-"Display the time in seconds" = "Display the time in seconds";
-
-/* Title asking users if they like the app */
-"Enjoy using Clocker" = "Enjoy using Clocker";
-
-/* Review */
-"Enjoy using Clocker?" = "Enjoy using Clocker?";
-
-/* (No Comment) */
-"Favourite a timezone to enable menubar display options." = "Favourite a timezone to enable menubar display options.";
-
-/* About View Screen */
-"Feedback is always welcome:" = "Feedback is always welcome:";
-
-/* (No Comment) */
-"Florida" = "Florida";
-
-/* (No Comment) */
-"Future Slider Range" = "Future Slider Range";
-
-/* Title for Welcome View Controller's Continue Button */
-"Get Started" = "立刻开始！";
-
-/* (No Comment) */
-"Grant" = "授权";
-
-/* (No Comment) */
-"Grant Access" = "授予访问权限";
-
-/* Grant Button Text */
+"start-at-login" = "开启时启动";
+"setup-steps" = "只需要三步来设置 Clocker";
+"Permissions-Header" = "权限";
+"See your next Calendar event here." = "在这里查看你的下一个日历事件。";
+"Click here to start." = "点此开始。";
+"Reminders Access" = "提醒访问权限";
+"Calendar Access" = "日历访问权限";
+"Permissions" = "权限";
+"Calendar Detail" = "未来你个人和分享的日历事件将显示在菜单栏和面板上。";
+"Reminders Detail" = "在您选择的位置时区设置提醒。您的提醒存储在默认提醒应用中。";
+"Privacy Text" = "您稍后可以在「系统偏好设置」的隐私部分更改此内容。";
+"Granted Button Text" = "已授权";
+"Denied Button Text" = "已拒绝";
 "Grant Button Text" = "授权";
 
-/* (No Comment) */
+// Welcome Onboarding
+"It only takes 3 steps to setup Clocker." = "只需要 3 步来设置 Clocker。";
+"Get Started" = "开始";
+
+// Tab Item Titles
+"Preferences Tab" = "首选项";
+"Appearance Tab" = "外观";
+"Calendar Tab" = "日历";
+"About Tab" = "关于";
+"Permissions Tab" = "权限";
+
+// General Preferences Screen
+"Start at Login" = "登录时启动 Clocker";
+"Sort by Time Difference" = "按时间差排序";
+"Sort by Name" = "按名称排序";
+"Sort by Label" = "按标签排序";
+"Search Field Placeholder" = "输入城市、省/州或国家名称";
+"No Timezone Selected" = "请选择一个时区！";
+"Max Timezones Selected" = "最多允许 100 个时区！";
+"Max Search Characters" = "最多允许 50 个字符！";
+"Add Button Title" = "添加";
+"Close Button Title" = "关闭";
+
+// Onboarding
+"Open Clocker At Login" = "登录时启动 Clocker";
+"Launch Clocker" = "启动 Clocker";
+
+// Welcome Onboarding
+"It only takes 3 steps to set up Clocker." = "只需要三步来设置 Clocker。";
+"Get Started" = "现在开始";
+
+// Permissions
+"Calendar Access Title" = "访问日历";
+"Reminders Access Title" = "访问提醒";
+"Later Config Description" = "这些可以稍后在系统偏好设置中配置。";
+"Back" = "返回";
+"Continue" = "继续";
+"Clocker is more useful when it can display events from your calendars." = "Clocker 能显示日历中的事件时会更有用。";
+"Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker 在能显示日历中的事件时更有用。你可以在「系统偏好设置 > 安全性与隐私 > 隐私」中更改设置。";
+"Launch Preferences" = "打开首选项";
+"Grant Access" = "授予访问权限";
+"Upcoming events from your personal and shared calendars can be shown in the menubar and the panel." = "你个人和共享日历的未来事件将显示在菜单栏和面板上。";
 "Granted" = "已授权";
+"Denied" = "已拒绝";
+"Grant" = "授权";
+"Unexpected" = "意外的";
 
-/* Granted Button Text */
-"Granted Button Text" = "已授权";
+// Onboarding Search
+"Quick Add Locations" = "快速添加地点";
+"More search options in Clocker Preferences." = "Clocker 首选项中的更多搜索选项。";
+"Enter 3 or more characters for locations you'll like to add" = "为您想要添加的位置输入 3 个或更多字符";
 
-/* (No Comment) */
-"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"";
-
-/* (No Comment) */
-"If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!";
-
-/* (No Comment) */
-"Include Date" = "包含日期";
-
-/* (No Comment) */
-"Include Day" = "Include Day";
-
-/* (No Comment) */
-"Include Place Name" = "Include Place Name";
-
-/* (No Comment) */
-"iRateAppMessage" = "If you enjoy using %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
-
-/* (No Comment) */
-"iRateCancelButton" = "No, Thanks";
-
-/* (No Comment) */
-"iRateGameMessage" = "If you enjoy playing %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
-
-/* (No Comment) */
-"iRateMessageTitle" = "Rate %@";
-
-/* (No Comment) */
-"iRateRateButton" = "Rate It Now";
-
-/* (No Comment) */
-"iRateRemindButton" = "稍后提醒";
-
-/* (No Comment) */
-"iRateUpdateMessage" = "立即更新";
-
-/* App Setup Description */
-"It only takes 3 steps to set up Clocker." = "It only takes 3 steps to setup Clocker.";
-
-/* Welcome Onboarding */
-"It only takes 3 steps to setup Clocker." = "It only takes 3 steps to setup Clocker.";
-
-/* (No Comment) */
-"Larger Text" = "Larger Text";
-
-/* Describing we can change the options later in System Preferences */
-"Later Config Description" = "These can be configured later in System Preferences.";
-
-/* Start at Login */
+// Start at Login
 "Launch at Login" = "登录时启动";
+"This can be configured later in Clocker Preferences." = "这可以稍后在 Clocker 首选项中进行配置。";
+"Should Clocker open automatically on startup?" = "是否在启动时自动打开 Clocker？";
 
-/* (No Comment) */
-"Launch Clocker" = "Launch Clocker";
+// Final Onboarding Screen
+"You're all set!" = "已完成全部设置！";
+"Thank you for the details." = "感谢您的详细信息。";
+"You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences." = "当你启动应用时，会在菜单栏看到一个时钟图标。如果想在 Dock 上显示图标，请在首选项设置。";
+"If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "如果您想帮助翻译本应用或收到不定时的应用更新，请输入您的电子邮箱！";
 
-/* (No Comment) */
-"Launch Preferences" = "Launch Preferences";
+// Appearance Tab
+"Panel Theme" = "面板主题";
+"Favourite a timezone to enable menubar display options." = "收藏一个时区以在菜单栏上显示可选项。";
+"Main Panel Options" = "主面板选项";
+"Time Format" = "时间格式";
+"Day Display Options" = "日显示选项";
+"Show Future Slider" = "显示未来滑块";
+"Show Sunrise/Sunset" = "显示日出/日落";
+"Display the time in seconds" = "显示秒数";
+"Larger Text" = "更大字号";
+"Future Slider Range" = "未来滑块范围";
+"Include Date" = "包含日期";
+"Include Day" = "包含日";
+"Include Place Name" = "包含地名";
+"Menubar Display Options" = "菜单栏显示选项";
+"Menubar Mode" = "菜单栏模式";
+"Preview" = "预览";
+"Miscellaneous" = "杂项设置";
 
-/* (No Comment) */
-"Main Panel Options" = "Main Panel Options";
+// Empty View
+"No places added" = "没有添加地点";
 
-/* Max Character Count Allowed Error Message */
-"Max Search Characters" = "Only 50 characters allowed!";
+// Panel
+"No upcoming event." = "暂无事项";
+"You have no events scheduled for tomorrow." = "您明天没有安排。";
 
-/* Max Timezones Error Message */
-"Max Timezones Selected" = "Maximum 100 timezones allowed!";
+// Review
+"Enjoy using Clocker?" = "喜欢使用 Clocker 吗？";
 
-/* (No Comment) */
-"Menubar Display Options" = "Menubar Display Options";
+// App Feedback
+"Tell us what you think!" = "告诉我们您的想法！";
+"Contact Information (Optional)" = "联系信息 (可选)";
+"Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!" = "联系人字段是可选项！我们需要更多信息或帮助时，将使用联络信息联络您！";
 
-/* (No Comment) */
-"Menubar Mode" = "Menubar Mode";
+// About View Screen
+"Feedback is always welcome:" = "欢迎提供反馈：";
 
-/* (No Comment) */
-"More search options in Clocker Preferences." = "More search options in Clocker Preferences.";
+// Calendars View
+"Upcoming Event View Options" = "即将到来的事件视图选项";
+"Show Upcoming Event View" = "显示即将到来的事件视图";
+"Show All Day Meetings" = "显示全天会议";
+"Show Next Meeting Title in Menubar" = "在菜单栏中显示下一个会议标题";
+"Truncate menubar text longer than" = "截断菜单栏文字长度大于";
+"characters" = "字符";
+"Show events from" = "显示事件来源";
+"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "如果会议标题是“Meeting with Neel”，并且截断长度设置为 5 ，菜单栏的文本将显示为“Meeti...”";
 
-/* UI Tests */
-"New Zealand" = "New Zealand";
+// Notes Popover
+"Reminder Set" = "提醒设置";
+"Successfully set." = "设置成功";
 
-/* Subtitle for no places added */
-"No places added" = "No places added";
+// Errors
+"You're offline, maybe?" = "您已经离线？";
+"Try again, maybe?" = "稍后再试？";
+"The Internet connection appears to be offline." = "网络连接已断开。";
 
-/* Message shown when the user taps on Add without selecting a timezone */
-"No Timezone Selected" = "Please select a timezone!";
+// UI Tests
+"New Zealand" = "新西兰";
+"Florida" = "佛罗里达";
+"San Francisco" = "旧金山";
 
-/* Title when there's no upcoming event */
-"No upcoming event." = "No upcoming event.";
 
-/* Onboarding */
-"Open Clocker At Login" = "Open Clocker At Login";
-
-/* Appearance Tab */
-"Panel Theme" = "Panel Theme";
-
-/* Permissions Tab Titles */
-"Permissions" = "Permissions";
-
-/* Title for Permissions screen */
-"Permissions Tab" = "Permissions";
-
-/* (No Comment) */
-"Permissions-Header" = "Permissions";
-
-/* Tab Item Titles */
-"Preferences Tab" = "Preferences";
-
-/* Text explaining options can be changed in the future through System Preferences */
-"Privacy Text" = "You can change this later in the Privacy section of the System Preferences.";
-
-/* Onboarding Search */
-"Quick Add Locations" = "Quick Add Locations";
-
-/* Notes Popover */
-"Reminder Set" = "Reminder Set";
-
-/* Reminders Permission Title */
-"Reminders Access" = "Reminders Access";
-
-/* Title for Reminders Access Label */
-"Reminders Access Title" = "Reminders Access";
-
-/* Reminders Detail Text */
-"Reminders Detail" = "Set reminders in the timezone of the location of your choice. Your reminders are stored in the default Reminders app.";
-
-/* (No Comment) */
-"San Francisco" = "San Francisco";
-
-/* Search Field Placeholder */
-"Search Field Placeholder" = "Enter a city, state or country name";
-
-/* (No Comment) */
-"Enter 3 or more characters for locations you'll like to add" = "Enter 3 or more characters for locations you'll like to add";
-
-/* Next Event Label for no Calendar access */
-"See your next Calendar event here." = "See your next Calendar event here.";
-
-/* (No Comment) */
-"setup-steps" = "It only takes 3 steps to set up Clocker";
-
-/* (No Comment) */
-"Should Clocker open automatically on startup?" = "Should Clocker open automatically on startup?";
-
-/* (No Comment) */
-"Show All Day Meetings" = "Show All Day Meetings";
-
-/* (No Comment) */
-"Show events from" = "Show events from";
-
-/* (No Comment) */
-"Show Future Slider" = "Show Future Slider";
-
-/* (No Comment) */
-"Show Next Meeting Title in Menubar" = "Show Next Meeting Title in Menubar";
-
-/* (No Comment) */
-"Show Sunrise/Sunset" = "Show Sunrise/Sunset";
-
-/* (No Comment) */
-"Show Upcoming Event View" = "Show Upcoming Event View";
-
-/* Start at Login */
-"Sort by Label" = "Sort by Label";
-
-/* Start at Login */
-"Sort by Name" = "Sort by Name";
-
-/* Start at Login */
-"Sort by Time Difference" = "Sort by Time Difference";
-
-/* Start at Login */
-"Start at Login" = "Start Clocker at Login";
-
-/* (No Comment) */
-"start-at-login" = "登录时启动";
-
-/* (No Comment) */
-"Successfully set." = "Successfully set.";
-
-/* App Feedback */
-"Tell us what you think!" = "Tell us what you think!";
-
-/* (No Comment) */
-"Thank you for helping make Clocker even better!" = "Thank you for helping make Clocker even better!";
-
-/* (No Comment) */
-"Thank you for the details." = "Thank you for the details.";
-
-/* (No Comment) */
-"The Internet connection appears to be offline." = "The Internet connection appears to be offline.";
-
-/* (No Comment) */
-"This can be configured later in Clocker Preferences." = "This can be configured later in Clocker Preferences.";
-
-/* (No Comment) */
-"Time Format" = "Time Format";
-
-/* (No Comment) */
-"Truncate menubar text longer than" = "Truncate menubar text longer than";
-
-/* (No Comment) */
-"Try again, maybe?" = "Try again, maybe?";
-
-/* (No Comment) */
-"Unexpected" = "Unexpected";
-
-/* Calendars View */
-"Upcoming Event View Options" = "Upcoming Event View Options";
-
-/* (No Comment) */
-"Upcoming events from your personal and shared calendars can be shown in the menubar and the panel." = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.";
-
-/* Title when there's no event scheduled for tomorrow */
-"You have no events scheduled for tomorrow." = "You have no events scheduled for tomorrow.";
-
-/* (No Comment) */
-"You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences." = "You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences.";
-
-/* Final Onboarding Screen */
-"You're all set!" = "You're all set!";
-
-/* Errors */
-"You're offline, maybe?" = "You're offline, maybe?";
-
-"Preview" = "Preview";
-
-"Miscellaneous" = "Miscellaneous";
+// DST changes
+"Daylights Saving transition will occur in < 24 hours" = "Daylights Saving transition will occur in < 24 hours";

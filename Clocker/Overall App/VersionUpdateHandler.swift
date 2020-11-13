@@ -96,7 +96,7 @@ class VersionUpdateHandler: NSObject {
         }
 
         guard let appStoreId = appStoreID() else {
-            print("No App Store ID was found for Clocker")
+            Logger.info("No App Store ID was found for Clocker")
             return URL(string: "")!
         }
 
@@ -197,7 +197,7 @@ class VersionUpdateHandler: NSObject {
         if checkAtLaunch {
             checkIfNewVersion()
         } else if verboseLogging {
-            print("iVersion will not check for updatess because checkAtLaunch option is disabled")
+            Logger.info("iVersion will not check for updatess because checkAtLaunch option is disabled")
         }
     }
 
@@ -311,9 +311,9 @@ class VersionUpdateHandler: NSObject {
 
             if remoteVersionsDict.count <= 0 {
                 if downloadError != nil {
-                    print("Update Check Failed because of \(downloadError!.localizedDescription)")
+                    Logger.info("Update Check Failed because of \(downloadError!.localizedDescription)")
                 } else {
-                    print("Version Update Check because an unknown error occurred")
+                    Logger.info("Version Update Check because an unknown error occurred")
                 }
             }
             return

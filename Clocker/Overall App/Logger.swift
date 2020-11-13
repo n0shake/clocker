@@ -5,8 +5,16 @@ import os.log
 import os.signpost
 
 class Logger: NSObject {
-    class func log(object _: [String: Any]?, for _: NSString) {
-        // TODO: Use a new analytics solution!
+    class func log(object annotations: [String: Any]?, for event: NSString) {
+        if #available(OSX 10.14, *) {
+            os_log(.default, "[%@] - [%@]", event, annotations ?? [:])
+        }
+    }
+
+    class func info(_ message: String) {
+        if #available(OSX 10.14, *) {
+            os_log(.info, "%@", message)
+        }
     }
 }
 

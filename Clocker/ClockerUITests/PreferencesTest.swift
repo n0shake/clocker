@@ -244,7 +244,7 @@ class PreferencesTest: XCTestCase {
         XCTAssertTrue(maxCharacterQuery.count > 0)
 
         addAPlace(place: "asdakjhdasdahsdasd", to: app, shouldSleep: false)
-        XCTAssertTrue(app.sheets.staticTexts["Please select a timezone!"].exists)
+        XCTAssertTrue(app.sheets.staticTexts["No Timezone Selected".localizedString()].exists)
 
         let informativeLabelPredicate = NSPredicate(format: "placeholderValue like %@", "No results! 😔 Try entering the exact name.")
         let sheets = app.sheets.firstMatch.staticTexts
@@ -392,7 +392,7 @@ extension XCTestCase {
         let isHittable = NSPredicate(format: "exists == true", "")
         let addExpectation = expectation(for: isHittable,
                                          evaluatedWith: results.firstMatch) { () -> Bool in
-            print("Handler called")
+            Logger.info("Handler called")
             return true
         }
 

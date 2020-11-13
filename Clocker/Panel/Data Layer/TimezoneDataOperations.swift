@@ -33,6 +33,39 @@ extension TimezoneDataOperations {
         return dateFormatter.string(from: newDate)
     }
 
+    func nextDaylightSavingsTransitionIfAvailable(with sliderValue: Int) -> String? {
+        let currentTimezone = TimeZone(identifier: dataObject.timezone())
+        guard let nextDaylightSavingsTransition = currentTimezone?.nextDaylightSavingTimeTransition else {
+            return nil
+        }
+
+        guard let newDate = TimezoneDataOperations.gregorianCalendar?.date(byAdding: .minute,
+                                                                           value: sliderValue,
+                                                                           to: Date(),
+                                                                           options: .matchFirst) else {
+            assertionFailure("Data was unexpectedly nil")
+            return nil
+        }
+
+        let calendar = Calendar.autoupdatingCurrent
+        let numberOfDays = nextDaylightSavingsTransition.days(from: newDate, calendar: calendar)
+
+        // We'd like to show upcoming DST changes within the 7 day range.
+        // Using 8 as a fail-safe as timezones behind CDT can sometimes be wrongly attributed
+        if numberOfDays > 8 || numberOfDays < 0 {
+            return nil
+        }
+
+        if numberOfDays == 0 {
+            let hoursLeft = nextDaylightSavingsTransition.hours(from: newDate)
+            let suffix = hoursLeft == 1 ? "hour" : "hours"
+            return "Heads up! DST transition will occur in \(hoursLeft) \(suffix)."
+        }
+
+        let suffix = numberOfDays == 1 ? "day" : "days"
+        return "Heads up! DST transition will occur in \(numberOfDays) \(suffix)."
+    }
+
     private func checkForUpcomingEvents() -> (String, String)? {
         if DataStore.shared().shouldDisplay(.showMeetingInMenubar) {
             let filteredDates = EventCenter.sharedCenter().eventsForDate
@@ -46,7 +79,7 @@ extension TimezoneDataOperations {
                     let timeForEventToStart = event.event.startDate.timeIntervalSinceNow / 60
 
                     if timeForEventToStart > 30 {
-                        print("Our next event: \(event.event.title ?? "Error") starts in \(timeForEventToStart) mins")
+                        Logger.info("Our next event: \(event.event.title ?? "Error") starts in \(timeForEventToStart) mins")
 
                         continue
                     }

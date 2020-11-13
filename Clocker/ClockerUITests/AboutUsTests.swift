@@ -34,6 +34,7 @@ class AboutUsTests: XCTestCase {
 
         let appDisplayName = "CFBundleDisplayName".localizedString()
         let expectedVersion = "\(appDisplayName) 20.10.03 (83)"
+        
         guard let presentVersion = app.windows["Clocker"].staticTexts["ClockerVersion"].value as? String else {
             XCTFail("Present version not present")
             return

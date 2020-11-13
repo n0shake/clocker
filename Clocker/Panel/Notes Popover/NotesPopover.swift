@@ -150,7 +150,7 @@ class NotesPopover: NSViewController {
     }
 
     private func getCurrentTimezoneDate(completionHandler: @escaping (_ response: Date?) -> Void) {
-        guard let timezoneID = dataObject?.timezoneID else {
+        guard let timezoneID = dataObject?.timezone() else {
             assertionFailure("Unable to retrieve timezoneID from the model")
             completionHandler(nil)
             return
@@ -353,7 +353,7 @@ class NotesPopover: NSViewController {
             let alertIndex = alertPopupButton.indexOfSelectedItem
 
             if eventCenter.createReminder(with: model.customLabel!,
-                                          timezone: model.timezoneID!,
+                                          timezone: model.timezone(),
                                           alertIndex: alertIndex,
                                           reminderDate: reminderPicker.dateValue,
                                           additionalNotes: model.note) {
