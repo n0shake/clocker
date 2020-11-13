@@ -1732,7 +1732,7 @@ DQ
                                             <button toolTip="Sorts by time difference from your current timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="P6d-qq-ycq">
                                                 <rect key="frame" x="277" y="3" width="13" height="25"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="160" id="cAs-on-f7X"/>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="180" id="cAs-on-f7X"/>
                                                     <constraint firstAttribute="height" constant="25" id="juv-QL-vMx"/>
                                                 </constraints>
                                                 <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="NSDescendingSortIndicator" imagePosition="right" alignment="right" state="on" inset="2" id="zcN-lz-EiH">
