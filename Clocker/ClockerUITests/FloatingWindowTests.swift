@@ -26,7 +26,7 @@ class FloatingWindowTests: XCTestCase {
 
         addUIInterruptionMonitor(withDescription: "Reminders Access") { (alert) -> Bool in
             Logger.info("Interruption Handler called")
-            Logger.info(alert)
+            Logger.info(alert.description)
             let alertButton = alert.buttons["OK"]
             if alertButton.exists {
                 Logger.info("Okay button found")
