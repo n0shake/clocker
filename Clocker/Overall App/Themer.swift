@@ -153,7 +153,6 @@ extension Themer {
     func shutdownImage() -> NSImage {
         if let symbolImageForShutdown = symbolImage(for: "ellipsis.circle") {
             return symbolImageForShutdown
-
         }
 
         if #available(macOS 10.14, *) {
@@ -452,7 +451,7 @@ extension Themer {
         if #available(OSX 11.0, *) {
             return NSImage(systemSymbolName: name,
                            accessibilityDescription: name)!
-        } 
+        }
 
         return nil
     }
