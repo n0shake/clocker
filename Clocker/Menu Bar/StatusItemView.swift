@@ -43,11 +43,7 @@ class StatusItemView: NSView {
     }
 
     private var timeAttributes: [NSAttributedString.Key: AnyObject] {
-        var textColor = hasDarkAppearance ? NSColor.white : NSColor.black
-
-        if #available(OSX 11.0, *) {
-            textColor = NSColor.white
-        }
+        let textColor = hasDarkAppearance ? NSColor.white : NSColor.black
 
         let attributes = [
             NSAttributedString.Key.font: compactModeTimeFont,
@@ -59,11 +55,7 @@ class StatusItemView: NSView {
     }
 
     private var textFontAttributes: [NSAttributedString.Key: Any] {
-        var textColor = hasDarkAppearance ? NSColor.white : NSColor.black
-
-        if #available(OSX 11.0, *) {
-            textColor = NSColor.white
-        }
+        let textColor = hasDarkAppearance ? NSColor.white : NSColor.black
 
         let textFontAttributes = [
             NSAttributedString.Key.font: NSFont.boldSystemFont(ofSize: 10),
