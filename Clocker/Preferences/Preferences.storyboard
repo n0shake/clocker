@@ -197,7 +197,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <segmentedControl toolTip="Select a time-format!" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rgT-lC-Gae">
-                                <rect key="frame" x="240" y="473" width="79" height="24"/>
+                                <rect key="frame" x="240" y="477" width="79" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="LqO-6o-qzs"/>
                                 </constraints>
@@ -237,7 +237,7 @@
                                 </textFieldCell>
                             </textField>
                             <segmentedControl toolTip="Select a time-format!" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kxb-GU-bkz">
-                                <rect key="frame" x="240" y="440" width="79" height="24"/>
+                                <rect key="frame" x="240" y="444" width="79" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="uxI-bW-5Fb"/>
                                 </constraints>
@@ -277,10 +277,10 @@
                                 </textFieldCell>
                             </textField>
                             <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UjI-Ps-1YP" customClass="ClockerTextBackgroundView" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="242" y="331" width="299" height="70"/>
+                                <rect key="frame" x="242" y="335" width="299" height="70"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="nr6-Fw-1cb">
-                                        <rect key="frame" x="8" y="13" width="283" height="45"/>
+                                        <rect key="frame" x="8" y="12" width="283" height="45"/>
                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="nKQ-6v-Ka2">
                                             <font key="font" size="11" name="Avenir-Book"/>
                                             <string key="title">When selected, your upcoming meeting title will appear in the menubar 30 mins before it starts. All Day Events won't be shown in the menubar!</string>
@@ -298,7 +298,7 @@
                                 </constraints>
                             </customView>
                             <segmentedControl toolTip="Select a time-format!" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="buu-OA-tPg">
-                                <rect key="frame" x="240" y="407" width="79" height="24"/>
+                                <rect key="frame" x="240" y="411" width="79" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="k9H-x5-Ty2"/>
                                 </constraints>
@@ -315,7 +315,7 @@
                                 </connections>
                             </segmentedControl>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="94u-Ea-XeF">
-                                <rect key="frame" x="23" y="292" width="204" height="30"/>
+                                <rect key="frame" x="23" y="296" width="204" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="9q1-rv-VAH"/>
                                     <constraint firstAttribute="width" constant="200" id="uL4-ca-MBV"/>
@@ -327,7 +327,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="fnD-KO-35B">
-                                <rect key="frame" x="23" y="193" width="204" height="22"/>
+                                <rect key="frame" x="23" y="197" width="204" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="Oxe-gR-mXs"/>
                                     <constraint firstAttribute="width" constant="200" id="PMY-9P-Dfn"/>
@@ -339,7 +339,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QvL-RL-y11">
-                                <rect key="frame" x="240" y="298" width="96" height="22"/>
+                                <rect key="frame" x="240" y="302" width="96" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="96" id="B2N-PU-1jD"/>
                                     <constraint firstAttribute="height" constant="22" id="Mdr-i8-lrC"/>
@@ -358,7 +358,7 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="noH-ER-AVN">
-                                <rect key="frame" x="344" y="303" width="199" height="18"/>
+                                <rect key="frame" x="344" y="307" width="199" height="18"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="characters" id="5sM-ex-lWc">
                                     <font key="font" size="13" name="Avenir-Light"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -366,10 +366,10 @@
                                 </textFieldCell>
                             </textField>
                             <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TBT-nr-2Yr" customClass="ClockerTextBackgroundView" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="240" y="223" width="301" height="60"/>
+                                <rect key="frame" x="240" y="227" width="301" height="60"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="IXx-xe-JuJ">
-                                        <rect key="frame" x="8" y="8" width="285" height="45"/>
+                                        <rect key="frame" x="8" y="7" width="285" height="45"/>
                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="If meeting title is &quot;Meeting with Neel&quot; and truncate length is set to 5, text in menubar will appear as &quot;Meeti...&quot;" id="c3u-06-0Up">
                                             <font key="font" size="11" name="Avenir-Book"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -386,7 +386,7 @@
                                 </constraints>
                             </customView>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="35" horizontalPageScroll="10" verticalLineScroll="35" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPC-SO-wjL">
-                                <rect key="frame" x="237" y="33" width="304" height="182"/>
+                                <rect key="frame" x="237" y="37" width="304" height="182"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="Vp7-Ne-2S6">
                                     <rect key="frame" x="1" y="1" width="302" height="180"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -537,7 +537,6 @@
                             <constraint firstAttribute="bottom" secondItem="oi9-oL-3xm" secondAttribute="bottom" id="5T9-dR-5g6"/>
                             <constraint firstItem="QvL-RL-y11" firstAttribute="leading" secondItem="94u-Ea-XeF" secondAttribute="trailing" constant="15" id="5jT-tP-Te9"/>
                             <constraint firstItem="UjI-Ps-1YP" firstAttribute="leading" secondItem="buu-OA-tPg" secondAttribute="leading" id="6h5-QU-sVd"/>
-                            <constraint firstItem="kxb-GU-bkz" firstAttribute="leading" secondItem="azz-uL-7Sr" secondAttribute="trailing" constant="7" id="6jf-OU-Gof"/>
                             <constraint firstItem="8pM-Qz-i7L" firstAttribute="centerX" secondItem="Jf8-HS-Ag9" secondAttribute="centerX" id="7Ql-ES-ifg"/>
                             <constraint firstItem="VPC-SO-wjL" firstAttribute="top" secondItem="QvL-RL-y11" secondAttribute="bottom" constant="83" id="B0V-hG-f9X"/>
                             <constraint firstItem="fnD-KO-35B" firstAttribute="top" secondItem="TBT-nr-2Yr" secondAttribute="bottom" constant="8" id="C9P-nV-2Tc"/>
@@ -548,21 +547,22 @@
                             <constraint firstItem="94u-Ea-XeF" firstAttribute="leading" secondItem="Jf8-HS-Ag9" secondAttribute="leading" constant="25" id="HuD-NV-A2M"/>
                             <constraint firstAttribute="trailing" secondItem="oi9-oL-3xm" secondAttribute="trailing" id="J5k-WP-Ga0"/>
                             <constraint firstItem="azz-uL-7Sr" firstAttribute="leading" secondItem="Jf8-HS-Ag9" secondAttribute="leading" constant="60" id="MJn-ki-wCn"/>
-                            <constraint firstItem="kxb-GU-bkz" firstAttribute="top" secondItem="azz-uL-7Sr" secondAttribute="bottom" constant="-18" id="Nqu-ZD-SSj"/>
+                            <constraint firstItem="kxb-GU-bkz" firstAttribute="centerY" secondItem="azz-uL-7Sr" secondAttribute="centerY" id="N20-Hw-WUK"/>
                             <constraint firstAttribute="trailing" secondItem="UjI-Ps-1YP" secondAttribute="trailing" constant="20" id="OIw-v6-xAt"/>
-                            <constraint firstItem="rgT-lC-Gae" firstAttribute="top" secondItem="c5D-oS-eI6" secondAttribute="bottom" constant="-18" id="Rat-pl-GTr"/>
                             <constraint firstItem="94u-Ea-XeF" firstAttribute="top" secondItem="UjI-Ps-1YP" secondAttribute="bottom" constant="9" id="RtA-Od-21P"/>
                             <constraint firstItem="TBT-nr-2Yr" firstAttribute="top" secondItem="QvL-RL-y11" secondAttribute="bottom" constant="15" id="RuH-Ch-oI2"/>
                             <constraint firstItem="VPC-SO-wjL" firstAttribute="leading" secondItem="fnD-KO-35B" secondAttribute="trailing" constant="12" id="UZd-go-SIU"/>
                             <constraint firstItem="TBT-nr-2Yr" firstAttribute="leading" secondItem="QvL-RL-y11" secondAttribute="leading" id="X2A-LJ-Cge"/>
                             <constraint firstItem="azz-uL-7Sr" firstAttribute="top" secondItem="c5D-oS-eI6" secondAttribute="bottom" constant="11" id="YyJ-g7-na6"/>
                             <constraint firstItem="c5D-oS-eI6" firstAttribute="leading" secondItem="Jf8-HS-Ag9" secondAttribute="leading" constant="60" id="bMt-N1-IvI"/>
+                            <constraint firstItem="kxb-GU-bkz" firstAttribute="leading" secondItem="rgT-lC-Gae" secondAttribute="leading" id="bx2-0Q-Squ"/>
                             <constraint firstItem="fnD-KO-35B" firstAttribute="leading" secondItem="Jf8-HS-Ag9" secondAttribute="leading" constant="25" id="e9d-hb-o0Y"/>
                             <constraint firstItem="x5i-r6-8yw" firstAttribute="leading" secondItem="Jf8-HS-Ag9" secondAttribute="leading" constant="20" id="ejF-rs-A8Q"/>
                             <constraint firstItem="8pM-Qz-i7L" firstAttribute="top" secondItem="Jf8-HS-Ag9" secondAttribute="top" constant="20" id="emE-aZ-jP4"/>
+                            <constraint firstItem="buu-OA-tPg" firstAttribute="leading" secondItem="kxb-GU-bkz" secondAttribute="leading" id="fmx-MP-yVF"/>
                             <constraint firstAttribute="trailing" secondItem="VPC-SO-wjL" secondAttribute="trailing" constant="20" id="h5N-Go-dVG"/>
                             <constraint firstItem="oi9-oL-3xm" firstAttribute="leading" secondItem="Jf8-HS-Ag9" secondAttribute="leading" id="hc9-YE-zVF"/>
-                            <constraint firstItem="buu-OA-tPg" firstAttribute="leading" secondItem="x5i-r6-8yw" secondAttribute="trailing" constant="12" id="lAS-M1-QTx"/>
+                            <constraint firstItem="rgT-lC-Gae" firstAttribute="centerY" secondItem="c5D-oS-eI6" secondAttribute="centerY" id="iVx-ci-vTx"/>
                             <constraint firstItem="buu-OA-tPg" firstAttribute="top" secondItem="kxb-GU-bkz" secondAttribute="bottom" constant="12" id="oJN-Ne-Vpp"/>
                             <constraint firstItem="c5D-oS-eI6" firstAttribute="top" secondItem="8pM-Qz-i7L" secondAttribute="bottom" constant="18" id="sJo-c6-ZPb"/>
                             <constraint firstItem="VPC-SO-wjL" firstAttribute="top" secondItem="fnD-KO-35B" secondAttribute="top" id="smg-N2-UbJ"/>
@@ -1518,11 +1518,11 @@
                     <value key="minSize" type="size" width="345" height="320"/>
                     <value key="maxSize" type="size" width="345" height="320"/>
                     <view key="contentView" misplaced="YES" id="MAe-t5-3A2">
-                        <rect key="frame" x="0.0" y="12" width="345" height="308"/>
+                        <rect key="frame" x="0.0" y="24" width="345" height="296"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <searchField toolTip="Search a timezone" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dha-h9-Nd0" customClass="ClockerSearchField" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="8" y="277" width="329" height="23"/>
+                                <rect key="frame" x="8" y="265" width="329" height="23"/>
                                 <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Enter a city, state, country name" usesSingleLineMode="YES" maximumRecents="5" id="ikU-Tm-0WZ">
                                     <font key="font" size="13" name="Avenir-Light"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1561,7 +1561,7 @@ Gw
                                 </connections>
                             </button>
                             <button toolTip="Add a timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Cm-Ys-lwo">
-                                <rect key="frame" x="2" y="-2" width="92" height="31"/>
+                                <rect key="frame" x="2" y="-26" width="92" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="Ikc-5C-yOA"/>
                                     <constraint firstAttribute="height" constant="20" id="TRi-p5-6gR"/>
@@ -1579,13 +1579,13 @@ DQ
                                 </connections>
                             </button>
                             <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wY-ff-FLW">
-                                <rect key="frame" x="8" y="30" width="329" height="237"/>
+                                <rect key="frame" x="8" y="30" width="329" height="225"/>
                                 <clipView key="contentView" drawsBackground="NO" id="rGc-3M-cCq">
-                                    <rect key="frame" x="0.0" y="0.0" width="329" height="237"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="329" height="225"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="xkl-2X-ZCb">
-                                            <rect key="frame" x="0.0" y="0.0" width="329" height="237"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="329" height="225"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1675,14 +1675,14 @@ DQ
                                 </scroller>
                             </scrollView>
                             <progressIndicator wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="0A5-gp-lay">
-                                <rect key="frame" x="165" y="168" width="16" height="16"/>
+                                <rect key="frame" x="165" y="138" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="fgE-77-Vda"/>
                                     <constraint firstAttribute="width" constant="16" id="pwe-em-e0a"/>
                                 </constraints>
                             </progressIndicator>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xgb-wU-8RU">
-                                <rect key="frame" x="18" y="138" width="309" height="22"/>
+                                <rect key="frame" x="18" y="132" width="309" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="zqt-d8-yas"/>
                                 </constraints>
