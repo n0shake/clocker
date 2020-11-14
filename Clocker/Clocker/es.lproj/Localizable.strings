@@ -7,94 +7,94 @@
 */
 
 "CFBundleDisplayName" = "Clocker";
-"Thank you for helping make Clocker even better!" = "Thank you for helping make Clocker even better!";
-"iRateMessageTitle" = "Rate %@";
-"iRateAppMessage" = "If you enjoy using %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
-"iRateGameMessage" = "If you enjoy playing %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
-"iRateCancelButton" = "No, Thanks";
-"iRateRateButton" = "Rate It Now";
-"iRateRemindButton" = "Remind Me Later";
-"iRateUpdateMessage" = "Update now?";
-"ClockerVersion" = "Version %@";
-"CLFeedbackAlertTitle" = "Thank you for helping make Clocker even better!";
+"Thank you for helping make Clocker even better!" = "¡Gracias por ayudar a mejorar Clocker!";
+"iRateMessageTitle" = "Valora %@";
+"iRateAppMessage" = "Si te gusta %@, ¿podrías escribirnos una reseña? No te tomará más de un minuto. ¡Gracias por tu apoyo!";
+"iRateGameMessage" = "Si te gusta %@, ¿te importaría dedicar un momento para valorarla? No tardarás nada. ¡Gracias por tu apoyo!";
+"iRateCancelButton" = "No, gracias";
+"iRateRateButton" = "Califícalo ahora";
+"iRateRemindButton" = "Recordarme más tarde";
+"iRateUpdateMessage" = "¿Actualizar ahora?";
+"ClockerVersion" = "Versión %@";
+"CLFeedbackAlertTitle" = "¡Gracias por ayudar a mejorar Clocker!";
 "app-name" = "Clocker";
-"start-at-login" = "Start At Login";
-"setup-steps" = "It only takes 3 steps to set up Clocker";
-"Permissions-Header" = "Permissions";
-"See your next Calendar event here." = "See your next Calendar event here.";
-"Click here to start." = "Click here to start.";
-"Reminders Access" = "Reminders Access";
-"Calendar Access" = "Calendar Access";
-"Permissions" = "Permissions";
-"Calendar Detail" = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.";
-"Reminders Detail" = "Set reminders in the timezone of the location of your choice. Your reminders are stored in the default Reminders app.";
-"Privacy Text" = "You can change this later in the Privacy section of the System Preferences.";
-"Granted Button Text" = "Granted";
-"Denied Button Text" = "Denied";
-"Grant Button Text" = "Grant";
+"start-at-login" = "Abrir en el inicio de sesión";
+"setup-steps" = "Sólo te tomará 3 pasos configurar Clocker";
+"Permissions-Header" = "Permisos";
+"See your next Calendar event here." = "Vea aquí su próximo evento del calendario.";
+"Click here to start." = "Haga clic aquí para comenzar.";
+"Reminders Access" = "Acceder a Recordatorios";
+"Calendar Access" = "Acceder al calendario";
+"Permissions" = "Permisos";
+"Calendar Detail" = "Los próximos eventos de sus calendarios personales y compartidos pueden mostrarse en la barra de menú y en el panel.";
+"Reminders Detail" = "Establece recordatorios en la zona horaria de la ubicación seleccionada. Los recordatorios serán guardados en la aplicación Recordatorios predeterminada.";
+"Privacy Text" = "Puede cambiar esto más tarde en la sección de Privacidad de las Preferencias del Sistema.";
+"Granted Button Text" = "Permitido";
+"Denied Button Text" = "Denegado";
+"Grant Button Text" = "Permitir";
 
 // Welcome Onboarding
-"It only takes 3 steps to setup Clocker." = "It only takes 3 steps to setup Clocker.";
-"Get Started" = "Get Started";
+"It only takes 3 steps to setup Clocker." = "Sólo te tomará 3 pasos configurar Clocker.";
+"Get Started" = "Comenzar ahora";
 
 // Tab Item Titles
-"Preferences Tab" = "Preferences";
-"Appearance Tab" = "Appearance";
-"Calendar Tab" = "Calendar";
-"About Tab" = "About";
-"Permissions Tab" = "Permissions";
+"Preferences Tab" = "Preferencias";
+"Appearance Tab" = "Aspecto";
+"Calendar Tab" = "Calendario";
+"About Tab" = "Acerca de";
+"Permissions Tab" = "Permisos";
 
 // General Preferences Screen
-"Start at Login" = "Start Clocker at Login";
-"Sort by Time Difference" = "Sort by Time Difference";
-"Sort by Name" = "Sort by Name";
-"Sort by Label" = "Sort by Label";
-"Search Field Placeholder" = "Enter a city, state or country name";
-"No Timezone Selected" = "Please select a timezone!";
-"Max Timezones Selected" = "Maximum 100 timezones allowed!";
-"Max Search Characters" = "Only 50 characters allowed!";
-"Add Button Title" = "Add";
-"Close Button Title" = "Close";
+"Start at Login" = "Abrir Clocker al inicio de sesión";
+"Sort by Time Difference" = "Ordenar por diferencia horaria";
+"Sort by Name" = "Ordenar por nombre";
+"Sort by Label" = "Ordenar por etiqueta";
+"Search Field Placeholder" = "Introduzca un nombre de ciudad, estado o país";
+"No Timezone Selected" = "¡Por favor, selecciona una zona horaria!";
+"Max Timezones Selected" = "¡Se permiten maximo 100 zonas horarias!";
+"Max Search Characters" = "¡Solo se permiten 50 caracteres!";
+"Add Button Title" = "Añadir";
+"Close Button Title" = "Cerrar";
 
 // Onboarding
-"Open Clocker At Login" = "Open Clocker At Login";
-"Launch Clocker" = "Launch Clocker";
+"Open Clocker At Login" = "Abrir Clocker al iniciar sesión";
+"Launch Clocker" = "Abrir Clocker";
 
 // Welcome Onboarding
-"It only takes 3 steps to set up Clocker." = "It only takes 3 steps to setup Clocker.";
-"Get Started" = "Get Started";
+"It only takes 3 steps to set up Clocker." = "Sólo te tomará 3 pasos configurar Clocker.";
+"Get Started" = "Comenzar ahora";
 
 // Permissions
-"Calendar Access Title" = "Calendar Access";
-"Reminders Access Title" = "Reminders Access";
-"Later Config Description" = "These can be configured later in System Preferences.";
-"Back" = "Back";
-"Continue" = "Continue";
-"Clocker is more useful when it can display events from your calendars." = "Clocker is more useful when it can display events from your calendars.";
-"Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy.";
-"Launch Preferences" = "Launch Preferences";
-"Grant Access" = "Grant Access";
-"Upcoming events from your personal and shared calendars can be shown in the menubar and the panel." = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.";
-"Granted" = "Granted";
-"Denied" = "Denied";
-"Grant" = "Grant";
-"Unexpected" = "Unexpected";
+"Calendar Access Title" = "Acceder al calendario";
+"Reminders Access Title" = "Acceder a Recordatorios";
+"Later Config Description" = "Se puede configurar más tarde en Preferencias del sistema.";
+"Back" = "Regresar";
+"Continue" = "Continuar";
+"Clocker is more useful when it can display events from your calendars." = "Clocker es más útil cuando puede mostrar eventos de tus calendarios.";
+"Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker es más útil cuando puede mostrar eventos de tus calendarios. Puede cambiar esta configuración en Preferencias del Sistema › Seguridad y privacidad › Privacidad.";
+"Launch Preferences" = "Abrir las preferencias";
+"Grant Access" = "Permitir acceso";
+"Upcoming events from your personal and shared calendars can be shown in the menubar and the panel." = "Los próximos eventos de sus calendarios personales y compartidos pueden mostrarse en la barra de menú y en el panel.";
+"Granted" = "Permitido";
+"Denied" = "Denegado";
+"Grant" = "Permitir";
+"Unexpected" = "Inesperado";
 
 // Onboarding Search
 "Quick Add Locations" = "Quick Add Locations";
-"More search options in Clocker Preferences." = "More search options in Clocker Preferences.";
-"Enter 3 or more characters for locations you'll like to add" = "Enter 3 or more characters for locations you'll like to add";
+"More search options in Clocker Preferences." = "Más opciones de búsqueda en las preferencias de Clocker.";
+"Enter 3 or more characters for locations you'll like to add" = "Introduce 3 o más caracteres de las ubicaciones que quisiera añadir";
 
 // Start at Login
-"Launch at Login" = "Launch at Login";
-"This can be configured later in Clocker Preferences." = "This can be configured later in Clocker Preferences.";
-"Should Clocker open automatically on startup?" = "Should Clocker open automatically on startup?";
+"Launch at Login" = "Ejecutar cuando inicia la sesión";
+"This can be configured later in Clocker Preferences." = "Esto se puede configurar más tarde en las Preferencias de Clocker.";
+"Should Clocker open automatically on startup?" = "¿Quieres que Clocker se abra automáticamente al inicio?";
 
 // Final Onboarding Screen
-"You're all set!" = "You're all set!";
-"Thank you for the details." = "Thank you for the details.";
-"You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences." = "You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences.";
-"If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!";
+"You're all set!" = "¡Todo listo!";
+"Thank you for the details." = "Gracias por informarnos.";
+"You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences." = "Verás un icono de reloj en tu barra de menú cuando inicies la aplicación. Si quieres ver el icono en el Dock, ve a Preferencias.";
+"If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "Si quieres ayudarnos a traducir la aplicación en tu idioma o recibir actualizaciones relacionadas con la aplicación, ¡Por favor escribe tu correo electrónico!";
 
 // Appearance Tab
 "Panel Theme" = "Panel Theme";
@@ -149,7 +149,7 @@
 
 // Errors
 "You're offline, maybe?" = "You're offline, maybe?";
-"Try again, maybe?" =  "Try again, maybe?";
+"Try again, maybe?" = "Try again, maybe?";
 "The Internet connection appears to be offline." = "The Internet connection appears to be offline.";
 
 // UI Tests

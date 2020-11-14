@@ -7,14 +7,14 @@
 */
 
 "CFBundleDisplayName" = "Clocker";
-"Thank you for helping make Clocker even better!" = "Thank you for helping make Clocker even better!";
-"iRateMessageTitle" = "Rate %@";
-"iRateAppMessage" = "If you enjoy using %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
-"iRateGameMessage" = "If you enjoy playing %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
-"iRateCancelButton" = "No, Thanks";
-"iRateRateButton" = "Rate It Now";
-"iRateRemindButton" = "Remind Me Later";
-"iRateUpdateMessage" = "Update now?";
+"Thank you for helping make Clocker even better!" = "Merci d'aider à améliorer Clocker !";
+"iRateMessageTitle" = "Noter %@";
+"iRateAppMessage" = "Si vous aimez utiliser %@, pourriez-vous prendre un moment pour l'évaluer ? Cela ne prendra pas plus d'une minute. Merci pour votre soutien !";
+"iRateGameMessage" = "Si vous aimez utiliser %@, pourriez-vous prendre un moment pour l'évaluer ? Cela ne prendra pas plus d'une minute. Merci pour votre soutien !";
+"iRateCancelButton" = "Non Merci";
+"iRateRateButton" = "Évaluez-le maintenant";
+"iRateRemindButton" = "Me le rappeler ultérieurement";
+"iRateUpdateMessage" = "Mettre à jour maintenant ?";
 "ClockerVersion" = "Version %@";
 "CLFeedbackAlertTitle" = "Thank you for helping make Clocker even better!";
 "app-name" = "Clocker";
@@ -62,42 +62,42 @@
 
 // Welcome Onboarding
 "It only takes 3 steps to set up Clocker." = "It only takes 3 steps to setup Clocker.";
-"Get Started" = "Get Started";
+"Get Started" = "Commencer";
 
 // Permissions
-"Calendar Access Title" = "Calendar Access";
-"Reminders Access Title" = "Reminders Access";
+"Calendar Access Title" = "Accès au calendrier";
+"Reminders Access Title" = "Accès aux rappels";
 "Later Config Description" = "These can be configured later in System Preferences.";
 "Back" = "Back";
-"Continue" = "Continue";
+"Continue" = "Continuer";
 "Clocker is more useful when it can display events from your calendars." = "Clocker is more useful when it can display events from your calendars.";
 "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy.";
 "Launch Preferences" = "Launch Preferences";
 "Grant Access" = "Grant Access";
 "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel." = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.";
-"Granted" = "Granted";
-"Denied" = "Denied";
-"Grant" = "Grant";
-"Unexpected" = "Unexpected";
+"Granted" = "Autorisé";
+"Denied" = "Refusé";
+"Grant" = "Autoriser";
+"Unexpected" = "Inattendu";
 
 // Onboarding Search
-"Quick Add Locations" = "Quick Add Locations";
-"More search options in Clocker Preferences." = "More search options in Clocker Preferences.";
-"Enter 3 or more characters for locations you'll like to add" = "Enter 3 or more characters for locations you'll like to add";
+"Quick Add Locations" = "Ajouter rapidement des emplacements";
+"More search options in Clocker Preferences." = "Plus d'options de recherche dans les Préférences de Clocker.";
+"Enter 3 or more characters for locations you'll like to add" = "Entrez 3 caractères ou plus pour les emplacements que vous souhaitez ajouter";
 
 // Start at Login
-"Launch at Login" = "Launch at Login";
-"This can be configured later in Clocker Preferences." = "This can be configured later in Clocker Preferences.";
-"Should Clocker open automatically on startup?" = "Should Clocker open automatically on startup?";
+"Launch at Login" = "Démarrer à la connexion";
+"This can be configured later in Clocker Preferences." = "Ceci peut être configuré plus tard dans les préférences de Clocker.";
+"Should Clocker open automatically on startup?" = "Clocker doit-il s'ouvrir automatiquement au démarrage ?";
 
 // Final Onboarding Screen
-"You're all set!" = "You're all set!";
+"You're all set!" = "Tout est prêt !";
 "Thank you for the details." = "Thank you for the details.";
 "You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences." = "You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences.";
 "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!";
 
 // Appearance Tab
-"Panel Theme" = "Panel Theme";
+"Panel Theme" = "Apparence de la fenêtre";
 "Favourite a timezone to enable menubar display options." = "Favourite a timezone to enable menubar display options.";
 "Main Panel Options" = "Main Panel Options";
 "Time Format" = "Time Format";
@@ -149,12 +149,12 @@
 
 // Errors
 "You're offline, maybe?" = "You're offline, maybe?";
-"Try again, maybe?" =  "Try again, maybe?";
+"Try again, maybe?" = "Try again, maybe?";
 "The Internet connection appears to be offline." = "The Internet connection appears to be offline.";
 
 // UI Tests
 "New Zealand" = "New Zealand";
-"Florida" = "Florida";
+"Florida" = "Floride";
 "San Francisco" = "San Francisco";
 
 // DST changes
