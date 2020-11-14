@@ -155,6 +155,10 @@ extension SearchDataSource: NSTableViewDelegate {
         let currentRowType = finalArray[row]
         return !(currentRowType == .timezoneHeader || currentRowType == .cityHeader)
     }
+
+    func tableView(_: NSTableView, heightOfRow _: Int) -> CGFloat {
+        return 30
+    }
 }
 
 extension SearchDataSource {
