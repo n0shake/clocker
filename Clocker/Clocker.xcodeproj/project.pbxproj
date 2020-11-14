@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35190E47255F53F5006E9C85 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F3C2259D892002FA5C6 /* Logger.swift */; };
 		357391872507277500D30819 /* HourMarkerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357391852507277500D30819 /* HourMarkerViewItem.swift */; };
 		357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357391862507277500D30819 /* HourMarkerViewItem.xib */; };
 		3595FAD0227F88BC0044A12A /* UserDefaults + KVOExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */; };
@@ -1191,6 +1192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2F7821B20B70E3700B6CD07 /* AboutUsTests.swift in Sources */,
+				35190E47255F53F5006E9C85 /* Logger.swift in Sources */,
 				C264A0C820B898D600CCD875 /* PanelTests.swift in Sources */,
 				C2BFE3E62049F82300825BE5 /* ClockerUITests.m in Sources */,
 				C2AB022421AEED590014A401 /* OnboardingTests.swift in Sources */,
@@ -1494,7 +1496,7 @@
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 20.10.02;
+				MARKETING_VERSION = 20.10.03;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
@@ -1983,7 +1985,7 @@
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 20.10.02;
+				MARKETING_VERSION = 20.10.03;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
@@ -2046,7 +2048,7 @@
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 20.10.02;
+				MARKETING_VERSION = 20.10.03;
 				OTHER_LDFLAGS = "";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
