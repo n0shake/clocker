@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -41,15 +41,15 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1000" y="379" width="350" height="460"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-            <view key="contentView" focusRingType="none" misplaced="YES" id="6" customClass="BackgroundPanelView" customModule="Clocker" customModuleProvider="target">
+            <view key="contentView" focusRingType="none" id="6" customClass="BackgroundPanelView" customModule="Clocker" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="350" height="460"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView focusRingType="none" distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZA-6o-SbE">
-                        <rect key="frame" x="0.0" y="0.0" width="379" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="460"/>
                         <subviews>
                             <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="96" horizontalPageScroll="1" verticalLineScroll="96" verticalPageScroll="1" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" scrollerKnobStyle="light" translatesAutoresizingMaskIntoConstraints="NO" id="4Gd-Nv-fXr">
-                                <rect key="frame" x="0.0" y="195" width="379" height="265"/>
+                                <rect key="frame" x="-29" y="195" width="379" height="265"/>
                                 <clipView key="contentView" focusRingType="none" drawsBackground="NO" copiesOnScroll="NO" id="4MZ-Di-yNR">
                                     <rect key="frame" x="0.0" y="0.0" width="379" height="265"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -259,10 +259,10 @@
                                 </scroller>
                             </scrollView>
                             <customView identifier="Review Cell" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="TDn-Kk-KkV">
-                                <rect key="frame" x="0.0" y="145" width="379" height="50"/>
+                                <rect key="frame" x="0.0" y="145" width="350" height="50"/>
                                 <subviews>
                                     <stackView focusRingType="none" distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uys-ww-duA">
-                                        <rect key="frame" x="40" y="25" width="300" height="20"/>
+                                        <rect key="frame" x="25" y="25" width="300" height="20"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" preferredMaxLayoutWidth="185" translatesAutoresizingMaskIntoConstraints="NO" id="8Qj-Y9-Okf">
                                                 <rect key="frame" x="-2" y="0.0" width="304" height="20"/>
@@ -286,7 +286,7 @@
                                         <accessibility identifier="ReviewLabel"/>
                                     </stackView>
                                     <stackView focusRingType="none" distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1AK-MW-qsc">
-                                        <rect key="frame" x="90" y="2" width="200" height="21"/>
+                                        <rect key="frame" x="75" y="2" width="200" height="21"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WVY-D9-AAX">
                                                 <rect key="frame" x="-6" y="-7" width="108" height="32"/>
@@ -333,13 +333,13 @@
                                 <accessibility description="ReviewCell" identifier="ReviewCell"/>
                             </customView>
                             <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Akn-cR-W4G" customClass="ReviewView" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="70" width="379" height="75"/>
+                                <rect key="frame" x="0.0" y="70" width="350" height="75"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Etf-aa-udM" customClass="ClockerTextBackgroundView" customModule="Clocker" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="359" height="55"/>
+                                        <rect key="frame" x="10" y="10" width="330" height="55"/>
                                         <subviews>
                                             <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OmF-0e-AfS">
-                                                <rect key="frame" x="23" y="11" width="296" height="18"/>
+                                                <rect key="frame" x="23" y="11" width="267" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="ouD-k5-ZNV"/>
                                                 </constraints>
@@ -360,7 +360,7 @@
                                                 </constraints>
                                             </customView>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rld-Ag-KL1">
-                                                <rect key="frame" x="21" y="26" width="280" height="24"/>
+                                                <rect key="frame" x="21" y="26" width="271" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="aer-Hh-Lga"/>
                                                 </constraints>
@@ -371,7 +371,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <button verticalHuggingPriority="750" tag="55" translatesAutoresizingMaskIntoConstraints="NO" id="R8q-7U-hbU">
-                                                <rect key="frame" x="319" y="10" width="35" height="35"/>
+                                                <rect key="frame" x="290" y="10" width="35" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="35" id="HPk-IL-BH6"/>
                                                     <constraint firstAttribute="height" constant="35" id="cKO-Aj-Fq6"/>
@@ -391,7 +391,7 @@
                                             <constraint firstItem="OmF-0e-AfS" firstAttribute="bottom" secondItem="KFy-Xe-qhq" secondAttribute="bottom" id="EaO-VK-aSp"/>
                                             <constraint firstItem="rld-Ag-KL1" firstAttribute="centerY" secondItem="Etf-aa-udM" secondAttribute="centerY" constant="-10" id="ZL3-an-mCL"/>
                                             <constraint firstItem="R8q-7U-hbU" firstAttribute="centerY" secondItem="Etf-aa-udM" secondAttribute="centerY" id="cZc-vc-rKd"/>
-                                            <constraint firstItem="R8q-7U-hbU" firstAttribute="leading" secondItem="rld-Ag-KL1" secondAttribute="trailing" constant="20" id="d5O-iy-zGi"/>
+                                            <constraint firstItem="R8q-7U-hbU" firstAttribute="leading" secondItem="rld-Ag-KL1" secondAttribute="trailing" id="d5O-iy-zGi"/>
                                             <constraint firstItem="KFy-Xe-qhq" firstAttribute="centerY" secondItem="Etf-aa-udM" secondAttribute="centerY" id="gjc-cr-6nS"/>
                                             <constraint firstItem="KFy-Xe-qhq" firstAttribute="leading" secondItem="Etf-aa-udM" secondAttribute="leading" constant="10" id="hZu-c0-P4T"/>
                                             <constraint firstItem="R8q-7U-hbU" firstAttribute="leading" secondItem="OmF-0e-AfS" secondAttribute="trailing" id="n3q-Am-kYG"/>
@@ -405,6 +405,7 @@
                                     <constraint firstItem="Etf-aa-udM" firstAttribute="leading" secondItem="Akn-cR-W4G" secondAttribute="leading" constant="10" id="JSl-8d-7xg"/>
                                     <constraint firstAttribute="height" constant="75" id="JUg-Of-bAv"/>
                                     <constraint firstAttribute="bottom" secondItem="Etf-aa-udM" secondAttribute="bottom" constant="10" id="ikw-nw-27q"/>
+                                    <constraint firstAttribute="width" constant="350" id="oPv-7I-Y3n"/>
                                 </constraints>
                                 <accessibility identifier="UpcomingEventView"/>
                             </customView>
@@ -458,10 +459,10 @@
                                 </constraints>
                             </customView>
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="B8X-sx-cjT">
-                                <rect key="frame" x="0.0" y="0.0" width="379" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="40"/>
                                 <subviews>
                                     <button toolTip="Close Clocker" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1cR-pI-osG">
-                                        <rect key="frame" x="338" y="7" width="30" height="26"/>
+                                        <rect key="frame" x="309" y="7" width="30" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="WSi-Xj-Kfl"/>
                                             <constraint firstAttribute="width" constant="30" id="j2s-C4-pK5"/>
@@ -476,7 +477,7 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Switch between Menubar/Floating mode." verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YXE-4J-5cn">
-                                        <rect key="frame" x="304" y="10" width="29" height="19"/>
+                                        <rect key="frame" x="275" y="10" width="29" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="29" id="fWo-31-i3M"/>
                                             <constraint firstAttribute="height" constant="18" id="v7I-PR-eTK"/>
@@ -491,7 +492,7 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Share Clocker!" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hc7-fH-V7i">
-                                        <rect key="frame" x="269" y="10" width="30" height="21"/>
+                                        <rect key="frame" x="240" y="10" width="30" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Bnf-E1-uaE"/>
                                             <constraint firstAttribute="width" constant="30" id="pke-4M-ob5"/>
