@@ -187,8 +187,8 @@ extension Themer {
 
         return
             themeIndex == .light
-                ? NSImage(named: NSImage.Name("Settings"))!
-                : NSImage(named: NSImage.Name("Settings-White"))!
+            ? NSImage(named: NSImage.Name("Settings"))!
+            : NSImage(named: NSImage.Name("Settings-White"))!
     }
 
     func pinImage() -> NSImage {
@@ -450,7 +450,7 @@ extension Themer {
 
         if #available(OSX 11.0, *) {
             return NSImage(systemSymbolName: name,
-                           accessibilityDescription: name)!
+                           accessibilityDescription: name)
         }
 
         return nil
