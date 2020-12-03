@@ -36,8 +36,6 @@ class NotesPopover: NSViewController {
 
     @IBOutlet var timeFormatControl: NSSegmentedControl!
 
-    @IBOutlet var secondsFormatControl: NSSegmentedControl!
-
     @IBOutlet var notesTextView: TextViewWithPlaceholder!
 
     override func viewDidLoad() {

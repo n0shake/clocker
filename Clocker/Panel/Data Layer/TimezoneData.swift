@@ -352,10 +352,7 @@ class TimezoneData: NSObject, NSCoding {
     func timezoneFormat() -> String {
         let chosenDefault = DataStore.shared().timezoneFormat()
 
-        let currentValue = values[chosenDefault] ?? DateFormat.twelveHour
-
-        Swift.print("Format is \(currentValue)")
-        return currentValue
+        return values[chosenDefault] ?? DateFormat.twelveHour
 
 //        var timeFormat = DateFormat.twentyFourHour
 //
