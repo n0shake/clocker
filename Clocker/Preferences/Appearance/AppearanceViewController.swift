@@ -25,14 +25,26 @@ class AppearanceViewController: ParentViewController {
         informationLabel.stringValue = "Favourite a timezone to enable menubar display options.".localized()
         informationLabel.textColor = NSColor.secondaryLabelColor
 
+        let chosenFormat = DataStore.shared().timezoneFormat().intValue
         let supportedTimeFormats = ["h:mm a (7:08 PM)",
-                                    "h:mm:ss a (7:08:09 PM)",
                                     "HH:mm (19:08)",
+                                    "-- With Seconds --",
+                                    "h:mm:ss a (7:08:09 PM)",
                                     "HH:mm:ss (19:08:09)",
+                                    "-- 12 Hour with Preceding 0 --",
                                     "hh:mm a (07:08 PM)",
-                                    "hh:mm:ss a (07:08:09 PM)"]
+                                    "hh:mm:ss a (07:08:09 PM)",
+                                    "-- 12 Hour w/o AM/PM --",
+                                    "hh:mm (07:08)",
+                                    "hh:mm:ss (07:08:09)"]
         timeFormat.removeAllItems()
         timeFormat.addItems(withTitles: supportedTimeFormats)
+
+        timeFormat.item(at: 2)?.isEnabled = false
+        timeFormat.item(at: 5)?.isEnabled = false
+        timeFormat.item(at: 8)?.isEnabled = false
+        timeFormat.autoenablesItems = false
+        timeFormat.selectItem(at: chosenFormat)
 
         informationLabel.setAccessibilityIdentifier("InformationLabel")
 

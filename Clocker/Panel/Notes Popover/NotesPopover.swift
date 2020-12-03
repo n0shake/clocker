@@ -215,7 +215,6 @@ class NotesPopover: NSViewController {
 
         dataObject?.note = notesTextView.string
         dataObject?.setShouldOverrideGlobalTimeFormat(timeFormatControl.selectedSegment)
-        dataObject?.setShouldOverrideSecondsFormat(secondsFormatControl.selectedSegment)
         insertTimezoneInDefaultPreferences()
 
         if setReminderCheckbox.state == .on {
@@ -285,7 +284,8 @@ class NotesPopover: NSViewController {
         DataStore.shared().setTimezones(timezones)
     }
 
-    private func updateTimezoneInDefaultPreferences(with override: Int, _ overrideType: OverrideType) {
+    private func updateTimezoneInDefaultPreferences(with override: Int,
+                                                    _: OverrideType) {
         let timezones = DataStore.shared().timezones()
 
         var timezoneObjects: [TimezoneData] = []
@@ -297,9 +297,7 @@ class NotesPopover: NSViewController {
         }
 
         for timezoneObject in timezoneObjects where timezoneObject.isEqual(dataObject) {
-            overrideType == .timezoneFormat ?
-                timezoneObject.setShouldOverrideGlobalTimeFormat(override) :
-                timezoneObject.setShouldOverrideSecondsFormat(override)
+            timezoneObject.setShouldOverrideGlobalTimeFormat(override)
         }
 
         var datas: [Data] = []
@@ -452,18 +450,11 @@ extension NotesPopover {
 
         setInitialReminderTime()
         updateTimeFormat()
-        updateSecondsFormat()
     }
 
     private func updateTimeFormat() {
         if let overrideFormat = dataObject?.overrideFormat.rawValue {
             timeFormatControl.setSelected(true, forSegment: overrideFormat)
-        }
-    }
-
-    private func updateSecondsFormat() {
-        if let overrideFormat = dataObject?.overrideSecondsFormat.rawValue {
-            secondsFormatControl.setSelected(true, forSegment: overrideFormat)
         }
     }
 

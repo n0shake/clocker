@@ -8,6 +8,10 @@ struct DateFormat {
     static let twelveHourWithSeconds = "h:mm:ss a"
     static let twentyFourHour = "HH:mm"
     static let twentyFourHourWithSeconds = "HH:mm:ss"
+    static let twelveHourWithZero = "hh:mm a"
+    static let twelveHourWithZeroSeconds = "hh:mm:ss a"
+    static let twelveHourWithoutSuffix = "hh:mm"
+    static let twelveHourWithoutSuffixAndSeconds = "hh:mm:ss"
 }
 
 // Non-class type cannot conform to NSCoding!
@@ -28,11 +32,16 @@ class TimezoneData: NSObject, NSCoding {
         case globalFormat
     }
 
-    enum SecondsOverride: Int {
-        case showSeconds
-        case hideSeconds
-        case globalFormat
-    }
+    let values = [
+        NSNumber(integerLiteral: 0): DateFormat.twelveHour,
+        NSNumber(integerLiteral: 1): DateFormat.twelveHourWithSeconds,
+        NSNumber(integerLiteral: 2): DateFormat.twentyFourHour,
+        NSNumber(integerLiteral: 3): DateFormat.twentyFourHourWithSeconds,
+        NSNumber(integerLiteral: 4): DateFormat.twelveHourWithZero,
+        NSNumber(integerLiteral: 5): DateFormat.twelveHourWithZeroSeconds,
+        NSNumber(integerLiteral: 6): DateFormat.twelveHourWithoutSuffix,
+        NSNumber(integerLiteral: 7): DateFormat.twelveHourWithoutSuffixAndSeconds,
+    ]
 
     var customLabel: String?
     var formattedAddress: String?
@@ -49,7 +58,6 @@ class TimezoneData: NSObject, NSCoding {
     var selectionType: SelectionType = .city
     var isSystemTimezone = false
     var overrideFormat: TimezoneOverride = .globalFormat
-    var overrideSecondsFormat: SecondsOverride = .globalFormat
 
     override init() {
         selectionType = .timezone
@@ -57,7 +65,6 @@ class TimezoneData: NSObject, NSCoding {
         note = CLEmptyString
         isSystemTimezone = false
         overrideFormat = .globalFormat
-        overrideSecondsFormat = .globalFormat
         placeID = UUID().uuidString
     }
 
@@ -84,7 +91,6 @@ class TimezoneData: NSObject, NSCoding {
         selectionType = originalTimezone.selectionType == CLSelection.citySelection ? .city : .timezone
         isSystemTimezone = originalTimezone.isSystemTimezone
         overrideFormat = .globalFormat
-        overrideSecondsFormat = .globalFormat
     }
 
     init(with dictionary: [String: Any]) {
@@ -137,7 +143,6 @@ class TimezoneData: NSObject, NSCoding {
         isSystemTimezone = false
 
         overrideFormat = .globalFormat
-        overrideSecondsFormat = .globalFormat
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -170,9 +175,6 @@ class TimezoneData: NSObject, NSCoding {
 
         let override = aDecoder.decodeInteger(forKey: "overrideFormat")
         overrideFormat = TimezoneOverride(rawValue: override)!
-
-        let secondsOverride = aDecoder.decodeInteger(forKey: "secondsOverrideFormat")
-        overrideSecondsFormat = SecondsOverride(rawValue: secondsOverride)!
     }
 
     class func customObject(from encodedData: Data?) -> TimezoneData? {
@@ -235,7 +237,6 @@ class TimezoneData: NSObject, NSCoding {
                 let newTimezone = TimezoneData(with: oldModel)
                 newModels.append(newTimezone)
             } else if let newModel = old as? TimezoneData {
-                shouldOverrideSecondsFormatBugFix(model: newModel)
                 newModels.append(newModel)
             }
         }
@@ -250,12 +251,6 @@ class TimezoneData: NSObject, NSCoding {
         }
 
         return serializedModels
-    }
-
-    private class func shouldOverrideSecondsFormatBugFix(model: TimezoneData) {
-        if UserDefaults.standard.object(forKey: "shouldOverrideSecondsFormatBug") == nil {
-            model.setShouldOverrideSecondsFormat(2)
-        }
     }
 
     func encode(with aCoder: NSCoder) {
@@ -286,8 +281,6 @@ class TimezoneData: NSObject, NSCoding {
         aCoder.encode(isSystemTimezone, forKey: "isSystemTimezone")
 
         aCoder.encode(overrideFormat.rawValue, forKey: "overrideFormat")
-
-        aCoder.encode(overrideSecondsFormat.rawValue, forKey: "secondsOverrideFormat")
     }
 
     func formattedTimezoneLabel() -> String {
@@ -332,16 +325,6 @@ class TimezoneData: NSObject, NSCoding {
         }
     }
 
-    func setShouldOverrideSecondsFormat(_ shouldOverride: Int) {
-        if shouldOverride == 0 {
-            overrideSecondsFormat = .showSeconds
-        } else if shouldOverride == 1 {
-            overrideSecondsFormat = .hideSeconds
-        } else {
-            overrideSecondsFormat = .globalFormat
-        }
-    }
-
     func timezone() -> String {
         if isSystemTimezone {
             timezoneID = TimeZone.autoupdatingCurrent.identifier
@@ -367,46 +350,45 @@ class TimezoneData: NSObject, NSCoding {
     }
 
     func timezoneFormat() -> String {
-        let showSeconds = shouldShowSeconds()
-        let isTwelveHourFormatSelected = DataStore.shared().shouldDisplay(.twelveHour)
+        let chosenDefault = DataStore.shared().timezoneFormat()
 
-        var timeFormat = DateFormat.twentyFourHour
+        let currentValue = values[chosenDefault] ?? DateFormat.twelveHour
 
-        if showSeconds {
-            if overrideFormat == .globalFormat {
-                timeFormat = isTwelveHourFormatSelected ? DateFormat.twelveHourWithSeconds : DateFormat.twentyFourHourWithSeconds
-            } else if overrideFormat == .twelveHourFormat {
-                timeFormat = DateFormat.twelveHourWithSeconds
-            } else {
-                timeFormat = DateFormat.twentyFourHourWithSeconds
-            }
-        } else {
-            if overrideFormat == .globalFormat {
-                timeFormat = isTwelveHourFormatSelected ? DateFormat.twelveHour : DateFormat.twentyFourHour
-            } else if overrideFormat == .twelveHourFormat {
-                timeFormat = DateFormat.twelveHour
-            } else {
-                timeFormat = DateFormat.twentyFourHour
-            }
-        }
+        Swift.print("Format is \(currentValue)")
+        return currentValue
 
-        return timeFormat
-    }
-
-    func shouldDisplayTwelveHourFormat() -> Bool {
-        if overrideSecondsFormat == .globalFormat {
-            return DataStore.shared().shouldDisplay(.twelveHour)
-        }
-
-        return overrideFormat == .twelveHourFormat
+//        var timeFormat = DateFormat.twentyFourHour
+//
+//        if shouldShowSeconds() {
+//            if overrideFormat == .globalFormat {
+//                timeFormat = true ? DateFormat.twelveHourWithSeconds : DateFormat.twentyFourHourWithSeconds
+//            } else if overrideFormat == .twelveHourFormat {
+//                timeFormat = DateFormat.twelveHourWithSeconds
+//            } else {
+//                timeFormat = DateFormat.twentyFourHourWithSeconds
+//            }
+//        } else {
+//            if overrideFormat == .globalFormat {
+//                timeFormat = true ? DateFormat.twelveHour : DateFormat.twentyFourHour
+//            } else if overrideFormat == .twelveHourFormat {
+//                timeFormat = DateFormat.twelveHour
+//            } else {
+//                timeFormat = DateFormat.twentyFourHour
+//            }
+//        }
+//
+//        return timeFormat
     }
 
     func shouldShowSeconds() -> Bool {
-        if overrideSecondsFormat == .globalFormat {
-            return DataStore.shared().shouldDisplay(.seconds)
+        if overrideFormat == .globalFormat {
+            let currentFormat = DataStore.shared().timezoneFormat()
+            let formatInString = values[currentFormat] ?? DateFormat.twelveHour
+            return formatInString.contains("ss")
         }
 
-        return overrideSecondsFormat == .showSeconds
+        let formatInString = values[NSNumber(integerLiteral: overrideFormat.rawValue)] ?? DateFormat.twelveHour
+        return formatInString.contains("ss")
     }
 
     override var hash: Int {
@@ -472,7 +454,6 @@ extension TimezoneData {
         Note: \(note ?? "Error")
         Is System Timezone: \(isSystemTimezone)
         Override: \(overrideFormat)
-        Seconds Override: \(overrideSecondsFormat)
         """
 
         return customString
