@@ -3,7 +3,7 @@
 import Cocoa
 
 class AppearanceViewController: ParentViewController {
-    @IBOutlet var timeFormat: NSSegmentedControl!
+    @IBOutlet var timeFormat: NSPopUpButton!
     @IBOutlet var theme: NSSegmentedControl!
     @IBOutlet var informationLabel: NSTextField!
     @IBOutlet var sliderDayRangePopup: NSPopUpButton!
@@ -24,6 +24,15 @@ class AppearanceViewController: ParentViewController {
 
         informationLabel.stringValue = "Favourite a timezone to enable menubar display options.".localized()
         informationLabel.textColor = NSColor.secondaryLabelColor
+
+        let supportedTimeFormats = ["h:mm a (7:08 PM)",
+                                    "h:mm:ss a (7:08:09 PM)",
+                                    "HH:mm (19:08)",
+                                    "HH:mm:ss (19:08:09)",
+                                    "hh:mm a (07:08 PM)",
+                                    "hh:mm:ss a (07:08:09 PM)"]
+        timeFormat.removeAllItems()
+        timeFormat.addItems(withTitles: supportedTimeFormats)
 
         informationLabel.setAccessibilityIdentifier("InformationLabel")
 
@@ -114,7 +123,6 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet var dayDisplayOptionsLabel: NSTextField!
     @IBOutlet var showSliderLabel: NSTextField!
     @IBOutlet var showSunriseLabel: NSTextField!
-    @IBOutlet var showSecondsLabel: NSTextField!
     @IBOutlet var largerTextLabel: NSTextField!
     @IBOutlet var futureSliderRangeLabel: NSTextField!
     @IBOutlet var includeDateLabel: NSTextField!
@@ -134,7 +142,6 @@ class AppearanceViewController: ParentViewController {
         dayDisplayOptionsLabel.stringValue = "Day Display Options".localized()
         showSliderLabel.stringValue = "Show Future Slider".localized()
         showSunriseLabel.stringValue = "Show Sunrise/Sunset".localized()
-        showSecondsLabel.stringValue = "Display the time in seconds".localized()
         largerTextLabel.stringValue = "Larger Text".localized()
         futureSliderRangeLabel.stringValue = "Future Slider Range".localized()
         includeDateLabel.stringValue = "Include Date".localized()
@@ -145,7 +152,7 @@ class AppearanceViewController: ParentViewController {
         miscelleaneousLabel.stringValue = "Miscellaneous".localized()
 
         [timeFormatLabel, panelTheme,
-         dayDisplayOptionsLabel, showSliderLabel, showSecondsLabel,
+         dayDisplayOptionsLabel, showSliderLabel,
          showSunriseLabel, largerTextLabel, futureSliderRangeLabel,
          includeDayLabel, includeDateLabel, includePlaceLabel, appDisplayLabel, menubarModeLabel,
          previewLabel, miscelleaneousLabel].forEach {
@@ -153,12 +160,12 @@ class AppearanceViewController: ParentViewController {
         }
     }
 
-    @IBAction func timeFormatSelectionChanged(_ sender: NSSegmentedControl) {
-        let selection = NSNumber(value: sender.selectedSegment)
+    @IBAction func timeFormatSelectionChanged(_ sender: NSPopUpButton) {
+        let selection = NSNumber(value: sender.indexOfSelectedItem)
 
         UserDefaults.standard.set(selection, forKey: CL24hourFormatSelectedKey)
 
-        Logger.log(object: ["Time Format": sender.selectedSegment == 0 ? "12 Hour Format" : "24 Hour Format"], for: "Time Format Selected")
+        Logger.log(object: ["Time Format": sender.indexOfSelectedItem == 0 ? "12 Hour Format" : "24 Hour Format"], for: "Time Format Selected")
 
         refresh(panel: true, floating: true)
 
