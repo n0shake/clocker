@@ -186,10 +186,10 @@
                             <rect key="frame" x="0.0" y="77" width="300" height="60"/>
                             <subviews>
                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wso-Nb-JHM">
-                                    <rect key="frame" x="17" y="6" width="267" height="25"/>
+                                    <rect key="frame" x="17" y="6" width="277" height="25"/>
                                     <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="8qk-GL-4hW" id="fxb-yT-8r3">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="menu"/>
+                                        <font key="font" size="12" name="Avenir-Book"/>
                                         <menu key="menu" id="cw0-En-hDs">
                                             <items>
                                                 <menuItem title="Item 1" state="on" id="8qk-GL-4hW"/>
@@ -213,7 +213,7 @@
                                 <constraint firstItem="Wqz-cF-lhm" firstAttribute="leading" secondItem="wso-Nb-JHM" secondAttribute="leading" id="6Nz-Pg-AjP"/>
                                 <constraint firstAttribute="height" constant="60" id="6tP-1d-ufg"/>
                                 <constraint firstAttribute="trailing" secondItem="Wqz-cF-lhm" secondAttribute="trailing" constant="10" id="G6S-5h-12V"/>
-                                <constraint firstAttribute="trailing" secondItem="wso-Nb-JHM" secondAttribute="trailing" constant="20" symbolic="YES" id="a7H-jo-4dw"/>
+                                <constraint firstAttribute="trailing" secondItem="wso-Nb-JHM" secondAttribute="trailing" constant="10" id="a7H-jo-4dw"/>
                                 <constraint firstAttribute="bottom" secondItem="wso-Nb-JHM" secondAttribute="bottom" constant="10" id="uXh-0D-6O0"/>
                                 <constraint firstAttribute="width" constant="300" id="xeM-Ue-etB"/>
                             </constraints>

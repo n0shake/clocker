@@ -38,6 +38,18 @@ class NotesPopover: NSViewController {
 
     @IBOutlet var notesTextView: TextViewWithPlaceholder!
 
+    private func convertOverrideFormatToPopupControlSelection() -> Int {
+        var chosenFormat: Int = dataObject?.overrideFormat.rawValue ?? 0
+        if chosenFormat == 3 {
+            chosenFormat = 4
+        } else if chosenFormat == 6 {
+            chosenFormat = 7
+        } else if chosenFormat == 9 {
+            chosenFormat = 10
+        }
+        return chosenFormat
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -67,7 +79,6 @@ class NotesPopover: NSViewController {
         alertPopupButton.selectItem(at: 1)
 
         // Set up time control
-        let chosenFormat: Int = dataObject?.overrideFormat.rawValue ?? 0
         let supportedTimeFormats = ["Respect Global Preference",
                                     "h:mm a (7:08 PM)",
                                     "HH:mm (19:08)",
@@ -87,7 +98,7 @@ class NotesPopover: NSViewController {
         timeFormatControl.item(at: 6)?.isEnabled = false
         timeFormatControl.item(at: 9)?.isEnabled = false
         timeFormatControl.autoenablesItems = false
-        timeFormatControl.selectItem(at: chosenFormat)
+        timeFormatControl.selectItem(at: convertOverrideFormatToPopupControlSelection())
 
         // Set Accessibility Identifiers for UI tests
         customLabel.setAccessibilityIdentifier("CustomLabel")
@@ -474,9 +485,7 @@ extension NotesPopover {
     }
 
     private func updateTimeFormat() {
-        if let overrideFormat = dataObject?.overrideFormat.rawValue {
-            timeFormatControl.selectItem(at: overrideFormat)
-        }
+        timeFormatControl.selectItem(at: convertOverrideFormatToPopupControlSelection())
     }
 
     private func enableReminderView(_ shouldEnable: Bool) {

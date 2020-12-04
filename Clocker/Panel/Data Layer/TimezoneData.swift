@@ -28,14 +28,14 @@ class TimezoneData: NSObject, NSCoding {
 
     enum TimezoneOverride: Int {
         case globalFormat = 0
-        case twelveHourFormat
-        case twentyFourFormat
-        case twelveHourWithSeconds
-        case twentyHourWithSeconds
-        case twelveHourPrecedingZero
-        case twelveHourPrecedingZeroSeconds
-        case twelveHourWithoutSuffix
-        case twelveHourWithoutSuffixAndSeconds
+        case twelveHourFormat = 1
+        case twentyFourFormat = 2
+        case twelveHourWithSeconds = 4
+        case twentyHourWithSeconds = 5
+        case twelveHourPrecedingZero = 7
+        case twelveHourPrecedingZeroSeconds = 8
+        case twelveHourWithoutSuffix = 10
+        case twelveHourWithoutSuffixAndSeconds = 11
     }
 
     static let values = [
@@ -335,6 +335,7 @@ class TimezoneData: NSObject, NSCoding {
         } else if shouldOverride == 4 {
             overrideFormat = .twelveHourWithSeconds
         } else if shouldOverride == 5 {
+            print("Setting override format to five")
             overrideFormat = .twentyHourWithSeconds
         } else if shouldOverride == 7 {
             overrideFormat = .twelveHourPrecedingZero
@@ -344,6 +345,8 @@ class TimezoneData: NSObject, NSCoding {
             overrideFormat = .twelveHourWithoutSuffix
         } else if shouldOverride == 11 {
             overrideFormat = .twelveHourWithoutSuffixAndSeconds
+        } else {
+            assertionFailure("Chosen a wrong timezone format")
         }
     }
 
