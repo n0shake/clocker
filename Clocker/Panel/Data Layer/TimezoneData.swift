@@ -329,9 +329,21 @@ class TimezoneData: NSObject, NSCoding {
         if shouldOverride == 0 {
             overrideFormat = .globalFormat
         } else if shouldOverride == 1 {
+            overrideFormat = .twelveHourFormat
+        } else if shouldOverride == 2 {
             overrideFormat = .twentyFourFormat
-        } else {
-            overrideFormat = .globalFormat
+        } else if shouldOverride == 4 {
+            overrideFormat = .twelveHourWithSeconds
+        } else if shouldOverride == 5 {
+            overrideFormat = .twentyHourWithSeconds
+        } else if shouldOverride == 7 {
+            overrideFormat = .twelveHourPrecedingZero
+        } else if shouldOverride == 8 {
+            overrideFormat = .twelveHourPrecedingZeroSeconds
+        } else if shouldOverride == 10 {
+            overrideFormat = .twelveHourWithoutSuffix
+        } else if shouldOverride == 11 {
+            overrideFormat = .twelveHourWithoutSuffixAndSeconds
         }
     }
 
@@ -361,29 +373,29 @@ class TimezoneData: NSObject, NSCoding {
 
     func timezoneFormat() -> String {
         let chosenDefault = DataStore.shared().timezoneFormat()
-        return TimezoneData.values[chosenDefault] ?? DateFormat.twelveHour
+        let timeFormat = TimezoneData.values[chosenDefault] ?? DateFormat.twelveHour
 
-//        var timeFormat = DateFormat.twentyFourHour
-//
-//        if shouldShowSeconds() {
-//            if overrideFormat == .globalFormat {
-//                timeFormat = true ? DateFormat.twelveHourWithSeconds : DateFormat.twentyFourHourWithSeconds
-//            } else if overrideFormat == .twelveHourFormat {
-//                timeFormat = DateFormat.twelveHourWithSeconds
-//            } else {
-//                timeFormat = DateFormat.twentyFourHourWithSeconds
-//            }
-//        } else {
-//            if overrideFormat == .globalFormat {
-//                timeFormat = true ? DateFormat.twelveHour : DateFormat.twentyFourHour
-//            } else if overrideFormat == .twelveHourFormat {
-//                timeFormat = DateFormat.twelveHour
-//            } else {
-//                timeFormat = DateFormat.twentyFourHour
-//            }
-//        }
-//
-//        return timeFormat
+        if overrideFormat == .globalFormat {
+            return timeFormat
+        } else if overrideFormat == .twelveHourFormat {
+            return DateFormat.twelveHour
+        } else if overrideFormat == .twentyFourFormat {
+            return DateFormat.twentyFourHour
+        } else if overrideFormat == .twelveHourWithSeconds {
+            return DateFormat.twelveHourWithSeconds
+        } else if overrideFormat == .twentyHourWithSeconds {
+            return DateFormat.twentyFourHourWithSeconds
+        } else if overrideFormat == .twelveHourPrecedingZero {
+            return DateFormat.twelveHourWithZero
+        } else if overrideFormat == .twelveHourPrecedingZeroSeconds {
+            return DateFormat.twelveHourWithZeroSeconds
+        } else if overrideFormat == .twelveHourWithoutSuffix {
+            return DateFormat.twelveHourWithoutSuffix
+        } else if overrideFormat == .twelveHourWithoutSuffixAndSeconds {
+            return DateFormat.twelveHourWithoutSuffixAndSeconds
+        }
+
+        return timeFormat
     }
 
     func shouldShowSeconds() -> Bool {
