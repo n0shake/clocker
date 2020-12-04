@@ -107,6 +107,10 @@ class DataStore: NSObject {
         return value.isEqual(to: NSNumber(value: 0))
     }
 
+    func timezoneFormat() -> NSNumber {
+        return userDefaults.object(forKey: CL24hourFormatSelectedKey) as? NSNumber ?? NSNumber(integerLiteral: 0)
+    }
+
     func shouldDisplay(_ type: ViewType) -> Bool {
         switch type {
         case .futureSlider:
