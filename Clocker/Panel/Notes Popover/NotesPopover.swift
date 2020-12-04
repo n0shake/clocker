@@ -34,7 +34,7 @@ class NotesPopover: NSViewController {
 
     @IBOutlet var remindersButton: NSButton!
 
-    @IBOutlet var timeFormatControl: NSSegmentedControl!
+    @IBOutlet var timeFormatControl: NSPopUpButton!
 
     @IBOutlet var notesTextView: TextViewWithPlaceholder!
 
@@ -65,6 +65,29 @@ class NotesPopover: NSViewController {
         alertPopupButton.removeAllItems()
         alertPopupButton.addItems(withTitles: titles)
         alertPopupButton.selectItem(at: 1)
+
+        // Set up time control
+        let chosenFormat: Int = dataObject?.overrideFormat.rawValue ?? 0
+        let supportedTimeFormats = ["Respect Global Preference",
+                                    "h:mm a (7:08 PM)",
+                                    "HH:mm (19:08)",
+                                    "-- With Seconds --",
+                                    "h:mm:ss a (7:08:09 PM)",
+                                    "HH:mm:ss (19:08:09)",
+                                    "-- 12 Hour with Preceding 0 --",
+                                    "hh:mm a (07:08 PM)",
+                                    "hh:mm:ss a (07:08:09 PM)",
+                                    "-- 12 Hour w/o AM/PM --",
+                                    "hh:mm (07:08)",
+                                    "hh:mm:ss (07:08:09)"]
+        timeFormatControl.removeAllItems()
+        timeFormatControl.addItems(withTitles: supportedTimeFormats)
+
+        timeFormatControl.item(at: 3)?.isEnabled = false
+        timeFormatControl.item(at: 6)?.isEnabled = false
+        timeFormatControl.item(at: 9)?.isEnabled = false
+        timeFormatControl.autoenablesItems = false
+        timeFormatControl.selectItem(at: chosenFormat)
 
         // Set Accessibility Identifiers for UI tests
         customLabel.setAccessibilityIdentifier("CustomLabel")
@@ -212,7 +235,7 @@ class NotesPopover: NSViewController {
         updateLabel()
 
         dataObject?.note = notesTextView.string
-        dataObject?.setShouldOverrideGlobalTimeFormat(timeFormatControl.selectedSegment)
+        dataObject?.setShouldOverrideGlobalTimeFormat(timeFormatControl.indexOfSelectedItem)
         insertTimezoneInDefaultPreferences()
 
         if setReminderCheckbox.state == .on {
@@ -452,7 +475,7 @@ extension NotesPopover {
 
     private func updateTimeFormat() {
         if let overrideFormat = dataObject?.overrideFormat.rawValue {
-            timeFormatControl.setSelected(true, forSegment: overrideFormat)
+            timeFormatControl.selectItem(at: overrideFormat)
         }
     }
 
