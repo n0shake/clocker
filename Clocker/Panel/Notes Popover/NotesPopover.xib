@@ -304,7 +304,7 @@
                                         <constraint firstAttribute="width" constant="50" id="n5J-f7-aqy"/>
                                         <constraint firstAttribute="height" constant="25" id="oQ5-uv-Gfg"/>
                                     </constraints>
-                                    <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xa4-rw-FBZ">
+                                    <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xa4-rw-FBZ">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" size="12" name="Avenir-Light"/>
                                     </buttonCell>

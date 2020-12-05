@@ -181,8 +181,14 @@ class AppearanceViewController: ParentViewController {
 
         refresh(panel: true, floating: true)
 
-        updateStatusItem()
+        if let selectedFormat = sender.selectedItem?.title,
+            selectedFormat.contains("ss") {
+            print("Seconds are contained")
+            guard let panelController = PanelController.panel() else { return }
+            panelController.pauseTimer()
+        }
 
+        updateStatusItem()
         previewPanelTableView.reloadData()
     }
 
@@ -254,18 +260,6 @@ class AppearanceViewController: ParentViewController {
 
     @IBAction func showSunriseSunset(_ sender: NSSegmentedControl) {
         Logger.log(object: ["Is It Displayed": sender.selectedSegment == 0 ? "YES" : "NO"], for: "Sunrise Sunset")
-        previewPanelTableView.reloadData()
-    }
-
-    @IBAction func displayTimeWithSeconds(_ sender: NSSegmentedControl) {
-        Logger.log(object: ["Displayed": sender.selectedSegment == 0 ? "YES" : "NO"], for: "Display Time With Seconds")
-
-        if DataStore.shared().shouldDisplay(.seconds) {
-            guard let panelController = PanelController.panel() else { return }
-            panelController.pauseTimer()
-        }
-
-        updateStatusItem()
         previewPanelTableView.reloadData()
     }
 

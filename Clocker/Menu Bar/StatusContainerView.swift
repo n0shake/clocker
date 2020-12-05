@@ -13,10 +13,6 @@ func bufferCalculatedWidth() -> Int {
         totalWidth += 20
     }
 
-    if DataStore.shared().shouldDisplay(.seconds) {
-        totalWidth += 15
-    }
-
     if DataStore.shared().shouldShowDateInMenubar() {
         totalWidth += 20
     }
@@ -85,7 +81,9 @@ class StatusContainerView: NSView {
                     let operationObject = TimezoneDataOperations(with: timezoneObject)
                     let calculatedSubtitleSize = compactModeTimeFont.size(operationObject.compactMenuSubtitle(), precalculatedWidth, attributes: timeBasedAttributes)
                     let calculatedTitleSize = compactModeTimeFont.size(operationObject.compactMenuTitle(), precalculatedWidth, attributes: timeBasedAttributes)
-                    return result + max(calculatedTitleSize.width, calculatedSubtitleSize.width) + bufferWidth
+                    let showSeconds = timezoneObject.shouldShowSeconds()
+                    let secondsBuffer: CGFloat = showSeconds ? 7 : 0
+                    return result + max(calculatedTitleSize.width, calculatedSubtitleSize.width) + bufferWidth + secondsBuffer
                 }
 
                 return result + CGFloat(bufferCalculatedWidth())

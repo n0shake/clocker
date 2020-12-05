@@ -7,7 +7,6 @@ enum ViewType {
     case upcomingEventView
     case twelveHour
     case sunrise
-    case seconds
     case showMeetingInMenubar
     case showAllDayEventsInMenubar
     case showAppInForeground
@@ -126,8 +125,6 @@ class DataStore: NSObject {
             return shouldDisplayHelper(CLShowAllDayEventsInUpcomingView)
         case .sunrise:
             return shouldDisplayHelper(CLSunriseSunsetTime)
-        case .seconds:
-            return shouldDisplayHelper(CLShowSecondsInMenubar)
         case .showMeetingInMenubar:
             return shouldDisplayHelper(CLShowMeetingInMenubar)
         case .showAppInForeground:
