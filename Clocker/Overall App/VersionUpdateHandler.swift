@@ -45,7 +45,7 @@ class VersionUpdateHandler: NSObject {
         appStoreCountry = Locale.current.regionCode
         if appStoreCountry == "150" {
             appStoreCountry = "eu"
-        } else if appStoreCountry.replacingOccurrences(of: "[A-Za-z]{2}", with: "", options: .regularExpression, range: appStoreCountry.startIndex ..< appStoreCountry.endIndex).count > 0 {
+        } else if appStoreCountry.replacingOccurrences(of: "[A-Za-z]{2}", with: "", options: .regularExpression, range: appStoreCountry.startIndex ..< appStoreCountry.endIndex).isEmpty == false {
             appStoreCountry = "us"
         }
 
@@ -91,7 +91,7 @@ class VersionUpdateHandler: NSObject {
     }
 
     private func updatedURL() -> URL {
-        if updateURL.absoluteString.count > 0 {
+        if updateURL.absoluteString.isEmpty == false {
             return updateURL
         }
 
@@ -257,11 +257,11 @@ class VersionUpdateHandler: NSObject {
         scrollView.frame = NSMakeRect(0.0, 0.0, scrollView.frame.size.width, height)
         alert.accessoryView = scrollView
 
-        if ignoreButton.count > 0 {
+        if ignoreButton.isEmpty == false {
             alert.addButton(withTitle: ignoreButton)
         }
 
-        if remindButton.count > 0 {
+        if remindButton.isEmpty == false {
             alert.addButton(withTitle: remindButton)
 
             let modalResponse = alert.runModal()
@@ -309,7 +309,7 @@ class VersionUpdateHandler: NSObject {
         if checkingForNewVersion {
             checkingForNewVersion = false
 
-            if remoteVersionsDict.count <= 0 {
+            if remoteVersionsDict.isEmpty {
                 if downloadError != nil {
                     Logger.info("Update Check Failed because of \(downloadError!.localizedDescription)")
                 } else {
@@ -347,7 +347,7 @@ class VersionUpdateHandler: NSObject {
         }
 
         let lastVersionString = lastVersion()
-        if lastVersionString.count > 0 || showOnFirstLaunch || previewMode {
+        if lastVersionString.isEmpty == false || showOnFirstLaunch || previewMode {
             if applicationVersion.compareVersion(lastVersionString) == ComparisonResult.orderedDescending || previewMode {
                 // Clear Reminder
                 setLastReminded(nil)

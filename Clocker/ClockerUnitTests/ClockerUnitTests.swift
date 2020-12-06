@@ -72,8 +72,7 @@ class ClockerUnitTests: XCTestCase {
 
     func testOverridingSecondsComponent_shouldHideSeconds() {
         let dummyDefaults = UserDefaults.standard
-        dummyDefaults.set(NSNumber(value: 0), forKey: CLShowSecondsInMenubar)
-        dummyDefaults.set(NSNumber(value: 1), forKey: CL24hourFormatSelectedKey)
+        dummyDefaults.set(NSNumber(value: 4), forKey: CLSelectedTimeZoneFormatKey) // 4 is 12 hour with seconds
 
         let timezoneObjects = [TimezoneData(with: mumbai),
                                TimezoneData(with: auckland),
@@ -84,37 +83,11 @@ class ClockerUnitTests: XCTestCase {
             let currentTime = operationsObject.time(with: 0)
             XCTAssert(currentTime.count == 8) // 8 includes 2 colons
 
-            $0.setShouldOverrideSecondsFormat(1)
+            $0.setShouldOverrideGlobalTimeFormat(1)
+
             let newTime = operationsObject.time(with: 0)
-
-            XCTAssert(newTime.count == 5) // 5 includes colon
+            XCTAssert(newTime.count == 7) // 5 includes colon
         }
-        // Reset
-        dummyDefaults.set(NSNumber(value: 1), forKey: CLShowSecondsInMenubar)
-    }
-
-    func testOverridingSecondsComponentFor12HourFormat_shouldHideSeconds() {
-        let dummyDefaults = UserDefaults.standard
-        dummyDefaults.set(NSNumber(value: 0), forKey: CLShowSecondsInMenubar)
-        dummyDefaults.set(NSNumber(value: 0), forKey: CL24hourFormatSelectedKey)
-
-        let timezoneObjects = [TimezoneData(with: mumbai),
-                               TimezoneData(with: auckland),
-                               TimezoneData(with: california)]
-
-        timezoneObjects.forEach {
-            let operationsObject = TimezoneDataOperations(with: $0)
-            let currentTime = operationsObject.time(with: 0)
-            XCTAssert(currentTime.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count >= 10) // 8 includes 2 colons
-
-            $0.setShouldOverrideSecondsFormat(1)
-            let newTime = operationsObject.time(with: 0)
-
-            XCTAssert(newTime.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count >= 7) // 5 includes colon
-        }
-        // Reset
-        dummyDefaults.set(NSNumber(value: 1), forKey: CLShowSecondsInMenubar)
-        dummyDefaults.set(NSNumber(value: 1), forKey: CL24hourFormatSelectedKey)
     }
 
     func testAddingATimezoneToDefaults() {
@@ -155,11 +128,11 @@ class ClockerUnitTests: XCTestCase {
     // The below test might fail outside California or if DST is active!
     // CI is calibrated to be on LA timezone!
     func testTimeDifference() {
-        XCTAssertTrue(operations.timeDifference() == ", 13 hours 30 mins ahead", "Difference was unexpectedly: \(operations.timeDifference())")
-        XCTAssertTrue(californiaOperations.timeDifference() == "", "Difference was unexpectedly: \(californiaOperations.timeDifference())")
-        XCTAssertTrue(floridaOperations.timeDifference() == ", 3 hours ahead", "Difference was unexpectedly: \(floridaOperations.timeDifference())")
-        XCTAssertTrue(aucklandOperations.timeDifference() == ", 21 hours ahead", "Difference was unexpectedly: \(aucklandOperations.timeDifference())")
-        XCTAssertTrue(omahaOperations.timeDifference() == ", 2 hours ahead", "Difference was unexpectedly: \(omahaOperations.timeDifference())")
+        XCTAssertTrue(operations.timeDifference() == ", 11 hours 30 mins ahead", "Difference was unexpectedly: \(operations.timeDifference())")
+        XCTAssertTrue(californiaOperations.timeDifference() == ", 2 hours behind", "Difference was unexpectedly: \(californiaOperations.timeDifference())")
+        XCTAssertTrue(floridaOperations.timeDifference() == ", an hour ahead", "Difference was unexpectedly: \(floridaOperations.timeDifference())")
+        XCTAssertTrue(aucklandOperations.timeDifference() == ", 19 hours ahead", "Difference was unexpectedly: \(aucklandOperations.timeDifference())")
+        XCTAssertTrue(omahaOperations.timeDifference() == "", "Difference was unexpectedly: \(omahaOperations.timeDifference())")
     }
 
     func testSunriseSunset() {
@@ -188,34 +161,72 @@ class ClockerUnitTests: XCTestCase {
 
     func testTimezoneFormat() {
         let dataObject = TimezoneData(with: mumbai)
-        UserDefaults.standard.set(NSNumber(value: 0), forKey: CLShowSecondsInMenubar) // Set to show seconds
-        UserDefaults.standard.set(NSNumber(value: 0), forKey: CL24hourFormatSelectedKey) // Set to 12 hour format
+        UserDefaults.standard.set(NSNumber(value: 0), forKey: CLSelectedTimeZoneFormatKey) // Set to 12 hour format
 
-        dataObject.setShouldOverrideGlobalTimeFormat(0)
-        XCTAssertTrue(dataObject.timezoneFormat() == "h:mm:ss a")
-
-        dataObject.setShouldOverrideGlobalTimeFormat(1)
-        XCTAssertTrue(dataObject.timezoneFormat() == "HH:mm:ss")
-
-        dataObject.setShouldOverrideGlobalTimeFormat(2)
-        XCTAssertTrue(dataObject.timezoneFormat() == "h:mm:ss a")
-
-        UserDefaults.standard.set(NSNumber(value: 1), forKey: CL24hourFormatSelectedKey) // Set to 24-Hour Format
-        XCTAssertTrue(dataObject.timezoneFormat() == "HH:mm:ss")
-
-        UserDefaults.standard.set(NSNumber(value: 1), forKey: CLShowSecondsInMenubar)
-
-        dataObject.setShouldOverrideGlobalTimeFormat(0)
+        dataObject.setShouldOverrideGlobalTimeFormat(0) // Respect Global Preference
         XCTAssertTrue(dataObject.timezoneFormat() == "h:mm a")
 
-        dataObject.setShouldOverrideGlobalTimeFormat(1)
-        XCTAssertTrue(dataObject.timezoneFormat() == "HH:mm")
-
-        dataObject.setShouldOverrideGlobalTimeFormat(2)
-        XCTAssertTrue(dataObject.timezoneFormat() == "HH:mm")
-
-        UserDefaults.standard.set(NSNumber(value: 0), forKey: CL24hourFormatSelectedKey)
+        dataObject.setShouldOverrideGlobalTimeFormat(1) // 12-Hour Format
         XCTAssertTrue(dataObject.timezoneFormat() == "h:mm a")
+
+        dataObject.setShouldOverrideGlobalTimeFormat(2) // 24-Hour format
+        XCTAssertTrue(dataObject.timezoneFormat() == "HH:mm")
+
+        // Skip 3 since it's a placeholder
+        dataObject.setShouldOverrideGlobalTimeFormat(4) // 12-Hour with seconds
+        XCTAssertTrue(dataObject.timezoneFormat() == "h:mm:ss a")
+
+        dataObject.setShouldOverrideGlobalTimeFormat(5) // 24-Hour format with seconds
+        XCTAssertTrue(dataObject.timezoneFormat() == "HH:mm:ss")
+
+        // Skip 6 since it's a placeholder
+        dataObject.setShouldOverrideGlobalTimeFormat(7) // 12-hour with preceding zero and no seconds
+        XCTAssertTrue(dataObject.timezoneFormat() == "hh:mm a")
+
+        dataObject.setShouldOverrideGlobalTimeFormat(8) // 12-hour with preceding zero and seconds
+        XCTAssertTrue(dataObject.timezoneFormat() == "hh:mm:ss a")
+
+        // Skip 9 since it's a placeholder
+        dataObject.setShouldOverrideGlobalTimeFormat(10) // 12-hour without am/pm and seconds
+        XCTAssertTrue(dataObject.timezoneFormat() == "hh:mm")
+
+        dataObject.setShouldOverrideGlobalTimeFormat(11) // 12-hour with preceding zero and seconds
+        XCTAssertTrue(dataObject.timezoneFormat() == "hh:mm:ss")
+    }
+
+    func testTimezoneFormatWithDefaultSetAs24HourFormat() {
+        let dataObject = TimezoneData(with: california)
+        UserDefaults.standard.set(NSNumber(value: 1), forKey: CLSelectedTimeZoneFormatKey) // Set to 24-Hour Format
+
+        dataObject.setShouldOverrideGlobalTimeFormat(0)
+        XCTAssertTrue(dataObject.timezoneFormat() == "HH:mm")
+
+        dataObject.setShouldOverrideGlobalTimeFormat(1) // 12-Hour Format
+        XCTAssertTrue(dataObject.timezoneFormat() == "h:mm a")
+
+        dataObject.setShouldOverrideGlobalTimeFormat(2) // 24-Hour format
+        XCTAssertTrue(dataObject.timezoneFormat() == "HH:mm")
+
+        // Skip 3 since it's a placeholder
+        dataObject.setShouldOverrideGlobalTimeFormat(4) // 12-Hour with seconds
+        XCTAssertTrue(dataObject.timezoneFormat() == "h:mm:ss a")
+
+        dataObject.setShouldOverrideGlobalTimeFormat(5) // 24-Hour format with seconds
+        XCTAssertTrue(dataObject.timezoneFormat() == "HH:mm:ss")
+
+        // Skip 6 since it's a placeholder
+        dataObject.setShouldOverrideGlobalTimeFormat(7) // 12-hour with preceding zero and no seconds
+        XCTAssertTrue(dataObject.timezoneFormat() == "hh:mm a")
+
+        dataObject.setShouldOverrideGlobalTimeFormat(8) // 12-hour with preceding zero and seconds
+        XCTAssertTrue(dataObject.timezoneFormat() == "hh:mm:ss a")
+
+        // Skip 9 since it's a placeholder
+        dataObject.setShouldOverrideGlobalTimeFormat(10) // 12-hour without am/pm and seconds
+        XCTAssertTrue(dataObject.timezoneFormat() == "hh:mm")
+
+        dataObject.setShouldOverrideGlobalTimeFormat(11) // 12-hour with preceding zero and seconds
+        XCTAssertTrue(dataObject.timezoneFormat() == "hh:mm:ss")
     }
 
     func testFormattedLabel() {

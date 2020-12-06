@@ -7,7 +7,6 @@ enum ViewType {
     case upcomingEventView
     case twelveHour
     case sunrise
-    case seconds
     case showMeetingInMenubar
     case showAllDayEventsInMenubar
     case showAppInForeground
@@ -108,7 +107,7 @@ class DataStore: NSObject {
     }
 
     func timezoneFormat() -> NSNumber {
-        return userDefaults.object(forKey: CL24hourFormatSelectedKey) as? NSNumber ?? NSNumber(integerLiteral: 0)
+        return userDefaults.object(forKey: CLSelectedTimeZoneFormatKey) as? NSNumber ?? NSNumber(integerLiteral: 0)
     }
 
     func shouldDisplay(_ type: ViewType) -> Bool {
@@ -121,13 +120,11 @@ class DataStore: NSObject {
             }
             return value == "YES"
         case .twelveHour:
-            return shouldDisplayHelper(CL24hourFormatSelectedKey)
+            return shouldDisplayHelper(CLSelectedTimeZoneFormatKey)
         case .showAllDayEventsInMenubar:
             return shouldDisplayHelper(CLShowAllDayEventsInUpcomingView)
         case .sunrise:
             return shouldDisplayHelper(CLSunriseSunsetTime)
-        case .seconds:
-            return shouldDisplayHelper(CLShowSecondsInMenubar)
         case .showMeetingInMenubar:
             return shouldDisplayHelper(CLShowMeetingInMenubar)
         case .showAppInForeground:

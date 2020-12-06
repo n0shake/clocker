@@ -40,13 +40,19 @@ class TimezoneData: NSObject, NSCoding {
 
     static let values = [
         NSNumber(integerLiteral: 0): DateFormat.twelveHour,
-        NSNumber(integerLiteral: 1): DateFormat.twelveHourWithSeconds,
-        NSNumber(integerLiteral: 2): DateFormat.twentyFourHour,
-        NSNumber(integerLiteral: 3): DateFormat.twentyFourHourWithSeconds,
-        NSNumber(integerLiteral: 4): DateFormat.twelveHourWithZero,
-        NSNumber(integerLiteral: 5): DateFormat.twelveHourWithZeroSeconds,
-        NSNumber(integerLiteral: 6): DateFormat.twelveHourWithoutSuffix,
-        NSNumber(integerLiteral: 7): DateFormat.twelveHourWithoutSuffixAndSeconds,
+        NSNumber(integerLiteral: 1): DateFormat.twentyFourHour,
+
+        // Seconds
+        NSNumber(integerLiteral: 3): DateFormat.twelveHourWithSeconds,
+        NSNumber(integerLiteral: 4): DateFormat.twentyFourHourWithSeconds,
+
+        // Preceding Zero
+        NSNumber(integerLiteral: 6): DateFormat.twelveHourWithZero,
+        NSNumber(integerLiteral: 7): DateFormat.twelveHourWithZeroSeconds,
+
+        // Suffix
+        NSNumber(integerLiteral: 8): DateFormat.twelveHourWithoutSuffix,
+        NSNumber(integerLiteral: 9): DateFormat.twelveHourWithoutSuffixAndSeconds,
     ]
 
     var customLabel: String?
