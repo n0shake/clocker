@@ -9,7 +9,7 @@ func bufferCalculatedWidth() -> Int {
         totalWidth += 12
     }
 
-    if DataStore.shared().shouldDisplay(.twelveHour) {
+    if DataStore.shared().isBufferRequiredForTwelveHourFormats() {
         totalWidth += 20
     }
 
@@ -28,9 +28,13 @@ func compactWidth(for timezone: TimezoneData) -> Int {
         totalWidth += 12
     }
 
-    if timeFormat == DateFormat.twelveHour || timeFormat == DateFormat.twelveHourWithSeconds {
+    if timeFormat == DateFormat.twelveHour
+        || timeFormat == DateFormat.twelveHourWithSeconds
+        || timeFormat == DateFormat.twelveHourWithZero
+        || timeFormat == DateFormat.twelveHourWithSeconds {
         totalWidth += 20
-    } else if timeFormat == DateFormat.twentyFourHour || timeFormat == DateFormat.twentyFourHourWithSeconds {
+    } else if timeFormat == DateFormat.twentyFourHour
+        || timeFormat == DateFormat.twentyFourHourWithSeconds {
         totalWidth += 0
     }
 
@@ -43,6 +47,7 @@ func compactWidth(for timezone: TimezoneData) -> Int {
         totalWidth += 20
     }
 
+    print("-- Compact Width is \(totalWidth)")
     return totalWidth
 }
 

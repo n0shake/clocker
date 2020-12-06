@@ -110,6 +110,16 @@ class DataStore: NSObject {
         return userDefaults.object(forKey: CLSelectedTimeZoneFormatKey) as? NSNumber ?? NSNumber(integerLiteral: 0)
     }
 
+    static let timeFormatsWithSuffix: Set<NSNumber> = Set([NSNumber(integerLiteral: 0),
+                                                           NSNumber(integerLiteral: 3),
+                                                           NSNumber(integerLiteral: 4),
+                                                           NSNumber(integerLiteral: 6),
+                                                           NSNumber(integerLiteral: 7)])
+
+    func isBufferRequiredForTwelveHourFormats() -> Bool {
+        return DataStore.timeFormatsWithSuffix.contains(timezoneFormat())
+    }
+
     func shouldDisplay(_ type: ViewType) -> Bool {
         switch type {
         case .futureSlider:
