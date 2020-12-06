@@ -86,7 +86,7 @@ class ClockerUnitTests: XCTestCase {
             $0.setShouldOverrideGlobalTimeFormat(1)
 
             let newTime = operationsObject.time(with: 0)
-            XCTAssert(newTime.count == 7) // 5 includes colon
+            XCTAssert(newTime.count >= 7) // 5 includes colon
         }
     }
 
