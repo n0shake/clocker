@@ -2,15 +2,15 @@
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
 <channel>
 <title>Clocker Changelog</title>
-<link>https://github.com/abhishekbanthia/Clocker/releases/download/v1.5.1/Clocker.zip</link>
+<link>https://github.com/n0shake/Clocker/files/5613815/Clocker.app.zip</link>
 <description>Most recent changes</description>
 <language>en</language>
 <item>
-<title>Version 1.5.1</title>
-<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-<sparkle:releaseNotesLink>https://raw.githubusercontent.com/abhishekbanthia/Clocker/Releases/changelog.html</sparkle:releaseNotesLink>
-<pubDate>Fri Aug 14 14:59:58 GMT 2017 +0000</pubDate>
-<enclosure url="https://github.com/abhishekbanthia/Clocker/releases/download/v1.5.1/Clocker.zip" sparkle:version="1.0" length="1023128" type="application/octet-stream"/>
+	<title>Version 20.10.03</title>
+	<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+	<sparkle:releaseNotesLink>https://github.com/n0shake/Clocker/blob/master/Clocker/Releases/changelog.md</sparkle:releaseNotesLink>
+	<pubDate>Sun Dec 07 14:59:58 GMT 2020 +0000</pubDate>
+	<enclosure url="https://github.com/n0shake/Clocker/files/5613815/Clocker.app.zip" sparkle:version="1.0" length="1023128" type="application/octet-stream"/>
 </item>
 </channel>
 </rss>
