@@ -99,7 +99,7 @@ class AppDefaults {
     private class func defaultsDictionary() -> [String: Any] {
         return [CLThemeKey: 0,
                 CLDisplayFutureSliderKey: 0,
-                CL24hourFormatSelectedKey: 0, // 12-hour format
+                CLSelectedTimeZoneFormatKey: 0, // 12-hour format
                 CLRelativeDateKey: 0,
                 CLShowDayInMenu: 0,
                 CLShowDateInMenu: 1,

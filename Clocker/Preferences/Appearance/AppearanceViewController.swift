@@ -175,7 +175,7 @@ class AppearanceViewController: ParentViewController {
     @IBAction func timeFormatSelectionChanged(_ sender: NSPopUpButton) {
         let selection = NSNumber(value: sender.indexOfSelectedItem)
 
-        UserDefaults.standard.set(selection, forKey: CL24hourFormatSelectedKey)
+        UserDefaults.standard.set(selection, forKey: CLSelectedTimeZoneFormatKey)
 
         Logger.log(object: ["Time Format": sender.indexOfSelectedItem == 0 ? "12 Hour Format" : "24 Hour Format"], for: "Time Format Selected")
 
