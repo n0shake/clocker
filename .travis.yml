@@ -3,7 +3,7 @@ language: swift
 xcode_project: Clocker.xcodeproj # path to your xcodeproj folder
 osx_image: xcode12.2
 before_install:
-- export TZ=America/Los_Angeles
+- export TZ=America/Chicago
 before_script:
  - xcodebuild -version
 install:
