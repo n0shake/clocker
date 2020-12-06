@@ -26,11 +26,17 @@ def increment_version_to(new_version):
 	check_version_command = "agvtool new-marketing-version "+new_version
 	handle_command_execution(check_version_command, os.system(check_version_command))
 
+def build_release_config():
+	build_command = "xcodebuild -scheme Clocker -project Clocker.xcodeproj/ -configuration Release build"
+	handle_command_execution(build_command, os.system(build_command))
+
 def main():
 	if len(sys.argv) < 2:
 		print("Doh! Enter the new release version")
 		return
+
 	increment_version_to(sys.argv[1])
 	increment_build_number()
+	build_release_config()
 
 main()
