@@ -446,7 +446,7 @@ extension Themer {
     }
 
     func symbolImage(for name: String) -> NSImage? {
-        assert(name.count > 0)
+        assert(name.isEmpty == false)
 
         if #available(OSX 11.0, *) {
             return NSImage(systemSymbolName: name,
