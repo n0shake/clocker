@@ -26,8 +26,12 @@ def increment_version_to(new_version):
 	check_version_command = "agvtool new-marketing-version "+new_version
 	handle_command_execution(check_version_command, os.system(check_version_command))
 
-def build_release_config():
-	build_command = "xcodebuild -scheme Clocker -project Clocker.xcodeproj/ -configuration Release build"
+def clean_build_analyze_release_config():
+	build_command = "xcodebuild -scheme Clocker -project Clocker.xcodeproj/ clean build analyze"
+	handle_command_execution(build_command, os.system(build_command))
+
+def test_release_config():
+	build_command = "xcodebuild -scheme Clocker -project Clocker.xcodeproj/ test"
 	handle_command_execution(build_command, os.system(build_command))
 
 def main():
@@ -37,6 +41,7 @@ def main():
 
 	increment_version_to(sys.argv[1])
 	increment_build_number()
-	build_release_config()
+	clean_build_analyze_release_config()
+	test_release_config()
 
 main()
