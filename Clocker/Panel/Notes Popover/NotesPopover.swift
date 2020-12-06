@@ -424,17 +424,6 @@ class NotesPopover: NSViewController {
             updateContent()
         }
     }
-
-    @IBAction func customizeSecondsFormat(_ sender: NSSegmentedControl) {
-        updateTimezoneInDefaultPreferences(with: sender.selectedSegment, .seconds)
-        refreshMainTableView()
-
-        // Update the display if the chosen menubar mode is compact!
-        if let delegate = NSApplication.shared.delegate as? AppDelegate {
-            let handler = delegate.statusItemForPanel()
-            handler.setupStatusItem()
-        }
-    }
 }
 
 extension NotesPopover {
