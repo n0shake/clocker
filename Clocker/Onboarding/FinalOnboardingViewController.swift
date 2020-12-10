@@ -51,8 +51,8 @@ class FinalOnboardingViewController: NSViewController {
         let mutableParaghStyle = NSMutableParagraphStyle()
         mutableParaghStyle.alignment = .center
 
-        let underlineRange = NSRange(location: 42, length: 14)
-        let originalText = NSMutableAttributedString(string: "Help localize Clocker in your language by clicking here!")
+        let underlineRange = NSRange(location: 0, length: 9)
+        let originalText = NSMutableAttributedString(string: "Follow us on Twitter for occasional updates!")
         originalText.addAttribute(NSAttributedString.Key.underlineStyle,
                                   value: NSNumber(value: Int8(NSUnderlineStyle.single.rawValue)),
                                   range: underlineRange)
@@ -70,7 +70,7 @@ class FinalOnboardingViewController: NSViewController {
     }
 
     @IBAction func localizationAction(_: Any) {
-        guard let localizationURL = URL(string: AboutUsConstants.CrowdInLocalizationLink),
+        guard let localizationURL = URL(string: AboutUsConstants.TwitterLink),
             let languageCode = Locale.preferredLanguages.first else { return }
 
         NSWorkspace.shared.open(localizationURL)
