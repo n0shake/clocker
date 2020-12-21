@@ -1,6 +1,7 @@
 // Copyright © 2015 Abhishek Banthia
 
 import Cocoa
+import StartupKit
 
 extension NSStoryboard.SceneIdentifier {
     static let welcomeIdentifier = NSStoryboard.SceneIdentifier("welcomeVC")

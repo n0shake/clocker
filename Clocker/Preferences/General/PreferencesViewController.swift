@@ -1,6 +1,7 @@
 // Copyright © 2015 Abhishek Banthia
 
 import Cocoa
+import StartupKit
 
 struct PreferencesConstants {
     static let noTimezoneSelectedErrorMessage = NSLocalizedString("No Timezone Selected",
