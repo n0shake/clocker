@@ -2,6 +2,7 @@
 
 import Cocoa
 import CoreLoggerKit
+import CoreModelKit
 
 func bufferCalculatedWidth() -> Int {
     var totalWidth = 55

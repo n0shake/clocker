@@ -2,6 +2,7 @@
 
 import Cocoa
 import CoreLoggerKit
+import CoreModelKit
 
 enum ViewType {
     case futureSlider

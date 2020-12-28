@@ -1,6 +1,7 @@
 // Copyright © 2015 Abhishek Banthia
 
 import Cocoa
+import CoreModelKit
 
 class TimezoneDataSource: NSObject {
     var timezones: [TimezoneData] = []

@@ -3,6 +3,7 @@
 import Cocoa
 import CoreLocation
 import CoreLoggerKit
+import CoreModelKit
 
 class TimezoneDataOperations: NSObject {
     private var dataObject: TimezoneData!

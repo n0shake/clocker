@@ -2,6 +2,7 @@
 
 import Cocoa
 import CoreLoggerKit
+import CoreModelKit
 
 class NotesPopover: NSViewController {
     private enum OverrideType {

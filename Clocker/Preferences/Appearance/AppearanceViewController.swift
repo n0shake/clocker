@@ -2,6 +2,7 @@
 
 import Cocoa
 import CoreLoggerKit
+import CoreModelKit
 
 class AppearanceViewController: ParentViewController {
     @IBOutlet var timeFormat: NSPopUpButton!

@@ -2,6 +2,7 @@
 
 import Cocoa
 import CoreLoggerKit
+import CoreModelKit
 
 class OnboardingSearchController: NSViewController {
     @IBOutlet private var appName: NSTextField!

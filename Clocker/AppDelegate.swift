@@ -2,6 +2,7 @@
 
 import Cocoa
 import CoreLoggerKit
+import CoreModelKit
 
 open class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var floatingWindow: FloatingWindowController = FloatingWindowController.shared()
@@ -44,6 +45,9 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     public func applicationDidFinishLaunching(_: Notification) {
         // Initializing the event store takes really long
         EventCenter.sharedCenter()
+
+        // Required for migrating our model type to CoreModelKit
+        NSKeyedUnarchiver.setClass(CoreModelKit.TimezoneData.classForKeyedUnarchiver(), forClassName: "Clocker.TimezoneData")
 
         AppDefaults.initialize()
 

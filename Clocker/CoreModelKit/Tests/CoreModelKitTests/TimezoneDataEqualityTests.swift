@@ -1,8 +1,7 @@
 // Copyright © 2015 Abhishek Banthia
 
+import CoreModelKit
 import Foundation
-
-@testable import Clocker
 import XCTest
 
 class TimezoneDataEqualityTests: XCTestCase {

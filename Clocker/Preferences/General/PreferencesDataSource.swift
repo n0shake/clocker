@@ -2,6 +2,7 @@
 
 import Cocoa
 import CoreLoggerKit
+import CoreModelKit
 
 struct PreferencesDataSourceConstants {
     static let timezoneNameIdentifier = "formattedAddress"

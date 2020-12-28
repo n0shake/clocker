@@ -3,6 +3,14 @@
 import Cocoa
 import CoreLoggerKit
 
+struct ModelConstants {
+    static let customLabel = "customLabel"
+    static let timezoneName = "formattedAddress"
+    static let placeIdentifier = "place_id"
+    static let timezoneID = "timezoneID"
+    static let emptyString = ""
+}
+
 public struct DateFormat {
     public static let twelveHour = "h:mm a"
     public static let twelveHourWithSeconds = "h:mm:ss a"
@@ -15,7 +23,7 @@ public struct DateFormat {
 }
 
 // Non-class type cannot conform to NSCoding!
-class TimezoneData: NSObject, NSCoding {
+public class TimezoneData: NSObject, NSCoding {
     public enum SelectionType: Int {
         case city
         case timezone
@@ -26,7 +34,7 @@ class TimezoneData: NSObject, NSCoding {
         case menu
     }
 
-    enum TimezoneOverride: Int {
+    public enum TimezoneOverride: Int {
         case globalFormat = 0
         case twelveHourFormat = 1
         case twentyFourFormat = 2
@@ -58,10 +66,10 @@ class TimezoneData: NSObject, NSCoding {
     public var customLabel: String?
     public var formattedAddress: String?
     public var placeID: String?
-    public var timezoneID: String? = CLEmptyString
+    public var timezoneID: String? = ModelConstants.emptyString
     public var latitude: Double?
     public var longitude: Double?
-    public var note: String? = CLEmptyString
+    public var note: String? = ModelConstants.emptyString
     public var nextUpdate: Date? = Date()
     public var sunriseTime: Date?
     public var sunsetTime: Date?
@@ -74,20 +82,20 @@ class TimezoneData: NSObject, NSCoding {
     public override init() {
         selectionType = .timezone
         isFavourite = 0
-        note = CLEmptyString
+        note = ModelConstants.emptyString
         isSystemTimezone = false
         overrideFormat = .globalFormat
         placeID = UUID().uuidString
     }
 
     public init(with dictionary: [String: Any]) {
-        if let label = dictionary[CLCustomLabel] as? String {
+        if let label = dictionary[ModelConstants.customLabel] as? String {
             customLabel = label
         } else {
             customLabel = nil
         }
 
-        if let timezone = dictionary[CLTimezoneID] as? String {
+        if let timezone = dictionary[ModelConstants.timezoneID] as? String {
             timezoneID = timezone
         } else {
             timezoneID = "Error"
@@ -105,13 +113,13 @@ class TimezoneData: NSObject, NSCoding {
             longitude = -0.0
         }
 
-        if let placeIdentifier = dictionary[CLPlaceIdentifier] as? String {
+        if let placeIdentifier = dictionary[ModelConstants.placeIdentifier] as? String {
             placeID = placeIdentifier
         } else {
             placeID = "Error"
         }
 
-        if let address = dictionary[CLTimezoneName] as? String {
+        if let address = dictionary[ModelConstants.timezoneName] as? String {
             formattedAddress = address
         } else {
             formattedAddress = "Error"
@@ -124,7 +132,7 @@ class TimezoneData: NSObject, NSCoding {
         if let noteString = dictionary["note"] as? String {
             note = noteString
         } else {
-            note = CLEmptyString
+            note = ModelConstants.emptyString
         }
 
         isSystemTimezone = false
@@ -132,7 +140,7 @@ class TimezoneData: NSObject, NSCoding {
         overrideFormat = .globalFormat
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         customLabel = aDecoder.decodeObject(forKey: "customLabel") as? String
 
         formattedAddress = aDecoder.decodeObject(forKey: "formattedAddress") as? String
@@ -176,7 +184,7 @@ class TimezoneData: NSObject, NSCoding {
         return nil
     }
 
-    func encode(with aCoder: NSCoder) {
+    public func encode(with aCoder: NSCoder) {
         aCoder.encode(placeID, forKey: "place_id")
 
         aCoder.encode(formattedAddress, forKey: "formattedAddress")
@@ -235,7 +243,7 @@ class TimezoneData: NSObject, NSCoding {
     }
 
     public func setLabel(_ label: String) {
-        customLabel = !label.isEmpty ? label : CLEmptyString
+        customLabel = !label.isEmpty ? label : ModelConstants.emptyString
     }
 
     public func setShouldOverrideGlobalTimeFormat(_ shouldOverride: Int) {
@@ -354,21 +362,11 @@ class TimezoneData: NSObject, NSCoding {
 }
 
 extension TimezoneData {
-    private func adjustStatusBarAppearance() {
-        guard let statusItem = (NSApplication.shared.delegate as? AppDelegate)?.statusItemForPanel() else {
-            return
-        }
-
-        statusItem.setupStatusItem()
-    }
-}
-
-extension TimezoneData {
-    override var description: String {
+    public override var description: String {
         return objectDescription()
     }
 
-    override var debugDescription: String {
+    public override var debugDescription: String {
         return objectDescription()
     }
 

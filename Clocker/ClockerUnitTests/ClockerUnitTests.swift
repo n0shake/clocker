@@ -1,5 +1,7 @@
 // Copyright © 2015 Abhishek Banthia
 
+import CoreModelKit
+
 @testable import Clocker
 import XCTest
 
@@ -164,34 +166,34 @@ class ClockerUnitTests: XCTestCase {
         UserDefaults.standard.set(NSNumber(value: 0), forKey: CLSelectedTimeZoneFormatKey) // Set to 12 hour format
 
         dataObject.setShouldOverrideGlobalTimeFormat(0) // Respect Global Preference
-        XCTAssertTrue(dataObject.timezoneFormat() == "h:mm a")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "h:mm a")
 
         dataObject.setShouldOverrideGlobalTimeFormat(1) // 12-Hour Format
-        XCTAssertTrue(dataObject.timezoneFormat() == "h:mm a")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "h:mm a")
 
         dataObject.setShouldOverrideGlobalTimeFormat(2) // 24-Hour format
-        XCTAssertTrue(dataObject.timezoneFormat() == "HH:mm")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "HH:mm")
 
         // Skip 3 since it's a placeholder
         dataObject.setShouldOverrideGlobalTimeFormat(4) // 12-Hour with seconds
-        XCTAssertTrue(dataObject.timezoneFormat() == "h:mm:ss a")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "h:mm:ss a")
 
         dataObject.setShouldOverrideGlobalTimeFormat(5) // 24-Hour format with seconds
-        XCTAssertTrue(dataObject.timezoneFormat() == "HH:mm:ss")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "HH:mm:ss")
 
         // Skip 6 since it's a placeholder
         dataObject.setShouldOverrideGlobalTimeFormat(7) // 12-hour with preceding zero and no seconds
-        XCTAssertTrue(dataObject.timezoneFormat() == "hh:mm a")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "hh:mm a")
 
         dataObject.setShouldOverrideGlobalTimeFormat(8) // 12-hour with preceding zero and seconds
-        XCTAssertTrue(dataObject.timezoneFormat() == "hh:mm:ss a")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "hh:mm:ss a")
 
         // Skip 9 since it's a placeholder
         dataObject.setShouldOverrideGlobalTimeFormat(10) // 12-hour without am/pm and seconds
-        XCTAssertTrue(dataObject.timezoneFormat() == "hh:mm")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "hh:mm")
 
         dataObject.setShouldOverrideGlobalTimeFormat(11) // 12-hour with preceding zero and seconds
-        XCTAssertTrue(dataObject.timezoneFormat() == "hh:mm:ss")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "hh:mm:ss")
     }
 
     func testTimezoneFormatWithDefaultSetAs24HourFormat() {
@@ -199,34 +201,34 @@ class ClockerUnitTests: XCTestCase {
         UserDefaults.standard.set(NSNumber(value: 1), forKey: CLSelectedTimeZoneFormatKey) // Set to 24-Hour Format
 
         dataObject.setShouldOverrideGlobalTimeFormat(0)
-        XCTAssertTrue(dataObject.timezoneFormat() == "HH:mm")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "HH:mm")
 
         dataObject.setShouldOverrideGlobalTimeFormat(1) // 12-Hour Format
-        XCTAssertTrue(dataObject.timezoneFormat() == "h:mm a")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "h:mm a")
 
         dataObject.setShouldOverrideGlobalTimeFormat(2) // 24-Hour format
-        XCTAssertTrue(dataObject.timezoneFormat() == "HH:mm")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "HH:mm")
 
         // Skip 3 since it's a placeholder
         dataObject.setShouldOverrideGlobalTimeFormat(4) // 12-Hour with seconds
-        XCTAssertTrue(dataObject.timezoneFormat() == "h:mm:ss a")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "h:mm:ss a")
 
         dataObject.setShouldOverrideGlobalTimeFormat(5) // 24-Hour format with seconds
-        XCTAssertTrue(dataObject.timezoneFormat() == "HH:mm:ss")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "HH:mm:ss")
 
         // Skip 6 since it's a placeholder
         dataObject.setShouldOverrideGlobalTimeFormat(7) // 12-hour with preceding zero and no seconds
-        XCTAssertTrue(dataObject.timezoneFormat() == "hh:mm a")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "hh:mm a")
 
         dataObject.setShouldOverrideGlobalTimeFormat(8) // 12-hour with preceding zero and seconds
-        XCTAssertTrue(dataObject.timezoneFormat() == "hh:mm:ss a")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "hh:mm:ss a")
 
         // Skip 9 since it's a placeholder
         dataObject.setShouldOverrideGlobalTimeFormat(10) // 12-hour without am/pm and seconds
-        XCTAssertTrue(dataObject.timezoneFormat() == "hh:mm")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "hh:mm")
 
         dataObject.setShouldOverrideGlobalTimeFormat(11) // 12-hour with preceding zero and seconds
-        XCTAssertTrue(dataObject.timezoneFormat() == "hh:mm:ss")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "hh:mm:ss")
     }
 
     func testFormattedLabel() {
@@ -281,7 +283,7 @@ class ClockerUnitTests: XCTestCase {
         for locale in Locale.availableIdentifiers {
             let currentLocale = Locale(identifier: locale)
             let dateFormatter = DateFormatterManager.dateFormatterWithFormat(with: .none,
-                                                                             format: dataObject.timezoneFormat(),
+                                                                             format: dataObject.timezoneFormat(DataStore.shared().timezoneFormat()),
                                                                              timezoneIdentifier: dataObject.timezone(),
                                                                              locale: currentLocale)
             let convertedDate = dateFormatter.string(from: newDate)
