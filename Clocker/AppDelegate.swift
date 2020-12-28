@@ -125,9 +125,6 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         // Check if another instance of the app is already running. If so, then stop this one.
         checkIfAppIsAlreadyOpen()
 
-        // Make sure the old models are not used anymore
-        TimezoneData.convert()
-
         // Install the menubar item!
         statusBarHandler = StatusItemHandler()
 

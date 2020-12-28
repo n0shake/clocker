@@ -176,21 +176,6 @@ class TimezoneData: NSObject, NSCoding {
         return nil
     }
 
-    /// Converts the Obj-C model objects into Swift
-    class func convert() {
-        if let timezones = DataStore.shared().retrieve(key: CLDefaultPreferenceKey) as? [Data], !timezones.isEmpty {
-            let newModels = converter(timezones)
-
-            if newModels.count == timezones.count {
-                // Now point preferences to empty
-                DataStore.shared().setTimezones([])
-
-                // Now point it to new models
-                DataStore.shared().setTimezones(newModels)
-            }
-        }
-    }
-
     private class func converter(_ timezones: [Data]) -> [Data] {
         var newModels: [TimezoneData] = []
 
