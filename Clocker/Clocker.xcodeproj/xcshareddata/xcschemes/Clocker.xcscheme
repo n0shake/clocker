@@ -39,7 +39,9 @@
       </MacroExpansion>
       <Testables>
          <TestableReference
-            skipped = "YES">
+            skipped = "YES"
+            parallelizable = "YES"
+            testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C2BFE3E22049F82300825BE5"
@@ -49,13 +51,25 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO">
+            skipped = "NO"
+            parallelizable = "YES"
+            testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C20839C621515C1E00C86589"
                BuildableName = "ClockerUnitTests.xctest"
                BlueprintName = "ClockerUnitTests"
                ReferencedContainer = "container:Clocker.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CoreModelKitTests"
+               BuildableName = "CoreModelKitTests"
+               BlueprintName = "CoreModelKitTests"
+               ReferencedContainer = "container:CoreModelKit">
             </BuildableReference>
          </TestableReference>
       </Testables>

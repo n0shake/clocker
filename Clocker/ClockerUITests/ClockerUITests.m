@@ -97,11 +97,12 @@
     XCUIElement *appearance = [[self.app.toolbars buttons] elementBoundByIndex: 1];
     [appearance click];
     
-    XCUIElement *timeFormat = self.app.radioButtons[@"12-hour clock"];
-    [timeFormat click];
-    
+    XCUIElement *timeFormat = [self.app.popUpButtons[@"TimeFormatPopover"] firstMatch];
+    [timeFormat click]; // Open Time Format Popover
+    XCUIElementQuery *const query = [[[timeFormat childrenMatchingType:XCUIElementTypeMenu] firstMatch] childrenMatchingType:0];
+    [[query elementBoundByIndex:0] click]; // 0 is 12-Hour
+ 
     XCUIElementQuery *mainTableView = [[self.app.tables[@"mainTableView"] cells] staticTexts];
-    
     NSPredicate *timeCells = [NSPredicate predicateWithFormat:@"identifier like 'ActualTime'"];
     XCUIElementQuery *elements = [mainTableView matchingPredicate:timeCells];
     
@@ -121,8 +122,10 @@
     XCUIElement *appearance = [[self.app.toolbars buttons] elementBoundByIndex: 1];
     [appearance click];
     
-    XCUIElement *timeFormat = self.app.radioButtons[@"24-hour clock"];
+    XCUIElement *timeFormat = self.app.popUpButtons[@"TimeFormatPopover"];
     [timeFormat click];
+  XCUIElementQuery *const query = [[[timeFormat childrenMatchingType:XCUIElementTypeMenu] firstMatch] childrenMatchingType:0];
+  [[query elementBoundByIndex:1] click]; // 1 is 24-Hour
     
     XCUIElementQuery *mainTableView = [[self.app.tables[@"mainTableView"] cells] staticTexts];
     

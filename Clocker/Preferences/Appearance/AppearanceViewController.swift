@@ -47,6 +47,7 @@ class AppearanceViewController: ParentViewController {
         timeFormat.item(at: 8)?.isEnabled = false
         timeFormat.autoenablesItems = false
         timeFormat.selectItem(at: chosenFormat)
+        timeFormat.setAccessibilityIdentifier("TimeFormatPopover")
 
         informationLabel.setAccessibilityIdentifier("InformationLabel")
 
