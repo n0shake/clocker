@@ -1,5 +1,6 @@
 // Copyright © 2015 Abhishek Banthia
 
+import CoreLoggerKit
 import EventKit
 
 extension EventCenter {

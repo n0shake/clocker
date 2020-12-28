@@ -1,6 +1,7 @@
 // Copyright © 2015 Abhishek Banthia
 
 import Cocoa
+import CoreLoggerKit
 
 open class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var floatingWindow: FloatingWindowController = FloatingWindowController.shared()

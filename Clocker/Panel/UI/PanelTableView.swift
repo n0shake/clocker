@@ -1,6 +1,7 @@
 // Copyright © 2015 Abhishek Banthia
 
 import Cocoa
+import CoreLoggerKit
 
 protocol PanelTableViewDelegate: NSTableViewDelegate {
     func tableView(_ table: NSTableView, didHoverOver row: NSInteger)

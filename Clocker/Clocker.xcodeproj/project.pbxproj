@@ -11,11 +11,11 @@
 		3508CC9A259A0001000E3530 /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CC99259A0001000E3530 /* StatusItemView.swift */; };
 		3508CC9F259A000E000E3530 /* StatusItemHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CC9E259A000E000E3530 /* StatusItemHandler.swift */; };
 		3508CCAA259A0027000E3530 /* StatusContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CCA9259A0027000E3530 /* StatusContainerView.swift */; };
-		35190E47255F53F5006E9C85 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F3C2259D892002FA5C6 /* Logger.swift */; };
 		357391872507277500D30819 /* HourMarkerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357391852507277500D30819 /* HourMarkerViewItem.swift */; };
 		357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357391862507277500D30819 /* HourMarkerViewItem.xib */; };
 		3595FAD0227F88BC0044A12A /* UserDefaults + KVOExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */; };
 		35B2FEC0259A186F005DA84D /* StartupKit in Frameworks */ = {isa = PBXBuildFile; productRef = 35B2FEBF259A186F005DA84D /* StartupKit */; };
+		35B2FEDD259A2291005DA84D /* CoreLoggerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 35B2FEDC259A2291005DA84D /* CoreLoggerKit */; };
 		35C11E2124873A550031F18C /* VersionUpdateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C11E2024873A550031F18C /* VersionUpdateHandler.swift */; };
 		35C36EF122595F14002FA5C6 /* OnboardingPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE822595F13002FA5C6 /* OnboardingPermissionsViewController.swift */; };
 		35C36EF222595F14002FA5C6 /* OnboardingWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE922595F13002FA5C6 /* OnboardingWelcomeViewController.swift */; };
@@ -50,7 +50,6 @@
 		35C36F372259D7C3002FA5C6 /* AddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F322259D7C3002FA5C6 /* AddTableViewCell.swift */; };
 		35C36F412259D892002FA5C6 /* Themer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F392259D892002FA5C6 /* Themer.swift */; };
 		35C36F422259D892002FA5C6 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F3A2259D892002FA5C6 /* Timer.swift */; };
-		35C36F442259D892002FA5C6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F3C2259D892002FA5C6 /* Logger.swift */; };
 		35C36F452259D892002FA5C6 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F3D2259D892002FA5C6 /* Strings.swift */; };
 		35C36F462259D892002FA5C6 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F3E2259D892002FA5C6 /* DataStore.swift */; };
 		35C36F472259D892002FA5C6 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F3F2259D892002FA5C6 /* Reach.swift */; };
@@ -238,6 +237,7 @@
 		357391862507277500D30819 /* HourMarkerViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourMarkerViewItem.xib; sourceTree = "<group>"; };
 		3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults + KVOExtensions.swift"; sourceTree = "<group>"; };
 		35B2FEB1259A1649005DA84D /* StartupKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StartupKit; sourceTree = "<group>"; };
+		35B2FED4259A2244005DA84D /* CoreLoggerKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CoreLoggerKit; sourceTree = "<group>"; };
 		35C11E2024873A550031F18C /* VersionUpdateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUpdateHandler.swift; sourceTree = "<group>"; };
 		35C36EE822595F13002FA5C6 /* OnboardingPermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPermissionsViewController.swift; sourceTree = "<group>"; };
 		35C36EE922595F13002FA5C6 /* OnboardingWelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingWelcomeViewController.swift; sourceTree = "<group>"; };
@@ -272,7 +272,6 @@
 		35C36F322259D7C3002FA5C6 /* AddTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTableViewCell.swift; sourceTree = "<group>"; };
 		35C36F392259D892002FA5C6 /* Themer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themer.swift; sourceTree = "<group>"; };
 		35C36F3A2259D892002FA5C6 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
-		35C36F3C2259D892002FA5C6 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		35C36F3D2259D892002FA5C6 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		35C36F3E2259D892002FA5C6 /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		35C36F3F2259D892002FA5C6 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
@@ -451,6 +450,7 @@
 				9ACF469D1DCBD45200C49B51 /* Quartz.framework in Frameworks */,
 				9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */,
 				9A5E75E4204CC39700119939 /* ShortcutRecorder.framework in Frameworks */,
+				35B2FEDD259A2291005DA84D /* CoreLoggerKit in Frameworks */,
 				35B2FEC0259A186F005DA84D /* StartupKit in Frameworks */,
 				9A6D93371CF3E82F005A8690 /* CoreImage.framework in Frameworks */,
 				9A5E75E8204CC39700119939 /* PTHotKey.framework in Frameworks */,
@@ -555,7 +555,6 @@
 				35C36F4D2259D981002FA5C6 /* AppDefaults.swift */,
 				35C36F4C2259D981002FA5C6 /* DateFormatterManager.swift */,
 				35C36F3E2259D892002FA5C6 /* DataStore.swift */,
-				35C36F3C2259D892002FA5C6 /* Logger.swift */,
 				35C36F402259D892002FA5C6 /* NetworkManager.swift */,
 				35C36F3F2259D892002FA5C6 /* Reach.swift */,
 				35C36F3D2259D892002FA5C6 /* Strings.swift */,
@@ -830,6 +829,7 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
+				35B2FED4259A2244005DA84D /* CoreLoggerKit */,
 				35B2FEB1259A1649005DA84D /* StartupKit */,
 				354BB0842574810500097121 /* Keys.plist */,
 				35C36F9B2259EC97002FA5C6 /* Events and Reminders */,
@@ -970,6 +970,7 @@
 			name = Clocker;
 			packageProductDependencies = (
 				35B2FEBF259A186F005DA84D /* StartupKit */,
+				35B2FEDC259A2291005DA84D /* CoreLoggerKit */,
 			);
 			productName = Popup;
 			productReference = DD4F7C0413C30F9F00825C6E /* Clocker.app */;
@@ -1194,7 +1195,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2F7821B20B70E3700B6CD07 /* AboutUsTests.swift in Sources */,
-				35190E47255F53F5006E9C85 /* Logger.swift in Sources */,
 				C264A0C820B898D600CCD875 /* PanelTests.swift in Sources */,
 				C2BFE3E62049F82300825BE5 /* ClockerUITests.m in Sources */,
 				C2AB022421AEED590014A401 /* OnboardingTests.swift in Sources */,
@@ -1272,7 +1272,6 @@
 				3595FAD0227F88BC0044A12A /* UserDefaults + KVOExtensions.swift in Sources */,
 				9AB6F1612259D1B000A44663 /* PreferencesViewController.swift in Sources */,
 				35C36F2022596253002FA5C6 /* OneWindowController.swift in Sources */,
-				35C36F442259D892002FA5C6 /* Logger.swift in Sources */,
 				35C36F0E225961DA002FA5C6 /* Date+Bundle.swift in Sources */,
 				9AB6F1672259D23200A44663 /* PermissionsViewController.swift in Sources */,
 				9AB6F1642259D1B900A44663 /* ParentViewController.swift in Sources */,
@@ -2178,6 +2177,10 @@
 		35B2FEBF259A186F005DA84D /* StartupKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = StartupKit;
+		};
+		35B2FEDC259A2291005DA84D /* CoreLoggerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreLoggerKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

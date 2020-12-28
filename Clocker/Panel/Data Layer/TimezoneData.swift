@@ -1,7 +1,7 @@
 // Copyright © 2015 Abhishek Banthia
 
 import Cocoa
-import os.log
+import CoreLoggerKit
 
 struct DateFormat {
     static let twelveHour = "h:mm a"

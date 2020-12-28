@@ -79,7 +79,7 @@ open class TimePeriodChain: TimePeriodGroup {
             // Insert new period
             periods.insert(period, at: index)
         } else {
-            Logger.info("All TimePeriods in a TimePeriodChain must contain a defined start and end date")
+            Swift.print("All TimePeriods in a TimePeriodChain must contain a defined start and end date")
             return
         }
 

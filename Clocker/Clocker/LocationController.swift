@@ -2,6 +2,7 @@
 
 import Cocoa
 import CoreLocation
+import CoreLoggerKit
 
 class LocationController: NSObject {
     public static let sharedInstance = LocationController()
