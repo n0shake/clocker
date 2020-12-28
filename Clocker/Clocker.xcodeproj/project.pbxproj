@@ -229,6 +229,7 @@
 		3508CC99259A0001000E3530 /* StatusItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
 		3508CC9E259A000E000E3530 /* StatusItemHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemHandler.swift; sourceTree = "<group>"; };
 		3508CCA9259A0027000E3530 /* StatusContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusContainerView.swift; sourceTree = "<group>"; };
+		3508CCB6259A011C000E3530 /* StartupKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StartupKit; sourceTree = "<group>"; };
 		352AF497232E07B400D96FA7 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		352AF499232E07B400D96FA7 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3545C52A22612BCC00121E25 /* TimezoneDataEqualityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneDataEqualityTests.swift; sourceTree = "<group>"; };
@@ -307,7 +308,6 @@
 		35C36F9E2259ED6D002FA5C6 /* EventCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenter.swift; sourceTree = "<group>"; };
 		35C36F9F2259ED6D002FA5C6 /* RemindersHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersHandler.swift; sourceTree = "<group>"; };
 		35C36FA32259EEC2002FA5C6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
-		35FE6FFF259151DB00F1445D /* StartupKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StartupKit; sourceTree = "<group>"; };
 		9A13BAD71CA87F08007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Panel.xib; sourceTree = "<group>"; };
 		9A13BAE11CA882FA007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A13BAEB1CA88A76007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -830,7 +830,7 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
-				35FE6FFF259151DB00F1445D /* StartupKit */,
+				3508CCB6259A011C000E3530 /* StartupKit */,
 				354BB0842574810500097121 /* Keys.plist */,
 				35C36F9B2259EC97002FA5C6 /* Events and Reminders */,
 				35C36F382259D80C002FA5C6 /* Overall App */,
