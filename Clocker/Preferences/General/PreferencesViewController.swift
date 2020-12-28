@@ -791,6 +791,7 @@ extension PreferencesViewController {
         data.timezoneID = metaInfo.0.name
         data.formattedAddress = metaInfo.1.formattedName
         data.selectionType = .timezone
+        data.isSystemTimezone = metaInfo.0.name == NSTimeZone.system.identifier
 
         let operationObject = TimezoneDataOperations(with: data)
         operationObject.saveObject()
