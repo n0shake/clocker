@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3508CC942599FFEC000E3530 /* MenubarHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CC932599FFEC000E3530 /* MenubarHandler.swift */; };
+		3508CC9A259A0001000E3530 /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CC99259A0001000E3530 /* StatusItemView.swift */; };
+		3508CC9F259A000E000E3530 /* StatusItemHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CC9E259A000E000E3530 /* StatusItemHandler.swift */; };
+		3508CCAA259A0027000E3530 /* StatusContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CCA9259A0027000E3530 /* StatusContainerView.swift */; };
 		35190E47255F53F5006E9C85 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F3C2259D892002FA5C6 /* Logger.swift */; };
 		357391872507277500D30819 /* HourMarkerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357391852507277500D30819 /* HourMarkerViewItem.swift */; };
 		357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357391862507277500D30819 /* HourMarkerViewItem.xib */; };
 		3595FAD0227F88BC0044A12A /* UserDefaults + KVOExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */; };
 		35C11E2124873A550031F18C /* VersionUpdateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C11E2024873A550031F18C /* VersionUpdateHandler.swift */; };
-		35C36EE422595EFD002FA5C6 /* StatusContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE022595EFD002FA5C6 /* StatusContainerView.swift */; };
-		35C36EE522595EFD002FA5C6 /* MenubarHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE122595EFD002FA5C6 /* MenubarHandler.swift */; };
-		35C36EE622595EFD002FA5C6 /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE222595EFD002FA5C6 /* StatusItemView.swift */; };
-		35C36EE722595EFD002FA5C6 /* StatusItemHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE322595EFD002FA5C6 /* StatusItemHandler.swift */; };
 		35C36EF122595F14002FA5C6 /* OnboardingPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE822595F13002FA5C6 /* OnboardingPermissionsViewController.swift */; };
 		35C36EF222595F14002FA5C6 /* OnboardingWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE922595F13002FA5C6 /* OnboardingWelcomeViewController.swift */; };
 		35C36EF322595F14002FA5C6 /* WelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35C36EEA22595F13002FA5C6 /* WelcomeView.xib */; };
@@ -225,6 +225,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3508CC932599FFEC000E3530 /* MenubarHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenubarHandler.swift; sourceTree = "<group>"; };
+		3508CC99259A0001000E3530 /* StatusItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
+		3508CC9E259A000E000E3530 /* StatusItemHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemHandler.swift; sourceTree = "<group>"; };
+		3508CCA9259A0027000E3530 /* StatusContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusContainerView.swift; sourceTree = "<group>"; };
 		352AF497232E07B400D96FA7 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		352AF499232E07B400D96FA7 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3545C52A22612BCC00121E25 /* TimezoneDataEqualityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneDataEqualityTests.swift; sourceTree = "<group>"; };
@@ -234,10 +238,6 @@
 		357391862507277500D30819 /* HourMarkerViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourMarkerViewItem.xib; sourceTree = "<group>"; };
 		3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults + KVOExtensions.swift"; sourceTree = "<group>"; };
 		35C11E2024873A550031F18C /* VersionUpdateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUpdateHandler.swift; sourceTree = "<group>"; };
-		35C36EE022595EFD002FA5C6 /* StatusContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusContainerView.swift; sourceTree = "<group>"; };
-		35C36EE122595EFD002FA5C6 /* MenubarHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenubarHandler.swift; sourceTree = "<group>"; };
-		35C36EE222595EFD002FA5C6 /* StatusItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
-		35C36EE322595EFD002FA5C6 /* StatusItemHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemHandler.swift; sourceTree = "<group>"; };
 		35C36EE822595F13002FA5C6 /* OnboardingPermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPermissionsViewController.swift; sourceTree = "<group>"; };
 		35C36EE922595F13002FA5C6 /* OnboardingWelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingWelcomeViewController.swift; sourceTree = "<group>"; };
 		35C36EEA22595F13002FA5C6 /* WelcomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeView.xib; sourceTree = "<group>"; };
@@ -483,10 +483,10 @@
 		35C36EDF22595D9C002FA5C6 /* Menu Bar */ = {
 			isa = PBXGroup;
 			children = (
-				35C36EE122595EFD002FA5C6 /* MenubarHandler.swift */,
-				35C36EE022595EFD002FA5C6 /* StatusContainerView.swift */,
-				35C36EE322595EFD002FA5C6 /* StatusItemHandler.swift */,
-				35C36EE222595EFD002FA5C6 /* StatusItemView.swift */,
+				3508CC932599FFEC000E3530 /* MenubarHandler.swift */,
+				3508CC99259A0001000E3530 /* StatusItemView.swift */,
+				3508CC9E259A000E000E3530 /* StatusItemHandler.swift */,
+				3508CCA9259A0027000E3530 /* StatusContainerView.swift */,
 			);
 			path = "Menu Bar";
 			sourceTree = "<group>";
@@ -1214,6 +1214,7 @@
 				9AB6F15D2259D08300A44663 /* iVersion.m in Sources */,
 				35C36EF622595F14002FA5C6 /* OnboardingController.swift in Sources */,
 				9AB6F1622259D1B000A44663 /* PreferencesDataSource.swift in Sources */,
+				3508CC9A259A0001000E3530 /* StatusItemView.swift in Sources */,
 				35C36F672259DF4C002FA5C6 /* RateController.swift in Sources */,
 				35C36F472259D892002FA5C6 /* Reach.swift in Sources */,
 				35C36EF222595F14002FA5C6 /* OnboardingWelcomeViewController.swift in Sources */,
@@ -1224,16 +1225,15 @@
 				35C36F412259D892002FA5C6 /* Themer.swift in Sources */,
 				35C36F452259D892002FA5C6 /* Strings.swift in Sources */,
 				35C36EF722595F14002FA5C6 /* FinalOnboardingViewController.swift in Sources */,
-				35C36EE622595EFD002FA5C6 /* StatusItemView.swift in Sources */,
 				35C36FA12259ED6D002FA5C6 /* EventCenter.swift in Sources */,
 				9A5951BD1C1D0A8D009C17AA /* CommonStrings.m in Sources */,
 				357391872507277500D30819 /* HourMarkerViewItem.swift in Sources */,
-				35C36EE422595EFD002FA5C6 /* StatusContainerView.swift in Sources */,
 				35C36F782259E1D0002FA5C6 /* Foundation + Additions.swift in Sources */,
 				35C36F16225961DA002FA5C6 /* Date+Inits.swift in Sources */,
 				35C36F4F2259D981002FA5C6 /* AppDefaults.swift in Sources */,
 				35C36F942259EB87002FA5C6 /* CLTimezoneData.m in Sources */,
 				35C36F5D2259DD96002FA5C6 /* TimezoneDataOperations.swift in Sources */,
+				3508CC942599FFEC000E3530 /* MenubarHandler.swift in Sources */,
 				35C36F14225961DA002FA5C6 /* Integer+DateTools.swift in Sources */,
 				35C36FA22259ED6D002FA5C6 /* RemindersHandler.swift in Sources */,
 				35C36F622259DE67002FA5C6 /* NotesPopover.swift in Sources */,
@@ -1246,7 +1246,6 @@
 				35C36F702259E185002FA5C6 /* BackgroundPanelView.swift in Sources */,
 				9AB6F1582259CFFC00A44663 /* AboutViewController.swift in Sources */,
 				35C36F2122596253002FA5C6 /* AppearanceViewController.swift in Sources */,
-				35C36EE722595EFD002FA5C6 /* StatusItemHandler.swift in Sources */,
 				35C36F1B225961DA002FA5C6 /* Date+Format.swift in Sources */,
 				35C36F372259D7C3002FA5C6 /* AddTableViewCell.swift in Sources */,
 				35C36F12225961DA002FA5C6 /* Date+Components.swift in Sources */,
@@ -1255,7 +1254,6 @@
 				35C36FA42259EEC2002FA5C6 /* AppDelegate.swift in Sources */,
 				35C36F5E2259DD96002FA5C6 /* TimezoneData.swift in Sources */,
 				35C36F19225961DA002FA5C6 /* Enums.swift in Sources */,
-				35C36EE522595EFD002FA5C6 /* MenubarHandler.swift in Sources */,
 				35C36F5A2259DD8A002FA5C6 /* Panelr.swift in Sources */,
 				35C36F712259E185002FA5C6 /* NoTimezoneView.swift in Sources */,
 				35C36F2B2259D6FA002FA5C6 /* ParentPanelController.swift in Sources */,
@@ -1267,6 +1265,7 @@
 				35C36F572259DD8A002FA5C6 /* TimezoneDataSource.swift in Sources */,
 				35C36F462259D892002FA5C6 /* DataStore.swift in Sources */,
 				9ACF618D231DABAE00F5E51E /* SearchDataSource.swift in Sources */,
+				3508CC9F259A000E000E3530 /* StatusItemHandler.swift in Sources */,
 				C2CCCD8220619C4C00F2DFC2 /* LocationController.swift in Sources */,
 				35C36F4B2259D971002FA5C6 /* UnderlinedButton.swift in Sources */,
 				9AB6F1562259CF3900A44663 /* CalendarViewController.swift in Sources */,
@@ -1278,6 +1277,7 @@
 				9AB6F1672259D23200A44663 /* PermissionsViewController.swift in Sources */,
 				9AB6F1642259D1B900A44663 /* ParentViewController.swift in Sources */,
 				35C36F1C225961DA002FA5C6 /* TimePeriodChain.swift in Sources */,
+				3508CCAA259A0027000E3530 /* StatusContainerView.swift in Sources */,
 				35C36F11225961DA002FA5C6 /* TimePeriodGroup.swift in Sources */,
 				35C36EF922595F14002FA5C6 /* OnboardingParentViewController.swift in Sources */,
 				35C36F4E2259D981002FA5C6 /* DateFormatterManager.swift in Sources */,
