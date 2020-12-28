@@ -563,7 +563,7 @@ class ParentPanelController: NSWindowController {
                 cellView.time.stringValue = dataOperation.time(with: futureSliderValue)
                 cellView.sunriseSetTime.stringValue = dataOperation.formattedSunriseTime(with: futureSliderValue)
                 cellView.sunriseSetTime.lineBreakMode = .byClipping
-                cellView.relativeDate.stringValue = dataOperation.date(with: futureSliderValue, displayType: .panelDisplay)
+                cellView.relativeDate.stringValue = dataOperation.date(with: futureSliderValue, displayType: .panel)
                 cellView.currentLocationIndicator.isHidden = !model.isSystemTimezone
                 cellView.sunriseImage.image = model.isSunriseOrSunset ? Themer.shared().sunriseImage() : Themer.shared().sunsetImage()
                 if let note = model.note, !note.isEmpty {

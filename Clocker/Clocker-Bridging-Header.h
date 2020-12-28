@@ -5,7 +5,6 @@
 //  Created by Banthia, Abhishek on 12/22/17.
 //
 
-#import "CLTimezoneData.h"
 #import "iVersion.h"
 #import <ShortcutRecorder/ShortcutRecorder.h>
 #import <PTHotKey/PTHotKeyCenter.h>

@@ -80,31 +80,6 @@ class TimezoneData: NSObject, NSCoding {
         placeID = UUID().uuidString
     }
 
-    init(with originalTimezone: CLTimezoneData) {
-        customLabel = originalTimezone.customLabel
-        formattedAddress = originalTimezone.formattedAddress
-        placeID = originalTimezone.place_id
-        timezoneID = originalTimezone.timezoneID
-
-        if originalTimezone.latitude != nil {
-            latitude = originalTimezone.latitude.doubleValue
-        }
-
-        if originalTimezone.longitude != nil {
-            longitude = originalTimezone.longitude.doubleValue
-        }
-
-        note = originalTimezone.note
-        nextUpdate = originalTimezone.nextUpdate
-        sunriseTime = originalTimezone.sunriseTime
-        sunsetTime = originalTimezone.sunsetTime
-        isFavourite = originalTimezone.isFavourite.intValue
-        isSunriseOrSunset = originalTimezone.sunriseOrSunset
-        selectionType = originalTimezone.selectionType == CLSelection.citySelection ? .city : .timezone
-        isSystemTimezone = originalTimezone.isSystemTimezone
-        overrideFormat = .globalFormat
-    }
-
     init(with dictionary: [String: Any]) {
         if let label = dictionary[CLCustomLabel] as? String {
             customLabel = label
@@ -196,30 +171,9 @@ class TimezoneData: NSObject, NSCoding {
 
         if let timezoneObject = NSKeyedUnarchiver.unarchiveObject(with: dataObject) as? TimezoneData {
             return timezoneObject
-        } else if let originalTimezoneObject = NSKeyedUnarchiver.unarchiveObject(with: dataObject) as? CLTimezoneData {
-            logOldModelUsage()
-            return TimezoneData(with: originalTimezoneObject)
         }
 
         return nil
-    }
-
-    private class func logOldModelUsage() {
-        guard let shortVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
-            let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String else {
-            return
-        }
-
-        let operatingSystem = ProcessInfo.processInfo.operatingSystemVersion
-        let osVersion = "\(operatingSystem.majorVersion).\(operatingSystem.minorVersion).\(operatingSystem.patchVersion)"
-        let versionInfo = "Clocker \(shortVersion) (\(appVersion))"
-
-        let feedbackInfo = [
-            AppFeedbackConstants.CLOperatingSystemVersion: osVersion,
-            AppFeedbackConstants.CLClockerVersion: versionInfo,
-        ]
-
-        Logger.log(object: feedbackInfo, for: "CLTimezoneData is still being used!")
     }
 
     /// Converts the Obj-C model objects into Swift
@@ -243,12 +197,7 @@ class TimezoneData: NSObject, NSCoding {
         for timezone in timezones {
             // Get the old (aka CLTimezoneData) model object
             let old = NSKeyedUnarchiver.unarchiveObject(with: timezone)
-            if let oldModel = old as? CLTimezoneData {
-                // Convert it to new model and add it
-                Logger.info("We're still using old Objective-C models")
-                let newTimezone = TimezoneData(with: oldModel)
-                newModels.append(newTimezone)
-            } else if let newModel = old as? TimezoneData {
+            if let newModel = old as? Clocker.TimezoneData {
                 if UserDefaults.standard.object(forKey: "migrateOverrideFormat") == nil {
                     print("Resetting Global Format")
                     newModel.setShouldOverrideGlobalTimeFormat(0)

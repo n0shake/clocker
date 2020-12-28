@@ -77,7 +77,6 @@
 		35C36F782259E1D0002FA5C6 /* Foundation + Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F752259E1CF002FA5C6 /* Foundation + Additions.swift */; };
 		35C36F792259E1D0002FA5C6 /* String + Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F762259E1CF002FA5C6 /* String + Additions.swift */; };
 		35C36F912259EAF4002FA5C6 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C36F902259EAF4002FA5C6 /* Preferences.storyboard */; };
-		35C36F942259EB87002FA5C6 /* CLTimezoneData.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F932259EB87002FA5C6 /* CLTimezoneData.m */; };
 		35C36F972259EBB1002FA5C6 /* AppFeedbackWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35C36F952259EBB1002FA5C6 /* AppFeedbackWindow.xib */; };
 		35C36F982259EBB1002FA5C6 /* AppFeedbackWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F962259EBB1002FA5C6 /* AppFeedbackWindowController.swift */; };
 		35C36FA02259ED6D002FA5C6 /* CalendarHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F9D2259ED6D002FA5C6 /* CalendarHandler.swift */; };
@@ -299,8 +298,6 @@
 		35C36F752259E1CF002FA5C6 /* Foundation + Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation + Additions.swift"; sourceTree = "<group>"; };
 		35C36F762259E1CF002FA5C6 /* String + Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String + Additions.swift"; sourceTree = "<group>"; };
 		35C36F902259EAF4002FA5C6 /* Preferences.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
-		35C36F922259EB87002FA5C6 /* CLTimezoneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTimezoneData.h; sourceTree = "<group>"; };
-		35C36F932259EB87002FA5C6 /* CLTimezoneData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTimezoneData.m; sourceTree = "<group>"; };
 		35C36F952259EBB1002FA5C6 /* AppFeedbackWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppFeedbackWindow.xib; sourceTree = "<group>"; };
 		35C36F962259EBB1002FA5C6 /* AppFeedbackWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFeedbackWindowController.swift; sourceTree = "<group>"; };
 		35C36F9D2259ED6D002FA5C6 /* CalendarHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHandler.swift; sourceTree = "<group>"; };
@@ -588,8 +585,6 @@
 		35C36F512259DC85002FA5C6 /* Data Layer */ = {
 			isa = PBXGroup;
 			children = (
-				35C36F922259EB87002FA5C6 /* CLTimezoneData.h */,
-				35C36F932259EB87002FA5C6 /* CLTimezoneData.m */,
 				35C36F5C2259DD96002FA5C6 /* TimezoneData.swift */,
 				35C36F5B2259DD96002FA5C6 /* TimezoneDataOperations.swift */,
 			);
@@ -1231,7 +1226,6 @@
 				35C36F782259E1D0002FA5C6 /* Foundation + Additions.swift in Sources */,
 				35C36F16225961DA002FA5C6 /* Date+Inits.swift in Sources */,
 				35C36F4F2259D981002FA5C6 /* AppDefaults.swift in Sources */,
-				35C36F942259EB87002FA5C6 /* CLTimezoneData.m in Sources */,
 				35C36F5D2259DD96002FA5C6 /* TimezoneDataOperations.swift in Sources */,
 				3508CC942599FFEC000E3530 /* MenubarHandler.swift in Sources */,
 				35C36F14225961DA002FA5C6 /* Integer+DateTools.swift in Sources */,

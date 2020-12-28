@@ -371,7 +371,7 @@ extension AppearanceViewController: NSTableViewDataSource, NSTableViewDelegate {
 
         cellView.sunriseSetTime.stringValue = operation.formattedSunriseTime(with: 0)
         cellView.sunriseImage.image = currentModel.isSunriseOrSunset ? Themer.shared().sunriseImage() : Themer.shared().sunsetImage()
-        cellView.relativeDate.stringValue = operation.date(with: 0, displayType: .panelDisplay)
+        cellView.relativeDate.stringValue = operation.date(with: 0, displayType: .panel)
         cellView.rowNumber = row
         cellView.customName.stringValue = currentModel.formattedTimezoneLabel()
         cellView.time.stringValue = operation.time(with: 0)

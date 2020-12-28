@@ -392,8 +392,7 @@ extension XCTestCase {
         let isHittable = NSPredicate(format: "exists == true", "")
         let addExpectation = expectation(for: isHittable,
                                          evaluatedWith: results.firstMatch) { () -> Bool in
-            Logger.info("Handler called")
-            return true
+            true
         }
 
         waiter.wait(for: [addExpectation], timeout: 5)

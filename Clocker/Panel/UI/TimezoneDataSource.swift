@@ -54,7 +54,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
 
         cellView.sunriseSetTime.stringValue = operation.formattedSunriseTime(with: sliderValue)
         cellView.sunriseImage.image = currentModel.isSunriseOrSunset ? Themer.shared().sunriseImage() : Themer.shared().sunsetImage()
-        cellView.relativeDate.stringValue = operation.date(with: sliderValue, displayType: .panelDisplay)
+        cellView.relativeDate.stringValue = operation.date(with: sliderValue, displayType: .panel)
         cellView.rowNumber = row
         cellView.customName.stringValue = currentModel.formattedTimezoneLabel()
         cellView.time.stringValue = operation.time(with: sliderValue)

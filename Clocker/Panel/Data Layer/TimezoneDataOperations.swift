@@ -100,7 +100,7 @@ extension TimezoneDataOperations {
         let shouldLabelBeShownAlongWithTime = !DataStore.shared().shouldDisplay(.placeInMenubar)
 
         if shouldDayBeShown, shouldLabelBeShownAlongWithTime {
-            let substring = date(with: 0, displayType: CLDateDisplayType.menuDisplay)
+            let substring = date(with: 0, displayType: .menu)
             subtitle.append(substring)
         }
 
@@ -120,7 +120,7 @@ extension TimezoneDataOperations {
         let shouldLabelsNotBeShownAlongWithTime = DataStore.shared().shouldDisplay(.placeInMenubar)
 
         if shouldDayBeShown, shouldLabelsNotBeShownAlongWithTime {
-            let substring = date(with: 0, displayType: CLDateDisplayType.menuDisplay)
+            let substring = date(with: 0, displayType: .menu)
             subtitle.append(substring)
         }
 
@@ -162,7 +162,7 @@ extension TimezoneDataOperations {
         }
 
         if shouldDayBeShown {
-            var substring = date(with: 0, displayType: CLDateDisplayType.menuDisplay)
+            var substring = date(with: 0, displayType: .menu)
 
             if substring.count > 3 {
                 let endIndex = substring.index(substring.startIndex, offsetBy: 2)
@@ -214,7 +214,7 @@ extension TimezoneDataOperations {
                               to: Date()) ?? Date()
     }
 
-    func date(with sliderValue: Int, displayType: CLDateDisplayType) -> String {
+    func date(with sliderValue: Int, displayType: TimezoneData.DateDisplayType) -> String {
         guard let relativeDayPreference = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber else {
             assertionFailure("Data was unexpectedly nil")
             return CLEmptyString
@@ -229,7 +229,7 @@ extension TimezoneDataOperations {
 
         let convertedDate = timezoneDate(with: sliderValue, currentCalendar)
 
-        if displayType == CLDateDisplayType.panelDisplay {
+        if displayType == .panel {
             // Yesterday, tomorrow, etc
             if relativeDayPreference.intValue == 0 {
                 let localFormatter = DateFormatterManager.localizedSimpleFormatter("EEEE")

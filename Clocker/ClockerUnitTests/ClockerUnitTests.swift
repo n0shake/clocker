@@ -156,7 +156,7 @@ class ClockerUnitTests: XCTestCase {
         let dataObject = TimezoneData(with: mumbai)
         let operations = TimezoneDataOperations(with: dataObject)
 
-        XCTAssertNotNil(operations.date(with: 0, displayType: .menuDisplay))
+        XCTAssertNotNil(operations.date(with: 0, displayType: .menu))
     }
 
     func testTimezoneFormat() {
