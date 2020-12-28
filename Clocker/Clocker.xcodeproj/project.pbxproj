@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		357391872507277500D30819 /* HourMarkerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357391852507277500D30819 /* HourMarkerViewItem.swift */; };
 		357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357391862507277500D30819 /* HourMarkerViewItem.xib */; };
 		3595FAD0227F88BC0044A12A /* UserDefaults + KVOExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */; };
+		35B2FEC0259A186F005DA84D /* StartupKit in Frameworks */ = {isa = PBXBuildFile; productRef = 35B2FEBF259A186F005DA84D /* StartupKit */; };
 		35C11E2124873A550031F18C /* VersionUpdateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C11E2024873A550031F18C /* VersionUpdateHandler.swift */; };
 		35C36EF122595F14002FA5C6 /* OnboardingPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE822595F13002FA5C6 /* OnboardingPermissionsViewController.swift */; };
 		35C36EF222595F14002FA5C6 /* OnboardingWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE922595F13002FA5C6 /* OnboardingWelcomeViewController.swift */; };
@@ -236,6 +237,7 @@
 		357391852507277500D30819 /* HourMarkerViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourMarkerViewItem.swift; sourceTree = "<group>"; };
 		357391862507277500D30819 /* HourMarkerViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourMarkerViewItem.xib; sourceTree = "<group>"; };
 		3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults + KVOExtensions.swift"; sourceTree = "<group>"; };
+		35B2FEB1259A1649005DA84D /* StartupKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StartupKit; sourceTree = "<group>"; };
 		35C11E2024873A550031F18C /* VersionUpdateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUpdateHandler.swift; sourceTree = "<group>"; };
 		35C36EE822595F13002FA5C6 /* OnboardingPermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPermissionsViewController.swift; sourceTree = "<group>"; };
 		35C36EE922595F13002FA5C6 /* OnboardingWelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingWelcomeViewController.swift; sourceTree = "<group>"; };
@@ -449,6 +451,7 @@
 				9ACF469D1DCBD45200C49B51 /* Quartz.framework in Frameworks */,
 				9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */,
 				9A5E75E4204CC39700119939 /* ShortcutRecorder.framework in Frameworks */,
+				35B2FEC0259A186F005DA84D /* StartupKit in Frameworks */,
 				9A6D93371CF3E82F005A8690 /* CoreImage.framework in Frameworks */,
 				9A5E75E8204CC39700119939 /* PTHotKey.framework in Frameworks */,
 				9A9E876A1C1FEDDB00A7A2DF /* SystemConfiguration.framework in Frameworks */,
@@ -827,6 +830,7 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
+				35B2FEB1259A1649005DA84D /* StartupKit */,
 				354BB0842574810500097121 /* Keys.plist */,
 				35C36F9B2259EC97002FA5C6 /* Events and Reminders */,
 				35C36F382259D80C002FA5C6 /* Overall App */,
@@ -965,6 +969,7 @@
 			);
 			name = Clocker;
 			packageProductDependencies = (
+				35B2FEBF259A186F005DA84D /* StartupKit */,
 			);
 			productName = Popup;
 			productReference = DD4F7C0413C30F9F00825C6E /* Clocker.app */;
@@ -1490,7 +1495,10 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 20.10.03;
 				OTHER_LDFLAGS = "";
@@ -1530,7 +1538,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = ClockerHelper/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.ClockerHelper;
@@ -1564,7 +1575,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = ClockerHelper/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.ClockerHelper;
@@ -1598,7 +1612,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = ClockerHelper/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.ClockerHelper;
@@ -1637,7 +1654,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = ClockerUnitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1681,7 +1702,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = ClockerUnitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1723,7 +1748,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = ClockerUnitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1759,7 +1788,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = ClockerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.ClockerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1797,7 +1830,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = ClockerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.ClockerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1834,7 +1871,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = ClockerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.ClockerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1939,7 +1980,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
@@ -1989,7 +2031,10 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 20.10.03;
 				ONLY_ACTIVE_ARCH = NO;
@@ -2053,7 +2098,10 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				INFOPLIST_FILE = "Clocker/Clocker-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 20.10.03;
 				OTHER_LDFLAGS = "";
@@ -2125,6 +2173,13 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		35B2FEBF259A186F005DA84D /* StartupKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StartupKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DD4F7BFB13C30F9F00825C6E /* Project object */;
 }
