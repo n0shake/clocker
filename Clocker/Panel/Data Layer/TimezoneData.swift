@@ -55,21 +55,21 @@ class TimezoneData: NSObject, NSCoding {
         NSNumber(integerLiteral: 9): DateFormat.twelveHourWithoutSuffixAndSeconds,
     ]
 
-    var customLabel: String?
-    var formattedAddress: String?
-    var placeID: String?
-    var timezoneID: String? = CLEmptyString
-    var latitude: Double?
-    var longitude: Double?
-    var note: String? = CLEmptyString
-    var nextUpdate: Date? = Date()
-    var sunriseTime: Date?
-    var sunsetTime: Date?
-    var isFavourite: Int = 0
-    var isSunriseOrSunset = false
-    var selectionType: SelectionType = .city
-    var isSystemTimezone = false
-    var overrideFormat: TimezoneOverride = .globalFormat
+    public var customLabel: String?
+    public var formattedAddress: String?
+    public var placeID: String?
+    public var timezoneID: String? = CLEmptyString
+    public var latitude: Double?
+    public var longitude: Double?
+    public var note: String? = CLEmptyString
+    public var nextUpdate: Date? = Date()
+    public var sunriseTime: Date?
+    public var sunsetTime: Date?
+    public var isFavourite: Int = 0
+    public var isSunriseOrSunset = false
+    public var selectionType: SelectionType = .city
+    public var isSystemTimezone = false
+    public var overrideFormat: TimezoneOverride = .globalFormat
 
     override init() {
         selectionType = .timezone

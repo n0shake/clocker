@@ -3,15 +3,15 @@
 import Cocoa
 
 public struct SearchResult: Codable {
-    let results: [Result]
-    let status: String
+    public let results: [Result]
+    public let status: String
 
     public struct Result: Codable {
-        let addressComponents: [AddressComponent]
-        let formattedAddress: String
-        let geometry: Geometry
-        let placeId: String
-        let types: [String]
+        public let addressComponents: [AddressComponent]
+        public let formattedAddress: String
+        public let geometry: Geometry
+        public let placeId: String
+        public let types: [String]
 
         private enum CodingKeys: String, CodingKey {
             case addressComponents = "address_components"
@@ -23,12 +23,12 @@ public struct SearchResult: Codable {
     }
 
     public struct Geometry: Codable {
-        let location: Location
-        let locationType: String
+        public let location: Location
+        public let locationType: String
 
         public struct Location: Codable {
-            let lat: Double
-            let lng: Double
+            public let lat: Double
+            public let lng: Double
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -38,9 +38,9 @@ public struct SearchResult: Codable {
     }
 
     public struct AddressComponent: Codable {
-        let longName: String
-        let shortName: String
-        let types: [String]
+        public let longName: String
+        public let shortName: String
+        public let types: [String]
 
         private enum CodingKeys: String, CodingKey {
             case longName = "long_name"
@@ -51,9 +51,9 @@ public struct SearchResult: Codable {
 }
 
 public struct Timezone: Codable {
-    let dstOffset: Int
-    let rawOffset: Int
-    let status: String
-    let timeZoneId: String
-    let timeZoneName: String
+    public let dstOffset: Int
+    public let rawOffset: Int
+    public let status: String
+    public let timeZoneId: String
+    public let timeZoneName: String
 }
