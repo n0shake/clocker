@@ -204,7 +204,7 @@ class StatusItemHandler: NSObject {
 
         for timezone in syncedTimezones {
             if let timezoneObj = TimezoneData.customObject(from: timezone) {
-                let shouldShowSeconds = timezoneObj.shouldShowSeconds()
+                let shouldShowSeconds = timezoneObj.shouldShowSeconds(DataStore.shared().timezoneFormat())
                 if shouldShowSeconds {
                     return true
                 }

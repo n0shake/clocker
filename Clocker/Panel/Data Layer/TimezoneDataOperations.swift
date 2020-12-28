@@ -27,7 +27,7 @@ extension TimezoneDataOperations {
         }
 
         let dateFormatter = DateFormatterManager.dateFormatterWithFormat(with: .none,
-                                                                         format: dataObject.timezoneFormat(),
+                                                                         format: dataObject.timezoneFormat(DataStore.shared().timezoneFormat()),
                                                                          timezoneIdentifier: dataObject.timezone(),
                                                                          locale: Locale.autoupdatingCurrent)
 

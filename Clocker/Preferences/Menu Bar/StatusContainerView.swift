@@ -23,7 +23,7 @@ func bufferCalculatedWidth() -> Int {
 
 func compactWidth(for timezone: TimezoneData) -> Int {
     var totalWidth = 55
-    let timeFormat = timezone.timezoneFormat()
+    let timeFormat = timezone.timezoneFormat(DataStore.shared().timezoneFormat())
 
     if DataStore.shared().shouldShowDayInMenubar() {
         totalWidth += 12
@@ -39,7 +39,7 @@ func compactWidth(for timezone: TimezoneData) -> Int {
         totalWidth += 0
     }
 
-    if timezone.shouldShowSeconds() {
+    if timezone.shouldShowSeconds(DataStore.shared().timezoneFormat()) {
         // Slight buffer needed when the Menubar supplementary text was Mon 9:27:58 AM
         totalWidth += 15
     }
@@ -87,7 +87,7 @@ class StatusContainerView: NSView {
                     let operationObject = TimezoneDataOperations(with: timezoneObject)
                     let calculatedSubtitleSize = compactModeTimeFont.size(operationObject.compactMenuSubtitle(), precalculatedWidth, attributes: timeBasedAttributes)
                     let calculatedTitleSize = compactModeTimeFont.size(operationObject.compactMenuTitle(), precalculatedWidth, attributes: timeBasedAttributes)
-                    let showSeconds = timezoneObject.shouldShowSeconds()
+                    let showSeconds = timezoneObject.shouldShowSeconds(DataStore.shared().timezoneFormat())
                     let secondsBuffer: CGFloat = showSeconds ? 7 : 0
                     return result + max(calculatedTitleSize.width, calculatedSubtitleSize.width) + bufferWidth + secondsBuffer
                 }
