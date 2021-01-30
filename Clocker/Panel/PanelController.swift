@@ -363,8 +363,13 @@ class PanelController: ParentPanelController {
             Logger.log(object: nil, for: "Scroll Event Ended")
         }
 
-        futureSlider.doubleValue += Double(event.scrollingDeltaX)
-        sliderMoved(futureSlider!)
+        // We only want to move the slider if the slider is visible.
+        // If the parent view is hidden, then that doesn't automatically mean that all the childViews are also hidden
+        // Hence, check if the parent view is totally hidden or not..
+        if futureSliderView.isHidden == false {
+            futureSlider.doubleValue += Double(event.scrollingDeltaX)
+            sliderMoved(futureSlider!)
+        }
     }
 }
 
