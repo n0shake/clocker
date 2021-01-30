@@ -319,6 +319,11 @@ extension TimezoneDataOperations {
             replaceAgo.append(agoString.replacingOccurrences(of: "ago", with: CLEmptyString))
 
             if !TimezoneDataOperations.currentLocale.contains("en") {
+                if TimezoneDataOperations.currentLocale.contains("de") {
+                    replaceAgo = replaceAgo.replacingOccurrences(of: "Vor ", with: CLEmptyString)
+                    replaceAgo.append(" vor")
+                }
+
                 return replaceAgo
             }
 
@@ -334,6 +339,11 @@ extension TimezoneDataOperations {
         replaceAgo.append(replaced)
 
         if !TimezoneDataOperations.currentLocale.contains("en") {
+            if TimezoneDataOperations.currentLocale.contains("de") {
+                replaceAgo = replaceAgo.replacingOccurrences(of: "Vor ", with: CLEmptyString)
+                replaceAgo.append(" zurück")
+            }
+
             return replaceAgo
         }
 
