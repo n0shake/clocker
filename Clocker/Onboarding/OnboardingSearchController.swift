@@ -20,7 +20,7 @@ class OnboardingSearchController: NSViewController {
         guard let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
             let dictionary = NSDictionary(contentsOfFile: path),
             let apiKey = dictionary["GeocodingKey"] as? String else {
-//            assertionFailure("Unable to find the API key")
+            assertionFailure("Unable to find the API key")
             return ""
         }
         return apiKey
