@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   Clocker
 
@@ -72,6 +72,7 @@
 "Continue" = "Continuar";
 "Clocker is more useful when it can display events from your calendars." = "Clocker es más útil cuando puede mostrar eventos de tus calendarios.";
 "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker es más útil cuando puede mostrar eventos de tus calendarios. Puede cambiar esta configuración en Preferencias del Sistema › Seguridad y privacidad › Privacidad.";
+/* Text for button that takes the user to the System Preferences app. In case the user hasn't given Calendar/Reminders access permission, this button takes you to the System Preferences app where the user can give proper permissions to Clocker. */
 "Launch Preferences" = "Abrir las preferencias";
 "Grant Access" = "Permitir acceso";
 "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel." = "Los próximos eventos de sus calendarios personales y compartidos pueden mostrarse en la barra de menú y en el panel.";
@@ -81,7 +82,7 @@
 "Unexpected" = "Inesperado";
 
 // Onboarding Search
-"Quick Add Locations" = "Quick Add Locations";
+"Quick Add Locations" = "Agregar ubicaciones rápidamente";
 "More search options in Clocker Preferences." = "Más opciones de búsqueda en las preferencias de Clocker.";
 "Enter 3 or more characters for locations you'll like to add" = "Introduce 3 o más caracteres de las ubicaciones que quisiera añadir";
 
@@ -97,65 +98,66 @@
 "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "Si quieres ayudarnos a traducir la aplicación en tu idioma o recibir actualizaciones relacionadas con la aplicación, ¡Por favor escribe tu correo electrónico!";
 
 // Appearance Tab
-"Panel Theme" = "Panel Theme";
-"Favourite a timezone to enable menubar display options." = "Favourite a timezone to enable menubar display options.";
-"Main Panel Options" = "Main Panel Options";
-"Time Format" = "Time Format";
-"Day Display Options" = "Day Display Options";
-"Show Future Slider" = "Show Future Slider";
-"Show Sunrise/Sunset" = "Show Sunrise/Sunset";
-"Display the time in seconds" = "Display the time in seconds";
-"Larger Text" = "Larger Text";
-"Future Slider Range" = "Future Slider Range";
-"Include Date" = "Include Date";
-"Include Day" = "Include Day";
-"Include Place Name" = "Include Place Name";
-"Menubar Display Options" = "Menubar Display Options";
-"Menubar Mode" = "Menubar Mode";
-"Preview" = "Preview";
-"Miscellaneous" = "Miscellaneous";
+"Panel Theme" = "Apariencia de la aplicación";
+"Favourite a timezone to enable menubar display options." = "Elija una zona horaria como favorita para habilitar las opciones de visualización de la barra de menú.";
+"Main Panel Options" = "Opciones del Panel Principal";
+"Time Format" = "Formato de hora";
+"Day Display Options" = "Formato de visualización del día";
+"Show Future Slider" = "Mostrar el deslizador para horas futuras";
+"Show Sunrise/Sunset" = "Mostrar salida de sol/puesta de sol";
+"Display the time in seconds" = "Mostrar el tiempo en segundos";
+"Larger Text" = "Texto más grande";
+"Future Slider Range" = "Deslizador de rango de tiempo";
+"Include Date" = "Mostrar fecha";
+"Include Day" = "Mostrar día";
+"Include Place Name" = "Mostrar nombre del lugar";
+"Menubar Display Options" = "Opciones de visualización del reloj en la barra de menú";
+"Menubar Mode" = "Modo en la barra de menú";
+"Preview" = "Vista previa";
+"Miscellaneous" = "Varios";
 
 // Empty View
-"No places added" = "No places added";
+"No places added" = "No hay zonas horarias añadidas";
 
 // Panel
-"No upcoming event." = "No upcoming event.";
-"You have no events scheduled for tomorrow." = "You have no events scheduled for tomorrow.";
+"No upcoming event." = "No hay próximos eventos.";
+"You have no events scheduled for tomorrow." = "No tienes eventos programados para mañana.";
 
 // Review
-"Enjoy using Clocker?" = "Enjoy using Clocker?";
+"Enjoy using Clocker?" = "¿Te gusta Clocker?";
 
 // App Feedback
-"Tell us what you think!" = "Tell us what you think!";
-"Contact Information (Optional)" = "Contact Information (Optional)";
-"Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!" = "Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!";
+"Tell us what you think!" = "¡Queremos conocer tu opinión!";
+"Contact Information (Optional)" = "Información de contacto (opcional)";
+"Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!" = "¡Los campos de contacto son opcionales! ¡Su información de contacto nos permitirá contactarnos con usted en caso de que necesitemos más información o podamos ayudar!";
 
 // About View Screen
-"Feedback is always welcome:" = "Feedback is always welcome:";
+"Feedback is always welcome:" = "Tus comentarios son bienvenidos:";
 
 // Calendars View
-"Upcoming Event View Options" = "Upcoming Event View Options";
-"Show Upcoming Event View" = "Show Upcoming Event View";
-"Show All Day Meetings" = "Show All Day Meetings";
-"Show Next Meeting Title in Menubar" = "Show Next Meeting Title in Menubar";
-"Truncate menubar text longer than" = "Truncate menubar text longer than";
-"characters" = "characters";
-"Show events from" = "Show events from";
-"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"";
+"Upcoming Event View Options" = "Opciones de visualización de los próximos eventos";
+"Show Upcoming Event View" = "Mostrar el próximo evento";
+"Show All Day Meetings" = "Mostrar todas las reuniones del día";
+"Show Next Meeting Title in Menubar" = "Mostrar el título de la próxima reunión en la barra de menú";
+"Truncate menubar text longer than" = "Cortar el texto de la barra de menú si es mayor que";
+"characters" = "caracteres";
+"Show events from" = "Mostrar eventos de";
+"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "Si el título de la reunión es \"Reunión con Neel\" y la longitud de corte está establecida en 5 caracteres, el texto en la barra de menú aparecerá como \"Reuni…\"";
 
 // Notes Popover
-"Reminder Set" = "Reminder Set";
-"Successfully set." = "Successfully set.";
+"Reminder Set" = "Recordatorio establecido";
+"Successfully set." = "Configurado con éxito.";
 
 // Errors
-"You're offline, maybe?" = "You're offline, maybe?";
-"Try again, maybe?" = "Try again, maybe?";
-"The Internet connection appears to be offline." = "The Internet connection appears to be offline.";
+"You're offline, maybe?" = "¿Quizás estás sin conexión a internet?";
+"Try again, maybe?" = "¿Podrías intentarlo otra vez?";
+"The Internet connection appears to be offline." = "Parece que no hay conexión a internet.";
 
 // UI Tests
-"New Zealand" = "New Zealand";
+"New Zealand" = "Nueva Zelanda";
 "Florida" = "Florida";
 "San Francisco" = "San Francisco";
+
 
 // DST changes
 "Daylights Saving transition will occur in < 24 hours" = "Daylights Saving transition will occur in < 24 hours";

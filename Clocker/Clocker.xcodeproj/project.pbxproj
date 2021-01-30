@@ -231,6 +231,7 @@
 		357391852507277500D30819 /* HourMarkerViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourMarkerViewItem.swift; sourceTree = "<group>"; };
 		357391862507277500D30819 /* HourMarkerViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourMarkerViewItem.xib; sourceTree = "<group>"; };
 		3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults + KVOExtensions.swift"; sourceTree = "<group>"; };
+		35A6A4B925C5DEF300356073 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		35B2FEB1259A1649005DA84D /* StartupKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StartupKit; sourceTree = "<group>"; };
 		35B2FED4259A2244005DA84D /* CoreLoggerKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CoreLoggerKit; sourceTree = "<group>"; };
 		35B2FEE4259A2C25005DA84D /* CoreModelKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CoreModelKit; sourceTree = "<group>"; };
@@ -1036,6 +1037,7 @@
 				tr,
 				ar,
 				"pt-BR",
+				"zh-Hant",
 			);
 			mainGroup = DD4F7BF913C30F9F00825C6E;
 			productRefGroup = DD4F7C0513C30F9F00825C6E /* Products */;
@@ -1354,6 +1356,7 @@
 				9AA522D523416A6000C9E005 /* nl */,
 				9AA522D723416E6000C9E005 /* it */,
 				3569A44E25441F320087E254 /* pt-BR */,
+				35A6A4B925C5DEF300356073 /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			path = Clocker;
