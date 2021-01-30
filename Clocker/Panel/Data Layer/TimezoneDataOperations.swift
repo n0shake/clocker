@@ -328,7 +328,7 @@ extension TimezoneDataOperations {
             }
 
             let minuteDifference = calculateTimeDifference(with: local as NSDate, timezoneDate: timezoneDate as NSDate)
-            minuteDifference == 0 ? replaceAgo.append("ahead") : replaceAgo.append("\(minuteDifference) mins ahead")
+            minuteDifference == 0 ? replaceAgo.append("ahead") : replaceAgo.append("\(minuteDifference)m ahead")
             return replaceAgo.lowercased()
         }
 
