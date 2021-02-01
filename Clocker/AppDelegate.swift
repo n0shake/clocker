@@ -43,6 +43,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     public func applicationDidFinishLaunching(_: Notification) {
+        migrateOverridenTimezones()
         // Initializing the event store takes really long
         EventCenter.sharedCenter()
 
@@ -61,6 +62,28 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
             Fabric.with([Crashlytics.self])
             checkIfRunFromApplicationsFolder()
         #endif
+    }
+
+    private func migrateOverridenTimezones() {
+        let defaults = UserDefaults.standard
+        if let shortCircuit = defaults.object(forKey: "MigrateIndividualTimezoneFormat") as? Bool, shortCircuit == true {
+            return
+        }
+
+        let timezones = DataStore.shared().timezones()
+        var migratedTimezones: [Data] = []
+
+        for encodedTimezone in timezones {
+            if let timezoneObject = TimezoneData.customObject(from: encodedTimezone) {
+                timezoneObject.setShouldOverrideGlobalTimeFormat(0)
+                migratedTimezones.append(NSKeyedArchiver.archivedData(withRootObject: timezoneObject))
+            }
+        }
+
+        if migratedTimezones.count > 0 {
+            defaults.set(migratedTimezones, forKey: CLDefaultPreferenceKey)
+            defaults.set(true, forKey: "MigrateIndividualTimezoneFormat")
+        }
     }
 
     public func applicationDockMenu(_: NSApplication) -> NSMenu? {
