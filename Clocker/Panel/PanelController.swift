@@ -270,7 +270,8 @@ class PanelController: ParentPanelController {
 
     func minimize() {
         let delegate = NSApplication.shared.delegate as? AppDelegate
-        if DataStore.shared().shouldDisplay(.showMeetingInMenubar) == true {
+        let count = DataStore.shared().menubarTimezones()?.count ?? 0
+        if count >= 1 || DataStore.shared().shouldDisplay(.showMeetingInMenubar) == true {
             if let handler = delegate?.statusItemForPanel(), let timer = handler.menubarTimer, !timer.isValid {
                 delegate?.setupMenubarTimer()
             }
