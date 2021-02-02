@@ -43,12 +43,14 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     public func applicationDidFinishLaunching(_: Notification) {
-        migrateOverridenTimezones()
         // Initializing the event store takes really long
         EventCenter.sharedCenter()
 
         // Required for migrating our model type to CoreModelKit
         NSKeyedUnarchiver.setClass(CoreModelKit.TimezoneData.classForKeyedUnarchiver(), forClassName: "Clocker.TimezoneData")
+      
+      // For users, still on the old timezones, only migrate timezonezes once setClass has been called
+      migrateOverridenTimezones()
 
         AppDefaults.initialize()
 
