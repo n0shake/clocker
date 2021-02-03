@@ -59,8 +59,8 @@ public class TimezoneData: NSObject, NSCoding {
         NSNumber(integerLiteral: 7): DateFormat.twelveHourWithZeroSeconds,
 
         // Suffix
-        NSNumber(integerLiteral: 8): DateFormat.twelveHourWithoutSuffix,
-        NSNumber(integerLiteral: 9): DateFormat.twelveHourWithoutSuffixAndSeconds,
+        NSNumber(integerLiteral: 9): DateFormat.twelveHourWithoutSuffix,
+        NSNumber(integerLiteral: 10): DateFormat.twelveHourWithoutSuffixAndSeconds,
     ]
 
     public var customLabel: String?
