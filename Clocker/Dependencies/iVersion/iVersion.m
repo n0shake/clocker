@@ -820,6 +820,7 @@ static NSString *mostRecentVersionInDict(NSDictionary *dictionary)
     {
       //clear reminder
       self.lastReminded = nil;
+      [self openAppPageInAppStore];
     }
     else if (buttonIndex == ignoreButtonIndex)
     {
