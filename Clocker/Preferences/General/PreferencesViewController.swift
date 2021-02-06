@@ -466,16 +466,8 @@ extension PreferencesViewController {
     }
 
     private func findLocalSearchResultsForTimezones() {
-        searchResultsDataSource.timezoneFilteredArray = []
         let lowercasedSearchString = searchField.stringValue.lowercased()
-
-        searchResultsDataSource.timezoneFilteredArray = searchResultsDataSource.timezoneArray.filter { (timezoneMetadata) -> Bool in
-            let tags = timezoneMetadata.tags
-            for tag in tags where tag.contains(lowercasedSearchString) {
-                return true
-            }
-            return false
-        }
+        searchResultsDataSource.searchTimezones(lowercasedSearchString)
 
         Logger.info(searchResultsDataSource.timezoneFilteredArray.debugDescription)
     }
@@ -613,7 +605,7 @@ extension PreferencesViewController {
     }
 
     private func installTimezone(_ timezone: Timezone) {
-        guard let dataObject = searchResultsDataSource.filteredArray[availableTimezoneTableView.selectedRow % searchResultsDataSource.filteredArray.count] as? TimezoneData else {
+        guard let dataObject = searchResultsDataSource.retrieveFilteredResult(availableTimezoneTableView.selectedRow) else {
             assertionFailure("Data was unexpectedly nil")
             return
         }
@@ -763,7 +755,7 @@ extension PreferencesViewController {
     }
 
     private func cleanupAfterInstallingCity() {
-        guard let dataObject = searchResultsDataSource.filteredArray[availableTimezoneTableView.selectedRow % searchResultsDataSource.filteredArray.count] as? TimezoneData else {
+        guard let dataObject = searchResultsDataSource.retrieveFilteredResult(availableTimezoneTableView.selectedRow) else {
             assertionFailure("Data was unexpectedly nil")
             return
         }
@@ -784,8 +776,8 @@ extension PreferencesViewController {
         let data = TimezoneData()
         data.setLabel(CLEmptyString)
 
-        let currentSelection = searchField.stringValue.isEmpty == false ? searchResultsDataSource.timezoneFilteredArray[availableTimezoneTableView.selectedRow % searchResultsDataSource.timezoneFilteredArray.count] :
-            searchResultsDataSource.timezoneArray[availableTimezoneTableView.selectedRow - 1]
+        let currentSelection = searchResultsDataSource.retrieveSelectedTimezone(searchField.stringValue,
+                                                                                availableTimezoneTableView.selectedRow)
 
         let metaInfo = metadata(for: currentSelection)
         data.timezoneID = metaInfo.0.name
