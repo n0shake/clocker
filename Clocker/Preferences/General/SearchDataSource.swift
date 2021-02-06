@@ -29,8 +29,8 @@ class SearchDataSource: NSObject {
          "EST": ["florida", "new york"],
          "EDT": ["florida", "new york"]]
 
-    var filteredArray: [Any] = []
-    var timezoneArray: [TimezoneMetadata] = []
+    private var filteredArray: [Any] = []
+    private var timezoneArray: [TimezoneMetadata] = []
     var timezoneFilteredArray: [TimezoneMetadata] = []
 
     init(with searchField: NSSearchField) {
@@ -50,6 +50,15 @@ class SearchDataSource: NSObject {
 
     func placeForRow(_ row: Int) -> RowType {
         return finalArray[row]
+    }
+
+    func retrieveFilteredResult(_ index: Int) -> TimezoneData? {
+        guard let dataObject = filteredArray[index % filteredArray.count] as? TimezoneData else {
+            assertionFailure("Data was unexpectedly nil")
+            return nil
+        }
+
+        return dataObject
     }
 
     private func setupTimezoneDatasource() {
@@ -122,6 +131,23 @@ class SearchDataSource: NSObject {
         }
 
         return false
+    }
+
+    func searchTimezones(_ searchString: String) {
+        timezoneFilteredArray = []
+
+        timezoneFilteredArray = timezoneArray.filter { (timezoneMetadata) -> Bool in
+            let tags = timezoneMetadata.tags
+            for tag in tags where tag.contains(searchString) {
+                return true
+            }
+            return false
+        }
+    }
+
+    func retrieveSelectedTimezone(_ searchString: String, _ selectedIndex: Int) -> TimezoneMetadata {
+        return searchString.isEmpty == false ? timezoneFilteredArray[selectedIndex % timezoneFilteredArray.count] :
+            timezoneArray[selectedIndex - 1]
     }
 }
 
