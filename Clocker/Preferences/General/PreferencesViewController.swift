@@ -412,15 +412,7 @@ extension PreferencesViewController {
             }
 
             self.placeholderLabel.isHidden = false
-
-            /*
-             if NetworkManager.isConnected() == false {
-                 self.placeholderLabel.placeholderString = PreferencesConstants.noInternetConnectivityError
-                 return
-             }*/
-
             self.isActivityInProgress = true
-
             self.placeholderLabel.placeholderString = "Searching for \(searchString)"
 
             Logger.info(self.placeholderLabel.placeholderString ?? "")
