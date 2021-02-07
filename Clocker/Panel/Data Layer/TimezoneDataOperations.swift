@@ -404,7 +404,7 @@ extension TimezoneDataOperations {
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US")
             dateFormatter.timeZone = TimeZone(identifier: dataObject.timezone())
-            dateFormatter.dateFormat = DataStore.shared().shouldDisplay(ViewType.twelveHour) ? "hh:mm a" : "HH:mm"
+            dateFormatter.dateFormat = dataObject.timezoneFormat(DataStore.shared().timezoneFormat())
             return dateFormatter.string(from: correct)
         }
 
