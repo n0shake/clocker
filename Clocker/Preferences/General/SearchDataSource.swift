@@ -29,7 +29,7 @@ class SearchDataSource: NSObject {
          "EST": ["florida", "new york"],
          "EDT": ["florida", "new york"]]
 
-    private var filteredArray: [Any] = []
+    private var filteredArray: [TimezoneData] = []
     private var timezoneArray: [TimezoneMetadata] = []
     var timezoneFilteredArray: [TimezoneMetadata] = []
 
@@ -44,7 +44,7 @@ class SearchDataSource: NSObject {
         filteredArray = []
     }
 
-    func setFilteredArrayValue(_ newArray: [Any]) {
+    func setFilteredArrayValue(_ newArray: [TimezoneData]) {
         filteredArray = newArray
     }
 
@@ -53,12 +53,7 @@ class SearchDataSource: NSObject {
     }
 
     func retrieveFilteredResult(_ index: Int) -> TimezoneData? {
-        guard let dataObject = filteredArray[index % filteredArray.count] as? TimezoneData else {
-            assertionFailure("Data was unexpectedly nil")
-            return nil
-        }
-
-        return dataObject
+        return filteredArray[index % filteredArray.count]
     }
 
     private func setupTimezoneDatasource() {
@@ -204,11 +199,7 @@ extension SearchDataSource {
 
     private func cityCell(_ tableView: NSTableView, _: RowType, _ row: Int) -> NSView? {
         if let cityCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "resultCell"), owner: self) as? SearchResultTableViewCell {
-            guard let timezoneData = filteredArray[row % filteredArray.count] as? TimezoneData else {
-                assertionFailure()
-                return nil
-            }
-
+            let timezoneData = filteredArray[row % filteredArray.count]
             cityCell.sourceName.stringValue = timezoneData.formattedAddress ?? "Error"
             return cityCell
         }
