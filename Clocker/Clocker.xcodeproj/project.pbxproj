@@ -66,7 +66,7 @@
 		35C36F612259DE67002FA5C6 /* NotesPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35C36F5F2259DE67002FA5C6 /* NotesPopover.xib */; };
 		35C36F622259DE67002FA5C6 /* NotesPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F602259DE67002FA5C6 /* NotesPopover.swift */; };
 		35C36F662259DF4C002FA5C6 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F642259DF4C002FA5C6 /* ReviewView.swift */; };
-		35C36F672259DF4C002FA5C6 /* RateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F652259DF4C002FA5C6 /* RateController.swift */; };
+		35C36F672259DF4C002FA5C6 /* ReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F652259DF4C002FA5C6 /* ReviewController.swift */; };
 		35C36F692259DF55002FA5C6 /* TextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F682259DF55002FA5C6 /* TextViewWithPlaceholder.swift */; };
 		35C36F6B2259E0E1002FA5C6 /* FloatingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35C36F6A2259E0E1002FA5C6 /* FloatingWindow.xib */; };
 		35C36F6F2259E185002FA5C6 /* CustomSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F6C2259E185002FA5C6 /* CustomSliderCell.swift */; };
@@ -287,7 +287,7 @@
 		35C36F5F2259DE67002FA5C6 /* NotesPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesPopover.xib; sourceTree = "<group>"; };
 		35C36F602259DE67002FA5C6 /* NotesPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesPopover.swift; sourceTree = "<group>"; };
 		35C36F642259DF4C002FA5C6 /* ReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
-		35C36F652259DF4C002FA5C6 /* RateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateController.swift; sourceTree = "<group>"; };
+		35C36F652259DF4C002FA5C6 /* ReviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewController.swift; sourceTree = "<group>"; };
 		35C36F682259DF55002FA5C6 /* TextViewWithPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewWithPlaceholder.swift; sourceTree = "<group>"; };
 		35C36F6A2259E0E1002FA5C6 /* FloatingWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloatingWindow.xib; sourceTree = "<group>"; };
 		35C36F6C2259E185002FA5C6 /* CustomSliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSliderCell.swift; sourceTree = "<group>"; };
@@ -612,7 +612,7 @@
 		35C36F632259DE9D002FA5C6 /* Rate Controller */ = {
 			isa = PBXGroup;
 			children = (
-				35C36F652259DF4C002FA5C6 /* RateController.swift */,
+				35C36F652259DF4C002FA5C6 /* ReviewController.swift */,
 				35C36F642259DF4C002FA5C6 /* ReviewView.swift */,
 			);
 			path = "Rate Controller";
@@ -1213,7 +1213,7 @@
 				35C36EF622595F14002FA5C6 /* OnboardingController.swift in Sources */,
 				9AB6F1622259D1B000A44663 /* PreferencesDataSource.swift in Sources */,
 				3508CC9A259A0001000E3530 /* StatusItemView.swift in Sources */,
-				35C36F672259DF4C002FA5C6 /* RateController.swift in Sources */,
+				35C36F672259DF4C002FA5C6 /* ReviewController.swift in Sources */,
 				35C36F472259D892002FA5C6 /* Reach.swift in Sources */,
 				35C36EF222595F14002FA5C6 /* OnboardingWelcomeViewController.swift in Sources */,
 				35C36F732259E1AA002FA5C6 /* FloatingWindowController.swift in Sources */,

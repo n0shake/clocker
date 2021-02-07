@@ -58,7 +58,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         showOnboardingFlowIfEligible()
 
         // Ratings Controller initialization
-        RateController.applicationDidLaunch(UserDefaults.standard)
+        ReviewController.applicationDidLaunch(UserDefaults.standard)
 
         #if RELEASE
             Fabric.with([Crashlytics.self])
@@ -140,7 +140,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         statusBarHandler = StatusItemHandler()
 
         if ProcessInfo.processInfo.arguments.contains(CLUITestingLaunchArgument) {
-            RateController.setPreviewMode(true)
+            ReviewController.setPreviewMode(true)
         }
 
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
