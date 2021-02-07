@@ -438,7 +438,7 @@ extension PreferencesViewController {
                                                             return
                                                         }
 
-                                                        let searchResults = self.decode(from: data)
+                                                        let searchResults = data.decode()
 
                                                         if searchResults?.status == "ZERO_RESULTS" {
                                                             self.findLocalSearchResultsForTimezones()
@@ -460,8 +460,6 @@ extension PreferencesViewController {
     private func findLocalSearchResultsForTimezones() {
         let lowercasedSearchString = searchField.stringValue.lowercased()
         searchResultsDataSource.searchTimezones(lowercasedSearchString)
-
-        Logger.info(searchResultsDataSource.timezoneFilteredArray.debugDescription)
     }
 
     private func generateSearchURL() -> String {
@@ -520,30 +518,6 @@ extension PreferencesViewController {
         }
     }
 
-    // Extracting this out for tests
-    private func decode(from data: Data) -> SearchResult? {
-        let jsonDecoder = JSONDecoder()
-        do {
-            let decodedObject = try jsonDecoder.decode(SearchResult.self, from: data)
-            return decodedObject
-        } catch {
-            Logger.info("decodedObject error: \n\(error)")
-            return nil
-        }
-    }
-
-    // Extracting this out for tests
-    private func decodeTimezone(from data: Data) -> Timezone? {
-        let jsonDecoder = JSONDecoder()
-        do {
-            let decodedObject = try jsonDecoder.decode(Timezone.self, from: data)
-            return decodedObject
-        } catch {
-            Logger.info("decodedObject error: \n\(error)")
-            return nil
-        }
-    }
-
     private func resetSearchView() {
         if dataTask?.state == .running {
             dataTask?.cancel()
@@ -576,7 +550,7 @@ extension PreferencesViewController {
                     return
                 }
 
-                if error == nil, let json = response, let timezone = strongSelf.decodeTimezone(from: json) {
+                if error == nil, let json = response, let timezone = json.decodeTimezone() {
                     if strongSelf.availableTimezoneTableView.selectedRow >= 0 {
                         strongSelf.installTimezone(timezone)
                     }
@@ -597,7 +571,7 @@ extension PreferencesViewController {
     }
 
     private func installTimezone(_ timezone: Timezone) {
-        guard let dataObject = searchResultsDataSource.retrieveFilteredResult(availableTimezoneTableView.selectedRow) else {
+        guard let dataObject = searchResultsDataSource.retrieveFilteredResultFromGoogleAPI(availableTimezoneTableView.selectedRow) else {
             assertionFailure("Data was unexpectedly nil")
             return
         }
@@ -742,7 +716,7 @@ extension PreferencesViewController {
     }
 
     private func cleanupAfterInstallingCity() {
-        guard let dataObject = searchResultsDataSource.retrieveFilteredResult(availableTimezoneTableView.selectedRow) else {
+        guard let dataObject = searchResultsDataSource.retrieveFilteredResultFromGoogleAPI(availableTimezoneTableView.selectedRow) else {
             assertionFailure("Data was unexpectedly nil")
             return
         }
@@ -763,8 +737,7 @@ extension PreferencesViewController {
         let data = TimezoneData()
         data.setLabel(CLEmptyString)
 
-        let currentSelection = searchResultsDataSource.retrieveSelectedTimezone(searchField.stringValue,
-                                                                                availableTimezoneTableView.selectedRow)
+        let currentSelection = searchResultsDataSource.retrieveSelectedTimezone(availableTimezoneTableView.selectedRow)
 
         let metaInfo = metadata(for: currentSelection)
         data.timezoneID = metaInfo.0.name
