@@ -147,7 +147,7 @@ static NSString *mostRecentVersionInDict(NSDictionary *dictionary)
     bundle = [NSBundle bundleWithPath:bundlePath] ?: [NSBundle mainBundle];
   }
   defaultString = [bundle localizedStringForKey:key value:defaultString table:nil];
-  return [[NSBundle mainBundle] localizedStringForKey:key value:defaultString table:nil];
+  return defaultString ?: [[NSBundle mainBundle] localizedStringForKey:key value:defaultString table:nil];
 }
 
 - (iVersion *)init
@@ -820,6 +820,7 @@ static NSString *mostRecentVersionInDict(NSDictionary *dictionary)
     {
       //clear reminder
       self.lastReminded = nil;
+      [self openAppPageInAppStore];
     }
     else if (buttonIndex == ignoreButtonIndex)
     {

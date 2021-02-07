@@ -49,10 +49,10 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         // Required for migrating our model type to CoreModelKit
         NSKeyedUnarchiver.setClass(CoreModelKit.TimezoneData.classForKeyedUnarchiver(), forClassName: "Clocker.TimezoneData")
 
+        AppDefaults.initialize()
+
         // For users, still on the old timezones, only migrate timezonezes once setClass has been called
         migrateOverridenTimezones()
-
-        AppDefaults.initialize()
 
         // Check if we can show the onboarding flow!
         showOnboardingFlowIfEligible()
@@ -139,11 +139,6 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         // Install the menubar item!
         statusBarHandler = StatusItemHandler()
 
-        if UserDefaults.standard.object(forKey: CLInstallHomeIndicatorObject) == nil {
-            fetchLocalTimezone()
-            UserDefaults.standard.set(1, forKey: CLInstallHomeIndicatorObject)
-        }
-
         if ProcessInfo.processInfo.arguments.contains(CLUITestingLaunchArgument) {
             RateController.setPreviewMode(true)
         }
@@ -208,23 +203,6 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         alert.informativeText = informativeText
         alert.addButton(withTitle: buttonTitle)
         alert.runModal()
-    }
-
-    private func fetchLocalTimezone() {
-        let identifier = TimeZone.autoupdatingCurrent.identifier
-
-        let currentTimezone = TimezoneData()
-        currentTimezone.timezoneID = identifier
-        currentTimezone.setLabel(identifier)
-        currentTimezone.formattedAddress = identifier
-        currentTimezone.isSystemTimezone = true
-        currentTimezone.placeID = "Home"
-
-        let operations = TimezoneDataOperations(with: currentTimezone)
-        operations.saveObject(at: 0)
-
-        // Retrieve Location
-        // retrieveLatestLocation()
     }
 
     @IBAction func ping(_ sender: Any) {

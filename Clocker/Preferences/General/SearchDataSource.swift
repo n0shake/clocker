@@ -29,8 +29,8 @@ class SearchDataSource: NSObject {
          "EST": ["florida", "new york"],
          "EDT": ["florida", "new york"]]
 
-    var filteredArray: [Any] = []
-    var timezoneArray: [TimezoneMetadata] = []
+    private var filteredArray: [TimezoneData] = []
+    private var timezoneArray: [TimezoneMetadata] = []
     var timezoneFilteredArray: [TimezoneMetadata] = []
 
     init(with searchField: NSSearchField) {
@@ -44,12 +44,16 @@ class SearchDataSource: NSObject {
         filteredArray = []
     }
 
-    func setFilteredArrayValue(_ newArray: [Any]) {
+    func setFilteredArrayValue(_ newArray: [TimezoneData]) {
         filteredArray = newArray
     }
 
     func placeForRow(_ row: Int) -> RowType {
         return finalArray[row]
+    }
+
+    func retrieveFilteredResult(_ index: Int) -> TimezoneData? {
+        return filteredArray[index % filteredArray.count]
     }
 
     private func setupTimezoneDatasource() {
@@ -123,6 +127,23 @@ class SearchDataSource: NSObject {
 
         return false
     }
+
+    func searchTimezones(_ searchString: String) {
+        timezoneFilteredArray = []
+
+        timezoneFilteredArray = timezoneArray.filter { (timezoneMetadata) -> Bool in
+            let tags = timezoneMetadata.tags
+            for tag in tags where tag.contains(searchString) {
+                return true
+            }
+            return false
+        }
+    }
+
+    func retrieveSelectedTimezone(_ searchString: String, _ selectedIndex: Int) -> TimezoneMetadata {
+        return searchString.isEmpty == false ? timezoneFilteredArray[selectedIndex % timezoneFilteredArray.count] :
+            timezoneArray[selectedIndex - 1]
+    }
 }
 
 extension SearchDataSource: NSTableViewDataSource {
@@ -178,11 +199,7 @@ extension SearchDataSource {
 
     private func cityCell(_ tableView: NSTableView, _: RowType, _ row: Int) -> NSView? {
         if let cityCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "resultCell"), owner: self) as? SearchResultTableViewCell {
-            guard let timezoneData = filteredArray[row % filteredArray.count] as? TimezoneData else {
-                assertionFailure()
-                return nil
-            }
-
+            let timezoneData = filteredArray[row % filteredArray.count]
             cityCell.sourceName.stringValue = timezoneData.formattedAddress ?? "Error"
             return cityCell
         }
