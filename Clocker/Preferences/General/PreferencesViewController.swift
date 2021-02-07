@@ -722,9 +722,6 @@ extension PreferencesViewController {
         let currentRowType = searchResultsDataSource.placeForRow(availableTimezoneTableView.selectedRow)
 
         switch currentRowType {
-        case .timezoneHeader, .cityHeader:
-            isActivityInProgress = false
-            return
         case .timezone:
             cleanupAfterInstallingTimezone()
         default:
@@ -736,11 +733,9 @@ extension PreferencesViewController {
         let currentRowType = searchResultsDataSource.placeForRow(availableTimezoneTableView.selectedRow)
 
         switch currentRowType {
-        case .timezoneHeader, .cityHeader:
-            isActivityInProgress = false
-            return
         case .timezone:
             cleanupAfterInstallingTimezone()
+            return
         case .city:
             cleanupAfterInstallingCity()
         }

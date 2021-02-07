@@ -4,8 +4,6 @@ import Cocoa
 import CoreModelKit
 
 enum RowType {
-    case timezoneHeader
-    case cityHeader
     case city
     case timezone
 }
@@ -100,9 +98,6 @@ class SearchDataSource: NSObject {
         var changesets: [RowType] = []
 
         func addTimezonesIfNeeded(_ data: [TimezoneMetadata]) {
-            if !data.isEmpty {
-                changesets.append(.timezoneHeader)
-            }
             data.forEach { _ in
                 changesets.append(.timezone)
             }
@@ -111,9 +106,6 @@ class SearchDataSource: NSObject {
         if searchField.stringValue.isEmpty {
             addTimezonesIfNeeded(timezoneArray)
         } else {
-            if !filteredArray.isEmpty {
-                changesets.append(.cityHeader)
-            }
             filteredArray.forEach { _ in
                 changesets.append(.city)
             }
@@ -142,7 +134,7 @@ class SearchDataSource: NSObject {
 
     func retrieveSelectedTimezone(_ searchString: String, _ selectedIndex: Int) -> TimezoneMetadata {
         return searchString.isEmpty == false ? timezoneFilteredArray[selectedIndex % timezoneFilteredArray.count] :
-            timezoneArray[selectedIndex - 1]
+            timezoneArray[selectedIndex]
     }
 }
 
@@ -155,8 +147,6 @@ extension SearchDataSource: NSTableViewDataSource {
         let currentRowType = finalArray[row]
 
         switch currentRowType {
-        case .timezoneHeader, .cityHeader:
-            return headerCell(tableView, currentRowType)
         case .timezone:
             return timezoneCell(tableView, currentRowType, row)
         case .city:
@@ -166,18 +156,6 @@ extension SearchDataSource: NSTableViewDataSource {
 }
 
 extension SearchDataSource: NSTableViewDelegate {
-    func tableView(_: NSTableView, isGroupRow row: Int) -> Bool {
-        let currentRowType = finalArray[row]
-        return
-            currentRowType == .timezoneHeader ||
-            currentRowType == .cityHeader
-    }
-
-    func tableView(_: NSTableView, shouldSelectRow row: Int) -> Bool {
-        let currentRowType = finalArray[row]
-        return !(currentRowType == .timezoneHeader || currentRowType == .cityHeader)
-    }
-
     func tableView(_: NSTableView, heightOfRow _: Int) -> CGFloat {
         return 30
     }
@@ -190,8 +168,7 @@ extension SearchDataSource {
             guard !datasource.isEmpty else {
                 return nil
             }
-            let index = searchField.stringValue.isEmpty ? row - 1 : row
-            message.sourceName.stringValue = datasource[index % datasource.count].formattedName + " (\(datasource[index % datasource.count].abbreviation))"
+            message.sourceName.stringValue = datasource[row % datasource.count].formattedName + " (\(datasource[row % datasource.count].abbreviation))"
             return message
         }
         return nil
@@ -202,15 +179,6 @@ extension SearchDataSource {
             let timezoneData = filteredArray[row % filteredArray.count]
             cityCell.sourceName.stringValue = timezoneData.formattedAddress ?? "Error"
             return cityCell
-        }
-
-        return nil
-    }
-
-    private func headerCell(_ tableView: NSTableView, _ headerType: RowType) -> NSView? {
-        if let message = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "headerCell"), owner: self) as? HeaderTableViewCell {
-            message.headerField.stringValue = headerType == .timezoneHeader ? "Timezones" : "Places"
-            return message
         }
 
         return nil
