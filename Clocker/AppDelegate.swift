@@ -48,9 +48,9 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Required for migrating our model type to CoreModelKit
         NSKeyedUnarchiver.setClass(CoreModelKit.TimezoneData.classForKeyedUnarchiver(), forClassName: "Clocker.TimezoneData")
-      
-      // For users, still on the old timezones, only migrate timezonezes once setClass has been called
-      migrateOverridenTimezones()
+
+        // For users, still on the old timezones, only migrate timezonezes once setClass has been called
+        migrateOverridenTimezones()
 
         AppDefaults.initialize()
 
