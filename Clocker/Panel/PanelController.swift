@@ -91,7 +91,7 @@ class PanelController: ParentPanelController {
 
         setTimezoneDatasourceSlider(sliderValue: 0)
 
-        reviewView.isHidden = !RateController.canPrompt()
+        reviewView.isHidden = !ReviewController.canPrompt()
 
         reviewView.layer?.backgroundColor = NSColor.clear.cgColor
 

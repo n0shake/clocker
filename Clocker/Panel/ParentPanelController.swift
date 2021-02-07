@@ -842,7 +842,7 @@ class ParentPanelController: NSWindowController {
 
         } else {
             updateReviewView()
-            RateController.prompted()
+            ReviewController.prompted()
 
             if let countryCode = Locale.autoupdatingCurrent.regionCode {
                 Logger.log(object: ["CurrentCountry": countryCode], for: "Remind Later for Feedback")
@@ -857,7 +857,7 @@ class ParentPanelController: NSWindowController {
                         leftTitle: PanelConstants.noThanksTitle,
                         rightTitle: "Yes")
         } else if sender.title == PanelConstants.yesWithQuestionMark {
-            RateController.prompted()
+            ReviewController.prompted()
             updateReviewView()
 
             feedbackWindow = AppFeedbackWindowController.shared()
@@ -865,7 +865,7 @@ class ParentPanelController: NSWindowController {
             NSApp.activate(ignoringOtherApps: true)
         } else {
             updateReviewView()
-            RateController.prompt()
+            ReviewController.prompt()
 
             if let countryCode = Locale.autoupdatingCurrent.regionCode {
                 Logger.log(object: ["CurrentCountry": countryCode], for: "Remind Later for Feedback")
@@ -876,7 +876,7 @@ class ParentPanelController: NSWindowController {
     private func updateReviewView() {
         reviewView.isHidden = true
         showReviewCell = false
-        leftField.stringValue = NSLocalizedString("Enjoy using Clocker",
+        leftField.stringValue = NSLocalizedString("Enjoy using Clocker?",
                                                   comment: "Title asking users if they like the app")
 
         let paragraphStyle = NSMutableParagraphStyle()

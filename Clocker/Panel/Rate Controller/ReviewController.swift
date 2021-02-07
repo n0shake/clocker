@@ -1,8 +1,9 @@
 // Copyright © 2015 Abhishek Banthia
 
 import Cocoa
+import StoreKit
 
-final class RateController {
+final class ReviewController {
     private static var storage = UserDefaults.standard
     private static let version: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "N/A"
     private static var debugging = false
@@ -62,7 +63,13 @@ final class RateController {
         guard let ratingsURL = URL(string: AboutUsConstants.AppStoreLink) else {
             return
         }
-        NSWorkspace.shared.open(ratingsURL)
+
+        if #available(OSX 10.14, *) {
+            SKStoreReviewController.requestReview()
+        } else {
+            NSWorkspace.shared.open(ratingsURL)
+        }
+
         prompted()
     }
 }
