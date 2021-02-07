@@ -1,6 +1,7 @@
 // Copyright © 2015 Abhishek Banthia
 
 import Cocoa
+import CoreModelKit
 
 extension NSNotification.Name {
     static let themeDidChange = NSNotification.Name("ThemeDidChangeNotification")
@@ -31,4 +32,27 @@ extension NSImage.Name {
     static let sortToggleIcon = NSImage.Name("Additional Preferences Dynamic")
     static let sortToggleAlternateIcon = NSImage.Name("Additional Preferences Highlighted Dynamic")
     static let menubarIcon = NSImage.Name("LightModeIcon")
+}
+
+extension Data {
+    // Extracting this out for tests
+    public func decode() -> SearchResult? {
+        let jsonDecoder = JSONDecoder()
+        do {
+            let decodedObject = try jsonDecoder.decode(SearchResult.self, from: self)
+            return decodedObject
+        } catch {
+            return nil
+        }
+    }
+
+    public func decodeTimezone() -> Timezone? {
+        let jsonDecoder = JSONDecoder()
+        do {
+            let decodedObject = try jsonDecoder.decode(Timezone.self, from: self)
+            return decodedObject
+        } catch {
+            return nil
+        }
+    }
 }
