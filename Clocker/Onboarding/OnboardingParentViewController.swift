@@ -2,6 +2,7 @@
 
 import Cocoa
 import CoreLoggerKit
+import CoreModelKit
 import StartupKit
 
 extension NSStoryboard.SceneIdentifier {
@@ -178,7 +179,26 @@ class OnboardingParentViewController: NSViewController {
         }
     }
 
+    private func fetchLocalTimezone() {
+        let identifier = TimeZone.autoupdatingCurrent.identifier
+
+        let currentTimezone = TimezoneData()
+        currentTimezone.timezoneID = identifier
+        currentTimezone.setLabel(identifier)
+        currentTimezone.formattedAddress = identifier
+        currentTimezone.isSystemTimezone = true
+        currentTimezone.placeID = "Home"
+
+        let operations = TimezoneDataOperations(with: currentTimezone)
+        operations.saveObject(at: 0)
+    }
+
     private func navigateToFinalStage() {
+        if UserDefaults.standard.object(forKey: CLInstallHomeIndicatorObject) == nil, DataStore.shared().timezones().isEmpty {
+            fetchLocalTimezone()
+            UserDefaults.standard.set(1, forKey: CLInstallHomeIndicatorObject)
+        }
+
         guard let fromViewController = onboardingSearchVC, let toViewController = finalOnboardingVC else {
             assertionFailure()
             return
