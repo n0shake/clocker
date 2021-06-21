@@ -5,19 +5,34 @@ import Cocoa
 class HourMarkerViewItem: NSCollectionViewItem {
     static let reuseIdentifier = NSUserInterfaceItemIdentifier("HourMarkerViewItem")
 
-    @IBOutlet var hourLabel: NSTextField!
+    @IBOutlet var constraintFromTop: NSLayoutConstraint!
+    @IBOutlet var verticalLine: NSBox!
+
+    public var indexTag: Int = -1
 
     func setup(with hour: Int) {
         var dateComponents = DateComponents()
-        dateComponents.hour = hour
+        dateComponents.minute = hour * 15
+        indexTag = hour
 
-        if let newDate = Calendar.autoupdatingCurrent.date(byAdding: dateComponents, to: Date().nextHour) {
-            let dateFormatter = DateFormatterManager.dateFormatterWithFormat(with: .none,
-                                                                             format: "HH:mm",
-                                                                             timezoneIdentifier: TimeZone.current.identifier,
-                                                                             locale: Locale.autoupdatingCurrent)
+        for constraint in view.constraints where constraint.identifier == "constrainFromTop" {
+            if hour % 4 == 0 {
+                constraint.constant = 0
+            } else {
+                constraint.constant = 20
+            }
+        }
+    }
 
-            hourLabel.stringValue = dateFormatter.string(from: newDate)
+    func setupLineColor() {
+        for subview in view.subviews where subview is NSBox {
+            subview.layer?.backgroundColor = NSColor.black.cgColor
+        }
+    }
+
+    func resetLineColor() {
+        for subview in view.subviews where subview is NSBox {
+            subview.layer?.backgroundColor = nil
         }
     }
 
