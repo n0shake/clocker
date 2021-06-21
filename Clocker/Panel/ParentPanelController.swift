@@ -87,6 +87,7 @@ class ParentPanelController: NSWindowController {
 
     // Modern Slider
     @IBOutlet var modernSlider: NSCollectionView!
+    @IBOutlet var modernSliderLabel: NSTextField!
 
     var defaultPreferences: [Data] {
         return DataStore.shared().timezones()
@@ -177,6 +178,12 @@ class ParentPanelController: NSWindowController {
         if modernSlider != nil {
             modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
             modernSlider.delegate = self
+            modernSlider.postsBoundsChangedNotifications = true
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(collectionViewDidScroll(_:)),
+                                                   name: NSView.boundsDidChangeNotification,
+                                                   object: modernSlider.superview)
+            setModernSliderLabel(0)
         }
 
         if roundedDateView != nil {
@@ -1029,21 +1036,5 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
         Logger.log(object: ["Service Title": sharingService.title],
                    for: "Sharing Service Executed")
         return self as? NSSharingServiceDelegate
-    }
-}
-
-extension ParentPanelController: NSCollectionViewDataSource, NSCollectionViewDelegate {
-    func collectionView(_: NSCollectionView, numberOfItemsInSection _: Int) -> Int {
-        return 24
-    }
-
-    func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: HourMarkerViewItem.reuseIdentifier, for: indexPath) as! HourMarkerViewItem
-        item.setup(with: indexPath.item)
-        return item
-    }
-
-    func collectionView(_: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-        Logger.info("Did Select Item at \(indexPaths.description)")
     }
 }
