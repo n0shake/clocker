@@ -17,6 +17,7 @@
                 <outlet property="leftButton" destination="WVY-D9-AAX" id="M2W-xG-chN"/>
                 <outlet property="leftField" destination="8Qj-Y9-Okf" id="q3N-ht-jCd"/>
                 <outlet property="mainTableView" destination="dFw-ts-8OZ" id="2kY-dd-rDV"/>
+                <outlet property="modernContainerView" destination="8W7-rS-Uob" id="qgZ-SS-ayy"/>
                 <outlet property="modernSlider" destination="lxA-64-3QU" id="kS5-ub-7gV"/>
                 <outlet property="modernSliderLabel" destination="pi8-wk-eXa" id="yLU-nz-IBx"/>
                 <outlet property="nextEventLabel" destination="rld-Ag-KL1" id="GTY-j3-A1g"/>
@@ -43,15 +44,15 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1000" y="379" width="350" height="460"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
-            <view key="contentView" focusRingType="none" id="6" customClass="BackgroundPanelView" customModule="Clocker" customModuleProvider="target">
-                <rect key="frame" x="0.0" y="0.0" width="350" height="275"/>
+            <view key="contentView" focusRingType="none" misplaced="YES" id="6" customClass="BackgroundPanelView" customModule="Clocker" customModuleProvider="target">
+                <rect key="frame" x="0.0" y="0.0" width="350" height="460"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView focusRingType="none" distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZA-6o-SbE">
-                        <rect key="frame" x="0.0" y="0.0" width="350" height="275"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="315"/>
                         <subviews>
                             <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="96" horizontalPageScroll="1" verticalLineScroll="96" verticalPageScroll="1" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" scrollerKnobStyle="light" translatesAutoresizingMaskIntoConstraints="NO" id="4Gd-Nv-fXr">
-                                <rect key="frame" x="-20" y="10" width="370" height="265"/>
+                                <rect key="frame" x="-20" y="50" width="370" height="265"/>
                                 <clipView key="contentView" focusRingType="none" drawsBackground="NO" copiesOnScroll="NO" id="4MZ-Di-yNR">
                                     <rect key="frame" x="0.0" y="0.0" width="370" height="265"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -261,7 +262,7 @@
                                 </scroller>
                             </scrollView>
                             <customView identifier="Review Cell" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="TDn-Kk-KkV">
-                                <rect key="frame" x="0.0" y="-40" width="350" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="50"/>
                                 <subviews>
                                     <stackView focusRingType="none" distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uys-ww-duA">
                                         <rect key="frame" x="25" y="25" width="300" height="20"/>
@@ -335,7 +336,7 @@
                                 <accessibility description="ReviewCell" identifier="ReviewCell"/>
                             </customView>
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="Akn-cR-W4G" customClass="ReviewView" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="140" width="350" height="75"/>
+                                <rect key="frame" x="0.0" y="-75" width="350" height="75"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Etf-aa-udM" customClass="ClockerTextBackgroundView" customModule="Clocker" customModuleProvider="target">
                                         <rect key="frame" x="10" y="10" width="330" height="55"/>
@@ -460,8 +461,65 @@
                                     <constraint firstAttribute="trailing" secondItem="I2Z-NZ-795" secondAttribute="trailing" constant="5" id="ju8-FH-nE8"/>
                                 </constraints>
                             </customView>
+                            <customView wantsLayer="YES" focusRingType="none" id="8W7-rS-Uob" userLabel="Modern Slider">
+                                <rect key="frame" x="0.0" y="40" width="350" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htc-pO-AqH">
+                                        <rect key="frame" x="5" y="30" width="340" height="40"/>
+                                        <clipView key="contentView" id="N1e-zE-F86">
+                                            <rect key="frame" x="0.0" y="0.0" width="340" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <collectionView id="lxA-64-3QU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="340" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" id="mgM-vQ-fB7">
+                                                        <size key="itemSize" width="50" height="50"/>
+                                                    </collectionViewFlowLayout>
+                                                    <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="-2" id="Exd-5i-4cB"/>
+                                                        <outlet property="delegate" destination="-2" id="r49-5r-Rx5"/>
+                                                    </connections>
+                                                </collectionView>
+                                            </subviews>
+                                        </clipView>
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="8II-oP-xbd">
+                                            <rect key="frame" x="0.0" y="34" width="340" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="f9b-8n-Bt1">
+                                            <rect key="frame" x="-100" y="-100" width="16" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pi8-wk-eXa">
+                                        <rect key="frame" x="123" y="3" width="104" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="eLd-zO-yiI"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label Goes Here" id="ii9-w0-WDX">
+                                            <font key="font" size="10" name="Avenir-LightOblique"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="Accent Color"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="5HT-Ps-YH3"/>
+                                    <constraint firstAttribute="bottom" secondItem="pi8-wk-eXa" secondAttribute="bottom" constant="3" id="6E6-8S-PZv"/>
+                                    <constraint firstItem="htc-pO-AqH" firstAttribute="top" secondItem="8W7-rS-Uob" secondAttribute="top" id="Ag8-2G-tVA"/>
+                                    <constraint firstItem="htc-pO-AqH" firstAttribute="leading" secondItem="8W7-rS-Uob" secondAttribute="leading" constant="5" id="QmJ-Dd-WLb"/>
+                                    <constraint firstItem="pi8-wk-eXa" firstAttribute="top" secondItem="htc-pO-AqH" secondAttribute="bottom" constant="5" id="UIT-XA-SEL"/>
+                                    <constraint firstAttribute="bottom" secondItem="htc-pO-AqH" secondAttribute="bottom" constant="30" id="YCJ-zB-dvc"/>
+                                    <constraint firstAttribute="trailing" secondItem="htc-pO-AqH" secondAttribute="trailing" constant="5" id="esR-My-uoD"/>
+                                    <constraint firstItem="pi8-wk-eXa" firstAttribute="centerX" secondItem="8W7-rS-Uob" secondAttribute="centerX" id="f3f-ax-wFo"/>
+                                </constraints>
+                                <accessibility identifier="Modern Slider"/>
+                            </customView>
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="B8X-sx-cjT">
-                                <rect key="frame" x="0.0" y="70" width="350" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="40"/>
                                 <subviews>
                                     <button toolTip="Close Clocker" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1cR-pI-osG">
                                         <rect key="frame" x="309" y="7" width="30" height="26"/>
@@ -537,63 +595,6 @@
                                     <constraint firstItem="Hc7-fH-V7i" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" constant="-1" id="vPp-mQ-wgE"/>
                                     <constraint firstItem="Ctq-BV-GPN" firstAttribute="leading" secondItem="B8X-sx-cjT" secondAttribute="leading" constant="8" id="ydm-oF-sVc"/>
                                 </constraints>
-                            </customView>
-                            <customView wantsLayer="YES" focusRingType="none" id="8W7-rS-Uob" userLabel="Modern Slider">
-                                <rect key="frame" x="0.0" y="0.0" width="350" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <subviews>
-                                    <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htc-pO-AqH">
-                                        <rect key="frame" x="5" y="30" width="340" height="40"/>
-                                        <clipView key="contentView" id="N1e-zE-F86">
-                                            <rect key="frame" x="0.0" y="0.0" width="340" height="40"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <collectionView id="lxA-64-3QU">
-                                                    <rect key="frame" x="0.0" y="0.0" width="340" height="40"/>
-                                                    <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" id="mgM-vQ-fB7">
-                                                        <size key="itemSize" width="50" height="50"/>
-                                                    </collectionViewFlowLayout>
-                                                    <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    <connections>
-                                                        <outlet property="dataSource" destination="-2" id="Exd-5i-4cB"/>
-                                                        <outlet property="delegate" destination="-2" id="r49-5r-Rx5"/>
-                                                    </connections>
-                                                </collectionView>
-                                            </subviews>
-                                        </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="8II-oP-xbd">
-                                            <rect key="frame" x="0.0" y="34" width="340" height="16"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="f9b-8n-Bt1">
-                                            <rect key="frame" x="-100" y="-100" width="16" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                    </scrollView>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pi8-wk-eXa">
-                                        <rect key="frame" x="123" y="3" width="104" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="eLd-zO-yiI"/>
-                                        </constraints>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label Goes Here" id="ii9-w0-WDX">
-                                            <font key="font" size="10" name="Avenir-LightOblique"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="Accent Color"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="5HT-Ps-YH3"/>
-                                    <constraint firstAttribute="bottom" secondItem="pi8-wk-eXa" secondAttribute="bottom" constant="3" id="6E6-8S-PZv"/>
-                                    <constraint firstItem="htc-pO-AqH" firstAttribute="top" secondItem="8W7-rS-Uob" secondAttribute="top" id="Ag8-2G-tVA"/>
-                                    <constraint firstItem="htc-pO-AqH" firstAttribute="leading" secondItem="8W7-rS-Uob" secondAttribute="leading" constant="5" id="QmJ-Dd-WLb"/>
-                                    <constraint firstItem="pi8-wk-eXa" firstAttribute="top" secondItem="htc-pO-AqH" secondAttribute="bottom" constant="5" id="UIT-XA-SEL"/>
-                                    <constraint firstAttribute="bottom" secondItem="htc-pO-AqH" secondAttribute="bottom" constant="30" id="YCJ-zB-dvc"/>
-                                    <constraint firstAttribute="trailing" secondItem="htc-pO-AqH" secondAttribute="trailing" constant="5" id="esR-My-uoD"/>
-                                    <constraint firstItem="pi8-wk-eXa" firstAttribute="centerX" secondItem="8W7-rS-Uob" secondAttribute="centerX" id="f3f-ax-wFo"/>
-                                </constraints>
-                                <accessibility identifier="Modern Slider"/>
                             </customView>
                         </subviews>
                         <constraints>
