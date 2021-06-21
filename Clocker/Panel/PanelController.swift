@@ -79,10 +79,17 @@ class PanelController: ParentPanelController {
 
         updateDefaultPreferences()
 
-        if DataStore.shared().timezones().isEmpty {
+        if DataStore.shared().timezones().isEmpty || DataStore.shared().shouldDisplay(.futureSlider) == false {
             futureSliderView.isHidden = true
-        } else if futureSliderView.isHidden == DataStore.shared().shouldDisplay(.futureSlider) {
-            futureSliderView.isHidden = false
+            modernContainerView.isHidden = true
+        } else if let value = DataStore.shared().retrieve(key: CLDisplayFutureSliderKey) as? NSNumber {
+            if value.intValue == 1 {
+                futureSliderView.isHidden = false
+                modernContainerView.isHidden = true
+            } else if value.intValue == 0 {
+                futureSliderView.isHidden = true
+                modernContainerView.isHidden = false
+            }
         }
 
         futureSlider.integerValue = 0

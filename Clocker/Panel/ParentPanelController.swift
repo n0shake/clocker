@@ -88,6 +88,7 @@ class ParentPanelController: NSWindowController {
     // Modern Slider
     @IBOutlet var modernSlider: NSCollectionView!
     @IBOutlet var modernSliderLabel: NSTextField!
+    @IBOutlet var modernContainerView: NSView!
 
     var defaultPreferences: [Data] {
         return DataStore.shared().timezones()
@@ -108,7 +109,16 @@ class ParentPanelController: NSWindowController {
     private func setupObservers() {
         futureSliderObserver = UserDefaults.standard.observe(\.displayFutureSlider, options: [.new]) { _, change in
             if let changedValue = change.newValue {
-                self.futureSliderView.isHidden = changedValue == 1
+                if changedValue == 0 {
+                    self.futureSliderView.isHidden = true
+                    self.modernContainerView.isHidden = false
+                } else if changedValue == 1 {
+                    self.futureSliderView.isHidden = false
+                    self.modernContainerView.isHidden = true
+                } else {
+                    self.futureSliderView.isHidden = true
+                    self.modernContainerView.isHidden = true
+                }
             }
         }
 
@@ -160,7 +170,18 @@ class ParentPanelController: NSWindowController {
 
         themeChanged()
 
-        futureSliderView.isHidden = !DataStore.shared().shouldDisplay(.futureSlider)
+        if DataStore.shared().timezones().isEmpty || DataStore.shared().shouldDisplay(.futureSlider) == false {
+            futureSliderView.isHidden = true
+            modernContainerView.isHidden = true
+        } else if let value = DataStore.shared().retrieve(key: CLDisplayFutureSliderKey) as? NSNumber {
+            if value.intValue == 1 {
+                futureSliderView.isHidden = false
+                modernContainerView.isHidden = true
+            } else if value.intValue == 0 {
+                futureSliderView.isHidden = true
+                modernContainerView.isHidden = false
+            }
+        }
 
         sharingButton.sendAction(on: .leftMouseDown)
 

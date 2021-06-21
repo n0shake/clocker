@@ -125,7 +125,10 @@ class DataStore: NSObject {
     func shouldDisplay(_ type: ViewType) -> Bool {
         switch type {
         case .futureSlider:
-            return shouldDisplayHelper(CLDisplayFutureSliderKey)
+            guard let value = retrieve(key: CLDisplayFutureSliderKey) as? NSNumber else {
+                return false
+            }
+            return value != 2 // Modern is 0, Legacy is 1 and Hide is 2.
         case .upcomingEventView:
             guard let value = retrieve(key: CLShowUpcomingEventView) as? NSString else {
                 return false
