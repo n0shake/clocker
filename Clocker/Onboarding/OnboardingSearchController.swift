@@ -4,6 +4,15 @@ import Cocoa
 import CoreLoggerKit
 import CoreModelKit
 
+/* Behaviour is as follows:
+
+ - When the user first sees the screen, show all available timezones
+ - When the user searches and tap enters, filter on both cities/locations + timezones
+ - On double-tapping, add the timezone to the list
+ - Show confirmation with undo screen
+
+ */
+
 class OnboardingSearchController: NSViewController {
     @IBOutlet private var appName: NSTextField!
     @IBOutlet private var onboardingTypeLabel: NSTextField!
@@ -13,6 +22,7 @@ class OnboardingSearchController: NSViewController {
     @IBOutlet var undoButton: NSButton!
 
     private var results: [TimezoneData] = []
+    private var searchDataSource: SearchDataSource!
     private var dataTask: URLSessionDataTask? = .none
     private var themeDidChangeNotification: NSObjectProtocol?
 
@@ -31,6 +41,7 @@ class OnboardingSearchController: NSViewController {
 
         view.wantsLayer = true
 
+        searchDataSource = SearchDataSource(with: searchBar)
         resultsTableView.delegate = self
         resultsTableView.setAccessibility("ResultsTableView")
         resultsTableView.dataSource = self
