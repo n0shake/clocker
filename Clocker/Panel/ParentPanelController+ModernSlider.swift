@@ -22,8 +22,8 @@ extension ParentPanelController {
         let changedOrigin = contentView.documentVisibleRect.origin
         let newPoint = NSPoint(x: changedOrigin.x + contentView.frame.width / 2, y: changedOrigin.y)
         let indexPath = modernSlider.indexPathForItem(at: newPoint)
-        if let correctIndexPath = indexPath?.item, let item = modernSlider.item(at: correctIndexPath) as? HourMarkerViewItem {
-            modernSliderLabel.stringValue = item.timeRepresentation
+        if let correctIndexPath = indexPath?.item {
+            modernSliderLabel.stringValue = modernSliderDataSource[correctIndexPath]
 //            setTimezoneDatasourceSlider(sliderValue: item.indexTag * 15)
 //            mainTableView.reloadData()
         }
@@ -47,29 +47,22 @@ extension ParentPanelController {
 
     public func forward15Minutes() -> [String] {
         let defaultParameters = minuteFromCalendar()
-        let hourQuarterDate = Calendar.current.nextDate(after: defaultParameters.0, matching: DateComponents(minute: defaultParameters.1), matchingPolicy: .strict, repeatedTimePolicy: .first, direction: .forward)!
-        var backwards = hourQuarterDate
-        var forwards = hourQuarterDate
+        var hourQuarterDate = Calendar.current.nextDate(after: defaultParameters.0, matching: DateComponents(minute: defaultParameters.1), matchingPolicy: .strict, repeatedTimePolicy: .first, direction: .forward)!
 
         var hourQuarters = [String]()
-        for _ in 1 ... 96 {
-            backwards = Calendar.current.date(byAdding: .minute, value: -15, to: backwards)!
-            hourQuarters.append(timezoneFormattedStringRepresentation(backwards))
-        }
-
-        hourQuarters.append(timezoneFormattedStringRepresentation(forwards))
-        for _ in 1 ... 96 {
-            forwards = Calendar.current.date(byAdding: .minute, value: 15, to: forwards)!
-            hourQuarters.append(timezoneFormattedStringRepresentation(forwards))
+        hourQuarters.append(timezoneFormattedStringRepresentation(hourQuarterDate))
+        for _ in 1 ... 288 {
+            hourQuarterDate = Calendar.current.date(byAdding: .minute, value: 15, to: hourQuarterDate)!
+            hourQuarters.append(timezoneFormattedStringRepresentation(hourQuarterDate))
         }
         return hourQuarters
     }
 
     public func backward15Minutes() -> [String] {
         let defaultParameters = minuteFromCalendar()
-        var hourQuarterDate = Calendar.current.nextDate(after: defaultParameters.0, matching: DateComponents(minute: defaultParameters.1), matchingPolicy: .strict, repeatedTimePolicy: .first, direction: .forward)!
+        var hourQuarterDate = Calendar.current.nextDate(after: defaultParameters.0, matching: DateComponents(minute: defaultParameters.1), matchingPolicy: .strict, repeatedTimePolicy: .first, direction: .backward)!
         var hourQuarters = [String]()
-        for _ in 1 ... 96 {
+        for _ in 1 ... 288 {
             hourQuarterDate = Calendar.current.date(byAdding: .minute, value: -15, to: hourQuarterDate)!
             hourQuarters.append(timezoneFormattedStringRepresentation(hourQuarterDate))
         }
