@@ -595,7 +595,7 @@ class ParentPanelController: NSWindowController {
                 if let futureSliderCell = futureSlider.cell as? CustomSliderCell, futureSliderCell.tracking == true {
                     return
                 }
-                if modernSliderLabel.isHidden == false {
+                if modernSlider.isHidden == false {
                     return
                 }
                 let dataOperation = TimezoneDataOperations(with: model)
