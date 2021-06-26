@@ -198,11 +198,10 @@ class ParentPanelController: NSWindowController {
         }
 
         if modernSlider != nil {
-//            var backwards = backward15Minutes()
-//            backwards.reverse()
-//            let forwards = forward15Minutes()
-            modernSliderDataSource = forward15Minutes()
-            print(modernSliderDataSource)
+            var backwards = backward15Minutes()
+            backwards.reverse()
+            let forwards = forward15Minutes()
+            modernSliderDataSource = backwards + forwards
 
             modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
             modernSlider.delegate = self
