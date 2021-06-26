@@ -92,9 +92,10 @@ class PanelController: ParentPanelController {
             }
         }
 
+        // Reset future slider value to zero
         futureSlider.integerValue = 0
-
         sliderDatePicker.dateValue = Date()
+        setModernSliderLabel(0)
 
         setTimezoneDatasourceSlider(sliderValue: 0)
 

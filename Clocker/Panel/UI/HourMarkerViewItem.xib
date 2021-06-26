@@ -19,10 +19,10 @@
             <rect key="frame" x="0.0" y="0.0" width="181" height="103"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="1AP-TS-SAk">
+                <box focusRingType="none" horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="1AP-TS-SAk">
                     <rect key="frame" x="88" y="0.0" width="5" height="103"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="1" id="DvW-Pd-tOA"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="1" id="DvW-Pd-tOA"/>
                     </constraints>
                 </box>
             </subviews>
