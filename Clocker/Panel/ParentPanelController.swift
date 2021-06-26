@@ -86,7 +86,10 @@ class ParentPanelController: NSWindowController {
     @IBOutlet var roundedDateView: NSView!
 
     // Modern Slider
+    public var modernSliderDataSource: [String] = []
     @IBOutlet var modernSlider: NSCollectionView!
+    @IBOutlet var modernSliderLabel: NSTextField!
+    @IBOutlet var modernContainerView: NSView!
 
     var defaultPreferences: [Data] {
         return DataStore.shared().timezones()
@@ -107,7 +110,16 @@ class ParentPanelController: NSWindowController {
     private func setupObservers() {
         futureSliderObserver = UserDefaults.standard.observe(\.displayFutureSlider, options: [.new]) { _, change in
             if let changedValue = change.newValue {
-                self.futureSliderView.isHidden = changedValue == 1
+                if changedValue == 0 {
+                    self.futureSliderView.isHidden = true
+                    self.modernContainerView.isHidden = false
+                } else if changedValue == 1 {
+                    self.futureSliderView.isHidden = false
+                    self.modernContainerView.isHidden = true
+                } else {
+                    self.futureSliderView.isHidden = true
+                    self.modernContainerView.isHidden = true
+                }
             }
         }
 
@@ -159,7 +171,18 @@ class ParentPanelController: NSWindowController {
 
         themeChanged()
 
-        futureSliderView.isHidden = !DataStore.shared().shouldDisplay(.futureSlider)
+        if DataStore.shared().timezones().isEmpty || DataStore.shared().shouldDisplay(.futureSlider) == false {
+            futureSliderView.isHidden = true
+            modernContainerView.isHidden = true
+        } else if let value = DataStore.shared().retrieve(key: CLDisplayFutureSliderKey) as? NSNumber {
+            if value.intValue == 1 {
+                futureSliderView.isHidden = false
+                modernContainerView.isHidden = true
+            } else if value.intValue == 0 {
+                futureSliderView.isHidden = true
+                modernContainerView.isHidden = false
+            }
+        }
 
         sharingButton.sendAction(on: .leftMouseDown)
 
@@ -175,8 +198,22 @@ class ParentPanelController: NSWindowController {
         }
 
         if modernSlider != nil {
+//            var backwards = backward15Minutes()
+//            backwards.reverse()
+//            let forwards = forward15Minutes()
+            modernSliderDataSource = forward15Minutes()
+            print(modernSliderDataSource)
+
             modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
             modernSlider.delegate = self
+            modernSlider.postsBoundsChangedNotifications = true
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(collectionViewDidScroll(_:)),
+                                                   name: NSView.boundsDidChangeNotification,
+                                                   object: modernSlider.superview)
+            modernSliderLabel.stringValue = modernSliderDataSource[modernSliderDataSource.count / 2]
+            let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSliderDataSource.count / 2, section: 0)])
+            modernSlider.scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
         }
 
         if roundedDateView != nil {
@@ -559,7 +596,9 @@ class ParentPanelController: NSWindowController {
                 if let futureSliderCell = futureSlider.cell as? CustomSliderCell, futureSliderCell.tracking == true {
                     return
                 }
-
+                if modernSliderLabel.isHidden == false {
+                    return
+                }
                 let dataOperation = TimezoneDataOperations(with: model)
                 cellView.time.stringValue = dataOperation.time(with: futureSliderValue)
                 cellView.sunriseSetTime.stringValue = dataOperation.formattedSunriseTime(with: futureSliderValue)
@@ -842,7 +881,7 @@ class ParentPanelController: NSWindowController {
 
         } else {
             updateReviewView()
-            RateController.prompted()
+            ReviewController.prompted()
 
             if let countryCode = Locale.autoupdatingCurrent.regionCode {
                 Logger.log(object: ["CurrentCountry": countryCode], for: "Remind Later for Feedback")
@@ -857,7 +896,7 @@ class ParentPanelController: NSWindowController {
                         leftTitle: PanelConstants.noThanksTitle,
                         rightTitle: "Yes")
         } else if sender.title == PanelConstants.yesWithQuestionMark {
-            RateController.prompted()
+            ReviewController.prompted()
             updateReviewView()
 
             feedbackWindow = AppFeedbackWindowController.shared()
@@ -865,7 +904,7 @@ class ParentPanelController: NSWindowController {
             NSApp.activate(ignoringOtherApps: true)
         } else {
             updateReviewView()
-            RateController.prompt()
+            ReviewController.prompt()
 
             if let countryCode = Locale.autoupdatingCurrent.regionCode {
                 Logger.log(object: ["CurrentCountry": countryCode], for: "Remind Later for Feedback")
@@ -876,7 +915,7 @@ class ParentPanelController: NSWindowController {
     private func updateReviewView() {
         reviewView.isHidden = true
         showReviewCell = false
-        leftField.stringValue = NSLocalizedString("Enjoy using Clocker",
+        leftField.stringValue = NSLocalizedString("Enjoy using Clocker?",
                                                   comment: "Title asking users if they like the app")
 
         let paragraphStyle = NSMutableParagraphStyle()
@@ -1029,21 +1068,5 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
         Logger.log(object: ["Service Title": sharingService.title],
                    for: "Sharing Service Executed")
         return self as? NSSharingServiceDelegate
-    }
-}
-
-extension ParentPanelController: NSCollectionViewDataSource, NSCollectionViewDelegate {
-    func collectionView(_: NSCollectionView, numberOfItemsInSection _: Int) -> Int {
-        return 24
-    }
-
-    func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: HourMarkerViewItem.reuseIdentifier, for: indexPath) as! HourMarkerViewItem
-        item.setup(with: indexPath.item)
-        return item
-    }
-
-    func collectionView(_: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-        Logger.info("Did Select Item at \(indexPaths.description)")
     }
 }

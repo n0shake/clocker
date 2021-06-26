@@ -13,6 +13,7 @@
 		3508CCAA259A0027000E3530 /* StatusContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CCA9259A0027000E3530 /* StatusContainerView.swift */; };
 		357391872507277500D30819 /* HourMarkerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357391852507277500D30819 /* HourMarkerViewItem.swift */; };
 		357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357391862507277500D30819 /* HourMarkerViewItem.xib */; };
+		3579765E2680208C009DDA6E /* ParentPanelController+ModernSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3579765D2680208C009DDA6E /* ParentPanelController+ModernSlider.swift */; };
 		3595FAD0227F88BC0044A12A /* UserDefaults + KVOExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */; };
 		35B2FEC0259A186F005DA84D /* StartupKit in Frameworks */ = {isa = PBXBuildFile; productRef = 35B2FEBF259A186F005DA84D /* StartupKit */; };
 		35B2FEDD259A2291005DA84D /* CoreLoggerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 35B2FEDC259A2291005DA84D /* CoreLoggerKit */; };
@@ -66,7 +67,7 @@
 		35C36F612259DE67002FA5C6 /* NotesPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35C36F5F2259DE67002FA5C6 /* NotesPopover.xib */; };
 		35C36F622259DE67002FA5C6 /* NotesPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F602259DE67002FA5C6 /* NotesPopover.swift */; };
 		35C36F662259DF4C002FA5C6 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F642259DF4C002FA5C6 /* ReviewView.swift */; };
-		35C36F672259DF4C002FA5C6 /* RateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F652259DF4C002FA5C6 /* RateController.swift */; };
+		35C36F672259DF4C002FA5C6 /* ReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F652259DF4C002FA5C6 /* ReviewController.swift */; };
 		35C36F692259DF55002FA5C6 /* TextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F682259DF55002FA5C6 /* TextViewWithPlaceholder.swift */; };
 		35C36F6B2259E0E1002FA5C6 /* FloatingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35C36F6A2259E0E1002FA5C6 /* FloatingWindow.xib */; };
 		35C36F6F2259E185002FA5C6 /* CustomSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F6C2259E185002FA5C6 /* CustomSliderCell.swift */; };
@@ -90,9 +91,6 @@
 		9A20A04B1C4DEED200FB45AB /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A20A04A1C4DEED200FB45AB /* IOKit.framework */; };
 		9A24A1881ED902CC0095201E /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A24A1871ED902CC0095201E /* EventKit.framework */; };
 		9A3169C11D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A3169C01D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist */; };
-		9A3231C725C605DA00D1078F /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A3231C625C605DA00D1078F /* Keys.plist */; };
-		9A3231C825C605DA00D1078F /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A3231C625C605DA00D1078F /* Keys.plist */; };
-		9A3231C925C605DA00D1078F /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A3231C625C605DA00D1078F /* Keys.plist */; };
 		9A4379271BEC223900F4E27F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379231BEC223900F4E27F /* Fabric.framework */; };
 		9A43792A1BEC230A00F4E27F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379291BEC230A00F4E27F /* libc++.tbd */; };
 		9A56DB801C1CFB73004CE6AF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A56DB7D1C1CFB73004CE6AF /* MainMenu.xib */; };
@@ -233,7 +231,9 @@
 		3569A44E25441F320087E254 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		357391852507277500D30819 /* HourMarkerViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourMarkerViewItem.swift; sourceTree = "<group>"; };
 		357391862507277500D30819 /* HourMarkerViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourMarkerViewItem.xib; sourceTree = "<group>"; };
+		3579765D2680208C009DDA6E /* ParentPanelController+ModernSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParentPanelController+ModernSlider.swift"; sourceTree = "<group>"; };
 		3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults + KVOExtensions.swift"; sourceTree = "<group>"; };
+		35992D07267EA61E00020078 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Keys.plist; path = ../Internal/Keys.plist; sourceTree = "<group>"; };
 		35A6A4B925C5DEF300356073 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		35B2FEB1259A1649005DA84D /* StartupKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StartupKit; sourceTree = "<group>"; };
 		35B2FED4259A2244005DA84D /* CoreLoggerKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CoreLoggerKit; sourceTree = "<group>"; };
@@ -287,7 +287,7 @@
 		35C36F5F2259DE67002FA5C6 /* NotesPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesPopover.xib; sourceTree = "<group>"; };
 		35C36F602259DE67002FA5C6 /* NotesPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesPopover.swift; sourceTree = "<group>"; };
 		35C36F642259DF4C002FA5C6 /* ReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
-		35C36F652259DF4C002FA5C6 /* RateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateController.swift; sourceTree = "<group>"; };
+		35C36F652259DF4C002FA5C6 /* ReviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewController.swift; sourceTree = "<group>"; };
 		35C36F682259DF55002FA5C6 /* TextViewWithPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewWithPlaceholder.swift; sourceTree = "<group>"; };
 		35C36F6A2259E0E1002FA5C6 /* FloatingWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloatingWindow.xib; sourceTree = "<group>"; };
 		35C36F6C2259E185002FA5C6 /* CustomSliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSliderCell.swift; sourceTree = "<group>"; };
@@ -311,7 +311,6 @@
 		9A20A06F1C4E804D00FB45AB /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		9A24A1871ED902CC0095201E /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		9A3169C01D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = com.abhishek.ClockerHelper.plist; path = Clocker/com.abhishek.ClockerHelper.plist; sourceTree = "<group>"; };
-		9A3231C625C605DA00D1078F /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Keys.plist; path = Internal/Keys.plist; sourceTree = "<group>"; };
 		9A4379231BEC223900F4E27F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9A4379291BEC230A00F4E27F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		9A43792B1BEC231100F4E27F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -539,6 +538,7 @@
 				35C36F282259D6FA002FA5C6 /* PanelController.swift */,
 				35C36F272259D6FA002FA5C6 /* ParentPanelController.swift */,
 				35C36F722259E1AA002FA5C6 /* FloatingWindowController.swift */,
+				3579765D2680208C009DDA6E /* ParentPanelController+ModernSlider.swift */,
 			);
 			path = Panel;
 			sourceTree = "<group>";
@@ -612,7 +612,7 @@
 		35C36F632259DE9D002FA5C6 /* Rate Controller */ = {
 			isa = PBXGroup;
 			children = (
-				35C36F652259DF4C002FA5C6 /* RateController.swift */,
+				35C36F652259DF4C002FA5C6 /* ReviewController.swift */,
 				35C36F642259DF4C002FA5C6 /* ReviewView.swift */,
 			);
 			path = "Rate Controller";
@@ -822,7 +822,7 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
-				9A3231C625C605DA00D1078F /* Keys.plist */,
+				35992D07267EA61E00020078 /* Keys.plist */,
 				35B2FEE4259A2C25005DA84D /* CoreModelKit */,
 				35B2FED4259A2244005DA84D /* CoreLoggerKit */,
 				35B2FEB1259A1649005DA84D /* StartupKit */,
@@ -1100,7 +1100,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A3231C925C605DA00D1078F /* Keys.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1108,7 +1107,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A3231C825C605DA00D1078F /* Keys.plist in Resources */,
 				9A8B256A232EFAD300204CAD /* Localizable.strings in Resources */,
 				9AA522C023415BDD00C9E005 /* InfoPlist.strings in Resources */,
 			);
@@ -1118,7 +1116,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A3231C725C605DA00D1078F /* Keys.plist in Resources */,
 				9A13BAEA1CA88A76007C6CBE /* Localizable.strings in Resources */,
 				357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */,
 				9AB6F15E2259D08300A44663 /* iVersion.bundle in Resources */,
@@ -1213,7 +1210,7 @@
 				35C36EF622595F14002FA5C6 /* OnboardingController.swift in Sources */,
 				9AB6F1622259D1B000A44663 /* PreferencesDataSource.swift in Sources */,
 				3508CC9A259A0001000E3530 /* StatusItemView.swift in Sources */,
-				35C36F672259DF4C002FA5C6 /* RateController.swift in Sources */,
+				35C36F672259DF4C002FA5C6 /* ReviewController.swift in Sources */,
 				35C36F472259D892002FA5C6 /* Reach.swift in Sources */,
 				35C36EF222595F14002FA5C6 /* OnboardingWelcomeViewController.swift in Sources */,
 				35C36F732259E1AA002FA5C6 /* FloatingWindowController.swift in Sources */,
@@ -1285,6 +1282,7 @@
 				35C36F15225961DA002FA5C6 /* TimeChunk.swift in Sources */,
 				35C36F482259D892002FA5C6 /* NetworkManager.swift in Sources */,
 				9A8605AE1BEC148400A810A4 /* main.m in Sources */,
+				3579765E2680208C009DDA6E /* ParentPanelController+ModernSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1453,14 +1451,23 @@
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
+				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_STATIC_ANALYZER_MODE = deep;
+				CLANG_WARN_ASSIGN_ENUM = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = NO;
-				CLANG_WARN_OBJC_INTERFACE_IVARS = NO;
-				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
+				CLANG_WARN_FRAMEWORK_INCLUDE_PRIVATE_FROM_PUBLIC = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_INTERFACE_IVARS = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
 				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
-				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = NO;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
@@ -1483,7 +1490,10 @@
 				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
@@ -1496,12 +1506,13 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 21.02.03;
+				MARKETING_VERSION = 21.07.01;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
 				PROVISIONING_PROFILE = "71701bee-fee7-4927-b6e9-20d9a78ef29c";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = "Clocker-Bridging-Header.h";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -1988,14 +1999,23 @@
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
+				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_STATIC_ANALYZER_MODE = deep;
+				CLANG_WARN_ASSIGN_ENUM = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = NO;
-				CLANG_WARN_OBJC_INTERFACE_IVARS = NO;
-				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
+				CLANG_WARN_FRAMEWORK_INCLUDE_PRIVATE_FROM_PUBLIC = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_INTERFACE_IVARS = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
 				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
-				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = NO;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
@@ -2019,7 +2039,10 @@
 				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
@@ -2032,7 +2055,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 21.02.03;
+				MARKETING_VERSION = 21.07.01;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
@@ -2040,6 +2063,7 @@
 				PRODUCT_NAME = Clocker;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = "Clocker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2057,14 +2081,23 @@
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
+				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_STATIC_ANALYZER_MODE = deep;
+				CLANG_WARN_ASSIGN_ENUM = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = NO;
-				CLANG_WARN_OBJC_INTERFACE_IVARS = NO;
-				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
+				CLANG_WARN_FRAMEWORK_INCLUDE_PRIVATE_FROM_PUBLIC = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_INTERFACE_IVARS = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
 				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
-				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = NO;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CODE_SIGN_ENTITLEMENTS = Clocker/Clocker.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
@@ -2087,7 +2120,10 @@
 				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
@@ -2100,13 +2136,14 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 21.02.03;
+				MARKETING_VERSION = 21.07.01;
 				OTHER_LDFLAGS = "";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = "Clocker-Bridging-Header.h";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
