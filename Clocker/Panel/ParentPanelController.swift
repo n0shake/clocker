@@ -86,6 +86,7 @@ class ParentPanelController: NSWindowController {
     @IBOutlet var roundedDateView: NSView!
 
     // Modern Slider
+    public var modernSliderDataSource: [String] = []
     @IBOutlet var modernSlider: NSCollectionView!
     @IBOutlet var modernSliderLabel: NSTextField!
     @IBOutlet var modernContainerView: NSView!
@@ -197,6 +198,12 @@ class ParentPanelController: NSWindowController {
         }
 
         if modernSlider != nil {
+//            var backwards = backward15Minutes()
+//            backwards.reverse()
+//            let forwards = forward15Minutes()
+            modernSliderDataSource = forward15Minutes()
+            print(modernSliderDataSource)
+
             modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
             modernSlider.delegate = self
             modernSlider.postsBoundsChangedNotifications = true
@@ -204,7 +211,9 @@ class ParentPanelController: NSWindowController {
                                                    selector: #selector(collectionViewDidScroll(_:)),
                                                    name: NSView.boundsDidChangeNotification,
                                                    object: modernSlider.superview)
-            setModernSliderLabel(0)
+            modernSliderLabel.stringValue = modernSliderDataSource[modernSliderDataSource.count / 2]
+            let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSliderDataSource.count / 2, section: 0)])
+            modernSlider.scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
         }
 
         if roundedDateView != nil {
@@ -587,7 +596,9 @@ class ParentPanelController: NSWindowController {
                 if let futureSliderCell = futureSlider.cell as? CustomSliderCell, futureSliderCell.tracking == true {
                     return
                 }
-
+                if modernSliderLabel.isHidden == false {
+                    return
+                }
                 let dataOperation = TimezoneDataOperations(with: model)
                 cellView.time.stringValue = dataOperation.time(with: futureSliderValue)
                 cellView.sunriseSetTime.stringValue = dataOperation.formattedSunriseTime(with: futureSliderValue)

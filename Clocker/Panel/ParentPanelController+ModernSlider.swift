@@ -5,12 +5,13 @@ import Foundation
 
 extension ParentPanelController: NSCollectionViewDataSource, NSCollectionViewDelegate {
     func collectionView(_: NSCollectionView, numberOfItemsInSection _: Int) -> Int {
-        return 96
+        return modernSliderDataSource.count
     }
 
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: HourMarkerViewItem.reuseIdentifier, for: indexPath) as! HourMarkerViewItem
-        item.setup(with: indexPath.item)
+        let dataSoureValue = modernSliderDataSource[indexPath.item]
+        item.setup(with: indexPath.item, value: dataSoureValue)
         return item
     }
 }
@@ -22,8 +23,8 @@ extension ParentPanelController {
         let newPoint = NSPoint(x: changedOrigin.x + contentView.frame.width / 2, y: changedOrigin.y)
         let indexPath = modernSlider.indexPathForItem(at: newPoint)
         if let correctIndexPath = indexPath?.item, let item = modernSlider.item(at: correctIndexPath) as? HourMarkerViewItem {
-            setModernSliderLabel(item.indexTag)
-            setTimezoneDatasourceSlider(sliderValue: item.indexTag * 15)
+            modernSliderLabel.stringValue = item.timeRepresentation
+//            setTimezoneDatasourceSlider(sliderValue: item.indexTag * 15)
             item.setupLineColor()
             mainTableView.reloadData()
 
@@ -36,16 +37,59 @@ extension ParentPanelController {
         }
     }
 
-    func setModernSliderLabel(_ index: Int) {
-        var dateComponents = DateComponents()
-        dateComponents.minute = index * 15
-        if let newDate = Calendar.autoupdatingCurrent.date(byAdding: dateComponents, to: Date().nextHour) {
-            let dateFormatter = DateFormatterManager.dateFormatterWithFormat(with: .none,
-                                                                             format: "MMM d HH:mm",
-                                                                             timezoneIdentifier: TimeZone.current.identifier,
-                                                                             locale: Locale.autoupdatingCurrent)
-
-            modernSliderLabel.stringValue = dateFormatter.string(from: newDate)
+    private func minuteFromCalendar() -> (Date, Int) {
+        let currentDate = Date()
+        var minute = Calendar.current.component(.minute, from: currentDate)
+        if minute < 15 {
+            minute = 15
+        } else if minute < 30 {
+            minute = 30
+        } else if minute < 45 {
+            minute = 45
+        } else {
+            minute = 0
         }
+
+        return (currentDate, minute)
+    }
+
+    public func forward15Minutes() -> [String] {
+        let defaultParameters = minuteFromCalendar()
+        let hourQuarterDate = Calendar.current.nextDate(after: defaultParameters.0, matching: DateComponents(minute: defaultParameters.1), matchingPolicy: .strict, repeatedTimePolicy: .first, direction: .forward)!
+        var backwards = hourQuarterDate
+        var forwards = hourQuarterDate
+
+        var hourQuarters = [String]()
+        for _ in 1 ... 96 {
+            backwards = Calendar.current.date(byAdding: .minute, value: -15, to: backwards)!
+            hourQuarters.append(timezoneFormattedStringRepresentation(backwards))
+        }
+
+        hourQuarters.append(timezoneFormattedStringRepresentation(forwards))
+        for _ in 1 ... 96 {
+            forwards = Calendar.current.date(byAdding: .minute, value: 15, to: forwards)!
+            hourQuarters.append(timezoneFormattedStringRepresentation(forwards))
+        }
+        return hourQuarters
+    }
+
+    public func backward15Minutes() -> [String] {
+        let defaultParameters = minuteFromCalendar()
+        var hourQuarterDate = Calendar.current.nextDate(after: defaultParameters.0, matching: DateComponents(minute: defaultParameters.1), matchingPolicy: .strict, repeatedTimePolicy: .first, direction: .forward)!
+        var hourQuarters = [String]()
+        for _ in 1 ... 96 {
+            hourQuarterDate = Calendar.current.date(byAdding: .minute, value: -15, to: hourQuarterDate)!
+            hourQuarters.append(timezoneFormattedStringRepresentation(hourQuarterDate))
+        }
+
+        return hourQuarters
+    }
+
+    private func timezoneFormattedStringRepresentation(_ date: Date) -> String {
+        let dateFormatter = DateFormatterManager.dateFormatterWithFormat(with: .none,
+                                                                         format: "MMM d HH:mm",
+                                                                         timezoneIdentifier: TimeZone.current.identifier,
+                                                                         locale: Locale.autoupdatingCurrent)
+        return dateFormatter.string(from: date)
     }
 }
