@@ -8,6 +8,11 @@ enum RowType {
     case timezone
 }
 
+enum SearchLocation {
+    case onboarding
+    case preferences
+}
+
 struct TimezoneMetadata {
     let timezone: NSTimeZone
     let tags: Set<String>
@@ -18,6 +23,7 @@ struct TimezoneMetadata {
 class SearchDataSource: NSObject {
     private var searchField: NSSearchField!
     private var finalArray: [RowType] = []
+    private var location: SearchLocation = .preferences
     private var dataTask: URLSessionDataTask? = .none
     private var timezoneMetadataDictionary: [String: [String]] =
         ["GMT+5:30": ["india", "indian", "kolkata", "calcutta", "mumbai", "delhi", "hyderabad", "noida"],
@@ -27,13 +33,14 @@ class SearchDataSource: NSObject {
          "EST": ["florida", "new york"],
          "EDT": ["florida", "new york"]]
 
-    private var filteredArray: [TimezoneData] = []
-    private var timezoneArray: [TimezoneMetadata] = []
-    var timezoneFilteredArray: [TimezoneMetadata] = []
+    private var filteredArray: [TimezoneData] = [] // Filtered results from the Google API
+    private var timezoneArray: [TimezoneMetadata] = [] // All timezones
+    var timezoneFilteredArray: [TimezoneMetadata] = [] // Filtered timezones list based on search input
 
-    init(with searchField: NSSearchField) {
+    init(with searchField: NSSearchField, location: SearchLocation = .preferences) {
         super.init()
         self.searchField = searchField
+        self.location = location
         setupTimezoneDatasource()
         calculateChangesets()
     }
@@ -50,8 +57,26 @@ class SearchDataSource: NSObject {
         return finalArray[row]
     }
 
-    func retrieveFilteredResult(_ index: Int) -> TimezoneData? {
+    // Returns result from finalArray based on the type i.e. city or timezone
+    func retrieveResult(_ row: Int) -> Any? {
+        let currentRowType = finalArray[row]
+
+        switch currentRowType {
+        case .timezone:
+            let datasource = searchField.stringValue.isEmpty ? timezoneArray : timezoneFilteredArray
+            return datasource[row % datasource.count]
+        case .city:
+            let timezoneData = filteredArray[row % filteredArray.count]
+            return timezoneData
+        }
+    }
+
+    func retrieveFilteredResultFromGoogleAPI(_ index: Int) -> TimezoneData? {
         return filteredArray[index % filteredArray.count]
+    }
+
+    func resultsCount() -> Int {
+        return finalArray.count
     }
 
     private func setupTimezoneDatasource() {
@@ -103,7 +128,7 @@ class SearchDataSource: NSObject {
             }
         }
 
-        if searchField.stringValue.isEmpty {
+        if searchField.stringValue.isEmpty, location == .preferences {
             addTimezonesIfNeeded(timezoneArray)
         } else {
             filteredArray.forEach { _ in
@@ -132,8 +157,8 @@ class SearchDataSource: NSObject {
         }
     }
 
-    func retrieveSelectedTimezone(_ searchString: String, _ selectedIndex: Int) -> TimezoneMetadata {
-        return searchString.isEmpty == false ? timezoneFilteredArray[selectedIndex % timezoneFilteredArray.count] :
+    func retrieveSelectedTimezone(_ selectedIndex: Int) -> TimezoneMetadata {
+        return searchField.stringValue.isEmpty == false ? timezoneFilteredArray[selectedIndex % timezoneFilteredArray.count] :
             timezoneArray[selectedIndex]
     }
 }

@@ -79,19 +79,29 @@ class PanelController: ParentPanelController {
 
         updateDefaultPreferences()
 
-        if DataStore.shared().timezones().isEmpty {
+        if DataStore.shared().timezones().isEmpty || DataStore.shared().shouldDisplay(.futureSlider) == false {
             futureSliderView.isHidden = true
-        } else if futureSliderView.isHidden == DataStore.shared().shouldDisplay(.futureSlider) {
-            futureSliderView.isHidden = false
+            modernContainerView.isHidden = true
+        } else if let value = DataStore.shared().retrieve(key: CLDisplayFutureSliderKey) as? NSNumber {
+            if value.intValue == 1 {
+                futureSliderView.isHidden = false
+                modernContainerView.isHidden = true
+            } else if value.intValue == 0 {
+                futureSliderView.isHidden = true
+                modernContainerView.isHidden = false
+            }
         }
 
+        // Reset future slider value to zero
         futureSlider.integerValue = 0
-
         sliderDatePicker.dateValue = Date()
+        modernSliderLabel.stringValue = modernSliderDataSource[modernSliderDataSource.count / 2]
+        let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSliderDataSource.count / 2, section: 0)])
+        modernSlider.scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
 
         setTimezoneDatasourceSlider(sliderValue: 0)
 
-        reviewView.isHidden = !RateController.canPrompt()
+        reviewView.isHidden = !ReviewController.canPrompt()
 
         reviewView.layer?.backgroundColor = NSColor.clear.cgColor
 
@@ -367,7 +377,7 @@ class PanelController: ParentPanelController {
         // We only want to move the slider if the slider is visible.
         // If the parent view is hidden, then that doesn't automatically mean that all the childViews are also hidden
         // Hence, check if the parent view is totally hidden or not..
-        if futureSliderView.isHidden == false {
+        if futureSliderView.isHidden == false, modernSlider.isHidden {
             futureSlider.doubleValue += Double(event.scrollingDeltaX)
             sliderMoved(futureSlider!)
         }

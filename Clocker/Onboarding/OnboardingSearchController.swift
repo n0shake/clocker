@@ -21,8 +21,7 @@ class OnboardingSearchController: NSViewController {
     @IBOutlet private var accessoryLabel: NSTextField!
     @IBOutlet var undoButton: NSButton!
 
-    private var results: [TimezoneData] = []
-    private var searchDataSource: SearchDataSource!
+    private var searchResultsDataSource: SearchDataSource!
     private var dataTask: URLSessionDataTask? = .none
     private var themeDidChangeNotification: NSObjectProtocol?
 
@@ -40,8 +39,9 @@ class OnboardingSearchController: NSViewController {
         super.viewDidLoad()
 
         view.wantsLayer = true
+        searchResultsDataSource = SearchDataSource(with: searchBar, location: .onboarding)
 
-        searchDataSource = SearchDataSource(with: searchBar)
+        resultsTableView.isHidden = true
         resultsTableView.delegate = self
         resultsTableView.setAccessibility("ResultsTableView")
         resultsTableView.dataSource = self
@@ -79,23 +79,68 @@ class OnboardingSearchController: NSViewController {
     @objc func doubleClickAction(_: NSTableView?) {
         [accessoryLabel].forEach { $0?.isHidden = false }
 
-        if resultsTableView.selectedRow >= 0, resultsTableView.selectedRow < results.count {
-            let selectedTimezone = results[resultsTableView.selectedRow]
+        if resultsTableView.selectedRow >= 0, resultsTableView.selectedRow < searchResultsDataSource.resultsCount() {
+            let selectedType = searchResultsDataSource.placeForRow(resultsTableView.selectedRow)
+            switch selectedType {
+            case .city:
+                let filteredGoogleResult = searchResultsDataSource.retrieveFilteredResultFromGoogleAPI(resultsTableView.selectedRow)
+                addTimezoneToDefaults(filteredGoogleResult!)
+                return
+            case .timezone:
+                cleanupAfterInstallingTimezone()
+                return
+            }
+        }
+    }
 
-            addTimezoneToDefaults(selectedTimezone)
+    private func cleanupAfterInstallingTimezone() {
+        let data = TimezoneData()
+        data.setLabel(CLEmptyString)
+
+        let currentSelection = searchResultsDataSource.retrieveSelectedTimezone(resultsTableView.selectedRow)
+
+        let metaInfo = metadata(for: currentSelection)
+        data.timezoneID = metaInfo.0.name
+        data.formattedAddress = metaInfo.1.formattedName
+        data.selectionType = .timezone
+        data.isSystemTimezone = metaInfo.0.name == NSTimeZone.system.identifier
+
+        let operationObject = TimezoneDataOperations(with: data)
+        operationObject.saveObject()
+
+        searchResultsDataSource.cleanupFilterArray()
+        searchResultsDataSource.timezoneFilteredArray = []
+        searchResultsDataSource.calculateChangesets()
+        searchBar.stringValue = CLEmptyString
+
+        accessoryLabel.stringValue = "Added \(metaInfo.1.formattedName)."
+        undoButton.isHidden = false
+        setupLabelHidingTimer()
+
+        resultsTableView.reloadData()
+        resultsTableView.isHidden = true
+    }
+
+    private func metadata(for selection: TimezoneMetadata) -> (NSTimeZone, TimezoneMetadata) {
+        if selection.formattedName == "Anywhere on Earth" {
+            return (NSTimeZone(name: "GMT-1200")!, selection)
+        } else if selection.formattedName == "UTC" {
+            return (NSTimeZone(name: "GMT")!, selection)
+        } else {
+            return (selection.timezone, selection)
+        }
+    }
+
+    private func setupLabelHidingTimer() {
+        Timer.scheduledTimer(withTimeInterval: 5,
+                             repeats: false) { _ in
+            OperationQueue.main.addOperation {
+                self.setInfoLabel(CLEmptyString)
+            }
         }
     }
 
     private func addTimezoneToDefaults(_ timezone: TimezoneData) {
-        func setupLabelHidingTimer() {
-            Timer.scheduledTimer(withTimeInterval: 5,
-                                 repeats: false) { _ in
-                OperationQueue.main.addOperation {
-                    self.accessoryLabel.stringValue = CLEmptyString
-                }
-            }
-        }
-
         if resultsTableView.selectedRow == -1 {
             setInfoLabel(PreferencesConstants.noTimezoneSelectedErrorMessage)
             setupLabelHidingTimer()
@@ -142,22 +187,10 @@ class OnboardingSearchController: NSViewController {
         return false
     }
 
-    // Extracting this out for tests
-    private func decodeTimezone(from data: Data) -> Timezone? {
-        let jsonDecoder = JSONDecoder()
-        do {
-            let decodedObject = try jsonDecoder.decode(Timezone.self, from: data)
-            return decodedObject
-        } catch {
-            Logger.info("decodedObject error: \n\(error)")
-            return nil
-        }
-    }
-
     private func fetchTimezone(for latitude: Double, and longitude: Double, _ dataObject: TimezoneData) {
         if NetworkManager.isConnected() == false || ProcessInfo.processInfo.arguments.contains("mockTimezoneDown") {
             setInfoLabel(PreferencesConstants.noInternetConnectivityError)
-            results = []
+            searchResultsDataSource.cleanupFilterArray()
             resultsTableView.reloadData()
             return
         }
@@ -177,8 +210,8 @@ class OnboardingSearchController: NSViewController {
                     return
                 }
 
-                if error == nil, let json = response, let response = self.decodeTimezone(from: json) {
-                    if self.resultsTableView.selectedRow >= 0, self.resultsTableView.selectedRow < self.results.count {
+                if error == nil, let json = response, let response = json.decodeTimezone() {
+                    if self.resultsTableView.selectedRow >= 0, self.resultsTableView.selectedRow < self.searchResultsDataSource.resultsCount() {
                         var filteredAddress = "Error"
 
                         if let address = dataObject.formattedAddress {
@@ -261,11 +294,6 @@ class OnboardingSearchController: NSViewController {
 
         accessoryLabel.isHidden = false
 
-        if NetworkManager.isConnected() == false {
-            setInfoLabel(PreferencesConstants.noInternetConnectivityError)
-            return
-        }
-
         NSObject.cancelPreviousPerformRequests(withTarget: self)
         perform(#selector(OnboardingSearchController.actualSearch), with: nil, afterDelay: 0.2)
     }
@@ -279,6 +307,7 @@ class OnboardingSearchController: NSViewController {
 
     @objc func actualSearch() {
         func setupForError() {
+            searchResultsDataSource.calculateChangesets()
             resultsTableView.isHidden = true
         }
 
@@ -311,11 +340,18 @@ class OnboardingSearchController: NSViewController {
                                                    return
                                                }
 
-                                               self.results = []
+                                               self.searchResultsDataSource.cleanupFilterArray()
+                                               self.searchResultsDataSource.timezoneFilteredArray = []
 
                                                if let errorPresent = error {
-                                                   self.presentErrorMessage(errorPresent.localizedDescription)
-                                                   setupForError()
+                                                   self.findLocalSearchResultsForTimezones()
+                                                   if self.searchResultsDataSource.timezoneFilteredArray.count == 0 {
+                                                       self.presentErrorMessage(errorPresent.localizedDescription)
+                                                       setupForError()
+                                                       return
+                                                   }
+
+                                                   self.prepareUIForPresentingResults()
                                                    return
                                                }
 
@@ -325,7 +361,7 @@ class OnboardingSearchController: NSViewController {
                                                    return
                                                }
 
-                                               let searchResults = self.decode(from: data)
+                                               let searchResults = data.decode()
 
                                                if searchResults?.status == "ZERO_RESULTS" {
                                                    self.setInfoLabel("No results! 😔 Try entering the exact name.")
@@ -334,10 +370,8 @@ class OnboardingSearchController: NSViewController {
                                                }
 
                                                self.appendResultsToFilteredArray(searchResults!.results)
-
-                                               self.setInfoLabel(CLEmptyString)
-
-                                               self.resultsTableView.reloadData()
+                                               self.findLocalSearchResultsForTimezones()
+                                               self.prepareUIForPresentingResults()
                                            }
         })
     }
@@ -350,12 +384,25 @@ class OnboardingSearchController: NSViewController {
         }
     }
 
+    private func findLocalSearchResultsForTimezones() {
+        let lowercasedSearchString = searchBar.stringValue.lowercased()
+        searchResultsDataSource.searchTimezones(lowercasedSearchString)
+    }
+
+    private func prepareUIForPresentingResults() {
+        setInfoLabel(CLEmptyString)
+        if searchResultsDataSource.calculateChangesets() {
+            resultsTableView.isHidden = false
+            resultsTableView.reloadData()
+        }
+    }
+
     private func appendResultsToFilteredArray(_ results: [SearchResult.Result]) {
-        results.forEach {
-            let location = $0.geometry.location
+        let finalTimezones: [TimezoneData] = results.map { (result) -> TimezoneData in
+            let location = result.geometry.location
             let latitude = location.lat
             let longitude = location.lng
-            let formattedAddress = $0.formattedAddress
+            let formattedAddress = result.formattedAddress
 
             let totalPackage = [
                 "latitude": latitude,
@@ -363,27 +410,17 @@ class OnboardingSearchController: NSViewController {
                 CLTimezoneName: formattedAddress,
                 CLCustomLabel: formattedAddress,
                 CLTimezoneID: CLEmptyString,
-                CLPlaceIdentifier: $0.placeId,
+                CLPlaceIdentifier: result.placeId,
             ] as [String: Any]
 
-            self.results.append(TimezoneData(with: totalPackage))
+            return TimezoneData(with: totalPackage)
         }
-    }
 
-    // Extracting this out for tests
-    private func decode(from data: Data) -> SearchResult? {
-        let jsonDecoder = JSONDecoder()
-        do {
-            let decodedObject = try jsonDecoder.decode(SearchResult.self, from: data)
-            return decodedObject
-        } catch {
-            Logger.info("decodedObject error: \n\(error)")
-            return nil
-        }
+        searchResultsDataSource.setFilteredArrayValue(finalTimezones)
     }
 
     private func resetSearchView() {
-        results = []
+        searchResultsDataSource.cleanupFilterArray()
         resultsTableView.reloadData()
         searchBar.stringValue = CLEmptyString
         searchBar.placeholderString = "Press Enter to Search"
@@ -397,13 +434,18 @@ class OnboardingSearchController: NSViewController {
 
 extension OnboardingSearchController: NSTableViewDataSource {
     func numberOfRows(in _: NSTableView) -> Int {
-        return results.count
+        return searchResultsDataSource.resultsCount()
     }
 
     func tableView(_ tableView: NSTableView, viewFor _: NSTableColumn?, row: Int) -> NSView? {
-        if let result = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "resultCellView"), owner: self) as? ResultTableViewCell, row >= 0, row < results.count {
-            let currentTimezone = results[row]
-            result.result.stringValue = " \(currentTimezone.formattedAddress ?? "Place Name")"
+        if let result = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "resultCellView"), owner: self) as? ResultTableViewCell, row >= 0, row < searchResultsDataSource.resultsCount() {
+            let currentSelection = searchResultsDataSource.retrieveResult(row)
+            if let timezone = currentSelection as? TimezoneMetadata {
+                result.result.stringValue = " \(timezone.formattedName)"
+            } else if let location = currentSelection as? TimezoneData {
+                result.result.stringValue = " \(location.formattedAddress ?? "Place Name")"
+            }
+
             result.result.textColor = Themer.shared().mainTextColor()
             return result
         }
@@ -414,7 +456,7 @@ extension OnboardingSearchController: NSTableViewDataSource {
 
 extension OnboardingSearchController: NSTableViewDelegate {
     func tableView(_: NSTableView, heightOfRow row: Int) -> CGFloat {
-        if row == 0, results.isEmpty {
+        if row == 0, searchResultsDataSource.resultsCount() == 0 {
             return 30
         }
 
@@ -422,7 +464,7 @@ extension OnboardingSearchController: NSTableViewDelegate {
     }
 
     func tableView(_: NSTableView, shouldSelectRow row: Int) -> Bool {
-        return results.isEmpty ? row != 0 : true
+        return searchResultsDataSource.resultsCount() == 0 ? row != 0 : true
     }
 
     func tableView(_: NSTableView, rowViewForRow _: Int) -> NSTableRowView? {
