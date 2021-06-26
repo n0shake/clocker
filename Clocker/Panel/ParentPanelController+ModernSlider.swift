@@ -25,15 +25,7 @@ extension ParentPanelController {
         if let correctIndexPath = indexPath?.item, let item = modernSlider.item(at: correctIndexPath) as? HourMarkerViewItem {
             modernSliderLabel.stringValue = item.timeRepresentation
 //            setTimezoneDatasourceSlider(sliderValue: item.indexTag * 15)
-            item.setupLineColor()
-            mainTableView.reloadData()
-
-            if let previousItem = modernSlider.item(at: correctIndexPath - 1) as? HourMarkerViewItem {
-                previousItem.resetLineColor()
-            }
-            if let nextItem = modernSlider.item(at: correctIndexPath + 1) as? HourMarkerViewItem {
-                nextItem.resetLineColor()
-            }
+//            mainTableView.reloadData()
         }
     }
 
