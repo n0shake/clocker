@@ -95,7 +95,9 @@ class PanelController: ParentPanelController {
         // Reset future slider value to zero
         futureSlider.integerValue = 0
         sliderDatePicker.dateValue = Date()
-        setModernSliderLabel(0)
+        modernSliderLabel.stringValue = modernSliderDataSource[modernSliderDataSource.count / 2]
+        let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSliderDataSource.count / 2, section: 0)])
+        modernSlider.scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
 
         setTimezoneDatasourceSlider(sliderValue: 0)
 

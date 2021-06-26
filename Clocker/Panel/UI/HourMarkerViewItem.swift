@@ -4,19 +4,13 @@ import Cocoa
 
 class HourMarkerViewItem: NSCollectionViewItem {
     static let reuseIdentifier = NSUserInterfaceItemIdentifier("HourMarkerViewItem")
+    public var timeRepresentation: String = "-1"
 
-    @IBOutlet var constraintFromTop: NSLayoutConstraint!
-    @IBOutlet var verticalLine: NSBox!
-
-    public var indexTag: Int = -1
-
-    func setup(with hour: Int) {
-        var dateComponents = DateComponents()
-        dateComponents.minute = hour * 15
-        indexTag = hour
+    func setup(with index: Int, value: String) {
+        timeRepresentation = value
 
         for constraint in view.constraints where constraint.identifier == "constrainFromTop" {
-            if hour % 4 == 0 {
+            if index % 4 == 0 {
                 constraint.constant = 0
             } else {
                 constraint.constant = 20
@@ -38,14 +32,5 @@ class HourMarkerViewItem: NSCollectionViewItem {
 
     override var acceptsFirstResponder: Bool {
         return false
-    }
-}
-
-extension Date {
-    public var nextHour: Date {
-        let calendar = Calendar.current
-        let minutes = calendar.component(.minute, from: self)
-        let components = DateComponents(hour: 1, minute: -minutes)
-        return calendar.date(byAdding: components, to: self) ?? self
     }
 }
