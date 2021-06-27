@@ -41,7 +41,8 @@ extension ParentPanelController {
         if shouldUpdate {
             modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(hourQuarterDate)
         } else {
-            modernSliderLabel.stringValue = CLEmptyString
+            let fullString = NSMutableAttributedString(string: "Time Scroller")
+            modernSliderLabel.attributedStringValue = fullString
         }
 
         return hourQuarterDate
