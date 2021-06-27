@@ -202,6 +202,7 @@ class ParentPanelController: NSWindowController {
         if modernSlider != nil {
             modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
             modernSlider.delegate = self
+            modernSlider.enclosingScrollView?.backgroundColor = NSColor.clear
             modernSlider.postsBoundsChangedNotifications = true
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(collectionViewDidScroll(_:)),

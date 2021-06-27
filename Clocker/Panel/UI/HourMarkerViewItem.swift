@@ -4,6 +4,7 @@ import Cocoa
 
 class HourMarkerViewItem: NSCollectionViewItem {
     static let reuseIdentifier = NSUserInterfaceItemIdentifier("HourMarkerViewItem")
+    @IBOutlet var verticalLineView: NSView!
 
     func setup(with index: Int) {
         for constraint in view.constraints where constraint.identifier == "constrainFromTop" {
@@ -13,6 +14,8 @@ class HourMarkerViewItem: NSCollectionViewItem {
                 constraint.constant = 20
             }
         }
+        verticalLineView.wantsLayer = true
+        verticalLineView.layer?.backgroundColor = NSColor.lightGray.cgColor
     }
 
     func setupLineColor() {
