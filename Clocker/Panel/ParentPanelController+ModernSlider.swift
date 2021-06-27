@@ -5,13 +5,12 @@ import Foundation
 
 extension ParentPanelController: NSCollectionViewDataSource, NSCollectionViewDelegate {
     func collectionView(_: NSCollectionView, numberOfItemsInSection _: Int) -> Int {
-        return modernSliderDataSource.count
+        return (96 * PanelConstants.modernSliderDaySupport * 2) + 1
     }
 
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: HourMarkerViewItem.reuseIdentifier, for: indexPath) as! HourMarkerViewItem
-        let dataSoureValue = modernSliderDataSource[indexPath.item]
-        item.setup(with: indexPath.item, value: dataSoureValue)
+        item.setup(with: indexPath.item)
         return item
     }
 }
@@ -22,10 +21,56 @@ extension ParentPanelController {
         let changedOrigin = contentView.documentVisibleRect.origin
         let newPoint = NSPoint(x: changedOrigin.x + contentView.frame.width / 2, y: changedOrigin.y)
         let indexPath = modernSlider.indexPathForItem(at: newPoint)
-        if let correctIndexPath = indexPath?.item {
-            modernSliderLabel.stringValue = modernSliderDataSource[correctIndexPath]
-//            setTimezoneDatasourceSlider(sliderValue: item.indexTag * 15)
-//            mainTableView.reloadData()
+        if let correctIndexPath = indexPath?.item, currentCenterIndexPath != correctIndexPath {
+            currentCenterIndexPath = correctIndexPath
+            let minutesToAdd = setDefaultDateLabel(correctIndexPath)
+            setTimezoneDatasourceSlider(sliderValue: minutesToAdd)
+            mainTableView.reloadData()
+        }
+    }
+
+    @objc func scrollViewWillStartLiveScroll(_: NSNotification) {
+        modernSliderIsScrolling = true
+    }
+
+    @objc func scrollViewDidEndLiveScroll(_: NSNotification) {
+        modernSliderIsScrolling = false
+    }
+
+    @discardableResult
+    public func setModernLabel(_ shouldUpdate: Bool = false) -> Date {
+        let defaultParameters = minuteFromCalendar()
+        let hourQuarterDate = Calendar.current.nextDate(after: defaultParameters.0,
+                                                        matching: DateComponents(minute: defaultParameters.1),
+                                                        matchingPolicy: .strict,
+                                                        repeatedTimePolicy: .first,
+                                                        direction: .forward)!
+
+        if shouldUpdate {
+            modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(hourQuarterDate)
+        } else {
+            modernSliderLabel.stringValue = CLEmptyString
+        }
+
+        return hourQuarterDate
+    }
+
+    public func setDefaultDateLabel(_ index: Int) -> Int {
+        let totalCount = (96 * PanelConstants.modernSliderDaySupport * 2) + 1
+        let centerPoint = Int(ceil(Double(totalCount / 2)))
+        if index > (centerPoint + 1) {
+            let remainder = (index % (centerPoint + 1))
+            let nextDate = Calendar.current.date(byAdding: .minute, value: remainder * 15, to: closestQuarterTimeRepresentation ?? Date())!
+            modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(nextDate)
+            return nextDate.minutes(from: Date()) + 1
+        } else if index <= centerPoint {
+            let remainder = centerPoint - index + 1
+            let previousDate = Calendar.current.date(byAdding: .minute, value: -1 * remainder * 15, to: closestQuarterTimeRepresentation ?? Date())!
+            modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(previousDate)
+            return previousDate.minutes(from: Date())
+        } else {
+            setModernLabel(true)
+            return 0
         }
     }
 
@@ -43,31 +88,6 @@ extension ParentPanelController {
         }
 
         return (currentDate, minute)
-    }
-
-    public func forward15Minutes() -> [String] {
-        let defaultParameters = minuteFromCalendar()
-        var hourQuarterDate = Calendar.current.nextDate(after: defaultParameters.0, matching: DateComponents(minute: defaultParameters.1), matchingPolicy: .strict, repeatedTimePolicy: .first, direction: .forward)!
-
-        var hourQuarters = [String]()
-        hourQuarters.append(timezoneFormattedStringRepresentation(hourQuarterDate))
-        for _ in 1 ... 288 {
-            hourQuarterDate = Calendar.current.date(byAdding: .minute, value: 15, to: hourQuarterDate)!
-            hourQuarters.append(timezoneFormattedStringRepresentation(hourQuarterDate))
-        }
-        return hourQuarters
-    }
-
-    public func backward15Minutes() -> [String] {
-        let defaultParameters = minuteFromCalendar()
-        var hourQuarterDate = Calendar.current.nextDate(after: defaultParameters.0, matching: DateComponents(minute: defaultParameters.1), matchingPolicy: .strict, repeatedTimePolicy: .first, direction: .backward)!
-        var hourQuarters = [String]()
-        for _ in 1 ... 288 {
-            hourQuarterDate = Calendar.current.date(byAdding: .minute, value: -15, to: hourQuarterDate)!
-            hourQuarters.append(timezoneFormattedStringRepresentation(hourQuarterDate))
-        }
-
-        return hourQuarters
     }
 
     private func timezoneFormattedStringRepresentation(_ date: Date) -> String {
