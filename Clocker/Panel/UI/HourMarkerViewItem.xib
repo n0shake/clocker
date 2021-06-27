@@ -8,31 +8,32 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HourMarkerViewItem" customModule="Clocker" customModuleProvider="target">
             <connections>
-                <outlet property="constraintFromTop" destination="s8k-hS-sHN" id="aWd-YA-FDM"/>
-                <outlet property="verticalLine" destination="1AP-TS-SAk" id="kxC-uc-q7X"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="11" height="103"/>
+            <rect key="frame" x="0.0" y="0.0" width="15" height="103"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box focusRingType="none" horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="1AP-TS-SAk">
-                    <rect key="frame" x="3" y="0.0" width="5" height="103"/>
-                </box>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="9oV-Ab-UG7" userLabel="Vertical Line">
+                    <rect key="frame" x="7" y="0.0" width="2" height="103"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="2" id="aed-xx-Q4B"/>
+                    </constraints>
+                </customView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="1AP-TS-SAk" secondAttribute="bottom" id="VbR-OQ-DUr"/>
-                <constraint firstItem="1AP-TS-SAk" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="5" id="azF-Qf-1NL"/>
-                <constraint firstItem="1AP-TS-SAk" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" identifier="constrainFromTop" id="s8k-hS-sHN"/>
-                <constraint firstAttribute="trailing" secondItem="1AP-TS-SAk" secondAttribute="trailing" constant="5" id="zcN-at-PoJ"/>
+                <constraint firstAttribute="bottom" secondItem="9oV-Ab-UG7" secondAttribute="bottom" id="FOz-f9-2fW"/>
+                <constraint firstItem="9oV-Ab-UG7" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="YXM-F6-rKf"/>
+                <constraint firstItem="9oV-Ab-UG7" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" identifier="constrainFromTop" id="yDo-di-gX7"/>
             </constraints>
             <point key="canvasLocation" x="-17.5" y="283"/>
         </customView>
         <customObject id="p0M-E4-898" customClass="HourMarkerViewItem" customModule="Clocker" customModuleProvider="target">
             <connections>
+                <outlet property="verticalLineView" destination="9oV-Ab-UG7" id="0d5-Lu-gh3"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="9S0-wg-csq"/>
             </connections>
         </customObject>
