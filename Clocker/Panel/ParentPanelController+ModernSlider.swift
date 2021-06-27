@@ -3,7 +3,7 @@
 import CoreLoggerKit
 import Foundation
 
-extension ParentPanelController: NSCollectionViewDataSource, NSCollectionViewDelegate {
+extension ParentPanelController: NSCollectionViewDataSource {
     func collectionView(_: NSCollectionView, numberOfItemsInSection _: Int) -> Int {
         return (96 * PanelConstants.modernSliderDaySupport * 2) + 1
     }
