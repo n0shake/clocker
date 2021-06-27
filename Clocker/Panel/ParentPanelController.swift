@@ -11,7 +11,7 @@ struct PanelConstants {
     static let noThanksTitle = "No, thanks"
     static let yesWithQuestionMark = "Yes?"
     static let yesWithExclamation = "Yes!"
-    static let modernSliderDaySupport = 7
+    static let modernSliderDaySupport = 5
 }
 
 class ParentPanelController: NSWindowController {
