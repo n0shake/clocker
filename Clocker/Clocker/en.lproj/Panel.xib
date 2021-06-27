@@ -49,10 +49,10 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView focusRingType="none" distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZA-6o-SbE">
-                        <rect key="frame" x="0.0" y="0.0" width="350" height="315"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="320"/>
                         <subviews>
                             <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="96" horizontalPageScroll="1" verticalLineScroll="96" verticalPageScroll="1" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" scrollerKnobStyle="light" translatesAutoresizingMaskIntoConstraints="NO" id="4Gd-Nv-fXr">
-                                <rect key="frame" x="-20" y="50" width="370" height="265"/>
+                                <rect key="frame" x="-20" y="55" width="370" height="265"/>
                                 <clipView key="contentView" focusRingType="none" drawsBackground="NO" copiesOnScroll="NO" id="4MZ-Di-yNR">
                                     <rect key="frame" x="0.0" y="0.0" width="370" height="265"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -262,7 +262,7 @@
                                 </scroller>
                             </scrollView>
                             <customView identifier="Review Cell" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="TDn-Kk-KkV">
-                                <rect key="frame" x="0.0" y="0.0" width="350" height="50"/>
+                                <rect key="frame" x="0.0" y="220" width="350" height="50"/>
                                 <subviews>
                                     <stackView focusRingType="none" distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uys-ww-duA">
                                         <rect key="frame" x="25" y="25" width="300" height="20"/>
@@ -336,7 +336,7 @@
                                 <accessibility description="ReviewCell" identifier="ReviewCell"/>
                             </customView>
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="Akn-cR-W4G" customClass="ReviewView" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="-75" width="350" height="75"/>
+                                <rect key="frame" x="0.0" y="145" width="350" height="75"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Etf-aa-udM" customClass="ClockerTextBackgroundView" customModule="Clocker" customModuleProvider="target">
                                         <rect key="frame" x="10" y="10" width="330" height="55"/>
@@ -413,7 +413,7 @@
                                 <accessibility identifier="UpcomingEventView"/>
                             </customView>
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="C7R-Dq-MFr" userLabel="Slider View">
-                                <rect key="frame" x="0.0" y="110" width="350" height="30"/>
+                                <rect key="frame" x="0.0" y="115" width="350" height="30"/>
                                 <subviews>
                                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vf2-uI-yf3">
                                         <rect key="frame" x="7" y="2" width="201" height="23"/>
@@ -462,7 +462,7 @@
                                 </constraints>
                             </customView>
                             <customView wantsLayer="YES" focusRingType="none" id="8W7-rS-Uob" userLabel="Modern Slider">
-                                <rect key="frame" x="0.0" y="40" width="350" height="70"/>
+                                <rect key="frame" x="0.0" y="40" width="350" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htc-pO-AqH">
@@ -507,9 +507,9 @@
                                     </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="5HT-Ps-YH3"/>
+                                    <constraint firstAttribute="height" constant="75" id="5HT-Ps-YH3"/>
                                     <constraint firstAttribute="bottom" secondItem="pi8-wk-eXa" secondAttribute="bottom" constant="3" id="6E6-8S-PZv"/>
-                                    <constraint firstItem="htc-pO-AqH" firstAttribute="top" secondItem="8W7-rS-Uob" secondAttribute="top" id="Ag8-2G-tVA"/>
+                                    <constraint firstItem="htc-pO-AqH" firstAttribute="top" secondItem="8W7-rS-Uob" secondAttribute="top" constant="5" id="Ag8-2G-tVA"/>
                                     <constraint firstItem="htc-pO-AqH" firstAttribute="leading" secondItem="8W7-rS-Uob" secondAttribute="leading" constant="5" id="QmJ-Dd-WLb"/>
                                     <constraint firstItem="pi8-wk-eXa" firstAttribute="top" secondItem="htc-pO-AqH" secondAttribute="bottom" constant="5" id="UIT-XA-SEL"/>
                                     <constraint firstAttribute="bottom" secondItem="htc-pO-AqH" secondAttribute="bottom" constant="30" id="YCJ-zB-dvc"/>

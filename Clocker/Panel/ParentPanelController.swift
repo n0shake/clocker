@@ -11,6 +11,7 @@ struct PanelConstants {
     static let noThanksTitle = "No, thanks"
     static let yesWithQuestionMark = "Yes?"
     static let yesWithExclamation = "Yes!"
+    static let modernSliderDaySupport = 7
 }
 
 class ParentPanelController: NSWindowController {
@@ -86,7 +87,9 @@ class ParentPanelController: NSWindowController {
     @IBOutlet var roundedDateView: NSView!
 
     // Modern Slider
-    public var modernSliderDataSource: [String] = []
+    public var currentCenterIndexPath: Int = -1
+    public var closestQuarterTimeRepresentation: Date?
+    public var modernSliderIsScrolling: Bool = false
     @IBOutlet var modernSlider: NSCollectionView!
     @IBOutlet var modernSliderLabel: NSTextField!
     @IBOutlet var modernContainerView: NSView!
@@ -198,20 +201,23 @@ class ParentPanelController: NSWindowController {
         }
 
         if modernSlider != nil {
-            var backwards = backward15Minutes()
-            backwards.reverse()
-            let forwards = forward15Minutes()
-            modernSliderDataSource = backwards + forwards
-
             modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
             modernSlider.delegate = self
             modernSlider.postsBoundsChangedNotifications = true
             NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(scrollViewWillStartLiveScroll(_:)),
+                                                   name: NSScrollView.willStartLiveScrollNotification,
+                                                   object: modernSlider.enclosingScrollView)
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(scrollViewDidEndLiveScroll(_:)),
+                                                   name: NSScrollView.didEndLiveScrollNotification,
+                                                   object: modernSlider.enclosingScrollView)
+            NotificationCenter.default.addObserver(self,
                                                    selector: #selector(collectionViewDidScroll(_:)),
                                                    name: NSView.boundsDidChangeNotification,
                                                    object: modernSlider.superview)
-            modernSliderLabel.stringValue = modernSliderDataSource[modernSliderDataSource.count / 2]
-            let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSliderDataSource.count / 2, section: 0)])
+            closestQuarterTimeRepresentation = setModernLabel()
+            let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSlider.numberOfItems(inSection: 0) / 2, section: 0)])
             modernSlider.scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
         }
 
@@ -595,7 +601,7 @@ class ParentPanelController: NSWindowController {
                 if let futureSliderCell = futureSlider.cell as? CustomSliderCell, futureSliderCell.tracking == true {
                     return
                 }
-                if modernSlider.isHidden == false {
+                if modernSlider.isHidden == false, modernSliderIsScrolling {
                     return
                 }
                 let dataOperation = TimezoneDataOperations(with: model)
@@ -615,6 +621,7 @@ class ParentPanelController: NSWindowController {
                 }
                 cellView.layout(with: model)
                 updateDatePicker()
+                setModernLabel()
             }
         }
     }

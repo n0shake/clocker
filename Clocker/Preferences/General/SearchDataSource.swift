@@ -66,6 +66,9 @@ class SearchDataSource: NSObject {
             let datasource = searchField.stringValue.isEmpty ? timezoneArray : timezoneFilteredArray
             return datasource[row % datasource.count]
         case .city:
+            if filteredArray.count == 0 {
+                return nil
+            }
             let timezoneData = filteredArray[row % filteredArray.count]
             return timezoneData
         }

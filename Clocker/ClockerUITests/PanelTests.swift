@@ -115,4 +115,13 @@ class PanelTests: XCTestCase {
 
         XCTAssert(app.popovers.count > 0)
     }
+
+    // Ensure that once main panel is closed, the time in the menubar doesn't stop and stays up-to-date
+    func testTimeIsUpToDate() {
+        // Ensure that we have seconds selected for the timezone format
+        // Open Panel; before closing panel note the time
+        // Close Panel;
+        // Start timer;
+        // Check time increments or is not equal for all those five seconds?
+    }
 }

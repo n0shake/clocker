@@ -4,11 +4,8 @@ import Cocoa
 
 class HourMarkerViewItem: NSCollectionViewItem {
     static let reuseIdentifier = NSUserInterfaceItemIdentifier("HourMarkerViewItem")
-    public var timeRepresentation: String = "-1"
 
-    func setup(with index: Int, value: String) {
-        timeRepresentation = value
-
+    func setup(with index: Int) {
         for constraint in view.constraints where constraint.identifier == "constrainFromTop" {
             if index % 4 == 0 {
                 constraint.constant = 0

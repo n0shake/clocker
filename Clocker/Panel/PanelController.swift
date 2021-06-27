@@ -95,8 +95,8 @@ class PanelController: ParentPanelController {
         // Reset future slider value to zero
         futureSlider.integerValue = 0
         sliderDatePicker.dateValue = Date()
-        modernSliderLabel.stringValue = modernSliderDataSource[modernSliderDataSource.count / 2]
-        let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSliderDataSource.count / 2, section: 0)])
+        closestQuarterTimeRepresentation = setModernLabel()
+        let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSlider.numberOfItems(inSection: 0) / 2, section: 0)])
         modernSlider.scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
 
         setTimezoneDatasourceSlider(sliderValue: 0)
