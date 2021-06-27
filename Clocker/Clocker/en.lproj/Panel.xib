@@ -262,7 +262,7 @@
                                 </scroller>
                             </scrollView>
                             <customView identifier="Review Cell" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="TDn-Kk-KkV">
-                                <rect key="frame" x="0.0" y="220" width="350" height="50"/>
+                                <rect key="frame" x="0.0" y="5" width="350" height="50"/>
                                 <subviews>
                                     <stackView focusRingType="none" distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uys-ww-duA">
                                         <rect key="frame" x="25" y="25" width="300" height="20"/>
@@ -336,7 +336,7 @@
                                 <accessibility description="ReviewCell" identifier="ReviewCell"/>
                             </customView>
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="Akn-cR-W4G" customClass="ReviewView" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="145" width="350" height="75"/>
+                                <rect key="frame" x="0.0" y="-70" width="350" height="75"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Etf-aa-udM" customClass="ClockerTextBackgroundView" customModule="Clocker" customModuleProvider="target">
                                         <rect key="frame" x="10" y="10" width="330" height="55"/>
@@ -413,7 +413,7 @@
                                 <accessibility identifier="UpcomingEventView"/>
                             </customView>
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="C7R-Dq-MFr" userLabel="Slider View">
-                                <rect key="frame" x="0.0" y="115" width="350" height="30"/>
+                                <rect key="frame" x="0.0" y="-100" width="350" height="30"/>
                                 <subviews>
                                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vf2-uI-yf3">
                                         <rect key="frame" x="7" y="2" width="201" height="23"/>
@@ -461,7 +461,7 @@
                                     <constraint firstAttribute="trailing" secondItem="I2Z-NZ-795" secondAttribute="trailing" constant="5" id="ju8-FH-nE8"/>
                                 </constraints>
                             </customView>
-                            <customView wantsLayer="YES" focusRingType="none" id="8W7-rS-Uob" userLabel="Modern Slider">
+                            <customView wantsLayer="YES" focusRingType="none" id="8W7-rS-Uob" userLabel="Modern Slider" customClass="ModernSliderContainerView" customModule="Clocker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="40" width="350" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>

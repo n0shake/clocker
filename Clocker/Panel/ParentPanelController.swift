@@ -89,10 +89,9 @@ class ParentPanelController: NSWindowController {
     // Modern Slider
     public var currentCenterIndexPath: Int = -1
     public var closestQuarterTimeRepresentation: Date?
-    public var modernSliderIsScrolling: Bool = false
     @IBOutlet var modernSlider: NSCollectionView!
     @IBOutlet var modernSliderLabel: NSTextField!
-    @IBOutlet var modernContainerView: NSView!
+    @IBOutlet var modernContainerView: ModernSliderContainerView!
 
     var defaultPreferences: [Data] {
         return DataStore.shared().timezones()
@@ -204,14 +203,6 @@ class ParentPanelController: NSWindowController {
             modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
             modernSlider.delegate = self
             modernSlider.postsBoundsChangedNotifications = true
-            NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(scrollViewWillStartLiveScroll(_:)),
-                                                   name: NSScrollView.willStartLiveScrollNotification,
-                                                   object: modernSlider.enclosingScrollView)
-            NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(scrollViewDidEndLiveScroll(_:)),
-                                                   name: NSScrollView.didEndLiveScrollNotification,
-                                                   object: modernSlider.enclosingScrollView)
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(collectionViewDidScroll(_:)),
                                                    name: NSView.boundsDidChangeNotification,
@@ -601,7 +592,7 @@ class ParentPanelController: NSWindowController {
                 if let futureSliderCell = futureSlider.cell as? CustomSliderCell, futureSliderCell.tracking == true {
                     return
                 }
-                if modernSlider.isHidden == false, modernSliderIsScrolling {
+                if modernSlider.isHidden == false, modernContainerView.currentlyInFocus {
                     return
                 }
                 let dataOperation = TimezoneDataOperations(with: model)

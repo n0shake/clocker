@@ -33,3 +33,30 @@ class ReviewView: NSView {
         addTrackingArea(trackingArea)
     }
 }
+
+class ModernSliderContainerView: NSView {
+    private var trackingArea: NSTrackingArea?
+    public var currentlyInFocus = false
+
+    override func mouseEntered(with event: NSEvent) {
+        super.mouseEntered(with: event)
+        currentlyInFocus = true
+    }
+
+    override func mouseExited(with event: NSEvent) {
+        super.mouseExited(with: event)
+        currentlyInFocus = false
+    }
+
+    override func updateTrackingAreas() {
+        super.updateTrackingAreas()
+
+        if let trackingArea = self.trackingArea {
+            removeTrackingArea(trackingArea)
+        }
+
+        let options: NSTrackingArea.Options = [.mouseEnteredAndExited, .activeAlways]
+        let trackingArea = NSTrackingArea(rect: bounds, options: options, owner: self, userInfo: nil)
+        addTrackingArea(trackingArea)
+    }
+}
