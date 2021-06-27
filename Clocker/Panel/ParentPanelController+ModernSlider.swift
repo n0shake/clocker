@@ -29,14 +29,6 @@ extension ParentPanelController {
         }
     }
 
-    @objc func scrollViewWillStartLiveScroll(_: NSNotification) {
-        modernSliderIsScrolling = true
-    }
-
-    @objc func scrollViewDidEndLiveScroll(_: NSNotification) {
-        modernSliderIsScrolling = false
-    }
-
     @discardableResult
     public func setModernLabel(_ shouldUpdate: Bool = false) -> Date {
         let defaultParameters = minuteFromCalendar()
