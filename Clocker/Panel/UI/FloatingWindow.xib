@@ -422,7 +422,7 @@
                                 </constraints>
                                 <accessibility description="Review Cell"/>
                             </customView>
-                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z63-pM-8OA" customClass="ReviewView" customModule="Clocker" customModuleProvider="target">
+                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z63-pM-8OA" customClass="UpcomingEventView" customModule="Clocker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="40" width="379" height="75"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="PpA-GH-1PV" customClass="ClockerTextBackgroundView" customModule="Clocker" customModuleProvider="target">
