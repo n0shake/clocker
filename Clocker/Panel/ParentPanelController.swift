@@ -593,7 +593,7 @@ class ParentPanelController: NSWindowController {
                 if let futureSliderCell = futureSlider.cell as? CustomSliderCell, futureSliderCell.tracking == true {
                     return
                 }
-                if modernSlider.isHidden == false, modernContainerView.currentlyInFocus {
+                if modernContainerView != nil, modernSlider.isHidden == false, modernContainerView.currentlyInFocus {
                     return
                 }
                 let dataOperation = TimezoneDataOperations(with: model)
