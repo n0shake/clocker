@@ -103,9 +103,11 @@
 "Time Format" = "Time Format";
 "Day Display Options" = "Day Display Options";
 "Show Future Slider" = "Show Future Slider";
+"Time Scroller" = "Time Scroller";
 "Show Sunrise/Sunset" = "Show Sunrise/Sunset";
 "Display the time in seconds" = "Display the time in seconds";
 "Larger Text" = "Larger Text";
+"Future Slider Range" = "Future Slider Range";
 "Future Slider Range" = "Future Slider Range";
 "Include Date" = "Include Date";
 "Include Day" = "Include Day";
