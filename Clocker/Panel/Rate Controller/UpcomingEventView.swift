@@ -2,7 +2,7 @@
 
 import Cocoa
 
-class ReviewView: NSView {
+class UpcomingEventView: NSView {
     private var trackingArea: NSTrackingArea?
 
     override func mouseEntered(with event: NSEvent) {
