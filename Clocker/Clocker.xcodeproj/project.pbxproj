@@ -66,7 +66,7 @@
 		35C36F5D2259DD96002FA5C6 /* TimezoneDataOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F5B2259DD96002FA5C6 /* TimezoneDataOperations.swift */; };
 		35C36F612259DE67002FA5C6 /* NotesPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35C36F5F2259DE67002FA5C6 /* NotesPopover.xib */; };
 		35C36F622259DE67002FA5C6 /* NotesPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F602259DE67002FA5C6 /* NotesPopover.swift */; };
-		35C36F662259DF4C002FA5C6 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F642259DF4C002FA5C6 /* ReviewView.swift */; };
+		35C36F662259DF4C002FA5C6 /* UpcomingEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F642259DF4C002FA5C6 /* UpcomingEventView.swift */; };
 		35C36F672259DF4C002FA5C6 /* ReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F652259DF4C002FA5C6 /* ReviewController.swift */; };
 		35C36F692259DF55002FA5C6 /* TextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F682259DF55002FA5C6 /* TextViewWithPlaceholder.swift */; };
 		35C36F6B2259E0E1002FA5C6 /* FloatingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35C36F6A2259E0E1002FA5C6 /* FloatingWindow.xib */; };
@@ -286,7 +286,7 @@
 		35C36F5B2259DD96002FA5C6 /* TimezoneDataOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimezoneDataOperations.swift; sourceTree = "<group>"; };
 		35C36F5F2259DE67002FA5C6 /* NotesPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotesPopover.xib; sourceTree = "<group>"; };
 		35C36F602259DE67002FA5C6 /* NotesPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesPopover.swift; sourceTree = "<group>"; };
-		35C36F642259DF4C002FA5C6 /* ReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		35C36F642259DF4C002FA5C6 /* UpcomingEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingEventView.swift; sourceTree = "<group>"; };
 		35C36F652259DF4C002FA5C6 /* ReviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewController.swift; sourceTree = "<group>"; };
 		35C36F682259DF55002FA5C6 /* TextViewWithPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewWithPlaceholder.swift; sourceTree = "<group>"; };
 		35C36F6A2259E0E1002FA5C6 /* FloatingWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloatingWindow.xib; sourceTree = "<group>"; };
@@ -613,7 +613,7 @@
 			isa = PBXGroup;
 			children = (
 				35C36F652259DF4C002FA5C6 /* ReviewController.swift */,
-				35C36F642259DF4C002FA5C6 /* ReviewView.swift */,
+				35C36F642259DF4C002FA5C6 /* UpcomingEventView.swift */,
 			);
 			path = "Rate Controller";
 			sourceTree = "<group>";
@@ -1275,7 +1275,7 @@
 				35C36F4E2259D981002FA5C6 /* DateFormatterManager.swift in Sources */,
 				35C36F0D225961DA002FA5C6 /* TimePeriod.swift in Sources */,
 				35C36EFB2259616B002FA5C6 /* Solar.swift in Sources */,
-				35C36F662259DF4C002FA5C6 /* ReviewView.swift in Sources */,
+				35C36F662259DF4C002FA5C6 /* UpcomingEventView.swift in Sources */,
 				35C36EF522595F14002FA5C6 /* OnboardingSearchController.swift in Sources */,
 				35C36F592259DD8A002FA5C6 /* TimezoneCellView.swift in Sources */,
 				35C11E2124873A550031F18C /* VersionUpdateHandler.swift in Sources */,
@@ -1549,7 +1549,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.ClockerHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1586,7 +1586,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.ClockerHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1623,7 +1623,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.ClockerHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";

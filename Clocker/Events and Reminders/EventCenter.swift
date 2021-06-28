@@ -34,6 +34,11 @@ class EventCenter: NSObject {
         refetchAll()
     }
 
+    deinit {
+        // Just to be super safe
+        NotificationCenter.default.removeObserver(self)
+    }
+
     private func refetchAll() {
         Logger.info("\nRefetching events from the store")
         eventsForDate = [:]

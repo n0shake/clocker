@@ -11,7 +11,7 @@ struct PanelConstants {
     static let noThanksTitle = "No, thanks"
     static let yesWithQuestionMark = "Yes?"
     static let yesWithExclamation = "Yes!"
-    static let modernSliderDaySupport = 7
+    static let modernSliderDaySupport = 5
 }
 
 class ParentPanelController: NSWindowController {
@@ -201,7 +201,6 @@ class ParentPanelController: NSWindowController {
 
         if modernSlider != nil {
             modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
-            modernSlider.delegate = self
             modernSlider.enclosingScrollView?.backgroundColor = NSColor.clear
             modernSlider.postsBoundsChangedNotifications = true
             NotificationCenter.default.addObserver(self,
