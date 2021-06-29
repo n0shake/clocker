@@ -42,7 +42,7 @@
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" ignoresCycle="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1000" y="379" width="350" height="460"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
             <value key="minSize" type="size" width="150" height="50"/>
             <value key="maxSize" type="size" width="350" height="800"/>
             <view key="contentView" misplaced="YES" id="qEx-SC-5Qd">
@@ -281,7 +281,7 @@
                                                 </collectionView>
                                             </subviews>
                                         </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="oU5-xB-bV5">
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="oU5-xB-bV5" customClass="ThinScroller" customModule="Clocker" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="34" width="340" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
