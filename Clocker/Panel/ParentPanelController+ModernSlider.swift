@@ -18,7 +18,7 @@ extension ParentPanelController: NSCollectionViewDataSource {
 extension ParentPanelController {
     func setupModernSliderIfNeccessary() {
         if modernSlider != nil {
-            modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+            modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             modernSlider.enclosingScrollView?.backgroundColor = NSColor.clear
             modernSlider.postsBoundsChangedNotifications = true
             NotificationCenter.default.addObserver(self,
