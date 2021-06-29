@@ -25,7 +25,7 @@ extension ParentPanelController {
                                                    selector: #selector(collectionViewDidScroll(_:)),
                                                    name: NSView.boundsDidChangeNotification,
                                                    object: modernSlider.superview)
-            closestQuarterTimeRepresentation = setModernLabel()
+            closestQuarterTimeRepresentation = setModernSliderLabel()
             let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSlider.numberOfItems(inSection: 0) / 2, section: 0)])
             modernSlider.scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
         }
