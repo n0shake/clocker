@@ -207,7 +207,7 @@ class ParentPanelController: NSWindowController {
                                                    selector: #selector(collectionViewDidScroll(_:)),
                                                    name: NSView.boundsDidChangeNotification,
                                                    object: modernSlider.superview)
-            closestQuarterTimeRepresentation = setModernLabel()
+            closestQuarterTimeRepresentation = setModernSliderLabel()
             let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSlider.numberOfItems(inSection: 0) / 2, section: 0)])
             modernSlider.scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
         }
@@ -583,6 +583,12 @@ class ParentPanelController: NSWindowController {
 
         let preferences = store.timezones()
 
+        if modernSlider != nil, modernSlider.isHidden == false, modernContainerView.currentlyInFocus == false {
+            setModernSliderLabel()
+            let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSlider.numberOfItems(inSection: 0) / 2, section: 0)])
+            modernSlider.animator().scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
+        }
+
         stride(from: 0, to: preferences.count, by: 1).forEach {
             let current = preferences[$0]
 
@@ -612,7 +618,6 @@ class ParentPanelController: NSWindowController {
                 }
                 cellView.layout(with: model)
                 updateDatePicker()
-                setModernLabel()
             }
         }
     }
