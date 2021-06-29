@@ -155,7 +155,7 @@ class AppearanceViewController: ParentViewController {
         timeFormatLabel.stringValue = "Time Format".localized()
         panelTheme.stringValue = "Panel Theme".localized()
         dayDisplayOptionsLabel.stringValue = "Day Display Options".localized()
-        showSliderLabel.stringValue = "Show Future Slider".localized()
+        showSliderLabel.stringValue = "Time Scroller".localized()
         showSunriseLabel.stringValue = "Show Sunrise/Sunset".localized()
         largerTextLabel.stringValue = "Larger Text".localized()
         futureSliderRangeLabel.stringValue = "Future Slider Range".localized()
