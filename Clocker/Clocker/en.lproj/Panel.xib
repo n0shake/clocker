@@ -42,7 +42,7 @@
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" ignoresCycle="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1000" y="379" width="350" height="460"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <view key="contentView" focusRingType="none" misplaced="YES" id="6" customClass="BackgroundPanelView" customModule="Clocker" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="350" height="460"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -369,7 +369,7 @@
                                     <constraint firstAttribute="bottom" secondItem="Ool-HA-BAA" secondAttribute="bottom" id="Cft-IZ-bGP"/>
                                     <constraint firstItem="htc-pO-AqH" firstAttribute="leading" secondItem="8W7-rS-Uob" secondAttribute="leading" constant="5" id="QmJ-Dd-WLb"/>
                                     <constraint firstItem="Ool-HA-BAA" firstAttribute="centerX" secondItem="8W7-rS-Uob" secondAttribute="centerX" id="XfN-mE-GIn"/>
-                                    <constraint firstAttribute="bottom" secondItem="htc-pO-AqH" secondAttribute="bottom" constant="30" id="YCJ-zB-dvc"/>
+                                    <constraint firstAttribute="bottom" secondItem="htc-pO-AqH" secondAttribute="bottom" priority="750" constant="30" id="YCJ-zB-dvc"/>
                                     <constraint firstAttribute="trailing" secondItem="htc-pO-AqH" secondAttribute="trailing" constant="5" id="esR-My-uoD"/>
                                 </constraints>
                                 <accessibility identifier="Modern Slider"/>
