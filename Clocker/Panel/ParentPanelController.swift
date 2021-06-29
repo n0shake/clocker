@@ -114,13 +114,22 @@ class ParentPanelController: NSWindowController {
             if let changedValue = change.newValue {
                 if changedValue == 0 {
                     self.futureSliderView.isHidden = true
-                    self.modernContainerView.isHidden = false
+                    if self.modernContainerView != nil {
+                        self.modernContainerView.isHidden = false
+                    }
                 } else if changedValue == 1 {
                     self.futureSliderView.isHidden = false
-                    self.modernContainerView.isHidden = true
+
+                    if self.modernContainerView != nil {
+                        self.modernContainerView.isHidden = true
+                    }
+
                 } else {
                     self.futureSliderView.isHidden = true
-                    self.modernContainerView.isHidden = true
+
+                    if self.modernContainerView != nil {
+                        self.modernContainerView.isHidden = true
+                    }
                 }
             }
         }
@@ -179,10 +188,15 @@ class ParentPanelController: NSWindowController {
         } else if let value = DataStore.shared().retrieve(key: CLDisplayFutureSliderKey) as? NSNumber {
             if value.intValue == 1 {
                 futureSliderView.isHidden = false
-                modernContainerView.isHidden = true
+                if modernContainerView != nil {
+                    modernContainerView.isHidden = true
+                }
             } else if value.intValue == 0 {
                 futureSliderView.isHidden = true
-                modernContainerView.isHidden = false
+                // Floating Window doesn't support modern slider yet!
+                if modernContainerView != nil {
+                    modernContainerView.isHidden = false
+                }
             }
         }
 
@@ -573,9 +587,10 @@ class ParentPanelController: NSWindowController {
         let preferences = store.timezones()
 
         if modernSlider != nil, modernSlider.isHidden == false, modernContainerView.currentlyInFocus == false {
-            setModernSliderLabel()
-            let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSlider.numberOfItems(inSection: 0) / 2, section: 0)])
-            modernSlider.animator().scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
+            if currentCenterIndexPath != -1, currentCenterIndexPath != modernSlider.numberOfItems(inSection: 0) / 2 {
+                // User is currently scrolling, return!
+                return
+            }
         }
 
         stride(from: 0, to: preferences.count, by: 1).forEach {
