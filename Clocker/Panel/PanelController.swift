@@ -25,7 +25,7 @@ class PanelController: ParentPanelController {
 
         window?.title = "Clocker Panel"
         window?.setAccessibilityIdentifier("Clocker Panel")
-      // Otherwise, the panel can be dragged around while we try to scroll through the modern slider
+        // Otherwise, the panel can be dragged around while we try to scroll through the modern slider
         window?.isMovableByWindowBackground = false
 
         futureSlider.isContinuous = true
