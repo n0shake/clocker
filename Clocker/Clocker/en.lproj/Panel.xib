@@ -315,11 +315,11 @@
                                 <subviews>
                                     <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htc-pO-AqH">
                                         <rect key="frame" x="5" y="30" width="340" height="50"/>
-                                        <clipView key="contentView" drawsBackground="NO" id="N1e-zE-F86">
+                                        <clipView key="contentView" drawsBackground="NO" id="N1e-zE-F86" customClass="DraggableClipView" customModule="Clocker" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="340" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <collectionView focusRingType="none" id="lxA-64-3QU">
+                                                <collectionView focusRingType="none" allowsEmptySelection="NO" id="lxA-64-3QU">
                                                     <rect key="frame" x="0.0" y="0.0" width="340" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" id="mgM-vQ-fB7">
