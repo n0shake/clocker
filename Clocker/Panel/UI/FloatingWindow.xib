@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,9 +15,6 @@
                 <outlet property="leftButton" destination="7ID-ll-0YN" id="Msx-3N-nDQ"/>
                 <outlet property="leftField" destination="DHg-ca-UOi" id="eOW-Ml-DE8"/>
                 <outlet property="mainTableView" destination="3js-Fl-DdU" id="6Lu-oW-cuZ"/>
-                <outlet property="modernContainerView" destination="xiU-DQ-S8i" id="7FJ-Cn-9xz"/>
-                <outlet property="modernSlider" destination="DfM-T9-EJV" id="CDx-pv-9dR"/>
-                <outlet property="modernSliderLabel" destination="MkJ-lW-F34" id="KHL-tE-iEN"/>
                 <outlet property="nextEventLabel" destination="A9a-aM-BNn" id="d2X-dP-Xbi"/>
                 <outlet property="pinButton" destination="KWj-8n-2K0" id="FUW-0f-glB"/>
                 <outlet property="preferencesButton" destination="iFk-kj-d5a" id="1bK-Ld-MwV"/>
@@ -42,7 +38,7 @@
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" ignoresCycle="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1000" y="379" width="350" height="460"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <value key="minSize" type="size" width="150" height="50"/>
             <value key="maxSize" type="size" width="350" height="800"/>
             <view key="contentView" misplaced="YES" id="qEx-SC-5Qd">
@@ -258,62 +254,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <customView wantsLayer="YES" focusRingType="none" id="xiU-DQ-S8i" userLabel="Modern Slider" customClass="ModernSliderContainerView" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="14" y="195" width="350" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <subviews>
-                                    <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPi-Fy-jM2">
-                                        <rect key="frame" x="5" y="30" width="340" height="40"/>
-                                        <clipView key="contentView" id="k15-DH-gfX">
-                                            <rect key="frame" x="0.0" y="0.0" width="340" height="40"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <collectionView id="DfM-T9-EJV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="340" height="40"/>
-                                                    <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" id="Kqv-Gl-PyA">
-                                                        <size key="itemSize" width="10" height="50"/>
-                                                    </collectionViewFlowLayout>
-                                                    <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    <connections>
-                                                        <outlet property="dataSource" destination="-2" id="fpK-DZ-kuA"/>
-                                                    </connections>
-                                                </collectionView>
-                                            </subviews>
-                                        </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="oU5-xB-bV5" customClass="ThinScroller" customModule="Clocker" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="34" width="340" height="16"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="sRi-SY-uKD">
-                                            <rect key="frame" x="-100" y="-100" width="16" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                    </scrollView>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MkJ-lW-F34">
-                                        <rect key="frame" x="123" y="3" width="104" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="LUK-pw-M3N"/>
-                                        </constraints>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label Goes Here" id="7Aa-eD-d0u">
-                                            <font key="font" size="10" name="Avenir-LightOblique"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="Accent Color"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="MkJ-lW-F34" firstAttribute="top" secondItem="uPi-Fy-jM2" secondAttribute="bottom" constant="5" id="1uz-6J-S4w"/>
-                                    <constraint firstItem="MkJ-lW-F34" firstAttribute="centerX" secondItem="xiU-DQ-S8i" secondAttribute="centerX" id="MW5-Qe-cfE"/>
-                                    <constraint firstAttribute="bottom" secondItem="uPi-Fy-jM2" secondAttribute="bottom" constant="30" id="Soz-Zw-M6w"/>
-                                    <constraint firstAttribute="height" constant="70" id="eCl-cg-UDO"/>
-                                    <constraint firstAttribute="trailing" secondItem="uPi-Fy-jM2" secondAttribute="trailing" constant="5" id="jce-zY-iUW"/>
-                                    <constraint firstAttribute="bottom" secondItem="MkJ-lW-F34" secondAttribute="bottom" constant="3" id="nQn-wx-QRA"/>
-                                    <constraint firstItem="uPi-Fy-jM2" firstAttribute="leading" secondItem="xiU-DQ-S8i" secondAttribute="leading" constant="5" id="tm8-dw-m3t"/>
-                                    <constraint firstItem="uPi-Fy-jM2" firstAttribute="top" secondItem="xiU-DQ-S8i" secondAttribute="top" id="zwN-Wp-qel"/>
-                                </constraints>
-                                <accessibility identifier="Modern Slider"/>
-                            </customView>
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="6vv-g2-Z63" userLabel="Slider View">
                                 <rect key="frame" x="0.0" y="165" width="350" height="30"/>
                                 <subviews>
@@ -590,10 +530,8 @@
                             <integer value="1000"/>
                             <integer value="1000"/>
                             <integer value="1000"/>
-                            <integer value="1000"/>
                         </visibilityPriorities>
                         <customSpacing>
-                            <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
@@ -626,8 +564,5 @@
         <image name="PowerIcon" width="350" height="350"/>
         <image name="Remove" width="700" height="700"/>
         <image name="Sunrise" width="700" height="700"/>
-        <namedColor name="Accent Color">
-            <color red="0.092000000178813934" green="0.0" blue="0.99900001287460327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>
