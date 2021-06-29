@@ -18,18 +18,6 @@ class HourMarkerViewItem: NSCollectionViewItem {
         verticalLineView.layer?.backgroundColor = NSColor.lightGray.cgColor
     }
 
-    func setupLineColor() {
-        for subview in view.subviews where subview is NSBox {
-            subview.layer?.backgroundColor = NSColor.black.cgColor
-        }
-    }
-
-    func resetLineColor() {
-        for subview in view.subviews where subview is NSBox {
-            subview.layer?.backgroundColor = nil
-        }
-    }
-
     override var acceptsFirstResponder: Bool {
         return false
     }
