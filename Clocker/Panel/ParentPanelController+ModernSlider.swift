@@ -25,7 +25,9 @@ extension ParentPanelController {
     }
 
     private func navigateModernSliderToSpecificIndex(_ index: Int) {
-        let contentView = modernSlider.superview as! NSClipView
+        guard let contentView = modernSlider.superview as? NSClipView else {
+            return
+        }
         let changedOrigin = contentView.documentVisibleRect.origin
         let newPoint = NSPoint(x: changedOrigin.x + contentView.frame.width / 2, y: changedOrigin.y)
         if let indexPath = modernSlider.indexPathForItem(at: newPoint) {
