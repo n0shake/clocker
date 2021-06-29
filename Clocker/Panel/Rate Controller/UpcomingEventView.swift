@@ -85,3 +85,67 @@ class ThinScroller: NSScroller {
         path.fill()
     }
 }
+
+class DraggableClipView: NSClipView {
+    private var clickPoint: NSPoint!
+    private var originalOrigin: NSPoint!
+    private var trackingArea: NSTrackingArea?
+
+    override func mouseDown(with event: NSEvent) {
+        print("2")
+        super.mouseDown(with: event)
+        clickPoint = event.locationInWindow
+        originalOrigin = bounds.origin
+        print("Click point \(clickPoint!)")
+
+        let keepOn = true
+        while keepOn {
+            let newEvent = window?.nextEvent(matching: [.leftMouseDragged, .leftMouseUp])
+            switch newEvent?.type {
+            case .leftMouseDragged:
+                print("Hello 1")
+                let scale = (superview as? NSScrollView)?.magnification ?? 1.0
+                let newPoint = event.locationInWindow
+                let newOrigin = NSPoint(x: originalOrigin.x + (clickPoint.x - newPoint.x) / scale,
+                                        y: originalOrigin.y + (clickPoint.y - newPoint.y) / scale)
+                let constrainedRect = constrainBoundsRect(NSRect(origin: newOrigin, size: bounds.size))
+                scroll(to: constrainedRect.origin)
+                superview?.reflectScrolledClipView(self)
+                return
+            default:
+                print("Hello2")
+            }
+        }
+    }
+
+    override func mouseDragged(with event: NSEvent) {
+        print("1")
+        super.mouseDragged(with: event)
+        // Account for a magnified parent scrollview.
+        let scale = (superview as? NSScrollView)?.magnification ?? 1.0
+        let newPoint = event.locationInWindow
+        let newOrigin = NSPoint(x: originalOrigin.x + (clickPoint.x - newPoint.x) / scale,
+                                y: originalOrigin.y + (clickPoint.y - newPoint.y) / scale)
+        let constrainedRect = constrainBoundsRect(NSRect(origin: newOrigin, size: bounds.size))
+        scroll(to: constrainedRect.origin)
+        superview?.reflectScrolledClipView(self)
+    }
+
+    override func mouseUp(with event: NSEvent) {
+        print("3")
+        super.mouseUp(with: event)
+        clickPoint = nil
+    }
+
+    override func updateTrackingAreas() {
+        super.updateTrackingAreas()
+
+        if let trackingArea = self.trackingArea {
+            removeTrackingArea(trackingArea)
+        }
+
+        let options: NSTrackingArea.Options = [.mouseEnteredAndExited, .activeAlways, .enabledDuringMouseDrag, .inVisibleRect, .activeInKeyWindow]
+        let trackingArea = NSTrackingArea(rect: bounds, options: options, owner: self, userInfo: nil)
+        addTrackingArea(trackingArea)
+    }
+}
