@@ -60,3 +60,13 @@ class ModernSliderContainerView: NSView {
         addTrackingArea(trackingArea)
     }
 }
+
+class ThinScroller: NSScroller {
+    override class func scrollerWidth(for _: NSControl.ControlSize, scrollerStyle _: NSScroller.Style) -> CGFloat {
+        return 15
+    }
+
+    override func drawKnobSlot(in _: NSRect, highlight _: Bool) {
+        // Leaving this empty to prevent background drawing
+    }
+}
