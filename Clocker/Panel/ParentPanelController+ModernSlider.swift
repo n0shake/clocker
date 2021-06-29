@@ -53,7 +53,7 @@ extension ParentPanelController {
     }
 
     @discardableResult
-    public func setModernLabel(_ shouldUpdate: Bool = false) -> Date {
+    public func setModernSliderLabel(_ shouldUpdate: Bool = false) -> Date {
         let defaultParameters = minuteFromCalendar()
         let hourQuarterDate = Calendar.current.nextDate(after: defaultParameters.0,
                                                         matching: DateComponents(minute: defaultParameters.1),
@@ -85,7 +85,7 @@ extension ParentPanelController {
             modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(previousDate)
             return previousDate.minutes(from: Date())
         } else {
-            setModernLabel(true)
+            setModernSliderLabel(true)
             return 0
         }
     }

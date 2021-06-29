@@ -25,6 +25,8 @@ class PanelController: ParentPanelController {
 
         window?.title = "Clocker Panel"
         window?.setAccessibilityIdentifier("Clocker Panel")
+      // Otherwise, the panel can be dragged around while we try to scroll through the modern slider
+        window?.isMovableByWindowBackground = false
 
         futureSlider.isContinuous = true
 
@@ -82,7 +84,7 @@ class PanelController: ParentPanelController {
         if DataStore.shared().timezones().isEmpty || DataStore.shared().shouldDisplay(.futureSlider) == false {
             futureSliderView.isHidden = true
             modernContainerView.isHidden = true
-        } else if let value = DataStore.shared().retrieve(key: CLDisplayFutureSliderKey) as? NSNumber {
+        } else if let value = DataStore.shared().retrieve(key: CLDisplayFutureSliderKey) as? NSNumber, modernContainerView != nil {
             if value.intValue == 1 {
                 futureSliderView.isHidden = false
                 modernContainerView.isHidden = true
@@ -95,9 +97,12 @@ class PanelController: ParentPanelController {
         // Reset future slider value to zero
         futureSlider.integerValue = 0
         sliderDatePicker.dateValue = Date()
-        closestQuarterTimeRepresentation = setModernLabel()
-        let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSlider.numberOfItems(inSection: 0) / 2, section: 0)])
-        modernSlider.scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
+        closestQuarterTimeRepresentation = setModernSliderLabel()
+
+        if modernSlider != nil {
+            let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSlider.numberOfItems(inSection: 0) / 2, section: 0)])
+            modernSlider.scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
+        }
 
         setTimezoneDatasourceSlider(sliderValue: 0)
 
