@@ -199,18 +199,7 @@ class ParentPanelController: NSWindowController {
             mainTableView.style = .fullWidth
         }
 
-        if modernSlider != nil {
-            modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
-            modernSlider.enclosingScrollView?.backgroundColor = NSColor.clear
-            modernSlider.postsBoundsChangedNotifications = true
-            NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(collectionViewDidScroll(_:)),
-                                                   name: NSView.boundsDidChangeNotification,
-                                                   object: modernSlider.superview)
-            closestQuarterTimeRepresentation = setModernLabel()
-            let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSlider.numberOfItems(inSection: 0) / 2, section: 0)])
-            modernSlider.scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
-        }
+        setupModernSliderIfNeccessary()
 
         if roundedDateView != nil {
             setupRoundedDateView()
