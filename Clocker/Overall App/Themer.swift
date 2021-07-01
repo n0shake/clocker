@@ -187,8 +187,8 @@ extension Themer {
 
         return
             themeIndex == .light
-            ? NSImage(named: NSImage.Name("Settings"))!
-            : NSImage(named: NSImage.Name("Settings-White"))!
+                ? NSImage(named: NSImage.Name("Settings"))!
+                : NSImage(named: NSImage.Name("Settings-White"))!
     }
 
     func pinImage() -> NSImage {
@@ -213,6 +213,10 @@ extension Themer {
     }
 
     func sunriseImage() -> NSImage {
+        if let symbolImage = symbolImage(for: "sunrise.fill") {
+            return symbolImage
+        }
+        
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:
@@ -228,6 +232,10 @@ extension Themer {
     }
 
     func sunsetImage() -> NSImage {
+        if let symbolImage = symbolImage(for: "sunset.fill") {
+            return symbolImage
+        }
+        
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:
@@ -240,21 +248,6 @@ extension Themer {
         }
 
         return themeIndex == .light ? NSImage(named: NSImage.Name("Sunset"))! : NSImage(named: NSImage.Name("WhiteSunset"))!
-    }
-
-    func calendarIconImage() -> NSImage {
-        if #available(macOS 10.14, *) {
-            switch themeIndex {
-            case .light:
-                return NSImage(named: NSImage.Name("Calendar"))!
-            case .dark:
-                return NSImage(named: NSImage.Name("CalendarIconWhite"))!
-            case .system:
-                return NSImage(named: NSImage.Name("Calendar Dynamic"))!
-            }
-        }
-
-        return themeIndex == .light ? NSImage(named: NSImage.Name("Calendar"))! : NSImage(named: NSImage.Name("CalendarIconWhite"))!
     }
 
     func removeImage() -> NSImage {
@@ -335,6 +328,10 @@ extension Themer {
     }
 
     func currentLocationImage() -> NSImage {
+        if let symbolImage = symbolImage(for: "location.fill") {
+            return symbolImage
+        }
+        
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:
