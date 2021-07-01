@@ -313,9 +313,9 @@
                                 <rect key="frame" x="0.0" y="165" width="350" height="85"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htc-pO-AqH">
+                                    <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" horizontalScrollElasticity="allowed" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="htc-pO-AqH">
                                         <rect key="frame" x="5" y="30" width="340" height="50"/>
-                                        <clipView key="contentView" drawsBackground="NO" id="N1e-zE-F86" customClass="DraggableClipView" customModule="Clocker" customModuleProvider="target">
+                                        <clipView key="contentView" drawsBackground="NO" id="N1e-zE-F86">
                                             <rect key="frame" x="0.0" y="0.0" width="340" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -334,7 +334,7 @@
                                             </subviews>
                                             <color key="backgroundColor" name="systemIndigoColor" catalog="System" colorSpace="catalog"/>
                                         </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="8II-oP-xbd" customClass="ThinScroller" customModule="Clocker" customModuleProvider="target">
+                                        <scroller key="horizontalScroller" hidden="YES" toolTip="Hello Sonali." wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" horizontal="YES" id="8II-oP-xbd" customClass="ThinScroller" customModule="Clocker" customModuleProvider="target">
                                             <rect key="frame" x="-100" y="-100" width="340" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
