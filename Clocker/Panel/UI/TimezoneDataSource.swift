@@ -157,7 +157,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
         return []
     }
 
-    func showAlertForDeletingAHomeRow(_ row: Int, _ tableView: NSTableView) {
+    private func showAlertForDeletingAHomeRow(_ row: Int, _ tableView: NSTableView) {
         NSApplication.shared.activate(ignoringOtherApps: true)
 
         let alert = NSAlert()
