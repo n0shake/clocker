@@ -150,7 +150,7 @@ extension EventCenter {
         return menubarText
     }
 
-    func nextOccuring(_: [EventInfo]) -> EKEvent? {
+    func nextOccuring(_: [EventInfo]) -> EventInfo? {
         if calendarAccessDenied() || calendarAccessNotDetermined() {
             return nil
         }
@@ -162,14 +162,14 @@ extension EventCenter {
         }.first
 
         if let firstEvent = filteredEvent {
-            return firstEvent.event
+            return firstEvent
         }
 
         let filteredAllDayEvent = relevantEvents.filter {
             $0.isAllDay
         }.first
 
-        return filteredAllDayEvent?.event
+        return filteredAllDayEvent
     }
 
     func initializeStoreIfNeccesary() {
