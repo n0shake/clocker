@@ -5,17 +5,17 @@ import QuartzCore
 
 class NoTimezoneView: NSView {
     private lazy var emoji: NSTextField = {
-        let emoji = NSTextField(frame: NSRect(x: frame.size.width / 2 - 50,
-                                              y: frame.size.height / 2 - 50,
-                                              width: 100,
-                                              height: 100))
+        let emoji = NSTextField(frame: NSRect(x: frame.size.width / 2 - 75,
+                                              y: frame.size.height / 2 - 75,
+                                              width: 150,
+                                              height: 150))
         emoji.wantsLayer = true
         emoji.stringValue = "🌏"
         emoji.isBordered = false
         emoji.isEditable = false
         emoji.focusRingType = .none
         emoji.alignment = .center
-        emoji.font = NSFont.systemFont(ofSize: 80)
+        emoji.font = NSFont.systemFont(ofSize: 100)
         emoji.backgroundColor = .clear
         emoji.setAccessibilityIdentifier("NoTimezoneEmoji")
         return emoji
