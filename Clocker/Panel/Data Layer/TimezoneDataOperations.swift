@@ -28,7 +28,6 @@ extension TimezoneDataOperations {
         }
         
         if (dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == DateFormat.epochTime) {
-            print("Slider Value is \(sliderValue)")
             let timezone = TimeZone(identifier: dataObject.timezone())
             let offset = timezone?.secondsFromGMT(for: newDate) ?? 0
             let value = Int(Date().timeIntervalSince1970 + Double(offset))
