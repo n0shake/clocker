@@ -20,6 +20,7 @@ public struct DateFormat {
     public static let twelveHourWithZeroSeconds = "hh:mm:ss a"
     public static let twelveHourWithoutSuffix = "hh:mm"
     public static let twelveHourWithoutSuffixAndSeconds = "hh:mm:ss"
+    public static let epochTime = "epoch"
 }
 
 // Non-class type cannot conform to NSCoding!
@@ -44,6 +45,7 @@ public class TimezoneData: NSObject, NSCoding {
         case twelveHourPrecedingZeroSeconds = 8
         case twelveHourWithoutSuffix = 10
         case twelveHourWithoutSuffixAndSeconds = 11
+        case epochTime = 12
     }
 
     static let values = [
@@ -61,6 +63,7 @@ public class TimezoneData: NSObject, NSCoding {
         // Suffix
         NSNumber(integerLiteral: 9): DateFormat.twelveHourWithoutSuffix,
         NSNumber(integerLiteral: 10): DateFormat.twelveHourWithoutSuffixAndSeconds,
+        NSNumber(integerLiteral: 11): DateFormat.epochTime,
     ]
 
     public var customLabel: String?
@@ -266,6 +269,8 @@ public class TimezoneData: NSObject, NSCoding {
             overrideFormat = .twelveHourWithoutSuffix
         } else if shouldOverride == 11 {
             overrideFormat = .twelveHourWithoutSuffixAndSeconds
+        } else if shouldOverride == 12 {
+            overrideFormat = .epochTime
         } else {
             assertionFailure("Chosen a wrong timezone format")
         }
@@ -318,6 +323,8 @@ public class TimezoneData: NSObject, NSCoding {
             return DateFormat.twelveHourWithoutSuffix
         case .twelveHourWithoutSuffixAndSeconds:
             return DateFormat.twelveHourWithoutSuffixAndSeconds
+        case .epochTime:
+            return DateFormat.epochTime
         }
     }
 

@@ -31,6 +31,13 @@ extension TimezoneDataOperations {
                                                                          format: dataObject.timezoneFormat(DataStore.shared().timezoneFormat()),
                                                                          timezoneIdentifier: dataObject.timezone(),
                                                                          locale: Locale.autoupdatingCurrent)
+        
+        if (dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == DateFormat.epochTime) {
+            let timezone = TimeZone(identifier: dataObject.timezone())
+            let offset = timezone?.secondsFromGMT(for: newDate) ?? 0
+            let value = Int(Date().timeIntervalSince1970 + Double(offset))
+            return "\(value)"
+        }
 
         return dateFormatter.string(from: newDate)
     }
