@@ -184,7 +184,9 @@ class ParentPanelController: NSWindowController {
 
         if DataStore.shared().timezones().isEmpty || DataStore.shared().shouldDisplay(.futureSlider) == false {
             futureSliderView.isHidden = true
-            modernContainerView.isHidden = true
+            if modernContainerView != nil {
+                modernContainerView.isHidden = true
+            }
         } else if let value = DataStore.shared().retrieve(key: CLDisplayFutureSliderKey) as? NSNumber {
             if value.intValue == 1 {
                 futureSliderView.isHidden = false
