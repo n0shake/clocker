@@ -298,28 +298,27 @@ public class TimezoneData: NSObject, NSCoding {
     public func timezoneFormat(_ currentFormat: NSNumber) -> String {
         let chosenDefault = currentFormat
         let timeFormat = TimezoneData.values[chosenDefault] ?? DateFormat.twelveHour
-
-        if overrideFormat == .globalFormat {
+        
+        switch overrideFormat {
+        case .globalFormat:
             return timeFormat
-        } else if overrideFormat == .twelveHourFormat {
+        case .twelveHourFormat:
             return DateFormat.twelveHour
-        } else if overrideFormat == .twentyFourFormat {
+        case .twentyFourFormat:
             return DateFormat.twentyFourHour
-        } else if overrideFormat == .twelveHourWithSeconds {
+        case .twelveHourWithSeconds:
             return DateFormat.twelveHourWithSeconds
-        } else if overrideFormat == .twentyHourWithSeconds {
+        case .twentyHourWithSeconds:
             return DateFormat.twentyFourHourWithSeconds
-        } else if overrideFormat == .twelveHourPrecedingZero {
+        case .twelveHourPrecedingZero:
             return DateFormat.twelveHourWithZero
-        } else if overrideFormat == .twelveHourPrecedingZeroSeconds {
+        case .twelveHourPrecedingZeroSeconds:
             return DateFormat.twelveHourWithZeroSeconds
-        } else if overrideFormat == .twelveHourWithoutSuffix {
+        case .twelveHourWithoutSuffix:
             return DateFormat.twelveHourWithoutSuffix
-        } else if overrideFormat == .twelveHourWithoutSuffixAndSeconds {
+        case .twelveHourWithoutSuffixAndSeconds:
             return DateFormat.twelveHourWithoutSuffixAndSeconds
         }
-
-        return timeFormat
     }
 
     public func shouldShowSeconds(_ currentFormat: NSNumber) -> Bool {
