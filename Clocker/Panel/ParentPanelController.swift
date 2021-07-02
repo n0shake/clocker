@@ -1097,7 +1097,7 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
             for encodedTimezone in timezones {
                 if let timezoneObject = TimezoneData.customObject(from: encodedTimezone) {
                     let operations = TimezoneDataOperations(with: timezoneObject)
-                    clipboardCopy.append("\(timezoneObject.formattedTimezoneLabel()) - \(operations.time(with: 0))")
+                    clipboardCopy.append("\(timezoneObject.formattedTimezoneLabel()) - \(operations.time(with: 0))\n")
                 }
             }
 
