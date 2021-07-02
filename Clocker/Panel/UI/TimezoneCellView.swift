@@ -198,6 +198,12 @@ class TimezoneCellView: NSTableCellView {
     }
 
     override func mouseDown(with _: NSEvent) {
+        // Text is copied in the following format: Chicago - 1625185925
+        let clipboardCopy = "\(customName.stringValue) - \(time.stringValue)"
+        let pasteboard = NSPasteboard.general
+        pasteboard.declareTypes([.string], owner: nil)
+        pasteboard.setString(clipboardCopy, forType: .string)
+        
         window?.endEditing(for: nil)
     }
 
