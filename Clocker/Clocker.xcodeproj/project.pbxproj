@@ -11,7 +11,7 @@
 		3508CC9A259A0001000E3530 /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CC99259A0001000E3530 /* StatusItemView.swift */; };
 		3508CC9F259A000E000E3530 /* StatusItemHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CC9E259A000E000E3530 /* StatusItemHandler.swift */; };
 		3508CCAA259A0027000E3530 /* StatusContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CCA9259A0027000E3530 /* StatusContainerView.swift */; };
-		357391872507277500D30819 /* HourMarkerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357391852507277500D30819 /* HourMarkerViewItem.swift */; };
+		357391872507277500D30819 /* TimeMarkerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357391852507277500D30819 /* TimeMarkerViewItem.swift */; };
 		357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357391862507277500D30819 /* HourMarkerViewItem.xib */; };
 		3579765E2680208C009DDA6E /* ParentPanelController+ModernSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3579765D2680208C009DDA6E /* ParentPanelController+ModernSlider.swift */; };
 		3595FAD0227F88BC0044A12A /* UserDefaults + KVOExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */; };
@@ -84,6 +84,7 @@
 		35C36FA12259ED6D002FA5C6 /* EventCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F9E2259ED6D002FA5C6 /* EventCenter.swift */; };
 		35C36FA22259ED6D002FA5C6 /* RemindersHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F9F2259ED6D002FA5C6 /* RemindersHandler.swift */; };
 		35C36FA42259EEC2002FA5C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36FA32259EEC2002FA5C6 /* AppDelegate.swift */; };
+		35E65125268EDD2E00E3E1E3 /* Toasty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E65124268EDD2E00E3E1E3 /* Toasty.swift */; };
 		9A0A1C8C20903DBD0012003B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87651C1FEDC500A7A2DF /* CoreLocation.framework */; };
 		9A13BAD61CA87F08007C6CBE /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAD81CA87F08007C6CBE /* Panel.xib */; };
 		9A13BAE01CA882FA007C6CBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAE21CA882FA007C6CBE /* InfoPlist.strings */; };
@@ -229,7 +230,7 @@
 		352AF497232E07B400D96FA7 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		352AF499232E07B400D96FA7 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3569A44E25441F320087E254 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		357391852507277500D30819 /* HourMarkerViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourMarkerViewItem.swift; sourceTree = "<group>"; };
+		357391852507277500D30819 /* TimeMarkerViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMarkerViewItem.swift; sourceTree = "<group>"; };
 		357391862507277500D30819 /* HourMarkerViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourMarkerViewItem.xib; sourceTree = "<group>"; };
 		3579765D2680208C009DDA6E /* ParentPanelController+ModernSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParentPanelController+ModernSlider.swift"; sourceTree = "<group>"; };
 		3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults + KVOExtensions.swift"; sourceTree = "<group>"; };
@@ -304,6 +305,7 @@
 		35C36F9E2259ED6D002FA5C6 /* EventCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenter.swift; sourceTree = "<group>"; };
 		35C36F9F2259ED6D002FA5C6 /* RemindersHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersHandler.swift; sourceTree = "<group>"; };
 		35C36FA32259EEC2002FA5C6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		35E65124268EDD2E00E3E1E3 /* Toasty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toasty.swift; sourceTree = "<group>"; };
 		9A13BAD71CA87F08007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Panel.xib; sourceTree = "<group>"; };
 		9A13BAE11CA882FA007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A13BAEB1CA88A76007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -603,8 +605,9 @@
 				35C36F552259DD8A002FA5C6 /* TimezoneCellView.swift */,
 				35C36F532259DD8A002FA5C6 /* TimezoneDataSource.swift */,
 				35C36F322259D7C3002FA5C6 /* AddTableViewCell.swift */,
-				357391852507277500D30819 /* HourMarkerViewItem.swift */,
+				357391852507277500D30819 /* TimeMarkerViewItem.swift */,
 				357391862507277500D30819 /* HourMarkerViewItem.xib */,
+				35E65124268EDD2E00E3E1E3 /* Toasty.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1153,7 +1156,7 @@
 		};
 		C2A632A020EAC5EE00EB6BEA /* SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -1161,9 +1164,9 @@
 			name = SwiftFormat;
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftformat >/dev/null; then\n    swiftformat . --swiftversion 5\nelse\n    echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+			shellScript = "if which swiftformat >/dev/null; then\\n    swiftformat . --swiftversion 5\\nelse\\n    echo \\\"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\\\"\\nfi\\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1222,7 +1225,7 @@
 				35C36EF722595F14002FA5C6 /* FinalOnboardingViewController.swift in Sources */,
 				35C36FA12259ED6D002FA5C6 /* EventCenter.swift in Sources */,
 				9A5951BD1C1D0A8D009C17AA /* CommonStrings.m in Sources */,
-				357391872507277500D30819 /* HourMarkerViewItem.swift in Sources */,
+				357391872507277500D30819 /* TimeMarkerViewItem.swift in Sources */,
 				35C36F782259E1D0002FA5C6 /* Foundation + Additions.swift in Sources */,
 				35C36F16225961DA002FA5C6 /* Date+Inits.swift in Sources */,
 				35C36F4F2259D981002FA5C6 /* AppDefaults.swift in Sources */,
@@ -1259,6 +1262,7 @@
 				35C36F462259D892002FA5C6 /* DataStore.swift in Sources */,
 				9ACF618D231DABAE00F5E51E /* SearchDataSource.swift in Sources */,
 				3508CC9F259A000E000E3530 /* StatusItemHandler.swift in Sources */,
+				35E65125268EDD2E00E3E1E3 /* Toasty.swift in Sources */,
 				C2CCCD8220619C4C00F2DFC2 /* LocationController.swift in Sources */,
 				35C36F4B2259D971002FA5C6 /* UnderlinedButton.swift in Sources */,
 				9AB6F1562259CF3900A44663 /* CalendarViewController.swift in Sources */,
