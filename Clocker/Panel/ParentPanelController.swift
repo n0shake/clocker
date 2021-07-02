@@ -701,11 +701,9 @@ class ParentPanelController: NSWindowController {
             let eventCenter = EventCenter.sharedCenter()
             let now = Date()
             if let events = eventCenter.eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: now)], events.isEmpty == false {
-                guard let upcomingEvent = eventCenter.nextOccuring(events), let meetingLink = upcomingEvent.meetingURL else {
-                    return
+                if let upcomingEvent = eventCenter.nextOccuring(events), let meetingLink = upcomingEvent.meetingURL {
+                    NSWorkspace.shared.open(meetingLink)
                 }
-                NSWorkspace.shared.open(meetingLink)
-                return
             }
 
             if self.stackView.arrangedSubviews.contains(self.upcomingEventView!), self.upcomingEventView?.isHidden == false {
