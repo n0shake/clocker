@@ -26,18 +26,20 @@ extension TimezoneDataOperations {
             assertionFailure("Data was unexpectedly nil")
             return CLEmptyString
         }
+        
+        if (dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == DateFormat.epochTime) {
+            print("Slider Value is \(sliderValue)")
+            let timezone = TimeZone(identifier: dataObject.timezone())
+            let offset = timezone?.secondsFromGMT(for: newDate) ?? 0
+            let value = Int(Date().timeIntervalSince1970 + Double(offset))
+            return "\(value)"
+        }
 
         let dateFormatter = DateFormatterManager.dateFormatterWithFormat(with: .none,
                                                                          format: dataObject.timezoneFormat(DataStore.shared().timezoneFormat()),
                                                                          timezoneIdentifier: dataObject.timezone(),
                                                                          locale: Locale.autoupdatingCurrent)
         
-        if (dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == DateFormat.epochTime) {
-            let timezone = TimeZone(identifier: dataObject.timezone())
-            let offset = timezone?.secondsFromGMT(for: newDate) ?? 0
-            let value = Int(Date().timeIntervalSince1970 + Double(offset))
-            return "\(value)"
-        }
 
         return dateFormatter.string(from: newDate)
     }
