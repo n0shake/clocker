@@ -1075,4 +1075,11 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
                    for: "Sharing Service Executed")
         return self as? NSSharingServiceDelegate
     }
+
+    func sharingServicePicker(_: NSSharingServicePicker, sharingServicesForItems _: [Any], proposedSharingServices proposed: [NSSharingService]) -> [NSSharingService] {
+        let allowedServices: Set<String> = Set(["Messages", "Notes"])
+        return proposed.filter { service in
+            allowedServices.contains(service.title)
+        }
+    }
 }
