@@ -55,6 +55,9 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
 
         cellView.sunriseSetTime.stringValue = operation.formattedSunriseTime(with: sliderValue)
         cellView.sunriseImage.image = currentModel.isSunriseOrSunset ? Themer.shared().sunriseImage() : Themer.shared().sunsetImage()
+        if #available(macOS 10.14, *) {
+            cellView.sunriseImage.contentTintColor = currentModel.isSunriseOrSunset ? NSColor.systemYellow : NSColor.systemOrange
+        }
         cellView.relativeDate.stringValue = operation.date(with: sliderValue, displayType: .panel)
         cellView.rowNumber = row
         cellView.customName.stringValue = currentModel.formattedTimezoneLabel()
