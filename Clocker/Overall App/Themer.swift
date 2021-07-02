@@ -187,8 +187,8 @@ extension Themer {
 
         return
             themeIndex == .light
-                ? NSImage(named: NSImage.Name("Settings"))!
-                : NSImage(named: NSImage.Name("Settings-White"))!
+            ? NSImage(named: NSImage.Name("Settings"))!
+            : NSImage(named: NSImage.Name("Settings-White"))!
     }
 
     func pinImage() -> NSImage {
@@ -216,7 +216,7 @@ extension Themer {
         if let symbolImage = symbolImage(for: "sunrise.fill") {
             return symbolImage
         }
-        
+
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:
@@ -235,7 +235,7 @@ extension Themer {
         if let symbolImage = symbolImage(for: "sunset.fill") {
             return symbolImage
         }
-        
+
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:
@@ -331,7 +331,7 @@ extension Themer {
         if let symbolImage = symbolImage(for: "location.fill") {
             return symbolImage
         }
-        
+
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:
