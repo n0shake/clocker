@@ -205,6 +205,8 @@ class TimezoneCellView: NSTableCellView {
         pasteboard.declareTypes([.string], owner: nil)
         pasteboard.setString(clipboardCopy, forType: .string)
         
+        self.window?.contentView?.makeToast("Copied to Clipboard".localized())
+        
         window?.endEditing(for: nil)
     }
 
