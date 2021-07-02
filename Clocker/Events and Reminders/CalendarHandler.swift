@@ -201,7 +201,7 @@ extension EventCenter {
                     for event in events {
                         if selectedCalendars.contains(event.event.calendar.calendarIdentifier) {
                             if filteredEvents[date] == nil {
-                                filteredEvents[date] = []
+                                filteredEvents[date] = Array()
                             }
 
                             filteredEvents[date]?.append(event)
@@ -341,9 +341,9 @@ extension EventCenter {
                                   meetingURL: meetingURL)
         return eventInfo
     }
-    
-    static var dataDetector: NSDataDetector? = nil
-    
+
+    static var dataDetector: NSDataDetector?
+
     // Borrowing logic from Ityscal
     @discardableResult
     private func findAppropriateURLs(_ description: String) -> URL? {
@@ -356,7 +356,7 @@ extension EventCenter {
                 if actualLink.contains("zoom.us/j/") || actualLink.contains("zoom.us/s/") || actualLink.contains("zoom.us/w/") {
                     // Create a Zoom App link
                     let workspace = NSWorkspace.shared
-                    if (workspace.urlForApplication(toOpen: URL(string: "zoommtg://")!) != nil) {
+                    if workspace.urlForApplication(toOpen: URL(string: "zoommtg://")!) != nil {
                         actualLink = actualLink.replacingOccurrences(of: "https://", with: "zoommtg://")
                         actualLink = actualLink.replacingOccurrences(of: "?", with: "&")
                         actualLink = actualLink.replacingOccurrences(of: "/j/", with: "/join?confno=")
@@ -365,21 +365,20 @@ extension EventCenter {
                         if let appLink = URL(string: actualLink) {
                             return appLink
                         }
-                        
                     }
                 } else if actualLink.contains("zoommtg://")
-                || actualLink.contains("meet.google.com/")
-                || actualLink.contains("hangouts.google.com/")
-                || actualLink.contains("webex.com/")
-                || actualLink.contains("gotomeeting.com/join")
-                || actualLink.contains("ringcentral.com/j")
-                || actualLink.contains("bigbluebutton.org/gl")
-                || actualLink.contains("://bigbluebutton.")
-                || actualLink.contains("://bbb.")
-                || actualLink.contains("indigo.collocall.de")
-                || actualLink.contains("public.senfcall.de")
-                || actualLink.contains("youcanbook.me/zoom/")
-                || actualLink.contains("workplace.com/groupcall") {
+                    || actualLink.contains("meet.google.com/")
+                    || actualLink.contains("hangouts.google.com/")
+                    || actualLink.contains("webex.com/")
+                    || actualLink.contains("gotomeeting.com/join")
+                    || actualLink.contains("ringcentral.com/j")
+                    || actualLink.contains("bigbluebutton.org/gl")
+                    || actualLink.contains("://bigbluebutton.")
+                    || actualLink.contains("://bbb.")
+                    || actualLink.contains("indigo.collocall.de")
+                    || actualLink.contains("public.senfcall.de")
+                    || actualLink.contains("youcanbook.me/zoom/")
+                    || actualLink.contains("workplace.com/groupcall") {
                     if let zoomLink = result.url {
                         return zoomLink
                     }
@@ -388,21 +387,21 @@ extension EventCenter {
         }
         return nil
     }
-    
+
     private func retrieveMeetingURL(_ event: EKEvent) -> URL? {
         if EventCenter.dataDetector == nil {
             // TODO: Handle Try-Catch gracefully
             EventCenter.dataDetector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
         }
-        
+
         if let location = event.location {
             return findAppropriateURLs(location)
         }
-        
+
         if let url = event.url {
             return findAppropriateURLs(url.absoluteString)
         }
-        
+
         if let notes = event.notes {
             return findAppropriateURLs(notes)
         }
