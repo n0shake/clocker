@@ -9,7 +9,7 @@ extension ParentPanelController: NSCollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: HourMarkerViewItem.reuseIdentifier, for: indexPath) as! HourMarkerViewItem
+        let item = collectionView.makeItem(withIdentifier: TimeMarkerViewItem.reuseIdentifier, for: indexPath) as! TimeMarkerViewItem
         item.setup(with: indexPath.item)
         return item
     }

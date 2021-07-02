@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,7 +26,7 @@
             </constraints>
             <point key="canvasLocation" x="-17.5" y="283"/>
         </customView>
-        <customObject id="p0M-E4-898" customClass="HourMarkerViewItem" customModule="Clocker" customModuleProvider="target">
+        <customObject id="p0M-E4-898" customClass="TimeMarkerViewItem" customModule="Clocker" customModuleProvider="target">
             <connections>
                 <outlet property="verticalLineView" destination="9oV-Ab-UG7" id="0d5-Lu-gh3"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="9S0-wg-csq"/>

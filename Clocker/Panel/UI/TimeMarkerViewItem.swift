@@ -2,13 +2,13 @@
 
 import Cocoa
 
-class HourMarkerViewItem: NSCollectionViewItem {
+class TimeMarkerViewItem: NSCollectionViewItem {
     static let topConstraintIdentifier = "constrainFromTop"
     static let reuseIdentifier = NSUserInterfaceItemIdentifier("HourMarkerViewItem")
     @IBOutlet var verticalLineView: NSView!
 
     func setup(with index: Int) {
-        for constraint in view.constraints where constraint.identifier == HourMarkerViewItem.topConstraintIdentifier {
+        for constraint in view.constraints where constraint.identifier == TimeMarkerViewItem.topConstraintIdentifier {
             constraint.constant = index % 4 == 0 ? 0 : 20
         }
         verticalLineView.wantsLayer = true
