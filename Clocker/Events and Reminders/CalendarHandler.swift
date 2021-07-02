@@ -150,7 +150,7 @@ extension EventCenter {
         return menubarText
     }
 
-    func nextOccuring(_: [EventInfo]) -> EKEvent? {
+    func nextOccuring(_: [EventInfo]) -> EventInfo? {
         if calendarAccessDenied() || calendarAccessNotDetermined() {
             return nil
         }
@@ -162,14 +162,14 @@ extension EventCenter {
         }.first
 
         if let firstEvent = filteredEvent {
-            return firstEvent.event
+            return firstEvent
         }
 
         let filteredAllDayEvent = relevantEvents.filter {
             $0.isAllDay
         }.first
 
-        return filteredAllDayEvent?.event
+        return filteredAllDayEvent
     }
 
     func initializeStoreIfNeccesary() {
@@ -201,7 +201,7 @@ extension EventCenter {
                     for event in events {
                         if selectedCalendars.contains(event.event.calendar.calendarIdentifier) {
                             if filteredEvents[date] == nil {
-                                filteredEvents[date] = []
+                                filteredEvents[date] = Array()
                             }
 
                             filteredEvents[date]?.append(event)
@@ -332,13 +332,81 @@ extension EventCenter {
         let isEndDate = autoupdatingCalendar.isDate(date, inSameDayAs: event.endDate) && (event.startDate.compare(date) == .orderedAscending)
         let isAllDay = event.isAllDay || (event.startDate.compare(date) == .orderedAscending && event.endDate.compare(nextDate) == .orderedSame)
         let isSingleDay = event.isAllDay && (event.startDate.compare(date) == .orderedSame && event.endDate.compare(nextDate) == .orderedSame)
-
+        let meetingURL = retrieveMeetingURL(event)
         let eventInfo = EventInfo(event: event,
                                   isStartDate: isStartDate,
                                   isEndDate: isEndDate,
                                   isAllDay: isAllDay,
-                                  isSingleDay: isSingleDay)
+                                  isSingleDay: isSingleDay,
+                                  meetingURL: meetingURL)
         return eventInfo
+    }
+
+    static var dataDetector: NSDataDetector?
+
+    // Borrowing logic from Ityscal
+    @discardableResult
+    private func findAppropriateURLs(_ description: String) -> URL? {
+        guard let results = EventCenter.dataDetector?.matches(in: description, options: .reportCompletion, range: NSMakeRange(0, description.count)) else {
+            return nil
+        }
+        for result in results {
+            if result.resultType == .link, var actualLink = result.url?.absoluteString {
+                // Check for Zoom links
+                if actualLink.contains("zoom.us/j/") || actualLink.contains("zoom.us/s/") || actualLink.contains("zoom.us/w/") {
+                    // Create a Zoom App link
+                    let workspace = NSWorkspace.shared
+                    if workspace.urlForApplication(toOpen: URL(string: "zoommtg://")!) != nil {
+                        actualLink = actualLink.replacingOccurrences(of: "https://", with: "zoommtg://")
+                        actualLink = actualLink.replacingOccurrences(of: "?", with: "&")
+                        actualLink = actualLink.replacingOccurrences(of: "/j/", with: "/join?confno=")
+                        actualLink = actualLink.replacingOccurrences(of: "/s/", with: "/join?confno=")
+                        actualLink = actualLink.replacingOccurrences(of: "/w/", with: "/join?confno=")
+                        if let appLink = URL(string: actualLink) {
+                            return appLink
+                        }
+                    }
+                } else if actualLink.contains("zoommtg://")
+                    || actualLink.contains("meet.google.com/")
+                    || actualLink.contains("hangouts.google.com/")
+                    || actualLink.contains("webex.com/")
+                    || actualLink.contains("gotomeeting.com/join")
+                    || actualLink.contains("ringcentral.com/j")
+                    || actualLink.contains("bigbluebutton.org/gl")
+                    || actualLink.contains("://bigbluebutton.")
+                    || actualLink.contains("://bbb.")
+                    || actualLink.contains("indigo.collocall.de")
+                    || actualLink.contains("public.senfcall.de")
+                    || actualLink.contains("youcanbook.me/zoom/")
+                    || actualLink.contains("workplace.com/groupcall") {
+                    if let zoomLink = result.url {
+                        return zoomLink
+                    }
+                }
+            }
+        }
+        return nil
+    }
+
+    private func retrieveMeetingURL(_ event: EKEvent) -> URL? {
+        if EventCenter.dataDetector == nil {
+            // TODO: Handle Try-Catch gracefully
+            EventCenter.dataDetector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        }
+
+        if let location = event.location {
+            return findAppropriateURLs(location)
+        }
+
+        if let url = event.url {
+            return findAppropriateURLs(url.absoluteString)
+        }
+
+        if let notes = event.notes {
+            return findAppropriateURLs(notes)
+        }
+
+        return nil
     }
 }
 
@@ -353,4 +421,5 @@ struct EventInfo {
     let isEndDate: Bool
     let isAllDay: Bool
     let isSingleDay: Bool
+    let meetingURL: URL?
 }

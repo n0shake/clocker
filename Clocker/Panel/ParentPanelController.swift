@@ -698,6 +698,16 @@ class ParentPanelController: NSWindowController {
 
     func removeUpcomingEventView() {
         OperationQueue.main.addOperation {
+            let eventCenter = EventCenter.sharedCenter()
+            let now = Date()
+            if let events = eventCenter.eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: now)], events.isEmpty == false {
+                guard let upcomingEvent = eventCenter.nextOccuring(events), let meetingLink = upcomingEvent.meetingURL else {
+                    return
+                }
+                NSWorkspace.shared.open(meetingLink)
+                return
+            }
+
             if self.stackView.arrangedSubviews.contains(self.upcomingEventView!), self.upcomingEventView?.isHidden == false {
                 self.upcomingEventView?.isHidden = true
                 UserDefaults.standard.set("NO", forKey: CLShowUpcomingEventView)
@@ -812,9 +822,9 @@ class ParentPanelController: NSWindowController {
                     return
                 }
 
-                self.calendarColorView.layer?.backgroundColor = upcomingEvent.calendar.color.cgColor
-                self.nextEventLabel.stringValue = upcomingEvent.title
-                self.nextEventLabel.toolTip = upcomingEvent.title
+                self.calendarColorView.layer?.backgroundColor = upcomingEvent.event.calendar.color.cgColor
+                self.nextEventLabel.stringValue = upcomingEvent.event.title
+                self.nextEventLabel.toolTip = upcomingEvent.event.title
                 if upcomingEvent.isAllDay == true {
                     let title = events.count == 1 ? "All-Day" : "All Day - Total \(events.count) events today"
                     self.setCalendarButtonTitle(buttonTitle: title)
@@ -824,11 +834,15 @@ class ParentPanelController: NSWindowController {
                     return
                 }
 
-                let timeSince = Date().timeAgo(since: upcomingEvent.startDate)
+                let timeSince = Date().timeAgo(since: upcomingEvent.event.startDate)
                 let withoutAn = timeSince.replacingOccurrences(of: "an", with: CLEmptyString)
                 let withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
 
                 self.setCalendarButtonTitle(buttonTitle: "in \(withoutAgo.lowercased())")
+                
+                if upcomingEvent.meetingURL != nil {
+                    self.whiteRemoveButton.image = Themer.shared().videoCallImage()
+                }
 
                 if #available(OSX 10.14, *) {
                     PerfLogger.endMarker("Fetch Calendar Events")
