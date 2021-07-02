@@ -12,7 +12,7 @@ class CopyToClipboardTests: XCTestCase {
 
         if app.tables["FloatingTableView"].exists == false {
             app.tapMenubarIcon()
-            app.buttons["FloatingPin"].click()
+            app.buttons["Pin"].click()
         }
     }
 
