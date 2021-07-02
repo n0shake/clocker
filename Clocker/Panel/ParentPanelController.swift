@@ -1093,9 +1093,27 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
     }
 
     func sharingServicePicker(_: NSSharingServicePicker, sharingServicesForItems _: [Any], proposedSharingServices proposed: [NSSharingService]) -> [NSSharingService] {
+        let copySharingService = NSSharingService(title: "Copy All Times", image: NSImage(), alternateImage: nil) {
+            let timezones = DataStore.shared().timezones()
+            var clipboardCopy = String()
+            for encodedTimezone in timezones {
+                if let timezoneObject = TimezoneData.customObject(from: encodedTimezone) {
+                    let operations = TimezoneDataOperations(with: timezoneObject)
+                    clipboardCopy.append("\(timezoneObject.formattedTimezoneLabel()) - \(operations.time(with: 0))")
+                }
+            }
+
+            let pasteboard = NSPasteboard.general
+            pasteboard.declareTypes([.string], owner: nil)
+            pasteboard.setString(clipboardCopy, forType: .string)
+        }
         let allowedServices: Set<String> = Set(["Messages", "Notes"])
-        return proposed.filter { service in
+        let filteredServices = proposed.filter { service in
             allowedServices.contains(service.title)
         }
+        
+        var newProposedServices: [NSSharingService] = [copySharingService]
+        newProposedServices.append(contentsOf: filteredServices)
+        return newProposedServices
     }
 }
