@@ -810,9 +810,9 @@ class ParentPanelController: NSWindowController {
                     return
                 }
 
-                self.calendarColorView.layer?.backgroundColor = upcomingEvent.calendar.color.cgColor
-                self.nextEventLabel.stringValue = upcomingEvent.title
-                self.nextEventLabel.toolTip = upcomingEvent.title
+                self.calendarColorView.layer?.backgroundColor = upcomingEvent.event.calendar.color.cgColor
+                self.nextEventLabel.stringValue = upcomingEvent.event.title
+                self.nextEventLabel.toolTip = upcomingEvent.event.title
                 if upcomingEvent.isAllDay == true {
                     let title = events.count == 1 ? "All-Day" : "All Day - Total \(events.count) events today"
                     self.setCalendarButtonTitle(buttonTitle: title)
@@ -822,7 +822,7 @@ class ParentPanelController: NSWindowController {
                     return
                 }
 
-                let timeSince = Date().timeAgo(since: upcomingEvent.startDate)
+                let timeSince = Date().timeAgo(since: upcomingEvent.event.startDate)
                 let withoutAn = timeSince.replacingOccurrences(of: "an", with: CLEmptyString)
                 let withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
 
