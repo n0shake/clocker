@@ -614,6 +614,9 @@ class ParentPanelController: NSWindowController {
                 cellView.relativeDate.stringValue = dataOperation.date(with: futureSliderValue, displayType: .panel)
                 cellView.currentLocationIndicator.isHidden = !model.isSystemTimezone
                 cellView.sunriseImage.image = model.isSunriseOrSunset ? Themer.shared().sunriseImage() : Themer.shared().sunsetImage()
+                if #available(macOS 10.14, *) {
+                    cellView.sunriseImage.contentTintColor = model.isSunriseOrSunset ? NSColor.systemYellow : NSColor.systemOrange
+                }
                 if let note = model.note, !note.isEmpty {
                     cellView.noteLabel.stringValue = note
                 } else if DataStore.shared().shouldDisplay(.dstTransitionInfo),
