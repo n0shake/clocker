@@ -77,10 +77,10 @@ extension ParentPanelController {
                                                         direction: .forward)!
 
         if shouldUpdate {
-            modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(hourQuarterDate)
+//            modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(hourQuarterDate)
         } else {
-            let fullString = NSMutableAttributedString(string: "Time Scroller")
-            modernSliderLabel.attributedStringValue = fullString
+//            let fullString = NSMutableAttributedString(string: "Time Scroller")
+//            modernSliderLabel.attributedStringValue = fullString
         }
 
         return hourQuarterDate
@@ -92,12 +92,12 @@ extension ParentPanelController {
         if index > (centerPoint + 1) {
             let remainder = (index % (centerPoint + 1))
             let nextDate = Calendar.current.date(byAdding: .minute, value: remainder * 15, to: closestQuarterTimeRepresentation ?? Date())!
-            modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(nextDate)
+//            modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(nextDate)
             return nextDate.minutes(from: Date()) + 1
         } else if index <= centerPoint {
             let remainder = centerPoint - index + 1
             let previousDate = Calendar.current.date(byAdding: .minute, value: -1 * remainder * 15, to: closestQuarterTimeRepresentation ?? Date())!
-            modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(previousDate)
+//            modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(previousDate)
             return previousDate.minutes(from: Date())
         } else {
             setModernSliderLabel(true)
