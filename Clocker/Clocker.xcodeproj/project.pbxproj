@@ -124,6 +124,9 @@
 		9AB6F1642259D1B900A44663 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F1632259D1B800A44663 /* ParentViewController.swift */; };
 		9AB6F1672259D23200A44663 /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F1662259D23200A44663 /* PermissionsViewController.swift */; };
 		9AB89E031CE97A4900EC8EB1 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AB89E021CE97A4900EC8EB1 /* Media.xcassets */; };
+		9ABF454E268FCF10002C779B /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9ABF454D268FCF10002C779B /* Keys.plist */; };
+		9ABF454F268FCF10002C779B /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9ABF454D268FCF10002C779B /* Keys.plist */; };
+		9ABF455B268FDABA002C779B /* CopyToClipboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABF4559268FDABA002C779B /* CopyToClipboardTests.swift */; };
 		9ABFB3801CA6882000E10745 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ABFB37F1CA6882000E10745 /* ApplicationServices.framework */; };
 		9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9ACB31401EDA994200F3E1D3 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACB313F1EDA994200F3E1D3 /* ShortcutRecorder.framework */; };
@@ -234,7 +237,6 @@
 		357391862507277500D30819 /* HourMarkerViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourMarkerViewItem.xib; sourceTree = "<group>"; };
 		3579765D2680208C009DDA6E /* ParentPanelController+ModernSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParentPanelController+ModernSlider.swift"; sourceTree = "<group>"; };
 		3595FACF227F88BC0044A12A /* UserDefaults + KVOExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults + KVOExtensions.swift"; sourceTree = "<group>"; };
-		35992D07267EA61E00020078 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Keys.plist; path = ../Internal/Keys.plist; sourceTree = "<group>"; };
 		35A6A4B925C5DEF300356073 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		35B2FEB1259A1649005DA84D /* StartupKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StartupKit; sourceTree = "<group>"; };
 		35B2FED4259A2244005DA84D /* CoreLoggerKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CoreLoggerKit; sourceTree = "<group>"; };
@@ -383,6 +385,8 @@
 		9AB6F1632259D1B800A44663 /* ParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		9AB6F1662259D23200A44663 /* PermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
 		9AB89E021CE97A4900EC8EB1 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		9ABF454D268FCF10002C779B /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Keys.plist; path = Internal/Keys.plist; sourceTree = "<group>"; };
+		9ABF4559268FDABA002C779B /* CopyToClipboardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyToClipboardTests.swift; sourceTree = "<group>"; };
 		9ABFB37F1CA6882000E10745 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9ACB31391EDA98EA00F3E1D3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -805,6 +809,7 @@
 		C2BFE3E42049F82300825BE5 /* ClockerUITests */ = {
 			isa = PBXGroup;
 			children = (
+				9ABF4559268FDABA002C779B /* CopyToClipboardTests.swift */,
 				C2BFE3E52049F82300825BE5 /* ClockerUITests.m */,
 				C2BFE3E72049F82300825BE5 /* Info.plist */,
 				9AA522BE23415BDD00C9E005 /* InfoPlist.strings */,
@@ -825,7 +830,7 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
-				35992D07267EA61E00020078 /* Keys.plist */,
+				9ABF454D268FCF10002C779B /* Keys.plist */,
 				35B2FEE4259A2C25005DA84D /* CoreModelKit */,
 				35B2FED4259A2244005DA84D /* CoreLoggerKit */,
 				35B2FEB1259A1649005DA84D /* StartupKit */,
@@ -956,7 +961,6 @@
 				9A4379201BEC220200F4E27F /* ShellScript */,
 				9A20A0711C4E808500FB45AB /* Login Item Helper */,
 				9A5E75EC204CC39700119939 /* Embed Frameworks */,
-				C2A632A020EAC5EE00EB6BEA /* SwiftFormat */,
 			);
 			buildRules = (
 			);
@@ -1110,6 +1114,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ABF454F268FCF10002C779B /* Keys.plist in Resources */,
 				9A8B256A232EFAD300204CAD /* Localizable.strings in Resources */,
 				9AA522C023415BDD00C9E005 /* InfoPlist.strings in Resources */,
 			);
@@ -1119,6 +1124,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ABF454E268FCF10002C779B /* Keys.plist in Resources */,
 				9A13BAEA1CA88A76007C6CBE /* Localizable.strings in Resources */,
 				357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */,
 				9AB6F15E2259D08300A44663 /* iVersion.bundle in Resources */,
@@ -1151,22 +1157,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
 			showEnvVarsInLog = 0;
-		};
-		C2A632A020EAC5EE00EB6BEA /* SwiftFormat */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = SwiftFormat;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftformat >/dev/null; then\\n    swiftformat . --swiftversion 5\\nelse\\n    echo \\\"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\\\"\\nfi\\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1192,6 +1184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ABF455B268FDABA002C779B /* CopyToClipboardTests.swift in Sources */,
 				C2F7821B20B70E3700B6CD07 /* AboutUsTests.swift in Sources */,
 				C264A0C820B898D600CCD875 /* PanelTests.swift in Sources */,
 				C2BFE3E62049F82300825BE5 /* ClockerUITests.m in Sources */,
@@ -1478,7 +1471,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 92;
+				CURRENT_PROJECT_VERSION = 94;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2026,7 +2019,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 92;
+				CURRENT_PROJECT_VERSION = 94;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -2108,7 +2101,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 92;
+				CURRENT_PROJECT_VERSION = 94;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
