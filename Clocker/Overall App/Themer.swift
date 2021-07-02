@@ -187,8 +187,8 @@ extension Themer {
 
         return
             themeIndex == .light
-            ? NSImage(named: NSImage.Name("Settings"))!
-            : NSImage(named: NSImage.Name("Settings-White"))!
+                ? NSImage(named: NSImage.Name("Settings"))!
+                : NSImage(named: NSImage.Name("Settings-White"))!
     }
 
     func pinImage() -> NSImage {
@@ -440,6 +440,15 @@ extension Themer {
         return themeIndex == .light ?
             NSColor(deviceRed: 241.0 / 255.0, green: 241.0 / 255.0, blue: 241.0 / 255.0, alpha: 1.0) :
             NSColor(deviceRed: 42.0 / 255.0, green: 55.0 / 255.0, blue: 62.0 / 255.0, alpha: 1.0)
+    }
+
+    func videoCallImage() -> NSImage? {
+        if #available(macOS 11.0, *) {
+            let symbolConfig = NSImage.SymbolConfiguration(pointSize: 20, weight: .regular)
+            return symbolImage(for: "video.circle.fill")?.withSymbolConfiguration(symbolConfig)
+        } else {
+            return nil
+        }
     }
 
     func symbolImage(for name: String) -> NSImage? {
