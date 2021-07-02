@@ -115,8 +115,21 @@ class ClockerUnitTests: XCTestCase {
             XCTFail("Default preferences aren't in the correct format")
             return
         }
-        let oldCount = currentFavourites.count
-
+        // Check if timezone with test identifier is present.
+        let filteredCount = currentFavourites.filter {
+            let timezone = TimezoneData.customObject(from: $0)
+            return timezone?.placeID == "TestIdentifier"
+        }
+        
+        // California is absent. Add it!
+        if filteredCount.count == 0 {
+            let timezoneData = TimezoneData(with: california)
+            let operationsObject = TimezoneDataOperations(with: timezoneData)
+            operationsObject.saveObject()
+        }
+        
+        let oldCount = (defaults.object(forKey: CLDefaultPreferenceKey) as? [Data])?.count ?? 0
+        
         currentFavourites = currentFavourites.filter {
             let timezone = TimezoneData.customObject(from: $0)
             return timezone?.placeID != "TestIdentifier"
