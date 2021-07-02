@@ -38,7 +38,8 @@ class AppearanceViewController: ParentViewController {
                                     "hh:mm:ss a (07:08:09 PM)",
                                     "-- 12 Hour w/o AM/PM --",
                                     "hh:mm (07:08)",
-                                    "hh:mm:ss (07:08:09)"]
+                                    "hh:mm:ss (07:08:09)",
+                                    "Epoch Time"]
         timeFormat.removeAllItems()
         timeFormat.addItems(withTitles: supportedTimeFormats)
 
@@ -179,9 +180,6 @@ class AppearanceViewController: ParentViewController {
         let selection = NSNumber(value: sender.indexOfSelectedItem)
 
         UserDefaults.standard.set(selection, forKey: CLSelectedTimeZoneFormatKey)
-
-        Logger.log(object: ["Time Format": sender.indexOfSelectedItem == 0 ? "12 Hour Format" : "24 Hour Format"], for: "Time Format Selected")
-
         refresh(panel: true, floating: true)
 
         if let selectedFormat = sender.selectedItem?.title,
