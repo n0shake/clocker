@@ -260,7 +260,7 @@
                                 </scroller>
                             </scrollView>
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="C7R-Dq-MFr" userLabel="Slider View">
-                                <rect key="frame" x="0.0" y="125" width="350" height="30"/>
+                                <rect key="frame" x="0.0" y="215" width="350" height="30"/>
                                 <subviews>
                                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vf2-uI-yf3">
                                         <rect key="frame" x="7" y="2" width="201" height="23"/>
@@ -333,7 +333,7 @@
                                             </subviews>
                                             <color key="backgroundColor" name="systemIndigoColor" catalog="System" colorSpace="catalog"/>
                                         </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" toolTip="Hello Sonali." wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" horizontal="YES" id="8II-oP-xbd" customClass="ThinScroller" customModule="Clocker" customModuleProvider="target">
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" horizontal="YES" id="8II-oP-xbd" customClass="ThinScroller" customModule="Clocker" customModuleProvider="target">
                                             <rect key="frame" x="-100" y="-100" width="340" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
