@@ -2,7 +2,6 @@
 
 import Cocoa
 import CoreLoggerKit
-import Firebase
 
 struct EmailSignupConstants {
     static let CLEmailSignupEmailProperty = "email"
@@ -118,17 +117,6 @@ class FinalOnboardingViewController: NSViewController {
             EmailSignupConstants.CLAppFeedbackDateProperty: todaysDate(),
             EmailSignupConstants.CLAppLanguageKey: Locale.preferredLanguages.first ?? "en-US",
         ]
-    }
-
-    func sendUpEmailIfValid() {
-        guard let identifier = serialNumber, let annotations = extraData() else {
-            // Either serial number wasn't present or email wasn't added. Abort.
-            return
-        }
-
-        let myRootReference = Firebase(url: "https://fiery-heat-5237.firebaseio.com/EmailSignup")
-        let feedbackReference = myRootReference?.child(byAppendingPath: identifier)
-        feedbackReference?.setValue(annotations)
     }
 }
 

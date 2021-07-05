@@ -2,7 +2,7 @@
 
 import Cocoa
 import CoreLoggerKit
-import Firebase
+import FirebaseDatabase
 
 extension NSNib.Name {
     static let appFeedbackWindowIdentifier = NSNib.Name("AppFeedbackWindow")
@@ -175,15 +175,16 @@ class AppFeedbackWindowController: NSWindowController {
         return dateFormatter.string(from: Date())
     }
 
-    private func sendDataToFirebase(feedbackInfo: [String: String]) {
+    var firebaseDBReference: DatabaseReference!
+
+    private func sendDataToFirebase(feedbackInfo info: [String: String]) {
         guard let identifier = serialNumber else {
             assertionFailure("Serial Identifier was unexpectedly nil")
             return
         }
 
-        let myRootReference = Firebase(url: "https://fiery-heat-5237.firebaseio.com/Feedback")
-        let feedbackReference = myRootReference?.child(byAppendingPath: identifier)
-        feedbackReference?.setValue(feedbackInfo)
+        firebaseDBReference = Database.database().reference()
+        firebaseDBReference.child("Feedback").child(identifier).setValue(info)
     }
 
     private func showSucccessOnSendingInfo() {
