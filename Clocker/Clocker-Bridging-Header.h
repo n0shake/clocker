@@ -9,5 +9,3 @@
 #import <ShortcutRecorder/ShortcutRecorder.h>
 #import <PTHotKey/PTHotKeyCenter.h>
 #import <PTHotKey/PTHotKey+ShortcutRecorder.h>
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
