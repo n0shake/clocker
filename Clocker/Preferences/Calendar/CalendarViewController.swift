@@ -239,13 +239,15 @@ extension CalendarViewController: NSTableViewDelegate {
 
     func tableView(_ tableView: NSTableView, viewFor _: NSTableColumn?, row: Int) -> NSView? {
         if let currentSource = calendars[row] as? String,
-            let message = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "sourceCellView"), owner: self) as? SourceTableViewCell {
+           let message = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "sourceCellView"), owner: self) as? SourceTableViewCell
+        {
             message.sourceName.stringValue = currentSource
             return message
         }
 
         if let currentSource = calendars[row] as? CalendarInfo,
-            let calendarCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "calendarCellView"), owner: self) as? CalendarTableViewCell {
+           let calendarCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "calendarCellView"), owner: self) as? CalendarTableViewCell
+        {
             calendarCell.calendarName.stringValue = currentSource.calendar.title
             calendarCell.calendarSelected.state = currentSource.selected ? NSControl.StateValue.on : NSControl.StateValue.off
             calendarCell.calendarSelected.target = self

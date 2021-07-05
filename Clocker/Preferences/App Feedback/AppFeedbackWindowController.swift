@@ -11,7 +11,7 @@ extension NSNib.Name {
     static let startAtLoginViewIdentifier = NSNib.Name("StartAtLoginView")
 }
 
-struct AppFeedbackConstants {
+enum AppFeedbackConstants {
     static let CLAppFeedbackNibIdentifier = "AppFeedbackWindow"
     static let CLAppFeedbackNoResponseString = "Not Provided"
     static let CLAppFeedbackNameProperty = "name"
@@ -59,7 +59,7 @@ class AppFeedbackWindowController: NSWindowController {
         }
     }
 
-    static var sharedWindow: AppFeedbackWindowController = AppFeedbackWindowController(windowNibName: NSNib.Name.appFeedbackWindowIdentifier)
+    static var sharedWindow = AppFeedbackWindowController(windowNibName: NSNib.Name.appFeedbackWindowIdentifier)
 
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -100,6 +100,7 @@ class AppFeedbackWindowController: NSWindowController {
         }
     }
 
+    @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -132,7 +133,7 @@ class AppFeedbackWindowController: NSWindowController {
                                  repeats: false,
                                  block: { _ in
                                      self.resetInformativeLabel()
-            })
+                                 })
 
             isActivityInProgress = false
 
@@ -144,7 +145,8 @@ class AppFeedbackWindowController: NSWindowController {
 
     private func retrieveDataForSending() -> [String: String] {
         guard let shortVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
-            let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String else {
+              let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+        else {
             return [:]
         }
 
@@ -248,7 +250,7 @@ class AppFeedbackWindowController: NSWindowController {
 
     @IBAction func navigateToSupportTwitter(_: Any) {
         guard let twitterURL = URL(string: AboutUsConstants.TwitterLink),
-            let countryCode = Locale.autoupdatingCurrent.regionCode else { return }
+              let countryCode = Locale.autoupdatingCurrent.regionCode else { return }
 
         NSWorkspace.shared.open(twitterURL)
 
