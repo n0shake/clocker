@@ -3,6 +3,8 @@
 import Cocoa
 import CoreLoggerKit
 import CoreModelKit
+import FirebaseCore
+import FirebaseCrashlytics
 
 open class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var floatingWindow: FloatingWindowController = FloatingWindowController.shared()
@@ -61,7 +63,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         ReviewController.applicationDidLaunch(UserDefaults.standard)
 
         #if RELEASE
-            Fabric.with([Crashlytics.self])
+            FirebaseApp.configure()
             checkIfRunFromApplicationsFolder()
         #endif
     }

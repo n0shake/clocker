@@ -11,6 +11,49 @@
 		3508CC9A259A0001000E3530 /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CC99259A0001000E3530 /* StatusItemView.swift */; };
 		3508CC9F259A000E000E3530 /* StatusItemHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CC9E259A000E000E3530 /* StatusItemHandler.swift */; };
 		3508CCAA259A0027000E3530 /* StatusContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CCA9259A0027000E3530 /* StatusContainerView.swift */; };
+		3531F7C226936C6E00DF0111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7C026936C6E00DF0111 /* GoogleService-Info.plist */; };
+		3531F7C326936C8300DF0111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7C026936C6E00DF0111 /* GoogleService-Info.plist */; };
+		3531F7C426936C8300DF0111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7C026936C6E00DF0111 /* GoogleService-Info.plist */; };
+		3531F7C526936C8400DF0111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7C026936C6E00DF0111 /* GoogleService-Info.plist */; };
+		3531F7ED26936DE900DF0111 /* run in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7EB26936DE900DF0111 /* run */; };
+		3531F7EE26936DE900DF0111 /* run in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7EB26936DE900DF0111 /* run */; };
+		3531F7EF26936DE900DF0111 /* run in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7EB26936DE900DF0111 /* run */; };
+		3531F7F026936DE900DF0111 /* upload-symbols in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7EC26936DE900DF0111 /* upload-symbols */; };
+		3531F7F126936DE900DF0111 /* upload-symbols in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7EC26936DE900DF0111 /* upload-symbols */; };
+		3531F7F226936DE900DF0111 /* upload-symbols in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7EC26936DE900DF0111 /* upload-symbols */; };
+		3531F7F52693882300DF0111 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7F42693882300DF0111 /* Keys.plist */; };
+		3531F7F62693882300DF0111 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7F42693882300DF0111 /* Keys.plist */; };
+		3531F7F72693882300DF0111 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7F42693882300DF0111 /* Keys.plist */; };
+		3531F80626938D7700DF0111 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FC26938D7600DF0111 /* GoogleUtilities.framework */; };
+		3531F80726938D7700DF0111 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FC26938D7600DF0111 /* GoogleUtilities.framework */; };
+		3531F80826938D7700DF0111 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FC26938D7600DF0111 /* GoogleUtilities.framework */; };
+		3531F80926938D7700DF0111 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FD26938D7700DF0111 /* FirebaseCoreDiagnostics.framework */; };
+		3531F80A26938D7700DF0111 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FD26938D7700DF0111 /* FirebaseCoreDiagnostics.framework */; };
+		3531F80B26938D7700DF0111 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FD26938D7700DF0111 /* FirebaseCoreDiagnostics.framework */; };
+		3531F80C26938D7700DF0111 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FE26938D7700DF0111 /* FirebaseDatabase.framework */; };
+		3531F80D26938D7700DF0111 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FE26938D7700DF0111 /* FirebaseDatabase.framework */; };
+		3531F80E26938D7700DF0111 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FE26938D7700DF0111 /* FirebaseDatabase.framework */; };
+		3531F80F26938D7700DF0111 /* PromisesObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FF26938D7700DF0111 /* PromisesObjC.framework */; };
+		3531F81026938D7700DF0111 /* PromisesObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FF26938D7700DF0111 /* PromisesObjC.framework */; };
+		3531F81126938D7700DF0111 /* PromisesObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FF26938D7700DF0111 /* PromisesObjC.framework */; };
+		3531F81226938D7700DF0111 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80026938D7700DF0111 /* FirebaseCore.framework */; };
+		3531F81326938D7700DF0111 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80026938D7700DF0111 /* FirebaseCore.framework */; };
+		3531F81426938D7700DF0111 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80026938D7700DF0111 /* FirebaseCore.framework */; };
+		3531F81526938D7700DF0111 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80126938D7700DF0111 /* nanopb.framework */; };
+		3531F81626938D7700DF0111 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80126938D7700DF0111 /* nanopb.framework */; };
+		3531F81726938D7700DF0111 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80126938D7700DF0111 /* nanopb.framework */; };
+		3531F81826938D7700DF0111 /* FirebaseCrashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80226938D7700DF0111 /* FirebaseCrashlytics.framework */; };
+		3531F81926938D7700DF0111 /* FirebaseCrashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80226938D7700DF0111 /* FirebaseCrashlytics.framework */; };
+		3531F81A26938D7700DF0111 /* FirebaseCrashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80226938D7700DF0111 /* FirebaseCrashlytics.framework */; };
+		3531F81B26938D7700DF0111 /* FirebaseInstallations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80326938D7700DF0111 /* FirebaseInstallations.framework */; };
+		3531F81C26938D7700DF0111 /* FirebaseInstallations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80326938D7700DF0111 /* FirebaseInstallations.framework */; };
+		3531F81D26938D7700DF0111 /* FirebaseInstallations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80326938D7700DF0111 /* FirebaseInstallations.framework */; };
+		3531F81E26938D7700DF0111 /* leveldb-library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80426938D7700DF0111 /* leveldb-library.framework */; };
+		3531F81F26938D7700DF0111 /* leveldb-library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80426938D7700DF0111 /* leveldb-library.framework */; };
+		3531F82026938D7700DF0111 /* leveldb-library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80426938D7700DF0111 /* leveldb-library.framework */; };
+		3531F82126938D7700DF0111 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80526938D7700DF0111 /* GoogleDataTransport.framework */; };
+		3531F82226938D7700DF0111 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80526938D7700DF0111 /* GoogleDataTransport.framework */; };
+		3531F82326938D7700DF0111 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80526938D7700DF0111 /* GoogleDataTransport.framework */; };
 		357391872507277500D30819 /* TimeMarkerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357391852507277500D30819 /* TimeMarkerViewItem.swift */; };
 		357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357391862507277500D30819 /* HourMarkerViewItem.xib */; };
 		3579765E2680208C009DDA6E /* ParentPanelController+ModernSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3579765D2680208C009DDA6E /* ParentPanelController+ModernSlider.swift */; };
@@ -92,10 +135,8 @@
 		9A20A04B1C4DEED200FB45AB /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A20A04A1C4DEED200FB45AB /* IOKit.framework */; };
 		9A24A1881ED902CC0095201E /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A24A1871ED902CC0095201E /* EventKit.framework */; };
 		9A3169C11D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A3169C01D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist */; };
-		9A4379271BEC223900F4E27F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379231BEC223900F4E27F /* Fabric.framework */; };
 		9A43792A1BEC230A00F4E27F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379291BEC230A00F4E27F /* libc++.tbd */; };
 		9A56DB801C1CFB73004CE6AF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A56DB7D1C1CFB73004CE6AF /* MainMenu.xib */; };
-		9A5951BA1C1D0A22009C17AA /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5951B91C1D0A22009C17AA /* Crashlytics.framework */; };
 		9A5951BD1C1D0A8D009C17AA /* CommonStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5951BB1C1D0A8D009C17AA /* CommonStrings.m */; };
 		9A5E75E4204CC39700119939 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86E2BC1CE04F1600547EE7 /* ShortcutRecorder.framework */; };
 		9A5E75E5204CC39700119939 /* ShortcutRecorder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86E2BC1CE04F1600547EE7 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -130,7 +171,6 @@
 		9ABFB3801CA6882000E10745 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ABFB37F1CA6882000E10745 /* ApplicationServices.framework */; };
 		9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9ACB31401EDA994200F3E1D3 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACB313F1EDA994200F3E1D3 /* ShortcutRecorder.framework */; };
-		9ACE03EF1CB0ADE00039FC01 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACE03EE1CB0ADE00039FC01 /* Firebase.framework */; };
 		9ACF469D1DCBD45200C49B51 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACF469C1DCBD45200C49B51 /* Quartz.framework */; };
 		9ACF618D231DABAE00F5E51E /* SearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF618C231DABAE00F5E51E /* SearchDataSource.swift */; };
 		C20839CA21515C1E00C86589 /* ClockerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20839C921515C1E00C86589 /* ClockerUnitTests.swift */; };
@@ -232,6 +272,21 @@
 		3508CCA9259A0027000E3530 /* StatusContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusContainerView.swift; sourceTree = "<group>"; };
 		352AF497232E07B400D96FA7 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		352AF499232E07B400D96FA7 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3531F7C026936C6E00DF0111 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3531F7EA26936D8800DF0111 /* Firebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
+		3531F7EB26936DE900DF0111 /* run */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = run; sourceTree = "<group>"; };
+		3531F7EC26936DE900DF0111 /* upload-symbols */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "upload-symbols"; sourceTree = "<group>"; };
+		3531F7F42693882300DF0111 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Keys.plist; path = Internal/Keys.plist; sourceTree = "<group>"; };
+		3531F7FC26938D7600DF0111 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/Firebase/GoogleUtilities.framework; sourceTree = "<group>"; };
+		3531F7FD26938D7700DF0111 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = Frameworks/Firebase/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
+		3531F7FE26938D7700DF0111 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Frameworks/Firebase/FirebaseDatabase.framework; sourceTree = "<group>"; };
+		3531F7FF26938D7700DF0111 /* PromisesObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromisesObjC.framework; path = Frameworks/Firebase/PromisesObjC.framework; sourceTree = "<group>"; };
+		3531F80026938D7700DF0111 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Frameworks/Firebase/FirebaseCore.framework; sourceTree = "<group>"; };
+		3531F80126938D7700DF0111 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Frameworks/Firebase/nanopb.framework; sourceTree = "<group>"; };
+		3531F80226938D7700DF0111 /* FirebaseCrashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCrashlytics.framework; path = Frameworks/Firebase/FirebaseCrashlytics.framework; sourceTree = "<group>"; };
+		3531F80326938D7700DF0111 /* FirebaseInstallations.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstallations.framework; path = Frameworks/Firebase/FirebaseInstallations.framework; sourceTree = "<group>"; };
+		3531F80426938D7700DF0111 /* leveldb-library.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "leveldb-library.framework"; path = "Frameworks/Firebase/leveldb-library.framework"; sourceTree = "<group>"; };
+		3531F80526938D7700DF0111 /* GoogleDataTransport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleDataTransport.framework; path = Frameworks/Firebase/GoogleDataTransport.framework; sourceTree = "<group>"; };
 		3569A44E25441F320087E254 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		357391852507277500D30819 /* TimeMarkerViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMarkerViewItem.swift; sourceTree = "<group>"; };
 		357391862507277500D30819 /* HourMarkerViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourMarkerViewItem.xib; sourceTree = "<group>"; };
@@ -315,7 +370,6 @@
 		9A20A06F1C4E804D00FB45AB /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		9A24A1871ED902CC0095201E /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		9A3169C01D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = com.abhishek.ClockerHelper.plist; path = Clocker/com.abhishek.ClockerHelper.plist; sourceTree = "<group>"; };
-		9A4379231BEC223900F4E27F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9A4379291BEC230A00F4E27F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		9A43792B1BEC231100F4E27F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9A4DC4DF2337F2EB00F03FA4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -329,7 +383,6 @@
 		9A4DC4E82337F5D600F03FA4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A4DC4E92337F5D600F03FA4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9A56DB7D1C1CFB73004CE6AF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Clocker/MainMenu.xib; sourceTree = "<group>"; };
-		9A5951B91C1D0A22009C17AA /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Frameworks/Crashlytics.framework; sourceTree = "<group>"; };
 		9A5951BB1C1D0A8D009C17AA /* CommonStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommonStrings.m; path = Clocker/Utilities/CommonStrings.m; sourceTree = "<group>"; };
 		9A5951BC1C1D0A8D009C17AA /* CommonStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonStrings.h; path = Clocker/Utilities/CommonStrings.h; sourceTree = "<group>"; };
 		9A5B1A8D1BECDFB700A77C68 /* Clocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Clocker.entitlements; path = Clocker/Clocker.entitlements; sourceTree = "<group>"; };
@@ -389,13 +442,7 @@
 		9ABF4559268FDABA002C779B /* CopyToClipboardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyToClipboardTests.swift; sourceTree = "<group>"; };
 		9ABFB37F1CA6882000E10745 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		9ACB31391EDA98EA00F3E1D3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		9ACB313A1EDA98EA00F3E1D3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		9ACB313B1EDA98EA00F3E1D3 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
-		9ACB313C1EDA98EA00F3E1D3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Security.framework; sourceTree = "<group>"; };
-		9ACB313D1EDA98EA00F3E1D3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SystemConfiguration.framework; sourceTree = "<group>"; };
 		9ACB313F1EDA994200F3E1D3 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Clocker-ewkrwqfbimlgoicxkolbqepjsbcy/Build/Products/Release/ShortcutRecorder.framework"; sourceTree = "<group>"; };
-		9ACE03EE1CB0ADE00039FC01 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Frameworks/Firebase.framework; sourceTree = "<group>"; };
 		9ACF469C1DCBD45200C49B51 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		9ACF618C231DABAE00F5E51E /* SearchDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataSource.swift; sourceTree = "<group>"; };
 		9AFCC7FC1FD668FF00509B9C /* ClockerHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClockerHelper.entitlements; sourceTree = "<group>"; };
@@ -432,6 +479,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3531F80E26938D7700DF0111 /* FirebaseDatabase.framework in Frameworks */,
+				3531F81D26938D7700DF0111 /* FirebaseInstallations.framework in Frameworks */,
+				3531F81426938D7700DF0111 /* FirebaseCore.framework in Frameworks */,
+				3531F81A26938D7700DF0111 /* FirebaseCrashlytics.framework in Frameworks */,
+				3531F80826938D7700DF0111 /* GoogleUtilities.framework in Frameworks */,
+				3531F82326938D7700DF0111 /* GoogleDataTransport.framework in Frameworks */,
+				3531F82026938D7700DF0111 /* leveldb-library.framework in Frameworks */,
+				3531F81126938D7700DF0111 /* PromisesObjC.framework in Frameworks */,
+				3531F81726938D7700DF0111 /* nanopb.framework in Frameworks */,
+				3531F80B26938D7700DF0111 /* FirebaseCoreDiagnostics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +496,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3531F80D26938D7700DF0111 /* FirebaseDatabase.framework in Frameworks */,
+				3531F81C26938D7700DF0111 /* FirebaseInstallations.framework in Frameworks */,
+				3531F81326938D7700DF0111 /* FirebaseCore.framework in Frameworks */,
+				3531F81926938D7700DF0111 /* FirebaseCrashlytics.framework in Frameworks */,
+				3531F80726938D7700DF0111 /* GoogleUtilities.framework in Frameworks */,
+				3531F82226938D7700DF0111 /* GoogleDataTransport.framework in Frameworks */,
+				3531F81F26938D7700DF0111 /* leveldb-library.framework in Frameworks */,
+				3531F81026938D7700DF0111 /* PromisesObjC.framework in Frameworks */,
+				3531F81626938D7700DF0111 /* nanopb.framework in Frameworks */,
+				3531F80A26938D7700DF0111 /* FirebaseCoreDiagnostics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,27 +513,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3531F80F26938D7700DF0111 /* PromisesObjC.framework in Frameworks */,
+				3531F80C26938D7700DF0111 /* FirebaseDatabase.framework in Frameworks */,
 				9A0A1C8C20903DBD0012003B /* CoreLocation.framework in Frameworks */,
 				9A7547C91F183729004705EF /* ServiceManagement.framework in Frameworks */,
 				9A24A1881ED902CC0095201E /* EventKit.framework in Frameworks */,
+				3531F81E26938D7700DF0111 /* leveldb-library.framework in Frameworks */,
 				9ACF469D1DCBD45200C49B51 /* Quartz.framework in Frameworks */,
 				9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */,
+				3531F80626938D7700DF0111 /* GoogleUtilities.framework in Frameworks */,
 				9A5E75E4204CC39700119939 /* ShortcutRecorder.framework in Frameworks */,
 				35B2FEF1259A2DB1005DA84D /* CoreModelKit in Frameworks */,
+				3531F81526938D7700DF0111 /* nanopb.framework in Frameworks */,
 				35B2FEDD259A2291005DA84D /* CoreLoggerKit in Frameworks */,
 				35B2FEC0259A186F005DA84D /* StartupKit in Frameworks */,
 				9A6D93371CF3E82F005A8690 /* CoreImage.framework in Frameworks */,
 				9A5E75E8204CC39700119939 /* PTHotKey.framework in Frameworks */,
+				3531F81826938D7700DF0111 /* FirebaseCrashlytics.framework in Frameworks */,
+				3531F82126938D7700DF0111 /* GoogleDataTransport.framework in Frameworks */,
 				9A9E876A1C1FEDDB00A7A2DF /* SystemConfiguration.framework in Frameworks */,
+				3531F81B26938D7700DF0111 /* FirebaseInstallations.framework in Frameworks */,
 				9A9E87621C1FEDB500A7A2DF /* CFNetwork.framework in Frameworks */,
 				9ABFB3801CA6882000E10745 /* ApplicationServices.framework in Frameworks */,
 				9A20A04B1C4DEED200FB45AB /* IOKit.framework in Frameworks */,
-				9A5951BA1C1D0A22009C17AA /* Crashlytics.framework in Frameworks */,
 				9A43792A1BEC230A00F4E27F /* libc++.tbd in Frameworks */,
+				3531F80926938D7700DF0111 /* FirebaseCoreDiagnostics.framework in Frameworks */,
+				3531F81226938D7700DF0111 /* FirebaseCore.framework in Frameworks */,
 				DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */,
-				9A4379271BEC223900F4E27F /* Fabric.framework in Frameworks */,
 				9ACB31401EDA994200F3E1D3 /* ShortcutRecorder.framework in Frameworks */,
-				9ACE03EF1CB0ADE00039FC01 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,14 +722,6 @@
 			name = Utilties;
 			sourceTree = "<group>";
 		};
-		9A5E6B9C1CAF7174006E7C5C /* Firebase */ = {
-			isa = PBXGroup;
-			children = (
-				9ACE03EE1CB0ADE00039FC01 /* Firebase.framework */,
-			);
-			name = Firebase;
-			sourceTree = "<group>";
-		};
 		9A7547D11F184DC3004705EF /* ClockerHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -772,11 +838,6 @@
 		9ACB31381EDA98EA00F3E1D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9ACB31391EDA98EA00F3E1D3 /* Crashlytics.framework */,
-				9ACB313A1EDA98EA00F3E1D3 /* Fabric.framework */,
-				9ACB313B1EDA98EA00F3E1D3 /* Firebase.framework */,
-				9ACB313C1EDA98EA00F3E1D3 /* Security.framework */,
-				9ACB313D1EDA98EA00F3E1D3 /* SystemConfiguration.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -842,7 +903,6 @@
 				C2021B89219F30960036C247 /* Onboarding */,
 				9AB89E021CE97A4900EC8EB1 /* Media.xcassets */,
 				9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */,
-				9A5E6B9C1CAF7174006E7C5C /* Firebase */,
 				9A5B1A8D1BECDFB700A77C68 /* Clocker.entitlements */,
 				9A2000C61BFBCEF6002BFDE8 /* Utilties */,
 				9A8605E01BEC15F400A810A4 /* XIB */,
@@ -851,6 +911,10 @@
 				C2BFE3E42049F82300825BE5 /* ClockerUITests */,
 				C20839C821515C1E00C86589 /* ClockerUnitTests */,
 				DD4F7C0713C30F9F00825C6E /* Frameworks */,
+				3531F7EA26936D8800DF0111 /* Firebase.h */,
+				3531F7EB26936DE900DF0111 /* run */,
+				3531F7EC26936DE900DF0111 /* upload-symbols */,
+				3531F7C026936C6E00DF0111 /* GoogleService-Info.plist */,
 				DD4F7C0513C30F9F00825C6E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -869,6 +933,16 @@
 		DD4F7C0713C30F9F00825C6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3531F80026938D7700DF0111 /* FirebaseCore.framework */,
+				3531F7FD26938D7700DF0111 /* FirebaseCoreDiagnostics.framework */,
+				3531F80226938D7700DF0111 /* FirebaseCrashlytics.framework */,
+				3531F7FE26938D7700DF0111 /* FirebaseDatabase.framework */,
+				3531F80326938D7700DF0111 /* FirebaseInstallations.framework */,
+				3531F80526938D7700DF0111 /* GoogleDataTransport.framework */,
+				3531F7FC26938D7600DF0111 /* GoogleUtilities.framework */,
+				3531F80426938D7700DF0111 /* leveldb-library.framework */,
+				3531F80126938D7700DF0111 /* nanopb.framework */,
+				3531F7FF26938D7700DF0111 /* PromisesObjC.framework */,
 				9ACB313F1EDA994200F3E1D3 /* ShortcutRecorder.framework */,
 				9ACB31381EDA98EA00F3E1D3 /* Frameworks */,
 				9A24A1871ED902CC0095201E /* EventKit.framework */,
@@ -884,9 +958,7 @@
 				9A9E87651C1FEDC500A7A2DF /* CoreLocation.framework */,
 				9A9E87631C1FEDBD00A7A2DF /* CoreGraphics.framework */,
 				9A9E87611C1FEDB500A7A2DF /* CFNetwork.framework */,
-				9A5951B91C1D0A22009C17AA /* Crashlytics.framework */,
 				9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */,
-				9A4379231BEC223900F4E27F /* Fabric.framework */,
 				9A43792B1BEC231100F4E27F /* libz.tbd */,
 				9A4379291BEC230A00F4E27F /* libc++.tbd */,
 				DD4F7C0B13C30F9F00825C6E /* AppKit.framework */,
@@ -958,9 +1030,10 @@
 				DD4F7C0013C30F9F00825C6E /* Sources */,
 				DD4F7C0113C30F9F00825C6E /* Frameworks */,
 				DD4F7C0213C30F9F00825C6E /* Resources */,
-				9A4379201BEC220200F4E27F /* ShellScript */,
 				9A20A0711C4E808500FB45AB /* Login Item Helper */,
 				9A5E75EC204CC39700119939 /* Embed Frameworks */,
+				C2A632A020EAC5EE00EB6BEA /* SwiftFormat */,
+				3531F7F326936F5000DF0111 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -987,7 +1060,7 @@
 				CLASSPREFIX = "";
 				DefaultBuildSystemTypeForWorkspace = Latest;
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					9A7547CF1F184DC3004705EF = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -1098,6 +1171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A7547DC1F184DC3004705EF /* Assets.xcassets in Resources */,
+				3531F7C326936C8300DF0111 /* GoogleService-Info.plist in Resources */,
 				9AA522C323415BDD00C9E005 /* InfoPlist.strings in Resources */,
 				9A7547DF1F184DC3004705EF /* Main.storyboard in Resources */,
 			);
@@ -1107,6 +1181,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3531F7F72693882300DF0111 /* Keys.plist in Resources */,
+				3531F7F226936DE900DF0111 /* upload-symbols in Resources */,
+				3531F7EF26936DE900DF0111 /* run in Resources */,
+				3531F7C526936C8400DF0111 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1115,8 +1193,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ABF454F268FCF10002C779B /* Keys.plist in Resources */,
+				3531F7EE26936DE900DF0111 /* run in Resources */,
 				9A8B256A232EFAD300204CAD /* Localizable.strings in Resources */,
 				9AA522C023415BDD00C9E005 /* InfoPlist.strings in Resources */,
+				3531F7C426936C8300DF0111 /* GoogleService-Info.plist in Resources */,
+				3531F7F126936DE900DF0111 /* upload-symbols in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1129,15 +1210,19 @@
 				357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */,
 				9AB6F15E2259D08300A44663 /* iVersion.bundle in Resources */,
 				35C36F972259EBB1002FA5C6 /* AppFeedbackWindow.xib in Resources */,
+				3531F7ED26936DE900DF0111 /* run in Resources */,
 				9A13BAE01CA882FA007C6CBE /* InfoPlist.strings in Resources */,
 				35C36F912259EAF4002FA5C6 /* Preferences.storyboard in Resources */,
+				3531F7F52693882300DF0111 /* Keys.plist in Resources */,
 				9AB89E031CE97A4900EC8EB1 /* Media.xcassets in Resources */,
 				9A13BAD61CA87F08007C6CBE /* Panel.xib in Resources */,
 				35C36F6B2259E0E1002FA5C6 /* FloatingWindow.xib in Resources */,
+				3531F7C226936C6E00DF0111 /* GoogleService-Info.plist in Resources */,
 				35C36F17225961DA002FA5C6 /* DateTools.bundle in Resources */,
 				35C36EF322595F14002FA5C6 /* WelcomeView.xib in Resources */,
 				35C36EF822595F14002FA5C6 /* Onboarding.storyboard in Resources */,
 				35C36F612259DE67002FA5C6 /* NotesPopover.xib in Resources */,
+				3531F7F026936DE900DF0111 /* upload-symbols in Resources */,
 				9A3169C11D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist in Resources */,
 				9A56DB801C1CFB73004CE6AF /* MainMenu.xib in Resources */,
 			);
@@ -1146,19 +1231,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9A4379201BEC220200F4E27F /* ShellScript */ = {
+		3531F7F326936F5000DF0111 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
+			);
+			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
-			showEnvVarsInLog = 0;
+			shellScript = "\"$SRCROOT/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1414,6 +1502,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1445,7 +1534,6 @@
 		9A5B1A8C1BECDB5B00A77C68 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
@@ -1479,6 +1567,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Frameworks/Firebase",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";
@@ -1504,7 +1593,8 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 21.07.01;
-				OTHER_LDFLAGS = "";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
 				PROVISIONING_PROFILE = "71701bee-fee7-4927-b6e9-20d9a78ef29c";
@@ -1653,6 +1743,7 @@
 					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/Firebase",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -1701,6 +1792,7 @@
 					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/Firebase",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -1747,6 +1839,7 @@
 					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/Firebase",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -1788,6 +1881,11 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks/Firebase",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -1830,6 +1928,11 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks/Firebase",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -1871,6 +1974,11 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks/Firebase",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -1907,6 +2015,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1960,6 +2069,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1993,7 +2103,6 @@
 		DD4F7C2313C30F9F00825C6E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
@@ -2028,6 +2137,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Frameworks/Firebase",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";
@@ -2053,8 +2163,8 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 21.07.01;
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;
@@ -2075,7 +2185,6 @@
 		DD4F7C2413C30F9F00825C6E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
@@ -2109,6 +2218,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Frameworks/Firebase",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Clocker/Clocker-Prefix.pch";
@@ -2134,7 +2244,8 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 21.07.01;
-				OTHER_LDFLAGS = "";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
 				PRODUCT_NAME = Clocker;

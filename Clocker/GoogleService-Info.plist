@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>59694130826-ra8s6202rhdb12j7kqgjij4utu6c467r.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.59694130826-ra8s6202rhdb12j7kqgjij4utu6c467r</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAUFTmji4YcfRPoWhTZ4hZs4JdxX5y_R2w</string>
+	<key>GCM_SENDER_ID</key>
+	<string>59694130826</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.abhishek.Clocker</string>
+	<key>PROJECT_ID</key>
+	<string>fiery-heat-5237</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fiery-heat-5237.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:59694130826:ios:6d8dbaa6eee09934a76f73</string>
+	<key>DATABASE_URL</key>
+	<string>https://fiery-heat-5237.firebaseio.com</string>
+</dict>
+</plist>
