@@ -37,7 +37,7 @@ class ParentPanelController: NSWindowController {
 
     var datasource: TimezoneDataSource?
 
-    private lazy var feedbackWindow: AppFeedbackWindowController = AppFeedbackWindowController.shared()
+    private lazy var feedbackWindow = AppFeedbackWindowController.shared()
 
     private var notePopover: NotesPopover?
 
@@ -395,7 +395,7 @@ class ParentPanelController: NSWindowController {
 
         var current = main.frame.height
 
-        let activeScreens = NSScreen.screens.filter { (current) -> Bool in
+        let activeScreens = NSScreen.screens.filter { current -> Bool in
             NSMouseInRect(mouseLocation, current.frame, false)
         }
 
@@ -425,8 +425,9 @@ class ParentPanelController: NSWindowController {
             if let note = object?.note, note.isEmpty == false {
                 newHeight += 20
             } else if DataStore.shared().shouldDisplay(.dstTransitionInfo),
-                let obj = object,
-                TimezoneDataOperations(with: obj).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) != nil {
+                      let obj = object,
+                      TimezoneDataOperations(with: obj).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) != nil
+            {
                 newHeight += 20
             }
         }
@@ -496,7 +497,7 @@ class ParentPanelController: NSWindowController {
         updatePanelColor()
 
         let defaults = DataStore.shared().timezones()
-        let convertedTimezones = defaults.map { (data) -> TimezoneData in
+        let convertedTimezones = defaults.map { data -> TimezoneData in
             TimezoneData.customObject(from: data)!
         }
 
@@ -533,7 +534,8 @@ class ParentPanelController: NSWindowController {
         let currentCalendar = Calendar(identifier: .gregorian)
         guard let newDate = currentCalendar.date(byAdding: .minute,
                                                  value: Int(futureSlider.doubleValue),
-                                                 to: Date()) else {
+                                                 to: Date())
+        else {
             assertionFailure("Data was unexpectedly nil")
             return
         }
@@ -599,8 +601,9 @@ class ParentPanelController: NSWindowController {
             let current = preferences[$0]
 
             if $0 < mainTableView.numberOfRows,
-                let cellView = mainTableView.view(atColumn: 0, row: $0, makeIfNecessary: false) as? TimezoneCellView,
-                let model = TimezoneData.customObject(from: current) {
+               let cellView = mainTableView.view(atColumn: 0, row: $0, makeIfNecessary: false) as? TimezoneCellView,
+               let model = TimezoneData.customObject(from: current)
+            {
                 if let futureSliderCell = futureSlider.cell as? CustomSliderCell, futureSliderCell.tracking == true {
                     return
                 }
@@ -620,7 +623,8 @@ class ParentPanelController: NSWindowController {
                 if let note = model.note, !note.isEmpty {
                     cellView.noteLabel.stringValue = note
                 } else if DataStore.shared().shouldDisplay(.dstTransitionInfo),
-                    let value = TimezoneDataOperations(with: model).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) {
+                          let value = TimezoneDataOperations(with: model).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue)
+                {
                     cellView.noteLabel.stringValue = value
                 } else {
                     cellView.noteLabel.stringValue = CLEmptyString
@@ -719,7 +723,8 @@ class ParentPanelController: NSWindowController {
 
     @IBAction func calendarButtonAction(_: NSButton) {
         if calendarButton.title == NSLocalizedString("Click here to start.",
-                                                     comment: "Button Title for no Calendar access") {
+                                                     comment: "Button Title for no Calendar access")
+        {
             showPermissionsWindow()
         } else {
             retrieveCalendarEvents()
@@ -840,7 +845,7 @@ class ParentPanelController: NSWindowController {
                 let withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
 
                 self.setCalendarButtonTitle(buttonTitle: "in \(withoutAgo.lowercased())")
-                
+
                 if upcomingEvent.meetingURL != nil {
                     self.whiteRemoveButton.image = Themer.shared().videoCallImage()
                 }
@@ -1033,7 +1038,7 @@ class ParentPanelController: NSWindowController {
 
     @objc func openCrowdin() {
         guard let localizationURL = URL(string: AboutUsConstants.CrowdInLocalizationLink),
-            let languageCode = Locale.preferredLanguages.first else { return }
+              let languageCode = Locale.preferredLanguages.first else { return }
 
         NSWorkspace.shared.open(localizationURL)
 
@@ -1112,7 +1117,7 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
         let filteredServices = proposed.filter { service in
             allowedServices.contains(service.title)
         }
-        
+
         var newProposedServices: [NSSharingService] = [copySharingService]
         newProposedServices.append(contentsOf: filteredServices)
         return newProposedServices

@@ -42,12 +42,12 @@ final class ReviewController {
 
         // Check if the app has been installed for atleast 7 days
         guard let install = storage.object(forKey: Keys.install) as? Date,
-            install.timeIntervalSinceNow < minInstall
+              install.timeIntervalSinceNow < minInstall
         else { return false }
 
         // If we have never been prompted before, go ahead and prompt
         guard let lastPrompt = storage.object(forKey: Keys.lastPrompt) as? Date,
-            let lastVersion = storage.object(forKey: Keys.lastVersion) as? String
+              let lastVersion = storage.object(forKey: Keys.lastVersion) as? String
         else { return true }
 
         // Minimum interval between two versions should be 45
