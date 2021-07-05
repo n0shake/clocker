@@ -7,7 +7,7 @@ import CoreModelKit
 
 class TimezoneDataOperations: NSObject {
     private var dataObject: TimezoneData!
-    private lazy var nsCalendar: Calendar = Calendar.autoupdatingCurrent
+    private lazy var nsCalendar = Calendar.autoupdatingCurrent
     private static var gregorianCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
     private static var swiftyCalendar = Calendar(identifier: .gregorian)
     private static let currentLocale = Locale.current.identifier
@@ -22,12 +22,13 @@ extension TimezoneDataOperations {
         guard let newDate = TimezoneDataOperations.gregorianCalendar?.date(byAdding: .minute,
                                                                            value: sliderValue,
                                                                            to: Date(),
-                                                                           options: .matchFirst) else {
+                                                                           options: .matchFirst)
+        else {
             assertionFailure("Data was unexpectedly nil")
             return CLEmptyString
         }
-        
-        if (dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == DateFormat.epochTime) {
+
+        if dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == DateFormat.epochTime {
             let timezone = TimeZone(identifier: dataObject.timezone())
             let offset = timezone?.secondsFromGMT(for: newDate) ?? 0
             let value = Int(Date().timeIntervalSince1970 + Double(offset))
@@ -38,7 +39,6 @@ extension TimezoneDataOperations {
                                                                          format: dataObject.timezoneFormat(DataStore.shared().timezoneFormat()),
                                                                          timezoneIdentifier: dataObject.timezone(),
                                                                          locale: Locale.autoupdatingCurrent)
-        
 
         return dateFormatter.string(from: newDate)
     }
@@ -52,7 +52,8 @@ extension TimezoneDataOperations {
         guard let newDate = TimezoneDataOperations.gregorianCalendar?.date(byAdding: .minute,
                                                                            value: sliderValue,
                                                                            to: Date(),
-                                                                           options: .matchFirst) else {
+                                                                           options: .matchFirst)
+        else {
             assertionFailure("Data was unexpectedly nil")
             return nil
         }
@@ -204,8 +205,8 @@ extension TimezoneDataOperations {
         let sourceTimezone = TimeZone.current
         let destinationTimezone = TimeZone(identifier: dataObject.timezone())
 
-        let sourceGMTOffset: Double = Double(sourceTimezone.secondsFromGMT(for: source))
-        let destinationGMTOffset: Double = Double(destinationTimezone?.secondsFromGMT(for: source) ?? 0)
+        let sourceGMTOffset = Double(sourceTimezone.secondsFromGMT(for: source))
+        let destinationGMTOffset = Double(destinationTimezone?.secondsFromGMT(for: source) ?? 0)
         let interval = destinationGMTOffset - sourceGMTOffset
 
         return Date(timeInterval: interval, since: source)
@@ -367,12 +368,13 @@ extension TimezoneDataOperations {
                                           to: Date())
 
         guard let lat = dataObject.latitude,
-            let long = dataObject.longitude else {
+              let long = dataObject.longitude
+        else {
             assertionFailure("Data was unexpectedly nil.")
             return
         }
 
-        let coordinates: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: long)
 
         guard let dateForCalculation = currentDate, let solar = Solar(for: dateForCalculation, coordinate: coordinates) else {
             return

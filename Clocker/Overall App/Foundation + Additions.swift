@@ -34,9 +34,9 @@ extension NSImage.Name {
     static let menubarIcon = NSImage.Name("LightModeIcon")
 }
 
-extension Data {
+public extension Data {
     // Extracting this out for tests
-    public func decode() -> SearchResult? {
+    func decode() -> SearchResult? {
         let jsonDecoder = JSONDecoder()
         do {
             let decodedObject = try jsonDecoder.decode(SearchResult.self, from: self)
@@ -46,7 +46,7 @@ extension Data {
         }
     }
 
-    public func decodeTimezone() -> Timezone? {
+    func decodeTimezone() -> Timezone? {
         let jsonDecoder = JSONDecoder()
         do {
             let decodedObject = try jsonDecoder.decode(Timezone.self, from: self)

@@ -5,7 +5,7 @@ import Cocoa
 class FloatingWindowController: ParentPanelController {
     private var repeater: Repeater?
 
-    static var sharedWindow: FloatingWindowController = FloatingWindowController(windowNibName: NSNib.Name.floatingWindowIdentifier)
+    static var sharedWindow = FloatingWindowController(windowNibName: NSNib.Name.floatingWindowIdentifier)
 
     override func windowDidLoad() {
         super.windowDidLoad()

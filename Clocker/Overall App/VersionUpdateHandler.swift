@@ -25,7 +25,7 @@ class VersionUpdateHandler: NSObject {
     private var appStoreCountry: String!
     private var applicationVersion: String!
     private var applicationBundleID: String = Bundle.main.bundleIdentifier ?? "N/A"
-    private var updatePriority: VersionUpdateHandlerPriority = VersionUpdateHandlerPriority.defaultPri
+    private var updatePriority = VersionUpdateHandlerPriority.defaultPri
     private var useAllAvailableLanguages: Bool = true
     private var onlyPromptIfMainWindowIsAvailable: Bool = true
     private var checkAtLaunch: Bool = true
