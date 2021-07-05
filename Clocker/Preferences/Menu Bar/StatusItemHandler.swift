@@ -17,6 +17,7 @@ class StatusItemHandler: NSObject {
 
     var statusItem: NSStatusItem = {
         let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        statusItem.toolTip = "Clocker"
         statusItem.highlightMode = false
         return statusItem
     }()

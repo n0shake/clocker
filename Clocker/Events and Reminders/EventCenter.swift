@@ -16,6 +16,8 @@ class EventCenter: NSObject {
     var eventsForDate: [Date: [EventInfo]] = [:]
 
     var filteredEvents: [Date: [EventInfo]] = [:]
+    
+    private let fetchQueue = DispatchQueue(label: "com.abhishek.fetch")
 
     @discardableResult class func sharedCenter() -> EventCenter {
         return shared
@@ -41,11 +43,16 @@ class EventCenter: NSObject {
 
     private func refetchAll() {
         Logger.info("\nRefetching events from the store")
+        
         eventsForDate = [:]
         filteredEvents = [:]
+        autoreleasepool {
+            fetchQueue.async {
+                // We get events for a 120 day period.
+                // If the user uses a calendar often, this will be called frequently
+                self.fetchEvents(-40, 80)
+            }
+        }
 
-        // We get events for a 120 day period.
-        // If the user uses a calendar often, this will be called frequently
-        fetchEvents(-40, 80)
     }
 }

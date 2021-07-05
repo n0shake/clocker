@@ -31,7 +31,7 @@ class PreferencesTest: XCTestCase {
             return
         }
 
-        app.windows["Clocker"].tables["TimezoneTableView"].tableRows.firstMatch.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0)).click()
+        app.windows["Clocker"].tables["TimezoneTableView"].tableRows.firstMatch.click()
 
         XCTAssertTrue(app.checkBoxes["DeleteTimezone"].isEnabled)
     }
@@ -334,7 +334,7 @@ class PreferencesTest: XCTestCase {
 
         if rowQueryCount > 0 {
             // Table Rows aren't hittable in Xcode 12.0 (10/7/20) and so we need to find a closer co-ordinate and perform click()
-            let currentElement = clockerWindow.tables["TimezoneTableView"].tableRows.firstMatch.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
+            let currentElement = clockerWindow.tables["TimezoneTableView"].tableRows.firstMatch
             currentElement.click()
 
             for _ in 0 ..< rowQueryCount {
@@ -416,7 +416,7 @@ extension XCTestCase {
             return
         }
 
-        let currentElement = app.windows["Clocker"].tableRows.firstMatch.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
+        let currentElement = app.windows["Clocker"].tableRows.firstMatch
         currentElement.click()
 
         while rowQueryCount > 0 {
@@ -442,7 +442,7 @@ extension XCTestCase {
     }
 
     private func deleteAtRow(_ rowToDelete: XCUIElement, for _: XCUIApplication, shouldSleep: Bool) {
-        rowToDelete.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0)).click()
+        rowToDelete.click()
         rowToDelete.typeKey(XCUIKeyboardKey.delete, modifierFlags: XCUIElement.KeyModifierFlags())
         if shouldSleep {
             sleep(2)

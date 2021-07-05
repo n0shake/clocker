@@ -47,7 +47,7 @@ class AboutViewController: ParentViewController {
     }
 
     private func underlineTextForActionButton() {
-        let rangesInOrder = [NSRange(location: 3, length: 8),
+        let rangesInOrder = [NSRange(location: 3, length: 16),
                              NSRange(location: 7, length: privateFeedback.attributedTitle.length - 7),
                              NSRange(location: 27, length: 33),
                              NSRange(location: 42, length: 14)]
@@ -57,7 +57,7 @@ class AboutViewController: ParentViewController {
                               supportClocker,
                               openSourceButton]
 
-        let localizedKeys = ["1. @n0shake on Twitter for quick comments",
+        let localizedKeys = ["1. @clocker_support on Twitter for quick comments",
                              "2. For Private Feedback",
                              "You can support Clocker by leaving a review on the App Store! :)",
                              "Help localize Clocker in your language by clicking here!"]

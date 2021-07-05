@@ -92,7 +92,8 @@ class NotesPopover: NSViewController {
                                     "hh:mm:ss a (07:08:09 PM)",
                                     "-- 12 Hour w/o AM/PM --",
                                     "hh:mm (07:08)",
-                                    "hh:mm:ss (07:08:09)"]
+                                    "hh:mm:ss (07:08:09)",
+                                    "Epoch Time"]
         timeFormatControl.removeAllItems()
         timeFormatControl.addItems(withTitles: supportedTimeFormats)
 

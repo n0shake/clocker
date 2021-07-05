@@ -79,7 +79,7 @@ class OnboardingSearchTests: XCTestCase {
 
     func testMispelledCityNameSearch() throws {
         let searchField = app.searchFields["MainSearchField"]
-        searchField.reset(text: "ajsdkjasdkjhasdkashkjda")
+        searchField.reset(text: "ajsdkjasdkjhasdkashkjdazasdasdas")
         searchField.typeKey(XCUIKeyboardKey.return, modifierFlags: XCUIElement.KeyModifierFlags())
 
         sleep(2) // Wait for the query to return

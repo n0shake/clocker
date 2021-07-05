@@ -184,7 +184,9 @@ class ParentPanelController: NSWindowController {
 
         if DataStore.shared().timezones().isEmpty || DataStore.shared().shouldDisplay(.futureSlider) == false {
             futureSliderView.isHidden = true
-            modernContainerView.isHidden = true
+            if modernContainerView != nil {
+                modernContainerView.isHidden = true
+            }
         } else if let value = DataStore.shared().retrieve(key: CLDisplayFutureSliderKey) as? NSNumber {
             if value.intValue == 1 {
                 futureSliderView.isHidden = false
@@ -612,6 +614,9 @@ class ParentPanelController: NSWindowController {
                 cellView.relativeDate.stringValue = dataOperation.date(with: futureSliderValue, displayType: .panel)
                 cellView.currentLocationIndicator.isHidden = !model.isSystemTimezone
                 cellView.sunriseImage.image = model.isSunriseOrSunset ? Themer.shared().sunriseImage() : Themer.shared().sunsetImage()
+                if #available(macOS 10.14, *) {
+                    cellView.sunriseImage.contentTintColor = model.isSunriseOrSunset ? NSColor.systemYellow : NSColor.systemOrange
+                }
                 if let note = model.note, !note.isEmpty {
                     cellView.noteLabel.stringValue = note
                 } else if DataStore.shared().shouldDisplay(.dstTransitionInfo),
@@ -696,6 +701,14 @@ class ParentPanelController: NSWindowController {
 
     func removeUpcomingEventView() {
         OperationQueue.main.addOperation {
+            let eventCenter = EventCenter.sharedCenter()
+            let now = Date()
+            if let events = eventCenter.eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: now)], events.isEmpty == false {
+                if let upcomingEvent = eventCenter.nextOccuring(events), let meetingLink = upcomingEvent.meetingURL {
+                    NSWorkspace.shared.open(meetingLink)
+                }
+            }
+
             if self.stackView.arrangedSubviews.contains(self.upcomingEventView!), self.upcomingEventView?.isHidden == false {
                 self.upcomingEventView?.isHidden = true
                 UserDefaults.standard.set("NO", forKey: CLShowUpcomingEventView)
@@ -810,9 +823,9 @@ class ParentPanelController: NSWindowController {
                     return
                 }
 
-                self.calendarColorView.layer?.backgroundColor = upcomingEvent.calendar.color.cgColor
-                self.nextEventLabel.stringValue = upcomingEvent.title
-                self.nextEventLabel.toolTip = upcomingEvent.title
+                self.calendarColorView.layer?.backgroundColor = upcomingEvent.event.calendar.color.cgColor
+                self.nextEventLabel.stringValue = upcomingEvent.event.title
+                self.nextEventLabel.toolTip = upcomingEvent.event.title
                 if upcomingEvent.isAllDay == true {
                     let title = events.count == 1 ? "All-Day" : "All Day - Total \(events.count) events today"
                     self.setCalendarButtonTitle(buttonTitle: title)
@@ -822,11 +835,15 @@ class ParentPanelController: NSWindowController {
                     return
                 }
 
-                let timeSince = Date().timeAgo(since: upcomingEvent.startDate)
+                let timeSince = Date().timeAgo(since: upcomingEvent.event.startDate)
                 let withoutAn = timeSince.replacingOccurrences(of: "an", with: CLEmptyString)
                 let withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
 
                 self.setCalendarButtonTitle(buttonTitle: "in \(withoutAgo.lowercased())")
+                
+                if upcomingEvent.meetingURL != nil {
+                    self.whiteRemoveButton.image = Themer.shared().videoCallImage()
+                }
 
                 if #available(OSX 10.14, *) {
                     PerfLogger.endMarker("Fetch Calendar Events")
@@ -1077,9 +1094,27 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
     }
 
     func sharingServicePicker(_: NSSharingServicePicker, sharingServicesForItems _: [Any], proposedSharingServices proposed: [NSSharingService]) -> [NSSharingService] {
+        let copySharingService = NSSharingService(title: "Copy All Times", image: NSImage(), alternateImage: nil) {
+            let timezones = DataStore.shared().timezones()
+            var clipboardCopy = String()
+            for encodedTimezone in timezones {
+                if let timezoneObject = TimezoneData.customObject(from: encodedTimezone) {
+                    let operations = TimezoneDataOperations(with: timezoneObject)
+                    clipboardCopy.append("\(timezoneObject.formattedTimezoneLabel()) - \(operations.time(with: 0))\n")
+                }
+            }
+
+            let pasteboard = NSPasteboard.general
+            pasteboard.declareTypes([.string], owner: nil)
+            pasteboard.setString(clipboardCopy, forType: .string)
+        }
         let allowedServices: Set<String> = Set(["Messages", "Notes"])
-        return proposed.filter { service in
+        let filteredServices = proposed.filter { service in
             allowedServices.contains(service.title)
         }
+        
+        var newProposedServices: [NSSharingService] = [copySharingService]
+        newProposedServices.append(contentsOf: filteredServices)
+        return newProposedServices
     }
 }
