@@ -21,7 +21,7 @@ extension EventCenter {
         var sourcesAndCalendars: [Any] = []
 
         // Fetch array of user's calendars sorted first by source title and then by calendar title
-        let calendars = eventStore.calendars(for: .event).sorted { (cal1, cal2) -> Bool in
+        let calendars = eventStore.calendars(for: .event).sorted { cal1, cal2 -> Bool in
 
             if cal1.source.sourceIdentifier == cal2.source.sourceIdentifier {
                 return cal1.title < cal2.title
@@ -232,7 +232,7 @@ extension EventCenter {
     }
 
     func retrieveAllCalendarIdentifiers() -> [String] {
-        return eventStore.calendars(for: .event).map { (calendar) -> String in
+        return eventStore.calendars(for: .event).map { calendar -> String in
             calendar.calendarIdentifier
         }
     }
@@ -242,7 +242,8 @@ extension EventCenter {
         dateComps.day = day
         guard let convertedDate = calendar?.date(byAdding: dateComps,
                                                  to: Date(),
-                                                 options: NSCalendar.Options.matchFirst) else {
+                                                 options: NSCalendar.Options.matchFirst)
+        else {
             return Date()
         }
         return convertedDate
@@ -313,7 +314,7 @@ extension EventCenter {
         // We now sort the array so that AllDay Events are first, then sort by startTime
 
         for date in eventsForDateMapper.keys {
-            let sortedEvents = eventsForDateMapper[date]?.sorted(by: { (event1, event2) -> Bool in
+            let sortedEvents = eventsForDateMapper[date]?.sorted(by: { event1, event2 -> Bool in
                 if event1.isAllDay { return true } else if event2.isAllDay { return false } else { return event1.event.startDate < event2.event.startDate }
             })
             eventsForDateMapper[date] = sortedEvents
@@ -378,7 +379,8 @@ extension EventCenter {
                     || actualLink.contains("indigo.collocall.de")
                     || actualLink.contains("public.senfcall.de")
                     || actualLink.contains("youcanbook.me/zoom/")
-                    || actualLink.contains("workplace.com/groupcall") {
+                    || actualLink.contains("workplace.com/groupcall")
+                {
                     if let zoomLink = result.url {
                         return zoomLink
                     }

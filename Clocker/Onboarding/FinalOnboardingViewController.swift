@@ -71,7 +71,7 @@ class FinalOnboardingViewController: NSViewController {
 
     @IBAction func localizationAction(_: Any) {
         guard let localizationURL = URL(string: AboutUsConstants.TwitterLink),
-            let languageCode = Locale.preferredLanguages.first else { return }
+              let languageCode = Locale.preferredLanguages.first else { return }
 
         NSWorkspace.shared.open(localizationURL)
 
@@ -103,7 +103,8 @@ class FinalOnboardingViewController: NSViewController {
         }
 
         guard let shortVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
-            let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String else {
+              let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+        else {
             return nil
         }
         let operatingSystem = ProcessInfo.processInfo.operatingSystemVersion
@@ -134,7 +135,8 @@ class EmailTextFieldValidator {
                                               range: range)
 
         if allMatches.count == 1,
-            allMatches.first?.url?.absoluteString.contains("mailto:") == true {
+           allMatches.first?.url?.absoluteString.contains("mailto:") == true
+        {
             return trimmedText
         }
         return nil

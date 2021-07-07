@@ -11,7 +11,7 @@ struct ModelConstants {
     static let emptyString = ""
 }
 
-public struct DateFormat {
+public enum DateFormat {
     public static let twelveHour = "h:mm a"
     public static let twelveHourWithSeconds = "h:mm:ss a"
     public static let twentyFourHour = "HH:mm"
@@ -82,7 +82,7 @@ public class TimezoneData: NSObject, NSCoding {
     public var isSystemTimezone = false
     public var overrideFormat: TimezoneOverride = .globalFormat
 
-    public override init() {
+    override public init() {
         selectionType = .timezone
         isFavourite = 0
         note = ModelConstants.emptyString
@@ -303,7 +303,7 @@ public class TimezoneData: NSObject, NSCoding {
     public func timezoneFormat(_ currentFormat: NSNumber) -> String {
         let chosenDefault = currentFormat
         let timeFormat = TimezoneData.values[chosenDefault] ?? DateFormat.twelveHour
-        
+
         switch overrideFormat {
         case .globalFormat:
             return timeFormat
@@ -338,7 +338,7 @@ public class TimezoneData: NSObject, NSCoding {
         return formatInString.contains("ss")
     }
 
-    public override var hash: Int {
+    override public var hash: Int {
         guard let placeIdentifier = placeID, let timezone = timezoneID else {
             return -1
         }
@@ -350,14 +350,14 @@ public class TimezoneData: NSObject, NSCoding {
         return lhs.placeID == rhs.placeID
     }
 
-    public override func isEqual(to object: Any?) -> Bool {
+    override public func isEqual(to object: Any?) -> Bool {
         if let other = object as? TimezoneData {
             return placeID == other.placeID
         }
         return false
     }
 
-    public override func isEqual(_ object: Any?) -> Bool {
+    override public func isEqual(_ object: Any?) -> Bool {
         guard let compared = object as? TimezoneData else {
             return false
         }
@@ -367,12 +367,12 @@ public class TimezoneData: NSObject, NSCoding {
     }
 }
 
-extension TimezoneData {
-    public override var description: String {
+public extension TimezoneData {
+    override var description: String {
         return objectDescription()
     }
 
-    public override var debugDescription: String {
+    override var debugDescription: String {
         return objectDescription()
     }
 
