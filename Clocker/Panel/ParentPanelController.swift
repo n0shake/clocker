@@ -700,19 +700,19 @@ class ParentPanelController: NSWindowController {
     }
 
     @IBAction func dismissNextEventLabel(_: NSButton) {
+      let eventCenter = EventCenter.sharedCenter()
+      let now = Date()
+      if let events = eventCenter.eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: now)], events.isEmpty == false {
+          if let upcomingEvent = eventCenter.nextOccuring(events), let meetingLink = upcomingEvent.meetingURL {
+              NSWorkspace.shared.open(meetingLink)
+          }
+      } else {
         removeUpcomingEventView()
+      }
     }
 
     func removeUpcomingEventView() {
         OperationQueue.main.addOperation {
-            let eventCenter = EventCenter.sharedCenter()
-            let now = Date()
-            if let events = eventCenter.eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: now)], events.isEmpty == false {
-                if let upcomingEvent = eventCenter.nextOccuring(events), let meetingLink = upcomingEvent.meetingURL {
-                    NSWorkspace.shared.open(meetingLink)
-                }
-            }
-
             if self.stackView.arrangedSubviews.contains(self.upcomingEventView!), self.upcomingEventView?.isHidden == false {
                 self.upcomingEventView?.isHidden = true
                 UserDefaults.standard.set("NO", forKey: CLShowUpcomingEventView)

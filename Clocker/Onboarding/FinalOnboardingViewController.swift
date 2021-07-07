@@ -70,8 +70,8 @@ class FinalOnboardingViewController: NSViewController {
     }
 
     @IBAction func localizationAction(_: Any) {
-        guard let localizationURL = URL(string: AboutUsConstants.TwitterLink),
-              let languageCode = Locale.preferredLanguages.first else { return }
+        guard let localizationURL = URL(string: AboutUsConstants.TwitterFollowIntentLink),
+            let languageCode = Locale.preferredLanguages.first else { return }
 
         NSWorkspace.shared.open(localizationURL)
 
