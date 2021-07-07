@@ -176,10 +176,10 @@ public struct Solar {
     }
 }
 
-extension Solar {
+public extension Solar {
     /// Whether the location specified by the `latitude` and `longitude` is in daytime on `date`
     /// - Complexity: O(1)
-    public var isDaytime: Bool {
+    var isDaytime: Bool {
         guard
             let sunrise = sunrise,
             let sunset = sunset
@@ -199,7 +199,7 @@ extension Solar {
 
     /// Whether the location specified by the `latitude` and `longitude` is in nighttime on `date`
     /// - Complexity: O(1)
-    public var isNighttime: Bool {
+    var isNighttime: Bool {
         return !isDaytime
     }
 }

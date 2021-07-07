@@ -36,8 +36,8 @@ extension NSView {
 class StatusItemView: NSView {
     // MARK: Private variables
 
-    private let locationView: NSTextField = NSTextField(labelWithString: "Hello")
-    private let timeView: NSTextField = NSTextField(labelWithString: "Mon 19:14 PM")
+    private let locationView = NSTextField(labelWithString: "Hello")
+    private let timeView = NSTextField(labelWithString: "Mon 19:14 PM")
     private var operationsObject: TimezoneDataOperations {
         return TimezoneDataOperations(with: dataObject)
     }
@@ -117,6 +117,7 @@ class StatusItemView: NSView {
         timeView.attributedStringValue = NSAttributedString(string: operationsObject.compactMenuSubtitle(), attributes: timeAttributes)
     }
 
+    @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

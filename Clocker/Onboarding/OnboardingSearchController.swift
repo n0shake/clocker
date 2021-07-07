@@ -27,8 +27,9 @@ class OnboardingSearchController: NSViewController {
 
     private var geocodingKey: String = {
         guard let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
-            let dictionary = NSDictionary(contentsOfFile: path),
-            let apiKey = dictionary["GeocodingKey"] as? String else {
+              let dictionary = NSDictionary(contentsOfFile: path),
+              let apiKey = dictionary["GeocodingKey"] as? String
+        else {
             assertionFailure("Unable to find the API key")
             return ""
         }
@@ -373,7 +374,7 @@ class OnboardingSearchController: NSViewController {
                                                self.findLocalSearchResultsForTimezones()
                                                self.prepareUIForPresentingResults()
                                            }
-        })
+                                       })
     }
 
     private func presentErrorMessage(_ errorMessage: String) {
@@ -398,7 +399,7 @@ class OnboardingSearchController: NSViewController {
     }
 
     private func appendResultsToFilteredArray(_ results: [SearchResult.Result]) {
-        let finalTimezones: [TimezoneData] = results.map { (result) -> TimezoneData in
+        let finalTimezones: [TimezoneData] = results.map { result -> TimezoneData in
             let location = result.geometry.location
             let latitude = location.lat
             let longitude = location.lng

@@ -22,7 +22,6 @@
 		3531F7F126936DE900DF0111 /* upload-symbols in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7EC26936DE900DF0111 /* upload-symbols */; };
 		3531F7F226936DE900DF0111 /* upload-symbols in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7EC26936DE900DF0111 /* upload-symbols */; };
 		3531F7F52693882300DF0111 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7F42693882300DF0111 /* Keys.plist */; };
-		3531F7F62693882300DF0111 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7F42693882300DF0111 /* Keys.plist */; };
 		3531F7F72693882300DF0111 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7F42693882300DF0111 /* Keys.plist */; };
 		3531F80626938D7700DF0111 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FC26938D7600DF0111 /* GoogleUtilities.framework */; };
 		3531F80726938D7700DF0111 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FC26938D7600DF0111 /* GoogleUtilities.framework */; };
@@ -215,13 +214,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = E273122E1349EC9000A84433;
 			remoteInfo = PTHotKey.framework;
-		};
-		9A86E2BF1CE04F1600547EE7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A86E2B51CE04F1600547EE7 /* ShortcutRecorder.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0D6B2468180304DE00CE1142;
-			remoteInfo = Demo;
 		};
 		C20839CC21515C1F00C86589 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -769,7 +761,6 @@
 			children = (
 				9A86E2BC1CE04F1600547EE7 /* ShortcutRecorder.framework */,
 				9A86E2BE1CE04F1600547EE7 /* PTHotKey.framework */,
-				9A86E2C01CE04F1600547EE7 /* Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -840,6 +831,14 @@
 			children = (
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		9AEF66812693A6270036142F /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				3531F7F42693882300DF0111 /* Keys.plist */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		C2021B89219F30960036C247 /* Onboarding */ = {
@@ -916,6 +915,7 @@
 				3531F7EC26936DE900DF0111 /* upload-symbols */,
 				3531F7C026936C6E00DF0111 /* GoogleService-Info.plist */,
 				DD4F7C0513C30F9F00825C6E /* Products */,
+				9AEF66812693A6270036142F /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1032,7 +1032,6 @@
 				DD4F7C0213C30F9F00825C6E /* Resources */,
 				9A20A0711C4E808500FB45AB /* Login Item Helper */,
 				9A5E75EC204CC39700119939 /* Embed Frameworks */,
-				C2A632A020EAC5EE00EB6BEA /* SwiftFormat */,
 				3531F7F326936F5000DF0111 /* ShellScript */,
 			);
 			buildRules = (
@@ -1154,13 +1153,6 @@
 			fileType = wrapper.framework;
 			path = PTHotKey.framework;
 			remoteRef = 9A86E2BD1CE04F1600547EE7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9A86E2C01CE04F1600547EE7 /* Demo.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = Demo.app;
-			remoteRef = 9A86E2BF1CE04F1600547EE7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1559,7 +1551,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 94;
+				CURRENT_PROJECT_VERSION = 95;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1592,7 +1584,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 21.07.01;
+				MARKETING_VERSION = 21.07.02;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
@@ -2128,7 +2120,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 94;
+				CURRENT_PROJECT_VERSION = 95;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -2162,7 +2154,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 21.07.01;
+				MARKETING_VERSION = 21.07.02;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
@@ -2210,7 +2202,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 94;
+				CURRENT_PROJECT_VERSION = 95;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2243,7 +2235,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 21.07.01;
+				MARKETING_VERSION = 21.07.02;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D RELEASE";

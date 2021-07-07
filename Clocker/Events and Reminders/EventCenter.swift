@@ -16,7 +16,7 @@ class EventCenter: NSObject {
     var eventsForDate: [Date: [EventInfo]] = [:]
 
     var filteredEvents: [Date: [EventInfo]] = [:]
-    
+
     private let fetchQueue = DispatchQueue(label: "com.abhishek.fetch")
 
     @discardableResult class func sharedCenter() -> EventCenter {
@@ -43,7 +43,7 @@ class EventCenter: NSObject {
 
     private func refetchAll() {
         Logger.info("\nRefetching events from the store")
-        
+
         eventsForDate = [:]
         filteredEvents = [:]
         autoreleasepool {
@@ -53,6 +53,5 @@ class EventCenter: NSObject {
                 self.fetchEvents(-40, 80)
             }
         }
-
     }
 }

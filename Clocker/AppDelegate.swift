@@ -7,8 +7,8 @@ import FirebaseCore
 import FirebaseCrashlytics
 
 open class AppDelegate: NSObject, NSApplicationDelegate {
-    private lazy var floatingWindow: FloatingWindowController = FloatingWindowController.shared()
-    private lazy var panelController: PanelController = PanelController.shared()
+    private lazy var floatingWindow = FloatingWindowController.shared()
+    private lazy var panelController = PanelController.shared()
     private var statusBarHandler: StatusItemHandler!
     private var panelObserver: NSKeyValueObservation?
 
@@ -16,7 +16,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         panelObserver?.invalidate()
     }
 
-    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change _: [NSKeyValueChangeKey: Any]?, context _: UnsafeMutableRawPointer?) {
+    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change _: [NSKeyValueChangeKey: Any]?, context _: UnsafeMutableRawPointer?) {
         if let path = keyPath, path == PreferencesConstants.hotKeyPathIdentifier {
             let hotKeyCenter = PTHotKeyCenter.shared()
 
@@ -30,10 +30,10 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
             }
 
             // Register new key
-            let newHotKey: PTHotKey = PTHotKey(identifier: keyPath,
-                                               keyCombo: newShortcut,
-                                               target: self,
-                                               action: #selector(ping(_:)))
+            let newHotKey = PTHotKey(identifier: keyPath,
+                                     keyCombo: newShortcut,
+                                     target: self,
+                                     action: #selector(ping(_:)))
 
             hotKeyCenter?.register(newHotKey)
         }
