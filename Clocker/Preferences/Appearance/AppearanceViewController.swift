@@ -183,7 +183,8 @@ class AppearanceViewController: ParentViewController {
         refresh(panel: true, floating: true)
 
         if let selectedFormat = sender.selectedItem?.title,
-            selectedFormat.contains("ss") {
+           selectedFormat.contains("ss")
+        {
             print("Seconds are contained")
             guard let panelController = PanelController.panel() else { return }
             panelController.pauseTimer()
@@ -193,7 +194,7 @@ class AppearanceViewController: ParentViewController {
         previewPanelTableView.reloadData()
     }
 
-    private var previousBackgroundColor: NSColor = NSColor.white
+    private var previousBackgroundColor = NSColor.white
 
     @IBAction func themeChanged(_ sender: NSSegmentedControl) {
         previousBackgroundColor = Themer.shared().mainBackgroundColor()

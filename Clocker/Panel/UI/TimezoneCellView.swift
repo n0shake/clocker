@@ -39,7 +39,7 @@ class TimezoneCellView: NSTableCellView {
 
     func setupLayout() {
         guard let relativeFont = relativeDate.font,
-            let sunriseFont = sunriseSetTime.font
+              let sunriseFont = sunriseSetTime.font
         else {
             assertionFailure("Unable to convert to NSString")
             return
@@ -128,7 +128,8 @@ class TimezoneCellView: NSTableCellView {
         }
 
         guard let customFont = customName.font,
-            let timeFont = time.font else {
+              let timeFont = time.font
+        else {
             assertionFailure("User Font Size is in unexpectedly nil")
             return
         }
@@ -164,7 +165,7 @@ class TimezoneCellView: NSTableCellView {
         }
 
         guard let panelTableView = searchView as? PanelTableView,
-            let enclosingScroller = panelTableView.enclosingScrollView
+              let enclosingScroller = panelTableView.enclosingScrollView
         else {
             // We might be coming from the preview tableview!
             return
@@ -203,9 +204,9 @@ class TimezoneCellView: NSTableCellView {
         let pasteboard = NSPasteboard.general
         pasteboard.declareTypes([.string], owner: nil)
         pasteboard.setString(clipboardCopy, forType: .string)
-        
-        self.window?.contentView?.makeToast("Copied to Clipboard".localized())
-        
+
+        window?.contentView?.makeToast("Copied to Clipboard".localized())
+
         window?.endEditing(for: nil)
     }
 

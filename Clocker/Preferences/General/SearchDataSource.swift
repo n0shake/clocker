@@ -151,7 +151,7 @@ class SearchDataSource: NSObject {
     func searchTimezones(_ searchString: String) {
         timezoneFilteredArray = []
 
-        timezoneFilteredArray = timezoneArray.filter { (timezoneMetadata) -> Bool in
+        timezoneFilteredArray = timezoneArray.filter { timezoneMetadata -> Bool in
             let tags = timezoneMetadata.tags
             for tag in tags where tag.contains(searchString) {
                 return true

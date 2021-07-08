@@ -42,8 +42,9 @@ class PreferencesViewController: ParentViewController {
 
     private var geocodingKey: String = {
         guard let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
-            let dictionary = NSDictionary(contentsOfFile: path),
-            let apiKey = dictionary["GeocodingKey"] as? String else {
+              let dictionary = NSDictionary(contentsOfFile: path),
+              let apiKey = dictionary["GeocodingKey"] as? String
+        else {
             assertionFailure("Unable to find the API key")
             return ""
         }
@@ -203,7 +204,6 @@ class PreferencesViewController: ParentViewController {
         timezoneTableView.enclosingScrollView?.isHidden = true
         showNoTimezoneState()
         cleanup()
-        return
     }
 
     private func cleanup() {
@@ -274,10 +274,10 @@ class PreferencesViewController: ParentViewController {
                 return
             }
 
-            let newHotKey: PTHotKey = PTHotKey(identifier: keyPath,
-                                               keyCombo: newShortcut,
-                                               target: self,
-                                               action: #selector(ping(_:)))
+            let newHotKey = PTHotKey(identifier: keyPath,
+                                     keyCombo: newShortcut,
+                                     target: self,
+                                     action: #selector(ping(_:)))
 
             hotKeyCenter?.register(newHotKey)
         }
@@ -333,9 +333,10 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
                    for: "favouriteRemoved")
 
         if let appDelegate = NSApplication.shared.delegate as? AppDelegate,
-            let menubarFavourites = DataStore.shared().menubarTimezones(),
-            menubarFavourites.isEmpty,
-            DataStore.shared().shouldDisplay(.showMeetingInMenubar) == false {
+           let menubarFavourites = DataStore.shared().menubarTimezones(),
+           menubarFavourites.isEmpty,
+           DataStore.shared().shouldDisplay(.showMeetingInMenubar) == false
+        {
             appDelegate.invalidateMenubarTimer(true)
         }
 
@@ -453,7 +454,7 @@ extension PreferencesViewController {
                                                         self.prepareUIForPresentingResults()
                                                     }
 
-            })
+                                                })
         }
     }
 
@@ -817,7 +818,7 @@ extension PreferencesViewController {
 
         var newDefaults = selectedTimeZones
 
-        let objectsToRemove = timezoneTableView.selectedRowIndexes.map { (index) -> Data in
+        let objectsToRemove = timezoneTableView.selectedRowIndexes.map { index -> Data in
             selectedTimeZones[index]
         }
 
@@ -896,12 +897,13 @@ extension PreferencesViewController {
     }
 
     @IBAction func sortByTime(_ sender: NSButton) {
-        let sortedByTime = selectedTimeZones.sorted { (obj1, obj2) -> Bool in
+        let sortedByTime = selectedTimeZones.sorted { obj1, obj2 -> Bool in
 
             let system = NSTimeZone.system
 
             guard let object1 = TimezoneData.customObject(from: obj1),
-                let object2 = TimezoneData.customObject(from: obj2) else {
+                  let object2 = TimezoneData.customObject(from: obj2)
+            else {
                 assertionFailure("Data was unexpectedly nil")
                 return false
             }
@@ -925,10 +927,11 @@ extension PreferencesViewController {
     }
 
     @IBAction func sortByLabel(_ sender: NSButton) {
-        let sortedLabels = selectedTimeZones.sorted { (obj1, obj2) -> Bool in
+        let sortedLabels = selectedTimeZones.sorted { obj1, obj2 -> Bool in
 
             guard let object1 = TimezoneData.customObject(from: obj1),
-                let object2 = TimezoneData.customObject(from: obj2) else {
+                  let object2 = TimezoneData.customObject(from: obj2)
+            else {
                 assertionFailure("Data was unexpectedly nil")
                 return false
             }
@@ -948,10 +951,11 @@ extension PreferencesViewController {
     }
 
     @IBAction func sortByFormattedAddress(_ sender: NSButton) {
-        let sortedByAddress = selectedTimeZones.sorted { (obj1, obj2) -> Bool in
+        let sortedByAddress = selectedTimeZones.sorted { obj1, obj2 -> Bool in
 
             guard let object1 = TimezoneData.customObject(from: obj1),
-                let object2 = TimezoneData.customObject(from: obj2) else {
+                  let object2 = TimezoneData.customObject(from: obj2)
+            else {
                 assertionFailure("Data was unexpectedly nil")
                 return false
             }
@@ -1014,10 +1018,11 @@ extension PreferencesViewController: PreferenceSelectionUpdates {
             return
         }
 
-        let sortedTimezones = selectedTimeZones.sorted { (obj1, obj2) -> Bool in
+        let sortedTimezones = selectedTimeZones.sorted { obj1, obj2 -> Bool in
 
             guard let object1 = TimezoneData.customObject(from: obj1),
-                let object2 = TimezoneData.customObject(from: obj2) else {
+                  let object2 = TimezoneData.customObject(from: obj2)
+            else {
                 assertionFailure("Data was unexpectedly nil")
                 return false
             }

@@ -89,7 +89,7 @@ class ThinScroller: NSScroller {
 class DraggableClipView: NSClipView {
     private var clickPoint: NSPoint!
     private var trackingArea: NSTrackingArea?
-    
+
     override func mouseDown(with event: NSEvent) {
         super.mouseDown(with: event)
         clickPoint = event.locationInWindow

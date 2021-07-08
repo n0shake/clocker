@@ -144,7 +144,7 @@ class StatusItemHandler: NSObject {
     private func retrieveSyncedMenubarTimezones() -> [Data] {
         let defaultPreferences = DataStore.shared().retrieve(key: CLDefaultPreferenceKey) as? [Data] ?? []
 
-        let menubarTimezones = defaultPreferences.filter { (data) -> Bool in
+        let menubarTimezones = defaultPreferences.filter { data -> Bool in
             if let timezoneObj = TimezoneData.customObject(from: data) {
                 return timezoneObj.isFavourite == 1
             }
@@ -188,7 +188,7 @@ class StatusItemHandler: NSObject {
                                  if let strongSelf = self {
                                      strongSelf.performTimerWork()
                                  }
-        })
+                             })
 
         // Tolerance, even a small amount, has a positive imapct on the power usage. As a rule, we set it to 10% of the interval
         menubarTimer?.tolerance = shouldDisplaySeconds ? 0.5 : 20

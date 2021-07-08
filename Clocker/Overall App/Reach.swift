@@ -54,8 +54,8 @@ open class Reach {
     }
 }
 
-extension ReachabilityStatus {
-    fileprivate init(reachabilityFlags flags: SCNetworkReachabilityFlags) {
+private extension ReachabilityStatus {
+    init(reachabilityFlags flags: SCNetworkReachabilityFlags) {
         let connectionRequired = flags.contains(.connectionRequired)
         let isReachable = flags.contains(.reachable)
 

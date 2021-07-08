@@ -24,7 +24,7 @@ class FloatingWindowTests: XCTestCase {
             app.buttons["Pin"].click()
         }
 
-        addUIInterruptionMonitor(withDescription: "Reminders Access") { (alert) -> Bool in
+        addUIInterruptionMonitor(withDescription: "Reminders Access") { alert -> Bool in
             let alertButton = alert.buttons["OK"]
             if alertButton.exists {
                 alertButton.tap()

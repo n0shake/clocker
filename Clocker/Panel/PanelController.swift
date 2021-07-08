@@ -152,7 +152,8 @@ class PanelController: ParentPanelController {
         }
 
         if let statusWindow = statusBackgroundWindow,
-            let statusButton = statusView {
+           let statusButton = statusView
+        {
             var statusItemFrame = statusWindow.convertToScreen(statusButton.frame)
             var statusItemScreen = NSScreen.main
             var testPoint = statusItemFrame.origin
@@ -184,16 +185,17 @@ class PanelController: ParentPanelController {
         let preferences = DataStore.shared().timezones()
 
         guard let theme = DataStore.shared().retrieve(key: CLThemeKey) as? NSNumber,
-            let displayFutureSliderKey = DataStore.shared().retrieve(key: CLThemeKey) as? NSNumber,
-            let showAppInForeground = DataStore.shared().retrieve(key: CLShowAppInForeground) as? NSNumber,
-            let relativeDateKey = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber,
-            let fontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber,
-            let sunriseTime = DataStore.shared().retrieve(key: CLSunriseSunsetTime) as? NSNumber,
-            let showDayInMenu = DataStore.shared().retrieve(key: CLShowDayInMenu) as? NSNumber,
-            let showDateInMenu = DataStore.shared().retrieve(key: CLShowDateInMenu) as? NSNumber,
-            let showPlaceInMenu = DataStore.shared().retrieve(key: CLShowPlaceInMenu) as? NSNumber,
-            let showUpcomingEventView = DataStore.shared().retrieve(key: CLShowUpcomingEventView) as? String,
-            let country = Locale.autoupdatingCurrent.regionCode else {
+              let displayFutureSliderKey = DataStore.shared().retrieve(key: CLThemeKey) as? NSNumber,
+              let showAppInForeground = DataStore.shared().retrieve(key: CLShowAppInForeground) as? NSNumber,
+              let relativeDateKey = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber,
+              let fontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber,
+              let sunriseTime = DataStore.shared().retrieve(key: CLSunriseSunsetTime) as? NSNumber,
+              let showDayInMenu = DataStore.shared().retrieve(key: CLShowDayInMenu) as? NSNumber,
+              let showDateInMenu = DataStore.shared().retrieve(key: CLShowDateInMenu) as? NSNumber,
+              let showPlaceInMenu = DataStore.shared().retrieve(key: CLShowPlaceInMenu) as? NSNumber,
+              let showUpcomingEventView = DataStore.shared().retrieve(key: CLShowUpcomingEventView) as? String,
+              let country = Locale.autoupdatingCurrent.regionCode
+        else {
             return
         }
 
@@ -313,7 +315,7 @@ class PanelController: ParentPanelController {
     }
 
     class func panel() -> PanelController? {
-        let panel = NSApplication.shared.windows.compactMap { (window) -> PanelController? in
+        let panel = NSApplication.shared.windows.compactMap { window -> PanelController? in
 
             guard let parent = window.windowController as? PanelController else {
                 return nil

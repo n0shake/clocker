@@ -120,16 +120,16 @@ class ClockerUnitTests: XCTestCase {
             let timezone = TimezoneData.customObject(from: $0)
             return timezone?.placeID == "TestIdentifier"
         }
-        
+
         // California is absent. Add it!
         if filteredCount.count == 0 {
             let timezoneData = TimezoneData(with: california)
             let operationsObject = TimezoneDataOperations(with: timezoneData)
             operationsObject.saveObject()
         }
-        
+
         let oldCount = (defaults.object(forKey: CLDefaultPreferenceKey) as? [Data])?.count ?? 0
-        
+
         currentFavourites = currentFavourites.filter {
             let timezone = TimezoneData.customObject(from: $0)
             return timezone?.placeID != "TestIdentifier"
@@ -288,7 +288,8 @@ class ClockerUnitTests: XCTestCase {
         guard let newDate = cal?.date(byAdding: .minute,
                                       value: 0,
                                       to: Date(),
-                                      options: .matchFirst) else {
+                                      options: .matchFirst)
+        else {
             XCTFail("Unable to add dates!")
             return
         }
