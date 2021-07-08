@@ -60,7 +60,7 @@ class OnboardingSearchController: NSViewController {
         resultsTableView.reloadData()
 
         func setupUndoButton() {
-            let font = NSFont(name: "Avenir", size: 13)!
+          let font = NSFont(name: "Avenir", size: 13) ?? NSFont.systemFont(ofSize: 13)
             let attributes = [NSAttributedString.Key.foregroundColor: NSColor.linkColor,
                               NSAttributedString.Key.font: font]
             undoButton.attributedTitle = NSAttributedString(string: "UNDO", attributes: attributes)
