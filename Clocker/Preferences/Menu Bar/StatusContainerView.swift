@@ -33,10 +33,12 @@ func compactWidth(for timezone: TimezoneData) -> Int {
     if timeFormat == DateFormat.twelveHour
         || timeFormat == DateFormat.twelveHourWithSeconds
         || timeFormat == DateFormat.twelveHourWithZero
-        || timeFormat == DateFormat.twelveHourWithSeconds {
+        || timeFormat == DateFormat.twelveHourWithSeconds
+    {
         totalWidth += 20
     } else if timeFormat == DateFormat.twentyFourHour
-        || timeFormat == DateFormat.twentyFourHourWithSeconds {
+        || timeFormat == DateFormat.twentyFourHourWithSeconds
+    {
         totalWidth += 0
     }
 
@@ -81,7 +83,7 @@ class StatusContainerView: NSView {
         ]
 
         func containerWidth(for timezones: [Data]) -> CGFloat {
-            let compressedWidth = timezones.reduce(0.0) { (result, timezone) -> CGFloat in
+            let compressedWidth = timezones.reduce(0.0) { result, timezone -> CGFloat in
 
                 if let timezoneObject = TimezoneData.customObject(from: timezone) {
                     let precalculatedWidth = Double(compactWidth(for: timezoneObject))
@@ -108,6 +110,7 @@ class StatusContainerView: NSView {
         addSubviews()
     }
 
+    @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

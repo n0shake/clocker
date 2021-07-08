@@ -5,9 +5,9 @@ import Cocoa
 class DateFormatterManager: NSObject {
     public static let sharedInstance = DateFormatterManager()
 
-    private static var dateFormatter: DateFormatter = DateFormatter()
-    private static var calendarDateFormatter: DateFormatter = DateFormatter()
-    private static var simpleFormatter: DateFormatter = DateFormatter()
+    private static var dateFormatter = DateFormatter()
+    private static var calendarDateFormatter = DateFormatter()
+    private static var simpleFormatter = DateFormatter()
     private static var specializedFormatter = DateFormatter()
     private static var localizedForamtter = DateFormatter()
     private static var localizedSimpleFormatter = DateFormatter()

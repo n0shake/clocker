@@ -21,7 +21,7 @@ class MenubarHandler: NSObject {
         }
 
         if menubarTitles.isEmpty == false {
-            let titles = menubarTitles.map { (data) -> String? in
+            let titles = menubarTitles.map { data -> String? in
                 let timezone = TimezoneData.customObject(from: data)
                 let operationsObject = TimezoneDataOperations(with: timezone!)
                 return "\(operationsObject.menuTitle().trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines))"
