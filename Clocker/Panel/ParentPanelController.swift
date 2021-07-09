@@ -840,11 +840,7 @@ class ParentPanelController: NSWindowController {
                     return
                 }
 
-                let timeSince = Date().timeAgo(since: upcomingEvent.event.startDate)
-                let withoutAn = timeSince.replacingOccurrences(of: "an", with: CLEmptyString)
-                let withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
-
-                self.setCalendarButtonTitle(buttonTitle: "in \(withoutAgo.lowercased())")
+                self.setCalendarButtonTitle(buttonTitle: upcomingEvent.metadataForMeeting())
 
                 if upcomingEvent.meetingURL != nil {
                     self.whiteRemoveButton.image = Themer.shared().videoCallImage()
