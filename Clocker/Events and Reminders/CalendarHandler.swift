@@ -158,7 +158,7 @@ extension EventCenter {
         let relevantEvents = filteredEvents[autoupdatingCalendar.startOfDay(for: Date())] ?? []
 
         let filteredEvent = relevantEvents.filter {
-            $0.event.isAllDay == false && $0.event.startDate.timeIntervalSinceNow > 0
+            $0.event.isAllDay == false && $0.event.startDate.timeIntervalSinceNow > -300
         }.first
 
         if let firstEvent = filteredEvent {
@@ -424,4 +424,17 @@ struct EventInfo {
     let isAllDay: Bool
     let isSingleDay: Bool
     let meetingURL: URL?
+    
+    func metadataForMeeting() -> String {
+        let timeIntervalSinceNowForMeeting = event.startDate.timeIntervalSinceNow
+        if (timeIntervalSinceNowForMeeting < 0 && timeIntervalSinceNowForMeeting > -300) {
+           return "Event began \(event.startDate.shortTimeAgoSinceNow) ago."
+        } else {
+            let timeSince = Date().timeAgo(since: event.startDate)
+            let withoutAn = timeSince.replacingOccurrences(of: "an", with: CLEmptyString)
+            let withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
+
+            return "in \(withoutAgo.lowercased())"
+        }
+    }
 }
