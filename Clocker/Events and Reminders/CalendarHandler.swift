@@ -428,7 +428,7 @@ struct EventInfo {
     func metadataForMeeting() -> String {
         let timeIntervalSinceNowForMeeting = event.startDate.timeIntervalSinceNow
         if (timeIntervalSinceNowForMeeting < 0 && timeIntervalSinceNowForMeeting > -300) {
-           return "Event began \(event.startDate.shortTimeAgoSinceNow) ago."
+           return "started \(event.startDate.shortTimeAgoSinceNow) ago."
         } else {
             let timeSince = Date().timeAgo(since: event.startDate)
             let withoutAn = timeSince.replacingOccurrences(of: "an", with: CLEmptyString)
