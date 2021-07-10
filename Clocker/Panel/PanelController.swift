@@ -97,7 +97,8 @@ class PanelController: ParentPanelController {
         // Reset future slider value to zero
         futureSlider.integerValue = 0
         sliderDatePicker.dateValue = Date()
-        closestQuarterTimeRepresentation = setModernSliderLabel()
+        closestQuarterTimeRepresentation = findClosestQuarterTimeApproximation()
+        modernSliderLabel.stringValue = "Time Scroller"
 
         if modernSlider != nil {
             let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSlider.numberOfItems(inSection: 0) / 2, section: 0)])
