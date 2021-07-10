@@ -24,6 +24,9 @@ extension ParentPanelController {
             goForwardButton.isContinuous = true
             goBackwardsButton.isContinuous = true
             
+            goBackwardsButton.toolTip = "Navigate 15 mins back"
+            goForwardButton.toolTip = "Navigate 15 mins forward"
+            
             modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             modernSlider.enclosingScrollView?.backgroundColor = NSColor.clear
             modernSlider.setAccessibility("ModernSlider")
