@@ -31,7 +31,6 @@ class AppFeedbackWindowController: NSWindowController {
     @IBOutlet var nameField: NSTextField!
     @IBOutlet var emailField: NSTextField!
     @IBOutlet var feedbackTextView: NSTextView!
-    @IBOutlet var informativeText: NSTextField!
     @IBOutlet var progressIndicator: NSProgressIndicator!
 
     @IBOutlet var quickCommentsLabel: UnderlinedButton!
@@ -69,7 +68,6 @@ class AppFeedbackWindowController: NSWindowController {
         window?.titlebarAppearsTransparent = true
 
         progressIndicator.isHidden = true
-        informativeText.setAccessibilityIdentifier("InformativeText")
         feedbackTextView.setAccessibilityIdentifier("FeedbackTextView")
         nameField.setAccessibilityIdentifier("NameField")
         emailField.setAccessibilityIdentifier("EmailField")
@@ -106,8 +104,6 @@ class AppFeedbackWindowController: NSWindowController {
     }
 
     @IBAction func sendFeedback(_: Any) {
-        resetInformativeLabel()
-
         isActivityInProgress = true
 
         if didUserEnterFeedback() == false {
@@ -127,16 +123,8 @@ class AppFeedbackWindowController: NSWindowController {
         let cleanedUpString = feedbackTextView.string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
 
         if cleanedUpString.isEmpty {
-            informativeText.stringValue = AppFeedbackConstants.CLFeedbackNotEnteredErrorMessage
-
-            Timer.scheduledTimer(withTimeInterval: 5.0,
-                                 repeats: false,
-                                 block: { _ in
-                                     self.resetInformativeLabel()
-                                 })
-
+            self.window?.contentView?.makeToast(AppFeedbackConstants.CLFeedbackNotEnteredErrorMessage)
             isActivityInProgress = false
-
             return false
         }
 
@@ -206,10 +194,6 @@ class AppFeedbackWindowController: NSWindowController {
         }
     }
 
-    private func resetInformativeLabel() {
-        informativeText.stringValue = CLEmptyString
-    }
-
     @IBOutlet var contactBox: NSBox!
     @IBOutlet var accessoryInfo: NSTextField!
 
@@ -262,7 +246,6 @@ class AppFeedbackWindowController: NSWindowController {
 
 extension AppFeedbackWindowController: NSWindowDelegate {
     func windowWillClose(_: Notification) {
-        resetInformativeLabel()
         performClosingCleanUp()
         bringPreferencesWindowToFront()
     }
