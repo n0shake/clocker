@@ -105,21 +105,6 @@ extension Themer {
         return themeIndex == .dark ? NSColor.white : NSColor.gray
     }
 
-    func mainControlColor() -> NSColor {
-        if #available(macOS 10.14, *) {
-            switch themeIndex {
-            case .light:
-                return NSColor.white
-            case .dark:
-                return NSColor(deviceRed: 42.0 / 255.0, green: 42.0 / 255.0, blue: 42.0 / 255.0, alpha: 1.0)
-            case .system:
-                return NSColor.controlBackgroundColor
-            }
-        }
-
-        return themeIndex == .light ? NSColor.white : NSColor(deviceRed: 42.0 / 255.0, green: 42.0 / 255.0, blue: 42.0 / 255.0, alpha: 1.0)
-    }
-
     func mainBackgroundColor() -> NSColor {
         if #available(macOS 10.14, *) {
             switch themeIndex {
@@ -128,13 +113,29 @@ extension Themer {
             case .dark:
                 return NSColor(deviceRed: 42.0 / 255.0, green: 42.0 / 255.0, blue: 42.0 / 255.0, alpha: 1.0)
             case .system:
-                return NSColor.windowBackgroundColor
+                return retrieveCurrentSystem() == .light ? NSColor.white : NSColor.windowBackgroundColor
             }
         }
 
         return themeIndex == .light ? NSColor.white : NSColor(deviceRed: 55.0 / 255.0, green: 71.0 / 255.0, blue: 79.0 / 255.0, alpha: 1.0)
     }
 
+    private func retrieveCurrentSystem() -> Theme {
+        if #available(OSX 10.15, *) {
+            let appearanceDescription = NSApplication.shared.effectiveAppearance.debugDescription.lowercased()
+            if appearanceDescription.contains("dark") {
+                return .dark
+            }
+        } else if #available(OSX 10.14, *) {
+            if let appleInterfaceStyle = UserDefaults.standard.object(forKey: "AppleInterfaceStyle") as? String {
+                if appleInterfaceStyle.lowercased().contains("dark") {
+                    return .dark
+                }
+            }
+        }
+        return .light
+    }
+    
     func mainTextColor() -> NSColor {
         if #available(macOS 10.14, *) {
             switch themeIndex {
@@ -433,7 +434,7 @@ extension Themer {
             case .dark:
                 return NSColor(deviceRed: 42.0 / 255.0, green: 55.0 / 255.0, blue: 62.0 / 255.0, alpha: 1.0)
             case .system:
-                return NSColor.controlBackgroundColor
+                return retrieveCurrentSystem() == .light ? NSColor(deviceRed: 241.0 / 255.0, green: 241.0 / 255.0, blue: 241.0 / 255.0, alpha: 1.0) : NSColor.controlBackgroundColor
             }
         }
 
