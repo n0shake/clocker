@@ -18,6 +18,12 @@ extension ParentPanelController: NSCollectionViewDataSource {
 extension ParentPanelController {
     func setupModernSliderIfNeccessary() {
         if modernSlider != nil {
+            goBackwardsButton.image = Themer.shared().goBackwardsImage()
+            goForwardButton.image = Themer.shared().goForwardsImage()
+            
+            goForwardButton.isContinuous = true
+            goBackwardsButton.isContinuous = true
+            
             modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             modernSlider.enclosingScrollView?.backgroundColor = NSColor.clear
             modernSlider.setAccessibility("ModernSlider")
@@ -78,10 +84,9 @@ extension ParentPanelController {
                                                         direction: .forward)!
 
         if shouldUpdate {
-//            modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(hourQuarterDate)
+            modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(hourQuarterDate)
         } else {
-//            let fullString = NSMutableAttributedString(string: "Time Scroller")
-//            modernSliderLabel.attributedStringValue = fullString
+            modernSliderLabel.stringValue = "Time Scroller"
         }
 
         return hourQuarterDate
@@ -93,12 +98,12 @@ extension ParentPanelController {
         if index > (centerPoint + 1) {
             let remainder = (index % (centerPoint + 1))
             let nextDate = Calendar.current.date(byAdding: .minute, value: remainder * 15, to: closestQuarterTimeRepresentation ?? Date())!
-//            modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(nextDate)
+            modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(nextDate)
             return nextDate.minutes(from: Date()) + 1
         } else if index <= centerPoint {
             let remainder = centerPoint - index + 1
             let previousDate = Calendar.current.date(byAdding: .minute, value: -1 * remainder * 15, to: closestQuarterTimeRepresentation ?? Date())!
-//            modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(previousDate)
+            modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(previousDate)
             return previousDate.minutes(from: Date())
         } else {
             setModernSliderLabel(true)

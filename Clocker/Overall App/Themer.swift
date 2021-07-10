@@ -450,8 +450,21 @@ extension Themer {
             return nil
         }
     }
+    
+    func filledTrashImage() -> NSImage? {
+        return symbolImage(for: "trash.fill")
+    }
+    
+    // Modern Slider
+    func goBackwardsImage() -> NSImage? {
+        return symbolImage(for: "gobackward.15")
+    }
+    
+    func goForwardsImage() -> NSImage? {
+        return symbolImage(for: "goforward.15")
+    }
 
-    func symbolImage(for name: String) -> NSImage? {
+    private func symbolImage(for name: String) -> NSImage? {
         assert(name.isEmpty == false)
 
         if #available(OSX 11.0, *) {

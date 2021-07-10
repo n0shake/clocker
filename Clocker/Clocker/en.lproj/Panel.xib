@@ -13,11 +13,14 @@
                 <outlet property="calendarColorView" destination="KFy-Xe-qhq" id="Qta-Vq-YyP"/>
                 <outlet property="futureSlider" destination="Vf2-uI-yf3" id="waZ-HW-18U"/>
                 <outlet property="futureSliderView" destination="C7R-Dq-MFr" id="IsR-aV-vjD"/>
+                <outlet property="goBackwardsButton" destination="aW8-hr-4Zh" id="EWT-EA-AGP"/>
+                <outlet property="goForwardButton" destination="Bmz-Z2-OvH" id="6bR-Ph-Nit"/>
                 <outlet property="leftButton" destination="WVY-D9-AAX" id="M2W-xG-chN"/>
                 <outlet property="leftField" destination="8Qj-Y9-Okf" id="q3N-ht-jCd"/>
                 <outlet property="mainTableView" destination="dFw-ts-8OZ" id="2kY-dd-rDV"/>
                 <outlet property="modernContainerView" destination="8W7-rS-Uob" id="qgZ-SS-ayy"/>
                 <outlet property="modernSlider" destination="lxA-64-3QU" id="kS5-ub-7gV"/>
+                <outlet property="modernSliderLabel" destination="e2d-EI-Dm0" id="eby-rL-B21"/>
                 <outlet property="nextEventLabel" destination="rld-Ag-KL1" id="GTY-j3-A1g"/>
                 <outlet property="pinButton" destination="YXE-4J-5cn" id="k6V-HK-7XG"/>
                 <outlet property="preferencesButton" destination="Ctq-BV-GPN" id="cdL-5h-qmx"/>
@@ -42,15 +45,15 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1000" y="379" width="350" height="460"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
-            <view key="contentView" focusRingType="none" misplaced="YES" id="6" customClass="BackgroundPanelView" customModule="Clocker" customModuleProvider="target">
-                <rect key="frame" x="0.0" y="0.0" width="350" height="460"/>
+            <view key="contentView" focusRingType="none" id="6" customClass="BackgroundPanelView" customModule="Clocker" customModuleProvider="target">
+                <rect key="frame" x="0.0" y="0.0" width="350" height="440"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView focusRingType="none" distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZA-6o-SbE">
-                        <rect key="frame" x="0.0" y="0.0" width="350" height="410"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="440"/>
                         <subviews>
                             <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="96" horizontalPageScroll="1" verticalLineScroll="96" verticalPageScroll="1" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" scrollerKnobStyle="light" translatesAutoresizingMaskIntoConstraints="NO" id="4Gd-Nv-fXr">
-                                <rect key="frame" x="-20" y="145" width="370" height="265"/>
+                                <rect key="frame" x="-20" y="175" width="370" height="265"/>
                                 <clipView key="contentView" focusRingType="none" drawsBackground="NO" copiesOnScroll="NO" id="4MZ-Di-yNR">
                                     <rect key="frame" x="0.0" y="0.0" width="370" height="265"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -260,7 +263,7 @@
                                 </scroller>
                             </scrollView>
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="C7R-Dq-MFr" userLabel="Slider View">
-                                <rect key="frame" x="0.0" y="115" width="350" height="30"/>
+                                <rect key="frame" x="0.0" y="235" width="350" height="30"/>
                                 <subviews>
                                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vf2-uI-yf3">
                                         <rect key="frame" x="7" y="2" width="201" height="23"/>
@@ -309,13 +312,13 @@
                                 </constraints>
                             </customView>
                             <customView wantsLayer="YES" focusRingType="none" id="8W7-rS-Uob" userLabel="Modern Slider" customClass="ModernSliderContainerView" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="165" width="350" height="40"/>
+                                <rect key="frame" x="0.0" y="165" width="350" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" horizontalScrollElasticity="allowed" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="htc-pO-AqH">
-                                        <rect key="frame" x="0.0" y="0.0" width="350" height="50"/>
+                                        <rect key="frame" x="0.0" y="30" width="350" height="40"/>
                                         <clipView key="contentView" drawsBackground="NO" id="N1e-zE-F86" customClass="DraggableClipView" customModule="Clocker" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="40"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <collectionView focusRingType="none" allowsEmptySelection="NO" id="lxA-64-3QU">
@@ -342,15 +345,70 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="hma-wI-Sc9" userLabel="Modern Slider Metadata View" customClass="ClockerTextBackgroundView" customModule="Clocker" customModuleProvider="target">
+                                        <rect key="frame" x="125" y="0.0" width="100" height="20"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e2d-EI-Dm0">
+                                                <rect key="frame" x="-2" y="0.0" width="104" height="20"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="6ph-Pe-Ayg">
+                                                    <font key="font" size="12" name="Avenir-Book"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="e2d-EI-Dm0" secondAttribute="bottom" id="8gX-z3-MxE"/>
+                                            <constraint firstItem="e2d-EI-Dm0" firstAttribute="top" secondItem="hma-wI-Sc9" secondAttribute="top" id="Ej7-XJ-dNL"/>
+                                            <constraint firstAttribute="height" constant="20" id="gFM-oL-xxD"/>
+                                            <constraint firstAttribute="width" constant="100" id="lD4-UL-UOh"/>
+                                            <constraint firstItem="e2d-EI-Dm0" firstAttribute="leading" secondItem="hma-wI-Sc9" secondAttribute="leading" id="siz-5L-N0Q"/>
+                                            <constraint firstAttribute="trailing" secondItem="e2d-EI-Dm0" secondAttribute="trailing" id="vFB-mV-hbB"/>
+                                        </constraints>
+                                    </customView>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aW8-hr-4Zh">
+                                        <rect key="frame" x="75" y="0.0" width="45" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="2Ef-45-5pI"/>
+                                            <constraint firstAttribute="height" constant="20" id="Cgv-Fx-BfO"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" title="Back" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="cLW-iV-S4k">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="goBackward:" target="-2" id="oE4-v9-7LC"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bmz-Z2-OvH">
+                                        <rect key="frame" x="230" y="0.0" width="45" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="ZOn-jQ-Wdp"/>
+                                            <constraint firstAttribute="height" constant="20" id="gfg-y1-zD1"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" title="Forward" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="hsm-i0-5Ct">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="goForward:" target="-2" id="ax0-sN-nD8"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="5HT-Ps-YH3"/>
+                                    <constraint firstItem="Bmz-Z2-OvH" firstAttribute="leading" secondItem="hma-wI-Sc9" secondAttribute="trailing" constant="5" id="1xy-0v-oyi"/>
+                                    <constraint firstItem="aW8-hr-4Zh" firstAttribute="centerY" secondItem="hma-wI-Sc9" secondAttribute="centerY" id="2ct-Wg-TX8"/>
+                                    <constraint firstAttribute="height" constant="70" id="5HT-Ps-YH3"/>
+                                    <constraint firstItem="Bmz-Z2-OvH" firstAttribute="centerY" secondItem="hma-wI-Sc9" secondAttribute="centerY" id="6aM-Qm-05e"/>
+                                    <constraint firstItem="e2d-EI-Dm0" firstAttribute="leading" secondItem="aW8-hr-4Zh" secondAttribute="trailing" constant="5" id="8cY-4o-YNN"/>
                                     <constraint firstItem="htc-pO-AqH" firstAttribute="top" secondItem="8W7-rS-Uob" secondAttribute="top" id="Ag8-2G-tVA"/>
+                                    <constraint firstItem="hma-wI-Sc9" firstAttribute="centerX" secondItem="8W7-rS-Uob" secondAttribute="centerX" id="GGe-go-nVx"/>
                                     <constraint firstItem="htc-pO-AqH" firstAttribute="leading" secondItem="8W7-rS-Uob" secondAttribute="leading" id="QmJ-Dd-WLb"/>
-                                    <constraint firstAttribute="bottom" secondItem="htc-pO-AqH" secondAttribute="bottom" priority="750" id="YCJ-zB-dvc"/>
+                                    <constraint firstAttribute="bottom" secondItem="hma-wI-Sc9" secondAttribute="bottom" id="TDr-Pa-iYA"/>
+                                    <constraint firstAttribute="bottom" secondItem="htc-pO-AqH" secondAttribute="bottom" priority="750" constant="30" id="YCJ-zB-dvc"/>
                                     <constraint firstAttribute="trailing" secondItem="htc-pO-AqH" secondAttribute="trailing" id="esR-My-uoD"/>
                                 </constraints>
-                                <accessibility identifier="Modern Slider"/>
+                                <accessibility identifier="Modern Slider Container"/>
                             </customView>
                             <customView identifier="Review Cell" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="TDn-Kk-KkV" userLabel="Review View">
                                 <rect key="frame" x="0.0" y="115" width="350" height="50"/>
