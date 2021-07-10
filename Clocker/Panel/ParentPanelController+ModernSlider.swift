@@ -32,7 +32,14 @@ extension ParentPanelController {
                                                    selector: #selector(collectionViewDidScroll(_:)),
                                                    name: NSView.boundsDidChangeNotification,
                                                    object: modernSlider.superview)
-            closestQuarterTimeRepresentation = setModernSliderLabel()
+            
+            // Set the modern slider label!
+            closestQuarterTimeRepresentation = findClosestQuarterTimeApproximation()
+            if let unwrappedClosetQuarterTime = closestQuarterTimeRepresentation {
+                modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(unwrappedClosetQuarterTime)
+            }
+            
+            // Make sure modern slider is centered horizontally!
             let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSlider.numberOfItems(inSection: 0) / 2, section: 0)])
             modernSlider.scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
         }
@@ -74,21 +81,13 @@ extension ParentPanelController {
         }
     }
 
-    @discardableResult
-    public func setModernSliderLabel(_ shouldUpdate: Bool = false) -> Date {
+    public func findClosestQuarterTimeApproximation() -> Date {
         let defaultParameters = minuteFromCalendar()
         let hourQuarterDate = Calendar.current.nextDate(after: defaultParameters.0,
                                                         matching: DateComponents(minute: defaultParameters.1),
                                                         matchingPolicy: .strict,
                                                         repeatedTimePolicy: .first,
                                                         direction: .forward)!
-
-        if shouldUpdate {
-            modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(hourQuarterDate)
-        } else {
-            modernSliderLabel.stringValue = "Time Scroller"
-        }
-
         return hourQuarterDate
     }
 
@@ -100,13 +99,13 @@ extension ParentPanelController {
             let nextDate = Calendar.current.date(byAdding: .minute, value: remainder * 15, to: closestQuarterTimeRepresentation ?? Date())!
             modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(nextDate)
             return nextDate.minutes(from: Date()) + 1
-        } else if index <= centerPoint {
+        } else if index < centerPoint {
             let remainder = centerPoint - index + 1
             let previousDate = Calendar.current.date(byAdding: .minute, value: -1 * remainder * 15, to: closestQuarterTimeRepresentation ?? Date())!
             modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(previousDate)
             return previousDate.minutes(from: Date())
         } else {
-            setModernSliderLabel(true)
+            modernSliderLabel.stringValue = "Time Scroller"
             return 0
         }
     }
