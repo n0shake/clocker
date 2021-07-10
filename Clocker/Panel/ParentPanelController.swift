@@ -92,6 +92,8 @@ class ParentPanelController: NSWindowController {
     @IBOutlet var modernSlider: NSCollectionView!
     @IBOutlet var modernSliderLabel: NSTextField!
     @IBOutlet var modernContainerView: ModernSliderContainerView!
+    @IBOutlet var goBackwardsButton: NSButton!
+    @IBOutlet var goForwardButton: NSButton!
 
     var defaultPreferences: [Data] {
         return DataStore.shared().timezones()
