@@ -51,7 +51,6 @@ func compactWidth(for timezone: TimezoneData) -> Int {
         totalWidth += 20
     }
 
-    print("-- Compact Width is \(totalWidth)")
     return totalWidth
 }
 

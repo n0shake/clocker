@@ -92,6 +92,8 @@ class ParentPanelController: NSWindowController {
     @IBOutlet var modernSlider: NSCollectionView!
     @IBOutlet var modernSliderLabel: NSTextField!
     @IBOutlet var modernContainerView: ModernSliderContainerView!
+    @IBOutlet var goBackwardsButton: NSButton!
+    @IBOutlet var goForwardButton: NSButton!
 
     var defaultPreferences: [Data] {
         return DataStore.shared().timezones()
@@ -840,11 +842,7 @@ class ParentPanelController: NSWindowController {
                     return
                 }
 
-                let timeSince = Date().timeAgo(since: upcomingEvent.event.startDate)
-                let withoutAn = timeSince.replacingOccurrences(of: "an", with: CLEmptyString)
-                let withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
-
-                self.setCalendarButtonTitle(buttonTitle: "in \(withoutAgo.lowercased())")
+                self.setCalendarButtonTitle(buttonTitle: upcomingEvent.metadataForMeeting())
 
                 if upcomingEvent.meetingURL != nil {
                     self.whiteRemoveButton.image = Themer.shared().videoCallImage()
