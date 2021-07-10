@@ -15,12 +15,6 @@
 		3531F7C326936C8300DF0111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7C026936C6E00DF0111 /* GoogleService-Info.plist */; };
 		3531F7C426936C8300DF0111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7C026936C6E00DF0111 /* GoogleService-Info.plist */; };
 		3531F7C526936C8400DF0111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7C026936C6E00DF0111 /* GoogleService-Info.plist */; };
-		3531F7ED26936DE900DF0111 /* run in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7EB26936DE900DF0111 /* run */; };
-		3531F7EE26936DE900DF0111 /* run in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7EB26936DE900DF0111 /* run */; };
-		3531F7EF26936DE900DF0111 /* run in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7EB26936DE900DF0111 /* run */; };
-		3531F7F026936DE900DF0111 /* upload-symbols in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7EC26936DE900DF0111 /* upload-symbols */; };
-		3531F7F126936DE900DF0111 /* upload-symbols in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7EC26936DE900DF0111 /* upload-symbols */; };
-		3531F7F226936DE900DF0111 /* upload-symbols in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7EC26936DE900DF0111 /* upload-symbols */; };
 		3531F7F52693882300DF0111 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7F42693882300DF0111 /* Keys.plist */; };
 		3531F7F72693882300DF0111 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7F42693882300DF0111 /* Keys.plist */; };
 		3531F80626938D7700DF0111 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FC26938D7600DF0111 /* GoogleUtilities.framework */; };
@@ -266,8 +260,6 @@
 		352AF499232E07B400D96FA7 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3531F7C026936C6E00DF0111 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3531F7EA26936D8800DF0111 /* Firebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
-		3531F7EB26936DE900DF0111 /* run */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = run; sourceTree = "<group>"; };
-		3531F7EC26936DE900DF0111 /* upload-symbols */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "upload-symbols"; sourceTree = "<group>"; };
 		3531F7F42693882300DF0111 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Keys.plist; path = Internal/Keys.plist; sourceTree = "<group>"; };
 		3531F7FC26938D7600DF0111 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/Firebase/GoogleUtilities.framework; sourceTree = "<group>"; };
 		3531F7FD26938D7700DF0111 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = Frameworks/Firebase/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
@@ -911,8 +903,6 @@
 				C20839C821515C1E00C86589 /* ClockerUnitTests */,
 				DD4F7C0713C30F9F00825C6E /* Frameworks */,
 				3531F7EA26936D8800DF0111 /* Firebase.h */,
-				3531F7EB26936DE900DF0111 /* run */,
-				3531F7EC26936DE900DF0111 /* upload-symbols */,
 				3531F7C026936C6E00DF0111 /* GoogleService-Info.plist */,
 				DD4F7C0513C30F9F00825C6E /* Products */,
 				9AEF66812693A6270036142F /* Recovered References */,
@@ -1174,8 +1164,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3531F7F72693882300DF0111 /* Keys.plist in Resources */,
-				3531F7F226936DE900DF0111 /* upload-symbols in Resources */,
-				3531F7EF26936DE900DF0111 /* run in Resources */,
 				3531F7C526936C8400DF0111 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1185,11 +1173,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ABF454F268FCF10002C779B /* Keys.plist in Resources */,
-				3531F7EE26936DE900DF0111 /* run in Resources */,
 				9A8B256A232EFAD300204CAD /* Localizable.strings in Resources */,
 				9AA522C023415BDD00C9E005 /* InfoPlist.strings in Resources */,
 				3531F7C426936C8300DF0111 /* GoogleService-Info.plist in Resources */,
-				3531F7F126936DE900DF0111 /* upload-symbols in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1202,7 +1188,6 @@
 				357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */,
 				9AB6F15E2259D08300A44663 /* iVersion.bundle in Resources */,
 				35C36F972259EBB1002FA5C6 /* AppFeedbackWindow.xib in Resources */,
-				3531F7ED26936DE900DF0111 /* run in Resources */,
 				9A13BAE01CA882FA007C6CBE /* InfoPlist.strings in Resources */,
 				35C36F912259EAF4002FA5C6 /* Preferences.storyboard in Resources */,
 				3531F7F52693882300DF0111 /* Keys.plist in Resources */,
@@ -1214,7 +1199,6 @@
 				35C36EF322595F14002FA5C6 /* WelcomeView.xib in Resources */,
 				35C36EF822595F14002FA5C6 /* Onboarding.storyboard in Resources */,
 				35C36F612259DE67002FA5C6 /* NotesPopover.xib in Resources */,
-				3531F7F026936DE900DF0111 /* upload-symbols in Resources */,
 				9A3169C11D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist in Resources */,
 				9A56DB801C1CFB73004CE6AF /* MainMenu.xib in Resources */,
 			);
@@ -1551,7 +1535,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 95;
+				CURRENT_PROJECT_VERSION = 96;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2120,7 +2104,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 95;
+				CURRENT_PROJECT_VERSION = 96;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -2202,7 +2186,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 95;
+				CURRENT_PROJECT_VERSION = 96;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
