@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -12,7 +12,6 @@
                 <outlet property="contactBox" destination="JzF-Oq-qhW" id="CUI-1V-SfW"/>
                 <outlet property="emailField" destination="zlM-Cf-OxV" id="uRw-dZ-JGR"/>
                 <outlet property="feedbackTextView" destination="sCg-gV-TTr" id="Evh-WS-epn"/>
-                <outlet property="informativeText" destination="W3a-Hi-ryk" id="qhv-iC-svS"/>
                 <outlet property="nameField" destination="Qzm-kE-Igl" id="miJ-7A-VPC"/>
                 <outlet property="progressIndicator" destination="h17-og-9PU" id="AE2-Gh-DpO"/>
                 <outlet property="quickCommentsLabel" destination="j4P-EU-Uso" id="TSm-DN-QeM"/>
@@ -24,7 +23,7 @@
         <window title="Clocker Feedback" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="437" y="172" width="319" height="456"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="319" height="456"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -111,7 +110,7 @@
                         <font key="titleFont" size="11" name="Avenir-Book"/>
                     </box>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="szs-8j-SMN">
-                        <rect key="frame" x="93" y="13" width="82" height="32"/>
+                        <rect key="frame" x="92" y="13" width="84" height="33"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="3Et-2P-JlO"/>
                             <constraint firstAttribute="width" constant="70" id="CFb-9Q-Mbd"/>
@@ -128,7 +127,7 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sJq-1o-Bft">
-                        <rect key="frame" x="171" y="13" width="134" height="32"/>
+                        <rect key="frame" x="170" y="13" width="136" height="33"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="122" id="IU8-yi-rFV"/>
                             <constraint firstAttribute="height" constant="21" id="M7a-oP-ZqD"/>
@@ -144,17 +143,6 @@ DQ
                             <action selector="sendFeedback:" target="-2" id="lrL-0l-Jbd"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W3a-Hi-ryk">
-                        <rect key="frame" x="10" y="47" width="289" height="22"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="22" id="vCO-Z3-Dfd"/>
-                        </constraints>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" placeholderString="" id="sSH-y9-tFH">
-                            <font key="font" size="13" name="Avenir-Light"/>
-                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="h17-og-9PU">
                         <rect key="frame" x="12" y="19" width="79" height="20"/>
                     </progressIndicator>
@@ -191,7 +179,6 @@ DQ
                 </subviews>
                 <constraints>
                     <constraint firstItem="JzF-Oq-qhW" firstAttribute="trailing" secondItem="oNX-kV-RGt" secondAttribute="trailing" id="4Vq-PW-upG"/>
-                    <constraint firstItem="W3a-Hi-ryk" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="12" id="8UN-bn-s8Y"/>
                     <constraint firstAttribute="trailing" secondItem="zlM-Cf-OxV" secondAttribute="trailing" constant="30" id="Arj-b2-oje"/>
                     <constraint firstItem="sJq-1o-Bft" firstAttribute="top" secondItem="JzF-Oq-qhW" secondAttribute="bottom" constant="26" id="Epm-On-lNy"/>
                     <constraint firstAttribute="trailing" secondItem="oNX-kV-RGt" secondAttribute="trailing" constant="12" id="IqR-EG-ga3"/>
@@ -206,10 +193,8 @@ DQ
                     <constraint firstAttribute="bottom" secondItem="sJq-1o-Bft" secondAttribute="bottom" constant="20" id="cft-qs-VMz"/>
                     <constraint firstItem="oNX-kV-RGt" firstAttribute="top" secondItem="6oZ-b5-xPJ" secondAttribute="bottom" constant="7" id="dlq-R6-ar3"/>
                     <constraint firstItem="h17-og-9PU" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="12" id="iIH-oN-lBO"/>
-                    <constraint firstAttribute="trailing" secondItem="W3a-Hi-ryk" secondAttribute="trailing" constant="22" id="j6H-0M-Cux"/>
                     <constraint firstItem="bGc-DH-2iw" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="o8t-tV-qS6"/>
                     <constraint firstItem="JzF-Oq-qhW" firstAttribute="top" secondItem="oNX-kV-RGt" secondAttribute="bottom" constant="13" id="v2l-OZ-epC"/>
-                    <constraint firstItem="szs-8j-SMN" firstAttribute="top" secondItem="W3a-Hi-ryk" secondAttribute="bottom" constant="6" id="vlm-Yj-d84"/>
                     <constraint firstAttribute="bottom" secondItem="szs-8j-SMN" secondAttribute="bottom" constant="20" id="xos-N8-d1k"/>
                 </constraints>
             </view>
