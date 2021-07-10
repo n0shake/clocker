@@ -142,6 +142,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         statusBarHandler = StatusItemHandler()
 
         if ProcessInfo.processInfo.arguments.contains(CLUITestingLaunchArgument) {
+            FirebaseApp.configure()
             ReviewController.setPreviewMode(true)
         }
 

@@ -13,6 +13,7 @@ class AboutUsTests: XCTestCase {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         app = XCUIApplication()
+        app.launchArguments.append(CLUITestingLaunchArgument) // To configure Firebase in AppDelegate
         app.launch()
 
         if app.tables["FloatingTableView"].exists {
@@ -33,7 +34,7 @@ class AboutUsTests: XCTestCase {
         tapAboutTab()
 
         let appDisplayName = "CFBundleDisplayName".localizedString()
-        let expectedVersion = "\(appDisplayName) 21.07.02 (95)"
+        let expectedVersion = "\(appDisplayName) 21.07.02 (96)"
 
         guard let presentVersion = app.windows["Clocker"].staticTexts["ClockerVersion"].value as? String else {
             XCTFail("Present version not present")
