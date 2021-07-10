@@ -16,7 +16,6 @@
 		3531F7C426936C8300DF0111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7C026936C6E00DF0111 /* GoogleService-Info.plist */; };
 		3531F7C526936C8400DF0111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7C026936C6E00DF0111 /* GoogleService-Info.plist */; };
 		3531F7F52693882300DF0111 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7F42693882300DF0111 /* Keys.plist */; };
-		3531F7F72693882300DF0111 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7F42693882300DF0111 /* Keys.plist */; };
 		3531F80626938D7700DF0111 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FC26938D7600DF0111 /* GoogleUtilities.framework */; };
 		3531F80726938D7700DF0111 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FC26938D7600DF0111 /* GoogleUtilities.framework */; };
 		3531F80826938D7700DF0111 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FC26938D7600DF0111 /* GoogleUtilities.framework */; };
@@ -47,6 +46,7 @@
 		3531F82126938D7700DF0111 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80526938D7700DF0111 /* GoogleDataTransport.framework */; };
 		3531F82226938D7700DF0111 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80526938D7700DF0111 /* GoogleDataTransport.framework */; };
 		3531F82326938D7700DF0111 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80526938D7700DF0111 /* GoogleDataTransport.framework */; };
+		353B5BC52698B78A0023858D /* UpcomingEventStatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B5BC42698B78A0023858D /* UpcomingEventStatusItemView.swift */; };
 		357391872507277500D30819 /* TimeMarkerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357391852507277500D30819 /* TimeMarkerViewItem.swift */; };
 		357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357391862507277500D30819 /* HourMarkerViewItem.xib */; };
 		3579765E2680208C009DDA6E /* ParentPanelController+ModernSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3579765D2680208C009DDA6E /* ParentPanelController+ModernSlider.swift */; };
@@ -158,8 +158,6 @@
 		9AB6F1642259D1B900A44663 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F1632259D1B800A44663 /* ParentViewController.swift */; };
 		9AB6F1672259D23200A44663 /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F1662259D23200A44663 /* PermissionsViewController.swift */; };
 		9AB89E031CE97A4900EC8EB1 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AB89E021CE97A4900EC8EB1 /* Media.xcassets */; };
-		9ABF454E268FCF10002C779B /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9ABF454D268FCF10002C779B /* Keys.plist */; };
-		9ABF454F268FCF10002C779B /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9ABF454D268FCF10002C779B /* Keys.plist */; };
 		9ABF455B268FDABA002C779B /* CopyToClipboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABF4559268FDABA002C779B /* CopyToClipboardTests.swift */; };
 		9ABFB3801CA6882000E10745 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ABFB37F1CA6882000E10745 /* ApplicationServices.framework */; };
 		9AC678E41C1ABAB9003B4F6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -271,6 +269,8 @@
 		3531F80326938D7700DF0111 /* FirebaseInstallations.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstallations.framework; path = Frameworks/Firebase/FirebaseInstallations.framework; sourceTree = "<group>"; };
 		3531F80426938D7700DF0111 /* leveldb-library.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "leveldb-library.framework"; path = "Frameworks/Firebase/leveldb-library.framework"; sourceTree = "<group>"; };
 		3531F80526938D7700DF0111 /* GoogleDataTransport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleDataTransport.framework; path = Frameworks/Firebase/GoogleDataTransport.framework; sourceTree = "<group>"; };
+		353B5BC42698B78A0023858D /* UpcomingEventStatusItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventStatusItemView.swift; sourceTree = "<group>"; };
+		353B5BC72698D4BB0023858D /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3569A44E25441F320087E254 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		357391852507277500D30819 /* TimeMarkerViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMarkerViewItem.swift; sourceTree = "<group>"; };
 		357391862507277500D30819 /* HourMarkerViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourMarkerViewItem.xib; sourceTree = "<group>"; };
@@ -422,7 +422,6 @@
 		9AB6F1632259D1B800A44663 /* ParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		9AB6F1662259D23200A44663 /* PermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
 		9AB89E021CE97A4900EC8EB1 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		9ABF454D268FCF10002C779B /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Keys.plist; path = Internal/Keys.plist; sourceTree = "<group>"; };
 		9ABF4559268FDABA002C779B /* CopyToClipboardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyToClipboardTests.swift; sourceTree = "<group>"; };
 		9ABFB37F1CA6882000E10745 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		9AC678E31C1ABAB9003B4F6B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -548,6 +547,7 @@
 				3508CC99259A0001000E3530 /* StatusItemView.swift */,
 				3508CC9E259A000E000E3530 /* StatusItemHandler.swift */,
 				3508CCA9259A0027000E3530 /* StatusContainerView.swift */,
+				353B5BC42698B78A0023858D /* UpcomingEventStatusItemView.swift */,
 			);
 			path = "Menu Bar";
 			sourceTree = "<group>";
@@ -882,7 +882,6 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
-				9ABF454D268FCF10002C779B /* Keys.plist */,
 				35B2FEE4259A2C25005DA84D /* CoreModelKit */,
 				35B2FED4259A2244005DA84D /* CoreLoggerKit */,
 				35B2FEB1259A1649005DA84D /* StartupKit */,
@@ -1110,6 +1109,7 @@
 				ar,
 				"pt-BR",
 				"zh-Hant",
+				hr,
 			);
 			mainGroup = DD4F7BF913C30F9F00825C6E;
 			productRefGroup = DD4F7C0513C30F9F00825C6E /* Products */;
@@ -1183,14 +1183,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9ABF454E268FCF10002C779B /* Keys.plist in Resources */,
 				9A13BAEA1CA88A76007C6CBE /* Localizable.strings in Resources */,
 				357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */,
 				9AB6F15E2259D08300A44663 /* iVersion.bundle in Resources */,
 				35C36F972259EBB1002FA5C6 /* AppFeedbackWindow.xib in Resources */,
 				9A13BAE01CA882FA007C6CBE /* InfoPlist.strings in Resources */,
 				35C36F912259EAF4002FA5C6 /* Preferences.storyboard in Resources */,
-				3531F7F52693882300DF0111 /* Keys.plist in Resources */,
 				9AB89E031CE97A4900EC8EB1 /* Media.xcassets in Resources */,
 				9A13BAD61CA87F08007C6CBE /* Panel.xib in Resources */,
 				35C36F6B2259E0E1002FA5C6 /* FloatingWindow.xib in Resources */,
@@ -1313,6 +1311,7 @@
 				35C36F582259DD8A002FA5C6 /* PanelTableView.swift in Sources */,
 				35C36F0F225961DA002FA5C6 /* TimePeriodCollection.swift in Sources */,
 				35C36F18225961DA002FA5C6 /* Date+Comparators.swift in Sources */,
+				353B5BC52698B78A0023858D /* UpcomingEventStatusItemView.swift in Sources */,
 				35C36FA02259ED6D002FA5C6 /* CalendarHandler.swift in Sources */,
 				35C36F1A225961DA002FA5C6 /* Date+Manipulations.swift in Sources */,
 				35C36F572259DD8A002FA5C6 /* TimezoneDataSource.swift in Sources */,
@@ -1422,6 +1421,7 @@
 				9AA522D723416E6000C9E005 /* it */,
 				3569A44E25441F320087E254 /* pt-BR */,
 				35A6A4B925C5DEF300356073 /* zh-Hant */,
+				353B5BC72698D4BB0023858D /* hr */,
 			);
 			name = Localizable.strings;
 			path = Clocker;
@@ -1568,7 +1568,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 21.07.02;
+				MARKETING_VERSION = 21.07.03;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
@@ -2138,7 +2138,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 21.07.02;
+				MARKETING_VERSION = 21.07.03;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
@@ -2219,7 +2219,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 21.07.02;
+				MARKETING_VERSION = 21.07.03;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D RELEASE";

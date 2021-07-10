@@ -1,0 +1,165 @@
+/*
+  Localizable.strings
+  Clocker
+
+  Created by Abhishek Banthia on 7/9/21.
+
+*/
+
+"CFBundleDisplayName" = "Clocker";
+"Thank you for helping make Clocker even better!" = "Hvala što pomažeš poboljšati Clocker!";
+"iRateMessageTitle" = "Ocijeni %@";
+"iRateAppMessage" = "Ako voliš koristiti %@, ocijeni program. Postupak ocjenjivanja traje manje od jedne minute. Hvala na podršci!";
+"iRateGameMessage" = "Ako voliš igrati %@, ocijeni program. Postupak ocjenjivanja traje manje od jedne minute. Hvala na podršci!";
+"iRateCancelButton" = "Ne, hvala";
+"iRateRateButton" = "Ocijeni";
+"iRateRemindButton" = "Podsjeti me kasnije";
+"iRateUpdateMessage" = "Sada aktualizirati?";
+"ClockerVersion" = "Verzija %@";
+"CLFeedbackAlertTitle" = "Hvala što pomažeš poboljšati Clocker!";
+"app-name" = "Clocker";
+"start-at-login" = "Pokreni nakon prijave";
+"setup-steps" = "Za postavljanje programa Clocker potrebna su samo tri koraka";
+"Permissions-Header" = "Dozvole";
+"See your next Calendar event here." = "Ovdje pogledaj svoje sljedeće kalendarske događaje.";
+"Click here to start." = "Pritisni ovdje za pokretanje.";
+"Reminders Access" = "Pristup podsjetnicima";
+"Calendar Access" = "Pristup kalendaru";
+"Permissions" = "Dozvole";
+"Calendar Detail" = "Predstojeći događaji iz tvojih osobnih i zajedničkih kalendara mogu se prikazati u traci izbornika i na ploči.";
+"Reminders Detail" = "Postavi podsjetnike u tvoju vremensku zonu mjesta. Tvoji se podsjetnici spremaju u standardni program Podsjetnici.";
+"Privacy Text" = "Ovo možeš kasnije promijeniti u odjeljku Privatnost u Postavkama sustava.";
+"Granted Button Text" = "Dozvoljeno";
+"Denied Button Text" = "Zabranjeno";
+"Grant Button Text" = "Dozvoli";
+
+// Welcome Onboarding
+"It only takes 3 steps to setup Clocker." = "Za postavljanje programa Clocker potrebna su samo tri koraka.";
+"Get Started" = "Početak";
+
+// Tab Item Titles
+"Preferences Tab" = "Postavke";
+"Appearance Tab" = "Izgled";
+"Calendar Tab" = "Kalendar";
+"About Tab" = "Informacije";
+"Permissions Tab" = "Dozvole";
+
+// General Preferences Screen
+"Start at Login" = "Pokreni Clocker nakon prijave";
+"Sort by Time Difference" = "Razvrstaj po vremenskoj ralzici";
+"Sort by Name" = "Razvrstaj po imenu";
+"Sort by Label" = "Razvrstaj po oznaci";
+"Search Field Placeholder" = "Upiši grad, državu ili zemlju";
+"No Timezone Selected" = "Odaberi vremensku zonu!";
+"Max Timezones Selected" = "Ograničeno na 100 vremenskih zona!";
+"Max Search Characters" = "Ograničeno na 50 znakova!";
+"Add Button Title" = "Dodaj";
+"Close Button Title" = "Zatvori";
+
+// Onboarding
+"Open Clocker At Login" = "Otvori Clocker nakon prijave";
+"Launch Clocker" = "Pokreni Clocker";
+
+// Welcome Onboarding
+"It only takes 3 steps to set up Clocker." = "Za postavljanje programa Clocker potrebna su samo tri koraka.";
+"Get Started" = "Početak";
+
+// Permissions
+"Calendar Access Title" = "Pristup kalendaru";
+"Reminders Access Title" = "Pristup podsjetnicima";
+"Later Config Description" = "Mogu se kasnije konfigurirati u postavkama sustava.";
+"Back" = "Natrag";
+"Continue" = "Nastavi";
+"Clocker is more useful when it can display events from your calendars." = "Clocker je korisniji kad može prikazivati događaje u tvojim kalendarima.";
+"Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker je korisniji kad može prikazivati događaje u tvojim kalendarima. Ovu postavku možeš promijeniti u Postavke sustava › Sigurnost i privatnost › Privatnost.";
+/* Text for button that takes the user to the System Preferences app. In case the user hasn't given Calendar/Reminders access permission, this button takes you to the System Preferences app where the user can give proper permissions to Clocker. */
+"Launch Preferences" = "Pokreni postavke";
+"Grant Access" = "Dopusti pristup";
+"Upcoming events from your personal and shared calendars can be shown in the menubar and the panel." = "Predstojeći događaji iz tvojih osobnih i zajedničkih kalendara mogu se prikazati u traci izbornika i na ploči.";
+"Granted" = "Dodijeljeno";
+"Denied" = "Odbijeno";
+"Grant" = "Odobrenje";
+"Unexpected" = "Neočekivano";
+
+// Onboarding Search
+"Quick Add Locations" = "Brzo dodavanje mjesta";
+"More search options in Clocker Preferences." = "Daljnje opcije pretage u Clocker postavkama.";
+"Enter 3 or more characters for locations you'll like to add" = "Upiši tri ili više znakova za mjesta koja želiš dodati";
+
+// Start at Login
+"Launch at Login" = "Pokreni nakon prijave";
+"This can be configured later in Clocker Preferences." = "Ovo se može kasnije konfigurirati u Clocker postavkama.";
+"Should Clocker open automatically on startup?" = "Želiš li automatski pokrenuti Clocker nakon pokretanja računala?";
+
+// Final Onboarding Screen
+"You're all set!" = "Sve je spremno!";
+"Thank you for the details." = "Hvala ti na detalju.";
+"You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences." = "Kad pokreneš program, u traci izbornika vidjet ćeš ikonu sata. Ako želiš vidjeti ikonu u traci programa, idi na Postavke.";
+"If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "Ako želiš pomoći prevesti program na tvoj jezik ili primati rijetke obavijesti o novim verzijama programa, upiši tvoju e-mail adresu!";
+
+// Appearance Tab
+"Panel Theme" = "Tema ploče";
+"Favourite a timezone to enable menubar display options." = "Odaberi vremensku zonu za aktiviranje opcija prikaza trake izbornika.";
+"Main Panel Options" = "Opcije glavne ploče";
+"Time Format" = "Format za vrijeme";
+"Day Display Options" = "Opcije za prikaz dana";
+"Show Future Slider" = "Prikaži klizač budućnosti";
+"Show Sunrise/Sunset" = "Prikaži izlazak/zalazak sunca";
+"Display the time in seconds" = "Prikaži vrijeme u sekundama";
+"Larger Text" = "Veći tekst";
+"Future Slider Range" = "Klizač za raspon budućnosti";
+"Include Date" = "Uključi datum";
+"Include Day" = "Uključi dan";
+"Include Place Name" = "Uključi ime mjesta";
+"Menubar Display Options" = "Opcije prikaza izbornika";
+/* Appears in Preferences -> Appearance which allows the user to switch between the compact and standard menubar mode. It doesn't lead anywhere. */
+"Menubar Mode" = "Modus izbornika";
+"Preview" = " Pregled";
+"Miscellaneous" = "Razno";
+
+// Empty View
+"No places added" = "Nema dodanih mjesta";
+
+// Panel
+"No upcoming event." = "Nema predstojećih događaja.";
+"You have no events scheduled for tomorrow." = "Za sutra nemaš zakazanih događaja.";
+
+// Review
+"Enjoy using Clocker?" = "Voliš Clocker?";
+
+// App Feedback
+"Tell us what you think!" = "Javi nam što misliš!";
+"Contact Information (Optional)" = "Kontaktni podaci (opcionalno)";
+"Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!" = "Polja za kontakt nisu obavezna! Tvoji kontaktni podaci omogućit će nam da te kontaktiramo u slučaju da trebamo daljnje informacije ili ako možemo pomoći!";
+
+// About View Screen
+"Feedback is always welcome:" = "Uvijek se radujemo povratnim informacijama:";
+
+// Calendars View
+"Upcoming Event View Options" = "Opcije prikaza predstojećih događaja";
+"Show Upcoming Event View" = "Prikaži prikaz predstojećih događaja";
+"Show All Day Meetings" = "Prikaži cjelodnevne sastanke";
+"Show Next Meeting Title in Menubar" = "Prikaži sljedeći sastanak u traci izbornika";
+"Truncate menubar text longer than" = "Skrati tekst izbone trake koji je duži od";
+"characters" = "znakova";
+"Show events from" = "Prikaži događaje od";
+"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "Ako je naslov sastanka „Sastanak s Vladimirom”, a kraćenje je postavljeno na 5, tekst na traci pojavit će se kao „Sasta …”";
+
+// Notes Popover
+"Reminder Set" = "Postavljanje podsjetnika";
+"Successfully set." = "Uspješno postavljeno.";
+
+// Errors
+"You're offline, maybe?" = "Možda nemaš vezu s internetom?";
+"Try again, maybe?" = "Želiš li ponovo pokušati?";
+"The Internet connection appears to be offline." = "Čini se da ne postoji veza s internetom.";
+
+// UI Tests
+"New Zealand" = "Novi Zeland";
+"Florida" = "Florida";
+"San Francisco" = "San Francisco";
+
+// DST changes
+"Daylights Saving transition will occur in < 24 hours" = "Daylights Saving transition will occur in < 24 hours";
+
+"Copied to Clipboard" = "Copied to Clipboard";
