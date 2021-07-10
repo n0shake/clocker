@@ -660,28 +660,13 @@ extension PreferencesViewController {
         isActivityInProgress = true
 
         if availableTimezoneTableView.selectedRow == -1 {
-            messageLabel.stringValue = PreferencesConstants.noTimezoneSelectedErrorMessage
-
-            Timer.scheduledTimer(withTimeInterval: 5,
-                                 repeats: false) { _ in
-                OperationQueue.main.addOperation {
-                    self.messageLabel.stringValue = CLEmptyString
-                }
-            }
-
+            timezonePanel.contentView?.makeToast(PreferencesConstants.noTimezoneSelectedErrorMessage)
             isActivityInProgress = false
             return
         }
 
         if selectedTimeZones.count >= 100 {
-            messageLabel.stringValue = PreferencesConstants.maxTimezonesErrorMessage
-            Timer.scheduledTimer(withTimeInterval: 5,
-                                 repeats: false) { _ in
-                OperationQueue.main.addOperation {
-                    self.messageLabel.stringValue = CLEmptyString
-                }
-            }
-
+            timezonePanel.contentView?.makeToast(PreferencesConstants.maxTimezonesErrorMessage)
             isActivityInProgress = false
             return
         }
@@ -855,20 +840,12 @@ extension PreferencesViewController {
     }
 
     @IBAction func filterArray(_: Any?) {
-        messageLabel.stringValue = CLEmptyString
-
         searchResultsDataSource.cleanupFilterArray()
 
         if searchField.stringValue.count > 50 {
             isActivityInProgress = false
-            messageLabel.stringValue = PreferencesConstants.maxCharactersAllowed
             reloadSearchResults()
-            Timer.scheduledTimer(withTimeInterval: 5,
-                                 repeats: false) { _ in
-                OperationQueue.main.addOperation {
-                    self.messageLabel.stringValue = CLEmptyString
-                }
-            }
+            timezonePanel.contentView?.makeToast(PreferencesConstants.maxCharactersAllowed)
             return
         }
 
