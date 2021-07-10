@@ -10,10 +10,10 @@ class CopyToClipboardTests: XCTestCase {
         app = XCUIApplication()
         app.launch()
 
-//        if app.tables["FloatingTableView"].exists == false {
-//            app.tapMenubarIcon()
-//            app.buttons["Pin"].click()
-//        }
+        if app.tables["FloatingTableView"].exists == false {
+            app.tapMenubarIcon()
+            app.buttons["Pin"].click()
+        }
     }
 
     override func tearDownWithError() throws {
