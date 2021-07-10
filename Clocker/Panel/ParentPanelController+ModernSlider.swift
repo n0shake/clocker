@@ -5,7 +5,7 @@ import Foundation
 
 extension ParentPanelController: NSCollectionViewDataSource {
     func collectionView(_: NSCollectionView, numberOfItemsInSection _: Int) -> Int {
-        return (96 * PanelConstants.modernSliderDaySupport * 2) + 1
+        return (PanelConstants.modernSliderPointsInADay * PanelConstants.modernSliderDaySupport * 2) + 1
     }
 
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
@@ -92,7 +92,7 @@ extension ParentPanelController {
     }
 
     public func setDefaultDateLabel(_ index: Int) -> Int {
-        let totalCount = (96 * PanelConstants.modernSliderDaySupport * 2) + 1
+        let totalCount = (PanelConstants.modernSliderPointsInADay * PanelConstants.modernSliderDaySupport * 2) + 1
         let centerPoint = Int(ceil(Double(totalCount / 2)))
         if index > (centerPoint + 1) {
             let remainder = (index % (centerPoint + 1))
