@@ -392,8 +392,14 @@ extension EventCenter {
 
     private func retrieveMeetingURL(_ event: EKEvent) -> URL? {
         if EventCenter.dataDetector == nil {
-            // TODO: Handle Try-Catch gracefully
-            EventCenter.dataDetector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+            var dataDetector: NSDataDetector? = nil
+            do {
+                dataDetector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+            } catch {
+                assertionFailure("Unable to create a link-type data detector")
+                return nil
+            }
+            EventCenter.dataDetector = dataDetector
         }
 
         if let location = event.location {
