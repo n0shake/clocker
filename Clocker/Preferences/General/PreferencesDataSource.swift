@@ -200,6 +200,6 @@ extension PreferencesDataSource: NSTableViewDataSource {
             return
         }
 
-        statusItem.performTimerWork()
+        statusItem.refresh()
     }
 }
