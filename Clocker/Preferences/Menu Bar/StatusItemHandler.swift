@@ -32,7 +32,7 @@ class StatusItemHandler: NSObject {
 
     private var userNotificationsDidChangeNotif: NSObjectProtocol?
 
-    // Current State is set twice when the user first launches an app.
+    // Current State might be set twice when the user first launches an app.
     // First, when StatusItemHandler() is instantiated in AppDelegate
     // Second, when AppDelegate.fetchLocalTimezone() is called triggering a customLabel didSet.
     // TODO: Make sure it's set just once.
