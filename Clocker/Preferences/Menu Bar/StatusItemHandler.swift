@@ -186,7 +186,7 @@ class StatusItemHandler: NSObject {
                              block: { [weak self] _ in
 
                                  if let strongSelf = self {
-                                     strongSelf.performTimerWork()
+                                     strongSelf.refresh()
                                  }
                              })
 
@@ -249,7 +249,7 @@ class StatusItemHandler: NSObject {
         parentView?.updateTime()
     }
 
-    func performTimerWork() {
+    func refresh() {
         if currentState == .compactText {
             updateCompactMenubar()
             updateMenubar()

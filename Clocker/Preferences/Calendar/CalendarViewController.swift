@@ -187,7 +187,7 @@ class CalendarViewController: ParentViewController {
             return
         }
 
-        statusItem.performTimerWork()
+        statusItem.refresh()
     }
 
     @IBOutlet var headerLabel: NSTextField!

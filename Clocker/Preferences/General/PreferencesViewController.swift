@@ -828,7 +828,7 @@ extension PreferencesViewController {
             return
         }
 
-        statusItem.performTimerWork()
+        statusItem.refresh()
     }
 
     private func updateStatusBarAppearance() {

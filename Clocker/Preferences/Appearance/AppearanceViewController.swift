@@ -325,7 +325,7 @@ class AppearanceViewController: ParentViewController {
         if DataStore.shared().shouldDisplay(.menubarCompactMode) {
             statusItem.setupStatusItem()
         } else {
-            statusItem.performTimerWork()
+            statusItem.refresh()
         }
     }
 
