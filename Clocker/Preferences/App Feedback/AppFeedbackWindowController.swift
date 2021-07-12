@@ -2,6 +2,7 @@
 
 import Cocoa
 import CoreLoggerKit
+import CoreModelKit
 import FirebaseDatabase
 
 extension NSNib.Name {
@@ -24,6 +25,7 @@ enum AppFeedbackConstants {
     static let CLFeedbackAlertButtonTitle = "Close"
     static let CLFeedbackNotEnteredErrorMessage = "Please enter some feedback."
     static let CLAppFeedbackDateProperty = "date"
+    static let CLAppFeedbackUserPreferences = "Prefs"
     static let CLCaliforniaTimezoneIdentifier = "America/Los_Angeles"
 }
 
@@ -111,6 +113,8 @@ class AppFeedbackWindowController: NSWindowController {
         }
 
         let feedbackInfo = retrieveDataForSending()
+        Logger.info("About to send \(feedbackInfo)")
+        
         sendDataToFirebase(feedbackInfo: feedbackInfo)
         showSucccessOnSendingInfo()
     }
@@ -130,6 +134,52 @@ class AppFeedbackWindowController: NSWindowController {
 
         return true
     }
+    
+    private func generateUserPreferences() -> String {
+        let preferences = DataStore.shared().timezones()
+
+        guard let theme = DataStore.shared().retrieve(key: CLThemeKey) as? NSNumber,
+              let displayFutureSliderKey = DataStore.shared().retrieve(key: CLThemeKey) as? NSNumber,
+              let relativeDateKey = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber,
+              let country = Locale.autoupdatingCurrent.regionCode
+        else {
+            return "Error"
+        }
+        
+        let selectedTimezones = preferences.compactMap { data -> String? in
+            guard let timezoneObject = TimezoneData.customObject(from: data) else {
+                return nil
+            }
+            return "Timezone: \(timezoneObject.timezone()) Name: \(timezoneObject.formattedAddress ?? "No") Favourited: \((timezoneObject.isFavourite == 1) ? "Yes": "No") Note: \(timezoneObject.note ?? "No Note") System: \(timezoneObject.isSystemTimezone ? "Yes": "No")"
+        }
+
+        var relativeDate = "Relative"
+
+        if relativeDateKey.isEqual(to: NSNumber(value: 1)) {
+            relativeDate = "Actual Day"
+        } else if relativeDateKey.isEqual(to: NSNumber(value: 2)) {
+            relativeDate = "Date"
+        }
+        
+        var themeInfo = "Light"
+        if theme.isEqual(to: NSNumber(value: 1)) {
+            themeInfo = "Dark"
+        } else if theme.isEqual(to: NSNumber(value: 2)) {
+            themeInfo = "System"
+        }
+        
+        var futureSlider = "Modern"
+        if displayFutureSliderKey.isEqual(to: NSNumber(value: 1)) {
+            futureSlider = "Legacy"
+        } else if theme.isEqual(to: NSNumber(value: 2)) {
+            futureSlider = "Hidden"
+        }
+        
+        return """
+            "Theme: \(themeInfo), "Display Future Slider": \(futureSlider), "Relative Date": \(relativeDate), "Country": \(country), "Timezones": \(selectedTimezones)
+            """
+        
+    }
 
     private func retrieveDataForSending() -> [String: String] {
         guard let shortVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
@@ -145,16 +195,15 @@ class AppFeedbackWindowController: NSWindowController {
         let osVersion = "\(operatingSystem.majorVersion).\(operatingSystem.minorVersion).\(operatingSystem.patchVersion)"
         let versionInfo = "Clocker \(shortVersion) (\(appVersion))"
 
-        let feedbackInfo = [
+        return [
             AppFeedbackConstants.CLAppFeedbackNameProperty: name,
             AppFeedbackConstants.CLAppFeedbackEmailProperty: email,
             AppFeedbackConstants.CLAppFeedbackFeedbackProperty: appFeedbackProperty,
             AppFeedbackConstants.CLOperatingSystemVersion: osVersion,
             AppFeedbackConstants.CLClockerVersion: versionInfo,
             AppFeedbackConstants.CLAppFeedbackDateProperty: todaysDate(),
+            AppFeedbackConstants.CLAppFeedbackUserPreferences: generateUserPreferences(),
         ]
-
-        return feedbackInfo
     }
 
     private func todaysDate() -> String {
