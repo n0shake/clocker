@@ -15,7 +15,6 @@
 		3531F7C326936C8300DF0111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7C026936C6E00DF0111 /* GoogleService-Info.plist */; };
 		3531F7C426936C8300DF0111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7C026936C6E00DF0111 /* GoogleService-Info.plist */; };
 		3531F7C526936C8400DF0111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7C026936C6E00DF0111 /* GoogleService-Info.plist */; };
-		3531F7F52693882300DF0111 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3531F7F42693882300DF0111 /* Keys.plist */; };
 		3531F80626938D7700DF0111 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FC26938D7600DF0111 /* GoogleUtilities.framework */; };
 		3531F80726938D7700DF0111 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FC26938D7600DF0111 /* GoogleUtilities.framework */; };
 		3531F80826938D7700DF0111 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F7FC26938D7600DF0111 /* GoogleUtilities.framework */; };
@@ -54,7 +53,6 @@
 		35B2FEC0259A186F005DA84D /* StartupKit in Frameworks */ = {isa = PBXBuildFile; productRef = 35B2FEBF259A186F005DA84D /* StartupKit */; };
 		35B2FEDD259A2291005DA84D /* CoreLoggerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 35B2FEDC259A2291005DA84D /* CoreLoggerKit */; };
 		35B2FEF1259A2DB1005DA84D /* CoreModelKit in Frameworks */ = {isa = PBXBuildFile; productRef = 35B2FEF0259A2DB1005DA84D /* CoreModelKit */; };
-		35C11E2124873A550031F18C /* VersionUpdateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C11E2024873A550031F18C /* VersionUpdateHandler.swift */; };
 		35C36EF122595F14002FA5C6 /* OnboardingPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE822595F13002FA5C6 /* OnboardingPermissionsViewController.swift */; };
 		35C36EF222595F14002FA5C6 /* OnboardingWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE922595F13002FA5C6 /* OnboardingWelcomeViewController.swift */; };
 		35C36EF322595F14002FA5C6 /* WelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35C36EEA22595F13002FA5C6 /* WelcomeView.xib */; };
@@ -121,6 +119,8 @@
 		35C36FA22259ED6D002FA5C6 /* RemindersHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F9F2259ED6D002FA5C6 /* RemindersHandler.swift */; };
 		35C36FA42259EEC2002FA5C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36FA32259EEC2002FA5C6 /* AppDelegate.swift */; };
 		35E65125268EDD2E00E3E1E3 /* Toasty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E65124268EDD2E00E3E1E3 /* Toasty.swift */; };
+		9A0385BB269E3434003B5E72 /* StandardMenubarHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0385BA269E3434003B5E72 /* StandardMenubarHandlerTests.swift */; };
+		9A066A04269A2BF600C3F1FB /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A066A03269A2BF600C3F1FB /* Keys.plist */; };
 		9A0A1C8C20903DBD0012003B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87651C1FEDC500A7A2DF /* CoreLocation.framework */; };
 		9A13BAD61CA87F08007C6CBE /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAD81CA87F08007C6CBE /* Panel.xib */; };
 		9A13BAE01CA882FA007C6CBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAE21CA882FA007C6CBE /* InfoPlist.strings */; };
@@ -347,6 +347,8 @@
 		35C36F9F2259ED6D002FA5C6 /* RemindersHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersHandler.swift; sourceTree = "<group>"; };
 		35C36FA32259EEC2002FA5C6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		35E65124268EDD2E00E3E1E3 /* Toasty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toasty.swift; sourceTree = "<group>"; };
+		9A0385BA269E3434003B5E72 /* StandardMenubarHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardMenubarHandlerTests.swift; sourceTree = "<group>"; };
+		9A066A03269A2BF600C3F1FB /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Keys.plist; path = Internal/Keys.plist; sourceTree = "<group>"; };
 		9A13BAD71CA87F08007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Panel.xib; sourceTree = "<group>"; };
 		9A13BAE11CA882FA007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A13BAEB1CA88A76007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -854,6 +856,7 @@
 			children = (
 				C20839C921515C1E00C86589 /* ClockerUnitTests.swift */,
 				C20839CB21515C1F00C86589 /* Info.plist */,
+				9A0385BA269E3434003B5E72 /* StandardMenubarHandlerTests.swift */,
 			);
 			path = ClockerUnitTests;
 			sourceTree = "<group>";
@@ -882,6 +885,7 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
+				9A066A03269A2BF600C3F1FB /* Keys.plist */,
 				35B2FEE4259A2C25005DA84D /* CoreModelKit */,
 				35B2FED4259A2244005DA84D /* CoreLoggerKit */,
 				35B2FEB1259A1649005DA84D /* StartupKit */,
@@ -1163,7 +1167,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3531F7F72693882300DF0111 /* Keys.plist in Resources */,
 				3531F7C526936C8400DF0111 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1172,7 +1175,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9ABF454F268FCF10002C779B /* Keys.plist in Resources */,
 				9A8B256A232EFAD300204CAD /* Localizable.strings in Resources */,
 				9AA522C023415BDD00C9E005 /* InfoPlist.strings in Resources */,
 				3531F7C426936C8300DF0111 /* GoogleService-Info.plist in Resources */,
@@ -1195,6 +1197,7 @@
 				3531F7C226936C6E00DF0111 /* GoogleService-Info.plist in Resources */,
 				35C36F17225961DA002FA5C6 /* DateTools.bundle in Resources */,
 				35C36EF322595F14002FA5C6 /* WelcomeView.xib in Resources */,
+				9A066A04269A2BF600C3F1FB /* Keys.plist in Resources */,
 				35C36EF822595F14002FA5C6 /* Onboarding.storyboard in Resources */,
 				35C36F612259DE67002FA5C6 /* NotesPopover.xib in Resources */,
 				9A3169C11D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist in Resources */,
@@ -1238,6 +1241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A0385BB269E3434003B5E72 /* StandardMenubarHandlerTests.swift in Sources */,
 				C20839CA21515C1E00C86589 /* ClockerUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1338,7 +1342,6 @@
 				35C36F662259DF4C002FA5C6 /* UpcomingEventView.swift in Sources */,
 				35C36EF522595F14002FA5C6 /* OnboardingSearchController.swift in Sources */,
 				35C36F592259DD8A002FA5C6 /* TimezoneCellView.swift in Sources */,
-				35C11E2124873A550031F18C /* VersionUpdateHandler.swift in Sources */,
 				35C36F15225961DA002FA5C6 /* TimeChunk.swift in Sources */,
 				35C36F482259D892002FA5C6 /* NetworkManager.swift in Sources */,
 				9A8605AE1BEC148400A810A4 /* main.m in Sources */,
@@ -1535,7 +1538,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 96;
+				CURRENT_PROJECT_VERSION = 97;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2104,7 +2107,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 96;
+				CURRENT_PROJECT_VERSION = 97;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -2186,7 +2189,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 96;
+				CURRENT_PROJECT_VERSION = 97;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;

@@ -74,7 +74,6 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
             cellView.noteLabel.stringValue = CLEmptyString
         }
         cellView.layout(with: currentModel)
-
         cellView.setAccessibilityIdentifier(currentModel.formattedTimezoneLabel())
         cellView.setAccessibilityLabel(currentModel.formattedTimezoneLabel())
 
