@@ -118,6 +118,7 @@ class ToastView: NSView {
         let rect = CGRect(origin: .zero, size: size)
         super.init(frame: rect)
         wantsLayer = true
+        setAccessibility("ToastView")
     }
 
     @available(*, unavailable)
@@ -127,6 +128,7 @@ class ToastView: NSView {
         super.viewDidMoveToSuperview()
         if superview != nil {
             configure()
+            setAccessibility("ToastView")
         }
     }
 
@@ -166,6 +168,8 @@ class ToastView: NSView {
 public extension NSView {
     func makeToast(_ message: String) {
         let toast = ToastView(message: message)
+        toast.setAccessibilityEnabled(true)
+        toast.setAccessibilityRole(.sheet)
         addSubview(toast)
         hideAnimation(view: toast, style: DefaultStyle.shared)
     }

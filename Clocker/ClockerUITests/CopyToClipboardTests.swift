@@ -44,7 +44,7 @@ class CopyToClipboardTests: XCTestCase {
         let expectedValue = "\(customLabel) - \(time)"
 
         // Tap to copy!
-        cell.tap()
+        cell.click()
 
         let clipboard = NSPasteboard.general.string(forType: .string) ?? "Empty Pasteboard"
         XCTAssert(expectedValue == clipboard, "Clipboard value (\(clipboard)) doesn't match expected result")

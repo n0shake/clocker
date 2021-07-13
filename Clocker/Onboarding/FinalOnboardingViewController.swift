@@ -19,24 +19,6 @@ class FinalOnboardingViewController: NSViewController {
     @IBOutlet var emailTextField: NSTextField!
     @IBOutlet var localizationButton: UnderlinedButton!
 
-    private let emailValidator = EmailTextFieldValidator()
-
-    private var serialNumber: String? {
-        let platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
-
-        guard platformExpert > 0 else {
-            return nil
-        }
-
-        guard let serialNumber = (IORegistryEntryCreateCFProperty(platformExpert, kIOPlatformSerialNumberKey as CFString, kCFAllocatorDefault, 0).takeUnretainedValue() as? String) else {
-            return nil
-        }
-
-        IOObjectRelease(platformExpert)
-
-        return serialNumber
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.stringValue = "You're all set!".localized()
@@ -86,59 +68,5 @@ class FinalOnboardingViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         emailTextField.becomeFirstResponder()
-    }
-
-    private func todaysDate() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .short
-        dateFormatter.timeZone = TimeZone(identifier: AppFeedbackConstants.CLCaliforniaTimezoneIdentifier)
-        return dateFormatter.string(from: Date())
-    }
-
-    private func extraData() -> [String: String]? {
-        guard let validEmail = emailValidator.validate(field: emailTextField) else {
-            Logger.info("Not sending up email because it was invalid")
-            return nil
-        }
-
-        guard let shortVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
-              let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
-        else {
-            return nil
-        }
-        let operatingSystem = ProcessInfo.processInfo.operatingSystemVersion
-        let osVersion = "\(operatingSystem.majorVersion).\(operatingSystem.minorVersion).\(operatingSystem.patchVersion)"
-        let versionInfo = "Clocker \(shortVersion) (\(appVersion))"
-
-        return [
-            EmailSignupConstants.CLEmailSignupEmailProperty: validEmail,
-            EmailSignupConstants.CLOperatingSystemVersion: osVersion,
-            EmailSignupConstants.CLClockerVersion: versionInfo,
-            EmailSignupConstants.CLAppFeedbackDateProperty: todaysDate(),
-            EmailSignupConstants.CLAppLanguageKey: Locale.preferredLanguages.first ?? "en-US",
-        ]
-    }
-}
-
-class EmailTextFieldValidator {
-    func validate(field: NSTextField) -> String? {
-        let trimmedText = field.stringValue.trimmingCharacters(in: .whitespacesAndNewlines)
-
-        guard let dataDetector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else {
-            return nil
-        }
-
-        let range = NSMakeRange(0, NSString(string: trimmedText).length)
-        let allMatches = dataDetector.matches(in: trimmedText,
-                                              options: [],
-                                              range: range)
-
-        if allMatches.count == 1,
-           allMatches.first?.url?.absoluteString.contains("mailto:") == true
-        {
-            return trimmedText
-        }
-        return nil
     }
 }
