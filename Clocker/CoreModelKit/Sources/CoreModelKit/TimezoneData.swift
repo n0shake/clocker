@@ -9,6 +9,9 @@ struct ModelConstants {
     static let placeIdentifier = "place_id"
     static let timezoneID = "timezoneID"
     static let emptyString = ""
+    static let latitude = "latitude"
+    static let longitude = "longitude"
+    static let note = "note"
 }
 
 public enum DateFormat {
@@ -92,85 +95,34 @@ public class TimezoneData: NSObject, NSCoding {
     }
 
     public init(with dictionary: [String: Any]) {
-        if let label = dictionary[ModelConstants.customLabel] as? String {
-            customLabel = label
-        } else {
-            customLabel = nil
-        }
-
-        if let timezone = dictionary[ModelConstants.timezoneID] as? String {
-            timezoneID = timezone
-        } else {
-            timezoneID = "Error"
-        }
-
-        if let lat = dictionary["latitude"] as? Double {
-            latitude = lat
-        } else {
-            latitude = -0.0
-        }
-
-        if let long = dictionary["longitude"] as? Double {
-            longitude = long
-        } else {
-            longitude = -0.0
-        }
-
-        if let placeIdentifier = dictionary[ModelConstants.placeIdentifier] as? String {
-            placeID = placeIdentifier
-        } else {
-            placeID = "Error"
-        }
-
-        if let address = dictionary[ModelConstants.timezoneName] as? String {
-            formattedAddress = address
-        } else {
-            formattedAddress = "Error"
-        }
-
+        customLabel = dictionary[ModelConstants.customLabel] as? String
+        timezoneID = (dictionary[ModelConstants.timezoneID] as? String) ?? "Error"
+        latitude = dictionary[ModelConstants.latitude] as? Double ?? -0.0
+        longitude = dictionary[ModelConstants.longitude] as? Double ?? -0.0
+        placeID = (dictionary[ModelConstants.placeIdentifier] as? String) ?? "Error"
+        formattedAddress = (dictionary[ModelConstants.timezoneName] as? String) ?? "Error"
         isFavourite = 0
-
         selectionType = .city
-
-        if let noteString = dictionary["note"] as? String {
-            note = noteString
-        } else {
-            note = ModelConstants.emptyString
-        }
-
+        note = (dictionary[ModelConstants.note] as? String) ?? ModelConstants.emptyString
         isSystemTimezone = false
-
         overrideFormat = .globalFormat
     }
 
     public required init?(coder aDecoder: NSCoder) {
         customLabel = aDecoder.decodeObject(forKey: "customLabel") as? String
-
         formattedAddress = aDecoder.decodeObject(forKey: "formattedAddress") as? String
-
         placeID = aDecoder.decodeObject(forKey: "place_id") as? String
-
         timezoneID = aDecoder.decodeObject(forKey: "timezoneID") as? String
-
         latitude = aDecoder.decodeObject(forKey: "latitude") as? Double
-
         longitude = aDecoder.decodeObject(forKey: "longitude") as? Double
-
         note = aDecoder.decodeObject(forKey: "note") as? String
-
         nextUpdate = aDecoder.decodeObject(forKey: "nextUpdate") as? Date
-
         sunriseTime = aDecoder.decodeObject(forKey: "sunriseTime") as? Date
-
         sunsetTime = aDecoder.decodeObject(forKey: "sunsetTime") as? Date
-
         isFavourite = aDecoder.decodeInteger(forKey: "isFavourite")
-
         let selection = aDecoder.decodeInteger(forKey: "selectionType")
         selectionType = SelectionType(rawValue: selection)!
-
         isSystemTimezone = aDecoder.decodeBool(forKey: "isSystemTimezone")
-
         let override = aDecoder.decodeInteger(forKey: "overrideFormat")
         overrideFormat = TimezoneOverride(rawValue: override)!
     }
@@ -189,31 +141,18 @@ public class TimezoneData: NSObject, NSCoding {
 
     public func encode(with aCoder: NSCoder) {
         aCoder.encode(placeID, forKey: "place_id")
-
         aCoder.encode(formattedAddress, forKey: "formattedAddress")
-
         aCoder.encode(customLabel, forKey: "customLabel")
-
         aCoder.encode(timezoneID, forKey: "timezoneID")
-
         aCoder.encode(nextUpdate, forKey: "nextUpdate")
-
         aCoder.encode(latitude, forKey: "latitude")
-
         aCoder.encode(longitude, forKey: "longitude")
-
         aCoder.encode(isFavourite, forKey: "isFavourite")
-
         aCoder.encode(sunriseTime, forKey: "sunriseTime")
-
         aCoder.encode(sunsetTime, forKey: "sunsetTime")
-
         aCoder.encode(selectionType.rawValue, forKey: "selectionType")
-
         aCoder.encode(note, forKey: "note")
-
         aCoder.encode(isSystemTimezone, forKey: "isSystemTimezone")
-
         aCoder.encode(overrideFormat.rawValue, forKey: "overrideFormat")
     }
 
