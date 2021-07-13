@@ -34,7 +34,7 @@ class AboutUsTests: XCTestCase {
         tapAboutTab()
 
         let appDisplayName = "CFBundleDisplayName".localizedString()
-        let expectedVersion = "\(appDisplayName) 21.07.02 (96)"
+        let expectedVersion = "\(appDisplayName) 21.07.03 (97)"
 
         guard let presentVersion = app.windows["Clocker"].staticTexts["ClockerVersion"].value as? String else {
             XCTFail("Present version not present")
@@ -46,24 +46,9 @@ class AboutUsTests: XCTestCase {
         app.checkBoxes["ClockerPrivateFeedback"].click()
         app.buttons["Send Feedback"].click()
 
-        let expectedInformativeText = "Please enter some feedback."
-        XCTAssertTrue(app.staticTexts["InformativeText"].exists)
-
-        guard let infoText = app.staticTexts["InformativeText"].value as? String else {
-            XCTFail("InformativeText label was unexpectedly absent")
-            return
-        }
-
-        XCTAssertEqual(infoText, expectedInformativeText)
-
-        sleep(5)
-
-        guard let newInfoText = app.staticTexts["InformativeText"].value as? String else {
-            XCTFail("InformativeText label was unexpectedly absent")
-            return
-        }
-
-        XCTAssertTrue(newInfoText.isEmpty)
+        XCTAssertFalse(app.progressIndicators["ProgressIndicator"].exists)
+        
+        sleep(2) // Wait for Toast to disappear
 
         // Close window
         app.windows["Clocker Feedback"].buttons["Cancel"].click()
