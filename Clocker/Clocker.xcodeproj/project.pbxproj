@@ -120,6 +120,7 @@
 		35C36FA42259EEC2002FA5C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36FA32259EEC2002FA5C6 /* AppDelegate.swift */; };
 		35E65125268EDD2E00E3E1E3 /* Toasty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E65124268EDD2E00E3E1E3 /* Toasty.swift */; };
 		9A0385BB269E3434003B5E72 /* StandardMenubarHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0385BA269E3434003B5E72 /* StandardMenubarHandlerTests.swift */; };
+		9A0385C0269E8891003B5E72 /* PermissionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0385BF269E8891003B5E72 /* PermissionsTests.swift */; };
 		9A066A04269A2BF600C3F1FB /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A066A03269A2BF600C3F1FB /* Keys.plist */; };
 		9A0A1C8C20903DBD0012003B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9E87651C1FEDC500A7A2DF /* CoreLocation.framework */; };
 		9A13BAD61CA87F08007C6CBE /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAD81CA87F08007C6CBE /* Panel.xib */; };
@@ -348,6 +349,7 @@
 		35C36FA32259EEC2002FA5C6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		35E65124268EDD2E00E3E1E3 /* Toasty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toasty.swift; sourceTree = "<group>"; };
 		9A0385BA269E3434003B5E72 /* StandardMenubarHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardMenubarHandlerTests.swift; sourceTree = "<group>"; };
+		9A0385BF269E8891003B5E72 /* PermissionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsTests.swift; sourceTree = "<group>"; };
 		9A066A03269A2BF600C3F1FB /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Keys.plist; path = Internal/Keys.plist; sourceTree = "<group>"; };
 		9A13BAD71CA87F08007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Panel.xib; sourceTree = "<group>"; };
 		9A13BAE11CA882FA007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -878,6 +880,7 @@
 				C22F3D7F2107778A0001D5E1 /* ShortcutTests.swift */,
 				C2AB022321AEED590014A401 /* OnboardingTests.swift */,
 				9A97419A2455442100087B0D /* OnboardingSearchTests.swift */,
+				9A0385BF269E8891003B5E72 /* PermissionsTests.swift */,
 			);
 			path = ClockerUITests;
 			sourceTree = "<group>";
@@ -1254,6 +1257,7 @@
 				C2F7821B20B70E3700B6CD07 /* AboutUsTests.swift in Sources */,
 				C264A0C820B898D600CCD875 /* PanelTests.swift in Sources */,
 				C2BFE3E62049F82300825BE5 /* ClockerUITests.m in Sources */,
+				9A0385C0269E8891003B5E72 /* PermissionsTests.swift in Sources */,
 				C2AB022421AEED590014A401 /* OnboardingTests.swift in Sources */,
 				C264A0C520B897D800CCD875 /* PreferencesTest.swift in Sources */,
 				C213713420B4FD920024D5A4 /* FloatingWindowTests.swift in Sources */,
