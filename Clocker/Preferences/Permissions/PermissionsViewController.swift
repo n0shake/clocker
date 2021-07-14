@@ -70,6 +70,8 @@ class PermissionsViewController: ParentViewController {
     }
 
     private func setupButtons() {
+        calendarButton.setAccessibility("CalendarGrantAccessButton")
+        remindersButton.setAccessibility("RemindersGrantAccessButton")
         /*
          if LocationController.sharedInstance.locationAccessGranted() {
          locationButton.title = "Granted"
