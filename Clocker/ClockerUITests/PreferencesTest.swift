@@ -224,7 +224,7 @@ class PreferencesTest: XCTestCase {
         deleteAPlace(place: "Anywhere on Earth", for: app, shouldSleep: false)
     }
 
-    func testSearchingWithMisspelledName() {
+    func searchingWithMisspelledName() {
         app.tapMenubarIcon()
         app.tables["mainTableView"].typeKey(",", modifierFlags: .command)
 
