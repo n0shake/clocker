@@ -106,7 +106,7 @@
 "Show Future Slider" = "顯示未來滑桿";
 "Show Sunrise/Sunset" = "顯示日出/日落";
 "Display the time in seconds" = "顯示時間秒數";
-"Larger Text" = "較大文字";
+"Larger Text" = "文字大小";
 "Future Slider Range" = "未來滑桿範圍";
 "Include Date" = "包含日期";
 "Include Day" = "包含星期";
@@ -129,7 +129,7 @@
 // App Feedback
 "Tell us what you think!" = "告訴我們您的想法！";
 "Contact Information (Optional)" = "聯絡資訊（可留空）";
-"Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!" = "Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!";
+"Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!" = "聯絡欄為可選填欄位！我們需要更多資訊或協助時，將會透過聯絡資訊聯絡您！";
 
 // About View Screen
 "Feedback is always welcome:" = "Feedback is always welcome:";
@@ -139,10 +139,10 @@
 "Show Upcoming Event View" = "顯示即將到來的行程";
 "Show All Day Meetings" = "顯示整日的行程";
 "Show Next Meeting Title in Menubar" = "在選單列中顯示下個行程";
-"Truncate menubar text longer than" = "Truncate menubar text longer than";
+"Truncate menubar text longer than" = "選單列文字長度限制";
 "characters" = "字元";
 "Show events from" = "Show events from";
-"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"";
+"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "如果會議標題為「Meeting with Neel」、文字長度限制為 5，選單列中的文字將顯示為「Meeti...」。";
 
 // Notes Popover
 "Reminder Set" = "Reminder Set";
