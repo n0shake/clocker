@@ -148,6 +148,7 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet var menubarModeLabel: NSTextField!
     @IBOutlet var previewLabel: NSTextField!
     @IBOutlet var miscelleaneousLabel: NSTextField!
+    @IBOutlet weak var dstTransitionField: NSTextField!
 
     // Panel Preview
     @IBOutlet var previewPanelTableView: NSTableView!
@@ -171,7 +172,7 @@ class AppearanceViewController: ParentViewController {
          dayDisplayOptionsLabel, showSliderLabel,
          showSunriseLabel, largerTextLabel, futureSliderRangeLabel,
          includeDayLabel, includeDateLabel, includePlaceLabel, appDisplayLabel, menubarModeLabel,
-         previewLabel, miscelleaneousLabel].forEach {
+         previewLabel, miscelleaneousLabel, dstTransitionField].forEach {
             $0?.textColor = Themer.shared().mainTextColor()
         }
     }

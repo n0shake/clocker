@@ -81,9 +81,17 @@ class OneWindowController: NSWindowController {
         }
 
         let themer = Themer.shared()
-        let identifierTOImageMapping: [String: NSImage] = ["Appearance Tab": themer.appearanceTabImage(),
+        var identifierTOImageMapping: [String: NSImage] = ["Appearance Tab": themer.appearanceTabImage(),
                                                            "Calendar Tab": themer.calendarTabImage(),
                                                            "Permissions Tab": themer.privacyTabImage()]
+        
+        if let prefsTabImage = themer.generalTabImage() {
+            identifierTOImageMapping["Preferences Tab"] = prefsTabImage
+        }
+        
+        if let aboutTabImage = themer.aboutTabImage() {
+            identifierTOImageMapping["About Tab"] = aboutTabImage
+        }
 
         tabViewController.tabViewItems.forEach { tabViewItem in
             let identity = (tabViewItem.identifier as? String) ?? ""
