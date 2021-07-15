@@ -6,7 +6,7 @@ import CoreModelKit
 
 class AppearanceViewController: ParentViewController {
     @IBOutlet var timeFormat: NSPopUpButton!
-    @IBOutlet var theme: NSSegmentedControl!
+    @IBOutlet var theme: NSPopUpButton!
     @IBOutlet var informationLabel: NSTextField!
     @IBOutlet var sliderDayRangePopup: NSPopUpButton!
     @IBOutlet var visualEffectView: NSVisualEffectView!
@@ -121,9 +121,8 @@ class AppearanceViewController: ParentViewController {
         }
 
         if #available(macOS 10.14, *) {
-            theme.setEnabled(true, forSegment: 2)
         } else {
-            theme.setEnabled(false, forSegment: 2)
+            theme.removeItem(at: 2)
         }
 
         let shouldDisplayCompact = DataStore.shared().shouldDisplay(.menubarCompactMode)
@@ -197,10 +196,11 @@ class AppearanceViewController: ParentViewController {
 
     private var previousBackgroundColor = NSColor.white
 
-    @IBAction func themeChanged(_ sender: NSSegmentedControl) {
+    @IBAction func themeChanged(_ sender: NSPopUpButton) {
         previousBackgroundColor = Themer.shared().mainBackgroundColor()
 
-        Themer.shared().set(theme: sender.selectedSegment)
+        let selectedMenuItem = sender.indexOfSelectedItem
+        Themer.shared().set(theme: selectedMenuItem)
 
         refresh(panel: false, floating: true)
 
@@ -222,7 +222,7 @@ class AppearanceViewController: ParentViewController {
 
         panelController.updateTableContent()
 
-        switch sender.selectedSegment {
+        switch selectedMenuItem {
         case 0:
             Logger.log(object: ["themeSelected": "Light"], for: "Theme")
         case 1:
