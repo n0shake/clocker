@@ -18,6 +18,8 @@ enum Theme: Int {
     case light = 0
     case dark
     case system
+    case solarizedLight
+    case solarizedDark
 }
 
 class Themer: NSObject {
@@ -39,6 +41,10 @@ class Themer: NSObject {
             themeIndex = Theme.dark
         case 2:
             themeIndex = Theme.system
+        case 3:
+            themeIndex = Theme.solarizedLight
+        case 4:
+            themeIndex = Theme.solarizedDark
         default:
             themeIndex = Theme.light
         }
@@ -71,6 +77,10 @@ extension Themer {
             themeIndex = Theme.dark
         case 2:
             themeIndex = Theme.system
+        case 3:
+            themeIndex = Theme.solarizedLight
+        case 4:
+            themeIndex = Theme.solarizedDark
         default:
             themeIndex = Theme.light
         }
@@ -114,6 +124,10 @@ extension Themer {
                 return NSColor(deviceRed: 42.0 / 255.0, green: 42.0 / 255.0, blue: 42.0 / 255.0, alpha: 1.0)
             case .system:
                 return retrieveCurrentSystem() == .light ? NSColor.white : NSColor.windowBackgroundColor
+            case .solarizedLight:
+                return NSColor(deviceRed: 253.0 / 255.0, green: 246.0 / 255.0, blue: 227.0 / 255.0, alpha: 1.0)
+            case .solarizedDark:
+                return NSColor(deviceRed: 7.0 / 255.0, green: 54.0 / 255.0, blue: 66.0 / 255.0, alpha: 1.0)
             }
         }
 
@@ -145,6 +159,10 @@ extension Themer {
                 return NSColor.white
             case .system:
                 return NSColor.textColor
+            case .solarizedLight:
+                return NSColor.black
+            case .solarizedDark:
+                return NSColor.white
             }
         }
 
@@ -160,10 +178,12 @@ extension Themer {
             switch themeIndex {
             case .light:
                 return NSImage(named: NSImage.Name("PowerIcon"))!
-            case .dark:
+            case .dark, .solarizedDark:
                 return NSImage(named: NSImage.Name("PowerIcon-White"))!
             case .system:
                 return NSImage(named: NSImage.Name("Power"))!
+            case .solarizedLight:
+                return NSImage(named: NSImage.Name("PowerIcon"))!
             }
         }
 
@@ -179,10 +199,12 @@ extension Themer {
             switch themeIndex {
             case .light:
                 return NSImage(named: NSImage.Name("Settings"))!
-            case .dark:
+            case .dark, .solarizedDark:
                 return NSImage(named: NSImage.Name("Settings-White"))!
             case .system:
                 return NSImage(named: NSImage.actionTemplateName)!
+            case .solarizedLight:
+                return NSImage(named: NSImage.Name("Settings"))!
             }
         }
 
@@ -199,9 +221,9 @@ extension Themer {
 
         if #available(macOS 10.14, *) {
             switch themeIndex {
-            case .light:
+            case .light, .solarizedLight:
                 return NSImage(named: NSImage.Name("Float"))!
-            case .dark:
+            case .dark, .solarizedDark:
                 return NSImage(named: NSImage.Name("Float-White"))!
             case .system:
                 return NSImage(named: NSImage.Name("Pin"))!
@@ -220,9 +242,9 @@ extension Themer {
 
         if #available(macOS 10.14, *) {
             switch themeIndex {
-            case .light:
+            case .light, .solarizedLight:
                 return NSImage(named: NSImage.Name("Sunrise"))!
-            case .dark:
+            case .dark, .solarizedDark:
                 return NSImage(named: NSImage.Name("WhiteSunrise"))!
             case .system:
                 return NSImage(named: NSImage.Name("Sunrise Dynamic"))!
@@ -239,9 +261,9 @@ extension Themer {
 
         if #available(macOS 10.14, *) {
             switch themeIndex {
-            case .light:
+            case .light, .solarizedLight:
                 return NSImage(named: NSImage.Name("Sunset"))!
-            case .dark:
+            case .dark, .solarizedDark:
                 return NSImage(named: NSImage.Name("WhiteSunset"))!
             case .system:
                 return NSImage(named: NSImage.Name("Sunset Dynamic"))!
@@ -254,9 +276,9 @@ extension Themer {
     func removeImage() -> NSImage {
         if #available(macOS 10.14, *) {
             switch themeIndex {
-            case .light:
+            case .light, .solarizedLight:
                 return NSImage(named: NSImage.Name("Remove"))!
-            case .dark:
+            case .dark, .solarizedDark:
                 return NSImage(named: NSImage.Name("WhiteRemove"))!
             case .system:
                 return NSImage(named: NSImage.Name("Remove Dynamic"))!
@@ -269,9 +291,9 @@ extension Themer {
     func extraOptionsImage() -> NSImage {
         if #available(macOS 10.14, *) {
             switch themeIndex {
-            case .light:
+            case .light, .solarizedLight:
                 return NSImage(named: NSImage.Name("Extra"))!
-            case .dark:
+            case .dark, .solarizedDark:
                 return NSImage(named: NSImage.Name("ExtraWhite"))!
             case .system:
                 return NSImage(named: NSImage.Name("Extra Dynamic"))!
@@ -297,9 +319,9 @@ extension Themer {
     func extraOptionsHighlightedImage() -> NSImage {
         if #available(macOS 10.14, *) {
             switch themeIndex {
-            case .light:
+            case .light, .solarizedLight:
                 return NSImage(named: NSImage.Name("ExtraHighlighted"))!
-            case .dark:
+            case .dark, .solarizedDark:
                 return NSImage(named: NSImage.Name("ExtraWhiteHighlighted"))!
             case .system:
                 return NSImage(named: NSImage.Name("ExtraHighlighted Dynamic"))!
@@ -316,9 +338,9 @@ extension Themer {
 
         if #available(macOS 10.14, *) {
             switch themeIndex {
-            case .light:
+            case .light, .solarizedLight:
                 return NSImage(named: NSImage.Name("Sharing"))!
-            case .dark:
+            case .dark, .solarizedDark:
                 return NSImage(named: NSImage.Name("SharingDarkIcon"))!
             case .system:
                 return NSImage(named: NSImage.Name("Sharing Dynamic"))!
@@ -335,9 +357,9 @@ extension Themer {
 
         if #available(macOS 10.14, *) {
             switch themeIndex {
-            case .light:
+            case .light, .solarizedLight:
                 return NSImage(named: NSImage.Name("CurrentLocation"))!
-            case .dark:
+            case .dark, .solarizedDark:
                 return NSImage(named: NSImage.Name("CurrentLocationWhite"))!
             case .system:
                 return NSImage(named: NSImage.Name("CurrentLocationDynamic"))!
@@ -350,9 +372,9 @@ extension Themer {
     func popoverAppearance() -> NSAppearance {
         if #available(macOS 10.14, *) {
             switch themeIndex {
-            case .light:
+            case .light, .solarizedLight:
                 return NSAppearance(named: NSAppearance.Name.vibrantLight)!
-            case .dark:
+            case .dark, .solarizedDark:
                 return NSAppearance(named: NSAppearance.Name.vibrantDark)!
             case .system:
                 return NSAppearance.current
@@ -365,9 +387,9 @@ extension Themer {
     func addImage() -> NSImage {
         if #available(macOS 10.14, *) {
             switch themeIndex {
-            case .light:
+            case .light, .solarizedLight:
                 return NSImage(named: NSImage.Name("Add Icon"))!
-            case .dark:
+            case .dark, .solarizedDark:
                 return NSImage(named: NSImage.Name("Add White"))!
             case .system:
                 return NSImage(named: .addDynamicIcon)!
@@ -382,11 +404,15 @@ extension Themer {
     }
 
     func privacyTabImage() -> NSImage {
+        if let privacyTabSFImage = symbolImage(for: "lock") {
+            return privacyTabSFImage
+        }
+        
         if #available(macOS 10.14, *) {
             switch themeIndex {
-            case .light:
+            case .light, .solarizedLight:
                 return NSImage(named: NSImage.Name("Privacy"))!
-            case .dark:
+            case .dark, .solarizedDark:
                 return NSImage(named: NSImage.Name("Privacy Dark"))!
             case .system:
                 return NSImage(named: .permissionTabIcon)!
@@ -397,11 +423,15 @@ extension Themer {
     }
 
     func appearanceTabImage() -> NSImage {
+        if let appearanceTabImage = symbolImage(for: "eye") {
+            return appearanceTabImage
+        }
+        
         if #available(macOS 10.14, *) {
             switch themeIndex {
-            case .light:
+            case .light, .solarizedLight:
                 return NSImage(named: NSImage.Name("Appearance"))!
-            case .dark:
+            case .dark, .solarizedDark:
                 return NSImage(named: NSImage.Name("Appearance Dark"))!
             case .system:
                 return NSImage(named: .appearanceTabIcon)!
@@ -412,11 +442,15 @@ extension Themer {
     }
 
     func calendarTabImage() -> NSImage {
+        if let calendarTabImage = symbolImage(for: "calendar") {
+            return calendarTabImage
+        }
+        
         if #available(macOS 10.14, *) {
             switch themeIndex {
-            case .light:
+            case .light, .solarizedLight:
                 return NSImage(named: NSImage.Name("Calendar Tab Icon"))!
-            case .dark:
+            case .dark, .solarizedDark:
                 return NSImage(named: NSImage.Name("Calendar Tab Dark"))!
             case .system:
                 return NSImage(named: .calendarTabIcon)!
@@ -424,6 +458,14 @@ extension Themer {
         }
 
         return themeIndex == .light ? NSImage(named: NSImage.Name("Calendar Tab Icon"))! : NSImage(named: NSImage.Name("Calendar Tab Dark"))!
+    }
+    
+    func generalTabImage() -> NSImage? {
+        return symbolImage(for: "gearshape")
+    }
+    
+    func aboutTabImage() -> NSImage? {
+        return symbolImage(for: "info.circle")
     }
 
     func textBackgroundColor() -> NSColor {
@@ -435,6 +477,10 @@ extension Themer {
                 return NSColor(deviceRed: 42.0 / 255.0, green: 55.0 / 255.0, blue: 62.0 / 255.0, alpha: 1.0)
             case .system:
                 return retrieveCurrentSystem() == .light ? NSColor(deviceRed: 241.0 / 255.0, green: 241.0 / 255.0, blue: 241.0 / 255.0, alpha: 1.0) : NSColor.controlBackgroundColor
+            case .solarizedLight:
+                return NSColor(deviceRed: 238.0 / 255.0, green: 232.0 / 255.0, blue: 213.0 / 255.0, alpha: 1.0)
+            case .solarizedDark:
+                return NSColor(deviceRed: 88.0 / 255.0, green: 110.0 / 255.0, blue: 117.0 / 255.0, alpha: 1.0)
             }
         }
 
