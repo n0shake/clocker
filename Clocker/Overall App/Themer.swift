@@ -274,6 +274,10 @@ extension Themer {
     }
 
     func removeImage() -> NSImage {
+        if let symbolImage = symbolImage(for: "xmark") {
+            return symbolImage
+        }
+        
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light, .solarizedLight:
