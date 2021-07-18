@@ -257,6 +257,9 @@ class AppFeedbackWindowController: NSWindowController {
         [accessoryInfo].forEach { $0?.textColor = Themer.shared().mainTextColor() }
 
         contactBox.borderColor = Themer.shared().mainTextColor()
+        feedbackTextView.backgroundColor = Themer.shared().mainBackgroundColor()
+        nameField.backgroundColor = Themer.shared().mainBackgroundColor()
+        emailField.backgroundColor = Themer.shared().mainBackgroundColor()
     }
 
     private func setUnderline(for button: UnderlinedButton?, range: NSRange) {
