@@ -249,7 +249,7 @@ class PreferencesViewController: ParentViewController {
         }
 
         timezoneTableView.backgroundColor = Themer.shared().mainBackgroundColor()
-        availableTimezoneTableView.backgroundColor = Themer.shared().mainBackgroundColor()
+        availableTimezoneTableView.backgroundColor = Themer.shared().textBackgroundColor()
         timezonePanel.backgroundColor = Themer.shared().textBackgroundColor()
         timezonePanel.contentView?.wantsLayer = true
         timezonePanel.contentView?.layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor

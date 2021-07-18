@@ -61,8 +61,9 @@ class CalendarViewController: ParentViewController {
         }
 
         if #available(macOS 10.14, *) {
-            noAccessView.material = .underWindowBackground
+            noAccessView.material = .contentBackground
         }
+        upcomingEventView.setAccessibility("UpcomingEventView")
     }
 
     deinit {
@@ -215,7 +216,8 @@ class CalendarViewController: ParentViewController {
          showNextMeetingLabel, nextMeetingAccessoryLabel, truncateTextLabel,
          showEventsFromLabel, charactersField, truncateAccessoryLabel].forEach { $0?.textColor = Themer.shared().mainTextColor() }
         
-        upcomingEventView.setAccessibility("UpcomingEventView")
+        calendarsTableView.backgroundColor = Themer.shared().mainBackgroundColor()
+        truncateTextField.backgroundColor = Themer.shared().mainBackgroundColor()
     }
 }
 
