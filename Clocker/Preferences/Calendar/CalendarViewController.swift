@@ -61,7 +61,7 @@ class CalendarViewController: ParentViewController {
         }
 
         if #available(macOS 10.14, *) {
-            noAccessView.material = .underWindowBackground
+            noAccessView.material = .contentBackground
         }
     }
 
