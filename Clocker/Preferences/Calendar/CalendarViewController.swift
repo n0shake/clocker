@@ -214,6 +214,9 @@ class CalendarViewController: ParentViewController {
         [headerLabel, upcomingEventView, allDayMeetingsLabel,
          showNextMeetingLabel, nextMeetingAccessoryLabel, truncateTextLabel,
          showEventsFromLabel, charactersField, truncateAccessoryLabel].forEach { $0?.textColor = Themer.shared().mainTextColor() }
+        
+        calendarsTableView.backgroundColor = Themer.shared().mainBackgroundColor()
+        truncateTextField.backgroundColor = Themer.shared().mainBackgroundColor()
     }
 }
 
