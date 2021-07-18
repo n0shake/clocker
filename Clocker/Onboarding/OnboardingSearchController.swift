@@ -77,10 +77,10 @@ class OnboardingSearchController: NSViewController {
         }
     }
 
-    @objc func doubleClickAction(_: NSTableView?) {
+    @objc func doubleClickAction(_ tableView: NSTableView) {
         [accessoryLabel].forEach { $0?.isHidden = false }
 
-        if resultsTableView.selectedRow >= 0, resultsTableView.selectedRow < searchResultsDataSource.resultsCount() {
+        if tableView.selectedRow >= 0, tableView.selectedRow < searchResultsDataSource.resultsCount() {
             let selectedType = searchResultsDataSource.placeForRow(resultsTableView.selectedRow)
             switch selectedType {
             case .city:
