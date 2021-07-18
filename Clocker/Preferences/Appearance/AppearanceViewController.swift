@@ -174,6 +174,8 @@ class AppearanceViewController: ParentViewController {
          previewLabel, miscelleaneousLabel, dstTransitionField].forEach {
             $0?.textColor = Themer.shared().mainTextColor()
         }
+        
+        self.previewPanelTableView.backgroundColor = Themer.shared().mainBackgroundColor()
     }
 
     @IBAction func timeFormatSelectionChanged(_ sender: NSPopUpButton) {
