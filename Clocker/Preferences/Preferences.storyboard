@@ -979,11 +979,11 @@
                                                 </gridView>
                                                 <scrollView borderType="line" autohidesScrollers="YES" horizontalLineScroll="113" horizontalPageScroll="10" verticalLineScroll="113" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ytg-0u-Mtu">
                                                     <rect key="frame" x="70" y="39" width="400" height="100"/>
-                                                    <clipView key="contentView" ambiguous="YES" id="gnX-f5-31D">
+                                                    <clipView key="contentView" id="gnX-f5-31D">
                                                         <rect key="frame" x="1" y="1" width="398" height="98"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
-                                                            <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="111" rowSizeStyle="automatic" viewBased="YES" id="KbJ-p4-i6E">
+                                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="111" rowSizeStyle="automatic" viewBased="YES" id="KbJ-p4-i6E">
                                                                 <rect key="frame" x="0.0" y="0.0" width="412" height="113"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -1512,7 +1512,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <searchField toolTip="Search a timezone" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dha-h9-Nd0" customClass="ClockerSearchField" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="8" y="121" width="320" height="23"/>
+                                <rect key="frame" x="8" y="97" width="320" height="23"/>
                                 <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Enter a city, state, country name" usesSingleLineMode="YES" maximumRecents="5" id="ikU-Tm-0WZ">
                                     <font key="font" size="13" name="Avenir-Light"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1569,13 +1569,13 @@ DQ
                                 </connections>
                             </button>
                             <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wY-ff-FLW">
-                                <rect key="frame" x="8" y="30" width="320" height="81"/>
+                                <rect key="frame" x="8" y="30" width="320" height="57"/>
                                 <clipView key="contentView" drawsBackground="NO" id="rGc-3M-cCq">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="xkl-2X-ZCb">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1665,14 +1665,14 @@ DQ
                                 </scroller>
                             </scrollView>
                             <progressIndicator wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="0A5-gp-lay">
-                                <rect key="frame" x="160" y="90" width="16" height="16"/>
+                                <rect key="frame" x="160" y="78" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="fgE-77-Vda"/>
                                     <constraint firstAttribute="width" constant="16" id="pwe-em-e0a"/>
                                 </constraints>
                             </progressIndicator>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xgb-wU-8RU">
-                                <rect key="frame" x="18" y="60" width="300" height="22"/>
+                                <rect key="frame" x="18" y="48" width="300" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="zqt-d8-yas"/>
                                 </constraints>
@@ -1889,7 +1889,7 @@ CA
                                                 </connections>
                                             </button>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="aGE-ap-6NE">
-                                                <rect key="frame" x="119" y="17" width="24" height="18"/>
+                                                <rect key="frame" x="119" y="17" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14" id="nRz-2k-dFx"/>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="20" id="sIw-f5-Tv7"/>
@@ -1915,7 +1915,10 @@ CA
                                                 <accessibility identifier="ShortcutControl"/>
                                             </customView>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aCf-xC-UkE">
-                                                <rect key="frame" x="142" y="19" width="266" height="18"/>
+                                                <rect key="frame" x="141" y="19" width="84" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="2Qq-l4-Jmc"/>
+                                                </constraints>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Start at Login" id="FFD-8V-sL0">
                                                     <font key="font" size="13" name="Avenir-Book"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1928,14 +1931,14 @@ CA
                                             <constraint firstItem="48a-Zz-oQg" firstAttribute="height" secondItem="1FY-Nb-ZXb" secondAttribute="height" id="33y-ga-IUI"/>
                                             <constraint firstItem="aGE-ap-6NE" firstAttribute="centerY" secondItem="348-wa-XEI" secondAttribute="centerY" id="4Zi-tv-iUg"/>
                                             <constraint firstItem="48a-Zz-oQg" firstAttribute="leading" secondItem="1FY-Nb-ZXb" secondAttribute="trailing" id="AUY-7G-gep"/>
-                                            <constraint firstItem="aCf-xC-UkE" firstAttribute="leading" secondItem="aGE-ap-6NE" secondAttribute="trailing" constant="3" id="Axm-NL-Rlj"/>
+                                            <constraint firstItem="aCf-xC-UkE" firstAttribute="leading" secondItem="aGE-ap-6NE" secondAttribute="trailing" constant="8" id="Axm-NL-Rlj"/>
                                             <constraint firstItem="1FY-Nb-ZXb" firstAttribute="centerY" secondItem="348-wa-XEI" secondAttribute="centerY" constant="-2" id="Iua-hE-fSo"/>
                                             <constraint firstAttribute="trailing" secondItem="PbD-dt-goz" secondAttribute="trailing" constant="12" id="K40-ee-cJc"/>
                                             <constraint firstItem="48a-Zz-oQg" firstAttribute="centerY" secondItem="348-wa-XEI" secondAttribute="centerY" constant="1" id="PDX-dP-7OB"/>
                                             <constraint firstItem="aGE-ap-6NE" firstAttribute="leading" secondItem="48a-Zz-oQg" secondAttribute="trailing" constant="40" id="Qy7-CH-mDD"/>
+                                            <constraint firstItem="PbD-dt-goz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aCf-xC-UkE" secondAttribute="trailing" constant="20" id="S7R-11-bgf"/>
                                             <constraint firstItem="aCf-xC-UkE" firstAttribute="centerY" secondItem="aGE-ap-6NE" secondAttribute="centerY" constant="-1.5" id="d8V-v9-JrU"/>
                                             <constraint firstItem="PbD-dt-goz" firstAttribute="centerY" secondItem="348-wa-XEI" secondAttribute="centerY" id="ffh-fE-ZH9"/>
-                                            <constraint firstItem="PbD-dt-goz" firstAttribute="leading" secondItem="aCf-xC-UkE" secondAttribute="trailing" constant="20" id="jXC-zn-cNU"/>
                                             <constraint firstItem="48a-Zz-oQg" firstAttribute="width" secondItem="1FY-Nb-ZXb" secondAttribute="width" id="vJp-oF-8uC"/>
                                             <constraint firstItem="1FY-Nb-ZXb" firstAttribute="leading" secondItem="348-wa-XEI" secondAttribute="leading" constant="1" id="zPT-mb-aTY"/>
                                         </constraints>
