@@ -214,6 +214,8 @@ class CalendarViewController: ParentViewController {
         [headerLabel, upcomingEventView, allDayMeetingsLabel,
          showNextMeetingLabel, nextMeetingAccessoryLabel, truncateTextLabel,
          showEventsFromLabel, charactersField, truncateAccessoryLabel].forEach { $0?.textColor = Themer.shared().mainTextColor() }
+        
+        upcomingEventView.setAccessibility("UpcomingEventView")
     }
 }
 
