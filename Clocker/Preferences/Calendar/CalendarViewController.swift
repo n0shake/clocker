@@ -63,6 +63,7 @@ class CalendarViewController: ParentViewController {
         if #available(macOS 10.14, *) {
             noAccessView.material = .contentBackground
         }
+        upcomingEventView.setAccessibility("UpcomingEventView")
     }
 
     deinit {
