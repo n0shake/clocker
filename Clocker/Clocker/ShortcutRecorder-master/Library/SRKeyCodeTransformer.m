@@ -340,7 +340,7 @@ FOUNDATION_STATIC_INLINE NSString* _SRUnicharToString(unichar aChar)
 
 - (NSString *)transformedSpecialKeyCode:(NSNumber *)aKeyCode withExplicitModifierFlags:(NSNumber *)anExplicitModifierFlags
 {
-    if ([anExplicitModifierFlags unsignedIntegerValue] & NSShiftKeyMask && [aKeyCode unsignedShortValue] == kVK_Tab)
+    if ([anExplicitModifierFlags unsignedIntegerValue] & NSEventModifierFlagShift && [aKeyCode unsignedShortValue] == kVK_Tab)
     {
         if (self.usesPlainStrings)
             return _SRUnicharToString(SRKeyCodeGlyphTabLeft);

@@ -81,10 +81,10 @@ NSString *SRReadableStringForCocoaModifierFlagsAndKeyCode(NSEventModifierFlags a
     NSString *c = [t transformedValue:@(aKeyCode)];
 
     return [NSString stringWithFormat:@"%@%@%@%@%@",
-                                      (aModifierFlags & NSCommandKeyMask ? SRLoc(@"Command-") : @""),
-                                      (aModifierFlags & NSAlternateKeyMask ? SRLoc(@"Option-") : @""),
-                                      (aModifierFlags & NSControlKeyMask ? SRLoc(@"Control-") : @""),
-                                      (aModifierFlags & NSShiftKeyMask ? SRLoc(@"Shift-") : @""),
+            (aModifierFlags & NSEventModifierFlagCommand ? SRLoc(@"Command-") : @""),
+            (aModifierFlags & NSEventModifierFlagOption ? SRLoc(@"Option-") : @""),
+            (aModifierFlags & NSEventModifierFlagControl ? SRLoc(@"Control-") : @""),
+            (aModifierFlags & NSEventModifierFlagShift ? SRLoc(@"Shift-") : @""),
                                       c];
 }
 
@@ -95,10 +95,10 @@ NSString *SRReadableASCIIStringForCocoaModifierFlagsAndKeyCode(NSEventModifierFl
     NSString *c = [t transformedValue:@(aKeyCode)];
 
     return [NSString stringWithFormat:@"%@%@%@%@%@",
-            (aModifierFlags & NSCommandKeyMask ? SRLoc(@"Command-") : @""),
-            (aModifierFlags & NSAlternateKeyMask ? SRLoc(@"Option-") : @""),
-            (aModifierFlags & NSControlKeyMask ? SRLoc(@"Control-") : @""),
-            (aModifierFlags & NSShiftKeyMask ? SRLoc(@"Shift-") : @""),
+            (aModifierFlags & NSEventModifierFlagCommand ? SRLoc(@"Command-") : @""),
+            (aModifierFlags & NSEventModifierFlagOption ? SRLoc(@"Option-") : @""),
+            (aModifierFlags & NSEventModifierFlagControl ? SRLoc(@"Control-") : @""),
+            (aModifierFlags & NSEventModifierFlagShift ? SRLoc(@"Shift-") : @""),
             c];
 }
 

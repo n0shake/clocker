@@ -49,7 +49,7 @@
             case kVK_F18:
             case kVK_F19:
             case kVK_F20:
-                mModifiers = modifiers | NSFunctionKeyMask;
+                mModifiers = modifiers | NSEventModifierFlagFunction;
                 break;
             default:
                 mModifiers = modifiers;
