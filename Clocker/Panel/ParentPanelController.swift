@@ -1098,16 +1098,9 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
     }
 
     func sharingServicePicker(_: NSSharingServicePicker, sharingServicesForItems _: [Any], proposedSharingServices proposed: [NSSharingService]) -> [NSSharingService] {
-        let copySharingService = NSSharingService(title: "Copy All Times", image: NSImage(), alternateImage: nil) {
-            let timezones = DataStore.shared().timezones()
-            var clipboardCopy = String()
-            for encodedTimezone in timezones {
-                if let timezoneObject = TimezoneData.customObject(from: encodedTimezone) {
-                    let operations = TimezoneDataOperations(with: timezoneObject)
-                    clipboardCopy.append("\(timezoneObject.formattedTimezoneLabel()) - \(operations.time(with: 0))\n")
-                }
-            }
-
+        let copySharingService = NSSharingService(title: "Copy All Times", image: NSImage(), alternateImage: nil) { [weak self] in
+            guard let strongSelf = self else { return }
+            let clipboardCopy = strongSelf.retrieveAllTimes()
             let pasteboard = NSPasteboard.general
             pasteboard.declareTypes([.string], owner: nil)
             pasteboard.setString(clipboardCopy, forType: .string)
@@ -1120,5 +1113,18 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
         var newProposedServices: [NSSharingService] = [copySharingService]
         newProposedServices.append(contentsOf: filteredServices)
         return newProposedServices
+    }
+    
+    private func retrieveAllTimes() -> String {
+        var clipboardCopy = String()
+        let timezones = DataStore.shared().timezones()
+        stride(from: 0, to: timezones.count, by: 1).forEach {
+            if $0 < mainTableView.numberOfRows,
+               let cellView = mainTableView.view(atColumn: 0, row: $0, makeIfNecessary: false) as? TimezoneCellView
+            {
+                clipboardCopy.append("\(cellView.customName.stringValue) - \(cellView.time.stringValue)\n")
+            }
+        }
+        return clipboardCopy
     }
 }
