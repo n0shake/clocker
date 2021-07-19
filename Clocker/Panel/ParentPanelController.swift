@@ -758,16 +758,12 @@ class ParentPanelController: NSWindowController {
             PerfLogger.endMarker("Retrieve Calendar Events")
         }
     }
+    
+    
 
     @IBAction func shareAction(_ sender: NSButton) {
-        let promotionText = "Keep track of your friends and colleagues in different timezones using Clocker: appstore.com/mac/clockermenubarworldclock"
-
-        guard let url = URL(string: "https://goo.gl/xyLA4j") else {
-            assertionFailure("Data was unexpectedly nil")
-            return
-        }
-
-        let servicePicker = NSSharingServicePicker(items: [promotionText, url])
+        let copyAllTimes = retrieveAllTimes()
+        let servicePicker = NSSharingServicePicker(items: [copyAllTimes])
         servicePicker.delegate = self
 
         servicePicker.show(relativeTo: sender.bounds,
