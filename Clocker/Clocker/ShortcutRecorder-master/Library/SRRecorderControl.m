@@ -475,7 +475,7 @@ typedef NS_ENUM(NSUInteger, _SRRecorderControlButtonTag)
     static NSDictionary *NormalAttributes = nil;
     dispatch_once(&OnceToken, ^{
         NSMutableParagraphStyle *p = [[NSMutableParagraphStyle alloc] init];
-        p.alignment = NSCenterTextAlignment;
+        p.alignment = NSTextAlignmentCenter;
         p.lineBreakMode = NSLineBreakByTruncatingTail;
         p.baseWritingDirection = NSWritingDirectionLeftToRight;
         NormalAttributes = @{
@@ -493,7 +493,7 @@ typedef NS_ENUM(NSUInteger, _SRRecorderControlButtonTag)
     static NSDictionary *RecordingAttributes = nil;
     dispatch_once(&OnceToken, ^{
         NSMutableParagraphStyle *p = [[NSMutableParagraphStyle alloc] init];
-        p.alignment = NSCenterTextAlignment;
+        p.alignment = NSTextAlignmentCenter;
         p.lineBreakMode = NSLineBreakByTruncatingTail;
         p.baseWritingDirection = NSWritingDirectionLeftToRight;
         RecordingAttributes = @{
@@ -511,7 +511,7 @@ typedef NS_ENUM(NSUInteger, _SRRecorderControlButtonTag)
     static NSDictionary *DisabledAttributes = nil;
     dispatch_once(&OnceToken, ^{
         NSMutableParagraphStyle *p = [[NSMutableParagraphStyle alloc] init];
-        p.alignment = NSCenterTextAlignment;
+        p.alignment = NSTextAlignmentCenter;
         p.lineBreakMode = NSLineBreakByTruncatingTail;
         p.baseWritingDirection = NSWritingDirectionLeftToRight;
         DisabledAttributes = @{
@@ -543,7 +543,7 @@ typedef NS_ENUM(NSUInteger, _SRRecorderControlButtonTag)
                              _SRImages[4],
                              _SRImages[5],
                              NO,
-                             NSCompositeSourceOver,
+                             NSCompositingOperationSourceOver,
                              1.0,
                              self.isFlipped);
     }
@@ -558,7 +558,7 @@ typedef NS_ENUM(NSUInteger, _SRRecorderControlButtonTag)
                                      _SRImages[1],
                                      _SRImages[2],
                                      NO,
-                                     NSCompositeSourceOver,
+                                     NSCompositingOperationSourceOver,
                                      1.0,
                                      self.isFlipped);
             }
@@ -569,7 +569,7 @@ typedef NS_ENUM(NSUInteger, _SRRecorderControlButtonTag)
                                      _SRImages[7],
                                      _SRImages[8],
                                      NO,
-                                     NSCompositeSourceOver,
+                                     NSCompositingOperationSourceOver,
                                      1.0,
                                      self.isFlipped);
             }
@@ -581,7 +581,7 @@ typedef NS_ENUM(NSUInteger, _SRRecorderControlButtonTag)
                                  _SRImages[10],
                                  _SRImages[11],
                                  NO,
-                                 NSCompositeSourceOver,
+                                 NSCompositingOperationSourceOver,
                                  1.0,
                                  self.isFlipped);
         }
@@ -592,7 +592,7 @@ typedef NS_ENUM(NSUInteger, _SRRecorderControlButtonTag)
                                  _SRImages[17],
                                  _SRImages[18],
                                  NO,
-                                 NSCompositeSourceOver,
+                                 NSCompositingOperationSourceOver,
                                  1.0,
                                  self.isFlipped);
         }
@@ -643,14 +643,14 @@ typedef NS_ENUM(NSUInteger, _SRRecorderControlButtonTag)
     {
         [_SRImages[14] drawInRect:imageRect
                          fromRect:NSZeroRect
-                        operation:NSCompositeSourceOver
+                        operation:NSCompositingOperationSourceOver
                          fraction:1.0];
     }
     else
     {
         [_SRImages[15] drawInRect:imageRect
                          fromRect:NSZeroRect
-                        operation:NSCompositeSourceOver
+                        operation:NSCompositingOperationSourceOver
                          fraction:1.0];
     }
 
@@ -680,14 +680,14 @@ typedef NS_ENUM(NSUInteger, _SRRecorderControlButtonTag)
     {
         [_SRImages[12] drawInRect:imageRect
                          fromRect:NSZeroRect
-                        operation:NSCompositeSourceOver
+                        operation:NSCompositingOperationSourceOver
                          fraction:1.0];
     }
     else
     {
         [_SRImages[13] drawInRect:imageRect
                          fromRect:NSZeroRect
-                        operation:NSCompositeSourceOver
+                        operation:NSCompositingOperationSourceOver
                          fraction:1.0];
     }
 
@@ -827,108 +827,6 @@ typedef NS_ENUM(NSUInteger, _SRRecorderControlButtonTag)
 {
     return self.objectValue;
 }
-
-
-#pragma mark NSAccessibility
-
-- (BOOL)accessibilityIsIgnored
-{
-    return NO;
-}
-
-- (NSArray *)accessibilityAttributeNames
-{
-    static NSArray *AttributeNames = nil;
-    static dispatch_once_t OnceToken;
-    dispatch_once(&OnceToken, ^
-    {
-        AttributeNames = [[super accessibilityAttributeNames] mutableCopy];
-        NSArray *newAttributes = @[
-            NSAccessibilityRoleAttribute,
-            NSAccessibilityTitleAttribute,
-            NSAccessibilityEnabledAttribute
-        ];
-
-        for (NSString *attributeName in newAttributes)
-        {
-            if (![AttributeNames containsObject:attributeName])
-                [(NSMutableArray *)AttributeNames addObject:attributeName];
-        }
-
-        AttributeNames = [AttributeNames copy];
-    });
-    return AttributeNames;
-}
-
-- (id)accessibilityAttributeValue:(NSString *)anAttributeName
-{
-    if ([anAttributeName isEqualToString:NSAccessibilityRoleAttribute])
-        return NSAccessibilityButtonRole;
-    else if ([anAttributeName isEqualToString:NSAccessibilityTitleAttribute])
-        return self.accessibilityLabel;
-    else if ([anAttributeName isEqualToString:NSAccessibilityEnabledAttribute])
-        return @(self.enabled);
-    else
-        return [super accessibilityAttributeValue:anAttributeName];
-}
-
-- (NSArray *)accessibilityActionNames
-{
-    static NSArray *AllActions = nil;
-    static NSArray *ButtonStateActionNames = nil;
-    static NSArray *RecorderStateActionNames = nil;
-
-    static dispatch_once_t OnceToken;
-    dispatch_once(&OnceToken, ^
-    {
-        AllActions = @[
-            NSAccessibilityPressAction,
-            NSAccessibilityCancelAction,
-            NSAccessibilityDeleteAction
-        ];
-
-        ButtonStateActionNames = @[
-            NSAccessibilityPressAction
-        ];
-
-        RecorderStateActionNames = @[
-            NSAccessibilityCancelAction,
-            NSAccessibilityDeleteAction
-        ];
-    });
-
-    // List of supported actions names must be fixed for 10.6, but can vary for 10.7 and above.
-    if (floor(NSAppKitVersionNumber) > NSAppKitVersionNumber10_6)
-    {
-        if (self.enabled)
-        {
-            if (self.isRecording)
-                return RecorderStateActionNames;
-            else
-                return ButtonStateActionNames;
-        }
-        else
-            return @[];
-    }
-    else
-        return AllActions;
-}
-
-- (NSString *)accessibilityActionDescription:(NSString *)anAction
-{
-    return NSAccessibilityActionDescription(anAction);
-}
-
-- (void)accessibilityPerformAction:(NSString *)anAction
-{
-    if ([anAction isEqualToString:NSAccessibilityPressAction])
-        [self beginRecording];
-    else if (self.isRecording && [anAction isEqualToString:NSAccessibilityCancelAction])
-        [self endRecording];
-    else if (self.isRecording && [anAction isEqualToString:NSAccessibilityDeleteAction])
-        [self clearAndEndRecording];
-}
-
 
 #pragma mark NSToolTipOwner
 
