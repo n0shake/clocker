@@ -758,8 +758,6 @@ class ParentPanelController: NSWindowController {
             PerfLogger.endMarker("Retrieve Calendar Events")
         }
     }
-    
-    
 
     @IBAction func shareAction(_ sender: NSButton) {
         let copyAllTimes = retrieveAllTimes()
