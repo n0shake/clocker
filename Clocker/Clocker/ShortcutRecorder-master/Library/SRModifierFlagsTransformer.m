@@ -77,16 +77,16 @@
         NSEventModifierFlags modifierFlags = [aValue unsignedIntegerValue];
         NSMutableString *s = [NSMutableString string];
 
-        if (modifierFlags & NSControlKeyMask)
+        if (modifierFlags & NSEventModifierFlagControl)
             [s appendString:SRLoc(@"Control-")];
 
-        if (modifierFlags & NSAlternateKeyMask)
+        if (modifierFlags & NSEventModifierFlagOption)
             [s appendString:SRLoc(@"Option-")];
 
-        if (modifierFlags & NSShiftKeyMask)
+        if (modifierFlags & NSEventModifierFlagShift)
             [s appendString:SRLoc(@"Shift-")];
 
-        if (modifierFlags & NSCommandKeyMask)
+        if (modifierFlags & NSEventModifierFlagCommand)
             [s appendString:SRLoc(@"Command-")];
 
         if (s.length > 0)
@@ -98,10 +98,10 @@
     {
         NSEventModifierFlags f = [aValue unsignedIntegerValue];
         return [NSString stringWithFormat:@"%@%@%@%@",
-                (f & NSControlKeyMask ? @"⌃" : @""),
-                (f & NSAlternateKeyMask ? @"⌥" : @""),
-                (f & NSShiftKeyMask ? @"⇧" : @""),
-                (f & NSCommandKeyMask ? @"⌘" : @"")];
+                (f & NSEventModifierFlagControl ? @"⌃" : @""),
+                (f & NSEventModifierFlagOption ? @"⌥" : @""),
+                (f & NSEventModifierFlagShift ? @"⇧" : @""),
+                (f & NSEventModifierFlagCommand ? @"⌘" : @"")];
     }
 }
 
