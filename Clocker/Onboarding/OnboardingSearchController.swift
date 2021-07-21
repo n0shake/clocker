@@ -84,8 +84,9 @@ class OnboardingSearchController: NSViewController {
             let selectedType = searchResultsDataSource.placeForRow(resultsTableView.selectedRow)
             switch selectedType {
             case .city:
-                let filteredGoogleResult = searchResultsDataSource.retrieveFilteredResultFromGoogleAPI(resultsTableView.selectedRow)
-                addTimezoneToDefaults(filteredGoogleResult!)
+                if let filteredGoogleResult = searchResultsDataSource.retrieveFilteredResultFromGoogleAPI(resultsTableView.selectedRow) {
+                    addTimezoneToDefaults(filteredGoogleResult)
+                }
                 return
             case .timezone:
                 cleanupAfterInstallingTimezone()
@@ -422,6 +423,8 @@ class OnboardingSearchController: NSViewController {
 
     private func resetSearchView() {
         searchResultsDataSource.cleanupFilterArray()
+        searchResultsDataSource.timezoneFilteredArray = []
+        searchResultsDataSource.calculateChangesets()
         resultsTableView.reloadData()
         searchBar.stringValue = CLEmptyString
         searchBar.placeholderString = "Press Enter to Search"
@@ -512,5 +515,9 @@ extension OnboardingSearchController: NSSearchFieldDelegate {
         Logger.info("Not Handled")
         // return true if the action was handled; otherwise false
         return false
+    }
+    
+    func searchFieldDidEndSearching(_ sender: NSSearchField) {
+        self.search(sender)
     }
 }
