@@ -75,6 +75,10 @@ class SearchDataSource: NSObject {
     }
 
     func retrieveFilteredResultFromGoogleAPI(_ index: Int) -> TimezoneData? {
+        if index >= filteredArray.count {
+            return nil
+        }
+        
         return filteredArray[index % filteredArray.count]
     }
 
