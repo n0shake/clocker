@@ -63,14 +63,6 @@ class AppearanceViewController: ParentViewController {
             "7 days",
         ])
         
-        theme.removeAllItems()
-        theme.addItems(withTitles: [
-            "Light",
-            "Dark",
-            "System",
-            "Solarized Light"
-        ])
-        
         if #available(macOS 11.0, *) {
             
         } else {
