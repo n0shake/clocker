@@ -62,6 +62,20 @@ class AppearanceViewController: ParentViewController {
             "6 days",
             "7 days",
         ])
+        
+        theme.removeAllItems()
+        theme.addItems(withTitles: [
+            "Light",
+            "Dark",
+            "System",
+            "Solarized Light"
+        ])
+        
+        if #available(macOS 11.0, *) {
+            
+        } else {
+            theme.font = NSFont.systemFont(ofSize: 13)
+        }
 
         setup()
 
