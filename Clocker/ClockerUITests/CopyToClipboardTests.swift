@@ -21,6 +21,19 @@ class CopyToClipboardTests: XCTestCase {
     }
 
     func testFullCopy() throws {
+        let cell = app.tables["FloatingTableView"].cells.firstMatch
+        let customLabel = cell.staticTexts["CustomNameLabelForCell"].value ?? "Nil Custom Label"
+        let time = cell.staticTexts["ActualTime"].value ?? "Nil Value"
+        let expectedValue = "\(customLabel) - \(time)"
+
+        // Tap to copy!
+        cell.click()
+
+        let actualValue = NSPasteboard.general.string(forType: .string) ?? "Empty Pasteboard"
+        XCTAssert(expectedValue == actualValue,
+                  "Clipboard value (\(actualValue)) doesn't match expected result: \(expectedValue)")
+        
+        // Test full copy
         let cellCount = app.tables["FloatingTableView"].cells.count
         var clipboardValue = String()
         for cellIndex in 0 ..< cellCount {
@@ -35,19 +48,6 @@ class CopyToClipboardTests: XCTestCase {
 
         let clipboard = NSPasteboard.general.string(forType: .string)
         XCTAssert(clipboardValue == clipboard)
-    }
-
-    func testIndividualTimezoneCopy() {
-        let cell = app.tables["FloatingTableView"].cells.firstMatch
-        let customLabel = cell.staticTexts["CustomNameLabelForCell"].value ?? "Nil Custom Label"
-        let time = cell.staticTexts["ActualTime"].value ?? "Nil Value"
-        let expectedValue = "\(customLabel) - \(time)"
-
-        // Tap to copy!
-        cell.click()
-
-        let clipboard = NSPasteboard.general.string(forType: .string) ?? "Empty Pasteboard"
-        XCTAssert(expectedValue == clipboard, "Clipboard value (\(clipboard)) doesn't match expected result")
     }
 
     func testModernSlider() {
