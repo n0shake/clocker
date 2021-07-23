@@ -490,6 +490,21 @@ class ParentPanelController: NSWindowController {
                 scrollViewHeight.constant = (screenHeight() - 100)
             }
         }
+      
+      if DataStore.shared().shouldDisplay(.futureSlider) {
+        let isModernSliderDisplayed = DataStore.shared().retrieve(key: CLDisplayFutureSliderKey) as? NSNumber ?? 0
+        if isModernSliderDisplayed == 0 {
+          if scrollViewHeight.constant >= (screenHeight() - 200) {
+              scrollViewHeight.constant = (screenHeight() - 300)
+          }
+        } else {
+          if scrollViewHeight.constant >= (screenHeight() - 200) {
+              scrollViewHeight.constant = (screenHeight() - 200)
+          }
+        }
+        
+
+      }
     }
 
     func updateDefaultPreferences() {
