@@ -32,17 +32,7 @@ class AboutUsTests: XCTestCase {
         app.buttons["Preferences"].click()
 
         tapAboutTab()
-
-        let appDisplayName = "CFBundleDisplayName".localizedString()
-        let expectedVersion = "\(appDisplayName) 21.07.03 (97)"
-
-        guard let presentVersion = app.windows["Clocker"].staticTexts["ClockerVersion"].value as? String else {
-            XCTFail("Present version not present")
-            return
-        }
-
-        XCTAssertEqual(expectedVersion, presentVersion)
-
+        
         app.checkBoxes["ClockerPrivateFeedback"].click()
         app.buttons["Send Feedback"].click()
 
