@@ -121,6 +121,7 @@ class FloatingWindowController: ParentPanelController {
         window?.contentView?.layer?.masksToBounds = true
         window?.isOpaque = false
         window?.backgroundColor = NSColor.clear
+        window?.collectionBehavior = .canJoinAllSpaces
     }
 
     func startWindowTimer() {
