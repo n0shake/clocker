@@ -20,13 +20,13 @@ extension ParentPanelController {
         if modernSlider != nil {
             goBackwardsButton.image = Themer.shared().goBackwardsImage()
             goForwardButton.image = Themer.shared().goForwardsImage()
-            
+
             goForwardButton.isContinuous = true
             goBackwardsButton.isContinuous = true
-            
+
             goBackwardsButton.toolTip = "Navigate 15 mins back"
             goForwardButton.toolTip = "Navigate 15 mins forward"
-            
+
             modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             modernSlider.enclosingScrollView?.backgroundColor = NSColor.clear
             modernSlider.setAccessibility("ModernSlider")
@@ -35,13 +35,13 @@ extension ParentPanelController {
                                                    selector: #selector(collectionViewDidScroll(_:)),
                                                    name: NSView.boundsDidChangeNotification,
                                                    object: modernSlider.superview)
-            
+
             // Set the modern slider label!
             closestQuarterTimeRepresentation = findClosestQuarterTimeApproximation()
             if let unwrappedClosetQuarterTime = closestQuarterTimeRepresentation {
                 modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(unwrappedClosetQuarterTime)
             }
-            
+
             // Make sure modern slider is centered horizontally!
             let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSlider.numberOfItems(inSection: 0) / 2, section: 0)])
             modernSlider.scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
