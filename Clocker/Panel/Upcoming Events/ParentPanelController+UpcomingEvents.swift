@@ -9,14 +9,30 @@ var avenirLightFont: NSFont {
     return NSFont.systemFont(ofSize: 12)
 }
 
+protocol UpcomingEventPanelDelegate: AnyObject {
+  func didRemoveCalendarView()
+  func didClickSupplementaryButton(_ sender: NSButton)
+}
+
 extension ParentPanelController {
     func setupUpcomingEventViewCollectionViewIfNeccesary() {
         if upcomingEventCollectionView != nil {
-            upcomingEventCollectionView.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+          upcomingEventsDataSource = UpcomingEventsDataSource(self)
+          upcomingEventCollectionView.enclosingScrollView?.scrollerInsets = NSEdgeInsetsZero
             upcomingEventCollectionView.enclosingScrollView?.backgroundColor = NSColor.clear
             upcomingEventCollectionView.setAccessibility("UpcomingEventCollectionView")
             upcomingEventCollectionView.dataSource = upcomingEventsDataSource
             upcomingEventCollectionView.delegate = upcomingEventsDataSource
         }
     }
+}
+
+extension ParentPanelController: UpcomingEventPanelDelegate {
+  func didRemoveCalendarView() {
+    removeUpcomingEventView()
+  }
+  
+  func didClickSupplementaryButton(_ sender: NSButton) {
+    calendarButtonAction(sender)
+  }
 }
