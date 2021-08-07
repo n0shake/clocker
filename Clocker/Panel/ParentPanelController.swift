@@ -95,6 +95,11 @@ class ParentPanelController: NSWindowController {
     @IBOutlet var modernContainerView: ModernSliderContainerView!
     @IBOutlet var goBackwardsButton: NSButton!
     @IBOutlet var goForwardButton: NSButton!
+    
+    // Upcoming Events
+    @IBOutlet var upcomingEventCollectionView: NSCollectionView!
+    @IBOutlet var upcomingEventContainerView: NSView!
+    public let upcomingEventsDataSource = UpcomingEventsDataSource()
 
     var defaultPreferences: [Data] {
         return DataStore.shared().timezones()
@@ -219,6 +224,7 @@ class ParentPanelController: NSWindowController {
         }
 
         setupModernSliderIfNeccessary()
+        setupUpcomingEventViewCollectionViewIfNeccesary()
 
         if roundedDateView != nil {
             setupRoundedDateView()
@@ -314,11 +320,13 @@ class ParentPanelController: NSWindowController {
         if eventCenter.calendarAccessGranted() {
             // Nice. Events will be retrieved when we open the panel
         } else if eventCenter.calendarAccessNotDetermined() {
-            nextEventLabel.stringValue = NSLocalizedString("See your next Calendar event here.",
-                                                           comment: "Next Event Label for no Calendar access")
-            setCalendarButtonTitle(buttonTitle: NSLocalizedString("Click here to start.",
-                                                                  comment: "Button Title for no Calendar access"))
-            calendarColorView.layer?.backgroundColor = NSColor(red: 97 / 255.0, green: 194 / 255.0, blue: 80 / 255.0, alpha: 1.0).cgColor
+            if nextEventLabel != nil {
+                nextEventLabel.stringValue = NSLocalizedString("See your next Calendar event here.",
+                                                               comment: "Next Event Label for no Calendar access")
+                setCalendarButtonTitle(buttonTitle: NSLocalizedString("Click here to start.",
+                                                                      comment: "Button Title for no Calendar access"))
+                calendarColorView.layer?.backgroundColor = NSColor(red: 97 / 255.0, green: 194 / 255.0, blue: 80 / 255.0, alpha: 1.0).cgColor
+            }
         } else {
             removeUpcomingEventView()
         }
@@ -353,9 +361,6 @@ class ParentPanelController: NSWindowController {
 
         if upcomingEventView?.isHidden == false {
             upcomingEventView?.layer?.backgroundColor = NSColor.clear.cgColor
-            nextEventLabel.textColor = sharedThemer.mainTextColor()
-            whiteRemoveButton.image = sharedThemer.removeImage()
-            setCalendarButtonTitle(buttonTitle: calendarButton.title)
         }
 
         shutdownButton.image = sharedThemer.shutdownImage()
@@ -832,6 +837,14 @@ class ParentPanelController: NSWindowController {
 
         if let events = eventCenter.eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: now)], events.isEmpty == false {
             OperationQueue.main.addOperation {
+                if self.upcomingEventCollectionView != nil,
+                   let upcomingEvents = eventCenter.upcomingEventsForDay(events) {
+                    self.upcomingEventsDataSource.updateEventsDataSource(upcomingEvents)
+                    self.upcomingEventCollectionView.reloadData()
+                    return
+                }
+                
+                
                 guard let upcomingEvent = eventCenter.nextOccuring(events) else {
                     self.setPlaceholdersForUpcomingCalendarView()
                     if #available(OSX 10.14, *) {
@@ -863,6 +876,12 @@ class ParentPanelController: NSWindowController {
                 }
             }
         } else {
+            if self.upcomingEventCollectionView != nil {
+                self.upcomingEventsDataSource.updateEventsDataSource([])
+                self.upcomingEventCollectionView.reloadData()
+                return
+            }
+            
             setPlaceholdersForUpcomingCalendarView()
             if #available(OSX 10.14, *) {
                 PerfLogger.endMarker("Fetch Calendar Events")

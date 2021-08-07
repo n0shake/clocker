@@ -191,6 +191,18 @@ extension EventCenter {
 
         return filteredAllDayEvent
     }
+    
+    func upcomingEventsForDay(_: [EventInfo]) -> [EventInfo]? {
+        if calendarAccessDenied() || calendarAccessNotDetermined() {
+            return nil
+        }
+
+        let relevantEvents = filteredEvents[autoupdatingCalendar.startOfDay(for: Date())] ?? []
+        
+        return relevantEvents.filter {
+            $0.event.startDate.timeIntervalSinceNow > -300
+        }
+    }
 
     func initializeStoreIfNeccesary() {
         if eventStore == nil {
