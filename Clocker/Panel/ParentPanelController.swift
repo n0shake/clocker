@@ -99,7 +99,7 @@ class ParentPanelController: NSWindowController {
     // Upcoming Events
     @IBOutlet var upcomingEventCollectionView: NSCollectionView!
     @IBOutlet var upcomingEventContainerView: NSView!
-    public let upcomingEventsDataSource = UpcomingEventsDataSource()
+    public var upcomingEventsDataSource: UpcomingEventsDataSource!
 
     var defaultPreferences: [Data] {
         return DataStore.shared().timezones()
@@ -736,7 +736,13 @@ class ParentPanelController: NSWindowController {
 
     func removeUpcomingEventView() {
         OperationQueue.main.addOperation {
-            if self.stackView.arrangedSubviews.contains(self.upcomingEventView!), self.upcomingEventView?.isHidden == false {
+          if self.upcomingEventCollectionView != nil {
+            if self.stackView.arrangedSubviews.contains(self.upcomingEventContainerView!), self.upcomingEventContainerView?.isHidden == false {
+                self.upcomingEventContainerView?.isHidden = true
+                UserDefaults.standard.set("NO", forKey: CLShowUpcomingEventView)
+                Logger.log(object: ["Removed": "YES"], for: "Removed Upcoming Event View")
+            }
+          } else if self.stackView.arrangedSubviews.contains(self.upcomingEventView!), self.upcomingEventView?.isHidden == false {
                 self.upcomingEventView?.isHidden = true
                 UserDefaults.standard.set("NO", forKey: CLShowUpcomingEventView)
                 Logger.log(object: ["Removed": "YES"], for: "Removed Upcoming Event View")

@@ -17,7 +17,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="250" height="75"/>
                     <subviews>
                         <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Khp-8n-4FA">
-                            <rect key="frame" x="16" y="21" width="232" height="18"/>
+                            <rect key="frame" x="16" y="21" width="198" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="18" id="asu-Dd-XhW"/>
                             </constraints>
@@ -25,6 +25,9 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" size="10" name="Avenir-Heavy"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="calendarButtonAction:" target="p0M-E4-898" id="Gua-lA-sNh"/>
+                            </connections>
                         </button>
                         <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="Bbu-oG-vAb">
                             <rect key="frame" x="5" y="21" width="2" height="34"/>
@@ -34,7 +37,7 @@
                             </constraints>
                         </customView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTt-gC-72b">
-                            <rect key="frame" x="15" y="31" width="235" height="24"/>
+                            <rect key="frame" x="15" y="33" width="201" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="BA4-1v-xiZ"/>
                             </constraints>
@@ -44,15 +47,28 @@
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </textFieldCell>
                         </textField>
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="qRe-Ao-1fr">
+                            <rect key="frame" x="216" y="26" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="24" id="ZRs-Vt-FOM"/>
+                                <constraint firstAttribute="height" constant="24" id="ouc-t4-DO2"/>
+                            </constraints>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Appearance" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="8Sv-kp-Zff">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="fTt-gC-72b" firstAttribute="top" secondItem="Bbu-oG-vAb" secondAttribute="top" id="FeN-R0-t1A"/>
+                        <constraint firstItem="qRe-Ao-1fr" firstAttribute="leading" secondItem="fTt-gC-72b" secondAttribute="trailing" constant="2" id="161-lb-rqc"/>
+                        <constraint firstItem="fTt-gC-72b" firstAttribute="top" secondItem="Bbu-oG-vAb" secondAttribute="top" constant="-2" id="FeN-R0-t1A"/>
                         <constraint firstItem="Khp-8n-4FA" firstAttribute="bottom" secondItem="Bbu-oG-vAb" secondAttribute="bottom" id="LQD-54-bUh"/>
                         <constraint firstItem="Bbu-oG-vAb" firstAttribute="leading" secondItem="aM6-TI-1os" secondAttribute="leading" constant="5" id="Myg-8W-znN"/>
+                        <constraint firstAttribute="trailing" secondItem="qRe-Ao-1fr" secondAttribute="trailing" constant="10" id="Myk-Ff-8WP"/>
                         <constraint firstItem="Khp-8n-4FA" firstAttribute="trailing" secondItem="fTt-gC-72b" secondAttribute="trailing" id="URW-gt-WbF"/>
-                        <constraint firstAttribute="trailing" secondItem="fTt-gC-72b" secondAttribute="trailing" constant="2" id="UmL-0o-BVG"/>
                         <constraint firstItem="Khp-8n-4FA" firstAttribute="leading" secondItem="fTt-gC-72b" secondAttribute="leading" constant="-1" id="VyL-Kt-2aT"/>
                         <constraint firstItem="fTt-gC-72b" firstAttribute="leading" secondItem="Bbu-oG-vAb" secondAttribute="trailing" constant="10" id="arv-Oe-yih"/>
+                        <constraint firstItem="qRe-Ao-1fr" firstAttribute="centerY" secondItem="aM6-TI-1os" secondAttribute="centerY" id="vdC-gb-1wa"/>
                         <constraint firstItem="Bbu-oG-vAb" firstAttribute="centerY" secondItem="aM6-TI-1os" secondAttribute="centerY" id="wkl-Vo-0kU"/>
                     </constraints>
                 </customView>
@@ -63,15 +79,20 @@
                 <constraint firstAttribute="bottom" secondItem="aM6-TI-1os" secondAttribute="bottom" id="DmC-7T-lrT"/>
                 <constraint firstAttribute="trailing" secondItem="aM6-TI-1os" secondAttribute="trailing" id="aCZ-sV-Mnd"/>
             </constraints>
-            <point key="canvasLocation" x="147" y="239"/>
+            <point key="canvasLocation" x="147" y="238.5"/>
         </customView>
         <customObject id="p0M-E4-898" customClass="UpcomingEventViewItem" customModule="Clocker" customModuleProvider="target">
             <connections>
                 <outlet property="calendarColorView" destination="Bbu-oG-vAb" id="tBe-V1-qmC"/>
-                <outlet property="eventSubtitleLabel" destination="Khp-8n-4FA" id="mXV-EZ-2AW"/>
+                <outlet property="eventSubtitleButton" destination="Khp-8n-4FA" id="mXV-EZ-2AW"/>
                 <outlet property="eventTitleLabel" destination="fTt-gC-72b" id="bOh-LO-tiH"/>
+                <outlet property="leadingConstraint" destination="Myg-8W-znN" id="OUR-Na-THS"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="9S0-wg-csq"/>
+                <outlet property="zoomButton" destination="qRe-Ao-1fr" id="0IC-Fx-l3Q"/>
             </connections>
         </customObject>
     </objects>
+    <resources>
+        <image name="Appearance" width="350" height="350"/>
+    </resources>
 </document>
