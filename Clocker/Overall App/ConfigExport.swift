@@ -1,10 +1,9 @@
 // Copyright © 2015 Abhishek Banthia
 
-import Foundation
 import CoreModelKit
+import Foundation
 
 struct ConfigExport {
-    
     private func generateJSONFromDefaults() {
         let selectedKeys: Set<String> = Set([
             CLShowOnboardingFlow,
@@ -30,17 +29,17 @@ struct ConfigExport {
             CLDefaultMenubarMode,
             CLInstallHomeIndicatorObject,
             CLSwitchToCompactModeAlert,
-            CLDisplayDSTTransitionInfo
+            CLDisplayDSTTransitionInfo,
         ])
         let dictionaryRep = UserDefaults.standard.dictionaryRepresentation()
-        var clockerPrefs: [String:Any] = [:]
+        var clockerPrefs: [String: Any] = [:]
         for (key, value) in dictionaryRep {
             if selectedKeys.contains(key) {
                 print("Key is \(key) and value is \(value)")
                 clockerPrefs[key] = value
             }
         }
-        
+
         do {
             let decodeJSON: [[String: Any]] = DataStore.shared().timezones().compactMap { data -> [String: Any]? in
                 guard let customObject = TimezoneData.customObject(from: data) else { return nil }
@@ -58,10 +57,10 @@ struct ConfigExport {
                 ]
                 return timezoneDictionary
             }
-            
+
             let timezoneDict = ["Timezones": decodeJSON]
-            clockerPrefs.merge(timezoneDict) { (current, _)  in current}
-            
+            clockerPrefs.merge(timezoneDict) { current, _ in current }
+
             guard let documentDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
             let fileUrl = documentDirectoryUrl.appendingPathComponent("Persons.json")
             // Transform array into data and save it into file
@@ -71,13 +70,11 @@ struct ConfigExport {
             } catch {
                 print(error)
             }
-            
+
             let json = try JSONSerialization.data(withJSONObject: clockerPrefs, options: .prettyPrinted)
             print(json)
         } catch {
             print("Failure Observed \(error.localizedDescription)")
         }
-        
     }
-    
 }

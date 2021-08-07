@@ -149,7 +149,7 @@ extension Themer {
         }
         return .light
     }
-    
+
     func mainTextColor() -> NSColor {
         if #available(macOS 10.14, *) {
             switch themeIndex {
@@ -210,8 +210,8 @@ extension Themer {
 
         return
             themeIndex == .light
-                ? NSImage(named: NSImage.Name("Settings"))!
-                : NSImage(named: NSImage.Name("Settings-White"))!
+            ? NSImage(named: NSImage.Name("Settings"))!
+            : NSImage(named: NSImage.Name("Settings-White"))!
     }
 
     func pinImage() -> NSImage {
@@ -277,7 +277,7 @@ extension Themer {
         if let symbolImage = symbolImage(for: "xmark") {
             return symbolImage
         }
-        
+
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light, .solarizedLight:
@@ -411,7 +411,7 @@ extension Themer {
         if let privacyTabSFImage = symbolImage(for: "lock") {
             return privacyTabSFImage
         }
-        
+
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light, .solarizedLight:
@@ -430,7 +430,7 @@ extension Themer {
         if let appearanceTabImage = symbolImage(for: "eye") {
             return appearanceTabImage
         }
-        
+
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light, .solarizedLight:
@@ -449,7 +449,7 @@ extension Themer {
         if let calendarTabImage = symbolImage(for: "calendar") {
             return calendarTabImage
         }
-        
+
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light, .solarizedLight:
@@ -463,11 +463,11 @@ extension Themer {
 
         return themeIndex == .light ? NSImage(named: NSImage.Name("Calendar Tab Icon"))! : NSImage(named: NSImage.Name("Calendar Tab Dark"))!
     }
-    
+
     func generalTabImage() -> NSImage? {
         return symbolImage(for: "gearshape")
     }
-    
+
     func aboutTabImage() -> NSImage? {
         return symbolImage(for: "info.circle")
     }
@@ -501,16 +501,16 @@ extension Themer {
             return nil
         }
     }
-    
+
     func filledTrashImage() -> NSImage? {
         return symbolImage(for: "trash.fill")
     }
-    
+
     // Modern Slider
     func goBackwardsImage() -> NSImage? {
         return symbolImage(for: "gobackward.15")
     }
-    
+
     func goForwardsImage() -> NSImage? {
         return symbolImage(for: "goforward.15")
     }

@@ -10,15 +10,15 @@ var avenirLightFont: NSFont {
 }
 
 protocol UpcomingEventPanelDelegate: AnyObject {
-  func didRemoveCalendarView()
-  func didClickSupplementaryButton(_ sender: NSButton)
+    func didRemoveCalendarView()
+    func didClickSupplementaryButton(_ sender: NSButton)
 }
 
 extension ParentPanelController {
     func setupUpcomingEventViewCollectionViewIfNeccesary() {
         if upcomingEventCollectionView != nil {
-          upcomingEventsDataSource = UpcomingEventsDataSource(self)
-          upcomingEventCollectionView.enclosingScrollView?.scrollerInsets = NSEdgeInsetsZero
+            upcomingEventsDataSource = UpcomingEventsDataSource(self)
+            upcomingEventCollectionView.enclosingScrollView?.scrollerInsets = NSEdgeInsetsZero
             upcomingEventCollectionView.enclosingScrollView?.backgroundColor = NSColor.clear
             upcomingEventCollectionView.setAccessibility("UpcomingEventCollectionView")
             upcomingEventCollectionView.dataSource = upcomingEventsDataSource
@@ -28,11 +28,11 @@ extension ParentPanelController {
 }
 
 extension ParentPanelController: UpcomingEventPanelDelegate {
-  func didRemoveCalendarView() {
-    removeUpcomingEventView()
-  }
-  
-  func didClickSupplementaryButton(_ sender: NSButton) {
-    calendarButtonAction(sender)
-  }
+    func didRemoveCalendarView() {
+        removeUpcomingEventView()
+    }
+
+    func didClickSupplementaryButton(_ sender: NSButton) {
+        calendarButtonAction(sender)
+    }
 }

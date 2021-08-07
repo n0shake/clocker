@@ -160,9 +160,9 @@ extension EventCenter {
         let filteredEvents = relevantEvents.filter {
             $0.event.isAllDay == false && $0.event.startDate.timeIntervalSinceNow > -300
         }
-        
+
         if filteredEvents.count == 1 { return filteredEvents.first }
-        
+
         // If there are multipl events coming up, prefer the ones the currentUser has accepted
         let acceptedEvents = filteredEvents.filter {
             $0.attendeStatus == .accepted
@@ -170,16 +170,16 @@ extension EventCenter {
         let optionalEvents = filteredEvents.filter {
             $0.attendeStatus == .tentative
         }
-        
+
         if let firstAcceptedEvent = acceptedEvents.first {
             return firstAcceptedEvent
         }
-        
+
         // If there are no accepted events, prefer the first optional event
-        if acceptedEvents.isEmpty && !optionalEvents.isEmpty {
+        if acceptedEvents.isEmpty, !optionalEvents.isEmpty {
             return optionalEvents.first
         }
-        
+
         // Otherwise check if there's a filtered event at all and return it
         if let first = filteredEvents.first {
             return first
@@ -191,14 +191,14 @@ extension EventCenter {
 
         return filteredAllDayEvent
     }
-    
+
     func upcomingEventsForDay(_: [EventInfo]) -> [EventInfo]? {
         if calendarAccessDenied() || calendarAccessNotDetermined() {
             return nil
         }
 
         let relevantEvents = filteredEvents[autoupdatingCalendar.startOfDay(for: Date())] ?? []
-        
+
         return relevantEvents.filter {
             $0.event.startDate.timeIntervalSinceNow > -300
         }
@@ -413,8 +413,7 @@ extension EventCenter {
                     || actualLink.contains("indigo.collocall.de")
                     || actualLink.contains("public.senfcall.de")
                     || actualLink.contains("youcanbook.me/zoom/")
-                    || actualLink.contains("workplace.com/groupcall")
-                {
+                    || actualLink.contains("workplace.com/groupcall") {
                     if let zoomLink = result.url {
                         return zoomLink
                     }
@@ -426,7 +425,7 @@ extension EventCenter {
 
     private func retrieveMeetingURL(_ event: EKEvent) -> URL? {
         if EventCenter.dataDetector == nil {
-            var dataDetector: NSDataDetector? = nil
+            var dataDetector: NSDataDetector?
             do {
                 dataDetector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
             } catch {
@@ -450,21 +449,21 @@ extension EventCenter {
 
         return nil
     }
-    
+
     private func attendingStatusForUser(_ event: EKEvent) -> EKParticipantStatus {
         // First check if the current user is the organizer
         if event.organizer?.isCurrentUser == true {
             return event.organizer?.participantStatus ?? .unknown
         }
-        
+
         guard let attendes = event.attendees else {
             return .unknown
         }
-        
+
         for attende in attendes where attende.isCurrentUser {
             return attende.participantStatus
         }
-        
+
         return .unknown
     }
 }
@@ -482,11 +481,11 @@ struct EventInfo {
     let isSingleDay: Bool
     let meetingURL: URL?
     let attendeStatus: EKParticipantStatus
-    
+
     func metadataForMeeting() -> String {
         let timeIntervalSinceNowForMeeting = event.startDate.timeIntervalSinceNow
-        if (timeIntervalSinceNowForMeeting < 0 && timeIntervalSinceNowForMeeting > -300) {
-           return "started \(event.startDate.shortTimeAgoSinceNow) ago."
+        if timeIntervalSinceNowForMeeting < 0, timeIntervalSinceNowForMeeting > -300 {
+            return "started \(event.startDate.shortTimeAgoSinceNow) ago."
         } else {
             let timeSince = Date().timeAgo(since: event.startDate)
             let withoutAn = timeSince.replacingOccurrences(of: "an", with: CLEmptyString)

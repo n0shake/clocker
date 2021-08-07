@@ -95,7 +95,7 @@ class ParentPanelController: NSWindowController {
     @IBOutlet var modernContainerView: ModernSliderContainerView!
     @IBOutlet var goBackwardsButton: NSButton!
     @IBOutlet var goForwardButton: NSButton!
-    
+
     // Upcoming Events
     @IBOutlet var upcomingEventCollectionView: NSCollectionView!
     @IBOutlet var upcomingEventContainerView: NSView!
@@ -433,9 +433,8 @@ class ParentPanelController: NSWindowController {
             if let note = object?.note, note.isEmpty == false {
                 newHeight += 20
             } else if DataStore.shared().shouldDisplay(.dstTransitionInfo),
-                      let obj = object,
-                      TimezoneDataOperations(with: obj).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) != nil
-            {
+                let obj = object,
+                TimezoneDataOperations(with: obj).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) != nil {
                 newHeight += 20
             }
         }
@@ -495,21 +494,19 @@ class ParentPanelController: NSWindowController {
                 scrollViewHeight.constant = (screenHeight() - 100)
             }
         }
-      
-      if DataStore.shared().shouldDisplay(.futureSlider) {
-        let isModernSliderDisplayed = DataStore.shared().retrieve(key: CLDisplayFutureSliderKey) as? NSNumber ?? 0
-        if isModernSliderDisplayed == 0 {
-          if scrollViewHeight.constant >= (screenHeight() - 200) {
-              scrollViewHeight.constant = (screenHeight() - 300)
-          }
-        } else {
-          if scrollViewHeight.constant >= (screenHeight() - 200) {
-              scrollViewHeight.constant = (screenHeight() - 200)
-          }
-        }
-        
 
-      }
+        if DataStore.shared().shouldDisplay(.futureSlider) {
+            let isModernSliderDisplayed = DataStore.shared().retrieve(key: CLDisplayFutureSliderKey) as? NSNumber ?? 0
+            if isModernSliderDisplayed == 0 {
+                if scrollViewHeight.constant >= (screenHeight() - 200) {
+                    scrollViewHeight.constant = (screenHeight() - 300)
+                }
+            } else {
+                if scrollViewHeight.constant >= (screenHeight() - 200) {
+                    scrollViewHeight.constant = (screenHeight() - 200)
+                }
+            }
+        }
     }
 
     func updateDefaultPreferences() {
@@ -624,9 +621,8 @@ class ParentPanelController: NSWindowController {
             let current = preferences[$0]
 
             if $0 < mainTableView.numberOfRows,
-               let cellView = mainTableView.view(atColumn: 0, row: $0, makeIfNecessary: false) as? TimezoneCellView,
-               let model = TimezoneData.customObject(from: current)
-            {
+                let cellView = mainTableView.view(atColumn: 0, row: $0, makeIfNecessary: false) as? TimezoneCellView,
+                let model = TimezoneData.customObject(from: current) {
                 if let futureSliderCell = futureSlider.cell as? CustomSliderCell, futureSliderCell.tracking == true {
                     return
                 }
@@ -646,8 +642,7 @@ class ParentPanelController: NSWindowController {
                 if let note = model.note, !note.isEmpty {
                     cellView.noteLabel.stringValue = note
                 } else if DataStore.shared().shouldDisplay(.dstTransitionInfo),
-                          let value = TimezoneDataOperations(with: model).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue)
-                {
+                    let value = TimezoneDataOperations(with: model).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) {
                     cellView.noteLabel.stringValue = value
                 } else {
                     cellView.noteLabel.stringValue = CLEmptyString
@@ -723,26 +718,26 @@ class ParentPanelController: NSWindowController {
     }
 
     @IBAction func dismissNextEventLabel(_: NSButton) {
-      let eventCenter = EventCenter.sharedCenter()
-      let now = Date()
-      if let events = eventCenter.eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: now)], events.isEmpty == false {
-          if let upcomingEvent = eventCenter.nextOccuring(events), let meetingLink = upcomingEvent.meetingURL {
-              NSWorkspace.shared.open(meetingLink)
-          }
-      } else {
-        removeUpcomingEventView()
-      }
+        let eventCenter = EventCenter.sharedCenter()
+        let now = Date()
+        if let events = eventCenter.eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: now)], events.isEmpty == false {
+            if let upcomingEvent = eventCenter.nextOccuring(events), let meetingLink = upcomingEvent.meetingURL {
+                NSWorkspace.shared.open(meetingLink)
+            }
+        } else {
+            removeUpcomingEventView()
+        }
     }
 
     func removeUpcomingEventView() {
         OperationQueue.main.addOperation {
-          if self.upcomingEventCollectionView != nil {
-            if self.stackView.arrangedSubviews.contains(self.upcomingEventContainerView!), self.upcomingEventContainerView?.isHidden == false {
-                self.upcomingEventContainerView?.isHidden = true
-                UserDefaults.standard.set("NO", forKey: CLShowUpcomingEventView)
-                Logger.log(object: ["Removed": "YES"], for: "Removed Upcoming Event View")
-            }
-          } else if self.stackView.arrangedSubviews.contains(self.upcomingEventView!), self.upcomingEventView?.isHidden == false {
+            if self.upcomingEventCollectionView != nil {
+                if self.stackView.arrangedSubviews.contains(self.upcomingEventContainerView!), self.upcomingEventContainerView?.isHidden == false {
+                    self.upcomingEventContainerView?.isHidden = true
+                    UserDefaults.standard.set("NO", forKey: CLShowUpcomingEventView)
+                    Logger.log(object: ["Removed": "YES"], for: "Removed Upcoming Event View")
+                }
+            } else if self.stackView.arrangedSubviews.contains(self.upcomingEventView!), self.upcomingEventView?.isHidden == false {
                 self.upcomingEventView?.isHidden = true
                 UserDefaults.standard.set("NO", forKey: CLShowUpcomingEventView)
                 Logger.log(object: ["Removed": "YES"], for: "Removed Upcoming Event View")
@@ -752,8 +747,7 @@ class ParentPanelController: NSWindowController {
 
     @IBAction func calendarButtonAction(_: NSButton) {
         if calendarButton.title == NSLocalizedString("Click here to start.",
-                                                     comment: "Button Title for no Calendar access")
-        {
+                                                     comment: "Button Title for no Calendar access") {
             showPermissionsWindow()
         } else {
             retrieveCalendarEvents()
@@ -844,13 +838,12 @@ class ParentPanelController: NSWindowController {
         if let events = eventCenter.eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: now)], events.isEmpty == false {
             OperationQueue.main.addOperation {
                 if self.upcomingEventCollectionView != nil,
-                   let upcomingEvents = eventCenter.upcomingEventsForDay(events) {
+                    let upcomingEvents = eventCenter.upcomingEventsForDay(events) {
                     self.upcomingEventsDataSource.updateEventsDataSource(upcomingEvents)
                     self.upcomingEventCollectionView.reloadData()
                     return
                 }
-                
-                
+
                 guard let upcomingEvent = eventCenter.nextOccuring(events) else {
                     self.setPlaceholdersForUpcomingCalendarView()
                     if #available(OSX 10.14, *) {
@@ -882,12 +875,12 @@ class ParentPanelController: NSWindowController {
                 }
             }
         } else {
-            if self.upcomingEventCollectionView != nil {
-                self.upcomingEventsDataSource.updateEventsDataSource([])
-                self.upcomingEventCollectionView.reloadData()
+            if upcomingEventCollectionView != nil {
+                upcomingEventsDataSource.updateEventsDataSource([])
+                upcomingEventCollectionView.reloadData()
                 return
             }
-            
+
             setPlaceholdersForUpcomingCalendarView()
             if #available(OSX 10.14, *) {
                 PerfLogger.endMarker("Fetch Calendar Events")
@@ -1071,7 +1064,7 @@ class ParentPanelController: NSWindowController {
 
     @objc func openCrowdin() {
         guard let localizationURL = URL(string: AboutUsConstants.CrowdInLocalizationLink),
-              let languageCode = Locale.preferredLanguages.first else { return }
+            let languageCode = Locale.preferredLanguages.first else { return }
 
         NSWorkspace.shared.open(localizationURL)
 
@@ -1148,14 +1141,13 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
         newProposedServices.append(contentsOf: filteredServices)
         return newProposedServices
     }
-    
+
     private func retrieveAllTimes() -> String {
         var clipboardCopy = String()
         let timezones = DataStore.shared().timezones()
         stride(from: 0, to: timezones.count, by: 1).forEach {
             if $0 < mainTableView.numberOfRows,
-               let cellView = mainTableView.view(atColumn: 0, row: $0, makeIfNecessary: false) as? TimezoneCellView
-            {
+                let cellView = mainTableView.view(atColumn: 0, row: $0, makeIfNecessary: false) as? TimezoneCellView {
                 clipboardCopy.append("\(cellView.customName.stringValue) - \(cellView.time.stringValue)\n")
             }
         }

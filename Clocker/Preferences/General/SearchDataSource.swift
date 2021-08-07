@@ -78,7 +78,7 @@ class SearchDataSource: NSObject {
         if index >= filteredArray.count {
             return nil
         }
-        
+
         return filteredArray[index % filteredArray.count]
     }
 

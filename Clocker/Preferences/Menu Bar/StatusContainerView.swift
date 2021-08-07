@@ -33,12 +33,10 @@ func compactWidth(for timezone: TimezoneData) -> Int {
     if timeFormat == DateFormat.twelveHour
         || timeFormat == DateFormat.twelveHourWithSeconds
         || timeFormat == DateFormat.twelveHourWithZero
-        || timeFormat == DateFormat.twelveHourWithSeconds
-    {
+        || timeFormat == DateFormat.twelveHourWithSeconds {
         totalWidth += 20
     } else if timeFormat == DateFormat.twentyFourHour
-        || timeFormat == DateFormat.twentyFourHourWithSeconds
-    {
+        || timeFormat == DateFormat.twentyFourHourWithSeconds {
         totalWidth += 0
     }
 

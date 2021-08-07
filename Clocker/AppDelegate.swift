@@ -16,7 +16,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         panelObserver?.invalidate()
     }
 
-    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change _: [NSKeyValueChangeKey: Any]?, context _: UnsafeMutableRawPointer?) {
+    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change _: [NSKeyValueChangeKey: Any]?, context _: UnsafeMutableRawPointer?) {
         if let path = keyPath, path == PreferencesConstants.hotKeyPathIdentifier {
             let hotKeyCenter = PTHotKeyCenter.shared()
 

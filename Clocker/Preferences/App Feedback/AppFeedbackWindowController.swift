@@ -114,7 +114,7 @@ class AppFeedbackWindowController: NSWindowController {
 
         let feedbackInfo = retrieveDataForSending()
         Logger.info("About to send \(feedbackInfo)")
-        
+
         sendDataToFirebase(feedbackInfo: feedbackInfo)
         showSucccessOnSendingInfo()
     }
@@ -127,30 +127,30 @@ class AppFeedbackWindowController: NSWindowController {
         let cleanedUpString = feedbackTextView.string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
 
         if cleanedUpString.isEmpty {
-            self.window?.contentView?.makeToast(AppFeedbackConstants.CLFeedbackNotEnteredErrorMessage)
+            window?.contentView?.makeToast(AppFeedbackConstants.CLFeedbackNotEnteredErrorMessage)
             isActivityInProgress = false
             return false
         }
 
         return true
     }
-    
+
     private func generateUserPreferences() -> String {
         let preferences = DataStore.shared().timezones()
 
         guard let theme = DataStore.shared().retrieve(key: CLThemeKey) as? NSNumber,
-              let displayFutureSliderKey = DataStore.shared().retrieve(key: CLThemeKey) as? NSNumber,
-              let relativeDateKey = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber,
-              let country = Locale.autoupdatingCurrent.regionCode
+            let displayFutureSliderKey = DataStore.shared().retrieve(key: CLThemeKey) as? NSNumber,
+            let relativeDateKey = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber,
+            let country = Locale.autoupdatingCurrent.regionCode
         else {
             return "Error"
         }
-        
+
         let selectedTimezones = preferences.compactMap { data -> String? in
             guard let timezoneObject = TimezoneData.customObject(from: data) else {
                 return nil
             }
-            return "Timezone: \(timezoneObject.timezone()) Name: \(timezoneObject.formattedAddress ?? "No") Favourited: \((timezoneObject.isFavourite == 1) ? "Yes": "No") Note: \(timezoneObject.note ?? "No Note") System: \(timezoneObject.isSystemTimezone ? "Yes": "No")"
+            return "Timezone: \(timezoneObject.timezone()) Name: \(timezoneObject.formattedAddress ?? "No") Favourited: \((timezoneObject.isFavourite == 1) ? "Yes" : "No") Note: \(timezoneObject.note ?? "No Note") System: \(timezoneObject.isSystemTimezone ? "Yes" : "No")"
         }
 
         var relativeDate = "Relative"
@@ -160,30 +160,29 @@ class AppFeedbackWindowController: NSWindowController {
         } else if relativeDateKey.isEqual(to: NSNumber(value: 2)) {
             relativeDate = "Date"
         }
-        
+
         var themeInfo = "Light"
         if theme.isEqual(to: NSNumber(value: 1)) {
             themeInfo = "Dark"
         } else if theme.isEqual(to: NSNumber(value: 2)) {
             themeInfo = "System"
         }
-        
+
         var futureSlider = "Modern"
         if displayFutureSliderKey.isEqual(to: NSNumber(value: 1)) {
             futureSlider = "Legacy"
         } else if theme.isEqual(to: NSNumber(value: 2)) {
             futureSlider = "Hidden"
         }
-        
+
         return """
-            "Theme: \(themeInfo), "Display Future Slider": \(futureSlider), "Relative Date": \(relativeDate), "Country": \(country), "Timezones": \(selectedTimezones)
-            """
-        
+        "Theme: \(themeInfo), "Display Future Slider": \(futureSlider), "Relative Date": \(relativeDate), "Country": \(country), "Timezones": \(selectedTimezones)
+        """
     }
 
     private func retrieveDataForSending() -> [String: String] {
         guard let shortVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
-              let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+            let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
         else {
             return [:]
         }
@@ -286,7 +285,7 @@ class AppFeedbackWindowController: NSWindowController {
 
     @IBAction func navigateToSupportTwitter(_: Any) {
         guard let twitterURL = URL(string: AboutUsConstants.TwitterLink),
-              let countryCode = Locale.autoupdatingCurrent.regionCode else { return }
+            let countryCode = Locale.autoupdatingCurrent.regionCode else { return }
 
         NSWorkspace.shared.open(twitterURL)
 

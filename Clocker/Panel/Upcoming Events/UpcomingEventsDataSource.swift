@@ -4,12 +4,12 @@ import Foundation
 
 class UpcomingEventsDataSource: NSObject, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
     private var upcomingEvents: [EventInfo] = []
-  private weak var delegate: UpcomingEventPanelDelegate?
-  
-  init(_ panelDelegate: UpcomingEventPanelDelegate?) {
-    super.init()
-    delegate = panelDelegate
-  }
+    private weak var delegate: UpcomingEventPanelDelegate?
+
+    init(_ panelDelegate: UpcomingEventPanelDelegate?) {
+        super.init()
+        delegate = panelDelegate
+    }
 
     func updateEventsDataSource(_ events: [EventInfo]) {
         upcomingEvents = events

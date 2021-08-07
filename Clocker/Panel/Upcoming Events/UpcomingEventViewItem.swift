@@ -4,13 +4,13 @@ import Foundation
 
 class UpcomingEventViewItem: NSCollectionViewItem {
     static let reuseIdentifier = NSUserInterfaceItemIdentifier("UpcomingEventViewItem")
-  
+
     @IBOutlet var calendarColorView: NSView!
     @IBOutlet var leadingConstraint: NSLayoutConstraint!
     @IBOutlet var eventTitleLabel: NSTextField!
     @IBOutlet var eventSubtitleButton: NSButton!
     @IBOutlet var zoomButton: NSButton!
-  
+
     private var meetingLink: URL?
     private weak var panelDelegate: UpcomingEventPanelDelegate?
 
@@ -39,7 +39,7 @@ class UpcomingEventViewItem: NSCollectionViewItem {
         }
     }
 
-  func setupUndeterminedState(_ delegate: UpcomingEventPanelDelegate?) {
+    func setupUndeterminedState(_ delegate: UpcomingEventPanelDelegate?) {
         if leadingConstraint.constant != 10 {
             leadingConstraint.constant = 10
         }
@@ -70,14 +70,14 @@ class UpcomingEventViewItem: NSCollectionViewItem {
     }
 
     @IBAction func calendarButtonAction(_ sender: NSButton) {
-      panelDelegate?.didClickSupplementaryButton(sender)
+        panelDelegate?.didClickSupplementaryButton(sender)
     }
 
     @objc func zoomButtonAction(_: Any) {
         if let meetingURL = meetingLink {
             NSWorkspace.shared.open(meetingURL)
         } else {
-          panelDelegate?.didRemoveCalendarView()
+            panelDelegate?.didRemoveCalendarView()
         }
     }
 }
