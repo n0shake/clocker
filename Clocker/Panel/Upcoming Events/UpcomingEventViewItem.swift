@@ -46,9 +46,20 @@ class UpcomingEventViewItem: NSCollectionViewItem {
 
         eventTitleLabel.stringValue = NSLocalizedString("See your next Calendar event here.", comment: "Next Event Label for no Calendar access")
         setCalendarButtonTitle(buttonTitle: NSLocalizedString("Click here to start.", comment: "Button Title for no Calendar access"))
-        calendarColorView.layer?.backgroundColor = NSColor.blue.cgColor
+        calendarColorView.layer?.backgroundColor = NSColor.systemBlue.cgColor
         zoomButton.image = Themer.shared().removeImage()
         panelDelegate = delegate
+    }
+  
+    func setupEmptyState() {
+        if leadingConstraint.constant != 10 {
+            leadingConstraint.constant = 10
+        }
+
+        eventTitleLabel.stringValue = NSLocalizedString("No upcoming events for today!", comment: "Next Event Label with no upcoming event")
+        setCalendarButtonTitle(buttonTitle: NSLocalizedString("Inbox Zero!", comment: "Button Title for no upcoming event"))
+        calendarColorView.layer?.backgroundColor = NSColor.systemGreen.cgColor
+        zoomButton.image = Themer.shared().removeImage()
     }
 
     private func setCalendarButtonTitle(buttonTitle: String) {
