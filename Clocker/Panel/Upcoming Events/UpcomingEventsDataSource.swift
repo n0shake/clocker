@@ -4,11 +4,13 @@ import Foundation
 
 class UpcomingEventsDataSource: NSObject, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
     private var upcomingEvents: [EventInfo] = []
+    private var eventCenter: EventCenter!
     private weak var delegate: UpcomingEventPanelDelegate?
 
-    init(_ panelDelegate: UpcomingEventPanelDelegate?) {
+    init(_ panelDelegate: UpcomingEventPanelDelegate?, _ center: EventCenter) {
         super.init()
         delegate = panelDelegate
+        eventCenter = center
     }
 
     func updateEventsDataSource(_ events: [EventInfo]) {
@@ -16,7 +18,7 @@ class UpcomingEventsDataSource: NSObject, NSCollectionViewDataSource, NSCollecti
     }
 
     func collectionView(_: NSCollectionView, numberOfItemsInSection _: Int) -> Int {
-        if upcomingEvents.isEmpty {
+        if eventCenter.calendarAccessDenied() || eventCenter.calendarAccessNotDetermined() || upcomingEvents.isEmpty {
             return 1
         }
         return upcomingEvents.count
@@ -24,8 +26,13 @@ class UpcomingEventsDataSource: NSObject, NSCollectionViewDataSource, NSCollecti
 
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: UpcomingEventViewItem.reuseIdentifier, for: indexPath) as! UpcomingEventViewItem
-        if upcomingEvents.isEmpty {
+        if eventCenter.calendarAccessNotDetermined() {
             item.setupUndeterminedState(delegate)
+            return item
+        }
+
+        if upcomingEvents.isEmpty {
+            item.setupEmptyState()
             return item
         }
 
@@ -37,7 +44,7 @@ class UpcomingEventsDataSource: NSObject, NSCollectionViewDataSource, NSCollecti
     }
 
     func collectionView(_ collectionView: NSCollectionView, layout _: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
-        if upcomingEvents.isEmpty {
+        if upcomingEvents.isEmpty || eventCenter.calendarAccessNotDetermined() {
             return NSSize(width: collectionView.frame.width - 20, height: 50)
         }
 
