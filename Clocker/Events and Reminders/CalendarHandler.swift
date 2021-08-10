@@ -197,8 +197,9 @@ extension EventCenter {
             return nil
         }
 
-        let relevantEvents = filteredEvents[autoupdatingCalendar.startOfDay(for: Date())] ?? []
-
+        let todayEvents = filteredEvents[autoupdatingCalendar.startOfDay(for: Date())] ?? []
+        let tomorrowEvents = filteredEvents[autoupdatingCalendar.startOfDay(for: Date().addingTimeInterval(86400))] ?? []
+        let relevantEvents = todayEvents + tomorrowEvents
         return relevantEvents.filter {
             $0.event.startDate.timeIntervalSinceNow > -300
         }
@@ -486,12 +487,20 @@ struct EventInfo {
         let timeIntervalSinceNowForMeeting = event.startDate.timeIntervalSinceNow
         if timeIntervalSinceNowForMeeting < 0, timeIntervalSinceNowForMeeting > -300 {
             return "started \(event.startDate.shortTimeAgoSinceNow) ago."
-        } else {
+        } else if event.startDate.isToday {
             let timeSince = Date().timeAgo(since: event.startDate)
             let withoutAn = timeSince.replacingOccurrences(of: "an", with: CLEmptyString)
             let withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
 
             return "in \(withoutAgo.lowercased())"
+        } else if event.startDate.isTomorrow {
+          let timeSince = event.startDate.shortTimeAgoSinceNow
+          let withoutAn = timeSince.replacingOccurrences(of: "an", with: CLEmptyString)
+          let withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
+
+          return "in \(withoutAgo.lowercased())"
         }
+      
+      return "Error"
     }
 }
