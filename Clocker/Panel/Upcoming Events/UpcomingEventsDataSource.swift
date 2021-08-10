@@ -42,7 +42,7 @@ class UpcomingEventsDataSource: NSObject, NSCollectionViewDataSource, NSCollecti
         }
 
         let currentEventInfo = upcomingEvents[indexPath.item]
-        let prefferedSize = avenirLightFont.size(currentEventInfo.event.title, 250, attributes: [NSAttributedString.Key.font: avenirLightFont])
-        return NSSize(width: prefferedSize.width, height: 50)
+        let attributedString = NSAttributedString(string: currentEventInfo.event.title, attributes: [NSAttributedString.Key.font : avenirLightFont])
+        return NSSize(width: attributedString.size().width + 60, height: 50)
     }
 }
