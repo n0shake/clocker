@@ -494,13 +494,13 @@ struct EventInfo {
 
             return "in \(withoutAgo.lowercased())"
         } else if event.startDate.isTomorrow {
-          let timeSince = event.startDate.shortTimeAgoSinceNow
-          let withoutAn = timeSince.replacingOccurrences(of: "an", with: CLEmptyString)
-          let withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
+            let timeSince = event.startDate.shortTimeAgoSinceNow
+            let withoutAn = timeSince.replacingOccurrences(of: "an", with: CLEmptyString)
+            let withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
 
-          return "in \(withoutAgo.lowercased())"
+            return "in \(withoutAgo.lowercased())"
         }
-      
-      return "Error"
+
+        return "Error"
     }
 }
