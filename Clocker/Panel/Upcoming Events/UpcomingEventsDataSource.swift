@@ -7,7 +7,7 @@ class UpcomingEventsDataSource: NSObject, NSCollectionViewDataSource, NSCollecti
     private var eventCenter: EventCenter!
     private weak var delegate: UpcomingEventPanelDelegate?
 
-  init(_ panelDelegate: UpcomingEventPanelDelegate?, _ center: EventCenter) {
+    init(_ panelDelegate: UpcomingEventPanelDelegate?, _ center: EventCenter) {
         super.init()
         delegate = panelDelegate
         eventCenter = center
@@ -18,7 +18,7 @@ class UpcomingEventsDataSource: NSObject, NSCollectionViewDataSource, NSCollecti
     }
 
     func collectionView(_: NSCollectionView, numberOfItemsInSection _: Int) -> Int {
-      if eventCenter.calendarAccessDenied() || eventCenter.calendarAccessNotDetermined() || upcomingEvents.isEmpty {
+        if eventCenter.calendarAccessDenied() || eventCenter.calendarAccessNotDetermined() || upcomingEvents.isEmpty {
             return 1
         }
         return upcomingEvents.count
@@ -27,10 +27,10 @@ class UpcomingEventsDataSource: NSObject, NSCollectionViewDataSource, NSCollecti
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: UpcomingEventViewItem.reuseIdentifier, for: indexPath) as! UpcomingEventViewItem
         if eventCenter.calendarAccessNotDetermined() {
-          item.setupUndeterminedState(delegate)
-          return item
+            item.setupUndeterminedState(delegate)
+            return item
         }
-      
+
         if upcomingEvents.isEmpty {
             item.setupEmptyState()
             return item
@@ -44,7 +44,7 @@ class UpcomingEventsDataSource: NSObject, NSCollectionViewDataSource, NSCollecti
     }
 
     func collectionView(_ collectionView: NSCollectionView, layout _: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
-      if upcomingEvents.isEmpty || eventCenter.calendarAccessNotDetermined() {
+        if upcomingEvents.isEmpty || eventCenter.calendarAccessNotDetermined() {
             return NSSize(width: collectionView.frame.width - 20, height: 50)
         }
 

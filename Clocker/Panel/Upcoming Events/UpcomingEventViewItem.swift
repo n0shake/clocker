@@ -50,7 +50,7 @@ class UpcomingEventViewItem: NSCollectionViewItem {
         zoomButton.image = Themer.shared().removeImage()
         panelDelegate = delegate
     }
-  
+
     func setupEmptyState() {
         if leadingConstraint.constant != 10 {
             leadingConstraint.constant = 10

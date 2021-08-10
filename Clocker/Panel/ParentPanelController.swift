@@ -747,7 +747,7 @@ class ParentPanelController: NSWindowController {
 
     @IBAction func calendarButtonAction(_ sender: NSButton) {
         if sender.title == NSLocalizedString("Click here to start.",
-                                                     comment: "Button Title for no Calendar access") {
+                                             comment: "Button Title for no Calendar access") {
             showPermissionsWindow()
         } else {
             retrieveCalendarEvents()
