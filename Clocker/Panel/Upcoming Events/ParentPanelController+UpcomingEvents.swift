@@ -17,7 +17,7 @@ protocol UpcomingEventPanelDelegate: AnyObject {
 extension ParentPanelController {
     func setupUpcomingEventViewCollectionViewIfNeccesary() {
         if upcomingEventCollectionView != nil {
-            upcomingEventsDataSource = UpcomingEventsDataSource(self)
+          upcomingEventsDataSource = UpcomingEventsDataSource(self, EventCenter.sharedCenter())
             upcomingEventCollectionView.enclosingScrollView?.scrollerInsets = NSEdgeInsetsZero
             upcomingEventCollectionView.enclosingScrollView?.backgroundColor = NSColor.clear
             upcomingEventCollectionView.setAccessibility("UpcomingEventCollectionView")
