@@ -15,7 +15,7 @@ class PermissionsTests: XCTestCase {
 
     func testAcceptingCalendarPermissions() {
         app.tapMenubarIcon()
-        app/*@START_MENU_TOKEN@*/.buttons["Preferences"]/*[[".dialogs[\"Clocker Panel\"].buttons[\"Preferences\"]",".buttons[\"Preferences\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.click()
+        app/*@START_MENU_TOKEN@*/ .buttons["Preferences"]/*[[".dialogs[\"Clocker Panel\"].buttons[\"Preferences\"]",".buttons[\"Preferences\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/ .click()
 
         let clockerWindow = app.windows["Clocker"]
 
@@ -53,7 +53,7 @@ class PermissionsTests: XCTestCase {
 
     func testAcceptingRemindersPermissions() {
         app.tapMenubarIcon()
-        app/*@START_MENU_TOKEN@*/.buttons["Preferences"]/*[[".dialogs[\"Clocker Panel\"].buttons[\"Preferences\"]",".buttons[\"Preferences\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.click()
+        app/*@START_MENU_TOKEN@*/ .buttons["Preferences"]/*[[".dialogs[\"Clocker Panel\"].buttons[\"Preferences\"]",".buttons[\"Preferences\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/ .click()
 
         let clockerWindow = app.windows["Clocker"]
 

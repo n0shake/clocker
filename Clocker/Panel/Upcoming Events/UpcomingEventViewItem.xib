@@ -87,6 +87,7 @@
                 <outlet property="eventSubtitleButton" destination="Khp-8n-4FA" id="mXV-EZ-2AW"/>
                 <outlet property="eventTitleLabel" destination="fTt-gC-72b" id="bOh-LO-tiH"/>
                 <outlet property="leadingConstraint" destination="Myg-8W-znN" id="OUR-Na-THS"/>
+                <outlet property="supplementaryButtonWidthConstraint" destination="ZRs-Vt-FOM" id="S8K-B3-ZLb"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="9S0-wg-csq"/>
                 <outlet property="zoomButton" destination="qRe-Ao-1fr" id="0IC-Fx-l3Q"/>
             </connections>

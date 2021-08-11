@@ -310,7 +310,7 @@ class ParentPanelController: NSWindowController {
         if eventCenter.calendarAccessGranted() {
             // Nice. Events will be retrieved when we open the panel
         } else if eventCenter.calendarAccessNotDetermined() {
-          upcomingEventCollectionView.reloadData()
+            upcomingEventCollectionView.reloadData()
         } else {
             removeUpcomingEventView()
         }
@@ -344,7 +344,7 @@ class ParentPanelController: NSWindowController {
         let sharedThemer = Themer.shared()
 
         if upcomingEventContainerView?.isHidden == false {
-          upcomingEventContainerView?.layer?.backgroundColor = NSColor.clear.cgColor
+            upcomingEventContainerView?.layer?.backgroundColor = NSColor.clear.cgColor
         }
 
         shutdownButton.image = sharedThemer.shutdownImage()
