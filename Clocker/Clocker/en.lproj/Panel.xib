@@ -261,7 +261,7 @@
                                 </scroller>
                             </scrollView>
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="C7R-Dq-MFr" userLabel="Slider View">
-                                <rect key="frame" x="0.0" y="235" width="350" height="30"/>
+                                <rect key="frame" x="0.0" y="145" width="350" height="30"/>
                                 <subviews>
                                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vf2-uI-yf3">
                                         <rect key="frame" x="7" y="2" width="201" height="23"/>

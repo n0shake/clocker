@@ -57,7 +57,7 @@ class UpcomingEventViewItem: NSCollectionViewItem {
         }
 
         eventTitleLabel.stringValue = NSLocalizedString("No upcoming events for today!", comment: "Next Event Label with no upcoming event")
-        setCalendarButtonTitle(buttonTitle: NSLocalizedString("Inbox Zero!", comment: "Button Title for no upcoming event"))
+        setCalendarButtonTitle(buttonTitle: NSLocalizedString("Great going.", comment: "Button Title for no upcoming event"))
         calendarColorView.layer?.backgroundColor = NSColor.systemGreen.cgColor
         zoomButton.image = Themer.shared().removeImage()
     }
@@ -66,7 +66,7 @@ class UpcomingEventViewItem: NSCollectionViewItem {
         let style = NSMutableParagraphStyle()
         style.alignment = .left
         style.lineBreakMode = .byTruncatingTail
-
+      
         if let boldFont = NSFont(name: "Avenir", size: 11) {
             let attributes = [NSAttributedString.Key.foregroundColor: NSColor.gray, NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.font: boldFont]
 
