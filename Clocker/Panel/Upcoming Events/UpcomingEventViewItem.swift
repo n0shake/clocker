@@ -24,15 +24,23 @@ class UpcomingEventViewItem: NSCollectionViewItem {
                _ subtitle: String,
                _ color: NSColor,
                _ meetingURL: URL?,
-               _ delegate: UpcomingEventPanelDelegate?) {
+               _ delegate: UpcomingEventPanelDelegate?,
+               _ isCancelled: Bool) {
         if leadingConstraint.constant != 5 {
             leadingConstraint.constant = 5
         }
 
         calendarColorView.layer?.backgroundColor = color.cgColor
-        eventTitleLabel.stringValue = title
         setCalendarButtonTitle(buttonTitle: subtitle)
         panelDelegate = delegate
+        
+        if isCancelled {
+            let strikethroughString = NSAttributedString(string: title, attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
+                                                                                     NSAttributedString.Key.strikethroughColor: NSColor.gray])
+            eventTitleLabel.attributedStringValue = strikethroughString
+        } else {
+            eventTitleLabel.stringValue = title
+        }
 
         if meetingURL != nil {
             zoomButton.isHidden = false

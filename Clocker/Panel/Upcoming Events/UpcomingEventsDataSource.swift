@@ -39,8 +39,12 @@ class UpcomingEventsDataSource: NSObject, NSCollectionViewDataSource, NSCollecti
 
         let currentEventInfo = upcomingEvents[indexPath.item]
         let upcomingEventSubtitle = currentEventInfo.isAllDay ? "All-Day" : currentEventInfo.metadataForMeeting()
-        item.setup(currentEventInfo.event.title, upcomingEventSubtitle, currentEventInfo.event.calendar.color,
-                   currentEventInfo.meetingURL, delegate)
+        item.setup(currentEventInfo.event.title,
+                   upcomingEventSubtitle,
+                   currentEventInfo.event.calendar.color,
+                   currentEventInfo.meetingURL,
+                   delegate,
+                   currentEventInfo.event.status == .canceled)
         return item
     }
 
