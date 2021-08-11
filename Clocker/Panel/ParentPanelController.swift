@@ -55,19 +55,11 @@ class ParentPanelController: NSWindowController {
 
     @IBOutlet var scrollViewHeight: NSLayoutConstraint!
 
-    @IBOutlet var calendarColorView: NSView!
-
     @IBOutlet var futureSliderView: NSView!
-
-    @IBOutlet var upcomingEventView: NSView?
 
     @IBOutlet var reviewView: NSView!
 
     @IBOutlet var leftField: NSTextField!
-
-    @IBOutlet var nextEventLabel: NSTextField!
-
-    @IBOutlet var whiteRemoveButton: NSButton!
 
     @IBOutlet var sharingButton: NSButton!
 
@@ -80,8 +72,6 @@ class ParentPanelController: NSWindowController {
     @IBOutlet var preferencesButton: NSButton!
 
     @IBOutlet var pinButton: NSButton!
-
-    @IBOutlet var calendarButton: NSButton!
 
     @IBOutlet var sliderDatePicker: NSDatePicker!
 
@@ -170,7 +160,7 @@ class ParentPanelController: NSWindowController {
         pinButton.image = sharedThemer.pinImage()
         sharingButton.image = sharedThemer.sharingImage()
 
-        if let upcomingView = upcomingEventView {
+        if let upcomingView = upcomingEventContainerView {
             upcomingView.setAccessibility("UpcomingEventView")
         }
 
@@ -287,9 +277,9 @@ class ParentPanelController: NSWindowController {
         let showUpcomingEventView = DataStore.shared().shouldDisplay(ViewType.upcomingEventView)
 
         if showUpcomingEventView == false {
-            upcomingEventView?.isHidden = true
+            upcomingEventContainerView?.isHidden = true
         } else {
-            upcomingEventView?.isHidden = false
+            upcomingEventContainerView?.isHidden = false
             setupUpcomingEventView()
             eventStoreChangedNotification = NotificationCenter.default.addObserver(forName: NSNotification.Name.EKEventStoreChanged, object: self, queue: OperationQueue.main) { _ in
                 self.fetchCalendarEvents()
@@ -320,13 +310,7 @@ class ParentPanelController: NSWindowController {
         if eventCenter.calendarAccessGranted() {
             // Nice. Events will be retrieved when we open the panel
         } else if eventCenter.calendarAccessNotDetermined() {
-            if nextEventLabel != nil {
-                nextEventLabel.stringValue = NSLocalizedString("See your next Calendar event here.",
-                                                               comment: "Next Event Label for no Calendar access")
-                setCalendarButtonTitle(buttonTitle: NSLocalizedString("Click here to start.",
-                                                                      comment: "Button Title for no Calendar access"))
-                calendarColorView.layer?.backgroundColor = NSColor(red: 97 / 255.0, green: 194 / 255.0, blue: 80 / 255.0, alpha: 1.0).cgColor
-            }
+          upcomingEventCollectionView.reloadData()
         } else {
             removeUpcomingEventView()
         }
@@ -359,8 +343,8 @@ class ParentPanelController: NSWindowController {
     @objc func themeChanged() {
         let sharedThemer = Themer.shared()
 
-        if upcomingEventView?.isHidden == false {
-            upcomingEventView?.layer?.backgroundColor = NSColor.clear.cgColor
+        if upcomingEventContainerView?.isHidden == false {
+          upcomingEventContainerView?.layer?.backgroundColor = NSColor.clear.cgColor
         }
 
         shutdownButton.image = sharedThemer.shutdownImage()
@@ -380,20 +364,6 @@ class ParentPanelController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         morePopover = NSPopover()
-    }
-
-    private func setCalendarButtonTitle(buttonTitle: String) {
-        let style = NSMutableParagraphStyle()
-        style.alignment = .left
-        style.lineBreakMode = .byTruncatingTail
-
-        if let boldFont = NSFont(name: "Avenir", size: 12) {
-            let attributes = [NSAttributedString.Key.foregroundColor: NSColor.lightGray, NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.font: boldFont]
-
-            let attributedString = NSAttributedString(string: buttonTitle, attributes: attributes)
-            calendarButton.attributedTitle = attributedString
-            calendarButton.toolTip = attributedString.string
-        }
     }
 
     func screenHeight() -> CGFloat {
@@ -737,10 +707,6 @@ class ParentPanelController: NSWindowController {
                     UserDefaults.standard.set("NO", forKey: CLShowUpcomingEventView)
                     Logger.log(object: ["Removed": "YES"], for: "Removed Upcoming Event View")
                 }
-            } else if self.stackView.arrangedSubviews.contains(self.upcomingEventView!), self.upcomingEventView?.isHidden == false {
-                self.upcomingEventView?.isHidden = true
-                UserDefaults.standard.set("NO", forKey: CLShowUpcomingEventView)
-                Logger.log(object: ["Removed": "YES"], for: "Removed Upcoming Event View")
             }
         }
     }
@@ -818,8 +784,8 @@ class ParentPanelController: NSWindowController {
 
     func showUpcomingEventView() {
         OperationQueue.main.addOperation {
-            if let upcomingView = self.upcomingEventView, upcomingView.isHidden {
-                self.upcomingEventView?.isHidden = false
+            if let upcomingView = self.upcomingEventContainerView, upcomingView.isHidden {
+                self.upcomingEventContainerView?.isHidden = false
                 UserDefaults.standard.set("YES", forKey: CLShowUpcomingEventView)
                 Logger.log(object: ["Shown": "YES"], for: "Added Upcoming Event View")
                 self.themeChanged()
@@ -844,32 +810,6 @@ class ParentPanelController: NSWindowController {
                     return
                 }
 
-                guard let upcomingEvent = eventCenter.nextOccuring(events) else {
-                    self.setPlaceholdersForUpcomingCalendarView()
-                    if #available(OSX 10.14, *) {
-                        PerfLogger.endMarker("Fetch Calendar Events")
-                    }
-                    return
-                }
-
-                self.calendarColorView.layer?.backgroundColor = upcomingEvent.event.calendar.color.cgColor
-                self.nextEventLabel.stringValue = upcomingEvent.event.title
-                self.nextEventLabel.toolTip = upcomingEvent.event.title
-                if upcomingEvent.isAllDay == true {
-                    let title = events.count == 1 ? "All-Day" : "All Day - Total \(events.count) events today"
-                    self.setCalendarButtonTitle(buttonTitle: title)
-                    if #available(OSX 10.14, *) {
-                        PerfLogger.endMarker("Fetch Calendar Events")
-                    }
-                    return
-                }
-
-                self.setCalendarButtonTitle(buttonTitle: upcomingEvent.metadataForMeeting())
-
-                if upcomingEvent.meetingURL != nil {
-                    self.whiteRemoveButton.image = Themer.shared().videoCallImage()
-                }
-
                 if #available(OSX 10.14, *) {
                     PerfLogger.endMarker("Fetch Calendar Events")
                 }
@@ -880,38 +820,9 @@ class ParentPanelController: NSWindowController {
                 upcomingEventCollectionView.reloadData()
                 return
             }
-
-            setPlaceholdersForUpcomingCalendarView()
             if #available(OSX 10.14, *) {
                 PerfLogger.endMarker("Fetch Calendar Events")
             }
-        }
-    }
-
-    private func setPlaceholdersForUpcomingCalendarView() {
-        let eventCenter = EventCenter.sharedCenter()
-
-        var tomorrow = DateComponents()
-        tomorrow.day = 1
-        guard let tomorrowDate = Calendar.autoupdatingCurrent.date(byAdding: tomorrow, to: Date()) else {
-            setCalendarButtonTitle(buttonTitle: "You have no events scheduled for tomorrow.")
-            return
-        }
-
-        nextEventLabel.stringValue = NSLocalizedString("No upcoming event.",
-                                                       comment: "Title when there's no upcoming event")
-        calendarColorView.layer?.backgroundColor = NSColor(red: 97 / 255.0, green: 194 / 255.0, blue: 80 / 255.0, alpha: 1.0).cgColor
-
-        let events = eventCenter.filteredEvents[NSCalendar.autoupdatingCurrent.startOfDay(for: tomorrowDate)]
-
-        if let count = events?.count, count > 1 {
-            let suffix = "events coming up tomorrow."
-            setCalendarButtonTitle(buttonTitle: "\(count) \(suffix)")
-        } else if let first = events?.first?.event.title {
-            setCalendarButtonTitle(buttonTitle: "\(first) coming up.")
-        } else {
-            setCalendarButtonTitle(buttonTitle: NSLocalizedString("You have no events scheduled for tomorrow.",
-                                                                  comment: "Title when there's no event scheduled for tomorrow"))
         }
     }
 
