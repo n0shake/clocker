@@ -2,11 +2,11 @@
 
 import Foundation
 
-var avenirLightFont: NSFont {
-    if let avenirFont = NSFont(name: "Avenir-Light", size: 12) {
+var avenirBookFont: NSFont {
+    if let avenirFont = NSFont(name: "Avenir-Book", size: 13) {
         return avenirFont
     }
-    return NSFont.systemFont(ofSize: 12)
+    return NSFont.systemFont(ofSize: 13)
 }
 
 protocol UpcomingEventPanelDelegate: AnyObject {

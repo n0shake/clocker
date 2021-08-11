@@ -44,13 +44,15 @@ class UpcomingEventsDataSource: NSObject, NSCollectionViewDataSource, NSCollecti
     }
 
     func collectionView(_ collectionView: NSCollectionView, layout _: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
-        if upcomingEvents.isEmpty || eventCenter.calendarAccessNotDetermined() {
-            return NSSize(width: collectionView.frame.width - 40, height: 50)
+        if eventCenter.calendarAccessNotDetermined() {
+          return NSSize(width: collectionView.frame.width - 40, height: collectionView.frame.height - 15)
+        } else if upcomingEvents.isEmpty {
+          return NSSize(width: collectionView.frame.width - 25, height: collectionView.frame.height - 15)
+        } else {
+          let currentEventInfo = upcomingEvents[indexPath.item]
+          let attributedString = NSAttributedString(string: currentEventInfo.event.title, attributes: [NSAttributedString.Key.font : avenirBookFont])
+          let maxWidth = max(attributedString.size().width + 60.0, collectionView.frame.width / 2)
+          return NSSize(width: maxWidth, height: collectionView.frame.height - 15)
         }
-
-        let currentEventInfo = upcomingEvents[indexPath.item]
-        let attributedString = NSAttributedString(string: currentEventInfo.event.title, attributes: [NSAttributedString.Key.font : avenirLightFont])
-        let maxWidth = max(attributedString.size().width + 60.0, collectionView.frame.width / 2)
-        return NSSize(width: maxWidth, height: 50)
     }
 }

@@ -42,7 +42,7 @@
                                 <constraint firstAttribute="height" constant="24" id="BA4-1v-xiZ"/>
                             </constraints>
                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Nandita Jaiswal's 35th birthday" placeholderString="" id="Dtv-o3-gqd">
-                                <font key="font" size="12" name="Avenir-Light"/>
+                                <font key="font" size="12" name="Avenir-Book"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </textFieldCell>
