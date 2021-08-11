@@ -45,11 +45,12 @@ class UpcomingEventsDataSource: NSObject, NSCollectionViewDataSource, NSCollecti
 
     func collectionView(_ collectionView: NSCollectionView, layout _: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
         if upcomingEvents.isEmpty || eventCenter.calendarAccessNotDetermined() {
-            return NSSize(width: collectionView.frame.width - 20, height: 50)
+            return NSSize(width: collectionView.frame.width - 40, height: 50)
         }
 
         let currentEventInfo = upcomingEvents[indexPath.item]
         let attributedString = NSAttributedString(string: currentEventInfo.event.title, attributes: [NSAttributedString.Key.font : avenirLightFont])
-        return NSSize(width: attributedString.size().width + 60, height: 50)
+        let maxWidth = max(attributedString.size().width + 60.0, collectionView.frame.width / 2)
+        return NSSize(width: maxWidth, height: 50)
     }
 }
