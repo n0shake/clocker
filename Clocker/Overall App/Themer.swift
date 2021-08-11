@@ -210,8 +210,8 @@ extension Themer {
 
         return
             themeIndex == .light
-            ? NSImage(named: NSImage.Name("Settings"))!
-            : NSImage(named: NSImage.Name("Settings-White"))!
+                ? NSImage(named: NSImage.Name("Settings"))!
+                : NSImage(named: NSImage.Name("Settings-White"))!
     }
 
     func pinImage() -> NSImage {

@@ -9,6 +9,7 @@ class UpcomingEventViewItem: NSCollectionViewItem {
     @IBOutlet var leadingConstraint: NSLayoutConstraint!
     @IBOutlet var eventTitleLabel: NSTextField!
     @IBOutlet var eventSubtitleButton: NSButton!
+    @IBOutlet var supplementaryButtonWidthConstraint: NSLayoutConstraint!
     @IBOutlet var zoomButton: NSButton!
 
     private var meetingLink: URL?
@@ -34,8 +35,13 @@ class UpcomingEventViewItem: NSCollectionViewItem {
         panelDelegate = delegate
 
         if meetingURL != nil {
+            zoomButton.isHidden = false
             meetingLink = meetingURL
             zoomButton.image = Themer.shared().videoCallImage()
+            supplementaryButtonWidthConstraint.constant = 24.0
+        } else {
+            zoomButton.image = nil
+            supplementaryButtonWidthConstraint.constant = 0.0
         }
     }
 
@@ -66,7 +72,7 @@ class UpcomingEventViewItem: NSCollectionViewItem {
         let style = NSMutableParagraphStyle()
         style.alignment = .left
         style.lineBreakMode = .byTruncatingTail
-      
+
         if let boldFont = NSFont(name: "Avenir", size: 11) {
             let attributes = [NSAttributedString.Key.foregroundColor: NSColor.gray, NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.font: boldFont]
 

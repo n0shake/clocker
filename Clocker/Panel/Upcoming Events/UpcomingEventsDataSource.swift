@@ -6,6 +6,7 @@ class UpcomingEventsDataSource: NSObject, NSCollectionViewDataSource, NSCollecti
     private var upcomingEvents: [EventInfo] = []
     private var eventCenter: EventCenter!
     private weak var delegate: UpcomingEventPanelDelegate?
+    private static let panelWidth: CGFloat = 350.0
 
     init(_ panelDelegate: UpcomingEventPanelDelegate?, _ center: EventCenter) {
         super.init()
@@ -45,14 +46,15 @@ class UpcomingEventsDataSource: NSObject, NSCollectionViewDataSource, NSCollecti
 
     func collectionView(_ collectionView: NSCollectionView, layout _: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
         if eventCenter.calendarAccessNotDetermined() {
-          return NSSize(width: collectionView.frame.width - 40, height: collectionView.frame.height - 15)
+            return NSSize(width: UpcomingEventsDataSource.panelWidth - 25, height: collectionView.frame.height - 15)
         } else if upcomingEvents.isEmpty {
-          return NSSize(width: collectionView.frame.width - 25, height: collectionView.frame.height - 15)
+            return NSSize(width: UpcomingEventsDataSource.panelWidth - 25, height: collectionView.frame.height - 15)
         } else {
-          let currentEventInfo = upcomingEvents[indexPath.item]
-          let attributedString = NSAttributedString(string: currentEventInfo.event.title, attributes: [NSAttributedString.Key.font : avenirBookFont])
-          let maxWidth = max(attributedString.size().width + 60.0, collectionView.frame.width / 2)
-          return NSSize(width: maxWidth, height: collectionView.frame.height - 15)
+            let currentEventInfo = upcomingEvents[indexPath.item]
+            let bufferWidth: CGFloat = currentEventInfo.meetingURL != nil ? 60.0 : 20.0
+            let attributedString = NSAttributedString(string: currentEventInfo.event.title, attributes: [NSAttributedString.Key.font: avenirBookFont])
+            let maxWidth = min(attributedString.size().width + bufferWidth, UpcomingEventsDataSource.panelWidth / 2)
+            return NSSize(width: maxWidth, height: collectionView.frame.height - 20)
         }
     }
 }
