@@ -44,22 +44,22 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView focusRingType="none" distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bn4-fy-Lm6">
-                        <rect key="frame" x="0.0" y="0.0" width="379" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="429" height="460"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="81" horizontalPageScroll="10" verticalLineScroll="81" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khu-OS-PzP">
-                                <rect key="frame" x="9" y="195" width="370" height="265"/>
+                                <rect key="frame" x="0.0" y="195" width="429" height="265"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="2rS-3B-A3C">
-                                    <rect key="frame" x="0.0" y="0.0" width="370" height="265"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="429" height="265"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="80" viewBased="YES" id="3js-Fl-DdU" customClass="PanelTableView" customModule="Clocker" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="370" height="265"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="429" height="265"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="1"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="338" minWidth="303" maxWidth="1000" id="009-6N-KRz">
+                                                <tableColumn width="337.80335195531063" minWidth="303" maxWidth="1000" id="009-6N-KRz">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -292,7 +292,7 @@
                                 </constraints>
                             </customView>
                             <customView identifier="Review Cell" translatesAutoresizingMaskIntoConstraints="NO" id="HBv-Eh-z9y">
-                                <rect key="frame" x="0.0" y="115" width="379" height="50"/>
+                                <rect key="frame" x="0.0" y="115" width="429" height="50"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y83-Ew-CDw">
                                         <rect key="frame" x="80" y="30" width="185" height="20"/>
@@ -360,7 +360,7 @@
                                 </constraints>
                                 <accessibility description="Review Cell"/>
                             </customView>
-                            <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="7cF-j3-JRf" userLabel="Upcoming Event View" customClass="UpcomingEventView" customModule="Clocker" customModuleProvider="target">
+                            <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="7cF-j3-JRf" userLabel="Upcoming Event View">
                                 <rect key="frame" x="0.0" y="40" width="370" height="75"/>
                                 <subviews>
                                     <scrollView wantsLayer="YES" focusRingType="none" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rh-Lu-bXY">
@@ -404,7 +404,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="350" height="40"/>
                                 <subviews>
                                     <button toolTip="Close Clocker" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M9q-iF-MaE">
-                                        <rect key="frame" x="309" y="7" width="30" height="26"/>
+                                        <rect key="frame" x="300" y="7" width="30" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="Aj8-oI-SG6"/>
                                             <constraint firstAttribute="width" constant="30" id="n8F-JR-9KP"/>
@@ -419,7 +419,7 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Switch between Menubar/Floating mode." verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KWj-8n-2K0">
-                                        <rect key="frame" x="278" y="10" width="29" height="19"/>
+                                        <rect key="frame" x="219" y="10" width="29" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="8yd-3c-2Nc"/>
                                             <constraint firstAttribute="width" constant="29" id="D7P-eC-faV"/>
@@ -434,7 +434,7 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Share Clocker!" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GMo-5B-bnh">
-                                        <rect key="frame" x="248" y="7" width="30" height="26"/>
+                                        <rect key="frame" x="119" y="7" width="30" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="WBC-l8-Gc1"/>
                                             <constraint firstAttribute="width" constant="30" id="h85-UM-Kfy"/>
@@ -449,7 +449,7 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Open Preferences" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iFk-kj-d5a">
-                                        <rect key="frame" x="8" y="10" width="29" height="19"/>
+                                        <rect key="frame" x="20" y="10" width="29" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="29" id="Rbf-3O-59g"/>
                                             <constraint firstAttribute="height" constant="18" id="eTh-dT-52B"/>
@@ -467,15 +467,15 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="iFk-kj-d5a" firstAttribute="leading" secondItem="YQL-kL-NAx" secondAttribute="leading" constant="8" id="NW8-KV-vPc"/>
+                                    <constraint firstItem="KWj-8n-2K0" firstAttribute="leading" secondItem="GMo-5B-bnh" secondAttribute="trailing" constant="70" id="0wr-fp-XKy"/>
+                                    <constraint firstItem="GMo-5B-bnh" firstAttribute="leading" secondItem="iFk-kj-d5a" secondAttribute="trailing" constant="70" id="6Kp-gC-dhg"/>
+                                    <constraint firstItem="iFk-kj-d5a" firstAttribute="leading" secondItem="YQL-kL-NAx" secondAttribute="leading" constant="20" id="NW8-KV-vPc"/>
                                     <constraint firstItem="GMo-5B-bnh" firstAttribute="centerY" secondItem="YQL-kL-NAx" secondAttribute="centerY" id="Pfa-z9-wko"/>
                                     <constraint firstItem="KWj-8n-2K0" firstAttribute="centerY" secondItem="YQL-kL-NAx" secondAttribute="centerY" id="iVM-fu-Mx5"/>
-                                    <constraint firstItem="M9q-iF-MaE" firstAttribute="leading" secondItem="KWj-8n-2K0" secondAttribute="trailing" constant="2" id="inS-B0-hUa"/>
                                     <constraint firstItem="M9q-iF-MaE" firstAttribute="centerY" secondItem="YQL-kL-NAx" secondAttribute="centerY" id="qhP-cY-vh9"/>
                                     <constraint firstAttribute="height" constant="40" id="qwB-I2-tKo"/>
-                                    <constraint firstAttribute="trailing" secondItem="M9q-iF-MaE" secondAttribute="trailing" constant="11" id="rOf-Hs-lyB"/>
+                                    <constraint firstAttribute="trailing" secondItem="M9q-iF-MaE" secondAttribute="trailing" constant="20" id="rOf-Hs-lyB"/>
                                     <constraint firstItem="iFk-kj-d5a" firstAttribute="centerY" secondItem="YQL-kL-NAx" secondAttribute="centerY" id="uOd-vQ-asj"/>
-                                    <constraint firstItem="KWj-8n-2K0" firstAttribute="leading" secondItem="GMo-5B-bnh" secondAttribute="trailing" id="x4c-WW-tGu"/>
                                 </constraints>
                             </customView>
                         </subviews>

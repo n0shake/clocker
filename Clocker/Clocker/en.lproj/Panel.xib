@@ -261,7 +261,7 @@
                                 </scroller>
                             </scrollView>
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="C7R-Dq-MFr" userLabel="Slider View">
-                                <rect key="frame" x="0.0" y="145" width="350" height="30"/>
+                                <rect key="frame" x="0.0" y="235" width="350" height="30"/>
                                 <subviews>
                                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vf2-uI-yf3">
                                         <rect key="frame" x="7" y="2" width="201" height="23"/>
@@ -526,7 +526,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="370" height="40"/>
                                 <subviews>
                                     <button toolTip="Close Clocker" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1cR-pI-osG">
-                                        <rect key="frame" x="329" y="7" width="30" height="26"/>
+                                        <rect key="frame" x="320" y="7" width="30" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="WSi-Xj-Kfl"/>
                                             <constraint firstAttribute="width" constant="30" id="j2s-C4-pK5"/>
@@ -541,9 +541,9 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Switch between Menubar/Floating mode." verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YXE-4J-5cn">
-                                        <rect key="frame" x="295" y="10" width="29" height="19"/>
+                                        <rect key="frame" x="220" y="10" width="30" height="19"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="29" id="fWo-31-i3M"/>
+                                            <constraint firstAttribute="width" constant="30" id="fWo-31-i3M"/>
                                             <constraint firstAttribute="height" constant="18" id="v7I-PR-eTK"/>
                                         </constraints>
                                         <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="Float-White" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iwC-c9-CBS">
@@ -556,7 +556,7 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Share Clocker!" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hc7-fH-V7i">
-                                        <rect key="frame" x="260" y="10" width="30" height="21"/>
+                                        <rect key="frame" x="125" y="10" width="30" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Bnf-E1-uaE"/>
                                             <constraint firstAttribute="width" constant="30" id="pke-4M-ob5"/>
@@ -571,9 +571,9 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Open Preferences" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ctq-BV-GPN">
-                                        <rect key="frame" x="8" y="10" width="29" height="19"/>
+                                        <rect key="frame" x="20" y="10" width="30" height="19"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="29" id="oaD-Rr-qht"/>
+                                            <constraint firstAttribute="width" constant="30" id="oaD-Rr-qht"/>
                                             <constraint firstAttribute="height" constant="18" id="t4M-6L-Vqi"/>
                                         </constraints>
                                         <buttonCell key="cell" type="recessed" bezelStyle="recessed" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SIv-Ve-UkG">
@@ -589,15 +589,15 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="YXE-4J-5cn" firstAttribute="leading" secondItem="Hc7-fH-V7i" secondAttribute="trailing" constant="65" id="0Zd-fd-Ove"/>
                                     <constraint firstItem="Ctq-BV-GPN" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" id="6Q7-jc-cTL"/>
-                                    <constraint firstItem="YXE-4J-5cn" firstAttribute="leading" secondItem="Hc7-fH-V7i" secondAttribute="trailing" constant="5" id="GF2-UV-dDg"/>
                                     <constraint firstItem="YXE-4J-5cn" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" id="OHe-Tc-b0V"/>
+                                    <constraint firstItem="Hc7-fH-V7i" firstAttribute="leading" secondItem="Ctq-BV-GPN" secondAttribute="trailing" constant="75" id="bL5-Kt-zaC"/>
                                     <constraint firstAttribute="height" constant="40" id="iYW-fj-EE2"/>
                                     <constraint firstItem="1cR-pI-osG" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" id="oVJ-Xa-cTw"/>
-                                    <constraint firstAttribute="trailing" secondItem="1cR-pI-osG" secondAttribute="trailing" constant="11" id="rb9-gW-QZS"/>
-                                    <constraint firstItem="1cR-pI-osG" firstAttribute="leading" secondItem="YXE-4J-5cn" secondAttribute="trailing" constant="5" id="tCt-DB-tt2"/>
+                                    <constraint firstAttribute="trailing" secondItem="1cR-pI-osG" secondAttribute="trailing" constant="20" id="rb9-gW-QZS"/>
                                     <constraint firstItem="Hc7-fH-V7i" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" constant="-1" id="vPp-mQ-wgE"/>
-                                    <constraint firstItem="Ctq-BV-GPN" firstAttribute="leading" secondItem="B8X-sx-cjT" secondAttribute="leading" constant="8" id="ydm-oF-sVc"/>
+                                    <constraint firstItem="Ctq-BV-GPN" firstAttribute="leading" secondItem="B8X-sx-cjT" secondAttribute="leading" constant="20" id="ydm-oF-sVc"/>
                                 </constraints>
                             </customView>
                         </subviews>
