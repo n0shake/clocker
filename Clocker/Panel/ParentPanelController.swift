@@ -870,10 +870,6 @@ class ParentPanelController: NSWindowController {
         } else {
             updateReviewView()
             ReviewController.prompt()
-
-            if let countryCode = Locale.autoupdatingCurrent.regionCode {
-                Logger.log(object: ["CurrentCountry": countryCode], for: "Remind Later for Feedback")
-            }
         }
     }
 
