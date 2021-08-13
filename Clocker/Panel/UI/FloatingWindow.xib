@@ -36,7 +36,7 @@
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" ignoresCycle="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1000" y="379" width="350" height="460"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <value key="minSize" type="size" width="150" height="50"/>
             <value key="maxSize" type="size" width="350" height="800"/>
             <view key="contentView" misplaced="YES" id="qEx-SC-5Qd">
@@ -374,7 +374,7 @@
                                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="8dR-oy-HpS">
                                                         <size key="itemSize" width="50" height="50"/>
-                                                        <edgeInsets key="sectionInset" left="10" right="0.0" top="0.0" bottom="0.0"/>
+                                                        <edgeInsets key="sectionInset" left="10" right="5" top="0.0" bottom="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <color key="primaryBackgroundColor" red="0.070588235289999995" green="0.95686274510000002" blue="0.10980392160000001" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </collectionView>
