@@ -366,7 +366,7 @@
                                         </constraints>
                                     </customView>
                                     <button wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TK5-db-7bd">
-                                        <rect key="frame" x="220" y="15" width="15" height="15"/>
+                                        <rect key="frame" x="215" y="15" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="15" id="JkE-Dc-CMn"/>
                                             <constraint firstAttribute="height" constant="15" id="U52-GS-JMp"/>
@@ -423,7 +423,7 @@
                                     <constraint firstAttribute="bottom" secondItem="htc-pO-AqH" secondAttribute="bottom" priority="750" constant="30" id="YCJ-zB-dvc"/>
                                     <constraint firstAttribute="trailing" secondItem="htc-pO-AqH" secondAttribute="trailing" id="esR-My-uoD"/>
                                     <constraint firstItem="hma-wI-Sc9" firstAttribute="top" secondItem="TK5-db-7bd" secondAttribute="bottom" constant="-5" id="pIb-qt-jKw"/>
-                                    <constraint firstItem="TK5-db-7bd" firstAttribute="trailing" secondItem="hma-wI-Sc9" secondAttribute="trailing" constant="10" id="yhv-uP-Oih"/>
+                                    <constraint firstItem="TK5-db-7bd" firstAttribute="trailing" secondItem="hma-wI-Sc9" secondAttribute="trailing" constant="5" id="yhv-uP-Oih"/>
                                 </constraints>
                                 <accessibility identifier="Modern Slider Container"/>
                             </customView>

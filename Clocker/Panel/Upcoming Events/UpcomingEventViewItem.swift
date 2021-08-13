@@ -41,6 +41,8 @@ class UpcomingEventViewItem: NSCollectionViewItem {
         } else {
             eventTitleLabel.stringValue = title
         }
+      
+        eventTitleLabel.toolTip = title
 
         if meetingURL != nil {
             zoomButton.isHidden = false
