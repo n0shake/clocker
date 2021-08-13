@@ -85,6 +85,7 @@ class ParentPanelController: NSWindowController {
     @IBOutlet var modernContainerView: ModernSliderContainerView!
     @IBOutlet var goBackwardsButton: NSButton!
     @IBOutlet var goForwardButton: NSButton!
+    @IBOutlet var resetModernSliderButton: NSButton!
 
     // Upcoming Events
     @IBOutlet var upcomingEventCollectionView: NSCollectionView!
@@ -543,7 +544,7 @@ class ParentPanelController: NSWindowController {
 
     @IBAction func openPreferences(_: NSButton) {
         updatePopoverDisplayState() // Popover's class has access to all timezones. Need to close the popover, so that we don't have two copies of selections
-        openPreferences()
+        openPreferencesWindow()
     }
 
     func deleteTimezone(at row: Int) {
@@ -682,7 +683,7 @@ class ParentPanelController: NSWindowController {
         mainTableView.reloadData()
     }
 
-    private func openPreferences() {
+    @objc private func openPreferencesWindow() {
         oneWindow?.showWindow(nil)
         NSApp.activate(ignoringOtherApps: true)
     }
@@ -870,10 +871,6 @@ class ParentPanelController: NSWindowController {
         } else {
             updateReviewView()
             ReviewController.prompt()
-
-            if let countryCode = Locale.autoupdatingCurrent.regionCode {
-                Logger.log(object: ["CurrentCountry": countryCode], for: "Remind Later for Feedback")
-            }
         }
     }
 
@@ -1000,6 +997,8 @@ class ParentPanelController: NSWindowController {
                                       action: #selector(reportIssue), keyEquivalent: "")
         let localizeClocker = NSMenuItem(title: "Localize Clocker...",
                                          action: #selector(openCrowdin), keyEquivalent: "")
+        let openPreferences = NSMenuItem(title: "Preferences",
+                                         action: #selector(openPreferencesWindow), keyEquivalent: "")
 
         let appDisplayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") ?? "Clocker"
         let shortVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") ?? "N/A"
@@ -1008,6 +1007,7 @@ class ParentPanelController: NSWindowController {
         let versionInfo = "\(appDisplayName) \(shortVersion) (\(longVersion))"
         let clockerVersionInfo = NSMenuItem(title: versionInfo, action: nil, keyEquivalent: "")
         clockerVersionInfo.isEnabled = false
+        menuItem.addItem(openPreferences)
         menuItem.addItem(rateClocker)
         menuItem.addItem(sendFeedback)
         menuItem.addItem(localizeClocker)

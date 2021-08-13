@@ -33,7 +33,7 @@ class UpcomingEventViewItem: NSCollectionViewItem {
         calendarColorView.layer?.backgroundColor = color.cgColor
         setCalendarButtonTitle(buttonTitle: subtitle)
         panelDelegate = delegate
-        
+
         if isCancelled {
             let strikethroughString = NSAttributedString(string: title, attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
                                                                                      NSAttributedString.Key.strikethroughColor: NSColor.gray])
