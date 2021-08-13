@@ -61,7 +61,7 @@ extension ParentPanelController {
     private func animateButton(_ hidden: Bool) {
         NSAnimationContext.runAnimationGroup({ context in
             context.duration = 0.5
-            context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+            context.timingFunction = CAMediaTimingFunction(name: hidden ? CAMediaTimingFunctionName.easeOut : CAMediaTimingFunctionName.easeIn)
             resetModernSliderButton.animator().alphaValue = hidden ? 0.0 : 1.0
         }, completionHandler: { [weak self] in
             guard let strongSelf = self else { return }
