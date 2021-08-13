@@ -12,6 +12,8 @@ class UpcomingEventViewItem: NSCollectionViewItem {
     @IBOutlet var supplementaryButtonWidthConstraint: NSLayoutConstraint!
     @IBOutlet var zoomButton: NSButton!
 
+    private static let SupplementaryButtonWidth: CGFloat = 24.0
+    private static let EventLeadingConstraint: CGFloat = 10.0
     private var meetingLink: URL?
     private weak var panelDelegate: UpcomingEventPanelDelegate?
 
@@ -20,62 +22,84 @@ class UpcomingEventViewItem: NSCollectionViewItem {
         zoomButton.action = #selector(zoomButtonAction(_:))
     }
 
+    override func prepareForReuse() {
+        zoomButton.image = nil
+        eventTitleLabel.stringValue = ""
+        eventSubtitleButton.stringValue = ""
+    }
+
+    override var acceptsFirstResponder: Bool {
+        return false
+    }
+
+    // MARK: Setup UI
     func setup(_ title: String,
                _ subtitle: String,
                _ color: NSColor,
-               _ meetingURL: URL?,
+               _ link: URL?,
                _ delegate: UpcomingEventPanelDelegate?,
                _ isCancelled: Bool) {
-        if leadingConstraint.constant != 5 {
-            leadingConstraint.constant = 5
+        if leadingConstraint.constant != UpcomingEventViewItem.EventLeadingConstraint / 2 {
+            leadingConstraint.animator().constant = UpcomingEventViewItem.EventLeadingConstraint / 2
         }
 
-        calendarColorView.layer?.backgroundColor = color.cgColor
-        setCalendarButtonTitle(buttonTitle: subtitle)
         panelDelegate = delegate
+        meetingLink = link
 
-        if isCancelled {
-            let strikethroughString = NSAttributedString(string: title, attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
-                                                                                     NSAttributedString.Key.strikethroughColor: NSColor.gray])
-            eventTitleLabel.attributedStringValue = strikethroughString
-        } else {
-            eventTitleLabel.stringValue = title
-        }
-      
+        setupLabels(title, isCancelled)
+        setupSupplementaryButton(link)
+        setCalendarButtonTitle(buttonTitle: subtitle)
+        calendarColorView.layer?.backgroundColor = color.cgColor
+    }
+
+    private func setupLabels(_ title: String, _ cancellationState: Bool) {
+        let attributes: [NSAttributedString.Key: Any] = cancellationState ? [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
+                                                                             NSAttributedString.Key.strikethroughColor: NSColor.gray] : [:]
+        let attributedString = NSAttributedString(string: title, attributes: attributes)
+        eventTitleLabel.attributedStringValue = attributedString
+
         eventTitleLabel.toolTip = title
+    }
 
-        if meetingURL != nil {
-            zoomButton.isHidden = false
-            meetingLink = meetingURL
-            zoomButton.image = Themer.shared().videoCallImage()
-            supplementaryButtonWidthConstraint.constant = 24.0
-        } else {
+    private func setupSupplementaryButton(_ meetingURL: URL?) {
+        guard meetingURL != nil else {
             zoomButton.image = nil
             supplementaryButtonWidthConstraint.constant = 0.0
+            return
+        }
+
+        zoomButton.isHidden = false
+        zoomButton.image = Themer.shared().videoCallImage()
+
+        if supplementaryButtonWidthConstraint.constant != UpcomingEventViewItem.SupplementaryButtonWidth {
+            supplementaryButtonWidthConstraint.constant = UpcomingEventViewItem.SupplementaryButtonWidth
         }
     }
 
     func setupUndeterminedState(_ delegate: UpcomingEventPanelDelegate?) {
-        if leadingConstraint.constant != 10 {
-            leadingConstraint.constant = 10
-        }
-
-        eventTitleLabel.stringValue = NSLocalizedString("See your next Calendar event here.", comment: "Next Event Label for no Calendar access")
-        setCalendarButtonTitle(buttonTitle: NSLocalizedString("Click here to start.", comment: "Button Title for no Calendar access"))
-        calendarColorView.layer?.backgroundColor = NSColor.systemBlue.cgColor
-        zoomButton.image = Themer.shared().removeImage()
         panelDelegate = delegate
+        setAlternateState(NSLocalizedString("See your next Calendar event here.", comment: "Next Event Label for no Calendar access"),
+                          NSLocalizedString("Click here to start.", comment: "Button Title for no Calendar access"),
+                          NSColor.systemBlue,
+                          Themer.shared().removeImage())
     }
 
     func setupEmptyState() {
-        if leadingConstraint.constant != 10 {
-            leadingConstraint.constant = 10
+        setAlternateState(NSLocalizedString("No upcoming events for today!", comment: "Next Event Label with no upcoming event"),
+                          NSLocalizedString("Great going.", comment: "Button Title for no upcoming event"),
+                          NSColor.systemGreen,
+                          nil)
+    }
+
+    private func setAlternateState(_ title: String, _ buttonTitle: String, _ color: NSColor, _ image: NSImage? = nil) {
+        if leadingConstraint.constant != UpcomingEventViewItem.EventLeadingConstraint {
+            leadingConstraint.animator().constant = UpcomingEventViewItem.EventLeadingConstraint
         }
 
-        eventTitleLabel.stringValue = NSLocalizedString("No upcoming events for today!", comment: "Next Event Label with no upcoming event")
-        setCalendarButtonTitle(buttonTitle: NSLocalizedString("Great going.", comment: "Button Title for no upcoming event"))
-        calendarColorView.layer?.backgroundColor = NSColor.systemGreen.cgColor
-        zoomButton.image = Themer.shared().removeImage()
+        eventTitleLabel.stringValue = title
+        setCalendarButtonTitle(buttonTitle: buttonTitle)
+        calendarColorView.layer?.backgroundColor = color.cgColor
+        zoomButton.image = image
     }
 
     private func setCalendarButtonTitle(buttonTitle: String) {
@@ -85,16 +109,13 @@ class UpcomingEventViewItem: NSCollectionViewItem {
 
         if let boldFont = NSFont(name: "Avenir", size: 11) {
             let attributes = [NSAttributedString.Key.foregroundColor: NSColor.gray, NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.font: boldFont]
-
             let attributedString = NSAttributedString(string: buttonTitle, attributes: attributes)
             eventSubtitleButton.attributedTitle = attributedString
             eventSubtitleButton.toolTip = attributedString.string
         }
     }
 
-    override var acceptsFirstResponder: Bool {
-        return false
-    }
+    // MARK: Button Actions
 
     @IBAction func calendarButtonAction(_ sender: NSButton) {
         panelDelegate?.didClickSupplementaryButton(sender)
