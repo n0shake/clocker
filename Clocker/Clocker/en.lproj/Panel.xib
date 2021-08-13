@@ -22,6 +22,7 @@
                 <outlet property="modernSliderLabel" destination="e2d-EI-Dm0" id="eby-rL-B21"/>
                 <outlet property="pinButton" destination="YXE-4J-5cn" id="k6V-HK-7XG"/>
                 <outlet property="preferencesButton" destination="Ctq-BV-GPN" id="cdL-5h-qmx"/>
+                <outlet property="resetModernSliderButton" destination="TK5-db-7bd" id="kFe-rX-u1L"/>
                 <outlet property="reviewView" destination="TDn-Kk-KkV" id="YdI-Y4-zrg"/>
                 <outlet property="rightButton" destination="w3d-CG-aBO" id="rcF-Gw-CtM"/>
                 <outlet property="roundedDateView" destination="I2Z-NZ-795" id="Oa9-q9-gZx"/>
@@ -261,7 +262,7 @@
                                 </scroller>
                             </scrollView>
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="C7R-Dq-MFr" userLabel="Slider View">
-                                <rect key="frame" x="0.0" y="245" width="350" height="30"/>
+                                <rect key="frame" x="0.0" y="155" width="350" height="30"/>
                                 <subviews>
                                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vf2-uI-yf3">
                                         <rect key="frame" x="7" y="2" width="201" height="23"/>
@@ -364,6 +365,20 @@
                                             <constraint firstAttribute="trailing" secondItem="e2d-EI-Dm0" secondAttribute="trailing" id="vFB-mV-hbB"/>
                                         </constraints>
                                     </customView>
+                                    <button wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TK5-db-7bd">
+                                        <rect key="frame" x="220" y="15" width="15" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="15" id="JkE-Dc-CMn"/>
+                                            <constraint firstAttribute="height" constant="15" id="U52-GS-JMp"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="PowerIcon-White" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="ba3-eN-C02">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="resetModernSlider:" target="-2" id="Nvd-lK-hK3"/>
+                                        </connections>
+                                    </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aW8-hr-4Zh">
                                         <rect key="frame" x="75" y="0.0" width="45" height="20"/>
                                         <constraints>
@@ -407,6 +422,8 @@
                                     <constraint firstAttribute="bottom" secondItem="hma-wI-Sc9" secondAttribute="bottom" id="TDr-Pa-iYA"/>
                                     <constraint firstAttribute="bottom" secondItem="htc-pO-AqH" secondAttribute="bottom" priority="750" constant="30" id="YCJ-zB-dvc"/>
                                     <constraint firstAttribute="trailing" secondItem="htc-pO-AqH" secondAttribute="trailing" id="esR-My-uoD"/>
+                                    <constraint firstItem="hma-wI-Sc9" firstAttribute="top" secondItem="TK5-db-7bd" secondAttribute="bottom" constant="-5" id="pIb-qt-jKw"/>
+                                    <constraint firstItem="TK5-db-7bd" firstAttribute="trailing" secondItem="hma-wI-Sc9" secondAttribute="trailing" constant="10" id="yhv-uP-Oih"/>
                                 </constraints>
                                 <accessibility identifier="Modern Slider Container"/>
                             </customView>
@@ -663,6 +680,7 @@
         <image name="Extra" width="700" height="700"/>
         <image name="Float-White" width="15" height="13"/>
         <image name="PowerIcon" width="350" height="350"/>
+        <image name="PowerIcon-White" width="350" height="350"/>
         <image name="SharingDarkIcon" width="19" height="22"/>
         <namedColor name="Accent Color">
             <color red="0.092000000178813934" green="0.0" blue="0.99900001287460327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

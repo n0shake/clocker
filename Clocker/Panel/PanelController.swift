@@ -99,6 +99,7 @@ class PanelController: ParentPanelController {
         sliderDatePicker.dateValue = Date()
         closestQuarterTimeRepresentation = findClosestQuarterTimeApproximation()
         modernSliderLabel.stringValue = "Time Scroller"
+        resetModernSliderButton.isHidden = true
 
         if modernSlider != nil {
             let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSlider.numberOfItems(inSection: 0) / 2, section: 0)])
