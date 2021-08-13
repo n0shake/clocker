@@ -68,10 +68,6 @@ class ThinScroller: NSScroller {
         return 15
     }
 
-    override class func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
     override func drawKnobSlot(in _: NSRect, highlight _: Bool) {
         // Leaving this empty to prevent background drawing
     }

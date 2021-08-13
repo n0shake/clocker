@@ -414,9 +414,10 @@ extension EventCenter {
                     || actualLink.contains("indigo.collocall.de")
                     || actualLink.contains("public.senfcall.de")
                     || actualLink.contains("youcanbook.me/zoom/")
-                    || actualLink.contains("workplace.com/groupcall") {
-                    if let zoomLink = result.url {
-                        return zoomLink
+                    || actualLink.contains("workplace.com/groupcall")
+                    || actualLink.contains("bluejeans.com/"){
+                    if let meetingLink = result.url {
+                        return meetingLink
                     }
                 }
             }
