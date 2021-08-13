@@ -210,8 +210,8 @@ extension Themer {
 
         return
             themeIndex == .light
-                ? NSImage(named: NSImage.Name("Settings"))!
-                : NSImage(named: NSImage.Name("Settings-White"))!
+            ? NSImage(named: NSImage.Name("Settings"))!
+            : NSImage(named: NSImage.Name("Settings-White"))!
     }
 
     func pinImage() -> NSImage {
@@ -513,6 +513,10 @@ extension Themer {
 
     func goForwardsImage() -> NSImage? {
         return symbolImage(for: "goforward.15")
+    }
+
+    func resetModernSliderImage() -> NSImage? {
+        return symbolImage(for: "xmark.circle.fill")
     }
 
     private func symbolImage(for name: String) -> NSImage? {
