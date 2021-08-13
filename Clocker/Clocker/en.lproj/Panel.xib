@@ -373,6 +373,7 @@
                                         <buttonCell key="cell" type="bevel" title="&lt;&lt;" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="cLW-iV-S4k">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
+                                            <string key="keyEquivalent"></string>
                                         </buttonCell>
                                         <connections>
                                             <action selector="goBackward:" target="-2" id="oE4-v9-7LC"/>
@@ -387,6 +388,7 @@
                                         <buttonCell key="cell" type="bevel" title="&gt;&gt;" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="hsm-i0-5Ct">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
+                                            <string key="keyEquivalent"></string>
                                         </buttonCell>
                                         <connections>
                                             <action selector="goForward:" target="-2" id="ax0-sN-nD8"/>
