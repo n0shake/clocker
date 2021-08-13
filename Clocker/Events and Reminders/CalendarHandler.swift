@@ -389,7 +389,9 @@ extension EventCenter {
         for result in results {
             if result.resultType == .link, var actualLink = result.url?.absoluteString {
                 // Check for Zoom links
-                if actualLink.contains("zoom.us/j/") || actualLink.contains("zoom.us/s/") || actualLink.contains("zoom.us/w/") {
+                if actualLink.contains("zoom.us/j/")
+                    || actualLink.contains("zoom.us/s/")
+                    || actualLink.contains("zoom.us/w/") {
                     // Create a Zoom App link
                     let workspace = NSWorkspace.shared
                     if workspace.urlForApplication(toOpen: URL(string: "zoommtg://")!) != nil {
@@ -415,7 +417,7 @@ extension EventCenter {
                     || actualLink.contains("public.senfcall.de")
                     || actualLink.contains("youcanbook.me/zoom/")
                     || actualLink.contains("workplace.com/groupcall")
-                    || actualLink.contains("bluejeans.com/"){
+                    || actualLink.contains("bluejeans.com/") {
                     if let meetingLink = result.url {
                         return meetingLink
                     }
