@@ -85,6 +85,7 @@ class ParentPanelController: NSWindowController {
     @IBOutlet var modernContainerView: ModernSliderContainerView!
     @IBOutlet var goBackwardsButton: NSButton!
     @IBOutlet var goForwardButton: NSButton!
+    @IBOutlet var resetModernSliderButton: NSButton!
 
     // Upcoming Events
     @IBOutlet var upcomingEventCollectionView: NSCollectionView!
@@ -997,7 +998,7 @@ class ParentPanelController: NSWindowController {
         let localizeClocker = NSMenuItem(title: "Localize Clocker...",
                                          action: #selector(openCrowdin), keyEquivalent: "")
         let openPreferences = NSMenuItem(title: "Preferences",
-                                       action: #selector(openPreferencesWindow), keyEquivalent: "")
+                                         action: #selector(openPreferencesWindow), keyEquivalent: "")
 
         let appDisplayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") ?? "Clocker"
         let shortVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") ?? "N/A"
