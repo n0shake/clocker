@@ -306,15 +306,22 @@ class PreferencesTest: XCTestCase {
 
         // Let's make sure we have > 1 timezones first
         let favourites = preferencesTable.tableRows
+        
+        if (favourites.count < 2) {
+            addAPlace(place: "UTC", to: app)
+        }
+        
         XCTAssertTrue(favourites.count > 1)
-
+        sleep(2)
+        
         // Select two timezones
         let unfavouritedMenubarsQuery = preferencesTable.checkBoxes.matching(NSPredicate(format: "value == 0", ""))
 
         if unfavouritedMenubarsQuery.count > 1 {
-            for _ in 0 ..< 2 {
+            for _ in 0 ..< unfavouritedMenubarsQuery.count {
                 let checkbox = unfavouritedMenubarsQuery.element(boundBy: 0)
                 checkbox.click()
+                sleep(2)
             }
         }
 
@@ -442,7 +449,7 @@ extension XCTestCase {
     }
 
     private func deleteAtRow(_ rowToDelete: XCUIElement, for _: XCUIApplication, shouldSleep: Bool) {
-        rowToDelete.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0)).click()
+        rowToDelete.click()
         rowToDelete.typeKey(XCUIKeyboardKey.delete, modifierFlags: XCUIElement.KeyModifierFlags())
         if shouldSleep {
             sleep(2)
