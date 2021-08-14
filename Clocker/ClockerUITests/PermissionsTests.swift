@@ -14,6 +14,10 @@ class PermissionsTests: XCTestCase {
     }
 
     func testAcceptingCalendarPermissions() {
+        if app.tables["FloatingTableView"].exists {
+            app.buttons["FloatingPin"].click()
+        }
+        
         app.tapMenubarIcon()
         app/*@START_MENU_TOKEN@*/ .buttons["Preferences"]/*[[".dialogs[\"Clocker Panel\"].buttons[\"Preferences\"]",".buttons[\"Preferences\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/ .click()
 
@@ -52,6 +56,10 @@ class PermissionsTests: XCTestCase {
     }
 
     func testAcceptingRemindersPermissions() {
+        if app.tables["FloatingTableView"].exists {
+            app.tapMenubarIcon()
+            app.buttons["FloatingPin"].click()
+        }
         app.tapMenubarIcon()
         app/*@START_MENU_TOKEN@*/ .buttons["Preferences"]/*[[".dialogs[\"Clocker Panel\"].buttons[\"Preferences\"]",".buttons[\"Preferences\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/ .click()
 

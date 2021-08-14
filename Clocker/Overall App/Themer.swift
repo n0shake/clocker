@@ -516,7 +516,11 @@ extension Themer {
     }
 
     func resetModernSliderImage() -> NSImage? {
-        return symbolImage(for: "xmark.circle.fill")
+        if let xmarkImage = symbolImage(for: "xmark.circle.fill") {
+            return xmarkImage
+        }
+        
+        return removeImage()
     }
 
     private func symbolImage(for name: String) -> NSImage? {
