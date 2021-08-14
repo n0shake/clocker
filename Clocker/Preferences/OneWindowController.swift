@@ -84,11 +84,11 @@ class OneWindowController: NSWindowController {
         var identifierTOImageMapping: [String: NSImage] = ["Appearance Tab": themer.appearanceTabImage(),
                                                            "Calendar Tab": themer.calendarTabImage(),
                                                            "Permissions Tab": themer.privacyTabImage()]
-        
+
         if let prefsTabImage = themer.generalTabImage() {
             identifierTOImageMapping["Preferences Tab"] = prefsTabImage
         }
-        
+
         if let aboutTabImage = themer.aboutTabImage() {
             identifierTOImageMapping["About Tab"] = aboutTabImage
         }

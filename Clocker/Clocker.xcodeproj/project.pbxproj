@@ -46,6 +46,10 @@
 		3531F82226938D7700DF0111 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80526938D7700DF0111 /* GoogleDataTransport.framework */; };
 		3531F82326938D7700DF0111 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531F80526938D7700DF0111 /* GoogleDataTransport.framework */; };
 		353B5BC52698B78A0023858D /* UpcomingEventStatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B5BC42698B78A0023858D /* UpcomingEventStatusItemView.swift */; };
+		3548C45A26BECF1B00AFB533 /* UpcomingEventViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3548C45926BECF1B00AFB533 /* UpcomingEventViewItem.xib */; };
+		3548C45D26BEEF4C00AFB533 /* ParentPanelController+UpcomingEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3548C45C26BEEF4C00AFB533 /* ParentPanelController+UpcomingEvents.swift */; };
+		3548C45F26BEEFB400AFB533 /* UpcomingEventsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3548C45E26BEEFB400AFB533 /* UpcomingEventsDataSource.swift */; };
+		3548C46126BEEFE400AFB533 /* UpcomingEventViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3548C46026BEEFE400AFB533 /* UpcomingEventViewItem.swift */; };
 		357391872507277500D30819 /* TimeMarkerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357391852507277500D30819 /* TimeMarkerViewItem.swift */; };
 		357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357391862507277500D30819 /* HourMarkerViewItem.xib */; };
 		3579765E2680208C009DDA6E /* ParentPanelController+ModernSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3579765D2680208C009DDA6E /* ParentPanelController+ModernSlider.swift */; };
@@ -119,6 +123,7 @@
 		35C36FA22259ED6D002FA5C6 /* RemindersHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F9F2259ED6D002FA5C6 /* RemindersHandler.swift */; };
 		35C36FA42259EEC2002FA5C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36FA32259EEC2002FA5C6 /* AppDelegate.swift */; };
 		35DFBCEF26A8468900D6648B /* ConfigExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFBCEE26A8468900D6648B /* ConfigExport.swift */; };
+		35DFBCF126A8479000D6648B /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35DFBCF026A8479000D6648B /* Keys.plist */; };
 		35E65125268EDD2E00E3E1E3 /* Toasty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E65124268EDD2E00E3E1E3 /* Toasty.swift */; };
 		9A0385BB269E3434003B5E72 /* StandardMenubarHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0385BA269E3434003B5E72 /* StandardMenubarHandlerTests.swift */; };
 		9A0385C0269E8891003B5E72 /* PermissionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0385BF269E8891003B5E72 /* PermissionsTests.swift */; };
@@ -272,6 +277,10 @@
 		3531F80526938D7700DF0111 /* GoogleDataTransport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleDataTransport.framework; path = Frameworks/Firebase/GoogleDataTransport.framework; sourceTree = "<group>"; };
 		353B5BC42698B78A0023858D /* UpcomingEventStatusItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventStatusItemView.swift; sourceTree = "<group>"; };
 		353B5BC72698D4BB0023858D /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3548C45926BECF1B00AFB533 /* UpcomingEventViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpcomingEventViewItem.xib; sourceTree = "<group>"; };
+		3548C45C26BEEF4C00AFB533 /* ParentPanelController+UpcomingEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParentPanelController+UpcomingEvents.swift"; sourceTree = "<group>"; };
+		3548C45E26BEEFB400AFB533 /* UpcomingEventsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsDataSource.swift; sourceTree = "<group>"; };
+		3548C46026BEEFE400AFB533 /* UpcomingEventViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventViewItem.swift; sourceTree = "<group>"; };
 		3569A44E25441F320087E254 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		357391852507277500D30819 /* TimeMarkerViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMarkerViewItem.swift; sourceTree = "<group>"; };
 		357391862507277500D30819 /* HourMarkerViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourMarkerViewItem.xib; sourceTree = "<group>"; };
@@ -348,6 +357,7 @@
 		35C36F9F2259ED6D002FA5C6 /* RemindersHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersHandler.swift; sourceTree = "<group>"; };
 		35C36FA32259EEC2002FA5C6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		35DFBCEE26A8468900D6648B /* ConfigExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigExport.swift; sourceTree = "<group>"; };
+		35DFBCF026A8479000D6648B /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Keys.plist; path = ../Internal/Keys.plist; sourceTree = "<group>"; };
 		35E65124268EDD2E00E3E1E3 /* Toasty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toasty.swift; sourceTree = "<group>"; };
 		9A0385BA269E3434003B5E72 /* StandardMenubarHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardMenubarHandlerTests.swift; sourceTree = "<group>"; };
 		9A0385BF269E8891003B5E72 /* PermissionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsTests.swift; sourceTree = "<group>"; };
@@ -534,6 +544,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3548C45B26BEEF2100AFB533 /* Upcoming Events */ = {
+			isa = PBXGroup;
+			children = (
+				3548C45C26BEEF4C00AFB533 /* ParentPanelController+UpcomingEvents.swift */,
+				3548C45E26BEEFB400AFB533 /* UpcomingEventsDataSource.swift */,
+				3548C46026BEEFE400AFB533 /* UpcomingEventViewItem.swift */,
+				3548C45926BECF1B00AFB533 /* UpcomingEventViewItem.xib */,
+			);
+			path = "Upcoming Events";
+			sourceTree = "<group>";
+		};
 		35C36EB522595834002FA5C6 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,6 +620,7 @@
 		35C36F242259D64D002FA5C6 /* Panel */ = {
 			isa = PBXGroup;
 			children = (
+				3548C45B26BEEF2100AFB533 /* Upcoming Events */,
 				35C36F632259DE9D002FA5C6 /* Rate Controller */,
 				35C36F522259DC9B002FA5C6 /* UI */,
 				35C36F512259DC85002FA5C6 /* Data Layer */,
@@ -889,6 +911,7 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
+				35DFBCF026A8479000D6648B /* Keys.plist */,
 				35B2FEE4259A2C25005DA84D /* CoreModelKit */,
 				35B2FED4259A2244005DA84D /* CoreLoggerKit */,
 				35B2FEB1259A1649005DA84D /* StartupKit */,
@@ -1200,6 +1223,8 @@
 				3531F7C226936C6E00DF0111 /* GoogleService-Info.plist in Resources */,
 				35C36F17225961DA002FA5C6 /* DateTools.bundle in Resources */,
 				35C36EF322595F14002FA5C6 /* WelcomeView.xib in Resources */,
+				3548C45A26BECF1B00AFB533 /* UpcomingEventViewItem.xib in Resources */,
+				35DFBCF126A8479000D6648B /* Keys.plist in Resources */,
 				35C36EF822595F14002FA5C6 /* Onboarding.storyboard in Resources */,
 				35C36F612259DE67002FA5C6 /* NotesPopover.xib in Resources */,
 				9A3169C11D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist in Resources */,
@@ -1278,6 +1303,7 @@
 				35C36F672259DF4C002FA5C6 /* ReviewController.swift in Sources */,
 				35C36F472259D892002FA5C6 /* Reach.swift in Sources */,
 				35C36EF222595F14002FA5C6 /* OnboardingWelcomeViewController.swift in Sources */,
+				3548C45F26BEEFB400AFB533 /* UpcomingEventsDataSource.swift in Sources */,
 				35C36F732259E1AA002FA5C6 /* FloatingWindowController.swift in Sources */,
 				35C36F6F2259E185002FA5C6 /* CustomSliderCell.swift in Sources */,
 				35C36EF122595F14002FA5C6 /* OnboardingPermissionsViewController.swift in Sources */,
@@ -1292,6 +1318,7 @@
 				35C36F16225961DA002FA5C6 /* Date+Inits.swift in Sources */,
 				35C36F4F2259D981002FA5C6 /* AppDefaults.swift in Sources */,
 				35C36F5D2259DD96002FA5C6 /* TimezoneDataOperations.swift in Sources */,
+				3548C45D26BEEF4C00AFB533 /* ParentPanelController+UpcomingEvents.swift in Sources */,
 				3508CC942599FFEC000E3530 /* MenubarHandler.swift in Sources */,
 				35C36F14225961DA002FA5C6 /* Integer+DateTools.swift in Sources */,
 				35C36FA22259ED6D002FA5C6 /* RemindersHandler.swift in Sources */,
@@ -1335,6 +1362,7 @@
 				35C36F2022596253002FA5C6 /* OneWindowController.swift in Sources */,
 				35C36F0E225961DA002FA5C6 /* Date+Bundle.swift in Sources */,
 				9AB6F1672259D23200A44663 /* PermissionsViewController.swift in Sources */,
+				3548C46126BEEFE400AFB533 /* UpcomingEventViewItem.swift in Sources */,
 				9AB6F1642259D1B900A44663 /* ParentViewController.swift in Sources */,
 				35C36F1C225961DA002FA5C6 /* TimePeriodChain.swift in Sources */,
 				3508CCAA259A0027000E3530 /* StatusContainerView.swift in Sources */,
@@ -1542,7 +1570,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 97;
+				CURRENT_PROJECT_VERSION = 98;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1575,7 +1603,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 21.07.03;
+				MARKETING_VERSION = 21.08.01;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Clocker;
@@ -2111,7 +2139,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 97;
+				CURRENT_PROJECT_VERSION = 98;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -2145,7 +2173,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 21.07.03;
+				MARKETING_VERSION = 21.08.01;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
@@ -2193,7 +2221,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 97;
+				CURRENT_PROJECT_VERSION = 98;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2226,7 +2254,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 21.07.03;
+				MARKETING_VERSION = 21.08.01;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D RELEASE";

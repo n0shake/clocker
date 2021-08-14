@@ -27,8 +27,8 @@ class OnboardingSearchController: NSViewController {
 
     private var geocodingKey: String = {
         guard let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
-              let dictionary = NSDictionary(contentsOfFile: path),
-              let apiKey = dictionary["GeocodingKey"] as? String
+            let dictionary = NSDictionary(contentsOfFile: path),
+            let apiKey = dictionary["GeocodingKey"] as? String
         else {
             assertionFailure("Unable to find the API key")
             return ""
@@ -61,7 +61,7 @@ class OnboardingSearchController: NSViewController {
         resultsTableView.reloadData()
 
         func setupUndoButton() {
-          let font = NSFont(name: "Avenir", size: 13) ?? NSFont.systemFont(ofSize: 13)
+            let font = NSFont(name: "Avenir", size: 13) ?? NSFont.systemFont(ofSize: 13)
             let attributes = [NSAttributedString.Key.foregroundColor: NSColor.linkColor,
                               NSAttributedString.Key.font: font]
             undoButton.attributedTitle = NSAttributedString(string: "UNDO", attributes: attributes)
@@ -375,7 +375,7 @@ class OnboardingSearchController: NSViewController {
                                                self.findLocalSearchResultsForTimezones()
                                                self.prepareUIForPresentingResults()
                                            }
-                                       })
+        })
     }
 
     private func presentErrorMessage(_ errorMessage: String) {
@@ -516,8 +516,8 @@ extension OnboardingSearchController: NSSearchFieldDelegate {
         // return true if the action was handled; otherwise false
         return false
     }
-    
+
     func searchFieldDidEndSearching(_ sender: NSSearchField) {
-        self.search(sender)
+        search(sender)
     }
 }

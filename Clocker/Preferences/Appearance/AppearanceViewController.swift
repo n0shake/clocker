@@ -62,10 +62,8 @@ class AppearanceViewController: ParentViewController {
             "6 days",
             "7 days",
         ])
-        
-        if #available(macOS 11.0, *) {
-            
-        } else {
+
+        if #available(macOS 11.0, *) {} else {
             theme.font = NSFont.systemFont(ofSize: 13)
         }
 
@@ -126,8 +124,7 @@ class AppearanceViewController: ParentViewController {
             sliderDayRangePopup.selectItem(at: selectedIndex.intValue)
         }
 
-        if #available(macOS 10.14, *) {
-        } else {
+        if #available(macOS 10.14, *) {} else {
             theme.removeItem(at: 2)
         }
 
@@ -153,7 +150,7 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet var menubarModeLabel: NSTextField!
     @IBOutlet var previewLabel: NSTextField!
     @IBOutlet var miscelleaneousLabel: NSTextField!
-    @IBOutlet weak var dstTransitionField: NSTextField!
+    @IBOutlet var dstTransitionField: NSTextField!
 
     // Panel Preview
     @IBOutlet var previewPanelTableView: NSTableView!
@@ -180,8 +177,8 @@ class AppearanceViewController: ParentViewController {
          previewLabel, miscelleaneousLabel, dstTransitionField].forEach {
             $0?.textColor = Themer.shared().mainTextColor()
         }
-        
-        self.previewPanelTableView.backgroundColor = Themer.shared().mainBackgroundColor()
+
+        previewPanelTableView.backgroundColor = Themer.shared().mainBackgroundColor()
     }
 
     @IBAction func timeFormatSelectionChanged(_ sender: NSPopUpButton) {
@@ -191,8 +188,7 @@ class AppearanceViewController: ParentViewController {
         refresh(panel: true, floating: true)
 
         if let selectedFormat = sender.selectedItem?.title,
-           selectedFormat.contains("ss")
-        {
+            selectedFormat.contains("ss") {
             print("Seconds are contained")
             guard let panelController = PanelController.panel() else { return }
             panelController.pauseTimer()

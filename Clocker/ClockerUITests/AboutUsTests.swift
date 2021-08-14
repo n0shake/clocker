@@ -32,12 +32,12 @@ class AboutUsTests: XCTestCase {
         app.buttons["Preferences"].click()
 
         tapAboutTab()
-        
+
         app.checkBoxes["ClockerPrivateFeedback"].click()
         app.buttons["Send Feedback"].click()
 
         XCTAssertFalse(app.progressIndicators["ProgressIndicator"].exists)
-        
+
         sleep(2) // Wait for Toast to disappear
 
         // Close window

@@ -144,7 +144,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
                                                              panelController.deleteTimezone(at: row)
                                                          }
 
-                                                     })
+            })
 
             if #available(OSX 11.0, *) {
                 swipeToDelete.image = Themer.shared().filledTrashImage()

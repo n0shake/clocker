@@ -157,12 +157,32 @@ extension EventCenter {
 
         let relevantEvents = filteredEvents[autoupdatingCalendar.startOfDay(for: Date())] ?? []
 
-        let filteredEvent = relevantEvents.filter {
+        let filteredEvents = relevantEvents.filter {
             $0.event.isAllDay == false && $0.event.startDate.timeIntervalSinceNow > -300
-        }.first
+        }
 
-        if let firstEvent = filteredEvent {
-            return firstEvent
+        if filteredEvents.count == 1 { return filteredEvents.first }
+
+        // If there are multipl events coming up, prefer the ones the currentUser has accepted
+        let acceptedEvents = filteredEvents.filter {
+            $0.attendeStatus == .accepted
+        }
+        let optionalEvents = filteredEvents.filter {
+            $0.attendeStatus == .tentative
+        }
+
+        if let firstAcceptedEvent = acceptedEvents.first {
+            return firstAcceptedEvent
+        }
+
+        // If there are no accepted events, prefer the first optional event
+        if acceptedEvents.isEmpty, !optionalEvents.isEmpty {
+            return optionalEvents.first
+        }
+
+        // Otherwise check if there's a filtered event at all and return it
+        if let first = filteredEvents.first {
+            return first
         }
 
         let filteredAllDayEvent = relevantEvents.filter {
@@ -170,6 +190,19 @@ extension EventCenter {
         }.first
 
         return filteredAllDayEvent
+    }
+
+    func upcomingEventsForDay(_: [EventInfo]) -> [EventInfo]? {
+        if calendarAccessDenied() || calendarAccessNotDetermined() {
+            return nil
+        }
+
+        let todayEvents = filteredEvents[autoupdatingCalendar.startOfDay(for: Date())] ?? []
+        let tomorrowEvents = filteredEvents[autoupdatingCalendar.startOfDay(for: Date().addingTimeInterval(86400))] ?? []
+        let relevantEvents = todayEvents + tomorrowEvents
+        return relevantEvents.filter {
+            $0.event.startDate.timeIntervalSinceNow > -300
+        }
     }
 
     func initializeStoreIfNeccesary() {
@@ -333,13 +366,15 @@ extension EventCenter {
         let isEndDate = autoupdatingCalendar.isDate(date, inSameDayAs: event.endDate) && (event.startDate.compare(date) == .orderedAscending)
         let isAllDay = event.isAllDay || (event.startDate.compare(date) == .orderedAscending && event.endDate.compare(nextDate) == .orderedSame)
         let isSingleDay = event.isAllDay && (event.startDate.compare(date) == .orderedSame && event.endDate.compare(nextDate) == .orderedSame)
+        let eventParticipationStatus = attendingStatusForUser(event)
         let meetingURL = retrieveMeetingURL(event)
         let eventInfo = EventInfo(event: event,
                                   isStartDate: isStartDate,
                                   isEndDate: isEndDate,
                                   isAllDay: isAllDay,
                                   isSingleDay: isSingleDay,
-                                  meetingURL: meetingURL)
+                                  meetingURL: meetingURL,
+                                  attendeStatus: eventParticipationStatus)
         return eventInfo
     }
 
@@ -354,7 +389,9 @@ extension EventCenter {
         for result in results {
             if result.resultType == .link, var actualLink = result.url?.absoluteString {
                 // Check for Zoom links
-                if actualLink.contains("zoom.us/j/") || actualLink.contains("zoom.us/s/") || actualLink.contains("zoom.us/w/") {
+                if actualLink.contains("zoom.us/j/")
+                    || actualLink.contains("zoom.us/s/")
+                    || actualLink.contains("zoom.us/w/") {
                     // Create a Zoom App link
                     let workspace = NSWorkspace.shared
                     if workspace.urlForApplication(toOpen: URL(string: "zoommtg://")!) != nil {
@@ -380,9 +417,9 @@ extension EventCenter {
                     || actualLink.contains("public.senfcall.de")
                     || actualLink.contains("youcanbook.me/zoom/")
                     || actualLink.contains("workplace.com/groupcall")
-                {
-                    if let zoomLink = result.url {
-                        return zoomLink
+                    || actualLink.contains("bluejeans.com/") {
+                    if let meetingLink = result.url {
+                        return meetingLink
                     }
                 }
             }
@@ -392,7 +429,7 @@ extension EventCenter {
 
     private func retrieveMeetingURL(_ event: EKEvent) -> URL? {
         if EventCenter.dataDetector == nil {
-            var dataDetector: NSDataDetector? = nil
+            var dataDetector: NSDataDetector?
             do {
                 dataDetector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
             } catch {
@@ -416,6 +453,23 @@ extension EventCenter {
 
         return nil
     }
+
+    private func attendingStatusForUser(_ event: EKEvent) -> EKParticipantStatus {
+        // First check if the current user is the organizer
+        if event.organizer?.isCurrentUser == true {
+            return event.organizer?.participantStatus ?? .unknown
+        }
+
+        guard let attendes = event.attendees else {
+            return .unknown
+        }
+
+        for attende in attendes where attende.isCurrentUser {
+            return attende.participantStatus
+        }
+
+        return .unknown
+    }
 }
 
 struct CalendarInfo {
@@ -430,17 +484,23 @@ struct EventInfo {
     let isAllDay: Bool
     let isSingleDay: Bool
     let meetingURL: URL?
-    
+    let attendeStatus: EKParticipantStatus
+
     func metadataForMeeting() -> String {
         let timeIntervalSinceNowForMeeting = event.startDate.timeIntervalSinceNow
-        if (timeIntervalSinceNowForMeeting < 0 && timeIntervalSinceNowForMeeting > -300) {
-           return "started \(event.startDate.shortTimeAgoSinceNow) ago."
-        } else {
+        if timeIntervalSinceNowForMeeting < 0, timeIntervalSinceNowForMeeting > -300 {
+            return "started \(event.startDate.shortTimeAgoSinceNow) ago."
+        } else if event.startDate.isToday {
             let timeSince = Date().timeAgo(since: event.startDate)
             let withoutAn = timeSince.replacingOccurrences(of: "an", with: CLEmptyString)
             let withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
 
             return "in \(withoutAgo.lowercased())"
+        } else if event.startDate.isTomorrow {
+            let hoursUntil = event.startDate.hoursUntil
+            return "in \(hoursUntil)h"
         }
+
+        return "Error"
     }
 }
