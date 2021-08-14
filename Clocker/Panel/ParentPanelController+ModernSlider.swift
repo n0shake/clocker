@@ -18,15 +18,17 @@ extension ParentPanelController: NSCollectionViewDataSource {
 extension ParentPanelController {
     func setupModernSliderIfNeccessary() {
         if modernSlider != nil {
+            resetModernSliderButton.image = Themer.shared().resetModernSliderImage()
+
             goBackwardsButton.image = Themer.shared().goBackwardsImage()
             goForwardButton.image = Themer.shared().goForwardsImage()
-            
+
             goForwardButton.isContinuous = true
             goBackwardsButton.isContinuous = true
-            
+
             goBackwardsButton.toolTip = "Navigate 15 mins back"
             goForwardButton.toolTip = "Navigate 15 mins forward"
-            
+
             modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             modernSlider.enclosingScrollView?.backgroundColor = NSColor.clear
             modernSlider.setAccessibility("ModernSlider")
@@ -35,13 +37,13 @@ extension ParentPanelController {
                                                    selector: #selector(collectionViewDidScroll(_:)),
                                                    name: NSView.boundsDidChangeNotification,
                                                    object: modernSlider.superview)
-            
+
             // Set the modern slider label!
             closestQuarterTimeRepresentation = findClosestQuarterTimeApproximation()
             if let unwrappedClosetQuarterTime = closestQuarterTimeRepresentation {
                 modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(unwrappedClosetQuarterTime)
             }
-            
+
             // Make sure modern slider is centered horizontally!
             let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSlider.numberOfItems(inSection: 0) / 2, section: 0)])
             modernSlider.scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
@@ -54,6 +56,27 @@ extension ParentPanelController {
 
     @IBAction func goBackward(_: NSButton) {
         navigateModernSliderToSpecificIndex(-1)
+    }
+
+    private func animateButton(_ hidden: Bool) {
+        NSAnimationContext.runAnimationGroup({ context in
+            context.duration = 0.5
+            context.timingFunction = CAMediaTimingFunction(name: hidden ? CAMediaTimingFunctionName.easeOut : CAMediaTimingFunctionName.easeIn)
+            resetModernSliderButton.animator().alphaValue = hidden ? 0.0 : 1.0
+        }, completionHandler: { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.resetModernSliderButton.animator().isHidden = hidden
+        })
+    }
+
+    @IBAction func resetModernSlider(_: NSButton) {
+        closestQuarterTimeRepresentation = findClosestQuarterTimeApproximation()
+        modernSliderLabel.stringValue = "Time Scroller"
+        animateButton(true)
+        if modernSlider != nil {
+            let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSlider.numberOfItems(inSection: 0) / 2, section: 0)])
+            modernSlider.scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
+        }
     }
 
     private func navigateModernSliderToSpecificIndex(_ index: Int) {
@@ -101,14 +124,24 @@ extension ParentPanelController {
             let remainder = (index % (centerPoint + 1))
             let nextDate = Calendar.current.date(byAdding: .minute, value: remainder * 15, to: closestQuarterTimeRepresentation ?? Date())!
             modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(nextDate)
+            if resetModernSliderButton.isHidden {
+                animateButton(false)
+            }
+
             return nextDate.minutes(from: Date()) + 1
         } else if index < centerPoint {
             let remainder = centerPoint - index + 1
             let previousDate = Calendar.current.date(byAdding: .minute, value: -1 * remainder * 15, to: closestQuarterTimeRepresentation ?? Date())!
             modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(previousDate)
+            if resetModernSliderButton.isHidden {
+                animateButton(false)
+            }
             return previousDate.minutes(from: Date())
         } else {
             modernSliderLabel.stringValue = "Time Scroller"
+            if !resetModernSliderButton.isHidden {
+                animateButton(true)
+            }
             return 0
         }
     }

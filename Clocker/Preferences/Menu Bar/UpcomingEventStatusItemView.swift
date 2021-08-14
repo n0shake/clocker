@@ -1,11 +1,11 @@
 // Copyright © 2015 Abhishek Banthia
 
-import Foundation
 import AppKit
+import Foundation
 
 class UpcomingEventStatusItemView: NSView {
     static let containerWidth = 70
-    
+
     private let nextEventField = NSTextField(labelWithString: "Next Event")
     private let etaField = NSTextField(labelWithString: "5 mins")
     var dataObject: EventInfo! {
@@ -13,6 +13,7 @@ class UpcomingEventStatusItemView: NSView {
             initialSetup()
         }
     }
+
     private var timeAttributes: [NSAttributedString.Key: AnyObject] {
         let textColor = hasDarkAppearance ? NSColor.white : NSColor.black
 
@@ -36,7 +37,7 @@ class UpcomingEventStatusItemView: NSView {
         ]
         return textFontAttributes
     }
-    
+
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
 
@@ -63,16 +64,16 @@ class UpcomingEventStatusItemView: NSView {
             etaField.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
-    
-    required init?(coder: NSCoder) {
+
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func initialSetup() {
         nextEventField.attributedStringValue = NSAttributedString(string: "Next Event", attributes: textFontAttributes)
         etaField.attributedStringValue = NSAttributedString(string: dataObject.metadataForMeeting(), attributes: timeAttributes)
     }
-    
+
     func updateWithNextEventInfo(_ metadata: String) {
         nextEventField.attributedStringValue = NSAttributedString(string: "Next Event", attributes: textFontAttributes)
         etaField.attributedStringValue = NSAttributedString(string: metadata, attributes: timeAttributes)

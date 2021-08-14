@@ -3,19 +3,17 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="FloatingWindowController" customModule="Clocker" customModuleProvider="target">
             <connections>
-                <outlet property="calendarButton" destination="8q4-YZ-gkb" id="jJa-d9-fdQ"/>
-                <outlet property="calendarColorView" destination="BU6-aE-Les" id="NRS-pe-Oxq"/>
                 <outlet property="futureSlider" destination="XQc-HF-TrM" id="r17-F5-qEj"/>
                 <outlet property="futureSliderView" destination="6vv-g2-Z63" id="7ld-Or-ilq"/>
                 <outlet property="leftButton" destination="7ID-ll-0YN" id="Msx-3N-nDQ"/>
                 <outlet property="leftField" destination="DHg-ca-UOi" id="eOW-Ml-DE8"/>
                 <outlet property="mainTableView" destination="3js-Fl-DdU" id="6Lu-oW-cuZ"/>
-                <outlet property="nextEventLabel" destination="A9a-aM-BNn" id="d2X-dP-Xbi"/>
                 <outlet property="pinButton" destination="KWj-8n-2K0" id="FUW-0f-glB"/>
                 <outlet property="preferencesButton" destination="iFk-kj-d5a" id="1bK-Ld-MwV"/>
                 <outlet property="reviewView" destination="HBv-Eh-z9y" id="vt7-in-yQF"/>
@@ -26,8 +24,8 @@
                 <outlet property="shutdownButton" destination="M9q-iF-MaE" id="43B-sx-8Oh"/>
                 <outlet property="sliderDatePicker" destination="Ngk-LZ-J2y" id="kfm-g4-diy"/>
                 <outlet property="stackView" destination="Bn4-fy-Lm6" id="bdu-HH-FT3"/>
-                <outlet property="upcomingEventView" destination="Z63-pM-8OA" id="8mP-u3-cFx"/>
-                <outlet property="whiteRemoveButton" destination="0xk-Sz-MQU" id="NVY-9C-W2H"/>
+                <outlet property="upcomingEventCollectionView" destination="1tF-ue-rfI" id="nkq-Ov-eUj"/>
+                <outlet property="upcomingEventContainerView" destination="7cF-j3-JRf" id="9M5-NS-aB6"/>
                 <outlet property="window" destination="1gY-Kq-Pzj" id="aEC-1h-f24"/>
             </connections>
         </customObject>
@@ -46,22 +44,22 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView focusRingType="none" distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bn4-fy-Lm6">
-                        <rect key="frame" x="0.0" y="0.0" width="379" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="429" height="460"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="81" horizontalPageScroll="10" verticalLineScroll="81" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khu-OS-PzP">
-                                <rect key="frame" x="9" y="195" width="370" height="265"/>
+                                <rect key="frame" x="0.0" y="195" width="429" height="265"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="2rS-3B-A3C">
-                                    <rect key="frame" x="0.0" y="0.0" width="370" height="265"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="429" height="265"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="80" viewBased="YES" id="3js-Fl-DdU" customClass="PanelTableView" customModule="Clocker" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="370" height="265"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="429" height="265"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="1"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="338" minWidth="303" maxWidth="1000" id="009-6N-KRz">
+                                                <tableColumn width="337.80335195531063" minWidth="303" maxWidth="1000" id="009-6N-KRz">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -294,7 +292,7 @@
                                 </constraints>
                             </customView>
                             <customView identifier="Review Cell" translatesAutoresizingMaskIntoConstraints="NO" id="HBv-Eh-z9y">
-                                <rect key="frame" x="0.0" y="115" width="379" height="50"/>
+                                <rect key="frame" x="0.0" y="115" width="429" height="50"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y83-Ew-CDw">
                                         <rect key="frame" x="80" y="30" width="185" height="20"/>
@@ -362,78 +360,43 @@
                                 </constraints>
                                 <accessibility description="Review Cell"/>
                             </customView>
-                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z63-pM-8OA" customClass="UpcomingEventView" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="40" width="379" height="75"/>
+                            <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="7cF-j3-JRf" userLabel="Upcoming Event View">
+                                <rect key="frame" x="0.0" y="40" width="370" height="75"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="PpA-GH-1PV" customClass="ClockerTextBackgroundView" customModule="Clocker" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="359" height="55"/>
-                                        <subviews>
-                                            <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8q4-YZ-gkb">
-                                                <rect key="frame" x="21" y="11" width="298" height="18"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="18" id="IIB-zJ-L1u"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="bevel" title="All Day Event" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingHead" truncatesLastVisibleLine="YES" state="on" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="URj-5B-okQ">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" size="12" name="Avenir-Heavy"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="calendarButtonAction:" target="-2" id="9kM-QX-h4O"/>
-                                                </connections>
-                                            </button>
-                                            <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="BU6-aE-Les">
-                                                <rect key="frame" x="10" y="11" width="3" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="G0S-Au-0t0"/>
-                                                    <constraint firstAttribute="width" constant="3" id="o03-al-nbF"/>
-                                                </constraints>
-                                            </customView>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9a-aM-BNn">
-                                                <rect key="frame" x="21" y="26" width="280" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="24" id="Ted-52-5mp"/>
-                                                </constraints>
-                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Nandita Jaiswal's 35th birthday" placeholderString="" id="nBm-hz-L5t">
-                                                    <font key="font" size="14" name="Avenir-Light"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <button verticalHuggingPriority="750" tag="55" translatesAutoresizingMaskIntoConstraints="NO" id="0xk-Sz-MQU">
-                                                <rect key="frame" x="319" y="10" width="35" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="35" id="n4G-W9-0Xp"/>
-                                                    <constraint firstAttribute="height" constant="35" id="viN-NC-XR0"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="Remove" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="3iw-XB-l87">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="dismissNextEventLabel:" target="-2" id="Gwd-aN-9CO"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="BU6-aE-Les" firstAttribute="centerY" secondItem="PpA-GH-1PV" secondAttribute="centerY" id="09c-hS-Kdy"/>
-                                            <constraint firstItem="0xk-Sz-MQU" firstAttribute="leading" secondItem="A9a-aM-BNn" secondAttribute="trailing" constant="20" id="1KT-TD-KeH"/>
-                                            <constraint firstItem="8q4-YZ-gkb" firstAttribute="leading" secondItem="A9a-aM-BNn" secondAttribute="leading" constant="-2" id="4lf-X6-VyZ"/>
-                                            <constraint firstItem="A9a-aM-BNn" firstAttribute="leading" secondItem="BU6-aE-Les" secondAttribute="trailing" constant="10" id="4mn-mF-aDr"/>
-                                            <constraint firstItem="A9a-aM-BNn" firstAttribute="centerY" secondItem="PpA-GH-1PV" secondAttribute="centerY" constant="-10" id="96S-1w-1cF"/>
-                                            <constraint firstItem="8q4-YZ-gkb" firstAttribute="bottom" secondItem="BU6-aE-Les" secondAttribute="bottom" id="JBT-HC-8XD"/>
-                                            <constraint firstItem="0xk-Sz-MQU" firstAttribute="centerY" secondItem="PpA-GH-1PV" secondAttribute="centerY" id="U5W-rp-ddf"/>
-                                            <constraint firstItem="0xk-Sz-MQU" firstAttribute="leading" secondItem="8q4-YZ-gkb" secondAttribute="trailing" id="csx-qD-s3k"/>
-                                            <constraint firstItem="BU6-aE-Les" firstAttribute="leading" secondItem="PpA-GH-1PV" secondAttribute="leading" constant="10" id="u6L-TR-aGX"/>
-                                            <constraint firstAttribute="trailing" secondItem="0xk-Sz-MQU" secondAttribute="trailing" constant="5" id="w17-Hh-USc"/>
-                                        </constraints>
-                                    </customView>
+                                    <scrollView wantsLayer="YES" focusRingType="none" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rh-Lu-bXY">
+                                        <rect key="frame" x="0.0" y="0.0" width="370" height="75"/>
+                                        <clipView key="contentView" drawsBackground="NO" id="03w-56-nAh">
+                                            <rect key="frame" x="0.0" y="0.0" width="370" height="75"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <collectionView id="1tF-ue-rfI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="370" height="75"/>
+                                                    <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="8dR-oy-HpS">
+                                                        <size key="itemSize" width="50" height="50"/>
+                                                        <edgeInsets key="sectionInset" left="10" right="5" top="0.0" bottom="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <color key="primaryBackgroundColor" red="0.070588235289999995" green="0.95686274510000002" blue="0.10980392160000001" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </collectionView>
+                                            </subviews>
+                                            <color key="backgroundColor" name="Accent Color"/>
+                                        </clipView>
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="MFX-8H-T4e">
+                                            <rect key="frame" x="-100" y="-100" width="370" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="Tcm-wM-yRg">
+                                            <rect key="frame" x="-100" y="-100" width="16" height="75"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="2wB-jF-5u4"/>
-                                    <constraint firstItem="PpA-GH-1PV" firstAttribute="top" secondItem="Z63-pM-8OA" secondAttribute="top" constant="10" id="bpv-rJ-2r6"/>
-                                    <constraint firstItem="PpA-GH-1PV" firstAttribute="leading" secondItem="Z63-pM-8OA" secondAttribute="leading" constant="10" id="e16-5F-0oB"/>
-                                    <constraint firstAttribute="trailing" secondItem="PpA-GH-1PV" secondAttribute="trailing" constant="10" id="nHH-4s-dG2"/>
-                                    <constraint firstAttribute="bottom" secondItem="PpA-GH-1PV" secondAttribute="bottom" constant="10" id="tHy-Ku-DWJ"/>
+                                    <constraint firstAttribute="height" constant="75" id="5Gb-Xg-seV"/>
+                                    <constraint firstItem="7rh-Lu-bXY" firstAttribute="top" secondItem="7cF-j3-JRf" secondAttribute="top" id="Ibp-cf-eH1"/>
+                                    <constraint firstAttribute="trailing" secondItem="7rh-Lu-bXY" secondAttribute="trailing" id="cHh-NY-5xT"/>
+                                    <constraint firstAttribute="bottom" secondItem="7rh-Lu-bXY" secondAttribute="bottom" id="erG-3T-NxN"/>
+                                    <constraint firstItem="7rh-Lu-bXY" firstAttribute="leading" secondItem="7cF-j3-JRf" secondAttribute="leading" id="fPm-mQ-0kM"/>
                                 </constraints>
                                 <accessibility identifier="UpcomingEventView"/>
                             </customView>
@@ -441,7 +404,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="350" height="40"/>
                                 <subviews>
                                     <button toolTip="Close Clocker" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M9q-iF-MaE">
-                                        <rect key="frame" x="309" y="7" width="30" height="26"/>
+                                        <rect key="frame" x="300" y="7" width="30" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="Aj8-oI-SG6"/>
                                             <constraint firstAttribute="width" constant="30" id="n8F-JR-9KP"/>
@@ -456,7 +419,7 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Switch between Menubar/Floating mode." verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KWj-8n-2K0">
-                                        <rect key="frame" x="278" y="10" width="29" height="19"/>
+                                        <rect key="frame" x="219" y="10" width="29" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="8yd-3c-2Nc"/>
                                             <constraint firstAttribute="width" constant="29" id="D7P-eC-faV"/>
@@ -471,7 +434,7 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Share Clocker!" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GMo-5B-bnh">
-                                        <rect key="frame" x="248" y="7" width="30" height="26"/>
+                                        <rect key="frame" x="119" y="7" width="30" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="WBC-l8-Gc1"/>
                                             <constraint firstAttribute="width" constant="30" id="h85-UM-Kfy"/>
@@ -486,7 +449,7 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Open Preferences" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iFk-kj-d5a">
-                                        <rect key="frame" x="8" y="10" width="29" height="19"/>
+                                        <rect key="frame" x="20" y="10" width="29" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="29" id="Rbf-3O-59g"/>
                                             <constraint firstAttribute="height" constant="18" id="eTh-dT-52B"/>
@@ -504,15 +467,15 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="iFk-kj-d5a" firstAttribute="leading" secondItem="YQL-kL-NAx" secondAttribute="leading" constant="8" id="NW8-KV-vPc"/>
+                                    <constraint firstItem="KWj-8n-2K0" firstAttribute="leading" secondItem="GMo-5B-bnh" secondAttribute="trailing" constant="70" id="0wr-fp-XKy"/>
+                                    <constraint firstItem="GMo-5B-bnh" firstAttribute="leading" secondItem="iFk-kj-d5a" secondAttribute="trailing" constant="70" id="6Kp-gC-dhg"/>
+                                    <constraint firstItem="iFk-kj-d5a" firstAttribute="leading" secondItem="YQL-kL-NAx" secondAttribute="leading" constant="20" id="NW8-KV-vPc"/>
                                     <constraint firstItem="GMo-5B-bnh" firstAttribute="centerY" secondItem="YQL-kL-NAx" secondAttribute="centerY" id="Pfa-z9-wko"/>
                                     <constraint firstItem="KWj-8n-2K0" firstAttribute="centerY" secondItem="YQL-kL-NAx" secondAttribute="centerY" id="iVM-fu-Mx5"/>
-                                    <constraint firstItem="M9q-iF-MaE" firstAttribute="leading" secondItem="KWj-8n-2K0" secondAttribute="trailing" constant="2" id="inS-B0-hUa"/>
                                     <constraint firstItem="M9q-iF-MaE" firstAttribute="centerY" secondItem="YQL-kL-NAx" secondAttribute="centerY" id="qhP-cY-vh9"/>
                                     <constraint firstAttribute="height" constant="40" id="qwB-I2-tKo"/>
-                                    <constraint firstAttribute="trailing" secondItem="M9q-iF-MaE" secondAttribute="trailing" constant="11" id="rOf-Hs-lyB"/>
+                                    <constraint firstAttribute="trailing" secondItem="M9q-iF-MaE" secondAttribute="trailing" constant="20" id="rOf-Hs-lyB"/>
                                     <constraint firstItem="iFk-kj-d5a" firstAttribute="centerY" secondItem="YQL-kL-NAx" secondAttribute="centerY" id="uOd-vQ-asj"/>
-                                    <constraint firstItem="KWj-8n-2K0" firstAttribute="leading" secondItem="GMo-5B-bnh" secondAttribute="trailing" id="x4c-WW-tGu"/>
                                 </constraints>
                             </customView>
                         </subviews>
@@ -520,8 +483,6 @@
                             <constraint firstItem="HBv-Eh-z9y" firstAttribute="leading" secondItem="Bn4-fy-Lm6" secondAttribute="leading" id="1gK-nB-cgS"/>
                             <constraint firstAttribute="trailing" secondItem="khu-OS-PzP" secondAttribute="trailing" id="AgT-oA-uZ1"/>
                             <constraint firstItem="khu-OS-PzP" firstAttribute="top" secondItem="Bn4-fy-Lm6" secondAttribute="top" id="AxZ-D1-B8f"/>
-                            <constraint firstAttribute="trailing" secondItem="Z63-pM-8OA" secondAttribute="trailing" id="IBs-CV-u71"/>
-                            <constraint firstItem="Z63-pM-8OA" firstAttribute="leading" secondItem="Bn4-fy-Lm6" secondAttribute="leading" id="ev6-Wj-PFx"/>
                             <constraint firstAttribute="trailing" secondItem="HBv-Eh-z9y" secondAttribute="trailing" id="i0H-Z4-5gF"/>
                         </constraints>
                         <visibilityPriorities>
@@ -562,7 +523,9 @@
         <image name="Float" width="15" height="13"/>
         <image name="NSShareTemplate" width="15" height="17"/>
         <image name="PowerIcon" width="350" height="350"/>
-        <image name="Remove" width="700" height="700"/>
         <image name="Sunrise" width="700" height="700"/>
+        <namedColor name="Accent Color">
+            <color red="0.092000000178813934" green="0.0" blue="0.99900001287460327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

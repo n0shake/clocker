@@ -32,7 +32,7 @@ class CopyToClipboardTests: XCTestCase {
         let actualValue = NSPasteboard.general.string(forType: .string) ?? "Empty Pasteboard"
         XCTAssert(expectedValue == actualValue,
                   "Clipboard value (\(actualValue)) doesn't match expected result: \(expectedValue)")
-        
+
         // Test full copy
         let cellCount = app.tables["FloatingTableView"].cells.count
         var clipboardValue = String()

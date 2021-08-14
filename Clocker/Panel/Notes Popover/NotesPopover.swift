@@ -224,7 +224,7 @@ class NotesPopover: NSViewController {
                                           }
                                           completionHandler(completedDate)
 
-                                      })
+            })
         } catch {
             assertionFailure("Failed to successfully initialize DataDetector")
             completionHandler(nil)
@@ -322,8 +322,7 @@ class NotesPopover: NSViewController {
     }
 
     private func updateTimezoneInDefaultPreferences(with override: Int,
-                                                    _: OverrideType)
-    {
+                                                    _: OverrideType) {
         let timezones = DataStore.shared().timezones()
 
         var timezoneObjects: [TimezoneData] = []
@@ -392,8 +391,7 @@ class NotesPopover: NSViewController {
                                           timezone: model.timezone(),
                                           alertIndex: alertIndex,
                                           reminderDate: reminderPicker.dateValue,
-                                          additionalNotes: model.note)
-            {
+                                          additionalNotes: model.note) {
                 showSuccessMessage()
             }
         }
