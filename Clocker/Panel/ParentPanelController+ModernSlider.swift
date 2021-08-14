@@ -18,8 +18,14 @@ extension ParentPanelController: NSCollectionViewDataSource {
 extension ParentPanelController {
     func setupModernSliderIfNeccessary() {
         if modernSlider != nil {
-            resetModernSliderButton.image = Themer.shared().resetModernSliderImage()
-
+            if #available(OSX 11.0, *) {
+                resetModernSliderButton.image = Themer.shared().resetModernSliderImage()
+            } else {
+                resetModernSliderButton.layer?.backgroundColor = NSColor.lightGray.cgColor
+                resetModernSliderButton.layer?.masksToBounds = true
+                resetModernSliderButton.layer?.cornerRadius = resetModernSliderButton.frame.width / 2
+            }
+            
             goBackwardsButton.image = Themer.shared().goBackwardsImage()
             goForwardButton.image = Themer.shared().goForwardsImage()
 
@@ -29,6 +35,7 @@ extension ParentPanelController {
             goBackwardsButton.toolTip = "Navigate 15 mins back"
             goForwardButton.toolTip = "Navigate 15 mins forward"
 
+            modernSlider.wantsLayer = true // Required for animating reset to center
             modernSlider.enclosingScrollView?.scrollerInsets = NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             modernSlider.enclosingScrollView?.backgroundColor = NSColor.clear
             modernSlider.setAccessibility("ModernSlider")
