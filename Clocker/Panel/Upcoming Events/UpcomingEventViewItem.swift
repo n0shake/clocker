@@ -26,6 +26,7 @@ class UpcomingEventViewItem: NSCollectionViewItem {
         zoomButton.image = nil
         eventTitleLabel.stringValue = ""
         eventSubtitleButton.stringValue = ""
+        meetingLink = nil
     }
 
     override var acceptsFirstResponder: Bool {
@@ -85,8 +86,10 @@ class UpcomingEventViewItem: NSCollectionViewItem {
     }
 
     func setupEmptyState() {
+        let subtitle = NSCalendar.autoupdatingCurrent.isDateInWeekend(Date()) ? NSLocalizedString("Happy Weekend.", comment: "Button Title for no upcoming event") : NSLocalizedString("Great going.", comment: "Button Title for no upcoming event")
+        
         setAlternateState(NSLocalizedString("No upcoming events for today!", comment: "Next Event Label with no upcoming event"),
-                          NSLocalizedString("Great going.", comment: "Button Title for no upcoming event"),
+                          subtitle,
                           NSColor.systemGreen,
                           nil)
     }
@@ -121,7 +124,9 @@ class UpcomingEventViewItem: NSCollectionViewItem {
         panelDelegate?.didClickSupplementaryButton(sender)
     }
 
-    @objc func zoomButtonAction(_: Any) {
+    @objc func zoomButtonAction(_ sender: NSButton) {
+        guard sender.image != nil else { return }
+        
         if let meetingURL = meetingLink {
             NSWorkspace.shared.open(meetingURL)
         } else {
