@@ -69,7 +69,7 @@ class PanelTests: XCTestCase {
     func testEnablingUpcomingEventView() {
         app.tapMenubarIcon()
 
-        let upcomingView = app.buttons["CalendarAccessory"]
+        let upcomingView = app.collectionViews["UpcomingEventCollectionView"]
         let beforeUpcomingEventViewExist = upcomingView.exists
 
         app.buttons["Preferences"].click()
@@ -101,7 +101,7 @@ class PanelTests: XCTestCase {
 
         app.tapMenubarIcon()
 
-        let newUpcomingEventView = app.buttons["CalendarAccessory"]
+        let newUpcomingEventView = app.collectionViews["UpcomingEventCollectionView"]
         let afterUpcomingEventViewExists = newUpcomingEventView.exists
 
         XCTAssertNotEqual(afterUpcomingEventViewExists, beforeUpcomingEventViewExist)
