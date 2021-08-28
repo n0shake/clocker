@@ -519,7 +519,7 @@ extension Themer {
         if let xmarkImage = symbolImage(for: "xmark.circle.fill") {
             return xmarkImage
         }
-        
+
         return removeImage()
     }
 

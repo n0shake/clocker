@@ -158,7 +158,7 @@ extension EventCenter {
         let relevantEvents = filteredEvents[autoupdatingCalendar.startOfDay(for: Date())] ?? []
 
         let filteredEvents = relevantEvents.filter {
-            $0.event.isAllDay == false && $0.event.startDate.timeIntervalSinceNow > -300
+            $0.event.isAllDay == false && $0.event.endDate.timeIntervalSinceNow > 0
         }
 
         if filteredEvents.count == 1 { return filteredEvents.first }
