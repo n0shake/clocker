@@ -339,6 +339,7 @@ class StatusItemHandler: NSObject {
         statusItem.button?.title = CLEmptyString
         statusItem.button?.image = NSImage(named: .menubarIcon)
         statusItem.button?.imagePosition = .imageOnly
+        statusItem.toolTip = "Clocker"
     }
 
     private func setupForStandardText() {
@@ -412,13 +413,16 @@ class StatusItemHandler: NSObject {
             time.invalidate()
         }
 
-        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { _ in
-            if self.statusBarVisibilityStatus() == false {
-                self.constructCompactView(true)
-                self.hasSystemHiddenClocker = true
-            } else if self.hasSystemHiddenClocker {
-                self.constructCompactView()
-                self.hasSystemHiddenClocker = false
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { [weak self] _ in
+          guard let localSelf = self else { return }
+            if localSelf.statusBarVisibilityStatus() == false {
+              localSelf.constructCompactView(true)
+              localSelf.hasSystemHiddenClocker = true
+              localSelf.statusItem.target = self
+              localSelf.statusItem.button?.action = #selector(localSelf.menubarIconClicked(_:))
+            } else if localSelf.hasSystemHiddenClocker {
+              localSelf.constructCompactView()
+              localSelf.hasSystemHiddenClocker = false
             }
         }
     }

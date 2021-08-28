@@ -18,6 +18,49 @@ struct PreferencesConstants {
     static let hotKeyPathIdentifier = "values.globalPing"
 }
 
+class TableHeaderViewCell: NSTableHeaderCell {
+    var backgroundColour: NSColor = NSColor.black {
+        didSet {
+            backgroundColor = backgroundColour
+        }
+    }
+
+    override init(textCell: String) {
+        super.init(textCell: textCell)
+        let attributedParagraphStyle = NSMutableParagraphStyle()
+        attributedParagraphStyle.alignment = .left
+        attributedStringValue = NSAttributedString(string: textCell,
+                                                   attributes: [.foregroundColor: Themer.shared().mainTextColor(),
+                                                                .font: NSFont(name: "Avenir", size: 14)!,
+                                                                .paragraphStyle: attributedParagraphStyle])
+        backgroundColor = Themer.shared().textBackgroundColor()
+    }
+
+    required init(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func draw(withFrame cellFrame: NSRect, in controlView: NSView) {
+        super.draw(withFrame: cellFrame, in: controlView)
+        if !controlView.isHidden {
+            backgroundColor?.setFill()
+            cellFrame.fill()
+            drawInterior(withFrame: cellFrame, in: controlView)
+        }
+    }
+
+    override func drawInterior(withFrame cellFrame: NSRect, in controlView: NSView) {
+        if !controlView.isHidden {
+            if let avenirFont = NSFont(name: "Avenir", size: 14) {
+                font = avenirFont
+            }
+            textColor = NSColor.white
+            let rect = titleRect(forBounds: cellFrame)
+            attributedStringValue.draw(in: rect)
+        }
+    }
+}
+
 class PreferencesViewController: ParentViewController {
     private var isActivityInProgress = false {
         didSet {
