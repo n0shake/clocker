@@ -25,7 +25,7 @@ extension ParentPanelController {
                 resetModernSliderButton.layer?.masksToBounds = true
                 resetModernSliderButton.layer?.cornerRadius = resetModernSliderButton.frame.width / 2
             }
-            
+
             goBackwardsButton.image = Themer.shared().goBackwardsImage()
             goForwardButton.image = Themer.shared().goForwardsImage()
 

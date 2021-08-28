@@ -17,7 +17,7 @@ class PermissionsTests: XCTestCase {
         if app.tables["FloatingTableView"].exists {
             app.buttons["FloatingPin"].click()
         }
-        
+
         app.tapMenubarIcon()
         app/*@START_MENU_TOKEN@*/ .buttons["Preferences"]/*[[".dialogs[\"Clocker Panel\"].buttons[\"Preferences\"]",".buttons[\"Preferences\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/ .click()
 
