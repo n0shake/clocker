@@ -32,6 +32,14 @@ class StatusItemHandler: NSObject {
 
     private var userNotificationsDidChangeNotif: NSObjectProtocol?
 
+    /// Observer that tracks if the front-level application (not window) updates. This might trigger a status bar reconstruction.
+    private var frontMostApplicationObserver: NSKeyValueObservation?
+
+    /// Delay timer that co-ordinates the status bar reconstruction
+    private var timer: Timer?
+
+    private var hasSystemHiddenClocker = false
+
     // Current State might be set twice when the user first launches an app.
     // First, when StatusItemHandler() is instantiated in AppDelegate
     // Second, when AppDelegate.fetchLocalTimezone() is called triggering a customLabel didSet.
@@ -53,6 +61,7 @@ class StatusItemHandler: NSObject {
             switch currentState {
             case .compactText:
                 setupForCompactTextMode()
+
             case .standardText:
                 setupForStandardTextMode()
             case .icon:
@@ -68,10 +77,10 @@ class StatusItemHandler: NSObject {
 
         setupStatusItem()
         setupNotificationObservers()
+        startObservingFrontmostApplication()
     }
 
-    func setupStatusItem() {
-        // Let's figure out the initial menubar state
+    private func getMenubarState() -> MenubarState {
         var menubarState = MenubarState.icon
 
         let shouldTextBeDisplayed = DataStore.shared().menubarTimezones()?.isEmpty ?? true
@@ -83,9 +92,12 @@ class StatusItemHandler: NSObject {
                 menubarState = .standardText
             }
         }
+        return menubarState
+    }
 
+    func setupStatusItem() {
         // Initial state has been figured out. Time to set it!
-        currentState = menubarState
+        currentState = getMenubarState()
 
         func setSelector() {
             if #available(macOS 10.14, *) {
@@ -126,12 +138,12 @@ class StatusItemHandler: NSObject {
         }
     }
 
-    private func constructCompactView() {
+    private func constructCompactView(_ forceSet: Bool = false) {
         parentView = nil
 
         let menubarTimezones = retrieveSyncedMenubarTimezones()
 
-        if menubarTimezones.isEmpty {
+        if menubarTimezones.isEmpty || forceSet {
             currentState = .icon
             return
         }
@@ -250,6 +262,12 @@ class StatusItemHandler: NSObject {
     }
 
     func refresh() {
+        if statusBarVisibilityStatus() == false {
+            hasSystemHiddenClocker = true
+            setClockerIcon()
+            return
+        }
+
         if currentState == .compactText {
             updateCompactMenubar()
             updateMenubar()
@@ -353,5 +371,55 @@ class StatusItemHandler: NSObject {
 
         constructCompactView()
         updateMenubar()
+    }
+
+    // MARK: Front-end application observer
+
+    private func statusBarVisibilityStatus() -> Bool {
+        guard let windowInfoList = CGWindowListCopyWindowInfo(CGWindowListOption.optionOnScreenOnly, kCGNullWindowID) as NSArray? as? [[String: AnyObject]] else {
+            print("Failed getting the status bar's visibility")
+            return false
+        }
+        // collect all status bar icons x positions
+        for windowInfo in windowInfoList {
+            let windowOwner = windowInfo[kCGWindowOwnerName as String] as? String ?? "No Window Name"
+            let isOnScreen = windowInfo[kCGWindowIsOnscreen as String] as? NSNumber ?? 0
+            let level = windowInfo[kCGWindowLayer as String] as? Int ?? -1 // Check the level since it can be the preferences window
+            if windowOwner == "Clocker", level == 25 {
+                return isOnScreen.boolValue
+            }
+        }
+
+        // Clocker is not in the windows list; return false
+        return false
+    }
+
+    private func startObservingFrontmostApplication() {
+      if getMenubarState() == .icon {
+        return
+      }
+      
+        frontMostApplicationObserver = NSWorkspace.shared.observe(\.frontmostApplication, options: [.new, .old]) { [weak self] _, change in
+            guard change.newValue != nil, change.oldValue != nil, let localSelf = self else {
+                return
+            }
+            localSelf.reconstructStatusBarIfNeccesary()
+        }
+    }
+
+    private func reconstructStatusBarIfNeccesary() {
+        if let time = self.timer, time.isValid {
+            time.invalidate()
+        }
+
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { _ in
+            if self.statusBarVisibilityStatus() == false {
+                self.constructCompactView(true)
+                self.hasSystemHiddenClocker = true
+            } else if self.hasSystemHiddenClocker {
+                self.constructCompactView()
+                self.hasSystemHiddenClocker = false
+            }
+        }
     }
 }
