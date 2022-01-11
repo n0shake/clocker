@@ -19,4 +19,4 @@ or
 **Clocker** is open for pull requests.
 
 # License
-Copyright (c) 2021 **Abhishek Banthia**. Released under the MIT License.
+Copyright (c) 2022 **Abhishek Banthia**. Released under the MIT License.
