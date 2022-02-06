@@ -93,7 +93,7 @@
 // Final Onboarding Screen
 "You're all set!" = "You're all set!";
 "Thank you for the details." = "Thank you for the details.";
-"You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences." = "You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences.";
+"You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences." = "アプリを起動すると、メニューバーに時計のアイコンが表示されます。ドックのアイコンが表示される場合は、format@@0に進みます。";
 "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!";
 
 // Appearance Tab
