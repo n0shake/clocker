@@ -1053,11 +1053,20 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
         return newProposedServices
     }
 
+    /// Retrieves all the times from user's added timezones. Times are sorted by date. For eg:
+    /// Feb 5
+    /// California - 17:17:01
+    /// Feb 6
+    /// London - 01:17:01
     private func retrieveAllTimes() -> String {
         var clipboardCopy = String()
         
         // Get all timezones
         let timezones = DataStore.shared().timezones()
+        
+        if timezones.isEmpty {
+            return clipboardCopy
+        }
     
         // Sort them in ascending order
         let sortedByTime = timezones.sorted { obj1, obj2 -> Bool in
