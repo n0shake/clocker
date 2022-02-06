@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="RHq-9Z-auA">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="RHq-9Z-auA">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -803,7 +803,7 @@
                                                             <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="wtO-uL-QBf">
                                                                 <rect key="frame" x="109" y="207" width="104" height="18"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="100" id="WNN-Le-h1b"/>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="WNN-Le-h1b"/>
                                                                 </constraints>
                                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Time Format" id="QH2-sO-Jan">
                                                                     <font key="font" size="13" name="Avenir-Light"/>
@@ -956,7 +956,7 @@
                                                             <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="xwt-pY-1w9">
                                                                 <rect key="frame" x="9" y="1" width="204" height="18"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="200" id="7fj-Em-Lyh"/>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="7fj-Em-Lyh"/>
                                                                 </constraints>
                                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Larger Text" id="LOM-yg-tI0">
                                                                     <font key="font" size="13" name="Avenir-Light"/>
@@ -979,11 +979,11 @@
                                                 </gridView>
                                                 <scrollView borderType="line" autohidesScrollers="YES" horizontalLineScroll="113" horizontalPageScroll="10" verticalLineScroll="113" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ytg-0u-Mtu">
                                                     <rect key="frame" x="70" y="39" width="400" height="100"/>
-                                                    <clipView key="contentView" id="gnX-f5-31D">
+                                                    <clipView key="contentView" ambiguous="YES" id="gnX-f5-31D">
                                                         <rect key="frame" x="1" y="1" width="398" height="98"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
-                                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="111" rowSizeStyle="automatic" viewBased="YES" id="KbJ-p4-i6E">
+                                                            <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="111" rowSizeStyle="automatic" viewBased="YES" id="KbJ-p4-i6E">
                                                                 <rect key="frame" x="0.0" y="0.0" width="412" height="113"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -1512,7 +1512,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <searchField toolTip="Search a timezone" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dha-h9-Nd0" customClass="ClockerSearchField" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="8" y="73" width="320" height="23"/>
+                                <rect key="frame" x="8" y="49" width="320" height="23"/>
                                 <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Enter a city, state, country name" usesSingleLineMode="YES" maximumRecents="5" id="ikU-Tm-0WZ">
                                     <font key="font" size="13" name="Avenir-Light"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1569,9 +1569,9 @@ DQ
                                 </connections>
                             </button>
                             <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wY-ff-FLW">
-                                <rect key="frame" x="8" y="30" width="320" height="33"/>
+                                <rect key="frame" x="8" y="30" width="320" height="9"/>
                                 <clipView key="contentView" drawsBackground="NO" id="rGc-3M-cCq">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="33"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="9"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="xkl-2X-ZCb">
@@ -1665,14 +1665,14 @@ DQ
                                 </scroller>
                             </scrollView>
                             <progressIndicator wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="0A5-gp-lay">
-                                <rect key="frame" x="160" y="66" width="16" height="16"/>
+                                <rect key="frame" x="160" y="54" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="fgE-77-Vda"/>
                                     <constraint firstAttribute="width" constant="16" id="pwe-em-e0a"/>
                                 </constraints>
                             </progressIndicator>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xgb-wU-8RU">
-                                <rect key="frame" x="18" y="36" width="300" height="22"/>
+                                <rect key="frame" x="18" y="24" width="300" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="zqt-d8-yas"/>
                                 </constraints>

@@ -81,6 +81,7 @@
       enableAddressSanitizer = "YES"
       enableASanStackUseAfterReturn = "YES"
       enableUBSanitizer = "YES"
+      language = "tr"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
