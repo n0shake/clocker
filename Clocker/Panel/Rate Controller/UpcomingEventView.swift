@@ -71,15 +71,6 @@ class ThinScroller: NSScroller {
     override func drawKnobSlot(in _: NSRect, highlight _: Bool) {
         // Leaving this empty to prevent background drawing
     }
-
-    override func drawKnob() {
-        let knobRect = rect(for: .knob)
-        let knobDimensions: CGFloat = 10.0
-        let newRect = NSMakeRect(knobRect.origin.x, knobRect.origin.y + 5, knobDimensions, knobDimensions)
-        let path = NSBezierPath(ovalIn: newRect)
-        NSColor.lightGray.set()
-        path.fill()
-    }
 }
 
 class DraggableClipView: NSClipView {
