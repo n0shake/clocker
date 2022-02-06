@@ -143,7 +143,9 @@ class ParentPanelController: NSWindowController {
         futureSliderRangeObserver = UserDefaults.standard.observe(\.sliderDayRange, options: [.new]) { _, change in
             if change.newValue != nil {
                 self.adjustFutureSliderBasedOnPreferences()
-                self.modernSlider.reloadData()
+                if self.modernSlider != nil {
+                    self.modernSlider.reloadData()
+                }
             }
         }
     }
