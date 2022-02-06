@@ -11,7 +11,6 @@ struct PanelConstants {
     static let noThanksTitle = "No, thanks"
     static let yesWithQuestionMark = "Yes?"
     static let yesWithExclamation = "Yes!"
-    static let modernSliderDaySupport = 5
     static let modernSliderPointsInADay = 96
 }
 
@@ -144,6 +143,7 @@ class ParentPanelController: NSWindowController {
         futureSliderRangeObserver = UserDefaults.standard.observe(\.sliderDayRange, options: [.new]) { _, change in
             if change.newValue != nil {
                 self.adjustFutureSliderBasedOnPreferences()
+                self.modernSlider.reloadData()
             }
         }
     }
