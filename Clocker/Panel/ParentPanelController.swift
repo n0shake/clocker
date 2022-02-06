@@ -1055,13 +1055,52 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
 
     private func retrieveAllTimes() -> String {
         var clipboardCopy = String()
+        
+        // Get all timezones
         let timezones = DataStore.shared().timezones()
-        stride(from: 0, to: timezones.count, by: 1).forEach {
-            if $0 < mainTableView.numberOfRows,
-                let cellView = mainTableView.view(atColumn: 0, row: $0, makeIfNecessary: false) as? TimezoneCellView {
-                clipboardCopy.append("\(cellView.customName.stringValue) - \(cellView.time.stringValue)\n")
+    
+        // Sort them in ascending order
+        let sortedByTime = timezones.sorted { obj1, obj2 -> Bool in
+            let system = NSTimeZone.system
+            guard let object1 = TimezoneData.customObject(from: obj1),
+                let object2 = TimezoneData.customObject(from: obj2)
+            else {
+                assertionFailure("Data was unexpectedly nil")
+                return false
+            }
+
+            let timezone1 = NSTimeZone(name: object1.timezone())
+            let timezone2 = NSTimeZone(name: object2.timezone())
+
+            let difference1 = system.secondsFromGMT() - timezone1!.secondsFromGMT
+            let difference2 = system.secondsFromGMT() - timezone2!.secondsFromGMT
+
+            return difference1 > difference2
+        }
+        
+        // Grab date in first place and store it as local variable
+        guard let earliestTimezone = TimezoneData.customObject(from: sortedByTime.first) else {
+            return clipboardCopy
+        }
+        
+        let timezoneOperations = TimezoneDataOperations(with: earliestTimezone)
+        var sectionTitle = timezoneOperations.todaysDate(with: 0) // TODO: Take slider value into consideration
+        clipboardCopy.append("\(sectionTitle)\n")
+        
+        stride(from: 0, to: sortedByTime.count, by: 1).forEach {
+            if $0 < sortedByTime.count,
+                let dataModel = TimezoneData.customObject(from: sortedByTime[$0]) {
+                let dataOperations = TimezoneDataOperations(with: dataModel)
+                let date = dataOperations.todaysDate(with: 0)
+                let time = dataOperations.time(with: 0)
+                if date != sectionTitle {
+                    sectionTitle = date
+                    clipboardCopy.append("\n\(sectionTitle)\n")
+                }
+                clipboardCopy.append("\(dataModel.customLabel ?? "N/A") - \(time)\n")
             }
         }
         return clipboardCopy
     }
 }
+
