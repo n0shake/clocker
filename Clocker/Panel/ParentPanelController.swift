@@ -1106,10 +1106,10 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
                     sectionTitle = date
                     clipboardCopy.append("\n\(sectionTitle)\n")
                 }
-                clipboardCopy.append("\(dataModel.customLabel ?? "N/A") - \(time)\n")
+
+                clipboardCopy.append("\(dataModel.formattedTimezoneLabel()) - \(time)\n")
             }
         }
         return clipboardCopy
     }
 }
-
