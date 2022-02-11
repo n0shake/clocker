@@ -642,6 +642,8 @@ extension PreferencesViewController {
 
         // Mark if the timezone is same as local timezone
         let timezoneObject = TimezoneData(with: newTimeZone)
+        timezoneObject.isSystemTimezone = timezoneObject.timezone() == NSTimeZone.system.identifier
+
         let operationsObject = TimezoneDataOperations(with: timezoneObject)
         operationsObject.saveObject()
 
