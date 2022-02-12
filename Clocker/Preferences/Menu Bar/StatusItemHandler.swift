@@ -118,6 +118,14 @@ class StatusItemHandler: NSObject {
                                                              queue: mainQueue) { _ in
             self.setupStatusItem()
         }
+        
+        NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.willSleepNotification, object: nil, queue: OperationQueue.main) { notification in
+            self.menubarTimer?.invalidate()
+        }
+        
+        NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didWakeNotification, object: nil, queue: OperationQueue.main) { notification in
+            self.setupStatusItem()
+        }
     }
 
     deinit {
