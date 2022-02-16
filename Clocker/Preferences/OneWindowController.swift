@@ -49,14 +49,7 @@ class OneWindowController: NSWindowController {
     private func setupWindow() {
         window?.titlebarAppearsTransparent = true
         window?.backgroundColor = Themer.shared().mainBackgroundColor()
-    }
-
-    class func shared() -> OneWindowController {
-        if sharedWindow == nil {
-            let prefStoryboard = NSStoryboard(name: "Preferences", bundle: nil)
-            sharedWindow = prefStoryboard.instantiateInitialController() as? OneWindowController
-        }
-        return sharedWindow
+        window?.identifier = NSUserInterfaceItemIdentifier("Preferences")
     }
 
     func openPermissions() {
