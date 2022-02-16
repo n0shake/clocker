@@ -191,7 +191,7 @@ extension Themer {
     }
 
     func preferenceImage() -> NSImage {
-        if let symbolImageForPreference = symbolImage(for: "gear") {
+        if let symbolImageForPreference = symbolImage(for: "plus") {
             return symbolImageForPreference
         }
 
@@ -389,6 +389,10 @@ extension Themer {
     }
 
     func addImage() -> NSImage {
+        if let symbolImageForPreference = symbolImage(for: "plus") {
+            return symbolImageForPreference
+        }
+        
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light, .solarizedLight:
