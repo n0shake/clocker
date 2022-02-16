@@ -172,8 +172,8 @@ class PreferencesViewController: ParentViewController {
 
     private func darkModeChanges() {
         if #available(macOS 10.14, *) {
-            addTimezoneButton.image = NSImage(named: .addDynamicIcon)
-            deleteButton.image = NSImage(named: NSImage.Name("Remove Dynamic"))!
+            addTimezoneButton.image = Themer.shared().addImage()
+            deleteButton.image = Themer.shared().removeImage()
         }
     }
 
