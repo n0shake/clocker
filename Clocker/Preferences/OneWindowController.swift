@@ -16,7 +16,6 @@ class CenteredTabViewController: NSTabViewController {
 }
 
 class OneWindowController: NSWindowController {
-    private static var sharedWindow: OneWindowController!
     private var themeDidChangeNotification: NSObjectProtocol?
 
     override func windowDidLoad() {
