@@ -1,6 +1,6 @@
 # Clocker 
 
-[![Twitter: @clocker_support](https://img.shields.io/badge/contact-@clocker_support-blue.svg?style=flat)](https://twitter.com/clocker_support) [![Build Status](https://travis-ci.org/n0shake/Clocker.svg?branch=master)](https://travis-ci.org/n0shake/Clocker) [![Crowdin](https://badges.crowdin.net/clocker/localized.svg)](https://crowdin.com/project/clocker)
+[![Twitter: @clocker_support](https://img.shields.io/badge/contact-@clocker_support-blue.svg?style=flat)](https://twitter.com/clocker_support) [![Crowdin](https://badges.crowdin.net/clocker/localized.svg)](https://crowdin.com/project/clocker)
 
 **Clocker** is an macOS menubar utility designed to help you keep track of your friends in different time zones.  It's written using ~~Objective-C~~ Swift 5 and is completely ad-free. If you'd like to help translate Clocker in your language, [here's the invite link](https://crwd.in/clocker).
 
