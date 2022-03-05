@@ -33,7 +33,7 @@ class ParentPanelController: NSWindowController {
 
     var previousPopoverRow: Int = -1
 
-    var morePopover: NSPopover?
+    var additionalOptionsPopover: NSPopover?
 
     var datasource: TimezoneDataSource?
 
@@ -366,7 +366,7 @@ class ParentPanelController: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
-        morePopover = NSPopover()
+        additionalOptionsPopover = NSPopover()
     }
 
     func screenHeight() -> CGFloat {
@@ -640,7 +640,7 @@ class ParentPanelController: NSWindowController {
     func showNotesPopover(forRow row: Int, relativeTo _: NSRect, andButton target: NSButton!) -> Bool {
         let defaults = DataStore.shared().timezones()
 
-        guard let popover = morePopover else {
+        guard let popover = additionalOptionsPopover else {
             assertionFailure("Data was unexpectedly nil")
             return false
         }
@@ -834,7 +834,7 @@ class ParentPanelController: NSWindowController {
         if notePopover != nil, let isShown = notePopover?.popover?.isShown, isShown {
             notePopover?.popover?.close()
         }
-        morePopover = nil
+        additionalOptionsPopover = nil
     }
 
     // MARK: Review
