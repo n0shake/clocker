@@ -489,12 +489,14 @@ extension PreferencesViewController {
 //                                                        let searchResults = data.decode()
 
                                                         if searchResults.status == ResultStatus.zeroResults {
+                                                            Logger.info("Zero Results returned")
                                                             self.findLocalSearchResultsForTimezones()
                                                             self.placeholderLabel.placeholderString = self.searchResultsDataSource.timezoneFilteredArray.isEmpty ? "No results! 😔 Try entering the exact name." : CLEmptyString
                                                             self.reloadSearchResults()
                                                             self.isActivityInProgress = false
                                                             return
                                                         } else if searchResults.status == ResultStatus.requestDenied && searchResults.results.isEmpty {
+                                                            Logger.info("Request denied!")
                                                             self.findLocalSearchResultsForTimezones()
                                                             self.placeholderLabel.placeholderString = self.searchResultsDataSource.timezoneFilteredArray.isEmpty ? "Update Clocker to get a faster experience 😃" : CLEmptyString
                                                             self.reloadSearchResults()
