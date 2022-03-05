@@ -16,7 +16,6 @@ class CenteredTabViewController: NSTabViewController {
 }
 
 class OneWindowController: NSWindowController {
-    private static var sharedWindow: OneWindowController!
     private var themeDidChangeNotification: NSObjectProtocol?
 
     override func windowDidLoad() {
@@ -49,32 +48,9 @@ class OneWindowController: NSWindowController {
     private func setupWindow() {
         window?.titlebarAppearsTransparent = true
         window?.backgroundColor = Themer.shared().mainBackgroundColor()
+        window?.identifier = NSUserInterfaceItemIdentifier("Preferences")
     }
-
-    class func shared() -> OneWindowController {
-        if sharedWindow == nil {
-            let prefStoryboard = NSStoryboard(name: "Preferences", bundle: nil)
-            sharedWindow = prefStoryboard.instantiateInitialController() as? OneWindowController
-        }
-        return sharedWindow
-    }
-
-    func openPermissions() {
-        guard let window = window else {
-            return
-        }
-
-        if !window.isMainWindow || !window.isVisible {
-            showWindow(nil)
-        }
-
-        guard let tabViewController = contentViewController as? CenteredTabViewController else {
-            return
-        }
-
-        tabViewController.selectedTabViewItemIndex = 3
-    }
-
+    
     private func setupToolbarImages() {
         guard let tabViewController = contentViewController as? CenteredTabViewController else {
             return
@@ -99,5 +75,34 @@ class OneWindowController: NSWindowController {
                 tabViewItem.image = identifierTOImageMapping[identity]
             }
         }
+    }
+
+    // MARK: Public
+    
+    func openPermissionsPane() {
+        openPreferenceTab(at: 3)
+        NSApp.activate(ignoringOtherApps: true)
+    }
+    
+    // Action mapped to the + button in the PanelController. We should always open the General Pane when the + button is clicked.
+    func openGeneralPane() {
+        openPreferenceTab(at: 0)
+        NSApp.activate(ignoringOtherApps: true)
+    }
+    
+    private func openPreferenceTab(at index: Int) {
+        guard let window = window else {
+            return
+        }
+
+        if !window.isMainWindow || !window.isVisible {
+            showWindow(nil)
+        }
+
+        guard let tabViewController = contentViewController as? CenteredTabViewController else {
+            return
+        }
+
+        tabViewController.selectedTabViewItemIndex = index
     }
 }

@@ -1,167 +1,357 @@
-/*
+
+
+"About Tab" = "關於";
+
+
+"Add Button Title" = "新增";
+
+
+"Appearance Tab" = "外觀";
+
+
+"Back" = "返回";
+
+/* 
   Localizable.strings
   Clocker
 
   Created by Abhishek Banthia on 3/27/16.
 
-*/
-
+ */
 "CFBundleDisplayName" = "Clocker";
-"Thank you for helping make Clocker even better!" = "感謝您的幫助，讓 Clocker 變得更好！";
-"iRateMessageTitle" = "評價 %@";
-"iRateAppMessage" = "如果您喜歡使用 %@ 的話，您是否願意花一點給予評價？不需要一分鐘就能完成。感謝您的支持！";
-"iRateGameMessage" = "如果您喜歡遊玩 %@ 的話，您是否願意花一點給予評價？不需要一分鐘就能完成。感謝您的支持！";
-"iRateCancelButton" = "不用了，謝謝！";
-"iRateRateButton" = "現在評分吧！";
-"iRateRemindButton" = "下次再提醒我";
-"iRateUpdateMessage" = "立即更新";
-"ClockerVersion" = "版本：%@";
+
+
 "CLFeedbackAlertTitle" = "感謝您的幫助，讓 Clocker 變得更好！";
-"app-name" = "Clocker";
-"start-at-login" = "在登入時啟動";
-"setup-steps" = "設定 Clocker 只需要 3 個步驟";
-"Permissions-Header" = "權限";
-"See your next Calendar event here." = "在此查看你的下一個日曆活動。";
-"Click here to start." = "開始";
-"Reminders Access" = "取用提醒事項";
+
+
 "Calendar Access" = "取用您的行事曆";
-"Permissions" = "權限";
+
+/* Permissions */
+"Calendar Access Title" = "取用您的行事曆";
+
+
 "Calendar Detail" = "即將到來的行程會在選單列和面板中顯示。";
-"Reminders Detail" = "根據你選擇的位置設定提醒。您的提醒將儲存在預設的提醒事項應用程式。";
-"Privacy Text" = "您稍後可以在「系統偏好設定」>「安全性與隱私權」中更改。";
-"Granted Button Text" = "允許";
-"Denied Button Text" = "拒絕";
-"Grant Button Text" = "允許";
 
-// Welcome Onboarding
-"It only takes 3 steps to setup Clocker." = "設定 Clocker 只需要 3 個步驟。";
-"Get Started" = "開始使用";
 
-// Tab Item Titles
-"Preferences Tab" = "偏好設定";
-"Appearance Tab" = "外觀";
 "Calendar Tab" = "行事曆";
-"About Tab" = "關於";
-"Permissions Tab" = "權限";
 
-// General Preferences Screen
-"Start at Login" = "登入時打開 Clocker";
-"Sort by Time Difference" = "按時差排序";
-"Sort by Name" = "按名稱排序";
-"Sort by Label" = "按標籤排序";
-"Search Field Placeholder" = "輸入一個地點的名稱";
-"No Timezone Selected" = "請選取一個時區！";
-"Max Timezones Selected" = "最多允許 100 個時區！";
-"Max Search Characters" = "只允許 50 個字元！";
-"Add Button Title" = "新增";
+
+"Click here to start." = "開始";
+
+
+"Clocker is more useful when it can display events from your calendars." = "從您的行事曆顯示行程將使 Clocker 更實用。";
+
+
+"Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "從您的行事曆顯示行程將使 Clocker 更實用。您可以在「系統偏好設定」>「安全性與隱私」>「隱私權」更改此設定。";
+
+
+"ClockerVersion" = "版本：%@";
+
+
 "Close Button Title" = "關閉";
 
-// Onboarding
-"Open Clocker At Login" = "在登入時打開 Clocker";
-"Launch Clocker" = "啟動 Clocker";
 
-// Welcome Onboarding
-"It only takes 3 steps to set up Clocker." = "設定 Clocker 只需要 3 個步驟。";
-"Get Started" = "開始使用";
-
-// Permissions
-"Calendar Access Title" = "取用您的行事曆";
-"Reminders Access Title" = "取用提醒事項";
-"Later Config Description" = "這些可以稍後在「系統偏好設定」中進行設置。";
-"Back" = "返回";
-"Continue" = "繼續";
-"Clocker is more useful when it can display events from your calendars." = "從您的行事曆顯示行程將使 Clocker 更實用。";
-"Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "從您的行事曆顯示行程將使 Clocker 更實用。您可以在「系統偏好設定」>「安全性與隱私」>「隱私權」更改此設定。";
-/* Text for button that takes the user to the System Preferences app. In case the user hasn't given Calendar/Reminders access permission, this button takes you to the System Preferences app where the user can give proper permissions to Clocker. */
-"Launch Preferences" = "啟動偏好設定";
-"Grant Access" = "允許存取";
-"Upcoming events from your personal and shared calendars can be shown in the menubar and the panel." = "即將到來的行程會在選單列和面板中顯示。";
-"Granted" = "允許";
-"Denied" = "拒絕";
-"Grant" = "允許";
-"Unexpected" = "無法預期的";
-
-// Onboarding Search
-"Quick Add Locations" = "快速加入位置";
-"More search options in Clocker Preferences." = "在 Clocker 偏好設定中更多的搜尋選項。";
-"Enter 3 or more characters for locations you'll like to add" = "為您想加入的位置輸入 3 個或更多字元";
-
-// Start at Login
-"Launch at Login" = "登入時啟動";
-"This can be configured later in Clocker Preferences." = "這可以稍後在 Clocker 偏好設定中進行設置。";
-"Should Clocker open automatically on startup?" = "啟動時自動打開 Clocker？";
-
-// Final Onboarding Screen
-"You're all set!" = "設定完成。";
-"Thank you for the details." = "Thank you for the details.";
-"You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences." = "當應用程式啟動時，您將會在選單列看到 Clocker 圖像。如果您想在 Dock 上看到圖像，請前往偏好設定。";
-"If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!";
-
-// Appearance Tab
-"Panel Theme" = "面板主題";
-"Favourite a timezone to enable menubar display options." = "將一時區設為喜好項目以啟用選單列顯示選項。";
-"Main Panel Options" = "主要面板選項";
-"Time Format" = "時間格式";
-"Day Display Options" = "日期顯示選項";
-"Show Future Slider" = "顯示未來滑桿";
-"Show Sunrise/Sunset" = "顯示日出/日落";
-"Display the time in seconds" = "顯示時間秒數";
-"Larger Text" = "文字大小";
-"Future Slider Range" = "未來滑桿範圍";
-"Include Date" = "包含日期";
-"Include Day" = "包含星期";
-"Include Place Name" = "包含位置名稱";
-"Menubar Display Options" = "選單列顯示選項";
-"Menubar Mode" = "選單列模式";
-"Preview" = "預覽";
-"Miscellaneous" = "其他設定";
-
-// Empty View
-"No places added" = "未加入地點";
-
-// Panel
-"No upcoming event." = "沒有即將到來的行程";
-"You have no events scheduled for tomorrow." = "您明天沒有排任何行程。";
-
-// Review
-"Enjoy using Clocker?" = "喜歡使用 Clocker 嗎？";
-
-// App Feedback
-"Tell us what you think!" = "告訴我們您的想法！";
 "Contact Information (Optional)" = "聯絡資訊（可留空）";
+
+
 "Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!" = "聯絡欄為可選填欄位！我們需要更多資訊或協助時，將會透過聯絡資訊聯絡您！";
 
-// About View Screen
-"Feedback is always welcome:" = "Feedback is always welcome:";
 
-// Calendars View
-"Upcoming Event View Options" = "即將到來的行程顯示選項";
-"Show Upcoming Event View" = "顯示即將到來的行程";
-"Show All Day Meetings" = "顯示整日的行程";
-"Show Next Meeting Title in Menubar" = "在選單列中顯示下個行程";
-"Truncate menubar text longer than" = "選單列文字長度限制";
-"characters" = "字元";
-"Show events from" = "Show events from";
-"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "如果會議標題為「Meeting with Neel」、文字長度限制為 5，選單列中的文字將顯示為「Meeti...」。";
+"Continue" = "繼續";
 
-// Notes Popover
-"Reminder Set" = "Reminder Set";
-"Successfully set." = "設定成功。";
-
-// Errors
-"You're offline, maybe?" = "You're offline, maybe?";
-"Try again, maybe?" = "再試一次？";
-"The Internet connection appears to be offline." = "Internet連線已斷開。";
-
-// UI Tests
-"New Zealand" = "紐西蘭";
-"Florida" = "佛羅里達";
-"San Francisco" = "舊金山";
-
-// DST changes
-"Daylights Saving transition will occur in < 24 hours" = "Daylights Saving transition will occur in < 24 hours";
 
 "Copied to Clipboard" = "Copied to Clipboard";
-"No upcoming events for today!" = "No upcoming events for today!";
+
+
+"Day Display Options" = "日期顯示選項";
+
+/* DST changes */
+"Daylights Saving transition will occur in < 24 hours" = "Daylights Saving transition will occur in < 24 hours";
+
+
+"Denied" = "拒絕";
+
+
+"Denied Button Text" = "拒絕";
+
+
+"Display the time in seconds" = "顯示時間秒數";
+
+/* Review */
+"Enjoy using Clocker?" = "喜歡使用 Clocker 嗎？";
+
+
+"Enter 3 or more characters for locations you'll like to add" = "為您想加入的位置輸入 3 個或更多字元";
+
+
+"Favourite a timezone to enable menubar display options." = "將一時區設為喜好項目以啟用選單列顯示選項。";
+
+/* About View Screen */
+"Feedback is always welcome:" = "Feedback is always welcome:";
+
+
+"Florida" = "佛羅里達";
+
+
+"Future Slider Range" = "未來滑桿範圍";
+
+
+"Get Started" = "開始使用";
+
+
+"Get Started" = "開始使用";
+
+
+"Grant" = "允許";
+
+
+"Grant Access" = "允許存取";
+
+
+"Grant Button Text" = "允許";
+
+
+"Granted" = "允許";
+
+
+"Granted Button Text" = "允許";
+
+
 "Great going." = "Great going.";
+
+
 "Happy Weekend." = "Happy Weekend.";
+
+
+"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "如果會議標題為「Meeting with Neel」、文字長度限制為 5，選單列中的文字將顯示為「Meeti...」。";
+
+
+"If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!";
+
+
+"Include Date" = "包含日期";
+
+
+"Include Day" = "包含星期";
+
+
+"Include Place Name" = "包含位置名稱";
+
+/* Welcome Onboarding */
+"It only takes 3 steps to set up Clocker." = "設定 Clocker 只需要 3 個步驟。";
+
+/* Welcome Onboarding */
+"It only takes 3 steps to setup Clocker." = "設定 Clocker 只需要 3 個步驟。";
+
+
+"Larger Text" = "文字大小";
+
+
+"Later Config Description" = "這些可以稍後在「系統偏好設定」中進行設置。";
+
+
+"Launch Clocker" = "啟動 Clocker";
+
+/* Text for button that takes the user to the System Preferences app. In case the user hasn't given Calendar/Reminders access permission, this button takes you to the System Preferences app where the user can give proper permissions to Clocker. */
+"Launch Preferences" = "啟動偏好設定";
+
+/* Start at Login */
+"Launch at Login" = "登入時啟動";
+
+
+"Main Panel Options" = "主要面板選項";
+
+
+"Max Search Characters" = "只允許 50 個字元！";
+
+
+"Max Timezones Selected" = "最多允許 100 個時區！";
+
+
+"Menubar Display Options" = "選單列顯示選項";
+
+
+"Menubar Mode" = "選單列模式";
+
+
+"Miscellaneous" = "其他設定";
+
+
+"More search options in Clocker Preferences." = "在 Clocker 偏好設定中更多的搜尋選項。";
+
+/* UI Tests */
+"New Zealand" = "紐西蘭";
+
+
+"No Timezone Selected" = "請選取一個時區！";
+
+/* Empty View */
+"No places added" = "未加入地點";
+
+/* Panel */
+"No upcoming event." = "沒有即將到來的行程";
+
+
+"No upcoming events for today!" = "No upcoming events for today!";
+
+/* Onboarding */
+"Open Clocker At Login" = "在登入時打開 Clocker";
+
+/* Appearance Tab */
+"Panel Theme" = "面板主題";
+
+
+"Permissions" = "權限";
+
+
+"Permissions Tab" = "權限";
+
+
+"Permissions-Header" = "權限";
+
+/* Tab Item Titles */
+"Preferences Tab" = "偏好設定";
+
+
+"Preview" = "預覽";
+
+
+"Privacy Text" = "您稍後可以在「系統偏好設定」>「安全性與隱私權」中更改。";
+
+/* Onboarding Search */
+"Quick Add Locations" = "快速加入位置";
+
+/* Notes Popover */
+"Reminder Set" = "Reminder Set";
+
+
+"Reminders Access" = "取用提醒事項";
+
+
+"Reminders Access Title" = "取用提醒事項";
+
+
+"Reminders Detail" = "根據你選擇的位置設定提醒。您的提醒將儲存在預設的提醒事項應用程式。";
+
+
+"San Francisco" = "舊金山";
+
+
+"Search Field Placeholder" = "輸入一個地點的名稱";
+
+
+"See your next Calendar event here." = "在此查看你的下一個日曆活動。";
+
+
+"Should Clocker open automatically on startup?" = "啟動時自動打開 Clocker？";
+
+
+"Show All Day Meetings" = "顯示整日的行程";
+
+
+"Show Future Slider" = "顯示未來滑桿";
+
+
+"Show Next Meeting Title in Menubar" = "在選單列中顯示下個行程";
+
+
+"Show Sunrise/Sunset" = "顯示日出/日落";
+
+
+"Show Upcoming Event View" = "顯示即將到來的行程";
+
+
+"Show events from" = "Show events from";
+
+
+"Sort by Label" = "按標籤排序";
+
+
+"Sort by Name" = "按名稱排序";
+
+
+"Sort by Time Difference" = "按時差排序";
+
+/* General Preferences Screen */
+"Start at Login" = "登入時打開 Clocker";
+
+
+"Successfully set." = "設定成功。";
+
+/* App Feedback */
+"Tell us what you think!" = "告訴我們您的想法！";
+
+
+"Thank you for helping make Clocker even better!" = "感謝您的幫助，讓 Clocker 變得更好！";
+
+
+"Thank you for the details." = "Thank you for the details.";
+
+
+"The Internet connection appears to be offline." = "Internet連線已斷開。";
+
+
+"This can be configured later in Clocker Preferences." = "這可以稍後在 Clocker 偏好設定中進行設置。";
+
+
+"Time Format" = "時間格式";
+
+
+"Truncate menubar text longer than" = "選單列文字長度限制";
+
+
+"Try again, maybe?" = "再試一次？";
+
+
+"Unexpected" = "無法預期的";
+
+/* Calendars View */
+"Upcoming Event View Options" = "即將到來的行程顯示選項";
+
+
+"Upcoming events from your personal and shared calendars can be shown in the menubar and the panel." = "即將到來的行程會在選單列和面板中顯示。";
+
+
+"You have no events scheduled for tomorrow." = "您明天沒有排任何行程。";
+
+
+"You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences." = "當應用程式啟動時，您將會在選單列看到 Clocker 圖像。如果您想在 Dock 上看到圖像，請前往偏好設定。";
+
+/* Final Onboarding Screen */
+"You're all set!" = "設定完成。";
+
+/* Errors */
+"You're offline, maybe?" = "You're offline, maybe?";
+
+
+"app-name" = "Clocker";
+
+
+"characters" = "字元";
+
+
+"iRateAppMessage" = "如果您喜歡使用 %@ 的話，您是否願意花一點給予評價？不需要一分鐘就能完成。感謝您的支持！";
+
+
+"iRateCancelButton" = "不用了，謝謝！";
+
+
+"iRateGameMessage" = "如果您喜歡玩 %@ 的話，您是否願意花一點時間給予評價？不需一分鐘即可完成。感謝您的支持";
+
+
+"iRateMessageTitle" = "評價 %@";
+
+
+"iRateRateButton" = "現在評分吧！";
+
+
+"iRateRemindButton" = "下次再提醒我";
+
+
+"iRateUpdateMessage" = "立即更新";
+
+
+"setup-steps" = "設定 Clocker 只需要 3 個步驟";
+
+
+"start-at-login" = "在登入時啟動";

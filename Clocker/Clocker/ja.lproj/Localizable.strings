@@ -1,166 +1,357 @@
+
+
+"About Tab" = "このプログラムについて";
+
+
+"Add Button Title" = "追加";
+
+
+"Appearance Tab" = "外観";
+
+
+"Back" = "戻る";
+
 /* 
   Localizable.strings
   Clocker
 
   Created by Abhishek Banthia on 3/27/16.
 
-*/
-
+ */
 "CFBundleDisplayName" = "Clocker";
-"Thank you for helping make Clocker even better!" = "Clocker の品質向上にご協力いただきありがとうございます!";
-"iRateMessageTitle" = "%@ を評価";
-"iRateAppMessage" = "%@ がお気に召したのであれば、評価をして頂けますか? 1分とはかかりません。ご協力ありがとうございます!";
-"iRateGameMessage" = "%@ がお気に召したのであれば、評価をして頂けますか? 1分とはかかりません。ご協力ありがとうございます!";
-"iRateCancelButton" = "いいえ、結構です";
-"iRateRateButton" = "今すぐ評価します";
-"iRateRemindButton" = "後で通知する";
-"iRateUpdateMessage" = "今すぐアップデートしますか?";
-"ClockerVersion" = "バージョン %@";
+
+
 "CLFeedbackAlertTitle" = "Clocker の品質向上にご協力いただきありがとうございます!";
-"app-name" = "Clocker";
-"start-at-login" = "ログイン時に開始";
-"setup-steps" = "Clocker のセットアップは3ステップのみです";
-"Permissions-Header" = "アクセス許可";
-"See your next Calendar event here." = "次回のカレンダーイベントはこちらをご覧ください。";
-"Click here to start." = "ここをクリックして開始します。";
-"Reminders Access" = "リマインダーアクセス";
+
+
 "Calendar Access" = "カレンダーアクセス";
-"Permissions" = "アクセス許可";
+
+/* Permissions */
+"Calendar Access Title" = "カレンダーアクセス";
+
+
 "Calendar Detail" = "個人カレンダーおよび共有カレンダーからの今後のイベントをメニューバーとパネルに表示させることができます。";
-"Reminders Detail" = "選択したロケーションのタイムゾーンでリマインダーを設定します。リマインダーはデフォルトのリマインダーアプリに保存されます。";
-"Privacy Text" = "この設定はシステム環境設定のプライバシーセクションであとから変更が可能です。";
-"Granted Button Text" = "許可されています";
-"Denied Button Text" = "拒否されています";
-"Grant Button Text" = "許可";
 
-// Welcome Onboarding
-"It only takes 3 steps to setup Clocker." = "Clocker のセットアップは3ステップのみです。";
-"Get Started" = "はじめに";
 
-// Tab Item Titles
-"Preferences Tab" = "設定";
-"Appearance Tab" = "外観";
 "Calendar Tab" = "カレンダー";
-"About Tab" = "このプログラムについて";
-"Permissions Tab" = "アクセス許可";
 
-// General Preferences Screen
-"Start at Login" = "ログイン時に Clocker を開始";
-"Sort by Time Difference" = "時差で並べ替え";
-"Sort by Name" = "地名で並べ替え";
-"Sort by Label" = "ラベルで並べ替え";
-"Search Field Placeholder" = "都市名、州や県、国名を入力してください";
-"No Timezone Selected" = "時間帯を選択してください!";
-"Max Timezones Selected" = "最大で100の時間帯が設定可能です!";
-"Max Search Characters" = "設定可能な文字数は50です!";
-"Add Button Title" = "追加";
+
+"Click here to start." = "ここをクリックして開始します。";
+
+
+"Clocker is more useful when it can display events from your calendars." = "Clocker is more useful when it can display events from your calendars.";
+
+
+"Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy.";
+
+
+"ClockerVersion" = "バージョン %@";
+
+
 "Close Button Title" = "閉じる";
 
-// Onboarding
-"Open Clocker At Login" = "ログイン時に Clocker を開始";
-"Launch Clocker" = "Clocker を起動";
 
-// Welcome Onboarding
-"It only takes 3 steps to set up Clocker." = "Clocker のセットアップは3ステップのみです。";
-"Get Started" = "はじめに";
-
-// Permissions
-"Calendar Access Title" = "カレンダーアクセス";
-"Reminders Access Title" = "リマインダーアクセス";
-"Later Config Description" = "これらはシステム環境設定で後から設定できます。";
-"Back" = "戻る";
-"Continue" = "続ける";
-"Clocker is more useful when it can display events from your calendars." = "Clocker is more useful when it can display events from your calendars.";
-"Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy.";
-"Launch Preferences" = "Launch Preferences";
-"Grant Access" = "Grant Access";
-"Upcoming events from your personal and shared calendars can be shown in the menubar and the panel." = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.";
-"Granted" = "Granted";
-"Denied" = "Denied";
-"Grant" = "Grant";
-"Unexpected" = "Unexpected";
-
-// Onboarding Search
-"Quick Add Locations" = "場所を簡単に追加";
-"More search options in Clocker Preferences." = "More search options in Clocker Preferences.";
-"Enter 3 or more characters for locations you'll like to add" = "Enter 3 or more characters for locations you'll like to add";
-
-// Start at Login
-"Launch at Login" = "Launch at Login";
-"This can be configured later in Clocker Preferences." = "This can be configured later in Clocker Preferences.";
-"Should Clocker open automatically on startup?" = "Should Clocker open automatically on startup?";
-
-// Final Onboarding Screen
-"You're all set!" = "You're all set!";
-"Thank you for the details." = "Thank you for the details.";
-"You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences." = "アプリを起動すると、メニューバーに時計のアイコンが表示されます。ドックのアイコンが表示される場合は、format@@0に進みます。";
-"If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!";
-
-// Appearance Tab
-"Panel Theme" = "Panel Theme";
-"Favourite a timezone to enable menubar display options." = "Favourite a timezone to enable menubar display options.";
-"Main Panel Options" = "Main Panel Options";
-"Time Format" = "Time Format";
-"Day Display Options" = "Day Display Options";
-"Show Future Slider" = "Show Future Slider";
-"Show Sunrise/Sunset" = "Show Sunrise/Sunset";
-"Display the time in seconds" = "Display the time in seconds";
-"Larger Text" = "Larger Text";
-"Future Slider Range" = "Future Slider Range";
-"Include Date" = "Include Date";
-"Include Day" = "Include Day";
-"Include Place Name" = "Include Place Name";
-"Menubar Display Options" = "Menubar Display Options";
-"Menubar Mode" = "Menubar Mode";
-"Preview" = "プレビュー";
-"Miscellaneous" = "Miscellaneous";
-
-// Empty View
-"No places added" = "No places added";
-
-// Panel
-"No upcoming event." = "No upcoming event.";
-"You have no events scheduled for tomorrow." = "You have no events scheduled for tomorrow.";
-
-// Review
-"Enjoy using Clocker?" = "Enjoy using Clocker?";
-
-// App Feedback
-"Tell us what you think!" = "Tell us what you think!";
 "Contact Information (Optional)" = "Contact Information (Optional)";
+
+
 "Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!" = "Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!";
 
-// About View Screen
-"Feedback is always welcome:" = "Feedback is always welcome:";
 
-// Calendars View
-"Upcoming Event View Options" = "Upcoming Event View Options";
-"Show Upcoming Event View" = "Show Upcoming Event View";
-"Show All Day Meetings" = "Show All Day Meetings";
-"Show Next Meeting Title in Menubar" = "次のミーティングタイトルをメニューバーに表示する";
-"Truncate menubar text longer than" = "Truncate menubar text longer than";
-"characters" = "characters";
-"Show events from" = "Show events from";
-"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"";
+"Continue" = "続ける";
 
-// Notes Popover
-"Reminder Set" = "Reminder Set";
-"Successfully set." = "Successfully set.";
-
-// Errors
-"You're offline, maybe?" = "オフラインのようです。";
-"Try again, maybe?" = "Try again, maybe?";
-"The Internet connection appears to be offline." = "The Internet connection appears to be offline.";
-
-// UI Tests
-"New Zealand" = "New Zealand";
-"Florida" = "Florida";
-"San Francisco" = "San Francisco";
-
-// DST changes
-"Daylights Saving transition will occur in < 24 hours" = "Daylights Saving transition will occur in < 24 hours";
 
 "Copied to Clipboard" = "Copied to Clipboard";
-"No upcoming events for today!" = "No upcoming events for today!";
+
+
+"Day Display Options" = "Day Display Options";
+
+/* DST changes */
+"Daylights Saving transition will occur in < 24 hours" = "Daylights Saving transition will occur in < 24 hours";
+
+
+"Denied" = "Denied";
+
+
+"Denied Button Text" = "拒否されています";
+
+
+"Display the time in seconds" = "Display the time in seconds";
+
+/* Review */
+"Enjoy using Clocker?" = "Enjoy using Clocker?";
+
+
+"Enter 3 or more characters for locations you'll like to add" = "Enter 3 or more characters for locations you'll like to add";
+
+
+"Favourite a timezone to enable menubar display options." = "メニューバーの表示オプションを有効にするには、タイムゾーンをお気に入りとして登録してください。";
+
+/* About View Screen */
+"Feedback is always welcome:" = "Feedback is always welcome:";
+
+
+"Florida" = "Florida";
+
+
+"Future Slider Range" = "Future Slider Range";
+
+
+"Get Started" = "はじめに";
+
+
+"Get Started" = "はじめに";
+
+
+"Grant" = "Grant";
+
+
+"Grant Access" = "Grant Access";
+
+
+"Grant Button Text" = "許可";
+
+
+"Granted" = "Granted";
+
+
+"Granted Button Text" = "許可されています";
+
+
 "Great going." = "Great going.";
+
+
 "Happy Weekend." = "Happy Weekend.";
+
+
+"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"";
+
+
+"If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!";
+
+
+"Include Date" = "Include Date";
+
+
+"Include Day" = "Include Day";
+
+
+"Include Place Name" = "Include Place Name";
+
+/* Welcome Onboarding */
+"It only takes 3 steps to set up Clocker." = "Clocker のセットアップは3ステップのみです。";
+
+/* Welcome Onboarding */
+"It only takes 3 steps to setup Clocker." = "Clocker のセットアップは3ステップのみです。";
+
+
+"Larger Text" = "Larger Text";
+
+
+"Later Config Description" = "これらはシステム環境設定で後から設定できます。";
+
+
+"Launch Clocker" = "Clocker を起動";
+
+
+"Launch Preferences" = "Launch Preferences";
+
+/* Start at Login */
+"Launch at Login" = "Launch at Login";
+
+
+"Main Panel Options" = "Main Panel Options";
+
+
+"Max Search Characters" = "設定可能な文字数は50です!";
+
+
+"Max Timezones Selected" = "最大で100の時間帯が設定可能です!";
+
+
+"Menubar Display Options" = "メニューバーの表示オプション";
+
+
+"Menubar Mode" = "メニューバーモード";
+
+
+"Miscellaneous" = "その他";
+
+
+"More search options in Clocker Preferences." = "More search options in Clocker Preferences.";
+
+/* UI Tests */
+"New Zealand" = "New Zealand";
+
+
+"No Timezone Selected" = "時間帯を選択してください!";
+
+/* Empty View */
+"No places added" = "No places added";
+
+/* Panel */
+"No upcoming event." = "No upcoming event.";
+
+
+"No upcoming events for today!" = "No upcoming events for today!";
+
+/* Onboarding */
+"Open Clocker At Login" = "ログイン時に Clocker を開始";
+
+/* Appearance Tab */
+"Panel Theme" = "Panel Theme";
+
+
+"Permissions" = "アクセス許可";
+
+
+"Permissions Tab" = "アクセス許可";
+
+
+"Permissions-Header" = "アクセス許可";
+
+/* Tab Item Titles */
+"Preferences Tab" = "設定";
+
+
+"Preview" = "プレビュー";
+
+
+"Privacy Text" = "この設定はシステム環境設定のプライバシーセクションであとから変更が可能です。";
+
+/* Onboarding Search */
+"Quick Add Locations" = "場所を簡単に追加";
+
+/* Notes Popover */
+"Reminder Set" = "Reminder Set";
+
+
+"Reminders Access" = "リマインダーアクセス";
+
+
+"Reminders Access Title" = "リマインダーアクセス";
+
+
+"Reminders Detail" = "選択したロケーションのタイムゾーンでリマインダーを設定します。リマインダーはデフォルトのリマインダーアプリに保存されます。";
+
+
+"San Francisco" = "San Francisco";
+
+
+"Search Field Placeholder" = "都市名、州や県、国名を入力してください";
+
+
+"See your next Calendar event here." = "次回のカレンダーイベントはこちらをご覧ください。";
+
+
+"Should Clocker open automatically on startup?" = "Should Clocker open automatically on startup?";
+
+
+"Show All Day Meetings" = "Show All Day Meetings";
+
+
+"Show Future Slider" = "Show Future Slider";
+
+
+"Show Next Meeting Title in Menubar" = "次のミーティングタイトルをメニューバーに表示する";
+
+
+"Show Sunrise/Sunset" = "Show Sunrise/Sunset";
+
+
+"Show Upcoming Event View" = "Show Upcoming Event View";
+
+
+"Show events from" = "Show events from";
+
+
+"Sort by Label" = "ラベルで並べ替え";
+
+
+"Sort by Name" = "地名で並べ替え";
+
+
+"Sort by Time Difference" = "時差で並べ替え";
+
+/* General Preferences Screen */
+"Start at Login" = "ログイン時に Clocker を開始";
+
+
+"Successfully set." = "Successfully set.";
+
+/* App Feedback */
+"Tell us what you think!" = "Tell us what you think!";
+
+
+"Thank you for helping make Clocker even better!" = "Clocker の品質向上にご協力いただきありがとうございます!";
+
+
+"Thank you for the details." = "Thank you for the details.";
+
+
+"The Internet connection appears to be offline." = "The Internet connection appears to be offline.";
+
+
+"This can be configured later in Clocker Preferences." = "This can be configured later in Clocker Preferences.";
+
+
+"Time Format" = "Time Format";
+
+
+"Truncate menubar text longer than" = "Truncate menubar text longer than";
+
+
+"Try again, maybe?" = "Try again, maybe?";
+
+
+"Unexpected" = "Unexpected";
+
+/* Calendars View */
+"Upcoming Event View Options" = "Upcoming Event View Options";
+
+
+"Upcoming events from your personal and shared calendars can be shown in the menubar and the panel." = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.";
+
+
+"You have no events scheduled for tomorrow." = "You have no events scheduled for tomorrow.";
+
+
+"You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences." = "アプリを起動すると、メニューバーに時計のアイコンが表示されます。ドックのアイコンが表示される場合は、format@@0に進みます。";
+
+/* Final Onboarding Screen */
+"You're all set!" = "You're all set!";
+
+/* Errors */
+"You're offline, maybe?" = "オフラインのようです。";
+
+
+"app-name" = "Clocker";
+
+
+"characters" = "characters";
+
+
+"iRateAppMessage" = "%@ がお気に召したのであれば、評価をして頂けますか? 1分とはかかりません。ご協力ありがとうございます!";
+
+
+"iRateCancelButton" = "いいえ、結構です";
+
+
+"iRateGameMessage" = "%@ がお気に召したのであれば、評価をして頂けますか? 1分とはかかりません。ご協力ありがとうございます!";
+
+
+"iRateMessageTitle" = "%@ を評価";
+
+
+"iRateRateButton" = "今すぐ評価します";
+
+
+"iRateRemindButton" = "後で通知する";
+
+
+"iRateUpdateMessage" = "今すぐアップデートしますか?";
+
+
+"setup-steps" = "Clocker のセットアップは3ステップのみです";
+
+
+"start-at-login" = "ログイン時に開始";

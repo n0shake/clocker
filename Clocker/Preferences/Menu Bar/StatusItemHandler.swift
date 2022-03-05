@@ -123,7 +123,7 @@ class StatusItemHandler: NSObject {
             self.menubarTimer?.invalidate()
         }
         
-        NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didWakeNotification, object: nil, queue: OperationQueue.main) { notification in
+        NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didWakeNotification, object: nil, queue:     OperationQueue.main) { notification in
             self.setupStatusItem()
         }
     }
