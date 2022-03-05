@@ -50,7 +50,7 @@ final class ReviewController {
             let lastVersion = storage.object(forKey: Keys.lastVersion) as? String
         else { return true }
 
-        // Minimum interval between two versions should be 45
+        // Minimum interval between two versions should be 3 months
         let minInterval: TimeInterval = day * 90
 
         // never prompt w/in the same version
@@ -60,13 +60,12 @@ final class ReviewController {
     }
 
     class func prompt() {
-        guard let ratingsURL = URL(string: AboutUsConstants.AppStoreLink) else {
-            return
-        }
-
         if #available(OSX 10.14, *) {
             SKStoreReviewController.requestReview()
         } else {
+            guard let ratingsURL = URL(string: AboutUsConstants.AppStoreLink) else {
+                return
+            }
             NSWorkspace.shared.open(ratingsURL)
         }
 

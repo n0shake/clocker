@@ -686,8 +686,7 @@ class ParentPanelController: NSWindowController {
     }
 
     @objc private func openPreferencesWindow() {
-        oneWindow?.showWindow(nil)
-        NSApp.activate(ignoringOtherApps: true)
+        oneWindow?.openGeneralPane()
     }
 
     @IBAction func dismissNextEventLabel(_: NSButton) {
@@ -724,7 +723,7 @@ class ParentPanelController: NSWindowController {
     }
 
     private func showPermissionsWindow() {
-        oneWindow?.openPermissions()
+        oneWindow?.openPermissionsPane()
         NSApp.activate(ignoringOtherApps: true)
     }
 

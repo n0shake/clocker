@@ -309,8 +309,13 @@ extension AppFeedbackWindowController: NSWindowDelegate {
     }
 
     func bringPreferencesWindowToFront() {
-        let oneWindowController = OneWindowController.shared()
-        oneWindowController.window?.makeKeyAndOrderFront(self)
-        NSApp.activate(ignoringOtherApps: true)
+        let windows = NSApplication.shared.windows
+        let prefWindow = windows.first(where: { window in
+            return window.identifier == NSUserInterfaceItemIdentifier("Preferences")
+        })
+        if let prefW = prefWindow {
+            prefW.makeKeyAndOrderFront(self)
+            NSApp.activate(ignoringOtherApps: true)
+        }
     }
 }
