@@ -481,22 +481,28 @@ extension PreferencesViewController {
                                                             return
                                                         }
 
-                                                        guard let data = response else {
+                                                        guard let data = response, let searchResults = data.decode() else {
                                                             assertionFailure("Data was unexpectedly nil")
                                                             return
                                                         }
 
-                                                        let searchResults = data.decode()
+//                                                        let searchResults = data.decode()
 
-                                                        if searchResults?.status == "ZERO_RESULTS" {
+                                                        if searchResults.status == ResultStatus.zeroResults {
                                                             self.findLocalSearchResultsForTimezones()
                                                             self.placeholderLabel.placeholderString = self.searchResultsDataSource.timezoneFilteredArray.isEmpty ? "No results! 😔 Try entering the exact name." : CLEmptyString
                                                             self.reloadSearchResults()
                                                             self.isActivityInProgress = false
                                                             return
+                                                        } else if searchResults.status == ResultStatus.requestDenied && searchResults.results.isEmpty {
+                                                            self.findLocalSearchResultsForTimezones()
+                                                            self.placeholderLabel.placeholderString = self.searchResultsDataSource.timezoneFilteredArray.isEmpty ? "Update Clocker to get a faster experience 😃" : CLEmptyString
+                                                            self.reloadSearchResults()
+                                                            self.isActivityInProgress = false
+                                                            return
                                                         }
 
-                                                        self.appendResultsToFilteredArray(searchResults!.results)
+                                                        self.appendResultsToFilteredArray(searchResults.results)
                                                         self.findLocalSearchResultsForTimezones()
                                                         self.prepareUIForPresentingResults()
                                                     }
@@ -670,7 +676,7 @@ extension PreferencesViewController {
             return false
         }
 
-        if let status = unwrapped["status"] as? String, status == "ZERO_RESULTS" {
+        if let status = unwrapped["status"] as? String, status == ResultStatus.zeroResults {
             setErrorPlaceholders()
             return true
         }
