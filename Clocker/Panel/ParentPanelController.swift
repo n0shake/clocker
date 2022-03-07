@@ -773,9 +773,9 @@ class ParentPanelController: NSWindowController {
         close()
 
         if inverseSelection.isEqual(to: NSNumber(value: 1)) {
-            sharedDelegate.setupFloatingWindow()
+            sharedDelegate.setupFloatingWindow(false)
         } else {
-            sharedDelegate.closeFloatingWindow()
+            sharedDelegate.setupFloatingWindow(true)
             sharedDelegate.setPanelDefaults()
         }
 

@@ -279,12 +279,8 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.activate(ignoringOtherApps: true)
     }
 
-    open func setupFloatingWindow() {
-        showFloatingWindow()
-    }
-
-    open func closeFloatingWindow() {
-        floatingWindow.window?.close()
+    open func setupFloatingWindow(_ hide: Bool) {
+        hide ? floatingWindow.window?.close() : showFloatingWindow()
     }
 
     func statusItemForPanel() -> StatusItemHandler {
