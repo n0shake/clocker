@@ -987,6 +987,12 @@ class ParentPanelController: NSWindowController {
 
         NSWorkspace.shared.open(sourceURL)
     }
+    
+    @objc func openFAQs() {
+        guard let sourceURL = URL(string: AboutUsConstants.FAQsLink) else { return }
+
+        NSWorkspace.shared.open(sourceURL)
+    }
 
     @IBAction func showMoreOptions(_ sender: NSButton) {
         let menuItem = NSMenu(title: "More Options")
@@ -1010,6 +1016,7 @@ class ParentPanelController: NSWindowController {
         clockerVersionInfo.isEnabled = false
         menuItem.addItem(openPreferences)
         menuItem.addItem(rateClocker)
+        menuItem.addItem(withTitle: "FAQs", action: #selector(openFAQs), keyEquivalent: "")
         menuItem.addItem(sendFeedback)
         menuItem.addItem(localizeClocker)
         menuItem.addItem(NSMenuItem.separator())
