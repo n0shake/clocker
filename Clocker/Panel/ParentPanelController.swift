@@ -33,7 +33,7 @@ class ParentPanelController: NSWindowController {
 
     var previousPopoverRow: Int = -1
 
-    var morePopover: NSPopover?
+    var additionalOptionsPopover: NSPopover?
 
     var datasource: TimezoneDataSource?
 
@@ -366,7 +366,7 @@ class ParentPanelController: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
-        morePopover = NSPopover()
+        additionalOptionsPopover = NSPopover()
     }
 
     func screenHeight() -> CGFloat {
@@ -640,7 +640,7 @@ class ParentPanelController: NSWindowController {
     func showNotesPopover(forRow row: Int, relativeTo _: NSRect, andButton target: NSButton!) -> Bool {
         let defaults = DataStore.shared().timezones()
 
-        guard let popover = morePopover else {
+        guard let popover = additionalOptionsPopover else {
             assertionFailure("Data was unexpectedly nil")
             return false
         }
@@ -773,9 +773,9 @@ class ParentPanelController: NSWindowController {
         close()
 
         if inverseSelection.isEqual(to: NSNumber(value: 1)) {
-            sharedDelegate.setupFloatingWindow()
+            sharedDelegate.setupFloatingWindow(false)
         } else {
-            sharedDelegate.closeFloatingWindow()
+            sharedDelegate.setupFloatingWindow(true)
             sharedDelegate.setPanelDefaults()
         }
 
@@ -834,7 +834,7 @@ class ParentPanelController: NSWindowController {
         if notePopover != nil, let isShown = notePopover?.popover?.isShown, isShown {
             notePopover?.popover?.close()
         }
-        morePopover = nil
+        additionalOptionsPopover = nil
     }
 
     // MARK: Review
@@ -987,6 +987,12 @@ class ParentPanelController: NSWindowController {
 
         NSWorkspace.shared.open(sourceURL)
     }
+    
+    @objc func openFAQs() {
+        guard let sourceURL = URL(string: AboutUsConstants.FAQsLink) else { return }
+
+        NSWorkspace.shared.open(sourceURL)
+    }
 
     @IBAction func showMoreOptions(_ sender: NSButton) {
         let menuItem = NSMenu(title: "More Options")
@@ -1010,6 +1016,7 @@ class ParentPanelController: NSWindowController {
         clockerVersionInfo.isEnabled = false
         menuItem.addItem(openPreferences)
         menuItem.addItem(rateClocker)
+        menuItem.addItem(withTitle: "FAQs", action: #selector(openFAQs), keyEquivalent: "")
         menuItem.addItem(sendFeedback)
         menuItem.addItem(localizeClocker)
         menuItem.addItem(NSMenuItem.separator())
