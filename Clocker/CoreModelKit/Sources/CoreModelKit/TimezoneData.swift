@@ -210,7 +210,7 @@ public class TimezoneData: NSObject, NSCoding {
         } else if shouldOverride == 12 {
             overrideFormat = .epochTime
         } else {
-            assertionFailure("Chosen a wrong timezone format")
+            print("Chosen a wrong timezone format")
         }
     }
 
@@ -223,16 +223,6 @@ public class TimezoneData: NSObject, NSCoding {
 
         if let timezone = timezoneID {
             return timezone
-        }
-
-        if let name = formattedAddress, let placeIdentifier = placeID, let timezoneIdentifier = timezoneID {
-            let errorDictionary = [
-                "Formatted Address": name,
-                "Place Identifier": placeIdentifier,
-                "TimezoneID": timezoneIdentifier,
-            ]
-
-            Logger.log(object: errorDictionary, for: "Error fetching timezone() in TimezoneData")
         }
 
         return TimeZone.autoupdatingCurrent.identifier
@@ -288,13 +278,6 @@ public class TimezoneData: NSObject, NSCoding {
 
     static func == (lhs: TimezoneData, rhs: TimezoneData) -> Bool {
         return lhs.placeID == rhs.placeID
-    }
-
-    public override func isEqual(to object: Any?) -> Bool {
-        if let other = object as? TimezoneData {
-            return placeID == other.placeID
-        }
-        return false
     }
 
     public override func isEqual(_ object: Any?) -> Bool {
