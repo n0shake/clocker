@@ -198,7 +198,6 @@ public class TimezoneData: NSObject, NSCoding {
         } else if shouldOverride == 4 {
             overrideFormat = .twelveHourWithSeconds
         } else if shouldOverride == 5 {
-            print("Setting override format to five")
             overrideFormat = .twentyHourWithSeconds
         } else if shouldOverride == 7 {
             overrideFormat = .twelveHourPrecedingZero
@@ -273,7 +272,9 @@ public class TimezoneData: NSObject, NSCoding {
             return formatInString.contains("ss")
         }
 
-        let formatInString = TimezoneData.values[NSNumber(integerLiteral: overrideFormat.rawValue)] ?? DateFormat.twelveHour
+        // We subtract 1 because the timezone format in the dropdown contains 1 extra row for "Respecting global preferences"
+        let key = NSNumber(integerLiteral: overrideFormat.rawValue - 1)
+        let formatInString = TimezoneData.values[key] ?? DateFormat.twelveHour
         return formatInString.contains("ss")
     }
 
