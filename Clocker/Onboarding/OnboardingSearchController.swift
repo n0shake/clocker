@@ -182,7 +182,7 @@ class OnboardingSearchController: NSViewController {
             return true
         }
 
-        if let status = unwrapped["status"] as? String, status == "ZERO_RESULTS" {
+        if let status = unwrapped["status"] as? String, status == ResultStatus.zeroResults {
             setErrorPlaceholders()
             return true
         }
@@ -365,7 +365,7 @@ class OnboardingSearchController: NSViewController {
 
                                                let searchResults = data.decode()
 
-                                               if searchResults?.status == "ZERO_RESULTS" {
+                                               if searchResults?.status == ResultStatus.zeroResults {
                                                    self.setInfoLabel("No results! 😔 Try entering the exact name.")
                                                    setupForError()
                                                    return
