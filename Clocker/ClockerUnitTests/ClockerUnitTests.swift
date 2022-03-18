@@ -143,10 +143,10 @@ class ClockerUnitTests: XCTestCase {
     // The below test might fail outside California or if DST is active!
     // CI is calibrated to be on LA timezone!
     func testTimeDifference() {
-        XCTAssertTrue(operations.timeDifference() == ", 10h 30m ahead", "Difference was unexpectedly: \(operations.timeDifference())")
+        XCTAssertTrue(operations.timeDifference() == ", 9h 30m ahead", "Difference was unexpectedly: \(operations.timeDifference())")
         XCTAssertTrue(californiaOperations.timeDifference() == ", 3h behind", "Difference was unexpectedly: \(californiaOperations.timeDifference())")
         XCTAssertTrue(floridaOperations.timeDifference() == "", "Difference was unexpectedly: \(floridaOperations.timeDifference())")
-        XCTAssertTrue(aucklandOperations.timeDifference() == ", 18h ahead", "Difference was unexpectedly: \(aucklandOperations.timeDifference())")
+        XCTAssertTrue(aucklandOperations.timeDifference() == ", 17h ahead", "Difference was unexpectedly: \(aucklandOperations.timeDifference())")
         XCTAssertTrue(omahaOperations.timeDifference() == ", an hour behind", "Difference was unexpectedly: \(omahaOperations.timeDifference())")
     }
 
@@ -214,7 +214,8 @@ class ClockerUnitTests: XCTestCase {
         UserDefaults.standard.set(NSNumber(value: 1), forKey: CLSelectedTimeZoneFormatKey) // Set to 24-Hour Format
 
         dataObject.setShouldOverrideGlobalTimeFormat(0)
-        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "HH:mm")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "HH:mm",
+                      "Unexpected format returned: \(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()))")
 
         dataObject.setShouldOverrideGlobalTimeFormat(1) // 12-Hour Format
         XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "h:mm a")
