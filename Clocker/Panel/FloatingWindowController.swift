@@ -49,7 +49,7 @@ class FloatingWindowController: ParentPanelController {
     }
 
     override func showNotesPopover(forRow row: Int, relativeTo positioningRect: NSRect, andButton target: NSButton!) -> Bool {
-        guard let popover = morePopover else {
+        guard let popover = additionalOptionsPopover else {
             return false
         }
 

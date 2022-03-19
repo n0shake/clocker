@@ -40,11 +40,23 @@ class DataStore: NSObject {
     }
 
     func timezones() -> [Data] {
+        if let cloudPreferences = NSUbiquitousKeyValueStore().object(forKey: CLDefaultPreferenceKey) as? [Data] {
+            Logger.info("Returning preferences from NSUbiquitousKeyValueStore")
+            return cloudPreferences
+        }
+        
         guard let preferences = userDefaults.object(forKey: CLDefaultPreferenceKey) as? [Data] else {
             return []
         }
 
         return preferences
+    }
+    
+    func setTimezones(_ timezones: [Data]?) {
+        userDefaults.set(timezones, forKey: CLDefaultPreferenceKey)
+        // iCloud sync
+        NSUbiquitousKeyValueStore().set(timezones, forKey: CLDefaultPreferenceKey)
+        NSUbiquitousKeyValueStore().synchronize()
     }
 
     func menubarTimezones() -> [Data]? {
@@ -70,10 +82,6 @@ class DataStore: NSObject {
         return shouldDisplayDateInMenubar
     }
 
-    func setTimezones(_ timezones: [Data]) {
-        userDefaults.set(timezones, forKey: CLDefaultPreferenceKey)
-    }
-
     func retrieve(key: String) -> Any? {
         return userDefaults.object(forKey: key)
     }
@@ -81,10 +89,9 @@ class DataStore: NSObject {
     func addTimezone(_ timezone: TimezoneData) {
         let encodedTimezone = NSKeyedArchiver.archivedData(withRootObject: timezone)
 
-        var defaults: [Data] = (userDefaults.object(forKey: CLDefaultPreferenceKey) as? [Data]) ?? []
+        var defaults: [Data] = timezones()
         defaults.append(encodedTimezone)
-
-        userDefaults.set(defaults, forKey: CLDefaultPreferenceKey)
+        setTimezones(defaults)
     }
 
     func removeLastTimezone() {
@@ -98,7 +105,7 @@ class DataStore: NSObject {
 
         Logger.log(object: [:], for: "Undo Action Executed during Onboarding")
 
-        userDefaults.set(currentLineup, forKey: CLDefaultPreferenceKey)
+        setTimezones(currentLineup)
     }
 
     private func shouldDisplayHelper(_ key: String) -> Bool {

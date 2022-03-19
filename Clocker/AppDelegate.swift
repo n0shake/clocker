@@ -53,9 +53,6 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
 
         AppDefaults.initialize()
 
-        // For users, still on the old timezones, only migrate timezonezes once setClass has been called
-        migrateOverridenTimezones()
-
         // Check if we can show the onboarding flow!
         showOnboardingFlowIfEligible()
 
@@ -66,28 +63,6 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
             FirebaseApp.configure()
             checkIfRunFromApplicationsFolder()
         #endif
-    }
-
-    private func migrateOverridenTimezones() {
-        let defaults = UserDefaults.standard
-        if let shortCircuit = defaults.object(forKey: "MigrateIndividualTimezoneFormat") as? Bool, shortCircuit == true {
-            return
-        }
-
-        let timezones = DataStore.shared().timezones()
-        var migratedTimezones: [Data] = []
-
-        for encodedTimezone in timezones {
-            if let timezoneObject = TimezoneData.customObject(from: encodedTimezone) {
-                timezoneObject.setShouldOverrideGlobalTimeFormat(0)
-                migratedTimezones.append(NSKeyedArchiver.archivedData(withRootObject: timezoneObject))
-            }
-        }
-
-        if migratedTimezones.count > 0 {
-            defaults.set(migratedTimezones, forKey: CLDefaultPreferenceKey)
-            defaults.set(true, forKey: "MigrateIndividualTimezoneFormat")
-        }
     }
 
     public func applicationDockMenu(_: NSApplication) -> NSMenu? {
@@ -279,12 +254,8 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.activate(ignoringOtherApps: true)
     }
 
-    open func setupFloatingWindow() {
-        showFloatingWindow()
-    }
-
-    open func closeFloatingWindow() {
-        floatingWindow.window?.close()
+    open func setupFloatingWindow(_ hide: Bool) {
+        hide ? floatingWindow.window?.close() : showFloatingWindow()
     }
 
     func statusItemForPanel() -> StatusItemHandler {
