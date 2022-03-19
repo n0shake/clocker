@@ -198,7 +198,6 @@ public class TimezoneData: NSObject, NSCoding {
         } else if shouldOverride == 4 {
             overrideFormat = .twelveHourWithSeconds
         } else if shouldOverride == 5 {
-            print("Setting override format to five")
             overrideFormat = .twentyHourWithSeconds
         } else if shouldOverride == 7 {
             overrideFormat = .twelveHourPrecedingZero
@@ -211,7 +210,7 @@ public class TimezoneData: NSObject, NSCoding {
         } else if shouldOverride == 12 {
             overrideFormat = .epochTime
         } else {
-            assertionFailure("Chosen a wrong timezone format")
+            Logger.info("Chosen a wrong timezone format: \(shouldOverride)")
         }
     }
 
@@ -224,16 +223,6 @@ public class TimezoneData: NSObject, NSCoding {
 
         if let timezone = timezoneID {
             return timezone
-        }
-
-        if let name = formattedAddress, let placeIdentifier = placeID, let timezoneIdentifier = timezoneID {
-            let errorDictionary = [
-                "Formatted Address": name,
-                "Place Identifier": placeIdentifier,
-                "TimezoneID": timezoneIdentifier,
-            ]
-
-            Logger.log(object: errorDictionary, for: "Error fetching timezone() in TimezoneData")
         }
 
         return TimeZone.autoupdatingCurrent.identifier
@@ -273,7 +262,9 @@ public class TimezoneData: NSObject, NSCoding {
             return formatInString.contains("ss")
         }
 
-        let formatInString = TimezoneData.values[NSNumber(integerLiteral: overrideFormat.rawValue)] ?? DateFormat.twelveHour
+        // We subtract 1 because the timezone format in the dropdown contains 1 extra row for "Respecting global preferences"
+        let key = NSNumber(integerLiteral: overrideFormat.rawValue - 1)
+        let formatInString = TimezoneData.values[key] ?? DateFormat.twelveHour
         return formatInString.contains("ss")
     }
 
@@ -283,17 +274,6 @@ public class TimezoneData: NSObject, NSCoding {
         }
 
         return placeIdentifier.hashValue ^ timezone.hashValue
-    }
-
-    static func == (lhs: TimezoneData, rhs: TimezoneData) -> Bool {
-        return lhs.placeID == rhs.placeID
-    }
-
-    public override func isEqual(to object: Any?) -> Bool {
-        if let other = object as? TimezoneData {
-            return placeID == other.placeID
-        }
-        return false
     }
 
     public override func isEqual(_ object: Any?) -> Bool {
@@ -317,17 +297,17 @@ public extension TimezoneData {
 
     private func objectDescription() -> String {
         let customString = """
-        TimezoneID: \(timezoneID ?? "Error")
+        TimezoneID: \(String(describing: timezoneID))
         Formatted Address: \(formattedAddress ?? "Error")
         Custom Label: \(customLabel ?? "Error")
         Latitude: \(latitude ?? -0.0)
         Longitude: \(longitude ?? -0.0)
-        Place Identifier: \(placeID ?? "Error")
+        Place Identifier: \(String(describing: placeID))
         Is Favourite: \(isFavourite)
-        Sunrise Time: \(sunriseTime?.debugDescription ?? "N/A")
-        Sunset Time: \(sunsetTime?.debugDescription ?? "N/A")
+        Sunrise Time: \(String(describing: sunriseTime))
+        Sunset Time: \(String(describing: sunsetTime))
         Selection Type: \(selectionType.rawValue)
-        Note: \(note ?? "Error")
+        Note: \(String(describing: note))
         Is System Timezone: \(isSystemTimezone)
         Override: \(overrideFormat)
         """

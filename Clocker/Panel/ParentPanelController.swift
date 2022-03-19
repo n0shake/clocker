@@ -153,36 +153,53 @@ class ParentPanelController: NSWindowController {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        // Setup table
         mainTableView.backgroundColor = NSColor.clear
         mainTableView.selectionHighlightStyle = .none
         mainTableView.enclosingScrollView?.hasVerticalScroller = false
+        if #available(OSX 11.0, *) {
+            mainTableView.style = .fullWidth
+        }
 
+        // Setup images
         let sharedThemer = Themer.shared()
         shutdownButton.image = sharedThemer.shutdownImage()
         preferencesButton.image = sharedThemer.preferenceImage()
         pinButton.image = sharedThemer.pinImage()
         sharingButton.image = sharedThemer.sharingImage()
 
-        if let upcomingView = upcomingEventContainerView {
-            upcomingView.setAccessibility("UpcomingEventView")
-        }
-
+        // Setup KVO observers for user default changes
         setupObservers()
 
         updateReviewViewFontColor()
 
+        // Setup layers
         futureSliderView.wantsLayer = true
         reviewView.wantsLayer = true
 
+        // Setup notifications
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(themeChanged),
                                                name: Notification.Name.themeDidChange,
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(systemTimezoneDidChange),
+                                               name: NSNotification.Name.NSSystemTimeZoneDidChange,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(ubiquitousStoreDidChange),
+                                               name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+                                               object: nil)
 
+        // Setup upcoming events view
+        upcomingEventContainerView.setAccessibility("UpcomingEventView")
         determineUpcomingViewVisibility()
+        setupUpcomingEventViewCollectionViewIfNeccesary()
 
+        // Setup colors based on the curren theme
         themeChanged()
 
+        // UI adjustments based on user preferences
         if DataStore.shared().timezones().isEmpty || DataStore.shared().shouldDisplay(.futureSlider) == false {
             futureSliderView.isHidden = true
             if modernContainerView != nil {
@@ -203,22 +220,10 @@ class ParentPanelController: NSWindowController {
             }
         }
 
+        // More UI adjustments
         sharingButton.sendAction(on: .leftMouseDown)
-
         adjustFutureSliderBasedOnPreferences()
-
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(timezoneGonnaChange),
-                                               name: NSNotification.Name.NSSystemTimeZoneDidChange,
-                                               object: nil)
-
-        if #available(OSX 11.0, *) {
-            mainTableView.style = .fullWidth
-        }
-
         setupModernSliderIfNeccessary()
-        setupUpcomingEventViewCollectionViewIfNeccesary()
-
         if roundedDateView != nil {
             setupRoundedDateView()
         }
@@ -231,7 +236,7 @@ class ParentPanelController: NSWindowController {
         roundedDateView.layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
     }
 
-    @objc func timezoneGonnaChange() {
+    @objc func systemTimezoneDidChange() {
         OperationQueue.main.addOperation {
             /*
              let locationController = LocationController.sharedController()
@@ -239,6 +244,14 @@ class ParentPanelController: NSWindowController {
 
             self.updateHomeObject(with: TimeZone.autoupdatingCurrent.identifier,
                                   coordinates: nil)
+        }
+    }
+    
+    // Backing defaults changed
+    @objc func ubiquitousStoreDidChange() {
+        OperationQueue.main.addOperation {
+            self.mainTableView.reloadData()
+            self.setScrollViewConstraint()
         }
     }
 

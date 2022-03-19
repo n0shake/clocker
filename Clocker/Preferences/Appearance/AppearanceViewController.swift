@@ -189,7 +189,7 @@ class AppearanceViewController: ParentViewController {
 
         if let selectedFormat = sender.selectedItem?.title,
             selectedFormat.contains("ss") {
-            print("Seconds are contained")
+            Logger.info("Selected format contains timezone format")
             guard let panelController = PanelController.panel() else { return }
             panelController.pauseTimer()
         }
