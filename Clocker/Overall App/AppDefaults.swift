@@ -31,7 +31,7 @@ class AppDefaults {
         // Register the usual suspects
         userDefaults.register(defaults: defaultsDictionary())
 
-        userDefaults.set(timezones, forKey: CLDefaultPreferenceKey)
+        dataStore.setTimezones(timezones)
         userDefaults.set(selectedCalendars, forKey: CLSelectedCalendars)
 
         // Set the theme default as Light!
