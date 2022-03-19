@@ -125,8 +125,21 @@ class ClockerUnitTests: XCTestCase {
     
     func testHashing() {
         let timezoneData = TimezoneData(with: california)
-        let hash = timezoneData.hash
-        XCTAssert(hash != -1)
+        XCTAssert(timezoneData.hash != -1)
+        
+        timezoneData.placeID = nil
+        timezoneData.timezoneID = nil
+        XCTAssert(timezoneData.hash == -1)
+    }
+    
+    func testBadInputDictionaryForInitialization() {
+        let badInput: [String: Any] = ["customLabel": "",
+                                       "latitude": "41.2565369",
+                                       "longitude": "-95.9345034"]
+        let badTimezoneData = TimezoneData(with: badInput)
+        XCTAssertEqual(badTimezoneData.placeID, "Error")
+        XCTAssertEqual(badTimezoneData.timezoneID, "Error")
+        XCTAssertEqual(badTimezoneData.formattedAddress, "Error")
     }
 
     func testDeletingATimezone() {
@@ -228,6 +241,10 @@ class ClockerUnitTests: XCTestCase {
 
         dataObject.setShouldOverrideGlobalTimeFormat(11) // 12-hour with preceding zero and seconds
         XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "hh:mm:ss")
+        
+        // Wrong input
+        dataObject.setShouldOverrideGlobalTimeFormat(0) // 12-hour with preceding zero and seconds
+        XCTAssertTrue(dataObject.timezoneFormat(88) == "h:mm a")
     }
 
     func testTimezoneFormatWithDefaultSetAs24HourFormat() {
@@ -298,26 +315,39 @@ class ClockerUnitTests: XCTestCase {
     
     func testTimezoneRetrieval() {
         let dataObject = TimezoneData(with: mumbai)
-        
+        let autoupdatingTimezone = TimeZone.autoupdatingCurrent.identifier
         XCTAssertEqual(dataObject.timezone(), "Asia/Calcutta")
         
+        // Unlikely
+        dataObject.timezoneID = nil
+        XCTAssertEqual(dataObject.timezone(), autoupdatingTimezone)
+        
         dataObject.isSystemTimezone = true
-        let autoupdatingTimezone = TimeZone.autoupdatingCurrent.identifier
         XCTAssertEqual(dataObject.timezone(), autoupdatingTimezone)
     }
 
     func testFormattedLabel() {
         let dataObject = TimezoneData(with: mumbai)
-        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "Ghar", "Incorrect custom label returned by model.")
+        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "Ghar", "Incorrect custom label returned by model \(dataObject.formattedTimezoneLabel())")
 
         dataObject.setLabel("")
-        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "Mumbai", "Incorrect custom label returned by model.")
+        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "Mumbai", "Incorrect custom label returned by model \(dataObject.formattedTimezoneLabel())")
 
         dataObject.formattedAddress = nil
-        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "Asia", "Incorrect custom label returned by model.")
+        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "Asia", "Incorrect custom label returned by model \(dataObject.formattedTimezoneLabel())")
         
         dataObject.setLabel("Jogeshwari")
-        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "Jogeshwari", "Incorrect custom label returned by model.")
+        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "Jogeshwari", "Incorrect custom label returned by model \(dataObject.formattedTimezoneLabel())")
+        
+        // Unlikely scenario
+        dataObject.setLabel("")
+        dataObject.timezoneID = "GMT"
+        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "GMT", "Incorrect custom label returned by model \(dataObject.formattedTimezoneLabel())")
+        
+        // Another unlikely scenario
+        dataObject.setLabel("")
+        dataObject.timezoneID = nil
+        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "Error", "Incorrect custom label returned by model \(dataObject.formattedTimezoneLabel())")
     }
 
     func testEquality() {
