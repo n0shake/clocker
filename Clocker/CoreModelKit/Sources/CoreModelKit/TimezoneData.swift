@@ -276,10 +276,6 @@ public class TimezoneData: NSObject, NSCoding {
         return placeIdentifier.hashValue ^ timezone.hashValue
     }
 
-    static func == (lhs: TimezoneData, rhs: TimezoneData) -> Bool {
-        return lhs.isEqual(rhs)
-    }
-
     public override func isEqual(_ object: Any?) -> Bool {
         guard let compared = object as? TimezoneData else {
             return false
@@ -301,17 +297,17 @@ public extension TimezoneData {
 
     private func objectDescription() -> String {
         let customString = """
-        TimezoneID: \(timezoneID ?? "Error")
+        TimezoneID: \(String(describing: timezoneID))
         Formatted Address: \(formattedAddress ?? "Error")
         Custom Label: \(customLabel ?? "Error")
         Latitude: \(latitude ?? -0.0)
         Longitude: \(longitude ?? -0.0)
-        Place Identifier: \(placeID ?? "Error")
+        Place Identifier: \(String(describing: placeID))
         Is Favourite: \(isFavourite)
-        Sunrise Time: \(sunriseTime?.debugDescription ?? "N/A")
-        Sunset Time: \(sunsetTime?.debugDescription ?? "N/A")
+        Sunrise Time: \(String(describing: sunriseTime))
+        Sunset Time: \(String(describing: sunsetTime))
         Selection Type: \(selectionType.rawValue)
-        Note: \(note ?? "Error")
+        Note: \(String(describing: note))
         Is System Timezone: \(isSystemTimezone)
         Override: \(overrideFormat)
         """
