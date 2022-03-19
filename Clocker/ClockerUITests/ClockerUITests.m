@@ -1,7 +1,6 @@
 // Copyright © 2015 Abhishek Banthia
 
 #import <XCTest/XCTest.h>
-#import "CommonStrings.h"
 
 @interface ClockerUITests : XCTestCase
 

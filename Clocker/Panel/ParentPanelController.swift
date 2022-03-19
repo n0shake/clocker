@@ -33,7 +33,7 @@ class ParentPanelController: NSWindowController {
 
     var previousPopoverRow: Int = -1
 
-    var morePopover: NSPopover?
+    var additionalOptionsPopover: NSPopover?
 
     var datasource: TimezoneDataSource?
 
@@ -153,36 +153,53 @@ class ParentPanelController: NSWindowController {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        // Setup table
         mainTableView.backgroundColor = NSColor.clear
         mainTableView.selectionHighlightStyle = .none
         mainTableView.enclosingScrollView?.hasVerticalScroller = false
+        if #available(OSX 11.0, *) {
+            mainTableView.style = .fullWidth
+        }
 
+        // Setup images
         let sharedThemer = Themer.shared()
         shutdownButton.image = sharedThemer.shutdownImage()
         preferencesButton.image = sharedThemer.preferenceImage()
         pinButton.image = sharedThemer.pinImage()
         sharingButton.image = sharedThemer.sharingImage()
 
-        if let upcomingView = upcomingEventContainerView {
-            upcomingView.setAccessibility("UpcomingEventView")
-        }
-
+        // Setup KVO observers for user default changes
         setupObservers()
 
         updateReviewViewFontColor()
 
+        // Setup layers
         futureSliderView.wantsLayer = true
         reviewView.wantsLayer = true
 
+        // Setup notifications
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(themeChanged),
                                                name: Notification.Name.themeDidChange,
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(systemTimezoneDidChange),
+                                               name: NSNotification.Name.NSSystemTimeZoneDidChange,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(ubiquitousStoreDidChange),
+                                               name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+                                               object: nil)
 
+        // Setup upcoming events view
+        upcomingEventContainerView.setAccessibility("UpcomingEventView")
         determineUpcomingViewVisibility()
+        setupUpcomingEventViewCollectionViewIfNeccesary()
 
+        // Setup colors based on the curren theme
         themeChanged()
 
+        // UI adjustments based on user preferences
         if DataStore.shared().timezones().isEmpty || DataStore.shared().shouldDisplay(.futureSlider) == false {
             futureSliderView.isHidden = true
             if modernContainerView != nil {
@@ -203,22 +220,10 @@ class ParentPanelController: NSWindowController {
             }
         }
 
+        // More UI adjustments
         sharingButton.sendAction(on: .leftMouseDown)
-
         adjustFutureSliderBasedOnPreferences()
-
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(timezoneGonnaChange),
-                                               name: NSNotification.Name.NSSystemTimeZoneDidChange,
-                                               object: nil)
-
-        if #available(OSX 11.0, *) {
-            mainTableView.style = .fullWidth
-        }
-
         setupModernSliderIfNeccessary()
-        setupUpcomingEventViewCollectionViewIfNeccesary()
-
         if roundedDateView != nil {
             setupRoundedDateView()
         }
@@ -231,7 +236,7 @@ class ParentPanelController: NSWindowController {
         roundedDateView.layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
     }
 
-    @objc func timezoneGonnaChange() {
+    @objc func systemTimezoneDidChange() {
         OperationQueue.main.addOperation {
             /*
              let locationController = LocationController.sharedController()
@@ -239,6 +244,14 @@ class ParentPanelController: NSWindowController {
 
             self.updateHomeObject(with: TimeZone.autoupdatingCurrent.identifier,
                                   coordinates: nil)
+        }
+    }
+    
+    // Backing defaults changed
+    @objc func ubiquitousStoreDidChange() {
+        OperationQueue.main.addOperation {
+            self.mainTableView.reloadData()
+            self.setScrollViewConstraint()
         }
     }
 
@@ -366,7 +379,7 @@ class ParentPanelController: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
-        morePopover = NSPopover()
+        additionalOptionsPopover = NSPopover()
     }
 
     func screenHeight() -> CGFloat {
@@ -640,7 +653,7 @@ class ParentPanelController: NSWindowController {
     func showNotesPopover(forRow row: Int, relativeTo _: NSRect, andButton target: NSButton!) -> Bool {
         let defaults = DataStore.shared().timezones()
 
-        guard let popover = morePopover else {
+        guard let popover = additionalOptionsPopover else {
             assertionFailure("Data was unexpectedly nil")
             return false
         }
@@ -773,9 +786,9 @@ class ParentPanelController: NSWindowController {
         close()
 
         if inverseSelection.isEqual(to: NSNumber(value: 1)) {
-            sharedDelegate.setupFloatingWindow()
+            sharedDelegate.setupFloatingWindow(false)
         } else {
-            sharedDelegate.closeFloatingWindow()
+            sharedDelegate.setupFloatingWindow(true)
             sharedDelegate.setPanelDefaults()
         }
 
@@ -834,7 +847,7 @@ class ParentPanelController: NSWindowController {
         if notePopover != nil, let isShown = notePopover?.popover?.isShown, isShown {
             notePopover?.popover?.close()
         }
-        morePopover = nil
+        additionalOptionsPopover = nil
     }
 
     // MARK: Review
@@ -987,6 +1000,12 @@ class ParentPanelController: NSWindowController {
 
         NSWorkspace.shared.open(sourceURL)
     }
+    
+    @objc func openFAQs() {
+        guard let sourceURL = URL(string: AboutUsConstants.FAQsLink) else { return }
+
+        NSWorkspace.shared.open(sourceURL)
+    }
 
     @IBAction func showMoreOptions(_ sender: NSButton) {
         let menuItem = NSMenu(title: "More Options")
@@ -1010,6 +1029,7 @@ class ParentPanelController: NSWindowController {
         clockerVersionInfo.isEnabled = false
         menuItem.addItem(openPreferences)
         menuItem.addItem(rateClocker)
+        menuItem.addItem(withTitle: "FAQs", action: #selector(openFAQs), keyEquivalent: "")
         menuItem.addItem(sendFeedback)
         menuItem.addItem(localizeClocker)
         menuItem.addItem(NSMenuItem.separator())

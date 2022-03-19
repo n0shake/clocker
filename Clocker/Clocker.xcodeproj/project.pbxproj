@@ -136,7 +136,6 @@
 		9A3169C11D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A3169C01D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist */; };
 		9A43792A1BEC230A00F4E27F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4379291BEC230A00F4E27F /* libc++.tbd */; };
 		9A56DB801C1CFB73004CE6AF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A56DB7D1C1CFB73004CE6AF /* MainMenu.xib */; };
-		9A5951BD1C1D0A8D009C17AA /* CommonStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5951BB1C1D0A8D009C17AA /* CommonStrings.m */; };
 		9A5E75E4204CC39700119939 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86E2BC1CE04F1600547EE7 /* ShortcutRecorder.framework */; };
 		9A5E75E5204CC39700119939 /* ShortcutRecorder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86E2BC1CE04F1600547EE7 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9A5E75E8204CC39700119939 /* PTHotKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A86E2BE1CE04F1600547EE7 /* PTHotKey.framework */; };
@@ -386,8 +385,6 @@
 		9A4DC4E82337F5D600F03FA4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A4DC4E92337F5D600F03FA4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9A56DB7D1C1CFB73004CE6AF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Clocker/MainMenu.xib; sourceTree = "<group>"; };
-		9A5951BB1C1D0A8D009C17AA /* CommonStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommonStrings.m; path = Clocker/Utilities/CommonStrings.m; sourceTree = "<group>"; };
-		9A5951BC1C1D0A8D009C17AA /* CommonStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonStrings.h; path = Clocker/Utilities/CommonStrings.h; sourceTree = "<group>"; };
 		9A5B1A8D1BECDFB700A77C68 /* Clocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Clocker.entitlements; path = Clocker/Clocker.entitlements; sourceTree = "<group>"; };
 		9A5E6B9F1CAF71C1006E7C5C /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		9A6D93361CF3E82F005A8690 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
@@ -727,8 +724,6 @@
 			isa = PBXGroup;
 			children = (
 				9A3169C01D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist */,
-				9A5951BB1C1D0A8D009C17AA /* CommonStrings.m */,
-				9A5951BC1C1D0A8D009C17AA /* CommonStrings.h */,
 				9A13BAE21CA882FA007C6CBE /* InfoPlist.strings */,
 				9A13BAEC1CA88A76007C6CBE /* Localizable.strings */,
 				C2CCCD8120619C4C00F2DFC2 /* LocationController.swift */,
@@ -1316,7 +1311,6 @@
 				35C36F452259D892002FA5C6 /* Strings.swift in Sources */,
 				35C36EF722595F14002FA5C6 /* FinalOnboardingViewController.swift in Sources */,
 				35C36FA12259ED6D002FA5C6 /* EventCenter.swift in Sources */,
-				9A5951BD1C1D0A8D009C17AA /* CommonStrings.m in Sources */,
 				357391872507277500D30819 /* TimeMarkerViewItem.swift in Sources */,
 				35C36F782259E1D0002FA5C6 /* Foundation + Additions.swift in Sources */,
 				35C36F16225961DA002FA5C6 /* Date+Inits.swift in Sources */,

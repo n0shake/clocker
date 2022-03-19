@@ -20,8 +20,9 @@ class AppDefaults {
 
     private class func initializeDefaults() {
         let userDefaults = UserDefaults.standard
+        let dataStore = DataStore.shared()
 
-        let timezones = userDefaults.object(forKey: CLDefaultPreferenceKey)
+        let timezones = dataStore.timezones()
         let selectedCalendars = userDefaults.object(forKey: CLSelectedCalendars)
 
         // Now delete the old preferences
@@ -30,7 +31,7 @@ class AppDefaults {
         // Register the usual suspects
         userDefaults.register(defaults: defaultsDictionary())
 
-        userDefaults.set(timezones, forKey: CLDefaultPreferenceKey)
+        dataStore.setTimezones(timezones)
         userDefaults.set(selectedCalendars, forKey: CLSelectedCalendars)
 
         // Set the theme default as Light!
@@ -39,7 +40,7 @@ class AppDefaults {
         // If we already have timezones to display in menubar, do nothing.
         // Else, we switch the menubar mode default to compact mode for new users
         if userDefaults.bool(forKey: CLDefaultMenubarMode) == false {
-            if let menubarFavourites = userDefaults.object(forKey: CLDefaultPreferenceKey) as? [Data], menubarFavourites.isEmpty == false {
+            if let menubarFavourites = dataStore.menubarTimezones(), menubarFavourites.isEmpty == false {
                 userDefaults.set(1, forKey: CLMenubarCompactMode)
             } else {
                 userDefaults.set(0, forKey: CLMenubarCompactMode)
@@ -137,6 +138,7 @@ extension UserDefaults {
 
     func wipeIfNeccesary() {
         if let bundleID = Bundle.main.bundleIdentifier, object(forKey: "PreferencesHaveBeenWiped") == nil {
+            Logger.info("Wiping all user defaults")
             removePersistentDomain(forName: bundleID)
             set(true, forKey: "PreferencesHaveBeenWiped")
         }

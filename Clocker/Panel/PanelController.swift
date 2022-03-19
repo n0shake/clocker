@@ -302,7 +302,7 @@ class PanelController: ParentPanelController {
         NSAnimationContext.beginGrouping()
         NSAnimationContext.current.duration = 0.1
         window?.animator().alphaValue = 0
-        morePopover?.close()
+        additionalOptionsPopover?.close()
         NSAnimationContext.endGrouping()
 
         window?.orderOut(nil)
@@ -329,11 +329,11 @@ class PanelController: ParentPanelController {
     }
 
     override func showNotesPopover(forRow row: Int, relativeTo positioningRect: NSRect, andButton target: NSButton!) -> Bool {
-        if morePopover == nil {
-            morePopover = NSPopover()
+        if additionalOptionsPopover == nil {
+            additionalOptionsPopover = NSPopover()
         }
 
-        guard let popover = morePopover else {
+        guard let popover = additionalOptionsPopover else {
             return false
         }
 

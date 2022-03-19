@@ -18,88 +18,7 @@ struct PreferencesConstants {
     static let hotKeyPathIdentifier = "values.globalPing"
 }
 
-class TableHeaderViewCell: NSTableHeaderCell {
-    var backgroundColour: NSColor = NSColor.black {
-        didSet {
-            backgroundColor = backgroundColour
-        }
-    }
-
-    override init(textCell: String) {
-        super.init(textCell: textCell)
-        let attributedParagraphStyle = NSMutableParagraphStyle()
-        attributedParagraphStyle.alignment = .left
-        attributedStringValue = NSAttributedString(string: textCell,
-                                                   attributes: [.foregroundColor: Themer.shared().mainTextColor(),
-                                                                .font: NSFont(name: "Avenir", size: 14)!,
-                                                                .paragraphStyle: attributedParagraphStyle])
-        backgroundColor = Themer.shared().textBackgroundColor()
-    }
-
-    required init(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func draw(withFrame cellFrame: NSRect, in controlView: NSView) {
-        super.draw(withFrame: cellFrame, in: controlView)
-        if !controlView.isHidden {
-            backgroundColor?.setFill()
-            cellFrame.fill()
-            drawInterior(withFrame: cellFrame, in: controlView)
-        }
-    }
-
-    override func drawInterior(withFrame cellFrame: NSRect, in controlView: NSView) {
-        if !controlView.isHidden {
-            if let avenirFont = NSFont(name: "Avenir", size: 14) {
-                font = avenirFont
-            }
-            textColor = NSColor.white
-            let rect = titleRect(forBounds: cellFrame)
-            attributedStringValue.draw(in: rect)
-        }
-    }
-}
-
 class PreferencesViewController: ParentViewController {
-    private var isActivityInProgress = false {
-        didSet {
-            OperationQueue.main.addOperation {
-                self.isActivityInProgress ? self.progressIndicator.startAnimation(nil) : self.progressIndicator.stopAnimation(nil)
-                self.availableTimezoneTableView.isEnabled = !self.isActivityInProgress
-                self.addButton.isEnabled = !self.isActivityInProgress
-            }
-        }
-    }
-
-    private var selectedTimeZones: [Data] {
-        return DataStore.shared().timezones()
-    }
-
-    private lazy var startupManager = StartupManager()
-    private var dataTask: URLSessionDataTask? = .none
-
-    private lazy var notimezoneView: NoTimezoneView? = {
-        NoTimezoneView(frame: tableview.frame)
-    }()
-
-    private var geocodingKey: String = {
-        guard let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
-            let dictionary = NSDictionary(contentsOfFile: path),
-            let apiKey = dictionary["GeocodingKey"] as? String
-        else {
-            assertionFailure("Unable to find the API key")
-            return ""
-        }
-        return apiKey
-    }()
-
-    // Sorting
-    private var arePlacesSortedInAscendingOrder = false
-    private var arePlacesSortedInAscendingTimezoneOrder = false
-    private var isTimezoneSortOptionSelected = false
-    private var isTimezoneNameSortOptionSelected = false
-    private var isLabelOptionSelected = false
 
     @IBOutlet private var placeholderLabel: NSTextField!
     @IBOutlet private var timezoneTableView: NSTableView!
@@ -124,13 +43,52 @@ class PreferencesViewController: ParentViewController {
     @IBOutlet var startAtLoginLabel: NSTextField!
 
     @IBOutlet var startupCheckbox: NSButton!
+    
+    // Sorting
+    private var arePlacesSortedInAscendingOrder = false
+    private var arePlacesSortedInAscendingTimezoneOrder = false
+    private var isTimezoneSortOptionSelected = false
+    private var isTimezoneNameSortOptionSelected = false
+    private var isLabelOptionSelected = false
+    
+    private var isActivityInProgress = false {
+        didSet {
+            OperationQueue.main.addOperation {
+                self.isActivityInProgress ? self.progressIndicator.startAnimation(nil) : self.progressIndicator.stopAnimation(nil)
+                self.availableTimezoneTableView.isEnabled = !self.isActivityInProgress
+                self.addButton.isEnabled = !self.isActivityInProgress
+            }
+        }
+    }
+
+    private var selectedTimeZones: [Data] {
+        return DataStore.shared().timezones()
+    }
 
     private var themeDidChangeNotification: NSObjectProtocol?
-
     // Selected Timezones Data Source
     private var selectionsDataSource: PreferencesDataSource!
     // Search Results Data Source Handler
     private var searchResultsDataSource: SearchDataSource!
+    private lazy var startupManager = StartupManager()
+    private var dataTask: URLSessionDataTask? = .none
+
+    private lazy var notimezoneView: NoTimezoneView? = {
+        NoTimezoneView(frame: tableview.frame)
+    }()
+
+    private var geocodingKey: String = {
+        guard let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
+            let dictionary = NSDictionary(contentsOfFile: path),
+            let apiKey = dictionary["GeocodingKey"] as? String
+        else {
+            assertionFailure("Unable to find the API key")
+            return ""
+        }
+        return apiKey
+    }()
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -530,12 +488,7 @@ extension PreferencesViewController {
     }
 
     private func presentError(_ errorMessage: String) {
-        if errorMessage == PreferencesConstants.offlineErrorMessage {
-            placeholderLabel.placeholderString = PreferencesConstants.noInternetConnectivityError
-        } else {
-            placeholderLabel.placeholderString = PreferencesConstants.tryAgainMessage
-        }
-
+        placeholderLabel.placeholderString = errorMessage == PreferencesConstants.offlineErrorMessage ? PreferencesConstants.noInternetConnectivityError : PreferencesConstants.tryAgainMessage
         isActivityInProgress = false
     }
 

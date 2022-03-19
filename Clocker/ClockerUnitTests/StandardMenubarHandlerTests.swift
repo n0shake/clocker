@@ -16,7 +16,7 @@ class StandardMenubarHandlerTests: XCTestCase {
 
     func testValidStandardMenubarHandler_returnMenubarTitle() {
         // Wipe all timezones from UserDefaults
-        UserDefaults.standard.setValue(nil, forKey: CLDefaultPreferenceKey)
+        DataStore.shared().setTimezones(nil)
 
         // Save a menubar selected timezone
         let dataObject = TimezoneData(with: mumbai)
@@ -43,7 +43,7 @@ class StandardMenubarHandlerTests: XCTestCase {
 
     func testUnfavouritedTimezone_returnEmptyMenubarTimezoneCount() {
         // Wipe all timezones from UserDefaults
-        UserDefaults.standard.setValue(nil, forKey: CLDefaultPreferenceKey)
+        DataStore.shared().setTimezones(nil)
 
         // Save a menubar selected timezone
         let dataObject = TimezoneData(with: mumbai)
@@ -57,7 +57,7 @@ class StandardMenubarHandlerTests: XCTestCase {
 
     func testUnfavouritedTimezone_returnNilMenubarString() {
         // Wipe all timezones from UserDefaults
-        UserDefaults.standard.setValue(nil, forKey: CLDefaultPreferenceKey)
+        DataStore.shared().setTimezones(nil)
         let menubarHandler = MenubarHandler()
         let emptyMenubarString = menubarHandler.titleForMenubar()
         // Returns early because DataStore.menubarTimezones is nil
