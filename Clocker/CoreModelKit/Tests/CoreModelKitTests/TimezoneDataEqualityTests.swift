@@ -14,7 +14,8 @@ class TimezoneDataEqualityTests: XCTestCase {
         timezone2.timezoneID = "Africa/Banjul"
         timezone2.formattedAddress = "SameLabel"
 
-        XCTAssertNotEqual(timezone1, timezone2)
+        XCTAssertFalse(timezone1 == timezone2) // Test ==
+        XCTAssertNotEqual(timezone1, timezone2) // Test isEqual
     }
 
     func testEqualityWhenTimezonesLabelsDiffer() {
@@ -26,6 +27,7 @@ class TimezoneDataEqualityTests: XCTestCase {
         timezone2.timezoneID = TimeZone.autoupdatingCurrent.identifier
         timezone2.formattedAddress = "DifferentLabel"
 
+        XCTAssertFalse(timezone1 == timezone2)
         XCTAssertNotEqual(timezone1, timezone2)
     }
 
@@ -40,6 +42,7 @@ class TimezoneDataEqualityTests: XCTestCase {
         timezone2.timezoneID = TimeZone.autoupdatingCurrent.identifier
         timezone2.formattedAddress = "DifferentLabel"
 
+        XCTAssertTrue(timezone1 == timezone2)
         XCTAssertEqual(timezone1, timezone2)
     }
 
@@ -54,6 +57,7 @@ class TimezoneDataEqualityTests: XCTestCase {
         timezone2.timezoneID = TimeZone.autoupdatingCurrent.identifier
         timezone2.formattedAddress = "DifferentLabel"
 
+        XCTAssertFalse(timezone1 == timezone2)
         XCTAssertNotEqual(timezone1, timezone2)
     }
 }
