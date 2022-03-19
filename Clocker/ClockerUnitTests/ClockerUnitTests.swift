@@ -94,18 +94,16 @@ class ClockerUnitTests: XCTestCase {
 
     func testAddingATimezoneToDefaults() {
         let timezoneData = TimezoneData(with: california)
-
-        let defaults = UserDefaults.standard
-        let currentFavourites = (defaults.object(forKey: CLDefaultPreferenceKey) as? [Data]) ?? []
+        let currentFavourites = DataStore.shared().timezones()
         let oldCount = currentFavourites.count
 
         let operationsObject = TimezoneDataOperations(with: timezoneData)
         operationsObject.saveObject()
 
-        let newDefaults = UserDefaults.standard.object(forKey: CLDefaultPreferenceKey) as? [Data]
+        let newDefaults = DataStore.shared().timezones()
 
-        XCTAssert(newDefaults != nil)
-        XCTAssert(newDefaults?.count == oldCount + 1)
+        XCTAssert(newDefaults.isEmpty == false)
+        XCTAssert(newDefaults.count == oldCount + 1)
     }
     
     func testDecoding() {
@@ -143,12 +141,7 @@ class ClockerUnitTests: XCTestCase {
     }
 
     func testDeletingATimezone() {
-        let defaults = UserDefaults.standard
-
-        guard var currentFavourites = defaults.object(forKey: CLDefaultPreferenceKey) as? [Data] else {
-            XCTFail("Default preferences aren't in the correct format")
-            return
-        }
+        var currentFavourites = DataStore.shared().timezones()
         // Check if timezone with test identifier is present.
         let filteredCount = currentFavourites.filter {
             let timezone = TimezoneData.customObject(from: $0)
@@ -162,14 +155,14 @@ class ClockerUnitTests: XCTestCase {
             operationsObject.saveObject()
         }
 
-        let oldCount = (defaults.object(forKey: CLDefaultPreferenceKey) as? [Data])?.count ?? 0
+        let oldCount = DataStore.shared().timezones().count
 
         currentFavourites = currentFavourites.filter {
             let timezone = TimezoneData.customObject(from: $0)
             return timezone?.placeID != "TestIdentifier"
         }
 
-        defaults.set(currentFavourites, forKey: CLDefaultPreferenceKey)
+        DataStore.shared().setTimezones(currentFavourites)
 
         XCTAssertTrue(currentFavourites.count == oldCount - 1)
     }
