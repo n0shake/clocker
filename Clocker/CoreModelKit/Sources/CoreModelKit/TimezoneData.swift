@@ -277,7 +277,7 @@ public class TimezoneData: NSObject, NSCoding {
     }
 
     static func == (lhs: TimezoneData, rhs: TimezoneData) -> Bool {
-        return lhs.placeID == rhs.placeID
+        return lhs.isEqual(rhs)
     }
 
     public override func isEqual(_ object: Any?) -> Bool {

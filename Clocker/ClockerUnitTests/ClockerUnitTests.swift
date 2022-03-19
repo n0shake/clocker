@@ -109,14 +109,24 @@ class ClockerUnitTests: XCTestCase {
     }
     
     func testDecoding() {
-        let timezone = TimezoneData.customObject(from: nil)
-        XCTAssertNotNil(timezone)
+        let timezone1 = TimezoneData.customObject(from: nil)
+        XCTAssertNotNil(timezone1)
+        
+        let data = Data()
+        let timezone2 = TimezoneData.customObject(from: data)
+        XCTAssertNil(timezone2)
     }
     
     func testDescription() {
         let timezoneData = TimezoneData(with: california)
         XCTAssertFalse(timezoneData.description.isEmpty)
         XCTAssertFalse(timezoneData.debugDescription.isEmpty)
+    }
+    
+    func testHashing() {
+        let timezoneData = TimezoneData(with: california)
+        let hash = timezoneData.hash
+        XCTAssert(hash != -1)
     }
 
     func testDeletingATimezone() {
@@ -286,7 +296,7 @@ class ClockerUnitTests: XCTestCase {
         XCTAssertFalse(dataObject.shouldShowSeconds(88))
     }
     
-    func testTimezone() {
+    func testTimezoneRetrieval() {
         let dataObject = TimezoneData(with: mumbai)
         
         XCTAssertEqual(dataObject.timezone(), "Asia/Calcutta")
@@ -294,7 +304,6 @@ class ClockerUnitTests: XCTestCase {
         dataObject.isSystemTimezone = true
         let autoupdatingTimezone = TimeZone.autoupdatingCurrent.identifier
         XCTAssertEqual(dataObject.timezone(), autoupdatingTimezone)
-        
     }
 
     func testFormattedLabel() {
