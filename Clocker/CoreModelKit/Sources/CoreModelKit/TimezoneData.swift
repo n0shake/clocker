@@ -210,7 +210,7 @@ public class TimezoneData: NSObject, NSCoding {
         } else if shouldOverride == 12 {
             overrideFormat = .epochTime
         } else {
-            print("Chosen a wrong timezone format")
+            Logger.info("Chosen a wrong timezone format: \(shouldOverride)")
         }
     }
 
