@@ -138,6 +138,7 @@ extension UserDefaults {
 
     func wipeIfNeccesary() {
         if let bundleID = Bundle.main.bundleIdentifier, object(forKey: "PreferencesHaveBeenWiped") == nil {
+            Logger.info("Wiping all user defaults")
             removePersistentDomain(forName: bundleID)
             set(true, forKey: "PreferencesHaveBeenWiped")
         }
