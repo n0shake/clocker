@@ -94,27 +94,54 @@ class ClockerUnitTests: XCTestCase {
 
     func testAddingATimezoneToDefaults() {
         let timezoneData = TimezoneData(with: california)
-
-        let defaults = UserDefaults.standard
-        let currentFavourites = (defaults.object(forKey: CLDefaultPreferenceKey) as? [Data]) ?? []
+        let currentFavourites = DataStore.shared().timezones()
         let oldCount = currentFavourites.count
 
         let operationsObject = TimezoneDataOperations(with: timezoneData)
         operationsObject.saveObject()
 
-        let newDefaults = UserDefaults.standard.object(forKey: CLDefaultPreferenceKey) as? [Data]
+        let newDefaults = DataStore.shared().timezones()
 
-        XCTAssert(newDefaults != nil)
-        XCTAssert(newDefaults?.count == oldCount + 1)
+        XCTAssert(newDefaults.isEmpty == false)
+        XCTAssert(newDefaults.count == oldCount + 1)
+    }
+    
+    func testDecoding() {
+        let timezone1 = TimezoneData.customObject(from: nil)
+        XCTAssertNotNil(timezone1)
+        
+        let data = Data()
+        let timezone2 = TimezoneData.customObject(from: data)
+        XCTAssertNil(timezone2)
+    }
+    
+    func testDescription() {
+        let timezoneData = TimezoneData(with: california)
+        XCTAssertFalse(timezoneData.description.isEmpty)
+        XCTAssertFalse(timezoneData.debugDescription.isEmpty)
+    }
+    
+    func testHashing() {
+        let timezoneData = TimezoneData(with: california)
+        XCTAssert(timezoneData.hash != -1)
+        
+        timezoneData.placeID = nil
+        timezoneData.timezoneID = nil
+        XCTAssert(timezoneData.hash == -1)
+    }
+    
+    func testBadInputDictionaryForInitialization() {
+        let badInput: [String: Any] = ["customLabel": "",
+                                       "latitude": "41.2565369",
+                                       "longitude": "-95.9345034"]
+        let badTimezoneData = TimezoneData(with: badInput)
+        XCTAssertEqual(badTimezoneData.placeID, "Error")
+        XCTAssertEqual(badTimezoneData.timezoneID, "Error")
+        XCTAssertEqual(badTimezoneData.formattedAddress, "Error")
     }
 
     func testDeletingATimezone() {
-        let defaults = UserDefaults.standard
-
-        guard var currentFavourites = defaults.object(forKey: CLDefaultPreferenceKey) as? [Data] else {
-            XCTFail("Default preferences aren't in the correct format")
-            return
-        }
+        var currentFavourites = DataStore.shared().timezones()
         // Check if timezone with test identifier is present.
         let filteredCount = currentFavourites.filter {
             let timezone = TimezoneData.customObject(from: $0)
@@ -128,14 +155,14 @@ class ClockerUnitTests: XCTestCase {
             operationsObject.saveObject()
         }
 
-        let oldCount = (defaults.object(forKey: CLDefaultPreferenceKey) as? [Data])?.count ?? 0
+        let oldCount = DataStore.shared().timezones().count
 
         currentFavourites = currentFavourites.filter {
             let timezone = TimezoneData.customObject(from: $0)
             return timezone?.placeID != "TestIdentifier"
         }
 
-        defaults.set(currentFavourites, forKey: CLDefaultPreferenceKey)
+        DataStore.shared().setTimezones(currentFavourites)
 
         XCTAssertTrue(currentFavourites.count == oldCount - 1)
     }
@@ -143,10 +170,10 @@ class ClockerUnitTests: XCTestCase {
     // The below test might fail outside California or if DST is active!
     // CI is calibrated to be on LA timezone!
     func testTimeDifference() {
-        XCTAssertTrue(operations.timeDifference() == ", 10h 30m ahead", "Difference was unexpectedly: \(operations.timeDifference())")
+        XCTAssertTrue(operations.timeDifference() == ", 9h 30m ahead", "Difference was unexpectedly: \(operations.timeDifference())")
         XCTAssertTrue(californiaOperations.timeDifference() == ", 3h behind", "Difference was unexpectedly: \(californiaOperations.timeDifference())")
         XCTAssertTrue(floridaOperations.timeDifference() == "", "Difference was unexpectedly: \(floridaOperations.timeDifference())")
-        XCTAssertTrue(aucklandOperations.timeDifference() == ", 18h ahead", "Difference was unexpectedly: \(aucklandOperations.timeDifference())")
+        XCTAssertTrue(aucklandOperations.timeDifference() == ", 17h ahead", "Difference was unexpectedly: \(aucklandOperations.timeDifference())")
         XCTAssertTrue(omahaOperations.timeDifference() == ", an hour behind", "Difference was unexpectedly: \(omahaOperations.timeDifference())")
     }
 
@@ -207,6 +234,10 @@ class ClockerUnitTests: XCTestCase {
 
         dataObject.setShouldOverrideGlobalTimeFormat(11) // 12-hour with preceding zero and seconds
         XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "hh:mm:ss")
+        
+        // Wrong input
+        dataObject.setShouldOverrideGlobalTimeFormat(0) // 12-hour with preceding zero and seconds
+        XCTAssertTrue(dataObject.timezoneFormat(88) == "h:mm a")
     }
 
     func testTimezoneFormatWithDefaultSetAs24HourFormat() {
@@ -214,7 +245,8 @@ class ClockerUnitTests: XCTestCase {
         UserDefaults.standard.set(NSNumber(value: 1), forKey: CLSelectedTimeZoneFormatKey) // Set to 24-Hour Format
 
         dataObject.setShouldOverrideGlobalTimeFormat(0)
-        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "HH:mm")
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "HH:mm",
+                      "Unexpected format returned: \(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()))")
 
         dataObject.setShouldOverrideGlobalTimeFormat(1) // 12-Hour Format
         XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "h:mm a")
@@ -242,17 +274,73 @@ class ClockerUnitTests: XCTestCase {
 
         dataObject.setShouldOverrideGlobalTimeFormat(11) // 12-hour with preceding zero and seconds
         XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "hh:mm:ss")
+        
+        dataObject.setShouldOverrideGlobalTimeFormat(12) // 12-hour with preceding zero and seconds
+        XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "epoch")
+    }
+    
+    func testSecondsDisplayForOverridenTimezone() {
+        let dataObject = TimezoneData(with: california)
+        UserDefaults.standard.set(NSNumber(value: 1), forKey: CLSelectedTimeZoneFormatKey) // Set to 24-Hour Format
+
+        // Test default behaviour
+        let timezoneWithSecondsKeys = [4,5,8,11]
+        for timezoneKey in timezoneWithSecondsKeys {
+            dataObject.setShouldOverrideGlobalTimeFormat(timezoneKey)
+            XCTAssertTrue(dataObject.shouldShowSeconds(DataStore.shared().timezoneFormat()))
+        }
+        
+        let timezoneWithoutSecondsKeys = [1,2,7,10]
+        for timezoneKey in timezoneWithoutSecondsKeys {
+            dataObject.setShouldOverrideGlobalTimeFormat(timezoneKey)
+            XCTAssertFalse(dataObject.shouldShowSeconds(DataStore.shared().timezoneFormat()))
+        }
+        
+        // Test wrong override timezone key
+        let wrongTimezoneKey = 88
+        dataObject.setShouldOverrideGlobalTimeFormat(wrongTimezoneKey)
+        XCTAssertFalse(dataObject.shouldShowSeconds(DataStore.shared().timezoneFormat()))
+        
+        // Test wrong global preference key
+        dataObject.setShouldOverrideGlobalTimeFormat(0)
+        XCTAssertFalse(dataObject.shouldShowSeconds(88))
+    }
+    
+    func testTimezoneRetrieval() {
+        let dataObject = TimezoneData(with: mumbai)
+        let autoupdatingTimezone = TimeZone.autoupdatingCurrent.identifier
+        XCTAssertEqual(dataObject.timezone(), "Asia/Calcutta")
+        
+        // Unlikely
+        dataObject.timezoneID = nil
+        XCTAssertEqual(dataObject.timezone(), autoupdatingTimezone)
+        
+        dataObject.isSystemTimezone = true
+        XCTAssertEqual(dataObject.timezone(), autoupdatingTimezone)
     }
 
     func testFormattedLabel() {
         let dataObject = TimezoneData(with: mumbai)
-        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "Ghar", "Incorrect custom label returned by model.")
+        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "Ghar", "Incorrect custom label returned by model \(dataObject.formattedTimezoneLabel())")
 
-        dataObject.customLabel = nil
-        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "Mumbai", "Incorrect custom label returned by model.")
+        dataObject.setLabel("")
+        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "Mumbai", "Incorrect custom label returned by model \(dataObject.formattedTimezoneLabel())")
 
         dataObject.formattedAddress = nil
-        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "Asia", "Incorrect custom label returned by model.")
+        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "Asia", "Incorrect custom label returned by model \(dataObject.formattedTimezoneLabel())")
+        
+        dataObject.setLabel("Jogeshwari")
+        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "Jogeshwari", "Incorrect custom label returned by model \(dataObject.formattedTimezoneLabel())")
+        
+        // Unlikely scenario
+        dataObject.setLabel("")
+        dataObject.timezoneID = "GMT"
+        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "GMT", "Incorrect custom label returned by model \(dataObject.formattedTimezoneLabel())")
+        
+        // Another unlikely scenario
+        dataObject.setLabel("")
+        dataObject.timezoneID = nil
+        XCTAssertTrue(dataObject.formattedTimezoneLabel() == "Error", "Incorrect custom label returned by model \(dataObject.formattedTimezoneLabel())")
     }
 
     func testEquality() {

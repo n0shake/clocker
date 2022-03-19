@@ -150,7 +150,7 @@ class StatusItemHandler: NSObject {
     }
 
     private func retrieveSyncedMenubarTimezones() -> [Data] {
-        let defaultPreferences = DataStore.shared().retrieve(key: CLDefaultPreferenceKey) as? [Data] ?? []
+        let defaultPreferences = DataStore.shared().timezones()
 
         let menubarTimezones = defaultPreferences.filter { data -> Bool in
             if let timezoneObj = TimezoneData.customObject(from: data) {
