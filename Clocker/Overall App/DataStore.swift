@@ -40,11 +40,23 @@ class DataStore: NSObject {
     }
 
     func timezones() -> [Data] {
+        if let cloudPreferences = NSUbiquitousKeyValueStore().object(forKey: CLDefaultPreferenceKey) as? [Data] {
+            Logger.info("Returning preferences from NSUbiquitousKeyValueStore")
+            return cloudPreferences
+        }
+        
         guard let preferences = userDefaults.object(forKey: CLDefaultPreferenceKey) as? [Data] else {
             return []
         }
 
         return preferences
+    }
+    
+    func setTimezones(_ timezones: [Data]?) {
+        userDefaults.set(timezones, forKey: CLDefaultPreferenceKey)
+        // iCloud sync
+        NSUbiquitousKeyValueStore().set(timezones, forKey: CLDefaultPreferenceKey)
+        NSUbiquitousKeyValueStore().synchronize()
     }
 
     func menubarTimezones() -> [Data]? {
@@ -68,10 +80,6 @@ class DataStore: NSObject {
 
     func shouldShowDateInMenubar() -> Bool {
         return shouldDisplayDateInMenubar
-    }
-
-    func setTimezones(_ timezones: [Data]?) {
-        userDefaults.set(timezones, forKey: CLDefaultPreferenceKey)
     }
 
     func retrieve(key: String) -> Any? {
