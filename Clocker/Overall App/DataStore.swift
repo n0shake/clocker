@@ -28,6 +28,11 @@ class DataStore: NSObject {
     // Since these pref can accessed every second, let's cache this
     private var shouldDisplayDayInMenubar: Bool = false
     private var shouldDisplayDateInMenubar: Bool = false
+    private static let timeFormatsWithSuffix: Set<NSNumber> = Set([NSNumber(integerLiteral: 0),
+                                                                   NSNumber(integerLiteral: 3),
+                                                                   NSNumber(integerLiteral: 4),
+                                                                   NSNumber(integerLiteral: 6),
+                                                                   NSNumber(integerLiteral: 7)])
 
     class func shared() -> DataStore {
         return sharedStore
@@ -109,22 +114,9 @@ class DataStore: NSObject {
         setTimezones(currentLineup)
     }
 
-    private func shouldDisplayHelper(_ key: String) -> Bool {
-        guard let value = retrieve(key: key) as? NSNumber else {
-            return false
-        }
-        return value.isEqual(to: NSNumber(value: 0))
-    }
-
     func timezoneFormat() -> NSNumber {
         return userDefaults.object(forKey: CLSelectedTimeZoneFormatKey) as? NSNumber ?? NSNumber(integerLiteral: 0)
     }
-
-    static let timeFormatsWithSuffix: Set<NSNumber> = Set([NSNumber(integerLiteral: 0),
-                                                           NSNumber(integerLiteral: 3),
-                                                           NSNumber(integerLiteral: 4),
-                                                           NSNumber(integerLiteral: 6),
-                                                           NSNumber(integerLiteral: 7)])
 
     func isBufferRequiredForTwelveHourFormats() -> Bool {
         return DataStore.timeFormatsWithSuffix.contains(timezoneFormat())
@@ -172,5 +164,14 @@ class DataStore: NSObject {
 
             return value == 0
         }
+    }
+    
+    //MARK: Private
+    
+    private func shouldDisplayHelper(_ key: String) -> Bool {
+        guard let value = retrieve(key: key) as? NSNumber else {
+            return false
+        }
+        return value.isEqual(to: NSNumber(value: 0))
     }
 }
