@@ -12,12 +12,12 @@ struct PreferencesDataSourceConstants {
 }
 
 protocol PreferenceSelectionUpdates: AnyObject {
-    func markAsFavorite(_ dataObject: TimezoneData)
-    func unfavourite(_ dataObject: TimezoneData)
-    func refreshTimezoneTable()
-    func refreshMainTableView()
-    func tableViewSelectionDidChange(_ status: Bool)
-    func table(didClick tableColumn: NSTableColumn)
+    func preferenceSelectionDataSourceMarkAsFavorite(_ dataObject: TimezoneData)
+    func preferenceSelectionDataSourceUnfavourite(_ dataObject: TimezoneData)
+    func preferenceSelectionDataSourceRefreshTimezoneTable()
+    func preferenceSelectionDataSourceRefreshMainTableView()
+    func preferenceSelectionDataSourceTableViewSelectionDidChange(_ status: Bool)
+    func preferenceSelectionDataSourceTable(didClick tableColumn: NSTableColumn)
 }
 
 class PreferencesDataSource: NSObject {
@@ -35,7 +35,7 @@ class PreferencesDataSource: NSObject {
 extension PreferencesDataSource: NSTableViewDelegate {
     func tableViewSelectionDidChange(_ notification: Notification) {
         if let tableView = notification.object as? NSTableView {
-            updateDelegate?.tableViewSelectionDidChange(tableView.selectedRow == -1)
+            updateDelegate?.preferenceSelectionDataSourceTableViewSelectionDidChange(tableView.selectedRow == -1)
         }
     }
 
@@ -79,7 +79,7 @@ extension PreferencesDataSource: NSTableViewDelegate {
 
         tableView.reloadData()
 
-        updateDelegate?.refreshMainTableView()
+        updateDelegate?.preferenceSelectionDataSourceRefreshMainTableView()
 
         tableView.deselectRow(tableView.selectedRow)
 
@@ -91,7 +91,7 @@ extension PreferencesDataSource: NSTableViewDelegate {
     }
 
     func tableView(_: NSTableView, didClick tableColumn: NSTableColumn) {
-        updateDelegate?.table(didClick: tableColumn)
+        updateDelegate?.preferenceSelectionDataSourceTable(didClick: tableColumn)
     }
 }
 
@@ -146,13 +146,13 @@ extension PreferencesDataSource: NSTableViewDataSource {
             dataObject.isFavourite = isFavouriteValue.intValue
             insert(timezone: dataObject, at: row)
             dataObject.isFavourite == 1 ?
-                updateDelegate?.markAsFavorite(dataObject) :
-                updateDelegate?.unfavourite(dataObject)
+                updateDelegate?.preferenceSelectionDataSourceMarkAsFavorite(dataObject) :
+                updateDelegate?.preferenceSelectionDataSourceUnfavourite(dataObject)
             updateStatusItem()
-            updateDelegate?.refreshTimezoneTable()
+            updateDelegate?.preferenceSelectionDataSourceRefreshTimezoneTable()
         }
 
-        updateDelegate?.refreshMainTableView()
+        updateDelegate?.preferenceSelectionDataSourceRefreshMainTableView()
     }
 
     private func setNewLabel(_ label: String, for dataObject: TimezoneData, at row: Int) {
