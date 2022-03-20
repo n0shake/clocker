@@ -138,7 +138,6 @@ class StatusItemHandler: NSObject {
         parentView = nil
 
         let menubarTimezones = DataStore.shared().menubarTimezones() ?? []
-
         if menubarTimezones.isEmpty {
             currentState = .icon
             return

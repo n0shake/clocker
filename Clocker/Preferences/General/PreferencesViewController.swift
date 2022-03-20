@@ -97,6 +97,14 @@ class PreferencesViewController: ParentViewController {
                                                selector: #selector(refreshTimezoneTableView),
                                                name: NSNotification.Name.customLabelChanged,
                                                object: nil)
+        
+        NotificationCenter.default.addObserver(forName: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+                                               object: self,
+                                               queue: OperationQueue.main) { [weak self] _ in
+            if let sSelf = self {
+                sSelf.refreshTimezoneTableView()
+            }
+        }
 
         refreshTimezoneTableView()
 
@@ -483,8 +491,7 @@ extension PreferencesViewController {
         let words = searchString.components(separatedBy: CharacterSet.whitespacesAndNewlines)
         searchString = words.joined(separator: CLEmptyString)
 
-        let url = "https://maps.googleapis.com/maps/api/geocode/json?address=\(searchString)&key=\(geocodingKey)&language=\(userPreferredLanguage)"
-        return url
+        return "https://maps.googleapis.com/maps/api/geocode/json?address=\(searchString)&key=\(geocodingKey)&language=\(userPreferredLanguage)"
     }
 
     private func presentError(_ errorMessage: String) {
@@ -977,27 +984,27 @@ extension PreferencesViewController {
 }
 
 extension PreferencesViewController: PreferenceSelectionUpdates {
-    func markAsFavorite(_ dataObject: TimezoneData) {
+    func preferenceSelectionDataSourceMarkAsFavorite(_ dataObject: TimezoneData) {
         _markAsFavorite(dataObject)
     }
 
-    func unfavourite(_ dataObject: TimezoneData) {
+    func preferenceSelectionDataSourceUnfavourite(_ dataObject: TimezoneData) {
         _unfavourite(dataObject)
     }
 
-    func refreshTimezoneTable() {
+    func preferenceSelectionDataSourceRefreshTimezoneTable() {
         refreshTimezoneTableView()
     }
 
-    func refreshMainTableView() {
+    func preferenceSelectionDataSourceRefreshMainTableView() {
         refreshMainTable()
     }
 
-    func tableViewSelectionDidChange(_ status: Bool) {
+    func preferenceSelectionDataSourceTableViewSelectionDidChange(_ status: Bool) {
         deleteButton.isEnabled = !status
     }
 
-    func table(didClick tableColumn: NSTableColumn) {
+    func preferenceSelectionDataSourceTable(didClick tableColumn: NSTableColumn) {
         if tableColumn.identifier.rawValue == "favouriteTimezone" {
             return
         }
