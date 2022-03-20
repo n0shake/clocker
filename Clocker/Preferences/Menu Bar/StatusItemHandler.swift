@@ -137,7 +137,7 @@ class StatusItemHandler: NSObject {
     private func constructCompactView() {
         parentView = nil
 
-        let menubarTimezones = retrieveSyncedMenubarTimezones()
+        let menubarTimezones = DataStore.shared().menubarTimezones() ?? []
 
         if menubarTimezones.isEmpty {
             currentState = .icon
@@ -147,18 +147,6 @@ class StatusItemHandler: NSObject {
         parentView = StatusContainerView(with: menubarTimezones)
         statusItem.view = parentView
         statusItem.view?.window?.backgroundColor = NSColor.clear
-    }
-
-    private func retrieveSyncedMenubarTimezones() -> [Data] {
-        let defaultPreferences = DataStore.shared().timezones()
-
-        let menubarTimezones = defaultPreferences.filter { data -> Bool in
-            if let timezoneObj = TimezoneData.customObject(from: data) {
-                return timezoneObj.isFavourite == 1
-            }
-            return false
-        }
-        return menubarTimezones
     }
 
     // This is called when the Apple interface style pre-Mojave is changed.
@@ -210,7 +198,7 @@ class StatusItemHandler: NSObject {
     }
 
     private func shouldDisplaySecondsInMenubar() -> Bool {
-        let syncedTimezones = retrieveSyncedMenubarTimezones()
+        let syncedTimezones = DataStore.shared().menubarTimezones() ?? []
 
         for timezone in syncedTimezones {
             if let timezoneObj = TimezoneData.customObject(from: timezone) {

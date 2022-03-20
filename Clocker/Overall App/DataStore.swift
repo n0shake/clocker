@@ -23,7 +23,7 @@ enum ViewType {
 class DataStore: NSObject {
     private static var sharedStore = DataStore(with: UserDefaults.standard)
     private var userDefaults: UserDefaults!
-    private var defaultUbiquotousKeyValueStore: NSUbiquitousKeyValueStore!
+    private var ubiquitousStore: NSUbiquitousKeyValueStore!
 
     // Since these pref can accessed every second, let's cache this
     private var shouldDisplayDayInMenubar: Bool = false
@@ -41,13 +41,13 @@ class DataStore: NSObject {
     init(with defaults: UserDefaults) {
         super.init()
         userDefaults = defaults
-        defaultUbiquotousKeyValueStore = NSUbiquitousKeyValueStore.default
+        ubiquitousStore = NSUbiquitousKeyValueStore.default
         shouldDisplayDayInMenubar = shouldDisplay(.dayInMenubar)
         shouldDisplayDateInMenubar = shouldDisplay(.dateInMenubar)
     }
 
     func timezones() -> [Data] {
-        if let cloudPreferences = defaultUbiquotousKeyValueStore.object(forKey: CLDefaultPreferenceKey) as? [Data] {
+        if let cloudPreferences = ubiquitousStore.object(forKey: CLDefaultPreferenceKey) as? [Data] {
             Logger.info("Returning preferences from NSUbiquitousKeyValueStore")
             return cloudPreferences
         }
@@ -62,7 +62,7 @@ class DataStore: NSObject {
     func setTimezones(_ timezones: [Data]?) {
         userDefaults.set(timezones, forKey: CLDefaultPreferenceKey)
         // iCloud sync
-        defaultUbiquotousKeyValueStore.set(timezones, forKey: CLDefaultPreferenceKey)
+        ubiquitousStore.set(timezones, forKey: CLDefaultPreferenceKey)
     }
 
     func menubarTimezones() -> [Data]? {
