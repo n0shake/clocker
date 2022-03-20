@@ -186,10 +186,14 @@ class ParentPanelController: NSWindowController {
                                                selector: #selector(systemTimezoneDidChange),
                                                name: NSNotification.Name.NSSystemTimeZoneDidChange,
                                                object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(ubiquitousStoreDidChange),
-                                               name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
-                                               object: nil)
+        NotificationCenter.default.addObserver(forName: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+                                               object: self,
+                                               queue: OperationQueue.main) { [weak self] _ in
+            if let sSelf = self {
+                sSelf.mainTableView.reloadData()
+                sSelf.setScrollViewConstraint()
+            }
+        }
 
         // Setup upcoming events view
         upcomingEventContainerView.setAccessibility("UpcomingEventView")
@@ -247,14 +251,6 @@ class ParentPanelController: NSWindowController {
         }
     }
     
-    // Backing defaults changed
-    @objc func ubiquitousStoreDidChange() {
-        OperationQueue.main.addOperation {
-            self.mainTableView.reloadData()
-            self.setScrollViewConstraint()
-        }
-    }
-
     private func updateHomeObject(with customLabel: String, coordinates: CLLocationCoordinate2D?) {
         let timezones = DataStore.shared().timezones()
 
