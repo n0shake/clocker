@@ -188,117 +188,67 @@ extension Themer {
         if let symbolImageForPreference = symbolImage(for: "plus") {
             return symbolImageForPreference
         }
-
-        if #available(macOS 10.14, *) {
-            switch themeIndex {
-            case .light:
-                return NSImage(named: NSImage.Name("Settings"))!
-            case .dark, .solarizedDark:
-                return NSImage(named: NSImage.Name("Settings-White"))!
-            case .system:
-                return NSImage(named: NSImage.actionTemplateName)!
-            case .solarizedLight:
-                return NSImage(named: NSImage.Name("Settings"))!
-            }
-        }
-
-        return
-            themeIndex == .light
-            ? NSImage(named: NSImage.Name("Settings"))!
-            : NSImage(named: NSImage.Name("Settings-White"))!
+        
+        return fallbackImageProvider(NSImage(named: NSImage.Name("Settings"))!,
+                                     NSImage(named: NSImage.Name("Settings-White"))!,
+                                     NSImage(named: NSImage.actionTemplateName)!,
+                                     NSImage(named: NSImage.Name("Settings"))!,
+                                     NSImage(named: NSImage.Name("Settings-White"))!)
     }
 
     func pinImage() -> NSImage {
         if let pinImage = symbolImage(for: "macwindow.on.rectangle") {
             return pinImage
         }
-
-        if #available(macOS 10.14, *) {
-            switch themeIndex {
-            case .light, .solarizedLight:
-                return NSImage(named: NSImage.Name("Float"))!
-            case .dark, .solarizedDark:
-                return NSImage(named: NSImage.Name("Float-White"))!
-            case .system:
-                return NSImage(named: NSImage.Name("Pin"))!
-            }
-        }
-
-        return themeIndex == .light
-            ? NSImage(named: NSImage.Name("Float"))!
-            : NSImage(named: NSImage.Name("Float-White"))!
+        
+        return fallbackImageProvider(NSImage(named: NSImage.Name("Float"))!,
+                                     NSImage(named: NSImage.Name("Float-White"))!,
+                                     NSImage(named: NSImage.Name("Pin"))!,
+                                     NSImage(named: NSImage.Name("Float"))!,
+                                     NSImage(named: NSImage.Name("Float-White"))!)
     }
 
     func sunriseImage() -> NSImage {
         if let symbolImage = symbolImage(for: "sunrise.fill") {
             return symbolImage
         }
-
-        if #available(macOS 10.14, *) {
-            switch themeIndex {
-            case .light, .solarizedLight:
-                return NSImage(named: NSImage.Name("Sunrise"))!
-            case .dark, .solarizedDark:
-                return NSImage(named: NSImage.Name("WhiteSunrise"))!
-            case .system:
-                return NSImage(named: NSImage.Name("Sunrise Dynamic"))!
-            }
-        }
-
-        return themeIndex == .light ? NSImage(named: NSImage.Name("Sunrise"))! : NSImage(named: NSImage.Name("WhiteSunrise"))!
+        return fallbackImageProvider(NSImage(named: NSImage.Name("Sunrise"))!,
+                                     NSImage(named: NSImage.Name("WhiteSunrise"))!,
+                                     NSImage(named: NSImage.Name("Sunrise Dynamic"))!,
+                                     NSImage(named: NSImage.Name("Sunrise"))!,
+                                     NSImage(named: NSImage.Name("WhiteSunrise"))!)
     }
 
     func sunsetImage() -> NSImage {
         if let symbolImage = symbolImage(for: "sunset.fill") {
             return symbolImage
         }
-
-        if #available(macOS 10.14, *) {
-            switch themeIndex {
-            case .light, .solarizedLight:
-                return NSImage(named: NSImage.Name("Sunset"))!
-            case .dark, .solarizedDark:
-                return NSImage(named: NSImage.Name("WhiteSunset"))!
-            case .system:
-                return NSImage(named: NSImage.Name("Sunset Dynamic"))!
-            }
-        }
-
-        return themeIndex == .light ? NSImage(named: NSImage.Name("Sunset"))! : NSImage(named: NSImage.Name("WhiteSunset"))!
+        
+        return fallbackImageProvider(NSImage(named: NSImage.Name("Sunset"))!,
+                                     NSImage(named: NSImage.Name("WhiteSunset"))!,
+                                     NSImage(named: NSImage.Name("Sunset Dynamic"))!,
+                                     NSImage(named: NSImage.Name("Sunset"))!,
+                                     NSImage(named: NSImage.Name("WhiteSunset"))!)
     }
 
     func removeImage() -> NSImage {
         if let symbolImage = symbolImage(for: "xmark") {
             return symbolImage
         }
-
-        if #available(macOS 10.14, *) {
-            switch themeIndex {
-            case .light, .solarizedLight:
-                return NSImage(named: NSImage.Name("Remove"))!
-            case .dark, .solarizedDark:
-                return NSImage(named: NSImage.Name("WhiteRemove"))!
-            case .system:
-                return NSImage(named: NSImage.Name("Remove Dynamic"))!
-            }
-        }
-
-        return themeIndex == .light ? NSImage(named: NSImage.Name("Remove"))! : NSImage(named: NSImage.Name("WhiteRemove"))!
+        
+        return fallbackImageProvider(NSImage(named: NSImage.Name("Remove"))!,
+                                     NSImage(named: NSImage.Name("WhiteRemove"))!,
+                                     NSImage(named: NSImage.Name("Remove Dynamic"))!,
+                                     NSImage(named: NSImage.Name("Remove"))!,
+                                     NSImage(named: NSImage.Name("WhiteRemove"))!)
     }
 
     func extraOptionsImage() -> NSImage {
-        if #available(macOS 10.14, *) {
-            switch themeIndex {
-            case .light, .solarizedLight:
-                return NSImage(named: NSImage.Name("Extra"))!
-            case .dark, .solarizedDark:
-                return NSImage(named: NSImage.Name("ExtraWhite"))!
-            case .system:
-                return NSImage(named: NSImage.Name("Extra Dynamic"))!
-            }
-        }
-
-        return themeIndex == .light ? NSImage(named: NSImage.Name("Extra"))! : NSImage(named: NSImage.Name("ExtraWhite"))!
+        return fallbackImageProvider(NSImage(named: NSImage.Name("Extra"))!,
+                                     NSImage(named: NSImage.Name("ExtraWhite"))!,
+                                     NSImage(named: NSImage.Name("Extra Dynamic"))!,
+                                     NSImage(named: NSImage.Name("Extra"))!,
+                                     NSImage(named: NSImage.Name("ExtraWhite"))!)
     }
 
     func menubarOnboardingImage() -> NSImage {
@@ -315,18 +265,11 @@ extension Themer {
     }
 
     func extraOptionsHighlightedImage() -> NSImage {
-        if #available(macOS 10.14, *) {
-            switch themeIndex {
-            case .light, .solarizedLight:
-                return NSImage(named: NSImage.Name("ExtraHighlighted"))!
-            case .dark, .solarizedDark:
-                return NSImage(named: NSImage.Name("ExtraWhiteHighlighted"))!
-            case .system:
-                return NSImage(named: NSImage.Name("ExtraHighlighted Dynamic"))!
-            }
-        }
-
-        return themeIndex == .light ? NSImage(named: NSImage.Name("ExtraHighlighted"))! : NSImage(named: NSImage.Name("ExtraWhiteHighlighted"))!
+        return fallbackImageProvider(NSImage(named: NSImage.Name("ExtraHighlighted"))!,
+                                     NSImage(named: NSImage.Name("ExtraWhiteHighlighted"))!,
+                                     NSImage(named: NSImage.Name("ExtraHighlighted Dynamic"))!,
+                                     NSImage(named: NSImage.Name("ExtraHighlighted"))!,
+                                     NSImage(named: NSImage.Name("ExtraWhiteHighlighted"))!)
     }
 
     func sharingImage() -> NSImage {
@@ -334,18 +277,11 @@ extension Themer {
             return sharingImage
         }
 
-        if #available(macOS 10.14, *) {
-            switch themeIndex {
-            case .light, .solarizedLight:
-                return NSImage(named: NSImage.Name("Sharing"))!
-            case .dark, .solarizedDark:
-                return NSImage(named: NSImage.Name("SharingDarkIcon"))!
-            case .system:
-                return NSImage(named: NSImage.Name("Sharing Dynamic"))!
-            }
-        }
-
-        return themeIndex == .light ? NSImage(named: NSImage.shareTemplateName)! : NSImage(named: NSImage.Name("SharingDarkIcon"))!
+        return fallbackImageProvider(NSImage(named: NSImage.Name("Sharing"))!,
+                                     NSImage(named: NSImage.Name("SharingDarkIcon"))!,
+                                     NSImage(named: NSImage.Name("Sharing Dynamic"))!,
+                                     NSImage(named: NSImage.Name("Sharing"))!,
+                                     NSImage(named: NSImage.Name("SharingDarkIcon"))!)
     }
 
     func currentLocationImage() -> NSImage {
@@ -353,18 +289,11 @@ extension Themer {
             return symbolImage
         }
 
-        if #available(macOS 10.14, *) {
-            switch themeIndex {
-            case .light, .solarizedLight:
-                return NSImage(named: NSImage.Name("CurrentLocation"))!
-            case .dark, .solarizedDark:
-                return NSImage(named: NSImage.Name("CurrentLocationWhite"))!
-            case .system:
-                return NSImage(named: NSImage.Name("CurrentLocationDynamic"))!
-            }
-        }
-
-        return themeIndex == .light ? NSImage(named: NSImage.Name("CurrentLocation"))! : NSImage(named: NSImage.Name("CurrentLocationWhite"))!
+        return fallbackImageProvider(NSImage(named: NSImage.Name("CurrentLocation"))!,
+                                     NSImage(named: NSImage.Name("CurrentLocationWhite"))!,
+                                     NSImage(named: NSImage.Name("CurrentLocationDynamic"))!,
+                                     NSImage(named: NSImage.Name("CurrentLocation"))!,
+                                     NSImage(named: NSImage.Name("CurrentLocationWhite"))!)
     }
 
     func popoverAppearance() -> NSAppearance {
@@ -387,18 +316,11 @@ extension Themer {
             return symbolImageForPreference
         }
         
-        if #available(macOS 10.14, *) {
-            switch themeIndex {
-            case .light, .solarizedLight:
-                return NSImage(named: NSImage.Name("Add Icon"))!
-            case .dark, .solarizedDark:
-                return NSImage(named: NSImage.Name("Add White"))!
-            case .system:
-                return NSImage(named: .addDynamicIcon)!
-            }
-        }
-
-        return themeIndex == .light ? NSImage(named: NSImage.Name("Add Icon"))! : NSImage(named: NSImage.Name("Add White"))!
+        return fallbackImageProvider(NSImage(named: NSImage.Name("Add Icon"))!,
+                                     NSImage(named: NSImage.Name("Add White"))!,
+                                     NSImage(named: .addDynamicIcon)!,
+                                     NSImage(named: NSImage.Name("Add Icon"))!,
+                                     NSImage(named: NSImage.Name("Add White"))!)
     }
 
     func addImageHighlighted() -> NSImage {
@@ -410,18 +332,11 @@ extension Themer {
             return privacyTabSFImage
         }
 
-        if #available(macOS 10.14, *) {
-            switch themeIndex {
-            case .light, .solarizedLight:
-                return NSImage(named: NSImage.Name("Privacy"))!
-            case .dark, .solarizedDark:
-                return NSImage(named: NSImage.Name("Privacy Dark"))!
-            case .system:
-                return NSImage(named: .permissionTabIcon)!
-            }
-        }
-
-        return themeIndex == .light ? NSImage(named: NSImage.Name("Privacy"))! : NSImage(named: NSImage.Name("Privacy Dark"))!
+        return fallbackImageProvider(NSImage(named: NSImage.Name("Privacy"))!,
+                                     NSImage(named: NSImage.Name("Privacy Dark"))!,
+                                     NSImage(named: .permissionTabIcon)!,
+                                     NSImage(named: NSImage.Name("Privacy"))!,
+                                     NSImage(named: NSImage.Name("Privacy Dark"))!)
     }
 
     func appearanceTabImage() -> NSImage {
@@ -429,18 +344,11 @@ extension Themer {
             return appearanceTabImage
         }
 
-        if #available(macOS 10.14, *) {
-            switch themeIndex {
-            case .light, .solarizedLight:
-                return NSImage(named: NSImage.Name("Appearance"))!
-            case .dark, .solarizedDark:
-                return NSImage(named: NSImage.Name("Appearance Dark"))!
-            case .system:
-                return NSImage(named: .appearanceTabIcon)!
-            }
-        }
-
-        return themeIndex == .light ? NSImage(named: NSImage.Name("Appearance"))! : NSImage(named: NSImage.Name("Appearance Dark"))!
+        return fallbackImageProvider(NSImage(named: NSImage.Name("Appearance"))!,
+                                     NSImage(named: NSImage.Name("Appearance Dark"))!,
+                                     NSImage(named: .appearanceTabIcon)!,
+                                     NSImage(named: NSImage.Name("Appearance"))!,
+                                     NSImage(named: NSImage.Name("Appearance Dark"))!)
     }
 
     func calendarTabImage() -> NSImage {
@@ -448,18 +356,11 @@ extension Themer {
             return calendarTabImage
         }
 
-        if #available(macOS 10.14, *) {
-            switch themeIndex {
-            case .light, .solarizedLight:
-                return NSImage(named: NSImage.Name("Calendar Tab Icon"))!
-            case .dark, .solarizedDark:
-                return NSImage(named: NSImage.Name("Calendar Tab Dark"))!
-            case .system:
-                return NSImage(named: .calendarTabIcon)!
-            }
-        }
-
-        return themeIndex == .light ? NSImage(named: NSImage.Name("Calendar Tab Icon"))! : NSImage(named: NSImage.Name("Calendar Tab Dark"))!
+        return fallbackImageProvider(NSImage(named: NSImage.Name("Calendar Tab Icon"))!,
+                                     NSImage(named: NSImage.Name("Calendar Tab Dark"))!,
+                                     NSImage(named: .calendarTabIcon)!,
+                                     NSImage(named: NSImage.Name("Calendar Tab Icon"))!,
+                                     NSImage(named: NSImage.Name("Calendar Tab Dark"))!)
     }
 
     func generalTabImage() -> NSImage? {
@@ -548,6 +449,30 @@ extension Themer {
             }
             NSApp.appearance = appAppearance
         }
+    }
+    
+    private func fallbackImageProvider(_ lightImage: NSImage,
+                                       _ darkImage: NSImage,
+                                       _ systemImage: NSImage,
+                                       _ solarizedLightImage: NSImage,
+                                       _ solarizedDarkImage: NSImage) -> NSImage {
+        if #available(macOS 10.14, *) {
+            switch themeIndex {
+            case .light:
+                return lightImage
+            case .dark:
+                return darkImage
+            case .system:
+                return systemImage
+            case .solarizedLight:
+                return solarizedLightImage
+            case .solarizedDark:
+                return solarizedDarkImage
+            }
+        }
+
+        return themeIndex == .light ? lightImage : darkImage
+        
     }
 
 }
