@@ -6,18 +6,17 @@ extension Notification.Name {
     static let themeDidChangeNotification = Notification.Name(rawValue: "ThemeDidChangeNotification")
 }
 
-enum Theme: Int {
-    case light = 0
-    case dark
-    case system
-    case solarizedLight
-    case solarizedDark
-}
-
 class Themer: NSObject {
+    // Adding a new theme should automatically cause the compiler to complain asking to make the switches in this class to be more exhaustive
+    enum Theme: Int {
+        case light = 0
+        case dark
+        case system
+        case solarizedLight
+        case solarizedDark
+    }
     private static var sharedInstance = Themer(index: UserDefaults.standard.integer(forKey: CLThemeKey))
     private var effectiveApperanceObserver: NSKeyValueObservation?
-
     private var themeIndex: Theme {
         didSet {
             NotificationCenter.default.post(name: .themeDidChangeNotification, object: nil)
@@ -96,11 +95,23 @@ extension Themer {
     
     //MARK: Color
     func sliderKnobColor() -> NSColor {
-        return themeIndex == .light ? NSColor(deviceRed: 255.0, green: 255.0, blue: 255, alpha: 0.9) : NSColor(deviceRed: 0.0, green: 0.0, blue: 0, alpha: 0.9)
+        switch themeIndex {
+        case .light:
+           return NSColor(deviceRed: 255.0, green: 255.0, blue: 255, alpha: 0.9)
+        case .system:
+            return retrieveCurrentSystem() == .light ? NSColor(deviceRed: 255.0, green: 255.0, blue: 255, alpha: 0.9) : NSColor(deviceRed: 0.0, green: 0.0, blue: 0, alpha: 0.9)
+        default:
+            return NSColor(deviceRed: 0.0, green: 0.0, blue: 0, alpha: 0.9)
+        }
     }
 
     func sliderRightColor() -> NSColor {
-        return themeIndex == .dark ? NSColor.white : NSColor.gray
+        switch themeIndex {
+        case .dark:
+           return NSColor.white
+        default:
+            return NSColor.gray
+        }
     }
 
     func mainBackgroundColor() -> NSColor {
