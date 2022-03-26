@@ -30,7 +30,7 @@ class StandardMenubarHandlerTests: XCTestCase {
         // Set standard menubar in Prefs
         UserDefaults.standard.set(1, forKey: CLMenubarCompactMode)
 
-        let menubarHandler = MenubarHandler()
+        let menubarHandler = MenubarTitleProvider()
         let menubarString = menubarHandler.titleForMenubar() ?? ""
 
         // Test menubar string is present
@@ -58,7 +58,7 @@ class StandardMenubarHandlerTests: XCTestCase {
     func testUnfavouritedTimezone_returnNilMenubarString() {
         // Wipe all timezones from UserDefaults
         DataStore.shared().setTimezones(nil)
-        let menubarHandler = MenubarHandler()
+        let menubarHandler = MenubarTitleProvider()
         let emptyMenubarString = menubarHandler.titleForMenubar()
         // Returns early because DataStore.menubarTimezones is nil
         XCTAssertNil(emptyMenubarString)

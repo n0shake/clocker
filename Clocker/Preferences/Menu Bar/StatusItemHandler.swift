@@ -22,7 +22,7 @@ class StatusItemHandler: NSObject {
         return statusItem
     }()
 
-    private var menubarTitleHandler = MenubarHandler()
+    private var menubarTitleHandler = MenubarTitleProvider()
 
     private var parentView: StatusContainerView?
 

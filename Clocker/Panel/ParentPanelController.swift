@@ -575,7 +575,7 @@ class ParentPanelController: NSWindowController {
         Logger.log(object: nil, for: "Deleted Timezone Through Swipe")
     }
 
-    private lazy var menubarTitleHandler = MenubarHandler()
+    private lazy var menubarTitleHandler = MenubarTitleProvider()
 
     @objc func updateTime() {
         let store = DataStore.shared()
