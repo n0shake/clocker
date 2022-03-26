@@ -50,6 +50,7 @@
 		3548C45D26BEEF4C00AFB533 /* ParentPanelController+UpcomingEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3548C45C26BEEF4C00AFB533 /* ParentPanelController+UpcomingEvents.swift */; };
 		3548C45F26BEEFB400AFB533 /* UpcomingEventsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3548C45E26BEEFB400AFB533 /* UpcomingEventsDataSource.swift */; };
 		3548C46126BEEFE400AFB533 /* UpcomingEventViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3548C46026BEEFE400AFB533 /* UpcomingEventViewItem.swift */; };
+		35584D1427EF8EB5006E3EAD /* ThemerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35584D1327EF8EB5006E3EAD /* ThemerTests.swift */; };
 		357391872507277500D30819 /* TimeMarkerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357391852507277500D30819 /* TimeMarkerViewItem.swift */; };
 		357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357391862507277500D30819 /* HourMarkerViewItem.xib */; };
 		3579765E2680208C009DDA6E /* ParentPanelController+ModernSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3579765D2680208C009DDA6E /* ParentPanelController+ModernSlider.swift */; };
@@ -130,7 +131,6 @@
 		9A13BAD61CA87F08007C6CBE /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAD81CA87F08007C6CBE /* Panel.xib */; };
 		9A13BAE01CA882FA007C6CBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAE21CA882FA007C6CBE /* InfoPlist.strings */; };
 		9A13BAEA1CA88A76007C6CBE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A13BAEC1CA88A76007C6CBE /* Localizable.strings */; };
-		9A159CEB27B00E3300570529 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A159CEA27B00E3300570529 /* Keys.plist */; };
 		9A20A04B1C4DEED200FB45AB /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A20A04A1C4DEED200FB45AB /* IOKit.framework */; };
 		9A24A1881ED902CC0095201E /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A24A1871ED902CC0095201E /* EventKit.framework */; };
 		9A3169C11D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A3169C01D2CC5AA0079FDF8 /* com.abhishek.ClockerHelper.plist */; };
@@ -285,6 +285,7 @@
 		3552066327AF63DC000EF08F /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3552066427AF6488000EF08F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3552066527AF6489000EF08F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		35584D1327EF8EB5006E3EAD /* ThemerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemerTests.swift; sourceTree = "<group>"; };
 		3569A44E25441F320087E254 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		357391852507277500D30819 /* TimeMarkerViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMarkerViewItem.swift; sourceTree = "<group>"; };
 		357391862507277500D30819 /* HourMarkerViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourMarkerViewItem.xib; sourceTree = "<group>"; };
@@ -367,7 +368,6 @@
 		9A13BAD71CA87F08007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Panel.xib; sourceTree = "<group>"; };
 		9A13BAE11CA882FA007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A13BAEB1CA88A76007C6CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9A159CEA27B00E3300570529 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Keys.plist; path = Internal/Keys.plist; sourceTree = "<group>"; };
 		9A20A04A1C4DEED200FB45AB /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		9A20A06F1C4E804D00FB45AB /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		9A24A1871ED902CC0095201E /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
@@ -880,6 +880,7 @@
 				C20839C921515C1E00C86589 /* ClockerUnitTests.swift */,
 				C20839CB21515C1F00C86589 /* Info.plist */,
 				9A0385BA269E3434003B5E72 /* StandardMenubarHandlerTests.swift */,
+				35584D1327EF8EB5006E3EAD /* ThemerTests.swift */,
 			);
 			path = ClockerUnitTests;
 			sourceTree = "<group>";
@@ -909,7 +910,6 @@
 		DD4F7BF913C30F9F00825C6E = {
 			isa = PBXGroup;
 			children = (
-				9A159CEA27B00E3300570529 /* Keys.plist */,
 				35B2FEE4259A2C25005DA84D /* CoreModelKit */,
 				35B2FED4259A2244005DA84D /* CoreLoggerKit */,
 				35B2FEB1259A1649005DA84D /* StartupKit */,
@@ -1216,7 +1216,6 @@
 				35C36F972259EBB1002FA5C6 /* AppFeedbackWindow.xib in Resources */,
 				9A13BAE01CA882FA007C6CBE /* InfoPlist.strings in Resources */,
 				35C36F912259EAF4002FA5C6 /* Preferences.storyboard in Resources */,
-				9A159CEB27B00E3300570529 /* Keys.plist in Resources */,
 				9AB89E031CE97A4900EC8EB1 /* Media.xcassets in Resources */,
 				9A13BAD61CA87F08007C6CBE /* Panel.xib in Resources */,
 				35C36F6B2259E0E1002FA5C6 /* FloatingWindow.xib in Resources */,
@@ -1267,6 +1266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35584D1427EF8EB5006E3EAD /* ThemerTests.swift in Sources */,
 				9A0385BB269E3434003B5E72 /* StandardMenubarHandlerTests.swift in Sources */,
 				C20839CA21515C1E00C86589 /* ClockerUnitTests.swift in Sources */,
 			);
