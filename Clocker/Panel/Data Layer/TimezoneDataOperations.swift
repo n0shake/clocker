@@ -368,7 +368,7 @@ extension TimezoneDataOperations {
                                           to: Date())
 
         guard let lat = dataObject.latitude,
-            let long = dataObject.longitude
+              let long = dataObject.longitude
         else {
             assertionFailure("Data was unexpectedly nil.")
             return

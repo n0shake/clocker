@@ -172,7 +172,7 @@ class VersionUpdateHandler: NSObject {
             lastVersionCopy = "0"
         }
         var newVersionFound = false
-        var details: String = ""
+        var details = ""
 
         let versions = dict.keys.sorted()
 

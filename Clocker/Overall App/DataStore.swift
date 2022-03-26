@@ -50,14 +50,14 @@ class DataStore: NSObject {
         if let cloudPreferences = ubiquitousStore.object(forKey: CLDefaultPreferenceKey) as? [Data] {
             return cloudPreferences
         }
-        
+
         guard let preferences = userDefaults.object(forKey: CLDefaultPreferenceKey) as? [Data] else {
             return []
         }
 
         return preferences
     }
-    
+
     func setTimezones(_ timezones: [Data]?) {
         userDefaults.set(timezones, forKey: CLDefaultPreferenceKey)
         // iCloud sync
@@ -164,9 +164,9 @@ class DataStore: NSObject {
             return value == 0
         }
     }
-    
-    //MARK: Private
-    
+
+    // MARK: Private
+
     private func shouldDisplayHelper(_ key: String) -> Bool {
         guard let value = retrieve(key: key) as? NSNumber else {
             return false

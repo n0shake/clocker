@@ -15,6 +15,7 @@ class Themer: NSObject {
         case solarizedLight
         case solarizedDark
     }
+
     private static var sharedInstance = Themer(index: UserDefaults.standard.integer(forKey: CLThemeKey))
     private var effectiveApperanceObserver: NSKeyValueObservation?
     private var themeIndex: Theme {
@@ -47,9 +48,9 @@ class Themer: NSObject {
                                                           selector: #selector(respondToInterfaceStyle),
                                                           name: .interfaceStyleDidChange,
                                                           object: nil)
-        
+
         if #available(macOS 10.14, *) {
-            effectiveApperanceObserver = NSApp.observe(\.effectiveAppearance) { [weak self] (app, _) in
+            effectiveApperanceObserver = NSApp.observe(\.effectiveAppearance) { [weak self] _, _ in
                 if let sSelf = self {
                     sSelf.setAppAppearance()
                     NotificationCenter.default.post(name: .themeDidChangeNotification, object: nil)
@@ -92,12 +93,13 @@ extension Themer {
             self.setAppAppearance()
         }
     }
-    
-    //MARK: Color
+
+    // MARK: Color
+
     func sliderKnobColor() -> NSColor {
         switch themeIndex {
         case .light:
-           return NSColor(deviceRed: 255.0, green: 255.0, blue: 255, alpha: 0.9)
+            return NSColor(deviceRed: 255.0, green: 255.0, blue: 255, alpha: 0.9)
         case .system:
             return retrieveCurrentSystem() == .light ? NSColor(deviceRed: 255.0, green: 255.0, blue: 255, alpha: 0.9) : NSColor(deviceRed: 0.0, green: 0.0, blue: 0, alpha: 0.9)
         default:
@@ -108,7 +110,7 @@ extension Themer {
     func sliderRightColor() -> NSColor {
         switch themeIndex {
         case .dark:
-           return NSColor.white
+            return NSColor.white
         default:
             return NSColor.gray
         }
@@ -132,7 +134,7 @@ extension Themer {
 
         return themeIndex == .light ? NSColor.white : NSColor(deviceRed: 55.0 / 255.0, green: 71.0 / 255.0, blue: 79.0 / 255.0, alpha: 1.0)
     }
-    
+
     func textBackgroundColor() -> NSColor {
         if #available(macOS 10.14, *) {
             switch themeIndex {
@@ -172,8 +174,9 @@ extension Themer {
 
         return themeIndex == .light ? NSColor.black : NSColor.white
     }
-    
-    //MARK: Images
+
+    // MARK: Images
+
     func shutdownImage() -> NSImage {
         if let symbolImageForShutdown = symbolImage(for: "ellipsis.circle") {
             return symbolImageForShutdown
@@ -190,7 +193,7 @@ extension Themer {
         if let symbolImageForPreference = symbolImage(for: "plus") {
             return symbolImageForPreference
         }
-        
+
         return fallbackImageProvider(NSImage(named: NSImage.Name("Settings"))!,
                                      NSImage(named: NSImage.Name("Settings-White"))!,
                                      NSImage(named: NSImage.actionTemplateName)!,
@@ -202,7 +205,7 @@ extension Themer {
         if let pinImage = symbolImage(for: "macwindow.on.rectangle") {
             return pinImage
         }
-        
+
         return fallbackImageProvider(NSImage(named: NSImage.Name("Float"))!,
                                      NSImage(named: NSImage.Name("Float-White"))!,
                                      NSImage(named: NSImage.Name("Pin"))!,
@@ -225,7 +228,7 @@ extension Themer {
         if let symbolImage = symbolImage(for: "sunset.fill") {
             return symbolImage
         }
-        
+
         return fallbackImageProvider(NSImage(named: NSImage.Name("Sunset"))!,
                                      NSImage(named: NSImage.Name("WhiteSunset"))!,
                                      NSImage(named: NSImage.Name("Sunset Dynamic"))!,
@@ -237,7 +240,7 @@ extension Themer {
         if let symbolImage = symbolImage(for: "xmark") {
             return symbolImage
         }
-        
+
         return fallbackImageProvider(NSImage(named: NSImage.Name("Remove"))!,
                                      NSImage(named: NSImage.Name("WhiteRemove"))!,
                                      NSImage(named: NSImage.Name("Remove Dynamic"))!,
@@ -317,7 +320,7 @@ extension Themer {
         if let symbolImageForPreference = symbolImage(for: "plus") {
             return symbolImageForPreference
         }
-        
+
         return fallbackImageProvider(NSImage(named: NSImage.Name("Add Icon"))!,
                                      NSImage(named: NSImage.Name("Add White"))!,
                                      NSImage(named: .addDynamicIcon)!,
@@ -402,21 +405,21 @@ extension Themer {
 
         return removeImage()
     }
-    
-    //MARK: Debug Description
-    
+
+    // MARK: Debug Description
+
     override var debugDescription: String {
         if themeIndex == .system {
             return "System Theme is \(retrieveCurrentSystem())"
         }
         return "Current Theme is \(themeIndex)"
     }
-    
+
     override var description: String {
         return debugDescription
     }
-    
-    //MARK: Private
+
+    // MARK: Private
 
     private func symbolImage(for name: String) -> NSImage? {
         assert(name.isEmpty == false)
@@ -428,7 +431,7 @@ extension Themer {
 
         return nil
     }
-    
+
     private func retrieveCurrentSystem() -> Theme {
         if #available(OSX 10.14, *) {
             if let appleInterfaceStyle = UserDefaults.standard.object(forKey: "AppleInterfaceStyle") as? String {
@@ -439,7 +442,7 @@ extension Themer {
         }
         return .light
     }
-    
+
     private func setAppAppearance() {
         if #available(OSX 10.14, *) {
             var appAppearance = NSAppearance(named: .aqua)
@@ -452,12 +455,13 @@ extension Themer {
             NSApp.appearance = appAppearance
         }
     }
-    
+
     private func fallbackImageProvider(_ lightImage: NSImage,
                                        _ darkImage: NSImage,
                                        _ systemImage: NSImage,
                                        _ solarizedLightImage: NSImage,
-                                       _ solarizedDarkImage: NSImage) -> NSImage {
+                                       _ solarizedDarkImage: NSImage) -> NSImage
+    {
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:
@@ -474,7 +478,5 @@ extension Themer {
         }
 
         return themeIndex == .light ? lightImage : darkImage
-        
     }
-
 }
