@@ -5,7 +5,7 @@ import CoreLoggerKit
 import CoreModelKit
 import EventKit
 
-class MenubarHandler: NSObject {
+class MenubarTitleProvider: NSObject {
     func titleForMenubar() -> String? {
         if let nextEvent = checkForUpcomingEvents() {
             return nextEvent
