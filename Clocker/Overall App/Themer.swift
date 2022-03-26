@@ -2,14 +2,6 @@
 
 import Cocoa
 
-func isDarkModeOn() -> Bool {
-    if #available(macOS 10.14, *) {
-        return NSAppearance.current.name == NSAppearance.Name.darkAqua
-    }
-
-    return false
-}
-
 extension Notification.Name {
     static let themeDidChangeNotification = Notification.Name(rawValue: "ThemeDidChangeNotification")
 }
@@ -23,7 +15,7 @@ enum Theme: Int {
 }
 
 class Themer: NSObject {
-    private static var sharedInstance = Themer()
+    private static var sharedInstance = Themer(index: UserDefaults.standard.integer(forKey: CLThemeKey))
     private var effectiveApperanceObserver: NSKeyValueObservation?
 
     private var themeIndex: Theme {
@@ -32,10 +24,8 @@ class Themer: NSObject {
         }
     }
 
-    override init() {
-        let defaultTheme = UserDefaults.standard.integer(forKey: CLThemeKey)
-
-        switch defaultTheme {
+    init(index: Int) {
+        switch index {
         case 0:
             themeIndex = Theme.light
         case 1:
@@ -62,7 +52,7 @@ class Themer: NSObject {
         if #available(macOS 10.14, *) {
             effectiveApperanceObserver = NSApp.observe(\.effectiveAppearance) { [weak self] (app, _) in
                 if let sSelf = self {
-                    sSelf.respondToInterfaceStyle()
+                    sSelf.setAppAppearance()
                     NotificationCenter.default.post(name: .themeDidChangeNotification, object: nil)
                 }
             }
@@ -103,20 +93,8 @@ extension Themer {
             self.setAppAppearance()
         }
     }
-
-    private func setAppAppearance() {
-        if #available(OSX 10.14, *) {
-            var appAppearance = NSAppearance(named: .aqua)
-
-            if themeIndex == .dark {
-                appAppearance = NSAppearance(named: .darkAqua)
-            } else if themeIndex == .system {
-                appAppearance = retrieveCurrentSystem() == .dark ? NSAppearance(named: .darkAqua) : NSAppearance(named: .aqua)
-            }
-            NSApp.appearance = appAppearance
-        }
-    }
-
+    
+    //MARK: Color
     func sliderKnobColor() -> NSColor {
         return themeIndex == .light ? NSColor(deviceRed: 255.0, green: 255.0, blue: 255, alpha: 0.9) : NSColor(deviceRed: 0.0, green: 0.0, blue: 0, alpha: 0.9)
     }
@@ -143,16 +121,26 @@ extension Themer {
 
         return themeIndex == .light ? NSColor.white : NSColor(deviceRed: 55.0 / 255.0, green: 71.0 / 255.0, blue: 79.0 / 255.0, alpha: 1.0)
     }
-
-    private func retrieveCurrentSystem() -> Theme {
-        if #available(OSX 10.14, *) {
-            if let appleInterfaceStyle = UserDefaults.standard.object(forKey: "AppleInterfaceStyle") as? String {
-                if appleInterfaceStyle.lowercased().contains("dark") {
-                    return .dark
-                }
+    
+    func textBackgroundColor() -> NSColor {
+        if #available(macOS 10.14, *) {
+            switch themeIndex {
+            case .light:
+                return NSColor(deviceRed: 241.0 / 255.0, green: 241.0 / 255.0, blue: 241.0 / 255.0, alpha: 1.0)
+            case .dark:
+                return NSColor(deviceRed: 42.0 / 255.0, green: 55.0 / 255.0, blue: 62.0 / 255.0, alpha: 1.0)
+            case .system:
+                return retrieveCurrentSystem() == .light ? NSColor(deviceRed: 241.0 / 255.0, green: 241.0 / 255.0, blue: 241.0 / 255.0, alpha: 1.0) : NSColor.controlBackgroundColor
+            case .solarizedLight:
+                return NSColor(deviceRed: 238.0 / 255.0, green: 232.0 / 255.0, blue: 213.0 / 255.0, alpha: 1.0)
+            case .solarizedDark:
+                return NSColor(deviceRed: 88.0 / 255.0, green: 110.0 / 255.0, blue: 117.0 / 255.0, alpha: 1.0)
             }
         }
-        return .light
+
+        return themeIndex == .light ?
+            NSColor(deviceRed: 241.0 / 255.0, green: 241.0 / 255.0, blue: 241.0 / 255.0, alpha: 1.0) :
+            NSColor(deviceRed: 42.0 / 255.0, green: 55.0 / 255.0, blue: 62.0 / 255.0, alpha: 1.0)
     }
 
     func mainTextColor() -> NSColor {
@@ -173,7 +161,8 @@ extension Themer {
 
         return themeIndex == .light ? NSColor.black : NSColor.white
     }
-
+    
+    //MARK: Images
     func shutdownImage() -> NSImage {
         if let symbolImageForShutdown = symbolImage(for: "ellipsis.circle") {
             return symbolImageForShutdown
@@ -481,27 +470,6 @@ extension Themer {
         return symbolImage(for: "info.circle")
     }
 
-    func textBackgroundColor() -> NSColor {
-        if #available(macOS 10.14, *) {
-            switch themeIndex {
-            case .light:
-                return NSColor(deviceRed: 241.0 / 255.0, green: 241.0 / 255.0, blue: 241.0 / 255.0, alpha: 1.0)
-            case .dark:
-                return NSColor(deviceRed: 42.0 / 255.0, green: 55.0 / 255.0, blue: 62.0 / 255.0, alpha: 1.0)
-            case .system:
-                return retrieveCurrentSystem() == .light ? NSColor(deviceRed: 241.0 / 255.0, green: 241.0 / 255.0, blue: 241.0 / 255.0, alpha: 1.0) : NSColor.controlBackgroundColor
-            case .solarizedLight:
-                return NSColor(deviceRed: 238.0 / 255.0, green: 232.0 / 255.0, blue: 213.0 / 255.0, alpha: 1.0)
-            case .solarizedDark:
-                return NSColor(deviceRed: 88.0 / 255.0, green: 110.0 / 255.0, blue: 117.0 / 255.0, alpha: 1.0)
-            }
-        }
-
-        return themeIndex == .light ?
-            NSColor(deviceRed: 241.0 / 255.0, green: 241.0 / 255.0, blue: 241.0 / 255.0, alpha: 1.0) :
-            NSColor(deviceRed: 42.0 / 255.0, green: 55.0 / 255.0, blue: 62.0 / 255.0, alpha: 1.0)
-    }
-
     func videoCallImage() -> NSImage? {
         if #available(macOS 11.0, *) {
             let symbolConfig = NSImage.SymbolConfiguration(pointSize: 20, weight: .regular)
@@ -531,6 +499,21 @@ extension Themer {
 
         return removeImage()
     }
+    
+    //MARK: Debug Description
+    
+    override var debugDescription: String {
+        if themeIndex == .system {
+            return "System Theme is \(retrieveCurrentSystem())"
+        }
+        return "Current Theme is \(themeIndex)"
+    }
+    
+    override var description: String {
+        return debugDescription
+    }
+    
+    //MARK: Private
 
     private func symbolImage(for name: String) -> NSImage? {
         assert(name.isEmpty == false)
@@ -543,14 +526,28 @@ extension Themer {
         return nil
     }
     
-    override var debugDescription: String {
-        if themeIndex == .system {
-            return "System Theme is \(retrieveCurrentSystem())"
+    private func retrieveCurrentSystem() -> Theme {
+        if #available(OSX 10.14, *) {
+            if let appleInterfaceStyle = UserDefaults.standard.object(forKey: "AppleInterfaceStyle") as? String {
+                if appleInterfaceStyle.lowercased().contains("dark") {
+                    return .dark
+                }
+            }
         }
-        return "Current Theme is \(themeIndex)"
+        return .light
     }
     
-    override var description: String {
-        return debugDescription
+    private func setAppAppearance() {
+        if #available(OSX 10.14, *) {
+            var appAppearance = NSAppearance(named: .aqua)
+
+            if themeIndex == .dark {
+                appAppearance = NSAppearance(named: .darkAqua)
+            } else if themeIndex == .system {
+                appAppearance = retrieveCurrentSystem() == .dark ? NSAppearance(named: .darkAqua) : NSAppearance(named: .aqua)
+            }
+            NSApp.appearance = appAppearance
+        }
     }
+
 }
