@@ -24,6 +24,7 @@ enum Theme: Int {
 
 class Themer: NSObject {
     private static var sharedInstance = Themer()
+    private var effectiveApperanceObserver: NSKeyValueObservation?
 
     private var themeIndex: Theme {
         didSet {
@@ -57,6 +58,15 @@ class Themer: NSObject {
                                                           selector: #selector(respondToInterfaceStyle),
                                                           name: .interfaceStyleDidChange,
                                                           object: nil)
+        
+        if #available(macOS 10.14, *) {
+            effectiveApperanceObserver = NSApp.observe(\.effectiveAppearance) { [weak self] (app, _) in
+                if let sSelf = self {
+                    sSelf.respondToInterfaceStyle()
+                    NotificationCenter.default.post(name: .themeDidChangeNotification, object: nil)
+                }
+            }
+        }
     }
 }
 
@@ -101,7 +111,7 @@ extension Themer {
             if themeIndex == .dark {
                 appAppearance = NSAppearance(named: .darkAqua)
             } else if themeIndex == .system {
-                appAppearance = NSAppearance.current
+                appAppearance = retrieveCurrentSystem() == .dark ? NSAppearance(named: .darkAqua) : NSAppearance(named: .aqua)
             }
             NSApp.appearance = appAppearance
         }
@@ -135,12 +145,7 @@ extension Themer {
     }
 
     private func retrieveCurrentSystem() -> Theme {
-        if #available(OSX 10.15, *) {
-            let appearanceDescription = NSApplication.shared.effectiveAppearance.debugDescription.lowercased()
-            if appearanceDescription.contains("dark") {
-                return .dark
-            }
-        } else if #available(OSX 10.14, *) {
+        if #available(OSX 10.14, *) {
             if let appleInterfaceStyle = UserDefaults.standard.object(forKey: "AppleInterfaceStyle") as? String {
                 if appleInterfaceStyle.lowercased().contains("dark") {
                     return .dark
@@ -536,5 +541,16 @@ extension Themer {
         }
 
         return nil
+    }
+    
+    override var debugDescription: String {
+        if themeIndex == .system {
+            return "System Theme is \(retrieveCurrentSystem())"
+        }
+        return "Current Theme is \(themeIndex)"
+    }
+    
+    override var description: String {
+        return debugDescription
     }
 }
