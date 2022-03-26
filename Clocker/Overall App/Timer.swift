@@ -118,7 +118,7 @@ open class Repeater: Equatable {
     }
 
     /// Handler typealias
-    public typealias Observer = ((Repeater) -> Void)
+    public typealias Observer = (Repeater) -> Void
 
     /// Token assigned to the observer
     public typealias ObserverToken = UInt64

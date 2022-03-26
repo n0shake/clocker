@@ -85,7 +85,7 @@ public class TimezoneData: NSObject, NSCoding {
     public var isSystemTimezone = false
     public var overrideFormat: TimezoneOverride = .globalFormat
 
-    public override init() {
+    override public init() {
         selectionType = .timezone
         isFavourite = 0
         note = ModelConstants.emptyString
@@ -268,7 +268,7 @@ public class TimezoneData: NSObject, NSCoding {
         return formatInString.contains("ss")
     }
 
-    public override var hash: Int {
+    override public var hash: Int {
         guard let placeIdentifier = placeID, let timezone = timezoneID else {
             return -1
         }
@@ -276,7 +276,7 @@ public class TimezoneData: NSObject, NSCoding {
         return placeIdentifier.hashValue ^ timezone.hashValue
     }
 
-    public override func isEqual(_ object: Any?) -> Bool {
+    override public func isEqual(_ object: Any?) -> Bool {
         guard let compared = object as? TimezoneData else {
             return false
         }

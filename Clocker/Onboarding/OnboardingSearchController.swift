@@ -27,8 +27,8 @@ class OnboardingSearchController: NSViewController {
 
     private var geocodingKey: String = {
         guard let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
-            let dictionary = NSDictionary(contentsOfFile: path),
-            let apiKey = dictionary["GeocodingKey"] as? String
+              let dictionary = NSDictionary(contentsOfFile: path),
+              let apiKey = dictionary["GeocodingKey"] as? String
         else {
             assertionFailure("Unable to find the API key")
             return ""
@@ -135,7 +135,8 @@ class OnboardingSearchController: NSViewController {
 
     private func setupLabelHidingTimer() {
         Timer.scheduledTimer(withTimeInterval: 5,
-                             repeats: false) { _ in
+                             repeats: false)
+        { _ in
             OperationQueue.main.addOperation {
                 self.setInfoLabel(CLEmptyString)
             }
@@ -375,7 +376,7 @@ class OnboardingSearchController: NSViewController {
                                                self.findLocalSearchResultsForTimezones()
                                                self.prepareUIForPresentingResults()
                                            }
-        })
+                                       })
     }
 
     private func presentErrorMessage(_ errorMessage: String) {

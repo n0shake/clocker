@@ -188,7 +188,8 @@ class ParentPanelController: NSWindowController {
                                                object: nil)
         NotificationCenter.default.addObserver(forName: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
                                                object: self,
-                                               queue: OperationQueue.main) { [weak self] _ in
+                                               queue: OperationQueue.main)
+        { [weak self] _ in
             if let sSelf = self {
                 sSelf.mainTableView.reloadData()
                 sSelf.setScrollViewConstraint()
@@ -250,7 +251,7 @@ class ParentPanelController: NSWindowController {
                                   coordinates: nil)
         }
     }
-    
+
     private func updateHomeObject(with customLabel: String, coordinates: CLLocationCoordinate2D?) {
         let timezones = DataStore.shared().timezones()
 
@@ -415,8 +416,9 @@ class ParentPanelController: NSWindowController {
             if let note = object?.note, note.isEmpty == false {
                 newHeight += 20
             } else if DataStore.shared().shouldDisplay(.dstTransitionInfo),
-                let obj = object,
-                TimezoneDataOperations(with: obj).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) != nil {
+                      let obj = object,
+                      TimezoneDataOperations(with: obj).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) != nil
+            {
                 newHeight += 20
             }
         }
@@ -603,8 +605,9 @@ class ParentPanelController: NSWindowController {
             let current = preferences[$0]
 
             if $0 < mainTableView.numberOfRows,
-                let cellView = mainTableView.view(atColumn: 0, row: $0, makeIfNecessary: false) as? TimezoneCellView,
-                let model = TimezoneData.customObject(from: current) {
+               let cellView = mainTableView.view(atColumn: 0, row: $0, makeIfNecessary: false) as? TimezoneCellView,
+               let model = TimezoneData.customObject(from: current)
+            {
                 if let futureSliderCell = futureSlider.cell as? CustomSliderCell, futureSliderCell.tracking == true {
                     return
                 }
@@ -624,7 +627,8 @@ class ParentPanelController: NSWindowController {
                 if let note = model.note, !note.isEmpty {
                     cellView.noteLabel.stringValue = note
                 } else if DataStore.shared().shouldDisplay(.dstTransitionInfo),
-                    let value = TimezoneDataOperations(with: model).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) {
+                          let value = TimezoneDataOperations(with: model).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue)
+                {
                     cellView.noteLabel.stringValue = value
                 } else {
                     cellView.noteLabel.stringValue = CLEmptyString
@@ -724,7 +728,8 @@ class ParentPanelController: NSWindowController {
 
     @IBAction func calendarButtonAction(_ sender: NSButton) {
         if sender.title == NSLocalizedString("Click here to start.",
-                                             comment: "Button Title for no Calendar access") {
+                                             comment: "Button Title for no Calendar access")
+        {
             showPermissionsWindow()
         } else {
             retrieveCalendarEvents()
@@ -815,7 +820,8 @@ class ParentPanelController: NSWindowController {
         if let events = eventCenter.eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: now)], events.isEmpty == false {
             OperationQueue.main.addOperation {
                 if self.upcomingEventCollectionView != nil,
-                    let upcomingEvents = eventCenter.upcomingEventsForDay(events) {
+                   let upcomingEvents = eventCenter.upcomingEventsForDay(events)
+                {
                     self.upcomingEventsDataSource.updateEventsDataSource(upcomingEvents)
                     self.upcomingEventCollectionView.reloadData()
                     return
@@ -982,7 +988,7 @@ class ParentPanelController: NSWindowController {
 
     @objc func openCrowdin() {
         guard let localizationURL = URL(string: AboutUsConstants.CrowdInLocalizationLink),
-            let languageCode = Locale.preferredLanguages.first else { return }
+              let languageCode = Locale.preferredLanguages.first else { return }
 
         NSWorkspace.shared.open(localizationURL)
 
@@ -996,7 +1002,7 @@ class ParentPanelController: NSWindowController {
 
         NSWorkspace.shared.open(sourceURL)
     }
-    
+
     @objc func openFAQs() {
         guard let sourceURL = URL(string: AboutUsConstants.FAQsLink) else { return }
 
@@ -1077,19 +1083,19 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
     /// London - 01:17:01
     private func retrieveAllTimes() -> String {
         var clipboardCopy = String()
-        
+
         // Get all timezones
         let timezones = DataStore.shared().timezones()
-        
+
         if timezones.isEmpty {
             return clipboardCopy
         }
-    
+
         // Sort them in ascending order
         let sortedByTime = timezones.sorted { obj1, obj2 -> Bool in
             let system = NSTimeZone.system
             guard let object1 = TimezoneData.customObject(from: obj1),
-                let object2 = TimezoneData.customObject(from: obj2)
+                  let object2 = TimezoneData.customObject(from: obj2)
             else {
                 assertionFailure("Data was unexpectedly nil")
                 return false
@@ -1103,19 +1109,20 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
 
             return difference1 > difference2
         }
-        
+
         // Grab date in first place and store it as local variable
         guard let earliestTimezone = TimezoneData.customObject(from: sortedByTime.first) else {
             return clipboardCopy
         }
-        
+
         let timezoneOperations = TimezoneDataOperations(with: earliestTimezone)
         var sectionTitle = timezoneOperations.todaysDate(with: 0) // TODO: Take slider value into consideration
         clipboardCopy.append("\(sectionTitle)\n")
-        
+
         stride(from: 0, to: sortedByTime.count, by: 1).forEach {
             if $0 < sortedByTime.count,
-                let dataModel = TimezoneData.customObject(from: sortedByTime[$0]) {
+               let dataModel = TimezoneData.customObject(from: sortedByTime[$0])
+            {
                 let dataOperations = TimezoneDataOperations(with: dataModel)
                 let date = dataOperations.todaysDate(with: 0)
                 let time = dataOperations.time(with: 0)

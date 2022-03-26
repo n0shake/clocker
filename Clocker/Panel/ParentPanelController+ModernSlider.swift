@@ -127,7 +127,7 @@ extension ParentPanelController {
     }
 
     public func setDefaultDateLabel(_ index: Int) -> Int {
-        let futureSliderDayPreference = DataStore.shared().retrieve(key: CLFutureSliderRange) as? NSNumber ??  5
+        let futureSliderDayPreference = DataStore.shared().retrieve(key: CLFutureSliderRange) as? NSNumber ?? 5
         let futureSliderDayRange = (futureSliderDayPreference.intValue + 1)
         let totalCount = (PanelConstants.modernSliderPointsInADay * futureSliderDayRange * 2) + 1
         let centerPoint = Int(ceil(Double(totalCount / 2)))

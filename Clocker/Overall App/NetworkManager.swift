@@ -41,7 +41,7 @@ extension NetworkManager {
         let session = URLSession(configuration: configuration)
 
         guard let encodedPath = path.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-            let url = URL(string: encodedPath)
+              let url = URL(string: encodedPath)
         else {
             completionHandler(nil, unableToGenerateURL)
             return nil
