@@ -5,6 +5,20 @@ import XCTest
 @testable import Clocker
 
 class ThemerTests: XCTestCase {
+    
+    @available(macOS 10.14, *)
+    func testSettingTheme() {
+        let subject = Themer(index: 0)
+        XCTAssertEqual(NSAppearance(named: .aqua), NSAppearance(named: .aqua))
+        
+        // Set the same theme; this should return early
+        subject.set(theme: 0)
+        
+        // Set the theme to dark theme
+        subject.set(theme: 1)
+        let expectedApperance = NSAppearance(named: .darkAqua)
+        XCTAssertEqual(expectedApperance, NSApp.appearance)
+    }
 
     func testLightTheme() throws {
         let subject = Themer(index: 0) // 0 is for light theme

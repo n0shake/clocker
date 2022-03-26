@@ -168,20 +168,11 @@ extension Themer {
             return symbolImageForShutdown
         }
 
-        if #available(macOS 10.14, *) {
-            switch themeIndex {
-            case .light:
-                return NSImage(named: NSImage.Name("PowerIcon"))!
-            case .dark, .solarizedDark:
-                return NSImage(named: NSImage.Name("PowerIcon-White"))!
-            case .system:
-                return NSImage(named: NSImage.Name("Power"))!
-            case .solarizedLight:
-                return NSImage(named: NSImage.Name("PowerIcon"))!
-            }
-        }
-
-        return themeIndex == .light ? NSImage(named: NSImage.Name("PowerIcon"))! : NSImage(named: NSImage.Name("PowerIcon-White"))!
+        return fallbackImageProvider(NSImage(named: NSImage.Name("PowerIcon"))!,
+                                     NSImage(named: NSImage.Name("PowerIcon-White"))!,
+                                     NSImage(named: NSImage.Name("Power"))!,
+                                     NSImage(named: NSImage.Name("PowerIcon"))!,
+                                     NSImage(named: NSImage.Name("PowerIcon-White"))!)
     }
 
     func preferenceImage() -> NSImage {
@@ -257,11 +248,11 @@ extension Themer {
             case .system:
                 return NSImage(named: NSImage.Name("Dynamic Menubar"))!
             default:
-                return UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark" ? NSImage(named: NSImage.Name("Dark Menubar"))! : NSImage(named: NSImage.Name("Light Menubar"))!
+                return retrieveCurrentSystem() == .dark ? NSImage(named: NSImage.Name("Dark Menubar"))! : NSImage(named: NSImage.Name("Light Menubar"))!
             }
         }
 
-        return UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark" ? NSImage(named: NSImage.Name("Dark Menubar"))! : NSImage(named: NSImage.Name("Light Menubar"))!
+        return retrieveCurrentSystem() == .dark ? NSImage(named: NSImage.Name("Dark Menubar"))! : NSImage(named: NSImage.Name("Light Menubar"))!
     }
 
     func extraOptionsHighlightedImage() -> NSImage {
