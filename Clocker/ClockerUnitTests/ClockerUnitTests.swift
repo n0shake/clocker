@@ -392,4 +392,15 @@ class ClockerUnitTests: XCTestCase {
             XCTAssertNotNil(convertedDate)
         }
     }
+    
+    func testStringFiltering() {
+        let stringWithComma = "Mumbai, Maharashtra"
+        let stringWithoutComma = "Mumbai"
+        let emptyString = ""
+        
+        XCTAssertEqual(stringWithComma.filteredName(), "Mumbai")
+        XCTAssertEqual(stringWithoutComma.filteredName(), "Mumbai")
+        XCTAssertEqual(emptyString.filteredName(), "")
+        
+    }
 }

@@ -262,10 +262,6 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         return statusBarHandler
     }
 
-    open func setPanelDefaults() {
-        panelController.updateDefaultPreferences()
-    }
-
     open func setupMenubarTimer() {
         statusBarHandler.setupStatusItem()
     }
