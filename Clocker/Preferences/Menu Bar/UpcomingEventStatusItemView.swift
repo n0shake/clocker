@@ -71,8 +71,14 @@ class UpcomingEventStatusItemView: NSView {
     }
 
     private func initialSetup() {
-        nextEventField.attributedStringValue = NSAttributedString(string: "Next Event", attributes: textFontAttributes)
+        nextEventField.attributedStringValue = NSAttributedString(string: dataObject.event.title, attributes: textFontAttributes)
         etaField.attributedStringValue = NSAttributedString(string: dataObject.metadataForMeeting(), attributes: timeAttributes)
+    }
+    
+    @available(OSX 10.14, *)
+    override func viewDidChangeEffectiveAppearance() {
+        super.viewDidChangeEffectiveAppearance()
+        statusItemViewSetNeedsDisplay()
     }
 
     func updateWithNextEventInfo(_ metadata: String) {
@@ -88,4 +94,17 @@ class UpcomingEventStatusItemView: NSView {
 
         mainDelegate.togglePanel(event)
     }
+}
+
+extension UpcomingEventStatusItemView: StatusItemViewConforming {
+    
+    func statusItemViewSetNeedsDisplay() {
+        nextEventField.attributedStringValue = NSAttributedString(string: dataObject.event.title, attributes: textFontAttributes)
+        etaField.attributedStringValue = NSAttributedString(string: dataObject.metadataForMeeting(), attributes: timeAttributes)
+    }
+    
+    func statusItemViewIdentifier() -> String {
+        return "upcoming_event_view"
+    }
+
 }
