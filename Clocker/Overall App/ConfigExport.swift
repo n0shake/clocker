@@ -29,7 +29,7 @@ struct ConfigExport {
             CLDefaultMenubarMode,
             CLInstallHomeIndicatorObject,
             CLSwitchToCompactModeAlert,
-            CLDisplayDSTTransitionInfo,
+            CLDisplayDSTTransitionInfo
         ])
         let dictionaryRep = UserDefaults.standard.dictionaryRepresentation()
         var clockerPrefs: [String: Any] = [:]
@@ -53,7 +53,7 @@ struct ConfigExport {
                     "Latitude": customObject.latitude ?? 0.0,
                     "Longitude": customObject.longitude ?? 0.0,
                     "Place Identifier": customObject.placeID ?? "0.0",
-                    "Selection Type": "\(customObject.selectionType)",
+                    "Selection Type": "\(customObject.selectionType)"
                 ]
                 return timezoneDictionary
             }

@@ -139,9 +139,9 @@ class AppFeedbackWindowController: NSWindowController {
         let preferences = DataStore.shared().timezones()
 
         guard let theme = DataStore.shared().retrieve(key: CLThemeKey) as? NSNumber,
-            let displayFutureSliderKey = DataStore.shared().retrieve(key: CLThemeKey) as? NSNumber,
-            let relativeDateKey = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber,
-            let country = Locale.autoupdatingCurrent.regionCode
+              let displayFutureSliderKey = DataStore.shared().retrieve(key: CLThemeKey) as? NSNumber,
+              let relativeDateKey = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber,
+              let country = Locale.autoupdatingCurrent.regionCode
         else {
             return "Error"
         }
@@ -182,7 +182,7 @@ class AppFeedbackWindowController: NSWindowController {
 
     private func retrieveDataForSending() -> [String: String] {
         guard let shortVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
-            let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+              let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
         else {
             return [:]
         }
@@ -201,7 +201,7 @@ class AppFeedbackWindowController: NSWindowController {
             AppFeedbackConstants.CLOperatingSystemVersion: osVersion,
             AppFeedbackConstants.CLClockerVersion: versionInfo,
             AppFeedbackConstants.CLAppFeedbackDateProperty: todaysDate(),
-            AppFeedbackConstants.CLAppFeedbackUserPreferences: generateUserPreferences(),
+            AppFeedbackConstants.CLAppFeedbackUserPreferences: generateUserPreferences()
         ]
     }
 
@@ -285,7 +285,7 @@ class AppFeedbackWindowController: NSWindowController {
 
     @IBAction func navigateToSupportTwitter(_: Any) {
         guard let twitterURL = URL(string: AboutUsConstants.TwitterLink),
-            let countryCode = Locale.autoupdatingCurrent.regionCode else { return }
+              let countryCode = Locale.autoupdatingCurrent.regionCode else { return }
 
         NSWorkspace.shared.open(twitterURL)
 
@@ -311,7 +311,7 @@ extension AppFeedbackWindowController: NSWindowDelegate {
     func bringPreferencesWindowToFront() {
         let windows = NSApplication.shared.windows
         let prefWindow = windows.first(where: { window in
-            return window.identifier == NSUserInterfaceItemIdentifier("Preferences")
+            window.identifier == NSUserInterfaceItemIdentifier("Preferences")
         })
         if let prefW = prefWindow {
             prefW.makeKeyAndOrderFront(self)

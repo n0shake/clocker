@@ -16,7 +16,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         panelObserver?.invalidate()
     }
 
-    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change _: [NSKeyValueChangeKey: Any]?, context _: UnsafeMutableRawPointer?) {
+    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change _: [NSKeyValueChangeKey: Any]?, context _: UnsafeMutableRawPointer?) {
         if let path = keyPath, path == PreferencesConstants.hotKeyPathIdentifier {
             let hotKeyCenter = PTHotKeyCenter.shared()
 
@@ -260,10 +260,6 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
 
     func statusItemForPanel() -> StatusItemHandler {
         return statusBarHandler
-    }
-
-    open func setPanelDefaults() {
-        panelController.updateDefaultPreferences()
     }
 
     open func setupMenubarTimer() {

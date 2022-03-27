@@ -5,7 +5,7 @@ import CoreLoggerKit
 import CoreModelKit
 import EventKit
 
-class MenubarHandler: NSObject {
+class MenubarTitleProvider: NSObject {
     func titleForMenubar() -> String? {
         if let nextEvent = checkForUpcomingEvents() {
             return nextEvent
@@ -34,7 +34,7 @@ class MenubarHandler: NSObject {
         return nil
     }
 
-    private func checkForUpcomingEvents() -> String? {
+    func checkForUpcomingEvents() -> String? {
         if DataStore.shared().shouldDisplay(.showMeetingInMenubar) {
             let filteredDates = EventCenter.sharedCenter().eventsForDate
             let autoupdatingCal = EventCenter.sharedCenter().autoupdatingCalendar
@@ -48,7 +48,6 @@ class MenubarHandler: NSObject {
 
                     if timeForEventToStart > 30 {
                         Logger.info("Our next event: \(event.event.title ?? "Error") starts in \(timeForEventToStart) mins")
-
                         continue
                     }
 

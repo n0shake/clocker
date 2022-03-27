@@ -19,7 +19,6 @@ struct PreferencesConstants {
 }
 
 class PreferencesViewController: ParentViewController {
-
     @IBOutlet private var placeholderLabel: NSTextField!
     @IBOutlet private var timezoneTableView: NSTableView!
     @IBOutlet private var availableTimezoneTableView: NSTableView!
@@ -43,14 +42,14 @@ class PreferencesViewController: ParentViewController {
     @IBOutlet var startAtLoginLabel: NSTextField!
 
     @IBOutlet var startupCheckbox: NSButton!
-    
+
     // Sorting
     private var arePlacesSortedInAscendingOrder = false
     private var arePlacesSortedInAscendingTimezoneOrder = false
     private var isTimezoneSortOptionSelected = false
     private var isTimezoneNameSortOptionSelected = false
     private var isLabelOptionSelected = false
-    
+
     private var isActivityInProgress = false {
         didSet {
             OperationQueue.main.addOperation {
@@ -73,22 +72,18 @@ class PreferencesViewController: ParentViewController {
     private lazy var startupManager = StartupManager()
     private var dataTask: URLSessionDataTask? = .none
 
-    private lazy var notimezoneView: NoTimezoneView? = {
-        NoTimezoneView(frame: tableview.frame)
-    }()
+    private lazy var notimezoneView: NoTimezoneView? = NoTimezoneView(frame: tableview.frame)
 
     private var geocodingKey: String = {
         guard let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
-            let dictionary = NSDictionary(contentsOfFile: path),
-            let apiKey = dictionary["GeocodingKey"] as? String
+              let dictionary = NSDictionary(contentsOfFile: path),
+              let apiKey = dictionary["GeocodingKey"] as? String
         else {
-            assertionFailure("Unable to find the API key")
+//            assertionFailure("Unable to find the API key")
             return ""
         }
         return apiKey
     }()
-
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +92,7 @@ class PreferencesViewController: ParentViewController {
                                                selector: #selector(refreshTimezoneTableView),
                                                name: NSNotification.Name.customLabelChanged,
                                                object: nil)
-        
+
         NotificationCenter.default.addObserver(forName: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
                                                object: self,
                                                queue: OperationQueue.main) { [weak self] _ in
@@ -253,7 +248,7 @@ class PreferencesViewController: ParentViewController {
         [timezoneNameSortButton, labelSortButton, timezoneSortButton].forEach {
             $0?.attributedTitle = NSAttributedString(string: $0?.title ?? CLEmptyString, attributes: [
                 NSAttributedString.Key.foregroundColor: Themer.shared().mainTextColor(),
-                NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!,
+                NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!
             ])
         }
 
@@ -349,9 +344,9 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
                    for: "favouriteRemoved")
 
         if let appDelegate = NSApplication.shared.delegate as? AppDelegate,
-            let menubarFavourites = DataStore.shared().menubarTimezones(),
-            menubarFavourites.isEmpty,
-            DataStore.shared().shouldDisplay(.showMeetingInMenubar) == false {
+           let menubarFavourites = DataStore.shared().menubarTimezones(),
+           menubarFavourites.isEmpty,
+           DataStore.shared().shouldDisplay(.showMeetingInMenubar) == false {
             appDelegate.invalidateMenubarTimer(true)
         }
 
@@ -477,7 +472,7 @@ extension PreferencesViewController {
                                                         self.prepareUIForPresentingResults()
                                                     }
 
-            })
+                                                })
         }
     }
 
@@ -515,7 +510,7 @@ extension PreferencesViewController {
                 CLTimezoneName: formattedAddress,
                 CLCustomLabel: formattedAddress,
                 CLTimezoneID: CLEmptyString,
-                CLPlaceIdentifier: $0.placeId,
+                CLPlaceIdentifier: $0.placeId
             ] as [String: Any]
 
             finalResults.append(TimezoneData(with: totalPackage))
@@ -607,7 +602,7 @@ extension PreferencesViewController {
             "latitude": dataObject.latitude!,
             "longitude": dataObject.longitude!,
             "nextUpdate": CLEmptyString,
-            CLCustomLabel: filteredAddress,
+            CLCustomLabel: filteredAddress
         ] as [String: Any]
 
         // Mark if the timezone is same as local timezone
@@ -895,7 +890,7 @@ extension PreferencesViewController {
             let system = NSTimeZone.system
 
             guard let object1 = TimezoneData.customObject(from: obj1),
-                let object2 = TimezoneData.customObject(from: obj2)
+                  let object2 = TimezoneData.customObject(from: obj2)
             else {
                 assertionFailure("Data was unexpectedly nil")
                 return false
@@ -923,7 +918,7 @@ extension PreferencesViewController {
         let sortedLabels = selectedTimeZones.sorted { obj1, obj2 -> Bool in
 
             guard let object1 = TimezoneData.customObject(from: obj1),
-                let object2 = TimezoneData.customObject(from: obj2)
+                  let object2 = TimezoneData.customObject(from: obj2)
             else {
                 assertionFailure("Data was unexpectedly nil")
                 return false
@@ -947,7 +942,7 @@ extension PreferencesViewController {
         let sortedByAddress = selectedTimeZones.sorted { obj1, obj2 -> Bool in
 
             guard let object1 = TimezoneData.customObject(from: obj1),
-                let object2 = TimezoneData.customObject(from: obj2)
+                  let object2 = TimezoneData.customObject(from: obj2)
             else {
                 assertionFailure("Data was unexpectedly nil")
                 return false
@@ -1014,7 +1009,7 @@ extension PreferencesViewController: PreferenceSelectionUpdates {
         let sortedTimezones = selectedTimeZones.sorted { obj1, obj2 -> Bool in
 
             guard let object1 = TimezoneData.customObject(from: obj1),
-                let object2 = TimezoneData.customObject(from: obj2)
+                  let object2 = TimezoneData.customObject(from: obj2)
             else {
                 assertionFailure("Data was unexpectedly nil")
                 return false

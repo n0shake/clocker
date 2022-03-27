@@ -77,32 +77,6 @@ extension TimezoneDataOperations {
         return "Heads up! DST transition will occur in \(numberOfDays) \(suffix)."
     }
 
-    private func checkForUpcomingEvents() -> (String, String)? {
-        if DataStore.shared().shouldDisplay(.showMeetingInMenubar) {
-            let filteredDates = EventCenter.sharedCenter().eventsForDate
-            let autoupdatingCal = EventCenter.sharedCenter().autoupdatingCalendar
-            guard let events = filteredDates[autoupdatingCal.startOfDay(for: Date())] else {
-                return nil
-            }
-
-            for event in events {
-                if event.event.startDate.timeIntervalSinceNow > 0, !event.isAllDay {
-                    let timeForEventToStart = event.event.startDate.timeIntervalSinceNow / 60
-
-                    if timeForEventToStart > 30 {
-                        Logger.info("Our next event: \(event.event.title ?? "Error") starts in \(timeForEventToStart) mins")
-
-                        continue
-                    }
-
-                    return EventCenter.sharedCenter().separateFormat(event: event.event)
-                }
-            }
-        }
-
-        return nil
-    }
-
     func compactMenuTitle() -> String {
         var subtitle = CLEmptyString
 
@@ -309,7 +283,7 @@ extension TimezoneDataOperations {
             let unableToConvertDateParameters = [
                 "New Date": newDate,
                 "Timezone": dataObject.timezone(),
-                "Locale": dateFormatter.locale.identifier,
+                "Locale": dateFormatter.locale.identifier
             ] as [String: Any]
             Logger.log(object: unableToConvertDateParameters, for: "Date conversion failure - New Date is nil")
             return CLEmptyString
@@ -368,7 +342,7 @@ extension TimezoneDataOperations {
                                           to: Date())
 
         guard let lat = dataObject.latitude,
-            let long = dataObject.longitude
+              let long = dataObject.longitude
         else {
             assertionFailure("Data was unexpectedly nil.")
             return

@@ -84,7 +84,6 @@ class CalendarViewController: ParentViewController {
 
         verifyCalendarAccess()
         showSegmentedControl.selectedSegment = DataStore.shared().shouldDisplay(ViewType.upcomingEventView) ? 0 : 1
-        showNextMeetingInMenubarControl.isEnabled = DataStore.shared().shouldDisplay(.menubarCompactMode) ? false : true
     }
 
     private func verifyCalendarAccess() {
@@ -114,7 +113,7 @@ class CalendarViewController: ParentViewController {
         let attributesDictionary: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.paragraphStyle: style,
             NSAttributedString.Key.font: boldFont,
-            NSAttributedString.Key.foregroundColor: Themer.shared().mainTextColor(),
+            NSAttributedString.Key.foregroundColor: Themer.shared().mainTextColor()
         ]
         let attributedString = NSAttributedString(string: title,
                                                   attributes: attributesDictionary)
@@ -243,13 +242,13 @@ extension CalendarViewController: NSTableViewDelegate {
 
     func tableView(_ tableView: NSTableView, viewFor _: NSTableColumn?, row: Int) -> NSView? {
         if let currentSource = calendars[row] as? String,
-            let message = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "sourceCellView"), owner: self) as? SourceTableViewCell {
+           let message = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "sourceCellView"), owner: self) as? SourceTableViewCell {
             message.sourceName.stringValue = currentSource
             return message
         }
 
         if let currentSource = calendars[row] as? CalendarInfo,
-            let calendarCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "calendarCellView"), owner: self) as? CalendarTableViewCell {
+           let calendarCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "calendarCellView"), owner: self) as? CalendarTableViewCell {
             calendarCell.calendarName.stringValue = currentSource.calendar.title
             calendarCell.calendarSelected.state = currentSource.selected ? NSControl.StateValue.on : NSControl.StateValue.off
             calendarCell.calendarSelected.target = self

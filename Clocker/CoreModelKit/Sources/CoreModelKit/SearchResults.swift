@@ -2,7 +2,7 @@
 
 import Cocoa
 
-public struct ResultStatus {
+public enum ResultStatus {
     public static let okay = "OK"
     public static let zeroResults = "ZERO_RESULTS"
     public static let requestDenied = "REQUEST_DENIED"
@@ -12,7 +12,7 @@ public struct SearchResult: Codable {
     public let results: [Result]
     public let status: String
     public let errorMessage: String?
-    
+
     public struct Result: Codable {
         public let addressComponents: [AddressComponent]
         public let formattedAddress: String
@@ -55,10 +55,10 @@ public struct SearchResult: Codable {
             case types
         }
     }
-    
+
     private enum CodingKeys: String, CodingKey {
-        case results = "results"
-        case status = "status"
+        case results
+        case status
         case errorMessage = "error_message"
     }
 }

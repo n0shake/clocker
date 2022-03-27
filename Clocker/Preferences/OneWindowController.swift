@@ -50,7 +50,7 @@ class OneWindowController: NSWindowController {
         window?.backgroundColor = Themer.shared().mainBackgroundColor()
         window?.identifier = NSUserInterfaceItemIdentifier("Preferences")
     }
-    
+
     private func setupToolbarImages() {
         guard let tabViewController = contentViewController as? CenteredTabViewController else {
             return
@@ -78,18 +78,18 @@ class OneWindowController: NSWindowController {
     }
 
     // MARK: Public
-    
+
     func openPermissionsPane() {
         openPreferenceTab(at: 3)
         NSApp.activate(ignoringOtherApps: true)
     }
-    
+
     // Action mapped to the + button in the PanelController. We should always open the General Pane when the + button is clicked.
     func openGeneralPane() {
         openPreferenceTab(at: 0)
         NSApp.activate(ignoringOtherApps: true)
     }
-    
+
     private func openPreferenceTab(at index: Int) {
         guard let window = window else {
             return
