@@ -129,14 +129,12 @@ class StatusItemView: NSView {
 }
 
 extension StatusItemView: StatusItemViewConforming {
-    
     func statusItemViewSetNeedsDisplay() {
         locationView.attributedStringValue = NSAttributedString(string: operationsObject.compactMenuTitle(), attributes: textFontAttributes)
         timeView.attributedStringValue = NSAttributedString(string: operationsObject.compactMenuSubtitle(), attributes: timeAttributes)
     }
-    
+
     func statusItemViewIdentifier() -> String {
         return "location_view"
     }
-
 }
