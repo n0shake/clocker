@@ -63,13 +63,12 @@ public protocol Style {
     var horizontalMargin: CGFloat { get }
     var verticalMargin: CGFloat { get }
     var cornerRadius: CGFloat { get }
-    var font: NSFont { get }
+    var font: NSFont? { get }
     var backgroundColor: NSColor { get }
     var foregroundColor: NSColor { get }
     var fadeInOutDuration: CGFloat { get }
     var fadeInOutDelay: CGFloat { get }
     var labelOriginWithMargin: CGPoint { get }
-    var activitySize: CGSize { get }
 }
 
 public extension Style {
@@ -78,11 +77,8 @@ public extension Style {
     }
 
     var fontSize: CGFloat { return 12 }
-    var font: NSFont {
-        if let avenirFont = NSFont(name: "Avenir-Light", size: fontSize) {
-            return avenirFont
-        }
-        return NSFont.systemFont(ofSize: fontSize)
+    var font: NSFont? {
+        return NSFont(name: "Avenir-Light", size: fontSize)
     }
 
     var horizontalMargin: CGFloat { return 10 }
@@ -90,7 +86,6 @@ public extension Style {
     var cornerRadius: CGFloat { return 8 }
     var backgroundColor: NSColor { return .black }
     var foregroundColor: NSColor { return .white }
-    var activitySize: CGSize { return CGSize(width: 100, height: 100) }
     var fadeInOutDuration: CGFloat { return 1.0 }
     var fadeInOutDelay: CGFloat { return 1.0 }
 }
@@ -155,7 +150,7 @@ class ToastView: NSView {
         text.frame = rect
         text.position = CGRect.center(of: container)
         text.string = message
-        text.font = NSFont.systemFont(ofSize: style.fontSize)
+        text.font = style.font
         text.fontSize = style.fontSize
         text.alignmentMode = .center
         text.foregroundColor = style.foregroundColor.cgColor
