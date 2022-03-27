@@ -785,7 +785,7 @@ class ParentPanelController: NSWindowController {
             sharedDelegate.setupFloatingWindow(false)
         } else {
             sharedDelegate.setupFloatingWindow(true)
-            sharedDelegate.setPanelDefaults()
+            updateDefaultPreferences()
         }
 
         let mode = inverseSelection.isEqual(to: NSNumber(value: 1)) ? "Floating Mode" : "Menubar Mode"
