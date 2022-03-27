@@ -105,12 +105,7 @@ class StatusItemView: NSView {
     @available(OSX 10.14, *)
     override func viewDidChangeEffectiveAppearance() {
         super.viewDidChangeEffectiveAppearance()
-        updateTimeInMenubar()
-    }
-
-    func updateTimeInMenubar() {
-        locationView.attributedStringValue = NSAttributedString(string: operationsObject.compactMenuTitle(), attributes: textFontAttributes)
-        timeView.attributedStringValue = NSAttributedString(string: operationsObject.compactMenuSubtitle(), attributes: timeAttributes)
+        statusItemViewSetNeedsDisplay()
     }
 
     private func initialSetup() {
@@ -131,4 +126,17 @@ class StatusItemView: NSView {
 
         mainDelegate.togglePanel(event)
     }
+}
+
+extension StatusItemView: StatusItemViewConforming {
+    
+    func statusItemViewSetNeedsDisplay() {
+        locationView.attributedStringValue = NSAttributedString(string: operationsObject.compactMenuTitle(), attributes: textFontAttributes)
+        timeView.attributedStringValue = NSAttributedString(string: operationsObject.compactMenuSubtitle(), attributes: timeAttributes)
+    }
+    
+    func statusItemViewIdentifier() -> String {
+        return "location_view"
+    }
+
 }
