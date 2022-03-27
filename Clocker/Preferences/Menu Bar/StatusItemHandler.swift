@@ -200,17 +200,14 @@ class StatusItemHandler: NSObject {
     private func shouldDisplaySecondsInMenubar() -> Bool {
         let syncedTimezones = DataStore.shared().menubarTimezones() ?? []
 
-        for timezone in syncedTimezones {
-            if let timezoneObj = TimezoneData.customObject(from: timezone) {
-                let shouldShowSeconds = timezoneObj.shouldShowSeconds(DataStore.shared().timezoneFormat())
-                if shouldShowSeconds {
-                    return true
-                }
+        let timezonesSupportingSeconds = syncedTimezones.filter { data in
+            if let timezoneObj = TimezoneData.customObject(from: data) {
+               return timezoneObj.shouldShowSeconds(DataStore.shared().timezoneFormat())
             }
-            continue
+            return false
         }
 
-        return false
+        return timezonesSupportingSeconds.isEmpty
     }
 
     private func calculateFireDate() -> Date? {

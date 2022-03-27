@@ -243,15 +243,13 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         let displayMode = UserDefaults.standard.integer(forKey: CLShowAppInForeground)
 
         if displayMode == 1 {
-            floatingWindow.showWindow(nil)
-            floatingWindow.updateTableContent()
-            floatingWindow.startWindowTimer()
+            // No need to call NSApp.activate here since `showFloatingWindow` takes care of this
+            showFloatingWindow()
         } else {
             panelController.showWindow(nil)
             panelController.setActivePanel(newValue: !panelController.hasActivePanelGetter())
+            NSApp.activate(ignoringOtherApps: true)
         }
-
-        NSApp.activate(ignoringOtherApps: true)
     }
 
     open func setupFloatingWindow(_ hide: Bool) {

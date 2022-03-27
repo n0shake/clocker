@@ -1,6 +1,7 @@
 // Copyright © 2015 Abhishek Banthia
 
 import XCTest
+import CoreModelKit
 
 @testable import Clocker
 
@@ -43,7 +44,7 @@ class AppDelegateTests: XCTestCase {
     func testFloatingWindow() {
         let subject = NSApplication.shared.delegate as? AppDelegate
         let previousWindows = NSApplication.shared.windows
-        XCTAssertEqual(previousWindows.count, 1) // Only the status bar window should be present
+        XCTAssertTrue(previousWindows.count >= 1) // Only the status bar window should be present
         
         subject?.setupFloatingWindow(true)
         
@@ -68,6 +69,85 @@ class AppDelegateTests: XCTestCase {
         
         XCTAssertNotNil(closedFloatingWindow)
     }
+    
+    func testActivationPolicy() {
+        let subject = NSApplication.shared.delegate as? AppDelegate
+        let previousOption = UserDefaults.standard.integer(forKey: CLAppDisplayOptions)
+        if previousOption == 0 {
+            XCTAssertEqual(NSApp.activationPolicy(), .accessory)
+        } else {
+            XCTAssertEqual(NSApp.activationPolicy(), .regular)
+        }
+        
+        subject?.hideFromDock()
+        XCTAssertEqual(NSApp.activationPolicy(), .accessory)
+    }
+    
+    func testMenubarInvalidationToIcon() {
+        let subject = NSApplication.shared.delegate as? AppDelegate
+        subject?.invalidateMenubarTimer(true)
+        let statusItemHandler = subject?.statusItemForPanel()
+        XCTAssertNil(statusItemHandler?.statusItem.view)
+        XCTAssertEqual(statusItemHandler?.statusItem.title, CLEmptyString)
+        XCTAssertEqual(statusItemHandler?.statusItem.button?.image?.name(), "LightModeIcon")
+        XCTAssertEqual(statusItemHandler?.statusItem.button?.imagePosition, .imageOnly)
+        XCTAssertEqual(statusItemHandler?.statusItem.toolTip, "Clocker")
+    }
+    
+    func testCompactModeMenubarSetup() {
+        let subject = NSApplication.shared.delegate as? AppDelegate
+        
+        let timezone1 = TimezoneData()
+        timezone1.timezoneID = TimeZone.autoupdatingCurrent.identifier
+        timezone1.formattedAddress = "MenubarTimezone"
+        timezone1.isFavourite = 1
+        // Encode it in UserDefaults
+        let encodedTimezone = NSKeyedArchiver.archivedData(withRootObject: timezone1)
+        DataStore.shared().setTimezones([encodedTimezone])
+        
+        subject?.setupMenubarTimer()
+        let statusItemHandler = subject?.statusItemForPanel()
+        XCTAssertNotNil(statusItemHandler?.statusItem.view) // This won't be nil for compact mode
+        
+        DataStore.shared().setTimezones([])
+    }
 
+    func testStandardModeMenubarSetup() {
+        UserDefaults.standard.set(1, forKey: CLMenubarCompactMode) // Set the menubar mode to standard
+        
+        let subject = NSApplication.shared.delegate as? AppDelegate
+        let statusItemHandler = subject?.statusItemForPanel()
+        
+        XCTAssertEqual(statusItemHandler?.statusItem.button?.image?.name(), "LightModeIcon")
+        
+        let timezone1 = TimezoneData()
+        timezone1.timezoneID = TimeZone.autoupdatingCurrent.identifier
+        timezone1.formattedAddress = "MenubarTimezone"
+        timezone1.isFavourite = 1
+        // Encode it in UserDefaults
+        let encodedTimezone = NSKeyedArchiver.archivedData(withRootObject: timezone1)
+        DataStore.shared().setTimezones([encodedTimezone])
+        
+        subject?.setupMenubarTimer()
+        
+        XCTAssertNil(statusItemHandler?.statusItem.view) // This won't be nil for compact mode
+        
+        DataStore.shared().setTimezones([])
+        
+        UserDefaults.standard.set(0, forKey: CLMenubarCompactMode) // Set the menubar mode back to compact
+    }
+    
+    func testTogglingPanel() {
+        UserDefaults.standard.set(1, forKey: CLShowAppInForeground)
+        
+        let subject = NSApplication.shared.delegate as? AppDelegate
+        subject?.ping("MockArgument")
+        
+        UserDefaults.standard.set(0, forKey: CLShowAppInForeground)
+        let hasActiveGetter = PanelController.shared().hasActivePanel
+        subject?.ping("MockArgument")
+        
+        XCTAssertNotEqual(hasActiveGetter, PanelController.shared().hasActivePanel)
+    }
 
 }
