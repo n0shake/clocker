@@ -3,7 +3,6 @@
 import Cocoa
 
 class DateFormatterManager: NSObject {
-    public static let sharedInstance = DateFormatterManager()
 
     private static var dateFormatter = DateFormatter()
     private static var calendarDateFormatter = DateFormatter()
@@ -22,21 +21,6 @@ class DateFormatterManager: NSObject {
         return dateFormatter
     }
 
-    class func dateFormatterWithCalendar(with style: DateFormatter.Style) -> DateFormatter {
-        calendarDateFormatter.dateStyle = style
-        calendarDateFormatter.timeStyle = style
-        calendarDateFormatter.locale = USLocale
-        calendarDateFormatter.calendar = gregorianCalendar
-        return calendarDateFormatter
-    }
-
-    class func simpleFormatter(with style: DateFormatter.Style) -> DateFormatter {
-        simpleFormatter.dateStyle = style
-        simpleFormatter.timeStyle = style
-        simpleFormatter.locale = USLocale
-        return simpleFormatter
-    }
-
     class func dateFormatterWithFormat(with style: DateFormatter.Style, format: String, timezoneIdentifier: String, locale: Locale = Locale(identifier: "en_US")) -> DateFormatter {
         specializedFormatter.dateStyle = style
         specializedFormatter.timeStyle = style
@@ -53,15 +37,6 @@ class DateFormatterManager: NSObject {
         dateFormatter.dateFormat = format
         dateFormatter.timeZone = TimeZone(identifier: timezoneIdentifier)
         return dateFormatter
-    }
-
-    class func localizedCalendaricalDateFormatter(with format: String) -> DateFormatter {
-        calendarDateFormatter.dateStyle = .none
-        calendarDateFormatter.timeStyle = .none
-        calendarDateFormatter.locale = Locale.autoupdatingCurrent
-        calendarDateFormatter.dateFormat = format
-        calendarDateFormatter.calendar = gregorianCalendar
-        return calendarDateFormatter
     }
 
     class func localizedSimpleFormatter(_ format: String) -> DateFormatter {
