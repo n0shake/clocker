@@ -50,11 +50,8 @@ class Themer: NSObject {
                                                           object: nil)
 
         if #available(macOS 10.14, *) {
-            effectiveApperanceObserver = NSApp.observe(\.effectiveAppearance) { [weak self] _, _ in
-                if let sSelf = self {
-                    sSelf.setAppAppearance()
-                    NotificationCenter.default.post(name: .themeDidChangeNotification, object: nil)
-                }
+            effectiveApperanceObserver = NSApp.observe(\.effectiveAppearance) { _, _ in
+                NotificationCenter.default.post(name: .themeDidChangeNotification, object: nil)
             }
         }
     }
@@ -452,7 +449,9 @@ extension Themer {
             } else if themeIndex == .system {
                 appAppearance = retrieveCurrentSystem() == .dark ? NSAppearance(named: .darkAqua) : NSAppearance(named: .aqua)
             }
-            NSApp.appearance = appAppearance
+            if NSApp.appearance != appAppearance {
+                NSApp.appearance = appAppearance
+            }
         }
     }
 
