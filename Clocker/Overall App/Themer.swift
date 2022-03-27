@@ -460,8 +460,7 @@ extension Themer {
                                        _ darkImage: NSImage,
                                        _ systemImage: NSImage,
                                        _ solarizedLightImage: NSImage,
-                                       _ solarizedDarkImage: NSImage) -> NSImage
-    {
+                                       _ solarizedDarkImage: NSImage) -> NSImage {
         if #available(macOS 10.14, *) {
             switch themeIndex {
             case .light:

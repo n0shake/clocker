@@ -154,8 +154,7 @@ class PanelController: ParentPanelController {
         }
 
         if let statusWindow = statusBackgroundWindow,
-           let statusButton = statusView
-        {
+           let statusButton = statusView {
             var statusItemFrame = statusWindow.convertToScreen(statusButton.frame)
             var statusItemScreen = NSScreen.main
             var testPoint = statusItemFrame.origin
@@ -222,7 +221,7 @@ class PanelController: ParentPanelController {
             "Show Upcoming Event View": showUpcomingEventView == "YES" ? "Yes" : "No",
             "Country": country,
             "Calendar Access Provided": EventCenter.sharedCenter().calendarAccessGranted() ? "Yes" : "No",
-            "Number of Timezones": preferences.count,
+            "Number of Timezones": preferences.count
         ]
 
         Logger.log(object: panelEvent, for: "openedPanel")

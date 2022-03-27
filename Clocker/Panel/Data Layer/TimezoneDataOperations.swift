@@ -283,7 +283,7 @@ extension TimezoneDataOperations {
             let unableToConvertDateParameters = [
                 "New Date": newDate,
                 "Timezone": dataObject.timezone(),
-                "Locale": dateFormatter.locale.identifier,
+                "Locale": dateFormatter.locale.identifier
             ] as [String: Any]
             Logger.log(object: unableToConvertDateParameters, for: "Date conversion failure - New Date is nil")
             return CLEmptyString
