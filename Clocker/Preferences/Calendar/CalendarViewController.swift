@@ -84,7 +84,6 @@ class CalendarViewController: ParentViewController {
 
         verifyCalendarAccess()
         showSegmentedControl.selectedSegment = DataStore.shared().shouldDisplay(ViewType.upcomingEventView) ? 0 : 1
-        showNextMeetingInMenubarControl.isEnabled = DataStore.shared().shouldDisplay(.menubarCompactMode) ? false : true
     }
 
     private func verifyCalendarAccess() {
