@@ -135,8 +135,7 @@ class OnboardingSearchController: NSViewController {
 
     private func setupLabelHidingTimer() {
         Timer.scheduledTimer(withTimeInterval: 5,
-                             repeats: false)
-        { _ in
+                             repeats: false) { _ in
             OperationQueue.main.addOperation {
                 self.setInfoLabel(CLEmptyString)
             }
@@ -228,7 +227,7 @@ class OnboardingSearchController: NSViewController {
                             "latitude": latitude,
                             "longitude": longitude,
                             "nextUpdate": CLEmptyString,
-                            CLCustomLabel: filteredAddress,
+                            CLCustomLabel: filteredAddress
                         ] as [String: Any]
 
                         DataStore.shared().addTimezone(TimezoneData(with: newTimeZone))
@@ -413,7 +412,7 @@ class OnboardingSearchController: NSViewController {
                 CLTimezoneName: formattedAddress,
                 CLCustomLabel: formattedAddress,
                 CLTimezoneID: CLEmptyString,
-                CLPlaceIdentifier: result.placeId,
+                CLPlaceIdentifier: result.placeId
             ] as [String: Any]
 
             return TimezoneData(with: totalPackage)
@@ -484,7 +483,7 @@ class ResultSectionHeaderTableViewCell: NSTableCellView {
 class OnboardingSelectionTableRowView: NSTableRowView {
     override func drawSelection(in _: NSRect) {
         if selectionHighlightStyle != .none {
-            let selectionRect = NSInsetRect(bounds, 1, 1)
+            let selectionRect = bounds.insetBy(dx: 1, dy: 1)
             NSColor(calibratedWhite: 0.4, alpha: 1).setStroke()
             NSColor(calibratedWhite: 0.4, alpha: 1).setFill()
             let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
