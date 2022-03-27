@@ -2,7 +2,7 @@
 
 import XCTest
 
-@testable import Clocker;
+@testable import Clocker
 
 class DateFormatterManagerTests: XCTestCase {
 
