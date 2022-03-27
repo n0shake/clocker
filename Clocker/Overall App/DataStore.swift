@@ -47,10 +47,6 @@ class DataStore: NSObject {
     }
 
     func timezones() -> [Data] {
-        if let cloudPreferences = ubiquitousStore.object(forKey: CLDefaultPreferenceKey) as? [Data] {
-            return cloudPreferences
-        }
-
         guard let preferences = userDefaults.object(forKey: CLDefaultPreferenceKey) as? [Data] else {
             return []
         }
