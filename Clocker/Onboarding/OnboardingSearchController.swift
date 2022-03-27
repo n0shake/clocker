@@ -27,8 +27,8 @@ class OnboardingSearchController: NSViewController {
 
     private var geocodingKey: String = {
         guard let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
-            let dictionary = NSDictionary(contentsOfFile: path),
-            let apiKey = dictionary["GeocodingKey"] as? String
+              let dictionary = NSDictionary(contentsOfFile: path),
+              let apiKey = dictionary["GeocodingKey"] as? String
         else {
             assertionFailure("Unable to find the API key")
             return ""
@@ -227,7 +227,7 @@ class OnboardingSearchController: NSViewController {
                             "latitude": latitude,
                             "longitude": longitude,
                             "nextUpdate": CLEmptyString,
-                            CLCustomLabel: filteredAddress,
+                            CLCustomLabel: filteredAddress
                         ] as [String: Any]
 
                         DataStore.shared().addTimezone(TimezoneData(with: newTimeZone))
@@ -375,7 +375,7 @@ class OnboardingSearchController: NSViewController {
                                                self.findLocalSearchResultsForTimezones()
                                                self.prepareUIForPresentingResults()
                                            }
-        })
+                                       })
     }
 
     private func presentErrorMessage(_ errorMessage: String) {
@@ -412,7 +412,7 @@ class OnboardingSearchController: NSViewController {
                 CLTimezoneName: formattedAddress,
                 CLCustomLabel: formattedAddress,
                 CLTimezoneID: CLEmptyString,
-                CLPlaceIdentifier: result.placeId,
+                CLPlaceIdentifier: result.placeId
             ] as [String: Any]
 
             return TimezoneData(with: totalPackage)
@@ -483,7 +483,7 @@ class ResultSectionHeaderTableViewCell: NSTableCellView {
 class OnboardingSelectionTableRowView: NSTableRowView {
     override func drawSelection(in _: NSRect) {
         if selectionHighlightStyle != .none {
-            let selectionRect = NSInsetRect(bounds, 1, 1)
+            let selectionRect = bounds.insetBy(dx: 1, dy: 1)
             NSColor(calibratedWhite: 0.4, alpha: 1).setStroke()
             NSColor(calibratedWhite: 0.4, alpha: 1).setFill()
             let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)

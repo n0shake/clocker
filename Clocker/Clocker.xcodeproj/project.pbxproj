@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3508CC942599FFEC000E3530 /* MenubarHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CC932599FFEC000E3530 /* MenubarHandler.swift */; };
+		3508CC942599FFEC000E3530 /* MenubarTitleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CC932599FFEC000E3530 /* MenubarTitleProvider.swift */; };
 		3508CC9A259A0001000E3530 /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CC99259A0001000E3530 /* StatusItemView.swift */; };
 		3508CC9F259A000E000E3530 /* StatusItemHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CC9E259A000E000E3530 /* StatusItemHandler.swift */; };
 		3508CCAA259A0027000E3530 /* StatusContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508CCA9259A0027000E3530 /* StatusContainerView.swift */; };
@@ -51,6 +51,8 @@
 		3548C45F26BEEFB400AFB533 /* UpcomingEventsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3548C45E26BEEFB400AFB533 /* UpcomingEventsDataSource.swift */; };
 		3548C46126BEEFE400AFB533 /* UpcomingEventViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3548C46026BEEFE400AFB533 /* UpcomingEventViewItem.swift */; };
 		35584D1427EF8EB5006E3EAD /* ThemerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35584D1327EF8EB5006E3EAD /* ThemerTests.swift */; };
+		35584D1827F0B019006E3EAD /* DateFormatterManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35584D1727F0B019006E3EAD /* DateFormatterManagerTests.swift */; };
+		35584D1A27F0B64E006E3EAD /* AppDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35584D1927F0B64E006E3EAD /* AppDelegateTests.swift */; };
 		357391872507277500D30819 /* TimeMarkerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357391852507277500D30819 /* TimeMarkerViewItem.swift */; };
 		357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357391862507277500D30819 /* HourMarkerViewItem.xib */; };
 		3579765E2680208C009DDA6E /* ParentPanelController+ModernSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3579765D2680208C009DDA6E /* ParentPanelController+ModernSlider.swift */; };
@@ -255,7 +257,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3508CC932599FFEC000E3530 /* MenubarHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenubarHandler.swift; sourceTree = "<group>"; };
+		3508CC932599FFEC000E3530 /* MenubarTitleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenubarTitleProvider.swift; sourceTree = "<group>"; };
 		3508CC99259A0001000E3530 /* StatusItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
 		3508CC9E259A000E000E3530 /* StatusItemHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemHandler.swift; sourceTree = "<group>"; };
 		3508CCA9259A0027000E3530 /* StatusContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusContainerView.swift; sourceTree = "<group>"; };
@@ -286,6 +288,8 @@
 		3552066427AF6488000EF08F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3552066527AF6489000EF08F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		35584D1327EF8EB5006E3EAD /* ThemerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemerTests.swift; sourceTree = "<group>"; };
+		35584D1727F0B019006E3EAD /* DateFormatterManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterManagerTests.swift; sourceTree = "<group>"; };
+		35584D1927F0B64E006E3EAD /* AppDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateTests.swift; sourceTree = "<group>"; };
 		3569A44E25441F320087E254 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		357391852507277500D30819 /* TimeMarkerViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMarkerViewItem.swift; sourceTree = "<group>"; };
 		357391862507277500D30819 /* HourMarkerViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourMarkerViewItem.xib; sourceTree = "<group>"; };
@@ -568,7 +572,7 @@
 		35C36EDF22595D9C002FA5C6 /* Menu Bar */ = {
 			isa = PBXGroup;
 			children = (
-				3508CC932599FFEC000E3530 /* MenubarHandler.swift */,
+				3508CC932599FFEC000E3530 /* MenubarTitleProvider.swift */,
 				3508CC99259A0001000E3530 /* StatusItemView.swift */,
 				3508CC9E259A000E000E3530 /* StatusItemHandler.swift */,
 				3508CCA9259A0027000E3530 /* StatusContainerView.swift */,
@@ -881,6 +885,8 @@
 				C20839CB21515C1F00C86589 /* Info.plist */,
 				9A0385BA269E3434003B5E72 /* StandardMenubarHandlerTests.swift */,
 				35584D1327EF8EB5006E3EAD /* ThemerTests.swift */,
+				35584D1727F0B019006E3EAD /* DateFormatterManagerTests.swift */,
+				35584D1927F0B64E006E3EAD /* AppDelegateTests.swift */,
 			);
 			path = ClockerUnitTests;
 			sourceTree = "<group>";
@@ -1267,7 +1273,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				35584D1427EF8EB5006E3EAD /* ThemerTests.swift in Sources */,
+				35584D1A27F0B64E006E3EAD /* AppDelegateTests.swift in Sources */,
 				9A0385BB269E3434003B5E72 /* StandardMenubarHandlerTests.swift in Sources */,
+				35584D1827F0B019006E3EAD /* DateFormatterManagerTests.swift in Sources */,
 				C20839CA21515C1E00C86589 /* ClockerUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1317,7 +1325,7 @@
 				35C36F4F2259D981002FA5C6 /* AppDefaults.swift in Sources */,
 				35C36F5D2259DD96002FA5C6 /* TimezoneDataOperations.swift in Sources */,
 				3548C45D26BEEF4C00AFB533 /* ParentPanelController+UpcomingEvents.swift in Sources */,
-				3508CC942599FFEC000E3530 /* MenubarHandler.swift in Sources */,
+				3508CC942599FFEC000E3530 /* MenubarTitleProvider.swift in Sources */,
 				35C36F14225961DA002FA5C6 /* Integer+DateTools.swift in Sources */,
 				35C36FA22259ED6D002FA5C6 /* RemindersHandler.swift in Sources */,
 				35C36F622259DE67002FA5C6 /* NotesPopover.swift in Sources */,

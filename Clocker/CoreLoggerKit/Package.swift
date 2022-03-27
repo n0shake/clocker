@@ -6,13 +6,13 @@ import PackageDescription
 let package = Package(
     name: "CoreLoggerKit",
     platforms: [
-        .macOS(.v10_12),
+        .macOS(.v10_12)
     ],
     products: [
         .library(
             name: "CoreLoggerKit",
             targets: ["CoreLoggerKit"]
-        ),
+        )
     ],
     dependencies: [],
     targets: [
@@ -23,6 +23,6 @@ let package = Package(
         .testTarget(
             name: "CoreLoggerKitTests",
             dependencies: ["CoreLoggerKit"]
-        ),
+        )
     ]
 )

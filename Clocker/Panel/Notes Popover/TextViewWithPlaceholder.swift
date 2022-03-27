@@ -18,7 +18,7 @@ class TextViewWithPlaceholder: NSTextView {
         if let placeHolderFont = NSFont(name: "Avenir", size: 14) {
             let textDict = [
                 NSAttributedString.Key.foregroundColor: NSColor.gray,
-                NSAttributedString.Key.font: placeHolderFont,
+                NSAttributedString.Key.font: placeHolderFont
             ]
             return NSAttributedString(string: " Add your notes here.", attributes: textDict)
         }

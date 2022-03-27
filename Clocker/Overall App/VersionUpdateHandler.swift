@@ -172,7 +172,7 @@ class VersionUpdateHandler: NSObject {
             lastVersionCopy = "0"
         }
         var newVersionFound = false
-        var details: String = ""
+        var details = ""
 
         let versions = dict.keys.sorted()
 
@@ -242,20 +242,20 @@ class VersionUpdateHandler: NSObject {
                                                 y: 0.0,
                                                 width: contentSize.width,
                                                 height: contentSize.height))
-        textView.minSize = NSMakeSize(0.0, contentSize.height)
-        textView.maxSize = NSMakeSize(floatMax, floatMax)
+        textView.minSize = NSSize(width: 0.0, height: contentSize.height)
+        textView.maxSize = NSSize(width: floatMax, height: floatMax)
         textView.isVerticallyResizable = true
         textView.isHorizontallyResizable = false
         textView.isEditable = false
         textView.autoresizingMask = .width
-        textView.textContainer?.containerSize = NSMakeSize(contentSize.width, floatMax)
+        textView.textContainer?.containerSize = NSSize(width: contentSize.width, height: floatMax)
         textView.textContainer?.widthTracksTextView = true
         textView.string = details
         scrollView.documentView = textView
         textView.sizeToFit()
 
         let height = min(200.0, scrollView.documentView?.frame.size.height ?? 200.0) + 3.0
-        scrollView.frame = NSMakeRect(0.0, 0.0, scrollView.frame.size.width, height)
+        scrollView.frame = NSRect(x: 0.0, y: 0.0, width: scrollView.frame.size.width, height: height)
         alert.accessoryView = scrollView
 
         if ignoreButton.isEmpty == false {
