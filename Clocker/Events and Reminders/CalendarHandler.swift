@@ -163,7 +163,7 @@ extension EventCenter {
 
         if filteredEvents.count == 1 { return filteredEvents.first }
 
-        // If there are multipl events coming up, prefer the ones the currentUser has accepted
+        // If there are multiple events coming up, prefer the ones the currentUser has accepted
         let acceptedEvents = filteredEvents.filter {
             $0.attendeStatus == .accepted
         }
