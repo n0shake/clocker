@@ -263,7 +263,9 @@ class PreferencesViewController: ParentViewController {
 
     private func setupShortcutObserver() {
         let defaults = NSUserDefaultsController.shared
-        recorderControl.setAccessibility("ShortcutControl")
+        recorderControl.setAccessibilityElement(true)
+        recorderControl.setAccessibilityIdentifier("ShortcutControl")
+        recorderControl.setAccessibilityLabel("ShortcutControl")
         recorderControl.bind(NSBindingName.value,
                              to: defaults,
                              withKeyPath: PreferencesConstants.hotKeyPathIdentifier,
