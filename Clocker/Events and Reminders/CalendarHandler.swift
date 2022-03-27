@@ -383,7 +383,7 @@ extension EventCenter {
     // Borrowing logic from Ityscal
     @discardableResult
     private func findAppropriateURLs(_ description: String) -> URL? {
-        guard let results = EventCenter.dataDetector?.matches(in: description, options: .reportCompletion, range: NSMakeRange(0, description.count)) else {
+        guard let results = EventCenter.dataDetector?.matches(in: description, options: .reportCompletion, range: NSRange(location: 0, length: description.count)) else {
             return nil
         }
         for result in results {
@@ -391,8 +391,7 @@ extension EventCenter {
                 // Check for Zoom links
                 if actualLink.contains("zoom.us/j/")
                     || actualLink.contains("zoom.us/s/")
-                    || actualLink.contains("zoom.us/w/")
-                {
+                    || actualLink.contains("zoom.us/w/") {
                     // Create a Zoom App link
                     let workspace = NSWorkspace.shared
                     if workspace.urlForApplication(toOpen: URL(string: "zoommtg://")!) != nil {
@@ -418,8 +417,7 @@ extension EventCenter {
                     || actualLink.contains("public.senfcall.de")
                     || actualLink.contains("youcanbook.me/zoom/")
                     || actualLink.contains("workplace.com/groupcall")
-                    || actualLink.contains("bluejeans.com/")
-                {
+                    || actualLink.contains("bluejeans.com/") {
                     if let meetingLink = result.url {
                         return meetingLink
                     }
