@@ -112,8 +112,7 @@ class StatusItemHandler: NSObject {
 
         userNotificationsDidChangeNotif = center.addObserver(forName: UserDefaults.didChangeNotification,
                                                              object: self,
-                                                             queue: mainQueue)
-        { _ in
+                                                             queue: mainQueue) { _ in
             self.setupStatusItem()
         }
     }
