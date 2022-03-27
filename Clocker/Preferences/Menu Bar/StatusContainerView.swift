@@ -18,6 +18,10 @@ func bufferCalculatedWidth() -> Int {
     if DataStore.shared().shouldShowDateInMenubar() {
         totalWidth += 20
     }
+    
+    if DataStore.shared().shouldDisplay(.showMeetingInMenubar) {
+        totalWidth += 100
+    }
 
     return totalWidth
 }
@@ -55,6 +59,14 @@ func compactWidth(for timezone: TimezoneData) -> Int {
 // Test with Sat 12:46 AM
 let bufferWidth: CGFloat = 9.5
 
+protocol StatusItemViewConforming {
+    /// Mark that we need to refresh the text we're showing in the menubar
+    func statusItemViewSetNeedsDisplay()
+
+    /// Status Item Views can be used to represent different information (like time in location, or an upcoming meeting). Distinguish between different status items view through this identifier
+    func statusItemViewIdentifier() -> String
+}
+
 class StatusContainerView: NSView {
     private var previousX: Int = 0
 
@@ -64,8 +76,20 @@ class StatusContainerView: NSView {
         layer?.backgroundColor = NSColor.clear.cgColor
     }
 
-    init(with timezones: [Data]) {
+    init(with timezones: [Data], showUpcomingEventView: Bool) {
         func addSubviews() {
+            if showUpcomingEventView,
+               let events = EventCenter.sharedCenter().eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: Date())],
+               events.isEmpty == false,
+               let upcomingEvent = EventCenter.sharedCenter().nextOccuring(events) {
+                let calculatedWidth = bestWidth(for: upcomingEvent)
+                let frame = NSRect(x: previousX, y: 0, width: calculatedWidth, height: 30)
+                let calendarItemView = UpcomingEventStatusItemView(frame: frame)
+                calendarItemView.dataObject = upcomingEvent
+                addSubview(calendarItemView)
+                previousX += calculatedWidth
+            }
+
             timezones.forEach {
                 if let timezoneObject = TimezoneData.customObject(from: $0) {
                     addTimezone(timezoneObject)
@@ -80,7 +104,7 @@ class StatusContainerView: NSView {
         ]
 
         func containerWidth(for timezones: [Data]) -> CGFloat {
-            let compressedWidth = timezones.reduce(0.0) { result, timezone -> CGFloat in
+            var compressedWidth = timezones.reduce(0.0) { result, timezone -> CGFloat in
 
                 if let timezoneObject = TimezoneData.customObject(from: timezone) {
                     let precalculatedWidth = Double(compactWidth(for: timezoneObject))
@@ -93,6 +117,10 @@ class StatusContainerView: NSView {
                 }
 
                 return result + CGFloat(bufferCalculatedWidth())
+            }
+
+            if showUpcomingEventView {
+                compressedWidth += 70
             }
 
             let calculatedWidth = min(compressedWidth,
@@ -145,10 +173,40 @@ class StatusContainerView: NSView {
 
         return Int(max(bestSize.width, bestTitleSize.width) + bufferWidth)
     }
+    
+    private func bestWidth(for eventInfo: EventInfo) -> Int {
+        var textColor = hasDarkAppearance ? NSColor.white : NSColor.black
+
+        if #available(OSX 11.0, *) {
+            textColor = NSColor.white
+        }
+
+        let timeBasedAttributes = [
+            NSAttributedString.Key.font: compactModeTimeFont,
+            NSAttributedString.Key.foregroundColor: textColor,
+            NSAttributedString.Key.backgroundColor: NSColor.clear,
+            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle
+        ]
+
+        let bestSize = compactModeTimeFont.size(eventInfo.metadataForMeeting(),
+                                                55, // Default for a location based status view
+                                                attributes: timeBasedAttributes)
+        let bestTitleSize = compactModeTimeFont.size(eventInfo.event.title,
+                                                     70, // Little more buffer since meeting titles tend to be longer
+                                                     attributes: timeBasedAttributes)
+
+        return Int(max(bestSize.width, bestTitleSize.width) + bufferWidth)
+    }
 
     func updateTime() {
         if subviews.isEmpty {
             assertionFailure("Subviews count should > 0")
+        }
+        
+        for view in subviews {
+            if let conformingView = view as? StatusItemViewConforming {
+                conformingView.statusItemViewSetNeedsDisplay()
+            }
         }
 
         // See if frame's width needs any adjustment
@@ -170,8 +228,6 @@ class StatusContainerView: NSView {
                                           y: statusItem.frame.origin.y,
                                           width: newBestWidth,
                                           height: statusItem.frame.size.height)
-
-                statusItem.updateTimeInMenubar()
             }
         }
 

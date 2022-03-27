@@ -24,7 +24,7 @@ class StatusItemHandler: NSObject {
 
     private var menubarTitleHandler = MenubarTitleProvider()
 
-    private var parentView: StatusContainerView?
+    private var statusContainerView: StatusContainerView?
 
     private var nsCalendar = Calendar.autoupdatingCurrent
 
@@ -42,7 +42,7 @@ class StatusItemHandler: NSObject {
             switch oldValue {
             case .compactText:
                 statusItem.view = nil
-                parentView = nil
+                statusContainerView = nil
             case .standardText:
                 statusItem.button?.title = CLEmptyString
             case .icon:
@@ -134,8 +134,8 @@ class StatusItemHandler: NSObject {
         }
     }
 
-    private func constructCompactView() {
-        parentView = nil
+    private func constructCompactView(with upcomingEventView: Bool = false) {
+        statusContainerView = nil
 
         let menubarTimezones = DataStore.shared().menubarTimezones() ?? []
         if menubarTimezones.isEmpty {
@@ -143,8 +143,9 @@ class StatusItemHandler: NSObject {
             return
         }
 
-        parentView = StatusContainerView(with: menubarTimezones)
-        statusItem.view = parentView
+        statusContainerView = StatusContainerView(with: menubarTimezones,
+                                                  showUpcomingEventView: upcomingEventView)
+        statusItem.view = statusContainerView
         statusItem.view?.window?.backgroundColor = NSColor.clear
     }
 
@@ -241,7 +242,20 @@ class StatusItemHandler: NSObject {
     }
 
     func updateCompactMenubar() {
-        parentView?.updateTime()
+        if let upcomingEvent = menubarTitleHandler.checkForUpcomingEvents() {
+            print("Need to construct upcoming event view \(upcomingEvent)")
+            // Iterate and see if we're showing the calendar item view
+            let upcomingEventView = retrieveUpcomingEventStatusView()
+            // If not, reconstruct Status Container View with another view
+            if upcomingEventView == nil {
+                constructCompactView(with: true)
+            }
+        } else {
+            let upcomingEventView = retrieveUpcomingEventStatusView()
+            upcomingEventView?.removeFromSuperview()
+        }
+        // This will internally call `statusItemViewSetNeedsDisplay` on all subviews ensuring all text in the menubar is up-to-date.
+        statusContainerView?.updateTime()
     }
 
     func refresh() {
@@ -347,7 +361,17 @@ class StatusItemHandler: NSObject {
         menubarTimer?.invalidate()
         menubarTimer = nil
 
-        constructCompactView()
+        constructCompactView(with: menubarTitleHandler.checkForUpcomingEvents() != nil)
         updateMenubar()
+    }
+    
+    private func retrieveUpcomingEventStatusView() -> NSView? {
+        let upcomingEventView = statusContainerView?.subviews.first(where: { statusItemView in
+            if let upcomingEventView = statusItemView as? StatusItemViewConforming {
+                return upcomingEventView.statusItemViewIdentifier() == "upcoming_event_view"
+            }
+            return false
+        })
+        return upcomingEventView
     }
 }
