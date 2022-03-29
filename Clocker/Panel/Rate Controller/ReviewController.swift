@@ -5,7 +5,6 @@ import StoreKit
 
 final class ReviewController {
     private static var storage = UserDefaults.standard
-    private static let version: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "N/A"
     private static var debugging = false
 
     private enum Keys {
@@ -32,7 +31,7 @@ final class ReviewController {
 
     class func prompted() {
         storage.set(Date(), forKey: Keys.lastPrompt)
-        storage.set(version, forKey: Keys.lastVersion)
+        storage.set(Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String, forKey: Keys.lastVersion)
     }
 
     class func canPrompt() -> Bool {
@@ -57,7 +56,7 @@ final class ReviewController {
         let minInterval: TimeInterval = day * 90
 
         // never prompt w/in the same version
-        return lastVersion != version
+        return lastVersion != (Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String)
             // limit all types of prompts to at least 1mo intervals
             && lastPrompt.timeIntervalSinceNow < minInterval
     }
