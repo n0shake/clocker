@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,7 +22,7 @@
         <window title="Clocker Feedback" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="437" y="172" width="319" height="456"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="319" height="456"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -32,7 +31,7 @@
                         <rect key="frame" x="12" y="245" width="295" height="123"/>
                         <clipView key="contentView" drawsBackground="NO" id="NNn-eZ-8Je">
                             <rect key="frame" x="1" y="1" width="293" height="121"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="sCg-gV-TTr">
                                     <rect key="frame" x="0.0" y="0.0" width="293" height="121"/>
@@ -152,7 +151,7 @@ DQ
                             <rect key="frame" x="3" y="3" width="295" height="65"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j4P-EU-Uso" customClass="UnderlinedButton" customModule="Clocker" customModuleProvider="target">
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j4P-EU-Uso" customClass="PointingHandCursorButton" customModule="Clocker" customModuleProvider="target">
                                     <rect key="frame" x="5" y="25" width="285" height="15"/>
                                     <buttonCell key="cell" type="bevel" title="Quick Comments Button" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="FQy-Mb-DcS">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>

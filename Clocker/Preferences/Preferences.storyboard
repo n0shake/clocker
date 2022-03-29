@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="RHq-9Z-auA">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -98,7 +97,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xk6-pW-V9J" customClass="UnderlinedButton" customModule="Clocker" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xk6-pW-V9J" customClass="PointingHandCursorButton" customModule="Clocker" customModuleProvider="target">
                                 <rect key="frame" x="24" y="192" width="500" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="500" id="2hU-kp-e8o"/>
@@ -113,7 +112,7 @@
                                     <action selector="viewSource:" target="oFk-9v-L8T" id="kcz-Ua-Ao5"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oGu-CT-SCA" customClass="UnderlinedButton" customModule="Clocker" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oGu-CT-SCA" customClass="PointingHandCursorButton" customModule="Clocker" customModuleProvider="target">
                                 <rect key="frame" x="89" y="106" width="400" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="LDF-bE-4op"/>
@@ -127,7 +126,7 @@
                                     <action selector="openMyTwitter:" target="oFk-9v-L8T" id="27B-gs-Xiz"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fug-6c-gIv" customClass="UnderlinedButton" customModule="Clocker" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fug-6c-gIv" customClass="PointingHandCursorButton" customModule="Clocker" customModuleProvider="target">
                                 <rect key="frame" x="24" y="239" width="500" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="500" id="CIY-Bh-qLL"/>
@@ -142,7 +141,7 @@
                                     <action selector="openGitHub:" target="oFk-9v-L8T" id="r5Z-04-TVo"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fvr-FW-FdJ" customClass="UnderlinedButton" customModule="Clocker" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fvr-FW-FdJ" customClass="PointingHandCursorButton" customModule="Clocker" customModuleProvider="target">
                                 <rect key="frame" x="150" y="59" width="223" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="MQ1-O4-WgH"/>
@@ -389,7 +388,7 @@
                                 <rect key="frame" x="282" y="35" width="333" height="182"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="Vp7-Ne-2S6">
                                     <rect key="frame" x="1" y="1" width="331" height="180"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="33" viewBased="YES" id="zKF-N6-rlF">
                                             <rect key="frame" x="0.0" y="0.0" width="331" height="180"/>
@@ -981,10 +980,10 @@
                                                     <rect key="frame" x="70" y="39" width="400" height="100"/>
                                                     <clipView key="contentView" id="gnX-f5-31D">
                                                         <rect key="frame" x="1" y="1" width="398" height="98"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="111" rowSizeStyle="automatic" viewBased="YES" id="KbJ-p4-i6E">
-                                                                <rect key="frame" x="0.0" y="0.0" width="412" height="113"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="412" height="98"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <size key="intercellSpacing" width="3" height="2"/>
                                                                 <color key="backgroundColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1003,7 +1002,7 @@
                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                         <prototypeCellViews>
                                                                             <tableCellView identifier="previewTimezoneCell" id="fKc-iV-VOa" customClass="TimezoneCellView" customModule="Clocker" customModuleProvider="target">
-                                                                                <rect key="frame" x="1" y="1" width="409" height="111"/>
+                                                                                <rect key="frame" x="11" y="1" width="409" height="111"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="749" tag="102" preferredMaxLayoutWidth="72" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqz-hf-wTd">
@@ -1504,7 +1503,7 @@
                     <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES" nonactivatingPanel="YES"/>
                     <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                     <rect key="contentRect" x="120" y="64" width="345" height="320"/>
-                    <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+                    <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
                     <value key="minSize" type="size" width="345" height="320"/>
                     <value key="maxSize" type="size" width="345" height="320"/>
                     <view key="contentView" misplaced="YES" id="MAe-t5-3A2">
@@ -1512,7 +1511,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <searchField toolTip="Search a timezone" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dha-h9-Nd0" customClass="ClockerSearchField" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="8" y="265" width="320" height="23"/>
+                                <rect key="frame" x="8" y="253" width="320" height="23"/>
                                 <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Enter a city, state, country name" usesSingleLineMode="YES" maximumRecents="5" id="ikU-Tm-0WZ">
                                     <font key="font" size="13" name="Avenir-Light"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1569,13 +1568,13 @@ DQ
                                 </connections>
                             </button>
                             <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wY-ff-FLW">
-                                <rect key="frame" x="8" y="30" width="320" height="225"/>
+                                <rect key="frame" x="8" y="30" width="320" height="213"/>
                                 <clipView key="contentView" drawsBackground="NO" id="rGc-3M-cCq">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="225"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="213"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="xkl-2X-ZCb">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="225"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="213"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1665,14 +1664,14 @@ DQ
                                 </scroller>
                             </scrollView>
                             <progressIndicator wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="0A5-gp-lay">
-                                <rect key="frame" x="160" y="162" width="16" height="16"/>
+                                <rect key="frame" x="160" y="156" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="fgE-77-Vda"/>
                                     <constraint firstAttribute="width" constant="16" id="pwe-em-e0a"/>
                                 </constraints>
                             </progressIndicator>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xgb-wU-8RU">
-                                <rect key="frame" x="18" y="132" width="300" height="22"/>
+                                <rect key="frame" x="18" y="126" width="300" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="zqt-d8-yas"/>
                                 </constraints>
@@ -1720,7 +1719,7 @@ DQ
                                         <rect key="frame" x="0.0" y="484" width="613" height="30"/>
                                         <subviews>
                                             <button toolTip="Sorts by time difference from your current timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="P6d-qq-ycq">
-                                                <rect key="frame" x="283" y="3" width="9" height="25"/>
+                                                <rect key="frame" x="285" y="3" width="8" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="180" id="cAs-on-f7X"/>
                                                     <constraint firstAttribute="height" constant="25" id="juv-QL-vMx"/>
@@ -1735,7 +1734,7 @@ DQ
                                                 </connections>
                                             </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0HL-uj-s4v">
-                                                <rect key="frame" x="331" y="3" width="9" height="25"/>
+                                                <rect key="frame" x="331" y="3" width="8" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="eZL-Gr-38S"/>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="sJk-T7-7Lm"/>
@@ -1750,7 +1749,7 @@ DQ
                                                 </connections>
                                             </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6fs-Mx-NcG">
-                                                <rect key="frame" x="307" y="3" width="9" height="25"/>
+                                                <rect key="frame" x="308" y="3" width="8" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="190" id="241-Rn-G6N"/>
                                                     <constraint firstAttribute="height" constant="25" id="weP-ll-vZ8"/>
@@ -1782,7 +1781,7 @@ DQ
                                                 <rect key="frame" x="0.0" y="0.0" width="618" height="412"/>
                                                 <clipView key="contentView" drawsBackground="NO" id="vaT-2p-gsy">
                                                     <rect key="frame" x="0.0" y="0.0" width="618" height="412"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" autosaveColumns="NO" rowHeight="60" headerView="1hb-YT-szP" id="p9D-mN-dTa">
                                                             <rect key="frame" x="0.0" y="0.0" width="653" height="387"/>
@@ -1997,11 +1996,6 @@ CA
             <point key="canvasLocation" x="747" y="1244"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="PbD-dt-goz">
-            <size key="intrinsicContentSize" width="96" height="25"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Add Icon" width="700" height="700"/>
         <image name="Appearance Dynamic" width="350" height="350"/>
@@ -2009,7 +2003,7 @@ CA
         <image name="ClockerIcon-512" width="1024" height="1024"/>
         <image name="CurrentLocation" width="350" height="350"/>
         <image name="Extra" width="700" height="700"/>
-        <image name="NSDescendingSortIndicator" width="9" height="9"/>
+        <image name="NSDescendingSortIndicator" width="8" height="8"/>
         <image name="NSInfo" width="32" height="32"/>
         <image name="NSPreferencesGeneral" width="32" height="32"/>
         <image name="Privacy" width="350" height="350"/>

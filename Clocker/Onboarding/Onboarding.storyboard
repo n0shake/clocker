@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fde-UX-327">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fde-UX-327">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -46,7 +45,7 @@
                                 </constraints>
                             </containerView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m1D-bY-RlD">
-                                <rect key="frame" x="367" y="13" width="95" height="32"/>
+                                <rect key="frame" x="374" y="13" width="89" height="32"/>
                                 <buttonCell key="cell" type="push" title="Continue" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5qt-i6-wXk">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -59,7 +58,7 @@ DQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kbp-ED-vvP">
-                                <rect key="frame" x="14" y="-1" width="70" height="61"/>
+                                <rect key="frame" x="13" y="-2" width="64" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="nfD-s1-MfF"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="opl-FH-00w"/>
@@ -73,7 +72,7 @@ DQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W3z-nZ-e6B">
-                                <rect key="frame" x="258" y="13" width="109" height="32"/>
+                                <rect key="frame" x="272" y="13" width="104" height="32"/>
                                 <buttonCell key="cell" type="push" title="Don't Open" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tPS-m0-NWm">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -187,7 +186,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O0s-Bu-IPq">
-                                        <rect key="frame" x="303" y="62" width="79" height="32"/>
+                                        <rect key="frame" x="310" y="62" width="73" height="32"/>
                                         <buttonCell key="cell" type="push" title="Action" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BW3-qu-NiR">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -205,7 +204,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Zhi-9z-C2u">
-                                        <rect key="frame" x="253" y="71" width="16" height="16"/>
+                                        <rect key="frame" x="261" y="71" width="16" height="16"/>
                                     </progressIndicator>
                                 </subviews>
                                 <constraints>
@@ -250,7 +249,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dI2-oA-MBA">
-                                        <rect key="frame" x="303" y="52" width="79" height="32"/>
+                                        <rect key="frame" x="310" y="52" width="73" height="32"/>
                                         <buttonCell key="cell" type="push" title="Action" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i5r-db-Pnw">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -260,7 +259,7 @@ DQ
                                         </connections>
                                     </button>
                                     <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="0GH-vY-2Du">
-                                        <rect key="frame" x="253" y="61" width="16" height="16"/>
+                                        <rect key="frame" x="261" y="61" width="16" height="16"/>
                                     </progressIndicator>
                                 </subviews>
                                 <constraints>
@@ -426,8 +425,8 @@ DQ
         <scene sceneID="u6P-zw-bJP">
             <objects>
                 <viewController storyboardIdentifier="onboardingSearchVC" id="bMm-q2-fpd" customClass="OnboardingSearchController" customModule="Clocker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="r3Q-VK-VHF">
-                        <rect key="frame" x="0.0" y="0.0" width="465" height="387"/>
+                    <view key="view" misplaced="YES" id="r3Q-VK-VHF">
+                        <rect key="frame" x="0.0" y="0.0" width="456" height="387"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="16a-9S-3hj">
@@ -455,7 +454,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2w-fr-zQp" customClass="ClockerSearchField" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="20" y="235" width="425" height="22"/>
+                                <rect key="frame" x="20" y="235" width="416" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="7wX-F5-PaV"/>
                                 </constraints>
@@ -467,13 +466,13 @@ DQ
                                 <accessibility identifier="searchField"/>
                             </searchField>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="35" horizontalPageScroll="10" verticalLineScroll="35" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGd-Ev-FdZ">
-                                <rect key="frame" x="20" y="49" width="425" height="160"/>
+                                <rect key="frame" x="20" y="49" width="416" height="160"/>
                                 <clipView key="contentView" ambiguous="YES" id="XpR-1t-AQy">
-                                    <rect key="frame" x="0.0" y="0.0" width="425" height="160"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="416" height="160"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="33" rowSizeStyle="automatic" viewBased="YES" id="30y-X6-i7I">
-                                            <rect key="frame" x="0.0" y="0.0" width="425" height="160"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="416" height="160"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -492,7 +491,7 @@ DQ
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="resultHeaderCellView" misplaced="YES" id="58e-cL-Nln" customClass="ResultSectionHeaderTableViewCell" customModule="Clocker" customModuleProvider="target">
-                                                            <rect key="frame" x="1" y="1" width="384" height="23"/>
+                                                            <rect key="frame" x="11" y="1" width="393" height="23"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ceH-HF-rVw">
@@ -515,11 +514,11 @@ DQ
                                                             </connections>
                                                         </tableCellView>
                                                         <tableCellView identifier="resultCellView" misplaced="YES" id="Et0-Ex-6mu" customClass="ResultTableViewCell" customModule="Clocker" customModuleProvider="target">
-                                                            <rect key="frame" x="1" y="26" width="384" height="33"/>
+                                                            <rect key="frame" x="11" y="26" width="393" height="33"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="73t-th-Wh0">
-                                                                    <rect key="frame" x="-2" y="0.0" width="383" height="27"/>
+                                                                    <rect key="frame" x="-2" y="0.0" width="392" height="27"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Search Result Name" placeholderString="Search Result Name" id="gDs-r6-Az3">
                                                                         <font key="font" size="20" name="Avenir-Light"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -670,8 +669,8 @@ DQ
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qLP-tx-m41" customClass="UnderlinedButton" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="117" y="103" width="293" height="14"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qLP-tx-m41" customClass="PointingHandCursorButton" customModule="Clocker" customModuleProvider="target">
+                                <rect key="frame" x="117" y="117" width="293" height="0.0"/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="left" imageScaling="proportionallyDown" inset="2" id="o87-us-e82">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="13" name="Avenir-Book"/>
