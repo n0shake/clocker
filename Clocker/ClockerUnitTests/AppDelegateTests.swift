@@ -130,7 +130,7 @@ class AppDelegateTests: XCTestCase {
         
         subject?.setupMenubarTimer()
         
-        XCTAssertNil(statusItemHandler?.statusItem.view) // This won't be nil for compact mode
+        XCTAssertNil(subject?.statusItemForPanel().statusItem.view) // This will be nil for standard mode
         
         DataStore.shared().setTimezones([])
         
