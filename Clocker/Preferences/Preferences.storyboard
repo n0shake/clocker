@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="RHq-9Z-auA">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -388,7 +389,7 @@
                                 <rect key="frame" x="282" y="35" width="333" height="182"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="Vp7-Ne-2S6">
                                     <rect key="frame" x="1" y="1" width="331" height="180"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="33" viewBased="YES" id="zKF-N6-rlF">
                                             <rect key="frame" x="0.0" y="0.0" width="331" height="180"/>
@@ -800,7 +801,7 @@
                                                     <gridCells>
                                                         <gridCell row="3zv-Qe-ePN" column="ARE-A4-4k4" id="fRB-cT-Ydc">
                                                             <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="wtO-uL-QBf">
-                                                                <rect key="frame" x="98" y="207" width="104" height="18"/>
+                                                                <rect key="frame" x="109" y="207" width="104" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="WNN-Le-h1b"/>
                                                                 </constraints>
@@ -813,7 +814,7 @@
                                                         </gridCell>
                                                         <gridCell row="3zv-Qe-ePN" column="YBI-pK-gPQ" id="QZh-9h-ecx">
                                                             <popUpButton key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iiG-Xu-4id">
-                                                                <rect key="frame" x="217" y="202" width="78" height="25"/>
+                                                                <rect key="frame" x="228" y="202" width="78" height="25"/>
                                                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="5tQ-hE-OyI" id="rzx-jH-Vr6">
                                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="menu"/>
@@ -833,7 +834,7 @@
                                                         </gridCell>
                                                         <gridCell row="YtR-o1-nGp" column="ARE-A4-4k4" id="gzZ-cp-CkC">
                                                             <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="60" translatesAutoresizingMaskIntoConstraints="NO" id="vrm-cg-RMn">
-                                                                <rect key="frame" x="101" y="167" width="101" height="18"/>
+                                                                <rect key="frame" x="112" y="167" width="101" height="18"/>
                                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Panel Theme" id="ZKN-5V-B4D">
                                                                     <font key="font" size="13" name="Avenir-Light"/>
                                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -843,7 +844,7 @@
                                                         </gridCell>
                                                         <gridCell row="YtR-o1-nGp" column="YBI-pK-gPQ" id="kQ8-mu-Ax8">
                                                             <popUpButton key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="89w-KN-GJ6">
-                                                                <rect key="frame" x="217" y="162" width="125" height="25"/>
+                                                                <rect key="frame" x="228" y="162" width="125" height="25"/>
                                                                 <popUpButtonCell key="cell" type="push" title="Light" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="xgz-r4-aaD" id="vql-m4-qSG">
                                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" size="13" name="Avenir-Book"/>
@@ -853,6 +854,7 @@
                                                                             <menuItem title="Dark" id="gCc-zi-Tfk"/>
                                                                             <menuItem title="System" id="F63-Mm-V97"/>
                                                                             <menuItem title="Solarized Light" id="xih-gI-QTY"/>
+                                                                            <menuItem title="Solarized Dark" id="Xqe-p5-k52"/>
                                                                         </items>
                                                                     </menu>
                                                                 </popUpButtonCell>
@@ -864,7 +866,7 @@
                                                         </gridCell>
                                                         <gridCell row="vjb-Ch-BZs" column="ARE-A4-4k4" id="Tkw-Kt-dMr">
                                                             <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="gFE-hZ-J92">
-                                                                <rect key="frame" x="18" y="126" width="184" height="18"/>
+                                                                <rect key="frame" x="29" y="126" width="184" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="180" id="SCi-hT-hxG"/>
                                                                 </constraints>
@@ -877,7 +879,7 @@
                                                         </gridCell>
                                                         <gridCell row="vjb-Ch-BZs" column="YBI-pK-gPQ" xPlacement="leading" yPlacement="none" id="Fnt-fn-6Wr">
                                                             <segmentedControl key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d4S-hM-MSP">
-                                                                <rect key="frame" x="218" y="123" width="273" height="24"/>
+                                                                <rect key="frame" x="229" y="123" width="273" height="24"/>
                                                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="564-Re-f1d">
                                                                     <font key="font" size="12" name="Avenir-Light"/>
                                                                     <segments>
@@ -895,7 +897,7 @@
                                                         </gridCell>
                                                         <gridCell row="ad4-FM-AWq" column="ARE-A4-4k4" id="XeO-qn-EGI">
                                                             <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="4lt-X6-3uU">
-                                                                <rect key="frame" x="-2" y="84" width="204" height="18"/>
+                                                                <rect key="frame" x="9" y="84" width="204" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="200" id="hAp-By-Lzj"/>
                                                                 </constraints>
@@ -908,7 +910,7 @@
                                                         </gridCell>
                                                         <gridCell row="ad4-FM-AWq" column="YBI-pK-gPQ" id="sA0-Dw-yO0">
                                                             <segmentedControl key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9WW-jp-NeO">
-                                                                <rect key="frame" x="218" y="81" width="81" height="24"/>
+                                                                <rect key="frame" x="229" y="81" width="81" height="24"/>
                                                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="CcB-5w-IoG">
                                                                     <font key="font" size="12" name="Avenir-Light"/>
                                                                     <segments>
@@ -924,7 +926,7 @@
                                                         </gridCell>
                                                         <gridCell row="yUG-1W-BQ2" column="ARE-A4-4k4" id="M8P-5s-oL4">
                                                             <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="ZWy-WW-6H9">
-                                                                <rect key="frame" x="39" y="42" width="163" height="18"/>
+                                                                <rect key="frame" x="50" y="42" width="163" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="159" id="NX0-Bo-SU8"/>
                                                                 </constraints>
@@ -937,7 +939,7 @@
                                                         </gridCell>
                                                         <gridCell row="yUG-1W-BQ2" column="YBI-pK-gPQ" id="N12-lC-Pe1">
                                                             <segmentedControl key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DCB-IB-UxK">
-                                                                <rect key="frame" x="218" y="39" width="81" height="24"/>
+                                                                <rect key="frame" x="229" y="39" width="81" height="24"/>
                                                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="PZZ-H7-LgV">
                                                                     <font key="font" size="12" name="Avenir-Light"/>
                                                                     <segments>
@@ -953,7 +955,7 @@
                                                         </gridCell>
                                                         <gridCell row="fbk-ef-Req" column="ARE-A4-4k4" id="Vth-MP-nfS">
                                                             <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="xwt-pY-1w9">
-                                                                <rect key="frame" x="-2" y="1" width="204" height="18"/>
+                                                                <rect key="frame" x="9" y="1" width="204" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="7fj-Em-Lyh"/>
                                                                 </constraints>
@@ -966,7 +968,7 @@
                                                         </gridCell>
                                                         <gridCell row="fbk-ef-Req" column="YBI-pK-gPQ" id="dCk-cz-no0">
                                                             <slider key="contentView" verticalHuggingPriority="750" alphaValue="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="3cU-IS-3Qu">
-                                                                <rect key="frame" x="218" y="-6" width="104" height="28"/>
+                                                                <rect key="frame" x="229" y="-6" width="104" height="28"/>
                                                                 <sliderCell key="cell" state="on" alignment="left" minValue="4" maxValue="7" doubleValue="4" tickMarkPosition="above" numberOfTickMarks="4" allowsTickMarkValuesOnly="YES" sliderType="linear" id="eAh-k3-cof"/>
                                                                 <connections>
                                                                     <action selector="fontSliderChanged:" target="1aL-zR-8L4" id="YAW-aA-5aR"/>
@@ -978,12 +980,12 @@
                                                 </gridView>
                                                 <scrollView borderType="line" autohidesScrollers="YES" horizontalLineScroll="113" horizontalPageScroll="10" verticalLineScroll="113" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ytg-0u-Mtu">
                                                     <rect key="frame" x="70" y="39" width="400" height="100"/>
-                                                    <clipView key="contentView" id="gnX-f5-31D">
+                                                    <clipView key="contentView" ambiguous="YES" id="gnX-f5-31D">
                                                         <rect key="frame" x="1" y="1" width="398" height="98"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
-                                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="111" rowSizeStyle="automatic" viewBased="YES" id="KbJ-p4-i6E">
-                                                                <rect key="frame" x="0.0" y="0.0" width="412" height="98"/>
+                                                            <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="111" rowSizeStyle="automatic" viewBased="YES" id="KbJ-p4-i6E">
+                                                                <rect key="frame" x="0.0" y="0.0" width="412" height="113"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <size key="intercellSpacing" width="3" height="2"/>
                                                                 <color key="backgroundColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1002,7 +1004,7 @@
                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                         <prototypeCellViews>
                                                                             <tableCellView identifier="previewTimezoneCell" id="fKc-iV-VOa" customClass="TimezoneCellView" customModule="Clocker" customModuleProvider="target">
-                                                                                <rect key="frame" x="11" y="1" width="409" height="111"/>
+                                                                                <rect key="frame" x="1" y="1" width="409" height="111"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="749" tag="102" preferredMaxLayoutWidth="72" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqz-hf-wTd">
@@ -1511,7 +1513,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <searchField toolTip="Search a timezone" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dha-h9-Nd0" customClass="ClockerSearchField" customModule="Clocker" customModuleProvider="target">
-                                <rect key="frame" x="8" y="253" width="320" height="23"/>
+                                <rect key="frame" x="8" y="241" width="320" height="23"/>
                                 <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Enter a city, state, country name" usesSingleLineMode="YES" maximumRecents="5" id="ikU-Tm-0WZ">
                                     <font key="font" size="13" name="Avenir-Light"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1568,13 +1570,13 @@ DQ
                                 </connections>
                             </button>
                             <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wY-ff-FLW">
-                                <rect key="frame" x="8" y="30" width="320" height="213"/>
+                                <rect key="frame" x="8" y="30" width="320" height="201"/>
                                 <clipView key="contentView" drawsBackground="NO" id="rGc-3M-cCq">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="213"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="201"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="xkl-2X-ZCb">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="213"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="201"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1664,14 +1666,14 @@ DQ
                                 </scroller>
                             </scrollView>
                             <progressIndicator wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="0A5-gp-lay">
-                                <rect key="frame" x="160" y="156" width="16" height="16"/>
+                                <rect key="frame" x="160" y="150" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="fgE-77-Vda"/>
                                     <constraint firstAttribute="width" constant="16" id="pwe-em-e0a"/>
                                 </constraints>
                             </progressIndicator>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xgb-wU-8RU">
-                                <rect key="frame" x="18" y="126" width="300" height="22"/>
+                                <rect key="frame" x="18" y="120" width="300" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="zqt-d8-yas"/>
                                 </constraints>
@@ -1781,7 +1783,7 @@ DQ
                                                 <rect key="frame" x="0.0" y="0.0" width="618" height="412"/>
                                                 <clipView key="contentView" drawsBackground="NO" id="vaT-2p-gsy">
                                                     <rect key="frame" x="0.0" y="0.0" width="618" height="412"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" autosaveColumns="NO" rowHeight="60" headerView="1hb-YT-szP" id="p9D-mN-dTa">
                                                             <rect key="frame" x="0.0" y="0.0" width="653" height="387"/>
@@ -1996,6 +1998,11 @@ CA
             <point key="canvasLocation" x="747" y="1244"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="PbD-dt-goz">
+            <size key="intrinsicContentSize" width="96" height="25"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Add Icon" width="700" height="700"/>
         <image name="Appearance Dynamic" width="350" height="350"/>
