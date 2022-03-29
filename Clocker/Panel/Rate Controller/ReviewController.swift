@@ -5,7 +5,6 @@ import StoreKit
 
 final class ReviewController {
     private static var storage = UserDefaults.standard
-    private static let version: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "N/A"
     private static var debugging = false
 
     private enum Keys {
@@ -14,15 +13,16 @@ final class ReviewController {
         static let install = "install"
     }
 
-    class func applicationDidLaunch(_ defaults: UserDefaults = UserDefaults.standard) {
+    class func applicationDidLaunch(_ defaults: UserDefaults) {
         if ProcessInfo.processInfo.arguments.contains(CLUITestingLaunchArgument) {
             debugging = true
         }
 
         storage = defaults
 
-        guard defaults.object(forKey: Keys.install) == nil else { return }
-        defaults.set(Date(), forKey: Keys.install)
+        if defaults.object(forKey: Keys.install) == nil {
+            defaults.set(Date(), forKey: Keys.install)
+        }
     }
 
     class func setPreviewMode(_ value: Bool) {
@@ -31,11 +31,13 @@ final class ReviewController {
 
     class func prompted() {
         storage.set(Date(), forKey: Keys.lastPrompt)
-        storage.set(version, forKey: Keys.lastVersion)
+        storage.set(Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String, forKey: Keys.lastVersion)
     }
 
     class func canPrompt() -> Bool {
-        guard debugging == false else { return true }
+        if debugging == true {
+            return true
+        }
 
         let day: TimeInterval = -1 * 60 * 60 * 24
         let minInstall: TimeInterval = day * 7
@@ -54,7 +56,7 @@ final class ReviewController {
         let minInterval: TimeInterval = day * 90
 
         // never prompt w/in the same version
-        return lastVersion != version
+        return lastVersion != (Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String)
             // limit all types of prompts to at least 1mo intervals
             && lastPrompt.timeIntervalSinceNow < minInterval
     }
