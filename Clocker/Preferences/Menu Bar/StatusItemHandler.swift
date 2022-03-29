@@ -207,7 +207,7 @@ class StatusItemHandler: NSObject {
             return false
         }
 
-        return timezonesSupportingSeconds.isEmpty
+        return timezonesSupportingSeconds.isEmpty == false
     }
 
     private func calculateFireDate() -> Date? {
