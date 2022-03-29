@@ -159,7 +159,7 @@ class ThemerTests: XCTestCase {
         let expectedSliderRightColor = currentSystemTheme == .dark ? NSColor.white : NSColor.gray
         let expectedBackgroundColor = currentSystemTheme == .dark ? NSColor.windowBackgroundColor : NSColor.white
         let expectedTextColor = NSColor.textColor
-        let expectedTextBackgroundColor = currentSystemTheme == .light ? NSColor(deviceRed: 42.0 / 255.0, green: 55.0 / 255.0, blue: 62.0 / 255.0, alpha: 1.0) : NSColor.controlBackgroundColor
+        let expectedTextBackgroundColor = currentSystemTheme == .light ? NSColor(deviceRed: 241.0 / 255.0, green: 241.0 / 255.0, blue: 241.0 / 255.0, alpha: 1.0) : NSColor.controlBackgroundColor
 
         let expectedShutdownImageName = "ellipsis.circle"
         let expectedPreferenceImageName = "plus"
