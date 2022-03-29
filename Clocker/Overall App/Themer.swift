@@ -146,7 +146,7 @@ extension Themer {
             case .solarizedLight:
                 return NSColor(deviceRed: 238.0 / 255.0, green: 232.0 / 255.0, blue: 213.0 / 255.0, alpha: 1.0)
             case .solarizedDark:
-                return NSColor(deviceRed: 88.0 / 255.0, green: 110.0 / 255.0, blue: 117.0 / 255.0, alpha: 1.0)
+                return NSColor(deviceRed: 0.0 / 255.0, green: 43.0 / 255.0, blue: 54.0 / 255.0, alpha: 1.0)
             }
         }
 
@@ -448,7 +448,7 @@ extension Themer {
         if #available(OSX 10.14, *) {
             var appAppearance = NSAppearance(named: .aqua)
 
-            if themeIndex == .dark {
+            if themeIndex == .dark || themeIndex == .solarizedDark {
                 appAppearance = NSAppearance(named: .darkAqua)
             } else if themeIndex == .system {
                 appAppearance = retrieveCurrentSystem() == .dark ? NSAppearance(named: .darkAqua) : NSAppearance(named: .aqua)
