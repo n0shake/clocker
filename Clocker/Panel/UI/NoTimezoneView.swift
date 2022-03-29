@@ -66,12 +66,5 @@ class NoTimezoneView: NSView {
 
         emoji.layer?.removeAllAnimations()
         emoji.layer?.add(emojiAnimation, forKey: "notimezone.emoji")
-
-        let shadowScale = CABasicAnimation(keyPath: "transform.scale")
-        shadowScale.toValue = 0.9
-        shadowScale.repeatCount = .greatestFiniteMagnitude
-        shadowScale.autoreverses = true
-        shadowScale.duration = 1
-        shadowScale.timingFunction = function
     }
 }
