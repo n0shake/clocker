@@ -329,10 +329,6 @@ extension Themer {
                                      NSImage(named: NSImage.Name("Add White"))!)
     }
 
-    func addImageHighlighted() -> NSImage {
-        return themeIndex == .light ? NSImage(named: NSImage.Name("Add Highlighted"))! : NSImage(named: NSImage.Name("Add White"))!
-    }
-
     func privacyTabImage() -> NSImage {
         if let privacyTabSFImage = symbolImage(for: "lock") {
             return privacyTabSFImage

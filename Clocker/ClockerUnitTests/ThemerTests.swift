@@ -27,7 +27,6 @@ class ThemerTests: XCTestCase {
         let expectedSharingImage: String
         let expectedCurrentLocationImage: String
         let expectedAddImage: String
-        let expectedAddImageHighlighted: String
         let expectedPrivacyTabImage: String
         let expectedAppearanceTabImage: String
         let expectedCalendarTabImage: String
@@ -74,7 +73,6 @@ class ThemerTests: XCTestCase {
                                                       expectedSharingImage: "square.and.arrow.up.on.square.fill",
                                                       expectedCurrentLocationImage: "location.fill",
                                                       expectedAddImage: "plus",
-                                                      expectedAddImageHighlighted: "Add Highlighted",
                                                       expectedPrivacyTabImage: "lock",
                                                       expectedAppearanceTabImage: "eye",
                                                       expectedCalendarTabImage: "calendar",
@@ -108,7 +106,6 @@ class ThemerTests: XCTestCase {
                                                       expectedSharingImage: "square.and.arrow.up.on.square.fill",
                                                       expectedCurrentLocationImage: "location.fill",
                                                       expectedAddImage: "plus",
-                                                      expectedAddImageHighlighted: "Add White",
                                                       expectedPrivacyTabImage: "lock",
                                                       expectedAppearanceTabImage: "eye",
                                                       expectedCalendarTabImage: "calendar",
@@ -150,7 +147,6 @@ class ThemerTests: XCTestCase {
                                                       expectedSharingImage: "square.and.arrow.up.on.square.fill",
                                                       expectedCurrentLocationImage: "location.fill",
                                                       expectedAddImage: "plus",
-                                                      expectedAddImageHighlighted: "Add White",
                                                       expectedPrivacyTabImage: "lock",
                                                       expectedAppearanceTabImage: "eye",
                                                       expectedCalendarTabImage: "calendar",
@@ -185,7 +181,6 @@ class ThemerTests: XCTestCase {
                                                       expectedSharingImage: "square.and.arrow.up.on.square.fill",
                                                       expectedCurrentLocationImage: "location.fill",
                                                       expectedAddImage: "plus",
-                                                      expectedAddImageHighlighted: "Add White",
                                                       expectedPrivacyTabImage: "lock",
                                                       expectedAppearanceTabImage: "eye",
                                                       expectedCalendarTabImage: "calendar",
@@ -219,7 +214,6 @@ class ThemerTests: XCTestCase {
                                                       expectedSharingImage: "square.and.arrow.up.on.square.fill",
                                                       expectedCurrentLocationImage: "location.fill",
                                                       expectedAddImage: "plus",
-                                                      expectedAddImageHighlighted: "Add White",
                                                       expectedPrivacyTabImage: "lock",
                                                       expectedAppearanceTabImage: "eye",
                                                       expectedCalendarTabImage: "calendar",
@@ -252,7 +246,6 @@ class ThemerTests: XCTestCase {
         XCTAssertEqual(subject.currentLocationImage().accessibilityDescription, expectations.expectedCurrentLocationImage)
         XCTAssertEqual(subject.popoverAppearance(), expectations.expectedPopoverApperarance)
         XCTAssertEqual(subject.addImage().accessibilityDescription, expectations.expectedAddImage)
-        XCTAssertEqual(subject.addImageHighlighted().name(), expectations.expectedAddImageHighlighted)
         XCTAssertEqual(subject.privacyTabImage().accessibilityDescription, expectations.expectedPrivacyTabImage)
         XCTAssertEqual(subject.appearanceTabImage().accessibilityDescription, expectations.expectedAppearanceTabImage)
         XCTAssertEqual(subject.calendarTabImage().accessibilityDescription, expectations.expectedCalendarTabImage)
