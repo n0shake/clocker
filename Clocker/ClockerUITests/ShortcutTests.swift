@@ -27,8 +27,8 @@ class ShortcutTests: XCTestCase {
 
         let randomAlphabet = randomLetter()
 
-        app.windows["Clocker"].buttons["ShortcutControl"].click()
-        app.windows["Clocker"].buttons["ShortcutControl"].typeKey(randomAlphabet, modifierFlags: [.shift, .command])
+        app.windows["Clocker"].otherElements["ShortcutControl"].click()
+        app.windows["Clocker"].otherElements["ShortcutControl"].typeKey(randomAlphabet, modifierFlags: [.shift, .command])
 
         // Close the window to really test
         app.windows["Clocker"].buttons["_XCUI:CloseWindow"].click()
@@ -44,7 +44,7 @@ class ShortcutTests: XCTestCase {
 
         // Reset the shortcut
         app.tables["mainTableView"].typeKey(",", modifierFlags: .command)
-        app.windows["Clocker"].buttons["ShortcutControl"].click()
+        app.windows["Clocker"].otherElements["ShortcutControl"].click()
         app.windows["Clocker"].typeKey(XCUIKeyboardKey.delete, modifierFlags: [])
         app.windows["Clocker"].typeKey(randomAlphabet, modifierFlags: [.shift, .command])
         XCTAssertFalse(app.tables["mainTableView"].exists)

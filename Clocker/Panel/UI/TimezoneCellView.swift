@@ -198,16 +198,20 @@ class TimezoneCellView: NSTableCellView {
         Logger.log(object: nil, for: "Open Extra Options")
     }
 
-    override func mouseDown(with _: NSEvent) {
-        // Text is copied in the following format: Chicago - 1625185925
-        let clipboardCopy = "\(customName.stringValue) - \(time.stringValue)"
-        let pasteboard = NSPasteboard.general
-        pasteboard.declareTypes([.string], owner: nil)
-        pasteboard.setString(clipboardCopy, forType: .string)
+    override func mouseDown(with event: NSEvent) {
+        if (event.clickCount == 1) {
+            // Text is copied in the following format: Chicago - 1625185925
+            let clipboardCopy = "\(customName.stringValue) - \(time.stringValue)"
+            let pasteboard = NSPasteboard.general
+            pasteboard.declareTypes([.string], owner: nil)
+            pasteboard.setString(clipboardCopy, forType: .string)
 
-        window?.contentView?.makeToast("Copied to Clipboard".localized())
+            window?.contentView?.makeToast("Copied to Clipboard".localized())
 
-        window?.endEditing(for: nil)
+            window?.endEditing(for: nil)
+        } else if (event.clickCount == 2) {
+            //TODO: Favourite this timezone
+        }
     }
 
     override func rightMouseDown(with event: NSEvent) {
