@@ -14,15 +14,16 @@ final class ReviewController {
         static let install = "install"
     }
 
-    class func applicationDidLaunch(_ defaults: UserDefaults = UserDefaults.standard) {
+    class func applicationDidLaunch(_ defaults: UserDefaults) {
         if ProcessInfo.processInfo.arguments.contains(CLUITestingLaunchArgument) {
             debugging = true
         }
 
         storage = defaults
 
-        guard defaults.object(forKey: Keys.install) == nil else { return }
-        defaults.set(Date(), forKey: Keys.install)
+        if defaults.object(forKey: Keys.install) == nil {
+            defaults.set(Date(), forKey: Keys.install)
+        }
     }
 
     class func setPreviewMode(_ value: Bool) {
@@ -35,7 +36,9 @@ final class ReviewController {
     }
 
     class func canPrompt() -> Bool {
-        guard debugging == false else { return true }
+        if debugging == true {
+            return true
+        }
 
         let day: TimeInterval = -1 * 60 * 60 * 24
         let minInstall: TimeInterval = day * 7
