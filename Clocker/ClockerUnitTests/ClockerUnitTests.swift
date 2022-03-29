@@ -415,4 +415,21 @@ class ClockerUnitTests: XCTestCase {
             XCTAssertTrue(view.subviews.isEmpty)
          }
     }
+    
+    func testPointingHandButton() {
+        let sampleRect = CGRect(x: 0, y: 0, width: 200, height: 200)
+        let pointingHandCursorButton = UnderlinedButton(frame: CGRect.zero)
+        pointingHandCursorButton.draw(sampleRect)
+        pointingHandCursorButton.resetCursorRects()
+        XCTAssertEqual(pointingHandCursorButton.pointingHandCursor, NSCursor.pointingHand)
+    }
+    
+    func testNoTimezoneView() {
+        let sampleRect = CGRect(x: 0, y: 0, width: 200, height: 200)
+        let subject = NoTimezoneView(frame: sampleRect)
+        // Perform a layout to add subviews
+        subject.layout()
+        XCTAssertEqual(subject.subviews.count, 2) // Two textfields
+        XCTAssertEqual(subject.subviews.first?.layer?.animationKeys(), ["notimezone.emoji"])
+    }
 }
