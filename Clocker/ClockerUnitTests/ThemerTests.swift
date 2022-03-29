@@ -101,7 +101,7 @@ class ThemerTests: XCTestCase {
         let expectedSunsetImageName = "sunset.fill"
         let expectedRemoveImageName = "xmark"
         let expectedExtraOptionsImage = "ExtraWhite"
-        let expectedMenubarOnboardingImage = "Light Menubar"
+        let expectedMenubarOnboardingImage = "Dark Menubar"
         let expectedExtraOptionsHighlightedImage = "ExtraWhiteHighlighted"
         let expectedSharingImage = "square.and.arrow.up.on.square.fill"
         let expectedCurrentLocationImage = "location.fill"
@@ -153,13 +153,13 @@ class ThemerTests: XCTestCase {
 
     func testSystemTheme() throws {
         let currentSystemTheme =
-            UserDefaults.standard.string(forKey: "AppleUserInterfaceStyle")?.lowercased().contains("dark") ?? false ? Themer.Theme.dark : Themer.Theme.light
+            UserDefaults.standard.string(forKey: "AppleInterfaceStyle")?.lowercased().contains("dark") ?? false ? Themer.Theme.dark : Themer.Theme.light
         let subject = Themer(index: 2) // 2 is for system theme
         let expectedSliderKnobColor = currentSystemTheme == .light ? NSColor(deviceRed: 255.0, green: 255.0, blue: 255, alpha: 0.9) : NSColor(deviceRed: 0.0, green: 0.0, blue: 0, alpha: 0.9)
         let expectedSliderRightColor = currentSystemTheme == .dark ? NSColor.white : NSColor.gray
-        let expectedBackgroundColor = currentSystemTheme == .dark ? NSColor(deviceRed: 42.0 / 255.0, green: 42.0 / 255.0, blue: 42.0 / 255.0, alpha: 1.0) : NSColor.white
+        let expectedBackgroundColor = currentSystemTheme == .dark ? NSColor.windowBackgroundColor : NSColor.white
         let expectedTextColor = NSColor.textColor
-        let expectedTextBackgroundColor = currentSystemTheme == .dark ? NSColor(deviceRed: 42.0 / 255.0, green: 55.0 / 255.0, blue: 62.0 / 255.0, alpha: 1.0) : NSColor(deviceRed: 241.0 / 255.0, green: 241.0 / 255.0, blue: 241.0 / 255.0, alpha: 1.0)
+        let expectedTextBackgroundColor = currentSystemTheme == .light ? NSColor(deviceRed: 42.0 / 255.0, green: 55.0 / 255.0, blue: 62.0 / 255.0, alpha: 1.0) : NSColor.controlBackgroundColor
 
         let expectedShutdownImageName = "ellipsis.circle"
         let expectedPreferenceImageName = "plus"
@@ -220,7 +220,7 @@ class ThemerTests: XCTestCase {
 
     func testSolarizedLightTheme() throws {
         let subject = Themer(index: 3) // 3 is for solarized light theme
-        let expectedSliderKnobColor = NSColor(deviceRed: 0.0, green: 0.0, blue: 0, alpha: 0.9)
+        let expectedSliderKnobColor = NSColor(deviceRed: 255.0, green: 255.0, blue: 255, alpha: 0.9)
         let expectedSliderRightColor = NSColor.gray
         let expectedBackgroundColor = NSColor(deviceRed: 253.0 / 255.0, green: 246.0 / 255.0, blue: 227.0 / 255.0, alpha: 1.0)
         let expectedTextColor = NSColor.black
@@ -299,7 +299,7 @@ class ThemerTests: XCTestCase {
         let expectedSunsetImageName = "sunset.fill"
         let expectedRemoveImageName = "xmark"
         let expectedExtraOptionsImage = "ExtraWhite"
-        let expectedMenubarOnboardingImage = "Light Menubar"
+        let expectedMenubarOnboardingImage = "Dark Menubar"
         let expectedExtraOptionsHighlightedImage = "ExtraWhiteHighlighted"
         let expectedSharingImage = "square.and.arrow.up.on.square.fill"
         let expectedCurrentLocationImage = "location.fill"

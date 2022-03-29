@@ -125,6 +125,7 @@
 		35C36FA12259ED6D002FA5C6 /* EventCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F9E2259ED6D002FA5C6 /* EventCenter.swift */; };
 		35C36FA22259ED6D002FA5C6 /* RemindersHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F9F2259ED6D002FA5C6 /* RemindersHandler.swift */; };
 		35C36FA42259EEC2002FA5C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36FA32259EEC2002FA5C6 /* AppDelegate.swift */; };
+		35D23E3727F27E2E00C6DD55 /* ReviewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D23E3627F27E2E00C6DD55 /* ReviewControllerTests.swift */; };
 		35DFBCEF26A8468900D6648B /* ConfigExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFBCEE26A8468900D6648B /* ConfigExport.swift */; };
 		35E65125268EDD2E00E3E1E3 /* Toasty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E65124268EDD2E00E3E1E3 /* Toasty.swift */; };
 		9A0385BB269E3434003B5E72 /* StandardMenubarHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0385BA269E3434003B5E72 /* StandardMenubarHandlerTests.swift */; };
@@ -365,6 +366,7 @@
 		35C36F9E2259ED6D002FA5C6 /* EventCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCenter.swift; sourceTree = "<group>"; };
 		35C36F9F2259ED6D002FA5C6 /* RemindersHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersHandler.swift; sourceTree = "<group>"; };
 		35C36FA32259EEC2002FA5C6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		35D23E3627F27E2E00C6DD55 /* ReviewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewControllerTests.swift; sourceTree = "<group>"; };
 		35DFBCEE26A8468900D6648B /* ConfigExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigExport.swift; sourceTree = "<group>"; };
 		35E65124268EDD2E00E3E1E3 /* Toasty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toasty.swift; sourceTree = "<group>"; };
 		9A0385BA269E3434003B5E72 /* StandardMenubarHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardMenubarHandlerTests.swift; sourceTree = "<group>"; };
@@ -887,6 +889,7 @@
 				35584D1327EF8EB5006E3EAD /* ThemerTests.swift */,
 				35584D1727F0B019006E3EAD /* DateFormatterManagerTests.swift */,
 				35584D1927F0B64E006E3EAD /* AppDelegateTests.swift */,
+				35D23E3627F27E2E00C6DD55 /* ReviewControllerTests.swift */,
 			);
 			path = ClockerUnitTests;
 			sourceTree = "<group>";
@@ -1273,6 +1276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35584D1427EF8EB5006E3EAD /* ThemerTests.swift in Sources */,
+				35D23E3727F27E2E00C6DD55 /* ReviewControllerTests.swift in Sources */,
 				35584D1A27F0B64E006E3EAD /* AppDelegateTests.swift in Sources */,
 				9A0385BB269E3434003B5E72 /* StandardMenubarHandlerTests.swift in Sources */,
 				35584D1827F0B019006E3EAD /* DateFormatterManagerTests.swift in Sources */,

@@ -95,12 +95,12 @@ extension Themer {
 
     func sliderKnobColor() -> NSColor {
         switch themeIndex {
-        case .light:
+        case .light, .solarizedLight:
             return NSColor(deviceRed: 255.0, green: 255.0, blue: 255, alpha: 0.9)
+        case .dark, .solarizedDark:
+            return NSColor(deviceRed: 0.0, green: 0.0, blue: 0, alpha: 0.9)
         case .system:
             return retrieveCurrentSystem() == .light ? NSColor(deviceRed: 255.0, green: 255.0, blue: 255, alpha: 0.9) : NSColor(deviceRed: 0.0, green: 0.0, blue: 0, alpha: 0.9)
-        default:
-            return NSColor(deviceRed: 0.0, green: 0.0, blue: 0, alpha: 0.9)
         }
     }
 
@@ -108,6 +108,8 @@ extension Themer {
         switch themeIndex {
         case .dark:
             return NSColor.white
+        case .system:
+            return retrieveCurrentSystem() == .dark ? NSColor.white : NSColor.gray
         default:
             return NSColor.gray
         }
@@ -258,8 +260,10 @@ extension Themer {
             switch themeIndex {
             case .system:
                 return NSImage(named: NSImage.Name("Dynamic Menubar"))!
-            default:
-                return retrieveCurrentSystem() == .dark ? NSImage(named: NSImage.Name("Dark Menubar"))! : NSImage(named: NSImage.Name("Light Menubar"))!
+            case .light, .solarizedLight:
+                return NSImage(named: NSImage.Name("Light Menubar"))!
+            case .dark, .solarizedDark:
+                return NSImage(named: NSImage.Name("Dark Menubar"))!
             }
         }
 
