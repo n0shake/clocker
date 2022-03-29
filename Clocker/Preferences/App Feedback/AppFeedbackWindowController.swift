@@ -35,7 +35,7 @@ class AppFeedbackWindowController: NSWindowController {
     @IBOutlet var feedbackTextView: NSTextView!
     @IBOutlet var progressIndicator: NSProgressIndicator!
 
-    @IBOutlet var quickCommentsLabel: UnderlinedButton!
+    @IBOutlet var quickCommentsLabel: PointingHandCursorButton!
     private var themeDidChangeNotification: NSObjectProtocol?
     private var serialNumber: String? {
         let platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
@@ -261,7 +261,7 @@ class AppFeedbackWindowController: NSWindowController {
         emailField.backgroundColor = Themer.shared().mainBackgroundColor()
     }
 
-    private func setUnderline(for button: UnderlinedButton?, range: NSRange) {
+    private func setUnderline(for button: PointingHandCursorButton?, range: NSRange) {
         guard let underlinedButton = button else { return }
 
         let mutableParaghStyle = NSMutableParagraphStyle()

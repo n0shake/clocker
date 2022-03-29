@@ -97,7 +97,7 @@
 		35C36F462259D892002FA5C6 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F3E2259D892002FA5C6 /* DataStore.swift */; };
 		35C36F472259D892002FA5C6 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F3F2259D892002FA5C6 /* Reach.swift */; };
 		35C36F482259D892002FA5C6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F402259D892002FA5C6 /* NetworkManager.swift */; };
-		35C36F4B2259D971002FA5C6 /* UnderlinedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F4A2259D971002FA5C6 /* UnderlinedButton.swift */; };
+		35C36F4B2259D971002FA5C6 /* PointingHandCursorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F4A2259D971002FA5C6 /* PointingHandCursorButton.swift */; };
 		35C36F4E2259D981002FA5C6 /* DateFormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F4C2259D981002FA5C6 /* DateFormatterManager.swift */; };
 		35C36F4F2259D981002FA5C6 /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F4D2259D981002FA5C6 /* AppDefaults.swift */; };
 		35C36F572259DD8A002FA5C6 /* TimezoneDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36F532259DD8A002FA5C6 /* TimezoneDataSource.swift */; };
@@ -338,7 +338,7 @@
 		35C36F3E2259D892002FA5C6 /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		35C36F3F2259D892002FA5C6 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
 		35C36F402259D892002FA5C6 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		35C36F4A2259D971002FA5C6 /* UnderlinedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedButton.swift; sourceTree = "<group>"; };
+		35C36F4A2259D971002FA5C6 /* PointingHandCursorButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointingHandCursorButton.swift; sourceTree = "<group>"; };
 		35C36F4C2259D981002FA5C6 /* DateFormatterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterManager.swift; sourceTree = "<group>"; };
 		35C36F4D2259D981002FA5C6 /* AppDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
 		35C36F532259DD8A002FA5C6 /* TimezoneDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimezoneDataSource.swift; sourceTree = "<group>"; };
@@ -818,7 +818,7 @@
 		9AB6F1542259CF1B00A44663 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				35C36F4A2259D971002FA5C6 /* UnderlinedButton.swift */,
+				35C36F4A2259D971002FA5C6 /* PointingHandCursorButton.swift */,
 				9AB6F1572259CFFC00A44663 /* AboutViewController.swift */,
 			);
 			path = About;
@@ -1365,7 +1365,7 @@
 				3508CC9F259A000E000E3530 /* StatusItemHandler.swift in Sources */,
 				35E65125268EDD2E00E3E1E3 /* Toasty.swift in Sources */,
 				C2CCCD8220619C4C00F2DFC2 /* LocationController.swift in Sources */,
-				35C36F4B2259D971002FA5C6 /* UnderlinedButton.swift in Sources */,
+				35C36F4B2259D971002FA5C6 /* PointingHandCursorButton.swift in Sources */,
 				9AB6F1562259CF3900A44663 /* CalendarViewController.swift in Sources */,
 				3595FAD0227F88BC0044A12A /* UserDefaults + KVOExtensions.swift in Sources */,
 				9AB6F1612259D1B000A44663 /* PreferencesViewController.swift in Sources */,

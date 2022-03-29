@@ -15,10 +15,10 @@ struct AboutUsConstants {
 }
 
 class AboutViewController: ParentViewController {
-    @IBOutlet var quickCommentAction: UnderlinedButton!
-    @IBOutlet var privateFeedback: UnderlinedButton!
-    @IBOutlet var supportClocker: UnderlinedButton!
-    @IBOutlet var openSourceButton: UnderlinedButton!
+    @IBOutlet var quickCommentAction: PointingHandCursorButton!
+    @IBOutlet var privateFeedback: PointingHandCursorButton!
+    @IBOutlet var supportClocker: PointingHandCursorButton!
+    @IBOutlet var openSourceButton: PointingHandCursorButton!
     @IBOutlet var versionField: NSTextField!
 
     private var themeDidChangeNotification: NSObjectProtocol?
@@ -75,7 +75,7 @@ class AboutViewController: ParentViewController {
         }
     }
 
-    private func setUnderline(for button: UnderlinedButton?, range: NSRange) {
+    private func setUnderline(for button: PointingHandCursorButton?, range: NSRange) {
         guard let underlinedButton = button else { return }
 
         let mutableParaghStyle = NSMutableParagraphStyle()

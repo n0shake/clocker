@@ -17,7 +17,7 @@ class FinalOnboardingViewController: NSViewController {
     @IBOutlet var accesoryLabel: NSTextField!
     @IBOutlet var accessoryImageView: NSImageView!
     @IBOutlet var emailTextField: NSTextField!
-    @IBOutlet var localizationButton: UnderlinedButton!
+    @IBOutlet var localizationButton: PointingHandCursorButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()

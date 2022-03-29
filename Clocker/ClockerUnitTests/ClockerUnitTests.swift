@@ -418,7 +418,7 @@ class ClockerUnitTests: XCTestCase {
     
     func testPointingHandButton() {
         let sampleRect = CGRect(x: 0, y: 0, width: 200, height: 200)
-        let pointingHandCursorButton = UnderlinedButton(frame: CGRect.zero)
+        let pointingHandCursorButton = PointingHandCursorButton(frame: CGRect.zero)
         pointingHandCursorButton.draw(sampleRect)
         pointingHandCursorButton.resetCursorRects()
         XCTAssertEqual(pointingHandCursorButton.pointingHandCursor, NSCursor.pointingHand)

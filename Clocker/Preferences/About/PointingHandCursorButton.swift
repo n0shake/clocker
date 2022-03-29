@@ -2,7 +2,7 @@
 
 import Cocoa
 
-class UnderlinedButton: NSButton {
+class PointingHandCursorButton: NSButton {
     let pointingHandCursor: NSCursor = NSCursor.pointingHand
 
     override func draw(_ dirtyRect: NSRect) {
