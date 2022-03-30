@@ -53,6 +53,38 @@ class ReviewControllerTests: XCTestCase {
         XCTAssertTrue(ReviewController.canPrompt())
     }
     
+    func testPromptDisplayAfterTwoMonths() {
+        let dateChunk = TimeChunk(seconds: 0,
+                                  minutes: 0,
+                                  hours: 0,
+                                  days: 68,
+                                  weeks: 0,
+                                  months: 0,
+                                  years: 0)
+        let minInstall = Date().subtract(dateChunk)
+        
+        let promptChunk = TimeChunk(seconds: 0,
+                                  minutes: 0,
+                                  hours: 0,
+                                  days: 60,
+                                  weeks: 0,
+                                  months: 0,
+                                  years: 0)
+        let lastPromptDate = Date().subtract(promptChunk)
+        
+        guard let mockDefaults = UserDefaults(suiteName: "com.test.Clocker3") else {
+            return
+        }
+        mockDefaults.set(minInstall, forKey: "install")
+        mockDefaults.set("test-version", forKey: "last-version")
+        mockDefaults.set(lastPromptDate, forKey: "last-prompt")
+        ReviewController.applicationDidLaunch(mockDefaults)
+        
+        // Explicitly set preview mode to false
+        ReviewController.setPreviewMode(false)
+        XCTAssertFalse(ReviewController.canPrompt())
+    }
+    
     func testPrompDisplayedAfterThreeMonths() {
         let dateChunk = TimeChunk(seconds: 0,
                                   minutes: 0,
@@ -72,7 +104,7 @@ class ReviewControllerTests: XCTestCase {
                                   years: 0)
         let lastPromptDate = Date().subtract(promptChunk)
         
-        guard let mockDefaults = UserDefaults(suiteName: "com.test.Clocker3") else {
+        guard let mockDefaults = UserDefaults(suiteName: "com.test.Clocker4") else {
             return
         }
         mockDefaults.set(minInstall, forKey: "install")
@@ -89,7 +121,7 @@ class ReviewControllerTests: XCTestCase {
     }
     
     func testPrompted() {
-        guard let mockDefaults = UserDefaults(suiteName: "com.test.Clocker4") else {
+        guard let mockDefaults = UserDefaults(suiteName: "com.test.Clocker5") else {
             return
         }
         ReviewController.applicationDidLaunch(mockDefaults)

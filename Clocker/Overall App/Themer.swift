@@ -431,7 +431,7 @@ extension Themer {
 
     private func retrieveCurrentSystem() -> Theme {
         if #available(OSX 10.14, *) {
-            if let appleInterfaceStyle = UserDefaults.standard.object(forKey: "AppleInterfaceStyle") as? String {
+            if let appleInterfaceStyle = UserDefaults.standard.object(forKey: CLAppleInterfaceStyleKey) as? String {
                 if appleInterfaceStyle.lowercased().contains("dark") {
                     return .dark
                 }
