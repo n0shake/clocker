@@ -117,6 +117,7 @@ class AppDelegateTests: XCTestCase {
         
         let subject = NSApplication.shared.delegate as? AppDelegate
         let statusItemHandler = subject?.statusItemForPanel()
+        subject?.setupMenubarTimer()
         
         XCTAssertEqual(statusItemHandler?.statusItem.button?.image?.name(), "LightModeIcon")
         
