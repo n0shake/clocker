@@ -16,7 +16,7 @@ import CoreModelKit
 class OnboardingSearchController: NSViewController {
     @IBOutlet private var appName: NSTextField!
     @IBOutlet private var onboardingTypeLabel: NSTextField!
-    @IBOutlet private var searchBar: ClockerSearchField!
+    @IBOutlet private var searchBar: NSSearchField!
     @IBOutlet private var resultsTableView: NSTableView!
     @IBOutlet private var accessoryLabel: NSTextField!
     @IBOutlet var undoButton: NSButton!
@@ -268,6 +268,7 @@ class OnboardingSearchController: NSViewController {
         appName.stringValue = "Quick Add Locations".localized()
         onboardingTypeLabel.stringValue = "More search options in Clocker Preferences.".localized()
         setInfoLabel(CLEmptyString)
+        searchBar.bezelStyle = .roundedBezel
         searchBar.placeholderString = "Press Enter to Search!"
         searchBar.delegate = self
         searchBar.setAccessibility("MainSearchField")

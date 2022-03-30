@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fde-UX-327">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -425,7 +426,7 @@ DQ
         <scene sceneID="u6P-zw-bJP">
             <objects>
                 <viewController storyboardIdentifier="onboardingSearchVC" id="bMm-q2-fpd" customClass="OnboardingSearchController" customModule="Clocker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="r3Q-VK-VHF">
+                    <view key="view" id="r3Q-VK-VHF">
                         <rect key="frame" x="0.0" y="0.0" width="456" height="387"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -453,7 +454,7 @@ DQ
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2w-fr-zQp" customClass="ClockerSearchField" customModule="Clocker" customModuleProvider="target">
+                            <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2w-fr-zQp">
                                 <rect key="frame" x="20" y="235" width="416" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="7wX-F5-PaV"/>
@@ -469,7 +470,7 @@ DQ
                                 <rect key="frame" x="20" y="49" width="416" height="160"/>
                                 <clipView key="contentView" ambiguous="YES" id="XpR-1t-AQy">
                                     <rect key="frame" x="0.0" y="0.0" width="416" height="160"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="33" rowSizeStyle="automatic" viewBased="YES" id="30y-X6-i7I">
                                             <rect key="frame" x="0.0" y="0.0" width="416" height="160"/>

@@ -238,6 +238,8 @@ class PreferencesViewController: ParentViewController {
         setupColor()
 
         startupCheckbox.integerValue = DataStore.shared().retrieve(key: CLStartAtLogin) as? Int ?? 0
+        
+        searchField.bezelStyle = .roundedBezel
     }
 
     private func setupColor() {
