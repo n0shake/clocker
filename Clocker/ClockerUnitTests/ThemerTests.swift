@@ -122,7 +122,7 @@ class ThemerTests: XCTestCase {
     
     func testSystemTheme() throws {
         let currentSystemTheme =
-        UserDefaults.standard.string(forKey: "AppleInterfaceStyle")?.lowercased().contains("dark") ?? false ? Themer.Theme.dark : Themer.Theme.light
+        UserDefaults.standard.string(forKey: CLAppleInterfaceStyleKey)?.lowercased().contains("dark") ?? false ? Themer.Theme.dark : Themer.Theme.light
         let subject = Themer(index: 2) // 2 is for system theme
         let expectedSliderKnobColor = currentSystemTheme == .light ? NSColor(deviceRed: 255.0, green: 255.0, blue: 255, alpha: 0.9) : NSColor(deviceRed: 0.0, green: 0.0, blue: 0, alpha: 0.9)
         let expectedSliderRightColor = currentSystemTheme == .dark ? NSColor.white : NSColor.gray
