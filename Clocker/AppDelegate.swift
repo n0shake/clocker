@@ -45,9 +45,6 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     public func applicationDidFinishLaunching(_: Notification) {
-        // Initializing the event store takes really long
-        EventCenter.sharedCenter()
-
         // Required for migrating our model type to CoreModelKit
         NSKeyedUnarchiver.setClass(CoreModelKit.TimezoneData.classForKeyedUnarchiver(), forClassName: "Clocker.TimezoneData")
 
@@ -124,10 +121,6 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
 
         assignShortcut()
-
-        panelObserver = panelController.observe(\.hasActivePanel, options: [.new]) { obj, _ in
-            self.statusBarHandler.setHasActiveIcon(obj.hasActivePanelGetter())
-        }
 
         let defaults = UserDefaults.standard
 
@@ -246,6 +239,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
             // No need to call NSApp.activate here since `showFloatingWindow` takes care of this
             showFloatingWindow()
         } else {
+            setupPanelObserverIfNeeeded()
             panelController.showWindow(nil)
             panelController.setActivePanel(newValue: !panelController.hasActivePanelGetter())
             NSApp.activate(ignoringOtherApps: true)
@@ -266,5 +260,13 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
 
     open func invalidateMenubarTimer(_ showIcon: Bool) {
         statusBarHandler.invalidateTimer(showIcon: showIcon, isSyncing: true)
+    }
+    
+    private func setupPanelObserverIfNeeeded() {
+        if panelObserver == nil {
+            panelObserver = panelController.observe(\.hasActivePanel, options: [.new]) { obj, _ in
+                self.statusBarHandler.setHasActiveIcon(obj.hasActivePanelGetter())
+            }
+        }
     }
 }
