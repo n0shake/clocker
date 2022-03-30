@@ -34,10 +34,3 @@ extension NSFont {
                                                      attributes: attributes).size
     }
 }
-
-class ClockerSearchField: NSSearchField {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        bezelStyle = .roundedBezel
-    }
-}
