@@ -22,7 +22,7 @@ class StatusItemHandler: NSObject {
         return statusItem
     }()
 
-    private var menubarTitleHandler = MenubarTitleProvider()
+    private var menubarTitleHandler = MenubarTitleProvider(with: DataStore.shared())
 
     private var statusContainerView: StatusContainerView?
 
