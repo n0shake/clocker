@@ -3,7 +3,7 @@
 import Cocoa
 
 class PointingHandCursorButton: NSButton {
-    let pointingHandCursor: NSCursor = NSCursor.pointingHand
+    let pointingHandCursor: NSCursor = .pointingHand
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)

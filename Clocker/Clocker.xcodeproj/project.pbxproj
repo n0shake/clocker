@@ -53,6 +53,7 @@
 		35584D1427EF8EB5006E3EAD /* ThemerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35584D1327EF8EB5006E3EAD /* ThemerTests.swift */; };
 		35584D1827F0B019006E3EAD /* DateFormatterManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35584D1727F0B019006E3EAD /* DateFormatterManagerTests.swift */; };
 		35584D1A27F0B64E006E3EAD /* AppDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35584D1927F0B64E006E3EAD /* AppDelegateTests.swift */; };
+		35621CFC27F66C1900926D5C /* SearchDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35621CFB27F66C1900926D5C /* SearchDataSourceTests.swift */; };
 		357391872507277500D30819 /* TimeMarkerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357391852507277500D30819 /* TimeMarkerViewItem.swift */; };
 		357391882507277500D30819 /* HourMarkerViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 357391862507277500D30819 /* HourMarkerViewItem.xib */; };
 		3579765E2680208C009DDA6E /* ParentPanelController+ModernSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3579765D2680208C009DDA6E /* ParentPanelController+ModernSlider.swift */; };
@@ -291,6 +292,7 @@
 		35584D1327EF8EB5006E3EAD /* ThemerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemerTests.swift; sourceTree = "<group>"; };
 		35584D1727F0B019006E3EAD /* DateFormatterManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterManagerTests.swift; sourceTree = "<group>"; };
 		35584D1927F0B64E006E3EAD /* AppDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateTests.swift; sourceTree = "<group>"; };
+		35621CFB27F66C1900926D5C /* SearchDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataSourceTests.swift; sourceTree = "<group>"; };
 		3569A44E25441F320087E254 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		357391852507277500D30819 /* TimeMarkerViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMarkerViewItem.swift; sourceTree = "<group>"; };
 		357391862507277500D30819 /* HourMarkerViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourMarkerViewItem.xib; sourceTree = "<group>"; };
@@ -890,6 +892,7 @@
 				35584D1727F0B019006E3EAD /* DateFormatterManagerTests.swift */,
 				35584D1927F0B64E006E3EAD /* AppDelegateTests.swift */,
 				35D23E3627F27E2E00C6DD55 /* ReviewControllerTests.swift */,
+				35621CFB27F66C1900926D5C /* SearchDataSourceTests.swift */,
 			);
 			path = ClockerUnitTests;
 			sourceTree = "<group>";
@@ -1279,6 +1282,7 @@
 				35D23E3727F27E2E00C6DD55 /* ReviewControllerTests.swift in Sources */,
 				35584D1A27F0B64E006E3EAD /* AppDelegateTests.swift in Sources */,
 				9A0385BB269E3434003B5E72 /* StandardMenubarHandlerTests.swift in Sources */,
+				35621CFC27F66C1900926D5C /* SearchDataSourceTests.swift in Sources */,
 				35584D1827F0B019006E3EAD /* DateFormatterManagerTests.swift in Sources */,
 				C20839CA21515C1E00C86589 /* ClockerUnitTests.swift in Sources */,
 			);

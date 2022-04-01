@@ -104,7 +104,8 @@ extension PreferencesDataSource: NSTableViewDataSource {
         var selectedDataSource: TimezoneData?
 
         if selectedTimezones.count > row,
-           let model = TimezoneData.customObject(from: selectedTimezones[row]) {
+           let model = TimezoneData.customObject(from: selectedTimezones[row])
+        {
             selectedDataSource = model
         }
 
@@ -161,7 +162,7 @@ extension PreferencesDataSource: NSTableViewDataSource {
         if selectedTimezones.count > row {
             Logger.log(object: [
                 "Old Label": dataObject.customLabel ?? "Error",
-                "New Label": formattedValue
+                "New Label": formattedValue,
             ],
             for: "Custom Label Changed")
 
@@ -174,7 +175,7 @@ extension PreferencesDataSource: NSTableViewDataSource {
             Logger.log(object: [
                 "MethodName": "SetObjectValue",
                 "Selected Timezone Count": selectedTimezones.count,
-                "Current Row": row
+                "Current Row": row,
             ],
             for: "Error in selected row count")
         }

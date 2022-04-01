@@ -95,7 +95,8 @@ class PreferencesViewController: ParentViewController {
 
         NotificationCenter.default.addObserver(forName: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
                                                object: self,
-                                               queue: OperationQueue.main) { [weak self] _ in
+                                               queue: OperationQueue.main)
+        { [weak self] _ in
             if let sSelf = self {
                 sSelf.refreshTimezoneTableView()
             }
@@ -238,7 +239,7 @@ class PreferencesViewController: ParentViewController {
         setupColor()
 
         startupCheckbox.integerValue = DataStore.shared().retrieve(key: CLStartAtLogin) as? Int ?? 0
-        
+
         searchField.bezelStyle = .roundedBezel
     }
 
@@ -250,7 +251,7 @@ class PreferencesViewController: ParentViewController {
         [timezoneNameSortButton, labelSortButton, timezoneSortButton].forEach {
             $0?.attributedTitle = NSAttributedString(string: $0?.title ?? CLEmptyString, attributes: [
                 NSAttributedString.Key.foregroundColor: Themer.shared().mainTextColor(),
-                NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!
+                NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!,
             ])
         }
 
@@ -348,7 +349,8 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
         if let appDelegate = NSApplication.shared.delegate as? AppDelegate,
            let menubarFavourites = DataStore.shared().menubarTimezones(),
            menubarFavourites.isEmpty,
-           DataStore.shared().shouldDisplay(.showMeetingInMenubar) == false {
+           DataStore.shared().shouldDisplay(.showMeetingInMenubar) == false
+        {
             appDelegate.invalidateMenubarTimer(true)
         }
 
@@ -512,7 +514,7 @@ extension PreferencesViewController {
                 CLTimezoneName: formattedAddress,
                 CLCustomLabel: formattedAddress,
                 CLTimezoneID: CLEmptyString,
-                CLPlaceIdentifier: $0.placeId
+                CLPlaceIdentifier: $0.placeId,
             ] as [String: Any]
 
             finalResults.append(TimezoneData(with: totalPackage))
@@ -604,7 +606,7 @@ extension PreferencesViewController {
             "latitude": dataObject.latitude!,
             "longitude": dataObject.longitude!,
             "nextUpdate": CLEmptyString,
-            CLCustomLabel: filteredAddress
+            CLCustomLabel: filteredAddress,
         ] as [String: Any]
 
         // Mark if the timezone is same as local timezone
