@@ -392,30 +392,29 @@ class ClockerUnitTests: XCTestCase {
             XCTAssertNotNil(convertedDate)
         }
     }
-    
+
     func testStringFiltering() {
         let stringWithComma = "Mumbai, Maharashtra"
         let stringWithoutComma = "Mumbai"
         let emptyString = ""
-        
+
         XCTAssertEqual(stringWithComma.filteredName(), "Mumbai")
         XCTAssertEqual(stringWithoutComma.filteredName(), "Mumbai")
         XCTAssertEqual(emptyString.filteredName(), "")
-        
     }
-    
+
     func testToasty() {
         let view = NSView(frame: CGRect.zero)
         view.makeToast("Hello, this is a toast")
         XCTAssertEqual(view.subviews.first?.accessibilityIdentifier(), "ToastView")
-        
+
         let expectation = expectation(description: "Toast View should hide after 1 second")
         let result = XCTWaiter.wait(for: [expectation], timeout: 1.5) // Set 2 seconds here for a little leeway
         if result == XCTWaiter.Result.timedOut {
             XCTAssertTrue(view.subviews.isEmpty)
-         }
+        }
     }
-    
+
     func testPointingHandButton() {
         let sampleRect = CGRect(x: 0, y: 0, width: 200, height: 200)
         let pointingHandCursorButton = PointingHandCursorButton(frame: CGRect.zero)
@@ -423,7 +422,7 @@ class ClockerUnitTests: XCTestCase {
         pointingHandCursorButton.resetCursorRects()
         XCTAssertEqual(pointingHandCursorButton.pointingHandCursor, NSCursor.pointingHand)
     }
-    
+
     func testNoTimezoneView() {
         let sampleRect = CGRect(x: 0, y: 0, width: 200, height: 200)
         let subject = NoTimezoneView(frame: sampleRect)

@@ -3,7 +3,6 @@
 import Cocoa
 
 class DateFormatterManager: NSObject {
-
     private static var dateFormatter = DateFormatter()
     private static var calendarDateFormatter = DateFormatter()
     private static var simpleFormatter = DateFormatter()

@@ -115,7 +115,8 @@ class StatusItemHandler: NSObject {
 
         userNotificationsDidChangeNotif = center.addObserver(forName: UserDefaults.didChangeNotification,
                                                              object: self,
-                                                             queue: mainQueue) { _ in
+                                                             queue: mainQueue)
+        { _ in
             self.setupStatusItem()
         }
 
@@ -202,7 +203,7 @@ class StatusItemHandler: NSObject {
 
         let timezonesSupportingSeconds = syncedTimezones.filter { data in
             if let timezoneObj = TimezoneData.customObject(from: data) {
-               return timezoneObj.shouldShowSeconds(DataStore.shared().timezoneFormat())
+                return timezoneObj.shouldShowSeconds(DataStore.shared().timezoneFormat())
             }
             return false
         }
@@ -361,7 +362,7 @@ class StatusItemHandler: NSObject {
         constructCompactView(with: menubarTitleHandler.checkForUpcomingEvents() != nil)
         updateMenubar()
     }
-    
+
     private func retrieveUpcomingEventStatusView() -> NSView? {
         let upcomingEventView = statusContainerView?.subviews.first(where: { statusItemView in
             if let upcomingEventView = statusItemView as? StatusItemViewConforming {

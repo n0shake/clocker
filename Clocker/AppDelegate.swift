@@ -261,7 +261,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     open func invalidateMenubarTimer(_ showIcon: Bool) {
         statusBarHandler.invalidateTimer(showIcon: showIcon, isSyncing: true)
     }
-    
+
     private func setupPanelObserverIfNeeeded() {
         if panelObserver == nil {
             panelObserver = panelController.observe(\.hasActivePanel, options: [.new]) { obj, _ in

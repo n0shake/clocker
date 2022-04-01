@@ -40,7 +40,8 @@ class UpcomingEventViewItem: NSCollectionViewItem {
                _ color: NSColor,
                _ link: URL?,
                _ delegate: UpcomingEventPanelDelegate?,
-               _ isCancelled: Bool) {
+               _ isCancelled: Bool)
+    {
         if leadingConstraint.constant != UpcomingEventViewItem.EventLeadingConstraint / 2 {
             leadingConstraint.animator().constant = UpcomingEventViewItem.EventLeadingConstraint / 2
         }
