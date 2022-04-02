@@ -240,8 +240,7 @@ class StatusItemHandler: NSObject {
     }
 
     func updateCompactMenubar() {
-        if let upcomingEvent = menubarTitleHandler.checkForUpcomingEvents() {
-            print("Need to construct upcoming event view \(upcomingEvent)")
+        if menubarTitleHandler.checkForUpcomingEvents() != nil {
             // Iterate and see if we're showing the calendar item view
             let upcomingEventView = retrieveUpcomingEventStatusView()
             // If not, reconstruct Status Container View with another view
