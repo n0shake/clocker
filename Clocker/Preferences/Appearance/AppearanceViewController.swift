@@ -16,7 +16,8 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet var includePlaceNameControl: NSSegmentedControl!
     @IBOutlet var appearanceTab: NSTabView!
     @IBOutlet var appDisplayControl: NSSegmentedControl!
-
+    @IBOutlet weak var syncLabel: NSTextField!
+    
     private var themeDidChangeNotification: NSObjectProtocol?
 
     private var previewTimezones: [TimezoneData] = []
@@ -162,6 +163,7 @@ class AppearanceViewController: ParentViewController {
         showSliderLabel.stringValue = "Time Scroller".localized()
         showSunriseLabel.stringValue = "Show Sunrise/Sunset".localized()
         largerTextLabel.stringValue = "Larger Text".localized()
+        syncLabel.stringValue = "Enable iCloud Sync".localized()
         futureSliderRangeLabel.stringValue = "Future Slider Range".localized()
         includeDateLabel.stringValue = "Include Date".localized()
         includeDayLabel.stringValue = "Include Day".localized()
@@ -172,7 +174,7 @@ class AppearanceViewController: ParentViewController {
 
         [timeFormatLabel, panelTheme,
          dayDisplayOptionsLabel, showSliderLabel,
-         showSunriseLabel, largerTextLabel, futureSliderRangeLabel,
+         showSunriseLabel, largerTextLabel, syncLabel, futureSliderRangeLabel,
          includeDayLabel, includeDateLabel, includePlaceLabel, appDisplayLabel, menubarModeLabel,
          previewLabel, miscelleaneousLabel, dstTransitionField].forEach {
             $0?.textColor = Themer.shared().mainTextColor()
@@ -356,6 +358,11 @@ class AppearanceViewController: ParentViewController {
     @IBAction func toggleDSTTransitionOption(_: Any) {
         previewPanelTableView.reloadData()
     }
+    
+    @IBAction func toggleSync(_ sender: Any) {
+        print("Toggle Sync")
+    }
+    
 }
 
 extension AppearanceViewController: NSTableViewDataSource, NSTableViewDelegate {
