@@ -359,8 +359,8 @@ class AppearanceViewController: ParentViewController {
         previewPanelTableView.reloadData()
     }
 
-    @IBAction func toggleSync(_: Any) {
-        print("Toggle Sync")
+    @IBAction func toggleSync(_ sender: NSSegmentedControl) {
+        DataStore.shared().setupSyncNotification()
     }
 }
 
