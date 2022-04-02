@@ -195,8 +195,8 @@ class ParentPanelController: NSWindowController {
                                                selector: #selector(systemTimezoneDidChange),
                                                name: NSNotification.Name.NSSystemTimeZoneDidChange,
                                                object: nil)
-        
-        if (DataStore.shared().shouldDisplay(.sync)) {
+
+        if DataStore.shared().shouldDisplay(.sync) {
             NotificationCenter.default.addObserver(forName: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
                                                    object: self,
                                                    queue: OperationQueue.main)

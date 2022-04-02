@@ -13,7 +13,7 @@ class StandardMenubarHandlerTests: XCTestCase {
                           "nextUpdate": "",
                           "latitude": "19.0759837",
                           "longitude": "72.8776559"]
-    
+
     private func makeMockStore(with menubarMode: Int = 1) -> DataStore {
         // Wipe all timezones from UserDefaults
         guard let defaults = UserDefaults(suiteName: "com.abhishek.Clocker.StandardMenubarHandlerTests") else {
@@ -25,10 +25,11 @@ class StandardMenubarHandlerTests: XCTestCase {
         XCTAssertNotEqual(defaults, UserDefaults.standard)
         return DataStore(with: defaults)
     }
-    
+
     private func saveObject(object: TimezoneData,
                             in store: DataStore,
-                            at index: Int = -1) {
+                            at index: Int = -1)
+    {
         var defaults = store.timezones()
         let encodedObject = NSKeyedArchiver.archivedData(withRootObject: object as Any)
         index == -1 ? defaults.append(encodedObject) : defaults.insert(encodedObject, at: index)
@@ -81,14 +82,14 @@ class StandardMenubarHandlerTests: XCTestCase {
         // Test menubar string is absent
         XCTAssertTrue(menubarString.count == 0)
     }
-    
+
     func testWithEmptyMenubarTimezones() {
         let store = makeMockStore()
         store.setTimezones(nil)
         let menubarHandler = MenubarTitleProvider(with: store)
         XCTAssertNil(menubarHandler.titleForMenubar())
     }
-    
+
     func testWithStandardMenubarMode() {
         // Set mode to standard mode
         let store = makeMockStore(with: 0)
@@ -96,11 +97,11 @@ class StandardMenubarHandlerTests: XCTestCase {
         let dataObject = TimezoneData(with: mumbai)
         dataObject.isFavourite = 1
         saveObject(object: dataObject, in: store)
-        
+
         let menubarHandler = MenubarTitleProvider(with: store)
         XCTAssertNil(menubarHandler.titleForMenubar())
     }
-    
+
     func testProviderPassingAllConditions() {
         // Set mode to standard mode
         let store = makeMockStore()
@@ -108,7 +109,7 @@ class StandardMenubarHandlerTests: XCTestCase {
         let dataObject = TimezoneData(with: mumbai)
         dataObject.isFavourite = 1
         saveObject(object: dataObject, in: store)
-        
+
         let menubarHandler = MenubarTitleProvider(with: store)
         XCTAssertNotNil(menubarHandler.titleForMenubar())
     }

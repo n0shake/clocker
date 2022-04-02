@@ -44,8 +44,8 @@ class DataStore: NSObject {
         userDefaults = defaults
         shouldDisplayDayInMenubar = shouldDisplay(.dayInMenubar)
         shouldDisplayDateInMenubar = shouldDisplay(.dateInMenubar)
-        
-        if (shouldDisplay(.sync)) {
+
+        if shouldDisplay(.sync) {
             ubiquitousStore = NSUbiquitousKeyValueStore.default
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(ubiquitousKeyValueStoreChanged),
@@ -54,14 +54,14 @@ class DataStore: NSObject {
             ubiquitousStore?.synchronize()
         }
     }
-    
+
     @objc func ubiquitousKeyValueStoreChanged(_ notification: Notification) {
         let userInfo = notification.userInfo ?? [:]
         let ubiquitousStore = notification.object as? NSUbiquitousKeyValueStore
         print("--- User Info is \(userInfo)")
         let currentTimezones = userDefaults.object(forKey: CLDefaultPreferenceKey) as? [Data]
         let cloudTimezones = ubiquitousStore?.object(forKey: CLDefaultPreferenceKey) as? [Data]
-        
+
         if cloudTimezones != currentTimezones {
             Logger.info("Syncing local timezones with data from the ☁️")
             userDefaults.set(cloudTimezones, forKey: CLDefaultPreferenceKey)

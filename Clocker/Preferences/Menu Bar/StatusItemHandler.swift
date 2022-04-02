@@ -256,7 +256,7 @@ class StatusItemHandler: NSObject {
         // This will internally call `statusItemViewSetNeedsDisplay` on all subviews ensuring all text in the menubar is up-to-date.
         statusContainerView?.updateTime()
     }
-    
+
     private func removeUpcomingStatusItemView() {
         NSAnimationContext.runAnimationGroup({ context in
             context.duration = 0.2
