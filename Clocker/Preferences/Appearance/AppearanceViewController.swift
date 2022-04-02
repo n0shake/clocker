@@ -16,8 +16,8 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet var includePlaceNameControl: NSSegmentedControl!
     @IBOutlet var appearanceTab: NSTabView!
     @IBOutlet var appDisplayControl: NSSegmentedControl!
-    @IBOutlet weak var syncLabel: NSTextField!
-    
+    @IBOutlet var syncLabel: NSTextField!
+
     private var themeDidChangeNotification: NSObjectProtocol?
 
     private var previewTimezones: [TimezoneData] = []
@@ -358,11 +358,10 @@ class AppearanceViewController: ParentViewController {
     @IBAction func toggleDSTTransitionOption(_: Any) {
         previewPanelTableView.reloadData()
     }
-    
-    @IBAction func toggleSync(_ sender: Any) {
+
+    @IBAction func toggleSync(_: Any) {
         print("Toggle Sync")
     }
-    
 }
 
 extension AppearanceViewController: NSTableViewDataSource, NSTableViewDelegate {
