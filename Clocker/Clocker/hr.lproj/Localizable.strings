@@ -166,3 +166,6 @@
 "No upcoming events for today!" = "Za danas nema predstojećih događaja!";
 "Great going." = "Super.";
 "Happy Weekend." = "Uživaj vikend.";
+
+// iCloud
+"Enable iCloud Sync" = "Enable iCloud Sync";

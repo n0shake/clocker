@@ -355,3 +355,6 @@
 
 
 "start-at-login" = "ログイン時に開始";
+
+// iCloud
+"Enable iCloud Sync" = "Enable iCloud Sync";

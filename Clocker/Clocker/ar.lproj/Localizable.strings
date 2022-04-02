@@ -158,3 +158,6 @@
 "New Zealand" = "New Zealand";
 "Florida" = "Florida";
 "San Francisco" = "San Francisco";
+
+// iCloud
+"Enable iCloud Sync" = "Enable iCloud Sync";
