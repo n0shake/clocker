@@ -44,7 +44,10 @@ class DataStore: NSObject {
         userDefaults = defaults
         shouldDisplayDayInMenubar = shouldDisplay(.dayInMenubar)
         shouldDisplayDateInMenubar = shouldDisplay(.dateInMenubar)
-
+        setupSyncNotification()
+    }
+    
+     func setupSyncNotification() {
         if shouldDisplay(.sync) {
             ubiquitousStore = NSUbiquitousKeyValueStore.default
             NotificationCenter.default.addObserver(self,
@@ -52,6 +55,10 @@ class DataStore: NSObject {
                                                    name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
                                                    object: NSUbiquitousKeyValueStore.default)
             ubiquitousStore?.synchronize()
+        } else {
+            NotificationCenter.default.removeObserver(self,
+                                                      name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+                                                      object: nil)
         }
     }
 
