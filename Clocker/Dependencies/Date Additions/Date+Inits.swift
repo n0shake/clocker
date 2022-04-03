@@ -41,47 +41,4 @@ public extension Date {
         }
         self = date
     }
-
-    /**
-     *  Init date with components. Hour, minutes, and seconds set to zero.
-     *
-     *  - parameter year: Year component of new date
-     *  - parameter month: Month component of new date
-     *  - parameter day: Day component of new date
-     */
-    init(year: Int, month: Int, day: Int) {
-        self.init(year: year, month: month, day: day, hour: 0, minute: 0, second: 0)
-    }
-
-    /**
-     *  Init date from string, given a format string, according to Apple's date formatting guide, and time zone.
-     *
-     *  - parameter dateString: Date in the formatting given by the format parameter
-     *  - parameter format: Format style using Apple's date formatting guide
-     *  - parameter timeZone: Time zone of date
-     */
-    init(dateString: String, format: String, timeZone: TimeZone) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .none
-        dateFormatter.timeStyle = .none
-        dateFormatter.timeZone = timeZone
-        dateFormatter.dateFormat = format
-
-        guard let date = dateFormatter.date(from: dateString) else {
-            self = Date()
-            return
-        }
-        self = date
-    }
-
-    /**
-     *  Init date from string, given a format string, according to Apple's date formatting guide.
-     *  Time Zone automatically selected as the current time zone.
-     *
-     *  - parameter dateString: Date in the formatting given by the format parameter
-     *  - parameter format: Format style using Apple's date formatting guide
-     */
-    init(dateString: String, format: String) {
-        self.init(dateString: dateString, format: format, timeZone: TimeZone.autoupdatingCurrent)
-    }
 }

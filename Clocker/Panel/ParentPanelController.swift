@@ -172,12 +172,12 @@ class ParentPanelController: NSWindowController {
         setupObservers()
 
         updateReviewViewFontColor()
-        
+
         // Set the background color of the bottom buttons view to something different to indicate we're not in a release candidate
         #if DEBUG
-            stackView.arrangedSubviews.last?.layer?.backgroundColor = NSColor(deviceRed: 255.0/255.0,
-                                                                              green: 150.0/255.0,
-                                                                              blue: 122.0/255.0,
+            stackView.arrangedSubviews.last?.layer?.backgroundColor = NSColor(deviceRed: 255.0 / 255.0,
+                                                                              green: 150.0 / 255.0,
+                                                                              blue: 122.0 / 255.0,
                                                                               alpha: 0.5).cgColor
             stackView.arrangedSubviews.last?.toolTip = "Clocker is running in Debug Mode"
         #endif
@@ -195,9 +195,11 @@ class ParentPanelController: NSWindowController {
                                                selector: #selector(systemTimezoneDidChange),
                                                name: NSNotification.Name.NSSystemTimeZoneDidChange,
                                                object: nil)
-        NotificationCenter.default.addObserver(forName: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+
+        NotificationCenter.default.addObserver(forName: DataStore.didSyncFromExternalSourceNotification,
                                                object: self,
-                                               queue: OperationQueue.main) { [weak self] _ in
+                                               queue: OperationQueue.main)
+        { [weak self] _ in
             if let sSelf = self {
                 sSelf.mainTableView.reloadData()
                 sSelf.setScrollViewConstraint()
@@ -349,7 +351,7 @@ class ParentPanelController: NSWindowController {
 
         let styleAttributes = [
             NSAttributedString.Key.paragraphStyle: paragraphStyle,
-            NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13) ?? NSFont.systemFont(ofSize: 13)
+            NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13) ?? NSFont.systemFont(ofSize: 13),
         ]
 
         let leftButtonAttributedTitle = NSAttributedString(string: leftButton.title, attributes: styleAttributes)
@@ -425,7 +427,8 @@ class ParentPanelController: NSWindowController {
                 newHeight += 20
             } else if DataStore.shared().shouldDisplay(.dstTransitionInfo),
                       let obj = object,
-                      TimezoneDataOperations(with: obj).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) != nil {
+                      TimezoneDataOperations(with: obj).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) != nil
+            {
                 newHeight += 20
             }
         }
@@ -582,7 +585,7 @@ class ParentPanelController: NSWindowController {
         Logger.log(object: nil, for: "Deleted Timezone Through Swipe")
     }
 
-    private lazy var menubarTitleHandler = MenubarTitleProvider()
+    private lazy var menubarTitleHandler = MenubarTitleProvider(with: DataStore.shared())
 
     @objc func updateTime() {
         let store = DataStore.shared()
@@ -613,7 +616,8 @@ class ParentPanelController: NSWindowController {
 
             if $0 < mainTableView.numberOfRows,
                let cellView = mainTableView.view(atColumn: 0, row: $0, makeIfNecessary: false) as? TimezoneCellView,
-               let model = TimezoneData.customObject(from: current) {
+               let model = TimezoneData.customObject(from: current)
+            {
                 if let futureSliderCell = futureSlider.cell as? CustomSliderCell, futureSliderCell.tracking == true {
                     return
                 }
@@ -633,7 +637,8 @@ class ParentPanelController: NSWindowController {
                 if let note = model.note, !note.isEmpty {
                     cellView.noteLabel.stringValue = note
                 } else if DataStore.shared().shouldDisplay(.dstTransitionInfo),
-                          let value = TimezoneDataOperations(with: model).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) {
+                          let value = TimezoneDataOperations(with: model).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue)
+                {
                     cellView.noteLabel.stringValue = value
                 } else {
                     cellView.noteLabel.stringValue = CLEmptyString
@@ -733,7 +738,8 @@ class ParentPanelController: NSWindowController {
 
     @IBAction func calendarButtonAction(_ sender: NSButton) {
         if sender.title == NSLocalizedString("Click here to start.",
-                                             comment: "Button Title for no Calendar access") {
+                                             comment: "Button Title for no Calendar access")
+        {
             showPermissionsWindow()
         } else {
             retrieveCalendarEvents()
@@ -824,7 +830,8 @@ class ParentPanelController: NSWindowController {
         if let events = eventCenter.eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: now)], events.isEmpty == false {
             OperationQueue.main.addOperation {
                 if self.upcomingEventCollectionView != nil,
-                   let upcomingEvents = eventCenter.upcomingEventsForDay(events) {
+                   let upcomingEvents = eventCenter.upcomingEventsForDay(events)
+                {
                     self.upcomingEventsDataSource.updateEventsDataSource(upcomingEvents)
                     self.upcomingEventCollectionView.reloadData()
                     return
@@ -904,7 +911,7 @@ class ParentPanelController: NSWindowController {
 
         let styleAttributes = [
             NSAttributedString.Key.paragraphStyle: paragraphStyle,
-            NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!
+            NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!,
         ]
         leftButton.attributedTitle = NSAttributedString(string: "Not Really", attributes: styleAttributes)
         rightButton.attributedTitle = NSAttributedString(string: "Yes!", attributes: styleAttributes)
@@ -940,7 +947,7 @@ class ParentPanelController: NSWindowController {
 
         let styleAttributes = [
             NSAttributedString.Key.paragraphStyle: paragraphStyle,
-            NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!
+            NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!,
         ]
 
         if leftButton.attributedTitle.string == "Not Really" {
@@ -1124,7 +1131,8 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
 
         stride(from: 0, to: sortedByTime.count, by: 1).forEach {
             if $0 < sortedByTime.count,
-               let dataModel = TimezoneData.customObject(from: sortedByTime[$0]) {
+               let dataModel = TimezoneData.customObject(from: sortedByTime[$0])
+            {
                 let dataOperations = TimezoneDataOperations(with: dataModel)
                 let date = dataOperations.todaysDate(with: 0)
                 let time = dataOperations.time(with: 0)

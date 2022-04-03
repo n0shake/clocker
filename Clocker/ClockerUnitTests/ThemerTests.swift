@@ -38,22 +38,22 @@ class ThemerTests: XCTestCase {
         let expectedForwardsImage: String
         let expectedResetSliderImage: String
     }
-    
+
     @available(macOS 10.14, *)
     func testSettingTheme() {
         // Set to some random number should set to 0
         let subject = Themer(index: 124)
         XCTAssertEqual(NSAppearance(named: .aqua), NSAppearance(named: .aqua))
-        
+
         // Set the same theme; this should return early
         subject.set(theme: 0)
-        
+
         // Set the theme to dark theme
         subject.set(theme: 1)
         let expectedApperance = NSAppearance(named: .darkAqua)
         XCTAssertEqual(expectedApperance, NSApp.appearance)
     }
-    
+
     func testLightTheme() throws {
         let subject = Themer(index: 0) // 0 is for light theme
         let expectedThemeElements = ThemeExpectations(expectedSliderKnobColor: NSColor(deviceRed: 255.0, green: 255.0, blue: 255, alpha: 0.9),
@@ -85,7 +85,7 @@ class ThemerTests: XCTestCase {
                                                       expectedResetSliderImage: "xmark.circle.fill")
         testSubject(subject: subject, withExpectatations: expectedThemeElements)
     }
-    
+
     func testDarkTheme() throws {
         let subject = Themer(index: 1) // 1 is for dark theme
         let expectedThemeElements = ThemeExpectations(expectedSliderKnobColor: NSColor(deviceRed: 0.0, green: 0.0, blue: 0, alpha: 0.9),
@@ -119,10 +119,10 @@ class ThemerTests: XCTestCase {
         testSubject(subject: subject, withExpectatations: expectedThemeElements)
         XCTAssertEqual(subject.description, "Current Theme is \(Themer.Theme.dark)")
     }
-    
+
     func testSystemTheme() throws {
         let currentSystemTheme =
-        UserDefaults.standard.string(forKey: CLAppleInterfaceStyleKey)?.lowercased().contains("dark") ?? false ? Themer.Theme.dark : Themer.Theme.light
+            UserDefaults.standard.string(forKey: CLAppleInterfaceStyleKey)?.lowercased().contains("dark") ?? false ? Themer.Theme.dark : Themer.Theme.light
         let subject = Themer(index: 2) // 2 is for system theme
         let expectedSliderKnobColor = currentSystemTheme == .light ? NSColor(deviceRed: 255.0, green: 255.0, blue: 255, alpha: 0.9) : NSColor(deviceRed: 0.0, green: 0.0, blue: 0, alpha: 0.9)
         let expectedSliderRightColor = currentSystemTheme == .dark ? NSColor.white : NSColor.gray
@@ -160,7 +160,7 @@ class ThemerTests: XCTestCase {
         testSubject(subject: subject, withExpectatations: expectedThemeElements)
         XCTAssertEqual(subject.description, "System Theme is \(currentSystemTheme == .dark ? Themer.Theme.dark : Themer.Theme.light)")
     }
-    
+
     func testSolarizedLightTheme() throws {
         let subject = Themer(index: 3) // 3 is for solarized light theme
         let expectedThemeElements = ThemeExpectations(expectedSliderKnobColor: NSColor(deviceRed: 255.0, green: 255.0, blue: 255, alpha: 0.9),
@@ -193,7 +193,7 @@ class ThemerTests: XCTestCase {
                                                       expectedResetSliderImage: "xmark.circle.fill")
         testSubject(subject: subject, withExpectatations: expectedThemeElements)
     }
-    
+
     func testSolarizedDarkTheme() throws {
         let subject = Themer(index: 4) // 4 is for solarized dark theme
         let expectedThemeElements = ThemeExpectations(expectedSliderKnobColor: NSColor(deviceRed: 0.0, green: 0.0, blue: 0, alpha: 0.9),
@@ -226,7 +226,7 @@ class ThemerTests: XCTestCase {
                                                       expectedResetSliderImage: "xmark.circle.fill")
         testSubject(subject: subject, withExpectatations: expectedThemeElements)
     }
-    
+
     private func testSubject(subject: Themer, withExpectatations expectations: ThemeExpectations) {
         XCTAssertEqual(subject.sliderKnobColor(), expectations.expectedSliderKnobColor)
         XCTAssertEqual(subject.sliderRightColor(), expectations.expectedSliderRightColor)

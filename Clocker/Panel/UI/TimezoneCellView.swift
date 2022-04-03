@@ -199,7 +199,7 @@ class TimezoneCellView: NSTableCellView {
     }
 
     override func mouseDown(with event: NSEvent) {
-        if (event.clickCount == 1) {
+        if event.clickCount == 1 {
             // Text is copied in the following format: Chicago - 1625185925
             let clipboardCopy = "\(customName.stringValue) - \(time.stringValue)"
             let pasteboard = NSPasteboard.general
@@ -209,8 +209,8 @@ class TimezoneCellView: NSTableCellView {
             window?.contentView?.makeToast("Copied to Clipboard".localized())
 
             window?.endEditing(for: nil)
-        } else if (event.clickCount == 2) {
-            //TODO: Favourite this timezone
+        } else if event.clickCount == 2 {
+            // TODO: Favourite this timezone
         }
     }
 

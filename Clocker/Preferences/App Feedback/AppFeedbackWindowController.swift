@@ -80,7 +80,8 @@ class AppFeedbackWindowController: NSWindowController {
 
         themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification,
                                                                             object: nil,
-                                                                            queue: OperationQueue.main) { _ in
+                                                                            queue: OperationQueue.main)
+        { _ in
             self.window?.backgroundColor = Themer.shared().mainBackgroundColor()
             self.setup()
         }
@@ -201,7 +202,7 @@ class AppFeedbackWindowController: NSWindowController {
             AppFeedbackConstants.CLOperatingSystemVersion: osVersion,
             AppFeedbackConstants.CLClockerVersion: versionInfo,
             AppFeedbackConstants.CLAppFeedbackDateProperty: todaysDate(),
-            AppFeedbackConstants.CLAppFeedbackUserPreferences: generateUserPreferences()
+            AppFeedbackConstants.CLAppFeedbackUserPreferences: generateUserPreferences(),
         ]
     }
 

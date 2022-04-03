@@ -135,7 +135,8 @@ class OnboardingSearchController: NSViewController {
 
     private func setupLabelHidingTimer() {
         Timer.scheduledTimer(withTimeInterval: 5,
-                             repeats: false) { _ in
+                             repeats: false)
+        { _ in
             OperationQueue.main.addOperation {
                 self.setInfoLabel(CLEmptyString)
             }
@@ -227,7 +228,7 @@ class OnboardingSearchController: NSViewController {
                             "latitude": latitude,
                             "longitude": longitude,
                             "nextUpdate": CLEmptyString,
-                            CLCustomLabel: filteredAddress
+                            CLCustomLabel: filteredAddress,
                         ] as [String: Any]
 
                         DataStore.shared().addTimezone(TimezoneData(with: newTimeZone))
@@ -413,7 +414,7 @@ class OnboardingSearchController: NSViewController {
                 CLTimezoneName: formattedAddress,
                 CLCustomLabel: formattedAddress,
                 CLTimezoneID: CLEmptyString,
-                CLPlaceIdentifier: result.placeId
+                CLPlaceIdentifier: result.placeId,
             ] as [String: Any]
 
             return TimezoneData(with: totalPackage)

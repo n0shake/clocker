@@ -31,10 +31,12 @@ func compactWidth(for timezone: TimezoneData) -> Int {
     if timeFormat == DateFormat.twelveHour
         || timeFormat == DateFormat.twelveHourWithSeconds
         || timeFormat == DateFormat.twelveHourWithZero
-        || timeFormat == DateFormat.twelveHourWithSeconds {
+        || timeFormat == DateFormat.twelveHourWithSeconds
+    {
         totalWidth += 20
     } else if timeFormat == DateFormat.twentyFourHour
-        || timeFormat == DateFormat.twentyFourHourWithSeconds {
+        || timeFormat == DateFormat.twentyFourHourWithSeconds
+    {
         totalWidth += 0
     }
 
@@ -75,7 +77,7 @@ class StatusContainerView: NSView {
         let timeBasedAttributes = [
             NSAttributedString.Key.font: compactModeTimeFont,
             NSAttributedString.Key.backgroundColor: NSColor.clear,
-            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle
+            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
         ]
 
         func containerWidth(for timezones: [Data]) -> CGFloat {
@@ -134,7 +136,7 @@ class StatusContainerView: NSView {
             NSAttributedString.Key.font: compactModeTimeFont,
             NSAttributedString.Key.foregroundColor: textColor,
             NSAttributedString.Key.backgroundColor: NSColor.clear,
-            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle
+            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
         ]
 
         let operation = TimezoneDataOperations(with: timezone)

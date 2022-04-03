@@ -5,27 +5,24 @@ import CoreLoggerKit
 import EventKit
 
 class ClockerTextBackgroundView: NSView {
-    private var themeDidChangeNotification: NSObjectProtocol?
 
     override func awakeFromNib() {
         wantsLayer = true
         layer?.cornerRadius = 8.0
         layer?.masksToBounds = false
-        layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
 
-        themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { _ in
-            self.layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
-        }
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateBackgroundColor),
+                                               name: .themeDidChangeNotification,
+                                               object: nil)
     }
-
-    deinit {
-        if let themeDidChangeNotif = themeDidChangeNotification {
-            NotificationCenter.default.removeObserver(themeDidChangeNotif)
-        }
-    }
-
+    
     override func updateLayer() {
         super.updateLayer()
+        layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
+    }
+    
+    @objc func updateBackgroundColor() {
         layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
     }
 }
@@ -113,7 +110,7 @@ class CalendarViewController: ParentViewController {
         let attributesDictionary: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.paragraphStyle: style,
             NSAttributedString.Key.font: boldFont,
-            NSAttributedString.Key.foregroundColor: Themer.shared().mainTextColor()
+            NSAttributedString.Key.foregroundColor: Themer.shared().mainTextColor(),
         ]
         let attributedString = NSAttributedString(string: title,
                                                   attributes: attributesDictionary)
@@ -242,13 +239,15 @@ extension CalendarViewController: NSTableViewDelegate {
 
     func tableView(_ tableView: NSTableView, viewFor _: NSTableColumn?, row: Int) -> NSView? {
         if let currentSource = calendars[row] as? String,
-           let message = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "sourceCellView"), owner: self) as? SourceTableViewCell {
+           let message = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "sourceCellView"), owner: self) as? SourceTableViewCell
+        {
             message.sourceName.stringValue = currentSource
             return message
         }
 
         if let currentSource = calendars[row] as? CalendarInfo,
-           let calendarCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "calendarCellView"), owner: self) as? CalendarTableViewCell {
+           let calendarCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "calendarCellView"), owner: self) as? CalendarTableViewCell
+        {
             calendarCell.calendarName.stringValue = currentSource.calendar.title
             calendarCell.calendarSelected.state = currentSource.selected ? NSControl.StateValue.on : NSControl.StateValue.off
             calendarCell.calendarSelected.target = self
