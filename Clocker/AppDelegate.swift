@@ -160,12 +160,6 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    private func showAppAlreadyOpenMessage() {
-        showAlert(message: "An instance of Clocker is already open 😅",
-                  informativeText: "This instance of Clocker will terminate now.",
-                  buttonTitle: "Close")
-    }
-
     private func showAlert(message: String, informativeText: String, buttonTitle: String) {
         NSApplication.shared.activate(ignoringOtherApps: true)
         let alert = NSAlert()
