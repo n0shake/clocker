@@ -8,7 +8,7 @@ import FirebaseCrashlytics
 
 open class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var floatingWindow = FloatingWindowController.shared()
-    private lazy var panelController = PanelController.shared()
+    internal lazy var panelController = PanelController(windowNibName: .panel)
     private var statusBarHandler: StatusItemHandler!
     private var panelObserver: NSKeyValueObservation?
 
@@ -84,7 +84,6 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
             let floatingWindow = FloatingWindowController.shared()
             floatingWindow.openPreferences(NSButton())
         } else {
-            let panelController = PanelController.shared()
             panelController.openPreferences(NSButton())
         }
     }
@@ -159,12 +158,6 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
                 app.terminate()
             }
         }
-    }
-
-    private func showAppAlreadyOpenMessage() {
-        showAlert(message: "An instance of Clocker is already open 😅",
-                  informativeText: "This instance of Clocker will terminate now.",
-                  buttonTitle: "Close")
     }
 
     private func showAlert(message: String, informativeText: String, buttonTitle: String) {
@@ -261,7 +254,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     open func invalidateMenubarTimer(_ showIcon: Bool) {
         statusBarHandler.invalidateTimer(showIcon: showIcon, isSyncing: true)
     }
-    
+
     private func setupPanelObserverIfNeeeded() {
         if panelObserver == nil {
             panelObserver = panelController.observe(\.hasActivePanel, options: [.new]) { obj, _ in

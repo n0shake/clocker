@@ -18,7 +18,7 @@ func bufferCalculatedWidth() -> Int {
     if DataStore.shared().shouldShowDateInMenubar() {
         totalWidth += 20
     }
-    
+
     if DataStore.shared().shouldDisplay(.showMeetingInMenubar) {
         totalWidth += 100
     }
@@ -37,10 +37,12 @@ func compactWidth(for timezone: TimezoneData) -> Int {
     if timeFormat == DateFormat.twelveHour
         || timeFormat == DateFormat.twelveHourWithSeconds
         || timeFormat == DateFormat.twelveHourWithZero
-        || timeFormat == DateFormat.twelveHourWithSeconds {
+        || timeFormat == DateFormat.twelveHourWithSeconds
+    {
         totalWidth += 20
     } else if timeFormat == DateFormat.twentyFourHour
-        || timeFormat == DateFormat.twentyFourHourWithSeconds {
+        || timeFormat == DateFormat.twentyFourHourWithSeconds
+    {
         totalWidth += 0
     }
 
@@ -81,7 +83,8 @@ class StatusContainerView: NSView {
             if showUpcomingEventView,
                let events = EventCenter.sharedCenter().eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: Date())],
                events.isEmpty == false,
-               let upcomingEvent = EventCenter.sharedCenter().nextOccuring(events) {
+               let upcomingEvent = EventCenter.sharedCenter().nextOccuring(events)
+            {
                 let calculatedWidth = bestWidth(for: upcomingEvent)
                 let frame = NSRect(x: previousX, y: 0, width: calculatedWidth, height: 30)
                 let calendarItemView = UpcomingEventStatusItemView(frame: frame)
@@ -100,7 +103,7 @@ class StatusContainerView: NSView {
         let timeBasedAttributes = [
             NSAttributedString.Key.font: compactModeTimeFont,
             NSAttributedString.Key.backgroundColor: NSColor.clear,
-            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle
+            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
         ]
 
         func containerWidth(for timezones: [Data]) -> CGFloat {
@@ -163,7 +166,7 @@ class StatusContainerView: NSView {
             NSAttributedString.Key.font: compactModeTimeFont,
             NSAttributedString.Key.foregroundColor: textColor,
             NSAttributedString.Key.backgroundColor: NSColor.clear,
-            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle
+            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
         ]
 
         let operation = TimezoneDataOperations(with: timezone)
@@ -173,7 +176,7 @@ class StatusContainerView: NSView {
 
         return Int(max(bestSize.width, bestTitleSize.width) + bufferWidth)
     }
-    
+
     private func bestWidth(for eventInfo: EventInfo) -> Int {
         var textColor = hasDarkAppearance ? NSColor.white : NSColor.black
 
@@ -185,7 +188,7 @@ class StatusContainerView: NSView {
             NSAttributedString.Key.font: compactModeTimeFont,
             NSAttributedString.Key.foregroundColor: textColor,
             NSAttributedString.Key.backgroundColor: NSColor.clear,
-            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle
+            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
         ]
 
         let bestSize = compactModeTimeFont.size(eventInfo.metadataForMeeting(),
@@ -202,7 +205,7 @@ class StatusContainerView: NSView {
         if subviews.isEmpty {
             assertionFailure("Subviews count should > 0")
         }
-        
+
         for view in subviews {
             if let conformingView = view as? StatusItemViewConforming {
                 conformingView.statusItemViewSetNeedsDisplay()
@@ -236,6 +239,7 @@ class StatusContainerView: NSView {
             // NSView move animation
             NSAnimationContext.runAnimationGroup({ context in
                 context.duration = 0.2
+                context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
                 let newFrame = CGRect(x: frame.origin.x, y: frame.origin.y, width: newWidth, height: frame.size.height)
                 // The view will animate to the new origin
                 self.animator().frame = newFrame

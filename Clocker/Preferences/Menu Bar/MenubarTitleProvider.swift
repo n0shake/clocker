@@ -6,17 +6,24 @@ import CoreModelKit
 import EventKit
 
 class MenubarTitleProvider: NSObject {
+    private let store: DataStore
+
+    init(with dataStore: DataStore) {
+        store = dataStore
+        super.init()
+    }
+
     func titleForMenubar() -> String? {
         if let nextEvent = checkForUpcomingEvents() {
             return nextEvent
         }
 
-        guard let menubarTitles = DataStore.shared().menubarTimezones() else {
+        guard let menubarTitles = store.menubarTimezones() else {
             return nil
         }
 
         // If the menubar is in compact mode, we don't need any of the below calculations; exit early
-        if DataStore.shared().shouldDisplay(.menubarCompactMode) {
+        if store.shouldDisplay(.menubarCompactMode) {
             return nil
         }
 
@@ -35,7 +42,7 @@ class MenubarTitleProvider: NSObject {
     }
 
     func checkForUpcomingEvents() -> String? {
-        if DataStore.shared().shouldDisplay(.showMeetingInMenubar) {
+        if store.shouldDisplay(.showMeetingInMenubar) {
             let filteredDates = EventCenter.sharedCenter().eventsForDate
             let autoupdatingCal = EventCenter.sharedCenter().autoupdatingCalendar
             guard let events = filteredDates[autoupdatingCal.startOfDay(for: Date())] else {

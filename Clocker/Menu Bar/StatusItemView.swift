@@ -49,7 +49,7 @@ class StatusItemView: NSView {
             NSAttributedString.Key.font: compactModeTimeFont,
             NSAttributedString.Key.foregroundColor: textColor,
             NSAttributedString.Key.backgroundColor: NSColor.clear,
-            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle
+            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
         ]
         return attributes
     }
@@ -61,7 +61,7 @@ class StatusItemView: NSView {
             NSAttributedString.Key.font: NSFont.boldSystemFont(ofSize: 10),
             NSAttributedString.Key.foregroundColor: textColor,
             NSAttributedString.Key.backgroundColor: NSColor.clear,
-            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle
+            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
         ]
         return textFontAttributes
     }
@@ -90,14 +90,14 @@ class StatusItemView: NSView {
             locationView.leadingAnchor.constraint(equalTo: leadingAnchor),
             locationView.trailingAnchor.constraint(equalTo: trailingAnchor),
             locationView.topAnchor.constraint(equalTo: topAnchor, constant: 7),
-            locationView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.35)
+            locationView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.35),
         ])
 
         NSLayoutConstraint.activate([
             timeView.leadingAnchor.constraint(equalTo: leadingAnchor),
             timeView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             timeView.topAnchor.constraint(equalTo: locationView.bottomAnchor),
-            timeView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            timeView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
 

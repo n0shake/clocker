@@ -40,7 +40,8 @@ class UpcomingEventViewItem: NSCollectionViewItem {
                _ color: NSColor,
                _ link: URL?,
                _ delegate: UpcomingEventPanelDelegate?,
-               _ isCancelled: Bool) {
+               _ isCancelled: Bool)
+    {
         if leadingConstraint.constant != UpcomingEventViewItem.EventLeadingConstraint / 2 {
             leadingConstraint.animator().constant = UpcomingEventViewItem.EventLeadingConstraint / 2
         }
@@ -89,7 +90,7 @@ class UpcomingEventViewItem: NSCollectionViewItem {
     func setupEmptyState() {
         let subtitle = NSCalendar.autoupdatingCurrent.isDateInWeekend(Date()) ? NSLocalizedString("Happy Weekend.", comment: "Button Title for no upcoming event") : NSLocalizedString("Great going.", comment: "Button Title for no upcoming event")
 
-        setAlternateState(NSLocalizedString("No upcoming events for today 🎉!", comment: "Next Event Label with no upcoming event"),
+        setAlternateState(NSLocalizedString("No upcoming events for today!", comment: "Next Event Label with no upcoming event"),
                           subtitle,
                           NSColor.systemGreen,
                           nil)

@@ -173,7 +173,7 @@ class ClockerUnitTests: XCTestCase {
         XCTAssertTrue(operations.timeDifference() == ", 9h 30m ahead", "Difference was unexpectedly: \(operations.timeDifference())")
         XCTAssertTrue(californiaOperations.timeDifference() == ", 3h behind", "Difference was unexpectedly: \(californiaOperations.timeDifference())")
         XCTAssertTrue(floridaOperations.timeDifference() == "", "Difference was unexpectedly: \(floridaOperations.timeDifference())")
-        XCTAssertTrue(aucklandOperations.timeDifference() == ", 17h ahead", "Difference was unexpectedly: \(aucklandOperations.timeDifference())")
+        XCTAssertTrue(aucklandOperations.timeDifference() == ", 16h ahead", "Difference was unexpectedly: \(aucklandOperations.timeDifference())")
         XCTAssertTrue(omahaOperations.timeDifference() == ", an hour behind", "Difference was unexpectedly: \(omahaOperations.timeDifference())")
     }
 
@@ -392,30 +392,28 @@ class ClockerUnitTests: XCTestCase {
             XCTAssertNotNil(convertedDate)
         }
     }
-    
+
     func testStringFiltering() {
         let stringWithComma = "Mumbai, Maharashtra"
         let stringWithoutComma = "Mumbai"
         let emptyString = ""
-        
+
         XCTAssertEqual(stringWithComma.filteredName(), "Mumbai")
         XCTAssertEqual(stringWithoutComma.filteredName(), "Mumbai")
         XCTAssertEqual(emptyString.filteredName(), "")
-        
     }
-    
+
     func testToasty() {
         let view = NSView(frame: CGRect.zero)
         view.makeToast("Hello, this is a toast")
-        XCTAssertEqual(view.subviews.first?.accessibilityIdentifier(), "ToastView")
-        
+        XCTAssertEqual(view.subviews.first?.accessibilityIdentifier(), "ToastView") 
         let toastExpectation = expectation(description: "Toast View should hide after 1 second")
         let result = XCTWaiter.wait(for: [toastExpectation], timeout: 1.5) // Set 1.5 seconds here for a little leeway
         if result == XCTWaiter.Result.timedOut {
             XCTAssertTrue(view.subviews.isEmpty)
-         }
+        }
     }
-    
+
     func testPointingHandButton() {
         let sampleRect = CGRect(x: 0, y: 0, width: 200, height: 200)
         let pointingHandCursorButton = PointingHandCursorButton(frame: CGRect.zero)
@@ -423,7 +421,7 @@ class ClockerUnitTests: XCTestCase {
         pointingHandCursorButton.resetCursorRects()
         XCTAssertEqual(pointingHandCursorButton.pointingHandCursor, NSCursor.pointingHand)
     }
-    
+
     func testNoTimezoneView() {
         let sampleRect = CGRect(x: 0, y: 0, width: 200, height: 200)
         let subject = NoTimezoneView(frame: sampleRect)

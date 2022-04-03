@@ -161,6 +161,9 @@
 "Daylights Saving transition will occur in < 24 hours" = "Daylights Saving transition will occur in < 24 hours";
 
 "Copied to Clipboard" = "Copied to Clipboard";
-"No upcoming events for today!" = "No upcoming events for today!";
+"No upcoming events for today!" = "No upcoming events for today 🎉";
 "Great going." = "Great going.";
 "Happy Weekend." = "Happy Weekend.";
+
+// iCloud
+"Enable iCloud Sync" = "Enable iCloud Sync";

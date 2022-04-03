@@ -102,27 +102,27 @@ class SearchDataSource: NSObject {
         timezoneArray.append(utcTimezone)
 
         for identifier in TimeZone.knownTimeZoneIdentifiers {
-            guard let timezoneObject = TimeZone(identifier: identifier) else {
-                continue
-            }
-            let abbreviation = timezoneObject.abbreviation() ?? "Empty"
-            let identifier = timezoneObject.identifier
-            var tags: Set<String> = [abbreviation.lowercased(), identifier.lowercased()]
-            var extraTags: [String] = []
-            if let tagsPresent = timezoneMetadataDictionary[abbreviation] {
-                extraTags = tagsPresent
-            }
+            if let timezoneObject = TimeZone(identifier: identifier) {
+                // Force-cast explicity since we get the identifier from `knownTimeZoneIdentifiers`
+                let abbreviation = timezoneObject.abbreviation()!
+                let identifier = timezoneObject.identifier
+                var tags: Set<String> = [abbreviation.lowercased(), identifier.lowercased()]
+                var extraTags: [String] = []
+                if let tagsPresent = timezoneMetadataDictionary[abbreviation] {
+                    extraTags = tagsPresent
+                }
 
-            extraTags.forEach { tag in
-                tags.insert(tag)
-            }
+                extraTags.forEach { tag in
+                    tags.insert(tag)
+                }
 
-            let timezoneIdentifier = NSTimeZone(name: identifier)!
-            let timezoneMetadata = TimezoneMetadata(timezone: timezoneIdentifier,
-                                                    tags: tags,
-                                                    formattedName: identifier,
-                                                    abbreviation: abbreviation)
-            timezoneArray.append(timezoneMetadata)
+                let timezoneIdentifier = NSTimeZone(name: identifier)!
+                let timezoneMetadata = TimezoneMetadata(timezone: timezoneIdentifier,
+                                                        tags: tags,
+                                                        formattedName: identifier,
+                                                        abbreviation: abbreviation)
+                timezoneArray.append(timezoneMetadata)
+            }
         }
     }
 
@@ -157,7 +157,7 @@ class SearchDataSource: NSObject {
 
         timezoneFilteredArray = timezoneArray.filter { timezoneMetadata -> Bool in
             let tags = timezoneMetadata.tags
-            for tag in tags where tag.contains(searchString) {
+            for tag in tags where tag.contains(searchString.lowercased()) {
                 return true
             }
             return false

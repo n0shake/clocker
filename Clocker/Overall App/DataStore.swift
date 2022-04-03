@@ -18,12 +18,13 @@ enum ViewType {
     case dayInMenubar
     case menubarCompactMode
     case dstTransitionInfo
+    case sync
 }
 
 class DataStore: NSObject {
     private static var sharedStore = DataStore(with: UserDefaults.standard)
     private var userDefaults: UserDefaults!
-    private var ubiquitousStore: NSUbiquitousKeyValueStore!
+    private var ubiquitousStore: NSUbiquitousKeyValueStore?
 
     // Since these pref can accessed every second, let's cache this
     private var shouldDisplayDayInMenubar: Bool = false
@@ -41,9 +42,39 @@ class DataStore: NSObject {
     init(with defaults: UserDefaults) {
         super.init()
         userDefaults = defaults
-        ubiquitousStore = NSUbiquitousKeyValueStore.default
         shouldDisplayDayInMenubar = shouldDisplay(.dayInMenubar)
         shouldDisplayDateInMenubar = shouldDisplay(.dateInMenubar)
+        setupSyncNotification()
+    }
+
+    func setupSyncNotification() {
+        if shouldDisplay(.sync) {
+            ubiquitousStore = NSUbiquitousKeyValueStore.default
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(ubiquitousKeyValueStoreChanged),
+                                                   name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+                                                   object: NSUbiquitousKeyValueStore.default)
+            ubiquitousStore?.synchronize()
+        } else {
+            NotificationCenter.default.removeObserver(self,
+                                                      name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+                                                      object: nil)
+        }
+    }
+
+    @objc func ubiquitousKeyValueStoreChanged(_ notification: Notification) {
+        let userInfo = notification.userInfo ?? [:]
+        let ubiquitousStore = notification.object as? NSUbiquitousKeyValueStore
+        print("--- User Info is \(userInfo)")
+        let currentTimezones = userDefaults.object(forKey: CLDefaultPreferenceKey) as? [Data]
+        let cloudTimezones = ubiquitousStore?.object(forKey: CLDefaultPreferenceKey) as? [Data]
+
+        if cloudTimezones != currentTimezones {
+            Logger.info("Syncing local timezones with data from the ☁️")
+            userDefaults.set(cloudTimezones, forKey: CLDefaultPreferenceKey)
+            NotificationCenter.default.post(name: DataStore.didSyncFromExternalSourceNotification,
+                                            object: self)
+        }
     }
 
     func timezones() -> [Data] {
@@ -57,7 +88,7 @@ class DataStore: NSObject {
     func setTimezones(_ timezones: [Data]?) {
         userDefaults.set(timezones, forKey: CLDefaultPreferenceKey)
         // iCloud sync
-        ubiquitousStore.set(timezones, forKey: CLDefaultPreferenceKey)
+        ubiquitousStore?.set(timezones, forKey: CLDefaultPreferenceKey)
     }
 
     func menubarTimezones() -> [Data]? {
@@ -158,6 +189,8 @@ class DataStore: NSObject {
             }
 
             return value == 0
+        case .sync:
+            return shouldDisplayHelper(CLEnableSyncKey)
         }
     }
 
@@ -169,4 +202,8 @@ class DataStore: NSObject {
         }
         return value.isEqual(to: NSNumber(value: 0))
     }
+}
+
+extension DataStore {
+    public static let didSyncFromExternalSourceNotification: NSNotification.Name = .init("didSyncFromExternalSourceNotification")
 }

@@ -16,6 +16,8 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet var includePlaceNameControl: NSSegmentedControl!
     @IBOutlet var appearanceTab: NSTabView!
     @IBOutlet var appDisplayControl: NSSegmentedControl!
+    @IBOutlet var syncLabel: NSTextField!
+    @IBOutlet var syncSegementedControl: NSSegmentedControl!
 
     private var themeDidChangeNotification: NSObjectProtocol?
 
@@ -60,7 +62,7 @@ class AppearanceViewController: ParentViewController {
             "4 days",
             "5 days",
             "6 days",
-            "7 days"
+            "7 days",
         ])
 
         if #available(macOS 11.0, *) {} else {
@@ -134,6 +136,10 @@ class AppearanceViewController: ParentViewController {
         // True is Menubar Only and False is Menubar + Dock
         let appDisplayOptions = DataStore.shared().shouldDisplay(.appDisplayOptions)
         appDisplayControl.setSelected(true, forSegment: appDisplayOptions ? 0 : 1)
+        
+        // Set the Sync value from NSUbiqutousKeyValueStore
+        let syncEnabled = NSUbiquitousKeyValueStore.default.bool(forKey: CLEnableSyncKey)
+        syncSegementedControl.setSelected(true, forSegment: syncEnabled ? 0 : 1)
     }
 
     @IBOutlet var timeFormatLabel: NSTextField!
@@ -150,7 +156,6 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet var menubarModeLabel: NSTextField!
     @IBOutlet var previewLabel: NSTextField!
     @IBOutlet var miscelleaneousLabel: NSTextField!
-    @IBOutlet var dstTransitionField: NSTextField!
 
     // Panel Preview
     @IBOutlet var previewPanelTableView: NSTableView!
@@ -162,6 +167,7 @@ class AppearanceViewController: ParentViewController {
         showSliderLabel.stringValue = "Time Scroller".localized()
         showSunriseLabel.stringValue = "Show Sunrise/Sunset".localized()
         largerTextLabel.stringValue = "Larger Text".localized()
+        syncLabel.stringValue = "Enable iCloud Sync".localized()
         futureSliderRangeLabel.stringValue = "Future Slider Range".localized()
         includeDateLabel.stringValue = "Include Date".localized()
         includeDayLabel.stringValue = "Include Day".localized()
@@ -172,9 +178,9 @@ class AppearanceViewController: ParentViewController {
 
         [timeFormatLabel, panelTheme,
          dayDisplayOptionsLabel, showSliderLabel,
-         showSunriseLabel, largerTextLabel, futureSliderRangeLabel,
+         showSunriseLabel, largerTextLabel, syncLabel, futureSliderRangeLabel,
          includeDayLabel, includeDateLabel, includePlaceLabel, appDisplayLabel, menubarModeLabel,
-         previewLabel, miscelleaneousLabel, dstTransitionField].forEach {
+         previewLabel, miscelleaneousLabel].forEach {
             $0?.textColor = Themer.shared().mainTextColor()
         }
 
@@ -188,7 +194,8 @@ class AppearanceViewController: ParentViewController {
         refresh(panel: true, floating: true)
 
         if let selectedFormat = sender.selectedItem?.title,
-           selectedFormat.contains("ss") {
+           selectedFormat.contains("ss")
+        {
             Logger.info("Selected format contains timezone format")
             guard let panelController = PanelController.panel() else { return }
             panelController.pauseTimer()
@@ -352,8 +359,9 @@ class AppearanceViewController: ParentViewController {
         previewPanelTableView.reloadData()
     }
 
-    @IBAction func toggleDSTTransitionOption(_: Any) {
-        previewPanelTableView.reloadData()
+    @IBAction func toggleSync(_ sender: NSSegmentedControl) {
+        NSUbiquitousKeyValueStore.default.set(sender.selectedSegment == 0, forKey: CLEnableSyncKey)
+        DataStore.shared().setupSyncNotification()
     }
 }
 
