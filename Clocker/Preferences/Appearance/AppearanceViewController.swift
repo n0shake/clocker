@@ -17,6 +17,7 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet var appearanceTab: NSTabView!
     @IBOutlet var appDisplayControl: NSSegmentedControl!
     @IBOutlet var syncLabel: NSTextField!
+    @IBOutlet var syncSegementedControl: NSSegmentedControl!
 
     private var themeDidChangeNotification: NSObjectProtocol?
 
@@ -135,6 +136,10 @@ class AppearanceViewController: ParentViewController {
         // True is Menubar Only and False is Menubar + Dock
         let appDisplayOptions = DataStore.shared().shouldDisplay(.appDisplayOptions)
         appDisplayControl.setSelected(true, forSegment: appDisplayOptions ? 0 : 1)
+        
+        // Set the Sync value from NSUbiqutousKeyValueStore
+        let syncEnabled = NSUbiquitousKeyValueStore.default.bool(forKey: CLEnableSyncKey)
+        syncSegementedControl.setSelected(true, forSegment: syncEnabled ? 0 : 1)
     }
 
     @IBOutlet var timeFormatLabel: NSTextField!
@@ -151,7 +156,6 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet var menubarModeLabel: NSTextField!
     @IBOutlet var previewLabel: NSTextField!
     @IBOutlet var miscelleaneousLabel: NSTextField!
-    @IBOutlet var dstTransitionField: NSTextField!
 
     // Panel Preview
     @IBOutlet var previewPanelTableView: NSTableView!
@@ -176,7 +180,7 @@ class AppearanceViewController: ParentViewController {
          dayDisplayOptionsLabel, showSliderLabel,
          showSunriseLabel, largerTextLabel, syncLabel, futureSliderRangeLabel,
          includeDayLabel, includeDateLabel, includePlaceLabel, appDisplayLabel, menubarModeLabel,
-         previewLabel, miscelleaneousLabel, dstTransitionField].forEach {
+         previewLabel, miscelleaneousLabel].forEach {
             $0?.textColor = Themer.shared().mainTextColor()
         }
 
@@ -355,11 +359,8 @@ class AppearanceViewController: ParentViewController {
         previewPanelTableView.reloadData()
     }
 
-    @IBAction func toggleDSTTransitionOption(_: Any) {
-        previewPanelTableView.reloadData()
-    }
-
-    @IBAction func toggleSync(_: NSSegmentedControl) {
+    @IBAction func toggleSync(_ sender: NSSegmentedControl) {
+        NSUbiquitousKeyValueStore.default.set(sender.selectedSegment == 0, forKey: CLEnableSyncKey)
         DataStore.shared().setupSyncNotification()
     }
 }
