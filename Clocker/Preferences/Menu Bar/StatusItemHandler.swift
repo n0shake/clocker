@@ -247,9 +247,8 @@ class StatusItemHandler: NSObject {
             if upcomingEventView == nil {
                 constructCompactView(with: true)
             }
-        } else {
-            let upcomingEventView = retrieveUpcomingEventStatusView()
-            upcomingEventView?.removeFromSuperview()
+        } else if let upcomingEventView = retrieveUpcomingEventStatusView() {
+            upcomingEventView.removeFromSuperview()
             constructCompactView() // So that Status Container View reclaims the space
         }
         // This will internally call `statusItemViewSetNeedsDisplay` on all subviews ensuring all text in the menubar is up-to-date.

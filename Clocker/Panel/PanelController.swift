@@ -74,6 +74,8 @@ class PanelController: ParentPanelController {
         super.dismissRowActions()
 
         updateDefaultPreferences()
+        
+        setupUpcomingEventViewCollectionViewIfNeccesary()
 
         if DataStore.shared().timezones().isEmpty || DataStore.shared().shouldDisplay(.futureSlider) == false {
             futureSliderView.isHidden = true
@@ -303,6 +305,9 @@ class PanelController: ParentPanelController {
         window?.orderOut(nil)
 
         datasource = nil
+        upcomingEventsDataSource = nil
+        parentTimer?.pause()
+        parentTimer = nil
     }
 
     func setActivePanel(newValue: Bool) {
