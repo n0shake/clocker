@@ -196,15 +196,13 @@ class ParentPanelController: NSWindowController {
                                                name: NSNotification.Name.NSSystemTimeZoneDidChange,
                                                object: nil)
 
-        if DataStore.shared().shouldDisplay(.sync) {
-            NotificationCenter.default.addObserver(forName: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
-                                                   object: self,
-                                                   queue: OperationQueue.main)
-            { [weak self] _ in
-                if let sSelf = self {
-                    sSelf.mainTableView.reloadData()
-                    sSelf.setScrollViewConstraint()
-                }
+        NotificationCenter.default.addObserver(forName: DataStore.didSyncFromExternalSourceNotification,
+                                               object: self,
+                                               queue: OperationQueue.main)
+        { [weak self] _ in
+            if let sSelf = self {
+                sSelf.mainTableView.reloadData()
+                sSelf.setScrollViewConstraint()
             }
         }
 

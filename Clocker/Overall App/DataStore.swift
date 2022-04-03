@@ -46,8 +46,8 @@ class DataStore: NSObject {
         shouldDisplayDateInMenubar = shouldDisplay(.dateInMenubar)
         setupSyncNotification()
     }
-    
-     func setupSyncNotification() {
+
+    func setupSyncNotification() {
         if shouldDisplay(.sync) {
             ubiquitousStore = NSUbiquitousKeyValueStore.default
             NotificationCenter.default.addObserver(self,
@@ -72,6 +72,8 @@ class DataStore: NSObject {
         if cloudTimezones != currentTimezones {
             Logger.info("Syncing local timezones with data from the ☁️")
             userDefaults.set(cloudTimezones, forKey: CLDefaultPreferenceKey)
+            NotificationCenter.default.post(name: DataStore.didSyncFromExternalSourceNotification,
+                                            object: self)
         }
     }
 
@@ -200,4 +202,8 @@ class DataStore: NSObject {
         }
         return value.isEqual(to: NSNumber(value: 0))
     }
+}
+
+extension DataStore {
+    public static let didSyncFromExternalSourceNotification: NSNotification.Name = .init("didSyncFromExternalSourceNotification")
 }
