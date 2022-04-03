@@ -6,16 +6,10 @@ import CoreLoggerKit
 class PanelController: ParentPanelController {
     @objc dynamic var hasActivePanel: Bool = false
 
-    static var sharedWindow = PanelController(windowNibName: .panel)
-
     @IBOutlet var backgroundView: BackgroundPanelView!
 
     override func windowDidLoad() {
         super.windowDidLoad()
-    }
-
-    class func shared() -> PanelController {
-        return sharedWindow
     }
 
     override func awakeFromNib() {

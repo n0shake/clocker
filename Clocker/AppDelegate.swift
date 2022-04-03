@@ -8,7 +8,7 @@ import FirebaseCrashlytics
 
 open class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var floatingWindow = FloatingWindowController.shared()
-    private lazy var panelController = PanelController.shared()
+    internal lazy var panelController = PanelController(windowNibName: .panel)
     private var statusBarHandler: StatusItemHandler!
     private var panelObserver: NSKeyValueObservation?
 
@@ -84,7 +84,6 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
             let floatingWindow = FloatingWindowController.shared()
             floatingWindow.openPreferences(NSButton())
         } else {
-            let panelController = PanelController.shared()
             panelController.openPreferences(NSButton())
         }
     }

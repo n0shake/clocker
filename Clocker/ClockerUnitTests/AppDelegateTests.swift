@@ -136,17 +136,4 @@ class AppDelegateTests: XCTestCase {
 
         UserDefaults.standard.set(0, forKey: CLMenubarCompactMode) // Set the menubar mode back to compact
     }
-
-    func testTogglingPanel() {
-        UserDefaults.standard.set(1, forKey: CLShowAppInForeground)
-
-        let subject = NSApplication.shared.delegate as? AppDelegate
-        subject?.ping("MockArgument")
-
-        UserDefaults.standard.set(0, forKey: CLShowAppInForeground)
-        let hasActiveGetter = PanelController.shared().hasActivePanel
-        subject?.ping("MockArgument")
-
-        XCTAssertNotEqual(hasActiveGetter, PanelController.shared().hasActivePanel)
-    }
 }
