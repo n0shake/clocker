@@ -115,10 +115,10 @@ public extension Date {
 
             return DateToolsLocalizedStrings("An hour ago")
         } else if components.minute! >= 2 {
-            return logicalLocalizedStringFromFormat(format: "%%d %@minutes ago", value: components.minute!)
+            return logicalLocalizedStringFromFormat(format: "%%d%@m ago", value: components.minute!)
         } else if components.minute! >= 1 {
             if numericTimes {
-                return DateToolsLocalizedStrings("1 minute ago")
+                return DateToolsLocalizedStrings("1m ago")
             }
 
             return DateToolsLocalizedStrings("A minute ago")
