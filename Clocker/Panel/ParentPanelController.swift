@@ -37,7 +37,7 @@ class ParentPanelController: NSWindowController {
 
     var datasource: TimezoneDataSource?
 
-    private lazy var feedbackWindow = AppFeedbackWindowController.shared()
+    private var feedbackWindow: AppFeedbackWindowController?
 
     private var notePopover: NotesPopover?
 
@@ -890,9 +890,9 @@ class ParentPanelController: NSWindowController {
         } else if sender.title == PanelConstants.yesWithQuestionMark {
             ReviewController.prompted()
             updateReviewView()
-
             feedbackWindow = AppFeedbackWindowController.shared()
-            feedbackWindow.showWindow(nil)
+            feedbackWindow?.appFeedbackWindowDelegate = self
+            feedbackWindow?.showWindow(nil)
             NSApp.activate(ignoringOtherApps: true)
         } else {
             updateReviewView()
@@ -986,7 +986,9 @@ class ParentPanelController: NSWindowController {
     }
 
     @objc func reportIssue() {
-        feedbackWindow.showWindow(nil)
+        feedbackWindow = AppFeedbackWindowController.shared()
+        feedbackWindow?.appFeedbackWindowDelegate = self
+        feedbackWindow?.showWindow(nil)
         NSApp.activate(ignoringOtherApps: true)
         window?.orderOut(nil)
 
@@ -1145,5 +1147,11 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
             }
         }
         return clipboardCopy
+    }
+}
+
+extension ParentPanelController: AppFeedbackWindowControllerDelegate {
+    func appFeedbackWindowWillClose() {
+        feedbackWindow = nil
     }
 }

@@ -22,7 +22,7 @@ class AboutViewController: ParentViewController {
     @IBOutlet var versionField: NSTextField!
 
     private var themeDidChangeNotification: NSObjectProtocol?
-    private lazy var feedbackWindow = AppFeedbackWindowController.shared()
+    private var feedbackWindow: AppFeedbackWindowController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,7 +120,9 @@ class AboutViewController: ParentViewController {
     }
 
     @IBAction func reportIssue(_: Any) {
-        feedbackWindow.showWindow(nil)
+        feedbackWindow = AppFeedbackWindowController.sharedWindow
+        feedbackWindow?.appFeedbackWindowDelegate = self
+        feedbackWindow?.showWindow(nil)
         NSApp.activate(ignoringOtherApps: true)
         view.window?.orderOut(nil)
 
@@ -148,5 +150,11 @@ class AboutViewController: ParentViewController {
         feedbackLabel.textColor = Themer.shared().mainTextColor()
         versionField.textColor = Themer.shared().mainTextColor()
         underlineTextForActionButton()
+    }
+}
+
+extension AboutViewController: AppFeedbackWindowControllerDelegate {
+    func appFeedbackWindowWillClose() {
+        feedbackWindow = nil
     }
 }
