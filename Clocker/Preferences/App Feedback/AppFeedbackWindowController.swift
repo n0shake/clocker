@@ -5,6 +5,10 @@ import CoreLoggerKit
 import CoreModelKit
 import FirebaseDatabase
 
+protocol AppFeedbackWindowControllerDelegate: AnyObject {
+    func appFeedbackWindowWillClose()
+}
+
 extension NSNib.Name {
     static let appFeedbackWindowIdentifier = NSNib.Name("AppFeedbackWindow")
     static let onboardingWindowIdentifier = NSNib.Name("OnboardingWindow")
@@ -36,6 +40,7 @@ class AppFeedbackWindowController: NSWindowController {
     @IBOutlet var progressIndicator: NSProgressIndicator!
 
     @IBOutlet var quickCommentsLabel: PointingHandCursorButton!
+    public weak var appFeedbackWindowDelegate: AppFeedbackWindowControllerDelegate?
     private var themeDidChangeNotification: NSObjectProtocol?
     private var serialNumber: String? {
         let platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
@@ -307,6 +312,7 @@ extension AppFeedbackWindowController: NSWindowDelegate {
         emailField.stringValue = CLEmptyString
         feedbackTextView.string = CLEmptyString
         isActivityInProgress = false
+        appFeedbackWindowDelegate?.appFeedbackWindowWillClose()
     }
 
     func bringPreferencesWindowToFront() {
