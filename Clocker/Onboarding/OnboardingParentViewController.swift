@@ -218,15 +218,15 @@ class OnboardingParentViewController: NSViewController {
     func performFinalStepsBeforeFinishing() {
         positiveButton.tag = OnboardingType.complete.rawValue
 
-        // Install the menubar option!
-        let appDelegate = NSApplication.shared.delegate as? AppDelegate
-        appDelegate?.continueUsually()
-
         view.window?.close()
 
         if ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument) == false {
             UserDefaults.standard.set(true, forKey: CLShowOnboardingFlow)
         }
+        
+        // Install the menubar option!
+        let appDelegate = NSApplication.shared.delegate as? AppDelegate
+        appDelegate?.continueUsually()
     }
 
     private func addChildIfNeccessary(_ viewController: NSViewController) {
