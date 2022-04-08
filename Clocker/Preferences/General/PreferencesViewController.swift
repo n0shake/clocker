@@ -93,7 +93,7 @@ class PreferencesViewController: ParentViewController {
                                                name: NSNotification.Name.customLabelChanged,
                                                object: nil)
 
-        NotificationCenter.default.addObserver(forName: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+        NotificationCenter.default.addObserver(forName: DataStore.didSyncFromExternalSourceNotification,
                                                object: self,
                                                queue: OperationQueue.main)
         { [weak self] _ in

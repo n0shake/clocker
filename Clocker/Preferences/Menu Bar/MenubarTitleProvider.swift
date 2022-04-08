@@ -7,12 +7,12 @@ import EventKit
 
 class MenubarTitleProvider: NSObject {
     private let store: DataStore
-    
+
     init(with dataStore: DataStore) {
-        self.store = dataStore
+        store = dataStore
         super.init()
     }
-    
+
     func titleForMenubar() -> String? {
         if let nextEvent = checkForUpcomingEvents() {
             return nextEvent

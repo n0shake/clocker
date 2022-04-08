@@ -239,6 +239,7 @@ class StatusContainerView: NSView {
             // NSView move animation
             NSAnimationContext.runAnimationGroup({ context in
                 context.duration = 0.2
+                context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
                 let newFrame = CGRect(x: frame.origin.x, y: frame.origin.y, width: newWidth, height: frame.size.height)
                 // The view will animate to the new origin
                 self.animator().frame = newFrame

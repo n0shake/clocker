@@ -173,7 +173,7 @@ class ClockerUnitTests: XCTestCase {
         XCTAssertTrue(operations.timeDifference() == ", 9h 30m ahead", "Difference was unexpectedly: \(operations.timeDifference())")
         XCTAssertTrue(californiaOperations.timeDifference() == ", 3h behind", "Difference was unexpectedly: \(californiaOperations.timeDifference())")
         XCTAssertTrue(floridaOperations.timeDifference() == "", "Difference was unexpectedly: \(floridaOperations.timeDifference())")
-        XCTAssertTrue(aucklandOperations.timeDifference() == ", 17h ahead", "Difference was unexpectedly: \(aucklandOperations.timeDifference())")
+        XCTAssertTrue(aucklandOperations.timeDifference() == ", 16h ahead", "Difference was unexpectedly: \(aucklandOperations.timeDifference())")
         XCTAssertTrue(omahaOperations.timeDifference() == ", an hour behind", "Difference was unexpectedly: \(omahaOperations.timeDifference())")
     }
 
@@ -406,10 +406,9 @@ class ClockerUnitTests: XCTestCase {
     func testToasty() {
         let view = NSView(frame: CGRect.zero)
         view.makeToast("Hello, this is a toast")
-        XCTAssertEqual(view.subviews.first?.accessibilityIdentifier(), "ToastView")
-
-        let expectation = expectation(description: "Toast View should hide after 1 second")
-        let result = XCTWaiter.wait(for: [expectation], timeout: 1.5) // Set 2 seconds here for a little leeway
+        XCTAssertEqual(view.subviews.first?.accessibilityIdentifier(), "ToastView") 
+        let toastExpectation = expectation(description: "Toast View should hide after 1 second")
+        let result = XCTWaiter.wait(for: [toastExpectation], timeout: 1.5) // Set 1.5 seconds here for a little leeway
         if result == XCTWaiter.Result.timedOut {
             XCTAssertTrue(view.subviews.isEmpty)
         }
