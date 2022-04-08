@@ -17,7 +17,6 @@ enum ViewType {
     case placeInMenubar
     case dayInMenubar
     case menubarCompactMode
-    case dstTransitionInfo
     case sync
 }
 
@@ -181,8 +180,6 @@ class DataStore: NSObject {
             return shouldDisplayHelper(CLShowDayInMenu)
         case .appDisplayOptions:
             return shouldDisplayHelper(CLAppDisplayOptions)
-        case .dstTransitionInfo:
-            return shouldDisplayHelper(CLDisplayDSTTransitionInfo)
         case .menubarCompactMode:
             guard let value = retrieve(key: CLMenubarCompactMode) as? Int else {
                 return false
