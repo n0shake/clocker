@@ -240,23 +240,21 @@ class StatusItemHandler: NSObject {
     }
 
     func updateCompactMenubar() {
-        if let upcomingEvent = menubarTitleHandler.checkForUpcomingEvents() {
-            print("Need to construct upcoming event view \(upcomingEvent)")
+        if menubarTitleHandler.checkForUpcomingEvents() != nil {
             // Iterate and see if we're showing the calendar item view
             let upcomingEventView = retrieveUpcomingEventStatusView()
             // If not, reconstruct Status Container View with another view
             if upcomingEventView == nil {
                 constructCompactView(with: true)
             }
-        } else {
-            let upcomingEventView = retrieveUpcomingEventStatusView()
-            upcomingEventView?.removeFromSuperview()
+        } else if let upcomingEventView = retrieveUpcomingEventStatusView() {
+            upcomingEventView.removeFromSuperview()
             constructCompactView() // So that Status Container View reclaims the space
         }
         // This will internally call `statusItemViewSetNeedsDisplay` on all subviews ensuring all text in the menubar is up-to-date.
         statusContainerView?.updateTime()
     }
-    
+
     private func removeUpcomingStatusItemView() {
         NSAnimationContext.runAnimationGroup({ context in
             context.duration = 0.2

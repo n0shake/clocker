@@ -5,27 +5,24 @@ import CoreLoggerKit
 import EventKit
 
 class ClockerTextBackgroundView: NSView {
-    private var themeDidChangeNotification: NSObjectProtocol?
 
     override func awakeFromNib() {
         wantsLayer = true
         layer?.cornerRadius = 8.0
         layer?.masksToBounds = false
-        layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
 
-        themeDidChangeNotification = NotificationCenter.default.addObserver(forName: .themeDidChangeNotification, object: nil, queue: OperationQueue.main) { _ in
-            self.layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
-        }
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateBackgroundColor),
+                                               name: .themeDidChangeNotification,
+                                               object: nil)
     }
-
-    deinit {
-        if let themeDidChangeNotif = themeDidChangeNotification {
-            NotificationCenter.default.removeObserver(themeDidChangeNotif)
-        }
-    }
-
+    
     override func updateLayer() {
         super.updateLayer()
+        layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
+    }
+    
+    @objc func updateBackgroundColor() {
         layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
     }
 }

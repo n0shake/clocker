@@ -791,8 +791,8 @@
                                                         <gridRow id="YtR-o1-nGp"/>
                                                         <gridRow id="vjb-Ch-BZs"/>
                                                         <gridRow id="ad4-FM-AWq"/>
-                                                        <gridRow id="yUG-1W-BQ2"/>
                                                         <gridRow id="fbk-ef-Req"/>
+                                                        <gridRow id="B74-Mt-1h8"/>
                                                     </rows>
                                                     <columns>
                                                         <gridColumn xPlacement="trailing" id="ARE-A4-4k4"/>
@@ -924,38 +924,9 @@
                                                                 </connections>
                                                             </segmentedControl>
                                                         </gridCell>
-                                                        <gridCell row="yUG-1W-BQ2" column="ARE-A4-4k4" id="M8P-5s-oL4">
-                                                            <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="ZWy-WW-6H9">
-                                                                <rect key="frame" x="50" y="42" width="163" height="18"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="159" id="NX0-Bo-SU8"/>
-                                                                </constraints>
-                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Show DST transition info" id="i0m-6h-scA">
-                                                                    <font key="font" size="13" name="Avenir-Light"/>
-                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                </textFieldCell>
-                                                            </textField>
-                                                        </gridCell>
-                                                        <gridCell row="yUG-1W-BQ2" column="YBI-pK-gPQ" id="N12-lC-Pe1">
-                                                            <segmentedControl key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DCB-IB-UxK">
-                                                                <rect key="frame" x="229" y="39" width="81" height="24"/>
-                                                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="PZZ-H7-LgV">
-                                                                    <font key="font" size="12" name="Avenir-Light"/>
-                                                                    <segments>
-                                                                        <segment label="Yes" width="36"/>
-                                                                        <segment label="No" width="36" selected="YES" tag="1"/>
-                                                                    </segments>
-                                                                </segmentedCell>
-                                                                <connections>
-                                                                    <action selector="toggleDSTTransitionOption:" target="1aL-zR-8L4" id="9bi-NL-gMv"/>
-                                                                    <binding destination="Gpv-Gr-MxZ" name="selectedIndex" keyPath="values.com.abhishek.showDSTTransitionInfo" id="eG0-sL-5hE"/>
-                                                                </connections>
-                                                            </segmentedControl>
-                                                        </gridCell>
                                                         <gridCell row="fbk-ef-Req" column="ARE-A4-4k4" id="Vth-MP-nfS">
                                                             <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="xwt-pY-1w9">
-                                                                <rect key="frame" x="9" y="1" width="204" height="18"/>
+                                                                <rect key="frame" x="9" y="43" width="204" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="7fj-Em-Lyh"/>
                                                                 </constraints>
@@ -968,7 +939,7 @@
                                                         </gridCell>
                                                         <gridCell row="fbk-ef-Req" column="YBI-pK-gPQ" id="dCk-cz-no0">
                                                             <slider key="contentView" verticalHuggingPriority="750" alphaValue="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="3cU-IS-3Qu">
-                                                                <rect key="frame" x="229" y="-6" width="104" height="28"/>
+                                                                <rect key="frame" x="229" y="36" width="104" height="28"/>
                                                                 <sliderCell key="cell" state="on" alignment="left" minValue="4" maxValue="7" doubleValue="4" tickMarkPosition="above" numberOfTickMarks="4" allowsTickMarkValuesOnly="YES" sliderType="linear" id="eAh-k3-cof"/>
                                                                 <connections>
                                                                     <action selector="fontSliderChanged:" target="1aL-zR-8L4" id="YAW-aA-5aR"/>
@@ -976,15 +947,43 @@
                                                                 </connections>
                                                             </slider>
                                                         </gridCell>
+                                                        <gridCell row="B74-Mt-1h8" column="ARE-A4-4k4" id="PbY-PK-2xB">
+                                                            <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="120" translatesAutoresizingMaskIntoConstraints="NO" id="kkn-L8-yOj">
+                                                                <rect key="frame" x="9" y="2" width="204" height="18"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="eD6-Fv-2tz"/>
+                                                                </constraints>
+                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Enable iCloud Sync" id="MDa-w4-4Xw">
+                                                                    <font key="font" size="13" name="Avenir-Light"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                        </gridCell>
+                                                        <gridCell row="B74-Mt-1h8" column="YBI-pK-gPQ" id="kVc-I2-8Kp">
+                                                            <segmentedControl key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ncK-Q6-ag9">
+                                                                <rect key="frame" x="229" y="-1" width="81" height="24"/>
+                                                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="bio-ov-phY">
+                                                                    <font key="font" size="12" name="Avenir-Light"/>
+                                                                    <segments>
+                                                                        <segment label="Yes" width="36"/>
+                                                                        <segment label="No" width="36" selected="YES" tag="1"/>
+                                                                    </segments>
+                                                                </segmentedCell>
+                                                                <connections>
+                                                                    <action selector="toggleSync:" target="1aL-zR-8L4" id="4Mg-ie-F7U"/>
+                                                                </connections>
+                                                            </segmentedControl>
+                                                        </gridCell>
                                                     </gridCells>
                                                 </gridView>
                                                 <scrollView borderType="line" autohidesScrollers="YES" horizontalLineScroll="113" horizontalPageScroll="10" verticalLineScroll="113" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ytg-0u-Mtu">
                                                     <rect key="frame" x="70" y="39" width="400" height="100"/>
-                                                    <clipView key="contentView" ambiguous="YES" id="gnX-f5-31D">
+                                                    <clipView key="contentView" id="gnX-f5-31D">
                                                         <rect key="frame" x="1" y="1" width="398" height="98"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
-                                                            <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="111" rowSizeStyle="automatic" viewBased="YES" id="KbJ-p4-i6E">
+                                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="111" rowSizeStyle="automatic" viewBased="YES" id="KbJ-p4-i6E">
                                                                 <rect key="frame" x="0.0" y="0.0" width="412" height="113"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -1468,7 +1467,6 @@
                         <outlet property="appDisplayLabel" destination="HNj-dh-8gr" id="A6U-gp-sje"/>
                         <outlet property="appearanceTab" destination="SGu-yd-JQh" id="CJn-3E-Ujd"/>
                         <outlet property="dayDisplayOptionsLabel" destination="gFE-hZ-J92" id="tVv-pC-MSW"/>
-                        <outlet property="dstTransitionField" destination="ZWy-WW-6H9" id="psJ-Wm-6Re"/>
                         <outlet property="futureSliderRangeLabel" destination="GaR-Qm-7u4" id="0aB-BK-7fN"/>
                         <outlet property="includeDateInMenubarControl" destination="Axn-Tb-Cdx" id="M5x-Qt-zvs"/>
                         <outlet property="includeDateLabel" destination="fTA-lS-4wJ" id="J1i-yl-JmT"/>
@@ -1487,6 +1485,8 @@
                         <outlet property="showSliderLabel" destination="8Jv-Cf-blJ" id="UHb-hK-VVl"/>
                         <outlet property="showSunriseLabel" destination="4lt-X6-3uU" id="tez-s5-RzL"/>
                         <outlet property="sliderDayRangePopup" destination="8Nx-Xq-XDU" id="PBM-yB-Yo1"/>
+                        <outlet property="syncLabel" destination="kkn-L8-yOj" id="egW-Df-fnH"/>
+                        <outlet property="syncSegementedControl" destination="ncK-Q6-ag9" id="8oT-zA-Ms5"/>
                         <outlet property="theme" destination="89w-KN-GJ6" id="SAL-Sh-eqp"/>
                         <outlet property="timeFormat" destination="iiG-Xu-4id" id="oM3-1Y-fAF"/>
                         <outlet property="timeFormatLabel" destination="wtO-uL-QBf" id="udS-d6-Tep"/>
@@ -1513,7 +1513,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <searchField toolTip="Search a timezone" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dha-h9-Nd0">
-                                <rect key="frame" x="8" y="205" width="320" height="23"/>
+                                <rect key="frame" x="8" y="121" width="320" height="23"/>
                                 <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Enter a city, state, country name" usesSingleLineMode="YES" maximumRecents="5" id="ikU-Tm-0WZ">
                                     <font key="font" size="13" name="Avenir-Light"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1570,13 +1570,13 @@ DQ
                                 </connections>
                             </button>
                             <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wY-ff-FLW">
-                                <rect key="frame" x="8" y="30" width="320" height="165"/>
+                                <rect key="frame" x="8" y="30" width="320" height="81"/>
                                 <clipView key="contentView" drawsBackground="NO" id="rGc-3M-cCq">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="xkl-2X-ZCb">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1666,14 +1666,14 @@ DQ
                                 </scroller>
                             </scrollView>
                             <progressIndicator wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="0A5-gp-lay">
-                                <rect key="frame" x="160" y="132" width="16" height="16"/>
+                                <rect key="frame" x="160" y="90" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="fgE-77-Vda"/>
                                     <constraint firstAttribute="width" constant="16" id="pwe-em-e0a"/>
                                 </constraints>
                             </progressIndicator>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xgb-wU-8RU">
-                                <rect key="frame" x="18" y="102" width="300" height="22"/>
+                                <rect key="frame" x="18" y="60" width="300" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="zqt-d8-yas"/>
                                 </constraints>
@@ -1721,7 +1721,7 @@ DQ
                                         <rect key="frame" x="0.0" y="484" width="613" height="30"/>
                                         <subviews>
                                             <button toolTip="Sorts by time difference from your current timezone" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="P6d-qq-ycq">
-                                                <rect key="frame" x="285" y="3" width="8" height="25"/>
+                                                <rect key="frame" x="283" y="3" width="9" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="180" id="cAs-on-f7X"/>
                                                     <constraint firstAttribute="height" constant="25" id="juv-QL-vMx"/>
@@ -1736,7 +1736,7 @@ DQ
                                                 </connections>
                                             </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0HL-uj-s4v">
-                                                <rect key="frame" x="331" y="3" width="8" height="25"/>
+                                                <rect key="frame" x="331" y="3" width="9" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="eZL-Gr-38S"/>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="sJk-T7-7Lm"/>
@@ -1751,7 +1751,7 @@ DQ
                                                 </connections>
                                             </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6fs-Mx-NcG">
-                                                <rect key="frame" x="308" y="3" width="8" height="25"/>
+                                                <rect key="frame" x="307" y="3" width="9" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="190" id="241-Rn-G6N"/>
                                                     <constraint firstAttribute="height" constant="25" id="weP-ll-vZ8"/>
@@ -2010,7 +2010,7 @@ CA
         <image name="ClockerIcon-512" width="1024" height="1024"/>
         <image name="CurrentLocation" width="350" height="350"/>
         <image name="Extra" width="700" height="700"/>
-        <image name="NSDescendingSortIndicator" width="8" height="8"/>
+        <image name="NSDescendingSortIndicator" width="9" height="9"/>
         <image name="NSInfo" width="32" height="32"/>
         <image name="NSPreferencesGeneral" width="32" height="32"/>
         <image name="Privacy" width="350" height="350"/>

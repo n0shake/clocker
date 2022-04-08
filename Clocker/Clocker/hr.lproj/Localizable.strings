@@ -163,6 +163,9 @@
 "Daylights Saving transition will occur in < 24 hours" = "Prijelaz na ljetno računanje vremena dogodit će se za < 24 sata";
 
 "Copied to Clipboard" = "Kopirano u međuspremnik";
-"No upcoming events for today!" = "Za danas nema predstojećih događaja!";
+"No upcoming events for today!" = "Za danas nema predstojećih događaja 🎉";
 "Great going." = "Super.";
 "Happy Weekend." = "Uživaj vikend.";
+
+// iCloud
+"Enable iCloud Sync" = "Enable iCloud Sync";

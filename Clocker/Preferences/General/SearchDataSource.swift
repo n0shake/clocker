@@ -21,7 +21,7 @@ struct TimezoneMetadata {
 }
 
 class SearchDataSource: NSObject {
-    private var searchField: NSSearchField!
+    private weak var searchField: NSSearchField!
     private var finalArray: [RowType] = []
     private var location: SearchLocation = .preferences
     private var dataTask: URLSessionDataTask? = .none

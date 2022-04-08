@@ -8,7 +8,7 @@ import FirebaseCrashlytics
 
 open class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var floatingWindow = FloatingWindowController.shared()
-    private lazy var panelController = PanelController.shared()
+    internal lazy var panelController = PanelController(windowNibName: .panel)
     private var statusBarHandler: StatusItemHandler!
     private var panelObserver: NSKeyValueObservation?
 
@@ -84,7 +84,6 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
             let floatingWindow = FloatingWindowController.shared()
             floatingWindow.openPreferences(NSButton())
         } else {
-            let panelController = PanelController.shared()
             panelController.openPreferences(NSButton())
         }
     }
@@ -107,6 +106,11 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func continueUsually() {
+        // Cleanup onboarding controller after its done!
+        if controller != nil {
+            controller = nil
+        }
+        
         // Check if another instance of the app is already running. If so, then stop this one.
         checkIfAppIsAlreadyOpen()
 
@@ -159,12 +163,6 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
                 app.terminate()
             }
         }
-    }
-
-    private func showAppAlreadyOpenMessage() {
-        showAlert(message: "An instance of Clocker is already open 😅",
-                  informativeText: "This instance of Clocker will terminate now.",
-                  buttonTitle: "Close")
     }
 
     private func showAlert(message: String, informativeText: String, buttonTitle: String) {
