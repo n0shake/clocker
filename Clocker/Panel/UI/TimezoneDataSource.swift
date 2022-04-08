@@ -68,7 +68,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
         cellView.relativeDate.setAccessibilityIdentifier("RelativeDate")
         if let note = currentModel.note, !note.isEmpty {
             cellView.noteLabel.stringValue = note
-        } else if DataStore.shared().shouldDisplay(.dstTransitionInfo), let value = operation.nextDaylightSavingsTransitionIfAvailable(with: sliderValue) {
+        } else if let value = operation.nextDaylightSavingsTransitionIfAvailable(with: sliderValue) {
             cellView.noteLabel.stringValue = value
         } else {
             cellView.noteLabel.stringValue = CLEmptyString
@@ -101,7 +101,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
 
             if let note = model.note, !note.isEmpty {
                 rowHeight += userFontSize.intValue + 15
-            } else if DataStore.shared().shouldDisplay(.dstTransitionInfo), TimezoneDataOperations(with: model).nextDaylightSavingsTransitionIfAvailable(with: sliderValue) != nil {
+            } else if TimezoneDataOperations(with: model).nextDaylightSavingsTransitionIfAvailable(with: sliderValue) != nil {
                 rowHeight += userFontSize.intValue + 15
             }
 

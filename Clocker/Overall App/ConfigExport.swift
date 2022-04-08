@@ -29,7 +29,6 @@ struct ConfigExport {
             CLDefaultMenubarMode,
             CLInstallHomeIndicatorObject,
             CLSwitchToCompactModeAlert,
-            CLDisplayDSTTransitionInfo,
         ])
         let dictionaryRep = UserDefaults.standard.dictionaryRepresentation()
         var clockerPrefs: [String: Any] = [:]

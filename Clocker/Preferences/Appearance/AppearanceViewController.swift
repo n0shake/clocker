@@ -389,9 +389,7 @@ extension AppearanceViewController: NSTableViewDataSource, NSTableViewDelegate {
         cellView.rowNumber = row
         cellView.customName.stringValue = currentModel.formattedTimezoneLabel()
         cellView.time.stringValue = operation.time(with: 0)
-        if DataStore.shared().shouldDisplay(.dstTransitionInfo) {
-            cellView.noteLabel.stringValue = "Heads up! DST Transition will occur in 3 days."
-        } else if let note = currentModel.note, !note.isEmpty {
+        if let note = currentModel.note, !note.isEmpty {
             cellView.noteLabel.stringValue = note
         } else {
             cellView.noteLabel.stringValue = CLEmptyString
@@ -412,8 +410,6 @@ extension AppearanceViewController: NSTableViewDataSource, NSTableViewDelegate {
 
             let rowHeight: Int = userFontSize == 4 ? 60 : 65
             if let note = model.note, !note.isEmpty {
-                return CGFloat(rowHeight + userFontSize.intValue + 25)
-            } else if DataStore.shared().shouldDisplay(.dstTransitionInfo) {
                 return CGFloat(rowHeight + userFontSize.intValue + 25)
             }
 
