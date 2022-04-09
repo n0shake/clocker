@@ -49,17 +49,18 @@ class MenubarTitleProvider: NSObject {
                 return nil
             }
 
-            for event in events {
-                let acceptableCriteria = event.event.startDate.timeIntervalSinceNow > -300
-                if acceptableCriteria, !event.isAllDay {
-                    let timeForEventToStart = event.event.startDate.timeIntervalSinceNow / 60
+            for eventInfo in events {
+                let event = eventInfo.event
+                let acceptableCriteria = event.startDate.timeIntervalSinceNow > -300
+                if acceptableCriteria, !eventInfo.isAllDay {
+                    let timeForEventToStart = event.startDate.timeIntervalSinceNow / 60
 
                     if timeForEventToStart > 30 {
-                        Logger.info("Our next event: \(event.event.title ?? "Error") starts in \(timeForEventToStart) mins")
+                        Logger.info("Our next event: \(event.title ?? "Error") starts in \(timeForEventToStart) mins")
                         continue
                     }
 
-                    return EventCenter.sharedCenter().format(event: event.event)
+                    return EventCenter.sharedCenter().format(event: event)
                 }
             }
         }
