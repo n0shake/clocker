@@ -36,4 +36,8 @@ let CLDefaultMenubarMode = "com.abhishek.shouldDefaultToCompactMode"
 let CLInstallHomeIndicatorObject = "installHomeIndicatorObject"
 let CLSwitchToCompactModeAlert = "com.abhishek.switchToCompactMode"
 let CLAppleInterfaceStyleKey = "AppleInterfaceStyle"
+
+// Sync Keys
 let CLEnableSyncKey = "com.abhishek.enableSync"
+let CLUbiquitousStoreLastUpdateKey = "com.abhishek.ubiquitousLastUpdateKey"
+let CLUserDefaultsLastUpdateKey = "com.abhishek.defaultsLastUpdateKey"
