@@ -225,13 +225,19 @@ class AppFeedbackWindowController: NSWindowController {
     var firebaseDBReference: DatabaseReference!
 
     private func sendDataToFirebase(feedbackInfo info: [String: String]) {
+        #if DEBUG
+            Logger.info("Sending a feedback in Debug builds will lead to a no-op")
+        #endif
+        
         guard let identifier = serialNumber else {
             assertionFailure("Serial Identifier was unexpectedly nil")
             return
         }
 
-        firebaseDBReference = Database.database().reference()
-        firebaseDBReference.child("Feedback").child(identifier).setValue(info)
+        #if RELEASE
+            firebaseDBReference = Database.database().reference()
+            firebaseDBReference.child("Feedback").child(identifier).setValue(info)
+        #endif
     }
 
     private func showSucccessOnSendingInfo() {
