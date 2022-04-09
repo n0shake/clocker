@@ -7,6 +7,7 @@ import FirebaseDatabase
 
 protocol AppFeedbackWindowControllerDelegate: AnyObject {
     func appFeedbackWindowWillClose()
+    func appFeedbackWindoEntryPoint() -> String
 }
 
 extension NSNib.Name {
@@ -31,6 +32,7 @@ enum AppFeedbackConstants {
     static let CLAppFeedbackDateProperty = "date"
     static let CLAppFeedbackUserPreferences = "Prefs"
     static let CLCaliforniaTimezoneIdentifier = "America/Los_Angeles"
+    static let CLFeedbackEntryPoint = "entry_point"
 }
 
 class AppFeedbackWindowController: NSWindowController {
@@ -208,6 +210,7 @@ class AppFeedbackWindowController: NSWindowController {
             AppFeedbackConstants.CLClockerVersion: versionInfo,
             AppFeedbackConstants.CLAppFeedbackDateProperty: todaysDate(),
             AppFeedbackConstants.CLAppFeedbackUserPreferences: generateUserPreferences(),
+            AppFeedbackConstants.CLFeedbackEntryPoint: appFeedbackWindowDelegate?.appFeedbackWindoEntryPoint() ?? "Error"
         ]
     }
 

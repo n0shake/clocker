@@ -157,4 +157,8 @@ extension AboutViewController: AppFeedbackWindowControllerDelegate {
     func appFeedbackWindowWillClose() {
         feedbackWindow = nil
     }
+    
+    func appFeedbackWindoEntryPoint() -> String {
+        return "about_view_controller"
+    }
 }
