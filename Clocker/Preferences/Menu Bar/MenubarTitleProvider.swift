@@ -50,7 +50,8 @@ class MenubarTitleProvider: NSObject {
             }
 
             for event in events {
-                if event.event.startDate.timeIntervalSinceNow > 0, !event.isAllDay {
+                let acceptableCriteria = event.event.startDate.timeIntervalSinceNow > -300
+                if acceptableCriteria, !event.isAllDay {
                     let timeForEventToStart = event.event.startDate.timeIntervalSinceNow / 60
 
                     if timeForEventToStart > 30 {
