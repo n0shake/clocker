@@ -53,7 +53,9 @@ class DataStore: NSObject {
                                                    selector: #selector(ubiquitousKeyValueStoreChanged),
                                                    name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
                                                    object: NSUbiquitousKeyValueStore.default)
-            ubiquitousStore?.synchronize()
+            let synchronizationResult = ubiquitousStore?.synchronize() ?? false
+            let resultString = synchronizationResult ? "successfully" : "unsuccessfully"
+            Logger.info("Ubiquitous Store synchronized \(resultString)")
         } else {
             NotificationCenter.default.removeObserver(self,
                                                       name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
@@ -67,10 +69,13 @@ class DataStore: NSObject {
         print("--- User Info is \(userInfo)")
         let currentTimezones = userDefaults.object(forKey: CLDefaultPreferenceKey) as? [Data]
         let cloudTimezones = ubiquitousStore?.object(forKey: CLDefaultPreferenceKey) as? [Data]
+        let cloudLastUpdateDate = (ubiquitousStore?.object(forKey: CLUbiquitousStoreLastUpdateKey) as? Date) ?? Date()
+        let defaultsLastUpdateDate = (ubiquitousStore?.object(forKey: CLUserDefaultsLastUpdateKey) as? Date) ?? Date()
 
-        if cloudTimezones != currentTimezones {
+        if cloudTimezones != currentTimezones, cloudLastUpdateDate.isLaterThanOrEqual(to: defaultsLastUpdateDate) {
             Logger.info("Syncing local timezones with data from the ☁️")
             userDefaults.set(cloudTimezones, forKey: CLDefaultPreferenceKey)
+            userDefaults.set(Date(), forKey: CLUserDefaultsLastUpdateKey)
             NotificationCenter.default.post(name: DataStore.didSyncFromExternalSourceNotification,
                                             object: self)
         }
@@ -86,8 +91,10 @@ class DataStore: NSObject {
 
     func setTimezones(_ timezones: [Data]?) {
         userDefaults.set(timezones, forKey: CLDefaultPreferenceKey)
+        userDefaults.set(Date(), forKey: CLUserDefaultsLastUpdateKey)
         // iCloud sync
         ubiquitousStore?.set(timezones, forKey: CLDefaultPreferenceKey)
+        ubiquitousStore?.set(Date(), forKey: CLUbiquitousStoreLastUpdateKey)
     }
 
     func menubarTimezones() -> [Data]? {
