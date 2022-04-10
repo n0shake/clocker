@@ -5,7 +5,8 @@ import XCTest
 
 class ReviewControllerTests: XCTestCase {
     func testDebuggingMode() throws {
-        guard let mockDefaults = UserDefaults(suiteName: "com.test.Clocker") else {
+        let mockSuite = "com.test.Clocker.\(randomLetter())"
+        guard let mockDefaults = UserDefaults(suiteName: mockSuite) else {
             return
         }
         ReviewController.applicationDidLaunch(mockDefaults)
@@ -15,10 +16,12 @@ class ReviewControllerTests: XCTestCase {
 
         ReviewController.setPreviewMode(true)
         XCTAssertTrue(ReviewController.canPrompt())
+        mockDefaults.removeSuite(named: mockSuite)
     }
 
     func testPromptNotDisplayedInFirstWeekSinceInstall() {
-        guard let mockDefaults = UserDefaults(suiteName: "com.test.Clocker1") else {
+        let mockSuite = "com.test.Clocker1.\(randomLetter())"
+        guard let mockDefaults = UserDefaults(suiteName: mockSuite) else {
             return
         }
         // Set key install time
@@ -27,6 +30,7 @@ class ReviewControllerTests: XCTestCase {
         ReviewController.setPreviewMode(false)
 
         XCTAssertFalse(ReviewController.canPrompt())
+        mockDefaults.removeSuite(named: mockSuite)
     }
 
     func testPrompDisplayedAfterFirstWeekOfInstall() {
@@ -38,8 +42,8 @@ class ReviewControllerTests: XCTestCase {
                                   months: 0,
                                   years: 0)
         let oldDate = Date().subtract(dateChunk)
-
-        guard let mockDefaults = UserDefaults(suiteName: "com.test.Clocker2") else {
+        let mockSuite = "com.test.Clocker2.\(randomLetter())"
+        guard let mockDefaults = UserDefaults(suiteName: mockSuite) else {
             return
         }
         mockDefaults.set(oldDate, forKey: "install")
@@ -51,6 +55,7 @@ class ReviewControllerTests: XCTestCase {
         XCTAssertNil(mockDefaults.object(forKey: "last-prompt"))
         XCTAssertNil(mockDefaults.object(forKey: "last-version"))
         XCTAssertTrue(ReviewController.canPrompt())
+        mockDefaults.removeSuite(named: mockSuite)
     }
 
     func testPromptDisplayAfterTwoMonths() {
@@ -72,7 +77,8 @@ class ReviewControllerTests: XCTestCase {
                                     years: 0)
         let lastPromptDate = Date().subtract(promptChunk)
 
-        guard let mockDefaults = UserDefaults(suiteName: "com.test.Clocker3") else {
+        let mockSuite = "com.test.Clocker3.\(randomLetter())"
+        guard let mockDefaults = UserDefaults(suiteName: mockSuite) else {
             return
         }
         mockDefaults.set(minInstall, forKey: "install")
@@ -83,6 +89,7 @@ class ReviewControllerTests: XCTestCase {
         // Explicitly set preview mode to false
         ReviewController.setPreviewMode(false)
         XCTAssertFalse(ReviewController.canPrompt())
+        mockDefaults.removeSuite(named: mockSuite)
     }
 
     func testPrompDisplayedAfterThreeMonths() {
@@ -104,7 +111,8 @@ class ReviewControllerTests: XCTestCase {
                                     years: 0)
         let lastPromptDate = Date().subtract(promptChunk)
 
-        guard let mockDefaults = UserDefaults(suiteName: "com.test.Clocker4") else {
+        let mockSuite = "com.test.Clocker4.\(randomLetter())"
+        guard let mockDefaults = UserDefaults(suiteName: mockSuite) else {
             return
         }
         mockDefaults.set(minInstall, forKey: "install")
@@ -118,15 +126,23 @@ class ReviewControllerTests: XCTestCase {
         XCTAssertNotNil(mockDefaults.object(forKey: "last-prompt"))
         XCTAssertNotNil(mockDefaults.object(forKey: "last-version"))
         XCTAssertTrue(ReviewController.canPrompt())
+        mockDefaults.removeSuite(named: mockSuite)
     }
 
     func testPrompted() {
-        guard let mockDefaults = UserDefaults(suiteName: "com.test.Clocker5") else {
+        let mockSuite = "com.test.Clocker5.\(randomLetter())"
+        guard let mockDefaults = UserDefaults(suiteName: mockSuite) else {
             return
         }
         ReviewController.applicationDidLaunch(mockDefaults)
         ReviewController.prompt()
         XCTAssertNotNil(mockDefaults.object(forKey: "last-prompt"))
         XCTAssertNotNil(mockDefaults.object(forKey: "last-version"))
+        mockDefaults.removeSuite(named: mockSuite)
+    }
+    
+    private func randomLetter() -> String {
+        let alphabet: [String] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+        return alphabet[Int(arc4random_uniform(26))]
     }
 }
