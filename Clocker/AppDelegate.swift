@@ -115,7 +115,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         checkIfAppIsAlreadyOpen()
 
         // Install the menubar item!
-        statusBarHandler = StatusItemHandler()
+        statusBarHandler = StatusItemHandler(with: DataStore.shared())
 
         if ProcessInfo.processInfo.arguments.contains(CLUITestingLaunchArgument) {
             FirebaseApp.configure()
