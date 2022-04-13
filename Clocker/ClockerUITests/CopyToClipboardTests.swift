@@ -22,9 +22,10 @@ class CopyToClipboardTests: XCTestCase {
 
     func testFullCopy() throws {
         let cell = app.tables["FloatingTableView"].cells.firstMatch
-        let customLabel = cell.staticTexts["CustomNameLabelForCell"].value ?? "Nil Custom Label"
+        let customLabel = cell.staticTexts["CustomNameLabelForCell"]
+        guard let value = customLabel.value else { return }
         let time = cell.staticTexts["ActualTime"].value ?? "Nil Value"
-        let expectedValue = "\(customLabel) - \(time)"
+        let expectedValue = "\(value) - \(time)"
 
         // Tap to copy!
         cell.click()
