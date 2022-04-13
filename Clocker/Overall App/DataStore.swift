@@ -71,11 +71,11 @@ class DataStore: NSObject {
         let cloudTimezones = ubiquitousStore?.object(forKey: CLDefaultPreferenceKey) as? [Data]
         let cloudLastUpdateDate = (ubiquitousStore?.object(forKey: CLUbiquitousStoreLastUpdateKey) as? Date) ?? Date()
         let defaultsLastUpdateDate = (ubiquitousStore?.object(forKey: CLUserDefaultsLastUpdateKey) as? Date) ?? Date()
-        
+
         if cloudTimezones == currentTimezones {
             Logger.info("Ubiquitous Store timezones aren't equal to current timezones")
         }
-        
+
         if defaultsLastUpdateDate.isLaterThanOrEqual(to: cloudLastUpdateDate) {
             Logger.info("Ubiquitous Store is stale as compared to User Defaults")
         }

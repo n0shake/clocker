@@ -74,7 +74,7 @@ class PanelController: ParentPanelController {
         super.dismissRowActions()
 
         updateDefaultPreferences()
-        
+
         setupUpcomingEventViewCollectionViewIfNeccesary()
 
         if DataStore.shared().timezones().isEmpty || DataStore.shared().shouldDisplay(.futureSlider) == false {

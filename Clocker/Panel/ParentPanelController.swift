@@ -1151,7 +1151,7 @@ extension ParentPanelController: AppFeedbackWindowControllerDelegate {
     func appFeedbackWindowWillClose() {
         feedbackWindow = nil
     }
-    
+
     func appFeedbackWindoEntryPoint() -> String {
         return "parent_panel_controller"
     }

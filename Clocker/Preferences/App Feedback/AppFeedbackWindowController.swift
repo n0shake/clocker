@@ -210,7 +210,7 @@ class AppFeedbackWindowController: NSWindowController {
             AppFeedbackConstants.CLClockerVersion: versionInfo,
             AppFeedbackConstants.CLAppFeedbackDateProperty: todaysDate(),
             AppFeedbackConstants.CLAppFeedbackUserPreferences: generateUserPreferences(),
-            AppFeedbackConstants.CLFeedbackEntryPoint: appFeedbackWindowDelegate?.appFeedbackWindoEntryPoint() ?? "Error"
+            AppFeedbackConstants.CLFeedbackEntryPoint: appFeedbackWindowDelegate?.appFeedbackWindoEntryPoint() ?? "Error",
         ]
     }
 
@@ -228,7 +228,7 @@ class AppFeedbackWindowController: NSWindowController {
         #if DEBUG
             Logger.info("Sending a feedback in Debug builds will lead to a no-op")
         #endif
-        
+
         guard let identifier = serialNumber else {
             assertionFailure("Serial Identifier was unexpectedly nil")
             return
