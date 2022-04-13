@@ -31,7 +31,7 @@ class StatusItemHandler: NSObject {
     private lazy var units: Set<Calendar.Component> = Set([.era, .year, .month, .day, .hour, .minute])
 
     private var userNotificationsDidChangeNotif: NSObjectProtocol?
-    
+
     private let store: DataStore
 
     // Current State might be set twice when the user first launches an app.
@@ -66,7 +66,7 @@ class StatusItemHandler: NSObject {
     }
 
     init(with dataStore: DataStore) {
-        self.store = dataStore
+        store = dataStore
         super.init()
 
         setupStatusItem()
@@ -148,6 +148,7 @@ class StatusItemHandler: NSObject {
         }
 
         statusContainerView = StatusContainerView(with: menubarTimezones,
+                                                  store: store,
                                                   showUpcomingEventView: upcomingEventView,
                                                   bufferContainerWidth: bufferCalculatedWidth())
         statusItem.view = statusContainerView
@@ -387,7 +388,7 @@ class StatusItemHandler: NSObject {
         })
         return upcomingEventView
     }
-    
+
     private func bufferCalculatedWidth() -> Int {
         var totalWidth = 55
 

@@ -4,11 +4,11 @@ import Cocoa
 import CoreLoggerKit
 import CoreModelKit
 
-func compactWidth(for timezone: TimezoneData) -> Int {
+func compactWidth(for timezone: TimezoneData, with store: DataStore) -> Int {
     var totalWidth = 55
-    let timeFormat = timezone.timezoneFormat(DataStore.shared().timezoneFormat())
+    let timeFormat = timezone.timezoneFormat(store.timezoneFormat())
 
-    if DataStore.shared().shouldShowDayInMenubar() {
+    if store.shouldShowDayInMenubar() {
         totalWidth += 12
     }
 
@@ -24,12 +24,12 @@ func compactWidth(for timezone: TimezoneData) -> Int {
         totalWidth += 0
     }
 
-    if timezone.shouldShowSeconds(DataStore.shared().timezoneFormat()) {
+    if timezone.shouldShowSeconds(store.timezoneFormat()) {
         // Slight buffer needed when the Menubar supplementary text was Mon 9:27:58 AM
         totalWidth += 15
     }
 
-    if DataStore.shared().shouldShowDateInMenubar() {
+    if store.shouldShowDateInMenubar() {
         totalWidth += 20
     }
 
@@ -49,6 +49,7 @@ protocol StatusItemViewConforming {
 
 class StatusContainerView: NSView {
     private var previousX: Int = 0
+    private let store: DataStore
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -56,7 +57,13 @@ class StatusContainerView: NSView {
         layer?.backgroundColor = NSColor.clear.cgColor
     }
 
-    init(with timezones: [Data], showUpcomingEventView: Bool, bufferContainerWidth: Int) {
+    init(with timezones: [Data],
+         store: DataStore,
+         showUpcomingEventView: Bool,
+         bufferContainerWidth: Int)
+    {
+        self.store = store
+
         func addSubviews() {
             if showUpcomingEventView,
                let events = EventCenter.sharedCenter().eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: Date())],
@@ -88,11 +95,15 @@ class StatusContainerView: NSView {
             var compressedWidth = timezones.reduce(0.0) { result, timezone -> CGFloat in
 
                 if let timezoneObject = TimezoneData.customObject(from: timezone) {
-                    let precalculatedWidth = Double(compactWidth(for: timezoneObject))
+                    let precalculatedWidth = Double(compactWidth(for: timezoneObject, with: store))
                     let operationObject = TimezoneDataOperations(with: timezoneObject)
-                    let calculatedSubtitleSize = compactModeTimeFont.size(operationObject.compactMenuSubtitle(), precalculatedWidth, attributes: timeBasedAttributes)
-                    let calculatedTitleSize = compactModeTimeFont.size(operationObject.compactMenuTitle(), precalculatedWidth, attributes: timeBasedAttributes)
-                    let showSeconds = timezoneObject.shouldShowSeconds(DataStore.shared().timezoneFormat())
+                    let calculatedSubtitleSize = compactModeTimeFont.size(for: operationObject.compactMenuSubtitle(),
+                                                                          width: precalculatedWidth,
+                                                                          attributes: timeBasedAttributes)
+                    let calculatedTitleSize = compactModeTimeFont.size(for: operationObject.compactMenuTitle(),
+                                                                       width: precalculatedWidth,
+                                                                       attributes: timeBasedAttributes)
+                    let showSeconds = timezoneObject.shouldShowSeconds(store.timezoneFormat())
                     let secondsBuffer: CGFloat = showSeconds ? 7 : 0
                     return result + max(calculatedTitleSize.width, calculatedSubtitleSize.width) + bufferWidth + secondsBuffer
                 }
@@ -148,9 +159,12 @@ class StatusContainerView: NSView {
         ]
 
         let operation = TimezoneDataOperations(with: timezone)
-        let bestSize = compactModeTimeFont.size(operation.compactMenuSubtitle(),
-                                                Double(compactWidth(for: timezone)), attributes: timeBasedAttributes)
-        let bestTitleSize = compactModeTimeFont.size(operation.compactMenuTitle(), Double(compactWidth(for: timezone)), attributes: timeBasedAttributes)
+        let bestSize = compactModeTimeFont.size(for: operation.compactMenuSubtitle(),
+                                                width: Double(compactWidth(for: timezone, with: store)),
+                                                attributes: timeBasedAttributes)
+        let bestTitleSize = compactModeTimeFont.size(for: operation.compactMenuTitle(),
+                                                     width: Double(compactWidth(for: timezone, with: store)),
+                                                     attributes: timeBasedAttributes)
 
         return Int(max(bestSize.width, bestTitleSize.width) + bufferWidth)
     }
@@ -169,11 +183,11 @@ class StatusContainerView: NSView {
             NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
         ]
 
-        let bestSize = compactModeTimeFont.size(eventInfo.metadataForMeeting(),
-                                                55, // Default for a location based status view
+        let bestSize = compactModeTimeFont.size(for: eventInfo.metadataForMeeting(),
+                                                width: 55, // Default for a location based status view
                                                 attributes: timeBasedAttributes)
-        let bestTitleSize = compactModeTimeFont.size(eventInfo.event.title,
-                                                     70, // Little more buffer since meeting titles tend to be longer
+        let bestTitleSize = compactModeTimeFont.size(for: eventInfo.event.title,
+                                                     width: 70, // Little more buffer since meeting titles tend to be longer
                                                      attributes: timeBasedAttributes)
 
         return Int(max(bestSize.width, bestTitleSize.width) + bufferWidth)

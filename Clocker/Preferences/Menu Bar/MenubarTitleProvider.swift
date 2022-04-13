@@ -67,7 +67,7 @@ class MenubarTitleProvider: NSObject {
 
         return nil
     }
-    
+
     internal func format(event: EKEvent) -> String {
         guard let truncateLength = store.retrieve(key: CLTruncateTextLength) as? NSNumber, let eventTitle = event.title, event.title.isEmpty == false else {
             return CLEmptyString
