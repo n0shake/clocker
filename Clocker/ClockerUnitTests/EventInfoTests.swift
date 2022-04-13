@@ -14,10 +14,7 @@ class EventInfoTests: XCTestCase {
         mockEvent.startDate = Date().add(futureChunk)
         
         let mockEventInfo = EventInfo(event: mockEvent,
-                                      isStartDate: false,
-                                      isEndDate: false,
                                       isAllDay: false,
-                                      isSingleDay: true,
                                       meetingURL: nil,
                                       attendeStatus: .accepted)
         XCTAssert(mockEventInfo.metadataForMeeting() == "in 5m",
@@ -31,10 +28,7 @@ class EventInfoTests: XCTestCase {
         mockEvent.startDate = Date().add(futureChunk)
         
         let mockEventInfo = EventInfo(event: mockEvent,
-                                      isStartDate: false,
-                                      isEndDate: false,
                                       isAllDay: false,
-                                      isSingleDay: true,
                                       meetingURL: nil,
                                       attendeStatus: .accepted)
         XCTAssert(mockEventInfo.metadataForMeeting() == "in <1m",
@@ -48,10 +42,7 @@ class EventInfoTests: XCTestCase {
         mockEvent.startDate = Date().subtract(pastChunk)
         
         let mockEventInfo = EventInfo(event: mockEvent,
-                                      isStartDate: false,
-                                      isEndDate: false,
                                       isAllDay: false,
-                                      isSingleDay: true,
                                       meetingURL: nil,
                                       attendeStatus: .accepted)
         XCTAssert(mockEventInfo.metadataForMeeting() == "started +2m.",
@@ -65,10 +56,7 @@ class EventInfoTests: XCTestCase {
         mockEvent.startDate = Date().subtract(pastChunk)
         
         let mockEventInfo = EventInfo(event: mockEvent,
-                                      isStartDate: false,
-                                      isEndDate: false,
                                       isAllDay: false,
-                                      isSingleDay: true,
                                       meetingURL: nil,
                                       attendeStatus: .accepted)
         XCTAssert(mockEventInfo.metadataForMeeting() == "Error",
@@ -82,10 +70,7 @@ class EventInfoTests: XCTestCase {
         mockEvent.startDate = Date().add(pastChunk)
         
         let mockEventInfo = EventInfo(event: mockEvent,
-                                      isStartDate: false,
-                                      isEndDate: false,
                                       isAllDay: false,
-                                      isSingleDay: true,
                                       meetingURL: nil,
                                       attendeStatus: .accepted)
         XCTAssert(mockEventInfo.metadataForMeeting() == "in 25h",
