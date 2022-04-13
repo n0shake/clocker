@@ -4,28 +4,6 @@ import Cocoa
 import CoreLoggerKit
 import CoreModelKit
 
-func bufferCalculatedWidth() -> Int {
-    var totalWidth = 55
-
-    if DataStore.shared().shouldShowDayInMenubar() {
-        totalWidth += 12
-    }
-
-    if DataStore.shared().isBufferRequiredForTwelveHourFormats() {
-        totalWidth += 20
-    }
-
-    if DataStore.shared().shouldShowDateInMenubar() {
-        totalWidth += 20
-    }
-
-    if DataStore.shared().shouldDisplay(.showMeetingInMenubar) {
-        totalWidth += 100
-    }
-
-    return totalWidth
-}
-
 func compactWidth(for timezone: TimezoneData) -> Int {
     var totalWidth = 55
     let timeFormat = timezone.timezoneFormat(DataStore.shared().timezoneFormat())
@@ -78,7 +56,7 @@ class StatusContainerView: NSView {
         layer?.backgroundColor = NSColor.clear.cgColor
     }
 
-    init(with timezones: [Data], showUpcomingEventView: Bool) {
+    init(with timezones: [Data], showUpcomingEventView: Bool, bufferContainerWidth: Int) {
         func addSubviews() {
             if showUpcomingEventView,
                let events = EventCenter.sharedCenter().eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: Date())],
@@ -119,7 +97,7 @@ class StatusContainerView: NSView {
                     return result + max(calculatedTitleSize.width, calculatedSubtitleSize.width) + bufferWidth + secondsBuffer
                 }
 
-                return result + CGFloat(bufferCalculatedWidth())
+                return result + CGFloat(bufferContainerWidth)
             }
 
             if showUpcomingEventView {
@@ -127,7 +105,7 @@ class StatusContainerView: NSView {
             }
 
             let calculatedWidth = min(compressedWidth,
-                                      CGFloat(timezones.count * bufferCalculatedWidth()))
+                                      CGFloat(timezones.count * bufferContainerWidth))
             return calculatedWidth
         }
 
