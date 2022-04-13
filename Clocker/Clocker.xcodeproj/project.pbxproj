@@ -61,6 +61,7 @@
 		35B2FEC0259A186F005DA84D /* StartupKit in Frameworks */ = {isa = PBXBuildFile; productRef = 35B2FEBF259A186F005DA84D /* StartupKit */; };
 		35B2FEDD259A2291005DA84D /* CoreLoggerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 35B2FEDC259A2291005DA84D /* CoreLoggerKit */; };
 		35B2FEF1259A2DB1005DA84D /* CoreModelKit in Frameworks */ = {isa = PBXBuildFile; productRef = 35B2FEF0259A2DB1005DA84D /* CoreModelKit */; };
+		35BD9A572807580800077443 /* EventInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD9A562807580800077443 /* EventInfoTests.swift */; };
 		35C36EF122595F14002FA5C6 /* OnboardingPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE822595F13002FA5C6 /* OnboardingPermissionsViewController.swift */; };
 		35C36EF222595F14002FA5C6 /* OnboardingWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C36EE922595F13002FA5C6 /* OnboardingWelcomeViewController.swift */; };
 		35C36EF322595F14002FA5C6 /* WelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35C36EEA22595F13002FA5C6 /* WelcomeView.xib */; };
@@ -298,6 +299,7 @@
 		35B2FEB1259A1649005DA84D /* StartupKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StartupKit; sourceTree = "<group>"; };
 		35B2FED4259A2244005DA84D /* CoreLoggerKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CoreLoggerKit; sourceTree = "<group>"; };
 		35B2FEE4259A2C25005DA84D /* CoreModelKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CoreModelKit; sourceTree = "<group>"; };
+		35BD9A562807580800077443 /* EventInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoTests.swift; sourceTree = "<group>"; };
 		35C11E2024873A550031F18C /* VersionUpdateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUpdateHandler.swift; sourceTree = "<group>"; };
 		35C36EE822595F13002FA5C6 /* OnboardingPermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPermissionsViewController.swift; sourceTree = "<group>"; };
 		35C36EE922595F13002FA5C6 /* OnboardingWelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingWelcomeViewController.swift; sourceTree = "<group>"; };
@@ -881,6 +883,7 @@
 				35584D1927F0B64E006E3EAD /* AppDelegateTests.swift */,
 				35D23E3627F27E2E00C6DD55 /* ReviewControllerTests.swift */,
 				35621CFB27F66C1900926D5C /* SearchDataSourceTests.swift */,
+				35BD9A562807580800077443 /* EventInfoTests.swift */,
 			);
 			path = ClockerUnitTests;
 			sourceTree = "<group>";
@@ -1266,6 +1269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35BD9A572807580800077443 /* EventInfoTests.swift in Sources */,
 				35584D1427EF8EB5006E3EAD /* ThemerTests.swift in Sources */,
 				35D23E3727F27E2E00C6DD55 /* ReviewControllerTests.swift in Sources */,
 				35584D1A27F0B64E006E3EAD /* AppDelegateTests.swift in Sources */,
