@@ -498,7 +498,7 @@ struct EventInfo {
             let withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
             // If the user has not turned on seconds granularity for one of the timezones,
             // we return "in 12 seconds" which looks weird.
-            return withoutAgo.contains("seconds") ? "starts in <1m" : "in \(withoutAgo.lowercased())"
+            return withoutAgo.contains("seconds") ? "in <1m" : "in \(withoutAgo.lowercased())"
         } else if event.startDate.isTomorrow {
             let hoursUntil = event.startDate.hoursUntil
             return "in \(hoursUntil)h"
