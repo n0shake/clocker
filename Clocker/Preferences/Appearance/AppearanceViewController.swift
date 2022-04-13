@@ -136,7 +136,7 @@ class AppearanceViewController: ParentViewController {
         // True is Menubar Only and False is Menubar + Dock
         let appDisplayOptions = DataStore.shared().shouldDisplay(.appDisplayOptions)
         appDisplayControl.setSelected(true, forSegment: appDisplayOptions ? 0 : 1)
-        
+
         // Set the Sync value from NSUbiqutousKeyValueStore
         let syncEnabled = NSUbiquitousKeyValueStore.default.bool(forKey: CLEnableSyncKey)
         syncSegementedControl.setSelected(true, forSegment: syncEnabled ? 0 : 1)

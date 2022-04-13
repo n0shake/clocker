@@ -116,40 +116,6 @@ extension EventCenter {
         return (formattedTitle, menubarText)
     }
 
-    func format(event: EKEvent) -> String {
-        guard let truncateLength = DataStore.shared().retrieve(key: CLTruncateTextLength) as? NSNumber, let eventTitle = event.title else {
-            return CLEmptyString
-        }
-
-        let seconds = event.startDate.timeIntervalSinceNow
-
-        var menubarText: String = CLEmptyString
-
-        if eventTitle.count > truncateLength.intValue {
-            let truncateIndex = eventTitle.index(eventTitle.startIndex, offsetBy: truncateLength.intValue)
-            let truncatedTitle = String(eventTitle[..<truncateIndex])
-
-            menubarText.append(truncatedTitle)
-            menubarText.append("...")
-        } else {
-            menubarText.append(eventTitle)
-        }
-
-        let minutes = seconds / 60
-
-        if minutes > 2 {
-            let suffix = String(format: " in %0.f mins", minutes)
-            menubarText.append(suffix)
-        } else if minutes == 1 {
-            let suffix = String(format: " in %0.f min", minutes)
-            menubarText.append(suffix)
-        } else {
-            menubarText.append(" starts now.")
-        }
-
-        return menubarText
-    }
-
     func nextOccuring(_: [EventInfo]) -> EventInfo? {
         if calendarAccessDenied() || calendarAccessNotDetermined() {
             return nil
@@ -362,17 +328,11 @@ extension EventCenter {
 
     private func generateEventInfo(for event: EKEvent, _ date: Date, _ nextDate: Date) -> EventInfo {
         // Make a customized struct
-        let isStartDate = autoupdatingCalendar.isDate(date, inSameDayAs: event.startDate) && (event.endDate.compare(date) == .orderedDescending)
-        let isEndDate = autoupdatingCalendar.isDate(date, inSameDayAs: event.endDate) && (event.startDate.compare(date) == .orderedAscending)
         let isAllDay = event.isAllDay || (event.startDate.compare(date) == .orderedAscending && event.endDate.compare(nextDate) == .orderedSame)
-        let isSingleDay = event.isAllDay && (event.startDate.compare(date) == .orderedSame && event.endDate.compare(nextDate) == .orderedSame)
         let eventParticipationStatus = attendingStatusForUser(event)
         let meetingURL = retrieveMeetingURL(event)
         let eventInfo = EventInfo(event: event,
-                                  isStartDate: isStartDate,
-                                  isEndDate: isEndDate,
                                   isAllDay: isAllDay,
-                                  isSingleDay: isSingleDay,
                                   meetingURL: meetingURL,
                                   attendeStatus: eventParticipationStatus)
         return eventInfo
@@ -481,10 +441,7 @@ struct CalendarInfo {
 
 struct EventInfo {
     let event: EKEvent
-    let isStartDate: Bool
-    let isEndDate: Bool
     let isAllDay: Bool
-    let isSingleDay: Bool
     let meetingURL: URL?
     let attendeStatus: EKParticipantStatus
 
@@ -492,13 +449,13 @@ struct EventInfo {
         let timeIntervalSinceNowForMeeting = event.startDate.timeIntervalSinceNow
         if timeIntervalSinceNowForMeeting < 0, timeIntervalSinceNowForMeeting > -300 {
             return "started +\(event.startDate.shortTimeAgoSinceNow)."
-        } else if event.startDate.isToday {
+        } else if event.startDate.isToday, timeIntervalSinceNowForMeeting > 0 {
             let timeSince = Date().timeAgo(since: event.startDate).lowercased()
             let withoutAn = timeSince.replacingOccurrences(of: "an", with: CLEmptyString)
             let withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
             // If the user has not turned on seconds granularity for one of the timezones,
             // we return "in 12 seconds" which looks weird.
-            return withoutAgo.contains("seconds") ? "starts in <1m" : "in \(withoutAgo.lowercased())"
+            return withoutAgo.contains("seconds") ? "in <1m" : "in \(withoutAgo.lowercased())".trimmingCharacters(in: .whitespaces)
         } else if event.startDate.isTomorrow {
             let hoursUntil = event.startDate.hoursUntil
             return "in \(hoursUntil)h"

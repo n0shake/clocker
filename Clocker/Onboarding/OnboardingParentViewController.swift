@@ -223,7 +223,7 @@ class OnboardingParentViewController: NSViewController {
         if ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument) == false {
             UserDefaults.standard.set(true, forKey: CLShowOnboardingFlow)
         }
-        
+
         // Install the menubar option!
         let appDelegate = NSApplication.shared.delegate as? AppDelegate
         appDelegate?.continueUsually()
