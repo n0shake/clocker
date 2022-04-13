@@ -1,14 +1,14 @@
 // Copyright © 2015 Abhishek Banthia
 
 import CoreModelKit
-import XCTest
 import EventKit
+import XCTest
 
 @testable import Clocker
 
 class StandardMenubarHandlerTests: XCTestCase {
     private let eventStore = EKEventStore()
-    
+
     private let mumbai = ["customLabel": "Ghar",
                           "formattedAddress": "Mumbai",
                           "place_id": "ChIJwe1EZjDG5zsRaYxkjY_tpF0",
@@ -116,73 +116,68 @@ class StandardMenubarHandlerTests: XCTestCase {
         let menubarHandler = MenubarTitleProvider(with: store)
         XCTAssertNotNil(menubarHandler.titleForMenubar())
     }
-    
+
     func testFormattedUpcomingEvent() {
         let store = makeMockStore()
-        
+
         let futureChunk = TimeChunk(seconds: 10, minutes: 10, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
         let mockEvent = EKEvent(eventStore: eventStore)
         mockEvent.title = "Mock Title"
         mockEvent.startDate = Date().add(futureChunk)
-        
+
         let menubarHandler = MenubarTitleProvider(with: store)
         XCTAssert(menubarHandler.format(event: mockEvent) == "Mock Title in 10m",
                   "Suffix \(menubarHandler.format(event: mockEvent)) doesn't match expectation")
-        
     }
-    
+
     func testUpcomingEventHappeningWithinOneMinute() {
         let store = makeMockStore()
-        
+
         let futureChunk = TimeChunk(seconds: 10, minutes: 1, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
         let mockEvent = EKEvent(eventStore: eventStore)
         mockEvent.title = "Mock Title"
         mockEvent.startDate = Date().add(futureChunk)
-        
+
         let menubarHandler = MenubarTitleProvider(with: store)
         XCTAssert(menubarHandler.format(event: mockEvent) == "Mock Title in 1m",
                   "Suffix \(menubarHandler.format(event: mockEvent)) doesn't match expectation")
-        
     }
-    
+
     func testUpcomingEventHappeningWithinSeconds() {
         let store = makeMockStore()
-        
+
         let futureChunk = TimeChunk(seconds: 10, minutes: 0, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
         let mockEvent = EKEvent(eventStore: eventStore)
         mockEvent.title = "Mock Title"
         mockEvent.startDate = Date().add(futureChunk)
-        
+
         let menubarHandler = MenubarTitleProvider(with: store)
         XCTAssert(menubarHandler.format(event: mockEvent) == "Mock Title starts now.",
                   "Suffix \(menubarHandler.format(event: mockEvent)) doesn't match expectation")
-        
     }
-    
+
     func testEmptyUpcomingEvent() {
         let store = makeMockStore()
-        
+
         let futureChunk = TimeChunk(seconds: 10, minutes: 0, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
         let mockEvent = EKEvent(eventStore: eventStore)
         mockEvent.startDate = Date().add(futureChunk)
-        
+
         let menubarHandler = MenubarTitleProvider(with: store)
         XCTAssert(menubarHandler.format(event: mockEvent) == CLEmptyString,
                   "Suffix \(menubarHandler.format(event: mockEvent)) doesn't match expectation")
-        
     }
-    
+
     func testLongUpcomingEvent() {
         let store = makeMockStore()
-        
+
         let futureChunk = TimeChunk(seconds: 10, minutes: 0, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
         let mockEvent = EKEvent(eventStore: eventStore)
         mockEvent.title = "Really long calendar event title that longer than the longest name"
         mockEvent.startDate = Date().add(futureChunk)
-        
+
         let menubarHandler = MenubarTitleProvider(with: store)
         XCTAssert(menubarHandler.format(event: mockEvent) == "Really long calendar event tit... starts now.",
                   "Suffix \(menubarHandler.format(event: mockEvent)) doesn't match expectation")
-        
     }
 }

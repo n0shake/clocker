@@ -21,7 +21,7 @@ extension NSTextField {
 }
 
 extension NSFont {
-    func size(_ string: String, _ width: Double, attributes: [NSAttributedString.Key: AnyObject]) -> CGSize {
+    func size(for string: String, width: Double, attributes: [NSAttributedString.Key: AnyObject]) -> CGSize {
         let size = CGSize(width: width,
                           height: Double.greatestFiniteMagnitude)
 

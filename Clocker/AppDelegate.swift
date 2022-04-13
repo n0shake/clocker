@@ -110,7 +110,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         if controller != nil {
             controller = nil
         }
-        
+
         // Check if another instance of the app is already running. If so, then stop this one.
         checkIfAppIsAlreadyOpen()
 
