@@ -362,17 +362,11 @@ extension EventCenter {
 
     private func generateEventInfo(for event: EKEvent, _ date: Date, _ nextDate: Date) -> EventInfo {
         // Make a customized struct
-        let isStartDate = autoupdatingCalendar.isDate(date, inSameDayAs: event.startDate) && (event.endDate.compare(date) == .orderedDescending)
-        let isEndDate = autoupdatingCalendar.isDate(date, inSameDayAs: event.endDate) && (event.startDate.compare(date) == .orderedAscending)
         let isAllDay = event.isAllDay || (event.startDate.compare(date) == .orderedAscending && event.endDate.compare(nextDate) == .orderedSame)
-        let isSingleDay = event.isAllDay && (event.startDate.compare(date) == .orderedSame && event.endDate.compare(nextDate) == .orderedSame)
         let eventParticipationStatus = attendingStatusForUser(event)
         let meetingURL = retrieveMeetingURL(event)
         let eventInfo = EventInfo(event: event,
-                                  isStartDate: isStartDate,
-                                  isEndDate: isEndDate,
                                   isAllDay: isAllDay,
-                                  isSingleDay: isSingleDay,
                                   meetingURL: meetingURL,
                                   attendeStatus: eventParticipationStatus)
         return eventInfo
@@ -481,10 +475,7 @@ struct CalendarInfo {
 
 struct EventInfo {
     let event: EKEvent
-    let isStartDate: Bool
-    let isEndDate: Bool
     let isAllDay: Bool
-    let isSingleDay: Bool
     let meetingURL: URL?
     let attendeStatus: EKParticipantStatus
 
