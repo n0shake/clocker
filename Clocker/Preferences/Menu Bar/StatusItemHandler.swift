@@ -148,7 +148,8 @@ class StatusItemHandler: NSObject {
         }
 
         statusContainerView = StatusContainerView(with: menubarTimezones,
-                                                  showUpcomingEventView: upcomingEventView)
+                                                  showUpcomingEventView: upcomingEventView,
+                                                  bufferContainerWidth: bufferCalculatedWidth())
         statusItem.view = statusContainerView
         statusItem.view?.window?.backgroundColor = NSColor.clear
     }
@@ -385,5 +386,27 @@ class StatusItemHandler: NSObject {
             return false
         })
         return upcomingEventView
+    }
+    
+    private func bufferCalculatedWidth() -> Int {
+        var totalWidth = 55
+
+        if store.shouldShowDayInMenubar() {
+            totalWidth += 12
+        }
+
+        if store.isBufferRequiredForTwelveHourFormats() {
+            totalWidth += 20
+        }
+
+        if store.shouldShowDateInMenubar() {
+            totalWidth += 20
+        }
+
+        if store.shouldDisplay(.showMeetingInMenubar) {
+            totalWidth += 100
+        }
+
+        return totalWidth
     }
 }
