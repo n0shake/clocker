@@ -5,7 +5,6 @@ import CoreLoggerKit
 import EventKit
 
 class ClockerTextBackgroundView: NSView {
-
     override func awakeFromNib() {
         wantsLayer = true
         layer?.cornerRadius = 8.0
@@ -16,12 +15,12 @@ class ClockerTextBackgroundView: NSView {
                                                name: .themeDidChangeNotification,
                                                object: nil)
     }
-    
+
     override func updateLayer() {
         super.updateLayer()
         layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
     }
-    
+
     @objc func updateBackgroundColor() {
         layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
     }
