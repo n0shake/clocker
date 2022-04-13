@@ -22,7 +22,7 @@ class StatusItemHandler: NSObject {
         return statusItem
     }()
 
-    private var menubarTitleHandler = MenubarTitleProvider(with: DataStore.shared())
+    private lazy var menubarTitleHandler = MenubarTitleProvider(with: self.store)
 
     private var statusContainerView: StatusContainerView?
 
@@ -31,6 +31,8 @@ class StatusItemHandler: NSObject {
     private lazy var units: Set<Calendar.Component> = Set([.era, .year, .month, .day, .hour, .minute])
 
     private var userNotificationsDidChangeNotif: NSObjectProtocol?
+
+    private let store: DataStore
 
     // Current State might be set twice when the user first launches an app.
     // First, when StatusItemHandler() is instantiated in AppDelegate
@@ -63,7 +65,8 @@ class StatusItemHandler: NSObject {
         }
     }
 
-    override init() {
+    init(with dataStore: DataStore) {
+        store = dataStore
         super.init()
 
         setupStatusItem()
@@ -74,10 +77,10 @@ class StatusItemHandler: NSObject {
         // Let's figure out the initial menubar state
         var menubarState = MenubarState.icon
 
-        let shouldTextBeDisplayed = DataStore.shared().menubarTimezones()?.isEmpty ?? true
+        let shouldTextBeDisplayed = store.menubarTimezones()?.isEmpty ?? true
 
-        if !shouldTextBeDisplayed || DataStore.shared().shouldDisplay(.showMeetingInMenubar) {
-            if DataStore.shared().shouldDisplay(.menubarCompactMode) {
+        if !shouldTextBeDisplayed || store.shouldDisplay(.showMeetingInMenubar) {
+            if store.shouldDisplay(.menubarCompactMode) {
                 menubarState = .compactText
             } else {
                 menubarState = .standardText
@@ -138,14 +141,16 @@ class StatusItemHandler: NSObject {
     private func constructCompactView(with upcomingEventView: Bool = false) {
         statusContainerView = nil
 
-        let menubarTimezones = DataStore.shared().menubarTimezones() ?? []
+        let menubarTimezones = store.menubarTimezones() ?? []
         if menubarTimezones.isEmpty {
             currentState = .icon
             return
         }
 
         statusContainerView = StatusContainerView(with: menubarTimezones,
-                                                  showUpcomingEventView: upcomingEventView)
+                                                  store: store,
+                                                  showUpcomingEventView: upcomingEventView,
+                                                  bufferContainerWidth: bufferCalculatedWidth())
         statusItem.view = statusContainerView
         statusItem.view?.window?.backgroundColor = NSColor.clear
     }
@@ -155,7 +160,7 @@ class StatusItemHandler: NSObject {
     // Our icon is template, so it changes automatically; so is our standard status bar text
     // Only need to handle the compact mode!
     @objc func respondToInterfaceStyleChange() {
-        if DataStore.shared().shouldDisplay(.menubarCompactMode) {
+        if store.shouldDisplay(.menubarCompactMode) {
             updateCompactMenubar()
         }
     }
@@ -199,11 +204,11 @@ class StatusItemHandler: NSObject {
     }
 
     private func shouldDisplaySecondsInMenubar() -> Bool {
-        let syncedTimezones = DataStore.shared().menubarTimezones() ?? []
+        let syncedTimezones = store.menubarTimezones() ?? []
 
         let timezonesSupportingSeconds = syncedTimezones.filter { data in
             if let timezoneObj = TimezoneData.customObject(from: data) {
-                return timezoneObj.shouldShowSeconds(DataStore.shared().timezoneFormat())
+                return timezoneObj.shouldShowSeconds(store.timezoneFormat())
             }
             return false
         }
@@ -213,7 +218,7 @@ class StatusItemHandler: NSObject {
 
     private func calculateFireDate() -> Date? {
         let shouldDisplaySeconds = shouldDisplaySecondsInMenubar()
-        let menubarFavourites = DataStore.shared().menubarTimezones()
+        let menubarFavourites = store.menubarTimezones()
 
         if !units.contains(.second), shouldDisplaySeconds {
             units.insert(.second)
@@ -298,9 +303,9 @@ class StatusItemHandler: NSObject {
         // Check if user is not showing
         // 1. Timezones
         // 2. Upcoming Event
-        let menubarFavourites = DataStore.shared().menubarTimezones() ?? []
+        let menubarFavourites = store.menubarTimezones() ?? []
 
-        if menubarFavourites.isEmpty, DataStore.shared().shouldDisplay(.showMeetingInMenubar) == false {
+        if menubarFavourites.isEmpty, store.shouldDisplay(.showMeetingInMenubar) == false {
             Logger.info("Invalidating menubar timer!")
 
             invalidation()
@@ -347,7 +352,7 @@ class StatusItemHandler: NSObject {
 
         if let menubarTitle = menubarTitleHandler.titleForMenubar() {
             menubarText = menubarTitle
-        } else if DataStore.shared().shouldDisplay(.showMeetingInMenubar) {
+        } else if store.shouldDisplay(.showMeetingInMenubar) {
             // Don't have any meeting to show
         } else {
             // We have no favourites to display and no meetings to show.
@@ -382,5 +387,27 @@ class StatusItemHandler: NSObject {
             return false
         })
         return upcomingEventView
+    }
+
+    private func bufferCalculatedWidth() -> Int {
+        var totalWidth = 55
+
+        if store.shouldShowDayInMenubar() {
+            totalWidth += 12
+        }
+
+        if store.isBufferRequiredForTwelveHourFormats() {
+            totalWidth += 20
+        }
+
+        if store.shouldShowDateInMenubar() {
+            totalWidth += 20
+        }
+
+        if store.shouldDisplay(.showMeetingInMenubar) {
+            totalWidth += 100
+        }
+
+        return totalWidth
     }
 }

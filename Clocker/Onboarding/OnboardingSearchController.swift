@@ -40,7 +40,7 @@ class OnboardingSearchController: NSViewController {
         super.viewDidLoad()
 
         view.wantsLayer = true
-        
+
         resultsTableView.isHidden = true
         resultsTableView.delegate = self
         resultsTableView.setAccessibility("ResultsTableView")
@@ -69,12 +69,12 @@ class OnboardingSearchController: NSViewController {
 
         setupUndoButton()
     }
-    
+
     override func viewWillAppear() {
         super.viewWillAppear()
         searchResultsDataSource = SearchDataSource(with: searchBar, location: .onboarding)
     }
-    
+
     override func viewWillDisappear() {
         super.viewWillDisappear()
         searchResultsDataSource = nil
