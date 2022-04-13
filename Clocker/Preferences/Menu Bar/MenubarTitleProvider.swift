@@ -60,11 +60,41 @@ class MenubarTitleProvider: NSObject {
                         continue
                     }
 
-                    return EventCenter.sharedCenter().format(event: event)
+                    return format(event: event)
                 }
             }
         }
 
         return nil
+    }
+    
+    internal func format(event: EKEvent) -> String {
+        guard let truncateLength = store.retrieve(key: CLTruncateTextLength) as? NSNumber, let eventTitle = event.title, event.title.isEmpty == false else {
+            return CLEmptyString
+        }
+
+        let seconds = event.startDate.timeIntervalSinceNow
+
+        var menubarText: String = CLEmptyString
+
+        if eventTitle.count > truncateLength.intValue {
+            let truncateIndex = eventTitle.index(eventTitle.startIndex, offsetBy: truncateLength.intValue)
+            let truncatedTitle = String(eventTitle[..<truncateIndex])
+
+            menubarText.append(truncatedTitle)
+            menubarText.append("...")
+        } else {
+            menubarText.append(eventTitle)
+        }
+
+        let minutes = seconds / 60
+        if minutes >= 1 {
+            let suffix = String(format: " in %0.fm", minutes)
+            menubarText.append(suffix)
+        } else {
+            menubarText.append(" starts now.")
+        }
+
+        return menubarText
     }
 }
