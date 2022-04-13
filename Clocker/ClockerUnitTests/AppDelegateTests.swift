@@ -95,6 +95,7 @@ class AppDelegateTests: XCTestCase {
 
     func testCompactModeMenubarSetup() {
         let subject = NSApplication.shared.delegate as? AppDelegate
+        let olderTimezones = DataStore.shared().timezones()
 
         let timezone1 = TimezoneData()
         timezone1.timezoneID = TimeZone.autoupdatingCurrent.identifier
@@ -108,17 +109,22 @@ class AppDelegateTests: XCTestCase {
         let statusItemHandler = subject?.statusItemForPanel()
         XCTAssertNotNil(statusItemHandler?.statusItem.view) // This won't be nil for compact mode
 
-        DataStore.shared().setTimezones([])
+        DataStore.shared().setTimezones(olderTimezones)
     }
 
     func testStandardModeMenubarSetup() {
+        let olderTimezones = DataStore.shared().timezones()
         UserDefaults.standard.set(1, forKey: CLMenubarCompactMode) // Set the menubar mode to standard
 
         let subject = NSApplication.shared.delegate as? AppDelegate
         let statusItemHandler = subject?.statusItemForPanel()
         subject?.setupMenubarTimer()
 
-        XCTAssertEqual(statusItemHandler?.statusItem.button?.image?.name(), "LightModeIcon")
+        if olderTimezones.isEmpty {
+            XCTAssertEqual(statusItemHandler?.statusItem.button?.image?.name(), "LightModeIcon")
+        } else {
+            XCTAssertTrue(statusItemHandler?.statusItem.button?.title != nil)
+        }
 
         let timezone1 = TimezoneData()
         timezone1.timezoneID = TimeZone.autoupdatingCurrent.identifier
@@ -131,8 +137,6 @@ class AppDelegateTests: XCTestCase {
         subject?.setupMenubarTimer()
 
         XCTAssertNil(subject?.statusItemForPanel().statusItem.view) // This will be nil for standard mode
-
-        DataStore.shared().setTimezones([])
 
         UserDefaults.standard.set(0, forKey: CLMenubarCompactMode) // Set the menubar mode back to compact
     }
