@@ -116,40 +116,6 @@ extension EventCenter {
         return (formattedTitle, menubarText)
     }
 
-    func format(event: EKEvent) -> String {
-        guard let truncateLength = DataStore.shared().retrieve(key: CLTruncateTextLength) as? NSNumber, let eventTitle = event.title else {
-            return CLEmptyString
-        }
-
-        let seconds = event.startDate.timeIntervalSinceNow
-
-        var menubarText: String = CLEmptyString
-
-        if eventTitle.count > truncateLength.intValue {
-            let truncateIndex = eventTitle.index(eventTitle.startIndex, offsetBy: truncateLength.intValue)
-            let truncatedTitle = String(eventTitle[..<truncateIndex])
-
-            menubarText.append(truncatedTitle)
-            menubarText.append("...")
-        } else {
-            menubarText.append(eventTitle)
-        }
-
-        let minutes = seconds / 60
-
-        if minutes > 2 {
-            let suffix = String(format: " in %0.f mins", minutes)
-            menubarText.append(suffix)
-        } else if minutes == 1 {
-            let suffix = String(format: " in %0.f min", minutes)
-            menubarText.append(suffix)
-        } else {
-            menubarText.append(" starts now.")
-        }
-
-        return menubarText
-    }
-
     func nextOccuring(_: [EventInfo]) -> EventInfo? {
         if calendarAccessDenied() || calendarAccessNotDetermined() {
             return nil
