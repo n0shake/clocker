@@ -113,7 +113,7 @@ public extension Date {
                 return DateToolsLocalizedStrings("1 hour ago")
             }
 
-            return DateToolsLocalizedStrings("An hour ago")
+            return DateToolsLocalizedStrings("1h ago")
         } else if components.minute! >= 2 {
             return logicalLocalizedStringFromFormat(format: "%%d%@m ago", value: components.minute!)
         } else if components.minute! >= 1 {
