@@ -117,7 +117,10 @@ class CalendarViewController: ParentViewController {
     }
 
     private func onCalendarAccessDenial() {
-        informationField.stringValue = "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy.".localized()
+        informationField.stringValue = """
+         Clocker is more useful when it can display events from your calendars.
+         You can change this setting in System Preferences › Security & Privacy › Privacy.
+        """.localized()
         setGrantAccess(title: "Launch Preferences".localized())
 
         // Remove upcoming event view if possible
