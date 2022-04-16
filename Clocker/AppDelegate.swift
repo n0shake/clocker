@@ -179,7 +179,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func retrieveLatestLocation() {
-        let locationController = LocationController.sharedController()
+        let locationController = LocationController(withStore: DataStore.shared())
         locationController.determineAndRequestLocationAuthorization()
     }
 
