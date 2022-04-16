@@ -177,4 +177,79 @@ class StandardMenubarHandlerTests: XCTestCase {
         XCTAssert(menubarHandler.format(event: mockEvent) == "Really long calendar event tit... starts now.",
                   "Suffix \(menubarHandler.format(event: mockEvent)) doesn't match expectation")
     }
+    
+    func testUpcomingEventHappeningInFiveMinutes() throws {
+        let store = makeMockStore()
+
+        let futureChunk = TimeChunk(seconds: 10, minutes: 5, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
+        let mockEvent = EKEvent(eventStore: eventStore)
+        mockEvent.title = "Event happening"
+        mockEvent.startDate = Date().add(futureChunk)
+        let eventInfo = EventInfo(event: mockEvent,
+                                  isAllDay: false,
+                                  meetingURL: nil,
+                                  attendeStatus: .accepted)
+
+        let menubarHandler = MenubarTitleProvider(with: store)
+        let calendar = Calendar.autoupdatingCurrent
+        let events: [Date: [EventInfo]] = [calendar.startOfDay(for: Date()): [eventInfo]]
+        let actualResult = try XCTUnwrap(menubarHandler.checkForUpcomingEvents(events, calendar: calendar))
+        let expectedResult = "Event happening in 5m"
+        XCTAssert(actualResult == expectedResult, "Actual Result \(actualResult)")
+    }
+    
+    func testUpcomingEventHappeningIn29Minutes() throws {
+        let store = makeMockStore()
+
+        let futureChunk = TimeChunk(seconds: 10, minutes: 29, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
+        let mockEvent = EKEvent(eventStore: eventStore)
+        mockEvent.title = "Event happening"
+        mockEvent.startDate = Date().add(futureChunk)
+        let eventInfo = EventInfo(event: mockEvent,
+                                  isAllDay: false,
+                                  meetingURL: nil,
+                                  attendeStatus: .accepted)
+
+        let menubarHandler = MenubarTitleProvider(with: store)
+        let calendar = Calendar.autoupdatingCurrent
+        let events: [Date: [EventInfo]] = [calendar.startOfDay(for: Date()): [eventInfo]]
+        let actualResult = try XCTUnwrap(menubarHandler.checkForUpcomingEvents(events, calendar: calendar))
+        let expectedResult = "Event happening in 29m"
+        XCTAssert(actualResult == expectedResult, "Actual Result \(actualResult)")
+    }
+    
+    func testUpcomingEventHappeningIn31Minutes() throws {
+        let store = makeMockStore()
+
+        let futureChunk = TimeChunk(seconds: 10, minutes: 31, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
+        let mockEvent = EKEvent(eventStore: eventStore)
+        mockEvent.title = "Event happening"
+        mockEvent.startDate = Date().add(futureChunk)
+        let eventInfo = EventInfo(event: mockEvent,
+                                  isAllDay: false,
+                                  meetingURL: nil,
+                                  attendeStatus: .accepted)
+
+        let menubarHandler = MenubarTitleProvider(with: store)
+        let calendar = Calendar.autoupdatingCurrent
+        let events: [Date: [EventInfo]] = [calendar.startOfDay(for: Date()): [eventInfo]]
+        XCTAssertNil(menubarHandler.checkForUpcomingEvents(events, calendar: calendar))
+    }
+    
+    func testUpcomingEventHappeningIn31MinutesWithEmptyEvent() throws {
+        let store = makeMockStore()
+
+        let futureChunk = TimeChunk(seconds: 10, minutes: 31, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
+        let mockEvent = EKEvent(eventStore: eventStore)
+        mockEvent.startDate = Date().add(futureChunk)
+        let eventInfo = EventInfo(event: mockEvent,
+                                  isAllDay: false,
+                                  meetingURL: nil,
+                                  attendeStatus: .accepted)
+
+        let menubarHandler = MenubarTitleProvider(with: store)
+        let calendar = Calendar.autoupdatingCurrent
+        let events: [Date: [EventInfo]] = [calendar.startOfDay(for: Date()): [eventInfo]]
+        XCTAssertNil(menubarHandler.checkForUpcomingEvents(events, calendar: calendar))
+    }
 }
