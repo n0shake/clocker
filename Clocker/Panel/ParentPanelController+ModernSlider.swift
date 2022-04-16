@@ -1,5 +1,6 @@
 // Copyright © 2015 Abhishek Banthia
 
+import AppKit
 import CoreLoggerKit
 import Foundation
 
@@ -11,7 +12,9 @@ extension ParentPanelController: NSCollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: TimeMarkerViewItem.reuseIdentifier, for: indexPath) as! TimeMarkerViewItem
+        guard let item = collectionView.makeItem(withIdentifier: TimeMarkerViewItem.reuseIdentifier, for: indexPath) as? TimeMarkerViewItem else {
+            return NSCollectionViewItem()
+        }
         item.setup(with: indexPath.item)
         return item
     }

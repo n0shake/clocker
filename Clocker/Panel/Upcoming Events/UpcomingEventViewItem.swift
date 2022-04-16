@@ -1,5 +1,6 @@
 // Copyright © 2015 Abhishek Banthia
 
+import AppKit
 import Foundation
 
 class UpcomingEventViewItem: NSCollectionViewItem {
@@ -88,7 +89,7 @@ class UpcomingEventViewItem: NSCollectionViewItem {
     }
 
     func setupEmptyState() {
-        let subtitle = NSCalendar.autoupdatingCurrent.isDateInWeekend(Date()) ? NSLocalizedString("Happy Weekend.", comment: "Button Title for no upcoming event") : NSLocalizedString("Great going.", comment: "Button Title for no upcoming event")
+        let subtitle = NSCalendar.autoupdatingCurrent.isDateInWeekend(Date()) ? "Happy Weekend.".localized() : "Great going.".localized()
 
         setAlternateState(NSLocalizedString("No upcoming events for today!", comment: "Next Event Label with no upcoming event"),
                           subtitle,
