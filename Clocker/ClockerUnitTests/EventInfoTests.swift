@@ -76,7 +76,7 @@ class EventInfoTests: XCTestCase {
         XCTAssert(mockEventInfo.metadataForMeeting() == "in 25h",
                   "Metadata for meeting: \(mockEventInfo.metadataForMeeting()) doesn't match expectation")
     }
-    
+
     func testMetadataForEventHappeningAfterAnHour() throws {
         let pastChunk = TimeChunk(seconds: 10, minutes: 10, hours: 1, days: 0, weeks: 0, months: 0, years: 0)
         let mockEvent = EKEvent(eventStore: eventStore)
@@ -90,7 +90,7 @@ class EventInfoTests: XCTestCase {
         XCTAssert(mockEventInfo.metadataForMeeting() == "in 1h",
                   "Metadata for meeting: \(mockEventInfo.metadataForMeeting()) doesn't match expectation")
     }
-    
+
     func testMetadataForEventHappeningAfterThreeHours() throws {
         let pastChunk = TimeChunk(seconds: 10, minutes: 10, hours: 3, days: 0, weeks: 0, months: 0, years: 0)
         let mockEvent = EKEvent(eventStore: eventStore)
