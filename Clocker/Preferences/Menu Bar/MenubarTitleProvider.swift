@@ -14,7 +14,9 @@ class MenubarTitleProvider: NSObject {
     }
 
     func titleForMenubar() -> String? {
-        if let nextEvent = checkForUpcomingEvents() {
+        let eventCenter = EventCenter.sharedCenter().eventsForDate
+        let autoupdatingCalendar = EventCenter.sharedCenter().autoupdatingCalendar
+        if let nextEvent = checkForUpcomingEvents(eventCenter, calendar: autoupdatingCalendar) {
             return nextEvent
         }
 
@@ -41,11 +43,9 @@ class MenubarTitleProvider: NSObject {
         return nil
     }
 
-    func checkForUpcomingEvents() -> String? {
+    func checkForUpcomingEvents(_ filteredEvents: [Date: [EventInfo]], calendar: Calendar) -> String? {
         if store.shouldDisplay(.showMeetingInMenubar) {
-            let filteredDates = EventCenter.sharedCenter().eventsForDate
-            let autoupdatingCal = EventCenter.sharedCenter().autoupdatingCalendar
-            guard let events = filteredDates[autoupdatingCal.startOfDay(for: Date())] else {
+            guard let events = filteredEvents[calendar.startOfDay(for: Date())] else {
                 return nil
             }
 
