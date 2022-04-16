@@ -78,55 +78,55 @@ public extension Date {
             return logicalLocalizedStringFromFormat(format: "%%d %@years ago", value: components.year!)
         } else if components.year! >= 1 {
             if numericDates {
-                return DateToolsLocalizedStrings("1 year ago")
+                return dateToolsLocalizedStrings("1 year ago")
             }
 
-            return DateToolsLocalizedStrings("Last year")
+            return dateToolsLocalizedStrings("Last year")
         } else if components.month! >= 2 {
             return logicalLocalizedStringFromFormat(format: "%%d %@months ago", value: components.month!)
         } else if components.month! >= 1 {
             if numericDates {
-                return DateToolsLocalizedStrings("1 month ago")
+                return dateToolsLocalizedStrings("1 month ago")
             }
 
-            return DateToolsLocalizedStrings("Last month")
+            return dateToolsLocalizedStrings("Last month")
         } else if components.weekOfYear! >= 2 {
             return logicalLocalizedStringFromFormat(format: "%%d %@weeks ago", value: components.weekOfYear!)
         } else if components.weekOfYear! >= 1 {
             if numericDates {
-                return DateToolsLocalizedStrings("1 week ago")
+                return dateToolsLocalizedStrings("1 week ago")
             }
 
-            return DateToolsLocalizedStrings("Last week")
+            return dateToolsLocalizedStrings("Last week")
         } else if components.day! >= 2 {
             return logicalLocalizedStringFromFormat(format: "%%d %@days ago", value: components.day!)
         } else if isYesterday {
             if numericDates {
-                return DateToolsLocalizedStrings("1 day ago")
+                return dateToolsLocalizedStrings("1 day ago")
             }
 
-            return DateToolsLocalizedStrings("Yesterday")
+            return dateToolsLocalizedStrings("Yesterday")
         } else if components.hour! >= 2 {
             return logicalLocalizedStringFromFormat(format: "%%d %@hours ago", value: components.hour!)
         } else if components.hour! >= 1 {
             if numericTimes {
-                return DateToolsLocalizedStrings("1 hour ago")
+                return dateToolsLocalizedStrings("1 hour ago")
             }
 
-            return DateToolsLocalizedStrings("1h ago")
+            return dateToolsLocalizedStrings("1h ago")
         } else if components.minute! >= 2 {
             return logicalLocalizedStringFromFormat(format: "%%d%@m ago", value: components.minute!)
         } else if components.minute! >= 1 {
             if numericTimes {
-                return DateToolsLocalizedStrings("1m ago")
+                return dateToolsLocalizedStrings("1m ago")
             }
 
-            return DateToolsLocalizedStrings("A minute ago")
+            return dateToolsLocalizedStrings("A minute ago")
         } else if components.second! >= 3 {
             return logicalLocalizedStringFromFormat(format: "%%d %@seconds ago", value: components.second!)
         } else {
             if numericTimes {
-                return DateToolsLocalizedStrings("1 second ago")
+                return dateToolsLocalizedStrings("1 second ago")
             }
 
             // Instead of returning "Just now" or the equivalent localized version; let's return an empty string
@@ -169,24 +169,24 @@ public extension Date {
 
     private func logicalLocalizedStringFromFormat(format: String, value: Int) -> String {
         let localeFormat = String(format: format, getLocaleFormatUnderscoresWithValue(Double(value)))
-        return String(format: DateToolsLocalizedStrings(localeFormat), value)
+        return String(format: dateToolsLocalizedStrings(localeFormat), value)
     }
 
     private func getLocaleFormatUnderscoresWithValue(_ value: Double) -> String {
         let localCode = Bundle.main.preferredLocalizations[0]
         if localCode == "ru" || localCode == "uk" {
-            let XY = Int(floor(value).truncatingRemainder(dividingBy: 100))
-            let Y = Int(floor(value).truncatingRemainder(dividingBy: 10))
+            let xy = Int(floor(value).truncatingRemainder(dividingBy: 100))
+            let y = Int(floor(value).truncatingRemainder(dividingBy: 10))
 
-            if Y == 0 || Y > 4 || (XY > 10 && XY < 15) {
+            if y == 0 || y > 4 || (xy > 10 && xy < 15) {
                 return ""
             }
 
-            if Y > 1, Y < 5, XY < 10 || XY > 20 {
+            if y > 1, y < 5, xy < 10 || xy > 20 {
                 return "_"
             }
 
-            if Y == 1, XY != 11 {
+            if y == 1, xy != 11 {
                 return "__"
             }
         }
@@ -196,7 +196,7 @@ public extension Date {
 
     // MARK: - Localization
 
-    private func DateToolsLocalizedStrings(_ string: String) -> String {
+    private func dateToolsLocalizedStrings(_ string: String) -> String {
         // let classBundle = Bundle(for:TimeChunk.self as! AnyClass.Type).resourcePath!.appending("DateTools.bundle")
 
         // let bundelPath = Bundle(path:classBundle)!
