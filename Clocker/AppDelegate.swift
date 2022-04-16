@@ -39,11 +39,6 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    public func applicationWillFinishLaunching(_: Notification) {
-        iVersion.sharedInstance().useAllAvailableLanguages = true
-        iVersion.sharedInstance().verboseLogging = false
-    }
-
     public func applicationDidFinishLaunching(_: Notification) {
         // Required for migrating our model type to CoreModelKit
         NSKeyedUnarchiver.setClass(CoreModelKit.TimezoneData.classForKeyedUnarchiver(), forClassName: "Clocker.TimezoneData")
