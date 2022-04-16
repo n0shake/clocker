@@ -36,18 +36,6 @@ class AppDefaults {
 
         // Set the theme default as Light!
         setDefaultTheme()
-
-        // If we already have timezones to display in menubar, do nothing.
-        // Else, we switch the menubar mode default to compact mode for new users
-        if userDefaults.bool(forKey: CLDefaultMenubarMode) == false {
-            if let menubarFavourites = dataStore.menubarTimezones(), menubarFavourites.isEmpty == false {
-                userDefaults.set(1, forKey: CLMenubarCompactMode)
-            } else {
-                userDefaults.set(0, forKey: CLMenubarCompactMode)
-            }
-
-            userDefaults.set(true, forKey: CLDefaultMenubarMode)
-        }
     }
 
     private class func setDefaultTheme() {
@@ -57,34 +45,7 @@ class AppDefaults {
             Themer.shared().set(theme: 0)
         }
     }
-
-    private class func showCompactModeAlert() {
-        // Time to display the alert.
-        NSApplication.shared.activate(ignoringOtherApps: true)
-
-        let alert = NSAlert()
-        alert.messageText = "Save space on your menu bar"
-        alert.informativeText = "Enable Menubar Compact Mode to fit in more timezones in less space!"
-        alert.addButton(withTitle: "Enable Compact Mode")
-        alert.addButton(withTitle: "Cancel")
-
-        let response = alert.runModal()
-
-        if response.rawValue == 1000 {
-            OperationQueue.main.addOperation {
-                UserDefaults.standard.set(0, forKey: CLMenubarCompactMode)
-
-                guard let statusItem = (NSApplication.shared.delegate as? AppDelegate)?.statusItemForPanel() else {
-                    return
-                }
-
-                statusItem.setupStatusItem()
-
-                Logger.log(object: ["Context": "On Launch"], for: "Switched to Compact Mode")
-            }
-        }
-    }
-
+    
     private class func defaultsDictionary() -> [String: Any] {
         return [CLThemeKey: 0,
                 CLDisplayFutureSliderKey: 0,
