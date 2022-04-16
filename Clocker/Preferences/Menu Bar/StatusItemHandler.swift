@@ -22,7 +22,7 @@ class StatusItemHandler: NSObject {
         return statusItem
     }()
 
-    private lazy var menubarTitleHandler = MenubarTitleProvider(with: self.store)
+    private lazy var menubarTitleHandler = MenubarTitleProvider(with: self.store, eventStore: EventCenter.sharedCenter())
 
     private var statusContainerView: StatusContainerView?
 
@@ -380,7 +380,7 @@ class StatusItemHandler: NSObject {
         let filteredEvents = EventCenter.sharedCenter().filteredEvents
         let calendar = EventCenter.sharedCenter().autoupdatingCalendar
         let checkForUpcomingEvents = menubarTitleHandler.checkForUpcomingEvents(filteredEvents, calendar: calendar)
-        constructCompactView(with: checkForUpcomingEvents  != nil)
+        constructCompactView(with: checkForUpcomingEvents != nil)
         updateMenubar()
     }
 

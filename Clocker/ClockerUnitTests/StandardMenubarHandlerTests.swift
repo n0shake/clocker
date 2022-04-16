@@ -19,7 +19,7 @@ class StandardMenubarHandlerTests: XCTestCase {
 
     private func makeMockStore(with menubarMode: Int = 1) -> DataStore {
         // Wipe all timezones from UserDefaults
-       let defaults = UserDefaults(suiteName: "com.abhishek.Clocker.StandardMenubarHandlerTests")!
+        let defaults = UserDefaults(suiteName: "com.abhishek.Clocker.StandardMenubarHandlerTests")!
         defaults.set(menubarMode, forKey: CLMenubarCompactMode)
         defaults.set(0, forKey: CLShowMeetingInMenubar)
         XCTAssertNotEqual(defaults, UserDefaults.standard)
@@ -67,7 +67,7 @@ class StandardMenubarHandlerTests: XCTestCase {
         let store = makeMockStore()
         // Wipe all timezones from UserDefaults
         store.setTimezones(nil)
-        let menubarHandler = MenubarTitleProvider(with: store)
+        let menubarHandler = MenubarTitleProvider(with: store, eventStore: EventCenter.sharedCenter())
         let emptyMenubarString = menubarHandler.titleForMenubar()
         // Returns early because DataStore.menubarTimezones is nil
         XCTAssertNil(emptyMenubarString)
@@ -86,7 +86,7 @@ class StandardMenubarHandlerTests: XCTestCase {
     func testWithEmptyMenubarTimezones() {
         let store = makeMockStore()
         store.setTimezones(nil)
-        let menubarHandler = MenubarTitleProvider(with: store)
+        let menubarHandler = MenubarTitleProvider(with: store, eventStore: EventCenter.sharedCenter())
         XCTAssertNil(menubarHandler.titleForMenubar())
     }
 
@@ -98,7 +98,7 @@ class StandardMenubarHandlerTests: XCTestCase {
         dataObject.isFavourite = 1
         saveObject(object: dataObject, in: store)
 
-        let menubarHandler = MenubarTitleProvider(with: store)
+        let menubarHandler = MenubarTitleProvider(with: store, eventStore: EventCenter.sharedCenter())
         XCTAssertNil(menubarHandler.titleForMenubar())
     }
 
@@ -110,7 +110,7 @@ class StandardMenubarHandlerTests: XCTestCase {
         dataObject.isFavourite = 1
         saveObject(object: dataObject, in: store)
 
-        let menubarHandler = MenubarTitleProvider(with: store)
+        let menubarHandler = MenubarTitleProvider(with: store, eventStore: EventCenter.sharedCenter())
         XCTAssertNotNil(menubarHandler.titleForMenubar())
     }
 
@@ -122,7 +122,7 @@ class StandardMenubarHandlerTests: XCTestCase {
         mockEvent.title = "Mock Title"
         mockEvent.startDate = Date().add(futureChunk)
 
-        let menubarHandler = MenubarTitleProvider(with: store)
+        let menubarHandler = MenubarTitleProvider(with: store, eventStore: EventCenter.sharedCenter())
         XCTAssert(menubarHandler.format(event: mockEvent) == "Mock Title in 10m",
                   "Suffix \(menubarHandler.format(event: mockEvent)) doesn't match expectation")
     }
@@ -135,7 +135,7 @@ class StandardMenubarHandlerTests: XCTestCase {
         mockEvent.title = "Mock Title"
         mockEvent.startDate = Date().add(futureChunk)
 
-        let menubarHandler = MenubarTitleProvider(with: store)
+        let menubarHandler = MenubarTitleProvider(with: store, eventStore: EventCenter.sharedCenter())
         XCTAssert(menubarHandler.format(event: mockEvent) == "Mock Title in 1m",
                   "Suffix \(menubarHandler.format(event: mockEvent)) doesn't match expectation")
     }
@@ -148,7 +148,7 @@ class StandardMenubarHandlerTests: XCTestCase {
         mockEvent.title = "Mock Title"
         mockEvent.startDate = Date().add(futureChunk)
 
-        let menubarHandler = MenubarTitleProvider(with: store)
+        let menubarHandler = MenubarTitleProvider(with: store, eventStore: EventCenter.sharedCenter())
         XCTAssert(menubarHandler.format(event: mockEvent) == "Mock Title starts now.",
                   "Suffix \(menubarHandler.format(event: mockEvent)) doesn't match expectation")
     }
@@ -160,7 +160,7 @@ class StandardMenubarHandlerTests: XCTestCase {
         let mockEvent = EKEvent(eventStore: eventStore)
         mockEvent.startDate = Date().add(futureChunk)
 
-        let menubarHandler = MenubarTitleProvider(with: store)
+        let menubarHandler = MenubarTitleProvider(with: store, eventStore: EventCenter.sharedCenter())
         XCTAssert(menubarHandler.format(event: mockEvent) == CLEmptyString,
                   "Suffix \(menubarHandler.format(event: mockEvent)) doesn't match expectation")
     }
@@ -173,11 +173,11 @@ class StandardMenubarHandlerTests: XCTestCase {
         mockEvent.title = "Really long calendar event title that longer than the longest name"
         mockEvent.startDate = Date().add(futureChunk)
 
-        let menubarHandler = MenubarTitleProvider(with: store)
+        let menubarHandler = MenubarTitleProvider(with: store, eventStore: EventCenter.sharedCenter())
         XCTAssert(menubarHandler.format(event: mockEvent) == "Really long calendar event tit... starts now.",
                   "Suffix \(menubarHandler.format(event: mockEvent)) doesn't match expectation")
     }
-    
+
     func testUpcomingEventHappeningInFiveMinutes() throws {
         let store = makeMockStore()
 
@@ -190,14 +190,14 @@ class StandardMenubarHandlerTests: XCTestCase {
                                   meetingURL: nil,
                                   attendeStatus: .accepted)
 
-        let menubarHandler = MenubarTitleProvider(with: store)
+        let menubarHandler = MenubarTitleProvider(with: store, eventStore: EventCenter.sharedCenter())
         let calendar = Calendar.autoupdatingCurrent
         let events: [Date: [EventInfo]] = [calendar.startOfDay(for: Date()): [eventInfo]]
         let actualResult = try XCTUnwrap(menubarHandler.checkForUpcomingEvents(events, calendar: calendar))
         let expectedResult = "Event happening in 5m"
         XCTAssert(actualResult == expectedResult, "Actual Result \(actualResult)")
     }
-    
+
     func testUpcomingEventHappeningIn29Minutes() throws {
         let store = makeMockStore()
 
@@ -210,14 +210,14 @@ class StandardMenubarHandlerTests: XCTestCase {
                                   meetingURL: nil,
                                   attendeStatus: .accepted)
 
-        let menubarHandler = MenubarTitleProvider(with: store)
+        let menubarHandler = MenubarTitleProvider(with: store, eventStore: EventCenter.sharedCenter())
         let calendar = Calendar.autoupdatingCurrent
         let events: [Date: [EventInfo]] = [calendar.startOfDay(for: Date()): [eventInfo]]
         let actualResult = try XCTUnwrap(menubarHandler.checkForUpcomingEvents(events, calendar: calendar))
         let expectedResult = "Event happening in 29m"
         XCTAssert(actualResult == expectedResult, "Actual Result \(actualResult)")
     }
-    
+
     func testUpcomingEventHappeningIn31Minutes() throws {
         let store = makeMockStore()
 
@@ -230,12 +230,12 @@ class StandardMenubarHandlerTests: XCTestCase {
                                   meetingURL: nil,
                                   attendeStatus: .accepted)
 
-        let menubarHandler = MenubarTitleProvider(with: store)
+        let menubarHandler = MenubarTitleProvider(with: store, eventStore: EventCenter.sharedCenter())
         let calendar = Calendar.autoupdatingCurrent
         let events: [Date: [EventInfo]] = [calendar.startOfDay(for: Date()): [eventInfo]]
         XCTAssertNil(menubarHandler.checkForUpcomingEvents(events, calendar: calendar))
     }
-    
+
     func testUpcomingEventHappeningIn31MinutesWithEmptyEvent() throws {
         let store = makeMockStore()
 
@@ -247,7 +247,7 @@ class StandardMenubarHandlerTests: XCTestCase {
                                   meetingURL: nil,
                                   attendeStatus: .accepted)
 
-        let menubarHandler = MenubarTitleProvider(with: store)
+        let menubarHandler = MenubarTitleProvider(with: store, eventStore: EventCenter.sharedCenter())
         let calendar = Calendar.autoupdatingCurrent
         let events: [Date: [EventInfo]] = [calendar.startOfDay(for: Date()): [eventInfo]]
         XCTAssertNil(menubarHandler.checkForUpcomingEvents(events, calendar: calendar))
