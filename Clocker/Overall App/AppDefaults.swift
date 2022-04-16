@@ -45,7 +45,7 @@ class AppDefaults {
             Themer.shared().set(theme: 0)
         }
     }
-    
+
     private class func defaultsDictionary() -> [String: Any] {
         return [CLThemeKey: 0,
                 CLDisplayFutureSliderKey: 0,

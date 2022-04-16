@@ -40,7 +40,7 @@ class OnboardingSearchController: NSViewController {
         super.viewDidLoad()
 
         view.wantsLayer = true
-        
+
         searchResultsDataSource = SearchDataSource(with: searchBar, location: .onboarding)
 
         resultsTableView.isHidden = true
