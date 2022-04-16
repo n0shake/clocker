@@ -43,7 +43,7 @@ public extension Date {
      *  - returns: A TimeChunk representing the time between the dates, in natural form
      */
     func chunkBetween(date: Date) -> TimeChunk {
-        let components : Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
+        let components: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
         let compenentsBetween = Calendar.autoupdatingCurrent.dateComponents(components, from: self, to: date)
         return TimeChunk(seconds: compenentsBetween.second!,
                          minutes: compenentsBetween.minute!,

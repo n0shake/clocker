@@ -445,7 +445,10 @@ extension OnboardingSearchController: NSTableViewDataSource {
     }
 
     func tableView(_ tableView: NSTableView, viewFor _: NSTableColumn?, row: Int) -> NSView? {
-        if let result = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "resultCellView"), owner: self) as? ResultTableViewCell, row >= 0, row < searchResultsDataSource.resultsCount() {
+        if let result = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "resultCellView"), owner: self) as? ResultTableViewCell,
+           row >= 0,
+           row < searchResultsDataSource.resultsCount()
+        {
             let currentSelection = searchResultsDataSource.retrieveResult(row)
             if let timezone = currentSelection as? TimezoneMetadata {
                 result.result.stringValue = " \(timezone.formattedName)"

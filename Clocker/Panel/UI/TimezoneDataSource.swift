@@ -85,7 +85,10 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
             return 100
         }
 
-        if let userFontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber, timezones.count > row, let relativeDisplay = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber {
+        if let userFontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber,
+           timezones.count > row,
+           let relativeDisplay = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber
+        {
             let model = timezones[row]
             let shouldShowSunrise = DataStore.shared().shouldDisplay(.sunrise)
 

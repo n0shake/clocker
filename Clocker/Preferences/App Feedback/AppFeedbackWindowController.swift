@@ -158,7 +158,14 @@ class AppFeedbackWindowController: NSWindowController {
             guard let timezoneObject = TimezoneData.customObject(from: data) else {
                 return nil
             }
-            return "Timezone: \(timezoneObject.timezone()) Name: \(timezoneObject.formattedAddress ?? "No") Favourited: \((timezoneObject.isFavourite == 1) ? "Yes" : "No") Note: \(timezoneObject.note ?? "No Note") System: \(timezoneObject.isSystemTimezone ? "Yes" : "No")"
+            let customString = """
+            Timezone: \(timezoneObject.timezone())
+            Name: \(timezoneObject.formattedAddress ?? "No")
+            Favourited: \((timezoneObject.isFavourite == 1) ? "Yes" : "No")
+            Note: \(timezoneObject.note ?? "No Note")
+            System: \(timezoneObject.isSystemTimezone ? "Yes" : "No")"
+            """
+            return customString
         }
 
         var relativeDate = "Relative"
