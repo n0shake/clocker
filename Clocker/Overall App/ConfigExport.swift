@@ -4,7 +4,7 @@ import CoreModelKit
 import Foundation
 
 struct ConfigExport {
-    private func generateJSONFromDefaults() {
+    private func generateJSON(from store: DataStore) {
         let selectedKeys: Set<String> = Set([
             CLShowOnboardingFlow,
             CLSelectedTimeZoneFormatKey,
@@ -40,7 +40,7 @@ struct ConfigExport {
         }
 
         do {
-            let decodeJSON: [[String: Any]] = DataStore.shared().timezones().compactMap { data -> [String: Any]? in
+            let decodeJSON: [[String: Any]] = store.timezones().compactMap { data -> [String: Any]? in
                 guard let customObject = TimezoneData.customObject(from: data) else { return nil }
                 let timezoneDictionary: [String: Any] = [
                     "Name": customObject.formattedAddress ?? "",
