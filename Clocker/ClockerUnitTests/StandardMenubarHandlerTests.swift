@@ -19,10 +19,7 @@ class StandardMenubarHandlerTests: XCTestCase {
 
     private func makeMockStore(with menubarMode: Int = 1) -> DataStore {
         // Wipe all timezones from UserDefaults
-        guard let defaults = UserDefaults(suiteName: "com.abhishek.Clocker.StandardMenubarHandlerTests") else {
-            XCTFail("User defaults couldn't be initialized")
-            return DataStore.shared()
-        }
+       let defaults = UserDefaults(suiteName: "com.abhishek.Clocker.StandardMenubarHandlerTests")!
         defaults.set(menubarMode, forKey: CLMenubarCompactMode)
         defaults.set(0, forKey: CLShowMeetingInMenubar)
         XCTAssertNotEqual(defaults, UserDefaults.standard)
