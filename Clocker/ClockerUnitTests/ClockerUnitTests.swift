@@ -164,7 +164,7 @@ class ClockerUnitTests: XCTestCase {
 
         DataStore.shared().setTimezones(currentFavourites)
 
-        XCTAssertTrue(currentFavourites.count == oldCount - 1)
+        XCTAssertTrue(currentFavourites.count == oldCount - 1, "Current Favourites Count \(currentFavourites.count) and Old Count \(oldCount - 1) don't line up.")
     }
 
     // The below test might fail outside California or if DST is active!
@@ -174,7 +174,7 @@ class ClockerUnitTests: XCTestCase {
         XCTAssertTrue(californiaOperations.timeDifference() == ", 3h behind", "Difference was unexpectedly: \(californiaOperations.timeDifference())")
         XCTAssertTrue(floridaOperations.timeDifference() == "", "Difference was unexpectedly: \(floridaOperations.timeDifference())")
         XCTAssertTrue(aucklandOperations.timeDifference() == ", 16h ahead", "Difference was unexpectedly: \(aucklandOperations.timeDifference())")
-        XCTAssertTrue(omahaOperations.timeDifference() == ", an hour behind", "Difference was unexpectedly: \(omahaOperations.timeDifference())")
+        XCTAssertTrue(omahaOperations.timeDifference() == ", 1h behind", "Difference was unexpectedly: \(omahaOperations.timeDifference())")
     }
 
     func testSunriseSunset() {
