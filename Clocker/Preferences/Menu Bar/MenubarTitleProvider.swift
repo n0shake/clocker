@@ -7,16 +7,18 @@ import EventKit
 
 class MenubarTitleProvider: NSObject {
     private let store: DataStore
+    private let eventCenter: EventCenter
 
-    init(with dataStore: DataStore) {
+    init(with dataStore: DataStore, eventStore: EventCenter) {
         store = dataStore
+        eventCenter = eventStore
         super.init()
     }
 
     func titleForMenubar() -> String? {
-        let eventCenter = EventCenter.sharedCenter().eventsForDate
-        let autoupdatingCalendar = EventCenter.sharedCenter().autoupdatingCalendar
-        if let nextEvent = checkForUpcomingEvents(eventCenter, calendar: autoupdatingCalendar) {
+        let filteredEvents = eventCenter.eventsForDate
+        let autoupdatingCalendar = eventCenter.autoupdatingCalendar
+        if let nextEvent = checkForUpcomingEvents(filteredEvents, calendar: autoupdatingCalendar) {
             return nextEvent
         }
 
