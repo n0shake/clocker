@@ -48,19 +48,6 @@ class AppDefaults {
 
             userDefaults.set(true, forKey: CLDefaultMenubarMode)
         }
-
-        if userDefaults.bool(forKey: CLSwitchToCompactModeAlert) == false {
-            userDefaults.set(true, forKey: CLSwitchToCompactModeAlert)
-
-            if let menubarFavourites = DataStore.shared().menubarTimezones(), menubarFavourites.count > 1 {
-                // If the user is already using the compact mode, abort.
-                if DataStore.shared().shouldDisplay(.menubarCompactMode) {
-                    return
-                }
-
-                showCompactModeAlert()
-            }
-        }
     }
 
     private class func setDefaultTheme() {
