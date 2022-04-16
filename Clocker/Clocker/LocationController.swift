@@ -6,17 +6,18 @@ import CoreLoggerKit
 import CoreModelKit
 
 class LocationController: NSObject {
-    public static let sharedInstance = LocationController()
+    private let store: DataStore
+    
+    init(withStore dataStore: DataStore) {
+        store = dataStore
+        super.init()
+    }
 
     private var locationManager: CLLocationManager = {
         let locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         return locationManager
     }()
-
-    class func sharedController() -> LocationController {
-        return sharedInstance
-    }
 
     func authorizationStatus() -> CLAuthorizationStatus {
         return CLLocationManager.authorizationStatus()
@@ -58,7 +59,7 @@ class LocationController: NSObject {
     }
 
     private func updateHomeObject(with customLabel: String, coordinates: CLLocationCoordinate2D?) {
-        let timezones = DataStore.shared().timezones()
+        let timezones = store.timezones()
 
         var timezoneObjects: [TimezoneData] = []
 
@@ -83,7 +84,7 @@ class LocationController: NSObject {
             datas.append(dataObject)
         }
 
-        DataStore.shared().setTimezones(datas)
+        store.setTimezones(datas)
     }
 }
 
