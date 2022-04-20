@@ -8,16 +8,6 @@ class AppDefaults {
         initializeDefaults()
     }
 
-    private class func deleteOldUserDefaults() {
-        let userDefaults = UserDefaults.standard
-
-        // Now delete the old preferences
-        if let bundleID = Bundle.main.bundleIdentifier, userDefaults.object(forKey: "PreferencesHaveBeenWiped") == nil {
-            userDefaults.removePersistentDomain(forName: bundleID)
-            userDefaults.set(true, forKey: "PreferencesHaveBeenWiped")
-        }
-    }
-
     private class func initializeDefaults() {
         let userDefaults = UserDefaults.standard
         let dataStore = DataStore.shared()
@@ -84,9 +74,9 @@ extension UserDefaults {
     }
 
     func wipeIfNeccesary() {
-        if let bundleID = Bundle.main.bundleIdentifier, object(forKey: "PreferencesHaveBeenWiped") == nil {
+        if object(forKey: "PreferencesHaveBeenWiped") == nil {
             Logger.info("Wiping all user defaults")
-            removePersistentDomain(forName: bundleID)
+            wipe()
             set(true, forKey: "PreferencesHaveBeenWiped")
         }
     }
