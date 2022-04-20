@@ -53,7 +53,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
 
         #if RELEASE
             FirebaseApp.configure()
-//            checkIfRunFromApplicationsFolder()
+            checkIfRunFromApplicationsFolder()
         #endif
     }
 
