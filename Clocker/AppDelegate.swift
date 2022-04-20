@@ -73,9 +73,9 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc private func openPreferencesWindow() {
-        let displayMode = UserDefaults.standard.integer(forKey: CLShowAppInForeground)
+        let displayMode = DataStore.shared().shouldDisplay(.showAppInForeground)
 
-        if displayMode == 1 {
+        if displayMode {
             let floatingWindow = FloatingWindowController.shared()
             floatingWindow.openPreferences(NSButton())
         } else {
