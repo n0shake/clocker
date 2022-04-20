@@ -29,7 +29,7 @@ class PreferencesDataSource: NSObject {
 
     init(with store: DataStore, callbackDelegate delegate: PreferenceSelectionUpdates) {
         self.store = store
-        self.updateDelegate = delegate
+        updateDelegate = delegate
         super.init()
     }
 }
