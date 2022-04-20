@@ -430,4 +430,15 @@ class ClockerUnitTests: XCTestCase {
         XCTAssertEqual(subject.subviews.count, 2) // Two textfields
         XCTAssertEqual(subject.subviews.first?.layer?.animationKeys(), ["notimezone.emoji"])
     }
+    
+    func testDefaultsWiping() {
+        let defaultsDict: [String: Any] = ["test1" : "testString", "test2": 24]
+        let domainName = "com.test.clocker"
+        let defaults = UserDefaults(suiteName: domainName)
+        defaults?.setPersistentDomain(defaultsDict, forName: domainName)
+        defaults?.wipe(for: domainName)
+        XCTAssertNil(defaults?.object(forKey: "test1"))
+        XCTAssertNil(defaults?.object(forKey: "test2"))
+    }
+    
 }
