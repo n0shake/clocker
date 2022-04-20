@@ -116,7 +116,7 @@ class PreferencesViewController: ParentViewController {
 
         searchField.placeholderString = "Enter city, state, country or timezone name"
 
-        selectionsDataSource = PreferencesDataSource(callbackDelegate: self)
+        selectionsDataSource = PreferencesDataSource(with: DataStore.shared(), callbackDelegate: self)
         timezoneTableView.dataSource = selectionsDataSource
         timezoneTableView.delegate = selectionsDataSource
 

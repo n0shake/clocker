@@ -509,12 +509,13 @@ class ParentPanelController: NSWindowController {
 
         updatePanelColor()
 
-        let defaults = DataStore.shared().timezones()
+        let store = DataStore.shared()
+        let defaults = store.timezones()
         let convertedTimezones = defaults.map { data -> TimezoneData in
             TimezoneData.customObject(from: data)!
         }
 
-        datasource = TimezoneDataSource(items: convertedTimezones)
+        datasource = TimezoneDataSource(items: convertedTimezones, store: store)
         mainTableView.dataSource = datasource
         mainTableView.delegate = datasource
         mainTableView.panelDelegate = datasource
