@@ -54,7 +54,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
         }
 
         let currentModel = timezones[row]
-        let operation = TimezoneDataOperations(with: currentModel)
+        let operation = TimezoneDataOperations(with: currentModel, store: dataStore)
 
         cellView.sunriseSetTime.stringValue = operation.formattedSunriseTime(with: sliderValue)
         cellView.sunriseImage.image = currentModel.isSunriseOrSunset ? Themer.shared().sunriseImage() : Themer.shared().sunsetImage()
@@ -107,7 +107,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
 
             if let note = model.note, !note.isEmpty {
                 rowHeight += userFontSize.intValue + 15
-            } else if TimezoneDataOperations(with: model).nextDaylightSavingsTransitionIfAvailable(with: sliderValue) != nil {
+            } else if TimezoneDataOperations(with: model, store: dataStore).nextDaylightSavingsTransitionIfAvailable(with: sliderValue) != nil {
                 rowHeight += userFontSize.intValue + 15
             }
 
@@ -176,12 +176,14 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
 
         let response = alert.runModal()
         if response.rawValue == 1000 {
-            OperationQueue.main.addOperation {
+            OperationQueue.main.addOperation { [weak self] in
+                guard let sSelf = self else { return }
+                
                 let indexSet = IndexSet(integer: row)
 
                 tableView.removeRows(at: indexSet, withAnimation: NSTableView.AnimationOptions.slideUp)
 
-                if DataStore.shared().shouldDisplay(ViewType.showAppInForeground) {
+                if sSelf.dataStore.shouldDisplay(ViewType.showAppInForeground) {
                     let windowController = FloatingWindowController.shared()
                     windowController.deleteTimezone(at: row)
                 } else {

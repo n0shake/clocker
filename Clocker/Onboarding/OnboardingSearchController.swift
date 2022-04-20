@@ -109,7 +109,7 @@ class OnboardingSearchController: NSViewController {
             data.selectionType = .timezone
             data.isSystemTimezone = metaInfo.0.name == NSTimeZone.system.identifier
 
-            let operationObject = TimezoneDataOperations(with: data)
+            let operationObject = TimezoneDataOperations(with: data, store: DataStore.shared())
             operationObject.saveObject()
 
             searchResultsDataSource?.cleanupFilterArray()

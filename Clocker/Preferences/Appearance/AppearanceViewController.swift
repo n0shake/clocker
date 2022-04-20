@@ -381,7 +381,7 @@ extension AppearanceViewController: NSTableViewDataSource, NSTableViewDelegate {
         }
 
         let currentModel = previewTimezones[row]
-        let operation = TimezoneDataOperations(with: currentModel)
+        let operation = TimezoneDataOperations(with: currentModel, store: DataStore.shared())
 
         cellView.sunriseSetTime.stringValue = operation.formattedSunriseTime(with: 0)
         cellView.sunriseImage.image = currentModel.isSunriseOrSunset ? Themer.shared().sunriseImage() : Themer.shared().sunsetImage()
