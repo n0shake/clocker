@@ -15,9 +15,6 @@ class AppDefaults {
         let timezones = dataStore.timezones()
         let selectedCalendars = userDefaults.object(forKey: CLSelectedCalendars)
 
-        // Now delete the old preferences
-        userDefaults.wipeIfNeccesary()
-
         // Register the usual suspects
         userDefaults.register(defaults: defaultsDictionary())
 
@@ -25,13 +22,11 @@ class AppDefaults {
         userDefaults.set(selectedCalendars, forKey: CLSelectedCalendars)
 
         // Set the theme default as Light!
-        setDefaultTheme()
+        setDefaultTheme(userDefaults)
     }
 
-    private class func setDefaultTheme() {
-        let defaults = UserDefaults.standard
-
-        if defaults.object(forKey: CLThemeKey) == nil {
+    private class func setDefaultTheme(_ userDefaults: UserDefaults) {
+        if userDefaults.object(forKey: CLThemeKey) == nil {
             Themer.shared().set(theme: 0)
         }
     }
@@ -67,17 +62,7 @@ extension String {
 
 extension UserDefaults {
     // Use this with caution. Exposing this for debugging purposes only.
-    func wipe() {
-        if let bundleID = Bundle.main.bundleIdentifier {
-            removePersistentDomain(forName: bundleID)
-        }
-    }
-
-    func wipeIfNeccesary() {
-        if object(forKey: "PreferencesHaveBeenWiped") == nil {
-            Logger.info("Wiping all user defaults")
-            wipe()
-            set(true, forKey: "PreferencesHaveBeenWiped")
-        }
+    func wipe(for bundleID: String) {
+        removePersistentDomain(forName: bundleID)
     }
 }
