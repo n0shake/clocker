@@ -43,7 +43,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         // Required for migrating our model type to CoreModelKit
         NSKeyedUnarchiver.setClass(CoreModelKit.TimezoneData.classForKeyedUnarchiver(), forClassName: "Clocker.TimezoneData")
 
-        AppDefaults.initialize()
+        AppDefaults.initialize(with: DataStore.shared(), defaults: UserDefaults.standard)
 
         // Check if we can show the onboarding flow!
         showOnboardingFlowIfEligible()
@@ -53,7 +53,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
 
         #if RELEASE
             FirebaseApp.configure()
-            checkIfRunFromApplicationsFolder()
+//            checkIfRunFromApplicationsFolder()
         #endif
     }
 
