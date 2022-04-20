@@ -61,7 +61,7 @@ class StatusItemHandler: NSObject {
                 setClockerIcon()
             }
 
-            Logger.info("\nStatus Bar Current State changed: \(currentState)\n")
+            Logger.info("Status Bar Current State changed: \(currentState)\n")
         }
     }
 
