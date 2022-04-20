@@ -17,15 +17,6 @@ class AppDefaults {
 
         store.setTimezones(timezones)
         defaults.set(selectedCalendars, forKey: CLSelectedCalendars)
-
-        // Set the theme default as Light!
-        setDefaultTheme(defaults)
-    }
-
-    private class func setDefaultTheme(_ userDefaults: UserDefaults) {
-        if userDefaults.object(forKey: CLThemeKey) == nil {
-            Themer.shared().set(theme: 0)
-        }
     }
 
     private class func defaultsDictionary() -> [String: Any] {
