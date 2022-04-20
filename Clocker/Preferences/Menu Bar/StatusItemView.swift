@@ -40,7 +40,7 @@ class StatusItemView: NSView {
     private let locationView = NSTextField(labelWithString: "Hello")
     private let timeView = NSTextField(labelWithString: "Mon 19:14 PM")
     private var operationsObject: TimezoneDataOperations {
-        return TimezoneDataOperations(with: dataObject)
+        return TimezoneDataOperations(with: dataObject, store: DataStore.shared())
     }
 
     private var timeAttributes: [NSAttributedString.Key: AnyObject] {

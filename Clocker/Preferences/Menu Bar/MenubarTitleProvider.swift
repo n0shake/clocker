@@ -34,7 +34,7 @@ class MenubarTitleProvider: NSObject {
         if menubarTitles.isEmpty == false {
             let titles = menubarTitles.map { data -> String? in
                 let timezone = TimezoneData.customObject(from: data)
-                let operationsObject = TimezoneDataOperations(with: timezone!)
+                let operationsObject = TimezoneDataOperations(with: timezone!, store: store)
                 return "\(operationsObject.menuTitle().trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines))"
             }
 

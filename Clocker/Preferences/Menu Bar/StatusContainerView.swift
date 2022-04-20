@@ -96,7 +96,7 @@ class StatusContainerView: NSView {
 
                 if let timezoneObject = TimezoneData.customObject(from: timezone) {
                     let precalculatedWidth = Double(compactWidth(for: timezoneObject, with: store))
-                    let operationObject = TimezoneDataOperations(with: timezoneObject)
+                    let operationObject = TimezoneDataOperations(with: timezoneObject, store: store)
                     let calculatedSubtitleSize = compactModeTimeFont.size(for: operationObject.compactMenuSubtitle(),
                                                                           width: precalculatedWidth,
                                                                           attributes: timeBasedAttributes)
@@ -158,7 +158,7 @@ class StatusContainerView: NSView {
             NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
         ]
 
-        let operation = TimezoneDataOperations(with: timezone)
+        let operation = TimezoneDataOperations(with: timezone, store: store)
         let bestSize = compactModeTimeFont.size(for: operation.compactMenuSubtitle(),
                                                 width: Double(compactWidth(for: timezone, with: store)),
                                                 attributes: timeBasedAttributes)
