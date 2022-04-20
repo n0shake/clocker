@@ -14,7 +14,7 @@ class TimezoneDataOperations: NSObject {
     private static let currentLocale = Locale.current.identifier
 
     init(with timezone: TimezoneData, store: DataStore) {
-        self.dataObject = timezone
+        dataObject = timezone
         self.store = store
         super.init()
     }

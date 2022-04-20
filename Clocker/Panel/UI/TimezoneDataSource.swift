@@ -143,7 +143,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
 
                                                          tableView.removeRows(at: indexSet, withAnimation: NSTableView.AnimationOptions())
 
-                if self.dataStore.shouldDisplay(ViewType.showAppInForeground) {
+                                                         if self.dataStore.shouldDisplay(ViewType.showAppInForeground) {
                                                              windowController.deleteTimezone(at: row)
                                                          } else {
                                                              guard let panelController = PanelController.panel() else { return }
@@ -178,7 +178,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
         if response.rawValue == 1000 {
             OperationQueue.main.addOperation { [weak self] in
                 guard let sSelf = self else { return }
-                
+
                 let indexSet = IndexSet(integer: row)
 
                 tableView.removeRows(at: indexSet, withAnimation: NSTableView.AnimationOptions.slideUp)

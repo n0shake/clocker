@@ -89,13 +89,15 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private var controller: OnboardingController?
-    
-    private func showOnboardingFlowIfEligible() {
-        let shouldLaunchOnboarding = (DataStore.shared().retrieve(key: CLShowOnboardingFlow) == nil
-                                      && DataStore.shared().timezones().isEmpty)
-        || ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument)
 
-        if (shouldLaunchOnboarding) {
+    private func showOnboardingFlowIfEligible() {
+        let isTestInProgress = ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument)
+        let shouldLaunchOnboarding =
+            (DataStore.shared().retrieve(key: CLShowOnboardingFlow) == nil
+                && DataStore.shared().timezones().isEmpty)
+            || isTestInProgress
+
+        if shouldLaunchOnboarding {
             let onboardingStoryboard = NSStoryboard(name: NSStoryboard.Name("Onboarding"), bundle: nil)
             controller = onboardingStoryboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("onboardingFlow")) as? OnboardingController
             controller?.launch()
