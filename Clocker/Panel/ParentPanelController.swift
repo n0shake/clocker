@@ -89,7 +89,7 @@ class ParentPanelController: NSWindowController {
     // Upcoming Events
     @IBOutlet var upcomingEventCollectionView: NSCollectionView!
     @IBOutlet var upcomingEventContainerView: NSView!
-    public var upcomingEventsDataSource: UpcomingEventsDataSource!
+    public var upcomingEventsDataSource: UpcomingEventsDataSource?
 
     var defaultPreferences: [Data] {
         return DataStore.shared().timezones()
@@ -829,7 +829,7 @@ class ParentPanelController: NSWindowController {
                 if self.upcomingEventCollectionView != nil,
                    let upcomingEvents = eventCenter.upcomingEventsForDay(events)
                 {
-                    self.upcomingEventsDataSource.updateEventsDataSource(upcomingEvents)
+                    self.upcomingEventsDataSource?.updateEventsDataSource(upcomingEvents)
                     self.upcomingEventCollectionView.reloadData()
                     return
                 }
@@ -840,7 +840,7 @@ class ParentPanelController: NSWindowController {
             }
         } else {
             if upcomingEventCollectionView != nil {
-                upcomingEventsDataSource.updateEventsDataSource([])
+                upcomingEventsDataSource?.updateEventsDataSource([])
                 upcomingEventCollectionView.reloadData()
                 return
             }
