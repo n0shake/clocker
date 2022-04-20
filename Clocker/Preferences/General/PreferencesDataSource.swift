@@ -22,12 +22,14 @@ protocol PreferenceSelectionUpdates: AnyObject {
 
 class PreferencesDataSource: NSObject {
     private weak var updateDelegate: PreferenceSelectionUpdates?
+    private let store: DataStore
     var selectedTimezones: [Data] {
-        return DataStore.shared().timezones()
+        return store.timezones()
     }
 
-    init(callbackDelegate delegate: PreferenceSelectionUpdates) {
-        updateDelegate = delegate
+    init(with store: DataStore, callbackDelegate delegate: PreferenceSelectionUpdates) {
+        self.store = store
+        self.updateDelegate = delegate
         super.init()
     }
 }
@@ -75,7 +77,7 @@ extension PreferencesDataSource: NSTableViewDelegate {
 
         newOrder.insert(currentObject, at: destination)
 
-        DataStore.shared().setTimezones(newOrder)
+        store.setTimezones(newOrder)
 
         tableView.reloadData()
 
@@ -185,7 +187,7 @@ extension PreferencesDataSource: NSTableViewDataSource {
         let encodedObject = NSKeyedArchiver.archivedData(withRootObject: timezone)
         var newDefaults = selectedTimezones
         newDefaults[index] = encodedObject
-        DataStore.shared().setTimezones(newDefaults)
+        store.setTimezones(newDefaults)
     }
 
     private func updateMenubarTitles() {

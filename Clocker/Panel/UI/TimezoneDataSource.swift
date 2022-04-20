@@ -6,10 +6,13 @@ import CoreModelKit
 class TimezoneDataSource: NSObject {
     var timezones: [TimezoneData] = []
     var sliderValue: Int = 0
+    var dataStore: DataStore
 
-    init(items: [TimezoneData]) {
+    init(items: [TimezoneData], store: DataStore) {
         sliderValue = 0
         timezones = Array(items)
+        dataStore = store
+        super.init()
     }
 }
 
@@ -85,12 +88,12 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
             return 100
         }
 
-        if let userFontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber,
+        if let userFontSize = dataStore.retrieve(key: CLUserFontSizePreference) as? NSNumber,
            timezones.count > row,
-           let relativeDisplay = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber
+           let relativeDisplay = dataStore.retrieve(key: CLRelativeDateKey) as? NSNumber
         {
             let model = timezones[row]
-            let shouldShowSunrise = DataStore.shared().shouldDisplay(.sunrise)
+            let shouldShowSunrise = dataStore.shouldDisplay(.sunrise)
 
             var rowHeight: Int = userFontSize == 4 ? 60 : 65
 
@@ -140,7 +143,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
 
                                                          tableView.removeRows(at: indexSet, withAnimation: NSTableView.AnimationOptions())
 
-                                                         if DataStore.shared().shouldDisplay(ViewType.showAppInForeground) {
+                if self.dataStore.shouldDisplay(ViewType.showAppInForeground) {
                                                              windowController.deleteTimezone(at: row)
                                                          } else {
                                                              guard let panelController = PanelController.panel() else { return }
