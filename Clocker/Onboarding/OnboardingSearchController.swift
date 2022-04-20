@@ -21,7 +21,7 @@ class OnboardingSearchController: NSViewController {
     @IBOutlet private var accessoryLabel: NSTextField!
     @IBOutlet var undoButton: NSButton!
 
-    private var searchResultsDataSource: SearchDataSource!
+    private var searchResultsDataSource: SearchDataSource?
     private var dataTask: URLSessionDataTask? = .none
     private var themeDidChangeNotification: NSObjectProtocol?
 
@@ -81,16 +81,18 @@ class OnboardingSearchController: NSViewController {
     @objc func doubleClickAction(_ tableView: NSTableView) {
         [accessoryLabel].forEach { $0?.isHidden = false }
 
-        if tableView.selectedRow >= 0, tableView.selectedRow < searchResultsDataSource.resultsCount() {
-            let selectedType = searchResultsDataSource.placeForRow(resultsTableView.selectedRow)
+        if tableView.selectedRow >= 0, tableView.selectedRow < (searchResultsDataSource?.resultsCount() ?? 0) {
+            let selectedType = searchResultsDataSource?.placeForRow(resultsTableView.selectedRow)
             switch selectedType {
             case .city:
-                if let filteredGoogleResult = searchResultsDataSource.retrieveFilteredResultFromGoogleAPI(resultsTableView.selectedRow) {
+                if let filteredGoogleResult = searchResultsDataSource?.retrieveFilteredResultFromGoogleAPI(resultsTableView.selectedRow) {
                     addTimezoneToDefaults(filteredGoogleResult)
                 }
                 return
             case .timezone:
                 cleanupAfterInstallingTimezone()
+                return
+            case .none:
                 return
             }
         }
@@ -100,28 +102,28 @@ class OnboardingSearchController: NSViewController {
         let data = TimezoneData()
         data.setLabel(CLEmptyString)
 
-        let currentSelection = searchResultsDataSource.retrieveSelectedTimezone(resultsTableView.selectedRow)
+        if let currentSelection = searchResultsDataSource?.retrieveSelectedTimezone(resultsTableView.selectedRow) {
+            let metaInfo = metadata(for: currentSelection)
+            data.timezoneID = metaInfo.0.name
+            data.formattedAddress = metaInfo.1.formattedName
+            data.selectionType = .timezone
+            data.isSystemTimezone = metaInfo.0.name == NSTimeZone.system.identifier
 
-        let metaInfo = metadata(for: currentSelection)
-        data.timezoneID = metaInfo.0.name
-        data.formattedAddress = metaInfo.1.formattedName
-        data.selectionType = .timezone
-        data.isSystemTimezone = metaInfo.0.name == NSTimeZone.system.identifier
+            let operationObject = TimezoneDataOperations(with: data)
+            operationObject.saveObject()
 
-        let operationObject = TimezoneDataOperations(with: data)
-        operationObject.saveObject()
+            searchResultsDataSource?.cleanupFilterArray()
+            searchResultsDataSource?.timezoneFilteredArray = []
+            searchResultsDataSource?.calculateChangesets()
+            searchBar.stringValue = CLEmptyString
 
-        searchResultsDataSource.cleanupFilterArray()
-        searchResultsDataSource.timezoneFilteredArray = []
-        searchResultsDataSource.calculateChangesets()
-        searchBar.stringValue = CLEmptyString
+            accessoryLabel.stringValue = "Added \(metaInfo.1.formattedName)."
+            undoButton.isHidden = false
+            setupLabelHidingTimer()
 
-        accessoryLabel.stringValue = "Added \(metaInfo.1.formattedName)."
-        undoButton.isHidden = false
-        setupLabelHidingTimer()
-
-        resultsTableView.reloadData()
-        resultsTableView.isHidden = true
+            resultsTableView.reloadData()
+            resultsTableView.isHidden = true
+        }
     }
 
     private func metadata(for selection: TimezoneMetadata) -> (NSTimeZone, TimezoneMetadata) {
@@ -194,7 +196,7 @@ class OnboardingSearchController: NSViewController {
     private func fetchTimezone(for latitude: Double, and longitude: Double, _ dataObject: TimezoneData) {
         if NetworkManager.isConnected() == false || ProcessInfo.processInfo.arguments.contains("mockTimezoneDown") {
             setInfoLabel(PreferencesConstants.noInternetConnectivityError)
-            searchResultsDataSource.cleanupFilterArray()
+            searchResultsDataSource?.cleanupFilterArray()
             resultsTableView.reloadData()
             return
         }
@@ -215,7 +217,7 @@ class OnboardingSearchController: NSViewController {
                 }
 
                 if error == nil, let json = response, let response = json.decodeTimezone() {
-                    if self.resultsTableView.selectedRow >= 0, self.resultsTableView.selectedRow < self.searchResultsDataSource.resultsCount() {
+                    if self.resultsTableView.selectedRow >= 0, self.resultsTableView.selectedRow < (self.searchResultsDataSource?.resultsCount()) ?? 0 {
                         var filteredAddress = "Error"
 
                         if let address = dataObject.formattedAddress {
@@ -312,7 +314,7 @@ class OnboardingSearchController: NSViewController {
 
     @objc func actualSearch() {
         func setupForError() {
-            searchResultsDataSource.calculateChangesets()
+            searchResultsDataSource?.calculateChangesets()
             resultsTableView.isHidden = true
         }
 
@@ -345,12 +347,12 @@ class OnboardingSearchController: NSViewController {
                                                    return
                                                }
 
-                                               self.searchResultsDataSource.cleanupFilterArray()
-                                               self.searchResultsDataSource.timezoneFilteredArray = []
+                                               self.searchResultsDataSource?.cleanupFilterArray()
+                                               self.searchResultsDataSource?.timezoneFilteredArray = []
 
                                                if let errorPresent = error {
                                                    self.findLocalSearchResultsForTimezones()
-                                                   if self.searchResultsDataSource.timezoneFilteredArray.count == 0 {
+                                                   if self.searchResultsDataSource?.timezoneFilteredArray.count == 0 {
                                                        self.presentErrorMessage(errorPresent.localizedDescription)
                                                        setupForError()
                                                        return
@@ -391,12 +393,12 @@ class OnboardingSearchController: NSViewController {
 
     private func findLocalSearchResultsForTimezones() {
         let lowercasedSearchString = searchBar.stringValue.lowercased()
-        searchResultsDataSource.searchTimezones(lowercasedSearchString)
+        searchResultsDataSource?.searchTimezones(lowercasedSearchString)
     }
 
     private func prepareUIForPresentingResults() {
         setInfoLabel(CLEmptyString)
-        if searchResultsDataSource.calculateChangesets() {
+        if let dataSource = searchResultsDataSource, dataSource.calculateChangesets() {
             resultsTableView.isHidden = false
             resultsTableView.reloadData()
         }
@@ -421,13 +423,13 @@ class OnboardingSearchController: NSViewController {
             return TimezoneData(with: totalPackage)
         }
 
-        searchResultsDataSource.setFilteredArrayValue(finalTimezones)
+        searchResultsDataSource?.setFilteredArrayValue(finalTimezones)
     }
 
     private func resetSearchView() {
-        searchResultsDataSource.cleanupFilterArray()
-        searchResultsDataSource.timezoneFilteredArray = []
-        searchResultsDataSource.calculateChangesets()
+        searchResultsDataSource?.cleanupFilterArray()
+        searchResultsDataSource?.timezoneFilteredArray = []
+        searchResultsDataSource?.calculateChangesets()
         resultsTableView.reloadData()
         searchBar.stringValue = CLEmptyString
         searchBar.placeholderString = "Press Enter to Search"
@@ -441,15 +443,15 @@ class OnboardingSearchController: NSViewController {
 
 extension OnboardingSearchController: NSTableViewDataSource {
     func numberOfRows(in _: NSTableView) -> Int {
-        return searchResultsDataSource != nil ? searchResultsDataSource.resultsCount() : 0
+        return searchResultsDataSource?.resultsCount() ?? 0
     }
 
     func tableView(_ tableView: NSTableView, viewFor _: NSTableColumn?, row: Int) -> NSView? {
         if let result = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "resultCellView"), owner: self) as? ResultTableViewCell,
            row >= 0,
-           row < searchResultsDataSource.resultsCount()
+           row < (searchResultsDataSource?.resultsCount() ?? 0)
         {
-            let currentSelection = searchResultsDataSource.retrieveResult(row)
+            let currentSelection = searchResultsDataSource?.retrieveResult(row)
             if let timezone = currentSelection as? TimezoneMetadata {
                 result.result.stringValue = " \(timezone.formattedName)"
             } else if let location = currentSelection as? TimezoneData {
@@ -466,7 +468,7 @@ extension OnboardingSearchController: NSTableViewDataSource {
 
 extension OnboardingSearchController: NSTableViewDelegate {
     func tableView(_: NSTableView, heightOfRow row: Int) -> CGFloat {
-        if row == 0, searchResultsDataSource.resultsCount() == 0 {
+        if row == 0, searchResultsDataSource?.resultsCount() == 0 {
             return 30
         }
 
@@ -474,7 +476,7 @@ extension OnboardingSearchController: NSTableViewDelegate {
     }
 
     func tableView(_: NSTableView, shouldSelectRow row: Int) -> Bool {
-        return searchResultsDataSource.resultsCount() == 0 ? row != 0 : true
+        return searchResultsDataSource?.resultsCount() == 0 ? row != 0 : true
     }
 
     func tableView(_: NSTableView, rowViewForRow _: Int) -> NSTableRowView? {
