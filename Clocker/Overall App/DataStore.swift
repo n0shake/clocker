@@ -66,7 +66,7 @@ class DataStore: NSObject {
     @objc func ubiquitousKeyValueStoreChanged(_ notification: Notification) {
         let userInfo = notification.userInfo ?? [:]
         let ubiquitousStore = notification.object as? NSUbiquitousKeyValueStore
-        print("--- User Info is \(userInfo)")
+        Logger.info("Ubiquitous Store Changed: User Info is \(userInfo)")
         let currentTimezones = userDefaults.object(forKey: CLDefaultPreferenceKey) as? [Data]
         let cloudTimezones = ubiquitousStore?.object(forKey: CLDefaultPreferenceKey) as? [Data]
         let cloudLastUpdateDate = (ubiquitousStore?.object(forKey: CLUbiquitousStoreLastUpdateKey) as? Date) ?? Date()
