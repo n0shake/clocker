@@ -6,7 +6,7 @@ import CoreLoggerKit
 import CoreModelKit
 
 class TimezoneDataOperations: NSObject {
-    private var dataObject: TimezoneData
+    private let dataObject: TimezoneData
     private lazy var nsCalendar = Calendar.autoupdatingCurrent
     private static var gregorianCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
     private static var swiftyCalendar = Calendar(identifier: .gregorian)
