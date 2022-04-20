@@ -51,12 +51,6 @@ class AppDefaults {
     }
 }
 
-extension String {
-    func localized() -> String {
-        return NSLocalizedString(self, comment: "Title for \(self)")
-    }
-}
-
 extension UserDefaults {
     // Use this with caution. Exposing this for debugging purposes only.
     func wipe(for bundleID: String) {
