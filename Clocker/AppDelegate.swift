@@ -88,16 +88,20 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.setActivationPolicy(.accessory)
     }
 
-    private lazy var controller: OnboardingController? = {
-        let onboardingStoryboard = NSStoryboard(name: NSStoryboard.Name("Onboarding"), bundle: nil)
-        return onboardingStoryboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("onboardingFlow")) as? OnboardingController
-    }()
-
+    private var controller: OnboardingController?
+    
     private func showOnboardingFlowIfEligible() {
-        let shouldLaunchOnboarding = (DataStore.shared().retrieve(key: CLShowOnboardingFlow) == nil && DataStore.shared().timezones().isEmpty)
-            || ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument)
+        let shouldLaunchOnboarding = (DataStore.shared().retrieve(key: CLShowOnboardingFlow) == nil
+                                      && DataStore.shared().timezones().isEmpty)
+        || ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument)
 
-        shouldLaunchOnboarding ? controller?.launch() : continueUsually()
+        if (shouldLaunchOnboarding) {
+            let onboardingStoryboard = NSStoryboard(name: NSStoryboard.Name("Onboarding"), bundle: nil)
+            controller = onboardingStoryboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("onboardingFlow")) as? OnboardingController
+            controller?.launch()
+        } else {
+            continueUsually()
+        }
     }
 
     func continueUsually() {
