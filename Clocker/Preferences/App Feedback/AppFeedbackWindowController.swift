@@ -18,7 +18,6 @@ extension NSNib.Name {
 }
 
 enum AppFeedbackConstants {
-    static let CLAppFeedbackNibIdentifier = "AppFeedbackWindow"
     static let CLAppFeedbackNoResponseString = "Not Provided"
     static let CLAppFeedbackNameProperty = "name"
     static let CLAppFeedbackEmailProperty = "email"
@@ -256,7 +255,7 @@ class AppFeedbackWindowController: NSWindowController {
         isActivityInProgress = false
 
         let alert = NSAlert()
-        alert.messageText = "Thank you for helping make Clocker even better!"
+        alert.messageText = AppFeedbackConstants.CLFeedbackAlertTitle
         alert.informativeText = AppFeedbackConstants.CLFeedbackAlertInformativeText
         alert.addButton(withTitle: AppFeedbackConstants.CLFeedbackAlertButtonTitle)
         alert.beginSheetModal(for: feedbackWindow) { _ in
