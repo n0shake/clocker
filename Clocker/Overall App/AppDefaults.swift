@@ -4,25 +4,22 @@ import Cocoa
 import CoreLoggerKit
 
 class AppDefaults {
-    class func initialize() {
-        initializeDefaults()
+    class func initialize(with store: DataStore, defaults: UserDefaults) {
+        initializeDefaults(with: store, defaults: defaults)
     }
 
-    private class func initializeDefaults() {
-        let userDefaults = UserDefaults.standard
-        let dataStore = DataStore.shared()
-
-        let timezones = dataStore.timezones()
-        let selectedCalendars = userDefaults.object(forKey: CLSelectedCalendars)
+    private class func initializeDefaults(with store: DataStore, defaults: UserDefaults) {
+        let timezones = store.timezones()
+        let selectedCalendars = defaults.object(forKey: CLSelectedCalendars)
 
         // Register the usual suspects
-        userDefaults.register(defaults: defaultsDictionary())
+        defaults.register(defaults: defaultsDictionary())
 
-        dataStore.setTimezones(timezones)
-        userDefaults.set(selectedCalendars, forKey: CLSelectedCalendars)
+        store.setTimezones(timezones)
+        defaults.set(selectedCalendars, forKey: CLSelectedCalendars)
 
         // Set the theme default as Light!
-        setDefaultTheme(userDefaults)
+        setDefaultTheme(defaults)
     }
 
     private class func setDefaultTheme(_ userDefaults: UserDefaults) {
