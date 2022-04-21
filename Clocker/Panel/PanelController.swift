@@ -305,7 +305,6 @@ class PanelController: ParentPanelController {
         window?.orderOut(nil)
 
         datasource = nil
-        upcomingEventsDataSource = nil
         parentTimer?.pause()
         parentTimer = nil
     }
