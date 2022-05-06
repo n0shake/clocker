@@ -47,6 +47,12 @@ protocol StatusItemViewConforming {
     func statusItemViewIdentifier() -> String
 }
 
+/// Observe for User Default changes for timezones in App Delegate and reconstruct the Status View if neccesary
+/// We'll inject the menubar timezones into Status Container View which'll pass it to StatusItemView
+/// The benefit of doing so is reducing time-spent calculating menubar timezones and deserialization through `TimezoneData.customObject`
+///  Also inject, `shouldDisplaySecondsInMenubar`
+///
+
 class StatusContainerView: NSView {
     private var previousX: Int = 0
     private let store: DataStore
