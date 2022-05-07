@@ -586,6 +586,9 @@ class ParentPanelController: NSWindowController {
     }
 
     private lazy var menubarTitleHandler = MenubarTitleProvider(with: DataStore.shared(), eventStore: EventCenter.sharedCenter())
+    
+    static private let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font: NSFont.monospacedDigitSystemFont(ofSize: 13.0, weight: NSFont.Weight.regular),
+                             NSAttributedString.Key.baselineOffset : 0.1]
 
     @objc func updateTime() {
         let store = DataStore.shared()
@@ -597,7 +600,8 @@ class ParentPanelController: NSWindowController {
                 if store.shouldDisplay(.menubarCompactMode) {
                     status.updateCompactMenubar()
                 } else {
-                    status.statusItem.title = menubarTitleHandler.titleForMenubar()
+                    status.statusItem.button?.attributedTitle = NSAttributedString(string: menubarTitleHandler.titleForMenubar() ?? "",
+                                                                                   attributes: ParentPanelController.attributes)
                 }
             }
         }
