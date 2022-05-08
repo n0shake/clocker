@@ -41,8 +41,6 @@ class DataStore: NSObject {
     init(with defaults: UserDefaults) {
         super.init()
         userDefaults = defaults
-        shouldDisplayDayInMenubar = shouldDisplay(.dayInMenubar)
-        shouldDisplayDateInMenubar = shouldDisplay(.dateInMenubar)
         setupSyncNotification()
     }
 
@@ -113,20 +111,14 @@ class DataStore: NSObject {
         }
     }
 
-    func updateDayPreference() {
-        shouldDisplayDayInMenubar = shouldDisplay(.dayInMenubar)
-    }
-
-    func updateDateInPreference() {
-        shouldDisplayDateInMenubar = shouldDisplay(.dateInMenubar)
-    }
-
-    func shouldShowDayInMenubar() -> Bool {
-        return shouldDisplayDayInMenubar
-    }
-
+    // MARK: Date (May 8th) in Compact Menubar
     func shouldShowDateInMenubar() -> Bool {
-        return shouldDisplayDateInMenubar
+        return shouldDisplay(.dateInMenubar)
+    }
+    
+    // MARK: Day (Sun, Mon etc.) in Compact Menubar
+    func shouldShowDayInMenubar() -> Bool {
+        return shouldDisplay(.dayInMenubar)
     }
 
     func retrieve(key: String) -> Any? {
@@ -189,11 +181,11 @@ class DataStore: NSObject {
             }
             return value.isEqual(to: NSNumber(value: 1))
         case .dateInMenubar:
-            return shouldDisplayHelper(CLShowDateInMenu)
+            return shouldDisplayNonObjectHelper(CLShowDateInMenu)
         case .placeInMenubar:
             return shouldDisplayHelper(CLShowPlaceInMenu)
         case .dayInMenubar:
-            return shouldDisplayHelper(CLShowDayInMenu)
+            return shouldDisplayNonObjectHelper(CLShowDayInMenu)
         case .appDisplayOptions:
             return shouldDisplayHelper(CLAppDisplayOptions)
         case .menubarCompactMode:
@@ -214,6 +206,12 @@ class DataStore: NSObject {
             return false
         }
         return value.isEqual(to: NSNumber(value: 0))
+    }
+    
+    // MARK: Some values are stored as plain integers; objectForKey: will return nil, so using integerForKey:
+    private func shouldDisplayNonObjectHelper(_ key: String) -> Bool {
+        let value = userDefaults.integer(forKey: key)
+        return value == 0
     }
 }
 

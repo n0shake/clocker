@@ -316,12 +316,10 @@ class AppearanceViewController: ParentViewController {
     }
 
     @IBAction func displayDayInMenubarAction(_: Any) {
-        DataStore.shared().updateDayPreference()
         updateStatusItem()
     }
 
     @IBAction func displayDateInMenubarAction(_: Any) {
-        DataStore.shared().updateDateInPreference()
         updateStatusItem()
     }
 
