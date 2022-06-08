@@ -14,4 +14,8 @@ extension String {
 
         return filteredAddress
     }
+
+    func localized() -> String {
+        return NSLocalizedString(self, comment: "Title for \(self)")
+    }
 }

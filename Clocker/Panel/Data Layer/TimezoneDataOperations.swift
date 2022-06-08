@@ -6,14 +6,17 @@ import CoreLoggerKit
 import CoreModelKit
 
 class TimezoneDataOperations: NSObject {
-    private var dataObject: TimezoneData!
+    private let dataObject: TimezoneData
+    private let store: DataStore
     private lazy var nsCalendar = Calendar.autoupdatingCurrent
     private static var gregorianCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
     private static var swiftyCalendar = Calendar(identifier: .gregorian)
     private static let currentLocale = Locale.current.identifier
 
-    init(with timezone: TimezoneData) {
+    init(with timezone: TimezoneData, store: DataStore) {
         dataObject = timezone
+        self.store = store
+        super.init()
     }
 }
 
@@ -28,7 +31,7 @@ extension TimezoneDataOperations {
             return CLEmptyString
         }
 
-        if dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == DateFormat.epochTime {
+        if dataObject.timezoneFormat(store.timezoneFormat()) == DateFormat.epochTime {
             let timezone = TimeZone(identifier: dataObject.timezone())
             let offset = timezone?.secondsFromGMT(for: newDate) ?? 0
             let value = Int(Date().timeIntervalSince1970 + Double(offset))
@@ -36,7 +39,7 @@ extension TimezoneDataOperations {
         }
 
         let dateFormatter = DateFormatterManager.dateFormatterWithFormat(with: .none,
-                                                                         format: dataObject.timezoneFormat(DataStore.shared().timezoneFormat()),
+                                                                         format: dataObject.timezoneFormat(store.timezoneFormat()),
                                                                          timezoneIdentifier: dataObject.timezone(),
                                                                          locale: Locale.autoupdatingCurrent)
 
@@ -80,15 +83,15 @@ extension TimezoneDataOperations {
     func compactMenuTitle() -> String {
         var subtitle = CLEmptyString
 
-        let shouldDayBeShown = DataStore.shared().shouldShowDayInMenubar()
-        let shouldLabelBeShownAlongWithTime = !DataStore.shared().shouldDisplay(.placeInMenubar)
+        let shouldDayBeShown = store.shouldShowDayInMenubar()
+        let shouldLabelBeShownAlongWithTime = !store.shouldDisplay(.placeInMenubar)
 
         if shouldDayBeShown, shouldLabelBeShownAlongWithTime {
             let substring = date(with: 0, displayType: .menu)
             subtitle.append(substring)
         }
 
-        let shouldDateBeShown = DataStore.shared().shouldShowDateInMenubar()
+        let shouldDateBeShown = store.shouldShowDateInMenubar()
         if shouldDateBeShown, shouldLabelBeShownAlongWithTime {
             let date = Date().formatter(with: "MMM d", timeZone: dataObject.timezone())
             subtitle.isEmpty ? subtitle.append("\(date)") : subtitle.append(" \(date)")
@@ -100,15 +103,15 @@ extension TimezoneDataOperations {
     func compactMenuSubtitle() -> String {
         var subtitle = CLEmptyString
 
-        let shouldDayBeShown = DataStore.shared().shouldShowDayInMenubar()
-        let shouldLabelsNotBeShownAlongWithTime = DataStore.shared().shouldDisplay(.placeInMenubar)
+        let shouldDayBeShown = store.shouldShowDayInMenubar()
+        let shouldLabelsNotBeShownAlongWithTime = store.shouldDisplay(.placeInMenubar)
 
         if shouldDayBeShown, shouldLabelsNotBeShownAlongWithTime {
             let substring = date(with: 0, displayType: .menu)
             subtitle.append(substring)
         }
 
-        let shouldDateBeShown = DataStore.shared().shouldShowDateInMenubar()
+        let shouldDateBeShown = store.shouldShowDateInMenubar()
         if shouldDateBeShown, shouldLabelsNotBeShownAlongWithTime {
             let date = Date().formatter(with: "MMM d", timeZone: dataObject.timezone())
             subtitle.isEmpty ? subtitle.append("\(date)") : subtitle.append(" \(date)")
@@ -122,7 +125,7 @@ extension TimezoneDataOperations {
     func menuTitle() -> String {
         var menuTitle = CLEmptyString
 
-        let dataStore = DataStore.shared()
+        let dataStore = store
 
         let shouldCityBeShown = dataStore.shouldDisplay(.placeInMenubar)
         let shouldDayBeShown = dataStore.shouldShowDayInMenubar()
@@ -199,7 +202,7 @@ extension TimezoneDataOperations {
     }
 
     func date(with sliderValue: Int, displayType: TimezoneData.DateDisplayType) -> String {
-        guard let relativeDayPreference = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber else {
+        guard let relativeDayPreference = store.retrieve(key: CLRelativeDateKey) as? NSNumber else {
             assertionFailure("Data was unexpectedly nil")
             return CLEmptyString
         }
@@ -332,7 +335,7 @@ extension TimezoneDataOperations {
 
         let minuteDifference = calculateTimeDifference(with: local as NSDate, timezoneDate: timezoneDate as NSDate)
 
-        minuteDifference == 0 ? replaceAgo.append("behind") : replaceAgo.append("\(minuteDifference) mins behind")
+        minuteDifference == 0 ? replaceAgo.append("behind") : replaceAgo.append("\(minuteDifference)m behind")
         return replaceAgo.lowercased()
     }
 
@@ -388,7 +391,7 @@ extension TimezoneDataOperations {
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US")
             dateFormatter.timeZone = TimeZone(identifier: dataObject.timezone())
-            dateFormatter.dateFormat = dataObject.timezoneFormat(DataStore.shared().timezoneFormat())
+            dateFormatter.dateFormat = dataObject.timezoneFormat(store.timezoneFormat())
             return dateFormatter.string(from: correct)
         }
 
@@ -417,10 +420,10 @@ extension TimezoneDataOperations {
     }
 
     func saveObject(at index: Int = -1) {
-        var defaults = DataStore.shared().timezones()
+        var defaults = store.timezones()
         let encodedObject = NSKeyedArchiver.archivedData(withRootObject: dataObject as Any)
         index == -1 ? defaults.append(encodedObject) : defaults.insert(encodedObject, at: index)
-        DataStore.shared().setTimezones(defaults)
+        store.setTimezones(defaults)
     }
 }
 

@@ -189,7 +189,7 @@ class OnboardingParentViewController: NSViewController {
         currentTimezone.isSystemTimezone = true
         currentTimezone.placeID = "Home"
 
-        let operations = TimezoneDataOperations(with: currentTimezone)
+        let operations = TimezoneDataOperations(with: currentTimezone, store: DataStore.shared())
         operations.saveObject(at: 0)
     }
 

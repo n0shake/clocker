@@ -1,6 +1,7 @@
 // Copyright © 2015 Abhishek Banthia
 
 import Cocoa
+import CoreLoggerKit
 
 class ModernSliderContainerView: NSView {
     private var trackingArea: NSTrackingArea?
@@ -67,7 +68,7 @@ class DraggableClipView: NSClipView {
                 clickPoint = nil
                 gestureInProgress = false
             default:
-                print("Default case is happening \(event.type)")
+                Logger.info("Default mouse event occurred for \(event.type)")
             }
         }
     }

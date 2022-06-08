@@ -89,7 +89,7 @@ class ParentPanelController: NSWindowController {
     // Upcoming Events
     @IBOutlet var upcomingEventCollectionView: NSCollectionView!
     @IBOutlet var upcomingEventContainerView: NSView!
-    public var upcomingEventsDataSource: UpcomingEventsDataSource!
+    public var upcomingEventsDataSource: UpcomingEventsDataSource?
 
     var defaultPreferences: [Data] {
         return DataStore.shared().timezones()
@@ -426,7 +426,7 @@ class ParentPanelController: NSWindowController {
             if let note = object?.note, note.isEmpty == false {
                 newHeight += 20
             } else if let obj = object,
-                      TimezoneDataOperations(with: obj).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) != nil
+                      TimezoneDataOperations(with: obj, store: DataStore.shared()).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) != nil
             {
                 newHeight += 20
             }
@@ -436,7 +436,7 @@ class ParentPanelController: NSWindowController {
             // Set it to 90 expicity in case the row height is calculated be higher.
             newHeight = 88.0
 
-            if let note = object?.note, note.isEmpty, let obj = object, TimezoneDataOperations(with: obj).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) == nil {
+            if let note = object?.note, note.isEmpty, let obj = object, TimezoneDataOperations(with: obj, store: DataStore.shared()).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) == nil {
                 newHeight -= 20.0
             }
         }
@@ -509,12 +509,13 @@ class ParentPanelController: NSWindowController {
 
         updatePanelColor()
 
-        let defaults = DataStore.shared().timezones()
+        let store = DataStore.shared()
+        let defaults = store.timezones()
         let convertedTimezones = defaults.map { data -> TimezoneData in
             TimezoneData.customObject(from: data)!
         }
 
-        datasource = TimezoneDataSource(items: convertedTimezones)
+        datasource = TimezoneDataSource(items: convertedTimezones, store: store)
         mainTableView.dataSource = datasource
         mainTableView.delegate = datasource
         mainTableView.panelDelegate = datasource
@@ -585,6 +586,9 @@ class ParentPanelController: NSWindowController {
     }
 
     private lazy var menubarTitleHandler = MenubarTitleProvider(with: DataStore.shared(), eventStore: EventCenter.sharedCenter())
+    
+    static private let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font: NSFont.monospacedDigitSystemFont(ofSize: 13.0, weight: NSFont.Weight.regular),
+                             NSAttributedString.Key.baselineOffset : 0.1]
 
     @objc func updateTime() {
         let store = DataStore.shared()
@@ -596,7 +600,8 @@ class ParentPanelController: NSWindowController {
                 if store.shouldDisplay(.menubarCompactMode) {
                     status.updateCompactMenubar()
                 } else {
-                    status.statusItem.title = menubarTitleHandler.titleForMenubar()
+                    status.statusItem.button?.attributedTitle = NSAttributedString(string: menubarTitleHandler.titleForMenubar() ?? "",
+                                                                                   attributes: ParentPanelController.attributes)
                 }
             }
         }
@@ -623,7 +628,7 @@ class ParentPanelController: NSWindowController {
                 if modernContainerView != nil, modernSlider.isHidden == false, modernContainerView.currentlyInFocus {
                     return
                 }
-                let dataOperation = TimezoneDataOperations(with: model)
+                let dataOperation = TimezoneDataOperations(with: model, store: DataStore.shared())
                 cellView.time.stringValue = dataOperation.time(with: futureSliderValue)
                 cellView.sunriseSetTime.stringValue = dataOperation.formattedSunriseTime(with: futureSliderValue)
                 cellView.sunriseSetTime.lineBreakMode = .byClipping
@@ -635,7 +640,7 @@ class ParentPanelController: NSWindowController {
                 }
                 if let note = model.note, !note.isEmpty {
                     cellView.noteLabel.stringValue = note
-                } else if let value = TimezoneDataOperations(with: model).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) {
+                } else if let value = TimezoneDataOperations(with: model, store: DataStore.shared()).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) {
                     cellView.noteLabel.stringValue = value
                 } else {
                     cellView.noteLabel.stringValue = CLEmptyString
@@ -829,7 +834,7 @@ class ParentPanelController: NSWindowController {
                 if self.upcomingEventCollectionView != nil,
                    let upcomingEvents = eventCenter.upcomingEventsForDay(events)
                 {
-                    self.upcomingEventsDataSource.updateEventsDataSource(upcomingEvents)
+                    self.upcomingEventsDataSource?.updateEventsDataSource(upcomingEvents)
                     self.upcomingEventCollectionView.reloadData()
                     return
                 }
@@ -840,7 +845,7 @@ class ParentPanelController: NSWindowController {
             }
         } else {
             if upcomingEventCollectionView != nil {
-                upcomingEventsDataSource.updateEventsDataSource([])
+                upcomingEventsDataSource?.updateEventsDataSource([])
                 upcomingEventCollectionView.reloadData()
                 return
             }
@@ -1124,7 +1129,7 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
             return clipboardCopy
         }
 
-        let timezoneOperations = TimezoneDataOperations(with: earliestTimezone)
+        let timezoneOperations = TimezoneDataOperations(with: earliestTimezone, store: DataStore.shared())
         var sectionTitle = timezoneOperations.todaysDate(with: 0) // TODO: Take slider value into consideration
         clipboardCopy.append("\(sectionTitle)\n")
 
@@ -1132,7 +1137,7 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
             if $0 < sortedByTime.count,
                let dataModel = TimezoneData.customObject(from: sortedByTime[$0])
             {
-                let dataOperations = TimezoneDataOperations(with: dataModel)
+                let dataOperations = TimezoneDataOperations(with: dataModel, store: DataStore.shared())
                 let date = dataOperations.todaysDate(with: 0)
                 let time = dataOperations.time(with: 0)
                 if date != sectionTitle {

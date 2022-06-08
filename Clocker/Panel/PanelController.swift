@@ -268,7 +268,7 @@ class PanelController: ParentPanelController {
 
         if count >= 1 || DataStore.shared().shouldDisplay(.showMeetingInMenubar) {
             if let delegate = NSApplication.shared.delegate as? AppDelegate {
-                Logger.info("\nWe will be invalidating the menubar timer as we want the parent timer to take care of both panel and menubar ")
+                Logger.info("We will be invalidating the menubar timer as we want the parent timer to take care of both panel and menubar ")
 
                 delegate.invalidateMenubarTimer(false)
             }
