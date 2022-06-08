@@ -444,17 +444,30 @@ struct EventInfo {
     let isAllDay: Bool
     let meetingURL: URL?
     let attendeStatus: EKParticipantStatus
+    private let nsCalendar = Calendar.autoupdatingCurrent
 
     func metadataForMeeting() -> String {
         let timeIntervalSinceNowForMeeting = event.startDate.timeIntervalSinceNow
-        if timeIntervalSinceNowForMeeting < 0, timeIntervalSinceNowForMeeting > -300 {
+        if timeIntervalSinceNowForMeeting == 0 {
+            return "started."
+        } else if timeIntervalSinceNowForMeeting < 0, timeIntervalSinceNowForMeeting > -300 {
             return "started +\(event.startDate.shortTimeAgoSinceNow)."
         } else if event.startDate.isToday, timeIntervalSinceNowForMeeting > 0 {
             let timeSince = Date().timeAgo(since: event.startDate).lowercased()
             let withoutAn = timeSince.replacingOccurrences(of: "an", with: CLEmptyString)
-            let withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
+            var withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
             // If the user has not turned on seconds granularity for one of the timezones,
             // we return "in 12 seconds" which looks weird.
+            
+            let upToHours: Set<Calendar.Component> = [.second, .minute, .hour]
+            let difference = nsCalendar.dateComponents(upToHours, from: Date(), to: event.startDate as Date)
+            let minuteDifference = difference.minute ?? 0
+            let hourDifference = difference.hour ?? 0
+            
+            if hourDifference > 0, minuteDifference > 0 {
+                withoutAgo.append(contentsOf: "\(minuteDifference)m")
+            }
+            
             return withoutAgo.contains("seconds") ? "in <1m" : "in \(withoutAgo.lowercased())".trimmingCharacters(in: .whitespaces)
         } else if event.startDate.isTomorrow {
             let hoursUntil = event.startDate.hoursUntil
