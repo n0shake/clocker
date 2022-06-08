@@ -1,6 +1,7 @@
 // Copyright © 2015 Abhishek Banthia
 
 import CoreModelKit
+import CoreLoggerKit
 import Foundation
 
 struct ConfigExport {
@@ -34,7 +35,7 @@ struct ConfigExport {
         var clockerPrefs: [String: Any] = [:]
         for (key, value) in dictionaryRep {
             if selectedKeys.contains(key) {
-                print("Key is \(key) and value is \(value)")
+                Logger.info("Config Export: Key is \(key) and value is \(value)")
                 clockerPrefs[key] = value
             }
         }
@@ -73,7 +74,7 @@ struct ConfigExport {
             let json = try JSONSerialization.data(withJSONObject: clockerPrefs, options: .prettyPrinted)
             print(json)
         } catch {
-            print("Failure Observed \(error.localizedDescription)")
+            Logger.info("Failure Observed \(error.localizedDescription)")
         }
     }
 }

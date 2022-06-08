@@ -43,7 +43,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         // Required for migrating our model type to CoreModelKit
         NSKeyedUnarchiver.setClass(CoreModelKit.TimezoneData.classForKeyedUnarchiver(), forClassName: "Clocker.TimezoneData")
 
-        AppDefaults.initialize()
+        AppDefaults.initialize(with: DataStore.shared(), defaults: UserDefaults.standard)
 
         // Check if we can show the onboarding flow!
         showOnboardingFlowIfEligible()
@@ -73,9 +73,9 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc private func openPreferencesWindow() {
-        let displayMode = UserDefaults.standard.integer(forKey: CLShowAppInForeground)
+        let displayMode = DataStore.shared().shouldDisplay(.showAppInForeground)
 
-        if displayMode == 1 {
+        if displayMode {
             let floatingWindow = FloatingWindowController.shared()
             floatingWindow.openPreferences(NSButton())
         } else {
@@ -88,16 +88,22 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.setActivationPolicy(.accessory)
     }
 
-    private lazy var controller: OnboardingController? = {
-        let onboardingStoryboard = NSStoryboard(name: NSStoryboard.Name("Onboarding"), bundle: nil)
-        return onboardingStoryboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("onboardingFlow")) as? OnboardingController
-    }()
+    private var controller: OnboardingController?
 
     private func showOnboardingFlowIfEligible() {
-        let shouldLaunchOnboarding = (DataStore.shared().retrieve(key: CLShowOnboardingFlow) == nil && DataStore.shared().timezones().isEmpty)
-            || ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument)
+        let isTestInProgress = ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument)
+        let shouldLaunchOnboarding =
+            (DataStore.shared().retrieve(key: CLShowOnboardingFlow) == nil
+                && DataStore.shared().timezones().isEmpty)
+            || isTestInProgress
 
-        shouldLaunchOnboarding ? controller?.launch() : continueUsually()
+        if shouldLaunchOnboarding {
+            let onboardingStoryboard = NSStoryboard(name: NSStoryboard.Name("Onboarding"), bundle: nil)
+            controller = onboardingStoryboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("onboardingFlow")) as? OnboardingController
+            controller?.launch()
+        } else {
+            continueUsually()
+        }
     }
 
     func continueUsually() {

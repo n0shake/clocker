@@ -61,7 +61,7 @@ class StatusItemHandler: NSObject {
                 setClockerIcon()
             }
 
-            Logger.info("\nStatus Bar Current State changed: \(currentState)\n")
+            Logger.info("Status Bar Current State changed: \(currentState)\n")
         }
     }
 
@@ -365,9 +365,10 @@ class StatusItemHandler: NSObject {
             setClockerIcon()
             return
         }
-
-        statusItem.button?.title = menubarText
-        statusItem.button?.font = NSFont.monospacedDigitSystemFont(ofSize: 14.0, weight: NSFont.Weight.regular)
+        
+        let attributes = [NSAttributedString.Key.font: NSFont.monospacedDigitSystemFont(ofSize: 13.0, weight: NSFont.Weight.regular),
+                          NSAttributedString.Key.baselineOffset : 0.1] as [NSAttributedString.Key : Any]
+        statusItem.button?.attributedTitle = NSAttributedString(string: menubarText, attributes: attributes)
         statusItem.button?.image = nil
         statusItem.button?.imagePosition = .imageLeft
     }

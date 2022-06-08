@@ -116,7 +116,7 @@ class PreferencesViewController: ParentViewController {
 
         searchField.placeholderString = "Enter city, state, country or timezone name"
 
-        selectionsDataSource = PreferencesDataSource(callbackDelegate: self)
+        selectionsDataSource = PreferencesDataSource(with: DataStore.shared(), callbackDelegate: self)
         timezoneTableView.dataSource = selectionsDataSource
         timezoneTableView.delegate = selectionsDataSource
 
@@ -612,7 +612,7 @@ extension PreferencesViewController {
         // Mark if the timezone is same as local timezone
         let timezoneObject = TimezoneData(with: newTimeZone)
 
-        let operationsObject = TimezoneDataOperations(with: timezoneObject)
+        let operationsObject = TimezoneDataOperations(with: timezoneObject, store: DataStore.shared())
         operationsObject.saveObject()
 
         Logger.log(object: ["PlaceName": filteredAddress, "Timezone": timezone.timeZoneId], for: "Filtered Address")
@@ -746,7 +746,7 @@ extension PreferencesViewController {
         data.selectionType = .timezone
         data.isSystemTimezone = metaInfo.0.name == NSTimeZone.system.identifier
 
-        let operationObject = TimezoneDataOperations(with: data)
+        let operationObject = TimezoneDataOperations(with: data, store: DataStore.shared())
         operationObject.saveObject()
 
         searchResultsDataSource.cleanupFilterArray()

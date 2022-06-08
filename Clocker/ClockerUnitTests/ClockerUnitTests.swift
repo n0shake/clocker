@@ -53,23 +53,23 @@ class ClockerUnitTests: XCTestCase {
                                         "longitude": "-95.9345034"]
 
     private var operations: TimezoneDataOperations {
-        return TimezoneDataOperations(with: TimezoneData(with: mumbai))
+        return TimezoneDataOperations(with: TimezoneData(with: mumbai), store: DataStore.shared())
     }
 
     private var californiaOperations: TimezoneDataOperations {
-        return TimezoneDataOperations(with: TimezoneData(with: california))
+        return TimezoneDataOperations(with: TimezoneData(with: california), store: DataStore.shared())
     }
 
     private var floridaOperations: TimezoneDataOperations {
-        return TimezoneDataOperations(with: TimezoneData(with: florida))
+        return TimezoneDataOperations(with: TimezoneData(with: florida), store: DataStore.shared())
     }
 
     private var aucklandOperations: TimezoneDataOperations {
-        return TimezoneDataOperations(with: TimezoneData(with: auckland))
+        return TimezoneDataOperations(with: TimezoneData(with: auckland), store: DataStore.shared())
     }
 
     private var omahaOperations: TimezoneDataOperations {
-        return TimezoneDataOperations(with: TimezoneData(with: omaha))
+        return TimezoneDataOperations(with: TimezoneData(with: omaha), store: DataStore.shared())
     }
 
     func testOverridingSecondsComponent_shouldHideSeconds() {
@@ -81,7 +81,7 @@ class ClockerUnitTests: XCTestCase {
                                TimezoneData(with: california)]
 
         timezoneObjects.forEach {
-            let operationsObject = TimezoneDataOperations(with: $0)
+            let operationsObject = TimezoneDataOperations(with: $0, store: DataStore.shared())
             let currentTime = operationsObject.time(with: 0)
             XCTAssert(currentTime.count == 8) // 8 includes 2 colons
 
@@ -97,7 +97,7 @@ class ClockerUnitTests: XCTestCase {
         let currentFavourites = DataStore.shared().timezones()
         let oldCount = currentFavourites.count
 
-        let operationsObject = TimezoneDataOperations(with: timezoneData)
+        let operationsObject = TimezoneDataOperations(with: timezoneData, store: DataStore.shared())
         operationsObject.saveObject()
 
         let newDefaults = DataStore.shared().timezones()
@@ -151,7 +151,7 @@ class ClockerUnitTests: XCTestCase {
         // California is absent. Add it!
         if filteredCount.count == 0 {
             let timezoneData = TimezoneData(with: california)
-            let operationsObject = TimezoneDataOperations(with: timezoneData)
+            let operationsObject = TimezoneDataOperations(with: timezoneData, store: DataStore.shared())
             operationsObject.saveObject()
         }
 
@@ -179,7 +179,7 @@ class ClockerUnitTests: XCTestCase {
 
     func testSunriseSunset() {
         let dataObject = TimezoneData(with: mumbai)
-        let operations = TimezoneDataOperations(with: dataObject)
+        let operations = TimezoneDataOperations(with: dataObject, store: DataStore.shared())
 
         XCTAssertNotNil(operations.formattedSunriseTime(with: 0))
         XCTAssertNotNil(dataObject.sunriseTime)
@@ -187,7 +187,7 @@ class ClockerUnitTests: XCTestCase {
 
         let timezoneObject = TimezoneData(with: onlyTimezone)
         timezoneObject.selectionType = .timezone
-        let timezoneOperations = TimezoneDataOperations(with: timezoneObject)
+        let timezoneOperations = TimezoneDataOperations(with: timezoneObject, store: DataStore.shared())
 
         XCTAssertTrue(timezoneOperations.formattedSunriseTime(with: 0) == "")
         XCTAssertNil(timezoneObject.sunriseTime)
@@ -196,7 +196,7 @@ class ClockerUnitTests: XCTestCase {
 
     func testDateWithSliderValue() {
         let dataObject = TimezoneData(with: mumbai)
-        let operations = TimezoneDataOperations(with: dataObject)
+        let operations = TimezoneDataOperations(with: dataObject, store: DataStore.shared())
 
         XCTAssertNotNil(operations.date(with: 0, displayType: .menu))
     }
@@ -359,7 +359,7 @@ class ClockerUnitTests: XCTestCase {
 
     func testWithAllLocales() {
         let dataObject1 = TimezoneData(with: mumbai)
-        let operations = TimezoneDataOperations(with: dataObject1)
+        let operations = TimezoneDataOperations(with: dataObject1, store: DataStore.shared())
 
         for locale in Locale.availableIdentifiers {
             let currentLocale = Locale(identifier: locale)
@@ -429,5 +429,15 @@ class ClockerUnitTests: XCTestCase {
         subject.layout()
         XCTAssertEqual(subject.subviews.count, 2) // Two textfields
         XCTAssertEqual(subject.subviews.first?.layer?.animationKeys(), ["notimezone.emoji"])
+    }
+
+    func testDefaultsWiping() {
+        let defaultsDict: [String: Any] = ["test1": "testString", "test2": 24]
+        let domainName = "com.test.clocker"
+        let defaults = UserDefaults(suiteName: domainName)
+        defaults?.setPersistentDomain(defaultsDict, forName: domainName)
+        defaults?.wipe(for: domainName)
+        XCTAssertNil(defaults?.object(forKey: "test1"))
+        XCTAssertNil(defaults?.object(forKey: "test2"))
     }
 }

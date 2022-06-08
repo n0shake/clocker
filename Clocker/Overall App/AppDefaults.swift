@@ -4,46 +4,19 @@ import Cocoa
 import CoreLoggerKit
 
 class AppDefaults {
-    class func initialize() {
-        initializeDefaults()
+    class func initialize(with store: DataStore, defaults: UserDefaults) {
+        initializeDefaults(with: store, defaults: defaults)
     }
 
-    private class func deleteOldUserDefaults() {
-        let userDefaults = UserDefaults.standard
-
-        // Now delete the old preferences
-        if let bundleID = Bundle.main.bundleIdentifier, userDefaults.object(forKey: "PreferencesHaveBeenWiped") == nil {
-            userDefaults.removePersistentDomain(forName: bundleID)
-            userDefaults.set(true, forKey: "PreferencesHaveBeenWiped")
-        }
-    }
-
-    private class func initializeDefaults() {
-        let userDefaults = UserDefaults.standard
-        let dataStore = DataStore.shared()
-
-        let timezones = dataStore.timezones()
-        let selectedCalendars = userDefaults.object(forKey: CLSelectedCalendars)
-
-        // Now delete the old preferences
-        userDefaults.wipeIfNeccesary()
+    private class func initializeDefaults(with store: DataStore, defaults: UserDefaults) {
+        let timezones = store.timezones()
+        let selectedCalendars = defaults.object(forKey: CLSelectedCalendars)
 
         // Register the usual suspects
-        userDefaults.register(defaults: defaultsDictionary())
+        defaults.register(defaults: defaultsDictionary())
 
-        dataStore.setTimezones(timezones)
-        userDefaults.set(selectedCalendars, forKey: CLSelectedCalendars)
-
-        // Set the theme default as Light!
-        setDefaultTheme()
-    }
-
-    private class func setDefaultTheme() {
-        let defaults = UserDefaults.standard
-
-        if defaults.object(forKey: CLThemeKey) == nil {
-            Themer.shared().set(theme: 0)
-        }
+        store.setTimezones(timezones)
+        defaults.set(selectedCalendars, forKey: CLSelectedCalendars)
     }
 
     private class func defaultsDictionary() -> [String: Any] {
@@ -69,25 +42,9 @@ class AppDefaults {
     }
 }
 
-extension String {
-    func localized() -> String {
-        return NSLocalizedString(self, comment: "Title for \(self)")
-    }
-}
-
 extension UserDefaults {
     // Use this with caution. Exposing this for debugging purposes only.
-    func wipe() {
-        if let bundleID = Bundle.main.bundleIdentifier {
-            removePersistentDomain(forName: bundleID)
-        }
-    }
-
-    func wipeIfNeccesary() {
-        if let bundleID = Bundle.main.bundleIdentifier, object(forKey: "PreferencesHaveBeenWiped") == nil {
-            Logger.info("Wiping all user defaults")
-            removePersistentDomain(forName: bundleID)
-            set(true, forKey: "PreferencesHaveBeenWiped")
-        }
+    func wipe(for bundleID: String) {
+        removePersistentDomain(forName: bundleID)
     }
 }
