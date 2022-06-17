@@ -294,7 +294,7 @@
 "This can be configured later in Clocker Preferences." = "This can be configured later in Clocker Preferences.";
 
 
-"Time Format" = "Time Format";
+"Time Format" = "表示フォーマット";
 
 
 "Truncate menubar text longer than" = "Truncate menubar text longer than";
