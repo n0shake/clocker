@@ -1,5 +1,3 @@
-# Clocker 
-
 <p align="center">
 	<a href="https://github.com/n0shake/Clocker/releases/latest">
  		<img src="https://img.shields.io/badge/download-latest-brightgreen.svg" alt="download">
