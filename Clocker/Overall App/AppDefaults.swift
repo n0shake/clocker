@@ -34,7 +34,7 @@ class AppDefaults {
                 CLShowAppInForeground: 0,
                 CLFutureSliderRange: 0,
                 CLShowAllDayEventsInUpcomingView: 1,
-                CLShowMeetingInMenubar: 1,
+                CLShowMeetingInMenubar: 0,
                 CLTruncateTextLength: 30,
                 CLSelectedCalendars: [],
                 CLAppDisplayOptions: 0,
