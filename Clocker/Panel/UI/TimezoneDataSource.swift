@@ -220,7 +220,7 @@ extension TimezoneDataSource: PanelTableViewDelegate {
             if offSet == 0.0 {
                 return "\(localizedName)"
             } else {
-              let offSetSign = offSet > 0 ? "+" : CLEmptyString
+                let offSetSign = offSet > 0 ? "+" : CLEmptyString
                 let offsetString = "UTC\(offSetSign)\(offSet)"
                 return "\(localizedName) (\(offsetString))"
             }
