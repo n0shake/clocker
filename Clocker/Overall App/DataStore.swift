@@ -112,11 +112,13 @@ class DataStore: NSObject {
     }
 
     // MARK: Date (May 8th) in Compact Menubar
+
     func shouldShowDateInMenubar() -> Bool {
         return shouldDisplay(.dateInMenubar)
     }
-    
+
     // MARK: Day (Sun, Mon etc.) in Compact Menubar
+
     func shouldShowDayInMenubar() -> Bool {
         return shouldDisplay(.dayInMenubar)
     }
@@ -207,8 +209,9 @@ class DataStore: NSObject {
         }
         return value.isEqual(to: NSNumber(value: 0))
     }
-    
+
     // MARK: Some values are stored as plain integers; objectForKey: will return nil, so using integerForKey:
+
     private func shouldDisplayNonObjectHelper(_ key: String) -> Bool {
         let value = userDefaults.integer(forKey: key)
         return value == 0

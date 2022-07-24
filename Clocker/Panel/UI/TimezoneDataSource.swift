@@ -205,8 +205,27 @@ extension TimezoneDataSource: PanelTableViewDelegate {
                 }
 
                 rowCellView.extraOptions.alphaValue = (rowIndex == row) ? 1 : 0.5
+                if rowIndex == row, let hoverString = hoverStringForSelectedRow(row: row) {
+                    rowCellView.relativeDate.stringValue = hoverString
+                }
             }
         }
+    }
+
+    private func hoverStringForSelectedRow(row: Int) -> String? {
+        let currentModel = timezones[row]
+        if let timezone = TimeZone(identifier: currentModel.timezone()) {
+            let offSet = Double(timezone.secondsFromGMT()) / 3600
+            let localizedName = timezone.localizedName(for: .shortDaylightSaving, locale: Locale.autoupdatingCurrent) ?? "Error"
+            if offSet == 0.0 {
+                return "\(localizedName)"
+            } else {
+                let offSetSign = offSet > 0 ? "+" : CLEmptyString
+                let offsetString = "UTC\(offSetSign)\(offSet)"
+                return "\(localizedName) (\(offsetString))"
+            }
+        }
+        return nil
     }
 }
 

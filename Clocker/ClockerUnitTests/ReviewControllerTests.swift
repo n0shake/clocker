@@ -19,20 +19,6 @@ class ReviewControllerTests: XCTestCase {
         mockDefaults.removeSuite(named: mockSuite)
     }
 
-    func testPromptNotDisplayedInFirstWeekSinceInstall() {
-        let mockSuite = "com.test.Clocker1.\(randomLetter())"
-        guard let mockDefaults = UserDefaults(suiteName: mockSuite) else {
-            return
-        }
-        // Set key install time
-        ReviewController.applicationDidLaunch(mockDefaults)
-        // Explicitly set preview mode to false
-        ReviewController.setPreviewMode(false)
-
-        XCTAssertFalse(ReviewController.canPrompt())
-        mockDefaults.removeSuite(named: mockSuite)
-    }
-
     func testPrompDisplayedAfterFirstWeekOfInstall() {
         let dateChunk = TimeChunk(seconds: 0,
                                   minutes: 0,
