@@ -1136,7 +1136,8 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
         }
 
         let timezoneOperations = TimezoneDataOperations(with: earliestTimezone, store: DataStore.shared())
-        var sectionTitle = timezoneOperations.todaysDate(with: 0) // TODO: Take slider value into consideration
+        let futureSliderValue = datasource?.sliderValue ?? 0
+        var sectionTitle = timezoneOperations.todaysDate(with: futureSliderValue)
         clipboardCopy.append("\(sectionTitle)\n")
 
         stride(from: 0, to: sortedByTime.count, by: 1).forEach {
@@ -1144,8 +1145,8 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
                let dataModel = TimezoneData.customObject(from: sortedByTime[$0])
             {
                 let dataOperations = TimezoneDataOperations(with: dataModel, store: DataStore.shared())
-                let date = dataOperations.todaysDate(with: 0)
-                let time = dataOperations.time(with: 0)
+                let date = dataOperations.todaysDate(with: futureSliderValue)
+                let time = dataOperations.time(with: futureSliderValue)
                 if date != sectionTitle {
                     sectionTitle = date
                     clipboardCopy.append("\n\(sectionTitle)\n")
