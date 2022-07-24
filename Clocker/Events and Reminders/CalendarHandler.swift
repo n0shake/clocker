@@ -124,7 +124,7 @@ extension EventCenter {
         let relevantEvents = filteredEvents[autoupdatingCalendar.startOfDay(for: Date())] ?? []
 
         let filteredEvents = relevantEvents.filter {
-            $0.event.isAllDay == false && $0.event.endDate.timeIntervalSinceNow > 0
+            $0.event.isAllDay == false && $0.event.endDate.timeIntervalSinceNow > 0 && $0.event.startDate.timeIntervalSinceNow > -300
         }
 
         if filteredEvents.count == 1 { return filteredEvents.first }
@@ -458,16 +458,16 @@ struct EventInfo {
             var withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
             // If the user has not turned on seconds granularity for one of the timezones,
             // we return "in 12 seconds" which looks weird.
-            
+
             let upToHours: Set<Calendar.Component> = [.second, .minute, .hour]
             let difference = nsCalendar.dateComponents(upToHours, from: Date(), to: event.startDate as Date)
             let minuteDifference = difference.minute ?? 0
             let hourDifference = difference.hour ?? 0
-            
+
             if hourDifference > 0, minuteDifference > 0 {
                 withoutAgo.append(contentsOf: "\(minuteDifference)m")
             }
-            
+
             return withoutAgo.contains("seconds") ? "in <1m" : "in \(withoutAgo.lowercased())".trimmingCharacters(in: .whitespaces)
         } else if event.startDate.isTomorrow {
             let hoursUntil = event.startDate.hoursUntil
