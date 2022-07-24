@@ -1,7 +1,7 @@
 // Copyright © 2015 Abhishek Banthia
 
-import CoreModelKit
 import CoreLoggerKit
+import CoreModelKit
 import Foundation
 
 struct ConfigExport {

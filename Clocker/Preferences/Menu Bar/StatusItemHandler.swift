@@ -365,9 +365,9 @@ class StatusItemHandler: NSObject {
             setClockerIcon()
             return
         }
-        
+
         let attributes = [NSAttributedString.Key.font: NSFont.monospacedDigitSystemFont(ofSize: 13.0, weight: NSFont.Weight.regular),
-                          NSAttributedString.Key.baselineOffset : 0.1] as [NSAttributedString.Key : Any]
+                          NSAttributedString.Key.baselineOffset: 0.1] as [NSAttributedString.Key: Any]
         statusItem.button?.attributedTitle = NSAttributedString(string: menubarText, attributes: attributes)
         statusItem.button?.image = nil
         statusItem.button?.imagePosition = .imageLeft
