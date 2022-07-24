@@ -151,8 +151,8 @@ class PermissionsViewController: ParentViewController {
                         NotificationCenter.default.post(name: .calendarAccessGranted, object: nil)
                     }
                 } else {
-                    Logger.log(object: ["Reminder Access Not Granted": "YES"],
-                               for: "Reminder Access Not Granted")
+                    Logger.log(object: ["Calendar Access Not Granted": "YES"],
+                               for: "Calendar Access Not Granted")
                 }
             })
         } else if eventCenter.calendarAccessGranted() {
