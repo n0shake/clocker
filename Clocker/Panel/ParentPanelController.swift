@@ -586,9 +586,9 @@ class ParentPanelController: NSWindowController {
     }
 
     private lazy var menubarTitleHandler = MenubarTitleProvider(with: DataStore.shared(), eventStore: EventCenter.sharedCenter())
-    
-    static private let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font: NSFont.monospacedDigitSystemFont(ofSize: 13.0, weight: NSFont.Weight.regular),
-                             NSAttributedString.Key.baselineOffset : 0.1]
+
+    private static let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: NSFont.monospacedDigitSystemFont(ofSize: 13.0, weight: NSFont.Weight.regular),
+                                                                    NSAttributedString.Key.baselineOffset: 0.1]
 
     @objc func updateTime() {
         let store = DataStore.shared()
@@ -615,6 +615,7 @@ class ParentPanelController: NSWindowController {
             }
         }
 
+        let hoverRow = mainTableView.hoverRow
         stride(from: 0, to: preferences.count, by: 1).forEach {
             let current = preferences[$0]
 
@@ -628,11 +629,16 @@ class ParentPanelController: NSWindowController {
                 if modernContainerView != nil, modernSlider.isHidden == false, modernContainerView.currentlyInFocus {
                     return
                 }
+
                 let dataOperation = TimezoneDataOperations(with: model, store: DataStore.shared())
                 cellView.time.stringValue = dataOperation.time(with: futureSliderValue)
                 cellView.sunriseSetTime.stringValue = dataOperation.formattedSunriseTime(with: futureSliderValue)
                 cellView.sunriseSetTime.lineBreakMode = .byClipping
-                cellView.relativeDate.stringValue = dataOperation.date(with: futureSliderValue, displayType: .panel)
+
+                if $0 != hoverRow {
+                    cellView.relativeDate.stringValue = dataOperation.date(with: futureSliderValue, displayType: .panel)
+                }
+
                 cellView.currentLocationIndicator.isHidden = !model.isSystemTimezone
                 cellView.sunriseImage.image = model.isSunriseOrSunset ? Themer.shared().sunriseImage() : Themer.shared().sunsetImage()
                 if #available(macOS 10.14, *) {
