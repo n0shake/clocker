@@ -10,7 +10,7 @@ class OnboardingTests: XCTestCase {
     override func setUp() {
         continueAfterFailure = false
         app = XCUIApplication()
-        app.launchArguments.append(CLOnboaringTestsLaunchArgument)
+        app.launchArguments.append(CLOnboardingTestsLaunchArgument)
         app.launch()
     }
 

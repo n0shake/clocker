@@ -220,7 +220,7 @@ class OnboardingParentViewController: NSViewController {
 
         view.window?.close()
 
-        if ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument) == false {
+        if ProcessInfo.processInfo.arguments.contains(CLOnboardingTestsLaunchArgument) == false {
             UserDefaults.standard.set(true, forKey: CLShowOnboardingFlow)
         }
 
@@ -317,7 +317,7 @@ class OnboardingParentViewController: NSViewController {
 
     private func shouldStartAtLogin(_ shouldStart: Bool) {
         // If tests are going on, we don't want to enable/disable launch at login!
-        if ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument) {
+        if ProcessInfo.processInfo.arguments.contains(CLOnboardingTestsLaunchArgument) {
             return
         }
 
