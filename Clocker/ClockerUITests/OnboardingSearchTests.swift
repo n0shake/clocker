@@ -10,7 +10,7 @@ class OnboardingSearchTests: XCTestCase {
 
         continueAfterFailure = false
         app = XCUIApplication()
-        app.launchArguments.append(CLOnboaringTestsLaunchArgument)
+        app.launchArguments.append(CLOnboardingTestsLaunchArgument)
         app.launch()
 
         // Let's go to the Search View

@@ -91,7 +91,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     private var controller: OnboardingController?
 
     private func showOnboardingFlowIfEligible() {
-        let isTestInProgress = ProcessInfo.processInfo.arguments.contains(CLOnboaringTestsLaunchArgument)
+        let isTestInProgress = ProcessInfo.processInfo.arguments.contains(CLOnboardingTestsLaunchArgument)
         let shouldLaunchOnboarding =
             (DataStore.shared().retrieve(key: CLShowOnboardingFlow) == nil
                 && DataStore.shared().timezones().isEmpty)
