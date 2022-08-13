@@ -247,14 +247,17 @@ class StatusItemHandler: NSObject {
     func updateCompactMenubar() {
         let filteredEvents = EventCenter.sharedCenter().filteredEvents
         let calendar = EventCenter.sharedCenter().autoupdatingCalendar
-        if menubarTitleHandler.checkForUpcomingEvents(filteredEvents, calendar: calendar) != nil {
+        let upcomingEvent =  menubarTitleHandler.checkForUpcomingEvents(filteredEvents, calendar: calendar)
+        if upcomingEvent != nil {
             // Iterate and see if we're showing the calendar item view
             let upcomingEventView = retrieveUpcomingEventStatusView()
             // If not, reconstruct Status Container View with another view
             if upcomingEventView == nil {
                 constructCompactView(with: true)
             }
-        } else if let upcomingEventView = retrieveUpcomingEventStatusView() {
+        }
+      
+        if let upcomingEventView = retrieveUpcomingEventStatusView(), upcomingEvent == nil {
             upcomingEventView.removeFromSuperview()
             constructCompactView() // So that Status Container View reclaims the space
         }
