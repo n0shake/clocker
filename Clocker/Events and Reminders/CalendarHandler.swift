@@ -448,7 +448,7 @@ struct EventInfo {
 
     func metadataForMeeting() -> String {
         let timeIntervalSinceNowForMeeting = event.startDate.timeIntervalSinceNow
-        if timeIntervalSinceNowForMeeting == 0 {
+        if timeIntervalSinceNowForMeeting == 0 || event.startDate.shortTimeAgoSinceNow == "0s" {
             return "started."
         } else if timeIntervalSinceNowForMeeting < 0, timeIntervalSinceNowForMeeting > -300 {
             return "started +\(event.startDate.shortTimeAgoSinceNow)."
