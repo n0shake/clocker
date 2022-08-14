@@ -228,6 +228,9 @@ class ThemerTests: XCTestCase {
     }
 
     private func testSubject(subject: Themer, withExpectatations expectations: ThemeExpectations) {
+        // Symbol images were introduced in 11.0; Clocker still supports 10.13+ so few asserts below that rely on symbol images will fail.
+      let eligibleOSVersion = ProcessInfo.processInfo.isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 11, minorVersion: 0, patchVersion: 0))
+      
         XCTAssertEqual(subject.sliderKnobColor(), expectations.expectedSliderKnobColor)
         XCTAssertEqual(subject.sliderRightColor(), expectations.expectedSliderRightColor)
         XCTAssertEqual(subject.mainBackgroundColor(), expectations.expectedBackgroundColor)
