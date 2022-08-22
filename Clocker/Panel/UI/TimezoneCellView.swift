@@ -12,9 +12,9 @@ class TimezoneCellView: NSTableCellView {
     @IBOutlet var extraOptions: NSButton!
     @IBOutlet var sunriseImage: NSImageView!
     @IBOutlet var currentLocationIndicator: NSImageView!
-  
-  static private let minimumFontSizeForTime: Int = 11
-  static private let minimumFontSizeForLabel: Int = 10
+
+    private static let minimumFontSizeForTime: Int = 11
+    private static let minimumFontSizeForLabel: Int = 10
 
     var rowNumber: NSInteger = -1
     var isPopoverDisplayed: Bool = false
@@ -137,7 +137,7 @@ class TimezoneCellView: NSTableCellView {
             return
         }
 
-      let newFontSize = CGFloat(TimezoneCellView.minimumFontSizeForLabel + (userFontSize.intValue * 1))
+        let newFontSize = CGFloat(TimezoneCellView.minimumFontSizeForLabel + (userFontSize.intValue * 1))
         let newTimeFontSize = CGFloat(TimezoneCellView.minimumFontSizeForTime + (userFontSize.intValue * 2))
 
         let fontManager = NSFontManager.shared

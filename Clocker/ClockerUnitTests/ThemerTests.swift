@@ -229,9 +229,9 @@ class ThemerTests: XCTestCase {
 
     private func testSubject(subject: Themer, withExpectatations expectations: ThemeExpectations) {
         // Symbol images were introduced in 11.0; Clocker still supports 10.13+ so few asserts below that rely on symbol images will fail.
-      let eligibleOSVersion = ProcessInfo.processInfo.isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 11, minorVersion: 0, patchVersion: 0))
-        
-        if (eligibleOSVersion) {
+        let eligibleOSVersion = ProcessInfo.processInfo.isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 11, minorVersion: 0, patchVersion: 0))
+
+        if eligibleOSVersion {
             XCTAssertEqual(subject.shutdownImage().accessibilityDescription, expectations.expectedShutdownImageName)
             XCTAssertEqual(subject.preferenceImage().accessibilityDescription, expectations.expectedPreferenceImageName)
             XCTAssertEqual(subject.pinImage().accessibilityDescription, expectations.expectedPinImageName)
@@ -252,7 +252,7 @@ class ThemerTests: XCTestCase {
             XCTAssertEqual(subject.sharingImage().accessibilityDescription, expectations.expectedSharingImage)
             XCTAssertEqual(subject.currentLocationImage().accessibilityDescription, expectations.expectedCurrentLocationImage)
         }
-      
+
         XCTAssertEqual(subject.sliderKnobColor(), expectations.expectedSliderKnobColor)
         XCTAssertEqual(subject.sliderRightColor(), expectations.expectedSliderRightColor)
         XCTAssertEqual(subject.mainBackgroundColor(), expectations.expectedBackgroundColor)
@@ -262,6 +262,5 @@ class ThemerTests: XCTestCase {
         XCTAssertEqual(subject.menubarOnboardingImage().name(), expectations.expectedMenubarOnboardingImage)
         XCTAssertEqual(subject.extraOptionsHighlightedImage().name(), expectations.expectedExtraOptionsHighlightedImage)
         XCTAssertEqual(subject.popoverAppearance(), expectations.expectedPopoverApperarance)
-
     }
 }
