@@ -109,6 +109,11 @@ static NSString *mostRecentVersionInDict(NSDictionary *dictionary)
 
 @implementation iVersion
 
++ (void)load
+{
+  [self performSelectorOnMainThread:@selector(sharedInstance) withObject:nil waitUntilDone:NO];
+}
+
 + (iVersion *)sharedInstance
 {
   static iVersion *sharedInstance = nil;
