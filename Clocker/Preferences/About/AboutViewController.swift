@@ -10,6 +10,7 @@ struct AboutUsConstants {
     static let TwitterLink = "https://twitter.com/clocker_support/?ref=ClockerApp"
     static let TwitterFollowIntentLink = "https://twitter.com/intent/follow?screen_name=clocker_support"
     static let AppStoreLink = "macappstore://itunes.apple.com/us/app/clocker/id1056643111?action=write-review"
+    static let AppStoreUpdateLink = "macappstore://itunes.apple.com/us/app/clocker/id1056643111"
     static let CrowdInLocalizationLink = "https://crwd.in/clocker"
     static let FAQsLink = "https://abhishekbanthia.com/clocker/faq"
 }
