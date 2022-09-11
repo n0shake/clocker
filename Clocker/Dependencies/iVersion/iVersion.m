@@ -98,7 +98,6 @@ static NSString *mostRecentVersionInDict(NSDictionary *dictionary)
 
 @interface iVersion ()
 
-@property (nonatomic, copy) NSDictionary *remoteVersionsDict;
 @property (nonatomic, strong) NSError *downloadError;
 @property (nonatomic, copy) NSString *versionDetails;
 @property (nonatomic, strong) id visibleLocalAlert;

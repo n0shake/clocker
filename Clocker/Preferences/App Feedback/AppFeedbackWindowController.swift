@@ -39,7 +39,6 @@ class AppFeedbackWindowController: NSWindowController {
     @IBOutlet var emailField: NSTextField!
     @IBOutlet var feedbackTextView: NSTextView!
     @IBOutlet var progressIndicator: NSProgressIndicator!
-
     @IBOutlet var quickCommentsLabel: PointingHandCursorButton!
     public weak var appFeedbackWindowDelegate: AppFeedbackWindowControllerDelegate?
     private var themeDidChangeNotification: NSObjectProtocol?
@@ -270,9 +269,20 @@ class AppFeedbackWindowController: NSWindowController {
         contactBox.title = "Contact Information (Optional)".localized()
         accessoryInfo.stringValue = "Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!".localized()
 
-        let range = NSRange(location: 9, length: 16)
-        quickCommentsLabel.title = "Tweet to @Clocker_Support if you have a quick comment!"
-        setUnderline(for: quickCommentsLabel, range: range)
+        let versionUpdateInstance = iVersion.sharedInstance()
+        let string = versionUpdateInstance?.versionDetails(since: versionUpdateInstance?.applicationVersion,
+                                                           inDict: versionUpdateInstance?.remoteVersionsDict)
+        if string != nil {
+            let range = NSRange(location: 37, length: 13)
+            quickCommentsLabel.title = "📣 An improved Clocker experience is now available!"
+            quickCommentsLabel.tag = 0
+            setUnderline(for: quickCommentsLabel, range: range)
+        } else {
+            let range = NSRange(location: 9, length: 16)
+            quickCommentsLabel.title = "Tweet to @Clocker_Support if you have a quick comment!"
+            setUnderline(for: quickCommentsLabel, range: range)
+            quickCommentsLabel.tag = 100
+        }
 
         [accessoryInfo].forEach { $0?.textColor = Themer.shared().mainTextColor() }
 
@@ -304,15 +314,11 @@ class AppFeedbackWindowController: NSWindowController {
         underlinedButton.attributedTitle = originalText
     }
 
-    @IBAction func navigateToSupportTwitter(_: Any) {
-        guard let twitterURL = URL(string: AboutUsConstants.TwitterLink),
-              let countryCode = Locale.autoupdatingCurrent.regionCode else { return }
+    @IBAction func navigateToSupportTwitter(_ sender: NSButton) {
+        let link = sender.tag == 100 ? AboutUsConstants.TwitterLink : AboutUsConstants.AppStoreUpdateLink
+        guard let url = URL(string: link) else { return }
 
-        NSWorkspace.shared.open(twitterURL)
-
-        // Log this
-        let custom: [String: Any] = ["Country": countryCode]
-        Logger.log(object: custom, for: "Opened Twitter")
+        NSWorkspace.shared.open(url)
     }
 }
 

@@ -142,6 +142,9 @@ typedef NS_ENUM(NSInteger, iVersionUpdatePriority)
 @property (nonatomic, strong) NSDate *lastReminded;
 @property (nonatomic, strong) NSURL *updateURL;
 @property (nonatomic, assign) BOOL viewedVersionDetails;
+@property (nonatomic, copy) NSDictionary *remoteVersionsDict;
+
+- (NSString *)versionDetailsSince:(NSString *)lastVersion inDict:(NSDictionary *)dict;
 
 //manually control behaviour
 @property (NS_NONATOMIC_IOSONLY, readonly) BOOL openAppPageInAppStore;
