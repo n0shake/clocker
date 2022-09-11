@@ -56,6 +56,11 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
             checkIfRunFromApplicationsFolder()
         #endif
     }
+  
+    public func applicationWillFinishLaunching(_: Notification) {
+        iVersion.sharedInstance().useAllAvailableLanguages = true
+        iVersion.sharedInstance().verboseLogging = false
+    }
 
     public func applicationDockMenu(_: NSApplication) -> NSMenu? {
         let menu = NSMenu(title: "Quick Access")
