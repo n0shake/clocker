@@ -191,6 +191,7 @@ class PanelController: ParentPanelController {
               let showDayInMenu = DataStore.shared().retrieve(key: CLShowDayInMenu) as? NSNumber,
               let showDateInMenu = DataStore.shared().retrieve(key: CLShowDateInMenu) as? NSNumber,
               let showPlaceInMenu = DataStore.shared().retrieve(key: CLShowPlaceInMenu) as? NSNumber,
+              let showLocalTimeInMenu = DataStore.shared().retrieve(key: CLShowLocalTimeInMenu) as? NSNumber,
               let showUpcomingEventView = DataStore.shared().retrieve(key: CLShowUpcomingEventView) as? String,
               let country = Locale.autoupdatingCurrent.regionCode
         else {
@@ -215,6 +216,7 @@ class PanelController: ParentPanelController {
             "Show Day in Menu": showDayInMenu.isEqual(to: NSNumber(value: 0)) ? "Yes" : "No",
             "Show Date in Menu": showDateInMenu.isEqual(to: NSNumber(value: 0)) ? "Yes" : "No",
             "Show Place in Menu": showPlaceInMenu.isEqual(to: NSNumber(value: 0)) ? "Yes" : "No",
+            "Show local time in menu": showLocalTimeInMenu.isEqual(to: NSNumber(value: 0)) ? "Yes" : "No",
             "Show Upcoming Event View": showUpcomingEventView == "YES" ? "Yes" : "No",
             "Country": country,
             "Calendar Access Provided": EventCenter.sharedCenter().calendarAccessGranted() ? "Yes" : "No",

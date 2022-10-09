@@ -15,6 +15,7 @@ enum ViewType {
     case appDisplayOptions
     case dateInMenubar
     case placeInMenubar
+    case localTimeInMenubar
     case dayInMenubar
     case menubarCompactMode
     case sync
@@ -28,6 +29,7 @@ class DataStore: NSObject {
     // Since these pref can accessed every second, let's cache this
     private var shouldDisplayDayInMenubar: Bool = false
     private var shouldDisplayDateInMenubar: Bool = false
+    private var shouldDisplaySystemTimeInMenubar: Bool = true
     private static let timeFormatsWithSuffix: Set<NSNumber> = Set([NSNumber(integerLiteral: 0),
                                                                    NSNumber(integerLiteral: 3),
                                                                    NSNumber(integerLiteral: 4),
@@ -105,10 +107,18 @@ class DataStore: NSObject {
     }
 
     func menubarTimezones() -> [Data]? {
-        return timezones().filter {
-            let customTimezone = TimezoneData.customObject(from: $0)
-            return customTimezone?.isFavourite == 1
+        if shouldShowLocalTimeInMenubar() {
+            return timezones().filter {
+                let customTimezone = TimezoneData.customObject(from: $0)
+                return customTimezone?.isFavourite == 1
+            }
+        } else {
+            return timezones().filter {
+                let customTimezone = TimezoneData.customObject(from: $0)
+                return customTimezone?.isFavourite == 1 && customTimezone?.isSystemTimezone == false
+            }
         }
+        
     }
 
     // MARK: Date (May 8th) in Compact Menubar
@@ -121,6 +131,10 @@ class DataStore: NSObject {
 
     func shouldShowDayInMenubar() -> Bool {
         return shouldDisplay(.dayInMenubar)
+    }
+    
+    func shouldShowLocalTimeInMenubar() -> Bool {
+        return shouldDisplay(.localTimeInMenubar)
     }
 
     func retrieve(key: String) -> Any? {
@@ -198,6 +212,8 @@ class DataStore: NSObject {
             return value == 0
         case .sync:
             return shouldDisplayHelper(CLEnableSyncKey)
+        case .localTimeInMenubar:
+            return shouldDisplayHelper(CLShowLocalTimeInMenu)
         }
     }
 

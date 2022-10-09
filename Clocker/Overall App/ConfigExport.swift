@@ -13,6 +13,7 @@ struct ConfigExport {
             CLShowDayInMenu,
             CLShowDateInMenu,
             CLShowPlaceInMenu,
+            CLShowLocalTimeInMenu,
             CLDisplayFutureSliderKey,
             CLStartAtLogin,
             CLShowAppInForeground,

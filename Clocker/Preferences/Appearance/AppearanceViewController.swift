@@ -14,6 +14,7 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet var includeDayInMenubarControl: NSSegmentedControl!
     @IBOutlet var includeDateInMenubarControl: NSSegmentedControl!
     @IBOutlet var includePlaceNameControl: NSSegmentedControl!
+    @IBOutlet var includeLocalTimeControl: NSSegmentedControl!
     @IBOutlet var appearanceTab: NSTabView!
     @IBOutlet var appDisplayControl: NSSegmentedControl!
     @IBOutlet var syncLabel: NSTextField!
@@ -151,6 +152,7 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet var futureSliderRangeLabel: NSTextField!
     @IBOutlet var includeDateLabel: NSTextField!
     @IBOutlet var includeDayLabel: NSTextField!
+    @IBOutlet var includeLocalTimeLabel: NSTextField!
     @IBOutlet var includePlaceLabel: NSTextField!
     @IBOutlet var appDisplayLabel: NSTextField!
     @IBOutlet var menubarModeLabel: NSTextField!
@@ -171,6 +173,7 @@ class AppearanceViewController: ParentViewController {
         futureSliderRangeLabel.stringValue = "Future Slider Range".localized()
         includeDateLabel.stringValue = "Include Date".localized()
         includeDayLabel.stringValue = "Include Day".localized()
+        includeLocalTimeLabel.stringValue = "Include local time".localized()
         includePlaceLabel.stringValue = "Include Place Name".localized()
         menubarModeLabel.stringValue = "Menubar Mode".localized()
         previewLabel.stringValue = "Preview".localized()
@@ -179,7 +182,7 @@ class AppearanceViewController: ParentViewController {
         [timeFormatLabel, panelTheme,
          dayDisplayOptionsLabel, showSliderLabel,
          showSunriseLabel, largerTextLabel, syncLabel, futureSliderRangeLabel,
-         includeDayLabel, includeDateLabel, includePlaceLabel, appDisplayLabel, menubarModeLabel,
+         includeDayLabel, includeLocalTimeLabel, includeDateLabel, includePlaceLabel, appDisplayLabel, menubarModeLabel,
          previewLabel, miscelleaneousLabel].forEach {
             $0?.textColor = Themer.shared().mainTextColor()
         }
@@ -324,6 +327,10 @@ class AppearanceViewController: ParentViewController {
     }
 
     @IBAction func displayPlaceInMenubarAction(_: Any) {
+        updateStatusItem()
+    }
+    
+    @IBAction func displaySystemTimeInMenubarAction(_: Any) {
         updateStatusItem()
     }
 

@@ -27,6 +27,7 @@ class AppDefaults {
                 CLShowDayInMenu: 0,
                 CLShowDateInMenu: 1,
                 CLShowPlaceInMenu: 0,
+                CLShowLocalTimeInMenu: 1,
                 CLStartAtLogin: 0,
                 CLSunriseSunsetTime: 1,
                 CLUserFontSizePreference: 4,
