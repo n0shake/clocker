@@ -267,6 +267,14 @@ public class TimezoneData: NSObject, NSCoding {
         let formatInString = TimezoneData.values[key] ?? DateFormat.twelveHour
         return formatInString.contains("ss")
     }
+    
+    public func isDaylightSavings() -> Bool {
+        guard let timezone = TimeZone(abbreviation: timezone()) else {
+            return false
+        }
+        
+        return timezone.isDaylightSavingTime(for: Date())
+    }
 
     override public var hash: Int {
         guard let placeIdentifier = placeID, let timezone = timezoneID else {
