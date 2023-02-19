@@ -106,7 +106,9 @@ class SearchDataSourceTests: XCTestCase {
         setupMockData()
 
         let result = subject.retrieveSelectedTimezone(0)
-        XCTAssert(result.timezone.abbreviation == "PDT")
+        let possibleOutcomes = Set<String>(["PDT", "PST"])
+        XCTAssert(possibleOutcomes.contains(result.timezone.abbreviation ?? "NA"),
+                  "Result timezone is actually \(result.timezone.abbreviation ?? "NA")")
     }
 
     func testRetrieveSelectedTimezoneWithEmptySearchField() {

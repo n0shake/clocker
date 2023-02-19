@@ -2,7 +2,7 @@
 
 import XCTest
 
-let CLOnboaringTestsLaunchArgument = "isTestingTheOnboardingFlow"
+let CLOnboardingTestsLaunchArgument = "isTestingTheOnboardingFlow"
 
 class OnboardingTests: XCTestCase {
     var app: XCUIApplication!
