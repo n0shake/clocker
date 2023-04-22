@@ -42,10 +42,10 @@
             <windowStyleMask key="styleMask" utility="YES" nonactivatingPanel="YES" texturedBackground="YES"/>
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" ignoresCycle="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="1000" y="379" width="350" height="460"/>
+            <rect key="contentRect" x="1000" y="379" width="300" height="420"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" focusRingType="none" id="6" customClass="BackgroundPanelView" customModule="Clocker" customModuleProvider="target">
-                <rect key="frame" x="0.0" y="0.0" width="370" height="450"/>
+            <view key="contentView" focusRingType="none" misplaced="YES" id="6" customClass="BackgroundPanelView" customModule="Clocker" customModuleProvider="target">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="420"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView focusRingType="none" distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZA-6o-SbE">
@@ -315,13 +315,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" horizontalScrollElasticity="allowed" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="htc-pO-AqH">
-                                        <rect key="frame" x="0.0" y="30" width="350" height="40"/>
+                                        <rect key="frame" x="0.0" y="25" width="350" height="45"/>
                                         <clipView key="contentView" drawsBackground="NO" id="N1e-zE-F86" customClass="DraggableClipView" customModule="Clocker" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="45"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <collectionView focusRingType="none" allowsEmptySelection="NO" id="lxA-64-3QU">
-                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="45"/>
                                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" id="mgM-vQ-fB7">
                                                         <size key="itemSize" width="10" height="50"/>
@@ -420,7 +420,7 @@
                                     <constraint firstItem="hma-wI-Sc9" firstAttribute="centerX" secondItem="8W7-rS-Uob" secondAttribute="centerX" id="GGe-go-nVx"/>
                                     <constraint firstItem="htc-pO-AqH" firstAttribute="leading" secondItem="8W7-rS-Uob" secondAttribute="leading" id="QmJ-Dd-WLb"/>
                                     <constraint firstAttribute="bottom" secondItem="hma-wI-Sc9" secondAttribute="bottom" id="TDr-Pa-iYA"/>
-                                    <constraint firstAttribute="bottom" secondItem="htc-pO-AqH" secondAttribute="bottom" priority="750" constant="30" id="YCJ-zB-dvc"/>
+                                    <constraint firstAttribute="bottom" secondItem="htc-pO-AqH" secondAttribute="bottom" priority="750" constant="25" id="YCJ-zB-dvc"/>
                                     <constraint firstAttribute="trailing" secondItem="htc-pO-AqH" secondAttribute="trailing" id="esR-My-uoD"/>
                                     <constraint firstItem="hma-wI-Sc9" firstAttribute="top" secondItem="TK5-db-7bd" secondAttribute="bottom" constant="-5" id="pIb-qt-jKw"/>
                                     <constraint firstItem="TK5-db-7bd" firstAttribute="trailing" secondItem="hma-wI-Sc9" secondAttribute="trailing" constant="5" id="yhv-uP-Oih"/>
@@ -556,7 +556,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="370" height="40"/>
                                 <subviews>
                                     <button toolTip="Close Clocker" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1cR-pI-osG">
-                                        <rect key="frame" x="320" y="7" width="30" height="26"/>
+                                        <rect key="frame" x="330" y="7" width="30" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="WSi-Xj-Kfl"/>
                                             <constraint firstAttribute="width" constant="30" id="j2s-C4-pK5"/>
@@ -571,7 +571,7 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Switch between Menubar/Floating mode." verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YXE-4J-5cn">
-                                        <rect key="frame" x="220" y="10" width="30" height="19"/>
+                                        <rect key="frame" x="180" y="10" width="30" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="fWo-31-i3M"/>
                                             <constraint firstAttribute="height" constant="18" id="v7I-PR-eTK"/>
@@ -586,7 +586,7 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Share Clocker!" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hc7-fH-V7i">
-                                        <rect key="frame" x="125" y="10" width="30" height="21"/>
+                                        <rect key="frame" x="95" y="10" width="30" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Bnf-E1-uaE"/>
                                             <constraint firstAttribute="width" constant="30" id="pke-4M-ob5"/>
@@ -601,7 +601,7 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Open Preferences" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ctq-BV-GPN">
-                                        <rect key="frame" x="20" y="10" width="30" height="19"/>
+                                        <rect key="frame" x="10" y="10" width="30" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="oaD-Rr-qht"/>
                                             <constraint firstAttribute="height" constant="18" id="t4M-6L-Vqi"/>
@@ -619,15 +619,15 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="YXE-4J-5cn" firstAttribute="leading" secondItem="Hc7-fH-V7i" secondAttribute="trailing" constant="65" id="0Zd-fd-Ove"/>
+                                    <constraint firstItem="YXE-4J-5cn" firstAttribute="leading" secondItem="Hc7-fH-V7i" secondAttribute="trailing" constant="55" id="0Zd-fd-Ove"/>
                                     <constraint firstItem="Ctq-BV-GPN" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" id="6Q7-jc-cTL"/>
                                     <constraint firstItem="YXE-4J-5cn" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" id="OHe-Tc-b0V"/>
-                                    <constraint firstItem="Hc7-fH-V7i" firstAttribute="leading" secondItem="Ctq-BV-GPN" secondAttribute="trailing" constant="75" id="bL5-Kt-zaC"/>
+                                    <constraint firstItem="Hc7-fH-V7i" firstAttribute="leading" secondItem="Ctq-BV-GPN" secondAttribute="trailing" constant="55" id="bL5-Kt-zaC"/>
                                     <constraint firstAttribute="height" constant="40" id="iYW-fj-EE2"/>
                                     <constraint firstItem="1cR-pI-osG" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" id="oVJ-Xa-cTw"/>
-                                    <constraint firstAttribute="trailing" secondItem="1cR-pI-osG" secondAttribute="trailing" constant="20" id="rb9-gW-QZS"/>
+                                    <constraint firstAttribute="trailing" secondItem="1cR-pI-osG" secondAttribute="trailing" constant="10" id="rb9-gW-QZS"/>
                                     <constraint firstItem="Hc7-fH-V7i" firstAttribute="centerY" secondItem="B8X-sx-cjT" secondAttribute="centerY" constant="-1" id="vPp-mQ-wgE"/>
-                                    <constraint firstItem="Ctq-BV-GPN" firstAttribute="leading" secondItem="B8X-sx-cjT" secondAttribute="leading" constant="20" id="ydm-oF-sVc"/>
+                                    <constraint firstItem="Ctq-BV-GPN" firstAttribute="leading" secondItem="B8X-sx-cjT" secondAttribute="leading" constant="10" id="ydm-oF-sVc"/>
                                 </constraints>
                             </customView>
                         </subviews>

@@ -7,7 +7,7 @@ class UpcomingEventsDataSource: NSObject, NSCollectionViewDataSource, NSCollecti
     private var upcomingEvents: [EventInfo] = []
     private var eventCenter: EventCenter!
     private weak var delegate: UpcomingEventPanelDelegate?
-    private static let panelWidth: CGFloat = 350.0
+    private static let panelWidth: CGFloat = 300.0
 
     init(_ panelDelegate: UpcomingEventPanelDelegate?, _ center: EventCenter) {
         super.init()
