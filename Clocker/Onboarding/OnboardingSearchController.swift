@@ -50,7 +50,7 @@ class OnboardingSearchController: NSViewController {
         resultsTableView.target = self
         resultsTableView.doubleAction = #selector(doubleClickAction(_:))
         if #available(OSX 11.0, *) {
-            resultsTableView.style = .fullWidth
+            resultsTableView.style = .plain
         }
 
         setup()
