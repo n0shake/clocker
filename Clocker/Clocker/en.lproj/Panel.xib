@@ -159,9 +159,9 @@
                                                                                 <constraint firstAttribute="height" constant="35" id="KT8-zo-Jox"/>
                                                                                 <constraint firstAttribute="width" constant="30" id="YCy-Bh-1Ik"/>
                                                                             </constraints>
-                                                                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="Extra" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="cSd-0p-P5N">
+                                                                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="cSd-0p-P5N">
                                                                                 <behavior key="behavior" lightByContents="YES"/>
-                                                                                <font key="font" metaFont="system"/>
+                                                                                <font key="font" metaFont="systemBold"/>
                                                                             </buttonCell>
                                                                             <connections>
                                                                                 <action selector="showExtraOptions:" target="qbN-ba-fho" id="IRR-6f-iwZ"/>
@@ -676,7 +676,6 @@
     <resources>
         <image name="Add Icon" width="700" height="700"/>
         <image name="CurrentLocation" width="350" height="350"/>
-        <image name="Extra" width="700" height="700"/>
         <image name="Float-White" width="15" height="13"/>
         <image name="PowerIcon" width="350" height="350"/>
         <image name="PowerIcon-White" width="350" height="350"/>
