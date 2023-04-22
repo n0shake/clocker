@@ -23,6 +23,7 @@ extension ParentPanelController {
             upcomingEventCollectionView.setAccessibility("UpcomingEventCollectionView")
             upcomingEventCollectionView.dataSource = upcomingEventsDataSource
             upcomingEventCollectionView.delegate = upcomingEventsDataSource
+            upcomingEventCollectionView.enclosingScrollView?.autohidesScrollers = true
         }
     }
 }
