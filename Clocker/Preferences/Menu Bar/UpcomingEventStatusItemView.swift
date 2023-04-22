@@ -21,7 +21,7 @@ class UpcomingEventStatusItemView: NSView {
             NSAttributedString.Key.font: compactModeTimeFont,
             NSAttributedString.Key.foregroundColor: textColor,
             NSAttributedString.Key.backgroundColor: NSColor.clear,
-            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
+            NSAttributedString.Key.paragraphStyle: defaultTimeParagraphStyle,
         ]
         return attributes
     }
