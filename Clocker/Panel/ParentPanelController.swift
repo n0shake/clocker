@@ -158,7 +158,7 @@ class ParentPanelController: NSWindowController {
         mainTableView.selectionHighlightStyle = .none
         mainTableView.enclosingScrollView?.hasVerticalScroller = false
         if #available(OSX 11.0, *) {
-            mainTableView.style = .fullWidth
+            mainTableView.style = .plain
         }
 
         // Setup images
