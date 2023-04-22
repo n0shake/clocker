@@ -177,7 +177,7 @@ extension Themer {
     // MARK: Images
 
     func shutdownImage() -> NSImage {
-        if let symbolImageForShutdown = symbolImage(for: "ellipsis.circle") {
+        if let symbolImageForShutdown = symbolImage(for: "ellipsis") {
             return symbolImageForShutdown
         }
 
@@ -248,6 +248,10 @@ extension Themer {
     }
 
     func extraOptionsImage() -> NSImage {
+        if let xmarkImage = symbolImage(for: "ellipsis.circle") {
+            return xmarkImage
+        }
+        
         return fallbackImageProvider(NSImage(named: NSImage.Name("Extra"))!,
                                      NSImage(named: NSImage.Name("ExtraWhite"))!,
                                      NSImage(named: NSImage.Name("Extra Dynamic"))!,
@@ -271,6 +275,10 @@ extension Themer {
     }
 
     func extraOptionsHighlightedImage() -> NSImage {
+        if let xmarkImage = symbolImage(for: "ellipsis.circle.fill") {
+            return xmarkImage
+        }
+        
         return fallbackImageProvider(NSImage(named: NSImage.Name("ExtraHighlighted"))!,
                                      NSImage(named: NSImage.Name("ExtraWhiteHighlighted"))!,
                                      NSImage(named: NSImage.Name("ExtraHighlighted Dynamic"))!,
