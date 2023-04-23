@@ -315,8 +315,9 @@ class NotesPopover: NSViewController {
     }
 
     private func insertTimezoneInDefaultPreferences() {
-        guard let model = dataObject, var timezones = timezoneObjects else { return }
-        let encodedObject = NSKeyedArchiver.clocker_archive(with:model)
+        guard let model = dataObject, var timezones = timezoneObjects,
+        let encodedObject = NSKeyedArchiver.clocker_archive(with:model) else { return }
+        
         timezones[currentRow] = encodedObject
         DataStore.shared().setTimezones(timezones)
     }
@@ -341,7 +342,9 @@ class NotesPopover: NSViewController {
         var datas: [Data] = []
 
         for updatedObject in timezoneObjects {
-            let dataObject = NSKeyedArchiver.clocker_archive(with: updatedObject)
+            guard let dataObject = NSKeyedArchiver.clocker_archive(with: updatedObject) else {
+                continue
+            }
             datas.append(dataObject)
         }
 

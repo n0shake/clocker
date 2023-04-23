@@ -80,7 +80,9 @@ class LocationController: NSObject {
         var datas: [Data] = []
 
         for updatedObject in timezoneObjects {
-            let dataObject = NSKeyedArchiver.clocker_archive(with: updatedObject)
+            guard let dataObject = NSKeyedArchiver.clocker_archive(with: updatedObject) else {
+                continue
+            }
             datas.append(dataObject)
         }
 
