@@ -977,7 +977,7 @@ extension PreferencesViewController: SRRecorderControlDelegate {}
 // Helpers
 extension PreferencesViewController {
     private func insert(timezone: TimezoneData, at index: Int) {
-        let encodedObject = NSKeyedArchiver.archivedData(withRootObject: timezone)
+        let encodedObject = NSKeyedArchiver.clocker_archive(with: timezone)
         var newDefaults = selectedTimeZones
         newDefaults[index] = encodedObject
         DataStore.shared().setTimezones(newDefaults)
