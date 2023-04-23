@@ -27,7 +27,11 @@ public enum DateFormat {
 }
 
 // Non-class type cannot conform to NSCoding!
-public class TimezoneData: NSObject, NSCoding {
+public class TimezoneData: NSObject, NSCoding, NSSecureCoding {
+    public static var supportsSecureCoding: Bool {
+        return true
+    }
+    
     public enum SelectionType: Int {
         case city
         case timezone
