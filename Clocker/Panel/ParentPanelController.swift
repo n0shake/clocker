@@ -1079,7 +1079,10 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
     }
 
     func sharingServicePicker(_: NSSharingServicePicker, sharingServicesForItems _: [Any], proposedSharingServices proposed: [NSSharingService]) -> [NSSharingService] {
-        let copySharingService = NSSharingService(title: "Copy All Times", image: NSImage(), alternateImage: nil) { [weak self] in
+        let themer = Themer.shared()
+        let copySharingService = NSSharingService(title: "Copy All Times",
+                                                  image:themer.copyImage(),
+                                                  alternateImage: themer.highlightedCopyImage()) { [weak self] in
             guard let strongSelf = self else { return }
             let clipboardCopy = strongSelf.retrieveAllTimes()
             let pasteboard = NSPasteboard.general

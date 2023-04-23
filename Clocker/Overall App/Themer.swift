@@ -270,12 +270,28 @@ extension Themer {
         return retrieveCurrentSystem() == .dark ? NSImage(named: NSImage.Name("Dark Menubar"))! : NSImage(named: NSImage.Name("Light Menubar"))!
     }
 
-    func extraOptionsHighlightedImage() -> NSImage {        
+    func extraOptionsHighlightedImage() -> NSImage {
         return fallbackImageProvider(NSImage(named: NSImage.Name("ExtraHighlighted"))!,
                                      NSImage(named: NSImage.Name("ExtraWhiteHighlighted"))!,
                                      NSImage(named: NSImage.Name("ExtraHighlighted Dynamic"))!,
                                      NSImage(named: NSImage.Name("ExtraHighlighted"))!,
                                      NSImage(named: NSImage.Name("ExtraWhiteHighlighted"))!)
+    }
+    
+    func copyImage() -> NSImage {
+        if let copyImage = symbolImage(for: "doc.on.doc") {
+            return copyImage
+        }
+
+        return NSImage()
+    }
+    
+    func highlightedCopyImage() -> NSImage? {
+        if let copyImage = symbolImage(for: "doc.on.doc.fill") {
+            return copyImage
+        }
+
+        return nil
     }
 
     func sharingImage() -> NSImage {
