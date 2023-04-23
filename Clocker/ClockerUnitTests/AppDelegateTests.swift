@@ -102,7 +102,9 @@ class AppDelegateTests: XCTestCase {
         timezone1.formattedAddress = "MenubarTimezone"
         timezone1.isFavourite = 1
         // Encode it in UserDefaults
-        let encodedTimezone = NSKeyedArchiver.clocker_archive(with: timezone1)
+        guard let encodedTimezone = NSKeyedArchiver.clocker_archive(with: timezone1) else {
+            return
+        }
         DataStore.shared().setTimezones([encodedTimezone])
 
         subject?.setupMenubarTimer()
@@ -131,7 +133,9 @@ class AppDelegateTests: XCTestCase {
         timezone1.formattedAddress = "MenubarTimezone"
         timezone1.isFavourite = 1
         // Encode it in UserDefaults
-        let encodedTimezone = NSKeyedArchiver.clocker_archive(with: timezone1)
+        guard let encodedTimezone = NSKeyedArchiver.clocker_archive(with: timezone1) else {
+            return
+        }
         DataStore.shared().setTimezones([encodedTimezone])
 
         subject?.setupMenubarTimer()
