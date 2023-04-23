@@ -17,7 +17,7 @@ var defaultParagraphStyle: NSMutableParagraphStyle {
     // Better readability for p,q,y,g in the status bar.
     let userPreferredLanguage = Locale.preferredLanguages.first ?? "en-US"
     let lineHeight = userPreferredLanguage.contains("en") ? 0.92 : 1
-    paragraphStyle.lineHeightMultiple = lineHeight
+    paragraphStyle.lineHeightMultiple = CGFloat(lineHeight)
     return paragraphStyle
 }
 
