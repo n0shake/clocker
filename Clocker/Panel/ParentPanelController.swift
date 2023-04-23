@@ -179,7 +179,7 @@ class ParentPanelController: NSWindowController {
                                                                               green: 150.0 / 255.0,
                                                                               blue: 122.0 / 255.0,
                                                                               alpha: 0.5).cgColor
-            stackView.arrangedSubviews.last?.toolTip = "Clocker is running in Debug Mode"
+            stackView.arrangedSubviews.last?.toolTip = "Debug Mode"
         #endif
 
         // Setup layers
