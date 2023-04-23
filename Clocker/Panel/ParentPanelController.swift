@@ -1039,7 +1039,7 @@ class ParentPanelController: NSWindowController {
                                       action: #selector(reportIssue), keyEquivalent: "")
         let localizeClocker = NSMenuItem(title: "Localize Clocker...",
                                          action: #selector(openCrowdin), keyEquivalent: "")
-        let openPreferences = NSMenuItem(title: "Preferences",
+        let openPreferences = NSMenuItem(title: "Settings",
                                          action: #selector(openPreferencesWindow), keyEquivalent: "")
 
         let appDisplayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") ?? "Clocker"
