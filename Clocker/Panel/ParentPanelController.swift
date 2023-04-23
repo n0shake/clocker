@@ -285,7 +285,7 @@ class ParentPanelController: NSWindowController {
         var datas: [Data] = []
 
         for updatedObject in timezoneObjects {
-            let dataObject = NSKeyedArchiver.archivedData(withRootObject: updatedObject)
+            let dataObject = NSKeyedArchiver.clocker_archive(with: updatedObject)
             datas.append(dataObject)
         }
 

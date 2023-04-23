@@ -20,7 +20,7 @@ class AppDelegateTests: XCTestCase {
 
         XCTAssertEqual(dockMenu?.title, "Quick Access")
         XCTAssertEqual(items.first?.title, "Toggle Panel")
-        XCTAssertEqual(items[1].title, "Preferences")
+        XCTAssertEqual(items[1].title, "Settings")
         XCTAssertEqual(items[1].keyEquivalent, ",")
         XCTAssertEqual(items[2].title, "Hide from Dock")
 
@@ -102,7 +102,7 @@ class AppDelegateTests: XCTestCase {
         timezone1.formattedAddress = "MenubarTimezone"
         timezone1.isFavourite = 1
         // Encode it in UserDefaults
-        let encodedTimezone = NSKeyedArchiver.archivedData(withRootObject: timezone1)
+        let encodedTimezone = NSKeyedArchiver.clocker_archive(with: timezone1)
         DataStore.shared().setTimezones([encodedTimezone])
 
         subject?.setupMenubarTimer()
@@ -131,7 +131,7 @@ class AppDelegateTests: XCTestCase {
         timezone1.formattedAddress = "MenubarTimezone"
         timezone1.isFavourite = 1
         // Encode it in UserDefaults
-        let encodedTimezone = NSKeyedArchiver.archivedData(withRootObject: timezone1)
+        let encodedTimezone = NSKeyedArchiver.clocker_archive(with: timezone1)
         DataStore.shared().setTimezones([encodedTimezone])
 
         subject?.setupMenubarTimer()

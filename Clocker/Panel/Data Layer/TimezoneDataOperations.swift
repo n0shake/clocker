@@ -421,7 +421,7 @@ extension TimezoneDataOperations {
 
     func saveObject(at index: Int = -1) {
         var defaults = store.timezones()
-        let encodedObject = NSKeyedArchiver.archivedData(withRootObject: dataObject as Any)
+        let encodedObject = NSKeyedArchiver.clocker_archive(with:dataObject as Any)
         index == -1 ? defaults.append(encodedObject) : defaults.insert(encodedObject, at: index)
         store.setTimezones(defaults)
     }

@@ -56,3 +56,16 @@ public extension Data {
         }
     }
 }
+
+extension NSKeyedArchiver {
+    static func clocker_archive(with object: Any) -> Data {
+        
+        if #available(macOS 10.14, *) {
+            return try! NSKeyedArchiver.archivedData(withRootObject: object, requiringSecureCoding: true)
+        }
+        
+        if #available(macOS 10.13, *) {
+            return NSKeyedArchiver.archivedData(withRootObject: object)
+        }
+    }
+}

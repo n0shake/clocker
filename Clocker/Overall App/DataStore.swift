@@ -128,7 +128,7 @@ class DataStore: NSObject {
     }
 
     func addTimezone(_ timezone: TimezoneData) {
-        let encodedTimezone = NSKeyedArchiver.archivedData(withRootObject: timezone)
+        let encodedTimezone = NSKeyedArchiver.clocker_archive(with: timezone)
 
         var defaults: [Data] = timezones()
         defaults.append(encodedTimezone)
