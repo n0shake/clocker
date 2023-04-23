@@ -58,7 +58,7 @@ public extension Data {
 }
 
 extension NSKeyedArchiver {
-    static func clocker_archive(with object: Any) -> Data {
+    static func clocker_archive(with object: Any) -> Data? {
         
         if #available(macOS 10.14, *) {
             return try! NSKeyedArchiver.archivedData(withRootObject: object, requiringSecureCoding: true)
@@ -67,5 +67,7 @@ extension NSKeyedArchiver {
         if #available(macOS 10.13, *) {
             return NSKeyedArchiver.archivedData(withRootObject: object)
         }
+        
+        return nil
     }
 }

@@ -184,7 +184,9 @@ extension PreferencesDataSource: NSTableViewDataSource {
     }
 
     private func insert(timezone: TimezoneData, at index: Int) {
-        let encodedObject = NSKeyedArchiver.clocker_archive(with: timezone)
+        guard let encodedObject = NSKeyedArchiver.clocker_archive(with: timezone) else {
+            return
+        }
         var newDefaults = selectedTimezones
         newDefaults[index] = encodedObject
         store.setTimezones(newDefaults)
