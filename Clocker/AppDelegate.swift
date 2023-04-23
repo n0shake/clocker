@@ -66,7 +66,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         let menu = NSMenu(title: "Quick Access")
 
         let toggleMenuItem = NSMenuItem(title: "Toggle Panel", action: #selector(AppDelegate.togglePanel(_:)), keyEquivalent: "")
-        let openPreferences = NSMenuItem(title: "Preferences", action: #selector(AppDelegate.openPreferencesWindow), keyEquivalent: ",")
+        let openPreferences = NSMenuItem(title: "Settings", action: #selector(AppDelegate.openPreferencesWindow), keyEquivalent: ",")
         let hideFromDockMenuItem = NSMenuItem(title: "Hide from Dock", action: #selector(AppDelegate.hideFromDock), keyEquivalent: "")
 
         [toggleMenuItem, openPreferences, hideFromDockMenuItem].forEach {
