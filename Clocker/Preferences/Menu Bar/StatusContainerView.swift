@@ -120,7 +120,7 @@ class StatusContainerView: NSView {
             if showUpcomingEventView {
                 let calculateMeetingHeaderSize = compactModeTimeFont.size(for: upcomingEvent?.event.title ?? "", width: 70, attributes: timeBasedAttributes)
                 let calculatedMeetingSubtitleSize = compactModeTimeFont.size(for: upcomingEvent?.metadataForMeeting() ?? "", width: 55, attributes: timeBasedAttributes)
-                compressedWidth += CGFloat(min(calculateMeetingHeaderSize.width, calculatedMeetingSubtitleSize.width) + bufferWidth)
+                compressedWidth += CGFloat(min(calculateMeetingHeaderSize.width, calculatedMeetingSubtitleSize.width) + bufferWidth + 32.5)
             }
 
             let calculatedWidth = min(compressedWidth,
