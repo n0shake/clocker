@@ -26,7 +26,7 @@
 "Reminders Access" = "Доступ до Нагадувань";
 "Calendar Access" = "Доступ до Календаря";
 "Permissions" = "Дозволи";
-"Calendar Detail" = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.";
+"Calendar Detail" = "Upcoming events from your calendars can be shown in the menubar + panel.";
 "Reminders Detail" = "Встановіть нагадування в часовому поясі вибраного вами місця. Ваші нагадування зберігаються в програмі Нагадування за умовчанням.";
 "Privacy Text" = "You can change this later in the Privacy section of the System Preferences.";
 "Granted Button Text" = "Надано";
@@ -75,7 +75,7 @@
 /* Text for button that takes the user to the System Preferences app. In case the user hasn't given Calendar/Reminders access permission, this button takes you to the System Preferences app where the user can give proper permissions to Clocker. */
 "Launch Preferences" = "Відкрити Системні параметри";
 "Grant Access" = "Надати доступ";
-"Upcoming events from your personal and shared calendars can be shown in the menubar and the panel." = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.";
+"Upcoming events from your calendars can be shown in the menubar + panel." = "Upcoming events from your calendars can be shown in the menubar + panel.";
 "Granted" = "Надано";
 "Denied" = "Відмовлено";
 "Grant" = "Надати";

@@ -26,7 +26,7 @@
 "Reminders Access" = "Reminders Access";
 "Calendar Access" = "Calendar Access";
 "Permissions" = "Permissions";
-"Calendar Detail" = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.";
+"Calendar Detail" = "Upcoming events from your calendars can be shown in the menubar + panel.";
 "Reminders Detail" = "Set reminders in the timezone of the location of your choice. Your reminders are stored in the default Reminders app.";
 "Privacy Text" = "You can change this later in the Privacy section of the System Preferences.";
 "Granted Button Text" = "Granted";
@@ -74,7 +74,7 @@
 "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy.";
 "Launch Preferences" = "Launch Preferences";
 "Grant Access" = "Grant Access";
-"Upcoming events from your personal and shared calendars can be shown in the menubar and the panel." = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.";
+"Upcoming events from your calendars can be shown in the menubar + panel." = "Upcoming events from your calendars can be shown in the menubar and the panel.";
 "Granted" = "Granted";
 "Denied" = "Denied";
 "Grant" = "Grant";
