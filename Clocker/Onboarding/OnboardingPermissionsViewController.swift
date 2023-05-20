@@ -42,16 +42,13 @@ class OnboardingPermissionsViewController: NSViewController {
     }
 
     private func setup() {
-        appLabel.stringValue = NSLocalizedString("Permissions Tab",
-                                                 comment: "Title for Permissions screen")
+        appLabel.stringValue = NSLocalizedString("Permissions Tab", comment: "Title for Permissions screen")
         onboardingTypeLabel.stringValue = "Your data doesn't leave your device 🔐"
 
-        reminderHeaderLabel.stringValue = NSLocalizedString("Reminders Access Title",
-                                                            comment: "Title for Reminders Access Label")
-        reminderDetailLabel.stringValue = "Set reminders in the timezone of the location of your choice. Your reminders are stored in the default Reminders app. "
+        reminderHeaderLabel.stringValue = NSLocalizedString("Reminders Access Title",comment: "Title for Reminders Access Label")
+        reminderDetailLabel.stringValue = "Set reminders in the timezone of the location of your choice."
 
-        calendarHeaderLabel.stringValue = NSLocalizedString("Calendar Access Title",
-                                                            comment: "Title for Calendar access label")
+        calendarHeaderLabel.stringValue = NSLocalizedString("Calendar Access Title",comment: "Title for Calendar access label")
         calendarDetailLabel.stringValue = "Calendar Detail".localized()
         
         locationHeaderLabel.stringValue = "Location Access"
@@ -160,6 +157,7 @@ class OnboardingPermissionsViewController: NSViewController {
     @IBAction func locationAction(_: NSButton) {
         let locationController = LocationController.shared()
         if locationController.locationAccessNotDetermined() {
+            locationController.delegate = self
             locationActivityIndicator.startAnimation(nil)
             locationController.determineAndRequestLocationAuthorization()
         } else if locationController.locationAccessDenied() {
@@ -167,6 +165,24 @@ class OnboardingPermissionsViewController: NSViewController {
         } else if locationController.locationAccessGranted() {
             locationGrantButton.title = "Granted".localized()
         }
-        
+    }
+    
+    private func setupLocationButton() {
+        let locationController = LocationController.shared()
+        if locationController.locationAccessNotDetermined() {
+            locationGrantButton.title = "Grant".localized()
+        } else if locationController.locationAccessDenied() {
+            locationGrantButton.title = "Denied".localized()
+        } else if locationController.locationAccessGranted() {
+            locationGrantButton.title = "Granted".localized()
+        }
+    }
+}
+
+extension OnboardingPermissionsViewController: LocationControllerDelegate {
+    
+    func didChangeAuthorizationStatus() {
+        locationActivityIndicator.stopAnimation(nil)
+        setupLocationButton()
     }
 }

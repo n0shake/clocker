@@ -5,9 +5,14 @@ import CoreLocation
 import CoreLoggerKit
 import CoreModelKit
 
+protocol LocationControllerDelegate: NSObject {
+    func didChangeAuthorizationStatus()
+}
+
 class LocationController: NSObject {
     private let store: DataStore
     private static var sharedController = LocationController(withStore: DataStore.shared())
+    weak var delegate: LocationControllerDelegate?
 
     init(withStore dataStore: DataStore) {
         store = dataStore
@@ -33,6 +38,7 @@ class LocationController: NSObject {
     }
 
     func locationAccessGranted() -> Bool {
+        print("Location Status is ", CLLocationManager.authorizationStatus().rawValue.description)
         return CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorized
     }
 
@@ -120,6 +126,7 @@ extension LocationController: CLLocationManagerDelegate {
         } else if status == .notDetermined || status == .authorized || status == .authorizedAlways {
             locationManager.startUpdatingLocation()
         }
+        delegate?.didChangeAuthorizationStatus()
     }
 
     func locationManager(_: CLLocationManager, didFailWithError error: Error) {
