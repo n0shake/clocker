@@ -118,7 +118,6 @@ extension LocationController: CLLocationManagerDelegate {
         } else if status == .notDetermined || status == .authorized || status == .authorizedAlways {
             locationManager.startUpdatingLocation()
         }
-        delegate?.didChangeAuthorizationStatus()
     }
 
     func locationManager(_: CLLocationManager, didFailWithError error: Error) {
