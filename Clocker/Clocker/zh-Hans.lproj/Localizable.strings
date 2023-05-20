@@ -67,7 +67,7 @@
 "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker 在能显示日历中的事件时更有用。你可以在「系统偏好设置 > 安全性与隐私 > 隐私」中更改设置。";
 "Launch Preferences" = "打开首选项";
 "Grant Access" = "授予访问权限";
-"Upcoming events from your personal and shared calendars can be shown in the menubar and the panel." = "你个人和共享日历的未来事件将显示在菜单栏和面板上。";
+"Upcoming events from your calendars can be shown in the menubar + panel." = "你个人和共享日历的未来事件将显示在菜单栏和面板上。";
 "Granted" = "已授权";
 "Denied" = "已拒绝";
 "Grant" = "授权";

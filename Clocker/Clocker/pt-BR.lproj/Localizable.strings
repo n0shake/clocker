@@ -75,7 +75,7 @@
 /* Text for button that takes the user to the System Preferences app. In case the user hasn't given Calendar/Reminders access permission, this button takes you to the System Preferences app where the user can give proper permissions to Clocker. */
 "Launch Preferences" = "Abrir Preferências";
 "Grant Access" = "Conceder Acesso";
-"Upcoming events from your personal and shared calendars can be shown in the menubar and the panel." = "Próximos eventos de seus calendários pessoais e compartilhados podem ser exibidos no menu e no painel.";
+"Upcoming events from your calendars can be shown in the menubar + panel." = "Próximos eventos de seus calendários pessoais e compartilhados podem ser exibidos no menu e no painel.";
 "Granted" = "Concedido";
 "Denied" = "Negado";
 "Grant" = "Conceder";
