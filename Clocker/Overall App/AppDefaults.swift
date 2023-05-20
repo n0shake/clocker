@@ -20,6 +20,7 @@ class AppDefaults {
     }
 
     private class func defaultsDictionary() -> [String: Any] {
+        let selectedCalendars: [String] = []
         return [CLThemeKey: 0,
                 CLDisplayFutureSliderKey: 0,
                 CLSelectedTimeZoneFormatKey: 0, // 12-hour format
@@ -36,7 +37,7 @@ class AppDefaults {
                 CLShowAllDayEventsInUpcomingView: 1,
                 CLShowMeetingInMenubar: 0,
                 CLTruncateTextLength: 30,
-                CLSelectedCalendars: [],
+                CLSelectedCalendars: selectedCalendars,
                 CLAppDisplayOptions: 0,
                 CLMenubarCompactMode: 1]
     }
