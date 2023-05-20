@@ -97,7 +97,7 @@ class StatusContainerView: NSView {
             NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
         ]
 
-        func containerWidth(for timezones: [Data], meetingTitle: String?, subtitle: String?) -> CGFloat {
+        func containerWidth(for timezones: [Data], event: EventInfo?) -> CGFloat {
             var compressedWidth = timezones.reduce(0.0) { result, timezone -> CGFloat in
 
                 if let timezoneObject = TimezoneData.customObject(from: timezone) {
@@ -118,9 +118,9 @@ class StatusContainerView: NSView {
             }
 
             if showUpcomingEventView {
-                let calculateMeetingHeaderSize = compactModeTimeFont.size(for: meetingTitle ?? "", width: 70, attributes: timeBasedAttributes)
-                let calculatedMeetingSubtitleSize = compactModeTimeFont.size(for: subtitle ?? "", width: 70, attributes: timeBasedAttributes)
-                compressedWidth += CGFloat(min(calculateMeetingHeaderSize.width, calculatedMeetingSubtitleSize.width) + 5.0)
+                let calculateMeetingHeaderSize = compactModeTimeFont.size(for: upcomingEvent?.event.title ?? "", width: 70, attributes: timeBasedAttributes)
+                let calculatedMeetingSubtitleSize = compactModeTimeFont.size(for: upcomingEvent?.metadataForMeeting() ?? "", width: 55, attributes: timeBasedAttributes)
+                compressedWidth += CGFloat(min(calculateMeetingHeaderSize.width, calculatedMeetingSubtitleSize.width) + bufferWidth)
             }
 
             let calculatedWidth = min(compressedWidth,
@@ -128,14 +128,10 @@ class StatusContainerView: NSView {
             return calculatedWidth
         }
 
-        var title: String?
-        var meetingMetadata: String?
-        if let events = EventCenter.sharedCenter().eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: Date())], let upcomingEvent = EventCenter.sharedCenter().nextOccuring(events) {
-            title = upcomingEvent.event.title
-            meetingMetadata = upcomingEvent.metadataForMeeting()
-        }
+        let events = EventCenter.sharedCenter().eventsForDate[NSCalendar.autoupdatingCurrent.startOfDay(for: Date())]
+        let upcomingEvent = EventCenter.sharedCenter().nextOccuring(events ?? [])
 
-        let statusItemWidth = containerWidth(for: timezones, meetingTitle: title, subtitle: meetingMetadata)
+        let statusItemWidth = containerWidth(for: timezones, event: upcomingEvent)
         let frame = NSRect(x: 0, y: 0, width: statusItemWidth, height: 30)
         super.init(frame: frame)
 
@@ -238,6 +234,16 @@ class StatusContainerView: NSView {
                                           y: statusItem.frame.origin.y,
                                           width: newBestWidth,
                                           height: statusItem.frame.size.height)
+            } else if let upcomingEventView = $0 as? UpcomingEventStatusItemView, upcomingEventView.isHidden == false {
+                let newBestWidth = CGFloat(bestWidth(for: upcomingEventView.dataObject))
+
+                // Let's note if the current width is too small/correct
+                newWidth += $0.frame.size.width != newBestWidth ? newBestWidth : upcomingEventView.frame.size.width
+
+                upcomingEventView.frame = CGRect(x: upcomingEventView.frame.origin.x,
+                                          y: upcomingEventView.frame.origin.y,
+                                          width: newBestWidth,
+                                          height: upcomingEventView.frame.size.height)
             }
         }
 
