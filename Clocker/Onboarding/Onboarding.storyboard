@@ -189,7 +189,7 @@ DQ
                                         </connections>
                                     </button>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="gHR-Pd-9pP">
-                                        <rect key="frame" x="8" y="5" width="370" height="22"/>
+                                        <rect key="frame" x="8" y="5" width="370" height="27"/>
                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" placeholderString="Reminder Access Detail" id="zbc-CH-UBI">
                                             <font key="font" size="12" name="Avenir-Book"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -201,7 +201,7 @@ DQ
                                     </progressIndicator>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="gHR-Pd-9pP" firstAttribute="top" secondItem="Lef-GT-zuM" secondAttribute="bottom" constant="15" id="1ke-VP-hq5"/>
+                                    <constraint firstItem="gHR-Pd-9pP" firstAttribute="top" secondItem="Lef-GT-zuM" secondAttribute="bottom" constant="10" id="1ke-VP-hq5"/>
                                     <constraint firstItem="Lef-GT-zuM" firstAttribute="leading" secondItem="mF9-1w-sxR" secondAttribute="leading" constant="10" id="2Re-VO-tfj"/>
                                     <constraint firstItem="gHR-Pd-9pP" firstAttribute="leading" secondItem="mF9-1w-sxR" secondAttribute="leading" constant="10" id="B1U-lb-GUc"/>
                                     <constraint firstItem="Lef-GT-zuM" firstAttribute="top" secondItem="mF9-1w-sxR" secondAttribute="top" constant="10" id="S18-SM-uCW"/>
