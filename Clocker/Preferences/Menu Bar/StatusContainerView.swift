@@ -38,6 +38,7 @@ func compactWidth(for timezone: TimezoneData, with store: DataStore) -> Int {
 
 // Test with Sat 12:46 AM
 let bufferWidth: CGFloat = 9.5
+let upcomingEventBufferWidth: CGFloat = 32.5
 
 protocol StatusItemViewConforming {
     /// Mark that we need to refresh the text we're showing in the menubar
@@ -120,7 +121,7 @@ class StatusContainerView: NSView {
             if showUpcomingEventView {
                 let calculateMeetingHeaderSize = compactModeTimeFont.size(for: upcomingEvent?.event.title ?? "", width: 70, attributes: timeBasedAttributes)
                 let calculatedMeetingSubtitleSize = compactModeTimeFont.size(for: upcomingEvent?.metadataForMeeting() ?? "", width: 55, attributes: timeBasedAttributes)
-                compressedWidth += CGFloat(min(calculateMeetingHeaderSize.width, calculatedMeetingSubtitleSize.width) + bufferWidth + 32.5)
+                compressedWidth += CGFloat(min(calculateMeetingHeaderSize.width, calculatedMeetingSubtitleSize.width) + bufferWidth + upcomingEventBufferWidth)
             }
 
             let calculatedWidth = min(compressedWidth,
