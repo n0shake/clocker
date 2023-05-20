@@ -167,19 +167,11 @@ DQ
                         <rect key="frame" x="0.0" y="0.0" width="436" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N6Z-mh-pET">
-                                <rect key="frame" x="18" y="6" width="400" height="18"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="lMj-6p-4uB">
-                                    <font key="font" size="13" name="Avenir-Book"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="mF9-1w-sxR">
-                                <rect key="frame" x="20" y="184" width="396" height="100"/>
+                                <rect key="frame" x="20" y="214" width="396" height="70"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="Lef-GT-zuM">
-                                        <rect key="frame" x="8" y="72" width="157" height="18"/>
+                                        <rect key="frame" x="8" y="42" width="157" height="18"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="Reminders Access Header" id="QiB-Um-yjg">
                                             <font key="font" size="13" name="Avenir-Roman"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -187,7 +179,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O0s-Bu-IPq">
-                                        <rect key="frame" x="310" y="62" width="73" height="32"/>
+                                        <rect key="frame" x="310" y="32" width="73" height="32"/>
                                         <buttonCell key="cell" type="push" title="Action" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BW3-qu-NiR">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -197,7 +189,7 @@ DQ
                                         </connections>
                                     </button>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="gHR-Pd-9pP">
-                                        <rect key="frame" x="8" y="5" width="370" height="52"/>
+                                        <rect key="frame" x="8" y="5" width="370" height="22"/>
                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" placeholderString="Reminder Access Detail" id="zbc-CH-UBI">
                                             <font key="font" size="12" name="Avenir-Book"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -205,7 +197,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Zhi-9z-C2u">
-                                        <rect key="frame" x="261" y="71" width="16" height="16"/>
+                                        <rect key="frame" x="261" y="41" width="16" height="16"/>
                                     </progressIndicator>
                                 </subviews>
                                 <constraints>
@@ -216,17 +208,17 @@ DQ
                                     <constraint firstItem="O0s-Bu-IPq" firstAttribute="centerY" secondItem="Lef-GT-zuM" secondAttribute="centerY" constant="2" id="SVr-hp-EwO"/>
                                     <constraint firstAttribute="bottom" secondItem="gHR-Pd-9pP" secondAttribute="bottom" constant="5" id="Wrw-Yt-aph"/>
                                     <constraint firstItem="Zhi-9z-C2u" firstAttribute="centerY" secondItem="Lef-GT-zuM" secondAttribute="centerY" constant="2" id="eav-2d-uIg"/>
-                                    <constraint firstAttribute="height" constant="100" id="nFN-Hi-RLw"/>
+                                    <constraint firstAttribute="height" constant="70" id="nFN-Hi-RLw"/>
                                     <constraint firstAttribute="trailing" secondItem="O0s-Bu-IPq" secondAttribute="trailing" constant="20" id="rLh-fW-vXY"/>
                                     <constraint firstAttribute="trailing" secondItem="gHR-Pd-9pP" secondAttribute="trailing" constant="20" id="u0N-ro-Kbt"/>
                                     <constraint firstItem="O0s-Bu-IPq" firstAttribute="leading" secondItem="Zhi-9z-C2u" secondAttribute="trailing" constant="40" id="zrX-jL-yyZ"/>
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="4eB-eD-0jK">
-                                <rect key="frame" x="20" y="44" width="396" height="100"/>
+                                <rect key="frame" x="20" y="124" width="396" height="70"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="noJ-fx-c1b">
-                                        <rect key="frame" x="8" y="48" width="148" height="42"/>
+                                        <rect key="frame" x="8" y="42" width="148" height="18"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="Calendar Access Header" id="cXW-N9-WyD">
                                             <font key="font" size="13" name="Avenir-Roman"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -234,7 +226,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="749" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="wcB-cI-R4k">
-                                        <rect key="frame" x="8" y="20" width="370" height="18"/>
+                                        <rect key="frame" x="8" y="20" width="370" height="12"/>
                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="leO-6q-mRB">
                                             <font key="font" size="13" name="Avenir-Book"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -242,7 +234,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="DgE-EN-bNM">
-                                        <rect key="frame" x="8" y="10" width="380" height="28"/>
+                                        <rect key="frame" x="8" y="10" width="380" height="22"/>
                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" placeholderString="Calendar Access Detail" id="RpL-I6-iJq">
                                             <font key="font" size="12" name="Avenir-Book"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -250,7 +242,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dI2-oA-MBA">
-                                        <rect key="frame" x="310" y="52" width="73" height="32"/>
+                                        <rect key="frame" x="310" y="34" width="73" height="32"/>
                                         <buttonCell key="cell" type="push" title="Action" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i5r-db-Pnw">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -260,7 +252,7 @@ DQ
                                         </connections>
                                     </button>
                                     <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="0GH-vY-2Du">
-                                        <rect key="frame" x="261" y="61" width="16" height="16"/>
+                                        <rect key="frame" x="261" y="43" width="16" height="16"/>
                                     </progressIndicator>
                                 </subviews>
                                 <constraints>
@@ -274,7 +266,7 @@ DQ
                                     <constraint firstItem="wcB-cI-R4k" firstAttribute="leading" secondItem="4eB-eD-0jK" secondAttribute="leading" constant="10" id="TKR-N9-vwe"/>
                                     <constraint firstAttribute="bottom" secondItem="DgE-EN-bNM" secondAttribute="bottom" constant="10" id="V7u-1h-Wao"/>
                                     <constraint firstItem="dI2-oA-MBA" firstAttribute="leading" secondItem="0GH-vY-2Du" secondAttribute="trailing" constant="40" id="Xfh-FQ-K5c"/>
-                                    <constraint firstAttribute="height" constant="100" id="aAs-sr-I65"/>
+                                    <constraint firstAttribute="height" constant="70" id="aAs-sr-I65"/>
                                     <constraint firstAttribute="bottom" secondItem="wcB-cI-R4k" secondAttribute="bottom" constant="20" id="dNh-UY-vd5"/>
                                     <constraint firstItem="noJ-fx-c1b" firstAttribute="leading" secondItem="4eB-eD-0jK" secondAttribute="leading" constant="10" id="g3a-hl-jaM"/>
                                     <constraint firstItem="0GH-vY-2Du" firstAttribute="centerY" secondItem="dI2-oA-MBA" secondAttribute="centerY" id="gSx-8h-MYg"/>
@@ -305,23 +297,70 @@ DQ
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="9um-4T-X2f">
+                                <rect key="frame" x="20" y="34" width="396" height="70"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SgA-b8-eJs">
+                                        <rect key="frame" x="8" y="42" width="145" height="18"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="Location Access Header" id="7pI-Kk-oBQ">
+                                            <font key="font" size="13" name="Avenir-Roman"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField verticalHuggingPriority="749" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="9Ie-8h-fWA">
+                                        <rect key="frame" x="8" y="10" width="380" height="22"/>
+                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" placeholderString="Location Access Detail" id="Zoo-Zk-g9u">
+                                            <font key="font" size="12" name="Avenir-Book"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Sen-hp-UcJ">
+                                        <rect key="frame" x="261" y="43" width="16" height="16"/>
+                                    </progressIndicator>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6uz-cF-WQm">
+                                        <rect key="frame" x="310" y="34" width="73" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Action" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nwp-cj-6Tb">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="locationAction:" target="HDG-wD-Hct" id="AFX-SQ-eUZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="9Ie-8h-fWA" firstAttribute="leading" secondItem="9um-4T-X2f" secondAttribute="leading" constant="10" id="1hB-n7-9D2"/>
+                                    <constraint firstItem="SgA-b8-eJs" firstAttribute="leading" secondItem="9um-4T-X2f" secondAttribute="leading" constant="10" id="83R-jt-hd4"/>
+                                    <constraint firstItem="SgA-b8-eJs" firstAttribute="top" secondItem="9um-4T-X2f" secondAttribute="top" constant="10" id="DDs-lc-yQ2"/>
+                                    <constraint firstItem="6uz-cF-WQm" firstAttribute="leading" secondItem="Sen-hp-UcJ" secondAttribute="trailing" constant="40" id="Hwz-51-ghV"/>
+                                    <constraint firstAttribute="trailing" secondItem="6uz-cF-WQm" secondAttribute="trailing" constant="20" id="KBv-zG-HBf"/>
+                                    <constraint firstAttribute="bottom" secondItem="9Ie-8h-fWA" secondAttribute="bottom" constant="10" id="NgL-7j-3ds"/>
+                                    <constraint firstAttribute="trailing" secondItem="9Ie-8h-fWA" secondAttribute="trailing" constant="10" id="OF7-Zm-3kj"/>
+                                    <constraint firstItem="Sen-hp-UcJ" firstAttribute="centerY" secondItem="6uz-cF-WQm" secondAttribute="centerY" id="bij-v4-plx"/>
+                                    <constraint firstItem="9Ie-8h-fWA" firstAttribute="top" secondItem="SgA-b8-eJs" secondAttribute="bottom" constant="10" id="e6V-lF-wMa"/>
+                                    <constraint firstItem="6uz-cF-WQm" firstAttribute="centerY" secondItem="SgA-b8-eJs" secondAttribute="centerY" id="rsA-pg-jx6"/>
+                                    <constraint firstAttribute="height" constant="70" id="twS-2k-pnz"/>
+                                </constraints>
+                            </customView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="iMf-Uy-zAf" firstAttribute="top" secondItem="pC3-D3-DSa" secondAttribute="bottom" constant="-5" id="1U9-K8-Cis"/>
                             <constraint firstAttribute="trailing" secondItem="mF9-1w-sxR" secondAttribute="trailing" constant="20" id="6Eh-Fo-RdG"/>
                             <constraint firstItem="iMf-Uy-zAf" firstAttribute="leading" secondItem="pC3-D3-DSa" secondAttribute="leading" constant="2" id="70x-kK-e8k"/>
                             <constraint firstItem="4eB-eD-0jK" firstAttribute="leading" secondItem="mF9-1w-sxR" secondAttribute="leading" id="HVv-ry-gqb"/>
-                            <constraint firstItem="N6Z-mh-pET" firstAttribute="leading" secondItem="mF9-1w-sxR" secondAttribute="leading" id="M5v-XW-L1V"/>
+                            <constraint firstItem="9um-4T-X2f" firstAttribute="leading" secondItem="4eB-eD-0jK" secondAttribute="leading" id="KSZ-EO-1Ot"/>
+                            <constraint firstItem="9um-4T-X2f" firstAttribute="top" secondItem="4eB-eD-0jK" secondAttribute="bottom" constant="20" id="Mpb-0A-bFX"/>
                             <constraint firstItem="XfU-36-tPs" firstAttribute="top" secondItem="sib-OR-ym5" secondAttribute="top" constant="20" id="Ps0-DI-VvS"/>
                             <constraint firstItem="4eB-eD-0jK" firstAttribute="trailing" secondItem="mF9-1w-sxR" secondAttribute="trailing" id="Twh-8s-2qe"/>
                             <constraint firstItem="mF9-1w-sxR" firstAttribute="top" secondItem="iMf-Uy-zAf" secondAttribute="bottom" constant="40" id="X3I-8c-Qgd"/>
-                            <constraint firstItem="N6Z-mh-pET" firstAttribute="top" secondItem="4eB-eD-0jK" secondAttribute="bottom" constant="20" id="bDb-bD-u40"/>
-                            <constraint firstItem="4eB-eD-0jK" firstAttribute="top" secondItem="mF9-1w-sxR" secondAttribute="bottom" constant="40" id="eDT-5v-xZY"/>
+                            <constraint firstItem="9um-4T-X2f" firstAttribute="trailing" secondItem="4eB-eD-0jK" secondAttribute="trailing" id="dd3-9x-yz8"/>
+                            <constraint firstItem="4eB-eD-0jK" firstAttribute="top" secondItem="mF9-1w-sxR" secondAttribute="bottom" constant="20" id="eDT-5v-xZY"/>
                             <constraint firstItem="pC3-D3-DSa" firstAttribute="leading" secondItem="XfU-36-tPs" secondAttribute="trailing" constant="20" id="lUs-se-BHO"/>
                             <constraint firstItem="XfU-36-tPs" firstAttribute="leading" secondItem="sib-OR-ym5" secondAttribute="leading" constant="20" id="o7n-nQ-6TG"/>
                             <constraint firstItem="mF9-1w-sxR" firstAttribute="leading" secondItem="sib-OR-ym5" secondAttribute="leading" constant="20" id="pco-hw-yLC"/>
                             <constraint firstItem="pC3-D3-DSa" firstAttribute="top" secondItem="XfU-36-tPs" secondAttribute="top" id="tD2-vW-0Qp"/>
-                            <constraint firstItem="N6Z-mh-pET" firstAttribute="trailing" secondItem="4eB-eD-0jK" secondAttribute="trailing" id="uAP-KZ-kV2"/>
                             <constraint firstAttribute="trailing" secondItem="iMf-Uy-zAf" secondAttribute="trailing" constant="10" id="vPf-CV-JBC"/>
                         </constraints>
                     </view>
@@ -332,8 +371,12 @@ DQ
                         <outlet property="calendarGrantButton" destination="dI2-oA-MBA" id="kwb-fA-6hY"/>
                         <outlet property="calendarHeaderLabel" destination="noJ-fx-c1b" id="um0-dZ-q3r"/>
                         <outlet property="calendarView" destination="4eB-eD-0jK" id="jpn-uQ-Dk1"/>
+                        <outlet property="locationActivityIndicator" destination="Sen-hp-UcJ" id="Pg3-mB-nxI"/>
+                        <outlet property="locationDetailLabel" destination="9Ie-8h-fWA" id="v7D-Yc-ZBf"/>
+                        <outlet property="locationGrantButton" destination="6uz-cF-WQm" id="wec-8h-Pj6"/>
+                        <outlet property="locationHeaderLabel" destination="SgA-b8-eJs" id="GT4-Bv-oJ3"/>
+                        <outlet property="locationView" destination="9um-4T-X2f" id="BMp-aJ-HdT"/>
                         <outlet property="onboardingTypeLabel" destination="iMf-Uy-zAf" id="saQ-ta-oT8"/>
-                        <outlet property="privacyLabel" destination="N6Z-mh-pET" id="DD9-WG-5WT"/>
                         <outlet property="reminderActivityIndicator" destination="Zhi-9z-C2u" id="GRE-KJ-HT7"/>
                         <outlet property="reminderDetailLabel" destination="gHR-Pd-9pP" id="smO-us-iu1"/>
                         <outlet property="reminderGrantButton" destination="O0s-Bu-IPq" id="bep-Ox-ego"/>

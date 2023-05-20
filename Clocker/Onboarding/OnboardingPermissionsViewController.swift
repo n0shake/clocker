@@ -6,6 +6,7 @@ import CoreLoggerKit
 class OnboardingPermissionsViewController: NSViewController {
     @IBOutlet var reminderGrantButton: NSButton!
     @IBOutlet var calendarGrantButton: NSButton!
+    @IBOutlet var locationGrantButton: NSButton!
 
     @IBOutlet var reminderView: NSView!
     @IBOutlet var calendarView: NSView!
@@ -31,7 +32,7 @@ class OnboardingPermissionsViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        [calendarView, reminderView].forEach { $0?.applyShadow() }
+        [calendarView, reminderView, locationView].forEach { $0?.applyShadow() }
         setup()
     }
 
@@ -52,23 +53,25 @@ class OnboardingPermissionsViewController: NSViewController {
         calendarHeaderLabel.stringValue = NSLocalizedString("Calendar Access Title",
                                                             comment: "Title for Calendar access label")
         calendarDetailLabel.stringValue = "Calendar Detail".localized()
-
-        privacyLabel.stringValue = CLEmptyString
+        
+        locationHeaderLabel.stringValue = "Location Access"
+        locationDetailLabel.stringValue = "Accurately track your local time; especially useful if you travel."
 
         [calendarHeaderLabel, calendarDetailLabel, privacyLabel, reminderDetailLabel, reminderHeaderLabel, onboardingTypeLabel, appLabel].forEach { $0?.textColor = Themer.shared().mainTextColor()
         }
     }
 
     private func setupButtons() {
-//         if LocationController.sharedInstance.locationAccessGranted() {
-//             locationButton.title = "Granted"
-//         } else if LocationController.sharedInstance.locationAccessDenied() {
-//             locationButton.title = "Denied"
-//         } else if LocationController.sharedInstance.locationAccessNotDetermined() {
-//             locationButton.title = "Grant"
-//         } else {
-//             locationButton.title = "Unexpected"
-//         }
+        let locationController = LocationController.shared()
+         if locationController.locationAccessGranted() {
+             locationGrantButton.title = "Granted"
+         } else if locationController.locationAccessDenied() {
+             locationGrantButton.title = "Denied"
+         } else if locationController.locationAccessNotDetermined() {
+             locationGrantButton.title = "Grant"
+         } else {
+             locationGrantButton.title = "Unexpected"
+         }
 
         if EventCenter.sharedCenter().calendarAccessGranted() {
             calendarGrantButton.title = "Granted".localized()
@@ -152,5 +155,18 @@ class OnboardingPermissionsViewController: NSViewController {
         } else {
             reminderGrantButton.title = "Denied".localized()
         }
+    }
+    
+    @IBAction func locationAction(_: NSButton) {
+        let locationController = LocationController.shared()
+        if locationController.locationAccessNotDetermined() {
+            locationActivityIndicator.startAnimation(nil)
+            locationController.determineAndRequestLocationAuthorization()
+        } else if locationController.locationAccessDenied() {
+            locationGrantButton.title = "Denied".localized()
+        } else if locationController.locationAccessGranted() {
+            locationGrantButton.title = "Granted".localized()
+        }
+        
     }
 }
