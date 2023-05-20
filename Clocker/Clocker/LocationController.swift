@@ -7,6 +7,7 @@ import CoreModelKit
 
 class LocationController: NSObject {
     private let store: DataStore
+    private static var sharedController = LocationController(withStore: DataStore.shared())
 
     init(withStore dataStore: DataStore) {
         store = dataStore
@@ -18,6 +19,10 @@ class LocationController: NSObject {
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         return locationManager
     }()
+    
+    class func shared() -> LocationController {
+        return sharedController
+    }
 
     func authorizationStatus() -> CLAuthorizationStatus {
         return CLLocationManager.authorizationStatus()
@@ -50,7 +55,9 @@ class LocationController: NSObject {
         case .authorizedAlways:
             locationManager.startUpdatingLocation()
         case .notDetermined:
-            locationManager.startUpdatingLocation()
+            if #available(macOS 10.15, *) {
+                locationManager.requestWhenInUseAuthorization()
+            }
         case .denied, .restricted:
             locationManager.startUpdatingLocation()
         default:
