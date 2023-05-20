@@ -49,7 +49,5 @@
 	<string>YES</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Clocker uses your location to auto-update the timezone of your local timezone.</string>
 </dict>
 </plist>
