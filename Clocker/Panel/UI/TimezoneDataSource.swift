@@ -205,7 +205,7 @@ extension TimezoneDataSource: PanelTableViewDelegate {
                 }
 
                 rowCellView.extraOptions.alphaValue = (rowIndex == row) ? 1 : 0.5
-                if rowIndex == row, let hoverString = hoverStringForSelectedRow(row: row) {
+                if rowIndex == row, let hoverString = hoverStringForSelectedRow(row: row), sliderValue == 0 {
                     rowCellView.relativeDate.stringValue = hoverString
                 }
             }

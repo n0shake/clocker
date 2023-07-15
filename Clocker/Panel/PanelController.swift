@@ -398,6 +398,8 @@ extension PanelController: NSWindowDelegate {
     }
 
     func windowDidResignKey(_: Notification) {
+        parentTimer = nil
+        
         if let isVisible = window?.isVisible, isVisible == true {
             setActivePanel(newValue: false)
         }

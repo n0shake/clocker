@@ -70,7 +70,7 @@
 "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy.";
 "Launch Preferences" = "Launch Preferences";
 "Grant Access" = "Grant Access";
-"Upcoming events from your personal and shared calendars can be shown in the menubar and the panel." = "Upcoming events from your personal and shared calendars can be shown in the menubar and the panel.";
+"Upcoming events from your calendars can be shown in the menubar + panel." = "Upcoming events from your calendars can be shown in the menubar + panel.";
 "Granted" = "Granted";
 "Denied" = "Denied";
 "Grant" = "Grant";

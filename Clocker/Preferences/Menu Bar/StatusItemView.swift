@@ -3,10 +3,21 @@
 import Cocoa
 import CoreModelKit
 
+var defaultTimeParagraphStyle: NSMutableParagraphStyle {
+    let paragraphStyle = NSMutableParagraphStyle()
+    paragraphStyle.alignment = .center
+    paragraphStyle.lineBreakMode = .byTruncatingTail
+    return paragraphStyle
+}
+
 var defaultParagraphStyle: NSMutableParagraphStyle {
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = .center
     paragraphStyle.lineBreakMode = .byTruncatingTail
+    // Better readability for p,q,y,g in the status bar.
+    let userPreferredLanguage = Locale.preferredLanguages.first ?? "en-US"
+    let lineHeight = userPreferredLanguage.contains("en") ? 0.92 : 1
+    paragraphStyle.lineHeightMultiple = CGFloat(lineHeight)
     return paragraphStyle
 }
 
@@ -50,7 +61,7 @@ class StatusItemView: NSView {
             NSAttributedString.Key.font: compactModeTimeFont,
             NSAttributedString.Key.foregroundColor: textColor,
             NSAttributedString.Key.backgroundColor: NSColor.clear,
-            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
+            NSAttributedString.Key.paragraphStyle: defaultTimeParagraphStyle,
         ]
         return attributes
     }

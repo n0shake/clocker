@@ -79,7 +79,7 @@ class PreferencesViewController: ParentViewController {
               let dictionary = NSDictionary(contentsOfFile: path),
               let apiKey = dictionary["GeocodingKey"] as? String
         else {
-//            assertionFailure("Unable to find the API key")
+            assertionFailure("Unable to find the API key")
             return ""
         }
         return apiKey
@@ -977,7 +977,9 @@ extension PreferencesViewController: SRRecorderControlDelegate {}
 // Helpers
 extension PreferencesViewController {
     private func insert(timezone: TimezoneData, at index: Int) {
-        let encodedObject = NSKeyedArchiver.archivedData(withRootObject: timezone)
+        guard let encodedObject = NSKeyedArchiver.clocker_archive(with: timezone) else {
+            return
+        }
         var newDefaults = selectedTimeZones
         newDefaults[index] = encodedObject
         DataStore.shared().setTimezones(newDefaults)
