@@ -27,7 +27,11 @@ public enum DateFormat {
 }
 
 // Non-class type cannot conform to NSCoding!
-public class TimezoneData: NSObject, NSCoding {
+public class TimezoneData: NSObject, NSCoding, NSSecureCoding {
+    public static var supportsSecureCoding: Bool {
+        return true
+    }
+    
     public enum SelectionType: Int {
         case city
         case timezone
@@ -266,6 +270,14 @@ public class TimezoneData: NSObject, NSCoding {
         let key = NSNumber(integerLiteral: overrideFormat.rawValue - 1)
         let formatInString = TimezoneData.values[key] ?? DateFormat.twelveHour
         return formatInString.contains("ss")
+    }
+    
+    public func isDaylightSavings() -> Bool {
+        guard let timezone = TimeZone(abbreviation: timezone()) else {
+            return false
+        }
+        
+        return timezone.isDaylightSavingTime(for: Date())
     }
 
     override public var hash: Int {

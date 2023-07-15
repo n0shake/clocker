@@ -158,7 +158,7 @@ class ParentPanelController: NSWindowController {
         mainTableView.selectionHighlightStyle = .none
         mainTableView.enclosingScrollView?.hasVerticalScroller = false
         if #available(OSX 11.0, *) {
-            mainTableView.style = .fullWidth
+            mainTableView.style = .plain
         }
 
         // Setup images
@@ -179,7 +179,7 @@ class ParentPanelController: NSWindowController {
                                                                               green: 150.0 / 255.0,
                                                                               blue: 122.0 / 255.0,
                                                                               alpha: 0.5).cgColor
-            stackView.arrangedSubviews.last?.toolTip = "Clocker is running in Debug Mode"
+            stackView.arrangedSubviews.last?.toolTip = "Debug Mode"
         #endif
 
         // Setup layers
@@ -285,7 +285,9 @@ class ParentPanelController: NSWindowController {
         var datas: [Data] = []
 
         for updatedObject in timezoneObjects {
-            let dataObject = NSKeyedArchiver.archivedData(withRootObject: updatedObject)
+            guard let dataObject = NSKeyedArchiver.clocker_archive(with: updatedObject) else {
+                continue
+            }
             datas.append(dataObject)
         }
 
@@ -1039,7 +1041,7 @@ class ParentPanelController: NSWindowController {
                                       action: #selector(reportIssue), keyEquivalent: "")
         let localizeClocker = NSMenuItem(title: "Localize Clocker...",
                                          action: #selector(openCrowdin), keyEquivalent: "")
-        let openPreferences = NSMenuItem(title: "Preferences",
+        let openPreferences = NSMenuItem(title: "Settings",
                                          action: #selector(openPreferencesWindow), keyEquivalent: "")
 
         let appDisplayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") ?? "Clocker"
@@ -1079,7 +1081,10 @@ extension ParentPanelController: NSSharingServicePickerDelegate {
     }
 
     func sharingServicePicker(_: NSSharingServicePicker, sharingServicesForItems _: [Any], proposedSharingServices proposed: [NSSharingService]) -> [NSSharingService] {
-        let copySharingService = NSSharingService(title: "Copy All Times", image: NSImage(), alternateImage: nil) { [weak self] in
+        let themer = Themer.shared()
+        let copySharingService = NSSharingService(title: "Copy All Times",
+                                                  image:themer.copyImage(),
+                                                  alternateImage: themer.highlightedCopyImage()) { [weak self] in
             guard let strongSelf = self else { return }
             let clipboardCopy = strongSelf.retrieveAllTimes()
             let pasteboard = NSPasteboard.general

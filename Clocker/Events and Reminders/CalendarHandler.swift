@@ -196,7 +196,7 @@ extension EventCenter {
             for date in eventsForDate.keys {
                 if let events = eventsForDate[date] {
                     for event in events {
-                        if selectedCalendars.contains(event.event.calendar.calendarIdentifier) {
+                        if event.event.calendar != nil && selectedCalendars.contains(event.event.calendar.calendarIdentifier) {
                             if filteredEvents[date] == nil {
                                 filteredEvents[date] = Array()
                             }

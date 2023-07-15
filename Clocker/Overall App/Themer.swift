@@ -277,6 +277,22 @@ extension Themer {
                                      NSImage(named: NSImage.Name("ExtraHighlighted"))!,
                                      NSImage(named: NSImage.Name("ExtraWhiteHighlighted"))!)
     }
+    
+    func copyImage() -> NSImage {
+        if let copyImage = symbolImage(for: "doc.on.doc") {
+            return copyImage
+        }
+
+        return NSImage()
+    }
+    
+    func highlightedCopyImage() -> NSImage? {
+        if let copyImage = symbolImage(for: "doc.on.doc.fill") {
+            return copyImage
+        }
+
+        return nil
+    }
 
     func sharingImage() -> NSImage {
         if let sharingImage = symbolImage(for: "square.and.arrow.up.on.square.fill") {

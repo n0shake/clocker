@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fde-UX-327">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fde-UX-327">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -167,14 +167,6 @@ DQ
                         <rect key="frame" x="0.0" y="0.0" width="436" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N6Z-mh-pET">
-                                <rect key="frame" x="18" y="6" width="400" height="18"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="lMj-6p-4uB">
-                                    <font key="font" size="13" name="Avenir-Book"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="mF9-1w-sxR">
                                 <rect key="frame" x="20" y="184" width="396" height="100"/>
                                 <subviews>
@@ -197,7 +189,7 @@ DQ
                                         </connections>
                                     </button>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="gHR-Pd-9pP">
-                                        <rect key="frame" x="8" y="5" width="370" height="52"/>
+                                        <rect key="frame" x="8" y="5" width="370" height="57"/>
                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" placeholderString="Reminder Access Detail" id="zbc-CH-UBI">
                                             <font key="font" size="12" name="Avenir-Book"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -209,7 +201,7 @@ DQ
                                     </progressIndicator>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="gHR-Pd-9pP" firstAttribute="top" secondItem="Lef-GT-zuM" secondAttribute="bottom" constant="15" id="1ke-VP-hq5"/>
+                                    <constraint firstItem="gHR-Pd-9pP" firstAttribute="top" secondItem="Lef-GT-zuM" secondAttribute="bottom" constant="10" id="1ke-VP-hq5"/>
                                     <constraint firstItem="Lef-GT-zuM" firstAttribute="leading" secondItem="mF9-1w-sxR" secondAttribute="leading" constant="10" id="2Re-VO-tfj"/>
                                     <constraint firstItem="gHR-Pd-9pP" firstAttribute="leading" secondItem="mF9-1w-sxR" secondAttribute="leading" constant="10" id="B1U-lb-GUc"/>
                                     <constraint firstItem="Lef-GT-zuM" firstAttribute="top" secondItem="mF9-1w-sxR" secondAttribute="top" constant="10" id="S18-SM-uCW"/>
@@ -223,7 +215,7 @@ DQ
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="4eB-eD-0jK">
-                                <rect key="frame" x="20" y="44" width="396" height="100"/>
+                                <rect key="frame" x="20" y="64" width="396" height="100"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="noJ-fx-c1b">
                                         <rect key="frame" x="8" y="48" width="148" height="42"/>
@@ -311,17 +303,14 @@ DQ
                             <constraint firstAttribute="trailing" secondItem="mF9-1w-sxR" secondAttribute="trailing" constant="20" id="6Eh-Fo-RdG"/>
                             <constraint firstItem="iMf-Uy-zAf" firstAttribute="leading" secondItem="pC3-D3-DSa" secondAttribute="leading" constant="2" id="70x-kK-e8k"/>
                             <constraint firstItem="4eB-eD-0jK" firstAttribute="leading" secondItem="mF9-1w-sxR" secondAttribute="leading" id="HVv-ry-gqb"/>
-                            <constraint firstItem="N6Z-mh-pET" firstAttribute="leading" secondItem="mF9-1w-sxR" secondAttribute="leading" id="M5v-XW-L1V"/>
                             <constraint firstItem="XfU-36-tPs" firstAttribute="top" secondItem="sib-OR-ym5" secondAttribute="top" constant="20" id="Ps0-DI-VvS"/>
                             <constraint firstItem="4eB-eD-0jK" firstAttribute="trailing" secondItem="mF9-1w-sxR" secondAttribute="trailing" id="Twh-8s-2qe"/>
                             <constraint firstItem="mF9-1w-sxR" firstAttribute="top" secondItem="iMf-Uy-zAf" secondAttribute="bottom" constant="40" id="X3I-8c-Qgd"/>
-                            <constraint firstItem="N6Z-mh-pET" firstAttribute="top" secondItem="4eB-eD-0jK" secondAttribute="bottom" constant="20" id="bDb-bD-u40"/>
-                            <constraint firstItem="4eB-eD-0jK" firstAttribute="top" secondItem="mF9-1w-sxR" secondAttribute="bottom" constant="40" id="eDT-5v-xZY"/>
+                            <constraint firstItem="4eB-eD-0jK" firstAttribute="top" secondItem="mF9-1w-sxR" secondAttribute="bottom" constant="20" id="eDT-5v-xZY"/>
                             <constraint firstItem="pC3-D3-DSa" firstAttribute="leading" secondItem="XfU-36-tPs" secondAttribute="trailing" constant="20" id="lUs-se-BHO"/>
                             <constraint firstItem="XfU-36-tPs" firstAttribute="leading" secondItem="sib-OR-ym5" secondAttribute="leading" constant="20" id="o7n-nQ-6TG"/>
                             <constraint firstItem="mF9-1w-sxR" firstAttribute="leading" secondItem="sib-OR-ym5" secondAttribute="leading" constant="20" id="pco-hw-yLC"/>
                             <constraint firstItem="pC3-D3-DSa" firstAttribute="top" secondItem="XfU-36-tPs" secondAttribute="top" id="tD2-vW-0Qp"/>
-                            <constraint firstItem="N6Z-mh-pET" firstAttribute="trailing" secondItem="4eB-eD-0jK" secondAttribute="trailing" id="uAP-KZ-kV2"/>
                             <constraint firstAttribute="trailing" secondItem="iMf-Uy-zAf" secondAttribute="trailing" constant="10" id="vPf-CV-JBC"/>
                         </constraints>
                     </view>
@@ -333,7 +322,6 @@ DQ
                         <outlet property="calendarHeaderLabel" destination="noJ-fx-c1b" id="um0-dZ-q3r"/>
                         <outlet property="calendarView" destination="4eB-eD-0jK" id="jpn-uQ-Dk1"/>
                         <outlet property="onboardingTypeLabel" destination="iMf-Uy-zAf" id="saQ-ta-oT8"/>
-                        <outlet property="privacyLabel" destination="N6Z-mh-pET" id="DD9-WG-5WT"/>
                         <outlet property="reminderActivityIndicator" destination="Zhi-9z-C2u" id="GRE-KJ-HT7"/>
                         <outlet property="reminderDetailLabel" destination="gHR-Pd-9pP" id="smO-us-iu1"/>
                         <outlet property="reminderGrantButton" destination="O0s-Bu-IPq" id="bep-Ox-ego"/>

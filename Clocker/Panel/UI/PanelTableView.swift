@@ -66,7 +66,8 @@ class PanelTableView: NSTableView {
         if row != hoverRow {
             hoverRow = row
             panelDelegate?.tableView(self, didHoverOver: hoverRow)
-            setNeedsDisplay()
+            // setNeedsDisplay is deprecated in 10.14
+            needsDisplay = true
         }
     }
 

@@ -31,7 +31,9 @@ class StandardMenubarHandlerTests: XCTestCase {
                             at index: Int = -1)
     {
         var defaults = store.timezones()
-        let encodedObject = NSKeyedArchiver.archivedData(withRootObject: object as Any)
+        guard let encodedObject = NSKeyedArchiver.clocker_archive(with: object as Any) else {
+            return
+        }
         index == -1 ? defaults.append(encodedObject) : defaults.insert(encodedObject, at: index)
         store.setTimezones(defaults)
     }

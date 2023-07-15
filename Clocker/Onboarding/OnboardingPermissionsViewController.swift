@@ -9,9 +9,11 @@ class OnboardingPermissionsViewController: NSViewController {
 
     @IBOutlet var reminderView: NSView!
     @IBOutlet var calendarView: NSView!
+    @IBOutlet var locationView: NSView!
 
     @IBOutlet var reminderActivityIndicator: NSProgressIndicator!
     @IBOutlet var calendarActivityIndicator: NSProgressIndicator!
+    @IBOutlet var locationActivityIndicator: NSProgressIndicator!
 
     @IBOutlet var appLabel: NSTextField!
     @IBOutlet var onboardingTypeLabel: NSTextField!
@@ -21,6 +23,9 @@ class OnboardingPermissionsViewController: NSViewController {
 
     @IBOutlet var calendarHeaderLabel: NSTextField!
     @IBOutlet var calendarDetailLabel: NSTextField!
+    
+    @IBOutlet var locationHeaderLabel: NSTextField!
+    @IBOutlet var locationDetailLabel: NSTextField!
 
     @IBOutlet var privacyLabel: NSTextField!
 
@@ -36,36 +41,29 @@ class OnboardingPermissionsViewController: NSViewController {
     }
 
     private func setup() {
-        appLabel.stringValue = NSLocalizedString("Permissions Tab",
-                                                 comment: "Title for Permissions screen")
-        onboardingTypeLabel.stringValue = NSLocalizedString("Later Config Description",
-                                                            comment: "Describing we can change the options later in System Preferences")
+        appLabel.stringValue = NSLocalizedString("Permissions Tab", comment: "Title for Permissions screen")
+        onboardingTypeLabel.stringValue = "Your data doesn't leave your device 🔐"
 
-        reminderHeaderLabel.stringValue = NSLocalizedString("Reminders Access Title",
-                                                            comment: "Title for Reminders Access Label")
-        reminderDetailLabel.stringValue = "Set reminders in the timezone of the location of your choice. Your reminders are stored in the default Reminders app. "
+        reminderHeaderLabel.stringValue = NSLocalizedString("Reminders Access Title",comment: "Title for Reminders Access Label")
+        reminderDetailLabel.stringValue = "Set reminders in the timezone of the location of your choice. Your reminders are stored in the default Reminders app."
 
-        calendarHeaderLabel.stringValue = NSLocalizedString("Calendar Access Title",
-                                                            comment: "Title for Calendar access label")
+        calendarHeaderLabel.stringValue = NSLocalizedString("Calendar Access Title",comment: "Title for Calendar access label")
         calendarDetailLabel.stringValue = "Calendar Detail".localized()
-
-        privacyLabel.stringValue = CLEmptyString
 
         [calendarHeaderLabel, calendarDetailLabel, privacyLabel, reminderDetailLabel, reminderHeaderLabel, onboardingTypeLabel, appLabel].forEach { $0?.textColor = Themer.shared().mainTextColor()
         }
     }
 
     private func setupButtons() {
-        /*
-         if LocationController.sharedInstance.locationAccessGranted() {
-         locationButton.title = "Granted"
-         } else if LocationController.sharedInstance.locationAccessDenied() {
-         locationButton.title = "Denied"
-         } else if LocationController.sharedInstance.locationAccessNotDetermined() {
-         locationButton.title = "Grant"
-         } else {
-         locationButton.title = "Unexpected"
-         } */
+//         if LocationController.sharedInstance.locationAccessGranted() {
+//             locationButton.title = "Granted"
+//         } else if LocationController.sharedInstance.locationAccessDenied() {
+//             locationButton.title = "Denied"
+//         } else if LocationController.sharedInstance.locationAccessNotDetermined() {
+//             locationButton.title = "Grant"
+//         } else {
+//             locationButton.title = "Unexpected"
+//         }
 
         if EventCenter.sharedCenter().calendarAccessGranted() {
             calendarGrantButton.title = "Granted".localized()

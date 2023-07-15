@@ -5,9 +5,13 @@ import CoreLocation
 import CoreLoggerKit
 import CoreModelKit
 
+protocol LocationControllerDelegate: NSObject {
+    func didChangeAuthorizationStatus()
+}
+
 class LocationController: NSObject {
     private let store: DataStore
-
+    
     init(withStore dataStore: DataStore) {
         store = dataStore
         super.init()
@@ -28,6 +32,7 @@ class LocationController: NSObject {
     }
 
     func locationAccessGranted() -> Bool {
+        print("Location Status is ", CLLocationManager.authorizationStatus().rawValue.description)
         return CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorized
     }
 
@@ -80,7 +85,9 @@ class LocationController: NSObject {
         var datas: [Data] = []
 
         for updatedObject in timezoneObjects {
-            let dataObject = NSKeyedArchiver.archivedData(withRootObject: updatedObject)
+            guard let dataObject = NSKeyedArchiver.clocker_archive(with: updatedObject) else {
+                continue
+            }
             datas.append(dataObject)
         }
 
