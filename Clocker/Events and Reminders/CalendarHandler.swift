@@ -22,11 +22,9 @@ extension EventCenter {
 
         // Fetch array of user's calendars sorted first by source title and then by calendar title
         let calendars = eventStore.calendars(for: .event).sorted { cal1, cal2 -> Bool in
-
             if cal1.source.sourceIdentifier == cal2.source.sourceIdentifier {
                 return cal1.title < cal2.title
             }
-
             return cal1.source.title < cal2.source.title
         }
 
