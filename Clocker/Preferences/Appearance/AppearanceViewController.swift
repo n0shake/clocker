@@ -145,7 +145,6 @@ class AppearanceViewController: ParentViewController {
     @IBOutlet var timeFormatLabel: NSTextField!
     @IBOutlet var panelTheme: NSTextField!
     @IBOutlet var dayDisplayOptionsLabel: NSTextField!
-    @IBOutlet var showSliderLabel: NSTextField!
     @IBOutlet var showSunriseLabel: NSTextField!
     @IBOutlet var largerTextLabel: NSTextField!
     @IBOutlet var futureSliderRangeLabel: NSTextField!
@@ -164,7 +163,6 @@ class AppearanceViewController: ParentViewController {
         timeFormatLabel.stringValue = "Time Format".localized()
         panelTheme.stringValue = "Panel Theme".localized()
         dayDisplayOptionsLabel.stringValue = "Day Display Options".localized()
-        showSliderLabel.stringValue = "Time Scroller".localized()
         showSunriseLabel.stringValue = "Show Sunrise/Sunset".localized()
         largerTextLabel.stringValue = "Larger Text".localized()
         syncLabel.stringValue = "Enable iCloud Sync".localized()
@@ -177,7 +175,7 @@ class AppearanceViewController: ParentViewController {
         miscelleaneousLabel.stringValue = "Miscellaneous".localized()
 
         [timeFormatLabel, panelTheme,
-         dayDisplayOptionsLabel, showSliderLabel,
+         dayDisplayOptionsLabel,
          showSunriseLabel, largerTextLabel, syncLabel, futureSliderRangeLabel,
          includeDayLabel, includeDateLabel, includePlaceLabel, appDisplayLabel, menubarModeLabel,
          previewLabel, miscelleaneousLabel].forEach {
@@ -266,10 +264,6 @@ class AppearanceViewController: ParentViewController {
         refresh(panel: true, floating: true)
 
         previewPanelTableView.reloadData()
-    }
-
-    @IBAction func showFutureSlider(_: Any) {
-        refresh(panel: false, floating: true)
     }
 
     @IBAction func showSunriseSunset(_ sender: NSSegmentedControl) {
