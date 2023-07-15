@@ -20,6 +20,8 @@ class AppDefaults {
     }
 
     private class func defaultsDictionary() -> [String: Any] {
+        // Local var for calendars to silence "empty collection requires an explicit type"
+        let calendars: [String] = []
         return [CLThemeKey: 0,
                 CLDisplayFutureSliderKey: 0,
                 CLSelectedTimeZoneFormatKey: 0, // 12-hour format
@@ -36,7 +38,7 @@ class AppDefaults {
                 CLShowAllDayEventsInUpcomingView: 1,
                 CLShowMeetingInMenubar: 0,
                 CLTruncateTextLength: 30,
-                CLSelectedCalendars: [],
+                CLSelectedCalendars: calendars,
                 CLAppDisplayOptions: 0,
                 CLMenubarCompactMode: 1]
     }
