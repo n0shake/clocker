@@ -184,6 +184,7 @@ class StandardMenubarHandlerTests: XCTestCase {
         let futureChunk = TimeChunk(seconds: 10, minutes: 5, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
         let mockEvent = EKEvent(eventStore: eventStore)
         mockEvent.title = "Event happening"
+        mockEvent.calendar = EKCalendar(for: .event, eventStore: eventStore)
         mockEvent.startDate = Date().add(futureChunk)
         let eventInfo = EventInfo(event: mockEvent,
                                   isAllDay: false,
@@ -204,6 +205,7 @@ class StandardMenubarHandlerTests: XCTestCase {
         let futureChunk = TimeChunk(seconds: 10, minutes: 29, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
         let mockEvent = EKEvent(eventStore: eventStore)
         mockEvent.title = "Event happening"
+        mockEvent.calendar = EKCalendar(for: .event, eventStore: eventStore)
         mockEvent.startDate = Date().add(futureChunk)
         let eventInfo = EventInfo(event: mockEvent,
                                   isAllDay: false,
@@ -224,6 +226,7 @@ class StandardMenubarHandlerTests: XCTestCase {
         let futureChunk = TimeChunk(seconds: 10, minutes: 31, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
         let mockEvent = EKEvent(eventStore: eventStore)
         mockEvent.title = "Event happening"
+        mockEvent.calendar = EKCalendar(for: .event, eventStore: eventStore)
         mockEvent.startDate = Date().add(futureChunk)
         let eventInfo = EventInfo(event: mockEvent,
                                   isAllDay: false,
@@ -242,6 +245,7 @@ class StandardMenubarHandlerTests: XCTestCase {
         let futureChunk = TimeChunk(seconds: 10, minutes: 31, hours: 0, days: 0, weeks: 0, months: 0, years: 0)
         let mockEvent = EKEvent(eventStore: eventStore)
         mockEvent.startDate = Date().add(futureChunk)
+        mockEvent.calendar = EKCalendar(for: .event, eventStore: eventStore)
         let eventInfo = EventInfo(event: mockEvent,
                                   isAllDay: false,
                                   meetingURL: nil,
