@@ -5,12 +5,14 @@ import XCTest
 class OnboardingSearchTests: XCTestCase {
     var app: XCUIApplication!
 
+    static let kOnboardingArgument = "isTestingTheOnboardingFlow"
+    
     override func setUp() {
         super.setUp()
 
         continueAfterFailure = false
         app = XCUIApplication()
-        app.launchArguments.append(CLOnboardingTestsLaunchArgument)
+        app.launchArguments.append(Self.kOnboardingArgument)
         app.launch()
 
         // Let's go to the Search View

@@ -2,15 +2,15 @@
 
 import XCTest
 
-let CLOnboaringTestsLaunchArgument = "isTestingTheOnboardingFlow"
-
 class OnboardingTests: XCTestCase {
     var app: XCUIApplication!
+    
+    static let kOnboardingTestsLaunchArgument = "isTestingTheOnboardingFlow"
 
     override func setUp() {
         continueAfterFailure = false
         app = XCUIApplication()
-        app.launchArguments.append(CLOnboardingTestsLaunchArgument)
+        app.launchArguments.append(Self.kOnboardingTestsLaunchArgument)
         app.launch()
     }
 
