@@ -22,8 +22,11 @@ public struct StartupManager {
         let response = alert.runModal()
         if response.rawValue == 1000 {
             OperationQueue.main.addOperation {
-                let prefPane = "/System/Library/PreferencePanes/Accounts.prefPane"
-                NSWorkspace.shared.openFile(prefPane)
+                // Reference: https://gist.github.com/rmcdongit/f66ff91e0dad78d4d6346a75ded4b751?permalink_comment_id=4286386#gistcomment-4286386
+                let prefPane = "x-apple.systempreferences:com.apple.LoginItems-Settings.extension"
+                if let prefPaneURL = URL(string: prefPane) {
+                    NSWorkspace.shared.open(prefPaneURL)
+                }
             }
         }
     }
