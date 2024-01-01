@@ -296,7 +296,6 @@ class AppearanceViewController: ParentViewController {
                 panelController.futureSlider.setNeedsDisplay(futureSliderBounds)
 
                 panelController.updateDefaultPreferences()
-
                 panelController.updateTableContent()
                 panelController.setupMenubarTimer()
             }

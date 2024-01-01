@@ -76,16 +76,16 @@ class PanelController: ParentPanelController {
         updateDefaultPreferences()
 
         setupUpcomingEventViewCollectionViewIfNeccesary()
+      
+      //TODO: Always hide the legacy slider. Delete this once v24.01 stabilizes.
+        futureSliderView.isHidden = true
 
         if DataStore.shared().timezones().isEmpty || DataStore.shared().shouldDisplay(.futureSlider) == false {
-            futureSliderView.isHidden = true
             modernContainerView.isHidden = true
         } else if let value = DataStore.shared().retrieve(key: CLDisplayFutureSliderKey) as? NSNumber, modernContainerView != nil {
             if value.intValue == 1 {
-                futureSliderView.isHidden = false
                 modernContainerView.isHidden = true
             } else if value.intValue == 0 {
-                futureSliderView.isHidden = true
                 modernContainerView.isHidden = false
             }
         }
