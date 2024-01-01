@@ -114,7 +114,7 @@ class FloatingWindowTests: XCTestCase {
         if floatingSlider {
             app.radioGroups["FutureSlider"].radioButtons["Hide"].click()
         } else {
-            app.radioGroups["FutureSlider"].radioButtons["Legacy"].click()
+            app.radioGroups["FutureSlider"].radioButtons["Show"].click()
         }
 
         let newFloatingSliderExists = app.sliders["FloatingSlider"].exists
