@@ -134,7 +134,7 @@ extension ParentPanelController {
         let futureSliderDayRange = (futureSliderDayPreference.intValue + 1)
         let totalCount = (PanelConstants.modernSliderPointsInADay * futureSliderDayRange * 2) + 1
         let centerPoint = Int(ceil(Double(totalCount / 2)))
-        if index > (centerPoint + 1) {
+        if index >= (centerPoint + 1) {
             let remainder = (index % (centerPoint + 1))
             let nextDate = Calendar.current.date(byAdding: .minute, value: remainder * 15, to: closestQuarterTimeRepresentation ?? Date())!
             modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(nextDate)
