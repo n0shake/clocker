@@ -17,7 +17,7 @@
 #import "SRKeyCodeTransformer.h"
 
 
-NSBundle *SRBundle()
+NSBundle *SRBundle(void)
 {
     static dispatch_once_t onceToken;
     static NSBundle *Bundle = nil;
