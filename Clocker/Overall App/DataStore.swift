@@ -165,7 +165,7 @@ class DataStore: NSObject {
             guard let value = retrieve(key: CLDisplayFutureSliderKey) as? NSNumber else {
                 return false
             }
-            return value != 2 // Modern is 0, Legacy is 1 and Hide is 2.
+            return value != 1 // Display slider is 0 and Hide is 1.
         case .upcomingEventView:
             guard let value = retrieve(key: CLShowUpcomingEventView) as? NSString else {
                 return false
