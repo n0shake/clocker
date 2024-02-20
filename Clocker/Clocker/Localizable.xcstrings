@@ -4442,6 +4442,12 @@
             "value" : "Dozvoli"
           }
         },
+        "is" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veita leyfi"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
