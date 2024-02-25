@@ -1107,6 +1107,7 @@
 				pl,
 				uk,
 				is,
+				he,
 			);
 			mainGroup = DD4F7BF913C30F9F00825C6E;
 			productRefGroup = DD4F7C0513C30F9F00825C6E /* Products */;
