@@ -40,6 +40,12 @@
             "value" : "À propos"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "אודות"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -169,6 +175,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajouter"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "הוספה"
           }
         },
         "hi" : {
@@ -302,6 +314,12 @@
             "value" : "Clocker"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "קלוקר"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -419,6 +437,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apparence"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "מראה חיצוני"
           }
         },
         "hi" : {
@@ -659,6 +683,12 @@
             "value" : "Accès au Calendrier"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "גישה ליומן"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -788,6 +818,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Accès au calendrier"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "גישה ליומן"
           }
         },
         "hi" : {
@@ -1052,6 +1088,12 @@
             "value" : "Calendrier"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "לוח שנה"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1182,6 +1224,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Clocker"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "קלוקר"
           }
         },
         "hi" : {
@@ -1422,6 +1470,12 @@
             "value" : "Merci pour votre aide à rendre Clocker encore meilleur!"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "תודה על עזרתך בהפיכת קלוקר לטוב יותר!"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1545,6 +1599,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cliquez ici pour commencer."
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "לחץ כאן כדי להתחיל."
           }
         },
         "hi" : {
@@ -1916,6 +1976,12 @@
             "value" : "Version %@"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "גרסה %@"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2045,6 +2111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fermer"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "סגירה"
           }
         },
         "hi" : {
@@ -2845,6 +2917,12 @@
             "value" : "Refusé"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "נדחה"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2974,6 +3052,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Refusée"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "נדחה"
           }
         },
         "hi" : {
@@ -4049,6 +4133,12 @@
             "value" : "Commencer"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "להתחיל"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4178,6 +4268,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "אשר/י"
           }
         },
         "hi" : {
@@ -4430,6 +4526,12 @@
             "value" : "Autoriser"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "אשר/י"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4561,6 +4663,12 @@
             "value" : "Autorisé"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "הוענק"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4690,6 +4798,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autorisé"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "הוענק"
           }
         },
         "hi" : {
@@ -5614,6 +5728,12 @@
             "value" : "Si vous aimez utiliser %@, pourriez-vous prendre un moment pour l'évaluer ? Cela ne prendra pas plus d'une minute. Merci pour votre soutien !"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "אם נהנת להשתמש ב%@, אכפת לך לקחת רגע ולדרג? זה לא יקח יותר מדקה. תודה על תמיכתך!"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5743,6 +5863,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Non Merci"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "לא, תודה"
           }
         },
         "hi" : {
@@ -5876,6 +6002,12 @@
             "value" : "Si vous aimez utiliser %@, pourriez-vous prendre un moment pour l'évaluer ? Cela ne prendra pas plus d'une minute. Merci pour votre soutien !"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "אם נהנת להשתמש ב%@, אכפת לך לקחת רגע ולדרג? זה לא יקח יותר מדקה. תודה על תמיכתך!"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5999,6 +6131,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Noter %@"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "לדרג %@"
           }
         },
         "hi" : {
@@ -6132,6 +6270,12 @@
             "value" : "Évaluez-le maintenant"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "דרגו עכשיו"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6261,6 +6405,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Me le rappeler ultérieurement"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "שאל אותי מאוחר יותר"
           }
         },
         "hi" : {
@@ -6394,6 +6544,12 @@
             "value" : "Mettre à jour maintenant ?"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "לעדכן עכשיו?"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6523,6 +6679,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cela ne prend que 3 étapes pour configurer Clocker."
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "זה לוקח רק 3 שלבים כדי להגדיר את קלוקר"
           }
         },
         "hi" : {
@@ -6655,6 +6817,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cela ne prend que 3 étapes pour configurer Clocker."
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "זה לוקח רק 3 שלבים כדי להגדיר את קלוקר"
           }
         },
         "hr" : {
@@ -6899,6 +7067,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ces paramètres peuvent être configurés plus tard dans les Préférences Système."
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ניתן להגדיר את זה בהמשך במסך ההגדרות."
           }
         },
         "hi" : {
@@ -7150,6 +7324,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lancer Clocker"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "הפעל את קלוקר"
           }
         },
         "hi" : {
@@ -7650,6 +7830,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "100 fuseaux horaires maximum autorisés !"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "מקסימום 100 אזורי זמן מותרים לכל היותר!"
           }
         },
         "hi" : {
@@ -8492,6 +8678,12 @@
             "value" : "Veuillez sélectionner un fuseau horaire !"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "נא בחר אזור זמן!"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9078,6 +9270,12 @@
             "value" : "Autorisations"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "רְשׁוּת"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9209,6 +9407,12 @@
             "value" : "Autorisations"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "רְשׁוּת"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9338,6 +9542,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Droits d'accès"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "רְשׁוּת"
           }
         },
         "hi" : {
@@ -10087,6 +10297,12 @@
             "value" : "Accès aux rappels"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "גישה לתזכורות"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10216,6 +10432,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Accès aux rappels"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "גישה לתזכורות"
           }
         },
         "hi" : {
@@ -10593,6 +10815,12 @@
             "value" : "Saisissez une ville, une région ou un pays"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "הזן שם עיר או מדינה"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10721,6 +10949,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Retrouvez votre prochain événement de calendrier ici."
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "צפה באיוע הקלנדרי הבא שלך כאן."
           }
         },
         "hi" : {
@@ -10863,6 +11097,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plus que trois marches à gravir et vous aurez ajusté Clocker"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "זה לוקח רק 3 שלבים כדי להגדיר את קלוקר"
           }
         },
         "hi" : {
@@ -11829,6 +12069,12 @@
             "value" : "Trier par étiquette"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "מיין לפי תווית"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11954,6 +12200,12 @@
             "value" : "Tri par nom"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "מיין לפי שם"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12077,6 +12329,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trier par différence de temps"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "מיין לפי הפרשי זמן"
           }
         },
         "hi" : {
@@ -12210,6 +12468,12 @@
             "value" : "Démarrer Clocker à la connexion"
           }
         },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "התחל את קלולר בכניסה"
+          }
+        },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12339,6 +12603,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Activer avec la session"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "הפעל בהתחברות"
           }
         },
         "hi" : {
@@ -12709,6 +12979,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Merci d'aider à améliorer Clocker !"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "תודה על עזרתך בהפיכת קלוקר לטוב יותר!"
           }
         },
         "hi" : {
