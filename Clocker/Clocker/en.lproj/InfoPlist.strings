@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Clocker
+
+  Created by Abhishek Banthia on 3/27/16.
+
+*/
+
+"CFBundleDisplayName" = "Clocker";
+"CFBundleName" = "Clocker";

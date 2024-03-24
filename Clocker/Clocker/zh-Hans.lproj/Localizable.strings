@@ -1,0 +1,163 @@
+/* (No Comment) */
+"CFBundleDisplayName" = "解锁器";
+"Thank you for helping make Clocker even better!" = "感谢您帮助 Clocker 做得更好！";
+"iRateMessageTitle" = "评价 %@";
+"iRateAppMessage" = "如果您喜欢使用 %@，能否请您抽出时间来对它进行评价？评价不会超过一分钟。感谢您的支持 ！";
+"iRateGameMessage" = "如果您喜欢使用 %@，能否请您抽出时间来对它进行评价？评价不会超过一分钟。感谢您的支持 ！";
+"iRateCancelButton" = "不用了，谢谢";
+"iRateRateButton" = "立即评分";
+"iRateRemindButton" = "稍后提醒我";
+"iRateUpdateMessage" = "现在更新？";
+"ClockerVersion" = "版本 %@";
+"CLFeedbackAlertTitle" = "感谢您帮助 Clocker 做得更好！";
+"app-name" = "Clocker";
+"start-at-login" = "开启时启动";
+"setup-steps" = "只需要三步来设置 Clocker";
+"Permissions-Header" = "权限";
+"See your next Calendar event here." = "在这里查看你的下一个日历事件。";
+"Click here to start." = "点此开始。";
+"Reminders Access" = "提醒访问权限";
+"Calendar Access" = "日历访问权限";
+"Permissions" = "权限";
+"Calendar Detail" = "未来你个人和分享的日历事件将显示在菜单栏和面板上。";
+"Reminders Detail" = "在您选择的位置时区设置提醒。您的提醒存储在默认提醒应用中。";
+"Privacy Text" = "您稍后可以在「系统偏好设置」的隐私部分更改此内容。";
+"Granted Button Text" = "已授权";
+"Denied Button Text" = "已拒绝";
+"Grant Button Text" = "授权";
+
+// Welcome Onboarding
+"It only takes 3 steps to setup Clocker." = "只需要 3 步来设置 Clocker。";
+"Get Started" = "开始";
+
+// Tab Item Titles
+"Preferences Tab" = "首选项";
+"Appearance Tab" = "外观";
+"Calendar Tab" = "日历";
+"About Tab" = "关于";
+"Permissions Tab" = "权限";
+
+// General Preferences Screen
+"Start at Login" = "登录时启动 Clocker";
+"Sort by Time Difference" = "按时间差排序";
+"Sort by Name" = "按名称排序";
+"Sort by Label" = "按标签排序";
+"Search Field Placeholder" = "输入城市、省/州或国家名称";
+"No Timezone Selected" = "请选择一个时区！";
+"Max Timezones Selected" = "最多允许 100 个时区！";
+"Max Search Characters" = "最多允许 50 个字符！";
+"Add Button Title" = "添加";
+"Close Button Title" = "关闭";
+
+// Onboarding
+"Open Clocker At Login" = "登录时启动 Clocker";
+"Launch Clocker" = "启动 Clocker";
+
+// Welcome Onboarding
+"It only takes 3 steps to set up Clocker." = "只需要三步来设置 Clocker。";
+"Get Started" = "现在开始";
+
+// Permissions
+"Calendar Access Title" = "访问日历";
+"Reminders Access Title" = "访问提醒";
+"Later Config Description" = "这些可以稍后在系统偏好设置中配置。";
+"Back" = "返回";
+"Continue" = "继续";
+"Clocker is more useful when it can display events from your calendars." = "Clocker 能显示日历中的事件时会更有用。";
+"Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker 在能显示日历中的事件时更有用。你可以在「系统偏好设置 > 安全性与隐私 > 隐私」中更改设置。";
+"Launch Preferences" = "打开首选项";
+"Grant Access" = "授予访问权限";
+"Upcoming events from your calendars can be shown in the menubar + panel." = "你个人和共享日历的未来事件将显示在菜单栏和面板上。";
+"Granted" = "已授权";
+"Denied" = "已拒绝";
+"Grant" = "授权";
+"Unexpected" = "意外的";
+
+// Onboarding Search
+"Quick Add Locations" = "快速添加地点";
+"More search options in Clocker Preferences." = "Clocker 首选项中的更多搜索选项。";
+"Enter 3 or more characters for locations you'll like to add" = "为您想要添加的位置输入 3 个或更多字符";
+
+// Start at Login
+"Launch at Login" = "登录时启动";
+"This can be configured later in Clocker Preferences." = "这可以稍后在 Clocker 首选项中进行配置。";
+"Should Clocker open automatically on startup?" = "是否在启动时自动打开 Clocker？";
+
+// Final Onboarding Screen
+"You're all set!" = "已完成全部设置！";
+"Thank you for the details." = "感谢您的详细信息。";
+"You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences." = "当你启动应用时，会在菜单栏看到一个时钟图标。如果想在 Dock 上显示图标，请在首选项设置。";
+"If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "如果您想帮助翻译本应用或收到不定时的应用更新，请输入您的电子邮箱！";
+
+// Appearance Tab
+"Panel Theme" = "面板主题";
+"Favourite a timezone to enable menubar display options." = "收藏一个时区以在菜单栏上显示可选项。";
+"Main Panel Options" = "主面板选项";
+"Time Format" = "时间格式";
+"Day Display Options" = "日显示选项";
+"Show Future Slider" = "显示未来滑块";
+"Show Sunrise/Sunset" = "显示日出/日落";
+"Display the time in seconds" = "显示秒数";
+"Larger Text" = "更大字号";
+"Future Slider Range" = "未来滑块范围";
+"Include Date" = "包含日期";
+"Include Day" = "包含日";
+"Include Place Name" = "包含地名";
+"Menubar Display Options" = "菜单栏显示选项";
+"Menubar Mode" = "菜单栏模式";
+"Preview" = "预览";
+"Miscellaneous" = "杂项设置";
+
+// Empty View
+"No places added" = "没有添加地点";
+
+// Panel
+"No upcoming event." = "暂无事项";
+"You have no events scheduled for tomorrow." = "您明天没有安排。";
+
+// Review
+"Enjoy using Clocker?" = "喜欢使用 Clocker 吗？";
+
+// App Feedback
+"Tell us what you think!" = "告诉我们您的想法！";
+"Contact Information (Optional)" = "联系信息 (可选)";
+"Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!" = "联系人字段是可选项！我们需要更多信息或帮助时，将使用联络信息联络您！";
+
+// About View Screen
+"Feedback is always welcome:" = "欢迎提供反馈：";
+
+// Calendars View
+"Upcoming Event View Options" = "即将到来的事件视图选项";
+"Show Upcoming Event View" = "显示即将到来的事件视图";
+"Show All Day Meetings" = "显示全天会议";
+"Show Next Meeting Title in Menubar" = "在菜单栏中显示下一个会议标题";
+"Truncate menubar text longer than" = "截断菜单栏文字长度大于";
+"characters" = "字符";
+"Show events from" = "显示事件来源";
+"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "如果会议标题是“Meeting with Neel”，并且截断长度设置为 5 ，菜单栏的文本将显示为“Meeti...”";
+
+// Notes Popover
+"Reminder Set" = "提醒设置";
+"Successfully set." = "设置成功";
+
+// Errors
+"You're offline, maybe?" = "您已经离线？";
+"Try again, maybe?" = "稍后再试？";
+"The Internet connection appears to be offline." = "网络连接已断开。";
+
+// UI Tests
+"New Zealand" = "新西兰";
+"Florida" = "佛罗里达";
+"San Francisco" = "旧金山";
+
+
+// DST changes
+"Daylights Saving transition will occur in < 24 hours" = "Daylights Saving transition will occur in < 24 hours";
+
+"Copied to Clipboard" = "Copied to Clipboard";
+"No upcoming events for today!" = "No upcoming events for today 🎉";
+"Great going." = "Great going.";
+"Happy Weekend." = "Happy Weekend.";
+
+// iCloud
+"Enable iCloud Sync" = "Enable iCloud Sync";

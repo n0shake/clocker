@@ -1,0 +1,169 @@
+/*
+  Localizable.strings
+  Clocker
+
+  Created by Abhishek Banthia on 3/27/16.
+
+*/
+
+"CFBundleDisplayName" = "Clocker";
+"Thank you for helping make Clocker even better!" = "Danke, dass du dabei geholfen hast, Clocker noch besser zu machen!";
+"iRateMessageTitle" = "%@ bewerten";
+"iRateAppMessage" = "Wenn dir %@ gefällt, dann bewerte uns doch im App Store. Das dauert kaum eine Minute und hilft uns sehr. Vielen Dank für deine Unterstützung!";
+"iRateGameMessage" = "Wenn du Spaß an %@ hast, dann bewerte uns doch im App Store. Das dauert kaum eine Minute und hilft uns sehr. Vielen Dank, für deine Unterstützung!";
+"iRateCancelButton" = "Nein, danke";
+"iRateRateButton" = "Jetzt bewerten";
+"iRateRemindButton" = "Später erinnern";
+"iRateUpdateMessage" = "Jetzt aktualisieren?";
+"ClockerVersion" = "Version %@";
+"CLFeedbackAlertTitle" = "Danke, dass Du hilfst Clocker noch besser zu machen!";
+"app-name" = "Clocker";
+"start-at-login" = "Bei der Anmeldung starten";
+"setup-steps" = "In nur drei Schritten ist Clocker fertig eingerichtet";
+"Permissions-Header" = "Berechtigungen";
+"See your next Calendar event here." = "Siehe bevorstehendes Kalenderereignis?";
+"Click here to start." = "Hier klicken, um zu starten.";
+"Reminders Access" = "Erinnerungen-Zugriff";
+"Calendar Access" = "Kalender-Zugriff";
+"Permissions" = "Berechtigungen";
+"Calendar Detail" = "Anstehende Termine aus Deinem persönlichen und geteilten Kalendern können in der Menüleiste und im Fenster angezeigt werden.";
+"Reminders Detail" = "Erinnerungen in der Zeitzone Deiner Wahl festlegen. Deine Erinnerungen werden in der Standard-Erinnerungs-App gespeichert.";
+"Privacy Text" = "Du kannst das später im Bereich Datenschutz in den Systemeinstellungen ändern.";
+"Granted Button Text" = "Gewährt";
+"Denied Button Text" = "Verweigert";
+"Grant Button Text" = "Gewähren";
+
+// Welcome Onboarding
+"It only takes 3 steps to setup Clocker." = "In nur drei Schritten ist Clocker fertig eingerichtet.";
+"Get Started" = "Erste Schritte";
+
+// Tab Item Titles
+"Preferences Tab" = "Einstellungen";
+"Appearance Tab" = "Darstellung";
+"Calendar Tab" = "Kalender";
+"About Tab" = "Über";
+"Permissions Tab" = "Berechtigungen";
+
+// General Preferences Screen
+"Start at Login" = "Clocker bei der Anmeldung starten";
+"Sort by Time Difference" = "Nach Zeitdifferenz sortieren";
+"Sort by Name" = "Nach Namen sortieren";
+"Sort by Label" = "Nach Bezeichnung sortieren";
+"Search Field Placeholder" = "Gebe eine Stadt, ein Bundesland oder Land ein";
+"No Timezone Selected" = "Bitte wählen Sie eine Zeitzone!";
+"Max Timezones Selected" = "Es werden maximal 100 Zeitzonen unterstützt!";
+"Max Search Characters" = "Es sind nur 50 Zeichen erlaubt!";
+"Add Button Title" = "Hinzufügen";
+"Close Button Title" = "Schließen";
+
+// Onboarding
+"Open Clocker At Login" = "Clocker bei der Anmeldung starten";
+"Launch Clocker" = "Clocker starten";
+
+// Welcome Onboarding
+"It only takes 3 steps to set up Clocker." = "In nur drei Schritten ist Clocker fertig eingerichtet.";
+"Get Started" = "Erste Schritte";
+
+// Permissions
+"Calendar Access Title" = "Kalender-Zugriff";
+"Reminders Access Title" = "Zugriff auf Erinnerungen";
+"Later Config Description" = "Dies kann später in den Clocker Einstellungen konfiguriert werden.";
+"Back" = "Zurück";
+"Continue" = "Fortfahren";
+"Clocker is more useful when it can display events from your calendars." = "Clocker ist nützlicher, wenn es Ereignisse aus Deinem Kalendern anzeigen kann.";
+"Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker ist nützlicher, wenn es Ereignisse aus Deinem Kalendern anzeigen kann. Du kannst diese Einstellung in Systemeinstellungen › Sicherheit Privatsphäre › Privatsphäre ändern.";
+"Launch Preferences" = "Einstellungen öffnen";
+"Grant Access" = "Zugriff erlauben";
+"Upcoming events from your calendars can be shown in the menubar + panel." = "Anstehende Termine aus Deinem persönlichen und geteilten Kalendern können in der Menüleiste und im Fenster angezeigt werden.";
+"Granted" = "Gewährt";
+"Denied" = "Abgelehnt";
+"Grant" = "Gewähren";
+"Unexpected" = "Unerwartet";
+
+// Onboarding Search
+"Quick Add Locations" = "Orte schnell hinzufügen";
+"More search options in Clocker Preferences." = "Weitere Suchoptionen in den Clocker Einstellungen.";
+"Enter 3 or more characters for locations you'll like to add" = "Gebe 3 oder mehr Zeichen für den Orte ein, die Du hinzufügen möchtest";
+
+// Start at Login
+"Launch at Login" = "Bei der Anmelden starten";
+"This can be configured later in Clocker Preferences." = "Dies kann später in den Clocker Einstellungen konfiguriert werden.";
+"Should Clocker open automatically on startup?" = "Soll Clocker beim Start automatisch geöffnet werden?";
+
+// Final Onboarding Screen
+"You're all set!" = "Du bist startklar!";
+"Thank you for the details." = "Vielen Dank für die Details.";
+"You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences." = "Du wirst ein Uhr-Symbol in Ihrer Menüleiste sehen, wenn Du die App startest. Wenn Du ein Dock-Symbol sehen möchtest, gehe in die Einstellungen.";
+"If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "Wenn Du uns helfen möchtest die App in Deine Sprache zu übersetzen oder von Zeit zu Zeit Informationen zur App erhalten möchtest, gibt bitte hier Deine E-Mail ein!";
+
+// Appearance Tab
+"Panel Theme" = "Erscheinungsbild";
+"Favourite a timezone to enable menubar display options." = "Favorisiere eine Zeitzone, um diese in der Menüleiste zu zeigen.";
+"Main Panel Options" = "Optionen für Programmfenster";
+"Time Format" = "Zeitformat";
+"Day Display Options" = "Anzeigeoptionen für den Tag";
+"Show Future Slider" = "\"Future Slider\" anzeigen";
+"Show Sunrise/Sunset" = "Sonnenaufgang/-untergang anzeigen";
+"Display the time in seconds" = "Zeit in Sekunden anzeigen";
+"Larger Text" = "Größerer Text";
+"Future Slider Range" = "Bereich für den \"Future Slider\"";
+"Include Date" = "Datum hinzufügen";
+"Include Day" = "Tag hinzufügen";
+"Include Place Name" = "Ortsname hinzufügen";
+"Menubar Display Options" = "Anzeigeoptionen für die Menüleiste";
+"Menubar Mode" = "Menüleisten-Modus";
+"Preview" = "Vorschau";
+"Miscellaneous" = "Verschiedenes";
+
+// Empty View
+"No places added" = "Keine Orte hinzugefügt";
+
+// Panel
+"No upcoming event." = "Kein anstehendes Ereignis.";
+"You have no events scheduled for tomorrow." = "Du hast keine Kalendereinträge für morgen.";
+
+// Review
+"Enjoy using Clocker?" = "Gefällt Dir Clocker?";
+
+// App Feedback
+"Tell us what you think!" = "Sag uns, was Du denkst!";
+"Contact Information (Optional)" = "Kontaktinformationen (optional)";
+"Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!" = "Kontaktinformationen sind optional! Diese helfen uns jedoch Dich zu erreichen, falls wir weitere Informationen benötigen oder helfen können!";
+
+// About View Screen
+"Feedback is always welcome:" = "Feedback ist immer willkommen:";
+
+// Calendars View
+"Upcoming Event View Options" = "Zukünftige Ereignisse zeigen";
+"Show Upcoming Event View" = "Anzeigeoptionen für zukünftige Ereignisse";
+"Show All Day Meetings" = "Ganztägige Ereignisse anzeigen";
+"Show Next Meeting Title in Menubar" = "Das nächste Ereignis in der Menüliste zeigen";
+"Truncate menubar text longer than" = "Text in der Menüleiste kürzen, der länger ist als";
+"characters" = "Zeichen";
+"Show events from" = "Zeige Ereignisse aus";
+"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "Wenn der Besprechungstitel \"Besprechung mit Neel\" ist und die Kürzungslänge auf 5 eingestellt wurde, dann erscheint der Text in der Menüleiste als \"Bespr...\"";
+
+// Notes Popover
+"Reminder Set" = "Erinnerung gespeichert";
+"Successfully set." = "Erfolgreich gespeichert.";
+
+// Errors
+"You're offline, maybe?" = "Bist Du eventuell offline?";
+"Try again, maybe?" = "Versuche es nochmal!";
+"The Internet connection appears to be offline." = "Scheinbar besteht keine Verbindung zum Internet.";
+
+// UI Tests
+"New Zealand" = "Neuseeland";
+"Florida" = "Florida";
+"San Francisco" = "San Francisco";
+
+// DST changes
+"Daylights Saving transition will occur in < 24 hours" = "Daylights Saving transition will occur in < 24 hours";
+
+"Copied to Clipboard" = "Copied to Clipboard";
+"No upcoming events for today!" = "No upcoming events for today 🎉";
+"Great going." = "Great going.";
+"Happy Weekend." = "Happy Weekend.";
+
+// iCloud
+"Enable iCloud Sync" = "Enable iCloud Sync";

@@ -1,0 +1,173 @@
+/* 
+  Localizable.strings
+  Clocker
+
+  Created by Abhishek Banthia on 3/27/16.
+
+*/
+
+"CFBundleDisplayName" = "Clocker";
+"Thank you for helping make Clocker even better!" = "Thank you for helping make Clocker even better!";
+"iRateMessageTitle" = "Rate %@";
+"iRateAppMessage" = "If you enjoy using %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
+"iRateGameMessage" = "If you enjoy playing %@, would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!";
+"iRateCancelButton" = "No, Thanks";
+"iRateRateButton" = "Rate It Now";
+"iRateRemindButton" = "Remind Me Later";
+"iRateUpdateMessage" = "Update now?";
+"ClockerVersion" = "Version %@";
+"CLFeedbackAlertTitle" = "Thank you for helping make Clocker even better!";
+"app-name" = "Clocker";
+"start-at-login" = "Start At Login";
+"setup-steps" = "It only takes 3 steps to set up Clocker";
+"Permissions-Header" = "Permissions";
+"See your next Calendar event here." = "See your next Calendar event here.";
+"Click here to start." = "Click here to start.";
+"Reminders Access" = "Reminders Access";
+"Calendar Access" = "Calendar Access";
+"Permissions" = "Permissions";
+"Calendar Detail" = "Upcoming events from your calendars can be shown in the menubar + panel.";
+"Reminders Detail" = "Set reminders in the timezone of the location of your choice. Your reminders are stored in the default Reminders app.";
+"Privacy Text" = "You can change this later in the Privacy section of the System Preferences.";
+"Granted Button Text" = "Granted";
+"Denied Button Text" = "Denied";
+"Grant Button Text" = "Grant";
+
+// Welcome Onboarding
+"It only takes 3 steps to setup Clocker." = "It only takes 3 steps to setup Clocker.";
+"Get Started" = "Get Started";
+
+// Tab Item Titles
+"Preferences Tab" = "Preferences";
+"Appearance Tab" = "Appearance";
+"Calendar Tab" = "Calendar";
+"About Tab" = "About";
+"Permissions Tab" = "Permissions";
+
+// General Preferences Screen
+"Start at Login" = "Start Clocker at Login";
+"Sort by Time Difference" = "Sort by Time Difference";
+"Sort by Name" = "Sort by Name";
+"Sort by Label" = "Sort by Label";
+"Search Field Placeholder" = "Enter a city, state or country name";
+"No Timezone Selected" = "Please select a timezone!";
+"Max Timezones Selected" = "Maximum 100 timezones allowed!";
+"Max Search Characters" = "Only 50 characters allowed!";
+"Add Button Title" = "Add";
+"Close Button Title" = "Close";
+
+// Onboarding
+"Open Clocker At Login" = "Open Clocker At Login";
+"Launch Clocker" = "Launch Clocker";
+
+// Welcome Onboarding
+"It only takes 3 steps to set up Clocker." = "It only takes 3 steps to setup Clocker.";
+"Get Started" = "Get Started";
+
+// Permissions
+"Calendar Access Title" = "Calendar Access";
+"Reminders Access Title" = "Reminders Access";
+"Later Config Description" = "These can be configured later in System Preferences.";
+"Back" = "Back";
+"Continue" = "Continue";
+"Clocker is more useful when it can display events from your calendars." = "Clocker is more useful when it can display events from your calendars.";
+"Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Clocker is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy.";
+"Launch Preferences" = "Launch Preferences";
+"Grant Access" = "Grant Access";
+"Upcoming events from your calendars can be shown in the menubar + panel." = "Upcoming events from your calendars can be shown in the menubar and the panel.";
+"Granted" = "Granted";
+"Denied" = "Denied";
+"Grant" = "Grant";
+"Unexpected" = "Unexpected";
+
+// Onboarding Search
+"Quick Add Locations" = "Quick Add Locations";
+"More search options in Clocker Preferences." = "More search options in Clocker Preferences.";
+"Enter 3 or more characters for locations you'll like to add" = "Enter 3 or more characters for locations you'll like to add";
+
+// Start at Login
+"Launch at Login" = "Launch at Login";
+"This can be configured later in Clocker Preferences." = "This can be configured later in Clocker Preferences.";
+"Should Clocker open automatically on startup?" = "Should Clocker open automatically on startup?";
+
+// Final Onboarding Screen
+"You're all set!" = "You're all set!";
+"Thank you for the details." = "Thank you for the details.";
+"You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences." = "You'll see a clock icon in your Menu Bar when you launch the app. If you'd like to see a dock icon, go to Preferences.";
+"If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!" = "If you'd like to help us localize the app in your language or receive infrequent app-related updates, please enter your email!";
+
+// Appearance Tab
+"Panel Theme" = "Panel Theme";
+"Favourite a timezone to enable menubar display options." = "Favourite a timezone to enable menubar display options.";
+"Main Panel Options" = "Main Panel Options";
+"Time Format" = "Time Format";
+"Day Display Options" = "Day Display Options";
+"Show Future Slider" = "Show Future Slider";
+"Time Scroller" = "Time Scroller";
+"Show Sunrise/Sunset" = "Show Sunrise/Sunset";
+"Display the time in seconds" = "Display the time in seconds";
+"Larger Text" = "Larger Text";
+"Future Slider Range" = "Future Slider Range";
+"Future Slider Range" = "Future Slider Range";
+"Include Date" = "Include Date";
+"Include Day" = "Include Day";
+"Include Place Name" = "Include Place Name";
+"Menubar Display Options" = "Menubar Display Options";
+"Menubar Mode" = "Menubar Mode";
+"Preview" = "Preview";
+"Miscellaneous" = "Miscellaneous";
+
+// Empty View
+"No places added" = "No places added";
+
+// Panel
+"No upcoming event." = "No upcoming event.";
+"You have no events scheduled for tomorrow." = "You have no events scheduled for tomorrow.";
+
+// Review
+"Enjoy using Clocker?" = "Enjoy using Clocker?";
+
+// App Feedback
+"Tell us what you think!" = "Tell us what you think!";
+"Contact Information (Optional)" = "Contact Information (Optional)";
+"Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!" = "Contact fields are optional! Your contact information will let us contact you in case we need more information or can help!";
+
+// About View Screen
+"Feedback is always welcome:" = "Feedback is always welcome:";
+
+// Calendars View
+"Upcoming Event View Options" = "Upcoming Event View Options";
+"Show Upcoming Event View" = "Show Upcoming Event View";
+"Show All Day Meetings" = "Show All Day Meetings";
+"Show Next Meeting Title in Menubar" = "Show Next Meeting Title in Menubar";
+"Truncate menubar text longer than" = "Truncate menubar text longer than";
+"characters" = "characters";
+"Show events from" = "Show events from";
+"If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"" = "If meeting title is \"Meeting with Neel\" and truncate length is set to 5, text in menubar will appear as \"Meeti...\"";
+
+// Notes Popover
+"Reminder Set" = "Reminder Set";
+"Successfully set." = "Successfully set.";
+
+// Errors
+"You're offline, maybe?" = "You're offline, maybe?";
+"Try again, maybe?" =  "Try again, maybe?";
+"The Internet connection appears to be offline." = "The Internet connection appears to be offline.";
+
+// UI Tests
+"New Zealand" = "New Zealand";
+"Florida" = "Florida";
+"San Francisco" = "San Francisco";
+
+// DST changes
+"Daylights Saving transition will occur in < 24 hours" = "Daylights Saving transition will occur in < 24 hours";
+
+"Copied to Clipboard" = "Copied to Clipboard";
+
+// Upcoming Event View
+"No upcoming events for today!" = "No upcoming events for today 🎉";
+"Great going." = "Great going.";
+"Happy Weekend." = "Happy Weekend.";
+
+// iCloud
+"Enable iCloud Sync" = "Enable iCloud Sync";

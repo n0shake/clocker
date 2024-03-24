@@ -34,7 +34,7 @@ class FinalOnboardingViewController: NSViewController {
         mutableParaghStyle.alignment = .center
 
         let underlineRange = NSRange(location: 0, length: 9)
-        let originalText = NSMutableAttributedString(string: "Follow us on X / Twitter for occasional updates!")
+        let originalText = NSMutableAttributedString(string: "Follow us on Twitter for occasional updates!")
         originalText.addAttribute(NSAttributedString.Key.underlineStyle,
                                   value: NSNumber(value: Int8(NSUnderlineStyle.single.rawValue)),
                                   range: underlineRange)
