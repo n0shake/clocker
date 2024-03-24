@@ -160,7 +160,7 @@ class AppFeedbackWindowController: NSWindowController {
             Timezone: \(timezoneObject.timezone())
             Name: \(timezoneObject.formattedAddress ?? "No")
             Favourited: \((timezoneObject.isFavourite == 1) ? "Yes" : "No")
-            Note: \(timezoneObject.note ?? "No Note")
+            Format: \(timezoneObject.overrideFormat)
             System: \(timezoneObject.isSystemTimezone ? "Yes" : "No")"
             """
             return customString
@@ -174,13 +174,6 @@ class AppFeedbackWindowController: NSWindowController {
             relativeDate = "Date"
         }
 
-        var themeInfo = "Light"
-        if theme.isEqual(to: NSNumber(value: 1)) {
-            themeInfo = "Dark"
-        } else if theme.isEqual(to: NSNumber(value: 2)) {
-            themeInfo = "System"
-        }
-
         var futureSlider = "Modern"
         if displayFutureSliderKey.isEqual(to: NSNumber(value: 1)) {
             futureSlider = "Legacy"
@@ -189,7 +182,7 @@ class AppFeedbackWindowController: NSWindowController {
         }
 
         return """
-        "Theme: \(themeInfo), "Display Future Slider": \(futureSlider), "Relative Date": \(relativeDate), "Country": \(country), "Timezones": \(selectedTimezones)
+        "Global Timezone Format: \(DataStore.shared().timezoneFormat()), "Display Future Slider": \(futureSlider), "Relative Date": \(relativeDate), "Country": \(country), "Timezones": \(selectedTimezones)
         """
     }
 
