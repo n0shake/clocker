@@ -117,9 +117,9 @@ class FloatingWindowTests: XCTestCase {
             app.radioGroups["FutureSlider"].radioButtons["Show"].click()
         }
 
+        // Floating window does not support modern slider.
         let newFloatingSliderExists = app.sliders["FloatingSlider"].exists
-
-        XCTAssertNotEqual(floatingSlider, newFloatingSliderExists)
+        XCTAssertFalse(newFloatingSliderExists)
     }
 
     func testHidingMenubarOptions() {
