@@ -1,0 +1,24 @@
+/* InfoPlist.strings
+  Clocker
+
+  Created by Abhishek Banthia on 3/27/16. */
+"CFBundleDisplayName" = "Clocker";
+
+/* (No Comment) */
+"CFBundleName" = "Clocker";
+
+/* Privacy - Calendars Usage Description */
+"NSCalendarsUsageDescription" = "Clocker kann nützlicher sein, wenn es kommende Termine von Ihren Kalender anzeigen kann. Sie können diese Einstellung in Systemeinstellungen › Sicherheit Privatsphäre › Privatsphäre ändern";
+
+/* Copyright (human-readable) */
+"NSHumanReadableCopyright" = "Copyright © 2016, Abhishek Banthia";
+
+/* Privacy - Location Always and When In Use Usage Description */
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Clocker kann nützlicher sein, wenn es Ihren Standort zur Bestimmung Ihrer aktuellen Zeitzone verwenden kann.";
+
+/* Privacy - Location Usage Description */
+"NSLocationUsageDescription" = "Clocker kann nützlicher sein, wenn es Ihren Standort zur Bestimmung Ihrer aktuellen Zeitzone verwenden kann.";
+
+/* Privacy - Reminders Usage Description */
+"NSRemindersUsageDescription" = "Clocker kann nützlicher sein, wenn es Erinnerungen für Ihre ausgewählte Zeitzone(n) setzen kann. Sie können diese Einstellung in Systemeinstellungen › Sicherheit und Privatsphäre › Privatsphäre ändern.";
+
