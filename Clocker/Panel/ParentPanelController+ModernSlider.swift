@@ -146,7 +146,7 @@ extension ParentPanelController {
             let remainder = (index % (centerPoint + 1))
             let nextDate = Calendar.current.date(byAdding: .minute, value: remainder * 15, to: closestQuarterTimeRepresentation ?? Date())!
             let minutes = minutesToHoursAndMinutes(remainder * 15)
-            modernSliderLabel.stringValue = "+\(minutes.hours).\(minutes.leftMinutes)h"
+            modernSliderLabel.stringValue = "+\(minutes.hours):\(minutes.leftMinutes)h"
             if resetModernSliderButton.isHidden {
                 animateButton(false)
             }
@@ -157,7 +157,7 @@ extension ParentPanelController {
             let previousDate = Calendar.current.date(byAdding: .minute, value: -1 * remainder * 15, to: closestQuarterTimeRepresentation ?? Date())!
             modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(previousDate)
             let minutes = minutesToHoursAndMinutes(-1 * remainder * 15)
-            modernSliderLabel.stringValue = "\(minutes.hours).\(minutes.leftMinutes)h"
+            modernSliderLabel.stringValue = "\(minutes.hours):\(minutes.leftMinutes)h"
             if resetModernSliderButton.isHidden {
                 animateButton(false)
             }
