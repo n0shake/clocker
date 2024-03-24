@@ -113,7 +113,7 @@ class OnboardingTests: XCTestCase {
         let onboardingWindow = app.windows["OnboardingWindow"]
 
         XCTAssertTrue(onboardingWindow.staticTexts["Permissions".localizedString()].exists, "Header label's static text was unexpectedly wrong.")
-        XCTAssertTrue(onboardingWindow.staticTexts["Later Config Description".localizedString()].exists, "Onboarding Info label's static text was unexpectedly wrong.")
+        XCTAssertTrue(onboardingWindow.staticTexts["Your data doesn't leave your device 🔐"].exists, "Onboarding Info label's static text was unexpectedly wrong.")
 
         XCTAssertTrue(onboardingWindow.buttons["Forward"].title == "Continue".localizedString(), "Forward button title's was unexpectedly wrong")
         XCTAssertTrue(onboardingWindow.buttons["Backward"].exists, "Back button was unexpectedly missing")

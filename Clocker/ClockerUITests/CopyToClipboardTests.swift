@@ -64,9 +64,9 @@ class CopyToClipboardTests: XCTestCase {
         miscTab.click()
 
         if modernSliderExists {
-            app.radioGroups["FutureSlider"].radioButtons["Legacy"].click()
+            app.radioGroups["FutureSlider"].radioButtons["Hide"].click()
         } else {
-            app.radioGroups["FutureSlider"].radioButtons["Modern"].click()
+            app.radioGroups["FutureSlider"].radioButtons["Show"].click()
         }
 
         app.tapMenubarIcon()
