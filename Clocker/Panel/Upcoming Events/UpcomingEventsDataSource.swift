@@ -62,7 +62,7 @@ class UpcomingEventsDataSource: NSObject, NSCollectionViewDataSource, NSCollecti
             let bufferWidth: CGFloat = currentEventInfo.meetingURL != nil ? 60.0 : 20.0
             let longerString = currentEventInfo.event.title.count >= currentEventInfo.metadataForMeeting().count ? currentEventInfo.event.title : currentEventInfo.metadataForMeeting()
             let attributedString = NSAttributedString(string: longerString ?? CLEmptyString, attributes: [NSAttributedString.Key.font: avenirBookFont])
-            let maxWidth = min(attributedString.size().width + bufferWidth, UpcomingEventsDataSource.panelWidth / 2)
+            let maxWidth = min((attributedString.size().width + 15) + bufferWidth, UpcomingEventsDataSource.panelWidth / 2)
             return NSSize(width: maxWidth, height: collectionView.frame.height - 20)
         }
     }

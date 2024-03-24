@@ -350,6 +350,11 @@ extension EventCenter {
                 if actualLink.contains("zoom.us/j/")
                     || actualLink.contains("zoom.us/s/")
                     || actualLink.contains("zoom.us/w/")
+                    || actualLink.contains("zoom.us/my/")
+                    || actualLink.contains("zoomgov.com/j/")
+                    || actualLink.contains("zoomgov.com/s/")
+                    || actualLink.contains("zoomgov.com/w/")
+                    || actualLink.contains("zoomgov.com/my/")
                 {
                     // Create a Zoom App link
                     let workspace = NSWorkspace.shared
@@ -363,20 +368,39 @@ extension EventCenter {
                             return appLink
                         }
                     }
+                } else if (actualLink.contains("teams.microsoft.com/l/meetup-join")) {
+                    let workSpace = NSWorkspace.shared
+                    if workSpace.urlForApplication(toOpen: URL(string:"msteams://")!) != nil {
+                        let sanitizedString = actualLink.replacingOccurrences(of: "https://", with: "msteams://")
+                        if let sanitizedURL = URL(string: sanitizedString) {
+                            return sanitizedURL
+                        }
+                    }
+                } else if (actualLink.contains("chime.aws/")) {
+                    let workSpace = NSWorkspace.shared
+                    if workSpace.urlForApplication(toOpen: URL(string:"chime://")!) != nil {
+                        let sanitizedString = actualLink.replacingOccurrences(of: "https://chime.aws/", with: "chime://meeting?pin=")
+                        if let sanitizedURL = URL(string: sanitizedString) {
+                            return sanitizedURL
+                        }
+                    }
                 } else if actualLink.contains("zoommtg://")
-                    || actualLink.contains("meet.google.com/")
-                    || actualLink.contains("hangouts.google.com/")
-                    || actualLink.contains("webex.com/")
-                    || actualLink.contains("gotomeeting.com/join")
-                    || actualLink.contains("ringcentral.com/j")
-                    || actualLink.contains("bigbluebutton.org/gl")
-                    || actualLink.contains("://bigbluebutton.")
-                    || actualLink.contains("://bbb.")
-                    || actualLink.contains("indigo.collocall.de")
-                    || actualLink.contains("public.senfcall.de")
-                    || actualLink.contains("youcanbook.me/zoom/")
-                    || actualLink.contains("workplace.com/groupcall")
-                    || actualLink.contains("bluejeans.com/")
+                            || actualLink.contains("msteams://")
+                            || actualLink.contains("chime://")
+                            || actualLink.contains("meet.google.com/")
+                            || actualLink.contains("hangouts.google.com/")
+                            || actualLink.contains("webex.com/")
+                            || actualLink.contains("gotomeeting.com/join")
+                            || actualLink.contains("ringcentral.com/j")
+                            || actualLink.contains("bigbluebutton.org/gl")
+                            || actualLink.contains("https://bigbluebutton.")
+                            || actualLink.contains("https://bbb.")
+                            || actualLink.contains("https://meet.jit.si/")
+                            || actualLink.contains("indigo.collocall.de")
+                            || actualLink.contains("public.senfcall.de")
+                            || actualLink.contains("facetime.apple.com/join")
+                            || actualLink.contains("workplace.com/meet")
+                            || actualLink.contains("youcanbook.me/zoom/")
                 {
                     if let meetingLink = result.url {
                         return meetingLink
@@ -404,6 +428,7 @@ extension EventCenter {
         }
 
         if let url = event.url {
+            print("--- URL exists \(url)")
             return findAppropriateURLs(url.absoluteString)
         }
 
