@@ -216,7 +216,8 @@ extension TimezoneDataSource: PanelTableViewDelegate {
         let currentModel = timezones[row]
         if let timezone = TimeZone(identifier: currentModel.timezone()) {
             let offSet = Double(timezone.secondsFromGMT()) / 3600
-            let localizedName = timezone.localizedName(for: .shortDaylightSaving, locale: Locale.autoupdatingCurrent) ?? "Error"
+            let isDaylightSavings = timezone.isDaylightSavingTime()
+            let localizedName = timezone.localizedName(for: isDaylightSavings ? .shortDaylightSaving : .shortStandard, locale: Locale.autoupdatingCurrent) ?? "Error"
             if offSet == 0.0 {
                 return "\(localizedName)"
             } else {
