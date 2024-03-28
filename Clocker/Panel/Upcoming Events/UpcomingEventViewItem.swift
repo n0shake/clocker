@@ -52,14 +52,20 @@ class UpcomingEventViewItem: NSCollectionViewItem {
 
         setupLabels(title, isCancelled)
         setupSupplementaryButton(link)
-        setCalendarButtonTitle(buttonTitle: subtitle)
+        setCalendarButtonTitle(buttonTitle: subtitle, cancellationState: isCancelled)
         calendarColorView.layer?.backgroundColor = color.cgColor
     }
 
     private func setupLabels(_ title: String, _ cancellationState: Bool) {
+        var sanitizedTitle = title
+        if (cancellationState) {
+            let offendingString = "Canceled: "
+            sanitizedTitle = sanitizedTitle.replacingOccurrences(of: offendingString, with: "")
+        }
+        
         let attributes: [NSAttributedString.Key: Any] = cancellationState ? [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
                                                                              NSAttributedString.Key.strikethroughColor: NSColor.gray] : [:]
-        let attributedString = NSAttributedString(string: title, attributes: attributes)
+        let attributedString = NSAttributedString(string: sanitizedTitle, attributes: attributes)
         eventTitleLabel.attributedStringValue = attributedString
 
         eventTitleLabel.toolTip = title
@@ -103,21 +109,22 @@ class UpcomingEventViewItem: NSCollectionViewItem {
         }
 
         eventTitleLabel.stringValue = title
-        setCalendarButtonTitle(buttonTitle: buttonTitle)
+        setCalendarButtonTitle(buttonTitle: buttonTitle, cancellationState: false)
         calendarColorView.layer?.backgroundColor = color.cgColor
         zoomButton.image = image
     }
 
-    private func setCalendarButtonTitle(buttonTitle: String) {
+    private func setCalendarButtonTitle(buttonTitle: String, cancellationState: Bool) {
         let style = NSMutableParagraphStyle()
         style.alignment = .left
         style.lineBreakMode = .byTruncatingTail
 
         if let boldFont = NSFont(name: "Avenir", size: 11) {
+            let sanitizedString = cancellationState ? "Canceled." : buttonTitle
             let attributes = [NSAttributedString.Key.foregroundColor: NSColor.gray, NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.font: boldFont]
-            let attributedString = NSAttributedString(string: buttonTitle, attributes: attributes)
+            let attributedString = NSAttributedString(string: sanitizedString, attributes: attributes)
             eventSubtitleButton.attributedTitle = attributedString
-            eventSubtitleButton.toolTip = attributedString.string
+            eventSubtitleButton.toolTip =  buttonTitle
         }
     }
 
