@@ -341,7 +341,8 @@ extension EventCenter {
     // Borrowing logic from Ityscal
     @discardableResult
     private func findAppropriateURLs(_ description: String) -> URL? {
-        guard let results = EventCenter.dataDetector?.matches(in: description, options: .reportCompletion, range: NSRange(location: 0, length: description.count)) else {
+        guard let results = EventCenter.dataDetector?.matches(in: description, options: .reportCompletion, range: NSRange(location: 0, length: description.count)),
+              results.isEmpty == false else {
             return nil
         }
         for result in results {
@@ -401,6 +402,7 @@ extension EventCenter {
                             || actualLink.contains("facetime.apple.com/join")
                             || actualLink.contains("workplace.com/meet")
                             || actualLink.contains("youcanbook.me/zoom/")
+                            || actualLink.contains("fb.workplace.com/groupcall")
                 {
                     if let meetingLink = result.url {
                         return meetingLink
@@ -423,20 +425,21 @@ extension EventCenter {
             EventCenter.dataDetector = dataDetector
         }
 
-        if let location = event.location {
-            return findAppropriateURLs(location)
-        }
-
+        var meetingURL: URL? = nil
+        
         if let url = event.url {
-            print("--- URL exists \(url)")
-            return findAppropriateURLs(url.absoluteString)
+            meetingURL = findAppropriateURLs(url.absoluteString)
         }
 
-        if let notes = event.notes {
-            return findAppropriateURLs(notes)
+        if let notes = event.notes, meetingURL == nil {
+            meetingURL = findAppropriateURLs(notes)
+        }
+        
+        if let location = event.location, meetingURL == nil  {
+            meetingURL = findAppropriateURLs(location)
         }
 
-        return nil
+        return meetingURL
     }
 
     private func attendingStatusForUser(_ event: EKEvent) -> EKParticipantStatus {
