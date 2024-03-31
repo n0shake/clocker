@@ -171,14 +171,14 @@ class ClockerUnitTests: XCTestCase {
     // CI is calibrated to be on LA timezone!
     func testTimeDifference() {
         let observingDaylightSavings = TimeZone.autoupdatingCurrent.isDaylightSavingTime(for: Date())
-        let expectedDifference = observingDaylightSavings ? ", 9h 30m ahead" : ", 10h 30m ahead"
-        let expectedDifferenceForAuckland = observingDaylightSavings ? ", 16h ahead" : ", 18h ahead"
+        let expectedDifference = observingDaylightSavings ? ", +9h 30m" : ", +10h 30m"
+        let expectedDifferenceForAuckland = observingDaylightSavings ? ", +16h" : ", +18h"
         
         XCTAssertTrue(operations.timeDifference() == expectedDifference, "Difference was unexpectedly: \(operations.timeDifference())")
-        XCTAssertTrue(californiaOperations.timeDifference() == ", 3h behind", "Difference was unexpectedly: \(californiaOperations.timeDifference())")
+        XCTAssertTrue(californiaOperations.timeDifference() == ",-3h", "Difference was unexpectedly: \(californiaOperations.timeDifference())")
         XCTAssertTrue(floridaOperations.timeDifference() == "", "Difference was unexpectedly: \(floridaOperations.timeDifference())")
         XCTAssertTrue(aucklandOperations.timeDifference() == expectedDifferenceForAuckland, "Difference was unexpectedly: \(aucklandOperations.timeDifference())")
-        XCTAssertTrue(omahaOperations.timeDifference() == ", 1h behind", "Difference was unexpectedly: \(omahaOperations.timeDifference())")
+        XCTAssertTrue(omahaOperations.timeDifference() == " ,-1h", "Difference was unexpectedly: \(omahaOperations.timeDifference())")
     }
 
     func testSunriseSunset() {
