@@ -51,7 +51,7 @@ class UpcomingEventViewItem: NSCollectionViewItem {
         meetingLink = link
 
         setupLabels(title, isCancelled)
-        setupSupplementaryButton(link)
+        setupSupplementaryButton(link, cancellationState: isCancelled)
         setCalendarButtonTitle(buttonTitle: subtitle, cancellationState: isCancelled)
         calendarColorView.layer?.backgroundColor = color.cgColor
     }
@@ -71,8 +71,8 @@ class UpcomingEventViewItem: NSCollectionViewItem {
         eventTitleLabel.toolTip = title
     }
 
-    private func setupSupplementaryButton(_ meetingURL: URL?) {
-        guard meetingURL != nil else {
+    private func setupSupplementaryButton(_ meetingURL: URL?, cancellationState: Bool) {
+        guard meetingURL != nil, cancellationState == false else {
             zoomButton.image = nil
             supplementaryButtonWidthConstraint.constant = 0.0
             return
