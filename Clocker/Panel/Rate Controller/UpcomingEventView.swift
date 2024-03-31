@@ -34,7 +34,7 @@ class ThinScroller: NSScroller {
     private var trackingArea: NSTrackingArea?
 
     override class func scrollerWidth(for _: NSControl.ControlSize, scrollerStyle _: NSScroller.Style) -> CGFloat {
-        return 15
+        return 10
     }
 
     override func drawKnobSlot(in _: NSRect, highlight _: Bool) {
