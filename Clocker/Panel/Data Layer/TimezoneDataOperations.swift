@@ -83,9 +83,13 @@ extension TimezoneDataOperations {
     func compactMenuTitle() -> String {
         var subtitle = CLEmptyString
 
-        let shouldDayBeShown = store.shouldShowDayInMenubar()
         let shouldLabelBeShownAlongWithTime = !store.shouldDisplay(.placeInMenubar)
-
+        
+        if shouldLabelBeShownAlongWithTime == false {
+            return dataObject.formattedTimezoneLabel()
+        }
+        
+        let shouldDayBeShown = store.shouldShowDayInMenubar()
         if shouldDayBeShown, shouldLabelBeShownAlongWithTime {
             let substring = date(with: 0, displayType: .menu)
             subtitle.append(substring)
