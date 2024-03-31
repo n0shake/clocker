@@ -71,10 +71,13 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
         cellView.relativeDate.setAccessibilityIdentifier("RelativeDate")
         if let note = currentModel.note, !note.isEmpty {
             cellView.noteLabel.stringValue = note
+            cellView.noteLabel.isHidden = false
         } else if let value = operation.nextDaylightSavingsTransitionIfAvailable(with: sliderValue) {
             cellView.noteLabel.stringValue = value
+            cellView.noteLabel.isHidden = false
         } else {
             cellView.noteLabel.stringValue = CLEmptyString
+            cellView.noteLabel.isHidden = true
         }
         cellView.layout(with: currentModel)
         cellView.setAccessibilityIdentifier(currentModel.formattedTimezoneLabel())
@@ -240,6 +243,7 @@ extension TimezoneCellView {
         if model.selectionType == .timezone, model.latitude == nil, model.longitude == nil {
             sunriseImage.isHidden = true
         }
+        
 
         setupLayout()
     }
