@@ -20,12 +20,32 @@ class DateFormatterManager: NSObject {
         return dateFormatter
     }
 
-    class func dateFormatterWithFormat(with style: DateFormatter.Style, format: String, timezoneIdentifier: String, locale: Locale = Locale(identifier: "en_US")) -> DateFormatter {
-        specializedFormatter.dateStyle = style
-        specializedFormatter.timeStyle = style
-        specializedFormatter.dateFormat = format
-        specializedFormatter.timeZone = TimeZone(identifier: timezoneIdentifier)
-        specializedFormatter.locale = locale
+    class func dateFormatterWithFormat(with style: DateFormatter.Style, 
+                                       format: String,
+                                       timezoneIdentifier: String,
+                                       locale:
+                                       Locale = Locale(identifier: "en_US")) -> DateFormatter {
+        if (specializedFormatter.dateStyle != style) {
+            specializedFormatter.dateStyle = style
+        }
+        
+        if (specializedFormatter.timeStyle != style) {
+            specializedFormatter.timeStyle = style
+        }
+        
+        if (specializedFormatter.dateFormat != format) {
+            specializedFormatter.dateFormat = format
+        }
+
+        if (specializedFormatter.timeZone.identifier != timezoneIdentifier) {
+            specializedFormatter.timeZone = TimeZone(identifier: timezoneIdentifier)
+        }
+
+        if (specializedFormatter.locale.identifier != locale.identifier) {
+            specializedFormatter.locale = locale
+        }
+
+
         return specializedFormatter
     }
 
