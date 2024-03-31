@@ -57,6 +57,16 @@ protocol StatusItemViewConforming {
 class StatusContainerView: NSView {
     private var previousX: Int = 0
     private let store: DataStore
+    private lazy var paragraphStyle: NSMutableParagraphStyle = {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        paragraphStyle.lineBreakMode = .byTruncatingTail
+        // Better readability for p,q,y,g in the status bar.
+        let userPreferredLanguage = Locale.preferredLanguages.first ?? "en-US"
+        let lineHeight = userPreferredLanguage.contains("en") ? 0.92 : 1
+        paragraphStyle.lineHeightMultiple = CGFloat(lineHeight)
+        return paragraphStyle
+    }()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -167,7 +177,7 @@ class StatusContainerView: NSView {
             NSAttributedString.Key.font: compactModeTimeFont,
             NSAttributedString.Key.foregroundColor: textColor,
             NSAttributedString.Key.backgroundColor: NSColor.clear,
-            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
+            NSAttributedString.Key.paragraphStyle: paragraphStyle,
         ]
 
         let operation = TimezoneDataOperations(with: timezone, store: store)

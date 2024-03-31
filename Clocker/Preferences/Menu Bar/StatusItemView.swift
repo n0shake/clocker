@@ -53,6 +53,16 @@ class StatusItemView: NSView {
     private var operationsObject: TimezoneDataOperations {
         return TimezoneDataOperations(with: dataObject, store: DataStore.shared())
     }
+    private lazy var paragraphStyle: NSMutableParagraphStyle = {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        paragraphStyle.lineBreakMode = .byTruncatingTail
+        // Better readability for p,q,y,g in the status bar.
+        let userPreferredLanguage = Locale.preferredLanguages.first ?? "en-US"
+        let lineHeight = userPreferredLanguage.contains("en") ? 0.92 : 1
+        paragraphStyle.lineHeightMultiple = CGFloat(lineHeight)
+        return paragraphStyle
+    }()
 
     private var timeAttributes: [NSAttributedString.Key: AnyObject] {
         let textColor = hasDarkAppearance ? NSColor.white : NSColor.black
@@ -61,7 +71,7 @@ class StatusItemView: NSView {
             NSAttributedString.Key.font: compactModeTimeFont,
             NSAttributedString.Key.foregroundColor: textColor,
             NSAttributedString.Key.backgroundColor: NSColor.clear,
-            NSAttributedString.Key.paragraphStyle: defaultTimeParagraphStyle,
+            NSAttributedString.Key.paragraphStyle: paragraphStyle,
         ]
         return attributes
     }
@@ -73,7 +83,7 @@ class StatusItemView: NSView {
             NSAttributedString.Key.font: NSFont.boldSystemFont(ofSize: 10),
             NSAttributedString.Key.foregroundColor: textColor,
             NSAttributedString.Key.backgroundColor: NSColor.clear,
-            NSAttributedString.Key.paragraphStyle: defaultParagraphStyle,
+            NSAttributedString.Key.paragraphStyle: paragraphStyle,
         ]
         return textFontAttributes
     }
