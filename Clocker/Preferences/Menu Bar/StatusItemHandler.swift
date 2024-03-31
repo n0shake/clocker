@@ -285,7 +285,9 @@ class StatusItemHandler: NSObject {
             // Need setting button's image to nil
             // Especially if we have showUpcomingEvents turned to true and menubar timezones are empty
             statusItem.button?.image = nil
-            statusItem.button?.title = title
+            let attributes = [NSAttributedString.Key.font: NSFont.monospacedDigitSystemFont(ofSize: 13.0, weight: NSFont.Weight.regular),
+                              NSAttributedString.Key.baselineOffset: 0.1] as [NSAttributedString.Key: Any]
+            statusItem.button?.attributedTitle = NSAttributedString(string: title, attributes: attributes)
             updateMenubar()
         } else {
             setClockerIcon()
