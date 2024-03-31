@@ -95,14 +95,15 @@ class PanelController: ParentPanelController {
         sliderDatePicker.dateValue = Date()
         closestQuarterTimeRepresentation = findClosestQuarterTimeApproximation()
         modernSliderLabel.stringValue = "Time Scroller"
-        goForwardButton.alphaValue = 0
-        goBackwardsButton.alphaValue = 0
         resetModernSliderButton.isHidden = true
 
         if modernSlider != nil {
             let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSlider.numberOfItems(inSection: 0) / 2, section: 0)])
             modernSlider.scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
         }
+        
+        goForwardButton.alphaValue = 0
+        goBackwardsButton.alphaValue = 0
 
         setTimezoneDatasourceSlider(sliderValue: 0)
 

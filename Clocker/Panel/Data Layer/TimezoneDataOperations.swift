@@ -300,7 +300,7 @@ extension TimezoneDataOperations {
 
         if (local as NSDate).earlierDate(timezoneDate) == local {
             var replaceAgo = CLEmptyString
-            replaceAgo.append(", ")
+            replaceAgo.append(", +")
             let agoString = timezoneDate.timeAgo(since: local, numericDates: true)
             replaceAgo.append(agoString.replacingOccurrences(of: "ago", with: CLEmptyString))
 
@@ -314,12 +314,12 @@ extension TimezoneDataOperations {
             }
 
             let minuteDifference = calculateTimeDifference(with: local as NSDate, timezoneDate: timezoneDate as NSDate)
-            minuteDifference == 0 ? replaceAgo.append("ahead") : replaceAgo.append("\(minuteDifference)m ahead")
+            minuteDifference == 0 ? replaceAgo.append("") : replaceAgo.append("\(minuteDifference)m")
             return replaceAgo.lowercased()
         }
 
         var replaceAgo = CLEmptyString
-        replaceAgo.append(", ")
+        replaceAgo.append(", -")
 
         let replaced = timeDifference.replacingOccurrences(of: "ago", with: CLEmptyString)
         replaceAgo.append(replaced)
@@ -335,7 +335,7 @@ extension TimezoneDataOperations {
 
         let minuteDifference = calculateTimeDifference(with: local as NSDate, timezoneDate: timezoneDate as NSDate)
 
-        minuteDifference == 0 ? replaceAgo.append("behind") : replaceAgo.append("\(minuteDifference)m behind")
+        minuteDifference == 0 ? replaceAgo.append("") : replaceAgo.append("\(minuteDifference)m")
         return replaceAgo.lowercased()
     }
 
