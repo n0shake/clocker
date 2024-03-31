@@ -30,6 +30,10 @@ extension ParentPanelController {
                 resetModernSliderButton.layer?.masksToBounds = true
                 resetModernSliderButton.layer?.cornerRadius = resetModernSliderButton.frame.width / 2
             }
+            
+            if let scrollView = modernSlider.superview?.superview as? NSScrollView {
+                scrollView.scrollerStyle = NSScroller.Style.overlay
+            }
 
             goBackwardsButton.image = Themer.shared().goBackwardsImage()
             goForwardButton.image = Themer.shared().goForwardsImage()
