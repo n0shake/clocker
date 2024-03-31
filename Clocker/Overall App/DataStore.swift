@@ -24,10 +24,6 @@ class DataStore: NSObject {
     private static var sharedStore = DataStore(with: UserDefaults.standard)
     private var userDefaults: UserDefaults!
     private var ubiquitousStore: NSUbiquitousKeyValueStore?
-
-    // Since these pref can accessed every second, let's cache this
-    private var shouldDisplayDayInMenubar: Bool = false
-    private var shouldDisplayDateInMenubar: Bool = false
     private static let timeFormatsWithSuffix: Set<NSNumber> = Set([NSNumber(integerLiteral: 0),
                                                                    NSNumber(integerLiteral: 3),
                                                                    NSNumber(integerLiteral: 4),
