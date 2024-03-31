@@ -95,6 +95,8 @@ class PanelController: ParentPanelController {
         sliderDatePicker.dateValue = Date()
         closestQuarterTimeRepresentation = findClosestQuarterTimeApproximation()
         modernSliderLabel.stringValue = "Time Scroller"
+        goForwardButton.alphaValue = 0
+        goBackwardsButton.alphaValue = 0
         resetModernSliderButton.isHidden = true
 
         if modernSlider != nil {

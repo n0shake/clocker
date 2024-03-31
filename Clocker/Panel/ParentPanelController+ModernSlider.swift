@@ -80,14 +80,30 @@ extension ParentPanelController {
             strongSelf.resetModernSliderButton.animator().isHidden = hidden
         })
     }
+    
+    private func showAccessoryButtonsIfNeccesary(_ hide: Bool) {
+        NSAnimationContext.runAnimationGroup({ context in
+            context.duration = 0.5
+            context.timingFunction = CAMediaTimingFunction(name: hide ? CAMediaTimingFunctionName.easeOut : CAMediaTimingFunctionName.easeIn)
+            goForwardButton.animator().alphaValue = hide ? 0.0 : 1.0
+            goBackwardsButton.animator().alphaValue = hide ? 0.0 : 1.0
+        }, completionHandler: nil)
+    }
 
     @IBAction func resetModernSlider(_: NSButton) {
         closestQuarterTimeRepresentation = findClosestQuarterTimeApproximation()
         modernSliderLabel.stringValue = "Time Scroller"
-        animateButton(true)
         if modernSlider != nil {
             let indexPaths: Set<IndexPath> = Set([IndexPath(item: modernSlider.numberOfItems(inSection: 0) / 2, section: 0)])
-            modernSlider.scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
+            NSAnimationContext.runAnimationGroup({ context in
+                context.duration = 0.5
+                context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
+                modernSlider.animator().scrollToItems(at: indexPaths, scrollPosition: .centeredHorizontally)
+            }, completionHandler: { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.animateButton(true)
+                strongSelf.showAccessoryButtonsIfNeccesary(true)
+            })
         }
     }
 
@@ -112,6 +128,7 @@ extension ParentPanelController {
         let newPoint = NSPoint(x: changedOrigin.x + contentView.frame.width / 2, y: changedOrigin.y)
         let indexPath = modernSlider.indexPathForItem(at: newPoint)
         if let correctIndexPath = indexPath?.item, currentCenterIndexPath != correctIndexPath {
+            showAccessoryButtonsIfNeccesary(false)
             currentCenterIndexPath = correctIndexPath
             let minutesToAdd = setDefaultDateLabel(correctIndexPath)
             setTimezoneDatasourceSlider(sliderValue: minutesToAdd)
@@ -146,7 +163,7 @@ extension ParentPanelController {
             let remainder = (index % (centerPoint + 1))
             let nextDate = Calendar.current.date(byAdding: .minute, value: remainder * 15, to: closestQuarterTimeRepresentation ?? Date())!
             let minutes = minutesToHoursAndMinutes(remainder * 15)
-            modernSliderLabel.stringValue = "+\(minutes.hours):\(minutes.leftMinutes)h"
+            modernSliderLabel.stringValue = minutes.leftMinutes != 0 ? "+\(minutes.hours):\(minutes.leftMinutes)h" : "+\(minutes.hours)h"
             if resetModernSliderButton.isHidden {
                 animateButton(false)
             }
@@ -157,7 +174,7 @@ extension ParentPanelController {
             let previousDate = Calendar.current.date(byAdding: .minute, value: -1 * remainder * 15, to: closestQuarterTimeRepresentation ?? Date())!
             modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(previousDate)
             let minutes = minutesToHoursAndMinutes(-1 * remainder * 15)
-            modernSliderLabel.stringValue = "\(minutes.hours):\(minutes.leftMinutes)h"
+            modernSliderLabel.stringValue = minutes.leftMinutes != 0 ? "\(minutes.hours):\(minutes.leftMinutes)h" : "\(minutes.hours)h"
             if resetModernSliderButton.isHidden {
                 animateButton(false)
             }
