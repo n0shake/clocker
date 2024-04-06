@@ -26,16 +26,17 @@ class VersionUpdateHandler: NSObject {
     private var applicationVersion: String!
     private var applicationBundleID: String = Bundle.main.bundleIdentifier ?? "N/A"
     private var updatePriority = VersionUpdateHandlerPriority.defaultPri
-    private var useAllAvailableLanguages: Bool = true
+    public var useAllAvailableLanguages: Bool = true
     private var onlyPromptIfMainWindowIsAvailable: Bool = true
     private var checkAtLaunch: Bool = true
-    private var checkPeriod: Float = 0.0
-    private var remindPeriod: Float = 1.0
+    private var checkPeriod: Double = 0.0
+    private var remindPeriod: Double = 1.0
     private var verboseLogging: Bool = true
     private var updateURL: URL!
     private var checkingForNewVersion: Bool = false
     private var remoteVersionsDict: [String: Any] = [:]
     private var downloadError: Error?
+    private var dataTask: URLSessionDataTask? = .none
 
     private var showOnFirstLaunch: Bool = false
     public var previewMode: Bool = false
@@ -59,8 +60,20 @@ class VersionUpdateHandler: NSObject {
         applicationVersion = appVersion ?? "N/A"
 
         // Bundle Identifier
+        self.applicationBundleID = Bundle.main.bundleIdentifier ?? "com.abhishek.Clocker"
+        
+        //default settings
+        self.updatePriority = .defaultPri;
+        self.useAllAvailableLanguages = true;
+        self.onlyPromptIfMainWindowIsAvailable = true;
+        self.checkAtLaunch = true;
+        self.checkPeriod = 0.0;
+        self.remindPeriod = 1.0;
+        self.verboseLogging = true;
 
         super.init()
+        
+        applicationLaunched()
     }
 
     private func inThisVersionTitle() -> String {
@@ -108,11 +121,11 @@ class VersionUpdateHandler: NSObject {
         return UserDefaults.standard.integer(forKey: VersionUpdateHandler.kMacAppStoreIDKey)
     }
 
-    func setAppStoreID(_ appStoreID: Int) {
+    @objc func setAppStoreID(_ appStoreID: Int) {
         UserDefaults.standard.set(appStoreID, forKey: VersionUpdateHandler.kMacAppStoreIDKey)
     }
 
-    private func setLastChecked(_ date: Date) {
+    @objc private func setLastChecked(_ date: Date) {
         UserDefaults.standard.set(date, forKey: VersionUpdateHandler.kVersionLastCheckedKey)
     }
 
@@ -191,12 +204,137 @@ class VersionUpdateHandler: NSObject {
     }
 
     private func shouldCheckForNewVersion() -> Bool {
+        if (!self.previewMode) {
+            if let lastRemindedDate = lastReminded() {
+                // Reminder takes priority over check period
+                if Date().timeIntervalSince(lastRemindedDate) < Double(remindPeriod * Self.kSecondsInDay) {
+                    if verboseLogging {
+                        Logger.info("iVersion did not check for a new version because the user last asked to be reminded less than \(self.remindPeriod) days ago")
+                    }
+                    return false
+                }
+            } else if let lastCheckedDate = lastChecked(), Date().timeIntervalSince(lastCheckedDate) < Double(self.checkPeriod * Self.kSecondsInDay) {
+                if (self.verboseLogging) {
+                    Logger.info("iVersion did not check for a new version because the last check was less than \(self.checkPeriod) days ago")
+                }
+                return false
+            }
+        } else if (self.verboseLogging) {
+            Logger.info("iVersion debug mode is enabled - make sure you disable this for release")
+        }
+        // perform the check
         return true
+    }
+    
+    private func checkForNewVersionInBackground() {
+        var newerVersionAvailable = false
+        var osVersionSupported = false
+        var latestVersion: String? = nil
+        var versions: [String:String]? = nil
+        
+        var itunesServiceURL = "http://itunes.apple.com/\(self.appStoreCountry ?? "us")/lookup"
+        if let appStoreID = appStoreID(), appStoreID != 0 {
+            Logger.info("--- App Store ID is \(appStoreID)")
+            itunesServiceURL = itunesServiceURL.appendingFormat("?id=%@", appStoreID)
+        } else {
+            itunesServiceURL = itunesServiceURL.appendingFormat("?bundleId=%@", self.applicationBundleID)
+        }
+        
+        if (verboseLogging) {
+            Logger.info("iVersion is checking \(itunesServiceURL) for a new app version...")
+        }
+        
+
+        
+        dataTask = NetworkManager.task(with: itunesServiceURL) { [weak self] response, error in
+            guard let self, let data = response else {return }
+            
+            if (error != nil || response == nil) {
+                Logger.info("Response is nil or error is non-nil")
+            }
+            
+            let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+            
+            if let unwrapped = json as? [String: Any], 
+                let results = unwrapped["results"] as? Array<Any>,
+               let firstResult = results.first as? [String: Any],
+            let bundleID = firstResult["bundleId"] as? String {
+                
+                if (bundleID == self.applicationBundleID) {
+                    guard let minimumSupportedOSVersion = firstResult["minimumOsVersion"] as? String else { return }
+                    let version = ProcessInfo.processInfo.operatingSystemVersion
+                    let systemVersion = "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
+                    osVersionSupported = systemVersion.compareVersion(minimumSupportedOSVersion) != ComparisonResult.orderedAscending
+                    if (!osVersionSupported) {
+                        Logger.info("Current OS version is not supported")
+                    }
+                    // get version details
+                    let releaseNotes = firstResult["releaseNotes"]
+                    latestVersion = firstResult["version"] as? String
+                    
+                    if let version = latestVersion, osVersionSupported {
+                        versions = [version : (releaseNotes as? String) ?? ""]
+                    }
+                    
+                    // Get app ID
+                    if (appStoreID() == nil) {
+                        let appStoreIDString = firstResult["trackId"]
+                        performSelector(onMainThread: #selector(setAppStoreID(_:)),
+                                        with: appStoreIDString,
+                                        waitUntilDone: true)
+                        if (verboseLogging) {
+                            Logger.info("iVersion found the app on iTunes. The App Store ID is \(appStoreIDString ?? "")")
+                        }
+                    }
+                    
+                    newerVersionAvailable = latestVersion?.compareVersion(self.applicationVersion) == .orderedDescending
+                    if (verboseLogging) {
+                        if (newerVersionAvailable) {
+                            Logger.info("iVersion found a new version \(latestVersion ?? "N/A") of the app on iTunes. Current version is \(self.applicationVersion ?? "nil")")
+                        } else {
+                            Logger.info("iVersion did not find a new version of the app on iTunes. Current version is \(self.applicationVersion ?? "nil") and the latest version is \(latestVersion ?? "nil")")
+                        }
+                    }
+                } else {
+                    if (verboseLogging) {
+                        Logger.info("iVersion found that the application bundle ID \(self.applicationBundleID) does not match the bundle ID of the app found on iTunes \(bundleID) with the specified App Store ID \(self.appStoreID() ?? 0)")
+                    }
+                }
+            } else {
+                Logger.info("Server returned an error while fetching version info")
+            }
+            
+            //TODO: Set download error
+            
+            performSelector(onMainThread: #selector(setRemoteVersionsDict(_:)), with: versions, waitUntilDone: true)
+            performSelector(onMainThread: #selector(setLastChecked(_:)), with: Date(), waitUntilDone: true)
+            performSelector(onMainThread: #selector(Self.downloadVersionsData), with: nil, waitUntilDone: true)
+        }
+        
+        dataTask?.resume()
+    }
+    
+    @objc private func setRemoteVersionsDict(_ dict: [String: Any]?) {
+        if let unwrappedDict = dict {
+            remoteVersionsDict = unwrappedDict
+        }
+    }
+    
+    private func checkForNewVersion() {
+        if (!self.checkingForNewVersion) {
+            self.checkingForNewVersion = true
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.checkForNewVersionInBackground()
+            }
+        }
     }
 
     private func applicationLaunched() {
         if checkAtLaunch {
             checkIfNewVersion()
+            if (shouldCheckForNewVersion()) {
+                checkForNewVersion()
+            }
         } else if verboseLogging {
             Logger.info("iVersion will not check for updatess because checkAtLaunch option is disabled")
         }
@@ -291,7 +429,7 @@ class VersionUpdateHandler: NSObject {
         // Get Button Indice
     }
 
-    private func downloadVersionsData() {
+    @objc private func downloadVersionsData() {
         if onlyPromptIfMainWindowIsAvailable {
             guard NSApplication.shared.mainWindow != nil else {
                 return
