@@ -34,7 +34,6 @@ class VersionUpdateHandler: NSObject {
     private var checkPeriod: Double = 0.0
     private var remindPeriod: Double = 1.0
     private var verboseLogging: Bool = true
-    private var updateURL: URL!
     private var checkingForNewVersion: Bool = false
     private var remoteVersionsDict: [String: Any] = [:]
     private var downloadError: Error?
@@ -45,7 +44,7 @@ class VersionUpdateHandler: NSObject {
     private var localRepeater: Repeater?
 
     private var showOnFirstLaunch: Bool = false
-    public var previewMode: Bool = true
+    public var previewMode: Bool = false
     private var versionDetails: String?
 
     override init() {
@@ -79,7 +78,6 @@ class VersionUpdateHandler: NSObject {
 
         super.init()
         
-        setAppStoreID(0)
         applicationLaunched()
     }
 
@@ -112,25 +110,8 @@ class VersionUpdateHandler: NSObject {
     }
 
     private func updatedURL() -> URL {
-        if let url = updateURL, url.absoluteString.isEmpty == false {
-            return updateURL
-        }
-
-        if let appStoreId = appStoreID() {
-            Logger.info("No App Store ID was found for Clocker")
-            return URL(string: "macappstore://itunes.apple.com/app/idid\(appStoreId)")!
-        }
-
         // Last resort
-        return URL(string: "macappstore://itunes.apple.com/app/id\(VersionUpdateHandler.kVersionMacAppStoreAppID)")!
-    }
-
-    private func appStoreID() -> Int? {
-        return UserDefaults.standard.integer(forKey: VersionUpdateHandler.kMacAppStoreIDKey)
-    }
-
-    @objc func setAppStoreID(_ appStoreID: Int) {
-        UserDefaults.standard.set(appStoreID, forKey: VersionUpdateHandler.kMacAppStoreIDKey)
+        return URL(string: "macappstore://itunes.apple.com/us/app/clocker/id1056643111")!
     }
 
     @objc private func setLastChecked(_ date: Date) {
@@ -241,18 +222,11 @@ class VersionUpdateHandler: NSObject {
         var versions: [String:String]? = nil
         
         var itunesServiceURL = "http://itunes.apple.com/\(self.appStoreCountry ?? "us")/lookup"
-        if let appStoreID = appStoreID(), appStoreID != 0 {
-            Logger.info("--- App Store ID is \(appStoreID)")
-            itunesServiceURL = itunesServiceURL.appendingFormat("?id=%@", appStoreID)
-        } else {
-            itunesServiceURL = itunesServiceURL.appendingFormat("?bundleId=%@", self.applicationBundleID)
-        }
+        itunesServiceURL = itunesServiceURL.appendingFormat("?bundleId=%@", self.applicationBundleID)
         
         if (verboseLogging) {
             Logger.info("iVersion is checking \(itunesServiceURL) for a new app version...")
         }
-        
-
         
         dataTask = NetworkManager.task(with: itunesServiceURL) { [weak self] response, error in
             guard let self, let data = response else {return }
@@ -283,18 +257,6 @@ class VersionUpdateHandler: NSObject {
                         versions = [version : (releaseNotes as? String) ?? ""]
                     }
                     
-                    // Get app ID
-                    let appStoreIdentifier = appStoreID()
-                    if (appStoreIdentifier == nil || appStoreIdentifier == 0) {
-                        let appStoreIDString = firstResult["trackId"]
-                        performSelector(onMainThread: #selector(setAppStoreID(_:)),
-                                        with: appStoreIDString,
-                                        waitUntilDone: true)
-                        if (verboseLogging) {
-                            Logger.info("iVersion found the app on iTunes. The App Store ID is \(appStoreIDString ?? "")")
-                        }
-                    }
-                    
                     newerVersionAvailable = latestVersion?.compareVersion(self.applicationVersion) == .orderedDescending
                     if (verboseLogging) {
                         if (newerVersionAvailable) {
@@ -305,7 +267,7 @@ class VersionUpdateHandler: NSObject {
                     }
                 } else {
                     if (verboseLogging) {
-                        Logger.info("iVersion found that the application bundle ID \(self.applicationBundleID) does not match the bundle ID of the app found on iTunes \(bundleID) with the specified App Store ID \(self.appStoreID() ?? 0)")
+                        Logger.info("iVersion found that the application bundle ID \(self.applicationBundleID) does not match the bundle ID of the app found on iTunes \(bundleID) with the specified App Store ID")
                     }
                 }
             } else {
@@ -330,6 +292,7 @@ class VersionUpdateHandler: NSObject {
     
     @objc private func setRemoteVersionsDict(_ dict: [String: Any]?) {
         if let unwrappedDict = dict {
+            Logger.info("Setting Remote Versions Dict to \(unwrappedDict)")
             remoteVersionsDict = unwrappedDict
         }
     }
@@ -473,36 +436,13 @@ class VersionUpdateHandler: NSObject {
     }
     
     private func showAppPageInAppStore() {
-        if (updateURL == nil && appStoreID() == nil) {
-            if (self.verboseLogging) {
-                Logger.info("iVersion was unable to open App Store because app store ID isn't set")
-            }
-        }
-        
         if (self.verboseLogging) {
             Logger.info("iVersion will open App Store using the following URL \(updatedURL())")
         }
         
         NSWorkspace.shared.open(updatedURL())
-        if (updateURL == nil) {
-            openAppPageWhenAppStoreLaunched()
-        }
     }
     
-    private func openAppPageWhenAppStoreLaunched() {
-        // Check if App Store is running
-        for app in NSWorkspace.shared.runningApplications {
-            if (app.bundleIdentifier == Self.kVersionMacAppStoreBundleID) {
-                // Open App Page
-                Logger.info("About to open App Store with our app")
-                perform(#selector(NSWorkspace.shared.open(_:)), with: self.updateURL, afterDelay: 5.0)
-                return
-            }
-        }
-        
-        // Try Again
-        openAppPageWhenAppStoreLaunched()
-    }
 
     @objc private func downloadVersionsData() {
         if onlyPromptIfMainWindowIsAvailable, NSApplication.shared.mainWindow == nil {
@@ -528,10 +468,8 @@ class VersionUpdateHandler: NSObject {
                 } else {
                     Logger.info("Version Update Check because an unknown error occurred")
                 }
+                return
             }
-            Logger.info("Returning early because remoteVersionsDict is empty")
-            remoteRepeater = nil
-            return
         }
 
         let details = versionDetails(since: applicationVersion, in: remoteVersionsDict)
