@@ -19,6 +19,8 @@ class VersionUpdateHandler: NSObject {
     static let kMacAppStoreIDKey = "VersionCheckAppStoreIDKey"
     static let kVersionLastCheckedKey = "VersionLastCheckedKey"
     static let kVersionLastRemindedKey = "VersionLastRemindedKey"
+    static let kVersionMacAppStoreBundleID = "com.apple.AppStore";
+    static let kVersionMacAppStoreAppID = 1056643111
 
     static let sharedInstance = VersionUpdateHandler()
 
@@ -39,9 +41,11 @@ class VersionUpdateHandler: NSObject {
     private var dataTask: URLSessionDataTask? = .none
     private var visibleLocalAlert: NSAlert?
     private var visibleRemoteAlert: NSAlert?
+    private var remoteRepeater: Repeater?
+    private var localRepeater: Repeater?
 
     private var showOnFirstLaunch: Bool = false
-    public var previewMode: Bool = false
+    public var previewMode: Bool = true
     private var versionDetails: String?
 
     override init() {
@@ -75,6 +79,7 @@ class VersionUpdateHandler: NSObject {
 
         super.init()
         
+        setAppStoreID(0)
         applicationLaunched()
     }
 
@@ -107,16 +112,17 @@ class VersionUpdateHandler: NSObject {
     }
 
     private func updatedURL() -> URL {
-        if updateURL.absoluteString.isEmpty == false {
+        if let url = updateURL, url.absoluteString.isEmpty == false {
             return updateURL
         }
 
-        guard let appStoreId = appStoreID() else {
+        if let appStoreId = appStoreID() {
             Logger.info("No App Store ID was found for Clocker")
-            return URL(string: "")!
+            return URL(string: "macappstore://itunes.apple.com/app/idid\(appStoreId)")!
         }
 
-        return URL(string: "macappstore://itunes.apple.com/app/id\(appStoreId)")!
+        // Last resort
+        return URL(string: "macappstore://itunes.apple.com/app/id\(VersionUpdateHandler.kVersionMacAppStoreAppID)")!
     }
 
     private func appStoreID() -> Int? {
@@ -261,7 +267,6 @@ class VersionUpdateHandler: NSObject {
                 let results = unwrapped["results"] as? Array<Any>,
                let firstResult = results.first as? [String: Any],
             let bundleID = firstResult["bundleId"] as? String {
-                
                 if (bundleID == self.applicationBundleID) {
                     guard let minimumSupportedOSVersion = firstResult["minimumOsVersion"] as? String else { return }
                     let version = ProcessInfo.processInfo.operatingSystemVersion
@@ -279,7 +284,8 @@ class VersionUpdateHandler: NSObject {
                     }
                     
                     // Get app ID
-                    if (appStoreID() == nil) {
+                    let appStoreIdentifier = appStoreID()
+                    if (appStoreIdentifier == nil || appStoreIdentifier == 0) {
                         let appStoreIDString = firstResult["trackId"]
                         performSelector(onMainThread: #selector(setAppStoreID(_:)),
                                         with: appStoreIDString,
@@ -307,10 +313,16 @@ class VersionUpdateHandler: NSObject {
             }
             
             //TODO: Set download error
-            
-            performSelector(onMainThread: #selector(setRemoteVersionsDict(_:)), with: versions, waitUntilDone: true)
-            performSelector(onMainThread: #selector(setLastChecked(_:)), with: Date(), waitUntilDone: true)
-            performSelector(onMainThread: #selector(Self.downloadVersionsData), with: nil, waitUntilDone: true)
+            Logger.info("Versions downloaded \(versions ?? [:])")
+            performSelector(onMainThread: #selector(setRemoteVersionsDict(_:)),
+                            with: versions,
+                            waitUntilDone: true)
+            performSelector(onMainThread: #selector(setLastChecked(_:)), 
+                            with: Date(),
+                            waitUntilDone: true)
+            performSelector(onMainThread: #selector(Self.downloadVersionsData), 
+                            with: nil,
+                            waitUntilDone: true)
         }
         
         dataTask?.resume()
@@ -365,6 +377,7 @@ class VersionUpdateHandler: NSObject {
                                     _ defaultButton: String,
                                     _ ignoreButton: String?,
                                     _ remindButton: String?) -> NSAlert {
+        Logger.info("Showing alert")
         let floatMax = CGFloat.greatestFiniteMagnitude
 
         let alert = NSAlert()
@@ -431,17 +444,70 @@ class VersionUpdateHandler: NSObject {
         return remindButtonLabel().isEmpty == false && updatePriority < VersionUpdateHandlerPriority.high
     }
 
-    private func didDismissAlert(_: NSAlert, _: Int) {
+    private func didDismissAlert(_ alert: NSAlert, _ buttonIndex: Int) {
         // Get Button Indice
+        let downloadButtonIndex = 0
+        let ignoreButtonIndex = showIgnoreButton() ? 1 : 0
+        let remindButtonIndex = showRemindButtton() ? ignoreButtonIndex + 1 : 0
+        
+        let latestVersion = mostRecentVersionInDict(self.remoteVersionsDict)
+        
+        if (self.visibleLocalAlert == alert) {
+            setViewedVersionDetails(true)
+            visibleLocalAlert = nil
+            return
+        }
+        
+        if (buttonIndex == downloadButtonIndex) {
+            setLastReminded(nil)
+            showAppPageInAppStore()
+        } else if (buttonIndex == ignoreButtonIndex) {
+            // ignore this version
+            setIgnoredVersion(latestVersion)
+            setLastReminded(nil)
+        } else if (buttonIndex == remindButtonIndex) {
+            setLastReminded(Date())
+        }
+        
+        self.visibleRemoteAlert = nil
+    }
+    
+    private func showAppPageInAppStore() {
+        if (updateURL == nil && appStoreID() == nil) {
+            if (self.verboseLogging) {
+                Logger.info("iVersion was unable to open App Store because app store ID isn't set")
+            }
+        }
+        
+        if (self.verboseLogging) {
+            Logger.info("iVersion will open App Store using the following URL \(updatedURL())")
+        }
+        
+        NSWorkspace.shared.open(updatedURL())
+        if (updateURL == nil) {
+            openAppPageWhenAppStoreLaunched()
+        }
+    }
+    
+    private func openAppPageWhenAppStoreLaunched() {
+        // Check if App Store is running
+        for app in NSWorkspace.shared.runningApplications {
+            if (app.bundleIdentifier == Self.kVersionMacAppStoreBundleID) {
+                // Open App Page
+                Logger.info("About to open App Store with our app")
+                perform(#selector(NSWorkspace.shared.open(_:)), with: self.updateURL, afterDelay: 5.0)
+                return
+            }
+        }
+        
+        // Try Again
+        openAppPageWhenAppStoreLaunched()
     }
 
     @objc private func downloadVersionsData() {
-        if onlyPromptIfMainWindowIsAvailable {
-            guard NSApplication.shared.mainWindow != nil else {
-                return
-            }
-
-            _ = Repeater(interval: .seconds(0.5), mode: .infinite) { _ in
+        if onlyPromptIfMainWindowIsAvailable, NSApplication.shared.mainWindow == nil {
+            Logger.info("Main window not available in downloadVersionsData")
+            remoteRepeater = Repeater(interval: .seconds(0.5), mode: .once) { _ in
                 OperationQueue.main.addOperation { [weak self] in
                     guard let self = self else {
                         return
@@ -449,6 +515,8 @@ class VersionUpdateHandler: NSObject {
                     self.downloadVersionsData()
                 }
             }
+            remoteRepeater?.start()
+            return
         }
 
         if checkingForNewVersion {
@@ -461,6 +529,8 @@ class VersionUpdateHandler: NSObject {
                     Logger.info("Version Update Check because an unknown error occurred")
                 }
             }
+            Logger.info("Returning early because remoteVersionsDict is empty")
+            remoteRepeater = nil
             return
         }
 
@@ -468,20 +538,29 @@ class VersionUpdateHandler: NSObject {
         let mostRecentVersion = mostRecentVersionInDict(remoteVersionsDict)
 
         if details != nil {
+            Logger.info("About to show visible remote alert")
             // Check if ignored
-            let showDetails = ignoredVersion() == mostRecentVersion || previewMode
+            let showDetails = ignoredVersion() != mostRecentVersion || previewMode
 
-            if showDetails {}
+            // show details
+            if showDetails && self.visibleRemoteAlert == nil {
+                var title = updateAvailableTitle()
+                title = title.appending(" (\(mostRecentVersion))")
+                self.visibleRemoteAlert = showAlertWithTitle(title, 
+                                                             details ?? "N/A",
+                                                             self.downloadButtonLabel(),
+                                                             showIgnoreButton() ? self.ignoreButtonLabel() : nil,
+                                                             showRemindButtton() ? self.remindButtonLabel() : nil)
+            }
+            
+            remoteRepeater = nil
         }
     }
 
     private func checkIfNewVersion() {
-        if onlyPromptIfMainWindowIsAvailable {
-            guard NSApplication.shared.mainWindow != nil else {
-                return
-            }
-
-            _ = Repeater(interval: .seconds(0.5), mode: .infinite) { _ in
+        if onlyPromptIfMainWindowIsAvailable, NSApplication.shared.mainWindow == nil {
+            Logger.info("Main window not available in checkIfNewVersion")
+            localRepeater = Repeater(interval: .seconds(0.5), mode: .once) { _ in
                 OperationQueue.main.addOperation { [weak self] in
                     guard let self = self else {
                         return
@@ -489,6 +568,8 @@ class VersionUpdateHandler: NSObject {
                     self.checkIfNewVersion()
                 }
             }
+            localRepeater?.start()
+            return
         }
 
         let lastVersionString = lastVersion()
@@ -498,13 +579,19 @@ class VersionUpdateHandler: NSObject {
                 setLastReminded(nil)
                 
                 if (self.versionDetails != nil && visibleLocalAlert == nil && visibleRemoteAlert == nil) {
+                    Logger.info("Visible Local Alert about to be display")
                     visibleLocalAlert = showAlertWithTitle(inThisVersionTitle(), self.versionDetailsString(), okayButtonLabel(), nil, nil)
+                } else {
+                    Logger.info("Skipping to show local alert because version details is \(self.versionDetails ?? "nil")")
                 }
             }
         } else {
             //record this as last viewed release
+            Logger.info("Set Viewed Version Details")
             setViewedVersionDetails(true)
         }
+        
+        localRepeater = nil
     }
 }
 
