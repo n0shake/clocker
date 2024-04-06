@@ -447,7 +447,7 @@ class VersionUpdateHandler: NSObject {
     @objc private func downloadVersionsData() {
         if onlyPromptIfMainWindowIsAvailable, NSApplication.shared.mainWindow == nil {
             Logger.info("Main window not available in downloadVersionsData")
-            remoteRepeater = Repeater(interval: .seconds(0.5), mode: .once) { _ in
+            remoteRepeater = Repeater(interval: .seconds(5), mode: .once) { _ in
                 OperationQueue.main.addOperation { [weak self] in
                     guard let self = self else {
                         return
@@ -498,7 +498,7 @@ class VersionUpdateHandler: NSObject {
     private func checkIfNewVersion() {
         if onlyPromptIfMainWindowIsAvailable, NSApplication.shared.mainWindow == nil {
             Logger.info("Main window not available in checkIfNewVersion")
-            localRepeater = Repeater(interval: .seconds(0.5), mode: .once) { _ in
+            localRepeater = Repeater(interval: .seconds(5), mode: .once) { _ in
                 OperationQueue.main.addOperation { [weak self] in
                     guard let self = self else {
                         return
