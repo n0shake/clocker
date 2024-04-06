@@ -122,7 +122,7 @@ extension EventCenter {
         let relevantEvents = filteredEvents[autoupdatingCalendar.startOfDay(for: Date())] ?? []
 
         let filteredEvents = relevantEvents.filter {
-            $0.event.isAllDay == false && $0.event.endDate.timeIntervalSinceNow > 0 && $0.event.startDate.timeIntervalSinceNow > -300
+            $0.event.isAllDay == false && $0.event.endDate.timeIntervalSinceNow > 0 && $0.event.startDate.timeIntervalSinceNow > -300 && $0.event.status != .canceled
         }
 
         if filteredEvents.count == 1 { return filteredEvents.first }
@@ -474,7 +474,9 @@ struct EventInfo {
 
     func metadataForMeeting() -> String {
         let timeIntervalSinceNowForMeeting = event.startDate.timeIntervalSinceNow
-        if timeIntervalSinceNowForMeeting == 0 || event.startDate.shortTimeAgoSinceNow == "0s" {
+        
+        
+        if timeIntervalSinceNowForMeeting <= 0 || event.startDate.shortTimeAgoSinceNow == "0s" {
             return "started."
         } else if timeIntervalSinceNowForMeeting < 0, timeIntervalSinceNowForMeeting > -300 {
             return "started +\(event.startDate.shortTimeAgoSinceNow)."
