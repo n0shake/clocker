@@ -4,7 +4,7 @@ import Cocoa
 import CoreLoggerKit
 
 class VersionUpdateHandler: NSObject {
-    enum VersionUpdateHandlerPriority {
+    enum VersionUpdateHandlerPriority: Comparable {
         case defaultPri
         case low
         case medium
@@ -37,6 +37,8 @@ class VersionUpdateHandler: NSObject {
     private var remoteVersionsDict: [String: Any] = [:]
     private var downloadError: Error?
     private var dataTask: URLSessionDataTask? = .none
+    private var visibleLocalAlert: NSAlert?
+    private var visibleRemoteAlert: NSAlert?
 
     private var showOnFirstLaunch: Bool = false
     public var previewMode: Bool = false
@@ -358,7 +360,11 @@ class VersionUpdateHandler: NSObject {
         return dict.keys.sorted().last ?? ""
     }
 
-    private func showAlertWithTitle(_ title: String, _ details: String, _ defaultButton: String, _ ignoreButton: String, _ remindButton: String) -> NSAlert {
+    private func showAlertWithTitle(_ title: String, 
+                                    _ details: String,
+                                    _ defaultButton: String,
+                                    _ ignoreButton: String?,
+                                    _ remindButton: String?) -> NSAlert {
         let floatMax = CGFloat.greatestFiniteMagnitude
 
         let alert = NSAlert()
@@ -396,12 +402,12 @@ class VersionUpdateHandler: NSObject {
         scrollView.frame = NSRect(x: 0.0, y: 0.0, width: scrollView.frame.size.width, height: height)
         alert.accessoryView = scrollView
 
-        if ignoreButton.isEmpty == false {
-            alert.addButton(withTitle: ignoreButton)
+        if let ignoreButtonTitle = ignoreButton {
+            alert.addButton(withTitle: ignoreButtonTitle)
         }
 
-        if remindButton.isEmpty == false {
-            alert.addButton(withTitle: remindButton)
+        if let remindButtonTitle = remindButton {
+            alert.addButton(withTitle: remindButtonTitle)
 
             let modalResponse = alert.runModal()
             if modalResponse == .alertFirstButtonReturn {
@@ -418,11 +424,11 @@ class VersionUpdateHandler: NSObject {
     }
 
     private func showIgnoreButton() -> Bool {
-        return false
+        return ignoreButtonLabel().isEmpty == false && updatePriority < VersionUpdateHandlerPriority.medium
     }
 
     private func showRemindButtton() -> Bool {
-        return false
+        return remindButtonLabel().isEmpty == false && updatePriority < VersionUpdateHandlerPriority.high
     }
 
     private func didDismissAlert(_: NSAlert, _: Int) {
@@ -475,7 +481,7 @@ class VersionUpdateHandler: NSObject {
                 return
             }
 
-            _ = Repeater(interval: .seconds(5), mode: .infinite) { _ in
+            _ = Repeater(interval: .seconds(0.5), mode: .infinite) { _ in
                 OperationQueue.main.addOperation { [weak self] in
                     guard let self = self else {
                         return
@@ -490,7 +496,14 @@ class VersionUpdateHandler: NSObject {
             if applicationVersion.compareVersion(lastVersionString) == ComparisonResult.orderedDescending || previewMode {
                 // Clear Reminder
                 setLastReminded(nil)
+                
+                if (self.versionDetails != nil && visibleLocalAlert == nil && visibleRemoteAlert == nil) {
+                    visibleLocalAlert = showAlertWithTitle(inThisVersionTitle(), self.versionDetailsString(), okayButtonLabel(), nil, nil)
+                }
             }
+        } else {
+            //record this as last viewed release
+            setViewedVersionDetails(true)
         }
     }
 }
