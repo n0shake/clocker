@@ -178,32 +178,17 @@ extension EventCenter {
     func requestAccess(to entity: EKEntityType, completionHandler: @escaping (_ granted: Bool) -> Void) {
         initializeStoreIfNeccesary()
         
-        if #available(macOS 14.0, *) {
-            eventStore.requestFullAccessToEvents { [weak self] granted, error in
-                // On successful granting of calendar permission, we default to showing events from all calendars
-                if let self = self, entity == .event, granted {
-                    self.saveDefaultIdentifiersList()
-                } else if let requestError = error {
-                    Logger.info("Unable to request events access due to \(requestError.localizedDescription)")
-                } else {
-                    Logger.info("Request events access failed silently")
-                }
-                completionHandler(granted)
+        eventStore.requestAccess(to: entity) { [weak self] granted, error in
+            // On successful granting of calendar permission, we default to showing events from all calendars
+            if let self = self, entity == .event, granted {
+                self.saveDefaultIdentifiersList()
+            } else if let requestError = error {
+                Logger.info("Unable to request events access due to \(requestError.localizedDescription)")
+            } else {
+                Logger.info("Request events access failed silently")
             }
-        } else {
-            eventStore.requestAccess(to: entity) { [weak self] granted, error in
-
-                // On successful granting of calendar permission, we default to showing events from all calendars
-                if let self = self, entity == .event, granted {
-                    self.saveDefaultIdentifiersList()
-                } else if let requestError = error {
-                    Logger.info("Unable to request events access due to \(requestError.localizedDescription)")
-                } else {
-                    Logger.info("Request events access failed silently")
-                }
-
-                completionHandler(granted)
-            }
+            
+            completionHandler(granted)
         }
     }
 
