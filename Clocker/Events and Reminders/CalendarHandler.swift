@@ -205,8 +205,6 @@ extension EventCenter {
                 completionHandler(granted)
             }
         }
-
-
     }
 
     func filterEvents() {
