@@ -229,7 +229,7 @@ class VersionUpdateHandler: NSObject {
         }
         
         dataTask = NetworkManager.task(with: itunesServiceURL) { [weak self] response, error in
-            guard let self, let data = response else {return }
+            guard let self = self, let data = response else {return }
             
             if (error != nil || response == nil) {
                 Logger.info("Response is nil or error is non-nil")
@@ -258,7 +258,7 @@ class VersionUpdateHandler: NSObject {
                     }
                     
                     newerVersionAvailable = latestVersion?.compareVersion(self.applicationVersion) == .orderedDescending
-                    if (verboseLogging) {
+                    if (self.verboseLogging) {
                         if (newerVersionAvailable) {
                             Logger.info("iVersion found a new version \(latestVersion ?? "N/A") of the app on iTunes. Current version is \(self.applicationVersion ?? "nil")")
                         } else {
@@ -266,7 +266,7 @@ class VersionUpdateHandler: NSObject {
                         }
                     }
                 } else {
-                    if (verboseLogging) {
+                    if (self.verboseLogging) {
                         Logger.info("iVersion found that the application bundle ID \(self.applicationBundleID) does not match the bundle ID of the app found on iTunes \(bundleID) with the specified App Store ID")
                     }
                 }
@@ -276,13 +276,13 @@ class VersionUpdateHandler: NSObject {
             
             //TODO: Set download error
             Logger.info("Versions downloaded \(versions ?? [:])")
-            performSelector(onMainThread: #selector(setRemoteVersionsDict(_:)),
+            self.performSelector(onMainThread: #selector(VersionUpdateHandler.setRemoteVersionsDict(_:)),
                             with: versions,
                             waitUntilDone: true)
-            performSelector(onMainThread: #selector(setLastChecked(_:)), 
+            self.performSelector(onMainThread: #selector(VersionUpdateHandler.setLastChecked(_:)),
                             with: Date(),
                             waitUntilDone: true)
-            performSelector(onMainThread: #selector(Self.downloadVersionsData), 
+            self.performSelector(onMainThread: #selector(Self.downloadVersionsData),
                             with: nil,
                             waitUntilDone: true)
         }

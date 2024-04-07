@@ -49,11 +49,16 @@ class UpcomingEventStatusItemView: NSView {
         }
 
         etaField.disableWrapping()
+        
+        var topAnchorConstant: CGFloat = 7
+        if #available(macOS 11.0, *) {
+            topAnchorConstant = 0
+        }
 
         NSLayoutConstraint.activate([
             nextEventField.leadingAnchor.constraint(equalTo: leadingAnchor),
             nextEventField.trailingAnchor.constraint(equalTo: trailingAnchor),
-            nextEventField.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            nextEventField.topAnchor.constraint(equalTo: topAnchor, constant: topAnchorConstant),
             nextEventField.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.35),
         ])
 

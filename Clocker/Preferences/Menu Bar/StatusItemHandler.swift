@@ -154,6 +154,17 @@ class StatusItemHandler: NSObject {
         statusContainerView?.wantsLayer = true
         statusItem.button?.addSubview(statusContainerView!)
         statusItem.button?.frame = statusContainerView!.bounds
+
+        // For OS < 11, we need to fix the sizing (width) on the button's window
+        // Otherwise, we won't be able to see the menu bar option at all.
+        if let window = statusItem.button?.window {
+            let currentFrame = window.frame
+            let newFrame = NSRect(x: currentFrame.origin.x,
+                                  y: currentFrame.origin.y,
+                                  width: statusItem.button?.bounds.size.width ?? 0,
+                                  height: currentFrame.size.height)
+            window.setFrame(newFrame, display: true)
+        }
         statusItem.button?.subviews.first?.window?.backgroundColor = NSColor.clear
     }
 
