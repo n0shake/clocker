@@ -172,21 +172,42 @@ extension EventCenter {
     func initializeStoreIfNeccesary() {
         if eventStore == nil {
             eventStore = EKEventStore()
+            eventStore.reset()
         }
     }
 
     func requestAccess(to entity: EKEntityType, completionHandler: @escaping (_ granted: Bool) -> Void) {
         initializeStoreIfNeccesary()
-
-        eventStore.requestAccess(to: entity) { [weak self] granted, _ in
-
-            // On successful granting of calendar permission, we default to showing events from all calendars
-            if let self = self, entity == .event, granted {
-                self.saveDefaultIdentifiersList()
+        
+        if #available(macOS 14.0, *) {
+            eventStore.requestFullAccessToEvents { [weak self] granted, error in
+                // On successful granting of calendar permission, we default to showing events from all calendars
+                if let self = self, entity == .event, granted {
+                    self.saveDefaultIdentifiersList()
+                } else if let requestError = error {
+                    Logger.info("Unable to request events access due to \(requestError.localizedDescription)")
+                } else {
+                    Logger.info("Request events access failed silently")
+                }
+                completionHandler(granted)
             }
+        } else {
+            eventStore.requestAccess(to: entity) { [weak self] granted, error in
 
-            completionHandler(granted)
+                // On successful granting of calendar permission, we default to showing events from all calendars
+                if let self = self, entity == .event, granted {
+                    self.saveDefaultIdentifiersList()
+                } else if let requestError = error {
+                    Logger.info("Unable to request events access due to \(requestError.localizedDescription)")
+                } else {
+                    Logger.info("Request events access failed silently")
+                }
+
+                completionHandler(granted)
+            }
         }
+
+
     }
 
     func filterEvents() {
