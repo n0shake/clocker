@@ -297,7 +297,7 @@ class PreferencesViewController: ParentViewController {
         }
     }
 
-    @objc func ping(_ sender: Any) {
+    @objc func ping(_ sender: NSButton) {
         guard let delegate = NSApplication.shared.delegate as? AppDelegate else {
             return
         }

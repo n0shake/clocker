@@ -17,8 +17,8 @@ class StatusItemHandler: NSObject {
 
     var statusItem: NSStatusItem = {
         let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        statusItem.toolTip = "Clocker"
-        statusItem.highlightMode = false
+        statusItem.button?.toolTip = "Clocker"
+        (statusItem.button?.cell as? NSButtonCell)?.highlightsBy = NSCell.StyleMask(rawValue: 0)
         return statusItem
     }()
 
@@ -43,7 +43,7 @@ class StatusItemHandler: NSObject {
             // Do some cleanup
             switch oldValue {
             case .compactText:
-                statusItem.view = nil
+                statusItem.button?.subviews = []
                 statusContainerView = nil
             case .standardText:
                 statusItem.button?.title = CLEmptyString
@@ -98,7 +98,7 @@ class StatusItemHandler: NSObject {
             }
         }
 
-        statusItem.target = self
+        statusItem.button?.target = self
         statusItem.autosaveName = NSStatusItem.AutosaveName("ClockerStatusItem")
         setSelector()
     }
@@ -151,8 +151,10 @@ class StatusItemHandler: NSObject {
                                                   store: store,
                                                   showUpcomingEventView: upcomingEventView,
                                                   bufferContainerWidth: bufferCalculatedWidth())
-        statusItem.view = statusContainerView
-        statusItem.view?.window?.backgroundColor = NSColor.clear
+        statusContainerView?.wantsLayer = true
+        statusItem.button?.addSubview(statusContainerView!)
+        statusItem.button?.frame = statusContainerView!.bounds
+        statusItem.button?.subviews.first?.window?.backgroundColor = NSColor.clear
     }
 
     // This is called when the Apple interface style pre-Mojave is changed.
@@ -169,7 +171,7 @@ class StatusItemHandler: NSObject {
         hasActiveIcon = value
     }
 
-    @objc func menubarIconClicked(_ sender: Any) {
+    @objc func menubarIconClicked(_ sender: NSStatusBarButton) {
         guard let mainDelegate = NSApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -340,8 +342,8 @@ class StatusItemHandler: NSObject {
     }
 
     private func setClockerIcon() {
-        if statusItem.view != nil {
-            statusItem.view = nil
+        if statusItem.button?.subviews.isEmpty == false {
+            statusItem.button?.subviews = []
         }
 
         if statusItem.button?.image?.name() == NSImage.Name.menubarIcon {
@@ -351,7 +353,7 @@ class StatusItemHandler: NSObject {
         statusItem.button?.title = CLEmptyString
         statusItem.button?.image = NSImage(named: .menubarIcon)
         statusItem.button?.imagePosition = .imageOnly
-        statusItem.toolTip = "Clocker"
+        statusItem.button?.toolTip = "Clocker"
     }
 
     private func setupForStandardText() {

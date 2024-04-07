@@ -10,12 +10,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var floatingWindow = FloatingWindowController.shared()
     internal lazy var panelController = PanelController(windowNibName: .panel)
     private var statusBarHandler: StatusItemHandler!
-    private var panelObserver: NSKeyValueObservation?
     private let store: VersionUpdateHandler = VersionUpdateHandler(with: DataStore.shared())
-
-    deinit {
-        panelObserver?.invalidate()
-    }
 
     override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change _: [NSKeyValueChangeKey: Any]?, context _: UnsafeMutableRawPointer?) {
         if let path = keyPath, path == PreferencesConstants.hotKeyPathIdentifier {
@@ -178,7 +173,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         alert.runModal()
     }
 
-    @IBAction func ping(_ sender: Any) {
+    @IBAction func ping(_ sender: NSButton) {
         togglePanel(sender)
     }
 
@@ -234,16 +229,16 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.terminate(nil)
     }
 
-    @IBAction open func togglePanel(_: Any) {
+    @IBAction open func togglePanel(_ sender: NSButton) {
+        Logger.info("Toggle Panel called with sender state \(sender.state.rawValue)")
         let displayMode = UserDefaults.standard.integer(forKey: CLShowAppInForeground)
 
         if displayMode == 1 {
             // No need to call NSApp.activate here since `showFloatingWindow` takes care of this
             showFloatingWindow()
         } else {
-            setupPanelObserverIfNeeeded()
             panelController.showWindow(nil)
-            panelController.setActivePanel(newValue: !panelController.hasActivePanelGetter())
+            panelController.setActivePanel(newValue: sender.state == .on)
             NSApp.activate(ignoringOtherApps: true)
         }
     }
@@ -262,13 +257,5 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
 
     open func invalidateMenubarTimer(_ showIcon: Bool) {
         statusBarHandler.invalidateTimer(showIcon: showIcon, isSyncing: true)
-    }
-
-    private func setupPanelObserverIfNeeeded() {
-        if panelObserver == nil {
-            panelObserver = panelController.observe(\.hasActivePanel, options: [.new]) { obj, _ in
-                self.statusBarHandler.setHasActiveIcon(obj.hasActivePanelGetter())
-            }
-        }
     }
 }

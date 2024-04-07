@@ -143,8 +143,8 @@ class PanelController: ParentPanelController {
             return
         }
 
-        var statusBackgroundWindow = appDelegate.statusItemForPanel().statusItem.view?.window
-        var statusView = appDelegate.statusItemForPanel().statusItem.view
+        var statusBackgroundWindow = appDelegate.statusItemForPanel().statusItem.button?.window
+        var statusView = appDelegate.statusItemForPanel().statusItem.button
 
         // This below is a better way than actually checking if the menubar compact mode is set.
         if statusBackgroundWindow == nil || statusView == nil {
@@ -407,7 +407,7 @@ extension PanelController: NSWindowDelegate {
             setActivePanel(newValue: false)
         }
         if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
-            appDelegate.statusItemForPanel().hasActiveIcon = false
+            appDelegate.statusItemForPanel().statusItem.button?.state = .off
         }
     }
 }

@@ -111,7 +111,7 @@ class StatusItemView: NSView {
         NSLayoutConstraint.activate([
             locationView.leadingAnchor.constraint(equalTo: leadingAnchor),
             locationView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            locationView.topAnchor.constraint(equalTo: topAnchor, constant: 7),
+            locationView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             locationView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.35),
         ])
 
@@ -137,15 +137,6 @@ class StatusItemView: NSView {
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    override func mouseDown(with event: NSEvent) {
-        super.mouseDown(with: event)
-        guard let mainDelegate = NSApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-
-        mainDelegate.togglePanel(event)
     }
 }
 
