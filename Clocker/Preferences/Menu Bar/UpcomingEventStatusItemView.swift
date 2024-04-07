@@ -85,15 +85,6 @@ class UpcomingEventStatusItemView: NSView {
         nextEventField.attributedStringValue = NSAttributedString(string: "Next Event", attributes: textFontAttributes)
         etaField.attributedStringValue = NSAttributedString(string: metadata, attributes: timeAttributes)
     }
-
-    override func mouseDown(with event: NSEvent) {
-        super.mouseDown(with: event)
-        guard let mainDelegate = NSApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-
-        mainDelegate.togglePanel(event)
-    }
 }
 
 extension UpcomingEventStatusItemView: StatusItemViewConforming {

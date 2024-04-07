@@ -66,11 +66,13 @@ extension PreferencesDataSource: NSTableViewDelegate {
             return false
         }
 
-        guard let rowIndexes = NSKeyedUnarchiver.unarchiveObject(with: data) as? IndexSet, let first = rowIndexes.first else {
+        guard let rowIndexes = try? NSKeyedUnarchiver.unarchivedObject(ofClass: NSIndexSet.self, from: data) else {
             assertionFailure("Row was unexpectedly nil")
             return false
         }
 
+        let first = rowIndexes.firstIndex
+        
         let currentObject = newOrder[first]
 
         newOrder.remove(at: first)

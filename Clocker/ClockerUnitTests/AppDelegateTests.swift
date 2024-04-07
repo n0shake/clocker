@@ -86,11 +86,11 @@ class AppDelegateTests: XCTestCase {
         let subject = NSApplication.shared.delegate as? AppDelegate
         subject?.invalidateMenubarTimer(true)
         let statusItemHandler = subject?.statusItemForPanel()
-        XCTAssertNil(statusItemHandler?.statusItem.view)
-        XCTAssertEqual(statusItemHandler?.statusItem.title, CLEmptyString)
+        XCTAssertEqual(statusItemHandler?.statusItem.button?.subviews, [])
+        XCTAssertEqual(statusItemHandler?.statusItem.button?.title, CLEmptyString)
         XCTAssertEqual(statusItemHandler?.statusItem.button?.image?.name(), "LightModeIcon")
         XCTAssertEqual(statusItemHandler?.statusItem.button?.imagePosition, .imageOnly)
-        XCTAssertEqual(statusItemHandler?.statusItem.toolTip, "Clocker")
+        XCTAssertEqual(statusItemHandler?.statusItem.button?.toolTip, "Clocker")
     }
 
     func testCompactModeMenubarSetup() {
@@ -109,7 +109,7 @@ class AppDelegateTests: XCTestCase {
 
         subject?.setupMenubarTimer()
         let statusItemHandler = subject?.statusItemForPanel()
-        XCTAssertNotNil(statusItemHandler?.statusItem.view) // This won't be nil for compact mode
+        XCTAssertNotNil(statusItemHandler?.statusItem.button) // This won't be nil for compact mode
 
         DataStore.shared().setTimezones(olderTimezones)
     }
@@ -140,7 +140,7 @@ class AppDelegateTests: XCTestCase {
 
         subject?.setupMenubarTimer()
 
-        XCTAssertNil(subject?.statusItemForPanel().statusItem.view) // This will be nil for standard mode
+        XCTAssertEqual(subject?.statusItemForPanel().statusItem.button?.subviews.isEmpty, true) // This will be nil for standard mode
 
         UserDefaults.standard.set(0, forKey: CLMenubarCompactMode) // Set the menubar mode back to compact
     }
