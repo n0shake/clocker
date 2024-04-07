@@ -107,11 +107,16 @@ class StatusItemView: NSView {
         }
 
         timeView.disableWrapping()
+        
+        var topAnchorConstant: CGFloat = 7.0
+        if #available(macOS 11.0, *) {
+            topAnchorConstant = 0.0
+        }
 
         NSLayoutConstraint.activate([
             locationView.leadingAnchor.constraint(equalTo: leadingAnchor),
             locationView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            locationView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            locationView.topAnchor.constraint(equalTo: topAnchor, constant: topAnchorConstant),
             locationView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.35),
         ])
 
