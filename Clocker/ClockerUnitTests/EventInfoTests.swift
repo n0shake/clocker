@@ -59,7 +59,7 @@ class EventInfoTests: XCTestCase {
                                       isAllDay: false,
                                       meetingURL: nil,
                                       attendeStatus: .accepted)
-        XCTAssert(mockEventInfo.metadataForMeeting() == "Error",
+        XCTAssert(mockEventInfo.metadataForMeeting() == "started.",
                   "Metadata for meeting: \(mockEventInfo.metadataForMeeting()) doesn't match expectation")
     }
 
