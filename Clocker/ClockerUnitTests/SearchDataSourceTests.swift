@@ -71,7 +71,7 @@ class SearchDataSourceTests: XCTestCase {
         let result2 = subject.retrieveResult(1)
         let unwrap2 = try XCTUnwrap(result2)
         if let metadata = unwrap2 as? TimezoneMetadata {
-            XCTAssert(metadata.timezone.name == "America/Tijuana")
+            XCTAssert(metadata.timezone.name == "America/Santa_Isabel")
         }
 
         // Test placeForRow
@@ -82,7 +82,7 @@ class SearchDataSourceTests: XCTestCase {
         XCTAssert(rowType1 == .timezone)
 
         // Test count
-        XCTAssertEqual(subject.resultsCount(), 4)
+        XCTAssertEqual(subject.resultsCount(), 5)
 
         // Test retrieveFilteredResultFromGoogleAPI
         let firstResult = try XCTUnwrap(subject.retrieveFilteredResultFromGoogleAPI(0))
@@ -97,7 +97,7 @@ class SearchDataSourceTests: XCTestCase {
         setupMockData()
 
         let resultsCount = subject.numberOfRows(in: mockTableView)
-        XCTAssert(resultsCount == 4)
+        XCTAssertEqual(resultsCount, 5)
         XCTAssert(subject.tableView(mockTableView, heightOfRow: 0) == 30)
     }
 
