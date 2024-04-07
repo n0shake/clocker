@@ -32,7 +32,7 @@ extension EventCenter {
         // Fetch the user-selected calendars. Initially, all the calendars will be selected
         var setOfCalendars: Set<String> = Set()
 
-        if let userCalendars = UserDefaults.standard.array(forKey: CLSelectedCalendars) as? [String], !userCalendars.isEmpty {
+        if let userCalendars = DataStore.shared().selectedCalendars(), !userCalendars.isEmpty {
             setOfCalendars = Set(userCalendars)
         }
 
@@ -192,7 +192,7 @@ extension EventCenter {
     func filterEvents() {
         filteredEvents = [:]
 
-        if let selectedCalendars = UserDefaults.standard.array(forKey: CLSelectedCalendars) as? [String] {
+        if let selectedCalendars = DataStore.shared().selectedCalendars() {
             for date in eventsForDate.keys {
                 if let events = eventsForDate[date] {
                     for event in events {

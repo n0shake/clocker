@@ -22,8 +22,6 @@ class VersionUpdateHandler: NSObject {
     static let kVersionMacAppStoreBundleID = "com.apple.AppStore";
     static let kVersionMacAppStoreAppID = 1056643111
 
-    static let sharedInstance = VersionUpdateHandler()
-
     private var appStoreCountry: String!
     private var applicationVersion: String!
     private var applicationBundleID: String = Bundle.main.bundleIdentifier ?? "N/A"
@@ -46,9 +44,11 @@ class VersionUpdateHandler: NSObject {
     private var showOnFirstLaunch: Bool = false
     public var previewMode: Bool = false
     private var versionDetails: String?
+    private let store: DataStore
 
-    override init() {
+    init(with dataStore: DataStore) {
         // Setup App Store Country
+        store = dataStore
         appStoreCountry = Locale.current.regionCode
         if appStoreCountry == "150" {
             appStoreCountry = "eu"
@@ -119,7 +119,7 @@ class VersionUpdateHandler: NSObject {
     }
 
     private func lastChecked() -> Date? {
-        return UserDefaults.standard.object(forKey: VersionUpdateHandler.kVersionLastCheckedKey) as? Date
+        return store.retrieve(key: VersionUpdateHandler.kVersionLastCheckedKey) as? Date
     }
 
     private func setLastReminded(_ date: Date?) {
@@ -127,11 +127,11 @@ class VersionUpdateHandler: NSObject {
     }
 
     private func lastReminded() -> Date? {
-        return UserDefaults.standard.object(forKey: VersionUpdateHandler.kVersionLastRemindedKey) as? Date
+        return store.retrieve(key: VersionUpdateHandler.kVersionLastRemindedKey) as? Date
     }
 
     private func ignoredVersion() -> String? {
-        return UserDefaults.standard.object(forKey: VersionUpdateHandler.kVersionIgnoreVersionKey) as? String
+        return store.retrieve(key: VersionUpdateHandler.kVersionIgnoreVersionKey) as? String
     }
 
     private func setIgnoredVersion(_ version: String) {
@@ -143,12 +143,12 @@ class VersionUpdateHandler: NSObject {
     }
 
     private func viewedVersionDetails() -> Bool {
-        let lastVersionKey = UserDefaults.standard.object(forKey: VersionUpdateHandler.kVersionCheckLastVersionKey) as? String ?? ""
+        let lastVersionKey = store.retrieve(key: VersionUpdateHandler.kVersionCheckLastVersionKey) as? String ?? ""
         return lastVersionKey == applicationVersion
     }
 
     private func lastVersion() -> String {
-        return UserDefaults.standard.object(forKey: VersionUpdateHandler.kVersionCheckLastVersionKey) as? String ?? ""
+        return store.retrieve(key: VersionUpdateHandler.kVersionCheckLastVersionKey) as? String ?? ""
     }
 
     private func setLastVersion(_ version: String) {
