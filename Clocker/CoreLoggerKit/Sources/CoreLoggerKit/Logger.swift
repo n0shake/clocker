@@ -9,15 +9,19 @@ public class Logger: NSObject {
     let logObjc = OSLog(subsystem: "com.abhishek.Clocker", category: "app")
 
     public class func log(object annotations: [String: Any]?, for event: NSString) {
-        if #available(OSX 10.14, *) {
-            os_log(.default, "[%@] - [%@]", event, annotations ?? [:])
-        }
+        #if DEBUG
+            if #available(OSX 10.14, *) {
+                os_log(.default, "[%@] - [%@]", event, annotations ?? [:])
+            }
+        #endif
     }
 
     public class func info(_ message: String) {
-        if #available(OSX 10.14, *) {
-            os_log(.info, "%@", message)
-        }
+        #if DEBUG
+            if #available(OSX 10.14, *) {
+                os_log(.info, "%@", message)
+            }
+        #endif
     }
 }
 
