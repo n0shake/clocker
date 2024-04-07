@@ -53,7 +53,7 @@ class UpcomingEventStatusItemView: NSView {
         NSLayoutConstraint.activate([
             nextEventField.leadingAnchor.constraint(equalTo: leadingAnchor),
             nextEventField.trailingAnchor.constraint(equalTo: trailingAnchor),
-            nextEventField.topAnchor.constraint(equalTo: topAnchor, constant: 7),
+            nextEventField.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             nextEventField.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.35),
         ])
 
