@@ -106,6 +106,10 @@ class DataStore: NSObject {
             return customTimezone?.isFavourite == 1
         }
     }
+    
+    func selectedCalendars() -> [String]? {
+        return userDefaults.array(forKey: CLSelectedCalendars) as? [String]
+    }
 
     // MARK: Date (May 8th) in Compact Menubar
 

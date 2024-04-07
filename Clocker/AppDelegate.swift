@@ -11,6 +11,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     internal lazy var panelController = PanelController(windowNibName: .panel)
     private var statusBarHandler: StatusItemHandler!
     private var panelObserver: NSKeyValueObservation?
+    private let store: VersionUpdateHandler = VersionUpdateHandler(with: DataStore.shared())
 
     deinit {
         panelObserver?.invalidate()

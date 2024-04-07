@@ -10,7 +10,7 @@ class AppDefaults {
 
     private class func initializeDefaults(with store: DataStore, defaults: UserDefaults) {
         let timezones = store.timezones()
-        let selectedCalendars = defaults.object(forKey: CLSelectedCalendars)
+        let selectedCalendars = store.selectedCalendars()
 
         // Register the usual suspects
         defaults.register(defaults: defaultsDictionary())
