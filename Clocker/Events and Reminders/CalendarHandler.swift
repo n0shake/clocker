@@ -172,7 +172,6 @@ extension EventCenter {
     func initializeStoreIfNeccesary() {
         if eventStore == nil {
             eventStore = EKEventStore()
-            eventStore.reset()
         }
     }
 
