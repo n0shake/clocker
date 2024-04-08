@@ -174,7 +174,10 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func ping(_ sender: NSButton) {
-        togglePanel(sender)
+        if let statusItemButton = statusBarHandler.statusItem.button {
+            statusItemButton.state = statusItemButton.state == .on ? .off : .on
+            togglePanel(statusItemButton)
+        }
     }
 
     private func retrieveLatestLocation() {
