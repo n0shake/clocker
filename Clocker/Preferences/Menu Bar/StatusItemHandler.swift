@@ -139,6 +139,7 @@ class StatusItemHandler: NSObject {
     }
 
     private func constructCompactView(with upcomingEventView: Bool = false) {
+        statusItem.button?.subviews = []
         statusContainerView = nil
 
         let menubarTimezones = store.menubarTimezones() ?? []
