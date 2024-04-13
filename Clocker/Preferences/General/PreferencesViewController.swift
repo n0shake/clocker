@@ -228,7 +228,7 @@ class PreferencesViewController: ParentViewController {
 
         [placeholderLabel].forEach { $0.isHidden = true }
 
-        messageLabel.stringValue = CLEmptyString
+        messageLabel.stringValue = UserDefaultKeys.emptyString
 
         timezoneTableView.registerForDraggedTypes([.dragSession])
 
@@ -238,7 +238,7 @@ class PreferencesViewController: ParentViewController {
 
         setupColor()
 
-        startupCheckbox.integerValue = DataStore.shared().retrieve(key: CLStartAtLogin) as? Int ?? 0
+        startupCheckbox.integerValue = DataStore.shared().retrieve(key: UserDefaultKeys.startAtLogin) as? Int ?? 0
 
         searchField.bezelStyle = .roundedBezel
     }
@@ -249,7 +249,7 @@ class PreferencesViewController: ParentViewController {
         startAtLoginLabel.textColor = Themer.shared().mainTextColor()
 
         [timezoneNameSortButton, labelSortButton, timezoneSortButton].forEach {
-            $0?.attributedTitle = NSAttributedString(string: $0?.title ?? CLEmptyString, attributes: [
+            $0?.attributedTitle = NSAttributedString(string: $0?.title ?? UserDefaultKeys.emptyString, attributes: [
                 NSAttributedString.Key.foregroundColor: Themer.shared().mainTextColor(),
                 NSAttributedString.Key.font: NSFont(name: "Avenir-Light", size: 13)!,
             ])
@@ -360,10 +360,10 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
     }
 
     private func showAlertIfMoreThanOneTimezoneHasBeenAddedToTheMenubar() {
-        let isUITestRunning = ProcessInfo.processInfo.arguments.contains(CLUITestingLaunchArgument)
+        let isUITestRunning = ProcessInfo.processInfo.arguments.contains(UserDefaultKeys.testingLaunchArgument)
 
         // If we have seen displayed the message before, abort!
-        let haveWeSeenThisMessageBefore = UserDefaults.standard.bool(forKey: CLLongStatusBarWarningMessage)
+        let haveWeSeenThisMessageBefore = UserDefaults.standard.bool(forKey: UserDefaultKeys.longStatusBarWarningMessage)
 
         if haveWeSeenThisMessageBefore, !isUITestRunning {
             return
@@ -393,10 +393,10 @@ extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate 
 
         if response.rawValue == 1000 {
             OperationQueue.main.addOperation {
-                UserDefaults.standard.set(0, forKey: CLMenubarCompactMode)
+                UserDefaults.standard.set(0, forKey: UserDefaultKeys.menubarCompactMode)
 
                 if alert.suppressionButton?.state == NSControl.StateValue.on {
-                    UserDefaults.standard.set(true, forKey: CLLongStatusBarWarningMessage)
+                    UserDefaults.standard.set(true, forKey: UserDefaultKeys.longStatusBarWarningMessage)
                 }
 
                 self.updateStatusBarAppearance()
@@ -458,14 +458,14 @@ extension PreferencesViewController {
                                                         if searchResults.status == ResultStatus.zeroResults {
                                                             Logger.info("Zero Results returned")
                                                             self.findLocalSearchResultsForTimezones()
-                                                            self.placeholderLabel.placeholderString = self.searchResultsDataSource.timezoneFilteredArray.isEmpty ? "No results! 😔 Try entering the exact name." : CLEmptyString
+                                                            self.placeholderLabel.placeholderString = self.searchResultsDataSource.timezoneFilteredArray.isEmpty ? "No results! 😔 Try entering the exact name." : UserDefaultKeys.emptyString
                                                             self.reloadSearchResults()
                                                             self.isActivityInProgress = false
                                                             return
                                                         } else if searchResults.status == ResultStatus.requestDenied && searchResults.results.isEmpty {
                                                             Logger.info("Request denied!")
                                                             self.findLocalSearchResultsForTimezones()
-                                                            self.placeholderLabel.placeholderString = self.searchResultsDataSource.timezoneFilteredArray.isEmpty ? "Update Clocker to get a faster experience 😃" : CLEmptyString
+                                                            self.placeholderLabel.placeholderString = self.searchResultsDataSource.timezoneFilteredArray.isEmpty ? "Update Clocker to get a faster experience 😃" : UserDefaultKeys.emptyString
                                                             self.reloadSearchResults()
                                                             self.isActivityInProgress = false
                                                             return
@@ -490,7 +490,7 @@ extension PreferencesViewController {
 
         var searchString = searchField.stringValue
         let words = searchString.components(separatedBy: CharacterSet.whitespacesAndNewlines)
-        searchString = words.joined(separator: CLEmptyString)
+        searchString = words.joined(separator: UserDefaultKeys.emptyString)
 
         return "https://maps.googleapis.com/maps/api/geocode/json?address=\(searchString)&key=\(geocodingKey)&language=\(userPreferredLanguage)"
     }
@@ -511,10 +511,10 @@ extension PreferencesViewController {
             let totalPackage = [
                 "latitude": latitude,
                 "longitude": longitude,
-                CLTimezoneName: formattedAddress,
-                CLCustomLabel: formattedAddress,
-                CLTimezoneID: CLEmptyString,
-                CLPlaceIdentifier: $0.placeId,
+                UserDefaultKeys.timezoneName: formattedAddress,
+                UserDefaultKeys.customLabel: formattedAddress,
+                UserDefaultKeys.timezoneID: UserDefaultKeys.emptyString,
+                UserDefaultKeys.placeIdentifier: $0.placeId,
             ] as [String: Any]
 
             finalResults.append(TimezoneData(with: totalPackage))
@@ -523,7 +523,7 @@ extension PreferencesViewController {
     }
 
     private func prepareUIForPresentingResults() {
-        placeholderLabel.placeholderString = CLEmptyString
+        placeholderLabel.placeholderString = UserDefaultKeys.emptyString
         isActivityInProgress = false
         reloadSearchResults()
     }
@@ -541,7 +541,7 @@ extension PreferencesViewController {
         }
 
         isActivityInProgress = false
-        placeholderLabel.placeholderString = CLEmptyString
+        placeholderLabel.placeholderString = UserDefaultKeys.emptyString
     }
 
     private func getTimezone(for latitude: Double, and longitude: Double) {
@@ -600,13 +600,13 @@ extension PreferencesViewController {
         }
 
         let newTimeZone = [
-            CLTimezoneID: timezone.timeZoneId,
-            CLTimezoneName: filteredAddress,
-            CLPlaceIdentifier: dataObject.placeID!,
+            UserDefaultKeys.timezoneID: timezone.timeZoneId,
+            UserDefaultKeys.timezoneName: filteredAddress,
+            UserDefaultKeys.placeIdentifier: dataObject.placeID!,
             "latitude": dataObject.latitude!,
             "longitude": dataObject.longitude!,
-            "nextUpdate": CLEmptyString,
-            CLCustomLabel: filteredAddress,
+            "nextUpdate": UserDefaultKeys.emptyString,
+            UserDefaultKeys.customLabel: filteredAddress,
         ] as [String: Any]
 
         // Mark if the timezone is same as local timezone
@@ -658,7 +658,7 @@ extension PreferencesViewController {
         refreshTimezoneTableView(true)
         refreshMainTable()
         timezonePanel.close()
-        placeholderLabel.placeholderString = CLEmptyString
+        placeholderLabel.placeholderString = UserDefaultKeys.emptyString
         searchField.placeholderString = NSLocalizedString("Search Field Placeholder",
                                                           comment: "Search Field Placeholder")
         availableTimezoneTableView.isHidden = false
@@ -723,7 +723,7 @@ extension PreferencesViewController {
         }
 
         if messageLabel.stringValue.isEmpty {
-            searchField.stringValue = CLEmptyString
+            searchField.stringValue = UserDefaultKeys.emptyString
 
             guard let latitude = dataObject.latitude, let longitude = dataObject.longitude else {
                 assertionFailure("Data was unexpectedly nil")
@@ -736,7 +736,7 @@ extension PreferencesViewController {
 
     private func cleanupAfterInstallingTimezone() {
         let data = TimezoneData()
-        data.setLabel(CLEmptyString)
+        data.setLabel(UserDefaultKeys.emptyString)
 
         let currentSelection = searchResultsDataSource.retrieveSelectedTimezone(availableTimezoneTableView.selectedRow)
 
@@ -751,8 +751,8 @@ extension PreferencesViewController {
 
         searchResultsDataSource.cleanupFilterArray()
         searchResultsDataSource.timezoneFilteredArray = []
-        placeholderLabel.placeholderString = CLEmptyString
-        searchField.stringValue = CLEmptyString
+        placeholderLabel.placeholderString = UserDefaultKeys.emptyString
+        searchField.stringValue = UserDefaultKeys.emptyString
 
         reloadSearchResults()
         refreshTimezoneTableView(true)
@@ -788,8 +788,8 @@ extension PreferencesViewController {
     @IBAction func closePanel(_: NSButton) {
         searchResultsDataSource.cleanupFilterArray()
         searchResultsDataSource.timezoneFilteredArray = []
-        searchField.stringValue = CLEmptyString
-        placeholderLabel.placeholderString = CLEmptyString
+        searchField.stringValue = UserDefaultKeys.emptyString
+        placeholderLabel.placeholderString = UserDefaultKeys.emptyString
         searchField.placeholderString = NSLocalizedString("Search Field Placeholder",
                                                           comment: "Search Field Placeholder")
 

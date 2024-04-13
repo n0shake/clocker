@@ -65,7 +65,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
         cellView.rowNumber = row
         cellView.customName.stringValue = currentModel.formattedTimezoneLabel()
         cellView.time.stringValue = operation.time(with: sliderValue)
-        cellView.noteLabel.toolTip = currentModel.note ?? CLEmptyString
+        cellView.noteLabel.toolTip = currentModel.note ?? UserDefaultKeys.emptyString
         cellView.currentLocationIndicator.isHidden = !currentModel.isSystemTimezone
         cellView.time.setAccessibilityIdentifier("ActualTime")
         cellView.relativeDate.setAccessibilityIdentifier("RelativeDate")
@@ -76,7 +76,7 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
             cellView.noteLabel.stringValue = value
             cellView.noteLabel.isHidden = false
         } else {
-            cellView.noteLabel.stringValue = CLEmptyString
+            cellView.noteLabel.stringValue = UserDefaultKeys.emptyString
             cellView.noteLabel.isHidden = true
         }
         cellView.layout(with: currentModel)
@@ -91,9 +91,9 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
             return 100
         }
 
-        if let userFontSize = dataStore.retrieve(key: CLUserFontSizePreference) as? NSNumber,
+        if let userFontSize = dataStore.retrieve(key: UserDefaultKeys.userFontSizePreference) as? NSNumber,
            timezones.count > row,
-           let relativeDisplay = dataStore.retrieve(key: CLRelativeDateKey) as? NSNumber
+           let relativeDisplay = dataStore.retrieve(key: UserDefaultKeys.relativeDateKey) as? NSNumber
         {
             let model = timezones[row]
             let shouldShowSunrise = dataStore.shouldDisplay(.sunrise)
@@ -223,7 +223,7 @@ extension TimezoneDataSource: PanelTableViewDelegate {
             if offSet == 0.0 {
                 return "\(localizedName)"
             } else {
-                let offSetSign = offSet > 0 ? "+" : CLEmptyString
+                let offSetSign = offSet > 0 ? "+" : UserDefaultKeys.emptyString
                 let offsetString = "UTC\(offSetSign)\(offSet)"
                 return "\(localizedName) (\(offsetString))"
             }

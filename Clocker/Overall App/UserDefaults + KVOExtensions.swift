@@ -4,14 +4,14 @@ import Cocoa
 
 extension UserDefaults {
     @objc dynamic var displayFutureSlider: Int {
-        return integer(forKey: CLDisplayFutureSliderKey)
+        return integer(forKey: UserDefaultKeys.displayFutureSliderKey)
     }
 
     @objc dynamic var userFontSize: Int {
-        return integer(forKey: CLUserFontSizePreference)
+        return integer(forKey: UserDefaultKeys.userFontSizePreference)
     }
 
     @objc dynamic var sliderDayRange: Int {
-        return integer(forKey: CLFutureSliderRange)
+        return integer(forKey: UserDefaultKeys.futureSliderRange)
     }
 }

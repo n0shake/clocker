@@ -46,7 +46,7 @@ class StatusItemHandler: NSObject {
                 statusItem.button?.subviews = []
                 statusContainerView = nil
             case .standardText:
-                statusItem.button?.title = CLEmptyString
+                statusItem.button?.title = UserDefaultKeys.emptyString
             case .icon:
                 statusItem.button?.image = nil
             }
@@ -362,14 +362,14 @@ class StatusItemHandler: NSObject {
             return
         }
 
-        statusItem.button?.title = CLEmptyString
+        statusItem.button?.title = UserDefaultKeys.emptyString
         statusItem.button?.image = NSImage(named: .menubarIcon)
         statusItem.button?.imagePosition = .imageOnly
         statusItem.button?.toolTip = "Clocker"
     }
 
     private func setupForStandardText() {
-        var menubarText = CLEmptyString
+        var menubarText = UserDefaultKeys.emptyString
 
         if let menubarTitle = menubarTitleHandler.titleForMenubar() {
             menubarText = menubarTitle

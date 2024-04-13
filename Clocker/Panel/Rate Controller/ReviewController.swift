@@ -14,7 +14,7 @@ final class ReviewController {
     }
 
     class func applicationDidLaunch(_ defaults: UserDefaults) {
-        if ProcessInfo.processInfo.arguments.contains(CLUITestingLaunchArgument) {
+        if ProcessInfo.processInfo.arguments.contains(UserDefaultKeys.testingLaunchArgument) {
             debugging = true
         }
 

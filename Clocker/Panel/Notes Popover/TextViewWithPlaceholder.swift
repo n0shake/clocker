@@ -32,7 +32,7 @@ class TextViewWithPlaceholder: NSTextView {
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        if string == CLEmptyString, self != window?.firstResponder {
+        if string == UserDefaultKeys.emptyString, self != window?.firstResponder {
             placeholder.draw(at: NSPoint(x: 0, y: 0))
         }
     }

@@ -144,9 +144,9 @@ class AppFeedbackWindowController: NSWindowController {
     private func generateUserPreferences() -> String {
         let preferences = DataStore.shared().timezones()
 
-        guard let theme = DataStore.shared().retrieve(key: CLThemeKey) as? NSNumber,
-              let displayFutureSliderKey = DataStore.shared().retrieve(key: CLThemeKey) as? NSNumber,
-              let relativeDateKey = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber,
+        guard let theme = DataStore.shared().retrieve(key: UserDefaultKeys.themeKey) as? NSNumber,
+              let displayFutureSliderKey = DataStore.shared().retrieve(key: UserDefaultKeys.themeKey) as? NSNumber,
+              let relativeDateKey = DataStore.shared().retrieve(key: UserDefaultKeys.relativeDateKey) as? NSNumber,
               let country = Locale.autoupdatingCurrent.regionCode
         else {
             return "Error"
@@ -322,9 +322,9 @@ extension AppFeedbackWindowController: NSWindowDelegate {
     }
 
     func performClosingCleanUp() {
-        nameField.stringValue = CLEmptyString
-        emailField.stringValue = CLEmptyString
-        feedbackTextView.string = CLEmptyString
+        nameField.stringValue = UserDefaultKeys.emptyString
+        emailField.stringValue = UserDefaultKeys.emptyString
+        feedbackTextView.string = UserDefaultKeys.emptyString
         isActivityInProgress = false
         appFeedbackWindowDelegate?.appFeedbackWindowWillClose()
     }

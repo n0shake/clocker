@@ -476,7 +476,7 @@ extension NotesPopover {
         if let note = model.note, !note.isEmpty {
             notesTextView.string = note
         } else {
-            notesTextView.string = CLEmptyString
+            notesTextView.string = UserDefaultKeys.emptyString
         }
 
         setInitialReminderTime()

@@ -28,7 +28,7 @@ extension TimezoneDataOperations {
                                                                            options: .matchFirst)
         else {
             assertionFailure("Data was unexpectedly nil")
-            return CLEmptyString
+            return UserDefaultKeys.emptyString
         }
 
         if dataObject.timezoneFormat(store.timezoneFormat()) == DateFormat.epochTime {
@@ -81,7 +81,7 @@ extension TimezoneDataOperations {
     }
 
     func compactMenuTitle() -> String {
-        var subtitle = CLEmptyString
+        var subtitle = UserDefaultKeys.emptyString
 
         let shouldLabelBeShownAlongWithTime = !store.shouldDisplay(.placeInMenubar)
         
@@ -105,7 +105,7 @@ extension TimezoneDataOperations {
     }
 
     func compactMenuSubtitle() -> String {
-        var subtitle = CLEmptyString
+        var subtitle = UserDefaultKeys.emptyString
 
         let shouldDayBeShown = store.shouldShowDayInMenubar()
         let shouldLabelsNotBeShownAlongWithTime = store.shouldDisplay(.placeInMenubar)
@@ -127,7 +127,7 @@ extension TimezoneDataOperations {
     }
 
     func menuTitle() -> String {
-        var menuTitle = CLEmptyString
+        var menuTitle = UserDefaultKeys.emptyString
 
         let dataStore = store
 
@@ -206,13 +206,13 @@ extension TimezoneDataOperations {
     }
 
     func date(with sliderValue: Int, displayType: TimezoneData.DateDisplayType) -> String {
-        guard let relativeDayPreference = store.retrieve(key: CLRelativeDateKey) as? NSNumber else {
+        guard let relativeDayPreference = store.retrieve(key: UserDefaultKeys.relativeDateKey) as? NSNumber else {
             assertionFailure("Data was unexpectedly nil")
-            return CLEmptyString
+            return UserDefaultKeys.emptyString
         }
 
         if relativeDayPreference.intValue == 3 {
-            return CLEmptyString
+            return UserDefaultKeys.emptyString
         }
 
         var currentCalendar = Calendar(identifier: .gregorian)
@@ -293,24 +293,24 @@ extension TimezoneDataOperations {
                 "Locale": dateFormatter.locale.identifier,
             ] as [String: Any]
             Logger.log(object: unableToConvertDateParameters, for: "Date conversion failure - New Date is nil")
-            return CLEmptyString
+            return UserDefaultKeys.emptyString
         }
 
         let timeDifference = local.timeAgo(since: timezoneDate)
 
         if timeDifference.isEmpty {
-            return CLEmptyString
+            return UserDefaultKeys.emptyString
         }
 
         if (local as NSDate).earlierDate(timezoneDate) == local {
-            var replaceAgo = CLEmptyString
+            var replaceAgo = UserDefaultKeys.emptyString
             replaceAgo.append(", +")
             let agoString = timezoneDate.timeAgo(since: local, numericDates: true)
-            replaceAgo.append(agoString.replacingOccurrences(of: "ago", with: CLEmptyString))
+            replaceAgo.append(agoString.replacingOccurrences(of: "ago", with: UserDefaultKeys.emptyString))
 
             if !TimezoneDataOperations.currentLocale.contains("en") {
                 if TimezoneDataOperations.currentLocale.contains("de") {
-                    replaceAgo = replaceAgo.replacingOccurrences(of: "Vor ", with: CLEmptyString)
+                    replaceAgo = replaceAgo.replacingOccurrences(of: "Vor ", with: UserDefaultKeys.emptyString)
                     replaceAgo.append(" vor")
                 }
 
@@ -322,15 +322,15 @@ extension TimezoneDataOperations {
             return replaceAgo.lowercased()
         }
 
-        var replaceAgo = CLEmptyString
+        var replaceAgo = UserDefaultKeys.emptyString
         replaceAgo.append(", -")
 
-        let replaced = timeDifference.replacingOccurrences(of: "ago", with: CLEmptyString)
+        let replaced = timeDifference.replacingOccurrences(of: "ago", with: UserDefaultKeys.emptyString)
         replaceAgo.append(replaced)
 
         if !TimezoneDataOperations.currentLocale.contains("en") {
             if TimezoneDataOperations.currentLocale.contains("de") {
-                replaceAgo = replaceAgo.replacingOccurrences(of: "Vor ", with: CLEmptyString)
+                replaceAgo = replaceAgo.replacingOccurrences(of: "Vor ", with: UserDefaultKeys.emptyString)
                 replaceAgo.append(" zurück")
             }
 
@@ -384,7 +384,7 @@ extension TimezoneDataOperations {
         /* We have to call this everytime so that we get an updated value everytime! */
 
         if dataObject.selectionType == .timezone || (dataObject.latitude == nil || dataObject.longitude == nil) {
-            return CLEmptyString
+            return UserDefaultKeys.emptyString
         }
 
         initializeSunriseSunset(with: sliderValue)
@@ -399,7 +399,7 @@ extension TimezoneDataOperations {
             return dateFormatter.string(from: correct)
         }
 
-        return CLEmptyString
+        return UserDefaultKeys.emptyString
     }
 
     func todaysDate(with sliderValue: Int, locale: Locale = Locale(identifier: "en-US")) -> String {
