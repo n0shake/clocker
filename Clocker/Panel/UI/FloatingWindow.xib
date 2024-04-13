@@ -9,8 +9,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="FloatingWindowController" customModule="Clocker" customModuleProvider="target">
             <connections>
-                <outlet property="futureSlider" destination="XQc-HF-TrM" id="r17-F5-qEj"/>
-                <outlet property="futureSliderView" destination="6vv-g2-Z63" id="7ld-Or-ilq"/>
                 <outlet property="leftButton" destination="7ID-ll-0YN" id="Msx-3N-nDQ"/>
                 <outlet property="leftField" destination="DHg-ca-UOi" id="eOW-Ml-DE8"/>
                 <outlet property="mainTableView" destination="3js-Fl-DdU" id="6Lu-oW-cuZ"/>
@@ -18,11 +16,9 @@
                 <outlet property="preferencesButton" destination="iFk-kj-d5a" id="1bK-Ld-MwV"/>
                 <outlet property="reviewView" destination="HBv-Eh-z9y" id="vt7-in-yQF"/>
                 <outlet property="rightButton" destination="8oB-ID-Dka" id="s0E-Pp-8Eb"/>
-                <outlet property="roundedDateView" destination="Ngk-LZ-J2y" id="AlZ-mg-9CJ"/>
                 <outlet property="scrollViewHeight" destination="SQM-7C-DIi" id="bRu-h6-Rvg"/>
                 <outlet property="sharingButton" destination="GMo-5B-bnh" id="ocx-7g-Wtp"/>
                 <outlet property="shutdownButton" destination="M9q-iF-MaE" id="43B-sx-8Oh"/>
-                <outlet property="sliderDatePicker" destination="Ngk-LZ-J2y" id="kfm-g4-diy"/>
                 <outlet property="stackView" destination="Bn4-fy-Lm6" id="bdu-HH-FT3"/>
                 <outlet property="upcomingEventCollectionView" destination="1tF-ue-rfI" id="nkq-Ov-eUj"/>
                 <outlet property="upcomingEventContainerView" destination="7cF-j3-JRf" id="9M5-NS-aB6"/>
@@ -36,7 +32,7 @@
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" ignoresCycle="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1000" y="379" width="300" height="460"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
             <value key="minSize" type="size" width="150" height="50"/>
             <value key="maxSize" type="size" width="300" height="800"/>
             <view key="contentView" misplaced="YES" id="qEx-SC-5Qd">
@@ -44,10 +40,10 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView focusRingType="none" distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bn4-fy-Lm6">
-                        <rect key="frame" x="0.0" y="0.0" width="429" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="429" height="430"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="81" horizontalPageScroll="10" verticalLineScroll="81" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khu-OS-PzP">
-                                <rect key="frame" x="0.0" y="195" width="429" height="265"/>
+                                <rect key="frame" x="0.0" y="165" width="429" height="265"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="2rS-3B-A3C">
                                     <rect key="frame" x="0.0" y="0.0" width="429" height="265"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -252,45 +248,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="6vv-g2-Z63" userLabel="Slider View">
-                                <rect key="frame" x="0.0" y="165" width="350" height="30"/>
-                                <subviews>
-                                    <datePicker focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ngk-LZ-J2y">
-                                        <rect key="frame" x="205" y="0.0" width="135" height="23"/>
-                                        <datePickerCell key="cell" focusRingType="none" alignment="left" drawsBackground="NO" datePickerStyle="textField" id="fj6-ZG-8ff">
-                                            <font key="font" size="13" name="Avenir-Roman"/>
-                                            <date key="date" timeIntervalSinceReferenceDate="-595929600">
-                                                <!--1982-02-12 16:00:00 +0000-->
-                                            </date>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <datePickerElements key="datePickerElements" year="YES" month="YES" day="YES" hour="YES" minute="YES"/>
-                                        </datePickerCell>
-                                        <connections>
-                                            <action selector="sliderPickerChanged:" target="-2" id="Vad-w6-Wt8"/>
-                                        </connections>
-                                    </datePicker>
-                                    <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XQc-HF-TrM">
-                                        <rect key="frame" x="7" y="2" width="198" height="23"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="15" id="UT0-Yf-jfk"/>
-                                        </constraints>
-                                        <sliderCell key="cell" alignment="left" maxValue="1440" doubleValue="726.0119047619047" tickMarkPosition="above" sliderType="linear" id="Ik2-Yu-A8P" customClass="CustomSliderCell" customModule="Clocker" customModuleProvider="target"/>
-                                        <accessibility description="FloatingSlider" identifier="FloatingSlider"/>
-                                        <connections>
-                                            <action selector="sliderMoved:" target="-2" id="JLX-8B-dKi"/>
-                                        </connections>
-                                    </slider>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Ngk-LZ-J2y" firstAttribute="firstBaseline" secondItem="XQc-HF-TrM" secondAttribute="firstBaseline" id="FhF-Ij-XvK"/>
-                                    <constraint firstItem="Ngk-LZ-J2y" firstAttribute="leading" secondItem="XQc-HF-TrM" secondAttribute="trailing" constant="2" id="GZh-tD-ZEU"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ngk-LZ-J2y" secondAttribute="trailing" constant="10" id="QMe-St-qSH"/>
-                                    <constraint firstAttribute="height" constant="30" id="YVW-Xj-U2r"/>
-                                    <constraint firstItem="XQc-HF-TrM" firstAttribute="leading" secondItem="6vv-g2-Z63" secondAttribute="leading" constant="9" id="gvD-R0-ANg"/>
-                                    <constraint firstItem="XQc-HF-TrM" firstAttribute="centerY" secondItem="6vv-g2-Z63" secondAttribute="centerY" id="xCY-68-Esl"/>
-                                </constraints>
-                            </customView>
                             <customView identifier="Review Cell" translatesAutoresizingMaskIntoConstraints="NO" id="HBv-Eh-z9y">
                                 <rect key="frame" x="0.0" y="115" width="429" height="50"/>
                                 <subviews>
@@ -490,10 +447,8 @@
                             <integer value="1000"/>
                             <integer value="1000"/>
                             <integer value="1000"/>
-                            <integer value="1000"/>
                         </visibilityPriorities>
                         <customSpacing>
-                            <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
