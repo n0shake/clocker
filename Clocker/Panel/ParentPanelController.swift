@@ -162,6 +162,7 @@ class ParentPanelController: NSWindowController {
         preferencesButton.image = sharedThemer.preferenceImage()
         pinButton.image = sharedThemer.pinImage()
         sharingButton.image = sharedThemer.sharingImage()
+        sharingButton.alternateImage = sharedThemer.sharingImageAlternate()
         
         // Setup KVO observers for user default changes
         setupObservers()
@@ -372,6 +373,7 @@ class ParentPanelController: NSWindowController {
         preferencesButton.image = sharedThemer.preferenceImage()
         pinButton.image = sharedThemer.pinImage()
         sharingButton.image = sharedThemer.sharingImage()
+        sharingButton.alternateImage = sharedThemer.sharingImageAlternate()
         
         sliderDatePicker.textColor = sharedThemer.mainTextColor()
         
@@ -769,12 +771,11 @@ class ParentPanelController: NSWindowController {
     
     @IBAction func shareAction(_ sender: NSButton) {
         let copyAllTimes = retrieveAllTimes()
-        let servicePicker = NSSharingServicePicker(items: [copyAllTimes])
-        servicePicker.delegate = self
+        let pasteboard = NSPasteboard.general
+        pasteboard.declareTypes([.string], owner: nil)
+        pasteboard.setString(copyAllTimes, forType: .string)
         
-        servicePicker.show(relativeTo: sender.bounds,
-                           of: sender,
-                           preferredEdge: .minY)
+        self.window?.contentView?.makeToast("Copied to Clipboard".localized())
     }
     
     @IBAction func convertToFloatingWindow(_: NSButton) {
