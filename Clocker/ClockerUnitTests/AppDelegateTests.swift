@@ -71,7 +71,7 @@ class AppDelegateTests: XCTestCase {
 
     func testActivationPolicy() {
         let subject = NSApplication.shared.delegate as? AppDelegate
-        let previousOption = UserDefaults.standard.integer(forKey: CLAppDisplayOptions)
+        let previousOption = UserDefaults.standard.integer(forKey: UserDefaultKeys.appDisplayOptions)
         if previousOption == 0 {
             XCTAssertEqual(NSApp.activationPolicy(), .accessory)
         } else {
@@ -87,7 +87,7 @@ class AppDelegateTests: XCTestCase {
         subject?.invalidateMenubarTimer(true)
         let statusItemHandler = subject?.statusItemForPanel()
         XCTAssertEqual(statusItemHandler?.statusItem.button?.subviews, [])
-        XCTAssertEqual(statusItemHandler?.statusItem.button?.title, CLEmptyString)
+        XCTAssertEqual(statusItemHandler?.statusItem.button?.title, UserDefaultKeys.emptyString)
         XCTAssertEqual(statusItemHandler?.statusItem.button?.image?.name(), "LightModeIcon")
         XCTAssertEqual(statusItemHandler?.statusItem.button?.imagePosition, .imageOnly)
         XCTAssertEqual(statusItemHandler?.statusItem.button?.toolTip, "Clocker")
@@ -116,7 +116,7 @@ class AppDelegateTests: XCTestCase {
 
     func testStandardModeMenubarSetup() {
         let olderTimezones = DataStore.shared().timezones()
-        UserDefaults.standard.set(1, forKey: CLMenubarCompactMode) // Set the menubar mode to standard
+        UserDefaults.standard.set(1, forKey: UserDefaultKeys.menubarCompactMode) // Set the menubar mode to standard
 
         let subject = NSApplication.shared.delegate as? AppDelegate
         let statusItemHandler = subject?.statusItemForPanel()
@@ -142,6 +142,6 @@ class AppDelegateTests: XCTestCase {
 
         XCTAssertEqual(subject?.statusItemForPanel().statusItem.button?.subviews.isEmpty, true) // This will be nil for standard mode
 
-        UserDefaults.standard.set(0, forKey: CLMenubarCompactMode) // Set the menubar mode back to compact
+        UserDefaults.standard.set(0, forKey: UserDefaultKeys.menubarCompactMode) // Set the menubar mode back to compact
     }
 }

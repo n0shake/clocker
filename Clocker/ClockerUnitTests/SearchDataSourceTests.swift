@@ -113,7 +113,7 @@ class SearchDataSourceTests: XCTestCase {
 
     func testRetrieveSelectedTimezoneWithEmptySearchField() {
         // Setup subject with an empty search field
-        setupSubject(searchText: CLEmptyString)
+        setupSubject(searchText: UserDefaultKeys.emptyString)
         subject.searchTimezones("los")
         XCTAssertFalse(subject.calculateChangesets())
 

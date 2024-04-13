@@ -36,7 +36,7 @@ extension EventCenter {
             setOfCalendars = Set(userCalendars)
         }
 
-        var currentSourceTitle = CLEmptyString
+        var currentSourceTitle = UserDefaultKeys.emptyString
 
         for calendar in calendars {
             if !(calendar.source.title == currentSourceTitle) {
@@ -81,12 +81,12 @@ extension EventCenter {
      Returns a tuple with 0 as the header string and 1 as the subtitle string
      */
     func separateFormat(event: EKEvent) -> (String, String)? {
-        guard let truncateLength = DataStore.shared().retrieve(key: CLTruncateTextLength) as? NSNumber, let eventTitle = event.title else {
+        guard let truncateLength = DataStore.shared().retrieve(key: UserDefaultKeys.truncateTextLength) as? NSNumber, let eventTitle = event.title else {
             return nil
         }
 
         let seconds = event.startDate.timeIntervalSinceNow
-        var formattedTitle: String = CLEmptyString
+        var formattedTitle: String = UserDefaultKeys.emptyString
 
         if eventTitle.count > truncateLength.intValue {
             let truncateIndex = eventTitle.index(eventTitle.startIndex, offsetBy: truncateLength.intValue)
@@ -98,7 +98,7 @@ extension EventCenter {
             formattedTitle.append(eventTitle)
         }
 
-        var menubarText: String = CLEmptyString
+        var menubarText: String = UserDefaultKeys.emptyString
         let minutes = seconds / 60
 
         if minutes > 2 {
@@ -224,7 +224,7 @@ extension EventCenter {
             let allCalendars = self.retrieveAllCalendarIdentifiers()
 
             if !allCalendars.isEmpty {
-                UserDefaults.standard.set(allCalendars, forKey: CLSelectedCalendars)
+                UserDefaults.standard.set(allCalendars, forKey: UserDefaultKeys.selectedCalendars)
                 Logger.info("Finished saving all calendar identifiers in default")
                 self.filterEvents()
             }
@@ -485,8 +485,8 @@ struct EventInfo {
             return "started +\(event.startDate.shortTimeAgoSinceNow)."
         } else if event.startDate.isToday, timeIntervalSinceNowForMeeting > 0 {
             let timeSince = Date().timeAgo(since: event.startDate).lowercased()
-            let withoutAn = timeSince.replacingOccurrences(of: "an", with: CLEmptyString)
-            var withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: CLEmptyString)
+            let withoutAn = timeSince.replacingOccurrences(of: "an", with: UserDefaultKeys.emptyString)
+            var withoutAgo = withoutAn.replacingOccurrences(of: "ago", with: UserDefaultKeys.emptyString)
             // If the user has not turned on seconds granularity for one of the timezones,
             // we return "in 12 seconds" which looks weird.
 

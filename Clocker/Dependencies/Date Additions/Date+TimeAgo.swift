@@ -131,7 +131,7 @@ public extension Date {
 
             // Instead of returning "Just now" or the equivalent localized version; let's return an empty string
             // Previously, we returned DateToolsLocalizedStrings("Just now")
-            return CLEmptyString
+            return UserDefaultKeys.emptyString
         }
     }
 

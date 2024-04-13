@@ -74,7 +74,7 @@ class ClockerUnitTests: XCTestCase {
 
     func testOverridingSecondsComponent_shouldHideSeconds() {
         let dummyDefaults = UserDefaults.standard
-        dummyDefaults.set(NSNumber(value: 4), forKey: CLSelectedTimeZoneFormatKey) // 4 is 12 hour with seconds
+        dummyDefaults.set(NSNumber(value: 4), forKey: UserDefaultKeys.selectedTimeZoneFormatKey) // 4 is 12 hour with seconds
 
         let timezoneObjects = [TimezoneData(with: mumbai),
                                TimezoneData(with: auckland),
@@ -207,7 +207,7 @@ class ClockerUnitTests: XCTestCase {
 
     func testTimezoneFormat() {
         let dataObject = TimezoneData(with: mumbai)
-        UserDefaults.standard.set(NSNumber(value: 0), forKey: CLSelectedTimeZoneFormatKey) // Set to 12 hour format
+        UserDefaults.standard.set(NSNumber(value: 0), forKey: UserDefaultKeys.selectedTimeZoneFormatKey) // Set to 12 hour format
 
         dataObject.setShouldOverrideGlobalTimeFormat(0) // Respect Global Preference
         XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "h:mm a")
@@ -246,7 +246,7 @@ class ClockerUnitTests: XCTestCase {
 
     func testTimezoneFormatWithDefaultSetAs24HourFormat() {
         let dataObject = TimezoneData(with: california)
-        UserDefaults.standard.set(NSNumber(value: 1), forKey: CLSelectedTimeZoneFormatKey) // Set to 24-Hour Format
+        UserDefaults.standard.set(NSNumber(value: 1), forKey: UserDefaultKeys.selectedTimeZoneFormatKey) // Set to 24-Hour Format
 
         dataObject.setShouldOverrideGlobalTimeFormat(0)
         XCTAssertTrue(dataObject.timezoneFormat(DataStore.shared().timezoneFormat()) == "HH:mm",
@@ -285,7 +285,7 @@ class ClockerUnitTests: XCTestCase {
 
     func testSecondsDisplayForOverridenTimezone() {
         let dataObject = TimezoneData(with: california)
-        UserDefaults.standard.set(NSNumber(value: 1), forKey: CLSelectedTimeZoneFormatKey) // Set to 24-Hour Format
+        UserDefaults.standard.set(NSNumber(value: 1), forKey: UserDefaultKeys.selectedTimeZoneFormatKey) // Set to 24-Hour Format
 
         // Test default behaviour
         let timezoneWithSecondsKeys = [4, 5, 8, 11]

@@ -194,9 +194,9 @@ class OnboardingParentViewController: NSViewController {
     }
 
     private func navigateToFinalStage() {
-        if UserDefaults.standard.object(forKey: CLInstallHomeIndicatorObject) == nil, DataStore.shared().timezones().isEmpty {
+        if UserDefaults.standard.object(forKey: UserDefaultKeys.installHomeIndicatorObject) == nil, DataStore.shared().timezones().isEmpty {
             fetchLocalTimezone()
-            UserDefaults.standard.set(1, forKey: CLInstallHomeIndicatorObject)
+            UserDefaults.standard.set(1, forKey: UserDefaultKeys.installHomeIndicatorObject)
         }
 
         guard let fromViewController = onboardingSearchVC, let toViewController = finalOnboardingVC else {
@@ -220,8 +220,8 @@ class OnboardingParentViewController: NSViewController {
 
         view.window?.close()
 
-        if ProcessInfo.processInfo.arguments.contains(CLOnboardingTestsLaunchArgument) == false {
-            UserDefaults.standard.set(true, forKey: CLShowOnboardingFlow)
+        if ProcessInfo.processInfo.arguments.contains(UserDefaultKeys.onboardingTestsLaunchArgument) == false {
+            UserDefaults.standard.set(true, forKey: UserDefaultKeys.showOnboardingFlow)
         }
 
         // Install the menubar option!
@@ -317,11 +317,11 @@ class OnboardingParentViewController: NSViewController {
 
     private func shouldStartAtLogin(_ shouldStart: Bool) {
         // If tests are going on, we don't want to enable/disable launch at login!
-        if ProcessInfo.processInfo.arguments.contains(CLOnboardingTestsLaunchArgument) {
+        if ProcessInfo.processInfo.arguments.contains(UserDefaultKeys.onboardingTestsLaunchArgument) {
             return
         }
 
-        UserDefaults.standard.set(shouldStart ? 1 : 0, forKey: CLStartAtLogin)
+        UserDefaults.standard.set(shouldStart ? 1 : 0, forKey: UserDefaultKeys.startAtLogin)
         startupManager.toggleLogin(shouldStart)
         shouldStart ?
             Logger.log(object: nil, for: "Enable Launch at Login while Onboarding") :

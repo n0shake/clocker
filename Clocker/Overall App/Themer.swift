@@ -16,7 +16,7 @@ class Themer: NSObject {
         case solarizedDark
     }
 
-    private static var sharedInstance = Themer(index: UserDefaults.standard.integer(forKey: CLThemeKey))
+    private static var sharedInstance = Themer(index: UserDefaults.standard.integer(forKey: UserDefaultKeys.themeKey))
     private var effectiveApperanceObserver: NSKeyValueObservation?
     private var themeIndex: Theme {
         didSet {
@@ -447,7 +447,7 @@ extension Themer {
 
     private func retrieveCurrentSystem() -> Theme {
         if #available(OSX 10.14, *) {
-            if let appleInterfaceStyle = UserDefaults.standard.object(forKey: CLAppleInterfaceStyleKey) as? String {
+            if let appleInterfaceStyle = UserDefaults.standard.object(forKey: UserDefaultKeys.appleInterfaceStyleKey) as? String {
                 if appleInterfaceStyle.lowercased().contains("dark") {
                     return .dark
                 }

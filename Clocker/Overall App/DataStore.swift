@@ -37,7 +37,7 @@ class DataStore: NSObject {
     }
 
     init(with defaults: UserDefaults) {
-        cachedTimezones = (defaults.object(forKey: CLDefaultPreferenceKey) as? [Data]) ?? []
+        cachedTimezones = (defaults.object(forKey: UserDefaultKeys.defaultPreferenceKey) as? [Data]) ?? []
         cachedMenubarTimezones = cachedTimezones.filter {
             let customTimezone = TimezoneData.customObject(from: $0)
             return customTimezone?.isFavourite == 1
@@ -69,10 +69,10 @@ class DataStore: NSObject {
         let userInfo = notification.userInfo ?? [:]
         let ubiquitousStore = notification.object as? NSUbiquitousKeyValueStore
         Logger.info("Ubiquitous Store Changed: User Info is \(userInfo)")
-        let currentTimezones = userDefaults.object(forKey: CLDefaultPreferenceKey) as? [Data]
-        let cloudTimezones = ubiquitousStore?.object(forKey: CLDefaultPreferenceKey) as? [Data]
-        let cloudLastUpdateDate = (ubiquitousStore?.object(forKey: CLUbiquitousStoreLastUpdateKey) as? Date) ?? Date()
-        let defaultsLastUpdateDate = (ubiquitousStore?.object(forKey: CLUserDefaultsLastUpdateKey) as? Date) ?? Date()
+        let currentTimezones = userDefaults.object(forKey: UserDefaultKeys.defaultPreferenceKey) as? [Data]
+        let cloudTimezones = ubiquitousStore?.object(forKey: UserDefaultKeys.defaultPreferenceKey) as? [Data]
+        let cloudLastUpdateDate = (ubiquitousStore?.object(forKey: UserDefaultKeys.ubiquitousStoreLastUpdateKey) as? Date) ?? Date()
+        let defaultsLastUpdateDate = (ubiquitousStore?.object(forKey: UserDefaultKeys.userDefaultsLastUpdateKey) as? Date) ?? Date()
 
         if cloudTimezones == currentTimezones {
             Logger.info("Ubiquitous Store timezones aren't equal to current timezones")
@@ -84,8 +84,8 @@ class DataStore: NSObject {
 
         if cloudTimezones != currentTimezones, cloudLastUpdateDate.isLaterThanOrEqual(to: defaultsLastUpdateDate) {
             Logger.info("Syncing local timezones with data from the ☁️. ☁️ last update timestamp is recent")
-            userDefaults.set(cloudTimezones, forKey: CLDefaultPreferenceKey)
-            userDefaults.set(Date(), forKey: CLUserDefaultsLastUpdateKey)
+            userDefaults.set(cloudTimezones, forKey: UserDefaultKeys.defaultPreferenceKey)
+            userDefaults.set(Date(), forKey: UserDefaultKeys.userDefaultsLastUpdateKey)
             NotificationCenter.default.post(name: DataStore.didSyncFromExternalSourceNotification,
                                             object: self)
             return
@@ -97,16 +97,16 @@ class DataStore: NSObject {
     }
 
     func setTimezones(_ timezones: [Data]?) {
-        userDefaults.set(timezones, forKey: CLDefaultPreferenceKey)
-        userDefaults.set(Date(), forKey: CLUserDefaultsLastUpdateKey)
+        userDefaults.set(timezones, forKey: UserDefaultKeys.defaultPreferenceKey)
+        userDefaults.set(Date(), forKey: UserDefaultKeys.userDefaultsLastUpdateKey)
         cachedTimezones = timezones ?? []
         cachedMenubarTimezones = cachedTimezones.filter {
             let customTimezone = TimezoneData.customObject(from: $0)
             return customTimezone?.isFavourite == 1
         }
         // iCloud sync
-        ubiquitousStore?.set(timezones, forKey: CLDefaultPreferenceKey)
-        ubiquitousStore?.set(Date(), forKey: CLUbiquitousStoreLastUpdateKey)
+        ubiquitousStore?.set(timezones, forKey: UserDefaultKeys.defaultPreferenceKey)
+        ubiquitousStore?.set(Date(), forKey: UserDefaultKeys.ubiquitousStoreLastUpdateKey)
     }
 
     func menubarTimezones() -> [Data]? {
@@ -114,7 +114,7 @@ class DataStore: NSObject {
     }
     
     func selectedCalendars() -> [String]? {
-        return userDefaults.array(forKey: CLSelectedCalendars) as? [String]
+        return userDefaults.array(forKey: UserDefaultKeys.selectedCalendars) as? [String]
     }
 
     // MARK: Date (May 8th) in Compact Menubar
@@ -158,7 +158,7 @@ class DataStore: NSObject {
     }
 
     func timezoneFormat() -> NSNumber {
-        return userDefaults.object(forKey: CLSelectedTimeZoneFormatKey) as? NSNumber ?? NSNumber(integerLiteral: 0)
+        return userDefaults.object(forKey: UserDefaultKeys.selectedTimeZoneFormatKey) as? NSNumber ?? NSNumber(integerLiteral: 0)
     }
 
     func isBufferRequiredForTwelveHourFormats() -> Bool {
@@ -168,44 +168,44 @@ class DataStore: NSObject {
     func shouldDisplay(_ type: ViewType) -> Bool {
         switch type {
         case .futureSlider:
-            guard let value = retrieve(key: CLDisplayFutureSliderKey) as? NSNumber else {
+            guard let value = retrieve(key: UserDefaultKeys.displayFutureSliderKey) as? NSNumber else {
                 return false
             }
             return value != 1 // Display slider is 0 and Hide is 1.
         case .upcomingEventView:
-            guard let value = retrieve(key: CLShowUpcomingEventView) as? NSString else {
+            guard let value = retrieve(key: UserDefaultKeys.showUpcomingEventView) as? NSString else {
                 return false
             }
             return value == "YES"
         case .twelveHour:
-            return shouldDisplayHelper(CLSelectedTimeZoneFormatKey)
+            return shouldDisplayHelper(UserDefaultKeys.selectedTimeZoneFormatKey)
         case .showAllDayEventsInMenubar:
-            return shouldDisplayHelper(CLShowAllDayEventsInUpcomingView)
+            return shouldDisplayHelper(UserDefaultKeys.showAllDayEventsInUpcomingView)
         case .sunrise:
-            return shouldDisplayHelper(CLSunriseSunsetTime)
+            return shouldDisplayHelper(UserDefaultKeys.sunriseSunsetTime)
         case .showMeetingInMenubar:
-            return shouldDisplayHelper(CLShowMeetingInMenubar)
+            return shouldDisplayHelper(UserDefaultKeys.showMeetingInMenubar)
         case .showAppInForeground:
-            guard let value = retrieve(key: CLShowAppInForeground) as? NSNumber else {
+            guard let value = retrieve(key: UserDefaultKeys.showAppInForeground) as? NSNumber else {
                 return false
             }
             return value.isEqual(to: NSNumber(value: 1))
         case .dateInMenubar:
-            return shouldDisplayNonObjectHelper(CLShowDateInMenu)
+            return shouldDisplayNonObjectHelper(UserDefaultKeys.showDateInMenu)
         case .placeInMenubar:
-            return shouldDisplayHelper(CLShowPlaceInMenu)
+            return shouldDisplayHelper(UserDefaultKeys.showPlaceInMenu)
         case .dayInMenubar:
-            return shouldDisplayNonObjectHelper(CLShowDayInMenu)
+            return shouldDisplayNonObjectHelper(UserDefaultKeys.showDayInMenu)
         case .appDisplayOptions:
-            return shouldDisplayHelper(CLAppDisplayOptions)
+            return shouldDisplayHelper(UserDefaultKeys.appDisplayOptions)
         case .menubarCompactMode:
-            guard let value = retrieve(key: CLMenubarCompactMode) as? Int else {
+            guard let value = retrieve(key: UserDefaultKeys.menubarCompactMode) as? Int else {
                 return false
             }
 
             return value == 0
         case .sync:
-            return shouldDisplayHelper(CLEnableSyncKey)
+            return shouldDisplayHelper(UserDefaultKeys.enableSyncKey)
         }
     }
 
