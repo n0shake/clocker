@@ -10,7 +10,9 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var floatingWindow = FloatingWindowController.shared()
     internal lazy var panelController = PanelController(windowNibName: .panel)
     private var statusBarHandler: StatusItemHandler!
-    private let versionUpdateHandler: VersionUpdateHandler = VersionUpdateHandler(with: DataStore.shared())
+    
+    // TODO: Replace iVersion with this!
+//    private let versionUpdateHandler: VersionUpdateHandler = VersionUpdateHandler(with: DataStore.shared())
 
     override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change _: [NSKeyValueChangeKey: Any]?, context _: UnsafeMutableRawPointer?) {
         if let path = keyPath, path == PreferencesConstants.hotKeyPathIdentifier {
