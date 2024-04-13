@@ -152,14 +152,6 @@ extension ParentPanelController {
         return hourQuarterDate
     }
     
-    func minutesToHoursAndMinutes(_ minutes: Int) -> (hours: Int , leftMinutes: Int) {
-        var minutesRemaining = (minutes % 60)
-        if (minutesRemaining < 0) {
-            minutesRemaining.negate()
-        }
-        return (minutes / 60, minutesRemaining)
-    }
-    
     public func setDefaultDateLabel(_ index: Int) -> Int {
         let futureSliderDayPreference = DataStore.shared().retrieve(key: UserDefaultKeys.futureSliderRange) as? NSNumber ?? 5
         let futureSliderDayRange = (futureSliderDayPreference.intValue + 1)
@@ -168,8 +160,7 @@ extension ParentPanelController {
         if index >= (centerPoint + 1) {
             let remainder = (index % (centerPoint + 1))
             let nextDate = Calendar.current.date(byAdding: .minute, value: remainder * 15, to: closestQuarterTimeRepresentation ?? Date())!
-            let minutes = minutesToHoursAndMinutes(remainder * 15)
-            modernSliderLabel.stringValue = minutes.leftMinutes != 0 ? "+\(minutes.hours):\(minutes.leftMinutes)h" : "+\(minutes.hours)h"
+            modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(nextDate)
             if resetModernSliderButton.isHidden {
                 animateButton(false)
             }
@@ -179,8 +170,6 @@ extension ParentPanelController {
             let remainder = centerPoint - index + 1
             let previousDate = Calendar.current.date(byAdding: .minute, value: -1 * remainder * 15, to: closestQuarterTimeRepresentation ?? Date())!
             modernSliderLabel.stringValue = timezoneFormattedStringRepresentation(previousDate)
-            let minutes = minutesToHoursAndMinutes(-1 * remainder * 15)
-            modernSliderLabel.stringValue = minutes.leftMinutes != 0 ? "\(minutes.hours):\(minutes.leftMinutes)h" : "\(minutes.hours)h"
             if resetModernSliderButton.isHidden {
                 animateButton(false)
             }
