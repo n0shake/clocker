@@ -43,7 +43,7 @@
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" ignoresCycle="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1000" y="379" width="300" height="420"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
             <view key="contentView" focusRingType="none" misplaced="YES" id="6" customClass="BackgroundPanelView" customModule="Clocker" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="300" height="420"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -262,7 +262,7 @@
                                 </scroller>
                             </scrollView>
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="C7R-Dq-MFr" userLabel="Slider View">
-                                <rect key="frame" x="0.0" y="245" width="350" height="30"/>
+                                <rect key="frame" x="0.0" y="155" width="350" height="30"/>
                                 <subviews>
                                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vf2-uI-yf3">
                                         <rect key="frame" x="7" y="2" width="203" height="23"/>
@@ -348,7 +348,7 @@
                                         <rect key="frame" x="125" y="3" width="100" height="20"/>
                                         <subviews>
                                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e2d-EI-Dm0">
-                                                <rect key="frame" x="-2" y="0.0" width="104" height="20"/>
+                                                <rect key="frame" x="-2" y="0.0" width="104" height="18"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="6ph-Pe-Ayg">
                                                     <font key="font" size="12" name="Avenir-Book"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -372,7 +372,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="e2d-EI-Dm0" secondAttribute="bottom" id="8gX-z3-MxE"/>
-                                            <constraint firstItem="e2d-EI-Dm0" firstAttribute="top" secondItem="hma-wI-Sc9" secondAttribute="top" id="Ej7-XJ-dNL"/>
+                                            <constraint firstItem="e2d-EI-Dm0" firstAttribute="top" secondItem="hma-wI-Sc9" secondAttribute="top" constant="2" id="Ej7-XJ-dNL"/>
                                             <constraint firstAttribute="trailing" secondItem="TK5-db-7bd" secondAttribute="trailing" constant="-5" id="WeH-gv-EZG"/>
                                             <constraint firstAttribute="height" constant="20" id="gFM-oL-xxD"/>
                                             <constraint firstItem="TK5-db-7bd" firstAttribute="top" secondItem="hma-wI-Sc9" secondAttribute="top" constant="-5" id="h99-yU-cPU"/>
@@ -518,11 +518,11 @@
                                     <scrollView wantsLayer="YES" focusRingType="none" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5BT-DM-xru">
                                         <rect key="frame" x="0.0" y="0.0" width="379" height="75"/>
                                         <clipView key="contentView" drawsBackground="NO" id="QHw-sR-BYe">
-                                            <rect key="frame" x="0.0" y="0.0" width="379" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="379" height="75"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <collectionView id="Tp2-pl-yIm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="379" height="64"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="379" height="75"/>
                                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="g4p-GT-v9Y">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -534,7 +534,7 @@
                                             <color key="backgroundColor" name="Accent Color"/>
                                         </clipView>
                                         <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" controlSize="mini" horizontal="YES" id="Akw-Iw-iVY" customClass="ThinScroller" customModule="Clocker" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="64" width="379" height="11"/>
+                                            <rect key="frame" x="0.0" y="61" width="379" height="14"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="MXo-gV-Bdf">
