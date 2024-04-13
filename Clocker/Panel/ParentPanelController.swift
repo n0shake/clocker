@@ -23,9 +23,7 @@ class ParentPanelController: NSWindowController {
     
     var dateFormatter = DateFormatter()
     
-    var futureSliderValue: Int {
-        return futureSlider.integerValue
-    }
+    var futureSliderValue: Int = 0
     
     var parentTimer: Repeater?
     
@@ -50,11 +48,7 @@ class ParentPanelController: NSWindowController {
     
     @IBOutlet var stackView: NSStackView!
     
-    @IBOutlet var futureSlider: NSSlider!
-    
     @IBOutlet var scrollViewHeight: NSLayoutConstraint!
-    
-    @IBOutlet var futureSliderView: NSView!
     
     @IBOutlet var reviewView: NSView!
     
@@ -71,8 +65,6 @@ class ParentPanelController: NSWindowController {
     @IBOutlet var preferencesButton: NSButton!
     
     @IBOutlet var pinButton: NSButton!
-    
-    @IBOutlet var sliderDatePicker: NSDatePicker!
     
     @IBOutlet var roundedDateView: NSView!
     
@@ -179,7 +171,6 @@ class ParentPanelController: NSWindowController {
 #endif
         
         // Setup layers
-        futureSliderView.wantsLayer = true
         reviewView.wantsLayer = true
         
         // Setup notifications
@@ -209,9 +200,6 @@ class ParentPanelController: NSWindowController {
         
         // Setup colors based on the curren theme
         themeChanged()
-        
-        //TODO: Always hide the legacy slider view. Delete this once v24.01 stabilizes.
-        futureSliderView.isHidden = true
         
         // UI adjustments based on user preferences
         if DataStore.shared().timezones().isEmpty || DataStore.shared().shouldDisplay(.futureSlider) == false {
@@ -310,18 +298,6 @@ class ParentPanelController: NSWindowController {
     }
     
     private func adjustFutureSliderBasedOnPreferences() {
-        // Setting up Slider's Date Picker
-        sliderDatePicker.minDate = Date()
-        
-        guard let sliderRange = DataStore.shared().retrieve(key: UserDefaultKeys.futureSliderRange) as? NSNumber else {
-            sliderDatePicker.maxDate = Date(timeInterval: 1 * 24 * 60 * 60, since: Date())
-            return
-        }
-        
-        sliderDatePicker.maxDate = Date(timeInterval: (sliderRange.doubleValue + 1) * 24 * 60 * 60, since: Date())
-        futureSlider.maxValue = (sliderRange.doubleValue + 1) * 24 * 60
-        
-        futureSlider.integerValue = 0
         setTimezoneDatasourceSlider(sliderValue: 0)
         updateTableContent()
     }
@@ -358,8 +334,6 @@ class ParentPanelController: NSWindowController {
         
         let rightButtonAttributedTitle = NSAttributedString(string: rightButton.title, attributes: styleAttributes)
         rightButton.attributedTitle = rightButtonAttributedTitle
-        
-        futureSliderView.layer?.backgroundColor = NSColor.clear.cgColor
     }
     
     @objc func themeChanged() {
@@ -374,8 +348,6 @@ class ParentPanelController: NSWindowController {
         pinButton.image = sharedThemer.pinImage()
         sharingButton.image = sharedThemer.sharingImage()
         sharingButton.alternateImage = sharedThemer.sharingImageAlternate()
-        
-        sliderDatePicker.textColor = sharedThemer.mainTextColor()
         
         if roundedDateView != nil {
             roundedDateView.layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
@@ -540,24 +512,8 @@ class ParentPanelController: NSWindowController {
         window?.alphaValue = 1.0
     }
     
-    @IBAction func sliderMoved(_: Any) {
-        let currentCalendar = Calendar(identifier: .gregorian)
-        guard let newDate = currentCalendar.date(byAdding: .minute,
-                                                 value: Int(futureSlider.doubleValue),
-                                                 to: Date())
-        else {
-            assertionFailure("Data was unexpectedly nil")
-            return
-        }
-        
-        setTimezoneDatasourceSlider(sliderValue: futureSliderValue)
-        
-        sliderDatePicker.dateValue = newDate
-        
-        mainTableView.reloadData()
-    }
-    
     func setTimezoneDatasourceSlider(sliderValue: Int) {
+        futureSliderValue = sliderValue
         datasource?.setSlider(value: sliderValue)
     }
     
@@ -619,9 +575,6 @@ class ParentPanelController: NSWindowController {
                let cellView = mainTableView.view(atColumn: 0, row: $0, makeIfNecessary: false) as? TimezoneCellView,
                let model = TimezoneData.customObject(from: current)
             {
-                if let futureSliderCell = futureSlider.cell as? CustomSliderCell, futureSliderCell.tracking == true {
-                    return
-                }
                 if modernContainerView != nil, modernSlider.isHidden == false, modernContainerView.currentlyInFocus {
                     return
                 }
@@ -646,19 +599,9 @@ class ParentPanelController: NSWindowController {
                     cellView.noteLabel.stringValue = UserDefaultKeys.emptyString
                 }
                 cellView.layout(with: model)
-                updateDatePicker()
+                // TODO: Update modern slider
             }
         }
-    }
-    
-    private func updateDatePicker() {
-        sliderDatePicker.minDate = Date()
-        guard let sliderRange = DataStore.shared().retrieve(key: UserDefaultKeys.futureSliderRange) as? NSNumber else {
-            sliderDatePicker.maxDate = Date(timeInterval: 1 * 24 * 60 * 60, since: Date())
-            return
-        }
-        
-        sliderDatePicker.maxDate = Date(timeInterval: (sliderRange.doubleValue + 1) * 24 * 60 * 60, since: Date())
     }
     
     @discardableResult
@@ -955,22 +898,11 @@ class ParentPanelController: NSWindowController {
     
     // MARK: Date Picker + Slider
     
-    @IBAction func sliderPickerChanged(_: Any) {
-        let minutesDifference = minutes(from: Date(), other: sliderDatePicker.dateValue)
-        futureSlider.integerValue = minutesDifference
-        setTimezoneDatasourceSlider(sliderValue: minutesDifference)
-        updateTableContent()
-    }
     
     func minutes(from date: Date, other: Date) -> Int {
         return Calendar.current.dateComponents([.minute], from: date, to: other).minute ?? 0
     }
     
-    @IBAction func resetDatePicker(_: Any) {
-        futureSlider.integerValue = 0
-        sliderDatePicker.dateValue = Date()
-        setTimezoneDatasourceSlider(sliderValue: 0)
-    }
     
     @objc func terminateClocker() {
         NSApplication.shared.terminate(nil)
