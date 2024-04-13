@@ -90,6 +90,7 @@ class FloatingWindowController: ParentPanelController {
         preferencesButton.image = shared.preferenceImage()
         pinButton.image = shared.pinImage()
         sharingButton.image = shared.sharingImage()
+        sharingButton.alternateImage = shared.sharingImageAlternate()
         mainTableView.backgroundColor = shared.mainBackgroundColor()
         window?.backgroundColor = shared.mainBackgroundColor()
     }

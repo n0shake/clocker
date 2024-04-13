@@ -287,7 +287,19 @@ extension Themer {
     }
     
     func sharingImage() -> NSImage {
-        if let sharingImage = symbolImage(for: "square.and.arrow.up.on.square.fill") {
+        if let sharingImage = symbolImage(for: "doc.on.doc") {
+            return sharingImage
+        }
+        
+        return fallbackImageProvider(NSImage(named: NSImage.Name("Sharing"))!,
+                                     NSImage(named: NSImage.Name("SharingDarkIcon"))!,
+                                     NSImage(named: NSImage.Name("Sharing Dynamic"))!,
+                                     NSImage(named: NSImage.Name("Sharing"))!,
+                                     NSImage(named: NSImage.Name("SharingDarkIcon"))!)
+    }
+    
+    func sharingImageAlternate() -> NSImage {
+        if let sharingImage = symbolImage(for: "doc.on.doc.fill") {
             return sharingImage
         }
         

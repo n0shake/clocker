@@ -262,7 +262,7 @@
                                 </scroller>
                             </scrollView>
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="C7R-Dq-MFr" userLabel="Slider View">
-                                <rect key="frame" x="0.0" y="155" width="350" height="30"/>
+                                <rect key="frame" x="0.0" y="245" width="350" height="30"/>
                                 <subviews>
                                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vf2-uI-yf3">
                                         <rect key="frame" x="7" y="2" width="203" height="23"/>
@@ -585,7 +585,7 @@
                                             <action selector="convertToFloatingWindow:" target="-2" id="cuu-WJ-Sd9"/>
                                         </connections>
                                     </button>
-                                    <button toolTip="Share Clocker!" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hc7-fH-V7i">
+                                    <button toolTip="Copy All Times" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hc7-fH-V7i">
                                         <rect key="frame" x="95" y="10" width="30" height="21"/>
                                         <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="SharingDarkIcon" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jZm-RN-msv">
                                             <behavior key="behavior" lightByContents="YES"/>
