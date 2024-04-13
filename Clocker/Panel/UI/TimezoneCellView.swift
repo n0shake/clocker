@@ -20,7 +20,7 @@ class TimezoneCellView: NSTableCellView {
     var isPopoverDisplayed: Bool = false
 
     override func awakeFromNib() {
-        if ProcessInfo.processInfo.arguments.contains(CLUITestingLaunchArgument) {
+        if ProcessInfo.processInfo.arguments.contains(UserDefaultKeys.testingLaunchArgument) {
             extraOptions.isHidden = false
             return
         }
@@ -125,7 +125,7 @@ class TimezoneCellView: NSTableCellView {
     }
 
     private func setupTextSize() {
-        guard let userFontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber else {
+        guard let userFontSize = DataStore.shared().retrieve(key: UserDefaultKeys.userFontSizePreference) as? NSNumber else {
             assertionFailure("User Font Size is in unexpected format")
             return
         }

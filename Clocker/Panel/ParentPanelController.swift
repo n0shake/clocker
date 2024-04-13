@@ -218,7 +218,7 @@ class ParentPanelController: NSWindowController {
             if modernContainerView != nil {
                 modernContainerView.isHidden = true
             }
-        } else if let value = DataStore.shared().retrieve(key: CLDisplayFutureSliderKey) as? NSNumber {
+        } else if let value = DataStore.shared().retrieve(key: UserDefaultKeys.displayFutureSliderKey) as? NSNumber {
             if value.intValue == 1 {
                 if modernContainerView != nil {
                     modernContainerView.isHidden = true
@@ -312,7 +312,7 @@ class ParentPanelController: NSWindowController {
         // Setting up Slider's Date Picker
         sliderDatePicker.minDate = Date()
 
-        guard let sliderRange = DataStore.shared().retrieve(key: CLFutureSliderRange) as? NSNumber else {
+        guard let sliderRange = DataStore.shared().retrieve(key: UserDefaultKeys.futureSliderRange) as? NSNumber else {
             sliderDatePicker.maxDate = Date(timeInterval: 1 * 24 * 60 * 60, since: Date())
             return
         }
@@ -410,7 +410,7 @@ class ParentPanelController: NSWindowController {
     }
 
     private func getAdjustedRowHeight(for object: TimezoneData?, _ currentHeight: CGFloat) -> CGFloat {
-        let userFontSize: NSNumber = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber ?? 4
+        let userFontSize: NSNumber = DataStore.shared().retrieve(key: UserDefaultKeys.userFontSizePreference) as? NSNumber ?? 4
         let shouldShowSunrise = DataStore.shared().shouldDisplay(.sunrise)
 
         var newHeight = currentHeight
@@ -468,7 +468,7 @@ class ParentPanelController: NSWindowController {
             return
         }
 
-        if let userFontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber {
+        if let userFontSize = DataStore.shared().retrieve(key: UserDefaultKeys.userFontSizePreference) as? NSNumber {
             if userFontSize == 4 {
                 scrollViewHeight.constant = totalHeight + CGFloat(userFontSize.intValue * 2)
             } else {
@@ -487,7 +487,7 @@ class ParentPanelController: NSWindowController {
         }
 
         if DataStore.shared().shouldDisplay(.futureSlider) {
-            let isModernSliderDisplayed = DataStore.shared().retrieve(key: CLDisplayFutureSliderKey) as? NSNumber ?? 0
+            let isModernSliderDisplayed = DataStore.shared().retrieve(key: UserDefaultKeys.displayFutureSliderKey) as? NSNumber ?? 0
             if isModernSliderDisplayed == 0 {
                 if scrollViewHeight.constant >= (screenHeight() - 200) {
                     scrollViewHeight.constant = (screenHeight() - 300)
@@ -529,7 +529,7 @@ class ParentPanelController: NSWindowController {
         datasource?.setItems(items: timezones)
         datasource?.setSlider(value: futureSliderValue)
 
-        if let userFontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber {
+        if let userFontSize = DataStore.shared().retrieve(key: UserDefaultKeys.userFontSizePreference) as? NSNumber {
             scrollViewHeight.constant = CGFloat(timezones.count) * (mainTableView.rowHeight + CGFloat(userFontSize.floatValue * 1.5))
 
             setScrollViewConstraint()
@@ -647,7 +647,7 @@ class ParentPanelController: NSWindowController {
                 } else if let value = TimezoneDataOperations(with: model, store: DataStore.shared()).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) {
                     cellView.noteLabel.stringValue = value
                 } else {
-                    cellView.noteLabel.stringValue = CLEmptyString
+                    cellView.noteLabel.stringValue = UserDefaultKeys.emptyString
                 }
                 cellView.layout(with: model)
                 updateDatePicker()
@@ -657,7 +657,7 @@ class ParentPanelController: NSWindowController {
 
     private func updateDatePicker() {
         sliderDatePicker.minDate = Date()
-        guard let sliderRange = DataStore.shared().retrieve(key: CLFutureSliderRange) as? NSNumber else {
+        guard let sliderRange = DataStore.shared().retrieve(key: UserDefaultKeys.futureSliderRange) as? NSNumber else {
             sliderDatePicker.maxDate = Date(timeInterval: 1 * 24 * 60 * 60, since: Date())
             return
         }
@@ -735,7 +735,7 @@ class ParentPanelController: NSWindowController {
             if self.upcomingEventCollectionView != nil {
                 if self.stackView.arrangedSubviews.contains(self.upcomingEventContainerView!), self.upcomingEventContainerView?.isHidden == false {
                     self.upcomingEventContainerView?.isHidden = true
-                    UserDefaults.standard.set("NO", forKey: CLShowUpcomingEventView)
+                    UserDefaults.standard.set("NO", forKey: UserDefaultKeys.showUpcomingEventView)
                     Logger.log(object: ["Removed": "YES"], for: "Removed Upcoming Event View")
                 }
             }
@@ -798,7 +798,7 @@ class ParentPanelController: NSWindowController {
 
         let inverseSelection = showAppInForeground ? NSNumber(value: 0) : NSNumber(value: 1)
 
-        UserDefaults.standard.set(inverseSelection, forKey: CLShowAppInForeground)
+        UserDefaults.standard.set(inverseSelection, forKey: UserDefaultKeys.showAppInForeground)
 
         close()
 
@@ -818,7 +818,7 @@ class ParentPanelController: NSWindowController {
         OperationQueue.main.addOperation {
             if let upcomingView = self.upcomingEventContainerView, upcomingView.isHidden {
                 self.upcomingEventContainerView?.isHidden = false
-                UserDefaults.standard.set("YES", forKey: CLShowUpcomingEventView)
+                UserDefaults.standard.set("YES", forKey: UserDefaultKeys.showUpcomingEventView)
                 Logger.log(object: ["Shown": "YES"], for: "Added Upcoming Event View")
                 self.themeChanged()
             }

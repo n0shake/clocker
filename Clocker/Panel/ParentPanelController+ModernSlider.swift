@@ -6,7 +6,7 @@ import Foundation
 
 extension ParentPanelController: NSCollectionViewDataSource {
     func collectionView(_: NSCollectionView, numberOfItemsInSection _: Int) -> Int {
-        let futureSliderDayPreference = DataStore.shared().retrieve(key: CLFutureSliderRange) as? NSNumber ?? 5
+        let futureSliderDayPreference = DataStore.shared().retrieve(key: UserDefaultKeys.futureSliderRange) as? NSNumber ?? 5
         let futureSliderDayRange = (futureSliderDayPreference.intValue + 1)
         return (PanelConstants.modernSliderPointsInADay * futureSliderDayRange * 2) + 1
     }
@@ -23,6 +23,8 @@ extension ParentPanelController: NSCollectionViewDataSource {
 extension ParentPanelController {
     func setupModernSliderIfNeccessary() {
         if modernSlider != nil {
+            modernSliderLabel.alignment = .center
+            
             if #available(OSX 11.0, *) {
                 resetModernSliderButton.image = Themer.shared().resetModernSliderImage()
             } else {
@@ -159,7 +161,7 @@ extension ParentPanelController {
     }
 
     public func setDefaultDateLabel(_ index: Int) -> Int {
-        let futureSliderDayPreference = DataStore.shared().retrieve(key: CLFutureSliderRange) as? NSNumber ?? 5
+        let futureSliderDayPreference = DataStore.shared().retrieve(key: UserDefaultKeys.futureSliderRange) as? NSNumber ?? 5
         let futureSliderDayRange = (futureSliderDayPreference.intValue + 1)
         let totalCount = (PanelConstants.modernSliderPointsInADay * futureSliderDayRange * 2) + 1
         let centerPoint = Int(ceil(Double(totalCount / 2)))

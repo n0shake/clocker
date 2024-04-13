@@ -122,7 +122,7 @@ class AppearanceViewController: ParentViewController {
             informationLabel.isHidden = menubarFavourites.isEmpty ? false : true
         }
 
-        if let selectedIndex = DataStore.shared().retrieve(key: CLFutureSliderRange) as? NSNumber {
+        if let selectedIndex = DataStore.shared().retrieve(key: UserDefaultKeys.futureSliderRange) as? NSNumber {
             sliderDayRangePopup.selectItem(at: selectedIndex.intValue)
         }
 
@@ -138,7 +138,7 @@ class AppearanceViewController: ParentViewController {
         appDisplayControl.setSelected(true, forSegment: appDisplayOptions ? 0 : 1)
 
         // Set the Sync value from NSUbiqutousKeyValueStore
-        let syncEnabled = NSUbiquitousKeyValueStore.default.bool(forKey: CLEnableSyncKey)
+        let syncEnabled = NSUbiquitousKeyValueStore.default.bool(forKey: UserDefaultKeys.enableSyncKey)
         syncSegementedControl.setSelected(true, forSegment: syncEnabled ? 0 : 1)
     }
 
@@ -190,7 +190,7 @@ class AppearanceViewController: ParentViewController {
     @IBAction func timeFormatSelectionChanged(_ sender: NSPopUpButton) {
         let selection = NSNumber(value: sender.indexOfSelectedItem)
 
-        UserDefaults.standard.set(selection, forKey: CLSelectedTimeZoneFormatKey)
+        UserDefaults.standard.set(selection, forKey: UserDefaultKeys.selectedTimeZoneFormatKey)
         refresh(panel: true, floating: true)
 
         if let selectedFormat = sender.selectedItem?.title,
@@ -357,7 +357,7 @@ class AppearanceViewController: ParentViewController {
     }
 
     @IBAction func toggleSync(_ sender: NSSegmentedControl) {
-        NSUbiquitousKeyValueStore.default.set(sender.selectedSegment == 0, forKey: CLEnableSyncKey)
+        NSUbiquitousKeyValueStore.default.set(sender.selectedSegment == 0, forKey: UserDefaultKeys.enableSyncKey)
         DataStore.shared().setupSyncNotification()
     }
 }
@@ -389,7 +389,7 @@ extension AppearanceViewController: NSTableViewDataSource, NSTableViewDelegate {
         if let note = currentModel.note, !note.isEmpty {
             cellView.noteLabel.stringValue = note
         } else {
-            cellView.noteLabel.stringValue = CLEmptyString
+            cellView.noteLabel.stringValue = UserDefaultKeys.emptyString
         }
         cellView.currentLocationIndicator.isHidden = !currentModel.isSystemTimezone
         cellView.time.setAccessibilityIdentifier("ActualTime")
@@ -402,7 +402,7 @@ extension AppearanceViewController: NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func tableView(_: NSTableView, heightOfRow row: Int) -> CGFloat {
-        if let userFontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber, previewTimezones.count > row {
+        if let userFontSize = DataStore.shared().retrieve(key: UserDefaultKeys.userFontSizePreference) as? NSNumber, previewTimezones.count > row {
             let model = previewTimezones[row]
 
             let rowHeight: Int = userFontSize == 4 ? 60 : 65

@@ -94,7 +94,7 @@ class CalendarViewController: ParentViewController {
             setGrantAccess(title: "Grant Access".localized())
         } else if hasDeniedCalendarAccess {
             // The informationField text is taken care off in the XIB. Just set the grant button to empty because we can't do anything.
-            setGrantAccess(title: CLEmptyString)
+            setGrantAccess(title: UserDefaultKeys.emptyString)
         } else {
             calendarsTableView.reloadData()
         }
@@ -124,7 +124,7 @@ class CalendarViewController: ParentViewController {
         setGrantAccess(title: "Launch Preferences".localized())
 
         // Remove upcoming event view if possible
-        UserDefaults.standard.set("NO", forKey: CLShowUpcomingEventView)
+        UserDefaults.standard.set("NO", forKey: UserDefaultKeys.showUpcomingEventView)
     }
 
     @IBAction func grantAccess(_: Any) {
@@ -163,7 +163,7 @@ class CalendarViewController: ParentViewController {
             showUpcomingEventView = "NO"
         }
 
-        UserDefaults.standard.set(showUpcomingEventView, forKey: CLShowUpcomingEventView)
+        UserDefaults.standard.set(showUpcomingEventView, forKey: UserDefaultKeys.showUpcomingEventView)
 
         if DataStore.shared().shouldDisplay(ViewType.showAppInForeground) {
             let floatingWindow = FloatingWindowController.shared()
@@ -284,7 +284,7 @@ extension CalendarViewController: NSTableViewDelegate {
             }
         }
 
-        UserDefaults.standard.set(selectedCalendars, forKey: CLSelectedCalendars)
+        UserDefaults.standard.set(selectedCalendars, forKey: UserDefaultKeys.selectedCalendars)
 
         calendars = EventCenter.sharedCenter().fetchSourcesAndCalendars()
 

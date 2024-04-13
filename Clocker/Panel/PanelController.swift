@@ -82,7 +82,7 @@ class PanelController: ParentPanelController {
 
         if DataStore.shared().timezones().isEmpty || DataStore.shared().shouldDisplay(.futureSlider) == false {
             modernContainerView.isHidden = true
-        } else if let value = DataStore.shared().retrieve(key: CLDisplayFutureSliderKey) as? NSNumber, modernContainerView != nil {
+        } else if let value = DataStore.shared().retrieve(key: UserDefaultKeys.displayFutureSliderKey) as? NSNumber, modernContainerView != nil {
             if value.intValue == 1 {
                 modernContainerView.isHidden = true
             } else if value.intValue == 0 {
@@ -185,16 +185,16 @@ class PanelController: ParentPanelController {
 
         let preferences = DataStore.shared().timezones()
 
-        guard let theme = DataStore.shared().retrieve(key: CLThemeKey) as? NSNumber,
-              let displayFutureSliderKey = DataStore.shared().retrieve(key: CLThemeKey) as? NSNumber,
-              let showAppInForeground = DataStore.shared().retrieve(key: CLShowAppInForeground) as? NSNumber,
-              let relativeDateKey = DataStore.shared().retrieve(key: CLRelativeDateKey) as? NSNumber,
-              let fontSize = DataStore.shared().retrieve(key: CLUserFontSizePreference) as? NSNumber,
-              let sunriseTime = DataStore.shared().retrieve(key: CLSunriseSunsetTime) as? NSNumber,
-              let showDayInMenu = DataStore.shared().retrieve(key: CLShowDayInMenu) as? NSNumber,
-              let showDateInMenu = DataStore.shared().retrieve(key: CLShowDateInMenu) as? NSNumber,
-              let showPlaceInMenu = DataStore.shared().retrieve(key: CLShowPlaceInMenu) as? NSNumber,
-              let showUpcomingEventView = DataStore.shared().retrieve(key: CLShowUpcomingEventView) as? String,
+        guard let theme = DataStore.shared().retrieve(key: UserDefaultKeys.themeKey) as? NSNumber,
+              let displayFutureSliderKey = DataStore.shared().retrieve(key: UserDefaultKeys.themeKey) as? NSNumber,
+              let showAppInForeground = DataStore.shared().retrieve(key: UserDefaultKeys.showAppInForeground) as? NSNumber,
+              let relativeDateKey = DataStore.shared().retrieve(key: UserDefaultKeys.relativeDateKey) as? NSNumber,
+              let fontSize = DataStore.shared().retrieve(key: UserDefaultKeys.userFontSizePreference) as? NSNumber,
+              let sunriseTime = DataStore.shared().retrieve(key: UserDefaultKeys.sunriseSunsetTime) as? NSNumber,
+              let showDayInMenu = DataStore.shared().retrieve(key: UserDefaultKeys.showDayInMenu) as? NSNumber,
+              let showDateInMenu = DataStore.shared().retrieve(key: UserDefaultKeys.showDateInMenu) as? NSNumber,
+              let showPlaceInMenu = DataStore.shared().retrieve(key: UserDefaultKeys.showPlaceInMenu) as? NSNumber,
+              let showUpcomingEventView = DataStore.shared().retrieve(key: UserDefaultKeys.showUpcomingEventView) as? String,
               let country = Locale.autoupdatingCurrent.regionCode
         else {
             return

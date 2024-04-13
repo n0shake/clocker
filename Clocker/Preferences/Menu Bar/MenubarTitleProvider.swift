@@ -73,13 +73,13 @@ class MenubarTitleProvider: NSObject {
     }
 
     internal func format(event: EKEvent) -> String {
-        guard let truncateLength = store.retrieve(key: CLTruncateTextLength) as? NSNumber, let eventTitle = event.title, event.title.isEmpty == false else {
-            return CLEmptyString
+        guard let truncateLength = store.retrieve(key: UserDefaultKeys.truncateTextLength) as? NSNumber, let eventTitle = event.title, event.title.isEmpty == false else {
+            return UserDefaultKeys.emptyString
         }
 
         let seconds = event.startDate.timeIntervalSinceNow
 
-        var menubarText: String = CLEmptyString
+        var menubarText: String = UserDefaultKeys.emptyString
 
         if eventTitle.count > truncateLength.intValue {
             let truncateIndex = eventTitle.index(eventTitle.startIndex, offsetBy: truncateLength.intValue)
