@@ -219,6 +219,18 @@ extension Themer {
                                      NSImage(named: NSImage.Name("WhiteSunset"))!)
     }
     
+    func remove() -> NSImage {
+        if let symbolImage = symbolImage(for: "xmark") {
+            return symbolImage
+        }
+        
+        return fallbackImageProvider(NSImage(named: NSImage.Name("Remove"))!,
+                                     NSImage(named: NSImage.Name("WhiteRemove"))!,
+                                     NSImage(named: NSImage.Name("Remove Dynamic"))!,
+                                     NSImage(named: NSImage.Name("Remove"))!,
+                                     NSImage(named: NSImage.Name("WhiteRemove"))!)
+    }
+    
     func removeImage() -> NSImage {
         if let symbolImage = symbolImage(for: "xmark.circle") {
             return symbolImage

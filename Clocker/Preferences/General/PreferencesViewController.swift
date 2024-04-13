@@ -134,7 +134,7 @@ class PreferencesViewController: ParentViewController {
     
     private func darkModeChanges() {
         addTimezoneButton.image = Themer.shared().addImage()
-        deleteButton.image = Themer.shared().removeImage()
+        deleteButton.image = Themer.shared().remove()
     }
     
     private func setupLocalizedText() {
@@ -259,7 +259,7 @@ class PreferencesViewController: ParentViewController {
         timezonePanel.contentView?.wantsLayer = true
         timezonePanel.contentView?.layer?.backgroundColor = Themer.shared().textBackgroundColor().cgColor
         addTimezoneButton.image = themer.addImage()
-        deleteButton.image = themer.removeImage()
+        deleteButton.image = themer.remove()
     }
     
     private func setupShortcutObserver() {
