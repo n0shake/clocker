@@ -24,6 +24,8 @@ class DataStore: NSObject {
     private static var sharedStore = DataStore(with: UserDefaults.standard)
     private var userDefaults: UserDefaults!
     private var ubiquitousStore: NSUbiquitousKeyValueStore?
+    private var cachedTimezones: [Data]
+    private var cachedMenubarTimezones: [Data]
     private static let timeFormatsWithSuffix: Set<NSNumber> = Set([NSNumber(integerLiteral: 0),
                                                                    NSNumber(integerLiteral: 3),
                                                                    NSNumber(integerLiteral: 4),
@@ -35,8 +37,14 @@ class DataStore: NSObject {
     }
 
     init(with defaults: UserDefaults) {
-        super.init()
+        cachedTimezones = (defaults.object(forKey: CLDefaultPreferenceKey) as? [Data]) ?? []
+        cachedMenubarTimezones = cachedTimezones.filter {
+            let customTimezone = TimezoneData.customObject(from: $0)
+            return customTimezone?.isFavourite == 1
+        }
         userDefaults = defaults
+        super.init()
+
         setupSyncNotification()
     }
 
@@ -85,26 +93,24 @@ class DataStore: NSObject {
     }
 
     func timezones() -> [Data] {
-        guard let preferences = userDefaults.object(forKey: CLDefaultPreferenceKey) as? [Data] else {
-            return []
-        }
-
-        return preferences
+        return cachedTimezones
     }
 
     func setTimezones(_ timezones: [Data]?) {
         userDefaults.set(timezones, forKey: CLDefaultPreferenceKey)
         userDefaults.set(Date(), forKey: CLUserDefaultsLastUpdateKey)
+        cachedTimezones = timezones ?? []
+        cachedMenubarTimezones = cachedTimezones.filter {
+            let customTimezone = TimezoneData.customObject(from: $0)
+            return customTimezone?.isFavourite == 1
+        }
         // iCloud sync
         ubiquitousStore?.set(timezones, forKey: CLDefaultPreferenceKey)
         ubiquitousStore?.set(Date(), forKey: CLUbiquitousStoreLastUpdateKey)
     }
 
     func menubarTimezones() -> [Data]? {
-        return timezones().filter {
-            let customTimezone = TimezoneData.customObject(from: $0)
-            return customTimezone?.isFavourite == 1
-        }
+        return cachedMenubarTimezones
     }
     
     func selectedCalendars() -> [String]? {
