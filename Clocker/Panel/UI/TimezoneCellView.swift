@@ -13,8 +13,8 @@ class TimezoneCellView: NSTableCellView {
     @IBOutlet var sunriseImage: NSImageView!
     @IBOutlet var currentLocationIndicator: NSImageView!
 
-    private static let minimumFontSizeForTime: Int = 11
-    private static let minimumFontSizeForLabel: Int = 10
+    private static let minimumFontSizeForTime: Int = 10
+    private static let minimumFontSizeForLabel: Int = 8
 
     var rowNumber: NSInteger = -1
     var isPopoverDisplayed: Bool = false
