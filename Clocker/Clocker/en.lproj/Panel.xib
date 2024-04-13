@@ -315,13 +315,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" horizontalScrollElasticity="allowed" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="htc-pO-AqH">
-                                        <rect key="frame" x="0.0" y="25" width="350" height="45"/>
+                                        <rect key="frame" x="5" y="25" width="340" height="45"/>
                                         <clipView key="contentView" drawsBackground="NO" id="N1e-zE-F86" customClass="DraggableClipView" customModule="Clocker" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="340" height="45"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <collectionView focusRingType="none" allowsEmptySelection="NO" id="lxA-64-3QU">
-                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="45"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="340" height="45"/>
                                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" id="mgM-vQ-fB7">
                                                         <size key="itemSize" width="10" height="50"/>
@@ -336,7 +336,7 @@
                                             <color key="backgroundColor" name="systemIndigoColor" catalog="System" colorSpace="catalog"/>
                                         </clipView>
                                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" controlSize="mini" horizontal="YES" id="8II-oP-xbd" customClass="ThinScroller" customModule="Clocker" customModuleProvider="target">
-                                            <rect key="frame" x="-100" y="-100" width="340" height="11"/>
+                                            <rect key="frame" x="0.0" y="31" width="340" height="14"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="f9b-8n-Bt1">
@@ -420,10 +420,10 @@
                                     <constraint firstItem="e2d-EI-Dm0" firstAttribute="leading" secondItem="aW8-hr-4Zh" secondAttribute="trailing" constant="5" id="8cY-4o-YNN"/>
                                     <constraint firstItem="htc-pO-AqH" firstAttribute="top" secondItem="8W7-rS-Uob" secondAttribute="top" id="Ag8-2G-tVA"/>
                                     <constraint firstItem="hma-wI-Sc9" firstAttribute="centerX" secondItem="8W7-rS-Uob" secondAttribute="centerX" id="GGe-go-nVx"/>
-                                    <constraint firstItem="htc-pO-AqH" firstAttribute="leading" secondItem="8W7-rS-Uob" secondAttribute="leading" id="QmJ-Dd-WLb"/>
+                                    <constraint firstItem="htc-pO-AqH" firstAttribute="leading" secondItem="8W7-rS-Uob" secondAttribute="leading" constant="5" id="QmJ-Dd-WLb"/>
                                     <constraint firstAttribute="bottom" secondItem="hma-wI-Sc9" secondAttribute="bottom" constant="3" id="TDr-Pa-iYA"/>
                                     <constraint firstAttribute="bottom" secondItem="htc-pO-AqH" secondAttribute="bottom" priority="750" constant="25" id="YCJ-zB-dvc"/>
-                                    <constraint firstAttribute="trailing" secondItem="htc-pO-AqH" secondAttribute="trailing" id="esR-My-uoD"/>
+                                    <constraint firstAttribute="trailing" secondItem="htc-pO-AqH" secondAttribute="trailing" constant="5" id="esR-My-uoD"/>
                                 </constraints>
                                 <accessibility identifier="Modern Slider Container"/>
                             </customView>
