@@ -19,6 +19,7 @@ class UpcomingEventViewItem: NSCollectionViewItem {
     private weak var panelDelegate: UpcomingEventPanelDelegate?
 
     override func viewDidLoad() {
+        zoomButton.setButtonType(.momentaryChange)
         zoomButton.target = self
         zoomButton.action = #selector(zoomButtonAction(_:))
     }
@@ -91,7 +92,8 @@ class UpcomingEventViewItem: NSCollectionViewItem {
         setAlternateState(NSLocalizedString("See your next Calendar event here.", comment: "Next Event Label for no Calendar access"),
                           NSLocalizedString("Click here to start.", comment: "Button Title for no Calendar access"),
                           NSColor.systemBlue,
-                          Themer.shared().removeImage())
+                          Themer.shared().removeImage(),
+                          Themer.shared().removeAlternateImage())
     }
 
     func setupEmptyState() {
@@ -100,10 +102,15 @@ class UpcomingEventViewItem: NSCollectionViewItem {
         setAlternateState(NSLocalizedString("No upcoming events for today!", comment: "Next Event Label with no upcoming event"),
                           subtitle,
                           NSColor.systemGreen,
-                          nil)
+                          nil,
+        nil)
     }
 
-    private func setAlternateState(_ title: String, _ buttonTitle: String, _ color: NSColor, _ image: NSImage? = nil) {
+    private func setAlternateState(_ title: String, 
+                                   _ buttonTitle: String,
+                                   _ color: NSColor,
+                                   _ image: NSImage?,
+                                   _ alternateImage: NSImage?) {
         if leadingConstraint.constant != UpcomingEventViewItem.EventLeadingConstraint {
             leadingConstraint.animator().constant = UpcomingEventViewItem.EventLeadingConstraint
         }
@@ -112,6 +119,7 @@ class UpcomingEventViewItem: NSCollectionViewItem {
         setCalendarButtonTitle(buttonTitle: buttonTitle, cancellationState: false)
         calendarColorView.layer?.backgroundColor = color.cgColor
         zoomButton.image = image
+        zoomButton.alternateImage = alternateImage
     }
 
     private func setCalendarButtonTitle(buttonTitle: String, cancellationState: Bool) {
