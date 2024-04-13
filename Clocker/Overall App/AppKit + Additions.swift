@@ -6,11 +6,9 @@ extension NSTextField {
         isEditable = false
         isBordered = false
         allowsDefaultTighteningForTruncation = true
-
-        if #available(OSX 10.12.2, *) {
-            isAutomaticTextCompletionEnabled = false
-            allowsCharacterPickerTouchBarItem = false
-        }
+        
+        isAutomaticTextCompletionEnabled = false
+        allowsCharacterPickerTouchBarItem = false
     }
 
     func disableWrapping() {
