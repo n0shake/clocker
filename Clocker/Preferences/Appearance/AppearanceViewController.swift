@@ -126,10 +126,6 @@ class AppearanceViewController: ParentViewController {
             sliderDayRangePopup.selectItem(at: selectedIndex.intValue)
         }
 
-        if #available(macOS 10.14, *) {} else {
-            theme.removeItem(at: 2)
-        }
-
         let shouldDisplayCompact = DataStore.shared().shouldDisplay(.menubarCompactMode)
         menubarMode.setSelected(true, forSegment: shouldDisplayCompact ? 0 : 1)
 
