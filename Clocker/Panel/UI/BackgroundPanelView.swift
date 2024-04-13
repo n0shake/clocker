@@ -3,7 +3,7 @@
 import Cocoa
 
 struct BackgroundPanelConstants {
-    static let kArrowHeight: CGFloat = 8
+    static let kArrowHeight: CGFloat = 4
     static let kCornerRadius: CGFloat = 8
     static let kBorderWidth: CGFloat = 1
 }
@@ -55,10 +55,5 @@ class BackgroundPanelView: NSView {
 
     override var allowsVibrancy: Bool {
         return true
-    }
-
-    func setArrowX(value: CGFloat) {
-        arrowX = value
-        setNeedsDisplay(bounds)
     }
 }
