@@ -10,7 +10,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var floatingWindow = FloatingWindowController.shared()
     internal lazy var panelController = PanelController(windowNibName: .panel)
     private var statusBarHandler: StatusItemHandler!
-    private let store: VersionUpdateHandler = VersionUpdateHandler(with: DataStore.shared())
+    private let versionUpdateHandler: VersionUpdateHandler = VersionUpdateHandler(with: DataStore.shared())
 
     override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change _: [NSKeyValueChangeKey: Any]?, context _: UnsafeMutableRawPointer?) {
         if let path = keyPath, path == PreferencesConstants.hotKeyPathIdentifier {
@@ -82,16 +82,16 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func hideFromDock() {
-        UserDefaults.standard.set(0, forKey: CLAppDisplayOptions)
+        UserDefaults.standard.set(0, forKey: UserDefaultKeys.appDisplayOptions)
         NSApp.setActivationPolicy(.accessory)
     }
 
     private var controller: OnboardingController?
 
     private func showOnboardingFlowIfEligible() {
-        let isTestInProgress = ProcessInfo.processInfo.arguments.contains(CLOnboardingTestsLaunchArgument)
+        let isTestInProgress = ProcessInfo.processInfo.arguments.contains(UserDefaultKeys.onboardingTestsLaunchArgument)
         let shouldLaunchOnboarding =
-            (DataStore.shared().retrieve(key: CLShowOnboardingFlow) == nil
+        (DataStore.shared().retrieve(key: UserDefaultKeys.showOnboardingFlow) == nil
                 && DataStore.shared().timezones().isEmpty)
             || isTestInProgress
 
@@ -116,7 +116,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         // Install the menubar item!
         statusBarHandler = StatusItemHandler(with: DataStore.shared())
 
-        if ProcessInfo.processInfo.arguments.contains(CLUITestingLaunchArgument) {
+        if ProcessInfo.processInfo.arguments.contains(UserDefaultKeys.testingLaunchArgument) {
             FirebaseApp.configure()
             ReviewController.setPreviewMode(true)
         }
@@ -130,9 +130,9 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         setActivationPolicy()
 
         // Set the display mode default as panel!
-        if let displayMode = defaults.object(forKey: CLShowAppInForeground) as? NSNumber, displayMode.intValue == 1 {
+        if let displayMode = defaults.object(forKey: UserDefaultKeys.showAppInForeground) as? NSNumber, displayMode.intValue == 1 {
             showFloatingWindow()
-        } else if let displayMode = defaults.object(forKey: CLShowAppInForeground) as? Int, displayMode == 1 {
+        } else if let displayMode = defaults.object(forKey: UserDefaultKeys.showAppInForeground) as? Int, displayMode == 1 {
             showFloatingWindow()
         }
     }
@@ -142,7 +142,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
         let defaults = UserDefaults.standard
 
         let currentActivationPolicy = NSRunningApplication.current.activationPolicy
-        let activationPolicy: NSApplication.ActivationPolicy = defaults.integer(forKey: CLAppDisplayOptions) == 0 ? .accessory : .regular
+        let activationPolicy: NSApplication.ActivationPolicy = defaults.integer(forKey: UserDefaultKeys.appDisplayOptions) == 0 ? .accessory : .regular
 
         if currentActivationPolicy != activationPolicy {
             NSApp.setActivationPolicy(activationPolicy)
@@ -234,7 +234,7 @@ open class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBAction open func togglePanel(_ sender: NSButton) {
         Logger.info("Toggle Panel called with sender state \(sender.state.rawValue)")
-        let displayMode = UserDefaults.standard.integer(forKey: CLShowAppInForeground)
+        let displayMode = UserDefaults.standard.integer(forKey: UserDefaultKeys.showAppInForeground)
 
         if displayMode == 1 {
             // No need to call NSApp.activate here since `showFloatingWindow` takes care of this

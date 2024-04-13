@@ -16,30 +16,30 @@ class AppDefaults {
         defaults.register(defaults: defaultsDictionary())
 
         store.setTimezones(timezones)
-        defaults.set(selectedCalendars, forKey: CLSelectedCalendars)
+        defaults.set(selectedCalendars, forKey: UserDefaultKeys.selectedCalendars)
     }
 
     private class func defaultsDictionary() -> [String: Any] {
         let calendars: [String] = []
-        return [CLThemeKey: 0,
-                CLDisplayFutureSliderKey: 0,
-                CLSelectedTimeZoneFormatKey: 0, // 12-hour format
-                CLRelativeDateKey: 0,
-                CLShowDayInMenu: 0,
-                CLShowDateInMenu: 1,
-                CLShowPlaceInMenu: 0,
-                CLStartAtLogin: 0,
-                CLSunriseSunsetTime: 1,
-                CLUserFontSizePreference: 4,
-                CLShowUpcomingEventView: "YES",
-                CLShowAppInForeground: 0,
-                CLFutureSliderRange: 0,
-                CLShowAllDayEventsInUpcomingView: 1,
-                CLShowMeetingInMenubar: 0,
-                CLTruncateTextLength: 30,
-                CLSelectedCalendars: calendars,
-                CLAppDisplayOptions: 0,
-                CLMenubarCompactMode: 1]
+        return [UserDefaultKeys.themeKey: 0,
+                UserDefaultKeys.displayFutureSliderKey: 0,
+                UserDefaultKeys.selectedTimeZoneFormatKey: 0, // 12-hour format
+                UserDefaultKeys.relativeDateKey: 0,
+                UserDefaultKeys.showDayInMenu: 0,
+                UserDefaultKeys.showDateInMenu: 1,
+                UserDefaultKeys.showPlaceInMenu: 0,
+                UserDefaultKeys.startAtLogin: 0,
+                UserDefaultKeys.sunriseSunsetTime: 1,
+                UserDefaultKeys.userFontSizePreference: 4,
+                UserDefaultKeys.showUpcomingEventView: "YES",
+                UserDefaultKeys.showAppInForeground: 0,
+                UserDefaultKeys.futureSliderRange: 0,
+                UserDefaultKeys.showAllDayEventsInUpcomingView: 1,
+                UserDefaultKeys.showMeetingInMenubar: 0,
+                UserDefaultKeys.truncateTextLength: 30,
+                UserDefaultKeys.selectedCalendars: calendars,
+                UserDefaultKeys.appDisplayOptions: 0,
+                UserDefaultKeys.menubarCompactMode: 1]
     }
 }
 

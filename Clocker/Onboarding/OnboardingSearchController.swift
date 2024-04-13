@@ -100,7 +100,7 @@ class OnboardingSearchController: NSViewController {
 
     private func cleanupAfterInstallingTimezone() {
         let data = TimezoneData()
-        data.setLabel(CLEmptyString)
+        data.setLabel(UserDefaultKeys.emptyString)
 
         if let currentSelection = searchResultsDataSource?.retrieveSelectedTimezone(resultsTableView.selectedRow) {
             let metaInfo = metadata(for: currentSelection)
@@ -115,7 +115,7 @@ class OnboardingSearchController: NSViewController {
             searchResultsDataSource?.cleanupFilterArray()
             searchResultsDataSource?.timezoneFilteredArray = []
             searchResultsDataSource?.calculateChangesets()
-            searchBar.stringValue = CLEmptyString
+            searchBar.stringValue = UserDefaultKeys.emptyString
 
             accessoryLabel.stringValue = "Added \(metaInfo.1.formattedName)."
             undoButton.isHidden = false
@@ -141,7 +141,7 @@ class OnboardingSearchController: NSViewController {
                              repeats: false)
         { _ in
             OperationQueue.main.addOperation {
-                self.setInfoLabel(CLEmptyString)
+                self.setInfoLabel(UserDefaultKeys.emptyString)
             }
         }
     }
@@ -225,13 +225,13 @@ class OnboardingSearchController: NSViewController {
                         }
 
                         let newTimeZone = [
-                            CLTimezoneID: response.timeZoneId,
-                            CLTimezoneName: filteredAddress,
-                            CLPlaceIdentifier: dataObject.placeID!,
+                            UserDefaultKeys.timezoneID: response.timeZoneId,
+                            UserDefaultKeys.timezoneName: filteredAddress,
+                            UserDefaultKeys.placeIdentifier: dataObject.placeID!,
                             "latitude": latitude,
                             "longitude": longitude,
-                            "nextUpdate": CLEmptyString,
-                            CLCustomLabel: filteredAddress,
+                            "nextUpdate": UserDefaultKeys.emptyString,
+                            UserDefaultKeys.customLabel: filteredAddress,
                         ] as [String: Any]
 
                         DataStore.shared().addTimezone(TimezoneData(with: newTimeZone))
@@ -271,7 +271,7 @@ class OnboardingSearchController: NSViewController {
     private func setup() {
         appName.stringValue = "Quick Add Locations".localized()
         onboardingTypeLabel.stringValue = "More search options in Clocker Preferences.".localized()
-        setInfoLabel(CLEmptyString)
+        setInfoLabel(UserDefaultKeys.emptyString)
         searchBar.bezelStyle = .roundedBezel
         searchBar.placeholderString = "Press Enter to Search!"
         searchBar.delegate = self
@@ -291,7 +291,7 @@ class OnboardingSearchController: NSViewController {
 
         if searchString.isEmpty {
             resetSearchView()
-            setInfoLabel(CLEmptyString)
+            setInfoLabel(UserDefaultKeys.emptyString)
             return
         }
 
@@ -308,7 +308,7 @@ class OnboardingSearchController: NSViewController {
     fileprivate func resetIfNeccesary(_ searchString: String) {
         if searchString.isEmpty {
             resetSearchView()
-            setInfoLabel(CLEmptyString)
+            setInfoLabel(UserDefaultKeys.emptyString)
         }
     }
 
@@ -324,7 +324,7 @@ class OnboardingSearchController: NSViewController {
 
         let words = searchString.components(separatedBy: CharacterSet.whitespacesAndNewlines)
 
-        searchString = words.joined(separator: CLEmptyString)
+        searchString = words.joined(separator: UserDefaultKeys.emptyString)
 
         if searchString.count < 3 {
             resetIfNeccesary(searchString)
@@ -343,7 +343,7 @@ class OnboardingSearchController: NSViewController {
 
                                                let words = currentSearchBarValue.components(separatedBy: CharacterSet.whitespacesAndNewlines)
 
-                                               if words.joined(separator: CLEmptyString) != searchString {
+                                               if words.joined(separator: UserDefaultKeys.emptyString) != searchString {
                                                    return
                                                }
 
@@ -397,7 +397,7 @@ class OnboardingSearchController: NSViewController {
     }
 
     private func prepareUIForPresentingResults() {
-        setInfoLabel(CLEmptyString)
+        setInfoLabel(UserDefaultKeys.emptyString)
         if let dataSource = searchResultsDataSource, dataSource.calculateChangesets() {
             resultsTableView.isHidden = false
             resultsTableView.reloadData()
@@ -414,10 +414,10 @@ class OnboardingSearchController: NSViewController {
             let totalPackage = [
                 "latitude": latitude,
                 "longitude": longitude,
-                CLTimezoneName: formattedAddress,
-                CLCustomLabel: formattedAddress,
-                CLTimezoneID: CLEmptyString,
-                CLPlaceIdentifier: result.placeId,
+                UserDefaultKeys.timezoneName: formattedAddress,
+                UserDefaultKeys.customLabel: formattedAddress,
+                UserDefaultKeys.timezoneID: UserDefaultKeys.emptyString,
+                UserDefaultKeys.placeIdentifier: result.placeId,
             ] as [String: Any]
 
             return TimezoneData(with: totalPackage)
@@ -431,7 +431,7 @@ class OnboardingSearchController: NSViewController {
         searchResultsDataSource?.timezoneFilteredArray = []
         searchResultsDataSource?.calculateChangesets()
         resultsTableView.reloadData()
-        searchBar.stringValue = CLEmptyString
+        searchBar.stringValue = UserDefaultKeys.emptyString
         searchBar.placeholderString = "Press Enter to Search"
     }
 

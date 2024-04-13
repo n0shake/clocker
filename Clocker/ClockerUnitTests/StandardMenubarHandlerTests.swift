@@ -20,8 +20,8 @@ class StandardMenubarHandlerTests: XCTestCase {
     private func makeMockStore(with menubarMode: Int = 1) -> DataStore {
         // Wipe all timezones from UserDefaults
         let defaults = UserDefaults(suiteName: "com.abhishek.Clocker.StandardMenubarHandlerTests")!
-        defaults.set(menubarMode, forKey: CLMenubarCompactMode)
-        defaults.set(0, forKey: CLShowMeetingInMenubar)
+        defaults.set(menubarMode, forKey: UserDefaultKeys.menubarCompactMode)
+        defaults.set(0, forKey: UserDefaultKeys.showMeetingInMenubar)
         XCTAssertNotEqual(defaults, UserDefaults.standard)
         return DataStore(with: defaults)
     }
@@ -163,7 +163,7 @@ class StandardMenubarHandlerTests: XCTestCase {
         mockEvent.startDate = Date().add(futureChunk)
 
         let menubarHandler = MenubarTitleProvider(with: store, eventStore: EventCenter.sharedCenter())
-        XCTAssert(menubarHandler.format(event: mockEvent) == CLEmptyString,
+        XCTAssert(menubarHandler.format(event: mockEvent) == UserDefaultKeys.emptyString,
                   "Suffix \(menubarHandler.format(event: mockEvent)) doesn't match expectation")
     }
 
