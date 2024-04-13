@@ -20,7 +20,6 @@ class FloatingWindowController: ParentPanelController {
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()
-        futureSlider.isContinuous = true
         windowFrameAutosaveName = NSWindow.FrameAutosaveName("FloatingWindowAutoSave")
         dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")
@@ -151,8 +150,6 @@ extension NSView {
 
 extension FloatingWindowController: NSWindowDelegate {
     func windowWillClose(_: Notification) {
-        futureSlider.integerValue = 0
-
         setTimezoneDatasourceSlider(sliderValue: 0)
 
         if let timer = repeater {

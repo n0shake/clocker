@@ -288,8 +288,8 @@ class AppearanceViewController: ParentViewController {
             if panel, DataStore.shared().shouldDisplay(ViewType.showAppInForeground) == false {
                 guard let panelController = PanelController.panel() else { return }
 
-                let futureSliderBounds = panelController.futureSlider.bounds
-                panelController.futureSlider.setNeedsDisplay(futureSliderBounds)
+                let futureSliderBounds = panelController.modernSlider.bounds
+                panelController.modernSlider.setNeedsDisplay(futureSliderBounds)
 
                 panelController.updateDefaultPreferences()
                 panelController.updateTableContent()
@@ -300,7 +300,7 @@ class AppearanceViewController: ParentViewController {
                 if DataStore.shared().shouldDisplay(ViewType.showAppInForeground) {
                     let floatingWindow = FloatingWindowController.shared()
                     floatingWindow.updateTableContent()
-                    floatingWindow.futureSlider.setNeedsDisplay(floatingWindow.futureSlider.bounds)
+                    floatingWindow.modernSlider.setNeedsDisplay(floatingWindow.modernSlider.bounds)
 
                     if !panel {
                         floatingWindow.updatePanelColor()

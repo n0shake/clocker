@@ -22,8 +22,6 @@ class PanelController: ParentPanelController {
         // Otherwise, the panel can be dragged around while we try to scroll through the modern slider
         window?.isMovableByWindowBackground = false
         
-        futureSlider.isContinuous = true
-        
         if let panel = window {
             panel.acceptsMouseMovedEvents = true
             panel.level = .popUpMenu
@@ -73,9 +71,6 @@ class PanelController: ParentPanelController {
         
         setupUpcomingEventViewCollectionViewIfNeccesary()
         
-        //TODO: Always hide the legacy slider. Delete this once v24.01 stabilizes.
-        futureSliderView.isHidden = true
-        
         if DataStore.shared().timezones().isEmpty || DataStore.shared().shouldDisplay(.futureSlider) == false {
             modernContainerView.isHidden = true
         } else if let value = DataStore.shared().retrieve(key: UserDefaultKeys.displayFutureSliderKey) as? NSNumber, modernContainerView != nil {
@@ -87,8 +82,6 @@ class PanelController: ParentPanelController {
         }
         
         // Reset future slider value to zero
-        futureSlider.integerValue = 0
-        sliderDatePicker.dateValue = Date()
         closestQuarterTimeRepresentation = findClosestQuarterTimeApproximation()
         modernSliderLabel.stringValue = "Time Scroller"
         resetModernSliderButton.isHidden = true
@@ -367,9 +360,8 @@ class PanelController: ParentPanelController {
         // We only want to move the slider if the slider is visible.
         // If the parent view is hidden, then that doesn't automatically mean that all the childViews are also hidden
         // Hence, check if the parent view is totally hidden or not..
-        if futureSliderView.isHidden == false, modernSlider.isHidden {
-            futureSlider.doubleValue += Double(event.scrollingDeltaX)
-            sliderMoved(futureSlider!)
+        if modernSlider.isHidden {
+            // TODO: Move modern slider
         }
     }
 }
