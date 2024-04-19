@@ -256,6 +256,10 @@ extension Themer {
     }
     
     func extraOptionsImage() -> NSImage {
+        if let infoImage = symbolImage(for: "info.circle") {
+            return infoImage
+        }
+        
         return fallbackImageProvider(NSImage(named: NSImage.Name("Extra"))!,
                                      NSImage(named: NSImage.Name("ExtraWhite"))!,
                                      NSImage(named: NSImage.Name("Extra Dynamic"))!,
@@ -275,6 +279,10 @@ extension Themer {
     }
     
     func extraOptionsHighlightedImage() -> NSImage {
+        if let infoImage = symbolImage(for: "info.circle.fill") {
+            return infoImage
+        }
+        
         return fallbackImageProvider(NSImage(named: NSImage.Name("ExtraHighlighted"))!,
                                      NSImage(named: NSImage.Name("ExtraWhiteHighlighted"))!,
                                      NSImage(named: NSImage.Name("ExtraHighlighted Dynamic"))!,
