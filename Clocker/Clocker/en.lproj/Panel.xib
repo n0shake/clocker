@@ -39,7 +39,7 @@
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" ignoresCycle="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1000" y="379" width="300" height="420"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
             <view key="contentView" focusRingType="none" misplaced="YES" id="6" customClass="BackgroundPanelView" customModule="Clocker" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="300" height="420"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,7 +76,7 @@
                                                             <rect key="frame" x="11" y="0.0" width="347" height="111"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="749" tag="102" preferredMaxLayoutWidth="72" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUd-7D-q14">
+                                                                <textField focusRingType="none" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" tag="102" preferredMaxLayoutWidth="72" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUd-7D-q14">
                                                                     <rect key="frame" x="28" y="50" width="189" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" identifier="relative-day-height" id="JkG-8f-zhJ"/>
@@ -87,7 +87,7 @@
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="101" preferredMaxLayoutWidth="110" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnv-J2-7r1">
+                                                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="101" preferredMaxLayoutWidth="110" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnv-J2-7r1">
                                                                     <rect key="frame" x="215" y="67" width="114" height="35"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="35" identifier="height" id="Bwf-I6-2Pc"/>
@@ -99,7 +99,7 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <textField verticalHuggingPriority="750" preferredMaxLayoutWidth="50" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOg-ij-alO">
+                                                                <textField focusRingType="none" verticalHuggingPriority="750" preferredMaxLayoutWidth="50" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOg-ij-alO">
                                                                     <rect key="frame" x="245" y="49" width="84" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="89H-r0-Dnh"/>
@@ -111,7 +111,7 @@
                                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6At-J8-gzZ">
+                                                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6At-J8-gzZ">
                                                                     <rect key="frame" x="28" y="0.0" width="319" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="eYP-TP-f1a"/>
@@ -130,7 +130,7 @@
                                                                     </constraints>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="right" imageScaling="proportionallyDown" id="cfP-C4-ENJ"/>
                                                                 </imageView>
-                                                                <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="751" tag="100" preferredMaxLayoutWidth="150" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etF-33-bCB">
+                                                                <textField focusRingType="none" verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="751" tag="100" preferredMaxLayoutWidth="150" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etF-33-bCB">
                                                                     <rect key="frame" x="28" y="79" width="181" height="20"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" placeholderString="Timezone Name" id="rnh-AP-ooc">
                                                                         <font key="font" size="15" name="Avenir-Medium"/>
@@ -294,7 +294,7 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="hma-wI-Sc9" userLabel="Modern Slider Metadata View" customClass="ClockerTextBackgroundView" customModule="Clocker" customModuleProvider="target">
                                         <rect key="frame" x="125" y="3" width="100" height="20"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e2d-EI-Dm0">
+                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e2d-EI-Dm0">
                                                 <rect key="frame" x="-2" y="0.0" width="104" height="18"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="6ph-Pe-Ayg">
                                                     <font key="font" size="12" name="Avenir-Book"/>
@@ -383,7 +383,7 @@
                                             <stackView focusRingType="none" distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uys-ww-duA">
                                                 <rect key="frame" x="29" y="25" width="300" height="20"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" preferredMaxLayoutWidth="185" translatesAutoresizingMaskIntoConstraints="NO" id="8Qj-Y9-Okf">
+                                                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" preferredMaxLayoutWidth="185" translatesAutoresizingMaskIntoConstraints="NO" id="8Qj-Y9-Okf">
                                                         <rect key="frame" x="-2" y="0.0" width="304" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="a0R-zl-Wu7"/>
@@ -465,11 +465,11 @@
                                     <scrollView wantsLayer="YES" focusRingType="none" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5BT-DM-xru">
                                         <rect key="frame" x="0.0" y="0.0" width="379" height="75"/>
                                         <clipView key="contentView" drawsBackground="NO" id="QHw-sR-BYe">
-                                            <rect key="frame" x="0.0" y="0.0" width="379" height="75"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="379" height="64"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <collectionView id="Tp2-pl-yIm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="379" height="75"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="379" height="64"/>
                                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="g4p-GT-v9Y">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -481,7 +481,7 @@
                                             <color key="backgroundColor" name="Accent Color"/>
                                         </clipView>
                                         <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" controlSize="mini" horizontal="YES" id="Akw-Iw-iVY" customClass="ThinScroller" customModule="Clocker" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="61" width="379" height="14"/>
+                                            <rect key="frame" x="0.0" y="64" width="379" height="11"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="MXo-gV-Bdf">
@@ -502,7 +502,7 @@
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="B8X-sx-cjT">
                                 <rect key="frame" x="0.0" y="0.0" width="379" height="40"/>
                                 <subviews>
-                                    <button toolTip="Close Clocker" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1cR-pI-osG">
+                                    <button toolTip="Options" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1cR-pI-osG">
                                         <rect key="frame" x="339" y="7" width="30" height="26"/>
                                         <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="PowerIcon" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fp1-89-Nwm">
                                             <behavior key="behavior" lightByContents="YES"/>
@@ -547,7 +547,7 @@
                                             <action selector="shareAction:" target="-2" id="Wvh-61-gkx"/>
                                         </connections>
                                     </button>
-                                    <button toolTip="Open Preferences" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ctq-BV-GPN">
+                                    <button toolTip="Add Location" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ctq-BV-GPN">
                                         <rect key="frame" x="10" y="10" width="30" height="19"/>
                                         <buttonCell key="cell" type="recessed" bezelStyle="recessed" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SIv-Ve-UkG">
                                             <behavior key="behavior" lightByContents="YES"/>
