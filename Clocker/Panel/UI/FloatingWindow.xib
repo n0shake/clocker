@@ -360,7 +360,7 @@
                             <customView wantsLayer="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="YQL-kL-NAx">
                                 <rect key="frame" x="0.0" y="0.0" width="350" height="40"/>
                                 <subviews>
-                                    <button toolTip="Close Clocker" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M9q-iF-MaE">
+                                    <button toolTip="Options" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M9q-iF-MaE">
                                         <rect key="frame" x="300" y="7" width="30" height="26"/>
                                         <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="PowerIcon" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cXX-25-Pif">
                                             <behavior key="behavior" lightByContents="YES"/>
@@ -405,7 +405,7 @@
                                             <action selector="shareAction:" target="-2" id="1nh-n0-V3P"/>
                                         </connections>
                                     </button>
-                                    <button toolTip="Open Preferences" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iFk-kj-d5a">
+                                    <button toolTip="Add Location" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iFk-kj-d5a">
                                         <rect key="frame" x="20" y="10" width="29" height="19"/>
                                         <buttonCell key="cell" type="recessed" bezelStyle="recessed" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9cQ-lG-snH">
                                             <behavior key="behavior" lightByContents="YES"/>
