@@ -300,7 +300,9 @@ class AppearanceViewController: ParentViewController {
                 if DataStore.shared().shouldDisplay(ViewType.showAppInForeground) {
                     let floatingWindow = FloatingWindowController.shared()
                     floatingWindow.updateTableContent()
-                    floatingWindow.modernSlider.setNeedsDisplay(floatingWindow.modernSlider.bounds)
+                    if let slider = floatingWindow.modernSlider {
+                        slider.setNeedsDisplay(floatingWindow.modernSlider.bounds)
+                    }
 
                     if !panel {
                         floatingWindow.updatePanelColor()
