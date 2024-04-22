@@ -73,11 +73,11 @@ extension TimezoneDataOperations {
         if numberOfDays == 0 {
             let hoursLeft = nextDaylightSavingsTransition.hours(from: newDate)
             let suffix = hoursLeft == 1 ? "hour" : "hours"
-            return "Heads up! DST transition will occur in \(hoursLeft) \(suffix)."
+            return "Heads up: DST transition will occur in \(hoursLeft) \(suffix)."
         }
 
         let suffix = numberOfDays == 1 ? "day" : "days"
-        return "Heads up! DST transition will occur in \(numberOfDays) \(suffix)."
+        return "Heads up: DST transition will occur in \(numberOfDays) \(suffix)."
     }
 
     func compactMenuTitle() -> String {
