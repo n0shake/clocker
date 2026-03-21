@@ -172,7 +172,7 @@ class ClockerUnitTests: XCTestCase {
     func testTimeDifference() {
         let observingDaylightSavings = TimeZone.autoupdatingCurrent.isDaylightSavingTime(for: Date())
         let expectedDifference = observingDaylightSavings ? ", +9h 30m" : ", +10h 30m"
-        let expectedDifferenceForAuckland = observingDaylightSavings ? ", +16h " : ", +18h "
+        let expectedDifferenceForAuckland = observingDaylightSavings ? ", +17h " : ", +18h "
         
         XCTAssertTrue(operations.timeDifference() == expectedDifference, "Difference was unexpectedly: \(operations.timeDifference())")
         XCTAssertTrue(californiaOperations.timeDifference() == ", -3h ", "Difference was unexpectedly: \(californiaOperations.timeDifference())")
