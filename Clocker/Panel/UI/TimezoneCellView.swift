@@ -56,7 +56,10 @@ class TimezoneCellView: NSTableCellView {
 
         if relativeDateString.length > 0 {
             if relativeDate.isHidden {
-                relativeDate.isHidden.toggle()
+                relativeDate.isHidden = false
+            }
+            for constraint in relativeDate.constraints where constraint.identifier == "relative-day-height" {
+                constraint.constant = 22
             }
             for constraint in relativeDate.constraints where constraint.identifier == "width" {
                 constraint.constant = width + 8
@@ -66,40 +69,14 @@ class TimezoneCellView: NSTableCellView {
                     constraint.constant = 12
                 }
             }
-
-            // If sunrise/sunset times are shown, adjust the time's top space to be closer to cell's top
-            if !sunriseSetTime.isHidden, relativeDate.isHidden {
-                for constraint in constraints where constraint.identifier == "time-top-space" {
-                    if constraint.constant == -5.0 {
-                        constraint.constant -= 10.0
-                    }
-                }
-            } else {
-                for constraint in constraints where constraint.identifier == "time-top-space" {
-                    if constraint.constant != -5.0 {
-                        constraint.constant = -3.0
-                    }
-                }
-            }
-
         } else {
             relativeDate.isHidden = true
+            for constraint in relativeDate.constraints where constraint.identifier == "relative-day-height" {
+                constraint.constant = 0
+            }
             for constraint in constraints where constraint.identifier == "custom-name-top-space" {
                 if constraint.constant == 12 {
                     constraint.constant += 15
-                }
-            }
-            if !sunriseSetTime.isHidden {
-                for constraint in constraints where constraint.identifier == "time-top-space" {
-                    if constraint.constant == -5.0 {
-                        constraint.constant -= 15.0
-                    }
-                }
-            } else {
-                for constraint in constraints where constraint.identifier == "time-top-space" {
-                    if constraint.constant != -5.0 {
-                        constraint.constant = -5.0
-                    }
                 }
             }
         }
@@ -142,20 +119,8 @@ class TimezoneCellView: NSTableCellView {
 
         let fontManager = NSFontManager.shared
 
-        let customPlaceFont = fontManager.convert(customFont, toSize: newFontSize)
-        let customTimeFont = fontManager.convert(timeFont, toSize: newTimeFontSize)
-
-        customName.font = customPlaceFont
-        time.font = customTimeFont
-
-        let timeString = time.stringValue as NSString
-
-        let timeHeight = timeString.size(withAttributes: [NSAttributedString.Key.font: customTimeFont]).height
-        let timeWidth = timeString.size(withAttributes: [NSAttributedString.Key.font: customTimeFont]).width
-
-        for constraint in time.constraints {
-            constraint.constant = constraint.identifier == "height" ? timeHeight : timeWidth
-        }
+        customName.font = fontManager.convert(customFont, toSize: newFontSize)
+        time.font = fontManager.convert(timeFont, toSize: newTimeFontSize)
     }
 
     @IBAction func showExtraOptions(_ sender: NSButton) {
@@ -199,6 +164,13 @@ class TimezoneCellView: NSTableCellView {
         }
 
         Logger.log(object: nil, for: "Open Extra Options")
+    }
+
+    func setNoteLabel(hidden: Bool) {
+        noteLabel.isHidden = hidden
+        for constraint in noteLabel.constraints where constraint.identifier == "note-label-height" {
+            constraint.constant = hidden ? 0 : 22
+        }
     }
 
     override func mouseDown(with event: NSEvent) {

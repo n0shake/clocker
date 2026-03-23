@@ -90,7 +90,6 @@
                                                                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="101" preferredMaxLayoutWidth="110" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnv-J2-7r1">
                                                                     <rect key="frame" x="215" y="67" width="114" height="35"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="35" identifier="height" id="Bwf-I6-2Pc"/>
                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="cQV-gJ-zMz"/>
                                                                     </constraints>
                                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" placeholderString="23:46 AM" id="g8s-EU-UHx">
@@ -114,7 +113,7 @@
                                                                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6At-J8-gzZ">
                                                                     <rect key="frame" x="28" y="0.0" width="319" height="22"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="22" id="eYP-TP-f1a"/>
+                                                                        <constraint firstAttribute="height" constant="22" identifier="note-label-height" id="eYP-TP-f1a"/>
                                                                     </constraints>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" id="Ri5-LB-7Xh">
                                                                         <font key="font" size="12" name="Avenir-Book"/>
@@ -195,6 +194,8 @@
                                                                 <constraint firstItem="Cbs-xa-uR7" firstAttribute="leading" secondItem="qbN-ba-fho" secondAttribute="leading" id="nZr-y8-mHE"/>
                                                                 <constraint firstItem="QUd-7D-q14" firstAttribute="leading" secondItem="etF-33-bCB" secondAttribute="leading" id="qpc-l4-zYv"/>
                                                                 <constraint firstAttribute="trailing" secondItem="vnv-J2-7r1" secondAttribute="trailing" constant="20" id="zXo-eA-0bQ"/>
+                                                                <constraint firstItem="6At-J8-gzZ" firstAttribute="top" secondItem="QUd-7D-q14" secondAttribute="bottom" relation="greaterThanOrEqual" constant="4" id="nL1-rD-kPq"/>
+                                                                <constraint firstItem="6At-J8-gzZ" firstAttribute="top" secondItem="uOg-ij-alO" secondAttribute="bottom" relation="greaterThanOrEqual" constant="4" id="nL2-sE-mRt"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="currentLocationIndicator" destination="SVj-Xy-zG5" id="rSl-mD-dA2"/>
