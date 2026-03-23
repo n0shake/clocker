@@ -809,7 +809,7 @@ class ParentPanelController: NSWindowController {
             updateReviewView()
             ReviewController.prompted()
             
-            if let countryCode = Locale.autoupdatingCurrent.regionCode {
+            if let countryCode = Locale.autoupdatingCurrent.region?.identifier {
                 Logger.log(object: ["CurrentCountry": countryCode], for: "Remind Later for Feedback")
             }
         }
@@ -915,7 +915,7 @@ class ParentPanelController: NSWindowController {
         NSApp.activate(ignoringOtherApps: true)
         window?.orderOut(nil)
         
-        if let countryCode = Locale.autoupdatingCurrent.regionCode {
+        if let countryCode = Locale.autoupdatingCurrent.region?.identifier {
             let custom: [String: Any] = ["Country": countryCode]
             Logger.log(object: custom, for: "Report Issue Opened")
         }

@@ -129,7 +129,7 @@ class CalendarViewController: ParentViewController {
         if grantAccessButton.title == "Grant Access".localized() {
             (parent as? CenteredTabViewController)?.selectedTabViewItemIndex = 3 // 3 is the Permissions View
         } else if grantAccessButton.title == "Launch Preferences" {
-            NSWorkspace.shared.launchApplication("System Preferences")
+            NSWorkspace.shared.open(URL(fileURLWithPath: "/System/Applications/System Settings.app"))
         }
     }
     

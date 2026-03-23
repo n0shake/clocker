@@ -43,7 +43,7 @@ class AppFeedbackWindowController: NSWindowController {
     public weak var appFeedbackWindowDelegate: AppFeedbackWindowControllerDelegate?
     private var themeDidChangeNotification: NSObjectProtocol?
     private var serialNumber: String? {
-        let platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
+        let platformExpert = IOServiceGetMatchingService(kIOMainPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
 
         guard platformExpert > 0 else {
             return nil
@@ -147,7 +147,7 @@ class AppFeedbackWindowController: NSWindowController {
         guard let theme = DataStore.shared().retrieve(key: UserDefaultKeys.themeKey) as? NSNumber,
               let displayFutureSliderKey = DataStore.shared().retrieve(key: UserDefaultKeys.themeKey) as? NSNumber,
               let relativeDateKey = DataStore.shared().retrieve(key: UserDefaultKeys.relativeDateKey) as? NSNumber,
-              let country = Locale.autoupdatingCurrent.regionCode
+              let country = Locale.autoupdatingCurrent.region?.identifier
         else {
             return "Error"
         }
