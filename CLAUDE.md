@@ -18,6 +18,9 @@ xcodebuild -project Clocker/Clocker.xcodeproj -scheme Clocker test
 # Run unit tests only
 xcodebuild -project Clocker/Clocker.xcodeproj -scheme ClockerUnitTests test
 
+# UI tests must be run from within Xcode — running them via xcodebuild fails due to
+# a code signing Team ID mismatch between the app and the UI test runner bundle.
+
 # Lint
 swiftlint lint --path Clocker/Clocker
 
