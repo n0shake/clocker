@@ -36,6 +36,11 @@
 # If you want verbose output, you can pass the --debug flag to this script
 #
 
+# Only run for Release/Distribution builds
+if [[ "$CONFIGURATION" != "Release" && "$CONFIGURATION" != "Distribution" ]]; then
+  exit 0
+fi
+
 #  Figure out where we're being called from
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
