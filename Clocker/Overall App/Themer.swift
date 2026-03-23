@@ -349,7 +349,7 @@ extension Themer {
         case .dark, .solarizedDark:
             return NSAppearance(named: NSAppearance.Name.vibrantDark)!
         case .system:
-            return NSAppearance.current
+            return NSAppearance.currentDrawing()
         }
     }
     

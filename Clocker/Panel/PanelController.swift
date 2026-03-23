@@ -176,7 +176,7 @@ class PanelController: ParentPanelController {
               let showDateInMenu = DataStore.shared().retrieve(key: UserDefaultKeys.showDateInMenu) as? NSNumber,
               let showPlaceInMenu = DataStore.shared().retrieve(key: UserDefaultKeys.showPlaceInMenu) as? NSNumber,
               let showUpcomingEventView = DataStore.shared().retrieve(key: UserDefaultKeys.showUpcomingEventView) as? String,
-              let country = Locale.autoupdatingCurrent.regionCode
+              let country = Locale.autoupdatingCurrent.region?.identifier
         else {
             return
         }

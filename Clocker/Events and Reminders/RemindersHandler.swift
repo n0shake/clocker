@@ -36,7 +36,7 @@ extension EventCenter {
     // MARK: Public
 
     func reminderAccessGranted() -> Bool {
-        return EKEventStore.authorizationStatus(for: .reminder) == .authorized
+        return EKEventStore.authorizationStatus(for: .reminder) == .fullAccess
     }
 
     func reminderAccessNotDetermined() -> Bool {
