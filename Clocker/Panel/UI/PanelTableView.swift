@@ -16,6 +16,7 @@ class PanelTableView: NSTableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         enableHover = true
+        usesAutomaticRowHeights = true
     }
 
     override func updateTrackingAreas() {

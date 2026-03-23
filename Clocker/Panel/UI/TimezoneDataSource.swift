@@ -69,58 +69,19 @@ extension TimezoneDataSource: NSTableViewDataSource, NSTableViewDelegate {
         cellView.relativeDate.setAccessibilityIdentifier("RelativeDate")
         if let note = currentModel.note, !note.isEmpty {
             cellView.noteLabel.stringValue = note
-            cellView.noteLabel.isHidden = false
+            cellView.setNoteLabel(hidden: false)
         } else if let value = operation.nextDaylightSavingsTransitionIfAvailable(with: sliderValue) {
             cellView.noteLabel.stringValue = value
-            cellView.noteLabel.isHidden = false
+            cellView.setNoteLabel(hidden: false)
         } else {
             cellView.noteLabel.stringValue = UserDefaultKeys.emptyString
-            cellView.noteLabel.isHidden = true
+            cellView.setNoteLabel(hidden: true)
         }
         cellView.layout(with: currentModel)
         cellView.setAccessibilityIdentifier(currentModel.formattedTimezoneLabel())
         cellView.setAccessibilityLabel(currentModel.formattedTimezoneLabel())
         
         return cellView
-    }
-    
-    func tableView(_: NSTableView, heightOfRow row: Int) -> CGFloat {
-        guard !timezones.isEmpty else {
-            return 100
-        }
-        
-        if let userFontSize = dataStore.retrieve(key: UserDefaultKeys.userFontSizePreference) as? NSNumber,
-           timezones.count > row,
-           let relativeDisplay = dataStore.retrieve(key: UserDefaultKeys.relativeDateKey) as? NSNumber
-        {
-            let model = timezones[row]
-            let shouldShowSunrise = dataStore.shouldDisplay(.sunrise)
-            
-            var rowHeight: Int = userFontSize == 4 ? 60 : 65
-            
-            if relativeDisplay.intValue == 3 {
-                rowHeight -= 5
-            }
-            
-            if shouldShowSunrise, model.selectionType == .city {
-                rowHeight += 8
-            }
-            
-            if let note = model.note, !note.isEmpty {
-                rowHeight += userFontSize.intValue + 15
-            } else if TimezoneDataOperations(with: model, store: dataStore).nextDaylightSavingsTransitionIfAvailable(with: sliderValue) != nil {
-                rowHeight += userFontSize.intValue + 15
-            }
-            
-            if model.isSystemTimezone {
-                rowHeight += 2
-            }
-            
-            rowHeight += (userFontSize.intValue * 2)
-            return CGFloat(rowHeight)
-        }
-        
-        return 1
     }
     
     func tableView(_ tableView: NSTableView, rowActionsForRow row: Int, edge: NSTableView.RowActionEdge) -> [NSTableViewRowAction] {
