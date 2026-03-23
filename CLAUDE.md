@@ -12,15 +12,6 @@ Clocker is a macOS menu bar utility (Swift 5, AppKit) that helps users track tim
 # Build
 xcodebuild -project Clocker/Clocker.xcodeproj -scheme Clocker build
 
-# Run all tests
-xcodebuild -project Clocker/Clocker.xcodeproj -scheme Clocker test
-
-# Run unit tests only
-xcodebuild -project Clocker/Clocker.xcodeproj -scheme ClockerUnitTests test
-
-# UI tests must be run from within Xcode — running them via xcodebuild fails due to
-# a code signing Team ID mismatch between the app and the UI test runner bundle.
-
 # Lint
 swiftlint lint --path Clocker/Clocker
 
@@ -29,6 +20,12 @@ swiftlint analyze --compiler-log-path build/CompileSwift.log
 ```
 
 The project uses Xcode directly — open `Clocker/Clocker.xcodeproj` for day-to-day development.
+
+## Verification Policy
+
+**Only build to verify changes — never run unit tests.** Use `xcodebuild ... build` to confirm the project compiles. Tests must be run manually from within Xcode.
+
+Unit tests via `xcodebuild ... test` launch the full app host process, which can produce misleading fatal errors unrelated to the change under review. UI tests cannot be run via xcodebuild at all due to a code signing Team ID mismatch between the app and the UI test runner bundle.
 
 ## Architecture
 
