@@ -24,20 +24,20 @@ class LocationController: NSObject {
     }()
 
     func authorizationStatus() -> CLAuthorizationStatus {
-        return CLLocationManager.authorizationStatus()
+        return locationManager.authorizationStatus
     }
 
     func locationAccessNotDetermined() -> Bool {
-        return CLLocationManager.authorizationStatus() == .notDetermined
+        return locationManager.authorizationStatus == .notDetermined
     }
 
     func locationAccessGranted() -> Bool {
-        print("Location Status is ", CLLocationManager.authorizationStatus().rawValue.description)
-        return CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorized
+        print("Location Status is ", locationManager.authorizationStatus.rawValue.description)
+        return locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorized
     }
 
     func locationAccessDenied() -> Bool {
-        return CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .denied
+        return locationManager.authorizationStatus == .restricted || locationManager.authorizationStatus == .denied
     }
 
     func setDelegate() {
