@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>GeocodingKey</key>
-	<string>AIzaSyDyctd3FZoyiCCOP7lGjafOYaXbXvEtaCU</string>
+	<string>YOUR_GOOGLE_GEOCODING_API_KEY</string>
 </dict>
 </plist>
