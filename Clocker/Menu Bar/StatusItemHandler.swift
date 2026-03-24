@@ -38,7 +38,7 @@ class StatusItemHandler: NSObject {
             // Do some cleanup
             switch oldValue {
             case .compactText:
-                statusItem.view = nil
+                statusItem.button?.subviews = []
                 parentView = nil
             case .standardText:
                 statusItem.button?.title = CLEmptyString
@@ -125,6 +125,7 @@ class StatusItemHandler: NSObject {
     }
 
     private func constructCompactView() {
+        statusItem.button?.subviews = []
         parentView = nil
 
         let menubarTimezones = retrieveSyncedMenubarTimezones()
@@ -135,8 +136,10 @@ class StatusItemHandler: NSObject {
         }
 
         parentView = StatusContainerView(with: menubarTimezones)
-        statusItem.view = parentView
-        statusItem.view?.window?.backgroundColor = NSColor.clear
+        guard let view = parentView else { return }
+        statusItem.button?.addSubview(view)
+        statusItem.button?.frame = view.bounds
+        statusItem.button?.window?.backgroundColor = NSColor.clear
     }
 
     private func retrieveSyncedMenubarTimezones() -> [Data] {
@@ -309,8 +312,8 @@ class StatusItemHandler: NSObject {
     }
 
     private func setClockerIcon() {
-        if statusItem.view != nil {
-            statusItem.view = nil
+        if statusItem.button?.subviews.isEmpty == false {
+            statusItem.button?.subviews = []
         }
 
         if statusItem.button?.image?.name() == NSImage.Name.menubarIcon {
