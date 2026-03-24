@@ -83,7 +83,7 @@
                                                                     <rect key="frame" x="33" y="24" width="76" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" identifier="width" id="4Qb-vu-Upf"/>
-                                                                        <constraint firstAttribute="height" constant="20" id="zbG-5a-kZz"/>
+                                                                        <constraint firstAttribute="height" constant="20" identifier="relative-day-height" id="zbG-5a-kZz"/>
                                                                     </constraints>
                                                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" usesSingleLineMode="YES" id="MAt-8Z-HKJ">
                                                                         <font key="font" size="13" name="Avenir-Light"/>
@@ -105,7 +105,7 @@
                                                                 <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NYh-Nx-Z7X">
                                                                     <rect key="frame" x="33" y="2" width="296" height="22"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="22" id="S78-bF-ZaL"/>
+                                                                        <constraint firstAttribute="height" constant="22" identifier="note-label-height" id="S78-bF-ZaL"/>
                                                                     </constraints>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" id="ZbS-gx-UZp">
                                                                         <font key="font" size="13" name="PingFangHK-Regular"/>
@@ -189,6 +189,7 @@
                                                                 <constraint firstItem="fsY-Co-wno" firstAttribute="trailing" secondItem="vG5-PS-a35" secondAttribute="trailing" id="sQc-aG-7Mo"/>
                                                                 <constraint firstItem="Nov-Lq-MHq" firstAttribute="top" secondItem="UES-Eo-BEf" secondAttribute="top" constant="10" identifier="custom-name-top-space" id="si0-gL-b4j"/>
                                                                 <constraint firstItem="xGh-3b-9zf" firstAttribute="leading" secondItem="UES-Eo-BEf" secondAttribute="leading" constant="5" id="w6E-p7-9te"/>
+                                                                <constraint firstAttribute="bottom" secondItem="NYh-Nx-Z7X" secondAttribute="bottom" id="FW1-0x-b0t"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="currentLocationIndicator" destination="k4t-Nn-Fzn" id="cUu-XI-fvJ"/>
