@@ -383,9 +383,10 @@ class ParentPanelController: NSWindowController {
         parentTimer = nil
     }
     
+    
     func setScrollViewConstraint() {
         let preferences = defaultPreferences
-
+        
         // This is for the Add Cell View case
         if preferences.isEmpty {
             scrollViewHeight.constant = 100.0
@@ -394,7 +395,8 @@ class ParentPanelController: NSWindowController {
 
         mainTableView.layoutSubtreeIfNeeded()
         scrollViewHeight.constant = mainTableView.fittingSize.height
-
+        
+        
         if DataStore.shared().shouldDisplay(ViewType.upcomingEventView) {
             if scrollViewHeight.constant > (screenHeight() - 160) {
                 scrollViewHeight.constant = (screenHeight() - 160)
