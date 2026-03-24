@@ -383,73 +383,18 @@ class ParentPanelController: NSWindowController {
         parentTimer = nil
     }
     
-    private func getAdjustedRowHeight(for object: TimezoneData?, _ currentHeight: CGFloat) -> CGFloat {
-        let userFontSize: NSNumber = DataStore.shared().retrieve(key: UserDefaultKeys.userFontSizePreference) as? NSNumber ?? 4
-        let shouldShowSunrise = DataStore.shared().shouldDisplay(.sunrise)
-        
-        var newHeight = currentHeight
-        
-        if newHeight <= 68.0 {
-            newHeight = 60.0
-        }
-        
-        if newHeight >= 68.0 {
-            newHeight = userFontSize == 4 ? 68.0 : 68.0
-            if let note = object?.note, note.isEmpty == false {
-                newHeight += 20
-            } else if let obj = object,
-                      TimezoneDataOperations(with: obj, store: DataStore.shared()).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) != nil
-            {
-                newHeight += 20
-            }
-        }
-        
-        if newHeight >= 88.0 {
-            // Set it to 90 expicity in case the row height is calculated be higher.
-            newHeight = 88.0
-            
-            if let note = object?.note, note.isEmpty, let obj = object, TimezoneDataOperations(with: obj, store: DataStore.shared()).nextDaylightSavingsTransitionIfAvailable(with: futureSliderValue) == nil {
-                newHeight -= 20.0
-            }
-        }
-        
-        if shouldShowSunrise, object?.selectionType == .city {
-            newHeight += 8.0
-        }
-        
-        if object?.isSystemTimezone == true {
-            newHeight += 5
-        }
-        
-        newHeight += mainTableView.intercellSpacing.height
-        
-        return newHeight
-    }
-    
     func setScrollViewConstraint() {
-        var totalHeight: CGFloat = 0.0
         let preferences = defaultPreferences
-        
-        for cellIndex in 0 ..< preferences.count {
-            let currentObject = TimezoneData.customObject(from: preferences[cellIndex])
-            let rowRect = mainTableView.rect(ofRow: cellIndex)
-            totalHeight += getAdjustedRowHeight(for: currentObject, rowRect.size.height)
-        }
-        
+
         // This is for the Add Cell View case
         if preferences.isEmpty {
             scrollViewHeight.constant = 100.0
             return
         }
-        
-        if let userFontSize = DataStore.shared().retrieve(key: UserDefaultKeys.userFontSizePreference) as? NSNumber {
-            if userFontSize == 4 {
-                scrollViewHeight.constant = totalHeight + CGFloat(userFontSize.intValue * 2)
-            } else {
-                scrollViewHeight.constant = totalHeight + CGFloat(userFontSize.intValue * 2) * 3.0
-            }
-        }
-        
+
+        mainTableView.layoutSubtreeIfNeeded()
+        scrollViewHeight.constant = mainTableView.fittingSize.height
+
         if DataStore.shared().shouldDisplay(ViewType.upcomingEventView) {
             if scrollViewHeight.constant > (screenHeight() - 160) {
                 scrollViewHeight.constant = (screenHeight() - 160)
@@ -459,7 +404,7 @@ class ParentPanelController: NSWindowController {
                 scrollViewHeight.constant = (screenHeight() - 100)
             }
         }
-        
+
         if DataStore.shared().shouldDisplay(.futureSlider) {
             let isModernSliderDisplayed = DataStore.shared().retrieve(key: UserDefaultKeys.displayFutureSliderKey) as? NSNumber ?? 0
             if isModernSliderDisplayed == 0 {
@@ -498,14 +443,9 @@ class ParentPanelController: NSWindowController {
     func updateDatasource(with timezones: [TimezoneData]) {
         datasource?.setItems(items: timezones)
         datasource?.setSlider(value: futureSliderValue)
-        
-        if let userFontSize = DataStore.shared().retrieve(key: UserDefaultKeys.userFontSizePreference) as? NSNumber {
-            scrollViewHeight.constant = CGFloat(timezones.count) * (mainTableView.rowHeight + CGFloat(userFontSize.floatValue * 1.5))
-            
-            setScrollViewConstraint()
-            
-            mainTableView.reloadData()
-        }
+
+        mainTableView.reloadData()
+        setScrollViewConstraint()
     }
     
     func updatePanelColor() {

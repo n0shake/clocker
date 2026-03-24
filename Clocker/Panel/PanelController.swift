@@ -104,15 +104,14 @@ class PanelController: ParentPanelController {
         
         startWindowTimer()
         
+        mainTableView.reloadData()
+
         if DataStore.shared().shouldDisplay(ViewType.upcomingEventView) {
             retrieveCalendarEvents()
         } else {
             removeUpcomingEventView()
             super.setScrollViewConstraint()
         }
-        
-        // This is done to make the UI look updated.
-        mainTableView.reloadData()
         
         log()
         
