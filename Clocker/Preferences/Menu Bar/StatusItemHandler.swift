@@ -19,6 +19,7 @@ class StatusItemHandler: NSObject {
         let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         statusItem.button?.toolTip = "Clocker"
         (statusItem.button?.cell as? NSButtonCell)?.highlightsBy = NSCell.StyleMask(rawValue: 0)
+        statusItem.button?.image = NSImage()
         return statusItem
     }()
     
