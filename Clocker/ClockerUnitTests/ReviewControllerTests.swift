@@ -1,4 +1,4 @@
-// Copyright © 2015 Abhishek Banthia
+// Copyright © 2026 Adrak Studio LLC
 
 @testable import Clocker
 import XCTest

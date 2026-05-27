@@ -34,7 +34,7 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>Clocker can be more useful when it can display upcoming events from your calendars. You can change this setting in System Preferences › Security &amp; Privacy › Privacy</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2024, Abhishek Banthia</string>
+	<string>Copyright © 2026 Adrak Studio LLC</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Clocker can be more useful when it can use your location to determine your current timezone.</string>
 	<key>NSLocationUsageDescription</key>
