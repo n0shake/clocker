@@ -11,7 +11,7 @@
 "NSCalendarsUsageDescription" = "Clocker kann nützlicher sein, wenn es kommende Termine von Ihren Kalender anzeigen kann. Sie können diese Einstellung in Systemeinstellungen › Sicherheit Privatsphäre › Privatsphäre ändern";
 
 /* Copyright (human-readable) */
-"NSHumanReadableCopyright" = "Copyright © 2026 Adrak Studio LLC";
+"NSHumanReadableCopyright" = "Copyright © 2015–2026 Adrak Studio LLC";
 
 /* Privacy - Location Always and When In Use Usage Description */
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "Clocker kann nützlicher sein, wenn es Ihren Standort zur Bestimmung Ihrer aktuellen Zeitzone verwenden kann.";

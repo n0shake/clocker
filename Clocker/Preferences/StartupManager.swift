@@ -1,4 +1,4 @@
-// Copyright © 2026 Adrak Studio LLC
+// Copyright © 2015–2026 Adrak Studio LLC
 
 import Cocoa
 import ServiceManagement

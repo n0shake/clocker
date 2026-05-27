@@ -24,4 +24,4 @@ brew install --cask clocker
 **Clocker** is open for pull requests.
 
 # License
-Copyright © 2026 Adrak Studio LLC. Released under the MIT License.
+Copyright © 2015–2026 Adrak Studio LLC. Released under the MIT License.
