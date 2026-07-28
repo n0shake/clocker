@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Clocker is a macOS menu bar utility (Swift 5, AppKit) that helps users track time across different time zones. It's a native macOS app targeting Sierra 10.12+, distributed via the Mac App Store and Homebrew.
+Clocker is a macOS menu bar utility (Swift 5, AppKit) that helps users track time across different time zones. It's a native macOS app targeting Sierra 10.12+, distributed via the Mac App Store.
 
 ## Build & Test Commands
 

@@ -15,11 +15,6 @@
 
 If you'd like to donate, you can do so [here](https://www.paypal.me/AbhishekBanthia). You can find detailed reviews [here](https://www.podfeet.com/blog/2020/07/clocker/) and [slightly older here](https://lifehacker.com/clocker-crams-a-world-clock-into-your-menu-bar-1794709422). Need any help? Open an issue!
 
-## Install
-```shell
-brew install --cask clocker
-```
-
 # Contributing
 **Clocker** is open for pull requests.
 
