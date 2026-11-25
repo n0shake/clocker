@@ -15,6 +15,10 @@
 
 If you'd like to donate, you can do so [here](https://www.paypal.me/AbhishekBanthia). You can find detailed reviews [here](https://www.podfeet.com/blog/2020/07/clocker/) and [slightly older here](https://lifehacker.com/clocker-crams-a-world-clock-into-your-menu-bar-1794709422). Need any help? Open an issue!
 
+# Usage guides
+
+- [Show a fixed timezone in a space-saving menu bar](docs/menu-bar-timezone.md)
+
 # Contributing
 **Clocker** is open for pull requests.
 
